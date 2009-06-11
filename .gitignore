@@ -1,0 +1,5 @@
+log/*.log
+tmp/**/*
+*.swp
+public/photos
+public/system
