@@ -1,0 +1,110 @@
+<% @page_title = 'Tests: Fish, fish dishes' %>
+<% @page_meta = {'description' => ""} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<%= javascript_include_tag 'test-text' %>
+<%= javascript_include_tag 'test' %>
+<%= stylesheet_link_tag 'test-style.css' %>
+
+<style type="text/css">
+
+.quest  {
+width: 210px;
+}
+
+.variants  {
+width: 220px;
+}
+
+#t2 .quest {
+width: 220px;
+}
+
+
+</style>
+
+<div class="hint_wrap">
+<div class="hint_button">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Recommended links</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+     				<li><a href="fish.html">Fish, fish dishes</a></li>
+     				<li><a href="fish-exercise.html"> Exercises: Fish, fish dishes</a></li>
+
+    		</ul>
+	</div>
+</div>
+</div>
+
+
+
+<h2 class="page">Fish, fish dishes (tests)</h2>
+
+<p class="task">Before completing the following tests, please revise the topic <a title="Fish, fish dishes" href="fish.html">Fish, fish dishes</a></p>
+<hr/>
+<br/>
+<h3>Test 1</h3>
+<p class="task">Listen to the phrase and сhoose the corresponding Russian expression.</p>
+
+<div id="t1">
+<script type="text/javascript">
+var t1 = new Test({dict: [
+
+['sounds/sound08401.mp3','рыба'],['sounds/sound08402.mp3','карп'],['sounds/sound08403.mp3','лещ'],['sounds/sound08404.mp3','лосось'],
+['sounds/sound08405.mp3','осётр'],['sounds/sound08406.mp3','окунь'],['sounds/sound08407.mp3','селёдка'],['sounds/sound08408.mp3','треска'],
+['sounds/sound08409.mp3','щука'],['sounds/sound08410.mp3','форель'],['sounds/sound08411.mp3','угорь'],
+['sounds/sound08412.mp3','икра'],['sounds/sound08413.mp3','красная икра'],['sounds/sound08414.mp3','белужья икра'],['sounds/sound08415.mp3','тресковая печень'],
+['sounds/sound08416.mp3','вяленая рыба'],['sounds/sound08417.mp3','уха'],['sounds/sound08418.mp3','жареная рыба'],['sounds/sound08419.mp3','солёная рыба'],
+['sounds/sound08420.mp3','копчёная рыба']
+
+
+],hide: 'di1',id:'t1', type: 'audio', how_questions: 8, how_show: 2});
+</script>
+</div>
+
+<h3>Test 2</h3>
+<p class="task">Read the Russian phrase and choose the corresponding English expression.</p>
+
+<div id="t2">
+<script type="text/javascript">
+var t2 = new Test({dict: [
+
+['рыба','fish'],['карп','carp'],['лещ','bream'],['лосось','salmon'],
+['осётр','sturgeon'],['окунь','perch'],['селёдка','herring'],['треска','cod'],
+['щука','pike'],['форель','trout'],['угорь','eel'],
+['икра','caviar'],['красная икра','red caviar'],['белужья икра','beluga caviar'],['тресковая печень','cod liver'],
+['вяленая рыба','dried fish'],['уха','fish soup'],['жареная рыба','fried fish'],['солёная рыба','salted fish'],
+['копчёная рыба','smoked fish']
+
+], hide:'di2',id:'t2',type: 'text', how_questions: 8, how_show: 2});
+</script>
+</div>
+
+<h3>Test 3</h3>
+<p class="task">Listen to the Russian phrases and сhoose their translation into English.</p>
+
+<div id="t3">
+<script type="text/javascript">
+var t3 = new Test({dict: [
+
+['sounds/sound08401.mp3','fish'],['sounds/sound08402.mp3','carp'],['sounds/sound08403.mp3','bream'],['sounds/sound08404.mp3','salmon'],
+['sounds/sound08405.mp3','sturgeon'],['sounds/sound08406.mp3','perch'],['sounds/sound08407.mp3','herring'],['sounds/sound08408.mp3','cod'],
+['sounds/sound08409.mp3','pike'],['sounds/sound08410.mp3','trout'],['sounds/sound08411.mp3','eel'],
+['sounds/sound08412.mp3','caviar'],['sounds/sound08413.mp3','red caviar'],['sounds/sound08414.mp3','beluga caviar'],['sounds/sound08415.mp3','cod liver'],
+['sounds/sound08416.mp3','dried fish'],['sounds/sound08417.mp3','fish soup'],['sounds/sound08418.mp3','fried fish'],['sounds/sound08419.mp3','salted fish'],
+['sounds/sound08420.mp3','smoked fish']
+
+
+],hide: 'di3',id:'t3',type: 'audio', how_questions: 8, how_show: 2});
+</script>
+</div>
+
+
+<script type="text/javascript">
+currentSection="words";
+</script>

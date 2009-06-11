@@ -1,0 +1,102 @@
+<% @page_title = 'Stress and reduction of vowels' %>
+<% @page_meta = {'description' => "Online information about stress and reduction of vowels in Russian with audio examples"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<%= stylesheet_link_tag 'stylesounds' %>
+
+<style type="text/css">
+.sound-letter td {
+width: 20%;
+}
+.italic-letter {
+font-style: italic;
+font-family: Times New Roman;
+}
+</style>
+
+<div class="hint_wrap">
+<div class="hint_button" style="float: right;">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Links and Settings</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+    				<li><a href="basic-letters.html">Russian Letters</a></li>
+    				<li><a href="softness.html">Softness </a></li>
+					<li><a href="devocalization.html">Devocalization</a></li>
+					<li><a href="reading-exceptions.html">Exceptional cases</a> </li>
+					<li><a href="basic-reading-rules.html">Basic rules</a> </li>
+    				<li><a href="reading-practice.html">Training exercises</a></li>
+    		</ul>
+        <%= render :partial => 'preload_option' %>
+	</div>
+</div>
+</div>
+<div id="pagecontent"><div id="content">
+
+
+<h2 class="page">Stress and reduction of vowels</h2>
+ 
+
+<h3>Stress</h3>
+<p>
+Stress plays an important role in the Russian language. In order to speak Russian correctly it is necessary to know the place of the stress in the words. In some cases incorrect stress leads to the change of meaning or grammatical value of the word. Stress in Russian is not fixed, it may fall on any part of the word (beginning, center, end) and it is not shown in texts. Moreover, stress may change its place in different forms of the same word and it is a real difficulty for those who are learning Russian. 
+</p>
+<p>
+Russian words are normally written without stress marks. Therefore, it is important to devote special attention to the place of stress in words when learning Russian. In order to help students to memorize the place of stress in Russian words, in manuals and text books stresses are usually marked, most frequently with [ <strong>&#xB4;</strong> ] above the stressed vowel.  On our site there are several view modes of stressed vowels in Russian texts. You can find more information about it on the page <a href="functions.html#stress">Functions and Settings</a>. We do not put stress marks on one-syllable words, as there is only one place for the stress to fall, and on the words with Russian letter <em>ё</em> which is always stressed. In the transcriptions of Russian words stressed vowels are always bold.
+</p>
+
+<h3>Reductions of vowels</h3> 
+<p>
+In Russian, unstressed vowels are not pronounced as distinctly as stressed vowels. The alteration of a vowel in an unstressed position is called reduction. As a result of reduction, some letters denoting vowel sounds are read in a different manner than they are read in the alphabet.
+</p>
+<p>
+In unstressed position there are no alterations in reading of letters <span class="letter">и</span>, <span class="letter">ы</span>, <span class="letter">у</span>, <span class="letter">ю</span>. Letter <span class="letter">ё</span> is always in stressed position, that is why it is read either as <span class="sound" onclick="playSound('sound107.mp3')">[yo]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span> (at the beginning of the word, after vowels, <em>ь</em> and <span class="letter">ъ</span>) or as <span class="sound" onclick="playSound('sound203.mp3')">[o]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span> (after vowels). 
+</p>
+<p>
+The letter <span class="letter">а</span> denotes a short neutral sound <span class="sound" onclick="playSound('sound252.mp3')">[&#x259] <span class="play_tip">&nbsp; &nbsp;</span></span> which is similar to the final sound in the English word <em>water</em>. It should be mentioned that we will not indicate this nuance of the pronunciation since we consider it not very important for those who begin to learn Russian. On our site you will see in transcriptions that letter <span class="letter">а</span> denotes sound <span class="sound" onclick="playSound('sound201.mp3')">[a] <span class="play_tip">&nbsp; &nbsp;</span></span> both in stressed and unstressed positions. 
+</p>
+<p>
+Other letters are read in unstressed positions as follows: 
+</p>
+<p>
+<span class="letter">е</span> - <span class="sound" onclick="playSound('sound251.mp3')">[yi] <span class="play_tip">&nbsp; &nbsp;</span></span> at the beginning of words, after vowels, <span class="letter">ь</span> and <span class="letter">ъ</span><br>
+&nbsp;   -  <span class="sound" onclick="playSound('sound205.mp3')">[i] <span class="play_tip">&nbsp; &nbsp;</span></span> after consonants
+</p>
+<p>
+<span class="letter">о</span>  <span class="sound" onclick="playSound('sound201.mp3')">[а] <span class="play_tip">&nbsp; &nbsp;</span></span>
+</p>
+<p>
+<span class="letter">э</span>  <span class="sound" onclick="playSound('sound205.mp3')">[i] <span class="play_tip">&nbsp; &nbsp;</span></span> at the beginning of words and after vowels<br>
+&nbsp;    <span class="sound" onclick="playSound('sound206.mp3')">[<span class="ry">i</span>] <span class="play_tip">&nbsp; &nbsp;</span></span> after hard consonants (occurs very rarely)
+</p>
+<p>
+<span class="letter">я</span>  – <span class="sound" onclick="playSound('sound251.mp3')">[yi] <span class="play_tip">&nbsp; &nbsp;</span></span> at the beginning of words, after vowels, <span class="letter">ь</span> and <span class="letter">ъ</span><br>
+&nbsp;   -  <span class="sound" onclick="playSound('sound205.mp3')">[i] <span class="play_tip">&nbsp; &nbsp;</span></span> after consonants
+</p>
+<p>
+In the endings of nouns, adjectives etc., in unstressed position letter <span class="letter">е</span> denotes a cross sound between <span class="sound" onclick="playSound('sound205.mp3')">[i] <span class="play_tip">&nbsp; &nbsp;</span></span> and <span class="sound" onclick="playSound('sound202.mp3')">[e] <span class="play_tip">&nbsp; &nbsp;</span></span>. We recommend you to read this letter as <span class="sound" onclick="playSound('sound202.mp3')">[e] <span class="play_tip">&nbsp; &nbsp;</span></span> (<span class="sound" onclick="playSound('sound106.mp3')">[ye] <span class="play_tip">&nbsp; &nbsp;</span></span> after vowels and <span class="letter">ь</span>). 
+</p>
+<p>
+Letter <span class="letter">я</span> should be read as <span class="sound" onclick="playSound('sound201.mp3')">[a] <span class="play_tip">&nbsp; &nbsp;</span></span> (<span class="sound" onclick="playSound('sound133.mp3')">[ya] <span class="play_tip">&nbsp; &nbsp;</span></span> after vowels and <span class="letter">ь</span>). 
+</p>
+
+<h3>Summary: </h3>
+
+<p>- Stress in Russian is not fixed, it may fall on any part of the word, and it may change its place in different forms of the same word.</p>
+<p>- The reading of letters <span class="letter">е</span>, <span class="letter">о</span>, <span class="letter">э</span>, <span class="letter">я</span> is different in stressed and unstressed positions. Letter <span class="letter">о</span> is read as [a], <span class="letter">э</span> is read as [i] or [<span class="ry">i</span>]; <span class="letter">е</span> and <span class="letter">я</span> inside the word are read as [yi] or [i].</p>
+
+
+
+
+
+
+
+</div></div>
+
+<script type="text/javascript">
+currentSection="reading";
+</script>

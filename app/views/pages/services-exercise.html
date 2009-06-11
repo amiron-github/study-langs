@@ -1,0 +1,165 @@
+<% @page_title = 'Russian language online: Exercises  for the topic Services' %>
+<% @page_meta = {'description' => "Online exercises for learning Russian words and phrases related to the topic Services"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<%= javascript_include_tag 'exercises.js' %>
+<%= stylesheet_link_tag 'exercises.css' %>
+
+<div class="hint_wrap">
+<div class="hint_button">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Recommended links</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+     				<li><a href="services.html">Services</a></li>
+     				<li><a href="services-test.html">Tests: Services</a></li>
+    		</ul>
+	</div>
+</div>
+</div>
+
+
+
+<h2 class="page">Services (exercises)</h2>
+
+<p class="task">Before doing the following exercises, please revise the topic <a title="Services" href="services.html">Services</a></p>
+
+<hr/>
+
+<h3>Exercise 1</h3>
+
+<%= render :partial => 'tt_exercise' %>
+
+<hr/>
+
+
+<h3>Exercise 2</h3>
+
+
+<div class="start_btn">
+<input type="button" value="START" onclick="startYN()" />
+</div>
+<div id="yn_box">
+
+	<div id="yn_place">
+
+
+		<div id="trans_wrapper">
+			<div id="yn_trans" style="background-color: transparent; border-width: 0px;">
+				<div>&nbsp;
+				</div>
+			</div>
+		</div>
+
+		<div id="yn_sound">
+			<div class="play">
+			
+			</div>
+		</div>
+		
+		<div>Is this a correct translation? </div>
+		<br/>
+		<div id="yn_btns">
+		<input id="yes_btn" type="button" value="YES" /> <input id="no_btn" type="button" value="NO" />
+		</div>
+		<div id="show_check"></div>
+		<br>
+		<div id="yn_info"></div>
+	</div>
+
+</div>
+
+
+<hr/>
+
+
+<h3>Exercise 3</h3>
+
+
+<div class="start_btn">
+<input type="button" value="START" onclick="startCO()" />
+</div>
+<div id="co_box">
+<div id="co_copy"></div>
+	<div id="co_place">
+		<div class="co_task_wrapper">
+			<div id="co_task"><div>&nbsp;</div></div>
+		</div>
+		
+		<div class="co_choose">Choose translation from the options below: </div>
+
+		<div class="co_options_container">
+		<div class="co_options_wrapper">
+			<div id="co_option0" class="co_options"><div>&nbsp;</div></div>
+			<div id="co_option1" class="co_options"><div>&nbsp;</div></div>
+			<div id="co_option2" class="co_options"><div>&nbsp;</div></div>
+			<div style="clear: both;"></div>
+		</div>
+		</div>
+
+		<div style="text-align: center; padding-top: 30px;">
+		<div id="co_correctness"><div>&nbsp;</div></div>
+		</div>
+		
+		<div class="co_counter"> </div>
+
+	</div>
+
+</div>
+
+
+
+<script type="text/javascript">
+
+////////////////// array for test together 
+
+var ttMassive=new Array(
+
+['служба быта','services'],['парикмахерская','hairdressing saloon'],['помыть голову','have a shampoo'],['постричься','have hair cut'],['побриться','have a shave '],
+['маникюр','manicure'],['педикюр','pedicure'],['прачечная','laundry'],['химчистка','dry-cleaner\'s'],
+['прачечная-автомат','coin laundry'],['почистить','clean'],['постирать','wash'],['одежда','clothes'],
+['обувь','shoes ']
+
+);
+
+/////////////////////// array for yes/no
+
+var massive=new Array(
+
+['sounds/sound05101.mp3','services'],['sounds/sound05102.mp3','hairdressing saloon'],['sounds/sound05104.mp3','have a shampoo'],['sounds/sound05104.mp3','have hair cut'],['sounds/sound05105.mp3','have a shave'],
+['sounds/sound05106.mp3','manicure'],['sounds/sound05107.mp3','pedicure'],['sounds/sound05117.mp3','laundry'],['sounds/sound05118.mp3','dry-cleaner\'s'],
+['sounds/sound05119.mp3','coin laundry'],['sounds/sound05120.mp3','clean'],['sounds/sound05121.mp3','wash'],['sounds/sound05122.mp3','clothes'],
+['sounds/sound05123.mp3','shoes ']
+
+
+);
+
+ynQuestNum=10;
+
+////////////////////// array for choose option
+var co_massive=new Array(
+
+['служба быта','services'],['парикмахерская','hairdressing saloon'],['помыть голову','have a shampoo'],['постричься','have hair cut'],['побриться','have a shave '],
+['маникюр','manicure'],['педикюр','pedicure'],['прачечная','laundry'],['химчистка','dry-cleaner\'s'],
+['прачечная-автомат','coin laundry'],['почистить','clean'],['постирать','wash'],['одежда','clothes'],
+['обувь','shoes ']
+
+);
+
+coQuestNum=10;
+
+</script>
+
+<hr/>
+
+<p class="after-exercise">If you want to check how you know these words, go to <a title="Services tests" href="services-test.html">Tests: Services</a></p>
+
+
+
+<script type="text/javascript">
+currentSection="words";
+</script>

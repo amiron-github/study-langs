@@ -1,0 +1,66 @@
+<% @page_title = 'Online Phonetics Course: Russian vowels' %>
+<% @page_meta = {'description' => "Online lesson to train the pronunciation of Russian vowels"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<%= stylesheet_link_tag 'stylesounds' %>
+
+<div class="hint_wrap">
+<div class="hint_button" style="float: right">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Links and Settings</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+     				<li><a class="bold" href="phonetics.html" title="Training">Training exercises</a></li>
+     				<li><a href="phonetics02.html" title="Hard consonants">Hard consonants</a></li>
+    				<li><a href="phonetics03.html" title="Soft consonants">Soft consonants</a></li>
+     				<li><a href="phonetics04.html" title="The most difficult">The most difficult</a></li>
+    		</ul>
+        <%= render :partial => 'preload_option' %>
+	</div>
+</div>
+</div>
+
+<h2 class="page">Lesson 1. Vowel sounds</h2>
+
+<p>
+This lesson is devoted to 5 vowel sounds which are usually not very difficult to pronounce for English speaking people. In the last lesson, <a href="phonetics04.html">The most difficult sounds</a>, you will find one more vowel sound [<span class="ry">i</span>].
+</p>
+
+<p class="task">Listen and reapeat</p>
+<hr>
+<p>
+<span class="sound" onclick="playSound('phonetic/soundp010001.mp3')">[a – a – a] &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+</p>
+<p>
+<span class="sound" onclick="playSound('phonetic/soundp010002.mp3')">[o – o – o] &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+</p>
+<p>
+<span class="sound" onclick="playSound('phonetic/soundp010003.mp3')">[oo – oo – oo] &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+</p>
+<p>
+<span class="sound" onclick="playSound('phonetic/soundp010004.mp3')">[e – e – e] &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+</p>
+<p>
+<span class="sound" onclick="playSound('phonetic/soundp010005.mp3')">[i – i – i] &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+</p>
+<br>
+<p>
+<span class="sound" onclick="playSound('phonetic/soundp010006.mp3')">[a – e – i – i – e – a] &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+</p>
+<p>
+<span class="sound" onclick="playSound('phonetic/soundp010007.mp3')">[a – o – oo – oo – o – a] &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+</p>
+
+<hr>
+<p>
+<a href="phonetics02.html" ><b>Next part >></b></a>
+</p>
+
+
+<script type="text/javascript">
+currentSection="phonetic";
+</script>

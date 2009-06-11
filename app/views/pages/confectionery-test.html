@@ -1,0 +1,99 @@
+<% @page_title = '' %>
+<% @page_meta = {'description' => ""} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<%= javascript_include_tag 'test-text' %>
+<%= javascript_include_tag 'test' %>
+<%= stylesheet_link_tag 'test-style.css' %>
+
+<style type="text/css">
+
+.quest  {
+width: 210px;
+}
+
+.variants  {
+width: 220px;
+}
+
+#t2 .quest {
+width: 220px;
+}
+
+
+
+</style>
+
+<div class="hint_wrap">
+<div class="hint_button">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Recommended links</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+    				
+     				<li><a href="confectionery.html">Confectionery</a></li>
+     				<li><a href="confectionery-exercise.html"> Exercises: Confectionery</a></li>
+
+    		</ul>
+	</div>
+</div>
+</div>
+
+
+
+<h2 class="page">Confectionery (tests)</h2>
+
+<p class="task">Before completing the following tests, please revise the topic <a title="Confectionery" href="confectionery.html">Confectionery</a></p>
+<hr/>
+<br/>
+<h3>Test 1</h3>
+<p class="task">Listen to the phrase and сhoose the corresponding Russian expression.</p>
+
+<div id="t1">
+<script type="text/javascript">
+var t1 = new Test({dict: [
+
+['sounds/sound08801.mp3','кондитерские изделия'],['sounds/sound08802.mp3','варенье, джем'],['sounds/sound08803.mp3','мёд'],['sounds/sound08804.mp3','мороженое'],
+['sounds/sound08805.mp3','конфеты'],['sounds/sound08806.mp3','шоколад']
+
+],hide: 'di1',id:'t1', type: 'audio', how_questions: 6, how_show: 2});
+</script>
+</div>
+
+<h3>Test 2</h3>
+<p class="task">Read the Russian phrase and choose the corresponding English expression.</p>
+
+<div id="t2">
+<script type="text/javascript">
+var t2 = new Test({dict: [
+
+['кондитерские изделия','confectionery'],['варенье, джем','jam'],['мёд','honey'],['мороженое','ice-cream'],
+['конфеты','sweets'],['шоколад','chocolate']
+
+
+
+], hide:'di2',id:'t2',type: 'text', how_questions: 6, how_show: 2});
+</script>
+</div>
+
+<h3>Test 3</h3>
+<p class="task">Listen to the Russian phrases and сhoose their translation into English.</p>
+
+<div id="t3">
+<script type="text/javascript">
+var t3 = new Test({dict: [
+
+['sounds/sound08801.mp3','confectionery'],['sounds/sound08802.mp3','jam'],['sounds/sound08803.mp3','honey'],['sounds/sound08804.mp3','ice-cream'],
+['sounds/sound08805.mp3','sweets'],['sounds/sound08806.mp3','chocolate']
+
+],hide: 'di3',id:'t3',type: 'audio', how_questions: 6, how_show: 2});
+</script>
+</div>
+
+<script type="text/javascript">
+currentSection="words";
+</script>

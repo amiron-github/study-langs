@@ -1,0 +1,10 @@
+
+#fixWidh {
+width:expression(document.body.clientWidth > 1400? "1400px": "auto" );
+background-image: url("images/corner.gif");
+}
+
+.corners {
+background-image: url("images/corner.gif");
+}
+

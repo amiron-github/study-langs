@@ -1,0 +1,53 @@
+#container {
+line-height: normal;
+}
+
+
+.test-container {
+bor der: 1px solid red;
+border-collapse: collapse;
+
+}
+
+.test-container td {
+}
+
+.quest {
+width: 200px;
+border: 1px solid navy;
+}
+.quest-p {
+padding: 20px;
+}
+
+.variants {
+border: 1px solid navy;
+}
+
+.checking {
+width: 150px;
+border: 1px solid navy;
+}
+
+.variants div {
+margin: 10px;
+}
+
+.task-string {
+padding: 20px 5px;
+}
+
+.answer {
+font-size: 18px;
+font-style: italic;
+font-weight: bold;
+color: blue;
+}
+
+#wrong {
+color: red;
+}
+
+.norm_txt {
+font-weight: normal;
+}

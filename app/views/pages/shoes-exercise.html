@@ -1,0 +1,175 @@
+<% @page_title = 'Russian language online: Exercises for the topic Shoes' %>
+<% @page_meta = {'description' => "Online exercises for learning Russian words and phrases related to the topic Shoes"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<%= javascript_include_tag 'exercises.js' %>
+<%= stylesheet_link_tag 'exercises.css' %>
+
+<div class="hint_wrap">
+<div class="hint_button">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Recommended links</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+     			   	<li><a href="shoes.html">Shoes</a></li>
+     				<li><a href="shoes-test.html">Tests: Shoes</a></li>
+    		</ul>
+	</div>
+</div>
+</div>
+
+
+
+<h2 class="page">Shoes (exercises)</h2>
+
+<p class="task">Before doing the following exercises, please revise the topic <a title="Shoes" href="shoes.html">Shoes</a></p>
+
+<hr/>
+
+<h3>Exercise 1</h3>
+
+<%= render :partial => 'tt_exercise' %>
+
+
+<hr/>
+
+
+<h3>Exercise 2</h3>
+
+
+<div class="start_btn">
+<input type="button" value="START" onclick="startYN()" />
+</div>
+<div id="yn_box">
+
+	<div id="yn_place">
+
+
+		<div id="trans_wrapper">
+			<div id="yn_trans" style="background-color: transparent; border-width: 0px;">
+				<div>&nbsp;
+				</div>
+			</div>
+		</div>
+
+		<div id="yn_sound">
+			<div class="play">
+			
+			</div>
+		</div>
+		
+		<div>Is this a correct translation? </div>
+		<br/>
+		<div id="yn_btns">
+		<input id="yes_btn" type="button" value="YES" /> <input id="no_btn" type="button" value="NO" />
+		</div>
+		<div id="show_check"></div>
+		<br>
+		<div id="yn_info"></div>
+	</div>
+
+</div>
+
+
+<hr/>
+
+
+<h3>Exercise 3</h3>
+
+
+<div class="start_btn">
+<input type="button" value="START" onclick="startCO()" />
+</div>
+<div id="co_box">
+<div id="co_copy"></div>
+	<div id="co_place">
+		<div class="co_task_wrapper">
+			<div id="co_task"><div>&nbsp;</div></div>
+		</div>
+		
+		<div class="co_choose">Choose translation from the options below: </div>
+
+		<div class="co_options_container">
+		<div class="co_options_wrapper">
+			<div id="co_option0" class="co_options"><div>&nbsp;</div></div>
+			<div id="co_option1" class="co_options"><div>&nbsp;</div></div>
+			<div id="co_option2" class="co_options"><div>&nbsp;</div></div>
+			<div style="clear: both;"></div>
+		</div>
+		</div>
+
+		<div style="text-align: center; padding-top: 30px;">
+		<div id="co_correctness"><div>&nbsp;</div></div>
+		</div>
+		
+		<div class="co_counter"> </div>
+
+	</div>
+
+</div>
+
+
+
+<script type="text/javascript">
+
+////////////////// array for test together 
+
+var ttMassive=new Array(
+
+['босоножки','peep-toes'],
+//['высокие сапоги','high shoes'],
+['мокасины','loafers'],
+['полусапожки','bottines'],['туфли-лодочки','court shoes'],['сандалии','sandals'],['туфли','shoes'],
+['ботинки','lace-boots'],['сапоги','boots'],['полуботинки','low shoes'],
+//['кроссовки','jogging shoes'],
+['тапочки','slippers'],['средства для ухода за обувью','shoe care products'],['крем для обуви','shoe polish'],['рожок для обуви','shoehorn'],
+['растяжка для обуви','shoe tree'],['щётка для обуви','polishing brush']
+
+);
+
+/////////////////////// array for yes/no
+
+var massive=new Array(
+
+
+['sounds/sound09402.mp3','peep-toes'],['sounds/sound09403.mp3','loafers'],
+['sounds/sound09404.mp3','bottines'],['sounds/sound09405.mp3','court shoes'],['sounds/sound09406.mp3','sandals'],['sounds/sound09407.mp3','shoes'],
+['sounds/sound09408.mp3','lace-boots'],['sounds/sound09409.mp3','boots'],['sounds/sound09410.mp3','low shoes'],
+['sounds/sound09411.mp3','slippers'],['sounds/sound09412.mp3','shoe care products'],['sounds/sound09413.mp3','shoe polish'],['sounds/sound09414.mp3','shoehorn'],
+['sounds/sound09415.mp3','shoe tree'],['sounds/sound09416.mp3','polishing brush']
+
+);
+
+ynQuestNum=10;
+
+////////////////////// array for choose option
+var co_massive=new Array(
+
+['босоножки','peep-toes'],
+//['высокие сапоги','high shoes'],
+['мокасины','loafers'],
+['полусапожки','bottines'],['туфли-лодочки','court shoes'],['сандалии','sandals'],['туфли','shoes'],
+['ботинки','lace-boots'],['сапоги','boots'],['полуботинки','low shoes'],
+//['кроссовки','jogging shoes'],
+['тапочки','slippers'],['средства для ухода за обувью','shoe care products'],['крем для обуви','shoe polish'],['рожок для обуви','shoehorn'],
+['растяжка для обуви','shoe tree'],['щётка для обуви','polishing brush']
+
+);
+
+coQuestNum=10;
+
+</script>
+
+<hr/>
+
+<p class="after-exercise">If you want to check how you know these words, go to <a title="Shoes tests" href="shoes-test.html"> Tests: Shoes</a></p>
+
+
+
+<script type="text/javascript">
+currentSection="words";
+</script>

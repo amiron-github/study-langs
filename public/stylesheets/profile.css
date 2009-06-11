@@ -1,0 +1,74 @@
+.pBlock h3 {
+font-size: 12pt;
+margin-top: 0px;
+}
+
+
+
+.pr-wrapper {
+width: 100%;
+float: left;
+}
+
+.pr-section {
+margin-left: 140px;
+} 
+
+.us-pic {
+float: left;
+margin-left: -100%;
+wid th: 140px;
+}
+
+.avatar {
+width: 96px;
+height: 96px;
+border: 1px solid #333333;
+background-image: url("images/uspic.jpg");
+background-repeat: no-repat;
+margin-top: 34px;
+}
+
+#upPic {
+margin: 0px auto;
+margin-top: 30px;
+}
+
+.pItem {
+margin-top: 15px;
+}
+
+.pfield {
+width: 100px;
+font-weight: bold;
+float: left;
+}
+
+.pfield2 {
+width: 140px;
+font-weight: bold;
+float: left;
+}
+
+.up-av {
+position: relative;
+left: -50px;
+}
+
+.up-av span {
+font-weight: bold;
+padding-right: 21px;
+}
+
+.psave {
+font-size: 15px;
+font-weight: bold;
+}
+
+
+
+
+
+
+
+

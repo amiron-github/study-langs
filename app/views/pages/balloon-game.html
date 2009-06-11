@@ -1,0 +1,1220 @@
+<% @page_title = 'Hot Air Balloon Game' %>
+<% @page_meta = {'description' => ""} %>
+<% @has_audio = true %>
+
+<%= javascript_include_tag 'vocabulary' %>
+
+<script type="text/javascript">
+
+
+
+var target=0;
+
+var posX=new Array(250, 250, 250);
+
+
+var balloonsLen=1;
+var counter=0;
+var missedTarget=0;
+var struckTarget=0;
+var gameBoxHtml;
+var directInt;
+var fallingTime;
+var totalTarget;
+var totalMissed;
+var windInt;
+var timeToStart;
+var tasksForLevel1;
+var tasksForLevel2;
+var tasksForLevel3;
+var balloonInLevel;
+var score;
+var tLevel;
+
+var wind11;
+var wind12;
+var wind21;
+var wind22;
+var wind31;
+var wind32;
+var windTLInt;
+var windTRInt;
+
+
+var phraseForLevel=new Array();
+
+$(document).ready(function(){
+
+gameBoxHtml=$("#gamebox").html();
+
+$("#game_info").html("<input class=\"play_btn\"type=\"button\" value=\"PLAY\" onclick=\"startBaloonGame()\" \/>").show();
+$("#faller0").css({top: "80px", left: "360px"}).find("div").empty();
+$("#faller1").css({top: "270px", left: "420px"}).find("div").empty();
+$("#faller2").css({top: "200px", left: "80px"}).find("div").empty();
+$("#bigcloud").css({opacity: "0.85"});
+$("div.back").css({opacity: "0.5"});
+$("div.ballon_info").hide();
+
+$("#var iants").hide();
+
+
+
+$("select").change(function () {
+
+var topic=$("select option").index($("select option:selected"));
+
+getTopic(topic);
+
+}).change();
+
+
+
+});
+
+
+function shuffle () {
+    len = shuffle.arguments[0] || this.length;
+    var sA = new Array();
+    for (var i=0; i < this.length; i++) {
+        sA[sA.length]=this[i];
+    }
+    var newArray = new Array();
+    for (var i=0; i<len; i++) {
+        var t = Math.round(Math.random()*(sA.length-1));
+        newArray.push(sA[t]);
+        sA.splice(t,1);
+    }
+    return newArray;
+}
+
+Array.prototype.shuffle = shuffle;
+
+
+
+function startBaloonGame() {
+
+	var tasksForGame=tasks.shuffle(12);
+	tasksForLevel1=tasksForGame.slice(0,4);
+	tasksForLevel2=tasksForGame.slice(4,8);
+	tasksForLevel3=tasksForGame.slice(8);
+	
+	score=0;
+	missedTarget=0;
+	
+	$("#game_info").text("Level 1").show();
+
+	   		startLevel1();	
+	
+}
+
+
+function startLevel1() {
+	
+	allClear();
+	
+	
+	$("#game_info").text("Level 1").show();
+	
+	getVariants();
+	variantsForLevel(1);
+	
+	setTimeout(function() {
+	   	   
+          	$("#game_info").fadeOut();
+          	
+          	$("div.incloud div").css({opacity: "0.9"});
+    
+          	$("div.back").css({opacity: "0.5"});
+          	
+          	
+           	$("#else").text();
+           	$("#points").text("0");
+           	$("#missed").text("0");
+          	
+          	guidesOn();
+          	keysOn();
+          	fallingTime=7500;
+          	totalTarget=3;  // does not work, go directly to targetStruck function
+          	totalMissed=3;
+          	tLevel=1;
+          	
+          	balloonInLevel=20; // for the indication
+          	
+          	$("#else").text(balloonInLevel);
+           	$("#points").text("0");
+           	$("#missed").text("0");
+           	
+           	
+          	
+          	$("div.balloons").eq(0).attr("id","faller0");
+          	startLanding(0);
+          	timeToStart=2500;
+          	
+
+
+           wind11=setTimeout("windToRight(50)", 90000);
+           wind12=setTimeout("windToLeft(50)", 140000);
+           
+           
+          //	setTimeout("windToRight(40)", 45000);
+	
+	
+   	},3000);
+	
+
+
+}
+
+function startLevel2() {
+	
+	allClear();
+	
+	$("#game_info").text("Level 2").show();
+	
+	
+		$("div.incloud div").css({opacity: "0.9"});
+    	
+    	$("#falling").css({backgroundImage: "url(games/balloon/evening.jpg)", backgroundColor: "#FD7CA5"});
+    	$("div.incloud div").css({opacity: "0.7"});
+    	$("#horizont div").css({opacity: "0.6"});
+    	
+    	$("div.ballon_info").css({color: "#FDFF00"});
+    		
+          	
+          	$("#else").text("30");
+           	$("#points").text(score);
+           	$("#missed").text(missedTarget);
+	
+	getVariants();
+	phraseForLevel=new Array();
+	variantsForLevel(2);
+	
+	setTimeout(function() {
+		
+		$("#game_info").fadeOut();
+	
+
+    	
+    	
+    	$("div.back").css({opacity: "0.5"});
+    	
+    	guidesOn();
+    	keysOn();
+    	balloonsLen=1;
+
+    	fallingTime=7500;
+    	totalTarget=5; // does not work, go directly to targetStruck function
+    	totalMissed=3;
+    	struckTarget=200;
+    	timeToStart=2500;
+    	tLevel=2;
+    	
+    	balloonInLevel=230; // for the indication
+    	
+    	
+    	$("div.balloons").eq(0).attr("id","faller0");
+    	startLanding(0);
+
+    	setTimeout( function() {
+    		$("div.balloons").eq(1).attr("id","faller1");
+    		balloonsLen++; 
+    		startLanding(1);
+    	}, 15000);
+    	
+
+           wind21=setTimeout("windToRight(60)", 130000);
+           wind22=setTimeout("windToLeft(60)", 80000);
+           
+           
+   	},3000);
+
+}
+
+function startLevel3() {
+	allClear();
+	
+	$("#game_info").text("Level 3").show();
+	
+	
+		$("#falling").css({backgroundImage: "url(games/balloon/darkness.gif)", backgroundRepeat: "repeat", backgroundColor: "#1C1C20"});
+		
+    	$("div.incloud div").css({opacity: "0.5"});
+    	$("#bigcloud").css({opacity: "0.5"});
+    	
+    	$("#horizont div").css({opacity: "0.2"});
+    	
+    	$("#horizont").css({backgroundColor: "#1C1C20"});
+    	
+    	$("div.ballon_info").css({color: "#fff"});
+    	
+    		$("#else").text("40");
+           	$("#points").text(score);
+           	$("#missed").text(missedTarget);
+    	
+    	
+	
+	getVariants();
+	phraseForLevel=new Array();
+	variantsForLevel(3);
+	
+	setTimeout(function() {
+			
+			$("#game_info").fadeOut();
+	
+        	
+        	$("div.back").css({opacity: "0.6"});
+        	
+        	guidesOn();
+        	keysOn();
+        	balloonsLen=1;
+
+        	fallingTime=8000;     // time from start to check
+        	totalTarget=20;             // does not work, go directly to targetStruck function
+        	totalMissed=3;
+        	struckTarget=300;      // initial for couneter of struck ballons in 3 level
+        	timeToStart=4000;     // time from check to start
+        	tLevel=3;
+        	
+        	balloonInLevel=340;
+        	
+        	
+        	$("div.balloons").eq(0).attr("id","faller0");
+        	startLanding(0);
+
+        	setTimeout( function() {
+        		$("div.balloons").eq(1).attr("id","faller1");
+        		
+        		balloonsLen++; 
+        		startLanding(1);
+        	}, 4000);
+        	
+        	setTimeout( function() {
+        	
+        		$("div.balloons").eq(2).attr("id","faller2");
+        		balloonsLen++; 
+        		startLanding(2);
+        		
+        	}, 8000);
+        	
+        	
+        	
+    	   wind31=setTimeout("windToRight(80)", 100000);
+    		
+           wind32=setTimeout("windToLeft(80)", 130000);
+	
+   	},3000);
+	
+	
+//setTimeout("windToRight(30)", 15000);
+
+}
+
+
+
+function startLanding(fallerNum) {
+counter++;
+   
+	
+	if(struckTarget==5) {
+	
+		fallingTime=6000;
+		timeToStart=2000;
+		
+	};
+	
+	if(struckTarget==210) {
+	
+		fallingTime=6300;
+		timeToStart=2100;
+		
+	};
+	
+   	var variantLen=$("div.variant").length-1;
+   	var targetIndex=Math.round(Math.random()*variantLen);
+   	 	
+   	var textToFaller=phraseForLevel[targetIndex]
+   	
+   	
+   	$("#faller"+fallerNum+" span").text(textToFaller);
+   	
+   	pointTarget();
+   	landing(fallerNum, targetIndex)
+}
+
+
+function landing(fallerNum, targetIndex) {
+	$("#faller"+fallerNum).animate({top: "300px"}, fallingTime, function() {
+		var hit=checkVariant(fallerNum, targetIndex);
+		if (target==fallerNum) {
+			changeTarget();
+		};
+		if (hit==1) {
+			targetStruck(fallerNum);
+		} else {
+			targetMissed(fallerNum);
+		}
+	});
+}
+
+
+
+function targetStruck(fallerNum) {
+
+	struckTarget++;
+	
+	var balloonsLeft = balloonInLevel - struckTarget;
+	
+	$("#else").text(balloonsLeft);
+	
+	score+=10;
+	
+	$("#points").text(score);
+	
+
+	
+   $("#faller"+fallerNum).find("span").text("GREAT!!!").css({fontWeight: "bold"});
+	$("#faller"+fallerNum+" div.sec").find("span").css({color: "blue"});
+
+   
+   var tBalloon=$("#faller"+fallerNum);
+
+	
+	if (struckTarget==20) {    //number of struck ballooons in the 1 level
+		endOfLevel(1);
+	
+			
+	}else if(struckTarget==230){ //number of struck ballooons in the 2 level
+		endOfLevel(2);
+	}else if(struckTarget==340){ //number of struck ballooons in the 3 level
+		youWin();
+	}else{
+	
+	   
+	
+		tBalloon.removeAttr("id").animate({top: "400px"}, timeToStart, function() {
+				
+			tBalloon.attr({id: "faller"+fallerNum}).find("span").css({fontWeight: "normal"}).end()
+					.find("div.sec").find("span").css({color: "#000"});
+			
+			balloonToStart(fallerNum);
+		});
+	}
+}
+
+
+function targetMissed(fallerNum) {
+	missedTarget++;
+	$("#missed").text(missedTarget);
+	
+	score-=10;
+	$("#points").text(score);
+	
+	var tBalloon=$("#faller"+fallerNum);
+	$("#faller"+fallerNum).find("span").text("WRONG :(").css({fontWeight: "bold"});
+	$("#faller"+fallerNum+" div.sec").find("span").css({color: "red"});
+	
+	if(missedTarget==totalMissed){ 
+		youLoose();
+   	}else{
+		tBalloon.removeAttr("id").animate({top: "400px"}, timeToStart, function() {
+		
+			tBalloon.attr({id: "faller"+fallerNum}).find("span").css({fontWeight: "normal"}).end()
+					.find("div.sec").find("span").css({color: "#000"});
+			
+			
+			balloonToStart(fallerNum);
+		});
+	}
+}
+
+function endOfLevel(level) {
+	allStop();
+	$("div.balloons").remove();
+	
+	if(level==1){
+	
+	
+		$("#game_info").html('EXCELLENT! <br> <br> <div class="complet"> You have successfully completed <\/div> <div class="complet">LEVEL 1<\/div>').show();
+						
+		
+		setTimeout(function() {
+	   		$("#game_info").animate({opacity: "0"}, 1400, function() {
+	   			startLevel2();
+	   		});
+   		},2500);
+	   		
+	   		
+   	}else if(level==2){
+   	
+   	
+		$("#game_info").html('EXCELLENT! <br> <br> <div class="complet"> You have successfully completed <\/div> <div class="complet">LEVEL 2<\/div>').show();
+						
+		
+		setTimeout(function() {
+	   		$("#game_info").animate({opacity: "0"}, 1400, function() {
+	   			startLevel3();
+	   		});
+   		},2500);
+   	
+   	}
+	
+}
+
+function youWin() {
+	allStop();
+	
+	clearTimeout(wind11);
+	clearTimeout(wind12);
+	clearTimeout(wind21);
+	clearTimeout(wind22);
+	clearTimeout(wind31);
+	clearTimeout(wind32);
+	clearTimeout(windTLInt);
+	clearTimeout(windTRInt);
+
+	posX=false;
+	
+	setTimeout(function() {
+	
+		$("div.balloons").remove();
+		
+		$("#game_info").html("YOU ARE THE BEST!!!  <br> <br>  ").show();
+		
+		setTimeout (function() {
+			$("#game_info").append("<input class=\"again_btn\"type=\"button\" value=\"PLAY AGAIN\" onclick=\"startBaloonGame()\" \/> ");
+		
+		}, 2000);
+		
+	
+	}, 1500);
+	
+}
+
+
+
+
+
+function youLoose() {
+
+	allStop();
+	
+	
+	clearTimeout(wind11);
+	clearTimeout(wind12);
+	clearTimeout(wind21);
+	clearTimeout(wind22);
+	clearTimeout(wind31);
+	clearTimeout(wind32);
+	clearTimeout(windTLInt);
+	clearTimeout(windTRInt);
+
+	posX=false;
+	
+	clearInterval(windInt);
+	
+	
+	var gColor;
+	
+	switch (tLevel)  {
+	case (1): 
+		gColor="red";
+		break;
+	case (2): 
+		gColor="#CF0C14";
+		break;
+	case (3):
+		gColor="yellow";
+		break;
+	
+	}
+	
+	setTimeout(function() {
+		$("#game_info").css({color: gColor})
+		.html("GAME OVER  <br> <br>  ").show();
+	
+		setTimeout (function() {
+			$("#game_info").append("<input class=\"again_btn\"type=\"button\" value=\"PLAY AGAIN\" onclick=\"startBaloonGame()\" \/> ");
+		
+		}, 2000);
+	
+	}, 1500);
+
+}
+
+
+function allStop() {
+	$(document).unbind("keydown");
+	$("#left").add("#right").unbind("mousedown");
+	$("#left").add("#right").unbind("mouseup");
+	clearInterval(windInt);
+	clearInterval(directInt);
+	$("#gamebox").find("div:animated").stop();
+}
+
+
+function allClear() {
+	$(document).unbind("keydown");
+	$("#left").add("#right").unbind("mousedown");
+	$("#left").add("#right").unbind("mouseup");
+	
+	clearInterval(windInt);
+	clearInterval(directInt);
+	allStop();
+	$("#gamebox").find("div:animated").remove();	
+	target=0;
+	posX=new Array(250, 250, 250);
+	balloonsLen=1;
+	counter=0;
+	//missedTarget=0;
+	struckTarget=0;
+	$("#gamebox").html(gameBoxHtml);
+	$("div.balloons").removeAttr("id");
+}
+
+
+function balloonToStart(fallerNum) {
+	posX[fallerNum]=(Math.round(Math.random()*400))+100;
+	$("#faller"+fallerNum).css({top: "-80px", left: posX[fallerNum]+"px"});
+	startLanding(fallerNum);
+}
+
+
+function changeTarget() {
+	if (balloonsLen > 1) {
+		for (var i=0; i < balloonsLen+1; i++) {
+			target++;
+	   		if ($("#faller"+target).length) {
+		   		break;
+			}else{
+				if (target >= balloonsLen) {
+					target=-1;
+				}
+			}
+		}
+		pointTarget();
+	}else { 
+   		return false;
+	}
+}
+
+
+
+function pointTarget() {
+	$("#counter").text(target);
+	$("div.balloons div.in_fall").css({backgroundPosition: "50% -100px"});
+	$("#faller"+target+" div.in_fall").css({backgroundPosition: "50% 75px"});
+}
+
+
+function toTheLeft(addition) {
+	posX[target]-=addition;
+	$("#faller"+target).css({"left": posX[target]+"px"});
+}
+
+
+function toTheRight(addition) {
+	posX[target]+=addition;
+	$("#faller"+target).css({"left": posX[target]+"px"});
+}
+
+
+
+function guidesOn() {
+	$("#left").mousedown(function() {
+		directInt=setInterval("toTheLeft(5)", 25);
+	} ).mouseup(function() {
+		clearInterval(directInt);
+	});
+	
+	$("#right").mousedown(function() {
+		directInt=setInterval("toTheRight(5)", 25);
+	}).mouseup(function() {
+		clearInterval(directInt);
+	});
+}
+
+
+
+function keysOn() {
+	$(document).keydown(function(event){
+    	if (event.keyCode == 37) {
+        	toTheLeft(10);
+    	}
+    	if (event.keyCode == 39) {
+    	
+        	toTheRight(10);
+    	}
+    	if (event.keyCode == 9) {
+        	changeTarget();
+			return false;
+     	}
+	});
+}
+
+
+var varCoordX=new Array();
+var varCoordX1=new Array();
+var varCoordW=new Array();
+
+function getVariants() {
+
+	var varSize=$("div.variant").size();
+	for (var i=0; i< varSize; i++) {
+		var t=$("#variants .variant").eq(i).get(0);
+		varCoordX[i]=t.offsetLeft - 40;
+		varCoordW[i]=t.clientWidth;
+		varCoordX1[i]=varCoordX[i]+varCoordW[i];
+	}
+}
+
+
+
+function checkVariant(fallerNum, targetIndex) {
+	
+	var tFallerX=$("#faller"+fallerNum).get(0).offsetLeft;
+
+	if ( (tFallerX >= varCoordX[targetIndex]) && (tFallerX <= varCoordX1[targetIndex])) {
+		
+		return 1;
+	
+	} else { return 0;} 
+
+}
+
+
+function windToRight(speed) {
+	clearInterval(windInt);
+	
+	$("#bigcloud").stop().animate({left: "+=1600px"}, 100000); 
+	$("#smallcloud").stop().animate({left: "+=1600px"}, 260000); 
+	
+	windTRInt=setTimeout(function() {
+	
+		windInt=setInterval("windForBallon()", speed);
+	
+	}, 3000)
+	
+}
+
+
+function windForBallon() {
+	for (var i=0; i< 3; i++) {
+		posX[i]+=1;
+		$("#faller"+i).css({"left": posX[i]+"px"});
+	}
+}
+
+
+function windToLeft(speed) {
+
+clearInterval(windInt);
+$("#bigcloud").stop().animate({left: "-=1600px"}, 100000); 
+$("#smallcloud").stop().animate({left: "-=1600px"}, 260000); 
+
+windTLInt=setTimeout(function(){
+windInt=setInterval("windForBallonLeft()", speed);
+}, 3000)
+
+}
+
+
+function windForBallonLeft() {
+	for (var i=0; i< 3; i++) {
+		posX[i]-=1;
+		$("#faller"+i).css({"left": posX[i]+"px"});
+	}
+}
+
+
+function variantsForLevel(level) {
+
+	var tasksForLevel; 
+	phraseForLevel=new Array();
+	
+	switch (level) { 
+		case (1):
+			tasksForLevel=tasksForLevel1;
+			break;
+		case (2):
+			tasksForLevel=tasksForLevel2;
+			break;
+		case (3):
+			tasksForLevel=tasksForLevel3;
+	}
+	
+	for (var i=0; i < 4; i++) {
+		$("div.textfield").eq(i).text(tasksForLevel[i][1]);
+		phraseForLevel.push(tasksForLevel[i][0]);
+	}
+		
+
+}
+
+
+</script>
+
+<style type="text/css">
+
+
+
+
+
+#gamebox {
+position: absolute;
+border: 1px solid #000;
+}
+
+#game-place {
+height: 400px;
+width: 600px;
+}
+
+
+#falling {
+position: absolute;
+height: 400px;
+width: 600px;
+overflow: hidden;
+background: #CFE0FF url("games/balloon/sky.gif") repeat-x left -20px;
+}
+
+
+#cloud {
+position: absolute;
+background-image: url("games/balloon/cloud.gif");
+background-repeat: no-repeat;
+background-position: 30% 0px;
+width: 500px;
+height: 100px;
+top: 25px;
+}
+
+
+#clouds {
+mar_gin-top: 15px;
+width: 600px;
+height: 200px;
+top: 25px;
+overflow: visible;
+}
+
+#bigclouds {
+wi_dth: 35%;
+}
+
+#smallclouds {
+wi_dth: 8%;
+}
+
+.incloud {
+float: right;
+position: relative;
+}
+
+
+#smallclouds .incloud div {
+position: absolute;
+margin-top: 80px;
+height: 100px;
+margin-left: -2000px;
+width: 10000px;
+background: transparent url("games/balloon/smallclouds.gif") repeat-x left top;
+}
+
+
+#bigclouds .incloud div {
+position: absolute;
+height: 80px;
+margin-left: -5000px;
+width: 20000px;
+background: transparent url("games/balloon/bigclouds.gif") repeat-x left top;
+z-index: 300;
+}
+
+
+#faller0, #faller1, #faller2, div.balloons {
+height: 95px;
+width: 100px;
+position: absolute;
+text-align: center;
+}
+
+
+
+#faller0, div.balloon0 {
+background: transparent url("games/balloon/baloon.gif") no-repeat 3px top;
+}
+
+
+#faller1, div.balloon1 {
+background: transparent url("games/balloon/baloon2.gif") no-repeat 3px top;
+}
+
+#faller2, div.balloon2 {
+background: transparent url("games/balloon/baloon.gif") no-repeat 3px top;
+}
+
+
+.variant {
+background-color: #F9D053;
+width: 50px;
+height: 30px;
+border: 1px solid brown;
+text-align: center;
+float: left;
+margin: -3px 0px 0px 80px !important;
+
+margin: -3px 40px 0px 40px; /*  for ie 6 */
+
+}
+
+#variants {
+position: relative;
+margin-top: 30px;
+width: 600px;
+}
+
+
+#relief {
+margin-top: -30px;
+
+}
+
+
+#horizont {
+position: absolute;
+margin-top: 335px;
+
+}
+
+#horizont div {
+width: 600px;
+height: 70px;
+background: transparent url("games/balloon/horizont.gif") no-repeat 40px top;
+}
+
+
+#plane {
+position: absolute;
+margin-top: 30px;
+width: 600px;
+height: 71px;
+background-color: green;
+border-bottom: 1px solid #000;
+}
+
+#mountain-lft {
+position: absolute;
+margin-top: -110px;
+width: 80px;
+height: 180px;
+background: transparent url("games/balloon/mountain.gif") no-repeat -80px top;
+}
+
+#mountain-rt {
+position: absolute;
+margin-top: -110px;
+margin-left: 520px;
+width: 80px;
+height: 180px;
+background: transparent url("games/balloon/mountain.gif") no-repeat 10px top;
+}
+
+
+.forest {
+position: relative;
+}
+
+
+.forest div {
+margin-top: -5px;
+margin-left: 132px;
+position: absolute;
+width: 80px;
+height: 70px;
+background: transparent url("games/balloon/wood.gif") repeat-x left top;
+}
+
+
+#lake {
+position: relative;
+}
+
+
+#lake div {
+margin-top: -5px;
+margin-left: 264px;
+position: absolute;
+width: 80px;
+height: 70px;
+background: transparent url("games/balloon/lake.gif") repeat-x left 13px;
+}
+
+#game_info {
+display: none;
+position: absolute;
+top: 150px;
+width: 600px;
+text-align: center;
+font-size: 27pt;
+font-weight: bold;
+color: blue;
+}
+
+#textfield {
+position: relative;
+}
+
+.textfield {
+height: 40px;
+background-color: #FFE38F;
+border: 1px solid #000;
+width: 130px;
+float: left;
+position: relative;
+text-align: center;
+
+margin-left: 15px !important;
+margin-left: 10px;  /*  for ie 6 */
+}
+
+
+#guide_buttons {
+width: 600px;
+padding-top: 480px;
+text-align: center;
+}
+
+#guide_buttons input {
+width: 100px;
+height: 40px;
+}
+
+.play_btn {
+height: 100px;
+width: 150px;
+font-size: 30px;
+cursor: point;
+}
+
+.again_btn {
+height: 60px;
+width: 180px;
+font-size: 25px;
+font-weight: normal;
+color: #000;
+cursor: point;
+}
+
+.complet {
+font-size: 18pt;
+color: #001E5F;
+}
+
+.in_fall {
+position: relative;
+overflow: visible;
+}
+
+
+#faller0 div.in_fall, #faller1 div.in_fall, #faller2 div.in_fall, div.balloons div.in_fall {
+min-height: 95px;
+height: auto !important;
+height: 95px;
+background: transparent url("games/balloon/arrows.gif") no-repeat 50% -60px;
+}
+
+
+#faller0 div.in_fall, #faller1 div.in_fall, #faller2 div.in_fall, div.balloons div.in_fall {
+position: relative;
+overflow: visible;
+text-align: left;
+}
+
+
+
+div.balloons div.in_fall div {
+position: absolute;
+bo rder: 1px solid #000;
+width: 200px;
+height: 40px;
+min-height: 40px;
+margin-left: -50px;
+text-align: center;
+margin-top: 18px;
+}
+
+div.balloons div.in_fall div span {
+border: 1px solid #ccc;
+background-color: #ccc;
+color: #ccc;
+line-height: 18px;
+padding: 0px 5px;
+}
+
+div.balloons div.in_fall div.sec span {
+background-color: transparent;
+color: #000;
+}
+
+
+.ballon_info {
+position: absolute;
+z-index: 900;
+font-weight: bold;
+color: #14077F;
+}
+
+#balloons_left {
+margin: 15px 0px 0px 15px;
+}
+
+#score {
+margin: 45px 0px 0px 15px;
+} 
+
+#balloons_missed {
+margin: 75px 0px 0px 15px;
+}
+
+
+</style>
+
+
+<div style="height: 700px">
+
+
+<h2  class="page" style="color: #444">Balloon Game</h2>
+
+
+<p>Use the buttons << >> to steer hot air balloons, or arrow keys. You may switch the control from one ballon to another with TAB key. If you miss 3 hot air ballons, the game will be over. 
+There are 3 levels in the game. Attention! Tasks will change at the beginning of each level.
+Choose the topic and start the game. Good luck! </p>
+
+
+<form action="">
+<p><b>Topic: &nbsp;&nbsp;</b>
+<select name="OS">
+<option selected>Formulas of politeness</option>
+<option>Transport</option>
+
+<option>Hotel</option>
+<option>City</option>
+<option>Sightseeing</option>
+<option>Meals</option>
+</select></p>
+</form>
+
+
+
+
+<br><br>
+
+
+
+<div id="gamebox">
+	<div id="game-place">
+		<div id="falling">
+		
+		<div id="balloons_left" class="ballon_info">Ballons left: <span id="else"></span></div>
+		<div id="score" class="ballon_info">Score: <span id="points"></span></div>
+		<div id="balloons_missed" class="ballon_info">Ballons missed: <span id="missed"></span></div>
+
+			<div id="clouds" style="left: -50px;">
+
+				<div id="horizont"><div>&nbsp;</div></div>
+
+				<div id="smallclouds"><div class="incloud"><div id="smallcloud">&nbsp;</div></div></div>
+
+
+				<div id="faller0" class="balloons balloon0" style="top: -100px; left: 250px;">
+					<div class="in_fall">
+						<div class="back">
+							<span>&nbsp;</span>
+						</div> 
+						<div class="sec">
+							<span> &nbsp;</span>
+						</div>  
+					</div>
+				</div>
+				<div id="faller1" class="balloons balloon1" style="top: -100px; left: 250px" >
+					<div class="in_fall">
+						<div class="back">
+							<span>&nbsp; </span>
+						</div> 
+						<div class="sec">
+							<span> &nbsp; </span>
+						</div>  
+					</div>
+				</div>
+				<div id="faller2" class="balloons balloon2" style="top: -100px; left: 250px" >
+					<div class="in_fall">
+						<div class="back">
+							<span>&nbsp; </span>
+						</div> 
+						<div class="sec">
+							<span> &nbsp;</span>
+						</div>  
+					</div>
+				</div>
+
+
+				<div id="bigclouds"><div class="incloud"><div id="bigcloud">&nbsp;</div></div></div>
+
+			</div>
+
+
+		</div>
+	</div>
+
+	<div id="relief">
+
+		<div id="plane"></div>
+
+		<div id="mountain-lft"></div>
+		<div id="mountain-rt"></div>
+
+		<div class="forest"><div>&nbsp;</div></div>
+		<div class="forest"><div style="margin-left: 395px;">&nbsp;</div></div>
+		<div id="lake"><div>&nbsp;</div></div>
+		
+		<div id="game_info">GAME OVER</div>
+	</div>
+
+
+	<div id="variants">
+		<div class="variant"></div>
+		<div class="variant"></div>
+		<div class="variant"></div>
+		<div class="variant" style="margin-right: 0px;"></div>
+		<div style="clear: both"></div>
+	</div>
+	<div id="textfields">
+		<div class="textfield">&nbsp;</div>
+		<div class="textfield">&nbsp;</div>
+		<div class="textfield">&nbsp;</div>
+		<div class="textfield" style="margin-right: 0px;">&nbsp;</div>
+		<div style="clear: both"></div>
+	</div>
+
+
+</div>
+
+
+<div id="guide_buttons">
+
+	<input id="left" type="button" value="<<" />
+	
+	<input id="right" type="button" value=">>" />
+	
+</div>
+
+
+
+
+
+
+
+
+</div>
+

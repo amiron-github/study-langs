@@ -1,0 +1,177 @@
+<% @page_title = 'Russian language online: Exercises  for the topic Formulas of politeness' %>
+<% @page_meta = {'description' => "Online exercises for learning Russian words and phrases related to the topic Formulas of politeness"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<%= javascript_include_tag 'exercises.js' %>
+<%= stylesheet_link_tag 'exercises.css' %>
+
+<div class="hint_wrap">
+<div class="hint_button">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Recommended links</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+     				<li><a href="politeness.html">Formulas of politeness</a></li>
+     				<li><a href="politeness-test.html">Tests: Formulas of politeness</a></li>
+    		</ul>
+	</div>
+</div>
+</div>
+
+
+
+<h2 class="page">Formulas of politeness<br/>(exercises)</h2>
+
+<p class="task">Before doing the following exercises, please revise the topic <a title="Formulas of politeness" href="politeness.html">Formulas of politeness</a></p>
+
+<hr/>
+
+<h3>Exercise 1</h3>
+
+<%= render :partial => 'tt_exercise' %>
+
+
+<hr/>
+
+
+<h3>Exercise 2</h3>
+
+
+<div class="start_btn">
+<input type="button" value="START" onclick="startYN()" />
+</div>
+<div id="yn_box">
+
+	<div id="yn_place">
+
+
+		<div id="trans_wrapper">
+			<div id="yn_trans" style="background-color: transparent; border-width: 0px;">
+				<div>&nbsp;
+				</div>
+			</div>
+		</div>
+
+		<div id="yn_sound">
+			<div class="play">
+			
+			</div>
+		</div>
+		
+		<div>Is this a correct translation? </div>
+		<br/>
+		<div id="yn_btns">
+		<input id="yes_btn" type="button" value="YES" /> <input id="no_btn" type="button" value="NO" />
+		</div>
+		<div id="show_check"></div>
+		<br>
+		<div id="yn_info"></div>
+	</div>
+<script type="text/javascript">
+
+
+
+
+
+</script>
+</div>
+
+
+<hr/>
+
+
+<h3>Exercise 3</h3>
+
+
+<div class="start_btn">
+<input type="button" value="START" onclick="startCO()" />
+</div>
+<div id="co_box">
+<div id="co_copy"></div>
+	<div id="co_place">
+		<div class="co_task_wrapper">
+			<div id="co_task"><div>&nbsp;</div></div>
+		</div>
+		
+		<div class="co_choose">Choose translation from the options below: </div>
+
+		<div class="co_options_container">
+		<div class="co_options_wrapper">
+			<div id="co_option0" class="co_options"><div>&nbsp;</div></div>
+			<div id="co_option1" class="co_options"><div>&nbsp;</div></div>
+			<div id="co_option2" class="co_options"><div>&nbsp;</div></div>
+			<div style="clear: both;"></div>
+		</div>
+		</div>
+
+		<div style="text-align: center; padding-top: 30px;">
+		<div id="co_correctness"><div>&nbsp;</div></div>
+		</div>
+		
+		<div class="co_counter"> </div>
+
+	</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+////////////////// array for test together 
+
+var ttMassive=new Array(
+
+['Здравствуйте','Hello'],['Привет!','Hi! (informal)'],['Как поживаете?','How are you getting on?'],['Как дела?','How are you? (informal)'],
+['Хорошо','Fine'],['Прекрасно','Perfectly well'], ['До свидания','Good bye'],['Всего хорошего!','All the best!'],
+['Пока!','Bye-bye!'],['Извините','Sorry'],['Простите','Excuse me'],['Будьте добры','Will you please...'],
+['Пожалуйста','Please'],['Спасибо','Thank you'],['Не за что','Don\'t mention it'], ['Большое спасибо','Thank you very much']
+
+);
+
+/////////////////////// array for yes/no
+
+var massive=new Array(
+['sounds/sound01101.mp3','Hello'],['sounds/sound01106.mp3','Hi! (informal)'],['sounds/sound01110.mp3','How are you?'],
+['sounds/sound01112.mp3','Fine'],['sounds/sound01115.mp3','Good bye'],['sounds/sound01120.mp3','Bye-bye!'],
+['sounds/sound01122.mp3','Sorry'],['sounds/sound01126.mp3','Please'],['sounds/sound01127.mp3','Thank you'],
+['sounds/sound01131.mp3','Don\'t mention it']
+
+
+);
+
+ynQuestNum=10;
+
+////////////////////// array for choose option
+var co_massive=new Array(
+
+['Здравствуйте','Hello'],['Привет!','Hi! (informal)'],['Как поживаете?','How are you getting on?'],['Как дела?','How are you? (informal)'],
+['Хорошо','Fine'],['Прекрасно','Perfectly well'], ['До свидания','Good bye'],['Всего хорошего!','All the best!'],
+['Пока!','Bye-bye!'],['Извините','Sorry'],['Простите','Excuse me'],['Будьте добры','Will you please...'],
+['Пожалуйста','Please'],['Спасибо','Thank you'],['Не за что','Don\'t mention it'], ['Большое спасибо','Thank you very much']
+
+);
+
+coQuestNum=10;
+
+</script>
+
+<hr/>
+
+<p class="after-exercise">If you want to check how you know these words, go to <a title="Formulas of politeness tests" href="politeness-test.html" style="padding: 0px;"> Tests: Formulas of politeness</a></p>
+
+
+
+<script type="text/javascript">
+currentSection="words";
+</script>

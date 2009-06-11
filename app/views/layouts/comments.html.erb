@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title><%= @page_title %></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf8"> 
+  <%= stylesheet_link_tag 'stylesheet.css' %>
+  <style type="text/css">
+    body {
+        margin: 20px 30px 30px 30px;
+        background-color: #ffffff;
+        background-image: url("/images/shdw.gif");
+        background-position: left -0px;
+        background-repeat: repeat-x;
+        text-align: left;
+    }
+
+    .com-example {
+        padding-left: 30px;
+    }
+  </style>
+</head>
+<body>
+  <%= yield %>
+</body>
+</html>

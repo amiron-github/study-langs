@@ -1,0 +1,336 @@
+
+.box_together {
+position: absolute;
+text-align: left;
+border: 1px solid #000;
+background-color: #EFEFEF;
+padding: 5px;
+padding-bottom: 0px;
+}
+
+table.table_tog {
+bor der: 1px solid #DFDFDF;
+}
+
+table.table_tog td {
+height: 80px;
+width: 135px;
+}
+
+table.table_tog td.empty_tog {
+width: 80px;
+}
+
+table.table_tog tr {
+vertical-align: top;
+}
+
+.variant_tog {
+height: 70px;
+width: 130px;
+border: 1px solid #DFDFDF;
+position: absolute;
+background-color: #fff;
+overflow: hidden;
+}
+
+.variant_tog div, td .task_tog {
+text-align: center;
+}
+
+.variant_tog div {
+text-align: center;
+padding-left: 3px;
+padding-right: 3px;
+}
+
+.variant_tog div.task_tog {
+padding-top: 4px;
+}
+
+.target_tog {
+height: 70px;
+width: 130px;
+border: 1px solid #DFDFDF;
+position: absolute;
+}
+
+.target_tog_on {
+background-color: #EEEAEA;
+border: 1px solid #888;
+cursor: pointer;
+}
+
+.var_tog_on {
+border: 1px solid #888;
+cursor: pointer;
+}
+
+div.var_tog_act {
+border-right: 1px solid #555;
+border-bottom: 1px solid #555;
+border-top: 1px solid #555;
+border-left: 1px solid #555;
+}
+
+.task_tog {
+wid_th: 130px;
+font-size: 9pt;
+font-style: italic;
+padding: 0px 3px;
+}
+
+#wrong_tog {
+color: red;
+font-weight: bold;
+}
+
+
+#yn_box {
+position: relative;
+height: 340px;
+width: 500px;
+overflow: hidden;
+}
+
+#yn_place {
+width: 498px;
+height: 315px;
+border: 1px solid #000;
+background-color: #EFEFEF;
+position: absolute;
+text-align: center;
+padding-top: 10px;
+overflow: hidden;
+}
+
+#yn_place div {
+margin-left: auto;
+margin-right: auto;
+}
+
+#yn_trans {
+width: 160px;
+height: 53px;
+background-color: #fff;
+bor der: 1px solid #000;
+position: absolute;
+text-align: center;
+}
+
+#yn_trans div {
+padding: 10px;
+}
+
+#trans_wrapper {
+background-color: #fff;
+border: 1px solid #000;
+width: 160px;
+height: 55px;
+position: relative;
+overflow: hidden;
+text-align: left;
+}
+
+#yn_sound {
+width: 150px;
+height: 50px;
+padding-top: 15px;
+margin-bottom: 15px;
+text-align: center;
+} 
+
+#yn_sound .play {
+margin: 0px auto;
+}
+
+#show_check {
+width: 150px;
+height: 40px;
+line-height: 40px;
+background-color: #fff;
+border: 1px solid #ccc;
+margin-top: 15px;
+text-align: center;
+}
+
+#yn_info {
+padding: 0px 15px;
+widt_h: 150px;
+min-height: 40px;
+hei ght: auto !important;
+height: 40px;
+}
+
+#yn_info p {
+margin: 11pt 0pt;
+font-style: italic;
+}
+
+#yes_btn, #no_btn {
+width: 60px;
+hei-ght: 30px;
+height: 40px;
+padding-bottom: 3px;
+font-weight: bold;
+outline: none;
+}
+
+#yn_btns {
+width: 150px;
+text-align: center;
+}
+
+span.yn_right {
+color: blue;
+}
+
+span.yn_wrong {
+color: red;
+}
+
+.yn_complete {
+font-weight: bold;
+font-style: italic;
+}
+
+
+
+
+
+#co_box {
+width: 500px;
+height: 350px;
+background-color: #EFEFEF;
+border: 1px solid #000;
+position: relative;
+overflow: hidden;
+font-family: Verdana;
+}
+
+#co-place, #co-place-1 {
+}
+
+#co_task, #co_task-1 {
+width: 200px;
+height: 58px;
+background-color: #fff;
+border: 1px solid gray;
+margin: 0px auto;
+text-align: center;
+font-weight: bold;
+font-size: 10pt;
+}
+
+#co_task div, #co_task-1 div{
+padding: 8px;
+}
+
+.co_options {
+width: 130px;
+height: 50px;
+float: left;
+border: 1px solid gray;
+background-color: #fff;
+margin-left: 20px;
+cursor: pointer;
+text-align: center;
+font-size: 9pt;
+}
+
+.co_options div {
+padding: 10px;
+}
+
+#co_correctness, #co_correctness-1 {
+text-align: center;
+width: 150px;
+height: 42px;
+line-height: 40px;
+margin: 0px auto;
+background-color: #fff;
+border: 1px solid #ccc;
+font-size: 10pt;
+}
+
+#co_info,  #co_info-1 {
+height: 300px;
+padding: 0px 15px;
+text-align: center;
+}
+
+#co_info p, #co_info-1 p {
+font-style: italic;
+margin: 11pt 0pt;
+text-align: center;
+}
+
+.co_task_wrapper {
+width: 500px;
+text-align: center;
+padding: 20px 0px;
+}
+
+.co_choose {
+text-align: center;
+font-size: 10pt;
+padding-bottom: 20px;
+
+}
+
+.co_options_wrapper {
+width: 480px;
+margin: 0px auto;
+}
+
+.co_options_container {
+text-align: center;
+}
+
+#co_copy {
+position: absolute;
+background-color: #EFEFEF;
+}
+
+.co-wrong  {
+color: red;
+}
+
+.co-right {
+color: blue;
+}
+
+.co_complete  {
+font-weight: bold;
+}
+
+div.co_counter {
+color: #333;
+padding-top: 20px;
+text-align: center;
+font-weight: bold;
+}
+
+
+.start_btn {
+width: 507px;
+text-align: center;
+padding-bottom: 30px;
+}
+
+.start_btn input {
+width: 90px;
+height: 40px;
+font-weight: bold;
+}
+
+#contfield hr {
+margin: 40px 0px;
+}
+
+.after-exercise {
+padding-top: 10px;
+margin-top: 0px;
+
+}
+

@@ -1,0 +1,250 @@
+<% @page_title = 'Russian Alphabet' %>
+<% @page_meta = {'description' => ""} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<%= stylesheet_link_tag 'stylesounds' %>
+
+<style type="text/css">
+
+.hint_button {
+float: right;
+}
+
+</style>
+
+<div class="hint_wrap">
+<div class="hint_button">
+  <div class="hint">
+      <div class="hint_list">
+        <span class="hint_string">Links and Settings</span>
+      </div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+        <ul>
+            <li><a href="basic-letters.html">Russian Letters</a></li>
+        </ul>
+                <%= render :partial => 'preload_option' %>
+  </div>
+</div>
+</div>
+<div id="pagecontent"><div id="content">
+
+
+<h2 class="page">Russian Alphabet</h2>
+
+<table class="sound-letter" cellspacing="0" align="center">
+  <tr>
+    <th>Uppercase</th>
+    <th>Lowercase</th>
+    <th>Name</th>
+    <th class="thbrd">Basic Meaning</th>
+  </tr>
+  <tr class="trow">
+    <td>A</td>
+    <td>a</td>
+    <td><span class="sound" onclick="playSound('sound101.mp3')">[a] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td><span class="sound" onclick="playSound('sound201.mp3')">[a] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td>Б</td>
+    <td>б</td>
+    <td><span class="sound" onclick="playSound('sound102.mp3')">[be] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td><span class="sound" onclick="playSound('sound207.mp3')">[b] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td>В</td>
+    <td>в</td>
+    <td><span class="sound" onclick="playSound('sound103.mp3')">[ve] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td><span class="sound" onclick="playSound('sound211.mp3')">[v] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td>Г</td>
+    <td>г</td>
+    <td><span class="sound" onclick="playSound('sound104.mp3')">[ge] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td><span class="sound" onclick="playSound('sound223.mp3')">[g] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td>Д</td>
+    <td>д</td>
+    <td><span class="sound" onclick="playSound('sound105.mp3')">[de] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td><span class="sound" onclick="playSound('sound219.mp3')">[d] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td>Е</td>
+    <td>е</td>
+    <td><span class="sound" onclick="playSound('sound106.mp3')">[ye] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td><span class="sound" onclick="playSound('sound106.mp3')">[ye] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td>Ё</td>
+    <td>ё</td>
+    <td><span class="sound" onclick="playSound('sound107.mp3')">[yo] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td><span class="sound" onclick="playSound('sound107.mp3')">[yo] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td>Ж</td>
+    <td>ж</td>
+    <td><span class="sound" onclick="playSound('sound108.mp3')">[je] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td><span class="sound" onclick="playSound('sound227.mp3')">[j] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td>З</td>
+    <td>з</td>
+    <td><span class="sound" onclick="playSound('sound109.mp3')">[ze] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td><span class="sound" onclick="playSound('sound215.mp3')">[z] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td>И</td>
+    <td>и</td>
+    <td><span class="sound" onclick="playSound('sound110.mp3')">[i] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td><span class="sound" onclick="playSound('sound205.mp3')">[i] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td>Й</td>
+    <td>й</td>
+    <td><span class="sound" onclick="playSound('sound111.mp3')">[i kratkaye] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td><span class="sound" onclick="playSound('sound237.mp3')">[y] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td>К</td>
+    <td>к</td>
+    <td><span class="sound" onclick="playSound('sound112.mp3')">[ka] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td><span class="sound" onclick="playSound('sound225.mp3')">[k] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td>Л</td>
+    <td>л</td>
+    <td><span class="sound" onclick="playSound('sound113.mp3')">[el] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td><span class="sound" onclick="playSound('sound233.mp3')">[l] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td>М</td>
+    <td>м</td>
+    <td><span class="sound" onclick="playSound('sound114.mp3')">[em] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td><span class="sound" onclick="playSound('sound229.mp3')">[m] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td>Н</td>
+    <td>н</td>
+    <td><span class="sound" onclick="playSound('sound115.mp3')">[en] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td><span class="sound" onclick="playSound('sound231.mp3')">[n] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td>О</td>
+    <td>о</td>
+    <td><span class="sound" onclick="playSound('sound116.mp3')">[o] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td><span class="sound" onclick="playSound('sound203.mp3')">[o] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td>П</td>
+    <td>п</td>
+    <td><span class="sound" onclick="playSound('sound117.mp3')">[pe] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td><span class="sound" onclick="playSound('sound209.mp3')">[p] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td>Р</td>
+    <td>р</td>
+    <td><span class="sound" onclick="playSound('sound118.mp3')">[er] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td><span class="sound" onclick="playSound('sound235.mp3')">[r] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td>С</td>
+    <td>с</td>
+    <td><span class="sound" onclick="playSound('sound119.mp3')">[es] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td><span class="sound" onclick="playSound('sound217.mp3')">[s] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td>Т</td>
+    <td>т</td>
+    <td><span class="sound" onclick="playSound('sound120.mp3')">[te] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td><span class="sound" onclick="playSound('sound221.mp3')">[t] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td>У</td>
+    <td>у</td>
+    <td><span class="sound" onclick="playSound('sound121.mp3')">[oo] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td><span class="sound" onclick="playSound('sound204.mp3')">[oo] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td>Ф</td>
+    <td>ф</td>
+    <td><span class="sound" onclick="playSound('sound122.mp3')">[ef] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td><span class="sound" onclick="playSound('sound213.mp3')">[f] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td>Х</td>
+    <td>х</td>
+    <td><span class="sound" onclick="playSound('sound123.mp3')">[ha] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td><span class="sound" onclick="playSound('sound241.mp3')">[h] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td>Ц</td>
+    <td>ц</td>
+    <td><span class="sound" onclick="playSound('sound124.mp3')">[tse] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td><span class="sound" onclick="playSound('sound240.mp3')">[ts] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td>Ч</td>
+    <td>ч</td>
+    <td><span class="sound" onclick="playSound('sound125.mp3')">[che] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td><span class="sound" onclick="playSound('sound239.mp3')">[ch] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td>Ш</td>
+    <td>ш</td>
+    <td><span class="sound" onclick="playSound('sound126.mp3')">[sha] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td><span class="sound" onclick="playSound('sound228.mp3')">[sh] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td>Щ</td>
+    <td>щ</td>
+    <td><span class="sound" onclick="playSound('sound127.mp3')">[scha] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td><span class="sound" onclick="playSound('sound238.mp3')">[sch] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td>Ъ</td>
+    <td>ъ</td>
+    <td><span class="sound" onclick="playSound('sound128.mp3')">[tv'ord<span class="ry">i</span>y znak] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td>-</td>
+  </tr>
+  
+  <tr class="trow">
+    <td>Ы</td>
+    <td>ы</td>
+    <td><span class="sound" onclick="playSound('sound129.mp3')">[<span class="ry">i</span>] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td><span class="sound" onclick="playSound('sound206.mp3')">[<span class="ry">i</span>] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td>Ь</td>
+    <td>ь</td>
+    <td><span class="sound" onclick="playSound('sound130.mp3')">[m'ahkiy znak] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td>-</td>
+  </tr>
+  <tr class="trow">
+    <td>Э</td>
+    <td>э</td>
+    <td><span class="sound" onclick="playSound('sound131.mp3')">[e] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td><span class="sound" onclick="playSound('sound202.mp3')">[e] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td>Ю</td>
+    <td>ю</td>
+    <td><span class="sound" onclick="playSound('sound132.mp3')">[yoo] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td><span class="sound" onclick="playSound('sound132.mp3')">[yoo] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td>Я</td>
+    <td>я</td>
+    <td><span class="sound" onclick="playSound('sound133.mp3')">[ya] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td><span class="sound" onclick="playSound('sound133.mp3')">[ya] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+</table>
+
+<br><br>
+
+</div></div>
+
+<script type="text/javascript">
+currentSection="reading";
+</script>

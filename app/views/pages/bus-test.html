@@ -1,0 +1,91 @@
+<% @page_title = 'Tests: City transport' %>
+<% @page_meta = {'description' => ""} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<%= javascript_include_tag 'test-text' %>
+<%= javascript_include_tag 'test' %>
+<%= stylesheet_link_tag 'test-style.css' %>
+
+<style type="text/css">
+.quest  {
+width: 210px;
+}
+.variants  {
+width: 220px;
+}
+#t2 .quest {
+width: 220px;
+}
+</style>
+
+<div class="hint_wrap">
+<div class="hint_button">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Recommended links</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+     				<li><a href="bus.html">Bus, trolley, tram</a></li>
+     				<li><a href="bus-exercise.html"> Exercises: City transport</a></li>
+
+    		</ul>
+	</div>
+</div>
+</div>
+
+
+
+<h2 class="page">Bus, trolley, tram <br/> (tests)</h2>
+
+<p class="task">Before completing the following tests, please revise the topic <a title="City transport tests" href="bus.html">Bus, trolley, tram</a></p>
+<hr/>
+<br/>
+
+<h3>Test 1</h3>
+<p class="task">Listen to the phrase and сhoose the corresponding Russian expression.</p>
+
+<div id="t1">
+<script type="text/javascript">
+var t1 = new Test({dict: [['sounds/sound02101.mp3','автобус'],['sounds/sound02102.mp3','троллейбус'],['sounds/sound02103.mp3','трамвай'],['sounds/sound02104.mp3','билет'],['sounds/sound02105.mp3','вход'],
+['sounds/sound02106.mp3','выход'],['sounds/sound02107.mp3','кондуктор'],['sounds/sound02108.mp3','маршрут'],
+['sounds/sound02109.mp3','остановка'],['sounds/sound02110.mp3','схема маршрутов'],['sounds/sound02111.mp3','штраф'],['sounds/sound02114.mp3','конечная остановка']],hide: 'di1',id:'t1', type: 'audio', how_questions: 8, how_show: 2});
+</script>
+</div>
+
+<h3>Test 2</h3>
+<p class="task">Read the Russian phrase and choose the corresponding English expression.</p>
+
+<div id="t2">
+<script type="text/javascript">
+var t2 = new Test({dict: [
+
+['автобус','bus'],['троллейбус','trolleybus'],['трамвай','tramway'],['билет','ticket'],['вход','entrance'],
+['выход','exit'],['кондуктор','conductor'],['маршрут','route'],
+['остановка','stop'],['схема маршрутов','route plan'],['штраф','penalty'],['конечная остановка','route terminal']
+
+], hide:'di1',id:'t2',type: 'text', how_questions: 8, how_show: 2});
+</script>
+</div>
+
+<h3>Test 3</h3>
+<p class="task">Listen to the Russian phrases and сhoose their translation into English.</p>
+
+<div id="t3">
+<script type="text/javascript">
+var t3 = new Test({dict: [
+
+['sounds/sound02101.mp3','bus'],['sounds/sound02102.mp3','trolleybus'],['sounds/sound02103.mp3','tramway'],['sounds/sound02104.mp3','ticket'],['sounds/sound02105.mp3','entrance'],
+['sounds/sound02106.mp3','exit'],['sounds/sound02107.mp3','conductor'],['sounds/sound02108.mp3','route'],
+['sounds/sound02109.mp3','stop'],['sounds/sound02110.mp3','route plan'],['sounds/sound02111.mp3','penalty'],
+['sounds/sound02114.mp3','route terminal']
+
+],hide: 'di1',id:'t3',type: 'audio', how_questions: 8, how_show: 2});
+</script>
+</div>
+
+<script type="text/javascript">
+currentSection="words";
+</script>

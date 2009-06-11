@@ -1,0 +1,12 @@
+development: &non_production_settings
+  site_url: http://localhost:3000
+  site_name: Study Russian Online
+  admin_email: lucky@inventos.ru
+
+test:
+  <<: *non_production_settings
+
+production:
+  site_url: http://www.study-languages-online.com
+  site_name: Study Russian Online
+  admin_email: lucky@inventos.ru

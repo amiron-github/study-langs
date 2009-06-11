@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+  <title><%= @page_title %></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf8"> 
+
+  <%= javascript_include_tag 'jquery.min.js' %>
+  <%= javascript_include_tag 'effects.js' %>
+  <%= stylesheet_link_tag 'stylesheet.css' %>
+  <%= stylesheet_link_tag 'stylesounds.css' %>
+
+<style type="text/css">
+html {
+height: auto ! important;
+}
+
+body {
+height: auto !important;
+min-height: 300px;
+margin: 20px 30px 30px 30px;
+background-color: #ffffff;
+background-image: url("/images/shdw.gif");
+background-position: left -0px;
+background-repeat: repeat-x;
+text-align: left;
+}
+
+div#contentcell {
+border: 0;
+margin: 0;
+padding: 0;
+background: none;
+}
+
+div#contfield {
+background: none;
+padding: 0;
+}
+
+.com-example {
+padding-left: 30px;
+}
+</style>
+</head>
+<body>
+  <div id="contentcell">
+    <div id="contfield" class="content">
+      <div style="display: no ne;">
+        <div id="loading"><div id="progress"></div><div id="progressbar"><div id="progressStatus"></div></div></div>
+      </div>
+      <div id="mess" class="sound_tip"><i>Tip</i></div>
+      <div id="audiospan" style="position: absolute;"></div>
+
+      <div id="pagecontent">
+        <div id="content">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<h2><%=t 'Login' %></h2>
+<% form_tag session_path do %>
+  <fieldset>
+    <legend><%=t "Your Details" %></legend>
+    <ol>
+      <li>
+        <%= label_tag 'login', t('Username') %>
+        <%= text_field_tag 'login', @login %>
+      </li>
+      <li>
+        <%= label_tag 'password', t('Password') %>
+        <%= password_field_tag 'password', nil %>
+      </li>
+    </ol>
+  </fieldset>
+  <div class="buttons">
+    <%= submit_tag t('Login') %>
+    <%= link_to t('Forgotten Password'), forgot_password_path %>
+  </div>
+<% end -%>

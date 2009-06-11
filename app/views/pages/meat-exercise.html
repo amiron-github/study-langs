@@ -1,0 +1,180 @@
+<% @page_title = 'Russian language online: Exercises  for the topic Meat dishes' %>
+<% @page_meta = {'description' => "Online exercises for learning Russian words and phrases related to the topic Meat dishes"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<%= javascript_include_tag 'exercises.js' %>
+<%= stylesheet_link_tag 'exercises.css' %>
+
+<div class="hint_wrap">
+<div class="hint_button">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Recommended links</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+     				<li><a href="meat.html">Meat dishes</a></li>
+     				<li><a href="meat-test.html"> Tests: Meat dishes</a></li>
+    		</ul>
+	</div>
+</div>
+</div>
+
+
+
+<h2 class="page">Meat dishes <br/> (exercises)</h2>
+
+<p class="task">Before doing the following exercises, please revise the topic <a title="Meat dishes" href="meat.html">Meat dishes</a></p>
+
+<hr/>
+
+<h3>Exercise 1</h3>
+
+<%= render :partial => 'tt_exercise' %>
+
+
+<hr/>
+
+
+<h3>Exercise 2</h3>
+
+
+<div class="start_btn">
+<input type="button" value="START" onclick="startYN()" />
+</div>
+<div id="yn_box">
+
+	<div id="yn_place">
+
+
+		<div id="trans_wrapper">
+			<div id="yn_trans" style="background-color: transparent; border-width: 0px;">
+				<div>&nbsp;
+				</div>
+			</div>
+		</div>
+
+		<div id="yn_sound">
+			<div class="play">
+			
+			</div>
+		</div>
+		
+		<div>Is this a correct translation? </div>
+		<br/>
+		<div id="yn_btns">
+		<input id="yes_btn" type="button" value="YES" /> <input id="no_btn" type="button" value="NO" />
+		</div>
+		<div id="show_check"></div>
+		<br>
+		<div id="yn_info"></div>
+	</div>
+
+</div>
+
+
+<hr/>
+
+
+<h3>Exercise 3</h3>
+
+
+<div class="start_btn">
+<input type="button" value="START" onclick="startCO()" />
+</div>
+<div id="co_box">
+<div id="co_copy"></div>
+	<div id="co_place">
+		<div class="co_task_wrapper">
+			<div id="co_task"><div>&nbsp;</div></div>
+		</div>
+		
+		<div class="co_choose">Choose translation from the options below: </div>
+
+		<div class="co_options_container">
+		<div class="co_options_wrapper">
+			<div id="co_option0" class="co_options"><div>&nbsp;</div></div>
+			<div id="co_option1" class="co_options"><div>&nbsp;</div></div>
+			<div id="co_option2" class="co_options"><div>&nbsp;</div></div>
+			<div style="clear: both;"></div>
+		</div>
+		</div>
+
+		<div style="text-align: center; padding-top: 30px;">
+		<div id="co_correctness"><div>&nbsp;</div></div>
+		</div>
+		
+		<div class="co_counter"> </div>
+
+	</div>
+
+</div>
+
+
+
+<script type="text/javascript">
+
+////////////////// array for test together 
+
+var ttMassive=new Array(
+
+['мясо','meat'],['баранина','lamb'],['говядина','beef '],['телятина','veal'],
+['свинина ','pork'],['кролик','rabbit'],['индейка','turkey'],['курица ','chicken'],
+['утка','duck'],['корейка','loin'],['бекон','bacon'],['яичница с беконом ','bacon and eggs'],
+//['бифштекс','beefsteak'],
+['отбивная','chop'],['отбивная котлета','cutlet'],['отварное мясо','boiled meat'],
+['бульон','clear soup'],['мясной суп','meat soup'],['ветчина ','ham'],['буженина','baked ham'],
+['свиная отбивная','pork chop'],['ростбиф','roast beef'],['колбаса','sausage'],['сосиска','sausage, frankfurter'],
+['хот дог','hot dog'],['варёная колбаса','cooked sausage'],['копченая колбаса ','smoked sausage'],['куриный бульон','chicken broth'],
+['жареный цыплёнок','roast chicken'],['яйцо','egg'],['яичница','fried eggs'],['омлет','omelet']
+
+);
+
+/////////////////////// array for yes/no
+
+var massive=new Array(
+
+['sounds/sound08301.mp3','meat'],['sounds/sound08302.mp3','lamb'],['sounds/sound08303.mp3','beef '],['sounds/sound08304.mp3','veal'],
+['sounds/sound08305.mp3','pork'],['sounds/sound08306.mp3','rabbit'],['sounds/sound08307.mp3','turkey'],['sounds/sound08308.mp3','chicken'],
+['sounds/sound08309.mp3','duck'],['sounds/sound08310.mp3','loin'],['sounds/sound08311.mp3','bacon'],['sounds/sound08312.mp3','bacon and eggs'],
+//['sounds/sound08313.mp3','beefsteak'],
+['sounds/sound08313.mp3','chop'],['sounds/sound08314.mp3','cutlet'],['sounds/sound08315.mp3','boiled meat'],
+['sounds/sound08316.mp3','clear soup'],['sounds/sound08317.mp3','meat soup'],['sounds/sound08318.mp3','ham'],['sounds/sound08319.mp3','baked ham'],
+['sounds/sound08320.mp3','pork chop'],['sounds/sound08321.mp3','roast beef'],['sounds/sound08322.mp3','sausage'],['sounds/sound08323.mp3','sausage, frankfurter'],
+['sounds/sound08324.mp3','hot dog'],['sounds/sound08325.mp3','cooked sausage'],['sounds/sound08326.mp3','smoked sausage'],['sounds/sound08327.mp3','chicken broth'],
+['sounds/sound08328.mp3','roast chicken'],['sounds/sound08329.mp3','egg'],['sounds/sound08330.mp3','fried eggs'],['sounds/sound08333.mp3','omelet']
+
+);
+
+ynQuestNum=10;
+
+////////////////////// array for choose option
+var co_massive=new Array(
+
+['мясо','meat'],['баранина','lamb'],['говядина','beef '],['телятина','veal'],
+['свинина ','pork'],['кролик','rabbit'],['индейка','turkey'],['курица ','chicken'],
+['утка','duck'],['корейка','loin'],['бекон','bacon'],['яичница с беконом ','bacon and eggs'],
+//['бифштекс','beefsteak'],
+['отбивная','chop'],['отбивная котлета','cutlet'],['отварное мясо','boiled meat'],
+['бульон','clear soup'],['мясной суп','meat soup'],['ветчина ','ham'],['буженина','baked ham'],
+['свиная отбивная','pork chop'],['ростбиф','roast beef'],['колбаса','sausage'],['сосиска','sausage, frankfurter'],
+['хот дог','hot dog'],['варёная колбаса','cooked sausage'],['копченая колбаса ','smoked sausage'],['куриный бульон','chicken broth'],
+['жареный цыплёнок','roast chicken'],['яйцо','egg'],['яичница','fried eggs'],['омлет','omelet']
+
+);
+
+coQuestNum=10;
+
+</script>
+
+<hr/>
+
+<p class="after-exercise">If you want to check how you know these words, go to <a title="Meat dishes tests" href="meat-test.html">Tests: Meat dishes</a></p>
+
+
+
+<script type="text/javascript">
+currentSection="words";
+</script>

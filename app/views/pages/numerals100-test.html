@@ -1,0 +1,92 @@
+<% @page_title = 'Tests: Numerals' %>
+<% @page_meta = {'description' => ""} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<%= javascript_include_tag 'test-text' %>
+<%= javascript_include_tag 'test' %>
+<%= stylesheet_link_tag 'test-style.css' %>
+
+<style type="text/css">
+
+.hint_button {
+float: right;
+}
+
+.quest  {
+width: 166px;
+}
+
+.variants  {
+width: 166px;
+}
+
+</style>
+
+<div class="hint_wrap">
+<div class="hint_button">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Recommended links</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+     				<li><a href="numerals100.html">Numerals (part 2)</a></li>
+
+    		</ul>
+	</div>
+</div>
+</div>
+
+
+
+<h2 class="page">Numerals (tests)</h2>
+
+<p class="task">Before completing the following tests, please revise the topic <a title="Numerals" href="numerals100.html">Numerals (part 2)</a></p>
+<hr/>
+<br/>
+
+<h3>Test 1</h3>
+<p class="task">Listen to the phrase and type the corresponding Russian numeral (from 100 to 1000).</p>
+
+<div id="t1">
+<script type="text/javascript">
+var t1 = new Test({dict: [
+
+['sounds/num00100.mp3','100'],['sounds/num00200.mp3','200'],['sounds/num00300.mp3','300'],['sounds/num00400.mp3','400'],
+['sounds/num00500.mp3','500'],['sounds/num00600.mp3','600'],['sounds/num00700.mp3','700'],['sounds/num00800.mp3','800'],
+['sounds/num00900.mp3','900'],
+
+['sounds/num00110.mp3','110'],['sounds/num00120.mp3','120'],['sounds/num00130.mp3','130'],['sounds/num00140.mp3','140'],['sounds/num00150.mp3','150'],
+['sounds/num00160.mp3','160'],['sounds/num00170.mp3','170'],['sounds/num00180.mp3','180'],['sounds/num00190.mp3','190'],
+['sounds/num00210.mp3','210'],['sounds/num00220.mp3','220'],['sounds/num00230.mp3','230'],['sounds/num00240.mp3','240'],['sounds/num00250.mp3','250'],
+['sounds/num00260.mp3','260'], ['sounds/num00270.mp3','270'],['sounds/num00280.mp3','280'],['sounds/num00290.mp3','290']
+
+],hide: 'di1',id:'t1', type: 'audio', answers_type: 'input', how_questions: 15, how_show: 2});
+</script>
+</div>
+
+<h3>Test 2</h3>
+<p class="task">Listen to the phrase and type the corresponding Russian numeral (more than 1000).</p>
+
+<div id="t2">
+<script type="text/javascript">
+var t2 = new Test({dict: [
+
+['sounds/num01000.mp3','1000'],['sounds/num02000.mp3','2000'],['sounds/num03000.mp3','3000'],['sounds/num04000.mp3','4000'],
+['sounds/num05000.mp3','5000'],['sounds/num06000.mp3','6000'],['sounds/num07000.mp3','7000'],['sounds/num08000.mp3','8000'],
+['sounds/num09000.mp3','9000'],['sounds/num10000.mp3','10000'], 
+['sounds/num12000.mp3','12000'],['sounds/num63000.mp3','63000'],['sounds/num04500.mp3','4500'],['sounds/num27300.mp3','27300'],
+['sounds/num20000.mp3','20000'],['sounds/num30000.mp3','30000'],['sounds/num40000.mp3','40000'],['sounds/num50000.mp3','50000'],
+['sounds/num60000.mp3','60000'],['sounds/num70000.mp3','70000'],['sounds/num80000.mp3','80000'],['sounds/num90000.mp3','90000']
+
+],hide: 'di2',id:'t2', type: 'audio', answers_type: 'input', how_questions: 12, how_show: 2});
+</script>
+</div>
+
+
+
+<script type="text/javascript">
+currentSection="words";
+</script>

@@ -1,0 +1,107 @@
+<% @page_title = 'Tests: Vegetables and vegetable dishes' %>
+<% @page_meta = {'description' => ""} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<%= javascript_include_tag 'test-text' %>
+<%= javascript_include_tag 'test' %>
+<%= stylesheet_link_tag 'test-style.css' %>
+
+<style type="text/css">
+
+.quest  {
+width: 210px;
+}
+
+.variants  {
+width: 220px;
+}
+
+#t2 .quest {
+width: 220px;
+}
+
+</style>
+
+<div class="hint_wrap">
+<div class="hint_button">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Recommended links</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+     				<li><a href="vegetables.html">Vegetables</a></li>
+     				<li><a href="vegetables-exercise.html"> Exercises: Vegetables</a></li>
+    		</ul>
+	</div>
+</div>
+</div>
+
+
+
+<h2 class="page">Vegetables and vegetable dishes <br/> (tests)</h2>
+
+<p class="task">Before completing the following tests, please revise the topic <a title="Vegetables" href="vegetables.html">Vegetables and vegetable dishes</a></p>
+<hr/>
+<br/>
+<h3>Test 1</h3>
+<p class="task">Listen to the phrase and сhoose the corresponding Russian expression.</p>
+
+<div id="t1">
+<script type="text/javascript">
+var t1 = new Test({dict: [
+
+['sounds/sound08601.mp3','овощи'],['sounds/sound08602.mp3','бобы'],['sounds/sound08603.mp3','горох'],['sounds/sound08604.mp3','капуста'],
+['sounds/sound08605.mp3','лук'],['sounds/sound08606.mp3','морковь'],['sounds/sound08607.mp3','салат'],['sounds/sound08608.mp3','петрушка'],
+['sounds/sound08609.mp3','свёкла'],['sounds/sound08610.mp3','огурец'],['sounds/sound08611.mp3','помидор'],['sounds/sound08612.mp3','редис'],
+['sounds/sound08613.mp3','перец'],['sounds/sound08614.mp3','картофель'],['sounds/sound08615.mp3','баклажан'],['sounds/sound08616.mp3','отварной картофель'],
+['sounds/sound08617.mp3','жаренный картофель'],['sounds/sound08618.mp3','картофельное пюре'],['sounds/sound08619.mp3','фаршированный перец'],['sounds/sound08620.mp3','свекольник'],
+['sounds/sound08621.mp3','щи'],['sounds/sound08622.mp3','овощной суп'],['sounds/sound08623.mp3','борщ']
+
+],hide: 'di1',id:'t1', type: 'audio', how_questions: 8, how_show: 2});
+</script>
+</div>
+
+<h3>Test 2</h3>
+<p class="task">Read the Russian phrase and choose the corresponding English expression.</p>
+
+<div id="t2">
+<script type="text/javascript">
+var t2 = new Test({dict: [
+
+['овощи','vegetables'],['бобы','beans'],['горох','peas'],['капуста','cabbage'],
+['петрушка','parsley'],['морковь','carrots'],['салат','lettuce'],['петрушка','parsley'],
+['свёкла','beet'],['огурец','cucumber'],['помидор','tomato'],['редис','radish'],
+['перец','pepper'],['картофель','potatoes'],['баклажан','egg-plant'],['отварной картофель','boiled potatoes'],
+['жаренный картофель','fried potatoes'],['картофельное пюре','mashed potatoes'],['фаршированный перец','stuffed pepper'],['свекольник','beetroot soup'],
+['щи','cabbage soup'],['овощной суп','vegetable soup'],['борщ','borsch, red-beet soup']
+
+], hide:'di2',id:'t2',type: 'text', how_questions: 8, how_show: 2});
+</script>
+</div>
+
+<h3>Test 3</h3>
+<p class="task">Listen to the Russian phrases and сhoose their translation into English.</p>
+
+<div id="t3">
+<script type="text/javascript">
+var t3 = new Test({dict: [
+
+['sounds/sound08601.mp3','vegetables'],['sounds/sound08602.mp3','beans'],['sounds/sound08603.mp3','peas'],['sounds/sound08604.mp3','cabbage'],
+['sounds/sound08605.mp3','onion'],['sounds/sound08606.mp3','carrots'],['sounds/sound08607.mp3','lettuce'],['sounds/sound08608.mp3','parsley'],
+['sounds/sound08609.mp3','beet'],['sounds/sound08610.mp3','cucumber'],['sounds/sound08611.mp3','tomato'],['sounds/sound08612.mp3','radish'],
+['sounds/sound08613.mp3','pepper'],['sounds/sound08614.mp3','potatoes'],['sounds/sound08615.mp3','egg-plant'],['sounds/sound08616.mp3','boiled potatoes'],
+['sounds/sound08617.mp3','fried potatoes'],['sounds/sound08618.mp3','mashed potatoes'],['sounds/sound08619.mp3','stuffed pepper'],['sounds/sound08620.mp3','beetroot soup'],
+['sounds/sound08621.mp3','cabbage soup'],['sounds/sound08622.mp3','vegetable soup'],['sounds/sound08623.mp3','borsch, red-beet soup']
+
+
+],hide: 'di3',id:'t3',type: 'audio', how_questions: 8, how_show: 2});
+</script>
+</div>
+
+
+<script type="text/javascript">
+currentSection="words";
+</script>
