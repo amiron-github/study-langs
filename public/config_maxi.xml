@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <param name="width" value="90"/>
+    <param name="height" value="18"/>
+    <param name="showslider" value="1"/>
+    <param name="buttonwidth" value="20"/>
+    <param name="buttoncolor" value="444444"/>
+    <param name="buttonovercolor" value="222222"/>
+    <param name="bgcolor1" value="f5f5f5"/>
+    <param name="bgcolor2" value="8E8F94"/>
+    <param name="sliderovercolor" value="333333"/>
+    <param name="loadingcolor" value="333333"/>
+    <param name="slidercolor1" value="555555"/>
+    <param name="slidercolor2" value="444444"/>
+    <param name="sliderwidth" value="4"/>
+    <param name="sliderheight" value="10"/>
+    <param name="showvolume" value="0"/>
+    <param name="vol_ume" value="50"/>
+</config>
