@@ -10,8 +10,14 @@
   <meta name="keywords" content="russian translation, russian language, learn russian, study russian, learn russian online, russian phrases, russian words, speak russian, speaking russian, learning russian, basic russian, learn russian language, beginners russian, russian language course, russian online lessons, russian vocabulary, russian for begginers" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf8"> 
   <%= javascript_include_tag 'jquery.min.js' %>
-  <%= javascript_include_tag 'effects.js' %>
-  <%= stylesheet_link_tag 'stylesheet.css' %>
+  <%= javascript_include_tag 'effects' %>
+  <%= stylesheet_link_tag 'stylesheet' %>
+  <% for js_file in @javascripts -%>
+    <%= javascript_include_tag js_file %>
+  <% end -%>
+  <% for css_file in @stylesheets -%>
+    <%= stylesheet_link_tag css_file %>
+  <% end -%>
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <!--[if lte IE 6]>
