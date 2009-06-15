@@ -51,7 +51,7 @@ class InitialMigration < ActiveRecord::Migration
     user = User.create do |u|
       u.login = 'admin'
       u.password = u.password_confirmation = 'ghbdtn60'
-      u.email = APP_CONFIG[:admin_email]
+      u.email = "lucky@inventos.ru"
     end
     
     # Activate user
