@@ -3,7 +3,7 @@
 <% @with_rec = true %>
 <% @has_audio = true %>
 
-<style type="text/css">
+<% content_for :special_css do %>
 
 .hint_button {
 float: right;
@@ -22,7 +22,7 @@ width: 220px;
 }
 
 
-</style>
+<% end %>
 
 <div class="hint_wrap">
 <div class="hint_button">

@@ -3,7 +3,7 @@
 <% @with_rec = true %>
 <% @has_audio = true %>
 
-<style type="text/css">
+<% content_for :special_css do %>
 
 .diction td.original {
 padding-left: 25px;
@@ -99,7 +99,7 @@ background-repeat: no-repeat;
 background-position: 50% 50%;
 }
 
-</style>
+<% end %>
 
 <div class="hint_wrap">
 <div class="hint_button" style="float: right;">

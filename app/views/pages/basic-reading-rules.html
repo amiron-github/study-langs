@@ -5,7 +5,7 @@
 
 <%= stylesheet_link_tag 'stylesounds' %>
 
-<style type="text/css">
+<% content_for :special_css do %>
 .sound-letter td {
 width: 15%;
 }
@@ -22,7 +22,7 @@ display: none;
 font-style: italic;
 font-family: Times New Roman;
 }
-</style>
+<% end %>
 
 <div class="hint_wrap">
 <div class="hint_button" style="float: right;">

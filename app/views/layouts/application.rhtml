@@ -23,6 +23,9 @@
   <!--[if lte IE 6]>
     <%= stylesheet_link_tag 'ie6.css' %>
   <![endif]-->
+  <style type="text/css">
+    <%= yield :special_css %>
+  </style>
 </head>
 <body>
     <div id="fixWidh"><div id="container">

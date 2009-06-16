@@ -1,7 +1,7 @@
 <% @page_title='Russian Language Online: Vocabulary Topics' %>
 <% @page_meta = {'description' => "Russian online vocabulary sorted by topics with audio examples, transcription and translation"} %>
 
-<style type="text/css">
+<% content_for :special_css do %>
 #prof_tabs {margin-top: 50px;}
 .inpBlock {min-height: 800px; height: auto !important; height: 800px;}
 .pBlock {padding: 40px 50px;}
@@ -31,7 +31,7 @@ margin-left: 200px;
 display: block;
 }
 
-</style>
+<% end %>
 
 <h2 class="page">Vocabulary Topics</h2>
 
