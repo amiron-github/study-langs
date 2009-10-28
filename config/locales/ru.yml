@@ -4,6 +4,7 @@
 ru:
   hello: "Всем привет"
   Username: Логин
+  Email: Электронная почта
   Password: Пароль
   Login: Войти
   Forgotten Password: Забыли пароль?

@@ -12,12 +12,6 @@
   <%= javascript_include_tag 'jquery.min.js' %>
   <%= javascript_include_tag 'effects' %>
   <%= stylesheet_link_tag 'stylesheet' %>
-  <% for js_file in @javascripts -%>
-    <%= javascript_include_tag js_file %>
-  <% end -%>
-  <% for css_file in @stylesheets -%>
-    <%= stylesheet_link_tag css_file %>
-  <% end -%>
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <!--[if lte IE 6]>
@@ -38,6 +32,7 @@
                 <div id="title_wrapper">
                   <div id="title_name">
                     <h1 class="title_site"><a href="index.html" title="Home page">Study Russian Online</a></h1>
+
                     <div class="title_volume">Study Russian Online</div>
                     <div class="title_shdw">Study Russian Online</div>		
                   </div>
@@ -150,6 +145,7 @@
                 </div>
                 <div id="contentcell">
                   <div id="contfield" class="<%= @with_rec ? 'content withRec' : 'content' %>">
+<% if logged_in?%> <%= link_to "logout",{:controller => 'sessions', :action => 'destroy'} %> You are logged as <%= current_user.email %> <%else%><%= link_to "login",{:controller => 'sessions', :action => 'new'} %><%end%>
                     <% if @has_audio %>
                       <div id="loading"><div id="progress"></div><div id="progressbar"><div id="progressStatus"></div></div></div>
                       <div id="mess" class="sound_tip"><i>Tip</i></div>

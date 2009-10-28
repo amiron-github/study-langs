@@ -11,7 +11,7 @@ class InitialMigration < ActiveRecord::Migration
 
     # Create Users Table
     create_table :users, :force => true do |t|
-      t.string :login,                     :limit => 40
+#       t.string :login,                     :limit => 40
       t.string :name,                      :limit => 100, :default => '', :null => true
       t.string :email,                     :limit => 100
       t.string :crypted_password,          :limit => 40
@@ -24,7 +24,8 @@ class InitialMigration < ActiveRecord::Migration
       t.datetime :deleted_at
       t.timestamps
     end
-    add_index :users, :login, :unique => true
+    add_index :users, :email, :unique => true
+#     add_index :users, :login, :unique => true
 
     # Create Passwords Table
     create_table :passwords do |t|
@@ -49,9 +50,9 @@ class InitialMigration < ActiveRecord::Migration
     
     # Create default admin user
     user = User.create do |u|
-      u.login = 'admin'
-      u.password = u.password_confirmation = 'ghbdtn60'
-      u.email = "lucky@inventos.ru"
+#       u.login = 'admin'
+      u.password = u.password_confirmation = 'gfccdjhl'
+      u.email = "dalles@inventos.ru"
     end
     
     # Activate user
