@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title><%= @page_title %></title>
+<% unless @page_meta.nil? -%>
+  <% @page_meta.each do |name, content| -%>
+  <meta name="<%= name %>" content="<%= content %>" />
+  <% end %>
+<% end %>
+  <meta name="keywords" content="russian translation, russian language, learn russian, study russian, learn russian online, russian phrases, russian words, speak russian, speaking russian, learning russian, basic russian, learn russian language, beginners russian, russian language course, russian online lessons, russian vocabulary, russian for begginers" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf8"> 
+  <%= javascript_include_tag 'jquery.min.js' %>
+  <%= javascript_include_tag 'effects' %>
+  <%= stylesheet_link_tag 'stylesheet' %>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <!--[if lte IE 6]>
+    <%= stylesheet_link_tag 'ie6.css' %>
+  <![endif]-->
+  <style type="text/css">
+    <%= yield :special_css %>
+  </style>
+</head>
+<body>
+    <div id="fixWidh"><div id="container">
+        <!--[if lte IE 6]>
+        <table id="containit" cellspacing="0">
+          <tr valign="top">
+            <td>
+              <![endif]-->
+              <div id="head">
+                <div id="title_wrapper">
+                  <div id="title_name">
+                    <h1 class="title_site"><a href="index.html" title="Home page">Study Russian Online</a></h1>
+
+                    <div class="title_volume">Study Russian Online</div>
+                    <div class="title_shdw">Study Russian Online</div>		
+                  </div>
+                </div>
+              </div>
+              <div class="corners cont-clt">
+                <div class="corners cont-crt">
+                  <div class="cont-center"></div>
+                </div>
+              </div>
+              <div id="menu_content">
+                <div id="navigation">
+
+                  <div id="nav-pos">
+
+                    <div id="menu_body" align="left">
+                      <div id="nav1" class="menu-item">
+                        <div class="menu-item-front">
+                          <div class="item-top">
+                            <a href="index.html">Home page</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div id="nav2" class="menu-item">
+                        <div class="menu-item-front">
+                          <div class="item-top">
+                            <div class="list down"></div> 
+                            <a href="course.html">Course of Russian</a>&nbsp;
+                          </div>
+                        </div>
+                      </div>
+                      <div class="sub" style="display: none">
+                        <ul>
+                          <li><a href="unit01.html" title="Lesson 1"> 1. In the airport</a> </li>
+                          <li><a href="unit02.html" title="Lesson 2"> 2. Transport</a> </li>
+                          <li><a href="unit03.html" title="Lesson 3"> 3. At the hotel</a> </li>
+                          <li><a href="unit04.html" title="Lesson 4"> 4. In the street</a></li>
+                          <li><a href="unit05.html" title="Lesson 5"> 5. Sightseeings</a></li>
+                          <li><a href="unit06.html" title="Lesson 6"> 6. Shopping</a></li>
+                          <li><a href="unit07.html" title="Lesson 7"> 7. At the restaurant</a></li>
+                          <li><a href="unit08.html" title="Lesson 8"> 8. At the drugstore</a></li>
+                          <li><a href="unit09.html" title="Lesson 9"> 9. Currency exchange</a></li>
+                          <li><a href="unit10.html" title="Lesson 10" style="margin-left: -5px;">10. Internet &amp; Phone</a></li>
+                        </ul>
+                      </div>
+                      <div id="nav3" class="menu-item">
+                        <div class="menu-item-front">
+                          <div class="item-top">
+                            <div class="list down"></div> 
+                            <a href="vocabulary.html">Vocabulary Topics</a>&nbsp;
+                          </div>
+                        </div>
+                      </div>
+                      <div class="sub" style="display: none">
+                        <ul>
+                          <li><a href="politeness.html" title="Formulas of politeness">Politeness</a></li>
+                          <li><a href="acquaintance.html" title="Making an acquaintance">Acquaintance</a></li>
+                          <li><a href="transport.html" title="Transport">Transport</a></li>
+                          <li><a href="hotel.html" title="Hotel">Hotel</a> </li>
+                          <li><a href="sightseeing.html" title="Sightseeing">Sightseeing</a> </li>
+                          <li><a href="meals.html" title="Meals">Meals</a> </li>
+                          <li><a href="shopping.html" title="Shopping">Shopping</a> </li>
+                          <li><a href="numerals00-100.html" title="Numerals">Numerals</a> </li>
+                          <li class="sub_high"><a href="memory.html" title="Memory Game">Memory game</a>  </li>
+                          <li class="sub_high"><a href="tests.html" title="Tests">Lexical tests</a>  </li>
+                        </ul>
+                      </div>
+                      <div id="nav4" class="menu-item">
+                        <div class="menu-item-front">
+                          <div class="item-top">
+                            <div class="list down"></div> 
+                            <a href="pronunciation.html">Pronunciation</a>&nbsp;
+                          </div>
+                        </div>
+                      </div>
+                      <div class="sub" style="display: none">
+                        <ul>
+                          <li><a href="basic-sounds.html" title="Sounds in Russian">Sounds in Russian</a></li>
+                          <li><a href="sounds-info.html" title="Infos">Info about sounds</a></li>
+                          <li><a href="phonetics-course.html" title="Training">Phonetics course</a></li>
+                        </ul>
+                      </div>
+                      <div id="nav5" class="menu-item">
+                        <div class="menu-item-front">
+                          <div class="item-top">
+                            <div class="list down"></div> 
+                            <a href="russian-reading.html" >Reading in Russian</a>&nbsp;
+                          </div>
+                        </div>
+                      </div> 
+                      <div class="sub" style="display: none">
+                        <ul>
+                          <li><a href="basic-letters.html" title="Alphabet">Russian Letters</a></li>
+                          <li><a href="readingrules.html" title="Rules">Rules of reading</a> </li>
+                          <li><a href="reading-practice.html" title="Training">Training exercises</a></li>
+                        </ul>
+                      </div>
+                      <div id="nav6" class="menu-item">
+                        <div class="menu-item-front">
+                          <div class="item-top">
+                            <a href="contacts.html">Contact Us</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                  </div>
+
+                </div>
+                <div id="contentcell">
+                  <div id="contfield" class="<%= @with_rec ? 'content withRec' : 'content' %>">
+
+<% if logged_in?%> <%= link_to "logout",{:controller => 'sessions', :action => 'destroy'} %> <%= current_user.email %> <%else%><%= link_to "login",{:controller => 'sessions', :action => 'new'} %><%end%>
+
+                    <% if @has_audio %>
+                      <div id="loading"><div id="progress"></div><div id="progressbar"><div id="progressStatus"></div></div></div>
+                      <div id="mess" class="sound_tip"><i>Tip</i></div>
+                      <div id="audiospan" style="position: absolute;"></div>
+                    <% end %>
+                    <%= yield %>
+                    <div id="divspace"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="corners cont-clb">
+                <div class="corners cont-crb">
+                  <div class="cont-center"></div>
+                </div>
+              </div>
+              <div class="photos">
+                <div id="photo1-pos"><div class="photo1"></div></div>
+                <div id="photo2-pos">
+                  <div style="float: right;">
+                    <div class="photo2"></div>
+                  </div>
+                </div>
+                <div id="photo3-pos">
+                  <div style="float: right;">
+                    <div class="photo3"></div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- end of #contain-border -->
+            <!--[if lte IE 6]>
+          </td>
+        </tr>
+      </table>
+      <![endif]-->
+      <div id="footer">
+
+        <div class="copy"><a href="copyright.html">&copy;2009 Copyright Study-Languages-Online.com</a> | <a href="sitemap.html">Site map</a></div>
+
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+      try {
+        var pageTracker = _gat._getTracker("UA-8218265-1");
+        pageTracker._trackPageview();
+      } catch(err) {}</script>
+
+  </body>
+</html>
