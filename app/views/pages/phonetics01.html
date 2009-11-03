@@ -3,6 +3,15 @@
 <% @with_rec = true %>
 <% @has_audio = true %>
 
+<% content_for :special_js_css do %>
+
+<style type="text/css">
+h2.page {margin-bottom: 0px;}
+</style>
+
+<% end %>
+
+
 <div class="hint_wrap">
 <div class="hint_button" style="float: right">
 	<div class="hint">
@@ -23,7 +32,14 @@
 </div>
 
 <h2 class="page">Lesson 1. Vowel sounds</h2>
-
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="pronunciation.html">Pronunciation</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="phonetics-course.html">Phonetics course</a>
+	<span class="int-arrow">--&gt;</span> Lesson 1. Vowels
+	</span>
+</h3>
 <p>
 This lesson is devoted to 5 vowel sounds which are usually not very difficult to pronounce for English speaking people. In the last lesson, <a href="phonetics04.html">The most difficult sounds</a>, you will find one more vowel sound [<span class="ry">i</span>].
 </p>

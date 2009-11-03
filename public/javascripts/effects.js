@@ -199,6 +199,8 @@ if($("div#softs").find("span.tcheck").hasClass("checked")){
 $("span#soft_on").addClass("checked");
 };
 
+$(".egt").prepend("'").append("'")
+
 changeContent();
 
 if(getCookie('preload')) {
@@ -278,7 +280,7 @@ $(".open_popup_link").hover(function(){
 
 
 if($(".dragit").length){
- $.getScript("/javascripts/draggable.js");
+ $.getScript("draggable.js");
 }
 
 
@@ -801,6 +803,9 @@ function sectionHighlight() {
 		case 'contact':
 			pageMenuItem(6);
 			break;
+		case 'login':
+			pageMenuItem(7);
+			break;
 		default: 
 		   	$("#menu_body .menu-item a").css({color: "#183A87"});
 	}
@@ -878,7 +883,56 @@ function openTab() {
 
 ///////////////////////// end for tabs
 
+////////////////////// text in input for login 
 
+$(document).ready(function(){
+
+if ( $("#navigation input#email").length==1) {
+	InputHelperCreate( $( "input#email" ).get(0), ' enter your email' );
+	//InputHelperCreate( $( "input#password" ).get(0), 'password' );
+	
+}else {
+return false;
+}
+
+
+});
+
+
+function InputHelperCreate(obj, text){
+		$( obj )
+			.bind( 'focus', function () {
+				InputHelperIn(this, text);
+			} )
+			.bind('blur', function () {
+				InputHelperOut(this, text);
+			} );
+		InputHelperOut(obj, text);
+}
+
+function InputHelperIn(obj, text)
+	{
+		if (obj.value == text)
+		{
+		    $( obj )
+		        .css({color: '#000'})
+		        .val('');
+		
+		}
+	}
+	
+function InputHelperOut(obj, text){
+
+		if ( obj.value == '' || obj.value == text ) {
+		    $( obj )
+		        .css({color: '#666'})
+		        .val(text);
+			
+		}
+}
+
+
+//////////////////////// end of text in input for login
 
 
 

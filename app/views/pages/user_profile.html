@@ -3,6 +3,10 @@
 
 
 <% content_for :special_js_css do %>
+<%= stylesheet_link_tag 'profile' %>
+ <%= javascript_include_tag 'profile_results' %>
+
+
 
 <style type="text/css">
 
@@ -11,6 +15,11 @@ margin-left: 50px;
 }
 
 .inpBlock h3 {
+}
+
+.item-name {
+font-size: 14px;
+font-weight: bold;
 }
 
 </style>
@@ -25,13 +34,10 @@ margin-left: 50px;
 	<div id="tabs_row">
             <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Profile</a></div></div>
             <div id="tab02" class="ptab"><div><a href="#">Progress</a></div></div>
-            <div id="tab03" class="ptab"><div><a href="#">Account</a></div></div>
+            <div id="tab03" class="ptab"><div><a href="#">Settings</a></div></div>
 	</div>
 	<div style="clear: both;"></div>
 </div>
-
-
-
 
 
 
@@ -41,8 +47,23 @@ margin-left: 50px;
 	
 		<h3>Profile</h3>
 		<hr/>
-	
-      
+		<p style="font-size: 10px; font-style: italic;">* You can change your profile info in the tab <strong>Settings</strong></p>
+		
+		<table cellpadding="0" cellspacing="20">
+		<tr>
+			<td class="item-name" width="200">Email: 
+			</td>
+			<td><%= current_user.email %>
+			</td>
+		</tr>
+		<tr>
+			<td class="item-name">Account created:
+			</td>
+			<td>00/00/00
+			</td>
+		</tr>
+		</table>
+		
 
 	</div>
 </div>
@@ -50,8 +71,8 @@ margin-left: 50px;
 	<div class="inpBlock">
 		
 		<h3>Content: </h3>
-		<hr/>
-        
+		
+        <div id="results_container"></div>
 		
 		
 	
@@ -60,25 +81,51 @@ margin-left: 50px;
 <div id="for_tab03" class="pBlock" style="display: none">
 	<div class="inpBlock">
 	
-		<h3>Content: </h3>
+		<h3>Account Settings: </h3>
 		<hr/>
-        
+	   
+	   <table cellpadding="0" cellspacing="20">
+		<tr>
+			<td class="item-name" width="200">Change my email: 
+			</td>
+			<td><input type="button" value="Change" />
+			</td>
+		</tr>
+		<tr>
+			<td class="item-name">Change my password: 
+			</td>
+			<td><input type="button" value="Change" />
+			</td>
+		</tr>
+		<tr>
+			<td class="item-name">Delete my results:
+			</td>
+			<td><input type="button" value="Delete &nbsp;" />
+			</td>
+		</tr>
+		<tr>
+			<td class="item-name">Delete my account: 
+			</td>
+			<td><input type="button" value="Delete &nbsp;" />
+			</td>
+		</tr>
+		</table>
+
 
 	</div>
 </div>
 
 
+<script type="text/javascript">
+
+var userProgress=new Array( 
+
+["v0201030.3",8,5], ["v0203030.3",8,5], ["v0203030.3",8,7],["v0103030.3",8,8],["v0101010.1",8,6],["p010202a.II.a)",8,6],["p010303a.I.a)",8,6],["p010403a.II.a)",8,6], ["p010102a.II.a)",8,6],["p010104b.IV.b)",8,8]
+
+);
 
 
-
-
-
-
-
-
-
-
-
+</script>
 
 
 

@@ -4,6 +4,11 @@
 <% @has_audio = true %>
 
 <%= stylesheet_link_tag 'stylesounds' %>
+<% content_for :special_js_css do %>
+<style type="text/css">
+h2.page {margin-bottom: 0px;}
+</style>
+<% end %>
 
 <div class="hint_wrap">
 <div class="hint_button" style="float: right;">
@@ -23,6 +28,7 @@
 </div>
 
 <h2 class="page">General Info about Sounds<br/> in the Russian Language</h2>
+<h3 class="page-path"><span class="int-links"><a href="pronunciation.html">Pronunciation</a> <span class="int-arrow">--&gt;</span> General Info about Russian Sounds</span></h3>
 <div id="pagecontent"><div id="content">
 
 <h3>Vowels</h3> 

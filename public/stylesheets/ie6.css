@@ -1,10 +1,22 @@
 
 #fixWidh {
 width:expression(document.body.clientWidth > 1400? "1400px": "auto" );
-background-image: url("images/corner.gif");
+background-image: url("/images/corner.gif");
 }
 
 .corners {
-background-image: url("images/corner.gif");
+background-image: url("/images/corner.gif");
+}
+
+table.cross_container td {
+background-image: none;
+filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=/games/crossword/cross-back.png,sizingMethod=crop);
+
+}
+
+#helper td, #helper1 td {
+color: #fff;
+background-image: none;
+filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=/games/crossword/cross-selected.png,sizingMethod=crop);
 }
 

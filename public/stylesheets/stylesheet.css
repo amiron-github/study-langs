@@ -2,6 +2,7 @@ html {
 min-height: 100%;
 }
 
+
 html, body  {
 hei_ght:100%;
 wid th: 2200px;
@@ -24,7 +25,7 @@ background-position: 0px 100%;
 
 
 #fixWidh {
-he_ight:auto !important; 
+he_ight:auto !important;
 mi_n-height:100%;
 margin: 0px auto;
 max-width: 1400px;
@@ -33,6 +34,7 @@ _hei_ght: 100%;
 background-image: url("/images/corners.png");
 background-position: -200px -20px;
 background-repeat: no-repeat;
+
 }
 
 table td {
@@ -232,6 +234,14 @@ margin-left: 12px;
 margin-left: 54px;
 }
 
+#menu_body #nav7 a {
+margin-left: 30px !important;
+padding:0px;
+}
+
+#menu_body #nav7 input {
+width: 140px;
+}
 
 div#menu_content {
 background-color: #fff;
@@ -268,6 +278,7 @@ background-color: #ffffff;
 
 #menu_body {
 width: 186px;
+overflow: hidden;
 }
 
 .sub ul, .sub_hint ul {
@@ -317,6 +328,8 @@ padding-left: 0px;
 font-weight: bold;
 outline-style: none;
 background-color: transparent;
+white-space: nowrap;
+text-align: center;
 }
 
 #menu_body .current {
@@ -336,7 +349,8 @@ padding: 0px;
 font-size: 0px; 
 height: 16px; 
 width: 20px;
-margin-left: 160px;
+margin: 0px;
+right: 6px;
 }
 
 .down {
@@ -402,7 +416,7 @@ background-color: transparent;
 width: 202px;
 position: relative;
 left: 0px;
-background-image:  url(/images/redbutton.gif);
+background-image:  url("/images/redbutton.gif");
 background-position: 100% -1px;
 background-repeat: no-repeat;
 color: #A20804;
@@ -420,7 +434,7 @@ line-height: 39px;
 .hint_button .hint {
 color: ;
 display: block;
-background-image:  url(/images/redbutton.gif);
+background-image:  url("/images/redbutton.gif");
 background-repeat: no-repeat;
 background-position: 0px -91px;
 padding-left: 4px;
@@ -1387,6 +1401,8 @@ border-top: none;
 }
 
 .inpBlock {
+min-height: 450px;
+height: auto ! important;
 height: 450px;
 
 }
@@ -1424,22 +1440,317 @@ margin-top: 0px;
 /*end for inner tabs*/
 
 .ad-bottom {
-height: 30px;
+height: 60px;
 background-color: #fff;
 position: relative;
 margin-top: -20px;
-padding-left: 200px;
+}
+
+div.hidden_content {
+background-color: #EFF5FF;
+border: 1px dotted gray;
+padding: 15px;
+text-align: center;
+color: gray;
+margin: 30px 0px;
+}
+
+a.to_reg:link {
+font-size: 14px;
+font-weight: bold;
+text-decoration: none;
+}
+
+a.to_reg:visited {
+font-size: 14px;
+font-weight: bold;
+text-decoration: none;
+}
+
+a.to_reg:hover {
+font-size: 14px;
+font-weight: bold;
+text-decoration: underline;
+}
+
+a.to_reg:active {
+font-size: 14px;
+font-weight: bold;
+text-decoration: underline;
+}
+
+/* styles for the rss block */
+
+.note {
+font-style: italic;
+border: 1px solid #ccc;
+background-color: #DFE5FF;
+padding: 2px 3px 2px 2px;
+}
+
+.last-updates span.note {
+position: relative;
+wi dth: 450px;
+display: block;
+text-align: left;
+padding-left: 20px;
+padding-right: 34px;
+}
+
+a.rss-link {
+font-size: 1px;
+width: 30px;
+height: 49px;
+display: block;
+background-image: url("/images/rss.gif");
+background-repeat: no-repeat;
+background-position: 0px 0px;
+position: absolute;
+right: 2px;
+margin-top: -8px;
+}
+
+a.rss-link:link {
+background-position: 0px 0px;
+}
+
+a.rss-link:visited{
+background-position: 0px 0px;
+}
+
+a.rss-link:hover {
+background-position: 0px -49px;
+}
+
+a.rss-link:active {
+background-position: 0px -49px;
+}
+
+.last-updates {
+width: 450px;
+margin-left: 20px;
+}
+
+.last-updates ul {
+list-style: none;
+padding: 20px 10px 20px 20px;
+margin: 0px;
+border: 1px solid #ccc;
+border-top: 0px solid #fff;
+}
+
+.last-updates ul li {
+padding: 4px 0px;
+}
+
+.last-updates h3 {
+font-style: normal;
+font-size: 10pt;
+margin-bottom: 0px;
+color:#444;
+}
+
+/* styles for the rss block  end*/
+
+/* styles for internal links*/
+span.int-links {
+display: block;
+font-size: 11px;
+margin-top: 18px;
+padding-bottom: 15px;
+}
+span.int-links .int-arrow {
+font-size: 9px;
+}
+span.int-links a .int-arrow {
+text-decoration: none;
+}
+span.int-links a:link {
+text-decoration: underline;
+color: #0000EE;
+}
+span.int-links a:visited {
+text-decoration: underline;
+color: #0000EE;
+}
+span.int-links a:hover {
+text-decoration: none;
+color: #00015F;
+}
+span.int-links a:active {
+text-decoration: none;
+color: #00015F;
+}
+
+h3.page-path {
+margin-bottom: 40px;
+text-align: center;
+font-weight: normal;
+}
+/* styles for internal links end*/
+
+/* styles for standard table*/
+
+table.st-table { 
+border-collapse: collapse;  
+border-left: 1px solid #CFCFCF; 
+border-top: 1px solid #CFCFCF;
+margin: 10px;
+}
+
+table.st-table tr {
+vertical-align: top;
+}
+
+table.st-table td { 
+verti cal-align: top; 
+padding: 10px; 
+border-right: 1px solid #CFCFCF; 
+border-bottom: 1px solid #CFCFCF;
+text-align: center;
+color: #222;
+}
+
+table.st-table .thbrd {
+border-right: 1px solid #CFCFCF;
 }
 
 
+table.st-table th {
+color: #555;
+padding:5px;
+border-right:solid 1px #fff;
+font-size: 12px; 
+font-weight: normal;
+background-color: #DFDFDF;
+text-align: center;
+}
+
+table.st-table .even {
+background-color: #EFEFEF;
+}
+
+table.st-table td {
+padding: 6px 10px;
+}
+
+span.ending {
+font-weight: bold;
+}
+
+span.end_nul {
+color: gray;
+
+}
+
+.case-name {
+font-style: italic;
+}
+
+.eg {
+font-weight: bold;
+font-style: italic;
+}
+
+.egt {
+font-style: italic;
+}
+
+.summary-list {
+list-style-type: circle;
+}
+
+.summary-list li {
+padding: 5px 0px;
+}
+
+/* end of styles for standard table*/
+
+.in-notes {
+font-style: italic;
+font-weight: normal;
+}
+
+.lesson-notes p {
+margin-left: 20px;
+margin-right: 20px;
+font-size: 12px;
+}
+
+.lesson-notes h3 {
+margin-top: 0px;
+border-width: 0px 0px 1px 0px;
+font-size: 12px;
+}
+
+.lesson-notes {
+border: 1px solid #CCCCCC;
+margin: 30px 20px;
+}
+
+/*examples */
+
+.egdiv {
+padding: 10px 0px 10px;
+margin: 14pt 20px;
+background-color: #F6F6F6;
+border: 1px solid #CFCFCF;
+
+-moz-border-radius: 7px; 
+-webkit-border-radius: 7px; 
+-khtml-border-radius: 7px;
+border-radius: 7px;
+}
+
+.egdiv h4 {
+font-size: 14px;
+color: #444444;
+margin: 0 30px 14pt;
+font-weight: bold;
+font-style: italic;
+color: #555;
+border-bottom: 3px double #CFCFCF;
+back ground-color: #EFEFEF;
+padding: 0px 0px 4px;
+}
+
+.egdiv p {
+margin: 12px 45px;
+font-size:12px;
+line-height:16px;
+}
+
+div.eg-sound {
+padding: 2px 0px 2px;
+}
+
+div.eg-sound p {
+font-size: 10pt;
+}
+
+.clear {
+clear: both;
+}
+
+/*end of examples*/
 
 
+/*for user logged*/
 
+#title_name #user_logged {
+color:white;
+float:right;
+font-size:10pt;
+font-weight:normal;
+margin-right:50px;
+margin-top:80px;
+position:relative;
+}
 
+#title_name #user_logged a {
+color: #fff;
+}
 
-
-
-
-
+/*for user logged*/
 
 

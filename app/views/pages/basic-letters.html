@@ -3,9 +3,12 @@
 <% @with_rec = true %>
 <% @has_audio = true %>
 
+
+
+<% content_for :special_js_css do %>
 <%= stylesheet_link_tag 'stylesounds' %>
 
-<% content_for :special_css do %>
+<style type="text/css">
 .sound-letter td {
 width: 20%;
 }
@@ -13,6 +16,7 @@ width: 20%;
 font-style: italic;
 font-family: Times New Roman;
 }
+</style>
 <% end %>
 
 <div class="hint_wrap">

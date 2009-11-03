@@ -12,14 +12,27 @@
   <%= javascript_include_tag 'jquery.min.js' %>
   <%= javascript_include_tag 'effects' %>
   <%= stylesheet_link_tag 'stylesheet' %>
+  
+    <% for js_file in @javascripts -%>
+    <%= javascript_include_tag js_file %>
+  <% end -%>
+  <% for css_file in @stylesheets -%>
+    <%= stylesheet_link_tag css_file %>
+  <% end -%>
+
+  
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <%= yield :special_js_css %>
+  <style type="text/css">
+  .never-existed {font-size: 10pt;}
+	<%= yield :special_css %>
+  </style>
+
   <!--[if lte IE 6]>
     <%= stylesheet_link_tag 'ie6.css' %>
   <![endif]-->
-  <style type="text/css">
-    <%= yield :special_css %>
-  </style>
+
 </head>
 <body>
     <div id="fixWidh"><div id="container">
@@ -32,9 +45,16 @@
                 <div id="title_wrapper">
                   <div id="title_name">
                     <h1 class="title_site"><a href="index.html" title="Home page">Study Russian Online</a></h1>
-
                     <div class="title_volume">Study Russian Online</div>
-                    <div class="title_shdw">Study Russian Online</div>		
+                    <div class="title_shdw">Study Russian Online</div>
+					<div id="user_logged">
+					
+					<% if logged_in?%> 
+						 <strong style="font-size: 10px;"><%= current_user.email %></strong> | <%= link_to "Sign Out",{:controller => 'sessions', :action => 'destroy'} %>
+					<%else%>
+						&nbsp;
+					<%end%>
+					</div>					
                   </div>
                 </div>
               </div>
@@ -130,6 +150,85 @@
                           <li><a href="reading-practice.html" title="Training">Training exercises</a></li>
                         </ul>
                       </div>
+					  
+					
+					<div id="nav7" class="menu-item">
+                      <div class="menu-item-front">
+                             <div class="item-top">
+                                 <div class="list down"></div> 
+								 
+								 <% if logged_in?%> 
+                                      <a href="user_profile.html">&nbsp;&nbsp;&nbsp;My account</a>
+								<%else%>	  
+									  <a href="login_page.html">Register/Log in</a>&nbsp;
+								<%end%>	  
+									  
+                                 </div>
+                              </div>
+                    </div>
+					
+					
+					
+					
+					<% if logged_in?%> 
+					 
+						 <div class="sub" style="display: none">
+                            <ul>
+                                <li><a href="user_profile.html" title="Profile">My Profile</a></li>
+								<li><%= link_to "Sign Out",{:controller => 'sessions', :action => 'destroy'} %> </li>
+                             </ul>
+                     </div>
+						 
+					<%else%>
+					
+					
+					 
+					
+					
+<div class="sub" style="display: none">
+
+	<% if @page_title == 'Login' %>
+	
+	<ul style="padding: 5px 1px 5px 28px;">
+              <li><a href="registration.html" >Registration</a></li>
+     </ul>
+
+	 <% elsif @page_title == 'Registration' %>
+	 
+	 <ul style="padding: 5px 1px 5px 28px;">
+              <li><a href="login_page.html">Log in</a></li>
+     </ul>
+	 
+	<%else%>
+	
+	<% form_tag session_path do %>
+    <ul style="padding: 5px 20px 5px 18px;">
+	<li style="padding-bottom: 7px;"><a href="registration.html">Click here to register!</a></li>
+      <li>
+        <%= text_field_tag 'email', @email %>
+      </li>
+      <li>
+
+        <%= password_field_tag 'password', nil %>
+      </li>
+	  <li style="text-align: center;">
+			<%= submit_tag t('Login') %>
+	  </li>
+    </ul>
+ <% end -%>
+	
+	
+	<%end%>
+							 
+ </div>
+						
+						
+					<%end%>
+                     
+					 
+					 
+					 
+					 
                       <div id="nav6" class="menu-item">
                         <div class="menu-item-front">
                           <div class="item-top">
@@ -145,7 +244,6 @@
                 </div>
                 <div id="contentcell">
                   <div id="contfield" class="<%= @with_rec ? 'content withRec' : 'content' %>">
-<% if logged_in?%> <%= link_to "logout",{:controller => 'sessions', :action => 'destroy'} %> You are logged as <%= current_user.email %> <%else%><%= link_to "login",{:controller => 'sessions', :action => 'new'} %><%end%>
                     <% if @has_audio %>
                       <div id="loading"><div id="progress"></div><div id="progressbar"><div id="progressStatus"></div></div></div>
                       <div id="mess" class="sound_tip"><i>Tip</i></div>

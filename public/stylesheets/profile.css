@@ -68,6 +68,90 @@ font-weight: bold;
 
 
 
+th.page {
+width: 200px;
+}
+
+th.results {
+width: 100px;
+}
+
+.sound-letter th.thbrd {
+width: 70px;
+border-right: 1px solid #0C2358;
+}
+
+table.sound-letter {
+border-collapse: collapse;
+border-left: 1px solid #0C2358;
+border-top: 1px solid #6D82AF;
+margin: 0px;
+}
+
+.sound-letter th {
+background-color: #112D6D;
+border-right: 1px solid #FFFFFF;
+color: #fff;
+font-weight: bold;
+font-size: 12px;
+padding: 5px;
+text-align: left;
+
+}
+
+table.sound-letter .thbrd {
+border-right: 1px solid #6D82AF;
+}
+
+table.sound-letter td {
+border-bottom:1px solid #6D82AF;
+border-right:1px solid #6D82AF;
+color:#222222;
+padding:6px 10px;
+text-align: left;
+vertical-align: top;
+}
+
+
+
+
+
+.pr-detail {
+position: relative;
+overflow: visible;
+}
+
+.pr-detail-block {
+overflow: hidden;
+position: absolute; 
+margin-top: 3px;
+width: 320px;
+display: none;
+}
+
+
+.pr-detail-block div {
+back_ground-color: #fff;
+bor_der: 1px solid #666666;
+margin-left: -500px;
+width: 320px;
+}
+
+div.pr-detail td {
+border: 0px solid #fff;
+width: 200px;
+}
+
+div.pr-detail td.res_perc {
+width: 100px;
+}
+
+span.show_det {
+cursor: pointer;
+color: #183A87;
+}
+
+
 
 
 
