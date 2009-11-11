@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090306115757) do
+ActiveRecord::Schema.define(:version => 20091110122759) do
 
   create_table "passwords", :force => true do |t|
     t.integer  "user_id"
@@ -38,8 +38,19 @@ ActiveRecord::Schema.define(:version => 20090306115757) do
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
+  create_table "user_tests", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.string   "test_id",    :null => false
+    t.integer  "total"
+    t.integer  "correct"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_tests", ["test_id"], :name => "index_user_tests_on_test_id"
+  add_index "user_tests", ["user_id"], :name => "index_user_tests_on_user_id"
+
   create_table "users", :force => true do |t|
-    t.string   "login",                     :limit => 40
     t.string   "name",                      :limit => 100, :default => ""
     t.string   "email",                     :limit => 100
     t.string   "crypted_password",          :limit => 40
@@ -54,6 +65,6 @@ ActiveRecord::Schema.define(:version => 20090306115757) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["login"], :name => "index_users_on_login", :unique => true
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
 
 end

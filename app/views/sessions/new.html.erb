@@ -1,20 +1,114 @@
-<h2><%=t 'Login' %></h2>
-<% form_tag session_path do %>
-  <fieldset>
-    <legend><%=t "Your Details" %></legend>
-    <ol>
-      <li>
-        <%= label_tag 'email', t('Email') %>
-        <%= text_field_tag 'email', @email %>
-      </li>
-      <li>
-        <%= label_tag 'password', t('Password') %>
-        <%= password_field_tag 'password', nil %>
-      </li>
-    </ol>
-  </fieldset>
-  <div class="buttons">
-    <%= submit_tag t('Login') %>
-    <%= link_to t('Forgotten Password'), forgot_password_path %>
-  </div>
-<% end -%>
+<% @page_title = 'Login' %>
+<% @page_meta = {'description' => "Log in Study Languages Online"} %>
+
+
+
+<% content_for :special_js_css do %>
+<%= stylesheet_link_tag 'stylesounds' %>
+
+<style type="text/css">
+
+
+
+.login_form_wrapper {
+text-align: center;
+}
+
+#login_form {
+width: 400px;
+margin: 0px auto;
+border: 1px solid #888;
+height: 300px;
+}
+
+#login_title {
+background-color: #DFDFDF;
+border-bottom: 1px solid #888;
+font-size: 20px;
+color: #666;
+padding: 5px 0px;
+margin-bottom: 20px;
+}
+
+.login_wrap {
+margin: 40px 30px 30px;
+}
+
+.login_wrap input {
+width: 150px;
+}
+
+.login_wrap div {
+margin-bottom: 15px;
+}
+
+span.log_item {
+width: 85px;
+display: block;
+float: left;
+font-weight: bold;
+text-align: right;
+
+}
+
+.submit_log input {
+font-size: 15px;
+}
+
+
+
+</style>
+
+
+<% end %>
+
+
+
+
+<div class="login_form_wrapper">
+
+	<div id="login_form">
+
+		<div id="login_title">Log In</div>
+		
+		<a href="signup" style="font-size: 11px; font-weight: bold;">No account yet? Click here to register</a>
+
+	
+		<% form_tag session_path do %>
+		
+		<div class="login_wrap">
+		
+			<div id="user_to_log"> 
+				<span class="log_item">Email:</span>
+
+				<%= text_field_tag 'email', @email %>
+			
+			</div>
+			
+			<div id="pass_to_log"> 
+		
+				<span class="log_item">Password:</span> 
+				<%= password_field_tag 'password', nil %>
+
+			</div>
+	   
+		</div>
+	<p><%= link_to t('Forgotten Password'), forgot_password_path %></p>
+	
+		<span class="submit_log"><%= submit_tag t('Login') %></span>
+		
+
+		<% end -%>
+</div>
+
+
+
+</div>
+
+
+
+
+
+<script type="text/javascript">
+currentSection="login";
+</script>

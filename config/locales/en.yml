@@ -2,4 +2,11 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  hello: Hello
+  Username: Name
+  Email: Email
+  Password: Password
+  Login: Login
+  Forgotten Password: Forgotten Password?
+  Your Details: Your Details
+  Save: Save

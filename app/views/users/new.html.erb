@@ -1,28 +1,125 @@
-<h1>Sign up as a new user</h1>
+<% @page_title = 'Registration' %>
+<% @page_meta = {'description' => "Registration for Study Languages Online"} %>
 
 
-<% @user.password = @user.password_confirmation = nil %>
 
+<% content_for :special_js_css do %>
+<%= stylesheet_link_tag 'stylesounds' %>
+
+<style type="text/css">
+
+
+
+.login_form_wrapper {
+text-align: center;
+}
+
+#login_form {
+width: 400px;
+margin: 0px auto;
+border: 1px solid #888;
+height: 300px;
+}
+
+#login_title {
+background-color: #DFDFDF;
+border-bottom: 1px solid #888;
+font-size: 20px;
+color: #666;
+padding: 5px 0px;
+margin-bottom:20px;
+}
+
+.login_wrap {
+margin: 40px 30px 30px;
+}
+
+.login_wrap input {
+width: 150px;
+}
+
+.login_wrap div {
+margin-bottom: 15px;
+}
+
+span.log_item {
+width: 150px;
+display: block;
+float: left;
+font-weight: bold;
+text-align: right;
+
+}
+
+.submit_log input {
+font-size: 15px;
+}
+
+
+
+</style>
+
+
+<% end %>
+<div class="login_form_wrapper">
+
+	<div id="login_form">
+
+		<div id="login_title">It's your first visit? Welcome!
+		</div>
+		<a href="login_page.html" style="font-size: 11px; font-weight: bold;">Already registered? Click here to login</a>
+	
 	<%= error_messages_for :user %>
 
 	<% form_for :user, :url => users_path do |f| -%>
+		
+		
+		
+		<div class="login_wrap">
+		
+			<div id="user_to_log"> 
+			
+				<span class="log_item">Email:</span>
 
-	<p>
+				<%= f.text_field :email %>
+			
+			</div>
+			
+			<div id="pass_to_log"> 
+		
+				<span class="log_item">Password:</span> 
+				<%= f.password_field :password %>
+
+			</div>
+			<div id="pass_confirm"> 
+		
+				<span class="log_item">Confirm Password:</span> 
+				<%= f.password_field :password_confirmation %>
+
+			</div>
+			
+	   
+		</div>
+		
+		
+
 	
-	<%= label_tag 'email' %><br/>
-	<%= f.text_field :email %>
-	
-	</p>
+		<p><span class="submit_log"><%= submit_tag 'Sign up' %></span></p>
+		
 
-<p><%= label_tag 'password' %><br/>
-<%= f.password_field :password %></p>
-
-<p><%= label_tag 'password_confirmation', 'Confirm Password' %><br/>
+		<% end -%>
+		
+		
+</div>
 
 
-<%= f.password_field :password_confirmation %></p>
 
-<p><%= submit_tag 'Sign up' %></p>
+</div>
 
 
-<% end -%>
+
+
+
+<script type="text/javascript">
+currentSection="login";
+</script>

@@ -88,13 +88,13 @@ font-weight: bold;
 		<tr>
 			<td class="item-name" width="200">Change my email: 
 			</td>
-			<td><input type="button" value="Change" />
+			<td><input type="button" value="Change" onclick=document.location.href="/user" />
 			</td>
 		</tr>
 		<tr>
 			<td class="item-name">Change my password: 
 			</td>
-			<td><input type="button" value="Change" />
+			<td><input type="button" value="Change" onclick=document.location.href="/userp" />
 			</td>
 		</tr>
 		<tr>
@@ -118,13 +118,18 @@ font-weight: bold;
 
 <script type="text/javascript">
 
-var userProgress=new Array( 
+/*var userProgress=new Array( 
 
 ["v0201030.3",8,5], ["v0203030.3",8,5], ["v0203030.3",8,7],["v0103030.3",8,8],["v0101010.1",8,6],["p010202a.II.a)",8,6],["p010303a.I.a)",8,6],["p010403a.II.a)",8,6], ["p010102a.II.a)",8,6],["p010104b.IV.b)",8,8]
 
 );
+*/
 
+<% if logged_in?%>
+<%=current_user.get_tests%>
+<%end%>
 
+ 
 </script>
 
 

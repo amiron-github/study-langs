@@ -9,6 +9,17 @@ ActionController::Routing::Routes.draw do |map|
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
 
+  map.user '/user', :controller => 'users', :action => 'update_user'
+  map.userp '/userp', :controller => 'users', :action => 'update_pass'
+  map.userd '/userd', :controller => 'users', :action => 'del'
+
+  map.get_stat '/set_stat', :controller => 'users', :action => 'set_stat'
+
+
+  map.edit '/edit', :controller => 'users', :action => 'save_user'
+  map.psedit '/psedit', :controller => 'users', :action => 'save_pass'
+
+                                                        
   map.resources :users, :member => { :suspend => :put, :unsuspend => :put, :purge => :delete }
   map.resource :session
 

@@ -13,13 +13,6 @@
   <%= javascript_include_tag 'effects' %>
   <%= stylesheet_link_tag 'stylesheet' %>
   
-    <% for js_file in @javascripts -%>
-    <%= javascript_include_tag js_file %>
-  <% end -%>
-  <% for css_file in @stylesheets -%>
-    <%= stylesheet_link_tag css_file %>
-  <% end -%>
-
   
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
@@ -159,8 +152,11 @@
 								 
 								 <% if logged_in?%> 
                                       <a href="user_profile.html">&nbsp;&nbsp;&nbsp;My account</a>
+
 								<%else%>	  
-									  <a href="login_page.html">Register/Log in</a>&nbsp;
+
+
+                                                                       <%= link_to "Register/Log in",{:controller => 'sessions', :action => 'new'} %>
 								<%end%>	  
 									  
                                  </div>
@@ -190,7 +186,8 @@
 	<% if @page_title == 'Login' %>
 	
 	<ul style="padding: 5px 1px 5px 28px;">
-              <li><a href="registration.html" >Registration</a></li>
+              <li><%= link_to "Registration",{:controller => 'users', :action => 'new'} %></li>
+
      </ul>
 
 	 <% elsif @page_title == 'Registration' %>
@@ -203,7 +200,7 @@
 	
 	<% form_tag session_path do %>
     <ul style="padding: 5px 20px 5px 18px;">
-	<li style="padding-bottom: 7px;"><a href="registration.html">Click here to register!</a></li>
+	<li style="padding-bottom: 7px;"><a href="signup">Click here to register!</a></li>
       <li>
         <%= text_field_tag 'email', @email %>
       </li>
@@ -244,6 +241,7 @@
                 </div>
                 <div id="contentcell">
                   <div id="contfield" class="<%= @with_rec ? 'content withRec' : 'content' %>">
+			<input type=button onclick=javascript:$.get('/set_stat?test_id='+'555'+'&total='+'8'+'&correct='+'4')
                     <% if @has_audio %>
                       <div id="loading"><div id="progress"></div><div id="progressbar"><div id="progressStatus"></div></div></div>
                       <div id="mess" class="sound_tip"><i>Tip</i></div>

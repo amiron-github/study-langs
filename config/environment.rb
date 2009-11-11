@@ -29,7 +29,7 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem 'rubyist-aasm', :version => '2.0.2', :lib => 'aasm', :source => 'http://gems.github.com'
   config.gem 'mislav-will_paginate', :version => '2.3.6', :lib => 'will_paginate', :source => 'http://gems.github.com'
-  config.gem 'yaroslav-russian', :version => '0.1.3', :lib => 'russian', :source => 'http://gems.github.com'
+#  config.gem 'yaroslav-russian', :version => '0.1.3', :lib => 'russian', :source => 'http://gems.github.com'
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
@@ -52,7 +52,7 @@ Rails::Initializer.run do |config|
   # All files from config/locales/*.rb,yml are added automatically.
   # config.i18n.load_path << Dir[File.join(RAILS_ROOT, 'my', 'locales', '*.{rb,yml}')]
   #config.i18n.default_locale = :en
-  config.i18n.default_locale = :ru
+  config.i18n.default_locale = :en
 
   # Your secret key for verifying cookie session data integrity.
   # If you change this key, all old sessions will become invalid!

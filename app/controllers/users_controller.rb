@@ -42,6 +42,99 @@ class UsersController < ApplicationController
       redirect_back_or_default('/')
     end
   end
+  
+   
+  def save_pass
+    if !current_user 
+    redirect_back_or_default('/')
+    else 
+    if (current_user.authenticated?(params[:password]))
+      case
+      when (!params[:new_password].blank?)&&(!params[:confirm_password].blank?)&&(params[:confirm_password]==params[:new_password])
+	current_user.update_attribute(:password, params[:new_password])
+      when (params[:confirm_password]!=params[:new_password])
+      @error_val="You entered incompatible passwords"
+      logger.warn("empty value")
+      end
+    else
+      @error_pas = "You entered incorrect password" 
+    end
+    render :action => 'update_pass'
+
+    end
+  end
+
+  def set_stat 
+    if !current_user
+    redirect_back_or_default('/')
+    else
+      test = current_user.user_tests.find(:first, :conditions => 'test_id='+params[:test_id])
+      if !test
+      current_user.user_tests.create(:test_id=>params[:test_id],:total=>params[:total],:correct=>params[:correct])
+      else
+       if test.correct<params[:correct].to_i
+	test.update_attribute(:correct,params[:correct])
+       end 
+      end  
+    render :text => '', :layout =>false
+    end
+
+  end
+  
+  def get_stat1 
+    if !current_user
+    redirect_back_or_default('/')
+    else
+     res='var userProgress=new Array('
+     current_user.user_tests.each do |t|
+     res = res +'["' +t.test_id+'",'+t.total.to_s+','+t.correct.to_s+'],'  
+#var userProgress=new Array( 
+#["v0201030.3",8,5], ["v0203030.3",8,5], ["v0203030.3",8,7],["v0103030.3",8,8],["v0101010.1",8,6],["p010202a.II.a)",8,6],["p010303a.I.a)",8,6],["p010403a.II.a)",8,6], ["p010102a.II.a)",8,6],["p010104b.IV.b)",8,8]
+#);
+     
+     end
+    res+=");"
+    render :text => '', :layout =>false
+    end
+   return res
+  end
+
+
+  def save_user
+
+    if !current_user 
+    redirect_back_or_default('/')
+    else
+
+    if (current_user.authenticated?(params[:password]))
+      case
+      when (!params[:email].blank?)
+	current_user.update_attributes(params)
+	@email= params[:email] 
+      else 
+      @error_val="You can't use empty value"
+      logger.warn("empty value")
+      end
+    else
+      @error_pas = "You entered incorrect password"      
+    end
+    render :action => 'update_user'
+    end
+  end
+
+  def del
+    if !current_user
+    redirect_back_or_default('/')
+    else
+    current_user.delete!
+    logout_keeping_session!
+    redirect_back_or_default('/')
+    end
+  end
+
+  def note_failed
+    flash[:error] = "You entered incorrect password"
+  end
 
   def suspend
     @user.suspend! 
