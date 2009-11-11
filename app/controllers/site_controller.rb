@@ -33,7 +33,7 @@ class SiteController < ApplicationController
       @javascripts << 'vocabulary'
     end
 
-    if @file=='/user_profile.html'&& !current_user 
+    if @file=='/user_profile.html' && !current_user 
     redirect_back_or_default('/')
     else
     render :file => "pages#{@file}.erb", :layout => layout
@@ -41,6 +41,6 @@ class SiteController < ApplicationController
 
   rescue StandardError => e
     logger.warn e
-#    render :file => "#{RAILS_ROOT}/public/404.html", :status => '404 Not Found'
+    render :file => "#{RAILS_ROOT}/public/404.html", :status => '404 Not Found'
   end
 end
