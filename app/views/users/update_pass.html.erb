@@ -1,0 +1,14 @@
+<% form_tag psedit_path do %>
+
+  <%if @error_pas %> You entered incorrect pass<%end%>
+  <%if @error_val %> Incompatible pass<%end%>
+
+
+old pw		 <%= password_field_tag 'password', nil %>
+new pw 		<%= password_field_tag 'new_password', nil %>
+confirmation pw 	<%= password_field_tag 'confirm_password', nil %>
+
+
+               <%= submit_tag 'Save' %>
+  
+  <%end%>
