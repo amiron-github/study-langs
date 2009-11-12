@@ -12,13 +12,17 @@
   <%= javascript_include_tag 'jquery.min.js' %>
   <%= javascript_include_tag 'effects' %>
   <%= stylesheet_link_tag 'stylesheet' %>
-  
-    <% for js_file in @javascripts -%>
-    <%= javascript_include_tag js_file %>
+  <%if @javascripts%>  
+  <% for js_file in @javascripts -%>
+  <%= javascript_include_tag js_file %>
   <% end -%>
+  <% end %>
+
+  <%if @stylesheets%>  
   <% for css_file in @stylesheets -%>
     <%= stylesheet_link_tag css_file %>
   <% end -%>
+  <%end%>
  
  
   <link rel="icon" href="/favicon.ico" type="image/x-icon">

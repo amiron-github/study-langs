@@ -132,6 +132,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def clear_tests
+    if !current_user
+    redirect_back_or_default('/')
+    else
+    current_user.user_tests.delete_all
+    render :text => '', :layout =>false
+    end
+
+  end
+
   def note_failed
     flash[:error] = "You entered incorrect password"
   end

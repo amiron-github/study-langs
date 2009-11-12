@@ -12,6 +12,8 @@ ActionController::Routing::Routes.draw do |map|
   map.user '/user', :controller => 'users', :action => 'update_user'
   map.userp '/userp', :controller => 'users', :action => 'update_pass'
   map.userd '/userd', :controller => 'users', :action => 'del'
+  map.usercl '/usercl', :controller => 'users', :action => 'clear_tests'
+
 
   map.get_stat '/set_stat', :controller => 'users', :action => 'set_stat'
 
