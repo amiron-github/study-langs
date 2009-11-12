@@ -68,9 +68,11 @@ class UsersController < ApplicationController
     if !current_user
     redirect_back_or_default('/')
     else
-      test = current_user.user_tests.find(:first, :conditions => 'test_id='+params[:test_id])
+      test = current_user.user_tests.find(:first, :conditions => 'test_id=\''+params[:test_id].to_s+'\'')
       if !test
-      current_user.user_tests.create(:test_id=>params[:test_id],:total=>params[:total],:correct=>params[:correct])
+
+      current_user.user_tests.create(:test_id=>params[:test_id].to_s,:total=>params[:total],:correct=>params[:correct])
+
       else
        if test.correct<params[:correct].to_i
 	test.update_attribute(:correct,params[:correct])
