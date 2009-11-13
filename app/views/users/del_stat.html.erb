@@ -1,0 +1,11 @@
+<% form_tag del_stat_path do %>
+
+  <%if @error_pas %> You entered incorrect pass<%end%>
+
+pw             <%= password_field_tag 'password', nil %>
+               
+		
+               <%= submit_tag 'Delete' %>
+
+  <%end%>
+

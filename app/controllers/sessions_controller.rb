@@ -24,6 +24,7 @@ class SessionsController < ApplicationController
       note_failed_signin
       @email       = params[:email]
       @remember_me = params[:remember_me]
+      @error_pas   = "PW/email incorrect"
       render :action => 'new'
     end
   end

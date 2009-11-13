@@ -70,9 +70,7 @@ class UsersController < ApplicationController
     else
       test = current_user.user_tests.find(:first, :conditions => 'test_id=\''+params[:test_id].to_s+'\'')
       if !test
-
       current_user.user_tests.create(:test_id=>params[:test_id].to_s,:total=>params[:total],:correct=>params[:correct])
-
       else
        if test.correct<params[:correct].to_i
 	test.update_attribute(:correct,params[:correct])
@@ -80,7 +78,6 @@ class UsersController < ApplicationController
       end  
     render :text => '', :layout =>false
     end
-
   end
   
   def get_stat1 
@@ -128,20 +125,31 @@ class UsersController < ApplicationController
     if !current_user
     redirect_back_or_default('/')
     else
-    current_user.delete!
-    logout_keeping_session!
-    redirect_back_or_default('/')
+      if (params[:password]) 
+	      if (current_user.authenticated?(params[:password]))
+	      current_user.delete!
+	      logout_keeping_session!
+	      redirect_back_or_default('/') 
+	      else 
+	      @error_pas = "You entered incorrect password"		
+      	      end
+      end	
     end
   end
 
-  def clear_tests
+  def del_stat
     if !current_user
     redirect_back_or_default('/')
     else
-    current_user.user_tests.delete_all
-    render :text => '', :layout =>false
+      if (params[:password])
+              if (current_user.authenticated?(params[:password]))
+              current_user.user_tests.delete_all
+	      redirect_back_or_default('/user_profile.html')	
+              else
+              @error_pas = "You entered incorrect password"
+              end
+      end
     end
-
   end
 
   def note_failed

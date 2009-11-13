@@ -12,15 +12,12 @@ ActionController::Routing::Routes.draw do |map|
   map.user '/user', :controller => 'users', :action => 'update_user'
   map.userp '/userp', :controller => 'users', :action => 'update_pass'
   map.userd '/userd', :controller => 'users', :action => 'del'
-  map.usercl '/usercl', :controller => 'users', :action => 'clear_tests'
-
+  map.del_stat '/del_stat', :controller => 'users', :action => 'del_stat'
 
   map.get_stat '/set_stat', :controller => 'users', :action => 'set_stat'
 
-
   map.edit '/edit', :controller => 'users', :action => 'save_user'
   map.psedit '/psedit', :controller => 'users', :action => 'save_pass'
-
                                                         
   map.resources :users, :member => { :suspend => :put, :unsuspend => :put, :purge => :delete }
   map.resource :session

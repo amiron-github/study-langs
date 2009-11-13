@@ -76,6 +76,8 @@ font-size: 15px;
 	
 		<% form_tag session_path do %>
 		
+		<%if @error_pas %> You entered incorrect pass<%end%>
+
 		<div class="login_wrap">
 		
 			<div id="user_to_log"> 
