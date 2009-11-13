@@ -280,7 +280,7 @@ $(".open_popup_link").hover(function(){
 
 
 if($(".dragit").length){
- $.getScript("draggable.js");
+ $.getScript("/javascripts/draggable.js");
 }
 
 
@@ -803,9 +803,6 @@ function sectionHighlight() {
 		case 'contact':
 			pageMenuItem(6);
 			break;
-		case 'login':
-			pageMenuItem(7);
-			break;
 		default: 
 		   	$("#menu_body .menu-item a").css({color: "#183A87"});
 	}
@@ -933,6 +930,14 @@ function InputHelperOut(obj, text){
 
 
 //////////////////////// end of text in input for login
+
+
+function sendResults(id, total, right) {
+    if (!id || !total) return false;
+    if (!right) right = 0;
+    $.get("/set_stat?test_id="+id+"&total="+ total+"&correct="+right ); 
+}
+
 
 
 

@@ -21,6 +21,8 @@ function Test(hash) {
     this.wrongAnswers = 0;
     this.wrongFlag = 0;
     this.done = 0;
+    this.general = Test.arguments[1] || 'noname';
+
     //this.remain = dictArr.length;
     this.enableChecking = 1;
     this.how_questions = dictArr.length;
@@ -201,6 +203,7 @@ function Test(hash) {
 	var total = "Total: <span class='norm_txt'> "+ this.correctAnswers + " correct and "+ this.wrongAnswers +" wrong answers </span>";
 	document.getElementById('total_'+this.id).style.visibility="visible";
 	document.getElementById('total_'+this.id).innerHTML=total;
+	sendResults(this.general, this.questArr.length, this.correctAnswers);
     }
 
     this.check = function(answer, order) {

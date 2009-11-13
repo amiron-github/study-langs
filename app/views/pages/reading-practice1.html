@@ -4,7 +4,11 @@
 <% @has_audio = true %>
 
 
-<% content_for :special_css do %>
+<% content_for :special_js_css do %>
+
+<style type="text/css">
+
+h2.page {margin-bottom: 0px;}
 
 .hint_button {
 float: right;
@@ -34,6 +38,7 @@ padding: 7px 50px 7px 30px;
 
 .tab1 p {margin: 0px;}
 
+</style>
 <% end %>
 
 <div class="hint_wrap">
@@ -58,6 +63,14 @@ padding: 7px 50px 7px 30px;
 
 
 <h2 class="page">Part 1</h2>
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="russian-reading.html">Reading in Russian</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="reading-practice.html">Training exercises</a>
+	<span class="int-arrow">--&gt;</span> Part 1
+	</span>
+</h3>
 
 <p>
 Before doing exercises on this page it is recommended to revise <a href="basic-letters.html">Russian Letters and their Basic Meanings</a>
@@ -65,6 +78,7 @@ Before doing exercises on this page it is recommended to revise <a href="basic-l
 <h3>Exercise 1</h3>
 <p class="task">
 a) Listen and repeat names of letters.
+
 </p>
 <p  class="task" > b) Listen and repeat names of letters and basic meanings of letters.</p>
 
@@ -72,210 +86,244 @@ a) Listen and repeat names of letters.
 
 
 <table class="sound-letter" cellspacing="0" align="center">
-  <tr>
-    <th>Uppercase</th>
-    <th>Lowercase</th>
-    <th>Name</th>
-    <th class="thbrd">Basic Meaning</th>
-  </tr>
-  <tr class="trow">
-    <td>A</td>
-    <td>a</td>
-    <td><span class="sound" onclick="playSound('sound101.mp3')">[a] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td><span class="sound" onclick="playSound('sound201.mp3')">[a] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-  </tr>
-  <tr class="trow">
-    <td>Б</td>
-    <td>б</td>
-    <td><span class="sound" onclick="playSound('sound102.mp3')">[be] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td><span class="sound" onclick="playSound('sound207.mp3')">[b] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-  </tr>
-  <tr class="trow">
-    <td>В</td>
-    <td>в</td>
-    <td><span class="sound" onclick="playSound('sound103.mp3')">[ve] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td><span class="sound" onclick="playSound('sound211.mp3')">[v] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-  </tr>
-  <tr class="trow">
-    <td>Г</td>
-    <td>г</td>
-    <td><span class="sound" onclick="playSound('sound104.mp3')">[ge] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td><span class="sound" onclick="playSound('sound223.mp3')">[g] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-  </tr>
-  <tr class="trow">
-    <td>Д</td>
-    <td>д</td>
-    <td><span class="sound" onclick="playSound('sound105.mp3')">[de] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td><span class="sound" onclick="playSound('sound219.mp3')">[d] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-  </tr>
-  <tr class="trow">
-    <td>Е</td>
-    <td>е</td>
-    <td><span class="sound" onclick="playSound('sound106.mp3')">[ye] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td><span class="sound" onclick="playSound('sound106.mp3')">[ye] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-  </tr>
-  <tr class="trow">
-    <td>Ё</td>
-    <td>ё</td>
-    <td><span class="sound" onclick="playSound('sound107.mp3')">[yo] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td><span class="sound" onclick="playSound('sound107.mp3')">[yo] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-  </tr>
-  <tr class="trow">
-    <td>Ж</td>
-    <td>ж</td>
-    <td><span class="sound" onclick="playSound('sound108.mp3')">[je] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td><span class="sound" onclick="playSound('sound227.mp3')">[j] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-  </tr>
-  <tr class="trow">
-    <td>З</td>
-    <td>з</td>
-    <td><span class="sound" onclick="playSound('sound109.mp3')">[ze] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td><span class="sound" onclick="playSound('sound215.mp3')">[z] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-  </tr>
-  <tr class="trow">
-    <td>И</td>
-    <td>и</td>
-    <td><span class="sound" onclick="playSound('sound110.mp3')">[i] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td><span class="sound" onclick="playSound('sound205.mp3')">[i] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-  </tr>
-  <tr class="trow">
-    <td>Й</td>
-    <td>й</td>
-    <td><span class="sound" onclick="playSound('sound111.mp3')">[i kratkaye] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td><span class="sound" onclick="playSound('sound237.mp3')">[y] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-  </tr>
-  <tr class="trow">
-    <td>К</td>
-    <td>к</td>
-    <td><span class="sound" onclick="playSound('sound112.mp3')">[ka] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td><span class="sound" onclick="playSound('sound225.mp3')">[k] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-  </tr>
-  <tr class="trow">
-    <td>Л</td>
-    <td>л</td>
-    <td><span class="sound" onclick="playSound('sound113.mp3')">[el] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td><span class="sound" onclick="playSound('sound233.mp3')">[l] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-  </tr>
-  <tr class="trow">
-    <td>М</td>
-    <td>м</td>
-    <td><span class="sound" onclick="playSound('sound114.mp3')">[em] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td><span class="sound" onclick="playSound('sound229.mp3')">[m] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-  </tr>
-  <tr class="trow">
-    <td>Н</td>
-    <td>н</td>
-    <td><span class="sound" onclick="playSound('sound115.mp3')">[en] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td><span class="sound" onclick="playSound('sound231.mp3')">[n] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-  </tr>
-  <tr class="trow">
-    <td>О</td>
-    <td>о</td>
-    <td><span class="sound" onclick="playSound('sound116.mp3')">[o] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td><span class="sound" onclick="playSound('sound203.mp3')">[o] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-  </tr>
-  <tr class="trow">
-    <td>П</td>
-    <td>п</td>
-    <td><span class="sound" onclick="playSound('sound117.mp3')">[pe] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td><span class="sound" onclick="playSound('sound209.mp3')">[p] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-  </tr>
-  <tr class="trow">
-    <td>Р</td>
-    <td>р</td>
-    <td><span class="sound" onclick="playSound('sound118.mp3')">[er] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td><span class="sound" onclick="playSound('sound235.mp3')">[r] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-  </tr>
-  <tr class="trow">
-    <td>С</td>
-    <td>с</td>
-    <td><span class="sound" onclick="playSound('sound119.mp3')">[es] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td><span class="sound" onclick="playSound('sound217.mp3')">[s] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-  </tr>
-  <tr class="trow">
-    <td>Т</td>
-    <td>т</td>
-    <td><span class="sound" onclick="playSound('sound120.mp3')">[te] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td><span class="sound" onclick="playSound('sound221.mp3')">[t] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-  </tr>
-  <tr class="trow">
-    <td>У</td>
-    <td>у</td>
-    <td><span class="sound" onclick="playSound('sound121.mp3')">[oo] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td><span class="sound" onclick="playSound('sound204.mp3')">[oo] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-  </tr>
-  <tr class="trow">
-    <td>Ф</td>
-    <td>ф</td>
-    <td><span class="sound" onclick="playSound('sound122.mp3')">[ef] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td><span class="sound" onclick="playSound('sound213.mp3')">[f] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-  </tr>
-  <tr class="trow">
-    <td>Х</td>
-    <td>х</td>
-    <td><span class="sound" onclick="playSound('sound123.mp3')">[ha] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td><span class="sound" onclick="playSound('sound241.mp3')">[h] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-  </tr>
-  <tr class="trow">
-    <td>Ц</td>
-    <td>ц</td>
-    <td><span class="sound" onclick="playSound('sound124.mp3')">[tse] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td><span class="sound" onclick="playSound('sound240.mp3')">[ts] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-  </tr>
-  <tr class="trow">
-    <td>Ч</td>
-    <td>ч</td>
-    <td><span class="sound" onclick="playSound('sound125.mp3')">[che] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td><span class="sound" onclick="playSound('sound239.mp3')">[ch] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-  </tr>
-  <tr class="trow">
-    <td>Ш</td>
-    <td>ш</td>
-    <td><span class="sound" onclick="playSound('sound126.mp3')">[sha] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td><span class="sound" onclick="playSound('sound228.mp3')">[sh] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-  </tr>
-  <tr class="trow">
-    <td>Щ</td>
-    <td>щ</td>
-    <td><span class="sound" onclick="playSound('sound127.mp3')">[scha] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td><span class="sound" onclick="playSound('sound238.mp3')">[sch] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-  </tr>
-  <tr class="trow">
-    <td>Ь</td>
-    <td>ь</td>
-    <td><span class="sound" onclick="playSound('sound128.mp3')">[tv'ord<span class="ry">i</span>y znak] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td>-</td>
-  </tr>
-  <tr class="trow">
-    <td>Ы</td>
-    <td>ы</td>
-    <td><span class="sound" onclick="playSound('sound129.mp3')">[<span class="ry">i</span>] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td><span class="sound" onclick="playSound('sound206.mp3')">[<span class="ry">i</span>] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-  </tr>
-  <tr class="trow">
-    <td>Ъ</td>
-    <td>ъ</td>
-    <td><span class="sound" onclick="playSound('sound130.mp3')">[m'ahkiy znak] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td>-</td>
-  </tr>
-  <tr class="trow">
-    <td>Э</td>
-    <td>э</td>
-    <td><span class="sound" onclick="playSound('sound131.mp3')">[e] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td><span class="sound" onclick="playSound('sound202.mp3')">[e] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-  </tr>
-  <tr class="trow">
-    <td>Ю</td>
-    <td>ю</td>
-    <td><span class="sound" onclick="playSound('sound132.mp3')">[yoo] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td><span class="sound" onclick="playSound('sound132.mp3')">[yoo] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-  </tr>
-  <tr class="trow">
-    <td>Я</td>
-    <td>я</td>
-    <td><span class="sound" onclick="playSound('sound133.mp3')">[ya] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-    <td><span class="sound" onclick="playSound('sound133.mp3')">[ya] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
-  </tr>
+	<tr>
+		<th>Uppercase</th>
+		<th>Lowercase</th>
+
+		<th>Name</th>
+		<th class="thbrd">Basic Meaning</th>
+	</tr>
+	<tr class="trow">
+		<td>A</td>
+		<td>a</td>
+		<td><span class="sound" onclick="playSound('sound101.mp3')">[a] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td><span class="sound" onclick="playSound('sound201.mp3')">[a] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+	</tr>
+	<tr class="trow">
+		<td>Б</td>
+		<td>б</td>
+		<td><span class="sound" onclick="playSound('sound102.mp3')">[be] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td><span class="sound" onclick="playSound('sound207.mp3')">[b] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+	</tr>
+	<tr class="trow">
+		<td>В</td>
+		<td>в</td>
+		<td><span class="sound" onclick="playSound('sound103.mp3')">[ve] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td><span class="sound" onclick="playSound('sound211.mp3')">[v] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+	</tr>
+	<tr class="trow">
+		<td>Г</td>
+		<td>г</td>
+		<td><span class="sound" onclick="playSound('sound104.mp3')">[ge] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td><span class="sound" onclick="playSound('sound223.mp3')">[g] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+	</tr>
+	<tr class="trow">
+		<td>Д</td>
+		<td>д</td>
+		<td><span class="sound" onclick="playSound('sound105.mp3')">[de] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td><span class="sound" onclick="playSound('sound219.mp3')">[d] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+	</tr>
+	<tr class="trow">
+		<td>Е</td>
+		<td>е</td>
+		<td><span class="sound" onclick="playSound('sound106.mp3')">[ye] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td><span class="sound" onclick="playSound('sound106.mp3')">[ye] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+	</tr>
+	<tr class="trow">
+		<td>Ё</td>
+		<td>ё</td>
+		<td><span class="sound" onclick="playSound('sound107.mp3')">[yo] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td><span class="sound" onclick="playSound('sound107.mp3')">[yo] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+	</tr>
+	<tr class="trow">
+		<td>Ж</td>
+		<td>ж</td>
+		<td><span class="sound" onclick="playSound('sound108.mp3')">[je] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td><span class="sound" onclick="playSound('sound227.mp3')">[j] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+	</tr>
+	<tr class="trow">
+		<td>З</td>
+		<td>з</td>
+		<td><span class="sound" onclick="playSound('sound109.mp3')">[ze] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td><span class="sound" onclick="playSound('sound215.mp3')">[z] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+	</tr>
+	<tr class="trow">
+		<td>И</td>
+		<td>и</td>
+		<td><span class="sound" onclick="playSound('sound110.mp3')">[i] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td><span class="sound" onclick="playSound('sound205.mp3')">[i] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+	</tr>
+	<tr class="trow">
+		<td>Й</td>
+		<td>й</td>
+		<td><span class="sound" onclick="playSound('sound111.mp3')">[i kratkaye] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td><span class="sound" onclick="playSound('sound237.mp3')">[y] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+	</tr>
+	<tr class="trow">
+		<td>К</td>
+		<td>к</td>
+		<td><span class="sound" onclick="playSound('sound112.mp3')">[ka] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td><span class="sound" onclick="playSound('sound225.mp3')">[k] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+	</tr>
+	<tr class="trow">
+		<td>Л</td>
+		<td>л</td>
+		<td><span class="sound" onclick="playSound('sound113.mp3')">[el] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td><span class="sound" onclick="playSound('sound233.mp3')">[l] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+	</tr>
+	<tr class="trow">
+		<td>М</td>
+		<td>м</td>
+		<td><span class="sound" onclick="playSound('sound114.mp3')">[em] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td><span class="sound" onclick="playSound('sound229.mp3')">[m] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+	</tr>
+	<tr class="trow">
+		<td>Н</td>
+		<td>н</td>
+		<td><span class="sound" onclick="playSound('sound115.mp3')">[en] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td><span class="sound" onclick="playSound('sound231.mp3')">[n] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+	</tr>
+	<tr class="trow">
+		<td>О</td>
+		<td>о</td>
+		<td><span class="sound" onclick="playSound('sound116.mp3')">[o] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td><span class="sound" onclick="playSound('sound203.mp3')">[o] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+	</tr>
+	<tr class="trow">
+		<td>П</td>
+		<td>п</td>
+		<td><span class="sound" onclick="playSound('sound117.mp3')">[pe] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td><span class="sound" onclick="playSound('sound209.mp3')">[p] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+	</tr>
+	<tr class="trow">
+		<td>Р</td>
+		<td>р</td>
+		<td><span class="sound" onclick="playSound('sound118.mp3')">[er] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td><span class="sound" onclick="playSound('sound235.mp3')">[r] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+	</tr>
+	<tr class="trow">
+		<td>С</td>
+		<td>с</td>
+		<td><span class="sound" onclick="playSound('sound119.mp3')">[es] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td><span class="sound" onclick="playSound('sound217.mp3')">[s] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+	</tr>
+	<tr class="trow">
+		<td>Т</td>
+		<td>т</td>
+		<td><span class="sound" onclick="playSound('sound120.mp3')">[te] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td><span class="sound" onclick="playSound('sound221.mp3')">[t] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+	</tr>
+	<tr class="trow">
+		<td>У</td>
+		<td>у</td>
+		<td><span class="sound" onclick="playSound('sound121.mp3')">[oo] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td><span class="sound" onclick="playSound('sound204.mp3')">[oo] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+	</tr>
+	<tr class="trow">
+		<td>Ф</td>
+		<td>ф</td>
+		<td><span class="sound" onclick="playSound('sound122.mp3')">[ef] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td><span class="sound" onclick="playSound('sound213.mp3')">[f] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+	</tr>
+	<tr class="trow">
+		<td>Х</td>
+		<td>х</td>
+		<td><span class="sound" onclick="playSound('sound123.mp3')">[ha] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td><span class="sound" onclick="playSound('sound241.mp3')">[h] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+	</tr>
+	<tr class="trow">
+		<td>Ц</td>
+		<td>ц</td>
+		<td><span class="sound" onclick="playSound('sound124.mp3')">[tse] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td><span class="sound" onclick="playSound('sound240.mp3')">[ts] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+	</tr>
+	<tr class="trow">
+		<td>Ч</td>
+		<td>ч</td>
+		<td><span class="sound" onclick="playSound('sound125.mp3')">[che] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td><span class="sound" onclick="playSound('sound239.mp3')">[ch] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+	</tr>
+	<tr class="trow">
+		<td>Ш</td>
+		<td>ш</td>
+		<td><span class="sound" onclick="playSound('sound126.mp3')">[sha] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td><span class="sound" onclick="playSound('sound228.mp3')">[sh] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+	</tr>
+	<tr class="trow">
+		<td>Щ</td>
+		<td>щ</td>
+		<td><span class="sound" onclick="playSound('sound127.mp3')">[scha] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td><span class="sound" onclick="playSound('sound238.mp3')">[sch] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+	</tr>
+	<tr class="trow">
+		<td>Ь</td>
+		<td>ь</td>
+		<td><span class="sound" onclick="playSound('sound128.mp3')">[tv'ord<span class="ry">i</span>y znak] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td>-</td>
+	</tr>
+	<tr class="trow">
+		<td>Ы</td>
+		<td>ы</td>
+		<td><span class="sound" onclick="playSound('sound129.mp3')">[<span class="ry">i</span>] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td><span class="sound" onclick="playSound('sound206.mp3')">[<span class="ry">i</span>] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+	</tr>
+	<tr class="trow">
+		<td>Ъ</td>
+		<td>ъ</td>
+		<td><span class="sound" onclick="playSound('sound130.mp3')">[m'ahkiy znak] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td>-</td>
+	</tr>
+	<tr class="trow">
+		<td>Э</td>
+		<td>э</td>
+		<td><span class="sound" onclick="playSound('sound131.mp3')">[e] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td><span class="sound" onclick="playSound('sound202.mp3')">[e] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+	</tr>
+	<tr class="trow">
+		<td>Ю</td>
+		<td>ю</td>
+		<td><span class="sound" onclick="playSound('sound132.mp3')">[yoo] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td><span class="sound" onclick="playSound('sound132.mp3')">[yoo] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+	</tr>
+	<tr class="trow">
+		<td>Я</td>
+		<td>я</td>
+		<td><span class="sound" onclick="playSound('sound133.mp3')">[ya] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+		<td><span class="sound" onclick="playSound('sound133.mp3')">[ya] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+	</tr>
 </table>
 
 <br><br>
@@ -287,55 +335,61 @@ Listen to the following words and repeat:
 </p>
 
 <table class="repeat-words" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top">
-    <td>
-      
-        <div>
-          <span class="sound" onclick="playSound('reading/soundr010001.mp3')">хаус &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
-        </div>
-        <div>
-          <span class="sound" onclick="playSound('reading/soundr010002.mp3')">йес &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
-        </div>
-        <div>
-          <span class="sound" onclick="playSound('reading/soundr010003.mp3')">ноу &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
-        </div>
-        <div>
-          <span class="sound" onclick="playSound('reading/soundr010004.mp3')">доллар &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
-        </div>
-        <div>
-          <span class="sound" onclick="playSound('reading/soundr010005.mp3')">стоун &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
-        </div>
-        <div>
-          <span class="sound" onclick="playSound('reading/soundr010006.mp3')">кэт &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
-        </div>
-        <div>
-          <span class="sound" onclick="playSound('reading/soundr010007.mp3')">спорт &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
-        </div>
-        
-    </td>
-    <td>
-      <div>
-          <span class="sound" onclick="playSound('reading/soundr010008.mp3')">фэйс &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
-        </div>
-        <div>
-          <span class="sound" onclick="playSound('reading/soundr010009.mp3')">тэйбл &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
-        </div>
-        <div>
-          <span class="sound" onclick="playSound('reading/soundr010010.mp3')">экшн &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
-        </div>
-        <div>
-          <span class="sound" onclick="playSound('reading/soundr010011.mp3')">ноутбук &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
-        </div>
-        <div>
-          <span class="sound" onclick="playSound('reading/soundr010012.mp3')">фитнес &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
-        </div>
-        <div>
-          <span class="sound" onclick="playSound('reading/soundr010013.mp3')">кока-кола &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
-        </div>
-                
-    </td>
-  </tr>
+	<tr valign="top">
+		<td>
+			
+    		<div>
+    			<span class="sound" onclick="playSound('reading/soundr010001.mp3')">хаус &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+    		</div>
+    		<div>
+    			<span class="sound" onclick="playSound('reading/soundr010002.mp3')">йес &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+
+    		</div>
+    		<div>
+    			<span class="sound" onclick="playSound('reading/soundr010003.mp3')">ноу &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+    		</div>
+    		<div>
+    			<span class="sound" onclick="playSound('reading/soundr010004.mp3')">доллар &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+    		</div>
+    		<div>
+
+    			<span class="sound" onclick="playSound('reading/soundr010005.mp3')">стоун &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+    		</div>
+    		<div>
+    			<span class="sound" onclick="playSound('reading/soundr010006.mp3')">кэт &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+    		</div>
+    		<div>
+    			<span class="sound" onclick="playSound('reading/soundr010007.mp3')">спорт &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+
+    		</div>
+    		
+		</td>
+		<td>
+			<div>
+    			<span class="sound" onclick="playSound('reading/soundr010008.mp3')">фэйс &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+    		</div>
+    		<div>
+    			<span class="sound" onclick="playSound('reading/soundr010009.mp3')">тэйбл &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+
+    		</div>
+    		<div>
+    			<span class="sound" onclick="playSound('reading/soundr010010.mp3')">экшн &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+    		</div>
+    		<div>
+    			<span class="sound" onclick="playSound('reading/soundr010011.mp3')">ноутбук &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+    		</div>
+    		<div>
+
+    			<span class="sound" onclick="playSound('reading/soundr010012.mp3')">фитнес &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+    		</div>
+    		<div>
+    			<span class="sound" onclick="playSound('reading/soundr010013.mp3')">кока-кола &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+    		</div>
+    		    		
+		</td>
+	</tr>
 </table>
+
 <br/>
 
 <h3>Exercise 3</h3>
@@ -356,169 +410,188 @@ var t1 = new Test({dict: [
 ['sounds/reading/soundr010021.mp3','тон'],['sounds/reading/soundr010022.mp3','бокс'],['sounds/reading/soundr010023.mp3','порт'],['sounds/reading/soundr010025.mp3','гол'],
 ['sounds/reading/soundr010027.mp3','фрукт'],['sounds/reading/soundr010029.mp3','суп'],['sounds/reading/soundr010031.mp3','курс'],['sounds/reading/soundr010033.mp3','музыка']
 
-],hide: 'di1',id:'t1', type: 'audio', how_questions: 10, how_show: 2});
+],hide: 'di1',id:'t1', type: 'audio', how_questions: 10, how_show: 2}, 'r0101030.3');
 </script>
 </div>
 
 <h3>Exercise 4</h3>
 <p  class="task">
+
 Read the following Russian words and check yourself:
 </p>
 
 
 <table cellpadding="0" cellspacing="0" border="0">
-  <tr>
-        <td style="padding-right: 110px;">
+	<tr>
+      	<td style="padding-right: 110px;">
             <div class="task_transl">
                 <table class="tab1 inter"  cellspacing="0" >
-                  <tr>
-                      <td width="80">
-                        <p>папа
-                        </p>
-                      </td>
-                      <td>
-                        <div class="key check">
-                          <div>
-                            <div class="sound"  onclick="playSound('reading/soundr010014.mp3')">Check&nbsp;yourself</div>
-                          </div>
-                        </div>
-                      </td>
-                  </tr>
+                	<tr>
+                			<td width="80">
+
+                				<p>папа
+                				</p>
+                			</td>
+                			<td>
+                				<div class="key check">
+                					<div>
+                						<div class="sound"  onclick="playSound('reading/soundr010014.mp3')">Check&nbsp;yourself</div>
+                					</div>
+
+                				</div>
+                			</td>
+                	</tr>
                 </table>
                 <table class="tab1 inter"  cellspacing="0" >
-                  <tr>
-                      <td width="80">
-                        <p>табак
-                        </p>
-                      </td>
-                      <td>
-                        <div class="key check">
-                          <div>
-                            <div class="sound"  onclick="playSound('reading/soundr010015.mp3')">Check&nbsp;yourself</div>
-                          </div>
-                        </div>
-                      </td>
-                  </tr>
+                	<tr>
+                			<td width="80">
+                				<p>табак
+                				</p>
+
+                			</td>
+                			<td>
+                				<div class="key check">
+                					<div>
+                						<div class="sound"  onclick="playSound('reading/soundr010015.mp3')">Check&nbsp;yourself</div>
+                					</div>
+                				</div>
+                			</td>
+
+                	</tr>
                 </table>
                 <table class="tab1 inter"  cellspacing="0" >
-                  <tr>
-                      <td width="80">
-                        <p>бал
-                        </p>
-                      </td>
-                      <td>
-                        <div class="key check">
-                          <div>
-                            <div class="sound"  onclick="playSound('reading/soundr010016.mp3')">Check&nbsp;yourself</div>
-                          </div>
-                        </div>
-                      </td>
-                  </tr>
+                	<tr>
+                			<td width="80">
+                				<p>бал
+                				</p>
+                			</td>
+                			<td>
+
+                				<div class="key check">
+                					<div>
+                						<div class="sound"  onclick="playSound('reading/soundr010016.mp3')">Check&nbsp;yourself</div>
+                					</div>
+                				</div>
+                			</td>
+                	</tr>
+                </table>
+
+                <table class="tab1 inter"  cellspacing="0" >
+                	<tr>
+                			<td width="80">
+                				<p>класс
+                				</p>
+                			</td>
+                			<td>
+                				<div class="key check">
+                					<div>
+
+                						<div class="sound"  onclick="playSound('reading/soundr010017.mp3')">Check&nbsp;yourself</div>
+                					</div>
+                				</div>
+                			</td>
+                	</tr>
                 </table>
                 <table class="tab1 inter"  cellspacing="0" >
-                  <tr>
-                      <td width="80">
-                        <p>класс
-                        </p>
-                      </td>
-                      <td>
-                        <div class="key check">
-                          <div>
-                            <div class="sound"  onclick="playSound('reading/soundr010017.mp3')">Check&nbsp;yourself</div>
-                          </div>
-                        </div>
-                      </td>
-                  </tr>
+                	<tr>
+
+                			<td width="80">
+                				<p>банк
+                				</p>
+                			</td>
+                			<td>
+                				<div class="key check">
+                					<div>
+                						<div class="sound"  onclick="playSound('reading/soundr010018.mp3')">Check&nbsp;yourself</div>
+
+                					</div>
+                				</div>
+                			</td>
+                	</tr>
                 </table>
                 <table class="tab1 inter"  cellspacing="0" >
-                  <tr>
-                      <td width="80">
-                        <p>банк
-                        </p>
-                      </td>
-                      <td>
-                        <div class="key check">
-                          <div>
-                            <div class="sound"  onclick="playSound('reading/soundr010018.mp3')">Check&nbsp;yourself</div>
-                          </div>
-                        </div>
-                      </td>
-                  </tr>
+                	<tr>
+                			<td width="80">
+                				<p>план
+                				</p>
+
+                			</td>
+                			<td>
+                				<div class="key check">
+                					<div>
+                						<div class="sound"  onclick="playSound('reading/soundr010019.mp3')">Check&nbsp;yourself</div>
+                					</div>
+                				</div>
+                			</td>
+
+                	</tr>
                 </table>
                 <table class="tab1 inter"  cellspacing="0" >
-                  <tr>
-                      <td width="80">
-                        <p>план
-                        </p>
-                      </td>
-                      <td>
-                        <div class="key check">
-                          <div>
-                            <div class="sound"  onclick="playSound('reading/soundr010019.mp3')">Check&nbsp;yourself</div>
-                          </div>
-                        </div>
-                      </td>
-                  </tr>
+                	<tr>
+                			<td width="80">
+                				<p>стоп
+                				</p>
+                			</td>
+                			<td>
+
+                				<div class="key check">
+                					<div>
+                						<div class="sound"  onclick="playSound('reading/soundr010020.mp3')">Check&nbsp;yourself</div>
+                					</div>
+                				</div>
+                			</td>
+                	</tr>
+                </table>
+
+                <table class="tab1 inter"  cellspacing="0" >
+                	<tr>
+                			<td width="80">
+                				<p>тон
+                				</p>
+                			</td>
+                			<td>
+                				<div class="key check">
+                					<div>
+
+                						<div class="sound"  onclick="playSound('reading/soundr010021.mp3')">Check&nbsp;yourself</div>
+                					</div>
+                				</div>
+                			</td>
+                	</tr>
                 </table>
                 <table class="tab1 inter"  cellspacing="0" >
-                  <tr>
-                      <td width="80">
-                        <p>стоп
-                        </p>
-                      </td>
-                      <td>
-                        <div class="key check">
-                          <div>
-                            <div class="sound"  onclick="playSound('reading/soundr010020.mp3')">Check&nbsp;yourself</div>
-                          </div>
-                        </div>
-                      </td>
-                  </tr>
+                	<tr>
+
+                			<td width="80">
+                				<p>бокс
+                				</p>
+                			</td>
+                			<td>
+                				<div class="key check">
+                					<div>
+                						<div class="sound"  onclick="playSound('reading/soundr010022.mp3')">Check&nbsp;yourself</div>
+
+                					</div>
+                				</div>
+                			</td>
+                	</tr>
                 </table>
                 <table class="tab1 inter"  cellspacing="0" >
-                  <tr>
-                      <td width="80">
-                        <p>тон
-                        </p>
-                      </td>
-                      <td>
-                        <div class="key check">
-                          <div>
-                            <div class="sound"  onclick="playSound('reading/soundr010021.mp3')">Check&nbsp;yourself</div>
-                          </div>
-                        </div>
-                      </td>
-                  </tr>
-                </table>
-                <table class="tab1 inter"  cellspacing="0" >
-                  <tr>
-                      <td width="80">
-                        <p>бокс
-                        </p>
-                      </td>
-                      <td>
-                        <div class="key check">
-                          <div>
-                            <div class="sound"  onclick="playSound('reading/soundr010022.mp3')">Check&nbsp;yourself</div>
-                          </div>
-                        </div>
-                      </td>
-                  </tr>
-                </table>
-                <table class="tab1 inter"  cellspacing="0" >
-                  <tr>
-                      <td width="80">
-                        <p>спорт
-                        </p>
-                      </td>
-                      <td>
-                        <div class="key check">
-                          <div>
-                            <div class="sound"  onclick="playSound('reading/soundr010007.mp3')">Check&nbsp;yourself</div>
-                          </div>
-                        </div>
-                      </td>
-                  </tr>
+                	<tr>
+                			<td width="80">
+                				<p>спорт
+                				</p>
+
+                			</td>
+                			<td>
+                				<div class="key check">
+                					<div>
+                						<div class="sound"  onclick="playSound('reading/soundr010007.mp3')">Check&nbsp;yourself</div>
+                					</div>
+                				</div>
+                			</td>
+
+                	</tr>
                 </table>
                 </div>
             </td>
@@ -526,154 +599,172 @@ Read the following Russian words and check yourself:
             
              <div class="task_transl">
                 <table class="tab1 inter"  cellspacing="0" >
-                  <tr>
-                      <td width="80">
-                        <p>порт
-                        </p>
-                      </td>
-                      <td>
-                        <div class="key check">
-                          <div>
-                            <div class="sound"  onclick="playSound('reading/soundr010023.mp3')">Check&nbsp;yourself</div>
-                          </div>
-                        </div>
-                      </td>
-                  </tr>
+                	<tr>
+                			<td width="80">
+
+                				<p>порт
+                				</p>
+                			</td>
+                			<td>
+                				<div class="key check">
+                					<div>
+                						<div class="sound"  onclick="playSound('reading/soundr010023.mp3')">Check&nbsp;yourself</div>
+                					</div>
+
+                				</div>
+                			</td>
+                	</tr>
                 </table>
                 <table class="tab1 inter"  cellspacing="0" >
-                  <tr>
-                      <td width="80">
-                        <p>гол
-                        </p>
-                      </td>
-                      <td>
-                        <div class="key check">
-                          <div>
-                            <div class="sound"  onclick="playSound('reading/soundr010025.mp3')">Check&nbsp;yourself</div>
-                          </div>
-                        </div>
-                      </td>
-                  </tr>
+                	<tr>
+                			<td width="80">
+                				<p>гол
+                				</p>
+
+                			</td>
+                			<td>
+                				<div class="key check">
+                					<div>
+                						<div class="sound"  onclick="playSound('reading/soundr010025.mp3')">Check&nbsp;yourself</div>
+                					</div>
+                				</div>
+                			</td>
+
+                	</tr>
                 </table>
                 <table class="tab1 inter"  cellspacing="0" >
-                  <tr>
-                      <td width="80">
-                        <p>луна
-                        </p>
-                      </td>
-                      <td>
-                        <div class="key check">
-                          <div>
-                            <div class="sound"  onclick="playSound('reading/soundr010026.mp3')">Check&nbsp;yourself</div>
-                          </div>
-                        </div>
-                      </td>
-                  </tr>
+                	<tr>
+                			<td width="80">
+                				<p>луна
+                				</p>
+                			</td>
+                			<td>
+
+                				<div class="key check">
+                					<div>
+                						<div class="sound"  onclick="playSound('reading/soundr010026.mp3')">Check&nbsp;yourself</div>
+                					</div>
+                				</div>
+                			</td>
+                	</tr>
+                </table>
+
+                <table class="tab1 inter"  cellspacing="0" >
+                	<tr>
+                			<td width="80">
+                				<p>фрукт
+                				</p>
+                			</td>
+                			<td>
+                				<div class="key check">
+                					<div>
+
+                						<div class="sound"  onclick="playSound('reading/soundr010027.mp3')">Check&nbsp;yourself</div>
+                					</div>
+                				</div>
+                			</td>
+                	</tr>
                 </table>
                 <table class="tab1 inter"  cellspacing="0" >
-                  <tr>
-                      <td width="80">
-                        <p>фрукт
-                        </p>
-                      </td>
-                      <td>
-                        <div class="key check">
-                          <div>
-                            <div class="sound"  onclick="playSound('reading/soundr010027.mp3')">Check&nbsp;yourself</div>
-                          </div>
-                        </div>
-                      </td>
-                  </tr>
+                	<tr>
+
+                			<td width="80">
+                				<p>тур
+                				</p>
+                			</td>
+                			<td>
+                				<div class="key check">
+                					<div>
+                						<div class="sound"  onclick="playSound('reading/soundr010028.mp3')">Check&nbsp;yourself</div>
+
+                					</div>
+                				</div>
+                			</td>
+                	</tr>
                 </table>
                 <table class="tab1 inter"  cellspacing="0" >
-                  <tr>
-                      <td width="80">
-                        <p>тур
-                        </p>
-                      </td>
-                      <td>
-                        <div class="key check">
-                          <div>
-                            <div class="sound"  onclick="playSound('reading/soundr010028.mp3')">Check&nbsp;yourself</div>
-                          </div>
-                        </div>
-                      </td>
-                  </tr>
+                	<tr>
+                			<td width="80">
+                				<p>суп
+                				</p>
+
+                			</td>
+                			<td>
+                				<div class="key check">
+                					<div>
+                						<div class="sound"  onclick="playSound('reading/soundr010029.mp3')">Check&nbsp;yourself</div>
+                					</div>
+                				</div>
+                			</td>
+
+                	</tr>
                 </table>
                 <table class="tab1 inter"  cellspacing="0" >
-                  <tr>
-                      <td width="80">
-                        <p>суп
-                        </p>
-                      </td>
-                      <td>
-                        <div class="key check">
-                          <div>
-                            <div class="sound"  onclick="playSound('reading/soundr010029.mp3')">Check&nbsp;yourself</div>
-                          </div>
-                        </div>
-                      </td>
-                  </tr>
+                	<tr>
+                			<td width="80">
+                				<p>стул
+                				</p>
+                			</td>
+                			<td>
+
+                				<div class="key check">
+                					<div>
+                						<div class="sound"  onclick="playSound('reading/soundr010030.mp3')">Check&nbsp;yourself</div>
+                					</div>
+                				</div>
+                			</td>
+                	</tr>
+                </table>
+
+                <table class="tab1 inter"  cellspacing="0" >
+                	<tr>
+                			<td width="80">
+                				<p>курс
+                				</p>
+                			</td>
+                			<td>
+                				<div class="key check">
+                					<div>
+
+                						<div class="sound"  onclick="playSound('reading/soundr010031.mp3')">Check&nbsp;yourself</div>
+                					</div>
+                				</div>
+                			</td>
+                	</tr>
                 </table>
                 <table class="tab1 inter"  cellspacing="0" >
-                  <tr>
-                      <td width="80">
-                        <p>стул
-                        </p>
-                      </td>
-                      <td>
-                        <div class="key check">
-                          <div>
-                            <div class="sound"  onclick="playSound('reading/soundr010030.mp3')">Check&nbsp;yourself</div>
-                          </div>
-                        </div>
-                      </td>
-                  </tr>
+                	<tr>
+
+                			<td width="80">
+                				<p>мэр
+                				</p>
+                			</td>
+                			<td>
+                				<div class="key check">
+                					<div>
+                						<div class="sound"  onclick="playSound('reading/soundr010032.mp3')">Check&nbsp;yourself</div>
+
+                					</div>
+                				</div>
+                			</td>
+                	</tr>
                 </table>
                 <table class="tab1 inter"  cellspacing="0" >
-                  <tr>
-                      <td width="80">
-                        <p>курс
-                        </p>
-                      </td>
-                      <td>
-                        <div class="key check">
-                          <div>
-                            <div class="sound"  onclick="playSound('reading/soundr010031.mp3')">Check&nbsp;yourself</div>
-                          </div>
-                        </div>
-                      </td>
-                  </tr>
-                </table>
-                <table class="tab1 inter"  cellspacing="0" >
-                  <tr>
-                      <td width="80">
-                        <p>мэр
-                        </p>
-                      </td>
-                      <td>
-                        <div class="key check">
-                          <div>
-                            <div class="sound"  onclick="playSound('reading/soundr010032.mp3')">Check&nbsp;yourself</div>
-                          </div>
-                        </div>
-                      </td>
-                  </tr>
-                </table>
-                <table class="tab1 inter"  cellspacing="0" >
-                  <tr>
-                      <td width="80">
-                        <p>музыка
-                        </p>
-                      </td>
-                      <td>
-                        <div class="key check">
-                          <div>
-                            <div class="sound"  onclick="playSound('reading/soundr010033.mp3')">Check&nbsp;yourself</div>
-                          </div>
-                        </div>
-                      </td>
-                  </tr>
+                	<tr>
+                			<td width="80">
+                				<p>музыка
+                				</p>
+
+                			</td>
+                			<td>
+                				<div class="key check">
+                					<div>
+                						<div class="sound"  onclick="playSound('reading/soundr010033.mp3')">Check&nbsp;yourself</div>
+                					</div>
+                				</div>
+                			</td>
+
+                	</tr>
                 </table>
                 </div>
             
@@ -684,6 +775,7 @@ Read the following Russian words and check yourself:
 <br/>
 <h3>Exercise 5</h3>
 <p class="task">
+
 Look at the words, listen to them and choose their translation from the list:
 </p>
 
@@ -708,7 +800,7 @@ var t2 = new Test({dict: [
 ['<div class="written">фитнес<\/div><div onclick="playTestSound(\'sounds/reading/soundr010012.mp3\')" onmouseup="(this.style.backgroundPosition=\'0px -70px\')" onmousedown="(this.style.backgroundPosition=\'0px 0px\')" class="play"/><\/div>','fitness'],
 ['<div class="written">кока-кола<\/div><div onclick="playTestSound(\'sounds/reading/soundr010013.mp3\')" onmouseup="(this.style.backgroundPosition=\'0px -70px\')" onmousedown="(this.style.backgroundPosition=\'0px 0px\')" class="play"/><\/div>','coca-cola']
 
-],hide: 'di2',id:'t2', type: 'text', how_questions: 10, how_show: 2});
+],hide: 'di2',id:'t2', type: 'text', how_questions: 10, how_show: 2}, 'r0101050.5');
 </script>
 </div>
 

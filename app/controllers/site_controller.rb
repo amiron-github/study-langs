@@ -33,10 +33,11 @@ class SiteController < ApplicationController
       @javascripts << 'vocabulary'
     end
 
-    if @file=='/user_profile.html' && !current_user 
+    if ((@file=='/user_profile.html' )&& (!current_user ))
     redirect_back_or_default('/')
     else
-    render :file => "pages#{@file}.erb", :layout => layout
+    print "pages#{@file}.erb"+"____________________________"
+    render :file => "pages#{@file}.erb", :layout => layout	
     end
 
   rescue StandardError => e

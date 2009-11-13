@@ -3,11 +3,13 @@ var res     = "r"; //image result id suffix
 var good    = "yes.gif";
 var wrong   = "no.gif";
 var empty   = "pixel.gif";
-function check_test(Form, test_number) {
+function check_test(Form, test_number, tId) {
 	var answers = T[test_number];
 	var otv = new Array();
 	var hash = new Object();
 	var l = Form.length;
+	var rightAnswers=new Array();
+	var gloabalId=tId;
 	i = 0;
 	var e = Form.elements;
 	while (i < l) {
@@ -43,6 +45,7 @@ function check_test(Form, test_number) {
 		var imageName = res +""+test_number+myi;
 		if (otv[i]==answers[i]) {
 			document.getElementById(imageName).src = good;
+			rightAnswers.push(i);
 		} else {
 			if (otv[i]!='0') {
 				document.getElementById(imageName).src = wrong;
@@ -51,6 +54,9 @@ function check_test(Form, test_number) {
 			}
 		}
 	}
+	
+	sendResults(gloabalId, otv.length, rightAnswers.length);
+	
 	return false;
 }
 

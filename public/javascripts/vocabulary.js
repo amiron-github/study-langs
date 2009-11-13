@@ -1,4 +1,3 @@
-
 var wordsPoliteness=new Array(
 
 ['Здравствуйте','Hello'],['Привет!','Hi! (informal)'],

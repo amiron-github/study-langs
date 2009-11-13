@@ -3,7 +3,11 @@
 <% @with_rec = true %>
 <% @has_audio = true %>
 
-<% content_for :special_css do %>
+<% content_for :special_js_css do %>
+
+<style type="text/css">
+
+h2.page {margin-bottom: 0px;}
 
 .hint_button {
 float: right;
@@ -33,6 +37,8 @@ padding: 7px 50px 7px 30px;
 
 .tab1 p {margin: 0px;}
 
+</style>
+
 <% end %>
 
 <div class="hint_wrap">
@@ -56,6 +62,14 @@ padding: 7px 50px 7px 30px;
 <div id="pagecontent"><div id="content">
 
 <h2 class="page">Part 3</h2>
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="russian-reading.html">Reading in Russian</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="reading-practice.html">Training exercises</a>
+	<span class="int-arrow">--&gt;</span> Part 3
+	</span>
+</h3>
 
 <p>
 Before doing exercises on this page it is recommended to revise <a href="devocalization.html">Devocalization and vocalization of consonants</a>
@@ -73,6 +87,7 @@ Before doing exercises on this page it is recommended to revise <a href="devocal
     		</div>
     		<div>
     			<span class="sound" onclick="playSound('reading/soundr030002.mp3')">нерв &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+
     		</div>
     		<div>
     			<span class="sound" onclick="playSound('reading/soundr030003.mp3')">массаж &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
@@ -81,6 +96,7 @@ Before doing exercises on this page it is recommended to revise <a href="devocal
     			<span class="sound" onclick="playSound('reading/soundr030004.mp3')">стаж &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
     		</div>
     		<div>
+
     			<span class="sound" onclick="playSound('reading/soundr030005.mp3')"> пляж &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
     		</div>
     		
@@ -106,7 +122,7 @@ var t1 = new Test({dict: [
 ['sounds/reading/soundr030009.mp3','анализ'],['sounds/reading/soundr030010.mp3','гипноз'],['sounds/reading/soundr030011.mp3','гараж'],['sounds/reading/soundr030012.mp3','каталог'],
 ['sounds/reading/soundr030013.mp3','диалог'],['sounds/reading/soundr030014.mp3','эпилог']
 
-],hide: 'di1',id:'t1', type: 'audio', how_questions: 10, how_show: 2});
+],hide: 'di1',id:'t1', type: 'audio', how_questions: 10, how_show: 2}, 'r0103020.2');
 </script>
 </div>
 
@@ -124,6 +140,7 @@ var t1 = new Test({dict: [
                 				<p>автобус
                 				</p>
                 			</td>
+
                 			<td>
                 				<div class="key check">
                 					<div>
@@ -132,6 +149,7 @@ var t1 = new Test({dict: [
                 				</div>
                 			</td>
                 	</tr>
+
                 </table>
                 <table class="tab1 inter"  cellspacing="0" >
                 	<tr>
@@ -141,6 +159,7 @@ var t1 = new Test({dict: [
                 			</td>
                 			<td>
                 				<div class="key check">
+
                 					<div>
                 						<div class="sound"  onclick="playSound('reading/soundr030007.mp3')">Check&nbsp;yourself</div>
                 					</div>
@@ -149,6 +168,7 @@ var t1 = new Test({dict: [
                 	</tr>
                 </table>
                 <table class="tab1 inter"  cellspacing="0" >
+
                 	<tr>
                 			<td width="80">
                 				<p>каприз
@@ -158,6 +178,7 @@ var t1 = new Test({dict: [
                 				<div class="key check">
                 					<div>
                 						<div class="sound"  onclick="playSound('reading/soundr030008.mp3')">Check&nbsp;yourself</div>
+
                 					</div>
                 				</div>
                 			</td>
@@ -168,6 +189,7 @@ var t1 = new Test({dict: [
                 			<td width="80">
                 				<p>анализ
                 				</p>
+
                 			</td>
                 			<td>
                 				<div class="key check">
@@ -176,6 +198,7 @@ var t1 = new Test({dict: [
                 					</div>
                 				</div>
                 			</td>
+
                 	</tr>
                 </table>
                 <table class="tab1 inter"  cellspacing="0" >
@@ -185,6 +208,7 @@ var t1 = new Test({dict: [
                 				</p>
                 			</td>
                 			<td>
+
                 				<div class="key check">
                 					<div>
                 						<div class="sound"  onclick="playSound('reading/soundr030010.mp3')">Check&nbsp;yourself</div>
@@ -193,6 +217,7 @@ var t1 = new Test({dict: [
                 			</td>
                 	</tr>
                 </table>
+
                 <table class="tab1 inter"  cellspacing="0" >
                 	<tr>
                 			<td width="80">
@@ -202,6 +227,7 @@ var t1 = new Test({dict: [
                 			<td>
                 				<div class="key check">
                 					<div>
+
                 						<div class="sound"  onclick="playSound('reading/soundr030011.mp3')">Check&nbsp;yourself</div>
                 					</div>
                 				</div>
@@ -210,6 +236,7 @@ var t1 = new Test({dict: [
                 </table>
                 </div>
             </td>
+
             <td>
             
              <div class="task_transl">
@@ -220,6 +247,7 @@ var t1 = new Test({dict: [
                 				</p>
                 			</td>
                 			<td>
+
                 				<div class="key check">
                 					<div>
                 						<div class="sound"  onclick="playSound('reading/soundr030012.mp3')">Check&nbsp;yourself</div>
@@ -228,6 +256,7 @@ var t1 = new Test({dict: [
                 			</td>
                 	</tr>
                 </table>
+
                 <table class="tab1 inter"  cellspacing="0" >
                 	<tr>
                 			<td width="80">
@@ -237,6 +266,7 @@ var t1 = new Test({dict: [
                 			<td>
                 				<div class="key check">
                 					<div>
+
                 						<div class="sound"  onclick="playSound('reading/soundr030013.mp3')">Check&nbsp;yourself</div>
                 					</div>
                 				</div>
@@ -245,6 +275,7 @@ var t1 = new Test({dict: [
                 </table>
                 <table class="tab1 inter"  cellspacing="0" >
                 	<tr>
+
                 			<td width="80">
                 				<p>эпилог
                 				</p>
@@ -253,6 +284,7 @@ var t1 = new Test({dict: [
                 				<div class="key check">
                 					<div>
                 						<div class="sound"  onclick="playSound('reading/soundr030014.mp3')">Check&nbsp;yourself</div>
+
                 					</div>
                 				</div>
                 			</td>
@@ -263,6 +295,7 @@ var t1 = new Test({dict: [
                 			<td width="80">
                 				<p>бюро
                 				</p>
+
                 			</td>
                 			<td>
                 				<div class="key check">
@@ -271,6 +304,7 @@ var t1 = new Test({dict: [
                 					</div>
                 				</div>
                 			</td>
+
                 	</tr>
                 </table>
                 <table class="tab1 inter"  cellspacing="0" >
@@ -280,6 +314,7 @@ var t1 = new Test({dict: [
                 				</p>
                 			</td>
                 			<td>
+
                 				<div class="key check">
                 					<div>
                 						<div class="sound"  onclick="playSound('reading/soundr030016.mp3')">Check&nbsp;yourself</div>
@@ -288,6 +323,7 @@ var t1 = new Test({dict: [
                 			</td>
                 	</tr>
                 </table>
+
                 </div>
             
             </td>
@@ -315,7 +351,8 @@ var t2 = new Test({dict: [
 ['<div class="written">диалог<\/div><div onclick="playTestSound(\'sounds/reading/soundr030013.mp3\')" onmouseup="(this.style.backgroundPosition=\'0px -70px\')" onmousedown="(this.style.backgroundPosition=\'0px 0px\')" class="play"/><\/div>','dialogue'],
 ['<div class="written">эпилог<\/div><div onclick="playTestSound(\'sounds/reading/soundr030014.mp3\')" onmouseup="(this.style.backgroundPosition=\'0px -70px\')" onmousedown="(this.style.backgroundPosition=\'0px 0px\')" class="play"/><\/div>','epilogue']
 
-],hide: 'di2',id:'t2', type: 'text', how_questions: 8, how_show: 2});
+],hide: 'di2',id:'t2', type: 'text', how_questions: 8, how_show: 2}, 'r0103040.4');
+
 </script>
 </div>
 

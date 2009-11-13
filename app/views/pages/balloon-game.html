@@ -2,6 +2,11 @@
 <% @page_meta = {'description' => ""} %>
 <% @has_audio = true %>
 
+
+<% content_for :special_js_css do %>
+
+ <%= javascript_include_tag 'vocabulary' %>
+
 <script type="text/javascript">
 
 
@@ -38,6 +43,8 @@ var wind32;
 var windTLInt;
 var windTRInt;
 
+var switchMusic="on";
+
 
 var phraseForLevel=new Array();
 
@@ -64,6 +71,18 @@ var topic=$("select option").index($("select option:selected"));
 getTopic(topic);
 
 }).change();
+
+
+$("#switch_music select").change(function () {
+  var switchMusicNum=$("#switch_music option").index($("#switch_music select option:selected"));
+  if (switchMusicNum==0) {
+  	switchMusic="on";
+  	playTrackGame("games/b-waltz.mp3");
+  }else if (switchMusicNum==1){
+  	switchMusic="off";
+  	$("#audiospan").empty();
+  }
+}); 
 
 
 
@@ -99,10 +118,25 @@ function startBaloonGame() {
 	score=0;
 	missedTarget=0;
 	
+	playTrackGame("games/b-waltz.mp3");
+	
 	$("#game_info").text("Level 1").show();
 
 	   		startLevel1();	
 	
+}
+
+
+function playTrackGame(slink) {
+
+if (switchMusic=="on") {
+        this.before = '<object type="application/x-shockwave-flash" data="player_norm.swf" width="20" height="20"><param name="movie" value="player_norm.swf"/><param name="FlashVars" value="mp3=sounds/';
+        this.after = '&amp;autoplay=1&amp;loop=1" \/><\/object>';
+	this.all=this.before + slink + this.after;
+  document.getElementById("audiospan").innerHTML=this.all;
+  } else {
+  	$("#audiospan").empty();
+  }
 }
 
 
@@ -136,7 +170,7 @@ function startLevel1() {
           	totalMissed=3;
           	tLevel=1;
           	
-          	balloonInLevel=20; // for the indication
+          	balloonInLevel=15; // for the indication
           	
           	$("#else").text(balloonInLevel);
            	$("#points").text("0");
@@ -150,8 +184,8 @@ function startLevel1() {
           	
 
 
-           wind11=setTimeout("windToRight(50)", 90000);
-           wind12=setTimeout("windToLeft(50)", 140000);
+           wind11=setTimeout("windToRight(50)", 60000);
+           wind12=setTimeout("windToLeft(50)", 90000);
            
            
           //	setTimeout("windToRight(40)", 45000);
@@ -377,7 +411,7 @@ function targetStruck(fallerNum) {
    var tBalloon=$("#faller"+fallerNum);
 
 	
-	if (struckTarget==20) {    //number of struck ballooons in the 1 level
+	if (struckTarget==15) {    //number of struck ballooons in the 1 level
 		endOfLevel(1);
 	
 			
@@ -529,6 +563,7 @@ function youLoose() {
 	setTimeout(function() {
 		$("#game_info").css({color: gColor})
 		.html("GAME OVER  <br> <br>  ").show();
+		
 	
 		setTimeout (function() {
 			$("#game_info").append("<input class=\"again_btn\"type=\"button\" value=\"PLAY AGAIN\" onclick=\"startBaloonGame()\" \/> ");
@@ -751,7 +786,7 @@ function variantsForLevel(level) {
 
 </script>
 
-<% content_for :special_css do %>
+<style type="text/css">
 
 
 
@@ -860,10 +895,7 @@ height: 30px;
 border: 1px solid brown;
 text-align: center;
 float: left;
-margin: -3px 0px 0px 80px !important;
-
-margin: -3px 40px 0px 40px; /*  for ie 6 */
-
+margin: -3px 0px 0px 80px;
 }
 
 #variants {
@@ -970,10 +1002,8 @@ border: 1px solid #000;
 width: 130px;
 float: left;
 position: relative;
+margin-left: 15px;
 text-align: center;
-
-margin-left: 15px !important;
-margin-left: 10px;  /*  for ie 6 */
 }
 
 
@@ -1076,22 +1106,30 @@ margin: 75px 0px 0px 15px;
 }
 
 
+</style>
+
+
 <% end %>
 
 
-<div style="height: 700px">
 
 
-<h2  class="page" style="color: #444">Balloon Game</h2>
 
 
-<p>Use the buttons << >> to steer hot air balloons, or arrow keys. You may switch the control from one ballon to another with TAB key. If you miss 3 hot air ballons, the game will be over. 
-There are 3 levels in the game. Attention! Tasks will change at the beginning of each level.
-Choose the topic and start the game. Good luck! </p>
+
+<div style="height: 800px">
 
 
-<form action="">
-<p><b>Topic: &nbsp;&nbsp;</b>
+<h2  class="page" style="color: #444">Hot Air Balloons</h2>
+
+
+<p>Use the buttons << >> to steer hot air balloons, or arrow keys. You may switch the control from one ballon to another with TAB key. If you miss 3 hot air ballons, the game will be over. There are 3 levels in the game. Attention! The words will change at the beginning of each level. Choose the topic and start the game. Good luck! </p>
+
+
+
+<p>
+
+<b>Topic: &nbsp;&nbsp;</b>
 <select name="OS">
 <option selected>Formulas of politeness</option>
 <option>Transport</option>
@@ -1100,8 +1138,20 @@ Choose the topic and start the game. Good luck! </p>
 <option>City</option>
 <option>Sightseeing</option>
 <option>Meals</option>
-</select></p>
-</form>
+
+</select>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<span id="switch_music">
+<b>Music</b>
+<select name="music">
+<option selected>ON</option>
+<option>OFF</option>
+</select>
+</span>
+
+</p>
 
 
 
@@ -1116,6 +1166,7 @@ Choose the topic and start the game. Good luck! </p>
 		
 		<div id="balloons_left" class="ballon_info">Ballons left: <span id="else"></span></div>
 		<div id="score" class="ballon_info">Score: <span id="points"></span></div>
+
 		<div id="balloons_missed" class="ballon_info">Ballons missed: <span id="missed"></span></div>
 
 			<div id="clouds" style="left: -50px;">
@@ -1127,6 +1178,7 @@ Choose the topic and start the game. Good luck! </p>
 
 				<div id="faller0" class="balloons balloon0" style="top: -100px; left: 250px;">
 					<div class="in_fall">
+
 						<div class="back">
 							<span>&nbsp;</span>
 						</div> 
@@ -1136,6 +1188,7 @@ Choose the topic and start the game. Good luck! </p>
 					</div>
 				</div>
 				<div id="faller1" class="balloons balloon1" style="top: -100px; left: 250px" >
+
 					<div class="in_fall">
 						<div class="back">
 							<span>&nbsp; </span>
@@ -1144,6 +1197,7 @@ Choose the topic and start the game. Good luck! </p>
 							<span> &nbsp; </span>
 						</div>  
 					</div>
+
 				</div>
 				<div id="faller2" class="balloons balloon2" style="top: -100px; left: 250px" >
 					<div class="in_fall">
@@ -1152,6 +1206,7 @@ Choose the topic and start the game. Good luck! </p>
 						</div> 
 						<div class="sec">
 							<span> &nbsp;</span>
+
 						</div>  
 					</div>
 				</div>
@@ -1175,6 +1230,7 @@ Choose the topic and start the game. Good luck! </p>
 		<div class="forest"><div>&nbsp;</div></div>
 		<div class="forest"><div style="margin-left: 395px;">&nbsp;</div></div>
 		<div id="lake"><div>&nbsp;</div></div>
+
 		
 		<div id="game_info">GAME OVER</div>
 	</div>
@@ -1184,14 +1240,15 @@ Choose the topic and start the game. Good luck! </p>
 		<div class="variant"></div>
 		<div class="variant"></div>
 		<div class="variant"></div>
-		<div class="variant" style="margin-right: 0px;"></div>
+		<div class="variant"></div>
+
 		<div style="clear: both"></div>
 	</div>
 	<div id="textfields">
 		<div class="textfield">&nbsp;</div>
 		<div class="textfield">&nbsp;</div>
 		<div class="textfield">&nbsp;</div>
-		<div class="textfield" style="margin-right: 0px;">&nbsp;</div>
+		<div class="textfield">&nbsp;</div>
 		<div style="clear: both"></div>
 	</div>
 
@@ -1211,8 +1268,10 @@ Choose the topic and start the game. Good luck! </p>
 
 
 
-
-
-
 </div>
+
+
+
+
+
 

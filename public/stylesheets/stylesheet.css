@@ -1753,4 +1753,24 @@ color: #fff;
 
 /*for user logged*/
 
+/*login errors */
+
+.errorExplanation {
+text-align: left;
+margin-left: 30px;
+margin-right: 30px;
+}
+
+.errorExplanation h2 {
+color: red;
+font-size: 16px;
+font-weight: bold;
+text-align: center;
+margin: 40px 30px 30px;
+}
+
+.errorExplanation li {
+font-size: 11px;
+}
+/* end of login errors*/
 

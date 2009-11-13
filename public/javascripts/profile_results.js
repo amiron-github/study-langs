@@ -1,7 +1,7 @@
 
 
 var phoneticResults=new Array();
-var readingresults=new Array();
+var readingResults=new Array();
 var coursesResults=new Array();
 var vocabResults=new Array();
 
@@ -32,7 +32,7 @@ function showResults() {
 for (var i=0; i<userProgress.length; i++) {
   switch(userProgress[i][0].charAt(0)){
   case 'r': 
-  	readingresults.push(userProgress[i]);
+  	readingResults.push(userProgress[i]);
   	break;
   case 'p':
   	phoneticResults.push(userProgress[i]);
@@ -48,6 +48,8 @@ for (var i=0; i<userProgress.length; i++) {
 }
 
 parseResults(phoneticResults,phoneticDescription);
+parseResults(coursesResults,coursesDescription);
+parseResults(readingResults,readingDescription);
 parseResults(vocabResults,vocabularyDescription);
 }
 
@@ -171,6 +173,14 @@ if (sectionResults.length > 0) {
 			}
 			
 		 	tPartName=tSubSection[2][tPartEq][0]; // название урока из описания подраздела
+			
+			var tTaskType;
+			
+			if(tSubSection.length > 3) {
+				tTaskType= tSubSection[3];
+			}else {
+				tTaskType='Exercise';
+			}
 		
 			if(tSubSection[1]!= "noname") { // начало и название урока
 			
@@ -202,7 +212,7 @@ if (sectionResults.length > 0) {
 			var partResults=new Array();
 			
 			for(var n=0; n < resultsInPart[i].length; n++) { // результаты заданий в уроке/теме
-				var taskName="Exercise";
+				var taskName=tTaskType;
 				var taskNum=resultsInPart[i][n][0].slice(9);
 				var taskResult= Math.round((resultsInPart[i][n][2] / resultsInPart[i][n][1]) * 100);
 				
@@ -329,20 +339,45 @@ vocabularyDescription=new Array('Section: Vocabulary', // - section title
 
 ['Exercises', //- subsection title 
 'Topic: ',      // - type of subsection part
-[['Politeness','01'],['Acquaintance', '02'],['Transport: Aiport', '03'],['Transport: Bus, Trolley, Tram ','04'],['Transport: Subway', '05'],['Transport: Taxi', '06'], ['Hotel', '07'], ['Services', '08'], ['City', '09'],['Sightseeing', '10'], ['Meals: Bread and confectionery', '11'], ['Meals: Gruels and porridges', '12'], ['Meals: Fish, fish dishes', '13'], ['Meals: Dairy produce', '14'], ['Meals: Vegetables', '15'], ['Meals: Fruit, berries', '16'],['Meals: Confectionery', '17'],['Meals: Beverages, soft and strong drinks', '18']] // - parts of subsection with index
-]
-,
-['Tests','Topic: ',[['Politeness','01'],['Acquaintance', '02'],['Transport - Aiport', '03'],['Transport - Bus, Trolley, Tram ','04'],['Transport - Subway', '05'],['Transport - Taxi', '06'], ['Hotel', '07'], ['Services', '08'], ['City', '09'],['Sightseeing', '10'], ['Meals: Bread and confectionery', '11'], ['Meals: Gruels and porridges', '12'], ['Meals: Fish, fish dishes', '13'], ['Meals: Dairy produce', '14'], ['Meals: Vegetables', '15'], ['Meals: Fruit, berries', '16'],['Meals: Confectionery', '17'],['Meals: Beverages, soft and strong drinks', '18']]
-]
-,
-['Stroke','Topic: ',[['Politeness','01'],['Acquaintance', '02'],['Transport - Aiport', '03'],['Transport - Bus, Trolley, Tram ','04'],['Transport - Subway', '05'],['Transport - Taxi', '06'], ['Hotel', '07'], ['Services', '08'], ['City', '09'],['Sightseeing', '10'], ['Meals: Bread and confectionery', '11'], ['Meals: Gruels and porridges', '12'], ['Meals: Fish, fish dishes', '13'], ['Meals: Dairy produce', '14'], ['Meals: Vegetables', '15'], ['Meals: Fruit, berries', '16'],['Meals: Confectionery', '17'],['Meals: Beverages, soft and strong drinks', '18']]
+[['Politeness','01'],['Acquaintance', '02'],['Transport: Aiport', '03'],['Transport: Bus, Trolley, Tram ','04'],
+['Transport: Subway', '05'],['Transport: Taxi', '06'], ['Hotel', '07'], ['Services', '08'], 
+['City', '09'],['Sightseeing', '10'], ['Meals: Bread and confectionery', '11'], ['Meals: Gruels and porridges', '12'], 
+['Meals: Fish, fish dishes', '13'], ['Meals: Dairy produce', '14'], ['Meals: Vegetables', '15'], ['Meals: Fruit, berries', '16'],
+['Meals: Confectionery', '17'],['Meals: Beverages, soft and strong drinks', '18'],['Shopping: Outdoor clothing', '19'],['Shopping: Lingerie and nightwear', '20'],
+['Shopping: Sportswear', '21'],['Shopping: Shoes', '22'],['Shopping: Accessories', '23'],['Shopping: Perfumery', '24'],
+['Shopping: Jewelry', '25'],['Shopping: Audio, video and photo', '26'],['Numbers from 0 to 100', '27'],['Numbers more than 100', '28']]
+], 
+
+['Tests', //- subsection title 
+'Topic: ',      // - type of subsection part
+[['Politeness','01'],['Acquaintance', '02'],['Transport: Aiport', '03'],['Transport: Bus, Trolley, Tram ','04'],
+['Transport: Subway', '05'],['Transport: Taxi', '06'], ['Hotel', '07'], ['Services', '08'], 
+['City', '09'],['Sightseeing', '10'], ['Meals: Bread and confectionery', '11'], ['Meals: Gruels and porridges', '12'], 
+['Meals: Fish, fish dishes', '13'], ['Meals: Dairy produce', '14'], ['Meals: Vegetables', '15'], ['Meals: Fruit, berries', '16'],
+['Meals: Confectionery', '17'],['Meals: Beverages, soft and strong drinks', '18'],['Shopping: Outdoor clothing', '19'],['Shopping: Lingerie and nightwear', '20'],
+['Shopping: Sportswear', '21'],['Shopping: Shoes', '22'],['Shopping: Accessories', '23'],['Shopping: Perfumery', '24'],
+['Shopping: Jewelry', '25'],['Shopping: Audio, video and photo', '26'],['Numbers from 0 to 100', '27'],['Numbers more than 100', '28']],
+'Test'
 ]
 
-,
-['Game','Topic: ',[['Politeness','01'],['Acquaintance', '02'],['Transport - Aiport', '03'],['Transport - Bus, Trolley, Tram ','04'],['Transport - Subway', '05'],['Transport - Taxi', '06'], ['Hotel', '07'], ['Services', '08'], ['City', '09'],['Sightseeing', '10'], ['Meals: Bread and confectionery', '11'], ['Meals: Gruels and porridges', '12'], ['Meals: Fish, fish dishes', '13'], ['Meals: Dairy produce', '14'], ['Meals: Vegetables', '15'], ['Meals: Fruit, berries', '16'],['Meals: Confectionery', '17'],['Meals: Beverages, soft and strong drinks', '18']]
-]
+]);
 
+coursesDescription = new Array('Section: Course of Russian',
+[
+['Everyday Russian', 'Lesson', 
+[
+[' 1. <br>In the airport','01'],[' 2. <br>Transport', '02'], [' 3. <br>At the hotel', '03'],[' 4. <br>In the street', '04'],
+[' 5. <br>Sightseeings','05'],[' 6. <br>Shopping', '06'], [' 7. <br>At the restaurant', '07'],[' 8. <br>At the drugstore', '08'],
+[' 9. <br>Currency exchange','09'],[' 10. <br>Internet and Phone', '10']
 
+], 
+'Exercise']
+
+]);
+
+readingDescription=new Array('Section: Reading in Russian',
+[
+['Training Exercises', 'Part', [['1','01'],['2', '02'], ['3', '03'],['4', '04']], 'Exercise']
 ]);
 
 
