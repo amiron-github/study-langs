@@ -237,16 +237,14 @@ if (sectionResults.length > 0) {
 			
 			var tPartTotal = Math.round ( partTotal / ( partResults.length)  ); 
 			
-			
 			tPartEnd = ''
                         +'</table>'
                         +'</div>'
                         +'</div>'
                         +'</div>'
                         +'</td>' 
-                        +'<td> &nbsp;'//результаты урока
-						+ tPartTotal 
-                        +'% </td>' 
+                        +'<td> &nbsp;'
+                        +tPartTotal+' % </td>' 
                         +'<td><span class="show_det">Show</span></td>'   
                         +'</tr>'  // конец урока			
 			
@@ -341,22 +339,22 @@ vocabularyDescription=new Array('Section: Vocabulary', // - section title
 'Topic: ',      // - type of subsection part
 [['Politeness','01'],['Acquaintance', '02'],['Transport: Aiport', '03'],['Transport: Bus, Trolley, Tram ','04'],
 ['Transport: Subway', '05'],['Transport: Taxi', '06'], ['Hotel', '07'], ['Services', '08'], 
-['City', '09'],['Sightseeing', '10'], ['Meals: Bread and confectionery', '11'], ['Meals: Gruels and porridges', '12'], 
-['Meals: Fish, fish dishes', '13'], ['Meals: Dairy produce', '14'], ['Meals: Vegetables', '15'], ['Meals: Fruit, berries', '16'],
-['Meals: Confectionery', '17'],['Meals: Beverages, soft and strong drinks', '18'],['Shopping: Outdoor clothing', '19'],['Shopping: Lingerie and nightwear', '20'],
-['Shopping: Sportswear', '21'],['Shopping: Shoes', '22'],['Shopping: Accessories', '23'],['Shopping: Perfumery', '24'],
-['Shopping: Jewelry', '25'],['Shopping: Audio, video and photo', '26'],['Numbers from 0 to 100', '27'],['Numbers more than 100', '28']]
+['City', '09'],['Sightseeing', '10'], ['Meals: Bread and confectionery', '11'], ['Meals: Gruels and porridges', '12'], ['Meals: Meat dishes', '13'],
+['Meals: Fish, fish dishes', '14'], ['Meals: Dairy produce', '15'], ['Meals: Vegetables', '16'], ['Meals: Fruit, berries', '17'],
+['Meals: Confectionery', '18'],['Meals: Beverages, soft and strong drinks', '19'],['Shopping: Outdoor clothing', '20'],['Shopping: Lingerie and nightwear', '21'],
+['Shopping: Sportswear', '22'],['Shopping: Shoes', '23'],['Shopping: Accessories', '24'],['Shopping: Perfumery', '25'],
+['Shopping: Jewelry', '26'],['Shopping: Audio, video and photo', '27'],['Numbers from 0 to 100', '28'],['Numbers more than 100', '29']]
 ], 
 
 ['Tests', //- subsection title 
 'Topic: ',      // - type of subsection part
 [['Politeness','01'],['Acquaintance', '02'],['Transport: Aiport', '03'],['Transport: Bus, Trolley, Tram ','04'],
 ['Transport: Subway', '05'],['Transport: Taxi', '06'], ['Hotel', '07'], ['Services', '08'], 
-['City', '09'],['Sightseeing', '10'], ['Meals: Bread and confectionery', '11'], ['Meals: Gruels and porridges', '12'], 
-['Meals: Fish, fish dishes', '13'], ['Meals: Dairy produce', '14'], ['Meals: Vegetables', '15'], ['Meals: Fruit, berries', '16'],
-['Meals: Confectionery', '17'],['Meals: Beverages, soft and strong drinks', '18'],['Shopping: Outdoor clothing', '19'],['Shopping: Lingerie and nightwear', '20'],
-['Shopping: Sportswear', '21'],['Shopping: Shoes', '22'],['Shopping: Accessories', '23'],['Shopping: Perfumery', '24'],
-['Shopping: Jewelry', '25'],['Shopping: Audio, video and photo', '26'],['Numbers from 0 to 100', '27'],['Numbers more than 100', '28']],
+['City', '09'],['Sightseeing', '10'], ['Meals: Bread and confectionery', '11'], ['Meals: Gruels and porridges', '12'], ['Meals: Meat dishes', '13'],
+['Meals: Fish, fish dishes', '14'], ['Meals: Dairy produce', '15'], ['Meals: Vegetables', '16'], ['Meals: Fruit, berries', '17'],
+['Meals: Confectionery', '18'],['Meals: Beverages, soft and strong drinks', '19'],['Shopping: Outdoor clothing', '20'],['Shopping: Lingerie and nightwear', '21'],
+['Shopping: Sportswear', '22'],['Shopping: Shoes', '23'],['Shopping: Accessories', '24'],['Shopping: Perfumery', '25'],
+['Shopping: Jewelry', '26'],['Shopping: Audio, video and photo', '27'],['Numbers from 0 to 100', '28'],['Numbers more than 100', '29']],
 'Test'
 ]
 

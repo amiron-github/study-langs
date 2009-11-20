@@ -121,7 +121,7 @@
                           <li><a href="shopping.html" title="Shopping">Shopping</a> </li>
                           <li><a href="numerals00-100.html" title="Numerals">Numerals</a> </li>
                           <li class="sub_high"><a href="memory.html" title="Memory Game">Memory game</a>  </li>
-                          <li class="sub_high"><a href="tests.html" title="Tests">Lexical tests</a>  </li>
+                          <li class="sub_high"><a href="vocabulary_tests.html" title="Tests">Lexical tests</a>  </li>
                         </ul>
                       </div>
                       <div id="nav4" class="menu-item">
@@ -167,7 +167,7 @@
 								<%else%>	  
 
 
-                                                                       <%= link_to "Register/Log in",{:controller => 'sessions', :action => 'new'} %>
+                                                   <%= link_to "Register/Log in",{:controller => 'sessions', :action => 'new'} %>
 								<%end%>	  
 									  
                                  </div>
@@ -204,7 +204,7 @@
 	 <% elsif @page_title == 'Registration' %>
 	 
 	 <ul style="padding: 5px 1px 5px 28px;">
-              <li><a href="login_page.html">Log in</a></li>
+              <li> <%= link_to "Log in",{:controller => 'sessions', :action => 'new'} %></li>
      </ul>
 	 
 	<%else%>
@@ -292,7 +292,7 @@
 
       </div>
     </div>
-
+<div id="analytic">
     <script type="text/javascript">
       var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
       document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -303,5 +303,7 @@
         pageTracker._trackPageview();
       } catch(err) {}</script>
 
+</div>
+	  
   </body>
 </html>

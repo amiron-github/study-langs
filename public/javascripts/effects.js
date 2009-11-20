@@ -803,6 +803,9 @@ function sectionHighlight() {
 		case 'contact':
 			pageMenuItem(6);
 			break;
+		case 'login':
+			pageMenuItem(7);
+			break;
 		default: 
 		   	$("#menu_body .menu-item a").css({color: "#183A87"});
 	}

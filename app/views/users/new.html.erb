@@ -75,68 +75,91 @@ text-align: right;
 font-size: 15px;
 }
 
-
-
 </style>
+
+<script type="text/javascript"> 
+
+$(document).ready(function() {
+
+	$("#contfield form input:submit").click(function () {
+		if ($("#accpeptance").is(":checked")== false) {
+		
+			alert("Checkmark that you have read the Terms and Conditions");
+			return false;	
+			
+		}
+	
+	});
+
+});
+
+</script>
 
 
 <% end %>
-<div class="login_form_wrapper">
 
-	<div id="login_form">
 
-		<div id="login_title">It's your first visit? Welcome!
-		</div>
-		<a href="login_page.html" style="font-size: 11px; font-weight: bold;">Already registered? Click here to login</a>
-	
-	<%= error_messages_for :user %>
 
-	<% form_for :user, :url => users_path do |f| -%>
-		
-		
-		
-		<div class="login_wrap">
-		
-			<div id="user_to_log"> 
-			
-				<span class="log_item">Email:</span>
 
-				<%= f.text_field :email %>
-			
-			</div>
-			
-			<div id="pass_to_log"> 
-		
-				<span class="log_item">Password:</span> 
-				<%= f.password_field :password %>
 
-			</div>
-			<div id="pass_confirm"> 
-		
-				<span class="log_item">Confirm Password:</span> 
-				<%= f.password_field :password_confirmation %>
 
-			</div>
-			
-	   
-		</div>
+<% form_for :user, :url => users_path do |f| -%>
 		
+<div class="module mod-in-log">
+<div class="module-top">
+	<div class="module-t-left"></div>
+	<div class="module-t-right"></div>
+</div>
+<div class="module-right">
+<div class="module-left">
+<div class="module-content">
+<h2 class="page">It's your first visit? Welcome!</h2>
 		
+<p align="center"><a href="login" style="font-size: 11px; font-weight: bold;">Already registered? Click here to login</a></p>
 
-	
-		<p><span class="submit_log"><%= submit_tag 'Sign up' %></span></p>
-		
+<%= error_messages_for :user %>
 
-		<% end -%>
+
+<table align="center">
+	<tr>
+		<td>
 		
+			<table class="form-entries">
+				<tr>
+					<td class="entry1">Email address:</td>
+					<td><%= f.text_field :email %></td>
+				</tr>
+				<tr>
+					<td class="entry1">Password:</td>
+					<td> <%= f.password_field :password %></td>
+				</tr>
+				<tr>
+					<td class="entry1">Confirm Password:</td>
+					<td><%= f.password_field :password_confirmation %></td>
+				</tr>
+			</table>
+	<tr>
+		<td>
+			<p align="center"><input type="checkbox" id="accpeptance"> I agree to the <a href="copyright.html">Terms</a></p>
+			<p align="center"><%= submit_tag 'Sign up' %> </p>
+		</td>
+	</tr>
+</table>		
 		
 </div>
-
-
-
 </div>
+</div>
+<div class="module-bottom">
+	<div class="module-b-left"></div>
+	<div class="module-b-right"></div>
+</div>
+</div>		
+		
+		
 
-
+<% end -%>
+		
+	
 
 
 

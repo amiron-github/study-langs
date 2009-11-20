@@ -1,13 +1,68 @@
+<% @page_title = 'Change Email Address' %>
+
+
+  
+  
 <% form_tag edit_path do %>
 
-  <%= @error_pas %>
-  <%= @error_val %>
+<div class="module mod-in-log">
+<div class="module-top">
+	<div class="module-t-left"></div>
+	<div class="module-t-right"></div>
+</div>
+<div class="module-right">
+<div class="module-left">
+<div class="module-content">
+<h2 class="page">Change Email Address</h2>
 
-  your email
-               <%= text_field_tag 'email', @email %>
-pw		 <%= password_field_tag 'password', nil %>
-                 <span class="log_item">Confirm Password:</span>
+  <%if @error_pas %><p style="color: red; font-weight: bold; text-align: center"> You have entered an incorrect password</p> <%end%>
+  <%if @error_val %> <p style="color: red; font-weight: bold; text-align: center"> You have entered an incorrect email address</p> <%end%>
 
-               <%= submit_tag 'Save' %>
-  
+<table align="center">
+	<tr>
+		<td>
+		
+			<table class="form-entries">
+				<tr>
+					<td class="entry1">Current Email:</td>
+					<td><%= current_user.email %></td>
+				</tr>
+				<tr>
+					<td class="entry1">New email:</td>
+					<td><%= text_field_tag 'email', nil %></td>
+				</tr>
+				<tr>
+					<td class="entry1">Password:</td>
+					<td> <%= password_field_tag 'password', nil %></td>
+				</tr>
+			</table>
+	<tr>
+		<td>
+			<p align="center"><%= submit_tag 'Change my email address' %>  </p>
+			
+			    <%if @success %> 
+				
+						<p style="color: blue; font-weight: bold; text-align: center; font-size: 16px; padding: 15px 0; "> Data have been saved</p> 
+						
+				<%end%>
+				
+				<p align="center"><a href="user_profile.html"> Back to Profile</a></p>
+		</td>
+	</tr>
+</table>
+
+
+</div>
+</div>
+</div>
+<div class="module-bottom">
+	<div class="module-b-left"></div>
+	<div class="module-b-right"></div>
+</div>
+</div>
+
   <%end%>
+  
+ <script type="text/javascript">
+currentSection="login";
+</script>

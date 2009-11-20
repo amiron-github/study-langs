@@ -1,0 +1,1782 @@
+<% @page_title = 'Fateful Battle' %>
+<% @page_meta = {'description' => "Language Game"} %>
+<% @has_audio = true %>
+
+
+<% content_for :special_js_css do %>
+
+ <%= javascript_include_tag 'vocabulary' %>
+
+<script type="text/javascript">
+
+/////////////////////// jquery backgroundPosition Plugin 
+/**
+ * @author Alexander Farkas
+ * v. 1.02
+ */
+(function($) {
+	$.extend($.fx.step,{
+	    backgroundPosition: function(fx) {
+            if (fx.state === 0 && typeof fx.end == 'string') {
+                var start = $.curCSS(fx.elem,'backgroundPosition');
+                start = toArray(start);
+                fx.start = [start[0],start[2]];
+                var end = toArray(fx.end);
+                fx.end = [end[0],end[2]];
+                fx.unit = [end[1],end[3]];
+			}
+            var nowPosX = [];
+            nowPosX[0] = ((fx.end[0] - fx.start[0]) * fx.pos) + fx.start[0] + fx.unit[0];
+            nowPosX[1] = ((fx.end[1] - fx.start[1]) * fx.pos) + fx.start[1] + fx.unit[1];           
+            fx.elem.style.backgroundPosition = nowPosX[0]+' '+nowPosX[1];
+            
+           function toArray(strg){
+               strg = strg.replace(/left|top/g,'0px');
+               strg = strg.replace(/right|bottom/g,'100%');
+               strg = strg.replace(/([0-9\.]+)(\s|\)|$)/g,"$1px$2");
+               var res = strg.match(/(-?[0-9\.]+)(px|\%|em|pt)\s(-?[0-9\.]+)(px|\%|em|pt)/);
+               return [parseFloat(res[1],10),res[2],parseFloat(res[3],10),res[4]];
+           }
+        }
+	});
+})(jQuery);
+
+/////////////////////////////////////////////////
+
+/**
+ * @author Alexander Mironov
+
+
+ * 
+ */
+
+var currentItems=new Array();
+
+var currentItemsOrder=new Array();
+
+var fallInd=new Array();
+
+
+var Playing=1;
+
+
+var counter;
+var powerCounter;
+var ghostCounter;
+var ghostPassCounter;
+var timing=15000;
+var endPos;
+var inner;
+var gameBoxHtml;
+
+
+var fall;
+var fallTop;
+var fallHeight;
+var fallWidth;
+var tTime;
+var toTime=new Array();
+endPos;
+var inPosX=new Array();
+
+var youLoose;
+var switchMusic="on";
+var animation="on";
+var gameLang="eng";
+var wordsLang="en-ru";
+var thisLevel="notmal";
+
+
+var startPermitted=true;
+
+var conjurations;
+var aliveTo;
+
+var totalDemons;
+var totalClicks;
+var speedInterval;
+
+
+var topicName;
+var thisTopic;
+
+var forPrayer='<span style="font-weight: normal;">Oh, Heavenly Powers!! Forgive me, since my language skills in Russian are not yet very strong, and I let this website be destroyed and the human world be shrouded by Darkness. <br> Be gracious, turn the time back and restore this website and the human world. <br>Amen. <\/span> <br><br><input type="button" value="Call to Heavenly Powers" id="siteRestore">'
+
+var bodyRestore;
+
+var titles=new Object(); //for tTitles
+
+var titles=new Array(
+
+["Мир в опасности ... ", "The World is in danger"],
+["Только ты ", "Only you "],
+["и великий чародей <br> Нестор", "And a powerful wizard <br>Nestor"],
+['cможете сокрушить <br><span class="inin">Зло<\/span>', 'can defeat  <br><span class="inin">the Evil<\/span>'],
+["Демоны", "Demons"], //4 - общий старт, продолжение на 12 
+["Нестор не выдержал ... <br> И сила его иссякла.", "Nestor's magic power<br> is exhausted."], // - 5
+["ГАМОВЕР", "GAME OVER"], // - 6
+["Силы зла повержены!!!", "Demons Army is defeated!!!"], // - 7
+["Блистательная <br> ПОБЕДА!!!", "Glorious <br> VICTORY!!!"], // - 8
+["Мир людей пал.", "The Mankind fell down."], // -9
+["Демоны прорвались ...", "Demons overcame ..."], // -10
+["&nbsp; <br/>И мир поглотила Тьма", "&nbsp; <br/>And Darkness shrouded the World"], // -11
+["<br>наступают ...", "<br>attack ..."] // -12 , идет вместе с 
+
+);
+
+var topicsTitles = new Array(
+['вежливости', 'of Politeness'],
+['транспорта', 'of Transport'],
+['гостиницы', 'of Hotel'],
+['города', 'of Сity'],
+['достопримечательностей', 'of Sightseeing'],
+['еды', 'of Meals'],
+['', ''],
+['', '']
+);
+
+var tTitles;
+var tTopics;
+
+
+
+
+$(document).ready(function(){
+
+$("#analytic").empty();
+
+bodyRestore=$("body").html();
+
+
+
+
+beginReady();
+
+
+});
+
+
+
+function restorePage() {
+
+startPermitted=true;
+
+$("body").removeAttr("class").removeAttr("style").html(bodyRestore);
+$.getScript("javascripts/effects.js");
+
+
+
+
+beginReady();
+}
+
+
+function beginReady() {
+
+
+var gTabZ=10000;
+$("div.gtab_wrapper").css({zIndex: gTabZ++});
+
+$("#game_menu li").mouseover(
+	function() {
+	
+	var tTabIndex=$("#game_menu li").index($(this));
+	$(this).addClass("gtabActive");
+	$("div.gtab_wrapper").eq(tTabIndex).css({zIndex: gTabZ++});
+	
+	$("div.gtab_container")
+		.eq(tTabIndex)
+		.show()
+		.find("div.gtab_content")
+		.stop()
+		.animate({marginTop: "0px"}, 400);
+	
+	}).mouseout(function() {
+	
+	
+		$(this).removeClass("gtabActive");
+		
+		var tTabIndex=$("#game_menu li").index($(this));
+	
+		
+      		$("div.gtab_content").eq(tTabIndex).stop().animate({marginTop: "-220px"}, 800, function() {
+      			$("div.gtab_container").eq(tTabIndex).hide()
+      		});
+		
+	   
+		
+		
+	});
+
+$("div.gtab_content").mouseover(
+	function() {
+	var tTabIndex=$("div.gtab_content").index($(this));
+	$("#game_menu ul li").eq(tTabIndex).addClass("gtabActive");
+	
+	$("div.gtab_container")
+		.eq(tTabIndex)
+		.show()
+		.find("div.gtab_content")
+		.stop()
+		.animate({marginTop: "0px"}, 400);
+	
+		}).mouseout(function() {
+		
+		
+		$("#game_menu ul li").removeClass("gtabActive");
+		
+		var tTabIndex=$("div.gtab_content").index($(this));
+		$("div.gtab_content").eq(tTabIndex).stop().animate({marginTop: "-220px"}, 800, function() {
+			$("div.gtab_container").eq(tTabIndex).hide()
+		});
+	});
+
+
+if(getCookie('fb-topic')) {
+	
+	var topicSet=getCookie('fb-topic');
+	alert(topicSet);
+	
+	$("#gTopic select option:selected")
+		.removeAttr('selected')
+		.parent("select")
+		.find("option")
+		.eq(topicSet)
+		.attr("selected", "selected");
+}
+
+
+$("#gTopic select").change(function () {
+
+var topic=$("#gTopic select option").index($("#gTopic select option:selected"));
+
+//setCookie('fb-topic', topic );
+//delCookie('fb-topic');
+
+var topicName=$("#gTopic select option:selected").text();
+$("#topic_name").text(topicName);
+
+thisTopic=topic;
+
+getTopic(topic);
+
+}).change();
+
+
+
+$("#startButton").click(function() {
+	if (startPermitted) {
+		startWordRain();
+	}else{
+		return false;
+	}
+}
+
+);
+
+
+$("#shooter0").css({opacity: "0.93"});
+$("#shooter1").css({opacity: "0.93"});
+$("#shooter2").css({opacity: "0.93"});
+$("#shooter3").css({opacity: "0.93"});
+$("#shooter4").css({opacity: "0.93"});
+
+
+
+gameBoxHtml=$("#gamebox").html();
+
+if(getCookie('animation')) {
+	var animationSet=getCookie('animation');
+	if(animationSet=="on") {
+		$("#switch_animation input").eq(0).click();
+	}else if (animationSet=="simple"){
+		$("#switch_animation input").eq(1).click();
+	}else if (animationSet=="off"){
+		$("#switch_animation input").eq(2).click();
+	}
+}
+
+$("#switch_animation input").change(function () {
+  var switchAnimationNum=$("#switch_animation input").index($("#switch_animation input:checked"));
+  if (switchAnimationNum==0) {
+  	animation="on";
+  	setCookie('animation', 'on');
+  }else if (switchAnimationNum==1){
+  	animation="simple";
+  	setCookie('animation', 'simple');
+  }else if (switchAnimationNum==2){
+  	animation="off";
+  	setCookie('animation', 'off');
+  }
+}).change();
+
+
+
+if(getCookie('language')) {
+	var langSet=getCookie('language');
+	if(langSet=="eng") {
+		$("#switch_language input").eq(0).click();
+	}else if (langSet=="rus"){
+		$("#switch_language input").eq(1).click();
+	}
+}
+
+
+$("#switch_language input").change(function () {
+  var switchLanguageNum=$("#switch_language input").index($("#switch_language input:checked"));
+  if (switchLanguageNum==0) {
+  	gameLang="eng";
+  	setCookie("language", "eng");
+  }else {
+  	gameLang="rus";
+  	setCookie("language", "rus");
+  }
+}).change();
+
+
+if(getCookie('fb-words')) {
+	var wordsSet=getCookie('fb-words');
+	if(wordsSet=="en-ru") {
+		$("#switch_words input").eq(0).click();
+	}else if (wordsSet=="ru-en"){
+		$("#switch_words input").eq(1).click();
+	}
+}
+
+
+$("#switch_words input").change(function () {
+  var switchWordsNum=$("#switch_words input").index($("#switch_words input:checked"));
+  
+  if (switchWordsNum==0) {
+  	wordsLang="en-ru";
+  	setCookie('fb-words', 'en-ru');
+  }else {
+  	wordsLang="ru-en";
+  	setCookie('fb-words', 'ru-en')
+  }
+}).change();
+
+
+if(getCookie('fb-mode')) {
+	var modeSet=getCookie('fb-mode');
+	if(modeSet=="easy") {
+		$("#switch_mode input").eq(0).click();
+	}else if (modeSet=="normal"){
+		$("#switch_mode input").eq(1).click();
+	}else if (modeSet=="hard") {
+		$("#switch_mode input").eq(2).click();
+	}
+}
+
+
+
+$("#switch_mode input").change(function () {
+  var switchModeNum=$("#switch_mode input").index($("#switch_mode input:checked"));
+  if (switchModeNum==0) {
+  	thisLevel="easy";
+  	setCookie('fb-mode', 'easy');
+  }else if (switchModeNum==2){
+  	thisLevel="hard";
+  	setCookie('fb-mode', 'hard')
+  }else {
+  	thisLevel="normal";
+  	setCookie('fb-mode', 'normal')
+  }
+}).change();
+
+
+if(getCookie('fb-music')) {
+	var musicSet=getCookie('fb-music');
+	$("#switch_music input").removeAttr("checked");
+	
+	if(musicSet=="on") {
+		$("#switch_music input").eq(0).attr("checked", "checked");
+	}else if (musicSet=="off"){
+		$("#switch_music input").eq(1).attr("checked", "checked");
+	}
+}
+
+
+}
+
+
+
+function shuffle () {
+    len = shuffle.arguments[0] || this.length;
+    var sA = new Array();
+    for (var i=0; i < this.length; i++) {
+        sA[sA.length]=this[i];
+    }
+    var newArray = new Array();
+    for (var i=0; i<len; i++) {
+        var t = Math.round(Math.random()*(sA.length-1));
+        newArray.push(sA[t]);
+        sA.splice(t,1);
+    }
+    return newArray;
+}
+
+Array.prototype.shuffle = shuffle;
+
+
+
+
+
+function startWordRain() {
+
+
+
+//if (!Playing) {
+//	return;
+//}
+
+Playing=0;
+
+
+
+$("#switch_music input").change(function () {
+  var switchMusicNum=$("#switch_music input").index($("#switch_music input:checked"));
+  if (switchMusicNum==0) {
+  	switchMusic="on";
+   	playTrackGame('al3.mp3');
+   	setCookie('fb-music', 'on');
+  }else {
+  	switchMusic="off";
+  	$("#audiospan").empty();
+  	setCookie('fb-music', 'off');
+  }
+}).change(); 
+
+
+
+
+
+
+counter=0;
+powerCounter=0;
+ghostPassCounter=0;
+timing=15000;
+youLoose=false;
+
+allStop();
+
+$("#gamebox").empty();
+
+clearTimeout(tTime);
+
+
+for (var i=0; i < 10; i ++) {
+	clearTimeout(toTime[i]);
+}
+
+
+
+$("#gamebox").html(gameBoxHtml);
+
+var variantLen=$(".variant").length;
+var forCurrent=new Array();
+
+for (i=0; i<tasks.length; i++) {
+	forCurrent[i]=tasks[i];
+
+}
+
+currentItems=tasks.shuffle(variantLen);
+
+tTitles=new Array();
+tTopics=new Array();
+
+
+if(gameLang == "rus") {
+  for (var i=0; i<titles.length; i++){
+  	tTitles[i]=titles[i][0];
+  }
+  
+  for (var i=0; i<topicsTitles.length; i++){
+  	tTopics[i]=topicsTitles[i][0];
+  }
+  
+}else{
+  for (var i=0; i<titles.length; i++){
+  	tTitles[i]=titles[i][1];
+  }
+  
+  for (var i=0; i<topicsTitles.length; i++){
+  	tTopics[i]=topicsTitles[i][1];
+  }
+}
+
+
+if(animation=="on") {
+
+    $("#in1").text(tTitles[0]).show().fadeOut(2500, function(){
+    	$("#in1").hide();
+    	$("#in2").text(tTitles[1]).show().fadeOut(2500, function(){
+       		$("#in2").hide();
+       		$("#in3").html(tTitles[2]).show().fadeOut(3000, function(){
+       	   		$("#in3").hide();
+       	   		$("#in4").html(tTitles[3]).show().fadeOut(3500, function(){
+       	   	   		$("#in4").hide();
+    				Playing=1;
+       	   			startLevel();
+       			});
+       	   		
+       		});
+       
+    	});
+    	
+    });
+
+
+}else {
+
+  Playing=1;
+  startLevel();
+
+}
+
+
+
+		
+}
+
+
+
+function startLevel() {
+
+conjurations=new Object();
+
+var levelTasks=currentItems.shuffle()
+var len=levelTasks.length;
+var russInd=new Array();
+fallInd=new Array();
+
+conjurations.arm=new Array();
+
+ for (var i=0; i<len; i++) {
+ 	conjurations.arm[i]=new Array();
+ }
+
+
+if (wordsLang=="en-ru"){
+ for (var i=0; i<len; i++) {
+	russInd.push(levelTasks[i][0]); //создаём массив из русских слов для помещения в варианты 
+	fallInd.push(levelTasks[i][1]); // массив английских слов для соответсвующих русских в первом массиве
+  }
+}else {
+
+ for (var i=0; i<len; i++) {
+	russInd.push(levelTasks[i][1]); //создаём массив из английских слов для помещения в варианты 
+	fallInd.push(levelTasks[i][0]); // массив русских слов для соответсвующих русских в первом массиве
+  }
+
+}
+
+
+for (var i=0; i<len; i++) {
+	$(".variant").eq(i).attr("id", "v"+i).html("<div>"+russInd[i]+"<\/div>"); // вводим русские слова в варианты и даем им id соответсвия
+};
+
+$("div.variant").hover(function() {              /// анимация при наведении на вариант
+		$(this).children().css({color: "blue"});
+	},function() {
+		$(this).children().css({color: "#000"});
+	}
+);
+
+$("#variants").add("div.variant").mousedown(function(e) {
+		e.preventDefault();
+		return false;
+	});
+	
+$("#variants").add("div.variant").mousemove(function(e) {
+		e.preventDefault();
+		return false;
+	});
+
+$(".variant").click(function(e) {
+	t=$(this);
+	checkFaller(t);
+	e.preventDefault();
+	return false;
+});
+
+counter=0;
+powerCounter=0;
+
+
+if(thisLevel == 'easy') {
+  totalDemons=80; // общее количество демонов
+  totalClicks = 95;	// общее количество ошибок (magic power)
+  speedInterval = 10;	// интервал на ускорение
+} else if (thisLevel == 'hard') {
+  totalDemons=140; // общее количество демонов
+  totalClicks = 150;	// общее количество ошибок (magic power)
+  speedInterval = 8;	// интервал на ускорение
+}else {
+    totalDemons=110; // общее количество демонов
+    totalClicks = 120;	// общее количество ошибок (magic power)
+    speedInterval = 9;	// интервал на ускорение
+
+}
+
+
+
+
+fall=$("#falling").get(0);
+fallTop=fall.offsetTop;
+fallHeight=fall.clientHeight;
+fallWidth=fall.clientWidth;
+endPos=fallHeight-150;
+aliveTo=fallHeight-80;
+
+
+
+
+
+$("#falling").empty();
+  $("#in5").html(tTitles[4] + " " + tTopics[thisTopic] + " " + tTitles[12]).show().animate({opacity: "0"}, 2500, function() {  // надпись про атаку
+      toTime[0] = setTimeout(function(){
+      			startPlay(0, 0);  
+      			toTime[1] = setTimeout(function(){
+      				startPlay(1, 1); 
+      			}, 2000)
+      		}, 500);
+  });
+}
+
+
+
+
+var fallIndex=new Array();
+
+
+function startPlay(adress, numer)  {
+
+if (counter==10){  // 3 демона
+counter=counter+1;
+startPlay(2,2)
+}
+
+if (counter==30){ // 4 демона
+counter=counter+1;
+startPlay(3,3)
+}
+
+if (counter==60){ // 5 демонов
+counter=counter+1;
+startPlay(4,4)
+}
+
+
+$("#falling").append("<div id=\"faller"+numer+"\"><\/div>");
+ 
+
+fallIndex[adress]=Math.round(Math.random()*(fallInd.length-1)); 	// выбираем произвольно одно из слов из массива английских слов и берем его индекс
+
+var necNum;
+necNum=fallIndex[adress];
+
+conjurations.arm[necNum].push(numer); // заряжаем слово на эту цель
+		
+$("#faller"+numer).html(fallInd[necNum]).data("toVariant", "v"+necNum).css({backgroundImage: "url(games/demon"+ necNum +".gif)"});    			// вставляем английское слово в падающий блок 
+
+//$(".variant").eq(necNum).css({borderColor: "red"});
+
+
+if(counter >=totalDemons) {  // количество убитых демонов для выигрыша, норма - 80
+	$("#faller"+numer).remove();
+	if ($("#falling div").length == 0){
+			youWin();
+	}
+}else{
+	counter=counter+1;
+	ghostPower(counter);
+	if(counter%speedInterval==0) {
+	timing=timing-500;
+	if (timing<1000) {timing=1000}
+}
+
+
+inPosX[necNum]=Math.random()*(fallWidth-60); // начальная позиция демона
+
+$("#faller"+numer).addClass("unhurt").css({top: "0", left: inPosX[necNum], opacity: "0.8", display: "block"}).animate({top: endPos}, timing, function() {
+	if ($("#faller"+numer).hasClass("unhurt")) {
+		
+		conjurations.arm[necNum].splice(0,1);
+			
+		$("#faller"+numer).css({backgroundImage: 'url("games/g-alive.gif")'}).empty().animate({opacity: "0", left: "60px", top: aliveTo}, 600, function() { 
+				$("#faller"+numer).remove();
+				
+				ghostPassCounter=ghostPassCounter+1;
+				$("#ghost_live").append("<div><\/div>");
+				
+					if(ghostPassCounter==5){ // количестов прорвавшихся демонов для конца игры, норма - 5
+						youLoose=true;
+						ghostWin();
+					}
+				
+				startPlay(necNum, numer); 
+		});
+		
+	}else{
+	 return false;
+	}
+
+});
+
+}
+
+
+}
+
+
+
+function checkFaller(t) {
+    var tNum=$("div.variant").index(t);
+    powerCounter=powerCounter+1;
+    checkPower(powerCounter);
+    if(conjurations.arm[tNum].length) {	
+    	var fireTo=conjurations.arm[tNum][0];
+    	conjurations.arm[tNum].splice(0,1);
+    	hurt(fireTo, fireTo);
+    }else{
+    return false;
+    }
+}
+
+
+
+function hurt(adress, numer){
+	
+	$("#faller"+adress).removeClass("unhurt").stop();
+	var hurtX=$("#faller"+adress).get(0).offsetLeft;
+	var hurtY=$("#faller"+adress).get(0).offsetTop;
+
+	$("#shooter"+adress).animate({top: hurtY+10, left: hurtX+30}, 500, function(){
+		$("#faller"+adress).fadeOut(900);
+	})
+	   toTime[2] = setTimeout(function(){
+			$("#shooter"+adress).css({left: "510px", top: "400px"})
+			$("#faller"+adress).remove();
+			startPlay(adress, numer);
+		},1300); 
+}
+
+
+
+function checkPower(power) {
+
+var forPower=(power/totalClicks)*100;
+var powerIndex=100-forPower;
+
+$("#power div").css({width: powerIndex+"%"});
+
+if (power==totalClicks) { // общее количество кликов,  норма - 100
+	youLoose=true;
+	startPermitted=false;
+	$("div.variant").unbind("click");
+	
+			$("#any").html(tTitles[5]).show().fadeOut(3000);
+	
+			toTime[4] =	setTimeout(function(){	
+			   $("#ghost_live").prepend("<div><\/div><div><\/div><div><\/div><div><\/div><div><\/div>");		
+				ghostWin();
+			},3000);
+	
+}
+
+
+}
+
+
+
+function ghostPower(power) {
+
+var forPower=(power/totalDemons)*100;
+var powerIndex=100-forPower;
+
+$("#ghost_power div").css({width: powerIndex+"%"});
+
+}
+
+
+
+
+function ghostWin() {
+	startPermitted=false;
+	
+   $("div.photo3").attr("id", "photo_to_rot");
+
+	$("#gamebox").animate({marginTop: "5px"}, 300)
+					.animate({marginTop: "-4px"}, 300)
+					.animate({marginTop: "3px"}, 300)
+					.animate({marginTop: "-2px"}, 300)
+					.animate({marginTop: "1px"}, 300)
+					.animate({marginTop: "0px"}, 300, function(){
+		allStop();
+		
+		if (animation=="on") {
+		   		fullEnd();
+		}else if (animation=="simple") {
+			setTimeout(function() {
+				simpleEnd();
+			}, 1000);	
+		}else{
+			gameOver();	
+			$("#game_over").text(tTitles[6]).show();
+			startPermitted=true;
+		}
+		
+	});
+}
+
+
+function gameOver() {
+	counter=1000;
+	$("#falling div").removeAttr("id").remove();
+	$("div.variant").unbind("click");
+}
+
+function allStop() {
+	$("#falling div").stop();
+	$("#gamebox div:animated").stop();
+	$("div.variant").unbind("click");
+	
+	$("#gamebox").queue();
+	$("#gamebox").stop();
+}
+
+function youWin() {
+startPermitted=false;
+ if (youLoose) {
+	return false;
+ }else{
+	allStop();
+	$("#any").css({color: "#E5FF00"}).html(tTitles[7]).show().fadeOut(5000);
+	if (animation=="on") {
+       toTime[7] =	setTimeout(function(){
+    			$("#clouds").animate({backgroundPosition: "(0px 0px)"}, 4000);
+    			$("#sky").animate({backgroundPosition: "(0px 40px)"}, 4000);
+    			$("#ghost_live div").fadeOut(3000);
+    		   	gameOver();	
+    		  toTime[8] =	setTimeout(function(){		
+    				$("#game_over").html(tTitles[8]).show();
+    				startPermitted=true;
+    			},4000);
+    	},2000);	
+	
+	}else{
+       toTime[7] =	setTimeout(function(){
+       			$("#ghost_live").empty();
+    			$("#game_over").html(tTitles[8]).show();
+    			startPermitted=true;
+    	},5000);
+	}
+ }
+}
+
+function playTrackGame(slink) {
+
+if (switchMusic=="on") {
+        this.before = '<object type="application/x-shockwave-flash" data="player_norm.swf" width="20" height="20"><param name="movie" value="player_norm.swf"/><param name="FlashVars" value="mp3=sounds/';
+        this.after = '&amp;autoplay=1&amp;loop=1" \/><\/object>';
+	this.all=this.before + slink + this.after;
+  document.getElementById("audiospan").innerHTML=this.all;
+  } else {
+  	$("#track_game").empty();
+  }
+}
+
+
+function simpleEnd() {
+
+  $("#any").html(tTitles[9]).show().fadeOut(6000);
+  
+  	toTime[5] =	setTimeout(function(){	
+   				$("#sky").animate({backgroundPosition: "(0px 495px)"}, 4000);
+    			$("#clouds").animate({backgroundPosition: "(0px 450px)"}, 4000);
+     			gameOver();	
+     		
+  	  	toTime[6] =	setTimeout(function(){			
+  	   		$("#game_over").html(tTitles[6]).show();
+  	   		startPermitted=true;
+     		},4000);
+  	},2000);
+}
+
+function fullEnd() {
+
+		$("#any").html(tTitles[10]).show().fadeOut(4000);
+		
+		$("#fixWidh").animate({marginTop: "3px"}, 300)
+				.animate({marginTop: "-1px"}, 300)
+				.animate({marginTop: "6px"}, 350)
+				.animate({marginTop: "0px"}, 300)
+				.animate({marginTop: "8px"}, 450)
+				.animate({marginTop: "1px"}, 300)
+				.animate({marginTop: "9px"}, 600)  //open menu
+				.animate({marginTop: "6px"}, 300)
+				.animate({marginTop: "12px"}, 900)
+				.animate({marginTop: "9px"}, 300)
+				.animate({marginTop: "15px"}, 900)
+				
+		setTimeout(function() {
+	   		$("#in1").html(tTitles[11]).show();
+	   		setTimeout(function() {
+	   			$("body").addClass("dark_body");
+	   			$("#head").css({backgroundImage: "none"});
+	   		}, 1000);
+		}, 2000);
+		
+		setTimeout(function() { // длина - 2100
+		
+			$("div.sub").slideDown(1100);
+			
+			setTimeout(function() {
+				$("#nav-pos").animate({marginTop: "950px"}, 1200, function() {
+				
+					$("div.photo3").animate({top: "+=1000px" }, 2200);
+					
+					$("#nav-pos").animate({opacity: "0"}, 400, function() {
+					
+						$("#nav-pos").hide();
+              					setTimeout(function() {
+              						$("div.photo1").animate({top: "+=1000px" }, 1200);
+              					}, 200);
+              					
+              					setTimeout(function() {
+              						$("#title_name").animate({top: "+=1100px" }, 1400);
+              					}, 500);
+              								
+              					setTimeout(function() {
+              						$("div.photo2").animate({top: "+=1000px" }, 900);
+              						
+              							setTimeout(function(){
+              								$("#darkness").css({height: "500px"})
+              								$("#evil-field")
+              								.add("#ghost_live")
+              								.add("#variants")
+              								.fadeOut(500);
+              							}, 500);
+              							
+              							setTimeout(function(){
+              								$("#title_name")
+              								.add("div.photo1")
+              								.add("div.photo2")
+              								.add("div.photo3")
+              								.fadeOut(300);
+              								
+              								$("#game_menu").css({position: "absolute", zIndex: 10000}).animate({top: "+=900px"}, 1000);
+              								
+              							}, 800);
+              							
+              							setTimeout(function(){
+              							   $("div#menu_content").css({backgroundColor: "transparent"});
+              							   
+              								$("div.cont-clb")
+              								.add("div.cont-clt")
+              								.add("div.photo2")
+              								.add("div.photo3")
+              								.fadeOut(500);
+              							}, 1200);
+              							
+              							setTimeout(function(){
+              							
+              							   $("#contentcell").css({backgroundColor: "transparent"});
+              								$("#gamebox")
+              								.fadeOut(500);
+              							}, 1900);
+              							
+              							setTimeout(function(){
+              							   $("#contfield").empty();
+              							}, 2400);
+              							
+              							setTimeout(function(){
+              							   $("body").css({backgroundImage: "none"});
+              							}, 2900);
+              							
+              							setTimeout(function(){
+              							   $("#footer").empty();
+              							}, 3400);
+              							
+              							setTimeout(function(){
+              							   
+              								$("#menu_content").prepend('<div id="hishelp">Help of Heavens<br><br><div id="prayer">Read aloud and click: <br><br> '+ forPrayer+ '<\/div><\/div> ');
+              								
+              								$("#hishelp").mouseover(
+              									function() {
+              										$("#prayer").slideDown();
+              									}
+              								);
+              								
+              								$('#siteRestore').click(function() {
+              									restorePage();
+              								});
+              								
+              							}, 9400);
+              							
+              					}, 1000);				
+					});
+				});
+			}, 900);
+			
+			setTimeout(function() {
+				$("div.sub").slideUp(1000);
+			}, 1100);			
+		
+		}, 2300);
+
+}
+
+
+
+</script>
+<style type="text/css">
+
+
+#gamebox {
+
+position: absolute;
+
+}
+
+#falling {
+position: absolute;
+height: 500px;
+width: 550px;
+backg_round-color: #EFEFEF;
+}
+
+
+#faller0,  #faller1, #faller2, #faller3, #faller4 {
+height: 79px;
+padding-top: 5px;
+width: 110px;
+overflow: visible;
+color: #fff;
+font-weight: bold;
+position: absolute;
+text-align: center;
+background-image: url("games/demon0.gif");
+background-repeat:  no-repeat;
+background-position: 50% 100%;
+bo_rder: 1px solid red;
+}
+
+#variants {
+width: 550px;
+height: 125px;
+margin-left: 28px;
+}
+
+.variant {
+background-image: url("games/paper.jpg");
+width: 123px;
+height: 54px;
+text-align: center;
+cursor: pointer;
+float: left;
+margin-left: 10px;
+margin-top: 10px;
+z-index: 500;
+}
+
+.variant div {
+margin-top: 10px;
+}
+
+
+#mag {
+background-image: url("games/mag.gif");
+width: 154px;
+height: 180px;
+position: absolute;
+left: 510px;
+top: 280px;
+z-index: 100;
+}
+
+#shooter0,  #shooter1, #shooter2, #shooter3, #shooter4 {
+background-image: url("games/fireball.gif");
+width: 35px;
+height: 35px;
+position: absolute;
+left: 510px;
+top: 400px;
+z-index: 600;
+}
+
+#in1, #in2, #in3, #in4, #in5, #in6, #any {
+position: absolute;
+width: 550px;
+left: 30px;
+top: 150px;
+z-index: 700;
+color: red;
+font-size: 40px;
+font-weight: bold;
+display: none;
+text-align: center; 
+font-family: Times New Roman;
+}
+
+#in4 .inin {
+font-size: 60px;
+}
+
+#in5 {
+font-size: 35px;
+top: 140px;
+}
+
+
+#magic_power {
+position: absolute;
+top: 460px;
+left: 550px;
+color: blue;
+font-weight: bold;
+}
+
+#power {
+width: 70px;
+border: 1px solid blue;
+position: absolute;
+top: 440px;
+left: 560px;
+padding: 1px;
+font-size: 0px;
+z-index: 700;
+background-color: #fff;
+}
+
+#power div {
+height: 8px;
+font-size: 0px;
+overflow: hidden;
+width: 100%;
+background-color: blue;
+position: relative;
+}
+
+#evil_power {
+position: absolute;
+top: 20px;
+left: 500px;
+color: red;
+font-weight: bold;
+}
+
+#ghost_power {
+width: 70px;
+border: 1px solid red;
+position: absolute;
+top: 5px;
+left: 510px;
+padding: 1px;
+font-size: 0px;
+z-index: 700;
+background-color: #fff;
+}
+
+#ghost_power div {
+height: 8px;
+font-size: 0px;
+overflow: hidden;
+width: 100%;
+background-color: red;
+position: relative;
+}
+
+
+#game_over {
+position: absolute;
+width: 550px;
+left: 30px;
+top: 150px;
+z-index: 700;
+color: #fff;
+font-size: 50px;
+font-weight: bold;
+display: none;
+text-align: center; 
+font-family: Times New Roman;
+}
+
+#ghost_live {
+position: absolute; 
+width: 180px;
+height: 45px;
+left: 5px;
+top: 450px;
+border: 1px solid red;
+background-color: #fff;
+overflow: hidden;
+}
+
+#ghost_live div {
+width: 36px;
+height: 45px;
+float: left;
+background-image: url(games/g-alive.gif);
+background-repeat: no-repeat;
+}
+
+
+#darkness {
+background-image: url(games/darkness.gif);
+}
+
+
+#evil-field {
+background-image: url(games/dark.jpg);
+background-repeat: repeat-x;
+}
+
+
+#clouds {
+background-image: url(games/clouds.jpg);
+background-repeat: repeat-x;
+background-position: left 350px;
+width: 600px;
+height: 500px;
+}
+
+#sky {
+background-image: url(games/sky.gif);
+background-repeat: repeat-x;
+background-position: left 390px;
+}
+
+div.variant {
+-moz-user-select: none;
+-khtml-user-select: none;
+user-select: none;
+} 
+
+#in1, #in2, #in3, #in4, #in5, #in6, #any, #power {
+background-position: -500px;
+background-repeat: no-repeat;
+}
+
+#in1{
+background-image: url("games/demon0.gif");
+}
+
+#in2{
+background-image: url("games/demon1.gif");
+}
+
+#in3{
+background-image: url("games/demon2.gif");
+}
+#in4{
+background-image: url("games/demon3.gif");
+}
+#in5{
+background-image: url("games/demon4.gif");
+}
+#in6{
+background-image: url("games/demon5.gif");
+}
+
+#any{
+background-image: url("games/demon6.gif");
+}
+
+#power {
+background-image: url("games/demon7.gif");
+}
+
+
+
+#switch_music, #switch_animation, #switch_language {
+}
+
+.dark_body {
+background-image: url(games/darkness.gif);
+background-repeat: repeat;
+background-color: #1D1C21;
+background-position: 0px 0px;
+}
+
+#hishelp {
+position: absolute;
+color: #fff;
+font-size: 20px;
+font-weight: bold;
+width: 700px;
+cursor: default;
+}
+
+#prayer {
+display: none;
+font-size: 16px;
+font-style: italic;
+cursor: default;
+}
+
+form p {
+margin-top: 4px;
+}
+
+.list {
+margin: 0px;
+right: 6px;
+}
+
+#game_menu {
+position: relative;
+width: 620px;
+}
+
+#game_menu ul {
+margin: 0px;
+padding: 0px;
+list-style: none;
+}
+
+#game_menu ul li {
+display:block;
+float: left;
+width: 150px;
+list-style: none;
+margin:0;
+padding:0;
+text-align: center;
+color: #fff;
+background-color: #790101;
+cursor: pointer;
+line-height: 26px;
+border-left: 1px solid #fff;
+border-right: 1px solid #fff;
+background-image: url("games/fbtab.gif");
+background-position: 0px 42px;
+font-size: 11px;
+font-weight: bold;
+}
+
+#game_menu ul li.gtabActive {
+background-position: 0px 0px;
+color: #DFDFDF;
+background-color: #B50001;
+}
+
+div.gtab_wrapper {
+position: relative; 
+width: 610px; 
+z-index: 10000;
+}
+
+div.gtab_container {
+display: none;
+position: absolute;
+overflow: hidden;
+height: 190px;
+width: 610px;
+margin-left: 3px;
+}
+
+#gRules div.gtab_container {
+height: 400px;
+
+}
+
+
+
+div.gtab_content {
+margin-top: -220px;
+position: absolute;
+back ground-color: #fff;
+background-image: url("games/tip-ground.png");
+border: 1px solid gray;
+width: 600px;
+min-height: 160px;
+height: auto !important;
+height: 160px;
+}
+
+#gRules div.gtab_content {
+margin-top: -420px;
+}
+
+div.gtab-in {
+padding: 10px 20px 20px;
+}
+
+div.game_poser {
+position: relative;
+margin: 0px auto;
+width: 620px;
+text-align: left;
+}
+
+div.content {
+text-align: center;
+}
+
+#startButton {
+font-size: 20px;
+}
+
+#gSettings .gtab-in p {
+margin-top: 0px;
+padding: 0px 10px;
+}
+
+#gSettings table td{
+}
+
+
+.nestors-face {
+display: block;
+float: left;
+width: 40px;
+height: 50px;
+margin: 0px 5px 5px 0px;
+background-color: transparent;
+background-image: url("games/mag.gif"); 
+background-repeat: no-repeat;
+background-position: -53px -35px;
+}
+
+#gLegend p {
+margin: 10px 0px;
+}
+
+#gRules {
+font-size: 11px;
+}
+
+#gRules p {
+margin: 5px 0px;
+}
+
+</style>
+
+
+<% end %>
+
+
+
+
+
+
+
+
+<h2  class="page" style="color: #444; background-image: url('games/tip-ground.png'); background-position: -200px -200px; background-repeat: no-repeat;">Fateful Battle</h2>
+
+<div class="game_poser">
+
+
+<div id="game_menu">
+<ul>
+	<li>Fateful Battle</li>
+	
+	<li>Settings</li>
+
+	
+	<li>Rules</li>
+	
+	<li>Information</li>
+	
+</ul>
+<div style="clear: both;"></div>
+
+</div>
+
+
+<div id="gLegend" class="gtab_wrapper" >
+	<div class="gtab_container">
+		<div class="gtab_content">
+
+			<div class="gtab-in" style="font-size: 12px;">
+			<strong>Fateful Battle</strong><br>
+				<p>
+				<img src="games/g-alive.gif" alt="" align="right">
+				The fateful hour for the humankind has come. Hordes of demons try to rush into our world in order to destroy the human race. 
+				If a demon reaches the earth, he will turn into a frightful Warrior of Darkness, whose infernal power can defeat thousands of armies.
+				
+				</p>
+				<p>
+					<span class="nestors-face">&nbsp;</span>
+				However, humans still cherish the hope to survive: a mighty wizard Nestor has a great magic power to stop the evil spirits. 
+				Be courageous, you and Nestor can bar the way of demons to our world! 
+				Find a spell against each demon so that Nestor could send him back to hell.
+				</p>
+
+				
+ 
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="gSettings" class="gtab_wrapper" >
+	<div class="gtab_container">
+		<div class="gtab_content">
+		<div class="gtab-in">
+		
+		<table cellpadding="0" cellspacing="0" border="0">
+
+			<tr valign="top">
+				<td >
+					
+					<div id="gTopic">
+                	<p>
+                	<b>Current topic:</b><br/> <span id="topic_name"></span><br/><br/>
+                	<select size="5">   
+                    <option selected>Formulas of Politeness</option>  
+                    <option >Transport</option>  
+                    <option >Hotel</option>
+
+                    <option >City</option>
+                    <option >Sightseeing</option>  
+                    <option >Meals</option>
+                   </select>
+                   
+                   </p>
+					</div>
+				
+				</td>
+				<td width="130">
+
+				
+        			<div id="switch_language">
+                    <p><b>Language</b><br/>
+                    <input type="radio" checked name="sl"/>English<br/>
+                    <input type="radio"  name="sl"/>Russian
+        			</p>
+
+                    </div>
+                    
+                    <div id="switch_words">
+                    <p><b>Words</b><br/>
+
+                    <input type="radio" checked name="sw"/>ENG-RUS<br/>
+                    <input type="radio" name="sw"/>RUS-ENG
+        			</p>
+
+                    </div>
+				
+				</td>
+				
+				<td width="120">
+				
+					<div id="switch_music">
+                      
+                        <p>
+
+                        <b>Music</b><br/>
+                        <input type="radio" checked name="sm"/>ON<br/>
+                        <input type="radio" name="sm"/>OFF<br/>
+                        </p>
+                    </div>
+				
+        			<div id="switch_mode">
+                    
+                        <p><b>Mode</b><br/>
+
+                          <input type="radio" name="smd"/>Easy<br/>
+                          <input type="radio" checked name="smd"/>Normal<br/>
+                          <input type="radio" name="smd"/>Hard
+            			</p>
+                    
+                    </div>
+				
+				</td>
+				
+				<td width="140">
+          			
+                    
+                    <div id="switch_animation">
+
+                    
+                        <p><b>Initial and final animations</b><br/>
+                          <input type="radio" checked name="sa"/>Full<br/>
+                          <input type="radio" name="sa"/>Simplified<br/>
+                          <input type="radio" name="sa"/>OFF
+            			</p>
+                    
+                    </div>
+                    
+
+				</td>
+				
+				
+			</tr>
+
+		</table>
+		
+
+        </div>
+		</div>
+	</div>
+</div>
+
+<div id="gRules" class="gtab_wrapper">
+	<div class="gtab_container">
+		<div class="gtab_content">
+		<div class="gtab-in" style="">
+
+			<strong>Rules</strong><br>
+				The main purpose of the game is to SAVE THE HUMANKIND. <br> <br>
+<p>How to do it: </p> 
+<p>1. <em>Don't dread the demons</em>, since good will always win and beat evil. </p>
+<p>2. <em>Be armed with knowledge, since knowledge is Light, and ignorance is Darkness</em> (Russian saying). 
+And language skills, which you can acquire on our website, in the section <a href="vocabulary.html">Vocabulary Topics</a>, will be very useful in this game. </p> 
+
+
+<p>3. <em>Don't surrender, since perseverance wins.</em> Evil's power is not unlimited, and you can check its status in the right top corner of the battlefield.</p>
+<p>4. <em>Respect and help elderly people.</em> Help Nestor to find a spell against each demon. 
+Click the manuscripts with translation of the words which appear with evil spirits. </p>
+<p>5. <em>Be kind and generous to others.</em> Watch Nestor's magic power which will decrease with each click.
+Don't make too many mistakes, otherwise the magic power will be exhausted, and the humankind will perish.   </p>
+<p>6. <em>Don't despair.</em> Even if you have let one demon reach the earth, you will not die right away. Only five (or more) Warriors of Darkness can destroy our world. 
+So, you will be guilty of the humankind's annihilation, if you let five or more demons reach the earth. </p> 
+
+		</div>
+
+		</div>
+	</div>
+</div>
+
+<div class="gtab_wrapper" >
+	<div class="gtab_container">
+		<div class="gtab_content">
+		<div class="gtab-in">
+			<strong>Information</strong><br><br>
+			Music: al3(master) by Vadim Petrov<br><br>
+
+			Special thanks for a great contrubution to: <br>
+			- <em>Olga Volobuyeva (Olya)</em><br>
+			- <em>Viktor Kalmayev (Vick)</em><br>
+			- <em>Vadim Petrov (Snark)</em>
+			
+			
+		</div>
+
+		</div>
+	</div>
+</div>
+
+<div style="padding: 30px 0px 20px; text-align: center; width: 610px;">
+<input type="button" value="START" id="startButton"/>
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div style="height: 625px; width: 650px; padding-left: 4px;">
+
+<div id="gamebox">
+
+
+<div style="width: 600px; height: 500px; background-image: url('games/dark.jpg'); background-repeat: repeat-x; background-color: #000; border: 1px solid #000;">
+
+   <div id="darkness">
+   <div id="evil-field">
+   <div id="sky" style="background-position: 0px 395px;">
+   <div id="earth">
+   <div id="clouds" style="background-position: 0px 350px;">
+
+	<div id="falling">
+
+	</div>
+
+	
+   </div>
+   </div>
+   </div>
+   </div>
+   </div>
+
+
+
+</div>
+
+<div id="variants">
+
+
+
+	<div class="variant"></div>
+
+	<div class="variant"></div>
+
+	<div class="variant"></div>
+
+	<div class="variant"></div>
+
+	<div class="variant"></div>
+
+	<div class="variant"></div>
+
+	<div class="variant"></div>
+
+	<div class="variant"></div>
+
+<div style="font-size: 0px; clear: both"></div>
+</div>
+
+
+<div id="shooter0"></div>
+<div id="shooter1"></div>
+<div id="shooter2"></div>
+<div id="shooter3"></div>
+<div id="shooter4"></div>
+
+<div id="mag"></div>
+
+<div id="in1"></div>
+<div id="in2"></div>
+<div id="in3"></div>
+<div id="in4"></div>
+<div id="in5"></div>
+<div id="in6"></div>
+<div id="any"></div>
+<div id="power"><div>&nbsp;</div></div>
+<div id="magic_power">Magic&nbsp;Power</div>
+
+<div id="ghost_power"><div>&nbsp;</div></div>
+<div id="evil_power">Evil's&nbsp;power</div>
+<div id="ghost_live"></div>
+
+<div id="game_over"></div>
+
+<script type="text/javascript">
+
+
+
+</script>
+
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<div style="text-align: center; padding-top: 40px;">
+<p>
+<a href="sorcerer-game-rus.html">Russian version of the game FATEFUL BATTLE</a>
+</p>
+
+
+<p>
+You can also try other games on our website in the section <a href="vocabulary_games.html">Games</a>
+</p>
+
+</div>
+
+
+<script type="text/javascript"> 
+currentSection="words";
+</script> 
+
+
+
+
+

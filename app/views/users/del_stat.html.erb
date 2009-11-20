@@ -1,11 +1,58 @@
+<% @page_title = 'Delete Results' %>
+
+
 <% form_tag del_stat_path do %>
+	   
+			   
+<div class="module mod-in-log">
+<div class="module-top">
+	<div class="module-t-left"></div>
+	<div class="module-t-right"></div>
+</div>
+<div class="module-right">
+<div class="module-left">
+<div class="module-content">
+<h2 class="page">Delete My Results</h2>
 
-  <%if @error_pas %> You entered incorrect pass<%end%>
+  <%if @error_pas %><p style="color: red; font-weight: bold; text-align: center"> Password is incorrect</p> <%end%>
 
-pw             <%= password_field_tag 'password', nil %>
-               
-		
-               <%= submit_tag 'Delete' %>
+<table align="center">
+	<tr>
+		<td>
+			<table class="form-entries">
+				<tr>
+					<td class="entry1">Enter your password:</td>
+					<td> <%= password_field_tag 'password', nil %></td>
+				</tr>
+			</table>
+	<tr>
+		<td>
+			<p align="center"><%= submit_tag 'Delete my results' %> </p>
+			
+			    <%if @success %> 
+				
+						<p style="color: blue; font-weight: bold; text-align: center; font-size: 16px; padding: 15px 0; "> Data have been saved</p> 
+						
+				<%end%>
+				
+				<p align="center"><a href="user_profile.html"> Back to Profile</a></p>
+		</td>
+	</tr>
+</table>
+
+
+</div>
+</div>
+</div>
+<div class="module-bottom">
+	<div class="module-b-left"></div>
+	<div class="module-b-right"></div>
+</div>
+</div>			   		   
+			   
 
   <%end%>
 
+<script type="text/javascript">
+currentSection="login";
+</script>

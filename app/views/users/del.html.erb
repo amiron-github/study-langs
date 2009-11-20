@@ -2,12 +2,55 @@
 
 <% form_tag userd_path do %>
 
-  <%if @error_pas %> You entered incorrect pass<%end%>
+			   
+<div class="module mod-in-log">
+<div class="module-top">
+	<div class="module-t-left"></div>
+	<div class="module-t-right"></div>
+</div>
+<div class="module-right">
+<div class="module-left">
+<div class="module-content">
+<h2 class="page">Delete My Account</h2>
 
-pw             <%= password_field_tag 'password', nil %>
-               
-		
-               <%= submit_tag 'Delete' %>
+  <%if @error_pas %><p style="color: red; font-weight: bold; text-align: center"> Password is incorrect</p> <%end%>
 
-  <%end%>
+<table align="center">
+	<tr>
+		<td>
+			<table class="form-entries">
+				<tr>
+					<td class="entry1">Enter your password:</td>
+					<td> <%= password_field_tag 'password', nil %></td>
+				</tr>
+			</table>
+	<tr>
+		<td>
+			<p align="center"><%= submit_tag 'Delete my account' %> </p>
+			
+			    <%if @success %> 
+				
+						<p style="color: blue; font-weight: bold; text-align: center; font-size: 16px; padding: 15px 0; "> Your account has been deleted. We gonna miss you :_( </p> 
+						
+				<%end%>
+				
+				<p align="center"><a href="user_profile.html"> Back to Profile</a></p>
+		</td>
+	</tr>
+</table>
 
+
+</div>
+</div>
+</div>
+<div class="module-bottom">
+	<div class="module-b-left"></div>
+	<div class="module-b-right"></div>
+</div>			   
+</div>			   
+
+<%end%>
+
+<script type="text/javascript">
+currentSection="login";
+</script>

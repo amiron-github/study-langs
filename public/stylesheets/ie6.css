@@ -20,3 +20,15 @@ background-image: none;
 filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=/games/crossword/cross-selected.png,sizingMethod=crop);
 }
 
+
+div.module div {
+background-image: none;
+}
+
+.module h2 {
+padding-top: 20px;
+}
+
+.mod-in-log {
+padding: 40px 10px 80px 10px; 
+}

@@ -1774,3 +1774,90 @@ font-size: 11px;
 }
 /* end of login errors*/
 
+/* module */
+
+.module-top {
+background-image: url("/images/module/module-top.png");
+height: 21px;
+position: relative;
+margin: 0px 24px 0 24px;
+}
+
+.module-t-left {
+background-image: url("/images/module/module.png");
+position: absolute;
+width: 24px;
+height: 21px;
+left: -24px;
+}
+
+.module-t-right {
+background-image: url("/images/module/module.png");
+background-position: right top;
+position: absolute;
+width: 24px;
+height: 21px;
+right: -24px;
+}
+
+.module-right {
+background-image: url("/images/module/module-right.png");
+background-position: right top;
+background-repeat: repeat-y;
+padding-right: 24px;
+}
+
+.module-left {
+background-image: url("/images/module/module-left.png");
+background-repeat: repeat-y;
+background-position: left top;
+padding-left: 24px;
+}
+
+.module-bottom {
+background-image: url("/images/module/module-bottom.png");
+background-position: left bottom;
+height: 27px;
+position: relative;
+margin: 0px 24px 0 24px;
+}
+
+.module-b-left {
+background-image: url("/images/module/module.png");
+background-position: left bottom;
+position: absolute;
+width: 24px;
+height: 27px;
+left: -24px;
+}
+
+.module-b-right {
+background-image: url("/images/module/module.png");
+background-position: right bottom;
+position: absolute;
+width: 24px;
+height: 27px;
+right: -24px;
+}
+
+.module-content {
+background-color: #fff;
+padding: 0 20px 20px 20px;
+}
+
+.form-entries td {
+padding: 10px;
+}
+
+td.entry1 {
+font-weight: bold;
+text-al ign: right;
+}
+
+
+.mod-in-log {
+padding: 40px 10% 80px 10%; background-color: #EFEFEF; border: 1px solid #DFDFDF; position: relative;
+}
+
+
+/* end of module*/

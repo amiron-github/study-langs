@@ -65,48 +65,57 @@ font-size: 15px;
 
 
 
-<div class="login_form_wrapper">
 
-	<div id="login_form">
+<% form_tag session_path do %>
 
-		<div id="login_title">Log In</div>
+
+<div class="module mod-in-log">
+<div class="module-top">
+	<div class="module-t-left"></div>
+	<div class="module-t-right"></div>
+</div>
+<div class="module-right">
+<div class="module-left">
+<div class="module-content">
+<h2 class="page">Log In</h2>
+
+<p align="center"><a href="signup" style="font-size: 11px; font-weight: bold;">No account yet? Click here to register</a></p>
+
+<%if @error_pas %> <p style="text-align: center; color: red; font-weight: bold;">ERROR: Email does not match password<%end%>
+
+<table align="center">
+	<tr>
+		<td>
 		
-		<a href="signup" style="font-size: 11px; font-weight: bold;">No account yet? Click here to register</a>
+			<table class="form-entries">
+				<tr>
+					<td class="entry1">Email:</td>
+					<td><%= text_field_tag 'email', @email %></td>
+				</tr>
+				<tr>
+					<td class="entry1">Password:</td>
+					<td> <%= password_field_tag 'password', nil %></td>
+				</tr>
+			</table>
+	<tr>
+		<td>
+			<p align="center"><%= submit_tag t('Login') %>  </p>
+			<p align="center"><%= link_to t('Forgotten Password'), forgot_password_path %></p>
+		</td>
+	</tr>
+</table>
 
-	
-		<% form_tag session_path do %>
-		
-		<%if @error_pas %> You entered incorrect pass<%end%>
 
-		<div class="login_wrap">
-		
-			<div id="user_to_log"> 
-				<span class="log_item">Email:</span>
-
-				<%= text_field_tag 'email', @email %>
-			
-			</div>
-			
-			<div id="pass_to_log"> 
-		
-				<span class="log_item">Password:</span> 
-				<%= password_field_tag 'password', nil %>
-
-			</div>
-	   
-		</div>
-	<p><%= link_to t('Forgotten Password'), forgot_password_path %></p>
-	
-		<span class="submit_log"><%= submit_tag t('Login') %></span>
-		
-
-		<% end -%>
+</div>
+</div>
+</div>
+<div class="module-bottom">
+	<div class="module-b-left"></div>
+	<div class="module-b-right"></div>
+</div>
 </div>
 
-
-
-</div>
-
+  <%end%>
 
 
 
