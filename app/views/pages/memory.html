@@ -13,6 +13,7 @@ var tasks;
 $(document).ready(function(){
 
 
+
 gamePlace=$("#game_place").html();
 
 $("select").change(function () {
@@ -23,6 +24,8 @@ getTopic(topic);
 
 }).change();
 
+ $.get("sounds/games/memory_ding.mp3");
+ $.get("sounds/games/memory-tada.mp3");
 
 });
 
@@ -78,6 +81,9 @@ if ($(".act_card").length) {
 				$("div#"+cardToCheck).removeClass("card").addClass("card_open").css({visibility: "hidden"});
 
 				$("div.act_card").removeClass("act_card");
+				
+				playSound('games/memory_ding.mp3');
+
 
 				$("#helper1").css({left: posX1+30, top: posY1, opacity: "1"}).text(cardPoints[0]+" points!").animate({top:  "-=100px", opacity: "0"},1200, function(){
 
@@ -93,6 +99,8 @@ if ($(".act_card").length) {
 				
 				if ($("div.card").length==0){
 					setTimeout(function(){
+						playSound('games/memory-tada.mp3');
+
 
 						$("#answers").hide().css({position: "relative", top: "-350px", fontSize: "16px"}).html("GAME OVER <br><br> Your score is: "+totalScore+" points").show();
 

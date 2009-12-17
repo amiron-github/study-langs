@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   has_many :user_tests,
 	   :dependent => :destroy
+  has_many :orders
   
   # has_role? simply needs to return true or false whether a user has a role or not.  
   # It may be a good idea to have "admin" roles return true always
@@ -37,7 +38,7 @@ class User < ActiveRecord::Base
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
   # attr_accessible :login, :email, :name, :password, :password_confirmation
-  attr_accessible :email, :name, :password, :password_confirmation
+  attr_accessible :email, :name, :password, :password_confirmation, :status
 
 
 
@@ -73,6 +74,27 @@ class User < ActiveRecord::Base
      res+=");"    
      return res 
   end
+	
+	def payment
+		order = self.orders.find(:first, :conditions => 'status >0 and expired_at >= now()')
+		if order	
+		return true 
+		else return false 
+		end
+	end
+
+	def expired
+                order = self.orders.find(:first, :conditions => 'status>0 and expired_at >= now()')
+#		self.orders.each do |t|
+#		logger.warn(t.expired_at)
+#		end                	
+		if order
+		logger.warn(order.expired_at.strftime("%m-%d-%Y"))
+		return order.expired_at.strftime("%m-%d-%Y")
+		else
+		return '1'
+		end
+	end
 
   protected
     

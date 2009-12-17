@@ -144,10 +144,10 @@ function draggerStop(elEq,difX,difY){
 			$(".target").eq(hit).addClass("already");
 
 			if(($(".target").eq(hit).data("for"))==elEq){
-				$("#drugbox"+bEq+" span.correct").eq(hit).text("Correct!").css({color: "red"});
+				$("#drugbox"+bEq+" span.correct").eq(hit).text("Correct!").css({color: "blue"});
 
 			    }else{
-				$("#drugbox"+bEq+" span.correct").eq(hit).text("Try another one").css({color: "blue"});
+				$("#drugbox"+bEq+" span.correct").eq(hit).text("Try another one").css({color: "red"});
 			   }
 		}else{
 			if($.browser.msie){

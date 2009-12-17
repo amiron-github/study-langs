@@ -3,9 +3,14 @@
 <% @with_rec = true %>
 <% @has_audio = true %>
 
+
+
+<% content_for :special_js_css do %>
 <%= stylesheet_link_tag 'stylesounds' %>
 
-<% content_for :special_css do %>
+<style type="text/css">
+h2.page {margin-bottom: 0px;}
+
 .sound-letter td {
 width: 15%;
 }
@@ -22,6 +27,8 @@ display: none;
 font-style: italic;
 font-family: Times New Roman;
 }
+</style>
+
 <% end %>
 
 <div class="hint_wrap">
@@ -48,6 +55,15 @@ font-family: Times New Roman;
 
 
 <h2 class="page">Basic rules of reading <br/>(Summary)</h2>
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="russian-reading.html">Reading in Russian</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="readingrules.html">Rules of reading</a>
+	<span class="int-arrow">--&gt;</span> Summary
+	</span>
+</h3>
+
 <p>
 In order to be able to read in Russian it is necessary to be aware of the following rules:
 </p>

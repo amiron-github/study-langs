@@ -1,7 +1,12 @@
 development: &non_production_settings
   site_url: http://localhost:3000
   site_name: Study Russian Online
-  admin_email: lucky@inventos.ru
+  admin_email: dalles@inventos.ru
+  support_email: support@study-languages-online.com
+  gch_id: qweqwe
+  gch_key: qweqwe
+
+
 
 test:
   <<: *non_production_settings
@@ -9,4 +14,9 @@ test:
 production:
   site_url: http://www.study-languages-online.com
   site_name: Study Russian Online
-  admin_email: lucky@inventos.ru
+  support_email: support@study-languages-online.com
+  admin_email: dalles@inventos.ru
+  gch_id: 736293013524833
+  gch_key: -TfwjkzYrHfyvqMg_Qq-ZQ
+
+

@@ -1,5 +1,5 @@
 <% @page_title = 'Russian Lessons Online: Lesson 3' %>
-<% @page_meta = {'description' => "Online Russian lesson which helps to learn basic Russian grammar structures and words related to hotel"} %>
+<% @page_meta = {'description' => "Online Russian lesson which helps to learn basic Russian grammar structures and words related to hotel", 'robots' => "noindex" }%>
 <% @with_rec = true %>
 <% @has_audio = true %>
 
@@ -47,6 +47,9 @@ width: 150px;
 
 
 <h2 class="page">Lesson 3 </h2>
+<% if !(logged_in? && current_user.payment) %>
+	<%=@hide_title%>
+<% end %>
 <hr>
 <h3 class="exers">I. At the hotel</h3>
 
@@ -58,6 +61,10 @@ width: 150px;
 <p>
 Listen to the dialogue between John and the receptionist in a hotel. John has reserved a double room for 4 days in this hotel. The receptionists gives the key from the number 116 and tells that there is a bathroom, a telephone and a TV set in the room. John asks when he should pay and the receptionist answers that he can do it when he wants.
 </p>
+
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <table class="audio-task" cellspacing="0">        
 	<tr>
@@ -334,6 +341,7 @@ Listen to the dialogue between John and the receptionist in a hotel. John has re
 	</tr>
 </table>
 </div>
+<% end %>
 
 <p class="task" style="padding-top: 20px;">b) Listen and repeat the dialogue phrase by phrase. </p>
 
@@ -345,7 +353,9 @@ T['2']=['2','3','1']; // For Test#2
 T['3']=['14','12','18','15','11']; // For Test#3
 </script>
 </div>
-
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 <form onsubmit="return check_test(this,1, 'c0103013.I.c)')">
 <table class="tbtest" cellspacing="0" cellpadding="3" align="center">
 	<tr>
@@ -459,6 +469,7 @@ T['3']=['14','12','18','15','11']; // For Test#3
 	<input type="submit" value="Check">
 </div>
 </form>
+<%end%>
 <hr>
 <h3 class="exers">II. Is there a bathroom in the room?</h3>
 
@@ -646,6 +657,10 @@ T['3']=['14','12','18','15','11']; // For Test#3
 </div>
 <p class="task">b) Listen to the Russian words and choose the right translation from the list:</p>
 
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
+
 <div id="t1">
 <script type="text/javascript">
 var t1 = new Test({dict: [
@@ -658,9 +673,13 @@ var t1 = new Test({dict: [
 </script>
 </div>
 
-
+<%end%>
 
 <p class="task">c) Translate into Russian and check yourself:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <div class="task_transl">
 <table class="tab1 inter"  cellspacing="0" >
@@ -798,6 +817,7 @@ var t1 = new Test({dict: [
 
 </table>
 </div>
+<%end%>
 <hr>
 
 <h3 class="exers">III. Where is the restaurant?</h3>
@@ -899,6 +919,9 @@ var t1 = new Test({dict: [
 
 <p class="task">b) Ask a stranger where is:</p>
 
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <div class="task_transl">
 <table class="tab1 inter"  cellspacing="0" >
@@ -986,9 +1009,12 @@ var t1 = new Test({dict: [
 	</tr>
 </table>
 </div>
-
+<%end%>
 <p class="task">c) Listen to the mini-dialogues and do the following tasks:</p>
 
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <table class="mini-dialog" cellpadding="0" cellspacing="0" border="0">
 	<tr>
@@ -1037,6 +1063,7 @@ var t1 = new Test({dict: [
 		<input type="submit" value="Check yourself">
 
 </form>
+<%end%>
 <br>
 <hr>
 
@@ -1084,6 +1111,9 @@ var t1 = new Test({dict: [
 
 <p class="task">Look at the examples with this construction:</p>
 
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <table  cellspacing="0" >
 	<tr valign="top">
@@ -1171,6 +1201,8 @@ var t1 = new Test({dict: [
 
 </table>
 
+<%end%>
+
 <p class="task">a) Using the following expression, translate phrases into Russian:</p>
 
 <table  cellspacing="0" >
@@ -1194,6 +1226,10 @@ var t1 = new Test({dict: [
 </table>
 
 <p class="task">Translate into Russian and check yourself:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <div class="task_transl">
 <table class="tab1 inter"  cellspacing="0" >
@@ -1297,7 +1333,7 @@ var t1 = new Test({dict: [
 
 </table>
 </div>
-
+<%end%>
 <p class="task">b) Using the following expression, translate phrases into Russian:</p>
 
 <table  cellspacing="0" >
@@ -1321,6 +1357,10 @@ var t1 = new Test({dict: [
 </table>
 
 <p class="task">Translate into Russian and check yourself:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <div class="task_transl">
 <table class="tab1 inter"  cellspacing="0" >
@@ -1425,6 +1465,7 @@ var t1 = new Test({dict: [
 </table>
 </div>
 
+<%end%>
 
 <p class="task">c) Using the following expressions, translate phrases into Russian:</p>
 
@@ -1470,6 +1511,10 @@ var t1 = new Test({dict: [
 </table>
 
 <p class="task">Translate into Russian and check yourself:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <div class="task_transl">
 <table class="tab1 inter"  cellspacing="0" >
@@ -1573,7 +1618,7 @@ var t1 = new Test({dict: [
 	</tr>
 </table>
 </div>
-
+<%end%>
 <hr>
 
 <h3 class="exers">V. Is it your passport?</h3>
@@ -1646,6 +1691,9 @@ var t1 = new Test({dict: [
 	</tr>
 
 </table>
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 <table  cellspacing="0" >
 	<tr valign="top">
 		<td width="390">
@@ -1755,8 +1803,12 @@ var t1 = new Test({dict: [
 	</tr>
 
 </table>
-
+<%end%>
 <p class="task">Give a positive answer to the questions:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
@@ -1854,7 +1906,7 @@ var t1 = new Test({dict: [
 			</td>
 	</tr>
 </table>
-
+<%end%>
 <hr>
 
 
@@ -1905,6 +1957,10 @@ var t1 = new Test({dict: [
 </table>
 
 <p class="task">a) Learn the following expressions:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
@@ -1983,8 +2039,12 @@ var t1 = new Test({dict: [
 	</tr>
 </table>
 </div>
-
+<%end%>
 <p class="task">b) Translate into Russian and check yourself:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <div class="task_transl">
 <table class="tab1 inter"  cellspacing="0" >
@@ -2088,6 +2148,8 @@ var t1 = new Test({dict: [
 	</tr>
 </table>
 </div>
+
+<%end%>
 <hr>
 
 <h3 class="exers">VII. Numerals</h3>
@@ -2167,6 +2229,10 @@ Look at the examples of these numerals with the noun <span class="norm_txt"><em>
 </table>
 </div>
 <p class="task">Translate into Russian and check yourself:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <div class="task_transl">
 <table class="tab1 inter"  cellspacing="0" >
@@ -2254,7 +2320,7 @@ Look at the examples of these numerals with the noun <span class="norm_txt"><em>
 	</tr>
 </table>
 </div>
-
+<%end%>
 <p class="task">b) Learn the following Russian numerals:</p>
 
 <table cellpadding="0" cellspacing="0" border="0">
@@ -2410,6 +2476,10 @@ Look at the examples of these numerals with the noun <span class="norm_txt"><em>
 
 <p class="task">c) Listen to the mini-dialogues and do the following tasks:</p>
 
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
+
 
 <table class="mini-dialog" cellpadding="0" cellspacing="0" border="0">
 	<tr>
@@ -2477,7 +2547,7 @@ Look at the examples of these numerals with the noun <span class="norm_txt"><em>
 
 <p><input type="submit" value="Check">
 </form>
-
+<%end%>
 <hr>
 
 <h3>In this lesson you have learnt:</h3> 

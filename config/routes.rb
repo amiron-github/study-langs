@@ -1,13 +1,24 @@
 ActionController::Routing::Routes.draw do |map|
-  map.forgot_password '/forgot_password', :controller => 'passwords', :action => 'new'
+  map.forgot_password '/forgot_password',             :controller => 'passwords', :action => 'new'
   map.change_password '/change_password/:reset_code', :controller => 'passwords', :action => 'reset'
-  map.resources :passwords
+  map.change_password '/update_password/', :controller => 'passwords', :action => 'update_after_forgetting'
 
+  map.resources :passwords
+  
+  map.order '/order', :controller => 'users', :action => 'new_order'
+
+  map.success '/success', :controller => 'users', :action => 'success_pp'
+
+  map.ppipn '/gettrial', :controller => 'users', :action => 'gettrial'
+
+  map.ppipn '/ppipn', :controller => 'orders', :action => 'paypal_ipn'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
+
+  map.cart '/cart', :controller => 'users', :action => 'show_cart'
 
   map.user '/user', :controller => 'users', :action => 'update_user'
   map.userp '/userp', :controller => 'users', :action => 'update_pass'

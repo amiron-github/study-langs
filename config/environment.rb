@@ -29,6 +29,7 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem 'rubyist-aasm', :version => '2.0.2', :lib => 'aasm', :source => 'http://gems.github.com'
   config.gem 'mislav-will_paginate', :version => '2.3.6', :lib => 'will_paginate', :source => 'http://gems.github.com'
+  config.gem 'activemerchant', :version => '1.3.2', :lib => 'active_merchant', :source => 'http://gems.github.com'
 #  config.gem 'yaroslav-russian', :version => '0.1.3', :lib => 'russian', :source => 'http://gems.github.com'
 
   # Only load the plugins named here, in the order given. By default, all plugins 
@@ -76,5 +77,10 @@ Rails::Initializer.run do |config|
   # Activate observers that should always be running
   # Please note that observers generated using script/generate observer need to have an _observer suffix
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
-  config.active_record.observers = :user_observer
+  config.active_record.observers = :user_observer, :order_observer
+
+
 end
+
+
+

@@ -3,9 +3,15 @@
 <% @with_rec = true %>
 <% @has_audio = true %>
 
+
+
+<% content_for :special_js_css do %>
+
 <%= stylesheet_link_tag 'stylesounds' %>
 
-<% content_for :special_css do %>
+<style type="text/css">
+h2.page {margin-bottom: 0px;}
+
 .sound-letter td {
 width: 20%;
 }
@@ -13,6 +19,8 @@ width: 20%;
 font-style: italic;
 font-family: Times New Roman;
 }
+</style>
+
 <% end %>
 
 <div class="hint_wrap">
@@ -39,6 +47,15 @@ font-family: Times New Roman;
 
 
 <h2 class="page">Softness of consonants in Russian</h2>
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="russian-reading.html">Reading in Russian</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="readingrules.html">Rules of reading</a>
+	<span class="int-arrow">--&gt;</span> Softness of consonants
+	</span>
+</h3>
+
 
 <h3>Basics</h3> 
 <p>

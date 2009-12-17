@@ -211,13 +211,11 @@ margin-left: 52px;
 }
 
 #menu_body #nav2 a {
-margin-left: 22px !important;
-margin-left: 15px;
+margin-left: 22px;
 }
 
 #menu_body #nav3 a {
-margin-left: 21px !important;
-margin-left: 15px;
+margin-left: 21px;
 padding: 0px;
 }
 
@@ -226,8 +224,7 @@ margin-left: 37px;
 }
 
 #menu_body #nav5 a {
-margin-left: 18px !important;
-margin-left: 12px;
+margin-left: 18px;
 }
 
 #menu_body #nav6 a {
@@ -1401,9 +1398,9 @@ border-top: none;
 }
 
 .inpBlock {
-min-height: 450px;
+min-height: 520px;
 height: auto ! important;
-height: 450px;
+height: 520px;
 
 }
 
@@ -1805,6 +1802,7 @@ background-image: url("/images/module/module-right.png");
 background-position: right top;
 background-repeat: repeat-y;
 padding-right: 24px;
+overflow: hidden;
 }
 
 .module-left {
@@ -1845,6 +1843,10 @@ background-color: #fff;
 padding: 0 20px 20px 20px;
 }
 
+.module-content form {
+margin: 0px;
+}
+
 .form-entries td {
 padding: 10px;
 }
@@ -1861,3 +1863,65 @@ padding: 40px 10% 80px 10%; background-color: #EFEFEF; border: 1px solid #DFDFDF
 
 
 /* end of module*/
+
+.sub form {
+margin: 0px;
+}
+
+.sub form #password, .sub form #email {
+font-size: 11px;
+width: 140px;
+text-align: left;
+}
+
+
+div.imp-info {
+position: relative;
+border: 1px solid blue;
+margin: 0px 30px;
+}
+
+div.imp-info p {
+border-left: 1px solid #C2CEEF;
+margin: 0px;
+padding: 10px 7px;
+margin-left: 50px;
+background-color: #EFF3FF;
+color: #061E5F;
+}
+
+div.info-icon {
+position: absolute;
+margin-left: 7px;
+margin-top: 7px;
+width: 34px;
+height: 33px;
+background-image: url("/images/icon-info.jpg");
+}
+
+
+div.pr_hsp {
+min-height: 200px;
+height: auto !important;
+height: 200px;
+
+}
+
+.sbcr-free input {
+font-weight: bold; font-size: 11px
+}
+
+.sbcr-free form {
+display: inline;
+}
+
+.sbcr-free {
+font-size: 12px;
+}
+
+
+
+
+
+
+

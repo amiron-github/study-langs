@@ -9,7 +9,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091110122759) do
+ActiveRecord::Schema.define(:version => 20091202155649) do
+
+  create_table "orders", :force => true do |t|
+    t.integer  "user_id",                                                                :null => false
+    t.decimal  "amount",                    :precision => 3, :scale => 2
+    t.integer  "item_id"
+    t.integer  "status",                                                  :default => 0
+    t.string   "txn_id",     :limit => 100
+    t.string   "ord_id",     :limit => 100
+    t.integer  "type_id",                                                                :null => false
+    t.datetime "expired_at",                                                             :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "orders", ["ord_id"], :name => "index_orders_on_ord_id", :unique => true
+  add_index "orders", ["user_id"], :name => "index_orders_on_user_id"
 
   create_table "passwords", :force => true do |t|
     t.integer  "user_id"
@@ -63,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20091110122759) do
     t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "status",                                                          :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

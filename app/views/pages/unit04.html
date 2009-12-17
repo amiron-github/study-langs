@@ -1,5 +1,5 @@
 <% @page_title = 'Russian Lessons Online: Lesson 4' %>
-<% @page_meta = {'description' => "Online Russian lesson which helps to learn how to ask the way in Russian"} %>
+<% @page_meta = {'description' => "Online Russian lesson which helps to learn how to ask the way in Russian", 'robots' => "noindex" } %>
 <% @with_rec = true %>
 <% @has_audio = true %>
 
@@ -52,6 +52,9 @@ height: 130px;
 
 
 <h2 class="page">Lesson 4 </h2>
+<% if !(logged_in? && current_user.payment) %>
+	<%=@hide_title%>
+<% end %>
 <hr>
 <h3 class="exers">I. Asking the way</h3>
 
@@ -64,6 +67,9 @@ height: 130px;
 A tourist doesn't know how to find the Lenin square. She asks a passer-by about the way to it, and he tells that she should reach a big house, turn to the right, cross the bridge and go along the street. The tourist asks him to repeat it once more since she does not speak Russian fluently, and then she thanks him for the help.
 </p>
 
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 <table class="audio-task" cellspacing="0">        
 	<tr>
 		<td>
@@ -338,10 +344,14 @@ A tourist doesn't know how to find the Lenin square. She asks a passer-by about 
 </table>
 </div>
 
+<%end%>
 <p style="margin-top: 25px;">
 A tourist looks for a W.C. He asks a passer-by where the nearest W.C. is and she tells that there may be a W.C. near the park. She says that to reach the park the tourist should turn the corner and cross the square.
 </p>
 
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <table class="audio-task" cellspacing="0">        
 	<tr>
@@ -507,7 +517,7 @@ A tourist looks for a W.C. He asks a passer-by where the nearest W.C. is and she
 
 </table>
 </div>
-
+<%end%>
 <p class="task" style="padding-top: 20px;">b) Listen and repeat the dialogues phrase by phrase. </p>
 <p class="task">c) Listen to the phrases in Russian and choose the right translation.</p>
 <div id="test1">
@@ -519,7 +529,9 @@ T['4']=['b','c','a','e' ,'d']; // For Test#4
 T['5']=['44','25','81', '38','61']; // For Test#5
 </script>
 </div>
-
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 <form onsubmit="return check_test(this,1, 'c0104013.I.c)')">
 <table class="tbtest" cellspacing="0" cellpadding="3" align="center">
 	<tr>
@@ -659,6 +671,7 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 	<input type="submit" value="Check">
 </div>
 </form>
+<%end%>
 <hr>
 <h3 class="exers">II. Tell me the way to the Lenin square!</h3>
 
@@ -860,6 +873,9 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 
 </div>
 <p class="task">b) Read the Russian words and choose the right translation from the list::</p>
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <div id="t1">
 <script type="text/javascript">
@@ -873,8 +889,12 @@ var t1 = new Test({dict: [
 
 </script>
 </div>
-
+<%end%>
 <p class="task">c) Translate into Russian and check yourself:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <div class="task_transl">
 <table class="tab1 inter"  cellspacing="0" >
@@ -1011,6 +1031,8 @@ var t1 = new Test({dict: [
 	</tr>
 </table>
 </div>
+
+<%end%>
 <hr>
 
 <h3 class="exers">III. Go straight ahead!</h3>
@@ -1127,6 +1149,10 @@ var t1 = new Test({dict: [
 
 <p class="task">Look at the examples with these verbs:</p>
 
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
+
 <div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
@@ -1237,8 +1263,13 @@ var t1 = new Test({dict: [
 </table>
 
 </div>
+<%end%>
 
 <p class="task">b) Listen and choose the right transalation for the phrases:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <form onsubmit="return check_test(this,2, 'c0104032.III.b)')">
 <table class="tbtest" cellspacing="0" cellpadding="3" align="center">
@@ -1354,8 +1385,12 @@ var t1 = new Test({dict: [
 	<input type="submit" value="Check">
 </div>
 </form>
-
+<%end%>
 <p class="task">c) Translate into Russian and check yourself:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <div class="task_transl">
 
@@ -1575,9 +1610,13 @@ var t1 = new Test({dict: [
 
 </table>
 
-
+<%end%>
 
 <p class="task">e) Listen to the mini-dialogues and do the following tasks:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 
 <table class="mini-dialog" cellpadding="0" cellspacing="0" border="0">
@@ -1638,7 +1677,7 @@ var t1 = new Test({dict: [
 		<input type="submit" value="Check yourself">
 
 </form>
-
+<%end%>
 
 <br>
 <hr>
@@ -1746,6 +1785,10 @@ var t1 = new Test({dict: [
 
 <p class="task">b) Translate into Russian and check yourself:</p>
 
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
+
 <div class="task_transl">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
@@ -1831,7 +1874,7 @@ var t1 = new Test({dict: [
 	</tr>
 </table>
 </div>
-
+<%end%>
 <hr>
 
 <h3 class="exers">V. There is a W.C. near the park.</h3>
@@ -1856,6 +1899,9 @@ var t1 = new Test({dict: [
 
 <p class="task">Listen to the following phrases and complete the test: </p>
 
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <table class="mini-dialog" cellpadding="0" cellspacing="0" border="0">
 	<tr>
@@ -1953,6 +1999,9 @@ var t1 = new Test({dict: [
 
  </table>
 </form>
+
+<%end%>
+
 <hr>
 
 <h3 class="exers">VI. I'm a foreigner !</h3>
@@ -2013,7 +2062,9 @@ var t1 = new Test({dict: [
 </div>
 
 <p class="task">a) Look, listen and reapeat the examples with these expressions:</p>
-
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 <table  cellspacing="0" >
 	<tr valign="top">
 		<td width="220">
@@ -2136,7 +2187,7 @@ var t1 = new Test({dict: [
 	</tr>
 
 </table>
-
+<%end%>
 <p class="task">b) Answer the questions in Russian following the model and check yourself:</p>
 
 <p style="margin-bottom: 0px;">Model:</p>
@@ -2171,6 +2222,10 @@ var t1 = new Test({dict: [
 </table>
 
 <p class="ital" style="margin-bottom: px;">Questions:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
@@ -2228,7 +2283,7 @@ var t1 = new Test({dict: [
 			</td>
 	</tr>
 </table>
-
+<%end%>
 <p class="task">c) <strong>Learn the following Russian words and translate phrases into Russian</strong>:</p>
 
 <div class="voc_inter">
@@ -2321,6 +2376,9 @@ var t1 = new Test({dict: [
 
 <p class="ital">Prases to translate:</p>
 
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <div class="task_transl">
 <table class="tab1 inter"  cellspacing="0" >
@@ -2407,7 +2465,7 @@ var t1 = new Test({dict: [
 	</tr>
 </table>
 </div>
-
+<%end%>
 <hr>
 
 <h3 class="exers">VII. Could you please repeat it!</h3>
@@ -2514,6 +2572,10 @@ var t1 = new Test({dict: [
 
 <p class="task">b) Translate into Russian, using the expression <span class="norm_txt nwr"><em>Вы не могл<span class="acco">и</span> бы&nbsp;<span class="sound" style="clear: left;" onclick="playAudio('audio04070001.mp3')">[v<span class="acct"><span class="ry">i</span></span> ni magl<span class="acct">i</span> b<span class="ry">i</span>]&nbsp;<span class="play_tip">&nbsp;&nbsp;&nbsp;</span></span></em></span>,  and check yourself:</p>
 
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
+
 <div class="task_transl">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
@@ -2599,7 +2661,7 @@ var t1 = new Test({dict: [
 	</tr>
 </table>
 </div>
-
+<%end%>
 <hr>
 
 <h3 class="exers">VIII. Numerals</h3>
@@ -2782,6 +2844,9 @@ b) Listen, read and repeat the following examples:
 
 <p class="task">c) Listen to the Russian numeral and write it (with figures <span class="norm_txt">1, 2, 3 etc.</span>) in the text area:</p>
 
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <div id="t2">
 <script type="text/javascript">
@@ -2802,7 +2867,7 @@ var t2 = new Test({dict: [
 ],hide: 'di2',id:'t2', type: 'audio', answers_type: 'input', how_questions: 10, how_show: 2}, 'c0104083.VIII.c)');
 </script>
 </div>
-
+<%end%>
 <hr>
 
 <h3>In this lesson you have learnt:</h3> 

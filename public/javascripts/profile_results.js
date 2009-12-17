@@ -7,8 +7,10 @@ var vocabResults=new Array();
 
 $(document).ready(function(){
 
+
 showResults();
 resultsEvents();
+
 });
 
 
@@ -18,7 +20,7 @@ function unique(a){
       for(var x = i + 1 ; x < n; x++){
          if(a[x]==a[i]) continue o;
       }
-      //r[r.length] = a[i];
+     
       r[r.length] = i;
    }
    return r;
@@ -28,6 +30,8 @@ function unique(a){
 
 
 function showResults() {
+
+
 
 for (var i=0; i<userProgress.length; i++) {
   switch(userProgress[i][0].charAt(0)){
@@ -47,20 +51,24 @@ for (var i=0; i<userProgress.length; i++) {
 
 }
 
+
+
 parseResults(phoneticResults,phoneticDescription);
 parseResults(coursesResults,coursesDescription);
 parseResults(readingResults,readingDescription);
 parseResults(vocabResults,vocabularyDescription);
+
 }
 
 function parseResults(sectionResults, sectionDescription) {
 
-//alert(sectionResults, sectionDescription);
 
 if (sectionResults.length > 0) {
+
+	$("#no_results").remove();
 	
 	var startHtml='<hr><br><h3>'+sectionDescription[0]+'</h3>';
-	$('#results_container').append(startHtml); // выводим название темы
+	$('#results_container').append(startHtml); 
    	
 	var taskDone=new Array();
 	
@@ -71,7 +79,7 @@ if (sectionResults.length > 0) {
 	for (var i=0; i<uniqueTaskIndex.length; i++) {
 		resultsForWork[i]=sectionResults[uniqueTaskIndex[i]];
 	}
-	////// - выбрали последние результаты для раздела: resultsForWork
+	
 	
 	var subsectionIndexes=new Array()
 	$.each(resultsForWork, function(i,obj){
@@ -88,7 +96,7 @@ if (sectionResults.length > 0) {
 		var newSIx = new Array();
 		
 	  x: for (var i=0; i < sectionDescription[1].length; i++) {
-	   		//alert(sectionDescription[1].length)
+	   		
 			for (var n=0; n < nIndexes.length; n++) {
 			
 				if ( nIndexes[n] == i )  {
@@ -114,7 +122,7 @@ if (sectionResults.length > 0) {
 		}
 	});
 	
-	// разделили результаты по подразделам - subsectionResults (subsectionResults[0] и т.д.)
+	
 
 	for (var c=0; c < subsectionResults.length; c++ ) {
 		var tResults=subsectionResults[c].sort();
@@ -128,7 +136,7 @@ if (sectionResults.length > 0) {
 	
 		var sectParts=new Array();
 		$.each(tResults, function(i,obj) {sectParts.push( obj[0].slice(3,5) );});
-		sectParts=uniqueByFirst(sectParts); // определили уроки
+		sectParts=uniqueByFirst(sectParts); 
 		
 		var resultsInPart=new Array();
 		
@@ -142,11 +150,9 @@ if (sectionResults.length > 0) {
 			} 
 		}
 			
-		// разделили результаты по урокам/темам - resultsInPart (resultsInPart[0] и т.д.)
 		
-		// начинаем выводить результаты
 		
-		subsectionHead='<h4>'+ tSubSection[0] +'</h4>' // название и начало подраздела  
+		subsectionHead='<h4>'+ tSubSection[0] +'</h4>' 
                         +'<table class="sound-letter" cellspacing="0" >' 
                         +'<tr>' 
                         +'<th class="page">Page</th>' 
@@ -156,9 +162,9 @@ if (sectionResults.length > 0) {
 		
 		partBody=new Array();
 		
-		for (var i=0; i < resultsInPart.length; i++) {  // тело урока/темы
+		for (var i=0; i < resultsInPart.length; i++) {  
 		
-			// - находим название урока/темы
+			
 			
 			var tPartIndex = resultsInPart[i][0][0].slice(3,5);
 			var tPartName;
@@ -168,11 +174,11 @@ if (sectionResults.length > 0) {
 				var tIndex = tSubSection[2][n][1];
 				
 				if (tPartIndex == tIndex) {
-					tPartEq=n; // нашли индекс урока/темы в массиве уроков
+					tPartEq=n; 
 				}
 			}
 			
-		 	tPartName=tSubSection[2][tPartEq][0]; // название урока из описания подраздела
+		 	tPartName=tSubSection[2][tPartEq][0]; 
 			
 			var tTaskType;
 			
@@ -182,10 +188,10 @@ if (sectionResults.length > 0) {
 				tTaskType='Exercise';
 			}
 		
-			if(tSubSection[1]!= "noname") { // начало и название урока
+			if(tSubSection[1]!= "noname") { 
 			
 			  	var partTitle=''
-                              +'</tr> '     // начало урока
+                              +'</tr> '    
                               +'<tr class="res_row">' 
                               +'<td>'			  	
 			  				  +tSubSection[1]+' '+tPartName
@@ -197,7 +203,7 @@ if (sectionResults.length > 0) {
 			}else {
 			
 			  var partTitle=''
-                              +'</tr> '     // начало урока
+                              +'</tr> '     
                               +'<tr class="res_row">' 
                               +'<td>'			  	
 			  				  +tPartName
@@ -211,7 +217,7 @@ if (sectionResults.length > 0) {
 			
 			var partResults=new Array();
 			
-			for(var n=0; n < resultsInPart[i].length; n++) { // результаты заданий в уроке/теме
+			for(var n=0; n < resultsInPart[i].length; n++) { 
 				var taskName=tTaskType;
 				var taskNum=resultsInPart[i][n][0].slice(9);
 				var taskResult= Math.round((resultsInPart[i][n][2] / resultsInPart[i][n][1]) * 100);
@@ -219,7 +225,7 @@ if (sectionResults.length > 0) {
 				partResults.push(taskResult);
 				
 				tasksBody[n]= ' '
-                              +'<tr>' // начало упражнения
+                              +'<tr>' 
                               +'<td>'				
 							  + taskName +' '+ taskNum
                               +'</td>'
@@ -246,7 +252,7 @@ if (sectionResults.length > 0) {
                         +'<td> &nbsp;'
                         +tPartTotal+' % </td>' 
                         +'<td><span class="show_det">Show</span></td>'   
-                        +'</tr>'  // конец урока			
+                        +'</tr>'  		
 			
 			partBody[i] = partTitle + tasksBody.join(" ")+tPartEnd;
 		}
@@ -285,14 +291,11 @@ $("table.sound-letter").each(function () {
 $("span.show_det").toggle(
 
  function() {
-   //	$("span.open_det").click();
    
    $(this).parent("td").parent("tr").parent().find(".open_det").click();
    
  	$(this).addClass("open_det").text("Hide");
  	var parentRow=$(this).parent("td").parent("tr");
- 	
- 	
  	parentRow.css({fontWeight: "bold"}).find("div.pr-detail-block").css({fontWeight: "normal"});
 	parentRow.find("div.pr-detail-block").css({display: "block"});
 	var detHeight=parentRow.find("div.pr-detail-block").height();
@@ -317,14 +320,7 @@ $("span.show_det").toggle(
 }
 
 
-/*
-vocabularyDescription=new Array('Vocabulary', // - section title
-[['Exercises', //- subsection title 
-'Topic',      // - type of subsection part
-[['Politeness','01'],['Acquaintance', '02'], ['Transport', '03'],['Transport: Aiport', '04']], // - parts of subsection with index
-['Tests', 'Topic','Politeness']]);
 
-*/
 
 phoneticDescription=new Array('Section: Russian Pronunciation',
 [
@@ -332,11 +328,11 @@ phoneticDescription=new Array('Section: Russian Pronunciation',
 ]);
 
 
-vocabularyDescription=new Array('Section: Vocabulary', // - section title
+vocabularyDescription=new Array('Section: Vocabulary', 
 [
 
-['Exercises', //- subsection title 
-'Topic: ',      // - type of subsection part
+['Exercises', 
+'Topic: ',    
 [['Politeness','01'],['Acquaintance', '02'],['Transport: Aiport', '03'],['Transport: Bus, Trolley, Tram ','04'],
 ['Transport: Subway', '05'],['Transport: Taxi', '06'], ['Hotel', '07'], ['Services', '08'], 
 ['City', '09'],['Sightseeing', '10'], ['Meals: Bread and confectionery', '11'], ['Meals: Gruels and porridges', '12'], ['Meals: Meat dishes', '13'],
@@ -346,8 +342,8 @@ vocabularyDescription=new Array('Section: Vocabulary', // - section title
 ['Shopping: Jewelry', '26'],['Shopping: Audio, video and photo', '27'],['Numbers from 0 to 100', '28'],['Numbers more than 100', '29']]
 ], 
 
-['Tests', //- subsection title 
-'Topic: ',      // - type of subsection part
+['Tests', 
+'Topic: ',      
 [['Politeness','01'],['Acquaintance', '02'],['Transport: Aiport', '03'],['Transport: Bus, Trolley, Tram ','04'],
 ['Transport: Subway', '05'],['Transport: Taxi', '06'], ['Hotel', '07'], ['Services', '08'], 
 ['City', '09'],['Sightseeing', '10'], ['Meals: Bread and confectionery', '11'], ['Meals: Gruels and porridges', '12'], ['Meals: Meat dishes', '13'],

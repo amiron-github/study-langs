@@ -1,5 +1,58 @@
-# See http://www.robotstxt.org/wc/norobots.html for documentation on how to use the robots.txt file
-#
-# To ban all spiders from the entire site uncomment the next two lines:
-# User-Agent: *
-# Disallow: /
+User-Agent: *
+Disallow: /fruit-exercise.html
+Disallow: /confectionery-exercise.html
+Disallow: /projects.html
+Disallow: /shoes-exercise.html
+Disallow: /airport-test.html
+Disallow: /city-test.html
+Disallow: /balloon-game.html
+Disallow: /vocabulary_tests.html
+Disallow: /fish-test.html
+Disallow: /fruit-test.html
+Disallow: /city-exercise.html
+Disallow: /services-test.html
+Disallow: /fish-exercise.html
+Disallow: /gruel-exercise.html
+Disallow: /meat-test.html
+Disallow: /sportwear-test.html
+Disallow: /bread-test.html
+Disallow: /lingerie-exercise.html
+Disallow: /hotel-test.html
+Allow: /
+Disallow: /jewelry-exercise.html
+Disallow: /drinks-exercise.html
+Disallow: /memory.html
+Disallow: /meat-exercise.html
+Disallow: /bus-test.html
+Disallow: /hotel-exercise.html
+Disallow: /services-exercise.html
+Disallow: /subway-test.html
+Disallow: /perfumery-exercise.html
+Disallow: /drinks-test.html
+Disallow: /clothing-test.html
+Disallow: /taxi-test.html
+Disallow: /video-exercise.html
+Disallow: /confectionery-test.html
+Disallow: /accessories-test.html
+Disallow: /clothing-exercise.html
+Disallow: /vegetables-exercise.html
+Disallow: /vocabulary_games.html
+Disallow: /lingerie-test.html
+Disallow: /shoes-test.html
+Disallow: /sightseeing-test.html
+Disallow: /vegetables-test.html
+Disallow: /dairy-test.html
+Disallow: /subway-exercise.html
+Disallow: /vocabulary_exercises.html
+Disallow: /video-test.html
+Disallow: /jewelry-test.html
+Disallow: /bread-exercise.html
+Disallow: /accessories-exercise.html
+Disallow: /taxi-exercise.html
+Disallow: /sportwear-exercise.html
+Disallow: /airport-exercise.html
+Disallow: /perfumery-test.html
+Disallow: /bus-exercise.html
+Disallow: /gruel-test.html
+Disallow: /sightseeing-exercise.html
+

@@ -1,9 +1,10 @@
 <% @page_title = 'Delete my account' %>
 
-<% form_tag userd_path do %>
+
 
 			   
 <div class="module mod-in-log">
+<br/>
 <div class="module-top">
 	<div class="module-t-left"></div>
 	<div class="module-t-right"></div>
@@ -11,6 +12,8 @@
 <div class="module-right">
 <div class="module-left">
 <div class="module-content">
+
+<% form_tag userd_path do %>
 <h2 class="page">Delete My Account</h2>
 
   <%if @error_pas %><p style="color: red; font-weight: bold; text-align: center"> Password is incorrect</p> <%end%>
@@ -39,7 +42,7 @@
 	</tr>
 </table>
 
-
+<%end%>
 </div>
 </div>
 </div>
@@ -49,7 +52,7 @@
 </div>			   
 </div>			   
 
-<%end%>
+
 
 <script type="text/javascript">
 currentSection="login";

@@ -1,5 +1,5 @@
 <% @page_title = 'Russian Lessons Online: Lesson 2' %>
-<% @page_meta = {'description' => "Online Russian lesson which helps to learn basic Russian words and phrases related to transport"} %>
+<% @page_meta = {'description' => "Online Russian lesson which helps to learn basic Russian words and phrases related to transport", 'robots' => "noindex" } %>
 <% @with_rec = true %>
 <% @has_audio = true %>
 
@@ -49,6 +49,9 @@ padding-bottom: 20px;
 
 
 <h2 class="page">Lesson 2 </h2>
+<% if !(logged_in? && current_user.payment) %>
+	<%=@hide_title%>
+<% end %>
 <hr>
 <h3 class="exers">I. Transport</h3>
 
@@ -60,6 +63,11 @@ padding-bottom: 20px;
 A tourist looks for the ticket office in the underground. He asks a passer-by where it is situated and he asks about the fare in the underground as well.
 </p>
 
+<% if !(logged_in? && current_user.payment) %>
+
+	<%= @hide_html %> 
+	
+<% else %>
 
 <table class="audio-task" cellspacing="0">        
 	<tr>
@@ -187,6 +195,8 @@ A tourist looks for the ticket office in the underground. He asks a passer-by wh
 	</tr>
 </table>
 </div>
+<%end%>
+
 
 <h3>2. Taxi</h3>
 
@@ -194,6 +204,11 @@ A tourist looks for the ticket office in the underground. He asks a passer-by wh
 A tourist is going to take a taxi in order to get to the hotel. He asks the taxi driver if he is free and how much it will cost to go to the hotel.
 </p>
 
+<% if !(logged_in? && current_user.payment) %>
+
+	<%= @hide_html %> 
+	
+<% else %>
 
 <table class="audio-task" cellspacing="0">        
 	<tr>
@@ -340,12 +355,19 @@ A tourist is going to take a taxi in order to get to the hotel. He asks the taxi
 </table>
 </div>
 
+<%end%>
+
 <h3>3. Bus</h3>
 <p>
 
 A tourist takes a bus. He asks another passanger how many stops he should take to get to the Lenin square.
 </p>
 
+<% if !(logged_in? && current_user.payment) %>
+
+	<%= @hide_html %> 
+	
+<% else %>
 
 <table class="audio-task" cellspacing="0">        
 	<tr>
@@ -438,6 +460,8 @@ A tourist takes a bus. He asks another passanger how many stops he should take t
 </table>
 </div>
 
+<% end %>
+
 <p class="task" style="padding-top: 20px;">b) Listen and repeat the dialogue phrase by phrase. </p>
 <p class="task">c) Listen to the phrases in Russian and choose the right translation.</p>
 <div id="test1">
@@ -448,6 +472,12 @@ T['3']=['4','3','1','8','6']; // For Test#3
 T['4']=['100','10','80','20','60']; // For Test#3
 </script>
 </div>
+
+<% if !(logged_in? && current_user.payment) %>
+
+	<%= @hide_html %> 
+	
+<% else %>
 
 <form onsubmit="return check_test(this,1, 'c0102013.I.c)')">
 <table class="tbtest" cellspacing="0" cellpadding="3" align="center">
@@ -563,6 +593,7 @@ T['4']=['100','10','80','20','60']; // For Test#3
 </div>
 
 </form>
+<%end%>
 <hr>
 <h3 class="exers">II. Where is the bus stop?</h3>
 <p>In the previous lesson you learned the following expression in Russian:</p>
@@ -754,6 +785,11 @@ T['4']=['100','10','80','20','60']; // For Test#3
 
 <p class="task">b) Ask a stranger, where is:</p>
 
+<% if !(logged_in? && current_user.payment) %>
+
+	<%= @hide_html %> 
+	
+<% else %>
 
 <div class="task_transl">
 <table class="tab1 inter"  cellspacing="0" >
@@ -841,6 +877,7 @@ T['4']=['100','10','80','20','60']; // For Test#3
 	</tr>
 </table>
 </div>
+<%end%>
 <hr>
 
 <h3 class="exers">III. To the airport! </h3>
@@ -927,6 +964,13 @@ T['4']=['100','10','80','20','60']; // For Test#3
 </div>
 
 <p class="task">b) Look at the pictures and answer the questions following the model:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+
+	<%= @hide_html %> 
+	
+<% else %>
+
 <table  cellspacing="0" >      
 	<tr valign="top">
 
@@ -1065,9 +1109,15 @@ T['4']=['100','10','80','20','60']; // For Test#3
 </table>
 </div>
 
-
+<%end%>
 
 <p class="task">c) Translate into Russian and check yourself:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+
+	<%= @hide_html %> 
+	
+<% else %>
 
 <div class="task_transl">
 <table class="tab1 inter"  cellspacing="0" >
@@ -1155,7 +1205,7 @@ T['4']=['100','10','80','20','60']; // For Test#3
 
 </table>
 </div>
-
+<%end%>
 <hr>
 
 <h3 class="exers">IV. I need to go to the hotel.</h3>
@@ -1258,6 +1308,12 @@ T['4']=['100','10','80','20','60']; // For Test#3
 
 <p class="task">b) Translate into Russian and check yourself:</p>
 
+<% if !(logged_in? && current_user.payment) %>
+
+	<%= @hide_html %> 
+	
+<% else %>
+
 <div class="task_transl">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
@@ -1343,6 +1399,7 @@ T['4']=['100','10','80','20','60']; // For Test#3
 	</tr>
 </table>
 </div>
+<%end%>
 
 <hr>
 
@@ -1416,6 +1473,12 @@ T['4']=['100','10','80','20','60']; // For Test#3
 
 <p class="task">b) Listen to the mini-dialogues and do the following tasks:</p>
 
+<% if !(logged_in? && current_user.payment) %>
+
+	<%= @hide_html %> 
+	
+<% else %>
+
 <table class="mini-dialog" cellpadding="0" cellspacing="0" border="0">
 	<tr>
 		<td>
@@ -1463,6 +1526,7 @@ T['4']=['100','10','80','20','60']; // For Test#3
 		<input type="submit" value="Check yourself">
 
 </form>
+<%end%>
 <br>
 <hr>
 
@@ -1567,6 +1631,12 @@ T['4']=['100','10','80','20','60']; // For Test#3
 
 <p class="task">b) Translate into Russian and check yourself:</p>
 
+<% if !(logged_in? && current_user.payment) %>
+
+	<%= @hide_html %> 
+	
+<% else %>
+
 <div class="task_transl">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
@@ -1652,6 +1722,7 @@ T['4']=['100','10','80','20','60']; // For Test#3
 	</tr>
 </table>
 </div>
+<%end%>
 
 <hr>
 <h3 class="exers">VII. Numerals</h3>
@@ -1827,6 +1898,12 @@ T['4']=['100','10','80','20','60']; // For Test#3
 
 <p class="task">Look at the following examples of these numerals with the noun <span class="norm_txt"><em>остановка&nbsp;<span class="s-ound" style="clear: left;" onclick="playAudio('audio0102-3003.mp3')">[astanofka]<span class="p-lay_tip">&nbsp;</span></span></em></span> - stop:</p>
 
+<% if !(logged_in? && current_user.payment) %>
+
+	<%= @hide_html %> 
+	
+<% else %>
+
 <table cellpadding="0" cellspacing="0" border="0">
 	<tr>
 
@@ -1993,8 +2070,15 @@ T['4']=['100','10','80','20','60']; // For Test#3
 		</td>
 	</tr>
 </table>
+<%end%>
 
 <p class="task">Look at the following examples of these numerals with the noun <span class="norm_txt"><em>рубль&nbsp;<span class="so-und" style="clear: left;" onclick="playAudio('audio-02071301.mp3')">[roobl]<span class="pl-ay_tip">&nbsp;</span></span></em></span> - ruble:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+
+	<%= @hide_html %> 
+	
+<% else %>
 
 <table cellpadding="0" cellspacing="0" border="0">
 	<tr>
@@ -2161,8 +2245,14 @@ T['4']=['100','10','80','20','60']; // For Test#3
 		</td>
 	</tr>
 </table>
-
+<%end%>
 <p class="task">b) Listen to the mini-dialogues and do the following tasks:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+
+	<%= @hide_html %> 
+	
+<% else %>
 
 
 <table class="mini-dialog" cellpadding="0" cellspacing="0" border="0">
@@ -2233,6 +2323,8 @@ T['4']=['100','10','80','20','60']; // For Test#3
 <p><input type="submit" value="Check">
 
 </form>
+
+<%end%>
 
 <p class="task">c) Learn the following numerals in Russian:</p>
 
@@ -2409,6 +2501,12 @@ T['4']=['100','10','80','20','60']; // For Test#3
 
 <p class="task">Look at the following examples:</p>
 
+<% if !(logged_in? && current_user.payment) %>
+
+	<%= @hide_html %> 
+	
+<% else %>
+
 <table cellpadding="0" cellspacing="0" border="0">
 	<tr>
 
@@ -2507,9 +2605,13 @@ T['4']=['100','10','80','20','60']; // For Test#3
 
 	</tr>
 </table>
+<%end%>
 
 <p class="task">d) Listen to the mini-dialogues and do the following tasks:</p>
 
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <table class="mini-dialog" cellpadding="0" cellspacing="0" border="0">
 	<tr>
@@ -2577,6 +2679,9 @@ T['4']=['100','10','80','20','60']; // For Test#3
 <p><img src="pixel.gif" width="10" height="10" id="r45"> It costs <input type="text" align="center" size=1> rubles to go to the Pushkin square by taxi.</p>
 <p><input type="submit" value="Check">
 </form>
+
+<%end%>
+
 <hr>
 
 <h3>In this lesson you have learnt:</h3> 

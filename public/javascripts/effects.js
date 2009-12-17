@@ -888,7 +888,7 @@ function openTab() {
 $(document).ready(function(){
 
 if ( $("#navigation input#email").length==1) {
-	InputHelperCreate( $( "input#email" ).get(0), ' enter your email' );
+	//InputHelperCreate( $( "input#email" ).get(0), ' email address' );
 	//InputHelperCreate( $( "input#password" ).get(0), 'password' );
 	
 }else {
@@ -936,9 +936,13 @@ function InputHelperOut(obj, text){
 
 
 function sendResults(id, total, right) {
-    if (!id || !total) return false;
+    if (!id || !total) {
+		return false;
+	}else{
+	
     if (!right) right = 0;
     $.get("/set_stat?test_id="+id+"&total="+ total+"&correct="+right ); 
+	}
 }
 
 

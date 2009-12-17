@@ -3,9 +3,14 @@
 <% @with_rec = true %>
 <% @has_audio = true %>
 
+
+
+<% content_for :special_js_css do %>
 <%= stylesheet_link_tag 'stylesounds' %>
 
-<% content_for :special_css do %>
+<style type="text/css">
+h2.page {margin-bottom: 0px;}
+
 .sound-letter td {
 width: 20%;
 }
@@ -13,6 +18,7 @@ width: 20%;
 font-style: italic;
 font-family: Times New Roman;
 }
+</style>
 <% end %>
 
 <div class="hint_wrap">
@@ -39,7 +45,14 @@ font-family: Times New Roman;
 
 
 <h2 class="page">Stress and reduction of vowels</h2>
- 
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="russian-reading.html">Reading in Russian</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="readingrules.html">Rules of reading</a>
+	<span class="int-arrow">--&gt;</span> Stress and reduction of vowels
+	</span>
+</h3>
 
 <h3>Stress</h3>
 <p>
@@ -57,7 +70,7 @@ In Russian, unstressed vowels are not pronounced as distinctly as stressed vowel
 In unstressed position there are no alterations in reading of letters <span class="letter">и</span>, <span class="letter">ы</span>, <span class="letter">у</span>, <span class="letter">ю</span>. Letter <span class="letter">ё</span> is always in stressed position, that is why it is read either as <span class="sound" onclick="playSound('sound107.mp3')">[yo]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span> (at the beginning of the word, after vowels, <em>ь</em> and <span class="letter">ъ</span>) or as <span class="sound" onclick="playSound('sound203.mp3')">[o]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span> (after consonants). 
 </p>
 <p>
-The letter <span class="letter">а</span> denotes a short neutral sound <span class="sound" onclick="playSound('sound252.mp3')">[&#x259] <span class="play_tip">&nbsp; &nbsp;</span></span> which is similar to the final sound in the English word <em>water</em>. It should be mentioned that we will not indicate this nuance of the pronunciation since we consider it not very important for those who begin to learn Russian. On our site you will see in transcriptions that letter <span class="letter">а</span> denotes sound <span class="sound" onclick="playSound('sound201.mp3')">[a] <span class="play_tip">&nbsp; &nbsp;</span></span> both in stressed and unstressed positions. 
+The letter <span class="letter">а</span> denotes a short neutral sound <span class="sound" onclick="playSound('sound252.mp3')">[ə] <span class="play_tip">&nbsp; &nbsp;</span></span> which is similar to the final sound in the English word <em>water</em>. It should be mentioned that we will not indicate this nuance of the pronunciation since we consider it not very important for those who begin to learn Russian. On our site you will see in transcriptions that letter <span class="letter">а</span> denotes sound <span class="sound" onclick="playSound('sound201.mp3')">[a] <span class="play_tip">&nbsp; &nbsp;</span></span> both in stressed and unstressed positions. 
 </p>
 <p>
 Other letters are read in unstressed positions as follows: 

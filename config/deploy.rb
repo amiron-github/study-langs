@@ -33,6 +33,6 @@ set :scm, :git
 set :branch, "master"
 #set :scm_user, 'devel2'
 #set :scm_passphrase, "PASSWORD"
-set :repository, "#{scm_username}@svn.licenzero.ru:/home/devel2/studylanguagesonline.git"
+set :repository, "dalles@svn.licenzero.ru:/home/devel2/studylanguagesonline.git"
 set :deploy_via, :remote_cache
 

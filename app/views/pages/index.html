@@ -2,7 +2,7 @@
 <% @page_meta = {'description' => "Russian language learning: online courses, vocabulary topics, pronunciation training", 'verify-v1' => "fRSaz4QoyTycTJLUZnk+AtNsVP8u9B3CorQMEuDuHLM="} %>
 
 <% content_for :special_js_css do %>
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://localhost:3000/rss.xml" >
+<link rel="alternate" type="application/rss+xml" title="RSS" href="<%=APP_CONFIG[:site_url]%>/rss.xml" >
 <%end%>
 
 <h2  class="page">Welcome to our website!</h2>
@@ -13,6 +13,14 @@ The main purpose of this site is to give an opportunity for all interested peopl
 <p>
 On our site you can find different materials for studying of the Russian language which would be useful <a href="recommendations.html" title="Recommendations for Beginners">for beginners</a> as well as for those who have some experience with Russian. The <a href="course.html" title="Course of Russian">online course of Russian</a> on our site can help those who have never studied the Russian language and those who want to reinforce their skills in Russian. 
 </p>
+
+<div class="imp-info">
+<div class="info-icon">
+</div>
+<p>
+The <a href="course.html"><strong>course of Russian</strong></a> is free only for a limited period of time. Soon, it will be available only for subscribed users. If you wish to subscribe to this course, please, <a href="/signup">Sign Up</a> or <a href="/login">Sign In</a> and follow the instructions for a free one year subscription.
+</p>
+ </div>
 
 <p style="te_xt-align: center;">Below you'll find a short description of main sections on our website and some links which may be useful for you:</p>
 <div id="sections">
@@ -33,8 +41,7 @@ On our site you can find different materials for studying of the Russian languag
     					Find an easy way to learn Russian with 10 lessons course. This course will give you an opportunity to really comunicate with Russian people.
     					</p>
     					<p>The course of Russian consists of ten lessons. Every lesson is devoted to a definite topic. The topics studied in the course cover typical situations which a person visiting Russia may get into. You will learn the most frequently used words and expressions related to the topic of the lesson, and you will find exercises and test for these words and expressions.There are also dialogues which demonstrate how studied words and expressions may be used in a real situations.</p>
-    					
-					
+    										
 					</div>
 					</div>
 				</div>
@@ -203,12 +210,11 @@ You may also find it interesting to take a look of our blog <a href="http://slod
 <div class="last-updates">
  <h3><span class="note"> <a href="rss.xml" class="rss-link" title="Subscribe"></a>  Last Updates on Study-Languages-Online.com  </span> </h3>
  <ul>
- 
+	<li>- Our users can save and review their results of the tests and exercises now. See the <a href="/signup">Registration page</a></li>
 	<li>- Article about <a href="russian-demonstrative-pronouns.html">Russian Demonstrative Pronouns</a></li>
 	<li>- Article about <a href="russian-nouns-gender.html">Russian Nouns Gender</a></li>
 	<li>- Article about <a href="russian-possessive-pronouns.html">Russian Possessive Pronouns</a></li>
 	<li>- Article about <a href="russian-gender.html">Gender in Russian</a></li>
-	<li>- Article about <a href="russian-personal-pronouns.html">Russian Personal Pronouns</a></li>
 
  </ul>
 </div>

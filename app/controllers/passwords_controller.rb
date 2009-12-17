@@ -12,7 +12,6 @@ class PasswordsController < ApplicationController
   def create
     @password = Password.new(params[:password])
     @password.user = User.find_by_email(@password.email)
-    
     respond_to do |format|
       if @password.save
         PasswordMailer.deliver_forgot_password(@password)
@@ -37,13 +36,13 @@ class PasswordsController < ApplicationController
 
   def update_after_forgetting
     @user = Password.find_by_reset_code(params[:reset_code]).user
-    
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        flash[:notice] = 'Password was successfully updated.'
-        format.html { redirect_to(:action => :reset, :reset_code => params[:reset_code]) }
+#        flash[:notice] = 'Password was successfully updated.'
+	@success="ok"
+        format.html { render(:action => :reset, :reset_code => params[:reset_code]) }
       else
-        flash[:notice] = 'EPIC FAIL!'
+#        flash[:notice] = 'EPIC FAIL!'
         format.html { redirect_to(:action => :reset, :reset_code => params[:reset_code]) }
       end
     end

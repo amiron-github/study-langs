@@ -1,12 +1,23 @@
 <% @page_title = 'Study-Languages-Online.com: Profile' %>
 <% @page_meta = {'description' => "User Profile"} %>
 
+<!-- !!! -->
+
 
 <% content_for :special_js_css do %>
 <%= stylesheet_link_tag 'profile' %>
  <%= javascript_include_tag 'profile_results' %>
 
 
+<script type="text/javascript">
+	
+$(document).ready(function () {
+
+var toTab='<%= params[:tab] %>';
+ $('#tab0'+toTab).click();
+});
+
+</script>	
 
 <style type="text/css">
 
@@ -33,7 +44,7 @@ font-weight: bold;
 <div id="prof_tabs">
 	<div id="tabs_row">
             <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Profile</a></div></div>
-            <div id="tab02" class="ptab"><div><a href="#">Progress</a></div></div>
+            <div id="tab02" class="ptab"><div><a href="#">Results</a></div></div>
             <div id="tab03" class="ptab"><div><a href="#">Settings</a></div></div>
 	</div>
 	<div style="clear: both;"></div>
@@ -46,9 +57,10 @@ font-weight: bold;
 	<div class="inpBlock">
 	
 		<h3>Profile</h3>
-		<hr/>
-		<p style="font-size: 10px; font-style: italic;">* You can change your profile info in the tab <strong>Settings</strong></p>
 		
+		<p style="font-size: 10px; font-style: italic;">* You can change your profile info in the tab <strong>Settings</strong></p>
+		<hr/>
+		<div class="pr_hsp"> 
 		<table cellpadding="0" cellspacing="20">
 		<tr>
 			<td class="item-name" width="200">Email: 
@@ -63,6 +75,49 @@ font-weight: bold;
 			</td>
 		</tr>
 		</table>
+		</div>
+	
+	
+	
+	
+		<% if current_user.payment%>
+
+<hr/>
+<p class="ital"> <strong>Subscriptions</strong></p>
+
+<p class="ital">You have the following subscriptions:</p>
+
+<table class="st-table">
+	<tr>
+        <th>Name</th>
+        <th>Status</th>
+        <th class="thbrd">Expiration Date</th>
+    </tr>
+    <tr>
+        <td height="50" style="padding: 15px;">One year subscription to the <a href="course.html">Course of Russian</a><a/></td>
+        <td style="padding: 15px;"><em>Active</em></td>
+        <td style="padding: 15px;"><%= current_user.expired %></td>
+    </tr>
+</table>
+		
+		
+	
+
+		<% else %>
+
+			<hr/>
+<p class="ital"> <strong>Subscriptions</strong>: <span class="ital" style="font-size: 11px"> You have no subscriptions </span> </p>
+<p style="font-size: 11px; margin-bottom:10px; margin-top: 40px">Subscriptions offered by <span class="ital bold">Study-Languages-Online.com</span>:</p>
+<div style="font-size: 12px" class="sbcr-free"> - One year subscription to the <strong>Course of Russian</strong>: 
+			
+			
+				<form action='/gettrial'>
+				<input type=submit value='SUBSCRIBE NOW FOR FREE'>
+				</form>
+</div>
+
+		<%end%>
+
 		
 
 	</div>
@@ -70,9 +125,15 @@ font-weight: bold;
 <div id="for_tab02" class="pBlock" style="display: none">
 	<div class="inpBlock">
 		
-		<h3>Content: </h3>
+		<h3>Tests and exercises results: </h3>
+		<p style="font-size: 10px; font-style: italic;">* You can delete all the results in the tab <strong>Settings</strong></p>
 		
-        <div id="results_container"></div>
+		<div id="no_results"  class="bold"><hr/> You have no results yet.</div>
+		
+        <div id="results_container">
+		
+		
+		</div>
 		
 		
 	
@@ -82,6 +143,7 @@ font-weight: bold;
 	<div class="inpBlock">
 	
 		<h3>Account Settings: </h3>
+		<p style="font-size: 10px; font-style: italic;">* Click the links below to perform the following actions</p>
 		<hr/>
 	   
 	   <table cellpadding="0" cellspacing="20">

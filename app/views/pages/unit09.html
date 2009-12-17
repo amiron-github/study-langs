@@ -1,5 +1,5 @@
 <% @page_title = 'Russian Lessons Online: Lesson 9' %>
-<% @page_meta = {'description' => "Online Russian lesson which helps to learn basic Russian words and phrases related to currency exchange"} %>
+<% @page_meta = {'description' => "Online Russian lesson which helps to learn basic Russian words and phrases related to currency exchange", 'robots' => "noindex"} %>
 <% @with_rec = true %>
 <% @has_audio = true %>
 
@@ -62,7 +62,9 @@ padding: 4px;
 
 
 <h2 class="page">Lesson 9</h2>
-
+<% if !(logged_in? && current_user.payment) %>
+	<%=@hide_title%>
+<% end %>
 <hr>
 <h3 class="exers">I. Currency exchange</h3>
 
@@ -75,6 +77,9 @@ padding: 4px;
 A tourist comes to the bank. She wants to changes euros for rubles. The bank teller tells her that the exchange value of euro is 40 rubles. The tourist changes 300 euros. She thanks the teller and says goodbye.
 </p>
 
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <table class="audio-task" cellspacing="0">        
 	<tr>
@@ -311,11 +316,13 @@ A tourist comes to the bank. She wants to changes euros for rubles. The bank tel
 	</tr>
 </table>
 </div>
-
+<%end%>
 <p style="margin-top: 25px;">
 A tourist asks a passer-by where the nearest cash machine is. The passer-by answers that there is a cash maсhine near the shop. The tourists also asks whether that cash machine accepts VISA cards.
 </p>
-
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <table class="audio-task" cellspacing="0">        
 	<tr>
@@ -443,7 +450,7 @@ A tourist asks a passer-by where the nearest cash machine is. The passer-by answ
 
 </table>
 </div>
-
+<%end%>
 <p class="task" style="padding-top: 20px;">b) Listen and repeat the dialogues phrase by phrase. </p>
 <p class="task">c) Listen to the phrases in Russian and choose the right translation.</p>
 <div id="test1">
@@ -458,7 +465,9 @@ T['7']=['5','4','2','1','3'];
 
 </script>
 </div>
-
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 <form onsubmit="return check_test(this,1, 'c0109013.I.c)')">
 <table class="tbtest" cellspacing="0" cellpadding="3" align="center">
 	<tr>
@@ -598,6 +607,7 @@ T['7']=['5','4','2','1','3'];
 	<input type="submit" value="Check">
 </div>
 </form>
+<%end%>
 <hr>
 <h3 class="exers">II. Money, money, money.</h3>
 
@@ -757,6 +767,10 @@ T['7']=['5','4','2','1','3'];
 
 <p class="task">b) Listen to the questions in Russian and find the corresponding answers:</p>
 
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
+
 <form onsubmit="return check_test(this,2, 'c0109022.II.b)')">
 <table class="tbtest" cellspacing="0" cellpadding="3" align="center">
 	<tr>
@@ -871,6 +885,8 @@ T['7']=['5','4','2','1','3'];
 	<input type="submit" value="Check">
 </div>
 </form>
+<%end%>
+
 <hr>
 
 <h3 class="exers">III. Bank.</h3>
@@ -1001,15 +1017,22 @@ T['7']=['5','4','2','1','3'];
 
 <p class="task">b) Read the English word and choose the corresponding translation in Russian:</p>
 
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
+
 <div id="t1">
 <script type="text/javascript">
 var t1 = new Test({dict: [['bank','банк'],['cash machine','банкомат'],['currency exchange','обмен валюты'],['currency exchange office','обменный пункт'],['count','счёт'],
 ['exchange rate','обменный курс'],['currency','валюта'],['amount','сумма']],hide: 'di1',id:'t1',type: 'text', how_questions: 8, how_show: 2}, 'c0109032.III.b)');
 </script>
 </div>
-
+<%end%>
 <p class="task">c) Ask a stranger where is:</p>
 
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <div class="task_transl">
 <table class="tab1 inter"  cellspacing="0" >
@@ -1081,11 +1104,16 @@ var t1 = new Test({dict: [['bank','банк'],['cash machine','банкомат'
 	</tr>
 </table>
 </div>
+<%end%>
 <hr>
 
 <h3 class="exers">IV. Bank transactions</h3>
 
 <p class="task">a) Learn the following expressions:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <div class="voc_inter">
 
@@ -1165,9 +1193,11 @@ var t1 = new Test({dict: [['bank','банк'],['cash machine','банкомат'
 </table>
 
 </div>
-
+<%end%>
 <p class="task">b) Using the expression "<span style="font-weight: normal">мн<span class="acco">е</span> н<span class="acco">у</span>жно</span>" [m<span class="sftv">n</span><span class="sfty">y</span><span class="acct">e</span> n<span class="acct">oo</span>jna], translate into Russian and check yourself:</p>
-
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 <div class="task_transl">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
@@ -1270,12 +1300,14 @@ var t1 = new Test({dict: [['bank','банк'],['cash machine','банкомат'
 
 </table>
 </div>
-
+<%end%>
 <p class="task">
 c) Listen to the dialogues and putting an appropriate numeral in the text area. 
 In the dialogues you may hear the expression <span onMouseover="tooltip(this,' [kakooyoo soommoo?] ')" onMouseout="hide_info(this)">"<span class="txt-norm">Какую сумму?</span>"</span> which means "what amount?" or "how much?":
 </p>
-
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 <table cellspacing="0">        
 	<tr>
 		<td><p><span class="bold">Dialogue 1</span></p>
@@ -1330,7 +1362,7 @@ In the dialogues you may hear the expression <span onMouseover="tooltip(this,' [
 	 </tr>
 	<tr>
 		<td>
-		<form onsubmit="return check_test(this,4, 'c0109043.IV.c)')" style="margin-bottom: 0px;">
+		<form onsubmit="return check_test(this,4)" style="margin-bottom: 0px;">
 		<div style="padding: 15px 0px;"><img src="pixel.gif" width="10" height="10" id="r41"> - The tourist wants to exchange  <input type="text" size=2> dollars for rubles.</div>
 
 		<div style="padding-left: 300px;"><input type="submit" value="Check"></div>
@@ -1401,7 +1433,7 @@ In the dialogues you may hear the expression <span onMouseover="tooltip(this,' [
 
 	</tr>
  </table>
-
+<%end%>
 <hr>
 
 <h3 class="exers">V. I'd like to exchange dollars!</h3>
@@ -1450,6 +1482,10 @@ In the dialogues you may hear the expression <span onMouseover="tooltip(this,' [
 </table>
 
 <p class="task">a) Look, listen and reapeat the examples:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <table  cellspacing="0" >
 	<tr valign="top">
@@ -1511,8 +1547,11 @@ In the dialogues you may hear the expression <span onMouseover="tooltip(this,' [
 	</tr>
 
 </table>
-
+<%end%>
 <p class="task">b) Find the translation for the following phrases:</p>
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <form onsubmit="return check_test(this,7, 'c0109052.V.b)')">
 <table id="testing7" cellspacing=0 align="center">
@@ -1570,8 +1609,11 @@ In the dialogues you may hear the expression <span onMouseover="tooltip(this,' [
 	</tr>
  </table>
 </form>
-
+<%end%>
 <p class="task">c) Translate into Russian and check yourself:</p>
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <div class="task_transl">
 <table class="tab1 inter"  cellspacing="0" >
@@ -1675,7 +1717,7 @@ In the dialogues you may hear the expression <span onMouseover="tooltip(this,' [
 
 </table>
 </div>
-
+<%end%>
 <hr>
 
 <h3 class="exers">VI. A problem with device.</h3>
@@ -1751,6 +1793,10 @@ In the dialogues you may hear the expression <span onMouseover="tooltip(this,' [
 </table>
 
 <p class="task">a) Give a negative answer to the questions following the model:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <p class="ital">Model:</p>
 
@@ -1897,8 +1943,11 @@ In the dialogues you may hear the expression <span onMouseover="tooltip(this,' [
 			</td>
 	</tr>
 </table>
-
+<%end%>
 <p class="task">b) Translate into Russian and check yourself:</p>
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <div class="task_transl">
 <table class="tab1 inter"  cellspacing="0" >
@@ -2002,7 +2051,7 @@ In the dialogues you may hear the expression <span onMouseover="tooltip(this,' [
 	</tr>
 </table>
 </div>
-
+<%end%>
 <hr>
 
 <h3>In this lesson you have learnt:</h3>  

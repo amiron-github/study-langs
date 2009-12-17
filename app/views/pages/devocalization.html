@@ -3,9 +3,16 @@
 <% @with_rec = true %>
 <% @has_audio = true %>
 
+
+
+
+
+
+<% content_for :special_js_css do %>
 <%= stylesheet_link_tag 'stylesounds' %>
 
-<% content_for :special_css do %>
+<style type="text/css">
+h2.page {margin-bottom: 0px;}
 .sound-letter td {
 width: 20%;
 }
@@ -13,6 +20,7 @@ width: 20%;
 font-style: italic;
 font-family: Times New Roman;
 }
+</style>
 <% end %>
 
 <div class="hint_wrap">
@@ -39,6 +47,14 @@ font-family: Times New Roman;
 
 
 <h2 class="page">Devocalization and Vocalization <br/>of Consonants</h2>
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="russian-reading.html">Reading in Russian</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="readingrules.html">Rules of reading</a>
+	<span class="int-arrow">--&gt;</span> Devocalization and Vocalization
+	</span>
+</h3>
 <p> 
 An important feature of the Russian phonetic system is the opposition of voiced consonants vs. unvoiced consonants. Voiced consonants are pronounced with vibration of vocal cords, while unvoiced consonants are pronounced with little or no vibration of vocal cords. There are 11 pairs of voiced vs. unvoiced consonants: [b - p, b' - p', v - f, v' - f', z - s, z' - s', d- t, d' - t', g - k, g' - k', j - sh]. Other consonants do not have pairs, these are voiced consonants [m, m', n, n', l, l', r, r', y] and unvoiced consonants [ts, ch, h, sch].
 <br />

@@ -6,7 +6,7 @@ class UserMailer < ActionMailer::Base
     @body[:url]  = "http://study-languages-online.com/activate/#{user.activation_code}"
   
   end
-  
+
   def activation(user)
     setup_email(user)
     @subject    += 'Your account has been activated!'
@@ -16,7 +16,7 @@ class UserMailer < ActionMailer::Base
   protected
     def setup_email(user)
       @recipients  = "#{user.email}"
-      @from        = "support@study-languages-online.com"
+      @from        = APP_CONFIG[:support_email]
       @subject     = "[Study Languages Online] "
       @sent_on     = Time.now
       @body[:user] = user

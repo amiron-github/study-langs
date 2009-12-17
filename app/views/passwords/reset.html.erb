@@ -1,17 +1,18 @@
-<h1>Reset your password</h1>
+<h2>Reset your password</h2>
 
 <% form_for(:user, :url => { :action => 'update_after_forgetting' }) do |f| %>
+
   <%= f.error_messages %>
 
   <p>Please enter a new password and confirm it.</p>
 
   <p>
-    <%= f.label :password %><br />
+    <%= f.label :password %><br/>
     <%= f.password_field :password %>
   </p>
 
   <p>
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation %><br/>
     <%= f.password_field :password_confirmation %>
   </p>
 
@@ -20,3 +21,9 @@
     <%= f.submit "Submit" %>
   </p>
 <% end %>
+
+
+
+<%if @success%>
+<p style="color: blue; font-weight: bold;"> New password has been saved </p>
+<%end%>

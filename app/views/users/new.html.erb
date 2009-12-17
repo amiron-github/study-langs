@@ -1,4 +1,4 @@
-<% @page_title = 'Registration' %>
+<% @page_title = 'Sign Up' %>
 <% @page_meta = {'description' => "Registration for Study Languages Online"} %>
 
 
@@ -8,20 +8,6 @@
 
 <style type="text/css">
 
-
-
-.login_form_wrapper {
-text-align: center;
-}
-
-#login_form {
-width: 400px;
-margin: 0px auto;
-border: 1px solid #888;
-min-height: 300px;
-height: auto !important;
-height: 300px;
-}
 
 .errorExplanation {
 text-align: left;
@@ -39,40 +25,6 @@ margin: 40px 30px 30px;
 
 .errorExplanation li {
 font-size: 11px;
-}
-
-#login_title {
-background-color: #DFDFDF;
-border-bottom: 1px solid #888;
-font-size: 20px;
-color: #666;
-padding: 5px 0px;
-margin-bottom:20px;
-}
-
-.login_wrap {
-margin: 40px 30px 30px;
-}
-
-.login_wrap input {
-width: 150px;
-}
-
-.login_wrap div {
-margin-bottom: 15px;
-}
-
-span.log_item {
-width: 150px;
-display: block;
-float: left;
-font-weight: bold;
-text-align: right;
-
-}
-
-.submit_log input {
-font-size: 15px;
 }
 
 </style>
@@ -99,13 +51,9 @@ $(document).ready(function() {
 <% end %>
 
 
-
-
-
-
-<% form_for :user, :url => users_path do |f| -%>
 		
 <div class="module mod-in-log">
+<br/>
 <div class="module-top">
 	<div class="module-t-left"></div>
 	<div class="module-t-right"></div>
@@ -113,9 +61,12 @@ $(document).ready(function() {
 <div class="module-right">
 <div class="module-left">
 <div class="module-content">
+
+<% form_for :user, :url => users_path do |f| -%>
+
 <h2 class="page">It's your first visit? Welcome!</h2>
 		
-<p align="center"><a href="login" style="font-size: 11px; font-weight: bold;">Already registered? Click here to login</a></p>
+<p align="center"><a href="login" style="font-size: 11px; font-weight: bold;">Already registered? Click here to sign in</a></p>
 
 <%= error_messages_for :user %>
 
@@ -145,6 +96,8 @@ $(document).ready(function() {
 		</td>
 	</tr>
 </table>		
+
+<% end -%>
 		
 </div>
 </div>
@@ -156,8 +109,13 @@ $(document).ready(function() {
 </div>		
 		
 		
+<p>The registration allows you to save and review the results of the exercises and tests that you have done on our site. In your account, you can find the results of each exercise and test, as well as overall results of all exercises and tests for a lesson or a topic.</p> 
 
-<% end -%>
+<p>The results of exercises and tests are shown in percents (%), i.e. they demonstrate the relation between correct answers and total number of answers. For example, if you have answered correctly to 4 from 5 questions, the result of the exercise is 80 %. </p>
+
+<p>The knowledge of your own results may give you the global vision of your progress in learning the language and it help you to better control and plan your studies.</p>
+
+
 		
 	
 

@@ -1,6 +1,7 @@
 log/*.log
 tmp/**/*
 *.swp
+*/Thumbs.db
 public/photos
 public/system
 *.*~

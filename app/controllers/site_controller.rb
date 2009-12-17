@@ -33,10 +33,12 @@ class SiteController < ApplicationController
       @javascripts << 'vocabulary'
     end
 
+	@hide_html = '<div class="hidden_content">Available for subscribed users</div>'
+	@hide_title= '<div class="hidden_content" style="font-size: 18px;">The full version of the lesson is available for subscribed users</div>'
+	
     if ((@file=='/user_profile.html' )&& (!current_user ))
     redirect_back_or_default('/')
     else
-    print "pages#{@file}.erb"+"____________________________"
     render :file => "pages#{@file}.erb", :layout => layout	
     end
 

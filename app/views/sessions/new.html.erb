@@ -1,75 +1,16 @@
-<% @page_title = 'Login' %>
+<% @page_title = 'Sign In' %>
 <% @page_meta = {'description' => "Log in Study Languages Online"} %>
 
 
 
 <% content_for :special_js_css do %>
-<%= stylesheet_link_tag 'stylesounds' %>
-
-<style type="text/css">
-
-
-
-.login_form_wrapper {
-text-align: center;
-}
-
-#login_form {
-width: 400px;
-margin: 0px auto;
-border: 1px solid #888;
-height: 300px;
-}
-
-#login_title {
-background-color: #DFDFDF;
-border-bottom: 1px solid #888;
-font-size: 20px;
-color: #666;
-padding: 5px 0px;
-margin-bottom: 20px;
-}
-
-.login_wrap {
-margin: 40px 30px 30px;
-}
-
-.login_wrap input {
-width: 150px;
-}
-
-.login_wrap div {
-margin-bottom: 15px;
-}
-
-span.log_item {
-width: 85px;
-display: block;
-float: left;
-font-weight: bold;
-text-align: right;
-
-}
-
-.submit_log input {
-font-size: 15px;
-}
-
-
-
-</style>
 
 
 <% end %>
 
-
-
-
-
-<% form_tag session_path do %>
-
-
 <div class="module mod-in-log">
+<br/>
+
 <div class="module-top">
 	<div class="module-t-left"></div>
 	<div class="module-t-right"></div>
@@ -77,11 +18,19 @@ font-size: 15px;
 <div class="module-right">
 <div class="module-left">
 <div class="module-content">
-<h2 class="page">Log In</h2>
 
-<p align="center"><a href="signup" style="font-size: 11px; font-weight: bold;">No account yet? Click here to register</a></p>
+<% form_tag session_path do %>
 
-<%if @error_pas %> <p style="text-align: center; color: red; font-weight: bold;">ERROR: Email does not match password<%end%>
+<h2 class="page">Sign In</h2>
+
+<p align="center"><a href="signup" style="font-size: 11px; font-weight: bold;">No account yet? Click here to sign up</a></p>
+
+<%if @error_pas %> <p style="text-align: center; color: red; font-weight: bold;">ERROR: Email does not match password </p><%end%>
+
+
+<%if flash[:notice]%>
+<p style="text-align: center; color: blue; font-weight: bold;"> <%= flash[:notice] %> </p>
+<%end%>
 
 <table align="center">
 	<tr>
@@ -99,12 +48,13 @@ font-size: 15px;
 			</table>
 	<tr>
 		<td>
-			<p align="center"><%= submit_tag t('Login') %>  </p>
+			<p align="center"><%= submit_tag 'Sign in' %>  </p>
 			<p align="center"><%= link_to t('Forgotten Password'), forgot_password_path %></p>
 		</td>
 	</tr>
 </table>
 
+  <%end%>
 
 </div>
 </div>
@@ -115,7 +65,7 @@ font-size: 15px;
 </div>
 </div>
 
-  <%end%>
+
 
 
 

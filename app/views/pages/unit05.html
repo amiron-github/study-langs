@@ -1,5 +1,5 @@
 <% @page_title = 'Russian Lessons Online: Lesson 5' %>
-<% @page_meta = {'description' => "Online Russian lesson which helps to learn basic Russian words and phrases related to sightseeing"} %>
+<% @page_meta = {'description' => "Online Russian lesson which helps to learn basic Russian words and phrases related to sightseeing", 'robots' => "noindex" } %>
 <% @with_rec = true %>
 <% @has_audio = true %>
 
@@ -57,6 +57,9 @@ width: 100px;
 </div>
 
 <h2 class="page">Lesson 5</h2>
+<% if !(logged_in? && current_user.payment) %>
+	<%=@hide_title%>
+<% end %>
 <hr>
 <h3 class="exers">I. Let's go sightseeing!</h3>
 
@@ -68,6 +71,10 @@ width: 100px;
 <p>
 An American speaks to his Russian business partner. He is going to have a day free of work and asks what places he should see in the town. The Russian recommends to go to the Fine Arts Museum. The American asks to show him this museum on the map and he asks when it is open and how much the entrance price is. The Russian tells that the museum is open every day since about 10 o'clock.
 </p>
+
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <table class="audio-task" cellspacing="0">        
 	<tr>
@@ -308,11 +315,14 @@ An American speaks to his Russian business partner. He is going to have a day fr
 
 </table>
 </div>
-
+<%end%>
 <p style="margin-top: 25px;">
 A tourist wants to take a picture of himself in front of the cathedral and she asks a passer-by for help. The passer-by agrees and takes a picture. The tourist asks to do it twice and thanks the passer-by for the help.
 </p>
 
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <table class="audio-task" cellspacing="0">        
 	<tr>
@@ -550,7 +560,7 @@ A tourist wants to take a picture of himself in front of the cathedral and she a
 
 </table>
 </div>
-
+<%end%>
 <p class="task" style="padding-top: 20px;">b) Listen and repeat the dialogues phrase by phrase. </p>
 <p class="task">c) Listen to the phrases in Russian and choose the right translation.</p>
 <div id="test1">
@@ -563,6 +573,9 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 </script>
 </div>
 
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 <form onsubmit="return check_test(this,1, 'c0105013.I.c)')">
 <table class="tbtest" cellspacing="0" cellpadding="3" align="center">
 	<tr>
@@ -700,6 +713,7 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 	<input type="submit" value="Check">
 </div>
 </form>
+<%end%>
 <hr>
 <h3 class="exers">II. I'd like to visit the museum.</h3>
 
@@ -845,6 +859,10 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 
 <p class="task">b) Translate into Russian and check yourself:</p>
 
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
+
 <div class="task_transl">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
@@ -980,6 +998,9 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 	</tr>
 </table>
 </div>
+
+<%end%>
+
 <hr>
 
 <h3 class="exers">III. Here is the camera.</h3>
@@ -1111,6 +1132,10 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 
 <p class="task">b) Translate into Russian and check yourself:</p>
 
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
+
 <div class="task_transl">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
@@ -1230,6 +1255,8 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 	</tr>
 </table>
 </div>
+
+<%end%>
 <hr>
 <h3 class="exers">IV. What would you advise me to see?</h3>
 
@@ -1277,6 +1304,10 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 	</tr>
 </table>
 <p class="task">a) Learn the following verbs: </p>
+
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
@@ -1341,7 +1372,13 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 
 </div>
 
+<%end%>
+
 <p class="task">b) Translate into Russian and check yourself:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <div class="task_transl">
 <table class="tab1 inter"  cellspacing="0" >
@@ -1428,6 +1465,8 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 	</tr>
 </table>
 </div>
+
+<%end%>
 <p class="task">c) Look at the following phrases:</p>
 
 <table  cellspacing="0" >
@@ -1471,6 +1510,10 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 </table>
 
 <p class="task">Listen and choose the right transalation for the phrases:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <form onsubmit="return check_test(this,2, 'c0105043.IV.c)')">
 <table class="tbtest" cellspacing="0" cellpadding="3" align="center">
@@ -1550,6 +1593,9 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 
 </div>
 </form>
+
+<%end%>
+
 <hr>
 
 
@@ -1577,6 +1623,10 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 
 
 <p class="task">a) Look at the examples with this expression:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <table  cellspacing="0" >
 	<tr valign="top">
@@ -1657,7 +1707,7 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 	</tr>
 
 </table>
-
+<%end%>
 <p class="task">b) <strong>Learn the following Russian words and expressions:</strong> </p>
 
 
@@ -1764,6 +1814,10 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 
 <p class="ital">Phrases to translate:</p>
 
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
+
 <div class="task_transl">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
@@ -1849,6 +1903,8 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 	</tr>
 </table>
 </div>
+
+<%end%>
 <hr>
 <h3 class="exers">VI. Time</h3>
 
@@ -1995,6 +2051,10 @@ Learn how to tell about the time in Russian:
 
 <p>Hours:</p>
 
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
+
 <table cellpadding="0" cellspacing="0" border="0">
 	<tr>
 		<td valign="top" width="340">
@@ -2129,8 +2189,13 @@ Learn how to tell about the time in Russian:
 	</tr>
 </table>
 
+<%end%>
 
 <p class="task">Look at the examples</p>
+
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <table  cellspacing="0" >
 	<tr valign="top">
@@ -2253,7 +2318,12 @@ Learn how to tell about the time in Russian:
 
 </table>
 
+<%end%>
 <p class="task">Translate into Russian and check yourself:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <div class="task_transl">
 <table class="tab1 inter"  cellspacing="0" >
@@ -2340,7 +2410,7 @@ Learn how to tell about the time in Russian:
 	</tr>
 </table>
 </div>
-
+<%end%>
 
 <p class="task">In order to say at what time an action happens, the preposition <span class="norm_txt">в</span> is used in Russian. Look at the examples, paying attention to the questions "what time is it?", "at what time?" and "when?":</p>
 
@@ -2397,6 +2467,11 @@ Learn how to tell about the time in Russian:
 	</tr>
 
 </table>
+
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
+
 <table cellspacing="0" >
 	<tr valign="top">
 		<td width="330">
@@ -2478,7 +2553,7 @@ Learn how to tell about the time in Russian:
 
 </table>
 
-
+<%end%>
 
 <p class="task">Learn the following expressions</p>
 
@@ -2523,6 +2598,10 @@ Learn how to tell about the time in Russian:
 </table>
 
 <p class="task">Translate into Russian and check yourself:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <div class="task_transl">
 <table class="tab1 inter"  cellspacing="0" >
@@ -2609,6 +2688,8 @@ Learn how to tell about the time in Russian:
 	</tr>
 </table>
 </div>
+
+<%end%>
 <hr>
 
 <h3 class="exers">VII. Numerals</h3>
@@ -2788,6 +2869,10 @@ a) Learn the following numerals in Russian:
 b) Look at the following examples:
 </p>
 
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
+
 <table cellpadding="0" cellspacing="0" border="0">
 	<tr>
 		<td valign="top" width="280">
@@ -2927,9 +3012,13 @@ b) Look at the following examples:
 	</tr>
 </table>
 
+<%end%>
 
 <p class="task">c) Listen to the following phrases and complete the test:</p>
 
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
 
 <table class="mini-dialog" cellpadding="0" cellspacing="0" border="0">
 	<tr>
@@ -2999,6 +3088,7 @@ b) Look at the following examples:
 <p><input type="submit" value="Check">
 </form>
 
+<%end%>
 <hr>
 
 <h3>In this lesson you have learnt:</h3>  

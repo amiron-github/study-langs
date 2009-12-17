@@ -1,11 +1,8 @@
 <% @page_title = 'Change Email Address' %>
 
 
-  
-  
-<% form_tag edit_path do %>
-
 <div class="module mod-in-log">
+<br/>
 <div class="module-top">
 	<div class="module-t-left"></div>
 	<div class="module-t-right"></div>
@@ -13,6 +10,7 @@
 <div class="module-right">
 <div class="module-left">
 <div class="module-content">
+<% form_tag edit_path do %>
 <h2 class="page">Change Email Address</h2>
 
   <%if @error_pas %><p style="color: red; font-weight: bold; text-align: center"> You have entered an incorrect password</p> <%end%>
@@ -42,7 +40,7 @@
 			
 			    <%if @success %> 
 				
-						<p style="color: blue; font-weight: bold; text-align: center; font-size: 16px; padding: 15px 0; "> Data have been saved</p> 
+						<p style="color: blue; font-weight: bold; text-align: center; font-size: 16px; padding: 15px 0; "> Data have been saved successfully</p> 
 						
 				<%end%>
 				
@@ -51,7 +49,7 @@
 	</tr>
 </table>
 
-
+  <%end%>
 </div>
 </div>
 </div>
@@ -61,7 +59,7 @@
 </div>
 </div>
 
-  <%end%>
+
   
  <script type="text/javascript">
 currentSection="login";
