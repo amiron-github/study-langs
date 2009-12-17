@@ -1,6 +1,6 @@
 #!/bin/sh
 
-/home/webmaster/studylanguagesonline/current/script/process/spawner \
+/home/studylanguagesonline/current/script/process/spawner \
   mongrel \
     --environment=production \
     --instances=3 \
