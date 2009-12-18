@@ -19,7 +19,7 @@ set :rails_env, "production"
 #	Servers
 #############################################################
 
-set :user, "root"
+set :user, "studylanguagesonline"
 set :runner, "studylanguagesonline"
 set :domain, "study-languages-online.com"
 #et :domain, 209.239.117.90
