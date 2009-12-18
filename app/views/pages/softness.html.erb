@@ -1,0 +1,126 @@
+<% @page_title = 'Russian Language Online: Softness of consonants in Russian' %>
+<% @page_meta = {'description' => "Online information about soft consonants in Russian with audio examples"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+
+
+<% content_for :special_js_css do %>
+
+<%= stylesheet_link_tag 'stylesounds' %>
+
+<style type="text/css">
+h2.page {margin-bottom: 0px;}
+
+.sound-letter td {
+width: 20%;
+}
+.italic-letter {
+font-style: italic;
+font-family: Times New Roman;
+}
+</style>
+
+<% end %>
+
+<div class="hint_wrap">
+<div class="hint_button" style="float: right;">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Links and Settings</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+    				<li><a href="basic-letters.html">Russian Letters</a></li>
+					<li><a href="devocalization.html">Devocalization</a></li>
+   					<li><a href="stress-reduction.html">Stress and reduction</a></li>
+					<li><a href="reading-exceptions.html">Exceptional cases</a> </li>
+					<li><a href="basic-reading-rules.html">Basic rules</a> </li>
+    				<li><a href="reading-practice.html">Training exercises</a></li>
+    		</ul>
+        <%= render :partial => 'preload_option' %>
+	</div>
+</div>
+</div>
+<div id="pagecontent"><div id="content">
+
+
+<h2 class="page">Softness of consonants in Russian</h2>
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="russian-reading.html">Reading in Russian</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="readingrules.html">Rules of reading</a>
+	<span class="int-arrow">--&gt;</span> Softness of consonants
+	</span>
+</h3>
+
+
+<h3>Basics</h3> 
+<p>
+There are 36 consonant sounds in Russian. All consonant sounds are divided into hard and soft. Most sounds come in pairs "hard vs. soft", i.e. their pronunciation differs only by softness. There are 15 pairs of consonants "hard vs. soft".
+<span style="line-height: 20px;" >
+<span class="open_popup_link" onClick="open_comment('comments_audio/comment_hard_soft.html')">Click here to listen to hard and soft consonant sounds.</span>
+</span> 
+</p>
+<p><span style="border-bottom: 1px dashed #000;">For each pair "hard vs. soft" only one letter is used.</span></p>
+<p>
+In order to determine whether the letter denotes a hard or a soft consonant, you should take a look at the letter which follows it. There can be two options: 
+</p>
+<p>
+- If the letter is followed by <span class="letter">и</span>, <span class="letter">е</span>, <span class="letter">ю</span>, <span class="letter">я</span>, <span class="letter">ё</span> or <span class="letter">ь</span>, it denotes the corresponding soft consonant.
+</p>
+<p>
+- In other occurrences, i.e. if the letter is followed by consonant letters (except cases of a group of soft consonants, see below), by vowel letters <span class="letter">а</span>, <span class="letter">о</span>, <span class="letter">у</span>, <span class="letter">ы</span>, <span class="letter">э</span>, <span class="letter">ъ</span> or if the letter is found at the end of the word, it denotes the corresponding hard consonant.
+</p>
+<p>
+Some sounds do not come in pairs: these are hard sounds <span class="sound" onclick="playSound('sound227.mp3')">[j]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('sound228.mp3')">[sh]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('sound240.mp3')">[ts]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span> and soft sounds 
+<span class="sound" onclick="playSound('sound238.mp3')">[sch]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('sound239.mp3')">[ch]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('sound237.mp3')">[y]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>.  They are denoted, respectively, by letters <span class="letter">ж</span>, <span class="letter">ш</span>, <span class="letter">ц</span>, <span class="letter">щ</span>, <span class="letter">ч</span>, <span class="letter">й</span>. Since these letters designate sounds which do not form pairs "hard vs. soft", their reading will be always the same, including the cases when they are found before the group of letters used to indicate softness (<span class="letter">и</span>, <span class="letter">е</span>, <span class="letter">ю</span>, <span class="letter">я</span>, <span class="letter">ё</span>, <span class="letter">ь</span>). It should be mentioned that if letters <span class="letter">ж</span>, <span class="letter">ш</span>, <span class="letter">ц</span> are followed by the letter <span class="letter">и</span>, the letter <span class="letter">и</span> is read as <span class="sound" onclick="playSound('sound206.mp3')">[<span class="ry">i</span>] <span class="play_tip">&nbsp; &nbsp;</span></span> (not as <span class="sound" onclick="playSound('sound205.mp3')">[i] <span class="play_tip">&nbsp;&nbsp;&nbsp;</span></span>). 
+</p>
+
+<h3>Group of soft consonants</h3>
+<p>
+Some letters which designate consonant sounds may denote soft sounds even when they are found in a word before other consonants, but on conditions that the following consonant is soft. It may happen in the following combinations of letters: <span class="letter">ст</span>, <span class="letter">зд</span>, <span class="letter">н</span> + <span class="letter">т</span>, <span class="letter">д</span>, <span class="letter">с</span>, <span class="letter">з</span>, <span class="letter">ч</span>.
+</p>
+<p style="display: none;">
+Take a look at the following examples and note that in the underlined combinations of letters both consonants are soft:
+</p>
+
+
+<p style="font-size: 15px; font-weight: bold;">Peculiarities of reading the letters <span class="norm_txt">е</span>, <span class="norm_txt">ю</span>, <span class="norm_txt">я</span>, <span class="norm_txt">ё</span> following consonants and signs <span class="norm_txt">ь</span>, <span class="norm_txt">ъ</span></p>
+<p>
+We have already mentioned that letters  <span class="letter">е</span>, <span class="letter">ю</span>, <span class="letter">я</span>, <span class="letter">ё</span> indicate the softness of the previous consonant,  and, as you may already have noticed, the initial sound <span class="sound" onclick="playSound('sound237.mp3')">[y]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span> which is present in their basic meaning may disappear if these letters follow a consonant. 
+</p>
+<p>Thus, when these letters designate stressed vowels and follow consonants, they are read as:</p>  
+
+<span class="letter">е</span> - <span class="sound" onclick="playSound('sound202.mp3')">[e] <span class="play_tip">&nbsp; &nbsp;</span></span>
+<br><br>
+<span class="letter">ё</span> - <span class="sound" onclick="playSound('sound203.mp3')">[o] <span class="play_tip">&nbsp; &nbsp;</span></span>
+<br><br>
+<span class="letter">ю</span> - <span class="sound" onclick="playSound('sound204.mp3')">[oo] <span class="play_tip">&nbsp; &nbsp;</span></span>
+<br><br>
+<span class="letter">я</span> - <span class="sound" onclick="playSound('sound201.mp3')">[a] <span class="play_tip">&nbsp; &nbsp;</span></span>
+
+<p>You can find more info about reading of these letters on the page <a href="stress-reduction.html">Stress and reduction of vowels</a></p>
+
+<h3>Summary: </h3>
+
+<p>- Softness of consonants is indicated by letters <span class="letter">и</span>, <span class="letter">е</span>, <span class="letter">ю</span>, <span class="letter">я</span>, <span class="letter">ё</span>, <span class="letter">ь</span></p>
+<p>- In some cases, not just one, but a group of consonants become soft</p>
+<p>- Letters <span class="letter">е</span>, <span class="letter">ё</span>, <span class="letter">ю</span>, <span class="letter">я</span> indicate the softness of the previous consonant + vowel sound [e], [o], [oo], [a], respectively</p>
+
+
+
+
+
+
+</div></div>
+
+<script type="text/javascript">
+currentSection="reading";
+</script>

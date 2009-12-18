@@ -1,0 +1,101 @@
+<% @page_title = 'Tests: Accessories' %>
+<% @page_meta = {'description' => ""} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<% content_for :special_css do %>
+
+.quest  {
+width: 210px;
+}
+
+.variants  {
+width: 220px;
+}
+
+#t2 .quest {
+width: 220px;
+}
+
+
+<% end %>
+
+<div class="hint_wrap">
+<div class="hint_button">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Recommended links</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+     				<li><a href="accessories.html">Accessories</a></li>
+     				<li><a href="accessories-exercise.html"> Exercises: Accessories</a></li>
+
+    		</ul>
+	</div>
+</div>
+</div>
+
+
+
+<h2 class="page">Accessories (tests)</h2>
+
+<p class="task">Before completing the following tests, please revise the topic <a title="Accessories" href="accessories.html">Accessories</a></p>
+<hr/>
+<br/>
+<h3>Test 1</h3>
+<p class="task">Listen to the phrase and сhoose the corresponding Russian expression.</p>
+
+<div id="t1">
+<script type="text/javascript">
+var t1 = new Test({dict: [
+
+['sounds/sound09501.mp3','аксессуары'],['sounds/sound09502.mp3','галстук-бабочка'],['sounds/sound09503.mp3','булавка'],['sounds/sound09504.mp3','булавка для галстука'],
+['sounds/sound09505.mp3','варежки'],['sounds/sound09506.mp3','галстук'],['sounds/sound09507.mp3','запонки'],['sounds/sound09508.mp3','зонтик'],
+['sounds/sound09509.mp3','кошелёк'],['sounds/sound09510.mp3','очки'],['sounds/sound09511.mp3','перчатки'],['sounds/sound09512.mp3','подтяжки'],
+['sounds/sound09513.mp3','портфель'],['sounds/sound09514.mp3','ремень'],['sounds/sound09515.mp3','солнцезащитные очки'],['sounds/sound09516.mp3','сумочка'],
+['sounds/sound09517.mp3','часы'],['sounds/sound09518.mp3','шарф']
+
+],hide: 'di1',id:'t1', type: 'audio', how_questions: 8, how_show: 2}, 'v0224010.1');
+</script>
+</div>
+
+<h3>Test 2</h3>
+<p class="task">Read the Russian phrase and choose the corresponding English expression.</p>
+
+<div id="t2">
+<script type="text/javascript">
+var t2 = new Test({dict: [
+
+['аксессуары','accessories'],['галстук-бабочка','bow tie'],['булавка','pin'],['булавка для галстука','tie-pin'],
+['варежки','mittens'],['галстук','tie'],['запонки','cuff links'],['зонтик','umbrella'],
+['кошелёк','purse'],['очки','glasses'],['перчатки','gloves'],['подтяжки','suspenders'],
+['портфель','briefcase'],['ремень','belt'],['солнцезащитные очки','sun glasses'],['сумочка','handbag'],
+['часы','watch'],['шарф','scarf']
+
+], hide:'di2',id:'t2',type: 'text', how_questions: 8, how_show: 2}, 'v0224020.2');
+</script>
+</div>
+
+<h3>Test 3</h3>
+<p class="task">Listen to the Russian phrases and сhoose their translation into English.</p>
+
+<div id="t3">
+<script type="text/javascript">
+var t3 = new Test({dict: [
+
+['sounds/sound09501.mp3','accessories'],['sounds/sound09502.mp3','bow tie'],['sounds/sound09503.mp3','pin'],['sounds/sound09504.mp3','tie-pin'],
+['sounds/sound09505.mp3','mittens'],['sounds/sound09506.mp3','tie'],['sounds/sound09507.mp3','cuff links'],['sounds/sound09508.mp3','umbrella'],
+['sounds/sound09509.mp3','purse'],['sounds/sound09510.mp3','glasses'],['sounds/sound09511.mp3','gloves'],['sounds/sound09512.mp3','suspenders'],
+['sounds/sound09513.mp3','briefcase'],['sounds/sound09514.mp3','belt'],['sounds/sound09515.mp3','sun glasses'],['sounds/sound09516.mp3','handbag'],
+['sounds/sound09517.mp3','watch'],['sounds/sound09518.mp3','scarf']
+
+],hide: 'di3',id:'t3',type: 'audio', how_questions: 8, how_show: 2}, 'v0224030.3');
+</script>
+</div>
+
+
+<script type="text/javascript">
+currentSection="words";
+</script>

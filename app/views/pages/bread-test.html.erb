@@ -1,0 +1,95 @@
+<% @page_title = 'Tests: Bread and confectionery' %>
+<% @page_meta = {'description' => ""} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<% content_for :special_css do %>
+
+.quest  {
+width: 210px;
+}
+
+.variants  {
+width: 220px;
+}
+
+#t2 .quest {
+width: 220px;
+}
+
+<% end %>
+
+<div class="hint_wrap">
+<div class="hint_button">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Recommended links</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+     				<li><a href="bread.html">Bread and confectionery</a></li>
+     				<li><a href="bread-exercise.html"> Exercises: Bread and confectionery</a></li>
+
+    		</ul>
+	</div>
+</div>
+</div>
+
+
+
+<h2 class="page">Bread and confectionery <br/>(tests)</h2>
+
+<p class="task">Before completing the following tests, please revise the topic <a title="Bread and confectionery" href="bread.html">Bread and confectionery</a></p>
+<hr/>
+<br/>
+
+<h3>Test 1</h3>
+<p class="task">Listen to the phrase and сhoose the corresponding Russian expression.</p>
+
+<div id="t1">
+<script type="text/javascript">
+var t1 = new Test({dict: [
+
+['sounds/sound08101.mp3','хлеб'],['sounds/sound08102.mp3','кондитерские изделия'],['sounds/sound08103.mp3','чёрный хлеб'],['sounds/sound08104.mp3','белый хлеб'],
+['sounds/sound08105.mp3','торт'],['sounds/sound08106.mp3','блины'],['sounds/sound08107.mp3','пирожное '],['sounds/sound08108.mp3','пирог '],
+['sounds/sound08109.mp3','кекс с изюмом'],['sounds/sound08110.mp3','слойка'],['sounds/sound08111.mp3','слоёный пирожок'],['sounds/sound08112.mp3','булочка ']
+
+],hide: 'di1',id:'t1', type: 'audio', how_questions: 8, how_show: 2}, 'v0211010.1');
+</script>
+</div>
+
+<h3>Test 2</h3>
+<p class="task">Read the Russian phrase and choose the corresponding English expression.</p>
+
+<div id="t2">
+<script type="text/javascript">
+var t2 = new Test({dict: [
+
+['хлеб ','bread'],['кондитерские изделия','confectionery'],['чёрный хлеб','dark bread'],['белый хлеб','white bread'],
+['торт','cake, pie'],['блины','pancakes'],['пирожное','fancy cake'],['пирог ','pie'],
+['кекс с изюмом','plum cake'],['слойка','puff'],['слоёный пирожок','jam puff'],['булочка ','roll']
+
+], hide:'di2',id:'t2',type: 'text', how_questions: 8, how_show: 2}, 'v0211020.2');
+</script>
+</div>
+
+<h3>Test 3</h3>
+<p class="task">Listen to the Russian phrases and сhoose their translation into English.</p>
+
+<div id="t3">
+<script type="text/javascript">
+var t3 = new Test({dict: [
+
+['sounds/sound08101.mp3','bread'],['sounds/sound08102.mp3','confectionery'],['sounds/sound08103.mp3','dark bread '],['sounds/sound08104.mp3','white bread'],
+['sounds/sound08105.mp3','cake, pie'],['sounds/sound08106.mp3','pancakes'],['sounds/sound08107.mp3','fancy cake'],['sounds/sound08108.mp3','pie'],
+['sounds/sound08109.mp3','plum cake'],['sounds/sound08110.mp3','puff'],['sounds/sound08111.mp3','jam puff'],['sounds/sound08112.mp3','roll']
+
+],hide: 'di3',id:'t3',type: 'audio', how_questions: 8, how_show: 2}, 'v0211030.3');
+</script>
+</div>
+
+
+<script type="text/javascript">
+currentSection="words";
+</script>

@@ -1,0 +1,166 @@
+<% @page_title = 'Russian language online: Exercises  for the topic Sightseeing' %>
+<% @page_meta = {'description' => "Online exercises for learning Russian words and phrases related to the topic Sightseeing"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<div class="hint_wrap">
+<div class="hint_button">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Recommended links</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+     				<li><a href="sightseeing.html">Sightseeing</a></li>
+     				<li><a href="sightseeing-test.html">Tests: Sightseeing</a></li>
+    		</ul>
+	</div>
+</div>
+</div>
+
+
+
+<h2 class="page">Sightseeing (exercises)</h2>
+
+<p class="task">Before doing the following exercises, please revise the topic <a title="Sightseeing" href="sightseeing.html">Sightseeing</a></p>
+
+<hr/>
+
+<h3>Exercise 1</h3>
+
+<%= render :partial => 'tt_exercise' %>
+
+
+<hr/>
+
+
+<h3>Exercise 2</h3>
+
+
+<div class="start_btn">
+<input type="button" value="START" onclick="startYN()" />
+</div>
+<div id="yn_box">
+
+	<div id="yn_place">
+
+
+		<div id="trans_wrapper">
+			<div id="yn_trans" style="background-color: transparent; border-width: 0px;">
+				<div>&nbsp;
+				</div>
+			</div>
+		</div>
+
+		<div id="yn_sound">
+			<div class="play">
+			
+			</div>
+		</div>
+		
+		<div>Is this a correct translation? </div>
+		<br/>
+		<div id="yn_btns">
+		<input id="yes_btn" type="button" value="YES" /> <input id="no_btn" type="button" value="NO" />
+		</div>
+		<div id="show_check"></div>
+		<br>
+		<div id="yn_info"></div>
+	</div>
+
+</div>
+
+
+<hr/>
+
+
+<h3>Exercise 3</h3>
+
+
+<div class="start_btn">
+<input type="button" value="START" onclick="startCO()" />
+</div>
+<div id="co_box">
+<div id="co_copy"></div>
+	<div id="co_place">
+		<div class="co_task_wrapper">
+			<div id="co_task"><div>&nbsp;</div></div>
+		</div>
+		
+		<div class="co_choose">Choose translation from the options below: </div>
+
+		<div class="co_options_container">
+		<div class="co_options_wrapper">
+			<div id="co_option0" class="co_options"><div>&nbsp;</div></div>
+			<div id="co_option1" class="co_options"><div>&nbsp;</div></div>
+			<div id="co_option2" class="co_options"><div>&nbsp;</div></div>
+			<div style="clear: both;"></div>
+		</div>
+		</div>
+
+		<div style="text-align: center; padding-top: 30px;">
+		<div id="co_correctness"><div>&nbsp;</div></div>
+		</div>
+		
+		<div class="co_counter"> </div>
+
+	</div>
+
+</div>
+
+
+
+<script type="text/javascript">
+
+////////////////// array for test together 
+
+var ttMassive=new Array(
+
+['дворец','palace'],['замок','castle'],['картинная галерея','picture-gallery'],
+['выставка','exhibition'],['музей','museum'],['исторический музей ','historical museum'],
+['памятник','monument'],['площадь','square'],['парк','park'],['сокровищница ','treasure-house'],
+['турист','tourist'],['собор','cathedral'],['церковь','church'],['экскурсия','excursion'],
+['карта города','city plan'],['фотографировать','photograph']
+
+);
+
+/////////////////////// array for yes/no
+
+var massive=new Array(
+
+['sounds/sound07101.mp3','sightseeings'],['sounds/sound07102.mp3','palace'],['sounds/sound07103.mp3','castle '],['sounds/sound07104.mp3','picture-gallery'],
+['sounds/sound07105.mp3','exhibition'],['sounds/sound07106.mp3','museum'],['sounds/sound07107.mp3','museum of fine arts'],['sounds/sound07108.mp3','historical museum'],
+['sounds/sound07109.mp3','monument'],['sounds/sound07111.mp3','square'],['sounds/sound07112.mp3','park'],['sounds/sound07114.mp3','treasure-house'],
+['sounds/sound07115.mp3','tourist'],['sounds/sound07116.mp3','cathedral'],['sounds/sound07117.mp3','church'],['sounds/sound07118.mp3','excursion'],
+['sounds/sound07120.mp3','city plan'],['sounds/sound07121.mp3','photograph']
+
+
+);
+
+ynQuestNum=10;
+
+////////////////////// array for choose option
+var co_massive=new Array(
+
+['дворец','palace'],['замок','castle'],['картинная галерея','picture-gallery'],
+['выставка','exhibition'],['музей','museum'],['исторический музей ','historical museum'],
+['памятник','monument'],['площадь','square'],['парк','park'],['сокровищница ','treasure-house'],
+['турист','tourist'],['собор','cathedral'],['церковь','church'],['экскурсия','excursion'],
+['карта города','city plan'],['фотографировать','photograph']
+
+);
+
+coQuestNum=10;
+
+</script>
+
+<hr/>
+
+<p class="after-exercise">If you want to check how you know these words, go to <a title="Sightseeings tests" href="sightseeing-test.html">Tests: Sightseeing</a></p>
+
+
+
+<script type="text/javascript">
+currentSection="words";
+</script>

@@ -1,0 +1,174 @@
+<% @page_title = 'Russian language online: Exercises for the topic Jewelry and bijouterie' %>
+<% @page_meta = {'description' => "Online exercises for learning Russian words and phrases related to the topic Jewelry and bijouterie"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<div class="hint_wrap">
+<div class="hint_button">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Recommended links</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+     			   	<li><a href="jewelry.html">Jewelry</a></li>
+     				<li><a href="jewelry-test.html"> Tests: Jewelry</a></li>
+    		</ul>
+	</div>
+</div>
+</div>
+
+
+
+<h2 class="page">Jewelry and bijouterie <br/> (exercises)</h2>
+
+<p class="task">Before doing the following exercises, please revise the topic <a title="Jewelry and bijouterie" href="jewelry.html">Jewelry and bijouterie</a></p>
+
+<hr/>
+
+<h3>Exercise 1</h3>
+
+<%= render :partial => 'tt_exercise' %>
+
+
+<hr/>
+
+
+<h3>Exercise 2</h3>
+
+
+<div class="start_btn">
+<input type="button" value="START" onclick="startYN()" />
+</div>
+<div id="yn_box">
+
+	<div id="yn_place">
+
+
+		<div id="trans_wrapper">
+			<div id="yn_trans" style="background-color: transparent; border-width: 0px;">
+				<div>&nbsp;
+				</div>
+			</div>
+		</div>
+
+		<div id="yn_sound">
+			<div class="play">
+			
+			</div>
+		</div>
+		
+		<div>Is this a correct translation? </div>
+		<br/>
+		<div id="yn_btns">
+		<input id="yes_btn" type="button" value="YES" /> <input id="no_btn" type="button" value="NO" />
+		</div>
+		<div id="show_check"></div>
+		<br>
+		<div id="yn_info"></div>
+	</div>
+
+</div>
+
+
+<hr/>
+
+
+<h3>Exercise 3</h3>
+
+
+<div class="start_btn">
+<input type="button" value="START" onclick="startCO()" />
+</div>
+<div id="co_box">
+<div id="co_copy"></div>
+	<div id="co_place">
+		<div class="co_task_wrapper">
+			<div id="co_task"><div>&nbsp;</div></div>
+		</div>
+		
+		<div class="co_choose">Choose translation from the options below: </div>
+
+		<div class="co_options_container">
+		<div class="co_options_wrapper">
+			<div id="co_option0" class="co_options"><div>&nbsp;</div></div>
+			<div id="co_option1" class="co_options"><div>&nbsp;</div></div>
+			<div id="co_option2" class="co_options"><div>&nbsp;</div></div>
+			<div style="clear: both;"></div>
+		</div>
+		</div>
+
+		<div style="text-align: center; padding-top: 30px;">
+		<div id="co_correctness"><div>&nbsp;</div></div>
+		</div>
+		
+		<div class="co_counter"> </div>
+
+	</div>
+
+</div>
+
+
+
+<script type="text/javascript">
+
+////////////////// array for test together 
+
+var ttMassive=new Array(
+
+['ювелирные изделия','jewelry'],['бижутерия','bijouterie'],['браслет','bracelet'],['брошь','brooch'],
+['заколка','hair-pin'],['запонки','cuff links'],['колье','necklace'],['кольцо','ring'],
+['кулон','pendant'],['ожерелье','necklace'],['перстень','class ring'],['серьги','ear-rings'],
+['цепочка','chain'],['часы','watch'],['драгоценный камень','precious stone'],['агат','agate'],
+['алмаз','diamond'],['аметист','amethyst'],['бирюза','turquoise'],['бриллиант','brilliant, diamond'],
+['жемчуг','pearls'],['изумруд','emerald'],['рубин','ruby'],['сапфир','sapphire'],
+['топаз','topaz'],['янтарь','amber'],['драгоценный металл','precious metal'],['золото','gold'],
+['серебро','silver'],['платина','platinum']
+
+);
+
+/////////////////////// array for yes/no
+
+var massive=new Array(
+
+['sounds/sound09701.mp3','jewelry'],['sounds/sound09702.mp3','bijouterie'],['sounds/sound09703.mp3','bracelet'],['sounds/sound09704.mp3','brooch'],
+['sounds/sound09705.mp3','hair-pin'],['sounds/sound09706.mp3','cuff links'],['sounds/sound09707.mp3','necklace'],['sounds/sound09708.mp3','ring'],
+['sounds/sound09709.mp3','pendant'],['sounds/sound09710.mp3','necklace'],['sounds/sound09711.mp3','class ring'],['sounds/sound09712.mp3','ear-rings'],
+['sounds/sound09713.mp3','chain'],['sounds/sound09714.mp3','watch'],['sounds/sound09715.mp3','precious stone'],['sounds/sound09716.mp3','agate'],
+['sounds/sound09717.mp3','diamond'],['sounds/sound09718.mp3','amethyst'],['sounds/sound09719.mp3','turquoise'],['sounds/sound09720.mp3','brilliant, diamond'],
+['sounds/sound09721.mp3','pearls'],['sounds/sound09722.mp3','emerald'],['sounds/sound09723.mp3','ruby'],['sounds/sound09724.mp3','sapphire'],
+['sounds/sound09725.mp3','topaz'],['sounds/sound09726.mp3','amber'],['sounds/sound09727.mp3','precious metal'],['sounds/sound09728.mp3','gold'],
+['sounds/sound09731.mp3','silver '],['sounds/sound09733.mp3','platinum	']
+
+);
+
+ynQuestNum=10;
+
+////////////////////// array for choose option
+var co_massive=new Array(
+
+['ювелирные изделия','jewelry'],['бижутерия','bijouterie'],['браслет','bracelet'],['брошь','brooch'],
+['заколка','hair-pin'],['запонки','cuff links'],['колье','necklace'],['кольцо','ring'],
+['кулон','pendant'],['ожерелье','necklace'],['перстень','class ring'],['серьги','ear-rings'],
+['цепочка','chain'],['часы','watch'],['драгоценный камень','precious stone'],['агат','agate'],
+['алмаз','diamond'],['аметист','amethyst'],['бирюза','turquoise'],['бриллиант','brilliant, diamond'],
+['жемчуг','pearls'],['изумруд','emerald'],['рубин','ruby'],['сапфир','sapphire'],
+['топаз','topaz'],['янтарь','amber'],['драгоценный металл','precious metal'],['золото','gold'],
+['серебро','silver'],['платина','platinum']
+
+);
+
+coQuestNum=10;
+
+</script>
+
+<hr/>
+
+<p class="after-exercise">If you want to check how you know these words, go to <a title="Jewelry and bijouterie tests" href="jewelry-test.html"> Tests: Jewelry and bijouterie</a></p>
+
+
+
+<script type="text/javascript">
+currentSection="words";
+</script>

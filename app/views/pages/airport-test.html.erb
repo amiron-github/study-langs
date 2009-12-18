@@ -1,0 +1,96 @@
+<% @page_title = 'Tests: Airport' %>
+<% @page_meta = {'description' => ""} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<% content_for :special_css do %>
+
+.hint_button {
+float: right;
+}
+
+.quest  {
+width: 210px;
+}
+
+.variants  {
+width: 220px;
+}
+
+#t2 .quest {
+width: 220px;
+}
+
+
+<% end %>
+
+<div class="hint_wrap">
+<div class="hint_button">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Recommended links</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+     				<li><a href="airport.html">Airport</a></li>
+     				<li><a href="airport-exercise.html"> Exercises: Airport</a></li>
+
+    		</ul>
+	</div>
+</div>
+</div>
+
+
+
+<h2 class="page">Airport (tests)</h2>
+<p class="task">Before completing the following tests, please revise the topic <a title="Airport" href="airport.html">Airport</a></p>
+<hr/>
+<br/>
+<h3>Test 1</h3>
+<p class="task">Listen to the phrase and сhoose the corresponding Russian expression.</p>
+<div id="t1">
+<script type="text/javascript">
+var t1 = new Test({dict: [['sounds/sound01301.mp3','самолёт'],['sounds/sound01305.mp3','посадка'],['sounds/sound01306.mp3','рейс'],['sounds/sound01307.mp3','международный рейс'],['sounds/sound01308.mp3','отправление'],
+['sounds/sound01309.mp3','пункт назначения'],['sounds/sound01310.mp3','прибытие'],['sounds/sound01311.mp3','задерживается'],
+['sounds/sound01312.mp3','отменён'],['sounds/sound01313.mp3','регистрация'],['sounds/sound01315.mp3','паспортный контроль'],['sounds/sound01317.mp3','таможня'],
+['sounds/sound01319.mp3','багаж'],['sounds/sound01321.mp3','выдача багажа'],['sounds/sound01323.mp3','справочная']],hide: 'di1',id:'t1', type: 'audio', how_questions: 8, how_show: 2}, 'v0203010.1');
+</script>
+</div>
+
+
+<h3>Test 2</h3>
+<p class="task">Read the Russian phrase and choose the corresponding English expression.</p>
+
+<div id="t2">
+<script type="text/javascript">
+var t2 = new Test({dict: [
+
+['самолёт','plane'],['посадка','landing'],['рейс','flight'],['международный рейс','international flight'],['отправление','departure'],
+['пункт назначения','destination'],['прибытие','arrival'],['задерживается','delayed'],
+['отменён','cancelled'],['регистрация','check-in'],['паспортный контроль','passport control'],['таможня','customs'],['багаж','luggage'],
+['выдача багажа','baggage claim area'],['справочная','information office']
+
+], hide:'di1',id:'t2',type: 'text', how_questions: 8, how_show: 2}, 'v0203020.2');
+</script>
+</div>
+
+<h3>Test 3</h3>
+<p class="task">Listen to the Russian phrases and сhoose their translation into English.</p>
+
+<div id="t3">
+<script type="text/javascript">
+var t3 = new Test({dict: [
+
+['sounds/sound01301.mp3','plane'],['sounds/sound01305.mp3','landing'],['sounds/sound01306.mp3','flight'],['sounds/sound01307.mp3','international flight'],['sounds/sound01308.mp3','departure'],
+['sounds/sound01309.mp3','destination'],['sounds/sound01310.mp3','arrival'],['sounds/sound01311.mp3','delayed'],
+['sounds/sound01312.mp3','cancelled'],['sounds/sound01313.mp3','check-in'],['sounds/sound01315.mp3','passport control'],
+['sounds/sound01317.mp3','customs'],['sounds/sound01319.mp3','luggage'],['sounds/sound01321.mp3','baggage claim area'],['sounds/sound01323.mp3','information office']
+
+],hide: 'di1',id:'t3',type: 'audio', how_questions: 8, how_show: 2}, 'v0203030.3');
+</script>
+</div>
+
+<script type="text/javascript">
+currentSection="words";
+</script>

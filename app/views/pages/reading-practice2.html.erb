@@ -1,0 +1,426 @@
+<% @page_title = 'Online exercises for reading:  Softness of consonants in Russian' %>
+<% @page_meta = {'description' => "Online lesson for reading in Russian:  Softness of consonants"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<% content_for :special_js_css do %>
+
+<style type="text/css">
+
+h2.page {margin-bottom: 0px;}
+
+.hint_button {
+float: right;
+}
+
+.quest  {
+width: 180px;
+}
+
+.variants  {
+width: 180px;
+}
+
+#t2 .quest {
+width: 180px;
+}
+
+.written {
+font-size: 11pt;
+font-weight: bold;
+padding: 0px 0px 15px 0px;
+}
+
+table.repeat-words td div {
+padding: 7px 50px 7px 30px;
+}
+
+.tab1 p {margin: 0px;}
+
+</style>
+
+<% end %>
+
+<div class="hint_wrap">
+<div class="hint_button">
+  <div class="hint">
+      <div class="hint_list">
+        <span class="hint_string">Links and Settings</span>
+      </div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+        <ul>
+            <li><a href="softness.html">Softness</a></li>
+            <li><a href="reading-practice1.html">Part 1</a></li>
+          <li><a href="reading-practice3.html">Part 3</a></li>
+          <li><a href="reading-practice4.html">Part 4</a></li>
+        </ul>
+        <%= render :partial => 'preload_option' %>
+  </div>
+</div>
+</div>
+
+<div id="pagecontent"><div id="content">
+
+<h2 class="page">Part 2</h2>
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="russian-reading.html">Reading in Russian</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="reading-practice.html">Training exercises</a>
+	<span class="int-arrow">--&gt;</span> Part 2
+	</span>
+</h3>
+
+<p>
+Before doing exercises on this page it is recommended to revise <a href="softness.html">Softness of consonants in Russian</a>
+</p>
+<h3>Exercise 1</h3>
+
+<p class="task">Listen to the following words and repeat</p>
+
+<table class="repeat-words" cellpadding="0" cellspacing="0" border="0">
+	<tr valign="top">
+		<td>
+			
+    		<div>
+    			<span class="sound" onclick="playSound('reading/soundr020001.mp3')">финал &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+    		</div>
+    		<div>
+    			<span class="sound" onclick="playSound('reading/soundr020002.mp3')">такси &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+
+    		</div>
+    		<div>
+    			<span class="sound" onclick="playSound('reading/soundr020003.mp3')">вилла &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+    		</div>
+    		<div>
+    			<span class="sound" onclick="playSound('reading/soundr020004.mp3')">литр &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+    		</div>
+    		<div>
+
+    			<span class="sound" onclick="playSound('reading/soundr020005.mp3')">фирма &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+    		</div>
+    		<div>
+    			<span class="sound" onclick="playSound('reading/soundr020006.mp3')">лимит &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+    		</div>
+    		<div>
+    			<span class="sound" onclick="playSound('reading/soundr020007.mp3')">министр &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+
+    		</div>
+    		<div>
+    			<span class="sound" onclick="playSound('reading/soundr020008.mp3')">тип &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+    		</div>
+    		
+		</td>
+		<td>
+			<div>
+    			<span class="sound" onclick="playSound('reading/soundr020009.mp3')">арбитр &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+
+    		</div>
+    		<div>
+    			<span class="sound" onclick="playSound('reading/soundr020010.mp3')">диплом &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+    		</div>
+    		<div>
+    			<span class="sound" onclick="playSound('reading/soundr020011.mp3')">пианист &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+    		</div>
+    		<div>
+
+    			<span class="sound" onclick="playSound('reading/soundr020012.mp3')">паника &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+    		</div>
+    		<div>
+    			<span class="sound" onclick="playSound('reading/soundr020013.mp3')">климат &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+    		</div>
+    		<div>
+    			<span class="sound" onclick="playSound('reading/soundr020014.mp3')">кристалл &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+
+    		</div>
+    		<div>
+    			<span class="sound" onclick="playSound('reading/soundr020015.mp3')">кабина &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+    		</div>
+    		    		
+		</td>
+	</tr>
+</table>
+<br/>
+
+
+<h3>Exercise 2</h3>
+
+<p class="task">Listen to the words and choose their written form from the list</p>
+
+<div id="t1">
+<script type="text/javascript">
+var t1 = new Test({dict: [
+
+['sounds/reading/soundr020001.mp3','финал'],['sounds/reading/soundr020002.mp3','такси'],
+['sounds/reading/soundr020003.mp3','вилла'],['sounds/reading/soundr020004.mp3','литр'],
+['sounds/reading/soundr020005.mp3','фирма'],['sounds/reading/soundr020006.mp3','лимит'],
+['sounds/reading/soundr020007.mp3','министр'],['sounds/reading/soundr020008.mp3','тип'],
+['sounds/reading/soundr020009.mp3','арбитр'],['sounds/reading/soundr020010.mp3','диплом'],
+['sounds/reading/soundr020011.mp3','пианист'],['sounds/reading/soundr020012.mp3','паника'],
+['sounds/reading/soundr020013.mp3','климат'],['sounds/reading/soundr020014.mp3','кристалл'],
+['sounds/reading/soundr020015.mp3','кабина'],['sounds/reading/soundr020016.mp3','буфет'],
+['sounds/reading/soundr020017.mp3','балет'],['sounds/reading/soundr020018.mp3','ферма'],
+['sounds/reading/soundr020019.mp3','пресса'],['sounds/reading/soundr020020.mp3','текст'],
+['sounds/reading/soundr020021.mp3','сирена'],['sounds/reading/soundr020022.mp3','метр'],
+['sounds/reading/soundr020023.mp3','пакет'],['sounds/reading/soundr020024.mp3','люстра'],
+['sounds/reading/soundr020025.mp3','пилюля'],['sounds/reading/soundr020026.mp3','бюро'],
+['sounds/reading/soundr020027.mp3','нюанс']
+
+],hide: 'di1',id:'t1', type: 'audio', how_questions: 10, how_show: 2}, 'r0102020.2');
+</script>
+</div>
+
+<h3>Exercise 3</h3>
+
+<p class="task">Read the following Russian words and check yourself:</p>
+
+<table cellpadding="0" cellspacing="0" border="0">
+	<tr>
+      	<td style="padding-right: 110px;">
+            <div class="task_transl">
+                <table class="tab1 inter"  cellspacing="0" >
+                	<tr>
+                			<td width="80">
+                				<p>буфет
+                				</p>
+                			</td>
+
+                			<td>
+                				<div class="key check">
+                					<div>
+                						<div class="sound"  onclick="playSound('reading/soundr020016.mp3')">Check&nbsp;yourself</div>
+                					</div>
+                				</div>
+                			</td>
+                	</tr>
+
+                </table>
+                <table class="tab1 inter"  cellspacing="0" >
+                	<tr>
+                			<td width="80">
+                				<p>балет
+                				</p>
+                			</td>
+                			<td>
+                				<div class="key check">
+
+                					<div>
+                						<div class="sound"  onclick="playSound('reading/soundr020017.mp3')">Check&nbsp;yourself</div>
+                					</div>
+                				</div>
+                			</td>
+                	</tr>
+                </table>
+                <table class="tab1 inter"  cellspacing="0" >
+
+                	<tr>
+                			<td width="80">
+                				<p>ферма
+                				</p>
+                			</td>
+                			<td>
+                				<div class="key check">
+                					<div>
+                						<div class="sound"  onclick="playSound('reading/soundr020018.mp3')">Check&nbsp;yourself</div>
+
+                					</div>
+                				</div>
+                			</td>
+                	</tr>
+                </table>
+                <table class="tab1 inter"  cellspacing="0" >
+                	<tr>
+                			<td width="80">
+                				<p>пресса
+                				</p>
+
+                			</td>
+                			<td>
+                				<div class="key check">
+                					<div>
+                						<div class="sound"  onclick="playSound('reading/soundr020019.mp3')">Check&nbsp;yourself</div>
+                					</div>
+                				</div>
+                			</td>
+
+                	</tr>
+                </table>
+                <table class="tab1 inter"  cellspacing="0" >
+                	<tr>
+                			<td width="80">
+                				<p>текст
+                				</p>
+                			</td>
+                			<td>
+
+                				<div class="key check">
+                					<div>
+                						<div class="sound"  onclick="playSound('reading/soundr020020.mp3')">Check&nbsp;yourself</div>
+                					</div>
+                				</div>
+                			</td>
+                	</tr>
+                </table>
+
+                <table class="tab1 inter"  cellspacing="0" >
+                	<tr>
+                			<td width="80">
+                				<p>сирена
+                				</p>
+                			</td>
+                			<td>
+                				<div class="key check">
+                					<div>
+
+                						<div class="sound"  onclick="playSound('reading/soundr020021.mp3')">Check&nbsp;yourself</div>
+                					</div>
+                				</div>
+                			</td>
+                	</tr>
+                </table>
+                </div>
+            </td>
+
+            <td>
+            
+             <div class="task_transl">
+                <table class="tab1 inter"  cellspacing="0" >
+                	<tr>
+                			<td width="80">
+                				<p>метр
+                				</p>
+                			</td>
+                			<td>
+
+                				<div class="key check">
+                					<div>
+                						<div class="sound"  onclick="playSound('reading/soundr020022.mp3')">Check&nbsp;yourself</div>
+                					</div>
+                				</div>
+                			</td>
+                	</tr>
+                </table>
+
+                <table class="tab1 inter"  cellspacing="0" >
+                	<tr>
+                			<td width="80">
+                				<p>пакет
+                				</p>
+                			</td>
+                			<td>
+                				<div class="key check">
+                					<div>
+
+                						<div class="sound"  onclick="playSound('reading/soundr020023.mp3')">Check&nbsp;yourself</div>
+                					</div>
+                				</div>
+                			</td>
+                	</tr>
+                </table>
+                <table class="tab1 inter"  cellspacing="0" >
+                	<tr>
+
+                			<td width="80">
+                				<p>люстра
+                				</p>
+                			</td>
+                			<td>
+                				<div class="key check">
+                					<div>
+                						<div class="sound"  onclick="playSound('reading/soundr020024.mp3')">Check&nbsp;yourself</div>
+
+                					</div>
+                				</div>
+                			</td>
+                	</tr>
+                </table>
+                <table class="tab1 inter"  cellspacing="0" >
+                	<tr>
+                			<td width="80">
+                				<p>пилюля
+                				</p>
+
+                			</td>
+                			<td>
+                				<div class="key check">
+                					<div>
+                						<div class="sound"  onclick="playSound('reading/soundr020025.mp3')">Check&nbsp;yourself</div>
+                					</div>
+                				</div>
+                			</td>
+
+                	</tr>
+                </table>
+                <table class="tab1 inter"  cellspacing="0" >
+                	<tr>
+                			<td width="80">
+                				<p>бюро
+                				</p>
+                			</td>
+                			<td>
+
+                				<div class="key check">
+                					<div>
+                						<div class="sound"  onclick="playSound('reading/soundr020026.mp3')">Check&nbsp;yourself</div>
+                					</div>
+                				</div>
+                			</td>
+                	</tr>
+                </table>
+
+                <table class="tab1 inter"  cellspacing="0" >
+                	<tr>
+                			<td width="80">
+                				<p>нюанс
+                				</p>
+                			</td>
+                			<td>
+                				<div class="key check">
+                					<div>
+
+                						<div class="sound"  onclick="playSound('reading/soundr020027.mp3')">Check&nbsp;yourself</div>
+                					</div>
+                				</div>
+                			</td>
+                	</tr>
+                </table>
+                </div>
+            
+            </td>
+
+      </tr>
+  </table>
+
+
+<h3>Exercise 4</h3>
+
+<p class="task">Look at the words, listen to them and choose their translation from the list</p>
+
+<div id="t2">
+<script type="text/javascript">
+var t2 = new Test({dict: [
+
+['<div class="written">финал<\/div><div onclick="playTestSound(\'sounds/reading/soundr020001.mp3\')" onmouseup="(this.style.backgroundPosition=\'0px -70px\')" onmousedown="(this.style.backgroundPosition=\'0px 0px\')" class="play"/><\/div>','final'],
+['<div class="written">такси<\/div><div onclick="playTestSound(\'sounds/reading/soundr020002.mp3\')" onmouseup="(this.style.backgroundPosition=\'0px -70px\')" onmousedown="(this.style.backgroundPosition=\'0px 0px\')" class="play"/><\/div>','taxi'],
+['<div class="written">вилла<\/div><div onclick="playTestSound(\'sounds/reading/soundr020003.mp3\')" onmouseup="(this.style.backgroundPosition=\'0px -70px\')" onmousedown="(this.style.backgroundPosition=\'0px 0px\')" class="play"/><\/div>','villa'],
+['<div class="written">фирма<\/div><div onclick="playTestSound(\'sounds/reading/soundr020005.mp3\')" onmouseup="(this.style.backgroundPosition=\'0px -70px\')" onmousedown="(this.style.backgroundPosition=\'0px 0px\')" class="play"/><\/div>','firm'],
+['<div class="written">лимит<\/div><div onclick="playTestSound(\'sounds/reading/soundr020006.mp3\')" onmouseup="(this.style.backgroundPosition=\'0px -70px\')" onmousedown="(this.style.backgroundPosition=\'0px 0px\')" class="play"/><\/div>','limit'],
+['<div class="written">министр<\/div><div onclick="playTestSound(\'sounds/reading/soundr020007.mp3\')" onmouseup="(this.style.backgroundPosition=\'0px -70px\')" onmousedown="(this.style.backgroundPosition=\'0px 0px\')" class="play"/><\/div>','minister'],
+['<div class="written">тип<\/div><div onclick="playTestSound(\'sounds/reading/soundr020008.mp3\')" onmouseup="(this.style.backgroundPosition=\'0px -70px\')" onmousedown="(this.style.backgroundPosition=\'0px 0px\')" class="play"/><\/div>','type'],
+['<div class="written">диплом<\/div><div onclick="playTestSound(\'sounds/reading/soundr020010.mp3\')" onmouseup="(this.style.backgroundPosition=\'0px -70px\')" onmousedown="(this.style.backgroundPosition=\'0px 0px\')" class="play"/><\/div>','diploma'],
+['<div class="written">арбитр<\/div><div onclick="playTestSound(\'sounds/reading/soundr020009.mp3\')" onmouseup="(this.style.backgroundPosition=\'0px -70px\')" onmousedown="(this.style.backgroundPosition=\'0px 0px\')" class="play"/><\/div>','arbiter'],
+['<div class="written">пианист<\/div><div onclick="playTestSound(\'sounds/reading/soundr020011.mp3\')" onmouseup="(this.style.backgroundPosition=\'0px -70px\')" onmousedown="(this.style.backgroundPosition=\'0px 0px\')" class="play"/><\/div>','pianist'],
+['<div class="written">паника<\/div><div onclick="playTestSound(\'sounds/reading/soundr020012.mp3\')" onmouseup="(this.style.backgroundPosition=\'0px -70px\')" onmousedown="(this.style.backgroundPosition=\'0px 0px\')" class="play"/><\/div>','panic']
+
+
+],hide: 'di2',id:'t2', type: 'text', how_questions: 10, how_show: 2},'r0102040.4');
+</script>
+</div>
+
+
+</div></div>
+
+<script type="text/javascript">
+currentSection="reading";
+</script>

@@ -1,0 +1,107 @@
+<% @page_title = 'Russian Language Online: Exceptional cases of reading' %>
+<% @page_meta = {'description' => "Online information about exceptional cases of reading in Russian with audio examples"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<% content_for :special_js_css do %>
+
+<%= stylesheet_link_tag 'stylesounds' %>
+
+<style type="text/css">
+h2.page {margin-bottom: 0px;}
+
+.sound-letter td {
+width: 20%;
+}
+.italic-letter {
+font-style: italic;
+font-family: Times New Roman;
+}
+</style>
+
+<% end %>
+
+<div class="hint_wrap">
+<div class="hint_button" style="float: right;">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Links and Settings</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+    				<li><a href="basic-letters.html">Russian Letters</a></li>
+    				<li><a href="softness.html">Softness </a></li>
+					<li><a href="devocalization.html">Devocalization</a></li>
+					<li><a href="stress-reduction.html">Stress and reduction</a></li>
+					<li><a href="basic-reading-rules.html">Basic rules</a> </li>
+    				<li><a href="reading-practice.html">Training exercises</a></li>
+    		</ul>
+        <%= render :partial => 'preload_option' %>
+	</div>
+</div>
+</div>
+<div id="pagecontent"><div id="content">
+
+
+<h2 class="page">Exceptional cases of reading</h2>
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="russian-reading.html">Reading in Russian</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="readingrules.html">Rules of reading</a>
+	<span class="int-arrow">--&gt;</span> Exceptional cases of reading
+	</span>
+</h3>
+
+Exceptional cases of reading 
+
+In Russian there are combinations of letters reading of which does not conform to the rules described in previous parts: 
+<div style="padding-left: 10px;">
+<p>- <span class="letter">сч</span>, <span class="letter">жч</span> <span class="sound" onclick="playSound('sound151.mp3')">[sch] <span class="play_tip">&nbsp; &nbsp;</span></span>: 
+<span class="sound" onclick="playSound('sound152.mp3')"><u>сч</u>ётчик <span class="play_tip">&nbsp; &nbsp;</span></span>, <span class="sound" onclick="playSound('sound153.mp3')">му<u>жч</u>ина <span class="play_tip">&nbsp; &nbsp;</span></span></p>
+<p>- <span class="letter">вств</span> <span class="sound" onclick="playSound('sound154.mp3')">[stv] <span class="play_tip">&nbsp; &nbsp;</span></span>: 
+<span class="sound" onclick="playSound('sound155.mp3')">здра<u>вств</u>уйте <span class="play_tip">&nbsp; &nbsp;</span></span></p>
+<p>- <span class="letter">стн</span> <span class="sound" onclick="playSound('sound156.mp3')">[sn] <span class="play_tip">&nbsp; &nbsp;</span></span>: 
+<span class="sound" onclick="playSound('sound157.mp3')">изве<u>стн</u>ый <span class="play_tip">&nbsp; &nbsp;</span></span></p> 
+<p>- <span class="letter">здн</span> <span class="sound" onclick="playSound('sound158.mp3')">[zn] <span class="play_tip">&nbsp; &nbsp;</span></span>: 
+<span class="sound" onclick="playSound('sound159.mp3')">по<u>здн</u>о <span class="play_tip">&nbsp; &nbsp;</span></span> </p>
+<p>- <span class="letter">чн</span> <span class="sound" onclick="playSound('sound160.mp3')">[shn] <span class="play_tip">&nbsp; &nbsp;</span></span>: 
+<span class="sound" onclick="playSound('sound161.mp3')">коне<u>чн</u>о <span class="play_tip">&nbsp; &nbsp;</span></span></p>
+<p>- <span class="letter">чт</span> <span class="sound" onclick="playSound('sound162.mp3')">[sht] <span class="play_tip">&nbsp; &nbsp;</span></span>: 
+<span class="sound" onclick="playSound('sound163.mp3')"><u>чт</u>о <span class="play_tip">&nbsp; &nbsp;</span></span></p> 
+
+<p>- <span class="letter">тс</span> <span class="sound" onclick="playSound('sound164.mp3')">[ts] <span class="play_tip">&nbsp; &nbsp;</span></span>: 
+
+<span class="sound" onclick="playSound('sound165.mp3')">де<u>тс</u>кий <span class="play_tip">&nbsp; &nbsp;</span></span>
+</p>
+
+<p class="clear">
+- in the Russian word <em>сегодня</em> and in the endings -<span class="letter">ого</span> and -<span class="letter">его</span> of pronouns and adjectives, letter <span class="letter">г</span> is read as <span class="sound" onclick="playSound('sound166.mp3')">[v] <span class="play_tip">&nbsp; &nbsp;</span></span>: 
+</p>
+<div style="padding-left: 30px;">
+<p>
+<span class="sound" onclick="playSound('sound167.mp3')">с<u>его</u>дня <span class="play_tip">&nbsp; &nbsp;</span></span> - today
+</p>
+<p>
+<span class="sound" onclick="playSound('sound168.mp3')">книга известн<u>ого</u> писателя <span class="play_tip">&nbsp; &nbsp;</span></span> - the book of a famous writer
+</p>
+<p>
+<span class="sound" onclick="playSound('sound169.mp3')">около эт<u>ого</u> дома <span class="play_tip">&nbsp; &nbsp;</span></span> - near this house
+</p>
+</div>
+
+<p class="clear">
+- in words borrowed from other languages consonants may remain hard before letter <span class="letter">е</span>: 
+<span class="sound" onclick="playSound('sound170.mp3')">теннис <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('sound171.mp3')">компьютер <span class="play_tip">&nbsp; &nbsp;</span></span>.
+</p>
+
+</div>
+
+
+</div></div>
+
+<script type="text/javascript">
+currentSection="reading";
+</script>

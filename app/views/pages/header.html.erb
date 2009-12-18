@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+	<title>Header</title>
+	<script type="text/javascript" src="jquery.min.js"></script>
+	
+<script type="text/javascript">
+  
+
+
+$(document).ready(function(){
+ 
+
+$("span.acc").each(function(){
+		$(this).replaceWith($(this).text() + "&#769;");
+});
+
+
+
+
+$("span:contains('о')").css("text-decoration", "underline");
+
+
+
+$("div.changeOrder").toggle(function(){
+
+			$("tr.row").each(function(){
+				var first=$(this).children("td.original").html();
+            	var second=$(this).children("td.transcript").html();
+            	var third=$(this).children("td.translation").html();
+            	newRow='<td class="translation" valign="top">'+third+'</td><td class="original" valign="top">'+first+'</td><td class="transcript" valign="top">'+second+'</td>';
+            	$(this).html(newRow);
+			});
+			
+			$(this).children("span.cOrder").html("EN-RU >> RU-EN");
+			
+},function(){
+
+			$("tr.row").each(function(){
+				var first=$(this).children("td.original").html();
+            	var second=$(this).children("td.transcript").html();
+            	var third=$(this).children("td.translation").html();
+            	
+            	newRow='<td class="original" valign="top">'+first+'</td><td class="transcript" valign="top">'+second+'</td><td class="translation" valign="top">'+third+'</td>';
+            	$(this).html(newRow);
+			});
+			$(this).children("span.cOrder").html("RU-EN >> EN-RU");
+});
+
+
+
+
+
+});
+               
+
+
+
+</script>
+	
+<% content_for :special_css do %>
+body {
+margin: 50px;
+}
+
+.original {
+background-color: red;
+}
+
+.translation {
+background-color: yellow;
+}
+
+.transcript {
+background-color: green;
+}
+
+<% end %>	
+
+	
+</head>
+<body>
+
+
+
+
+
+<span class="acc">о</span>
+
+<span class="acc">А</span>
+
+<span class="acc">а</span>
+
+<span class="acc">i</span>
+
+<span class="acc">ы</span>
+
+
+<div class="changeOrder">Click to change colomns order <br><span class="cOrder">EN-RU >> RU-EN</span></div></div>
+
+<table id="tabl1"  cellpadding="5" cellspacing="0" border="1">
+	<tr class="row">
+		<td class="original">First
+		</td>
+		<td class="transcript">Second
+		</td>		
+		<td  class="translation">THird 
+		</td>
+
+	</tr>
+	<tr class="row">
+		<td class="original">1
+		</td>
+		<td class="transcript">2
+		</td>		
+		<td  class="translation">3
+		</td>
+
+	</tr>
+</table>
+
+
+
+<table id="tabl1"  cellpadding="5" cellspacing="0" border="1">
+	<tr class="row">
+		<td class="original">First
+		</td>
+		<td class="transcript">Second
+		</td>		
+		<td  class="translation">THird 
+		</td>
+
+	</tr>
+	<tr class="row">
+		<td class="original">1
+		</td>
+		<td class="transcript">2
+		</td>		
+		<td  class="translation">3
+		</td>
+
+	</tr>
+</table>
+
+
+
+
+
+	
+</body>
+</html>
+

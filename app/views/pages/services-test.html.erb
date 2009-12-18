@@ -1,0 +1,98 @@
+<% @page_title = 'Tests: Services' %>
+<% @page_meta = {'description' => ""} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<% content_for :special_css do %>
+
+.quest  {
+width: 210px;
+}
+
+.variants  {
+width: 220px;
+}
+
+#t2 .quest {
+width: 220px;
+}
+
+
+<% end %>
+
+<div class="hint_wrap">
+<div class="hint_button">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Recommended links</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+     				<li><a href="services.html">Services</a></li>
+     				<li><a href="services-exercise.html"> Exercises: Services</a></li>
+    		</ul>
+	</div>
+</div>
+</div>
+
+
+
+<h2 class="page">Services (tests)</h2>
+
+
+<p class="task">Before completing the following tests, please revise the topic <a title="Services" href="services.html">Services</a></p>
+<hr/>
+<br/>
+
+<h3>Test 1</h3>
+<p class="task">Listen to the phrase and сhoose the corresponding Russian expression.</p>
+<div id="t1">
+<script type="text/javascript">
+var t1 = new Test({dict: [
+
+['sounds/sound05101.mp3','служба быта'],['sounds/sound05102.mp3','парикмахерская'],['sounds/sound05103.mp3','помыть голову'],['sounds/sound05104.mp3','постричься'],['sounds/sound05105.mp3','побриться'],
+['sounds/sound05106.mp3','маникюр'],['sounds/sound05107.mp3','педикюр'],['sounds/sound05117.mp3','прачечная'],['sounds/sound05118.mp3','химчистка'],
+['sounds/sound05119.mp3','прачечная-автомат'],['sounds/sound05120.mp3','почистить'],['sounds/sound05121.mp3','постирать'],['sounds/sound05122.mp3','одежда'],
+['sounds/sound05123.mp3','обувь']
+
+],hide: 'di1',id:'t1', type: 'audio', how_questions: 8, how_show: 2}, 'v0208010.1');
+</script>
+</div>
+
+<h3>Test 2</h3>
+<p class="task">Read the Russian phrase and choose the corresponding English expression.</p>
+
+<div id="t2">
+<script type="text/javascript">
+var t2 = new Test({dict: [
+
+['служба быта','services'],['парикмахерская','hairdressing saloon'],['помыть голову','have a shampoo'],['постричься','have hair cut'],['побриться','have a shave '],
+['маникюр','manicure'],['педикюр','pedicure'],['прачечная','laundry'],['химчистка','dry-cleaner\'s'],
+['прачечная-автомат','coin laundry'],['почистить','clean'],['постирать','wash'],['одежда','clothes'],
+['обувь','shoes ']
+
+], hide:'di1',id:'t2',type: 'text', how_questions: 8, how_show: 2}, 'v0208020.2');
+</script>
+</div>
+
+<h3>Test 3</h3>
+<p class="task">Listen to the Russian phrases and сhoose their translation into English.</p>
+
+<div id="t3">
+<script type="text/javascript">
+var t3 = new Test({dict: [
+
+['sounds/sound05101.mp3','services'],['sounds/sound05102.mp3','hairdressing saloon'],['sounds/sound05104.mp3','have a shampoo'],['sounds/sound05104.mp3','have hair cut'],['sounds/sound05105.mp3','have a shave'],
+['sounds/sound05106.mp3','manicure'],['sounds/sound05107.mp3','pedicure'],['sounds/sound05117.mp3','laundry'],['sounds/sound05118.mp3','dry-cleaner\'s'],
+['sounds/sound05119.mp3','coin laundry'],['sounds/sound05120.mp3','clean'],['sounds/sound05121.mp3','wash'],['sounds/sound05122.mp3','clothes'],
+['sounds/sound05123.mp3','shoes ']
+
+],hide: 'di1',id:'t3',type: 'audio', how_questions: 8, how_show: 2}, 'v0208030.3');
+</script>
+</div>
+
+
+<script type="text/javascript">
+currentSection="words";
+</script>

@@ -1,0 +1,159 @@
+<% @page_title = 'Russian language online: Exercises  for the topic Dairy produce and fats' %>
+<% @page_meta = {'description' => "Online exercises for learning Russian words and phrases related to the topic Dairy produce and fats"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<div class="hint_wrap">
+<div class="hint_button">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Recommended links</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+     				<li><a href="dairy.html">Dairy produce</a></li>
+     				<li><a href="dairy-test.html"> Tests: Dairy produce</a></li>
+    		</ul>
+	</div>
+</div>
+</div>
+
+
+
+<h2 class="page">Dairy produce and fats <br/> (exercises)</h2>
+
+<p class="task">Before doing the following exercises, please revise the topic <a title="Dairy produce and fats" href="dairy.html">Dairy produce and fats</a></p>
+
+<hr/>
+
+<h3>Exercise 1</h3>
+
+<%= render :partial => 'tt_exercise' %>
+
+
+<hr/>
+
+
+<h3>Exercise 2</h3>
+
+
+<div class="start_btn">
+<input type="button" value="START" onclick="startYN()" />
+</div>
+<div id="yn_box">
+
+	<div id="yn_place">
+
+
+		<div id="trans_wrapper">
+			<div id="yn_trans" style="background-color: transparent; border-width: 0px;">
+				<div>&nbsp;
+				</div>
+			</div>
+		</div>
+
+		<div id="yn_sound">
+			<div class="play">
+			
+			</div>
+		</div>
+		
+		<div>Is this a correct translation? </div>
+		<br/>
+		<div id="yn_btns">
+		<input id="yes_btn" type="button" value="YES" /> <input id="no_btn" type="button" value="NO" />
+		</div>
+		<div id="show_check"></div>
+		<br>
+		<div id="yn_info"></div>
+	</div>
+
+</div>
+
+
+<hr/>
+
+
+<h3>Exercise 3</h3>
+
+
+<div class="start_btn">
+<input type="button" value="START" onclick="startCO()" />
+</div>
+<div id="co_box">
+<div id="co_copy"></div>
+	<div id="co_place">
+		<div class="co_task_wrapper">
+			<div id="co_task"><div>&nbsp;</div></div>
+		</div>
+		
+		<div class="co_choose">Choose translation from the options below: </div>
+
+		<div class="co_options_container">
+		<div class="co_options_wrapper">
+			<div id="co_option0" class="co_options"><div>&nbsp;</div></div>
+			<div id="co_option1" class="co_options"><div>&nbsp;</div></div>
+			<div id="co_option2" class="co_options"><div>&nbsp;</div></div>
+			<div style="clear: both;"></div>
+		</div>
+		</div>
+
+		<div style="text-align: center; padding-top: 30px;">
+		<div id="co_correctness"><div>&nbsp;</div></div>
+		</div>
+		
+		<div class="co_counter"> </div>
+
+	</div>
+
+</div>
+
+
+
+<script type="text/javascript">
+
+////////////////// array for test together 
+
+var ttMassive=new Array(
+
+['молоко','milk'],['масло','butter'],['сливки','cream'],['творог','curds'],
+['простокваша','sour milk'],['сметана','sour cream'],['кефир','youghurt, kefir'],['йогурт','yoghurt'],
+['сыр','cheese'],['плавленный сыр','cream cheese spread']
+
+);
+
+/////////////////////// array for yes/no
+
+var massive=new Array(
+
+['sounds/sound08501.mp3','milk'],['sounds/sound08502.mp3','butter'],['sounds/sound08503.mp3','cream'],['sounds/sound08504.mp3','curds'],
+['sounds/sound08505.mp3','sour milk'],['sounds/sound08506.mp3','sour cream'],['sounds/sound08507.mp3','youghurt, kefir'],['sounds/sound08508.mp3','yoghurt'],
+['sounds/sound08509.mp3','cheese'],['sounds/sound08510.mp3','cream cheese spread']
+
+);
+
+ynQuestNum=10;
+
+////////////////////// array for choose option
+var co_massive=new Array(
+
+['молоко','milk'],['масло','butter'],['сливки','cream'],['творог','curds'],
+['простокваша','sour milk'],['сметана','sour cream'],['кефир','youghurt, kefir'],['йогурт','yoghurt'],
+['сыр','cheese'],['плавленный сыр','cream cheese spread']
+
+);
+
+coQuestNum=10;
+
+</script>
+
+<hr/>
+
+<p class="after-exercise">If you want to check how you know these words, go to <a title="Dairy produce and fats tests" href="dairy-test.html">Tests: Dairy produce and fats</a></p>
+
+
+
+<script type="text/javascript">
+currentSection="words";
+</script>

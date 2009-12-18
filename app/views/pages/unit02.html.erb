@@ -1,0 +1,2738 @@
+<% @page_title = 'Russian Lessons Online: Lesson 2' %>
+<% @page_meta = {'description' => "Online Russian lesson which helps to learn basic Russian words and phrases related to transport", 'robots' => "noindex" } %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<% content_for :special_js_css do %>
+
+
+<style type="text/css">
+
+
+.diction td.original {
+padding-left: 25px;
+text-indent: -10px;
+}
+
+
+.diction td.translation {
+text-indent: -10px;
+padding-left: 25px;
+}
+
+.mini-dialog td {
+padding-bottom: 20px;
+}
+
+</style>
+
+<% end %>
+
+<div class="hint_wrap">
+<div class="hint_button" style="float: right;">
+  <div class="hint">
+      <div class="hint_list">
+        <span class="hint_string">Links and Settings</span>
+      </div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+        <ul>
+            <li><a href="bus.html">Bus, trolley, tram</a></li>
+            <li><a href="subway.html" >Subway</a></li>
+            <li><a href="taxi.html" title="Taxi">Taxi</a></li>
+            <li><a href="numerals00-100.html">Numerals</a></li>
+        </ul>
+        <%= render :partial => 'colorder_accent' %>
+  </div>
+</div>
+</div>
+
+
+<h2 class="page">Lesson 2 </h2>
+<% if !(logged_in? && current_user.payment) %>
+	<%=@hide_title%>
+<% end %>
+<hr>
+<h3 class="exers">I. Transport</h3>
+
+<div id="pagecontent"><div id="content">
+
+<p class="task">a) Dialogues</p>
+<h3>1. Underground</h3>
+<p>
+A tourist looks for the ticket office in the underground. He asks a passer-by where it is situated and he asks about the fare in the underground as well.
+</p>
+
+<% if !(logged_in? && current_user.payment) %>
+
+	<%= @hide_html %> 
+	
+<% else %>
+
+<table class="audio-task" cellspacing="0">        
+	<tr>
+		<td>
+		<p class="task">Listen to the dialogue and read the translation</p>
+		</td>
+
+ 		<td> 
+        	<div class="player_swf"><span style="visibility: hidden">audios/audio02011100.mp3</span></div>
+		</td>
+	</tr>
+</table>
+
+
+<div class="dict_wrapper">
+<table class="diction"  cellspacing="0" align="center">
+	<tr class="trow">
+		<td class="original" valign="top">- Извин<span class="acco">и</span>те, пож<span class="acco">а</span>луйста, где здесь к<span class="acco">а</span>сса?
+		</td>
+
+		<td class="transcript" valign="top">
+			<table onclick="playAudio('audio02011101.mp3')" class="audiotrans"  cellspacing="0" >
+				<tr>
+					<td>[izvin<span class="acct">i</span>ti, paj<span class="acct">a</span>loosta, g<span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span> <span class="sftc">z</span><span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span><span class="sftc">s</span> kassa?]
+					</td>
+
+					<td class="trs_td"><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="translation" valign="top">- Excuse me, where is a ticket office over here?
+		</td>
+	</tr>
+
+	<tr class="trow">
+		<td class="original" valign="top">- Вот там, спр<span class="acco">а</span>ва.
+		</td>
+		<td class="transcript" valign="top">
+			<table onclick="playAudio('audio02011102.mp3')" class="audiotrans"  cellspacing="0" >
+				<tr>
+					<td>[v<span class="acct">o</span>t t<span class="acct">a</span>m, spr<span class="acct">a</span>va]
+					</td>
+
+					<td class="trs_td"><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="translation" valign="top">- Over there, to the right.
+		</td>
+	</tr>
+
+	<tr class="trow">
+		<td class="original" valign="top">- А ск<span class="acco">о</span>лько ст<span class="acco">о</span><i></i>ит пр<span class="acco">о</span><i></i>езд?
+		</td>
+		<td class="transcript" valign="top">
+			<table onclick="playAudio('audio02011103.mp3')" class="audiotrans"  cellspacing="0" >
+				<tr>
+
+					<td>[a sk<span class="acct">o</span><span class="sftc">l</span>ka st<span class="acct">o</span>it pray<span class="acct">e</span>st?]
+					</td>
+					<td class="trs_td"><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div>
+					</td>
+				</tr>
+
+			</table>
+		</td>
+		<td class="translation" valign="top">- And how much is the fare?
+		</td>
+	</tr>
+	<tr class="trow">
+		<td class="original" valign="top">- С<span class="acco">о</span>рок рубл<span class="acco">е</span>й.
+		</td>
+
+		<td class="transcript" valign="top">
+			<table onclick="playAudio('audio02011104.mp3')" class="audiotrans"  cellspacing="0" >
+				<tr>
+					<td>[s<span class="acct">o</span>rak roob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>y]
+					</td>
+					<td class="trs_td"><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div>
+
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="translation" valign="top">- Twenty rubles.
+		</td>
+	</tr>
+	<tr class="trow">
+		<td class="original" valign="top">- Спас<span class="acco">и</span>бо.
+		</td>
+
+		<td class="transcript" valign="top">
+			<table onclick="playAudio('audio02011105.mp3')" class="audiotrans"  cellspacing="0" >
+				<tr>
+					<td>[spas<span class="acct">i</span>ba]
+					</td>
+					<td class="trs_td"><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div>
+					</td>
+
+				</tr>
+			</table>
+		</td>
+		<td class="translation" valign="top">- Thank you.
+		</td>
+	</tr>
+	<tr class="trow">
+		<td class="original" valign="top">- Н<span class="acco">е</span> за что.
+		</td>
+
+		<td class="transcript" valign="top">
+			<table onclick="playAudio('audio02011106.mp3')" class="audiotrans"  cellspacing="0" >
+				<tr>
+					<td>[<span class="sftv">n</span><span class="sfty">y</span><span class="acct">e</span> za shta]
+					</td>
+					<td class="trs_td"><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div>
+
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="translation" valign="top">- You're welcome.
+		</td>
+	</tr>
+</table>
+</div>
+<%end%>
+
+
+<h3>2. Taxi</h3>
+
+<p>
+A tourist is going to take a taxi in order to get to the hotel. He asks the taxi driver if he is free and how much it will cost to go to the hotel.
+</p>
+
+<% if !(logged_in? && current_user.payment) %>
+
+	<%= @hide_html %> 
+	
+<% else %>
+
+<table class="audio-task" cellspacing="0">        
+	<tr>
+		<td>
+		<p class="task">Listen to the dialogue and read the translation</p>
+		</td>
+ 		<td> 
+        	<div class="player_swf"><span style="visibility: hidden">audios/audio02011200.mp3</span></div>
+
+		</td>
+	</tr>
+</table>
+
+
+<div class="dict_wrapper">
+<table class="diction"  cellspacing="0" align="center">
+	<tr class="trow">
+		<td class="original" valign="top">- Здр<span class="acco">а</span>вствуйте, вы своб<span class="acco">о</span>дны?
+		</td>
+
+		<td class="transcript" valign="top">
+			<table onclick="playAudio('audio02011201.mp3')" class="audiotrans"  cellspacing="0" >
+				<tr>
+					<td>[zdr<span class="acct">a</span>stvooyti, v<span class="ry">i</span> svab<span class="acct">o</span>dn<span class="ry">i</span>?]
+					</td>
+
+					<td class="trs_td"><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="translation" valign="top">- Hello, are you free?
+		</td>
+	</tr>
+
+	<tr class="trow">
+		<td class="original" valign="top">- Да.
+		</td>
+		<td class="transcript" valign="top">
+			<table onclick="playAudio('audio02011202.mp3')" class="audiotrans"  cellspacing="0" >
+				<tr>
+					<td>[d<span class="acct">a</span>]
+					</td>
+					<td class="trs_td"><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div>
+
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="translation" valign="top">- Yes.
+		</td>
+	</tr>
+	<tr class="trow">
+		<td class="original" valign="top">- Мне н<span class="acco">у</span>жно на <span class="acco">у</span>лицу Г<span class="acco">о</span>рького, гост<span class="acco">и</span>ница "Росс<span class="acco">и</span><i></i>я".
+		</td>
+
+		<td class="transcript" valign="top">
+			<table onclick="playAudio('audio02011203.mp3')" class="audiotrans"  cellspacing="0" >
+				<tr>
+					<td>[m<span class="sftv">n</span><span class="sfty">y</span><span class="acct">e</span> n<span class="acct">oo</span>jna na <span class="acct">oo</span>litsoo g<span class="acct">o</span><span class="sftc">r</span>kava, gast<span class="acct">i</span>nitsa rass<span class="acct">i</span>ya]
+					</td>
+
+					<td class="trs_td"><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="translation" valign="top">- I need to go to the Gorky street, hotel "Rossiya"?
+		</td>
+	</tr>
+
+	<tr class="trow">
+		<td class="original" valign="top">- Хорош<span class="acco">о</span>, сад<span class="acco">и</span>тесь.
+		</td>
+		<td class="transcript" valign="top">
+			<table onclick="playAudio('audio02011204.mp3')" class="audiotrans"  cellspacing="0" >
+				<tr>
+					<td>[harash<span class="acct">o</span>, sad<span class="acct">i</span><span class="sftv">t</span><span class="sfty">y</span><span class="acct">e</span><span class="sftc">s</span>]
+					</td>
+
+					<td class="trs_td"><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="translation" valign="top">- Ok, get in.
+		</td>
+	</tr>
+
+	<tr class="trow">
+		<td class="original" valign="top">- Ск<span class="acco">о</span>лько <span class="acco">э</span>то ст<span class="acco">о</span><i></i>ит?
+		</td>
+		<td class="transcript" valign="top">
+			<table onclick="playAudio('audio02011205.mp3')" class="audiotrans"  cellspacing="0" >
+				<tr>
+
+					<td>[sk<span class="acct">o</span><span class="sftc">l</span>ka eta st<span class="acct">o</span>it?]
+					</td>
+					<td class="trs_td"><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div>
+					</td>
+				</tr>
+			</table>
+
+		</td>
+		<td class="translation" valign="top">- How much does it cost?
+		</td>
+	</tr>
+	<tr class="trow">
+		<td class="original" valign="top">- Шестьс<span class="acco">о</span>т рубл<span class="acco">е</span>й.
+		</td>
+		<td class="transcript" valign="top">
+
+			<table onclick="playAudio('audio02011206.mp3')" class="audiotrans"  cellspacing="0" >
+				<tr>
+					<td>[sh<span class="ry">i</span>ss<span class="acct">o</span>t roob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>y]
+					</td>
+					<td class="trs_td"><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div>
+
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="translation" valign="top">- Six hundred rubles.
+		</td>
+	</tr>
+	<tr class="trow">
+		<td class="original" valign="top">- Прекр<span class="acco">а</span>сно.
+		</td>
+
+		<td class="transcript" valign="top">
+			<table onclick="playAudio('audio02011207.mp3')" class="audiotrans"  cellspacing="0" >
+				<tr>
+					<td>[prikr<span class="acct">a</span>sna]
+					</td>
+					<td class="trs_td"><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div>
+					</td>
+
+				</tr>
+			</table>
+		</td>
+		<td class="translation" valign="top">- Very good.
+		</td>
+	</tr>
+</table>
+</div>
+
+<%end%>
+
+<h3>3. Bus</h3>
+<p>
+
+A tourist takes a bus. He asks another passanger how many stops he should take to get to the Lenin square.
+</p>
+
+<% if !(logged_in? && current_user.payment) %>
+
+	<%= @hide_html %> 
+	
+<% else %>
+
+<table class="audio-task" cellspacing="0">        
+	<tr>
+		<td>
+		<p class="task">Listen to the dialogue and read the translation</p>
+		</td>
+ 		<td> 
+        	<div class="player_swf"><span style="visibility: hidden">audios/audio02011300.mp3</span></div>
+
+		</td>
+	</tr>
+</table>
+
+
+<div class="dict_wrapper">
+<table class="diction"  cellspacing="0" align="center">
+	<tr class="trow">
+		<td class="original" valign="top">- Извин<span class="acco">и</span>те, пож<span class="acco">а</span>луйста, ск<span class="acco">о</span>лько остан<span class="acco">о</span>вок до пл<span class="acco">о</span>щади Л<span class="acco">е</span>нина?
+		</td>
+
+		<td class="transcript" valign="top">
+			<table onclick="playAudio('audio02011301.mp3')" class="audiotrans"  cellspacing="0" >
+				<tr>
+					<td>[izvin<span class="acct">i</span>ti, paj<span class="acct">a</span>loosta, sk<span class="acct">o</span><span class="sftc">l</span>ka astan<span class="acct">o</span>vak da pl<span class="acct">o</span>schidi <span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>nina?]
+					</td>
+
+					<td class="trs_td"><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="translation" valign="top">- Excuse me, how many stops are there to get to the Lenin square?
+		</td>
+	</tr>
+
+	<tr class="trow">
+		<td class="original" valign="top">- Три остан<span class="acco">о</span>вки.
+		</td>
+		<td class="transcript" valign="top">
+			<table onclick="playAudio('audio02011302.mp3')" class="audiotrans"  cellspacing="0" >
+				<tr>
+					<td>[tr<span class="acct">i</span> astan<span class="acct">o</span>fki]
+					</td>
+
+					<td class="trs_td"><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="translation" valign="top">- Three stops.
+		</td>
+	</tr>
+
+	<tr class="trow">
+		<td class="original" valign="top">- Спас<span class="acco">и</span>бо.
+		</td>
+		<td class="transcript" valign="top">
+			<table onclick="playAudio('audio02011303.mp3')" class="audiotrans"  cellspacing="0" >
+				<tr>
+					<td>[spas<span class="acct">i</span>ba]
+					</td>
+
+					<td class="trs_td"><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="translation" valign="top">- Thank you.
+		</td>
+	</tr>
+
+	<tr class="trow">
+		<td class="original" valign="top">- Пож<span class="acco">а</span>луйста.
+		</td>
+		<td class="transcript" valign="top">
+			<table onclick="playAudio('audio02011304.mp3')" class="audiotrans"  cellspacing="0" >
+				<tr>
+					<td>[paj<span class="acct">a</span>loosta]
+					</td>
+
+					<td class="trs_td"><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="translation" valign="top">- You're welcome.
+		</td>
+	</tr>
+
+</table>
+</div>
+
+<% end %>
+
+<p class="task" style="padding-top: 20px;">b) Listen and repeat the dialogue phrase by phrase. </p>
+<p class="task">c) Listen to the phrases in Russian and choose the right translation.</p>
+<div id="test1">
+<script type="text/javascript">
+T['1']=['6','8','1','5','4','2','7','3']; // For Test#1 answers are '5' - for 1-st question, '2' - for second question
+T['2']=['2','3','1']; // For Test#2
+T['3']=['4','3','1','8','6']; // For Test#3
+T['4']=['100','10','80','20','60']; // For Test#3
+</script>
+</div>
+
+<% if !(logged_in? && current_user.payment) %>
+
+	<%= @hide_html %> 
+	
+<% else %>
+
+<form onsubmit="return check_test(this,1, 'c0102013.I.c)')">
+<table class="tbtest" cellspacing="0" cellpadding="3" align="center">
+	<tr>
+		<td>&nbsp;
+
+		</td>
+		<td class="put"><i>Put the phrase<br />number  in the<br /> text area.</i><br />&nbsp;
+		</td>
+	</tr>
+	<tr>
+		<td width="250" valign="top">
+			<div class="key">
+
+   				<div>
+					<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio02013010.mp3')">Phrase 1</div>
+				</div>
+			</div>
+		</td>
+		<td><img src="pixel.gif" width="10" height="10" id="r11"><input type="text" size="2"><span class="test-space">How many stops are there to get to the Lenin place?</span>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<div class="key">
+   				<div>
+					<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio02013020.mp3')">Phrase 2</div>
+				</div>
+			</div>
+		</td>
+
+		<td><img src="pixel.gif" width="10" height="10" id="r12"><input type="text" size="2"><span class="test-space">Very good.</span>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="key">
+   				<div>
+					<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio02013030.mp3')">Phrase 3</div>
+
+				</div>
+			</div>
+		</td>
+		<td><img src="pixel.gif" width="10" height="10" id="r13"><input type="text" size="2"><span class="test-space">Where is a ticket office over here?</span>
+		</td>
+	</tr>
+	<tr>
+		<td>
+
+			 <div class="key">
+   				<div>
+					<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio02013040.mp3')">Phrase 4</div>
+				</div>
+			</div>
+		</td>
+		<td><img src="pixel.gif" width="10" height="10" id="r14"><input type="text" size="2"><span class="test-space">How much is the fare?</span>
+		</td>
+
+	</tr>
+	<tr>
+		<td>
+			<div class="key">
+   				<div>
+					<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio02013050.mp3')">Phrase 5</div>
+				</div>
+			</div>
+
+		</td>
+		<td><img src="pixel.gif" width="10" height="10" id="r15"><input type="text" size="2"><span class="test-space">You're welcome.</span>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="key">
+   				<div>
+
+					<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio02013060.mp3')">Phrase 6</div>
+				</div>
+			</div>
+		</td>
+		<td><img src="pixel.gif" width="10" height="10" id="r16"><input type="text" size="2"><span class="test-space">I need to go to the Gorky street.</span>
+		</td>
+	</tr>
+	<tr>
+
+		<td>
+			<div class="key">
+   				<div>
+					<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio02013070.mp3')">Phrase 7</div>
+				</div>
+			</div>
+		</td>
+		<td><img src="pixel.gif" width="10" height="10" id="r17"><input type="text" size="2"><span class="test-space">How much does it cost?</span>
+
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="key">
+   				<div>
+					<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio02013080.mp3')">Phrase 8</div>
+				</div>
+
+			</div>
+		</td>
+		<td><img src="pixel.gif" width="10" height="10" id="r18"><input type="text" size="2"><span class="test-space">Are you free?</span>
+		</td>
+	</tr>
+ </table>
+<div style="margin: 15px 0px 20px 0px;" align="center">
+	<input type="submit" value="Check">
+</div>
+
+</form>
+<%end%>
+<hr>
+<h3 class="exers">II. Where is the bus stop?</h3>
+<p>In the previous lesson you learned the following expression in Russian:</p>
+
+<table  cellspacing="0" >      
+	<tr valign="top">
+		 <td width="300">
+		 <p class="bold">Excuse me, please, where is ...?</p></td>
+	</tr>
+	<tr valign="top">
+
+		 <td><p style="margin-top: 0pt;">Извин<span class="acco">и</span>те, пож<span class="acco">а</span>луйста, где нах<span class="acco">о</span>дится...?<br />
+		 		<span class="sound" onclick="playAudio('audio02020010.mp3')">[izvin<span class="acct">i</span>ti, paj<span class="acct">a</span>loosta, g<span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span> nah<span class="acct">o</span>ditsa...?] <span class="play_tip">&nbsp; &nbsp;</span></span>
+
+		 		</p>
+		 </td>
+	</tr>
+</table>
+
+<p class="task">a) <strong>Learn the Russian words</strong>:</p>
+
+<div class="voc_inter">
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+
+			<td width="130">
+				<p><span>к<span class="acco">а</span>сса</span><br />
+					<span class="sound" onclick="playAudio('audio02021010.mp3')">[k<span class="acct">a</span>ssa]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+				</p>
+			</td>
+
+			<td width="30"><p>-</p>
+			<td>
+				<span>ticket office</span>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="130">
+
+				<p><span>трамв<span class="acco">а</span>й</span><br />
+					<span class="sound" onclick="playAudio('audio02021020.mp3')">[tramv<span class="acct">a</span>y]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+				</p>
+			</td>
+			<td width="30"><p>-</p>
+
+			<td>
+				<span>tramway</span>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="130">
+				<p><span>тролл<span class="acct">е</span>йбус</span><br />
+
+					<span class="sound" onclick="playAudio('audio02021030.mp3')">[tra<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>boos]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+				</p>
+			</td>
+			<td width="30"><p>-</p>
+			<td>
+
+				<span>trolleybus</span>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="130">
+				<p><span>маш<span class="acco">и</span>на</span><br />
+
+					<span class="sound" onclick="playAudio('audio02021040.mp3')">[mash<span class="acct"><span class="ry">i</span></span>na]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+				</p>
+			</td>
+			<td width="30"><p>-</p>
+			<td>
+				<span>car</span>
+
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="130">
+				<p><span>остан<span class="acco">о</span>вка</span><br />
+					<span class="sound" onclick="playAudio('audio02021050.mp3')">[astan<span class="acct">o</span>fka]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+				</p>
+			</td>
+			<td width="30"><p>-</p>
+			<td>
+				<span>stop</span>
+			</td>
+	</tr>
+</table>
+
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="220">
+				<p><span>авт<span class="acco">о</span>бусная остан<span class="acco">о</span>вка</span><br />
+					<span class="sound" onclick="playAudio('audio02021060.mp3')">[aft<span class="acct">o</span>boosnaya astan<span class="acct">o</span>fka]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+				</p>
+			</td>
+			<td width="30"><p>-</p>
+			<td>
+				<span>bus stop</span>
+			</td>
+	</tr>
+</table>
+
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="220">
+				<p><span>трамв<span class="acco">а</span>йная остан<span class="acco">о</span>вка</span><br />
+					<span class="sound" onclick="playAudio('audio02021070.mp3')">[tramv<span class="acct">a</span>ynaya astan<span class="acct">o</span>fka]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+				</p>
+			</td>
+			<td width="30"><p>-</p>
+			<td>
+				<span>tramway stop</span>
+			</td>
+	</tr>
+</table>
+
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="220">
+				<p><span>тролл<span class="acco">е</span>йбусная остан<span class="acco">о</span>вка</span><br />
+					<span class="sound" onclick="playAudio('audio02021080.mp3')">[tra<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>boosnaya astan<span class="acct">o</span>fka]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+				</p>
+			</td>
+			<td width="30"><p>-</p>
+			<td>
+				<span>trolleybus stop</span>
+			</td>
+	</tr>
+</table>
+
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="220">
+				<p><span>ст<span class="acco">а</span>нция метр<span class="acco">о</span></span><br />
+					<span class="sound" onclick="playAudio('audio02021090.mp3')">[st<span class="acct">a</span>nts<span class="ry">i</span>ya mitr<span class="acct">o</span>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+				</p>
+			</td>
+			<td width="30"><p>-</p>
+			<td>
+				<span>subway station</span>
+			</td>
+	</tr>
+</table>
+
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="220">
+				<p><span>схема метро</span><br />
+					<span class="sound" onclick="playAudio('audio02021100.mp3')">[s<span class="sftv">h</span><span class="sfty">y</span><span class="acct">e</span>ma mitr<span class="acct">o</span>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+				</p>
+			</td>
+			<td width="30"><p>-</p>
+			<td>
+				<span>subway lines plan</span>
+			</td>
+	</tr>
+</table>
+
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="220">
+				<p><span>сто<span class="acco">я</span>нка такс<span class="acco">и</span></span><br />
+					<span class="sound" onclick="playAudio('audio02021110.mp3')">[stay<span class="acco">a</span>nka taks<span class="acco">i</span>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+				</p>
+			</td>
+			<td width="30"><p>-</p>
+			<td>
+				<span>taxi parking</span>
+			</td>
+	</tr>
+</table>
+
+</div>
+
+<p class="task">b) Ask a stranger, where is:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+
+	<%= @hide_html %> 
+	
+<% else %>
+
+<div class="task_transl">
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="260">
+				<p class="bold_it">- the subway station
+				</p>
+			</td>
+
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio02022010.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+			</td>
+	</tr>
+
+</table>
+
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="260">
+				<p class="bold_it">- the taxi parking
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+
+						<div class="sound"  onclick="playAudio('audio02022020.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="260">
+
+				<p class="bold_it">- the stop
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio02022030.mp3')">Check&nbsp;yourself</div>
+					</div>
+
+				</div>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="260">
+				<p class="bold_it">- the ticket office
+				</p>
+			</td>
+
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound" onclick="playAudio('audio02022040.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+			</td>
+	</tr>
+
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="260">
+				<p class="bold_it">- the subway lines plan
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+
+						<div class="sound" onclick="playAudio('audio02022050.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+			</td>
+	</tr>
+</table>
+</div>
+<%end%>
+<hr>
+
+<h3 class="exers">III. To the airport! </h3>
+
+
+<p class="task"><strong>a) Learn the following Russian words</strong>: </p>
+
+<div class="voc_inter">
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="130">
+				<p><span><span class="acco">у</span>лица</span><br />
+					<span class="sound" onclick="playAudio('audio02031010.mp3')">[<span class="acct">oo</span>litsa]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+				</p>
+			</td>
+			<td width="30"><p>-</p>
+			<td>
+				<span>street</span>
+			</td>
+	</tr>
+</table>
+
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="130">
+				<p><span>пл<span class="acco">о</span>щадь</span><br />
+					<span class="sound" onclick="playAudio('audio02031020.mp3')">[pl<span class="acct">o</span>scha<span class="sftc">t</span>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+				</p>
+			</td>
+			<td width="30"><p>-</p>
+			<td>
+				<span>square</span>
+			</td>
+	</tr>
+</table>
+
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="130">
+				<p><span>гост<span class="acco">и</span>ница</span><br />
+					<span class="sound" onclick="playAudio('audio02031030.mp3')">[gast<span class="acct">i</span>nitsa]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+				</p>
+
+			</td>
+			<td width="30"><p>-</p>
+			<td>
+				<span>hotel</span>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+
+			<td width="130">
+				<p><span>аэроп<span class="acco">о</span>рт</span><br />
+					<span class="sound" onclick="playAudio('audio02031040.mp3')">[airap<span class="acct">o</span>rt]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+				</p>
+			</td>
+
+			<td width="30"><p>-</p>
+			<td>
+				<span>airport</span>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="130">
+
+				<p><span>вокз<span class="acco">а</span>л</span><br />
+					<span class="sound" onclick="playAudio('audio02031050.mp3')">[vagz<span class="acct">a</span>l]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+				</p>
+			</td>
+			<td width="30"><p>-</p>
+
+			<td>
+				<span>railway station</span>
+			</td>
+	</tr>
+</table>
+
+</div>
+
+<p class="task">b) Look at the pictures and answer the questions following the model:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+
+	<%= @hide_html %> 
+	
+<% else %>
+
+<table  cellspacing="0" >      
+	<tr valign="top">
+
+		 <td width="180">
+		 <p class="bold">Is it a ralway station?</p></td>
+         <td width="30"><p>-</p>
+         </td>
+		 <td><p class="bold">Yes, it is a ralway station.<br /></p></td>
+		 <td><p class="bold">(No, it is an airport)<br /></p></td>
+	</tr>
+
+	<tr valign="top">
+		 <td><p><span class="acco">Э</span>то вокз<span class="acco">а</span>л?<br />
+		 		<span class="sound" onclick="playAudio('audio02032001.mp3')">[<span class="acct">e</span>ta vagz<span class="acct">a</span>l?] <span class="play_tip">&nbsp; &nbsp;</span></span>
+		 		</p>
+
+		 </td>
+         <td><p>-</p></td>
+		 <td>
+		 	<p>Да, <span class="acco">э</span>то вокз<span class="acco">а</span>л.<br />
+		 		<span class="sound" onclick="playAudio('audio02032002.mp3')">[d<span class="acct">a</span>, <span class="acct">e</span>ta vagz<span class="acct">a</span>l] <span class="play_tip">&nbsp; &nbsp;</span></span>
+
+		 	</p>
+		 </td>
+		 <td>
+		 	<p>(Нет, <span class="acco">э</span>то аэроп<span class="acco">о</span>рт.)<br />
+		 		<span class="sound" onclick="playAudio('audio02032003.mp3')">[<span class="sftv">n</span><span class="sfty">y</span><span class="acct">e</span>t, <span class="acct">e</span>ta airap<span class="acct">o</span>rt] <span class="play_tip">&nbsp; &nbsp;</span></span>
+
+		 	</p>
+		 </td>
+	</tr>
+</table>
+
+<p class="ital" style="margin-bottom: 20px;">Questions:</p>
+
+<div class="task_transl">
+
+<img src="images/street.jpg" style="display: block; width: 135px; height: 86px; margin-bottom: 10px;"/>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+
+			<td width="200">
+				<p><span class="acco">Э</span>то вокз<span class="acco">а</span>л? -  ...  <br />
+					<span class="sound" onclick="playAudio('audio02032011.mp3')">[<span class="acct">e</span>ta vagz<span class="acct">a</span>l?] <span class="play_tip">&nbsp; &nbsp;</span></span>
+				</p>
+
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio02032012.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+			</td>
+
+	</tr>
+</table>
+
+<img src="images/airport.jpg" style="display: block; width: 135px; height: 86px; margin-bottom: 10px;" />
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="200">
+				<p><span class="acco">Э</span>то аэроп<span class="acco">о</span>рт? -  ... <br />
+					<span class="sound" onclick="playAudio('audio02032021.mp3')">[<span class="acct">e</span>ta airap<span class="acct">o</span>rt?] <span class="play_tip">&nbsp; &nbsp;</span></span>
+
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio02032022.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+
+			</td>
+	</tr>
+</table>
+
+<img src="images/square.jpg" style="display: block; width: 135px; height: 86px; margin-bottom: 10px;" />
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="200">
+				<p><span class="acco">Э</span>то <span class="acco">у</span>лица? -  ... <br />
+
+					<span class="sound" onclick="playAudio('audio02032031.mp3')">[<span class="acct">e</span>ta <span class="acct">oo</span>litsa?] <span class="play_tip">&nbsp; &nbsp;</span></span>
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+
+						<div class="sound"  onclick="playAudio('audio02032032.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+			</td>
+	</tr>
+</table>
+<img src="images/hotel.jpg" style="display: block; width: 135px; height: 86px; margin-bottom: 10px;" />
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+
+			<td width="200">
+				<p><span class="acco">Э</span>то гост<span class="acco">и</span>ница? -  ... <br />
+					<span class="sound" onclick="playAudio('audio02032041.mp3')">[<span class="acct">e</span>ta gast<span class="acct">i</span>nitsa?] <span class="play_tip">&nbsp; &nbsp;</span></span>
+				</p>
+
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio02032042.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+			</td>
+
+	</tr>
+</table>
+<img src="images/station.jpg" style="display: block; width: 135px; height: 86px; margin-bottom: 10px;" />
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="200">
+				<p><span class="acco">Э</span>то вокз<span class="acco">а</span>л? -  ... <br />
+					<span class="sound" onclick="playAudio('audio02032051.mp3')">[<span class="acct">e</span>ta vagz<span class="acct">a</span>l?] <span class="play_tip">&nbsp; &nbsp;</span></span>
+
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio02032052.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+
+			</td>
+	</tr>
+</table>
+</div>
+
+<%end%>
+
+<p class="task">c) Translate into Russian and check yourself:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+
+	<%= @hide_html %> 
+	
+<% else %>
+
+<div class="task_transl">
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="260">
+
+				<p>1. It is a square.
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio02033010.mp3')">Check&nbsp;yourself</div>
+					</div>
+
+				</div>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="260">
+				<p>2. It's a hotel.
+				</p>
+			</td>
+
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio02033020.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+			</td>
+	</tr>
+
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="260">
+				<p>3. It's the airport.
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+
+						<div class="sound"  onclick="playAudio('audio02033030.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="260">
+
+				<p>4. It's the railway station.
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio02033040.mp3')">Check&nbsp;yourself</div>
+					</div>
+
+				</div>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="260">
+				<p>5. It's the street.
+				</p>
+			</td>
+
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio02033050.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+			</td>
+	</tr>
+
+</table>
+</div>
+<%end%>
+<hr>
+
+<h3 class="exers">IV. I need to go to the hotel.</h3>
+<p>In the dialogue above you have seen the following construction:</p>
+
+<table  cellspacing="0" >      
+	<tr valign="top">
+		 <td width="300">
+		 	<p class="bold"><u>I need</u> to go to the Gorky street.</p></td>
+
+	</tr>
+	<tr valign="top">
+		 <td><p style="margin-top: 0pt;"><u>Мне н<span class="acco">у</span>жно</u> на <span class="acco">у</span>лицу Г<span class="acco">о</span>рького.<br />
+		 		<span class="sound" onclick="playAudio('audio02040010.mp3')">[m<span class="sftv">n</span><span class="sfty">y</span><span class="acct">e</span> n<span class="acct">oo</span>jna na <span class="acct">oo</span>litsoo g<span class="acct">o</span><span class="sftc">r</span>kava] <span class="play_tip">&nbsp; &nbsp;</span></span>
+
+		 		</p>
+		 </td>
+	</tr>
+</table>
+
+<p class="task">a) Learn the following expressions: </p>
+
+<div class="voc_inter">
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="130">
+
+				<p><span>на вокз<span class="acco">а</span>л</span><br />
+					<span class="sound" onclick="playAudio('audio02041010.mp3')">[na vagz<span class="acct">a</span>l]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+				</p>
+			</td>
+			<td width="30"><p>-</p>
+
+			<td>
+				<span>(to go) to the railway station</span>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="130">
+				<p><span>в аэроп<span class="acco">о</span>рт</span><br />
+
+					<span class="sound" onclick="playAudio('audio02041020.mp3')">[v airap<span class="acct">o</span>rt]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+				</p>
+			</td>
+			<td width="30"><p>-</p>
+			<td>
+				<span>(to go) to the airport</span>
+
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="180">
+				<p><span>в гост<span class="acco">и</span>ницу "Росс<span class="acco">и</span><i></i>я"</span><br />
+
+					<span class="sound" onclick="playAudio('audio02041030.mp3')">[v gast<span class="acct">i</span>nitsoo ras<span class="acct">i</span>ya]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+				</p>
+			</td>
+			<td width="30"><p>-</p>
+			<td>
+
+				<span>(to go) to the hotel "Rossiya"</span>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="180">
+				<p><span>на <span class="acco">у</span>лицу Л<span class="acco">е</span>нина</span><br />
+
+					<span class="sound" onclick="playAudio('audio02041040.mp3')">[na <span class="acct">oo</span>litsoo <span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>nina]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+				</p>
+			</td>
+			<td width="30"><p>-</p>
+
+			<td>
+				<span>(to go) to the Lenin street</span>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="180">
+				<p><span>на пл<span class="acco">о</span>щадь Поб<span class="acco">е</span>ды</span><br />
+
+					<span class="sound" onclick="playAudio('audio02041050.mp3')">[na pl<span class="acct">o</span>scha<span class="sftc">t</span> pa<span class="sftv">b</span><span class="sfty">y</span><span class="acct">e</span>d<span class="ry">i</span>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+				</p>
+
+			</td>
+			<td width="30"><p>-</p>
+			<td>
+				<span>(to go) to the Pobeda square</span>
+			</td>
+	</tr>
+</table>
+</div>					
+
+<p class="task">b) Translate into Russian and check yourself:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+
+	<%= @hide_html %> 
+	
+<% else %>
+
+<div class="task_transl">
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="260">
+				<p>1. I need to go to the Lenin street.
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+
+						<div class="sound"  onclick="playAudio('audio02042010.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="260">
+
+				<p>2. I need to go to the Pobeda square.
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio02042020.mp3')">Check&nbsp;yourself</div>
+					</div>
+
+				</div>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="260">
+				<p>3. I need to go to the hotel "Rossiya".
+				</p>
+			</td>
+
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio02042030.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+			</td>
+	</tr>
+
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="260">
+				<p>4. I need to go to the airport.
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+
+						<div class="sound"  onclick="playAudio('audio02042040.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="260">
+
+				<p>5. I need to go to the railway station.
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio02042050.mp3')">Check&nbsp;yourself</div>
+					</div>
+
+				</div>
+			</td>
+	</tr>
+</table>
+</div>
+<%end%>
+
+<hr>
+
+<h3 class="exers">V. It's to the right.</h3>
+<p>In the dialogue above you have seen the following expression:</p>
+
+<table  cellspacing="0" >      
+	<tr valign="top">
+
+		 <td width="300">
+		 	<p class="bold">Over there, to the right.</p></td>
+	</tr>
+	<tr valign="top">
+		 <td><p style="margin-top: 0pt;">Вот там, спр<span class="acco">а</span>ва.<br />
+		 		<span class="sound" onclick="playAudio('audio02050010.mp3')">[v<span class="acct">o</span>t t<span class="acct">a</span>m, spr<span class="acct">a</span>va] <span class="play_tip">&nbsp; &nbsp;</span></span>
+
+		 		</p>
+		 </td>
+	</tr>
+</table>
+
+<p class="task">a) <strong>Learn the following Russian words</strong>: </p>
+
+<div class="voc_inter">
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+
+			<td width="100">
+				<p><span>спр<span class="acco">а</span>ва</span><br />
+					<span class="sound" onclick="playAudio('audio02051010.mp3')">[spr<span class="acct">a</span>va]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+				</p>
+			</td>
+
+			<td width="30"><p>-</p>
+			<td>
+				<span>to the right</span>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="100">
+
+				<p><span>сл<span class="acco">е</span>ва</span><br />
+					<span class="sound" onclick="playAudio('audio02051020.mp3')">[s<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>va]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+				</p>
+			</td>
+
+			<td width="30"><p>-</p>
+			<td>
+				<span>to the left</span>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="100">
+
+				<p><span>пр<span class="acco">я</span>мо</span><br />
+					<span class="sound" onclick="playAudio('audio02051030.mp3')">[p<span class="sftv">r</span><span class="sfty">y</span><span class="acct">a</span>ma]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+				</p>
+			</td>
+
+			<td width="30"><p>-</p>
+			<td>
+				<span>straight ahead</span>
+			</td>
+	</tr>
+</table>
+</div>		
+
+<p class="task">b) Listen to the mini-dialogues and do the following tasks:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+
+	<%= @hide_html %> 
+	
+<% else %>
+
+<table class="mini-dialog" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td>
+          <div class="key">
+             	 <div>
+          	 	<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio02052010.mp3')">Dialogue 1</div>
+          	</div>
+          </div>
+
+		</td>
+	</tr>
+	<tr>
+		<td>
+          <div class="key">
+             	 <div>
+          	 	<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio02052020.mp3')">Dialogue 2</div>
+          	</div>
+
+          </div>
+        </td>
+    </tr>
+	<tr>
+        <td>  
+          <div class="key">
+             	 <div>
+          	 	<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio02052030.mp3')">Dialogue 3</div>
+          	</div>
+
+          </div>
+		</td>
+	</tr>
+</table>
+
+<p class="task" style="margin-top: 0px; clear: left;">Choose an appropriate variant to continue the phrase:</p>
+
+
+<form onsubmit="return check_test(this,2, 'c0102052.V.b)')" style="margin-bottom: 0px;">
+
+			<p><b>  <img src="pixel.gif" width="10" height="10" id="r21">1. The railway station is: </b><br /><br /><input type="radio" name="q1">to the left.<br /><input type="radio" name="q1">to the right.<br /><input type="radio" name="q1">straight ahead.</p>
+
+			<p><b><img src="pixel.gif" width="10" height="10" id="r22"> 2. The taxi parking is:</b><br /><br /><input type="radio" name="q2">to the left.<br /><input type="radio" name="q2">to the right.<br /><input type="radio" name="q2">straight ahead.</p>
+
+			<p><b><img src="pixel.gif" width="10" height="10" id="r23">3. The bus stop is: </b><br /><br /><input type="radio" name="q3">to the left.<br /><input type="radio" name="q3">to the right.<br /><input type="radio" name="q3">straight ahead.</p>
+
+		<input type="submit" value="Check yourself">
+
+</form>
+<%end%>
+<br>
+<hr>
+
+<h3 class="exers">VI. How much is the fare?</h3>
+
+<p>In the dialogue above you have seen the following construction:</p>
+
+<table  cellspacing="0" >      
+	<tr valign="top">
+		 <td width="300">
+		 	<p class="bold">How much is the fare?</p></td>
+
+	</tr>
+	<tr valign="top">
+		 <td><p style="margin-top: 0pt;">Ск<span class="acco">о</span>лько ст<span class="acco">о</span><i></i>ит про<i></i><span class="acco">е</span>зд?<br />
+		 		<span class="sound" onclick="playAudio('audio02060010.mp3')">[sk<span class="acct">o</span><span class="sftc">l</span>ka st<span class="acct">o</span>it pray<span class="acct">e</span>st] <span class="play_tip">&nbsp; &nbsp;</span></span>
+
+		 		</p>
+		 </td>
+	</tr>
+</table>
+
+
+<p class="task">a) Learn the following expressions: </p>
+
+<div class="voc_inter">
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="130">
+
+				<p><span>на авт<span class="acco">о</span>бусе</span><br />
+					<span class="sound" onclick="playAudio('audio02061010.mp3')">[na aft<span class="acct">o</span>boo<span class="sftv">s</span><span class="sfty">y</span>e]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+				</p>
+			</td>
+
+			<td width="30"><p>-</p>
+			<td>
+				<span>on the bus, by bus</span>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="130">
+
+				<p><span>на такс<span class="acco">и</span></span><br />
+					<span class="sound" onclick="playAudio('audio02061020.mp3')">[na taks<span class="acct">i</span>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+				</p>
+			</td>
+			<td width="30"><p>-</p>
+
+			<td>
+				<span>on the taxi, by taxi</span>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="130">
+				<p><span>на метр<span class="acco">о</span></span><br />
+
+					<span class="sound" onclick="playAudio('audio02061030.mp3')">[na mitr<span class="acct">o</span>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+				</p>
+			</td>
+			<td width="30"><p>-</p>
+			<td>
+				<span>by underground</span>
+
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="150">
+				<p><span>на тролл<span class="acco">е</span>йбусе</span><br />
+					<span class="sound" onclick="playAudio('audio02061040.mp3')">[na tra<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>boo<span class="sftv">s</span><span class="sfty">y</span>e]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+				</p>
+			</td>
+			<td width="30"><p>-</p>
+			<td>
+				<span>by trolleybus</span>
+			</td>
+	</tr>
+</table>
+
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="150">
+				<p><span>на трамв<span class="acco">а</span><i></i>е</span><br />
+					<span class="sound" onclick="playAudio('audio02061050.mp3')">[na tramv<span class="acct">a</span>ye]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+				</p>
+
+			</td>
+			<td width="30"><p>-</p>
+			<td>
+				<span>by tram</span>
+			</td>
+	</tr>
+</table>
+</div>					
+
+<p class="task">b) Translate into Russian and check yourself:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+
+	<%= @hide_html %> 
+	
+<% else %>
+
+<div class="task_transl">
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="290">
+				<p>1. How much is the fare by underground?
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+
+						<div class="sound"  onclick="playAudio('audio02062010.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="290">
+
+				<p>2. How much is the fare by taxi?
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio02062020.mp3')">Check&nbsp;yourself</div>
+					</div>
+
+				</div>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="290">
+				<p>3. How much is the fare by bus?
+				</p>
+			</td>
+
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio02062030.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+			</td>
+	</tr>
+
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="290">
+				<p>4. How much is the fare by tram?
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+
+						<div class="sound"  onclick="playAudio('audio02062040.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="290">
+
+				<p>5. How much is the fare by trolley?
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio02062050.mp3')">Check&nbsp;yourself</div>
+					</div>
+
+				</div>
+			</td>
+	</tr>
+</table>
+</div>
+<%end%>
+
+<hr>
+<h3 class="exers">VII. Numerals</h3>
+<p class="task">a) Learn the following Russian numerals:</p>
+
+<table cellpadding="0" cellspacing="0" border="0">
+	<tr>
+
+		<td valign="top" width="280">
+            <div class="voc_inter">
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="30">
+            				<p><span>1</span></p>
+            			</td>
+            			<td width="30"><p>-</p>
+
+            			<td width="100">
+            				<p><span>од<span class="acco">и</span>н</span><br />
+            					<span class="sound" onclick="playAudio('audio02071101.mp3')">[ad<span class="acct">i</span>n]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+            				</p>
+            			</td>
+
+            	</tr>
+            </table>
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="30">
+            				<p><span>2</span></p>
+            			</td>
+            			<td width="30"><p>-</p>
+
+            			<td width="100">
+            				<p><span>два</span><br />
+            					<span class="sound" onclick="playAudio('audio02071102.mp3')">[dv<span class="acct">a</span>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+            				</p>
+            			</td>
+            	</tr>
+
+            </table>
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="30">
+            				<p><span>3</span></p>
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td width="100">
+
+            				<p><span>три</span><br />
+            					<span class="sound" onclick="playAudio('audio02071103.mp3')">[tr<span class="acct">i</span>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+            				</p>
+            			</td>
+            	</tr>
+            </table>
+
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="30">
+            				<p><span>4</span></p>
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td width="100">
+            				<p><span>чет<span class="acco">ы</span>ре</span><br />
+
+            					<span class="sound" onclick="playAudio('audio02071104.mp3')">[chit<span class="acct"><span class="ry">i</span></span>ri]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+            				</p>
+            			</td>
+            	</tr>
+            </table>
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+
+            			<td width="30">
+            				<p><span>5</span></p>
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td width="100">
+            				<p><span>пять</span><br />
+            					<span class="sound" onclick="playAudio('audio02071105.mp3')">[py<span class="acct">a</span><span class="sftc">t</span>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+            				</p>
+            			</td>
+            	</tr>
+            </table>
+            </div>		
+		</td>
+		<td>
+			<div class="voc_inter">
+            <table class="tab1 inter"  cellspacing="0" >
+
+            	<tr valign="top">
+            			<td width="30">
+            				<p><span>6</span></p>
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td width="100">
+            				<p><span>шесть</span><br />
+
+            					<span class="sound" onclick="playAudio('audio02071106.mp3')">[sh<span class="acct">e</span><span class="sftc">s</span><span class="sftc">t</span>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+            				</p>
+            			</td>
+            	</tr>
+            </table>
+            <table class="tab1 inter"  cellspacing="0" >
+
+            	<tr valign="top">
+            			<td width="30">
+            				<p><span>7</span></p>
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td width="100">
+            				<p><span>семь</span><br />
+
+            					<span class="sound" onclick="playAudio('audio02071107.mp3')">[<span class="sftv">s</span><span class="sfty">y</span><span class="acct">e</span><span class="sftc">m</span>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+            				</p>
+            			</td>
+            	</tr>
+            </table>
+
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="30">
+            				<p><span>8</span></p>
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td width="100">
+            				<p><span>в<span class="acco">о</span>семь</span><br />
+
+            					<span class="sound" onclick="playAudio('audio02071108.mp3')">[v<span class="acct">o</span>si<span class="sftc">m</span>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+            				</p>
+            			</td>
+            	</tr>
+            </table>
+            <table class="tab1 inter"  cellspacing="0" >
+
+            	<tr valign="top">
+            			<td width="30">
+            				<p><span>9</span></p>
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td width="100">
+            				<p><span>д<span class="acco">е</span>вять</span><br />
+
+            					<span class="sound" onclick="playAudio('audio02071109.mp3')">[<span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span>vi<span class="sftc">t</span>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+            				</p>
+            			</td>
+            	</tr>
+            </table>
+
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="30">
+            				<p><span>10</span></p>
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td  width="100">
+            				<p><span>д<span class="acco">е</span>сять</span><br />
+
+            					<span class="sound" onclick="playAudio('audio02071110.mp3')">[<span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span>si<span class="sftc">t</span>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+            				</p>
+            			</td>
+            	</tr>
+            </table>
+
+            
+            </div>
+		
+		
+		
+		</td>
+	</tr>
+</table>
+
+<p class="task">Look at the following examples of these numerals with the noun <span class="norm_txt"><em>остановка&nbsp;<span class="s-ound" style="clear: left;" onclick="playAudio('audio0102-3003.mp3')">[astanofka]<span class="p-lay_tip">&nbsp;</span></span></em></span> - stop:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+
+	<%= @hide_html %> 
+	
+<% else %>
+
+<table cellpadding="0" cellspacing="0" border="0">
+	<tr>
+
+		<td valign="top" width="340">
+            <div class="voc_inter">
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="160">
+            				<p><span>1 (одн<span class="acco">а</span>) остан<span class="acco">о</span>вка</span><br />
+
+            					<span class="sound" onclick="playAudio('audio02071201.mp3')">[adn<span class="acct">a</span> astan<span class="acct">o</span>fka]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+            				</p>
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td>
+
+            				<span>one stop</span>
+            			</td>
+            	</tr>
+            </table>
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="160">
+            				<p><span>2 (две) остан<span class="acco">о</span>вки</span><br />
+
+            					<span class="sound" onclick="playAudio('audio02071202.mp3')">[d<span class="sftv">v</span><span class="sfty">y</span><span class="acct">e</span> astan<span class="acct">o</span>fki]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+            				</p>
+            			</td>
+            			<td width="30"><p>-</p>
+
+            			<td>
+            				<span>two stops</span>
+            			</td>
+            	</tr>
+            </table>
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="160">
+
+            				<p><span>3 (три) остан<span class="acco">о</span>вки</span><br />
+            					<span class="sound" onclick="playAudio('audio02071203.mp3')">[tr<span class="acct">i</span> astan<span class="acct">o</span>fki]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+            				</p>
+            			</td>
+
+            			<td width="30"><p>-</p>
+            			<td>
+            				<span>three stops</span>
+            			</td>
+            	</tr>
+            </table>
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+
+            			<td width="160">
+            				<p><span>4 (чет<span class="acco">ы</span>ре) остан<span class="acco">о</span>вки</span><br />
+            					<span class="sound" onclick="playAudio('audio02071204.mp3')">[chit<span class="acct"><span class="ry">i</span></span>ri astan<span class="acct">o</span>fki]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+            				</p>
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td>
+            				<span>four stops</span>
+            			</td>
+            	</tr>
+            </table>
+
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="160">
+            				<p><span>5 (пять) остан<span class="acco">о</span>вок</span><br />
+            					<span class="sound" onclick="playAudio('audio02071205.mp3')">[<span class="sftv">p</span><span class="sfty">y</span><span class="acct">a</span><span class="sftc">t</span> astan<span class="acct">o</span>vak]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+            				</p>
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td>
+            				<span>five stops</span>
+            			</td>
+            	</tr>
+            </table>
+
+            </div>	
+		</td>
+		<td valign="top">
+			<div class="voc_inter">
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="160">
+            				<p><span>6 (шесть) остан<span class="acco">о</span>вок</span><br />
+
+            					<span class="sound" onclick="playAudio('audio02071206.mp3')">[sh<span class="acct">e</span><span class="sftc">s</span><span class="sftc">t</span> astan<span class="acct">o</span>vak]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+            				</p>
+            			</td>
+            			<td width="30"><p>-</p>
+
+            			<td>
+            				<span>six stops</span>
+            			</td>
+            	</tr>
+            </table>
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="160">
+
+            				<p><span>7 (семь) остан<span class="acco">о</span>вок</span><br />
+            					<span class="sound" onclick="playAudio('audio02071207.mp3')">[<span class="sftv">s</span><span class="sfty">y</span><span class="acct">e</span><span class="sftc">m</span> astan<span class="acct">o</span>vak]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+            				</p>
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td>
+            				<span>seven stops</span>
+            			</td>
+            	</tr>
+            </table>
+
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="160">
+            				<p><span>8 (в<span class="acco">о</span>семь) остан<span class="acco">о</span>вок</span><br />
+            					<span class="sound" onclick="playAudio('audio02071208.mp3')">[v<span class="acct">o</span>si<span class="sftc">m</span> astan<span class="acct">o</span>vak]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+            				</p>
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td>
+            				<span>eight stops</span>
+            			</td>
+            	</tr>
+            </table>
+
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="160">
+            				<p><span>9 (д<span class="acco">е</span>вять) остан<span class="acco">о</span>вок</span><br />
+            					<span class="sound" onclick="playAudio('audio02071209.mp3')">[<span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span>vi<span class="sftc">t</span> astan<span class="acct">o</span>vak]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+            				</p>
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td>
+            				<span>nine stops</span>
+            			</td>
+            	</tr>
+            </table>
+
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="160">
+            				<p><span>10 (д<span class="acco">е</span>сять) остан<span class="acco">о</span>вок</span><br />
+            					<span class="sound" onclick="playAudio('audio02071210.mp3')">[<span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span>si<span class="sftc">t</span> astan<span class="acct">o</span>vak]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+            				</p>
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td>
+            				<span>ten stops</span>
+            			</td>
+            	</tr>
+            </table>
+
+            </div>
+		
+		</td>
+	</tr>
+</table>
+<%end%>
+
+<p class="task">Look at the following examples of these numerals with the noun <span class="norm_txt"><em>рубль&nbsp;<span class="so-und" style="clear: left;" onclick="playAudio('audio-02071301.mp3')">[roobl]<span class="pl-ay_tip">&nbsp;</span></span></em></span> - ruble:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+
+	<%= @hide_html %> 
+	
+<% else %>
+
+<table cellpadding="0" cellspacing="0" border="0">
+	<tr>
+
+		<td valign="top" width="340">
+            <div class="voc_inter">
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="160">
+            				<p><span>1 (од<span class="acco">и</span>н) рубль</span><br />
+            					<span class="sound" onclick="playAudio('audio02071301.mp3')">[ad<span class="acct">i</span>n r<span class="acct">oo</span>b<span class="sftc">l</span>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+            				</p>
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td>
+            				<span>one ruble</span>
+            			</td>
+            	</tr>
+            </table>
+
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="160">
+            				<p><span>2 (два) рубл<span class="acco">я</span></span><br />
+            					<span class="sound" onclick="playAudio('audio02071302.mp3')">[dv<span class="acct">a</span> roob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">a</span>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+            				</p>
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td>
+            				<span>two rubles</span>
+            			</td>
+            	</tr>
+            </table>
+
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="160">
+            				<p><span>3 (три) рубл<span class="acco">я</span></span><br />
+            					<span class="sound" onclick="playAudio('audio02071303.mp3')">[tr<span class="acct">i</span> roob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">a</span>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+            				</p>
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td>
+            				<span>three rubles</span>
+            			</td>
+            	</tr>
+            </table>
+
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="160">
+            				<p><span>4 (чет<span class="acco">ы</span>ре) рубл<span class="acco">я</span></span><br />
+            					<span class="sound" onclick="playAudio('audio02071304.mp3')">[chit<span class="acct"><span class="ry">i</span></span>ri roob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">a</span>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+            				</p>
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td>
+            				<span>four rubles</span>
+            			</td>
+            	</tr>
+            </table>
+
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="160">
+            				<p><span>5 (пять) рубл<span class="acco">е</span>й</span><br />
+            					<span class="sound" onclick="playAudio('audio02071305.mp3')">[<span class="sftv">p</span><span class="sfty">y</span><span class="acct">a</span><span class="sftc">t</span> roob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>y]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+            				</p>
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td>
+            				<span>five rubles</span>
+            			</td>
+            	</tr>
+            </table>
+
+            </div>	
+		</td>
+		<td valign="top">
+			<div class="voc_inter">
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="160">
+            				<p><span>6 (шесть) рубл<span class="acco">е</span>й</span><br />
+
+            					<span class="sound" onclick="playAudio('audio02071306.mp3')">[sh<span class="acct">e</span><span class="sftc">s</span><span class="sftc">t</span> roob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>y]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+            				</p>
+            			</td>
+
+            			<td width="30"><p>-</p>
+            			<td>
+            				<span>six rubles</span>
+            			</td>
+            	</tr>
+            </table>
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+
+            			<td width="160">
+            				<p><span>7 (семь) рубл<span class="acco">е</span>й</span><br />
+            					<span class="sound" onclick="playAudio('audio02071307.mp3')">[<span class="sftv">s</span><span class="sfty">y</span><span class="acct">e</span><span class="sftc">m</span> roob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>y]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+            				</p>
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td>
+            				<span>seven rubles</span>
+            			</td>
+            	</tr>
+            </table>
+
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="160">
+            				<p><span>8 (в<span class="acco">о</span>семь) рубл<span class="acco">е</span>й</span><br />
+            					<span class="sound" onclick="playAudio('audio02071308.mp3')">[v<span class="acct">o</span>si<span class="sftc">m</span> roob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>y]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+            				</p>
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td>
+            				<span>eight rubles</span>
+            			</td>
+            	</tr>
+            </table>
+
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="160">
+            				<p><span>9 (д<span class="acco">е</span>вять) рубл<span class="acco">е</span>й</span><br />
+            					<span class="sound" onclick="playAudio('audio02071309.mp3')">[<span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span>vi<span class="sftc">t</span> roob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>y]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+            				</p>
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td>
+            				<span>nine rubles</span>
+            			</td>
+            	</tr>
+            </table>
+
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="160">
+            				<p><span>10 (д<span class="acco">е</span>сять) рубл<span class="acco">е</span>й</span><br />
+            					<span class="sound" onclick="playAudio('audio02071310.mp3')">[<span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span>si<span class="sftc">t</span> roob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>y]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+            				</p>
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td>
+            				<span>ten rubles</span>
+            			</td>
+            	</tr>
+            </table>
+
+            </div>
+		
+		</td>
+	</tr>
+</table>
+<%end%>
+<p class="task">b) Listen to the mini-dialogues and do the following tasks:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+
+	<%= @hide_html %> 
+	
+<% else %>
+
+
+<table class="mini-dialog" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td>
+
+          <div class="key">
+             	 <div>
+          	 	<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio02072010.mp3')">Dialogue 1</div>
+          	</div>
+          </div>
+		</td>
+	</tr>
+	<tr>
+
+		<td>
+          <div class="key">
+             	 <div>
+          	 	<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio02072020.mp3')">Dialogue 2</div>
+          	</div>
+          </div>
+        </td>
+    </tr>
+
+	<tr>
+        <td>  
+          <div class="key">
+             	 <div>
+          	 	<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio02072030.mp3')">Dialogue 3</div>
+          	</div>
+          </div>
+		</td>
+	</tr>
+
+	<tr>
+        <td>  
+          <div class="key">
+             	 <div>
+          	 	<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio02072040.mp3')">Dialogue 4</div>
+          	</div>
+          </div>
+		</td>
+	</tr>
+
+	<tr>
+        <td>  
+          <div class="key">
+             	 <div>
+          	 	<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio02072050.mp3')">Dialogue 5</div>
+          	</div>
+          </div>
+		</td>
+	</tr>
+
+</table>
+
+<p class="task">Put an appropriate numeral in the text area:</p>
+
+<form onsubmit="return check_test(this,3, 'c0102072.VII.b)')">
+
+<p><img src="pixel.gif" width="10" height="10" id="r31"> There are <input type="text" align="center" size=2> stops to go to the Pushkin place.</p>
+<p><img src="pixel.gif" width="10" height="10" id="r32"> There are <input type="text" align="center" size=2> stops to go to railway station.</p>
+
+<p><img src="pixel.gif" width="10" height="10" id="r33"> There are <input type="text" align="center" size=2> stops to go to the Gorky street.</p>
+
+<p><img src="pixel.gif" width="10" height="10" id="r34"> The fare is <input type="text" align="center" size=2> rubles for the bus.</p>
+<p><img src="pixel.gif" width="10" height="10" id="r35"> The fare is <input type="text" align="center" size=2> rubles for the trolley.</p>
+<p><input type="submit" value="Check">
+
+</form>
+
+<%end%>
+
+<p class="task">c) Learn the following numerals in Russian:</p>
+
+<table cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td valign="top" width="280">
+            <div class="voc_inter">
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="30">
+
+            				<p><span>10</span></p>
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td width="120">
+            				<p><span>д<span class="acco">е</span>сять</span><br />
+            					<span class="sound" onclick="playAudio('audio02073101.mp3')">[<span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span>si<span class="sftc">t</span>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+            				</p>
+            			</td>
+            	</tr>
+            </table>
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="30">
+            				<p><span>20</span></p>
+
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td width="120">
+            				<p><span>дв<span class="acco">а</span>дцать</span><br />
+            					<span class="sound" onclick="playAudio('audio02073102.mp3')">[dv<span class="acct">a</span>tsa<span class="sftc">t</span>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+            				</p>
+            			</td>
+            	</tr>
+            </table>
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="30">
+            				<p><span>30</span></p>
+
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td width="120">
+            				<p><span>тр<span class="acco">и</span>дцать</span><br />
+            					<span class="sound" onclick="playAudio('audio02073103.mp3')">[tr<span class="acct">i</span>tsa<span class="sftc">t</span>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+            				</p>
+            			</td>
+            	</tr>
+            </table>
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="30">
+            				<p><span>40</span></p>
+
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td width="120">
+            				<p><span>с<span class="acco">о</span>рок</span><br />
+            					<span class="sound" onclick="playAudio('audio02073104.mp3')">[s<span class="acct">o</span>rak]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+            				</p>
+            			</td>
+            	</tr>
+            </table>
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="30">
+            				<p><span>50</span></p>
+
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td width="120">
+            				<p><span>пятьдес<span class="acco">я</span>т</span><br />
+            					<span class="sound" onclick="playAudio('audio02073105.mp3')">[pitdi<span class="sftv">s</span><span class="sfty">y</span><span class="acct">a</span>t]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+            				</p>
+            			</td>
+            	</tr>
+            </table>
+            
+            </div>		
+		
+		
+		</td>
+		<td>
+			<div class="voc_inter">
+            <table class="tab1 inter"  cellspacing="0" >
+
+            	<tr valign="top">
+            			<td width="30">
+            				<p><span>60</span></p>
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td width="120">
+            				<p><span>шестьдес<span class="acco">я</span>т</span><br />
+
+            					<span class="sound" onclick="playAudio('audio02073106.mp3')">[sh<span class="ry">i</span><span class="sftc">z</span>di<span class="sftv">s</span><span class="sfty">y</span><span class="acct">a</span>t]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+            				</p>
+            			</td>
+            	</tr>
+
+            </table>
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="30">
+            				<p><span>70</span></p>
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td width="120">
+
+            				<p><span>с<span class="acco">е</span>мьдесят</span><br />
+            					<span class="sound" onclick="playAudio('audio02073107.mp3')">[<span class="sftv">s</span><span class="sfty">y</span><span class="acct">e</span>mdisyat]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+            				</p>
+            			</td>
+
+            	</tr>
+            </table>
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="30">
+            				<p><span>80</span></p>
+            			</td>
+            			<td width="30"><p>-</p>
+
+            			<td width="120">
+            				<p><span>в<span class="acct">о</span>семьдесят</span><br />
+            					<span class="sound" onclick="playAudio('audio02073108.mp3')">[v<span class="acct">o</span>simdi<span class="sftv">s</span><span class="sfty">y</span>at]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+            				</p>
+
+            			</td>
+            	</tr>
+            </table>
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="30">
+            				<p><span>90</span></p>
+            			</td>
+
+            			<td width="30"><p>-</p>
+            			<td width="120">
+            				<p><span>девян<span class="acco">о</span>сто</span><br />
+            					<span class="sound" onclick="playAudio('audio02073109.mp3')">[divin<span class="acct">o</span>sta]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+            				</p>
+
+            			</td>
+            	</tr>
+            </table>
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="30">
+            				<p><span>100</span></p>
+            			</td>
+
+            			<td width="30"><p>-</p>
+            			<td width="120">
+            				<p><span>сто</span><br />
+            					<span class="sound" onclick="playAudio('audio02073110.mp3')">[st<span class="acct">o</span>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+            				</p>
+            			</td>
+
+            	</tr>
+            </table>
+            
+            </div>
+		
+		
+		
+		</td>
+	</tr>
+</table>
+
+<p class="task">Look at the following examples:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+
+	<%= @hide_html %> 
+	
+<% else %>
+
+<table cellpadding="0" cellspacing="0" border="0">
+	<tr>
+
+		<td valign="top" width="340">
+            <div class="voc_inter">
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="160">
+            				<p><span>10 (д<span class="acco">е</span>сять) рубл<span class="acco">е</span>й</span><br />
+
+            					<span class="sound" onclick="playAudio('audio02073201.mp3')">[<span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span>si<span class="sftc">t</span> roob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>y]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+            				</p>
+
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td>
+            				<span>ten rubles</span>
+            			</td>
+            	</tr>
+            </table>
+            <table class="tab1 inter"  cellspacing="0" >
+
+            	<tr valign="top">
+            			<td width="160">
+            				<p><span>20 (дв<span class="acco">а</span>дцать) рубл<span class="acco">е</span>й</span><br />
+            					<span class="sound" onclick="playAudio('audio02073202.mp3')">[dv<span class="acct">a</span>tsa<span class="sftc">t</span> roob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>y]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+            				</p>
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td>
+            				<span>twenty rubles</span>
+            			</td>
+            	</tr>
+            </table>
+
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="160">
+            				<p><span>20 (тр<span class="acco">и</span>дцать) рубл<span class="acco">е</span>й</span><br />
+            					<span class="sound" onclick="playAudio('audio02073203.mp3')">[tr<span class="acct">i</span>tsa<span class="sftc">t</span> roob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>y]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+            				</p>
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td>
+            				<span>thirty rubles</span>
+            			</td>
+            	</tr>
+            </table>
+
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="160">
+            				<p><span>...</span></p>
+            			</td>
+            			<td width="30"><p></p>
+            			<td>
+            				<span></span>
+
+            			</td>
+            	</tr>
+            </table>
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="160">
+            				<p><span>90 (девян<span class="acco">о</span>сто) рубл<span class="acco">е</span>й</span><br />
+
+            					<span class="sound" onclick="playAudio('audio02073209.mp3')">[divin<span class="acct">o</span>sta roob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>y]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+            				</p>
+            			</td>
+            			<td width="30"><p>-</p>
+
+            			<td>
+            				<span>ninety rubles</span>
+            			</td>
+            	</tr>
+            </table>
+            <table class="tab1 inter"  cellspacing="0" >
+            	<tr valign="top">
+            			<td width="160">
+
+            				<p><span>100 (сто) рубл<span class="acco">е</span>й</span><br />
+            					<span class="sound" onclick="playAudio('audio02073210.mp3')">[st<span class="acct">o</span> roob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>y]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+            				</p>
+
+            			</td>
+            			<td width="30"><p>-</p>
+            			<td>
+            				<span>one hundred rubles</span>
+            			</td>
+            	</tr>
+            </table>
+            </div>	
+		</td>
+
+	</tr>
+</table>
+<%end%>
+
+<p class="task">d) Listen to the mini-dialogues and do the following tasks:</p>
+
+<% if !(logged_in? && current_user.payment) %>
+	<%= @hide_html %> 
+<% else %>
+
+<table class="mini-dialog" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td>
+          <div class="key">
+             	 <div>
+
+          	 	<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio02074010.mp3')">Dialogue 1</div>
+          	</div>
+          </div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+          <div class="key">
+
+             	 <div>
+          	 	<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio02074020.mp3')">Dialogue 2</div>
+          	</div>
+          </div>
+        </td>
+    </tr>
+	<tr>
+        <td>  
+          <div class="key">
+
+             	 <div>
+          	 	<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio02074030.mp3')">Dialogue 3</div>
+          	</div>
+          </div>
+		</td>
+	</tr>
+	<tr>
+        <td>  
+          <div class="key">
+
+             	 <div>
+          	 	<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio02074040.mp3')">Dialogue 4</div>
+          	</div>
+          </div>
+		</td>
+	</tr>
+	<tr>
+        <td>  
+          <div class="key">
+
+             	 <div>
+          	 	<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio02074050.mp3')">Dialogue 5</div>
+          	</div>
+          </div>
+		</td>
+	</tr>
+</table>
+
+<p class="task">Put an appropriate numeral in the text area:</p>
+
+<form onsubmit="return check_test(this,4, 'c0102074.VII.d)')">
+
+<p><img src="pixel.gif" width="10" height="10" id="r41"> It costs <input type="text" align="center" size=1> rubles to go to the hotel by taxi.</p>
+<p><img src="pixel.gif" width="10" height="10" id="r42"> The fare is <input type="text" align="center" size=1> rubles for the tram.</p>
+<p><img src="pixel.gif" width="10" height="10" id="r43"> It costs <input type="text" align="center" size=1> rubles to go to the Gorky street by taxi.</p>
+
+<p><img src="pixel.gif" width="10" height="10" id="r44"> The fare is <input type="text" align="center" size=1> rubles for the underground.</p>
+
+<p><img src="pixel.gif" width="10" height="10" id="r45"> It costs <input type="text" align="center" size=1> rubles to go to the Pushkin square by taxi.</p>
+<p><input type="submit" value="Check">
+</form>
+
+<%end%>
+
+<hr>
+
+<h3>In this lesson you have learnt:</h3> 
+ 
+
+<p>- Words and expressions on the topic "Transportation".</p>
+
+<p>- The way you can say in Russian that you need something:</p> 
+
+<ul class="learnt-list">
+	<li>Мне нужно в гостиницу.</li>
+</ul> 
+
+<p>- How you can ask about the cost of things, for example, the bus fare:</p> 
+
+<ul  class="learnt-list">
+	<li>Сколько это стоит?</li>
+	<li>Сколько стоит проезд в автобусе?</li>
+
+</ul> 
+
+<p>- How you can point out the way in Russian:</p> 
+
+<ul class="learnt-list">
+	<li>Справа.</li>
+	<li>Слева.</li>
+	<li>Прямо.</li>
+</ul>
+
+
+
+<p>- You have learnt the numerals from 1 to 10, and tens from 10 to 100 in Russian. </p>
+
+<p>
+In order to make sure you have understood all the material of the lesson and to get some additional information, we recommend you to visit the following pages: 
+</p>
+
+<ul class="last-links">
+	<li>Pages of <a href="transport.html">Transport</a> section:<br/>
+		- <a href="bus.html">Bus, trolley, tram</a><br/>
+
+		- <a href="subway.html">Subway</a> <br/>
+		- <a href="taxi.html">Taxi</a>
+	</li>
+	<li><a href="numerals00-100.html">Numerals from 1 to 100</a></li>
+</ul>
+
+
+</div>
+</div>
+
+<script type="text/javascript">
+currentSection="course";
+</script>

@@ -1,0 +1,114 @@
+<% @page_title = 'Tests: Meat dishes' %>
+<% @page_meta = {'description' => ""} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<% content_for :special_css do %>
+
+.quest  {
+width: 210px;
+}
+
+.variants  {
+width: 220px;
+}
+
+#t2 .quest {
+width: 220px;
+}
+
+<% end %>
+
+<div class="hint_wrap">
+<div class="hint_button">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Recommended links</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+     				<li><a href="meat.html">Meat dishes</a></li>
+     				<li><a href="meat-exercise.html">Exercises: Meat dishes</a></li>
+
+    		</ul>
+	</div>
+</div>
+</div>
+
+
+
+<h2 class="page">Meat dishes (tests)</h2>
+
+<p class="task">Before completing the following tests, please revise the topic <a title="Meat dishes" href="meat.html">Meat dishes</a></p>
+<hr/>
+<br/>
+<h3>Test 1</h3>
+<p class="task">Listen to the phrase and сhoose the corresponding Russian expression.</p>
+
+<div id="t1">
+<script type="text/javascript">
+var t1 = new Test({dict: [
+
+['sounds/sound08301.mp3','мясо '],['sounds/sound08302.mp3','баранина'],['sounds/sound08303.mp3','говядина'],['sounds/sound08304.mp3','телятина'],
+['sounds/sound08305.mp3','свинина '],['sounds/sound08306.mp3','кролик'],['sounds/sound08307.mp3','индейка'],['sounds/sound08308.mp3','курица '],
+['sounds/sound08309.mp3','утка'],['sounds/sound08310.mp3','корейка'],['sounds/sound08311.mp3','бекон'],['sounds/sound08312.mp3','яичница с беконом '],
+//['sounds/sound08313.mp3','бифштекс'],
+['sounds/sound08313.mp3','отбивная'],['sounds/sound08314.mp3','oтбивная котлета'],['sounds/sound08315.mp3','отварное мясо'],
+['sounds/sound08316.mp3','бульон'],['sounds/sound08317.mp3','мясной суп'],['sounds/sound08318.mp3','ветчина'],['sounds/sound08319.mp3','буженина '],
+['sounds/sound08320.mp3','свиная отбивная'],['sounds/sound08321.mp3','ростбиф'],['sounds/sound08322.mp3','колбаса'],['sounds/sound08323.mp3','сосиска'],
+['sounds/sound08324.mp3','хот дог'],['sounds/sound08325.mp3','варёная колбаса'],['sounds/sound08326.mp3','копченая колбаса'],['sounds/sound08327.mp3','куриный бульон '],
+['sounds/sound08328.mp3','жареный цыплёнок'],['sounds/sound08329.mp3','яйцо'],['sounds/sound08330.mp3','яичница'],['sounds/sound08333.mp3','омлет']
+
+
+],hide: 'di1',id:'t1', type: 'audio', how_questions: 10, how_show: 2}, 'v0213010.1');
+</script>
+</div>
+
+<h3>Test 2</h3>
+<p class="task">Read the Russian phrase and choose the corresponding English expression.</p>
+
+<div id="t2">
+<script type="text/javascript">
+var t2 = new Test({dict: [
+
+['мясо','meat'],['баранина','lamb'],['говядина','beef '],['телятина','veal'],
+['свинина ','pork'],['кролик','rabbit'],['индейка','turkey'],['курица ','chicken'],
+['утка','duck'],['корейка','loin'],['бекон','bacon'],['яичница с беконом ','bacon and eggs'],
+//['бифштекс','beefsteak'],
+['отбивная','chop'],['отбивная котлета','cutlet'],['отварное мясо','boiled meat'],
+['бульон','clear soup'],['мясной суп','meat soup'],['ветчина ','ham'],['буженина','baked ham'],
+['свиная отбивная','pork chop'],['ростбиф','roast beef'],['колбаса','sausage'],['сосиска','sausage, frankfurter'],
+['хот дог','hot dog'],['варёная колбаса','cooked sausage'],['копченая колбаса ','smoked sausage'],['куриный бульон','chicken broth'],
+['жареный цыплёнок','roast chicken'],['яйцо','egg'],['яичница','fried eggs'],['омлет','omelet']
+
+], hide:'di2',id:'t2',type: 'text', how_questions: 10, how_show: 2}, 'v0213020.2');
+</script>
+</div>
+
+<h3>Test 3</h3>
+<p class="task">Listen to the Russian phrases and сhoose their translation into English.</p>
+
+<div id="t3">
+<script type="text/javascript">
+var t3 = new Test({dict: [
+
+['sounds/sound08301.mp3','meat'],['sounds/sound08302.mp3','lamb'],['sounds/sound08303.mp3','beef '],['sounds/sound08304.mp3','veal'],
+['sounds/sound08305.mp3','pork'],['sounds/sound08306.mp3','rabbit'],['sounds/sound08307.mp3','turkey'],['sounds/sound08308.mp3','chicken'],
+['sounds/sound08309.mp3','duck'],['sounds/sound08310.mp3','loin'],['sounds/sound08311.mp3','bacon'],['sounds/sound08312.mp3','bacon and eggs'],
+//['sounds/sound08313.mp3','beefsteak'],
+['sounds/sound08313.mp3','chop'],['sounds/sound08314.mp3','cutlet'],['sounds/sound08315.mp3','boiled meat'],
+['sounds/sound08316.mp3','clear soup'],['sounds/sound08317.mp3','meat soup'],['sounds/sound08318.mp3','ham'],['sounds/sound08319.mp3','baked ham'],
+['sounds/sound08320.mp3','pork chop'],['sounds/sound08321.mp3','roast beef'],['sounds/sound08322.mp3','sausage'],['sounds/sound08323.mp3','sausage, frankfurter'],
+['sounds/sound08324.mp3','hot dog'],['sounds/sound08325.mp3','cooked sausage'],['sounds/sound08326.mp3','smoked sausage'],['sounds/sound08327.mp3','chicken broth'],
+['sounds/sound08328.mp3','roast chicken'],['sounds/sound08329.mp3','egg'],['sounds/sound08330.mp3','fried eggs'],['sounds/sound08333.mp3','omelet']
+
+
+],hide: 'di3',id:'t3',type: 'audio', how_questions: 10, how_show: 2}, 'v0213030.3');
+</script>
+</div>
+
+
+<script type="text/javascript">
+currentSection="words";
+</script>

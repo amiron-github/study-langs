@@ -1,0 +1,106 @@
+<% @page_title = 'Tests: Soft and strong drinks' %>
+<% @page_meta = {'description' => ""} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<% content_for :special_css do %>
+
+.quest  {
+width: 210px;
+}
+
+.variants  {
+width: 220px;
+}
+
+#t2 .quest {
+width: 220px;
+}
+
+<% end %>
+
+<div class="hint_wrap">
+<div class="hint_button">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Recommended links</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+     				<li><a href="drinks.html">Beverages</a></li>
+     				<li><a href="drinks-exercise.html"> Exercises: Beverages</a></li>
+
+    		</ul>
+	</div>
+</div>
+</div>
+
+
+
+<h2 class="page">Beverages, soft and strong drinks <br/>(tests)</h2>
+
+<p class="task">Before completing the following tests, please revise the topic <a title="Drinks" href="drinks.html">Soft and strong drinks</a></p>
+<hr/>
+<br/>
+<h3>Test 1</h3>
+<p class="task">Listen to the phrase and сhoose the corresponding Russian expression.</p>
+
+<div id="t1">
+<script type="text/javascript">
+var t1 = new Test({dict: [
+
+['sounds/sound08901.mp3','напитки'],['sounds/sound08902.mp3','какао'],['sounds/sound08903.mp3','коктейль'],['sounds/sound08904.mp3','кофе'],
+['sounds/sound08905.mp3','кофе с молоком'],['sounds/sound08906.mp3','лимонад'],['sounds/sound08907.mp3','минеральная вода'],['sounds/sound08908.mp3','питьевая вода'],
+['sounds/sound08909.mp3','фруктовые воды'],['sounds/sound08910.mp3','чай'],['sounds/sound08911.mp3','крепкий чай'],['sounds/sound08912.mp3','слабый чай'],
+['sounds/sound08913.mp3','крепкие напитки'],['sounds/sound08914.mp3','вино'],['sounds/sound08915.mp3','сладкое вино'],['sounds/sound08916.mp3','столовое вино'],
+['sounds/sound08917.mp3','сухое вино'],['sounds/sound08918.mp3','красное вино'],['sounds/sound08919.mp3','белое вино'],['sounds/sound08920.mp3','выдержанное вино'],
+['sounds/sound08921.mp3','виски'],['sounds/sound08922.mp3','вишнёвая наливка '],['sounds/sound08923.mp3','водка'],['sounds/sound08924.mp3','коньяк'],
+['sounds/sound08925.mp3','пиво'],['sounds/sound08926.mp3','светлое пиво'],['sounds/sound08927.mp3','тёмное пиво']
+
+],hide: 'di1',id:'t1', type: 'audio', how_questions: 8, how_show: 2}, 'v0219010.1');
+</script>
+</div>
+
+<h3>Test 2</h3>
+<p class="task">Read the Russian phrase and choose the corresponding English expression.</p>
+
+<div id="t2">
+<script type="text/javascript">
+var t2 = new Test({dict: [
+
+['напитки','beverages, drinks'],['какао','cocoa'],['коктейль','cocktail'],['кофе','coffee'],
+['кофе с молоком','white coffee'],['лимонад','lemonade'],['минеральная вода','mineral water'],['питьевая вода','drinking water '],
+['фруктовые воды','soft drinks'],['чай','tea'],['крепкий чай','strong tea'],['слабый чай','weak tea'],
+['крепкие напитки','strong drinks'],['вино','wine'],['сладкое вино','sweet wine'],['столовое вино','table wine'],
+['сухое вино','dry wine'],['красное вино','red wine'],['белое вино','white wine'],['выдержанное вино','old wine'],
+['виски','whisky'],['вишнёвая наливка','cherry-brandy'],['водка','vodka'],['коньяк','brandy'],
+['пиво','beer'],['светлое пиво','light beer'],['тёмное пиво','dark beer']
+
+], hide:'di2',id:'t2',type: 'text', how_questions: 8, how_show: 2}, 'v0219020.2');
+</script>
+</div>
+
+<h3>Test 3</h3>
+<p class="task">Listen to the Russian phrases and сhoose their translation into English.</p>
+
+<div id="t3">
+<script type="text/javascript">
+var t3 = new Test({dict: [
+
+['sounds/sound08901.mp3','beverages, drinks'],['sounds/sound08902.mp3','cocoa'],['sounds/sound08903.mp3','cocktail'],['sounds/sound08904.mp3','coffee'],
+['sounds/sound08905.mp3','white coffee'],['sounds/sound08906.mp3','lemonade'],['sounds/sound08907.mp3','mineral water'],['sounds/sound08908.mp3','drinking water'],
+['sounds/sound08909.mp3','soft drinks'],['sounds/sound08910.mp3','tea'],['sounds/sound08911.mp3','strong tea'],['sounds/sound08912.mp3','weak tea'],
+['sounds/sound08913.mp3','strong drinks'],['sounds/sound08914.mp3','wine'],['sounds/sound08915.mp3','sweet wine'],['sounds/sound08916.mp3','table wine'],
+['sounds/sound08917.mp3','dry wine'],['sounds/sound08918.mp3','red wine'],['sounds/sound08919.mp3','white wine'],['sounds/sound08920.mp3','old wine'],
+['sounds/sound08921.mp3','whisky'],['sounds/sound08922.mp3','cherry-brandy'],['sounds/sound08923.mp3','vodka'],['sounds/sound08924.mp3','brandy'],
+['sounds/sound08925.mp3','beer'],['sounds/sound08926.mp3','light beer'],['sounds/sound08927.mp3','dark beer']
+
+
+],hide: 'di3',id:'t3',type: 'audio', how_questions: 8, how_show: 2}, 'v0219030.3');
+</script>
+</div>
+
+<script type="text/javascript">
+currentSection="words";
+</script>

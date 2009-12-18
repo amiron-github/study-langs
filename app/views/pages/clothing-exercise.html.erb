@@ -1,0 +1,174 @@
+<% @page_title = 'Russian language online: Exercises for the topic Outdoor clothing' %>
+<% @page_meta = {'description' => "Online exercises for learning Russian words and phrases related to the topic Outdoor clothing"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<div class="hint_wrap">
+<div class="hint_button">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Recommended links</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+     			   	<li><a href="clothing.html">Outdoor clothing</a></li>
+     				<li><a href="clothing-test.html"> Tests: Outdoor clothing</a></li>
+    		</ul>
+	</div>
+</div>
+</div>
+
+
+
+<h2 class="page">Outdoor clothing <br/>(exercises)</h2>
+
+<p class="task">Before doing the following exercises, please revise the topic <a title="Outdoor clothing" href="clothing.html">Outdoor clothing</a></p>
+
+<hr/>
+
+<h3>Exercise 1</h3>
+
+<%= render :partial => 'tt_exercise' %>
+
+
+<hr/>
+
+
+<h3>Exercise 2</h3>
+
+
+<div class="start_btn">
+<input type="button" value="START" onclick="startYN()" />
+</div>
+<div id="yn_box">
+
+	<div id="yn_place">
+
+
+		<div id="trans_wrapper">
+			<div id="yn_trans" style="background-color: transparent; border-width: 0px;">
+				<div>&nbsp;
+				</div>
+			</div>
+		</div>
+
+		<div id="yn_sound">
+			<div class="play">
+			
+			</div>
+		</div>
+		
+		<div>Is this a correct translation? </div>
+		<br/>
+		<div id="yn_btns">
+		<input id="yes_btn" type="button" value="YES" /> <input id="no_btn" type="button" value="NO" />
+		</div>
+		<div id="show_check"></div>
+		<br>
+		<div id="yn_info"></div>
+	</div>
+
+</div>
+
+
+<hr/>
+
+
+<h3>Exercise 3</h3>
+
+
+<div class="start_btn">
+<input type="button" value="START" onclick="startCO()" />
+</div>
+<div id="co_box">
+<div id="co_copy"></div>
+	<div id="co_place">
+		<div class="co_task_wrapper">
+			<div id="co_task"><div>&nbsp;</div></div>
+		</div>
+		
+		<div class="co_choose">Choose translation from the options below: </div>
+
+		<div class="co_options_container">
+		<div class="co_options_wrapper">
+			<div id="co_option0" class="co_options"><div>&nbsp;</div></div>
+			<div id="co_option1" class="co_options"><div>&nbsp;</div></div>
+			<div id="co_option2" class="co_options"><div>&nbsp;</div></div>
+			<div style="clear: both;"></div>
+		</div>
+		</div>
+
+		<div style="text-align: center; padding-top: 30px;">
+		<div id="co_correctness"><div>&nbsp;</div></div>
+		</div>
+		
+		<div class="co_counter"> </div>
+
+	</div>
+
+</div>
+
+
+
+<script type="text/javascript">
+
+////////////////// array for test together 
+
+var ttMassive=new Array(
+
+['верхняя одежда','outerwear'],['блузка','blouse'],['брюки','trousers'],['джинсы','jeans'],
+['жилет','vest'],['костюм','suit'],['куртка','outdoor coat'],['пальто','overcoat'],
+['пиджак','jacket'],['платье ','dress'],['плащ','raincoat'],['рубашка','shirt'],
+['свитер','sweater'],['футболка','T-shirt'],['шорты','shorts'],['шуба','fur coat'],
+['юбка','skirt'],['головной убор','headwear'],['бейсболка','baseball cap'],['берет','beret'],
+['кепка','(cloth) cap'],['шапка','cap'],['шляпа','hat'],['материал','material'],
+['бархат','velvet'],['вельвет','velveteen'],['замша','chamois'],['кожа','leather'],
+['трикотаж','knitwear'],['шёлк','silk'],['шерсть','wool']
+
+);
+
+/////////////////////// array for yes/no
+
+var massive=new Array(
+
+['sounds/sound09101.mp3','outerwear'],['sounds/sound09102.mp3','blouse'],['sounds/sound09103.mp3','trousers'],['sounds/sound09104.mp3','jeans'],
+['sounds/sound09105.mp3','vest'],['sounds/sound09106.mp3','suit'],['sounds/sound09107.mp3','outdoor coat'],['sounds/sound09108.mp3','overcoat'],
+['sounds/sound09109.mp3','jacket'],['sounds/sound09110.mp3','dress'],['sounds/sound09111.mp3','raincoat'],['sounds/sound09112.mp3','shirt'],
+['sounds/sound09113.mp3','sweater'],['sounds/sound09114.mp3','T-shirt'],['sounds/sound09115.mp3','shorts'],['sounds/sound09116.mp3','fur coat'],
+['sounds/sound09117.mp3','skirt'],['sounds/sound09118.mp3','headwear'],['sounds/sound09119.mp3','baseball cap'],['sounds/sound09120.mp3','beret'],
+['sounds/sound09121.mp3','(cloth) cap'],['sounds/sound09122.mp3','cap'],['sounds/sound09123.mp3','hat'],['sounds/sound09124.mp3','material'],
+['sounds/sound09125.mp3','velvet'],['sounds/sound09126.mp3','velveteen'],['sounds/sound09127.mp3','chamois'],['sounds/sound09128.mp3','leather'],
+['sounds/sound09129.mp3','knitwear'],['sounds/sound09130.mp3','silk'],['sounds/sound09131.mp3','wool']
+
+);
+
+ynQuestNum=10;
+
+////////////////////// array for choose option
+var co_massive=new Array(
+
+['верхняя одежда','outerwear'],['блузка','blouse'],['брюки','trousers'],['джинсы','jeans'],
+['жилет','vest'],['костюм','suit'],['куртка','outdoor coat'],['пальто','overcoat'],
+['пиджак','jacket'],['платье ','dress'],['плащ','raincoat'],['рубашка','shirt'],
+['свитер','sweater'],['футболка','T-shirt'],['шорты','shorts'],['шуба','fur coat'],
+['юбка','skirt'],['головной убор','headwear'],['бейсболка','baseball cap'],['берет','beret'],
+['кепка','(cloth) cap'],['шапка','cap'],['шляпа','hat'],['материал','material'],
+['бархат','velvet'],['вельвет','velveteen'],['замша','chamois'],['кожа','leather'],
+['трикотаж','knitwear'],['шёлк','silk'],['шерсть','wool']
+
+);
+
+coQuestNum=10;
+
+</script>
+
+<hr/>
+
+<p class="after-exercise">If you want to check how you know these words, go to <a title="Clothing tests" href="clothing-test.html"> Tests: Outdoor clothing</a></p>
+
+
+
+<script type="text/javascript">
+currentSection="words";
+</script>
