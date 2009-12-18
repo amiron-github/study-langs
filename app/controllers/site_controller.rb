@@ -2,6 +2,7 @@ class SiteController < ApplicationController
   def page
     @file = request.path
     @file = '/index.html' if @file == '/'
+    logger.warn(@file)
     layout = @file.match(/\/comments\//) ? 'comments.html.erb' : 'application'
     layout = 'comment_audios.html.erb' if @file.match(/\/comments_audio\//)
 
@@ -39,6 +40,7 @@ class SiteController < ApplicationController
     if ((@file=='/user_profile.html' )&& (!current_user ))
     redirect_back_or_default('/')
     else
+    logger.warn("pages#{@file}.erb")
     render :file => "pages#{@file}.erb", :layout => layout	
     end
 
