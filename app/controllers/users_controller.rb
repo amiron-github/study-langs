@@ -114,9 +114,10 @@ class UsersController < ApplicationController
     if (current_user.authenticated?(params[:password]))
       case
       when (!params[:email].blank?)
-	current_user.update_attributes(params)
-	@success = "success"
-	@email= params[:email] 
+        logger.warn("Change email")
+        current_user.update_attribute(:email, params[:email])
+      	@success = "success"
+      	@email= params[:email] 
       else 
       @error_val="You can't use empty value"
       logger.warn("empty value")
@@ -124,6 +125,7 @@ class UsersController < ApplicationController
     else
       @error_pas = "You entered incorrect password"      
     end
+
     render :action => 'update_user'
     end
   end
