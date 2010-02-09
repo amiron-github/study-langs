@@ -94,7 +94,7 @@ font-weight: bold;
         <th class="thbrd">Expiration Date</th>
     </tr>
     <tr>
-        <td height="50" style="padding: 15px;">One year subscription to the <a href="course.html">Course of Russian</a><a/></td>
+        <td height="50" style="padding: 15px;">Subscription to the <a href="course.html">Course of Russian</a><a/></td>
         <td style="padding: 15px;"><em>Active</em></td>
         <td style="padding: 15px;"><%= current_user.expired %></td>
     </tr>
@@ -105,17 +105,51 @@ font-weight: bold;
 
 		<% else %>
 
-			<hr/>
+<hr/>
 <p class="ital"> <strong>Subscriptions</strong>: <span class="ital" style="font-size: 11px"> You have no subscriptions </span> </p>
-<p style="font-size: 11px; margin-bottom:10px; margin-top: 40px">Subscriptions offered by <span class="ital bold">Study-Languages-Online.com</span>:</p>
-<div style="font-size: 12px" class="sbcr-free"> - One year subscription to the <strong>Course of Russian</strong>: 
-			
-			
-				<form action='/gettrial'>
-				<input type=submit value='SUBSCRIBE NOW FOR FREE'>
-				</form>
-</div>
 
+<div class="if_no_payment">
+<p style="font-size: 11px; margin-bottom:10px; margin-top: 40px">Subscriptions offered by <span class="ital bold">Study-Languages-Online.com</span>:</p>
+
+
+
+<table class="st-table">
+	<tr>
+		<th>Name
+		</th>
+		<th>&nbsp;&nbsp;Price&nbsp;&nbsp;
+		</th>
+		<th class="thbrd">Subscribe
+		</th>
+	</tr>
+	<tr>
+		<td style="padding: 15px;"><div style="font-size: 12px" class="sbcr-free"> 6-month subscription to the <a href="course.html">Course&nbsp;of&nbsp;Russian</a>: </div>
+		</td>
+		<td style="padding: 15px;">$18.50&nbsp;USD
+		</td>
+		<td style="padding: 15px;">
+		
+		
+<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" onsubmit="$.ajax({url:'/order',async:false, success:function(data){$('#ord_id').attr('value',data)}})" >
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="1084249">
+<input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+<input type="hidden" name="no_shipping" value="1">
+<input type="hidden" name="custom" id="ord_id" value=1>
+<input type=hidden name=return value="http://study-languages-online.com/user_profile.html">
+<input type=hidden name=cancel_return value="http://study-languages-online.com/cancel.html">
+<input type="hidden" name="rm" value="2">
+<input type="hidden" name="notify_url" value="https://study-languages-online.com/ppipn">
+<input type="hidden" name="cpp_header_image" value="http://study-languages-online.com/images/head-paypal.jpg">
+</form>		
+
+	
+		
+		</td>
+	</tr>
+</table>
+</div>
 		<%end%>
 
 		

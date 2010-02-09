@@ -8,15 +8,29 @@ Find an easy way to learn basic Russian with 10 lessons course. This course will
 Every lesson in this course is devoted to a definite topic. The topics cover typical situations which a person visiting Russia may get into.
 </p>
 
-<div class="imp-info">
-<div class="info-icon">
+ 
+<% if !(logged_in? && current_user.payment) %>
+	<p>
+	<u>
+	The full version of this course is available for subscribed users. Other users have access to the full version of the first lesson and to a limited version of other lessons.
+	</u>
+	</p>
+<% end %>
+
+<div class="if_no_payment">
+<% if  !logged_in? %>
+	<p>If you would like to subscribe to this  course, please, <a href="/signup">Sign Up</a> or <a href="login">Sign In</a> and purchase a six months subscription.</p>
+<% elsif (logged_in? && !current_user.payment) %>
+	<p>If you would like to subscribe to this  course, you can purchase a six months subscription in your <a href="user_profile.html"><strong>Profile</strong></a>.</p>
+<%end%> 
+
+<% if !(logged_in? && current_user.payment) %>
+	<p class="ital"><strong>Price:</strong> $18.50 USD for 6-month subscription. </p>
+<% end %>
 </div>
-<p>
-This <strong>Course of Russian</strong> is free only for a limited period of time. Soon, it will be available only for subscribed users. If you wish to subscribe to this course, please, <a href="/signup">Sign Up</a> or <a href="/login">Sign In</a> and follow the instructions for a free one year subscription.
-</p>
- </div>
- 
- 
+
+
+<br/>
 <h3>Content:</h3>
 <div class="inner-listing">
 <p class="bold">
@@ -24,37 +38,63 @@ This <strong>Course of Russian</strong> is free only for a limited period of tim
 </p>
 <p class="bold">
 <a href="unit02.html" title="Lesson 2">Lesson 2. <span class="ital">Transport</span></a>
+<% if !(logged_in? && current_user.payment) %>
+<span style="font-weight: normal; color: #5F5F5F;">(limited version)</span>
+<% end %>
 
 </p>
 <p class="bold">
 <a href="unit03.html" title="Lesson 3">Lesson 3. <span class="ital">At the hotel</span></a>
+<% if !(logged_in? && current_user.payment) %>
+<span style="font-weight: normal; color: #5F5F5F;">(limited version)</span>
+<% end %>
 </p>
 <p class="bold">
 <a href="unit04.html" title="Lesson 4">Lesson 4. <span class="ital">In the street</span></a>
+<% if !(logged_in? && current_user.payment) %>
+<span style="font-weight: normal; color: #5F5F5F;">(limited version)</span>
+<% end %>
 </p>
 <p class="bold">
 <a href="unit05.html" title="Lesson 5">Lesson 5. <span class="ital">Sightseeings</span></a>
+<% if !(logged_in? && current_user.payment) %>
+<span style="font-weight: normal; color: #5F5F5F;">(limited version)</span>
+<% end %>
 </p>
 <p class="bold">
 
 <a href="unit06.html" title="Lesson 6">Lesson 6. <span class="ital">Shopping</span></a>
+<% if !(logged_in? && current_user.payment) %>
+<span style="font-weight: normal; color: #5F5F5F;">(limited version)</span>
+<% end %>
 </p>
 <p class="bold">
 <a href="unit07.html" title="Lesson 7">Lesson 7. <span class="ital">At the restaurant</span></a>
+<% if !(logged_in? && current_user.payment) %>
+<span style="font-weight: normal; color: #5F5F5F;">(limited version)</span>
+<% end %>
 </p>
 <p class="bold">
 <a href="unit08.html" title="Lesson 8">Lesson 8. <span class="ital">At the drugstore</span></a>
+<% if !(logged_in? && current_user.payment) %>
+<span style="font-weight: normal; color: #5F5F5F;">(limited version)</span>
+<% end %>
 </p>
 <p class="bold">
 <a href="unit09.html" title="Lesson 9">Lesson 9. <span class="ital">Currency exchange</span></a>
+<% if !(logged_in? && current_user.payment) %>
+<span style="font-weight: normal; color: #5F5F5F;">(limited version)</span>
+<% end %>
 
 </p>
 <p class="bold">
 <a href="unit10.html" title="Lesson 10">Lesson 10. <span class="ital">Internet &amp; Telephone</span></a>
+<% if !(logged_in? && current_user.payment) %>
+<span style="font-weight: normal; color: #5F5F5F;">(limited version)</span>
+<% end %>
 </p>
 </div>
 <br/>
-
 <p>
 Before you begin the course it is recommended to see the sections <a href="pronunciation.html">Russian Pronunciation</a> and <a href="russian-reading.html">Reading in Russian</a>. These sections are not necessary for the work with the course, but if you familiarize with them the work with the course will be easier, since when you do the exercises of the lessons you will devote less attention to the pronunciation and transcription of the words and expressions, and the tasks of the lessons will be simpler to fulfill. 
 

@@ -80,6 +80,11 @@ Rails::Initializer.run do |config|
   config.active_record.observers = :user_observer, :order_observer
 
 
+config.action_mailer.smtp_settings = {
+    :enable_starttls_auto => false,
+    :domain         => 'study-languages-online.com',
+}
+
 end
 
 

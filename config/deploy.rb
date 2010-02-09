@@ -3,7 +3,7 @@
 #############################################################
 
 set :application, "studylanguagesonline"
-set :deploy_to, "/home/studylanguagesonline"
+set :deploy_to, "/home/webmaster/studylanguagesonline"
 
 #############################################################
 #	Settings
@@ -19,9 +19,9 @@ set :rails_env, "production"
 #	Servers
 #############################################################
 
-set :user, "studylanguagesonline"
-set :runner, "studylanguagesonline"
-set :domain, "study-languages-online.com"
+set :user, "webmaster"
+set :runner, "root"
+set :domain, "66.132.151.228"
 server domain, :app, :web
 role :db, domain, :primary => true
 
