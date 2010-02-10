@@ -25,7 +25,7 @@ skip_before_filter :verify_authenticity_token, :only => [:paypal_ipn]
       order.update_attribute(:status, -1)
       logger.warn("RESCUE")
       end
-
+    else logger.warn("not acknowledge... FUCK!!!!!")
     end
 	render :text=> '', :layout => false
 
