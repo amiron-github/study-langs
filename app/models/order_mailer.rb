@@ -15,6 +15,15 @@ class OrderMailer < ActionMailer::Base
         @body[:url]  = "http://study-languages-online.com/"
 
 	end
+  
+  def admin_notification(order)
+      setup_admin_email
+      @subject        += 'WOW!!! +20$'
+      
+
+      @body[:user_email] = order.user.email
+  end
+
 
 
   protected
@@ -24,6 +33,13 @@ class OrderMailer < ActionMailer::Base
       @subject     = "[#{APP_CONFIG[:site_name]}] "
       @sent_on     = Time.now
       @body[:user] = user
+    end
+
+    def setup_admin_email
+      @recipients  = "#{APP_CONFIG[:admin_email]},#{APP_CONFIG[:support_email]}"
+      @from        = APP_CONFIG[:support_email]
+      @subject     = "[#{APP_CONFIG[:site_name]}] "
+      @sent_on     = Time.now
     end
 end
 

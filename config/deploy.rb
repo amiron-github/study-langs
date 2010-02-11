@@ -11,7 +11,7 @@ set :deploy_to, "/home/studylanguagesonline"
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
-set :use_sudo, true
+set :use_sudo, false
 set :scm_verbose, true
 set :rails_env, "production" 
 
@@ -44,7 +44,5 @@ namespace :deploy do
   end
 end
 
-require 'delayed/recipes'
-require 'lib/recipes'
 
 
