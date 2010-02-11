@@ -193,7 +193,7 @@ if (sectionResults.length > 0) {
 			  	var partTitle=''
                               +'</tr> '    
                               +'<tr class="res_row">' 
-                              +'<td>'			  	
+                              +'<td style="width: 190px;">'			  	
 			  				  +tSubSection[1]+' '+tPartName
                               +'<div class="pr-detail">'
                               +'<div class="pr-detail-block">'
