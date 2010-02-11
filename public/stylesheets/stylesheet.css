@@ -1921,9 +1921,32 @@ font-size: 12px;
 
 
 
-.if_no_payment {
-display: none;
+ .sub_hint {
+background-color: #ffffff;
+position: absolute;
+border: 1px solid #999999;
+width: 178px;
+border-top: 0px solid #fff;
+margin-left: 12px;
+-moz-box-shadow: 1px 3px 3px #BFBFBF;
+-webkit-box-shadow: 1px 3px 3px #BFBFBF;
+box-shadow: 1px 3px 3px #BFBFBF;
 }
 
+.drop_2bl, .drop_3bl {
+-moz-box-shadow: 1px 3px 3px #BFBFBF;
+-webkit-box-shadow: 1px 3px 3px #BFBFBF;
+box-shadow: 1px 3px 3px #BFBFBF;
+}
+
+
+
+h2 {
+font-size: 21pt;
+margin-bottom: 40px;
+font-weight: normal;
+color: #333333;
+text-shadow:2px 2px 2px #AFAFAF;
+}
 
 
