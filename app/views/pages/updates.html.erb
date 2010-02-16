@@ -1,0 +1,54 @@
+<% @page_title='Updates' %>
+
+<% content_for :special_js_css do %>
+
+<style type="text/css">
+
+#twtr-widget-1  a {
+background-color: transparent;
+
+}
+
+</style>
+<% end %>
+
+
+<h2 class="page" style="text-align: left;">Updates on our website
+</h2>
+
+
+
+<script src="http://widgets.twimg.com/j/2/widget.js"></script>
+<script>
+new TWTR.Widget({
+  version: 2,
+  type: 'profile',
+  rpp: 8,
+  interval: 6000,
+  width: 400,
+  height: 300,
+  theme: {
+    shell: {
+      background: '#454545',
+      color: '#ffffff'
+    },
+    tweets: {
+      background: '#f5f0f5',
+      color: '#302e30',
+      links: '#0ca2e8'
+    }
+  },
+  features: {
+    scrollbar: true,
+    loop: false,
+    live: false,
+    hashtags: true,
+    timestamp: false,
+    avatars: false,
+    behavior: 'all'
+  }
+}).render().setUser('SLO_support').start();
+</script>
+
+
+
