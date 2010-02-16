@@ -211,7 +211,7 @@ margin-left: 52px;
 }
 
 #menu_body #nav2 a {
-margin-left: 22px;
+margin-left: 35px;
 }
 
 #menu_body #nav3 a {
@@ -1945,8 +1945,29 @@ h2 {
 font-size: 21pt;
 margin-bottom: 40px;
 font-weight: normal;
-color: #333333;
+color: #444444;
 text-shadow:2px 2px 2px #BFBFBF;
+}
+
+.new_item {
+position: absolute;
+font-size: 10px;
+font-st yle: italic;
+color: #fff;
+font-weight: bold;
+background-color: #DF2929; /* #FFEFEF;*/
+border: 1px solid #FFBFBF;
+padding-bottom: 1px;
+
+-moz-border-radius: 6px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+
+text-shadow:1px 1px 1px #666;
+
+-moz-box-shadow: 1px 2px 2px #BFBFBF;
+-webkit-box-shadow: 1px 2px 2px #BFBFBF;
+box-shadow: 1px 2px 2px #BFBFBF;
 }
 
 
