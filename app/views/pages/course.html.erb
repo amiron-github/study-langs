@@ -147,7 +147,10 @@ Every lesson in this course is devoted to a definite topic. The topics cover typ
 <br/>
 
 <p>
-If you are a registered user, you can review the results of the exercises and tests you have done during the lessons. See the <a href="/signup">Registration page</a> 
+If you are a registered user, you can review the results of the exercises and tests you have done during the lessons<% if logged_in? %>
+ in your <a href="user_profile.html">Profile</a>
+<%else%>. See the <a href="/signup">Registration page</a> 
+<%end%>
 </p>
 <p>
 Before you begin the next lesson you should revise the content of the previous lesson.

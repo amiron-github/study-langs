@@ -149,74 +149,46 @@
                       </div>
 					  
 					
+				<% if logged_in?%>
+					<%= render :partial => 'logged_menu' %>
+				<%else%>
 					<div id="nav7" class="menu-item" >
                       <div class="menu-item-front">
                              <div class="item-top">
-                                 <div class="list down"></div> 
-								 
-								 <% if logged_in?%> 
-                                      <a href="user_profile.html" style="margin-left: 42px !important;">&nbsp;&nbsp;&nbsp;My account</a>
-
-								<%else%>	  
-                                          <%= link_to "Sign up/Sign in",{:controller => 'sessions', :action => 'new'} %>
-								<%end%>	  
-									  
+                                 <div class="list down"></div> 	  
+                                          <%= link_to "Sign up/Sign in",{:controller => 'sessions', :action => 'new'} %>					  
                                  </div>
                               </div>
                     </div>
-					
-					<% if logged_in?%> 
-					 
-						 <div class="sub" style="display: none">
-                            <ul>
-                                <li><a href="/user_profile.html" title="Profile">My Profile</a></li>
-								<li><%= link_to "Sign Out",{:controller => 'sessions', :action => 'destroy'} %> </li>
-                             </ul>
-                     </div>
-						 
+					<div class="sub" style="display: none">
+					<% if @page_title == 'Sign In' %>
+						<ul style="padding: 5px 1px 5px 28px;">
+							<li><%= link_to "Sign Up",{:controller => 'users', :action => 'new'} %></li>
+						</ul>
+					<% elsif @page_title == 'Sign Up' %>
+						<ul style="padding: 5px 1px 5px 28px;">
+							<li> <%= link_to "Sign in",{:controller => 'sessions', :action => 'new'} %></li>
+						</ul>
 					<%else%>
-					
-
-<div class="sub" style="display: none">
-
-	<% if @page_title == 'Sign In' %>
-	
-	<ul style="padding: 5px 1px 5px 28px;">
-              <li><%= link_to "Sign Up",{:controller => 'users', :action => 'new'} %></li>
-
-     </ul>
-
-	 <% elsif @page_title == 'Sign Up' %>
-	 
-	 <ul style="padding: 5px 1px 5px 28px;">
-              <li> <%= link_to "Sign in",{:controller => 'sessions', :action => 'new'} %></li>
-     </ul>
-	 
-	<%else%>
-	
-	<% form_tag session_path do %>
-    <ul style="padding: 5px 20px 5px 18px;">
-	<li style="padding-bottom: 7px; text-align: center;"><a href="/signup">Click here to sign up!</a></li>
-      <li>
-		<span style="font-size: 10px; font-weight: bold;">Email address</span><br/>
-        <%= text_field_tag 'email', @email %>
-      </li>
-      <li>
-		<span style="font-size: 10px; font-weight: bold;">Password</span><br/>
-        <%= password_field_tag 'password', nil %>
-      </li>
-	  <li style="text-align: center;">
-			<%= submit_tag 'Sign In' %>
-	  </li>
-    </ul>
- <% end -%>
-	
-	
-	<%end%>
-							 
- </div>
-							
-					<%end%>
+						<% form_tag session_path do %>
+							<ul style="padding: 5px 20px 5px 18px;">
+								<li style="padding-bottom: 7px; text-align: center;"><a href="/signup">Click here to sign up!</a></li>
+								<li>
+									<span style="font-size: 10px; font-weight: bold;">Email address</span><br/>
+									<%= text_field_tag 'email', @email %>
+								</li>
+								<li>
+									<span style="font-size: 10px; font-weight: bold;">Password</span><br/>
+									<%= password_field_tag 'password', nil %>
+								</li>
+								<li style="text-align: center;">
+									<%= submit_tag 'Sign In' %>
+								</li>
+							</ul>
+						<% end -%>
+					<%end%>		 
+					</div>
+				<%end%>			
                      
 
 					 

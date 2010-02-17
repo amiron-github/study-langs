@@ -45,6 +45,6 @@ class SiteController < ApplicationController
 
   rescue StandardError => e
     logger.warn e
-    render :file => "#{RAILS_ROOT}/public/404.html", :status => '404 Not Found'
+    render :file => "pages/404.html", :status => '404 Not Found', :layout => layout	
   end
 end

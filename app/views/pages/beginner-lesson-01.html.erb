@@ -9,7 +9,7 @@
 
 <%= javascript_include_tag 'test' %>
 <%= javascript_include_tag 'test-text' %>
-<%= javascript_include_tag 'exercises' %>
+<%= javascript_include_tag 'exercise-yn' %>
 <%= stylesheet_link_tag 'test-style' %>
 <%= stylesheet_link_tag 'exercises' %>
 
@@ -69,7 +69,7 @@ padding:8px;
         <ul>
             <li><a href="politeness.html">Formulas of politeness</a></li>
         </ul>
-        <%= render :partial => 'colorder_accent' %>
+        <%= render :partial => 'down_accent' %>
   </div>
 </div>
 </div>
@@ -1051,168 +1051,7 @@ T['1']=['5','1','2','3','4','6']; // For Test#1
 
 
 
-
-
-
-
-
-<div style="display: none;">
-
-
-<h3>Exercise 1</h3>
-
-<div class="start_btn">
-<input value="START" onclick="restart()" type="button">
-</div>
-<div style="overflow: hidden; position: relative; height: 410px; width: 509px;">
-
-	<div class="box_together">
-
-<table class="table_tog" border="0" cellpadding="0" cellspacing="0">
-  <tr>
-		<td>
-			<div class="variant_tog">
-				<div>&nbsp;</div>
-
-			</div>
-		</td>
-
-		<td class="empty_tog">
-		</td>
-
-		<td>
-			<div class="target_tog"></div>
-		</td>
-		<td class="correct_tog">
-
-			<div class="task_tog">&nbsp;</div>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<div class="variant_tog">
-				<div>&nbsp;</div>
-			</div>
-		</td>
-
-		<td class="empty_tog">
-		</td>
-
-		<td>
-			<div class="target_tog"></div>
-		</td>
-		<td class="correct_tog">
-			<div class="task_tog">&nbsp;</div>
-		</td>
-
-	</tr>
-	<tr>
-		<td>
-			<div class="variant_tog"> 
-				<div>&nbsp;</div>
-			</div>
-		</td>
-
-		<td class="empty_tog">
-		</td>
-
-		<td>
-			<div class="target_tog"></div>
-		</td>
-		<td class="correct_tog">
-			<div class="task_tog">&nbsp;</div>
-		</td>
-	</tr>
-
-
-</table>
-
-
-
-
-	</div>
-
-</div>
-
-
-
-
-
-
-<hr/>
-
-
-<h3>Exercise 3</h3>
-
-
-<div class="start_btn">
-<input type="button" value="START" onclick="startCO()" />
-</div>
-<div id="co_box">
-<div id="co_copy"></div>
-	<div id="co_place">
-		<div class="co_task_wrapper">
-
-			<div id="co_task"><div>&nbsp;</div></div>
-		</div>
-		
-		<div class="co_choose">Choose translation from the options below: </div>
-
-		<div class="co_options_container">
-		<div class="co_options_wrapper">
-			<div id="co_option0" class="co_options"><div>&nbsp;</div></div>
-			<div id="co_option1" class="co_options"><div>&nbsp;</div></div>
-			<div id="co_option2" class="co_options"><div>&nbsp;</div></div>
-
-			<div style="clear: both;"></div>
-		</div>
-		</div>
-
-		<div style="text-align: center; padding-top: 30px;">
-		<div id="co_correctness"><div>&nbsp;</div></div>
-		</div>
-		
-		<div class="co_counter"> </div>
-
-	</div>
-
-</div>
-
-
-
-
-
-
-
-
-
-</div>
-
-
 <script type="text/javascript">
 currentSection="course";
-
-
-var ttMassive=new Array(
-
-['самолёт','plane'],['посадка','landing'],['рейс','flight'],['международный рейс','international flight'],['отправление','departure'],
-['пункт назначения','destination'],['прибытие','arrival'],['задерживается','delayed'],
-['отменён','cancelled'],['регистрация','check-in'],['паспортный контроль','passport control'],['таможня','customs'],['багаж','luggage'],
-['выдача багажа','baggage claim area'],['справочная','information office']
-
-);
-
-
-var co_massive=new Array(
-
-['самолёт','plane'],['посадка','landing'],['рейс','flight'],['международный рейс','international flight'],['отправление','departure'],
-['пункт назначения','destination'],['прибытие','arrival'],['задерживается','delayed'],
-['отменён','cancelled'],['регистрация','check-in'],['паспортный контроль','passport control'],['таможня','customs'],['багаж','luggage'],
-['выдача багажа','baggage claim area'],['справочная','information office']
-
-);
-
-coQuestNum=10;
-
 
 </script>
