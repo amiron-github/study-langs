@@ -9,6 +9,10 @@
 <style type="text/css">
 
 
+.drugbox div {
+zoom: 1;
+}
+
 table.dragtable td {
 padding: 3px;
 }
@@ -31,9 +35,7 @@ user-select: none;
 }
 
 .target {
-background-color: #EFEFEF;
 color: #444444;
-font-size: 9px;
 line-height: 20px;
 position: relative;
 wh_ite-space: nowrap;
@@ -63,22 +65,51 @@ border: 1px dotted #666;
 }
 
 .dragit {
-background-color: #fff;
+back-ground-color: #fff;
 text-align: left;
-border: 1px solid #fff; 
+bord-er: 1px solid #fff; 
 position: relative;
 }
 
 
-.clear_placed_text {
-border: 1px solid grey;
-cursor: default;
+.content .clear_placed_text {
+border: 1px solid gray;
+cursor: pointer;
 padding: 0px 2px;
 font-weight: bold;
-
+outline: none;
+text-decoration: none !important;
 -moz-user-select: none;
 -khtml-user-select: none;
 user-select: none;
+}
+
+
+a:link.clear_placed_text {
+border: 1px solid gray;
+background-color: tranparent;
+color: #444;
+}
+
+a:visited.clear_placed_text {
+border: 1px solid gray;
+background-color: tranparent;
+color: #444;
+
+}
+
+a:hover.clear_placed_text {
+border: 1px solid #000;
+background-color: #BFDCFF;
+color: #000;
+
+}
+
+a:active.clear_placed_text {
+border: 1px solid #000;
+background-color: #2F71BF;
+color: #fff;
+
 }
 
 
@@ -157,69 +188,35 @@ padding-left: 18px;
 <%end%>
 
 
-
-
-
-<p class="task">Listen to the phrases. Move (with cursor) the flag of the country which the speaking person is from: </p>
-
-<br>
-
-
-<div style="position: absolute;" class="drugbox">
-
-
-
-
+<h2 class="page">Drag and drop test</h2>
 
 
 <br>
-<br>
-<br>
-<br>
-<h3>Exercise: choose a variant from list</h3>
+
+
+<div style="position: absolute;" class="drugbox multidrag">
+
+<div class="section-block" style="cursor: auto">
+				<div class="sect-crn clt">
+						<div class="sect-crn crt">
+							<div class="sect-mid">  </div>
+						</div>
+				</div>
+				<div class="section-content" style="height: auto; padding: 0px 40px;">
+
+
+				
+				
 
 
 
 
-<p class="task">Type the answer </p>
-
-<div  class="gr_ex_type">
-
-<div class="gext_task gext_sign  target"> 
-
-1. Я 
-<input type="text" size="20" value="сидеть" class="drag_text_place"> <span class="gext_answer" style="display: none">сижу на качелях</span>
-
-<span class="clear_placed_text">X</span>
-
-</div>
 
 
-
-<div class="gext_task gext_sign  target"> 
-
-2. Ты
-<input type="text" size="20" value="сидеть" class="drag_text_place"> <span class="gext_answer" style="display: none">сидишь</span><span class="clear_placed_text">X</span>
-на качелях. 
-
-</div>
-
-
-<div class="gext_task gext_sign target"> 
-
-3. Он 
-<input type="text" size="20" value="сидеть"  class="drag_text_place"> <span class="gext_answer" style="display: none">сидит</span><span class="clear_placed_text">X</span>
-на качелях. 
-
-</div>
-
-<p class="gext_check"><input type="button" value="Check the answers" ></p>
-
-</div>
 
 <p class="task">Drag and drop these words:</p> 
 
-<table>
+<table style="cursor: pointer">
 <tr>
 <td>
 <div class="dragit">сижу</div>
@@ -235,6 +232,61 @@ padding-left: 18px;
 </td>
 </tr>
 </table>
+<br>
+<br>
+
+
+<div  class="gr_ex_type">
+
+<div class="gext_task gext_sign  target"> 
+
+1. Я 
+<input type="text" size="20" rows="1" class="drag_text_place" /> <span class="gext_answer" style="display: none">сижу на качелях</span>
+
+<a href="javascript:;" class="clear_placed_text" title="Reset">X</a>
+
+</div>
+
+
+
+<div class="gext_task gext_sign  target"> 
+
+2. Ты
+<input type="text" size="20" value="сидеть" class="drag_text_place"> <span class="gext_answer" style="display: none">сидишь</span><a href="javascript:;" class="clear_placed_text" title="Reset">X</a>
+на качелях. 
+
+</div>
+
+
+<div class="gext_task gext_sign target"> 
+
+3. Он 
+<input type="text" size="20" value="сидеть"  class="drag_text_place"> <span class="gext_answer" style="display: none">сидит</span><a href="javascript:;" class="clear_placed_text" title="Reset">X</a>
+на качелях. 
+
+</div>
+
+<p class="gext_check"><input type="button" value="Check the answers" ></p>
+
+</div>
+
+
+
+
+
+
+</div>
+				<div class="sect-btm">
+    				<div class="sect-clb">
+    					<div class="sect-crb">
+    						<div class="sect-btm-bg" style="height: 40px;">
+    							    				   			
+    						</div>
+    					</div>
+    				</div>
+				</div>
+			</div>
+
 
 
 

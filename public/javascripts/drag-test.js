@@ -27,6 +27,7 @@
 	// http://jquery.offput.ca/highlightFade/
 
 	// Parse strings looking for color tuples [255,255,255]
+	
 	function getRGB(color) {
 		var result;
 
@@ -177,10 +178,6 @@ if(t.data("to_restore")) {
 	t.removeData("to_restore");
 }
 
-}).mouseover(function() {
-	$(this).css({color: "#fff", backgroundColor: "red"},100);
-}).mouseout(function() {
-	$(this).css({backgroundColor: "transparent", color: "#444444"});
 });
 
 $(".target textarea").val("")
@@ -232,7 +229,13 @@ $(".dragit").mousedown(function(e){
    	difY=e.pageY-curPosY-drugboxTop;
 	var intarget=t.data("intarget");
 
-	t.clone().css({left: "0", top: "0", position: "relative"}).appendTo("#dragHelper").end().css({visibility: "hi_dden"}).removeData("intarget");
+	
+	if( t.hasClass('multidrag') || drugbEq.hasClass('multidrag')) {
+		t.clone().css({left: "0", top: "0", position: "relative"}).appendTo("#dragHelper").end().css({visibility: "visible"}).removeData("intarget");
+	} else {
+		t.clone().css({left: "0", top: "0", position: "relative"}).appendTo("#dragHelper").end().css({visibility: "hidden"}).removeData("intarget");
+	}
+	
 	$("#dragHelper").css({left: curPosX+drugboxLeft, top: curPosY+drugboxTop, zIndex: inZ, opacity: "0.8"});
 
 	$("#drugbox"+bEq+" div.target").eq(intarget).removeClass("already");
@@ -328,10 +331,12 @@ if (domEl.tagName == "INPUT" || domEl.tagName == "TEXTAREA") {
 
 
 
-if (jObj.hasClass('multidrag')) {
+if (jObj.hasClass('multidrag') || $("#drugbox"+bEq).hasClass('multidrag')) {
 
 }else{
+
 jObj.css({visibility: "hidden"});
+
 }
 
 var inTarget = new Array();
