@@ -1,0 +1,256 @@
+<% @page_title = 'Drag and drop test' %>
+
+<% content_for :special_js_css do %>
+
+
+<%= javascript_include_tag 'drag-test' %>
+
+
+<style type="text/css">
+
+
+table.dragtable td {
+padding: 3px;
+}
+
+.post-drugbox {
+height: 310px;
+}
+
+#dragHelper div {
+-moz-user-select: none;
+-khtml-user-select: none;
+user-select: none;
+cursor: default;
+}
+
+.noselect {
+-moz-user-select: none;
+-khtml-user-select: none;
+user-select: none;
+}
+
+.target {
+background-color: #EFEFEF;
+color: #444444;
+font-size: 9px;
+line-height: 20px;
+position: relative;
+wh_ite-space: nowrap;
+zoom: 1;
+text-align: left;
+}
+
+.act_targ {
+background-color: #9F9F9F;
+border: 1px dashed #4F0505;
+}
+
+#dragHelper {
+position: absolute;
+top: -200px;
+text-align: left;
+cursor: default;
+font-weight: bold;
+color: #000;
+padding: 1px;
+white-space: nowrap;
+background-color: #fff;
+border: 1px dotted #666; 
+-moz-box-shadow: 0px 2px 3px #555;
+-khtml-box-shadow: 0px 2px 3px #555;
+
+}
+
+.dragit {
+background-color: #fff;
+text-align: left;
+border: 1px solid #fff; 
+position: relative;
+}
+
+
+.clear_placed_text {
+border: 1px solid grey;
+cursor: default;
+padding: 0px 2px;
+font-weight: bold;
+
+-moz-user-select: none;
+-khtml-user-select: none;
+user-select: none;
+}
+
+
+
+/*///////////////////////////////////*/
+
+
+.gr_exercise_container {
+position: relative;
+padding: 25px;
+
+}
+
+
+#holder {
+margin-top: -50px;
+position: absolute;
+z-index: 100;
+
+}
+
+
+.gr_ex_unit {
+line-height: 32px;
+padding-bottom: 10px;
+padding-left: 50px;
+backgro und-image: url("kids/accept.png");
+background-repeat: no-repeat;
+}
+
+.gexv_task {
+}
+
+.gexv_sign {
+line-height: 32px;
+padding-left: 50px;
+background-repeat: no-repeat;
+padding-bottom: 10px;
+}
+
+.gext_task input {
+text-al ign: center;
+}
+
+.gext_sign {
+line-height: 32px;
+padding-left: 50px;
+background-repeat: no-repeat;
+padding-bottom: 10px;
+}
+
+.d_answer span {
+display: none;
+}
+
+
+.gexd_task {
+line-height: 28px;
+padding-left: 50px;
+background-repeat: no-repeat;
+padding-bottom: 4px;
+}
+
+.gexd_task .d_answer {
+color: #666;
+}
+
+.gexd_task div {
+padding-left: 18px;
+}
+
+
+
+</style>
+
+<%end%>
+
+
+
+
+
+<p class="task">Listen to the phrases. Move (with cursor) the flag of the country which the speaking person is from: </p>
+
+<br>
+
+
+<div style="position: absolute;" class="drugbox">
+
+
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+<h3>Exercise: choose a variant from list</h3>
+
+
+
+
+<p class="task">Type the answer </p>
+
+<div  class="gr_ex_type">
+
+<div class="gext_task gext_sign  target"> 
+
+1. Я 
+<input type="text" size="20" value="сидеть" class="drag_text_place"> <span class="gext_answer" style="display: none">сижу на качелях</span>
+
+<span class="clear_placed_text">X</span>
+
+</div>
+
+
+
+<div class="gext_task gext_sign  target"> 
+
+2. Ты
+<input type="text" size="20" value="сидеть" class="drag_text_place"> <span class="gext_answer" style="display: none">сидишь</span><span class="clear_placed_text">X</span>
+на качелях. 
+
+</div>
+
+
+<div class="gext_task gext_sign target"> 
+
+3. Он 
+<input type="text" size="20" value="сидеть"  class="drag_text_place"> <span class="gext_answer" style="display: none">сидит</span><span class="clear_placed_text">X</span>
+на качелях. 
+
+</div>
+
+<p class="gext_check"><input type="button" value="Check the answers" ></p>
+
+</div>
+
+<p class="task">Drag and drop these words:</p> 
+
+<table>
+<tr>
+<td>
+<div class="dragit">сижу</div>
+
+</td>
+<td>
+<div class="dragit multidrag">на качелях</div>
+
+</td>
+<td>
+<div class="dragit">сидишь</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+
+</div>
+
+
+<div class="post-drugbox" style="height: 600px;"></div>
+
+
+
+<br>
+<br>
+<br>
+<br>
+
+

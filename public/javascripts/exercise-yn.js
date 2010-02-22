@@ -181,6 +181,9 @@ $("#yn_place").empty().html("<div id=\"yn_info\"><\/div>");
     				+ wrongAnswersForEnd;
     }
     $("#yn_info").css({height: "250px"}).html(endHtml);
+	
+	var correctToSend = ynQuestNum - ynWrongAnswers.length;
+	sendResults(ynIdToSend, ynQuestNum, correctToSend)
 }
 
 function ynMakePlayer(mp3File) {

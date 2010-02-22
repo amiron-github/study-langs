@@ -278,10 +278,11 @@ $(".open_popup_link").hover(function(){
 	$(this).removeClass("pphover");
 	});
 
-
+/*
 if($(".dragit").length){
  $.getScript("/javascripts/draggable.js");
 }
+*/
 
 
 }

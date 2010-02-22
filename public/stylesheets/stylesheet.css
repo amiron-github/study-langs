@@ -1970,4 +1970,7 @@ text-shadow:1px 1px 1px #666;
 box-shadow: 1px 2px 2px #BFBFBF;
 }
 
-
+.content a.drop_lessons_list {
+padding-left: 15px;
+background-color: transparent;
+}

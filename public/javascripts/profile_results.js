@@ -358,11 +358,19 @@ vocabularyDescription=new Array('Section: Vocabulary',
 
 coursesDescription = new Array('Section: Course of Russian',
 [
-['Everyday Russian', 'Lesson', 
+['Everyday Russian Course', 'Lesson', 
 [
 [' 1. <br>In the airport','01'],[' 2. <br>Transport', '02'], [' 3. <br>At the hotel', '03'],[' 4. <br>In the street', '04'],
 [' 5. <br>Sightseeings','05'],[' 6. <br>Shopping', '06'], [' 7. <br>At the restaurant', '07'],[' 8. <br>At the drugstore', '08'],
 [' 9. <br>Currency exchange','09'],[' 10. <br>Internet and Phone', '10']
+
+], 
+'Exercise'],
+
+['Russian Course for Beginners', 'Lesson', 
+[
+[' 1. <br>Greetings and Farewells','01'],[' 2. <br>Introducing yourself', '02'], [' 3. <br>Where are you from?', '03'],[' 4. <br>Professions and Occupations', '04'],
+[' 5. <br>Languages skills','05']
 
 ], 
 'Exercise']

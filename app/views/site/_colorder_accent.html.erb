@@ -5,6 +5,12 @@
 	</li>
 </ul>
 
+<% if @file =~ /unit\d\d\.html/ %>
+
+ <%= render :partial => 'everyday_course_links' %>
+ 
+<%end%>
+
 <div class="drop_1 toopen"><span style="padding-left: 12px;">Audio files preloading</span></div>
 	<div class="drop_2">
 		<div id="preload_options" class="drop_2bl" style="display: none">
