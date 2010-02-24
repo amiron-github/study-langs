@@ -1,0 +1,59 @@
+
+<% content_for :special_js_css do %>
+
+<%= javascript_include_tag 'profile_results' %>
+<%= stylesheet_link_tag 'profile' %>
+
+<%end%>
+
+<%= link_to 'Back to all', {:controller => 'userdata'} %> 
+
+<h2>User's information</h2>
+
+<hr>
+<p>
+  <b>Email:</b>
+  <%=h @user.email %>
+    
+</p>
+
+<p>
+  <b>Status:</b>
+  <%=h @user.state %>
+</p>
+
+<p>
+  <b>Created:</b>
+  <%=h @user.created_at %>
+</p>
+
+<p>
+  <b>Activated:</b>
+  <%=h @user.activated_at %>
+</p>
+
+
+<p>
+  <b>Payment:</b>
+  <%=h @user.payment %>
+</p>
+
+<br><br>
+<hr>
+<h2 style="font-size: 20px;">User's Tests and Exercises Results</h2>
+
+<div id="results_container">
+		No results yet.
+		
+</div>
+
+
+<script type="text/javascript">
+
+
+
+<%=@user.get_tests %>
+
+
+ 
+</script>

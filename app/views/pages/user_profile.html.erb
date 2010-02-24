@@ -38,7 +38,11 @@ font-weight: bold;
 <% end %>
 
 
-
+<% if current_user.email == 'mirumir.sasha@gmail.com'%>
+	<div align="right">
+		<%= link_to 'View userdata', {:controller => 'userdata'} %> 
+	</div>
+<% end %>
 
 
 <div id="prof_tabs">

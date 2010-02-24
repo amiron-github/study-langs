@@ -1,0 +1,81 @@
+<% content_for :special_js_css do %>
+ <%= stylesheet_link_tag 'tablesorter' %>
+ <%= javascript_include_tag 'jquery.tablesorter.min.js' %>
+ <%= javascript_include_tag 'jquery.tablesorter.pager.js' %>
+
+<script type="text/javascript">
+
+$(document).ready(function() { 
+    $("table.tablesorter") 
+    .tablesorter({widthFixed: true, sortList: [[0,1]], headers: {4: {sorter: 'digit'}, 5:{sorter: false}},widgets: ['zebra'] }) 
+    .tablesorterPager({container: $("#pager"), size: 30,positionFixed: false}); 
+});
+</script>
+
+
+<style>
+div#contentcell {
+height:auto !important;
+min-height:950px;
+}
+
+</style>
+
+<%end%>
+
+<h2>User Data</h2>
+<hr>
+<br><br>
+
+<div id="pager" class="pager"> 
+	<form> 
+		<img title="First Page" src="/images/tablesorter/first.png" class="first"/> 
+		<img title="Previous Page" src="/images/tablesorter/prev.png" class="prev"/> 
+		<input type="text" class="pagedisplay"/> 
+		<img title="Next Page" src="/images/tablesorter/next.png" class="next"/> 
+		<img title="Last Page" src="/images/tablesorter/last.png" class="last"/> 
+		
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<b>Display rows:</b>
+		<select class="pagesize"> 
+			<option  value="30" selected="selected">30</option> 
+			<option value="50">50</option> 
+			<option  value="100">100</option> 
+			<option  value="200">200</option>
+			<option  value="500">500</option>
+			<option  value="1000">1000</option>
+		</select> 
+	</form> 
+</div>
+
+
+
+<table class="stt-table tablesorter" cellspacing="1" cellpadding="0" border="0">
+<thead>
+<tr>
+	<th >ID</th>
+	<th>Email</th>
+	<th>Created</th>
+	<th >State</th>
+	<th >Tests</th>
+	<th class="thbrd">Show</th>
+</tr>
+</thead>
+<tbody>
+<% for user in @users -%>
+
+<tr>
+
+<td><%= user.id %></td>
+<td style="text-align: left;"><%= user.email %></td>
+<td><%=h user.created_at.strftime("%Y/%m/%d") %></td>
+<td><%= user.state %></td>
+<td><%= user.tests_number %></td>
+<td><%= link_to 'Show', {:controller => 'userdata', :action => 'show', :id => user} %><br/></td>
+
+</tr>
+
+<% end %>
+
+</tbody>
+</table>

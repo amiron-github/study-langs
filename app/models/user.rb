@@ -61,6 +61,10 @@ class User < ActiveRecord::Base
   def email=(value)
    write_attribute :email, (value ? value.downcase : nil)
   end
+  
+  def tests_number 
+	self.user_tests.size
+  end
 
   def get_tests 
      res='var userProgress=new Array('

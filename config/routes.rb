@@ -29,6 +29,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.edit '/edit', :controller => 'users', :action => 'save_user'
   map.psedit '/psedit', :controller => 'users', :action => 'save_pass'
+  
+  map.userdata '/userdata', :controller => 'userdata', :action => 'index'
+  map.userdata '/userdata/:id', :controller => 'userdata', :action => 'show'
                                                         
   map.resources :users, :member => { :suspend => :put, :unsuspend => :put, :purge => :delete }
   map.resource :session
