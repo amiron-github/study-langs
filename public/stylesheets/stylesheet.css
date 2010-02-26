@@ -1718,7 +1718,7 @@ line-height:16px;
 }
 
 div.eg-sound {
-padding: 2px 0px 2px;
+p_adding: 2px 0px 2px;
 }
 
 div.eg-sound p {
@@ -1974,3 +1974,53 @@ box-shadow: 1px 2px 2px #BFBFBF;
 padding-left: 15px;
 background-color: transparent;
 }
+
+
+.soft_letter {
+background-color: #8FFF9E;
+}
+
+.stressed_letter {
+background-color: #E5FF00;
+}
+
+.unvoiced_letter {
+background-color: #F3BFFF;
+}
+
+.reduct_letter {
+background-color: #FFBD6F;
+}
+
+.hard_letter {
+background-color: #BFEEFF;
+}
+
+
+
+.highlight_letters {
+text-align: center; 
+height: 30px; 
+width: 150px; 
+outline: none; 
+font-weight: bold; 
+font-size: 13px;
+}
+
+.hidden_soft .soft_letter {
+background-color: transparent;
+}
+
+.hidden_stressed .stressed_letter {
+background-color: transparent;
+}
+
+.hidden_unvoiced .unvoiced_letter {
+background-color: transparent;
+}
+
+.hidden_reduct .reduct_letter {
+background-color: transparent;
+}
+
+

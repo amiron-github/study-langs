@@ -4,7 +4,7 @@
 <% @has_audio = true %>
 
 <% content_for :special_js_css do %>
-
+<%= javascript_include_tag 'reading_helper' %>
 <style type="text/css">
 
 h2.page {margin-bottom: 0px;}
@@ -78,26 +78,33 @@ Before doing exercises on this page it is recommended to revise <a href="devocal
 
 <p class="task">Listen to the following words and repeat</p>
 
+<div class="hidden_soft hidden_stressed hidden_unvoiced">
+ 
+<input type="button" class="highlight_letters highlight_unvoiced_letter" value="Highlight unvoiced" />
+<input type="button" class="highlight_letters highlight_soft_letter" value="Highlight softness"/>
+<input type="button" class="highlight_letters highlight_stressed_letter" value="Highlight stress" />
+
+<br><br><br>
+
+
 <table class="repeat-words" cellpadding="0" cellspacing="0" border="0">
 	<tr valign="top">
 		<td>
 			
     		<div>
-    			<span class="sound" onclick="playSound('reading/soundr030001.mp3')">газ &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+    			<span class="sound" onclick="playSound('reading/soundr030001.mp3')">г<span class="stressed_letter">а</span><span class="unvoiced_letter">з</span> &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
     		</div>
     		<div>
-    			<span class="sound" onclick="playSound('reading/soundr030002.mp3')">нерв &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
-
+    			<span class="sound" onclick="playSound('reading/soundr030002.mp3')"><span class="soft_letter">н</span><span class="stressed_letter">е</span>р<span class="unvoiced_letter">в</span> &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
     		</div>
     		<div>
-    			<span class="sound" onclick="playSound('reading/soundr030003.mp3')">массаж &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+    			<span class="sound" onclick="playSound('reading/soundr030003.mp3')">м<span class="stressed_letter">а</span>сса<span class="unvoiced_letter">ж</span> &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
     		</div>
     		<div>
-    			<span class="sound" onclick="playSound('reading/soundr030004.mp3')">стаж &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+    			<span class="sound" onclick="playSound('reading/soundr030004.mp3')">ст<span class="stressed_letter">а</span><span class="unvoiced_letter">ж</span> &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
     		</div>
     		<div>
-
-    			<span class="sound" onclick="playSound('reading/soundr030005.mp3')"> пляж &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+    			<span class="sound" onclick="playSound('reading/soundr030005.mp3')"> п<span class="soft_letter">л</span><span class="stressed_letter">я</span><span class="unvoiced_letter">ж</span> &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
     		</div>
     		
 		</td>
@@ -107,6 +114,7 @@ Before doing exercises on this page it is recommended to revise <a href="devocal
 		</td>
 	</tr>
 </table>
+</div>
 <br/>
 
 <h3>Exercise 2</h3>
@@ -130,6 +138,15 @@ var t1 = new Test({dict: [
 
 <p class="task">Read the following Russian words and check yourself:</p>
 
+<div class="hidden_soft hidden_stressed hidden_unvoiced">
+
+<input type="button" class="highlight_letters highlight_unvoiced_letter" value="Highlight unvoiced" />
+<input type="button" class="highlight_letters highlight_soft_letter" value="Highlight softness"/>
+<input type="button" class="highlight_letters highlight_stressed_letter" value="Highlight stress" />
+
+<br><br><br>
+
+
 <table cellpadding="0" cellspacing="0" border="0">
 	<tr valign="top">
       	<td style="padding-right: 110px;">
@@ -137,10 +154,9 @@ var t1 = new Test({dict: [
                 <table class="tab1 inter"  cellspacing="0" >
                 	<tr>
                 			<td width="80">
-                				<p>автобус
+                				<p>а<span class="unvoiced_letter">в</span>т<span class="stressed_letter">о</span>бус
                 				</p>
                 			</td>
-
                 			<td>
                 				<div class="key check">
                 					<div>
@@ -149,17 +165,15 @@ var t1 = new Test({dict: [
                 				</div>
                 			</td>
                 	</tr>
-
                 </table>
                 <table class="tab1 inter"  cellspacing="0" >
                 	<tr>
                 			<td width="80">
-                				<p>автомат
+                				<p>а<span class="unvoiced_letter">в</span>том<span class="stressed_letter">а</span>т
                 				</p>
                 			</td>
                 			<td>
                 				<div class="key check">
-
                 					<div>
                 						<div class="sound"  onclick="playSound('reading/soundr030007.mp3')">Check&nbsp;yourself</div>
                 					</div>
@@ -168,17 +182,15 @@ var t1 = new Test({dict: [
                 	</tr>
                 </table>
                 <table class="tab1 inter"  cellspacing="0" >
-
                 	<tr>
                 			<td width="80">
-                				<p>каприз
+                				<p>кап<span class="soft_letter">р</span><span class="stressed_letter">и</span><span class="unvoiced_letter">з</span>
                 				</p>
                 			</td>
                 			<td>
                 				<div class="key check">
                 					<div>
                 						<div class="sound"  onclick="playSound('reading/soundr030008.mp3')">Check&nbsp;yourself</div>
-
                 					</div>
                 				</div>
                 			</td>
@@ -187,9 +199,8 @@ var t1 = new Test({dict: [
                 <table class="tab1 inter"  cellspacing="0" >
                 	<tr>
                 			<td width="80">
-                				<p>анализ
+                				<p>ан<span class="stressed_letter">а</span><span class="soft_letter">л</span>и<span class="unvoiced_letter">з</span>
                 				</p>
-
                 			</td>
                 			<td>
                 				<div class="key check">
@@ -198,17 +209,15 @@ var t1 = new Test({dict: [
                 					</div>
                 				</div>
                 			</td>
-
                 	</tr>
                 </table>
                 <table class="tab1 inter"  cellspacing="0" >
                 	<tr>
                 			<td width="80">
-                				<p>гипноз
+                				<p><span class="soft_letter">г</span>ипн<span class="stressed_letter">о</span><span class="unvoiced_letter">з</span>
                 				</p>
                 			</td>
                 			<td>
-
                 				<div class="key check">
                 					<div>
                 						<div class="sound"  onclick="playSound('reading/soundr030010.mp3')">Check&nbsp;yourself</div>
@@ -217,17 +226,15 @@ var t1 = new Test({dict: [
                 			</td>
                 	</tr>
                 </table>
-
                 <table class="tab1 inter"  cellspacing="0" >
                 	<tr>
                 			<td width="80">
-                				<p>гараж
+                				<p>гар<span class="stressed_letter">а</span><span class="unvoiced_letter">ж</span>
                 				</p>
                 			</td>
                 			<td>
                 				<div class="key check">
                 					<div>
-
                 						<div class="sound"  onclick="playSound('reading/soundr030011.mp3')">Check&nbsp;yourself</div>
                 					</div>
                 				</div>
@@ -236,18 +243,16 @@ var t1 = new Test({dict: [
                 </table>
                 </div>
             </td>
-
             <td>
             
              <div class="task_transl">
                 <table class="tab1 inter"  cellspacing="0" >
                 	<tr>
                 			<td width="80">
-                				<p>каталог
+                				<p>катал<span class="stressed_letter">о</span><span class="unvoiced_letter">г</span>
                 				</p>
                 			</td>
                 			<td>
-
                 				<div class="key check">
                 					<div>
                 						<div class="sound"  onclick="playSound('reading/soundr030012.mp3')">Check&nbsp;yourself</div>
@@ -256,17 +261,15 @@ var t1 = new Test({dict: [
                 			</td>
                 	</tr>
                 </table>
-
                 <table class="tab1 inter"  cellspacing="0" >
                 	<tr>
                 			<td width="80">
-                				<p>диалог
+                				<p><span class="soft_letter">д</span>иал<span class="stressed_letter">о</span><span class="unvoiced_letter">г</span>
                 				</p>
                 			</td>
                 			<td>
                 				<div class="key check">
                 					<div>
-
                 						<div class="sound"  onclick="playSound('reading/soundr030013.mp3')">Check&nbsp;yourself</div>
                 					</div>
                 				</div>
@@ -275,16 +278,14 @@ var t1 = new Test({dict: [
                 </table>
                 <table class="tab1 inter"  cellspacing="0" >
                 	<tr>
-
                 			<td width="80">
-                				<p>эпилог
+                				<p>э<span class="soft_letter">п</span>ил<span class="stressed_letter">о</span><span class="unvoiced_letter">г</span>
                 				</p>
                 			</td>
                 			<td>
                 				<div class="key check">
                 					<div>
                 						<div class="sound"  onclick="playSound('reading/soundr030014.mp3')">Check&nbsp;yourself</div>
-
                 					</div>
                 				</div>
                 			</td>
@@ -293,9 +294,8 @@ var t1 = new Test({dict: [
                 <table class="tab1 inter"  cellspacing="0" >
                 	<tr>
                 			<td width="80">
-                				<p>бюро
+                				<p><span class="soft_letter">б</span>юр<span class="stressed_letter">о</span>
                 				</p>
-
                 			</td>
                 			<td>
                 				<div class="key check">
@@ -304,17 +304,15 @@ var t1 = new Test({dict: [
                 					</div>
                 				</div>
                 			</td>
-
                 	</tr>
                 </table>
                 <table class="tab1 inter"  cellspacing="0" >
                 	<tr>
                 			<td width="80">
-                				<p>нюанс
+                				<p><span class="soft_letter">н</span>ю<span class="stressed_letter">а</span>нс
                 				</p>
                 			</td>
                 			<td>
-
                 				<div class="key check">
                 					<div>
                 						<div class="sound"  onclick="playSound('reading/soundr030016.mp3')">Check&nbsp;yourself</div>
@@ -323,12 +321,12 @@ var t1 = new Test({dict: [
                 			</td>
                 	</tr>
                 </table>
-
                 </div>
             
             </td>
       </tr>
   </table>
+</div>
 
 <h3>Exercise 4</h3>
 
