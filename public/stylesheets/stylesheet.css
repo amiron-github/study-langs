@@ -1959,9 +1959,9 @@ background-color: #DF2929; /* #FFEFEF;*/
 border: 1px solid #FFBFBF;
 padding-bottom: 1px;
 
--moz-border-radius: 6px;
--webkit-border-radius: 5px;
-border-radius: 5px;
+-moz-bor-der-radius: 6px;
+-webkit-bor-der-radius: 5px;
+bor-der-radius: 5px;
 
 text-shadow:1px 1px 1px #666;
 
@@ -2023,4 +2023,153 @@ background-color: transparent;
 background-color: transparent;
 }
 
+/* styles for highlighted letteres*/
+.soft_letter {
+background-color: #8FFF9E;
+}
 
+.stressed_letter {
+background-color: #E5FF00;
+}
+
+.unvoiced_letter {
+background-color: #E77FFF;
+}
+
+.reduct_letter {
+background-color: #FFBD6F;
+}
+
+.hard_letter {
+background-color: #BFEEFF;
+}
+
+.voiced_letter {
+background-color: #7FFFF0;
+}
+
+
+
+.highlight_letters {
+text-align: center; 
+height: 30px; 
+width: 150px; 
+outline: none; 
+font-weight: bold; 
+font-size: 13px;
+}
+
+.hidden_soft .soft_letter {
+background-color: transparent;
+}
+
+.hidden_stressed .stressed_letter {
+background-color: transparent;
+}
+
+.hidden_unvoiced .unvoiced_letter {
+background-color: transparent;
+}
+
+.hidden_reduct .reduct_letter {
+background-color: transparent;
+}
+
+.highlight_buttons td {
+width: 140px;
+padding: 5px 5px;
+text-align: center;
+font-size: 11px;
+font-weight: bold;
+color: #777;
+cursor: pointer;
+-moz-user-select: none;
+-khtml-user-select: none;
+user-select: none;
+
+}
+
+.highlight_stressed {
+background-color: #E4EF86;
+background-image: url("/images/btn-grd.png");
+background-repeat: no-repeat;
+background-position: 50% 50%;
+
+}
+
+.highlight_soft{
+background-color: #A7DFAF;
+background-image: url("/images/btn-grd.png");
+background-repeat: no-repeat;
+background-position: 50% 50%;
+
+}
+
+.highlight_reduct{
+background-color: #EFCCA4;
+background-image: url("/images/btn-grd.png");
+background-repeat: no-repeat;
+background-position: 50% 50%;
+
+}
+
+.highlight_unvoiced{
+background-color: #F3BFFF;
+background-image: url("/images/btn-grd.png");
+background-repeat: no-repeat;
+background-position: 50% 50%;
+
+}
+
+
+
+.highlight_buttons .stressed_hover {
+background-color: #FDFF00;
+color: #222;
+}
+
+.highlight_buttons .soft_hover {
+background-color: #7FFF3F;
+color: #222;
+}
+
+.highlight_buttons .unvoiced_hover {
+background-color: #FF7FCC;
+color: #222;
+}
+
+.highlight_buttons .reduct_hover {
+background-color: #FFA26F;
+color: #222;
+}
+
+
+
+
+
+.highlight_buttons .stressed_active {
+background-color: #FFD100;
+color: #000;
+}
+
+.highlight_buttons .soft_active {
+background-color: #0BBF13;
+color: #000;
+}
+
+.highlight_buttons .unvoiced_active{
+background-color: #FF00E2;
+color: #000;
+}
+
+.highlight_buttons .reduct_active {
+background-color: #FF5A00;
+color: #000;
+}
+
+
+.highlight_info {
+padding: 8px 10px 20px 10px;
+color: #444;
+font-size: 11px;
+}

@@ -6,6 +6,8 @@
 
 <% content_for :special_js_css do %>
 
+<%= javascript_include_tag 'reading_helper' %>
+
 <style type="text/css">
 
 h2.page {margin-bottom: 0px;}
@@ -38,9 +40,6 @@ padding: 7px 50px 7px 30px;
 
 .tab1 p {margin: 0px;}
 
-.stressed_letter {
-background-color: transparent;
-}
 
 </style>
 <% end %>
@@ -338,6 +337,27 @@ a) Listen and repeat names of letters.
 Listen to the following words and repeat: 
 </p>
 
+<div class="hidden_stressed"> 
+<table class="highlight_options" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td colspan="3" class="highlight_info">
+			Choose a view mode of the following groups of letters
+		</td>
+	</tr>
+	<tr class="highlight_buttons">
+		<td class="highlight_stressed">
+			Stressed vowels
+		</td>
+		<td class="highlight_soft" style="visibility: hidden;">
+			Soft consonants
+		</td>
+		<td class="highlight_unvoiced" style="visibility: hidden;">
+			Unvoiced consonants
+		</td>
+	</tr>
+</table>
+<br><br>
+
 <table class="repeat-words" cellpadding="0" cellspacing="0" border="0">
 	<tr valign="top">
 		<td>
@@ -387,13 +407,13 @@ Listen to the following words and repeat:
     			<span class="sound" onclick="playSound('reading/soundr010012.mp3')">ф<span class="stressed_letter">и</span>тнес &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
     		</div>
     		<div>
-    			<span class="sound" onclick="playSound('reading/soundr010013.mp3')">кока-к<span class="stressed_letter">о</span>ла &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+    			<span class="sound" onclick="playSound('reading/soundr010013.mp3')">к<span class="stressed_letter">о</span>ка-к<span class="stressed_letter">о</span>ла &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
     		</div>
     		    		
 		</td>
 	</tr>
 </table>
-
+</div>
 <br/>
 
 <h3>Exercise 3</h3>
@@ -423,6 +443,30 @@ var t1 = new Test({dict: [
 
 Read the following Russian words and check yourself:
 </p>
+
+
+
+<div class="hidden_stressed"> 
+<table class="highlight_options" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td colspan="3" class="highlight_info">
+			Choose a view mode of the following groups of letters
+		</td>
+	</tr>
+	<tr class="highlight_buttons">
+		<td class="highlight_stressed">
+			Stressed vowels
+		</td>
+		<td class="highlight_soft" style="visibility: hidden;">
+			Soft consonants
+		</td>
+		<td class="highlight_unvoiced" style="visibility: hidden;">
+			Unvoiced consonants
+		</td>
+	</tr>
+</table>
+<br><br>
+
 
 
 <table cellpadding="0" cellspacing="0" border="0">
@@ -776,6 +820,9 @@ Read the following Russian words and check yourself:
       </tr>
   </table>
 
+</div>  
+  
+  
 <br/>
 <h3>Exercise 5</h3>
 <p class="task">

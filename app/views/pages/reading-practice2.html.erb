@@ -82,11 +82,53 @@ Before doing exercises on this page it is recommended to revise <a href="softnes
 <p class="task">Listen to the following words and repeat</p>
 
 <div class="hidden_soft hidden_stressed"> 
-<input type="button" class="highlight_letters highlight_soft_letter" value="Highlight softness"/>
-<input type="button" class="highlight_letters highlight_stressed_letter" value="Highlight stresses" />
 
-<br><br>
-<table class="repeat-words" cellpadding="0" cellspacing="0" border="0">
+<!-- table class="highlight_options" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td colspan="4" class="highlight_info">
+			Choose a view mode of the following groups of letters
+		</td>
+	</tr>
+	<tr class="highlight_buttons">
+		<td class="highlight_stressed">
+			Stressed vowels
+		</td>
+		<td class="highlight_soft">
+			Soft consonants
+		</td>
+		<td class="highlight_unvoiced" style="visibility: hidden;">
+			Unvoiced consonants
+		</td>
+		<td class="highlight_reduct" style="visibility: hidden;">
+			Reducted vowels
+		</td>
+	</tr>
+</table -->
+
+
+<table class="highlight_options" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td colspan="3" class="highlight_info">
+			Choose a view mode of the following groups of letters
+		</td>
+	</tr>
+	<tr class="highlight_buttons">
+		<td class="highlight_soft">
+			Soft consonants
+		</td>
+		<td class="highlight_stressed">
+			Stressed vowels
+		</td>
+		<td class="highlight_unvoiced" style="visibility: hidden;">
+			Unvoiced consonants
+		</td>
+	</tr>
+</table>
+
+<br>
+<br>
+
+<table class="repeat-words" cellpadding="0" cellspacing="0" border="0" style="padding-top: 20px;">
 	<tr valign="top">
 		<td>
 			
@@ -106,13 +148,13 @@ Before doing exercises on this page it is recommended to revise <a href="softnes
     			<span class="sound" onclick="playSound('reading/soundr020005.mp3')"><span class="soft_letter">ф</span><span class="stressed_letter">и</span>рма &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
     		</div>
     		<div>
-    			<span class="sound" onclick="playSound('reading/soundr020006.mp3')"><span class="soft_letter">л</span><span class="stressed_letter">и</span><span class="soft_letter">м</span>ит &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+    			<span class="sound" onclick="playSound('reading/soundr020006.mp3')"><span class="soft_letter">л</span>и<span class="soft_letter">м</span><span class="stressed_letter">и</span>т &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
     		</div>
     		<div>
     			<span class="sound" onclick="playSound('reading/soundr020007.mp3')"><span class="soft_letter">м</span>и<span class="soft_letter">н</span><span class="stressed_letter">и</span>стр &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
     		</div>
     		<div>
-    			<span class="sound" onclick="playSound('reading/soundr020008.mp3')"><span class="soft_letter">т</span>ип &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+    			<span class="sound" onclick="playSound('reading/soundr020008.mp3')"><span class="soft_letter">т</span><span class="stressed_letter">и</span>п &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
     		</div>
     		
 		</td>
@@ -178,10 +220,27 @@ var t1 = new Test({dict: [
 <p class="task">Read the following Russian words and check yourself:</p>
 
 <div class="hidden_soft hidden_stressed"> 
-<input type="button" class="highlight_letters highlight_soft_letter" value="Highlight softness"/>
-<input type="button" class="highlight_letters highlight_stressed_letter" value="Highlight stresses" />
+<table class="highlight_options" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td colspan="3" class="highlight_info">
+			Choose a view mode of the following groups of letters
+		</td>
+	</tr>
+	<tr class="highlight_buttons">
+		<td class="highlight_soft">
+			Soft consonants
+		</td>
+		<td class="highlight_stressed">
+			Stressed vowels
+		</td>
+		<td class="highlight_unvoiced" style="visibility: hidden;">
+			Unvoiced consonants
+		</td>
+	</tr>
+</table>
 
-<br><br>
+<br><br><br>
+
 <table cellpadding="0" cellspacing="0" border="0">
 	<tr>
       	<td style="padding-right: 110px;">
@@ -284,7 +343,7 @@ var t1 = new Test({dict: [
                 <table class="tab1 inter"  cellspacing="0" >
                 	<tr>
                 			<td width="80">
-                				<p><span class="soft_letter">м</span><span class="stressed_letter">э</span>тр
+                				<p>м<span class="stressed_letter">э</span>тр
                 				</p>
                 			</td>
                 			<td>
