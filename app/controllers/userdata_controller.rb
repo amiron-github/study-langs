@@ -22,7 +22,6 @@ before_filter :is_admin
     end
   end
   
-  
  
 private 
 
