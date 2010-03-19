@@ -85,6 +85,21 @@ class UsersController < ApplicationController
     render :text => '', :layout =>false
     end
   end
+
+	def buy
+
+		ord_id = rand(36**20).to_s(36)
+    current_user.orders.create(:status=>0, :type_id =>1, :ord_id => ord_id :product_id = params[:product_id])
+		logger.warn("not rendering!!!!!!!!!")
+
+		params[:ord_id] = ord_id		
+
+		render :text =>ord_id, :layout =>false
+
+		logger.warn "BUY"
+
+		redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr"
+	end
   
   def get_stat1 
     if !current_user

@@ -3,7 +3,8 @@ class OrderObserver < ActiveRecord::Observer
 	if order.type_id>0
         order.expired_at=DateTime.now+183
 	else
-        order.expired_at=DateTime.now+365
+				d = DateTime.now >>order.product.period
+        order.expired_at= d
         end
 	end
         

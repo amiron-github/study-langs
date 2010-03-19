@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091202155649) do
+ActiveRecord::Schema.define(:version => 20100319104727) do
 
   create_table "orders", :force => true do |t|
     t.integer  "user_id",                                                                :null => false
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20091202155649) do
     t.datetime "expired_at",                                                             :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "product_id"
   end
 
   add_index "orders", ["ord_id"], :name => "index_orders_on_ord_id", :unique => true
@@ -31,6 +32,14 @@ ActiveRecord::Schema.define(:version => 20091202155649) do
     t.integer  "user_id"
     t.string   "reset_code"
     t.datetime "expiration_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "products", :force => true do |t|
+    t.integer  "period",     :null => false
+    t.integer  "price",      :null => false
+    t.string   "code",       :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

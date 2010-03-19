@@ -8,6 +8,7 @@ ActionController::Routing::Routes.draw do |map|
   map.order '/order', :controller => 'users', :action => 'new_order'
 
   map.success '/success', :controller => 'users', :action => 'success_pp'
+	map.buy '/buy', :controller => 'users', :action => 'buy'
 
   map.ppipn '/gettrial', :controller => 'users', :action => 'gettrial'
 
