@@ -1,10 +1,11 @@
 class OrderObserver < ActiveRecord::Observer
         def before_create(order)
 	if order.type_id>0
-        order.expired_at=DateTime.now+183
-	else
-				d = DateTime.now >>order.product.period
+ 				d = DateTime.now >> order.product.period
         order.expired_at= d
+
+	else
+	       order.expired_at=DateTime.now+365	
         end
 	end
         
