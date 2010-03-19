@@ -1,8 +1,7 @@
 class Order < ActiveRecord::Base
    belongs_to :user
-   has_many :products
+   belongs_to :products
 
-   attr_accessible :period, :price, :code
 
 #	def before_create 
 #	self.expired_at=DateTime.now+365
