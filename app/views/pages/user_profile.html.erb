@@ -133,7 +133,7 @@ font-weight: bold;
 		</td>
 		<td style="padding: 15px;">
 		
-<form action="" method="post" onsubmit="$.ajax({url:'/order',async:false, success:function(data){$('#ord_id').attr('value',data)}})">
+<form action="/buy" method="post" onsubmit="$.ajax({url:'/order',async:false, success:function(data){$('#ord_id').attr('value',data)}})">
 <input type="hidden" name="custom" id="ord_id" value=1>
 <input type=hidden name=return value="http://study-languages-online.com/success">
 <input type=hidden name=cancel_return value="http://study-languages-online.com/cancel.html">
