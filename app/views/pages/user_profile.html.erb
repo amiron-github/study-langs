@@ -136,7 +136,14 @@ Sorry, subscriptions are temporary unavailable.
 		<td style="padding: 15px;">
 		
 		
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" onsubmit="$.ajax({url:'/order?product_id=1',async:false, success:function(data){$('#ord_id1').attr('value',data)}})">
+<input type="hidden" name="custom" id="ord_id1" value=1>
+<input type=hidden name=return value="http://study-languages-online.com/success">
+<input type=hidden name=cancel_return value="http://study-languages-online.com/cancel.html">
+<input type="hidden" name="notify_url" value="https://study-languages-online.com/ppipn">
+<input type="hidden" name="cpp_header_image" value="https://www.health-science-report.com/images/head-paypal.jpg">
+
+
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="hosted_button_id" value="J92TCPKLHGM24">
 <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
@@ -155,7 +162,13 @@ Sorry, subscriptions are temporary unavailable.
 		<td style="padding: 15px;">
 		
 		
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" onsubmit="$.ajax({url:'/order?product_id=2',async:false, success:function(data){$('#ord_id2').attr('value',data)}})">
+<input type="hidden" name="custom" id="ord_id2" value=1>
+<input type=hidden name=return value="http://study-languages-online.com/success">
+<input type=hidden name=cancel_return value="http://study-languages-online.com/cancel.html">
+<input type="hidden" name="notify_url" value="https://study-languages-online.com/ppipn">
+<input type="hidden" name="cpp_header_image" value="https://www.health-science-report.com/images/head-paypal.jpg">
+
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="hosted_button_id" value="W6K9X5U8K5YRA">
 <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
@@ -175,8 +188,8 @@ Sorry, subscriptions are temporary unavailable.
 		<td style="padding: 15px;">
 		
 		
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" onsubmit="$.ajax({url:'/order',async:false, success:function(data){$('#ord_id').attr('value',data)}})">
-<input type="hidden" name="custom" id="ord_id" value=1>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" onsubmit="$.ajax({url:'/order?product_id=3',async:false, success:function(data){$('#ord_id3').attr('value',data)}})">
+<input type="hidden" name="custom" id="ord_id3" value=1>
 <input type=hidden name=return value="http://study-languages-online.com/success">
 <input type=hidden name=cancel_return value="http://study-languages-online.com/cancel.html">
 <input type="hidden" name="notify_url" value="https://study-languages-online.com/ppipn">

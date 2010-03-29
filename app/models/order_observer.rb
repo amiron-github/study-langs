@@ -1,6 +1,7 @@
 class OrderObserver < ActiveRecord::Observer
         def before_create(order)
 	if order.type_id>0
+		 print("BEFORE!!!!")
  				d = DateTime.now >> order.product.period
         order.expired_at= d
 
