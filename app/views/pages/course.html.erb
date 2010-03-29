@@ -73,17 +73,7 @@ Every lesson in this course is devoted to a definite topic. The topics cover typ
 	</p>
 <% end %>
 
-<div class="if_no_payment">
-<% if  !logged_in? %>
-	<p>If you would like to subscribe to this  course, please, <a href="/signup">Sign Up</a> or <a href="login">Sign In</a> and purchase a six months subscription.</p>
-<% elsif (logged_in? && !current_user.payment) %>
-	<p>If you would like to subscribe to this  course, you can purchase a six months subscription in your <a href="user_profile.html"><strong>Profile</strong></a>.</p>
-<%end%> 
 
-<% if !(logged_in? && current_user.payment) %>
-	<p class="ital"><strong>Price:</strong> $19.99 USD for 6-month subscription. </p>
-<% end %>
-</div>
 
 
 <br/>
@@ -151,6 +141,21 @@ Every lesson in this course is devoted to a definite topic. The topics cover typ
 </p>
 </div>
 <br/>
+
+<div class="if_no_payment">
+<% if  !logged_in? %>
+	<p>If you would like to subscribe to this  course, please, <a href="/signup">Sign Up</a> or <a href="login">Sign In</a> and purchase a subscription.</p>
+<% elsif (logged_in? && !current_user.payment) %>
+	<p>If you would like to subscribe to this  course, you can purchase a subscription in your <a href="user_profile.html"><strong>Profile</strong></a>.</p>
+<%end%> 
+
+<% if !(logged_in? && current_user.payment) %>
+	<p class="ital"><strong>Prices:</strong> </p>
+	<p class="ital">- $8.99 USD for 2-month subscription </p>
+	<p class="ital">- $14.99 USD for 4-month subscription </p>
+	<p class="ital">- $19.99 USD for 6-month subscription </p>
+<% end %>
+</div>
 
 <p>
 If you are a registered user, you can review the results of the exercises and tests you have done during the lessons<% if logged_in? %>
