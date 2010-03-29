@@ -185,7 +185,7 @@ class UsersController < ApplicationController
 
   def new_order
 		ord_id = rand(36**20).to_s(36)
-    current_user.orders.create(:status=>0, :type_id =>1, :ord_id => ord_id, :product_id => params[:product_id])
+    current_user.orders.create(:status=>0, :type_id =>1, :ord_id => ord_id, :product_id => params[:product_id] || 4)
 		logger.warn("not rendering!!!!!!!!!")
 	  render :text =>ord_id, :layout =>false
 		return ord_id
