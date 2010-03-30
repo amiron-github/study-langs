@@ -4,9 +4,63 @@
 <%= javascript_include_tag 'profile_results' %>
 <%= stylesheet_link_tag 'profile' %>
 
+<script type="text/javascript">
+$(document).ready(function() { 
+	
+$("#show_edit_form").toggle(
+	function() {
+		$("#payment_form").show();
+		$(this).text('[hide form]')
+	},function() {
+		$("#payment_form").hide();
+		$(this).text(' [edit] ')
+	} 
+);
+
+$("#show_status_form").toggle(
+	function() {
+		$(".status_buttons").show();
+		$(this).text('[hide form]')
+	},function() {
+		$(".status_buttons").hide();
+		$(this).text(' [edit] ')
+	} 
+
+);
+
+});
+</script>
+
+
+<style type="text/css">
+
+.a_button {
+text-decoration: none !important;
+outline: none;
+}
+
+.status_buttons form {
+display: inline;
+}
+
+.status_buttons {
+padding-left: 20px;
+display: none;
+}
+.status_buttons input {
+min-width: 80px;
+font-size: 12px;
+}
+#payment_form {
+display: none;
+}
+
+</style>
+
 <%end%>
 
 <%= link_to 'Back to all', {:controller => 'userdata'} %> 
+
 
 <h2>User's information</h2>
 
@@ -19,23 +73,45 @@
 
 <p>
   <b>Status:</b>
-  <%=h @user.state %>
+  <%=h @user.state %> &nbsp; &nbsp; &nbsp; &nbsp; <a class="a_button" href="javascript:;" id="show_status_form"> [edit] </a>
+
+<div class="status_buttons">
+<% form_for :user, :url => { :action => :edit_state, :status => 'active', :time => Time.now } do %>
+		<%= submit_tag "Activate" %>
+<% end %>  
+  
+<% form_for :user, :url => { :action => :edit_state, :status => 'deleted' } do %>
+		<%= submit_tag "Delete" %>
+<% end %> 
+</div>
 </p>
 
 <p>
   <b>Created:</b>
-  <%=h @user.created_at %>
+  <%=h @user.created_at.to_s(:long) %>
 </p>
 
 <p>
   <b>Activated:</b>
-  <%=h @user.activated_at %>
+  <% if @user.activated_at %>
+	<%=h @user.activated_at.to_s(:long) %>
+  <% end %>
 </p>
 
 
 <p>
   <b>Payment:</b>
-  <%=h @user.payment %>
+  <%if @user.payment %>
+	until <%= @user.expired %>
+  <%else%>
+	&nbsp; No payment &nbsp; &nbsp; &nbsp; &nbsp; <a class="a_button" href="javascript:;" id="show_edit_form">[edit]</a>
+	
+	<div id="payment_form">
+			<% form_for :user, :url => { :action => :edit_payment} do %>
+				<%= submit_tag "Free one year" %>
+			<% end %>
+	</div>
+  <%end%>
 </p>
 
 <br><br>

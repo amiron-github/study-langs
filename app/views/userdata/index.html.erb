@@ -9,6 +9,12 @@ $(document).ready(function() {
     $("table.tablesorter") 
     .tablesorter({widthFixed: true, sortList: [[0,1]], headers: {4: {sorter: 'digit'}, 5:{sorter: false}},widgets: ['zebra'] }) 
     .tablesorterPager({container: $("#pager"), size: 30,positionFixed: false}); 
+	
+$("#show_deleted").click(function() {
+	$(".deleted").show();
+
+});
+
 });
 </script>
 
@@ -17,6 +23,19 @@ $(document).ready(function() {
 div#contentcell {
 height:auto !important;
 min-height:950px;
+}
+
+.deleted {
+display: none;
+}
+
+#show_deleted {
+text-decoration: none !important;
+outline: none;
+}
+
+.with_payment {
+color: #238F46 !important;
 }
 
 </style>
@@ -48,7 +67,9 @@ min-height:950px;
 	</form> 
 </div>
 
-
+<div align="right">
+<a href="javascript:;" id="show_deleted">[show deleted users]</a>
+</div>
 
 <table class="stt-table tablesorter" cellspacing="1" cellpadding="0" border="0">
 <thead>
@@ -64,10 +85,10 @@ min-height:950px;
 <tbody>
 <% for user in @users -%>
 
-<tr>
+<tr <%if user.state == 'deleted' %> class="deleted" <%end%> >
 
 <td><%= user.id %></td>
-<td style="text-align: left;"><%= user.email %></td>
+<td style="text-align: left;" <%if user.payment %> class="with_payment"<%end%> ><%= user.email %></td>
 <td><%=h user.created_at.strftime("%Y/%m/%d") %></td>
 <td><%= user.state %></td>
 <td><%= user.tests_number %></td>

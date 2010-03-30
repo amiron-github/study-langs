@@ -33,7 +33,9 @@ ActionController::Routing::Routes.draw do |map|
   
   map.userdata '/userdata', :controller => 'userdata', :action => 'index'
   map.userdata '/userdata/:id', :controller => 'userdata', :action => 'show'
-                                                        
+  map.userdata '/userdata/edit_state/:id', :controller => 'userdata', :action => 'edit_state'
+  map.userdata '/userdata/edit_payment/:id', :controller => 'userdata', :action => 'edit_payment'
+  
   map.resources :users, :member => { :suspend => :put, :unsuspend => :put, :purge => :delete }
   map.resource :session
 
