@@ -121,10 +121,140 @@ $(".highlight_reduct").hover(
 
 
 
+});
 
 
+
+$(function () {
+    if ($.browser.msie) {
+        $('input:checkbox').click(function () {
+            this.blur();
+            this.focus();
+        });
+    }
+});
+
+
+//for reading texts
+
+$(document).ready(function(){
+
+$("#hide_transcription").change(function() {
+	toggleTracription($(this))
+}).change();
+
+
+
+$("#hide_translation").change(function() {
+	if ($("#hide_translation").attr('checked') ) {
+		$(".r_translate").show(400)
+	}else{
+   		$(".r_translate").hide(400)
+	}
+}).change();
+
+$("#hide_stressmark").change(function() {
+	toggleAccentMode($(this))
+}).change();
+
+$("#stress_adjust").click(function() {
+
+if (getCookie('accent_adjust')) {
+	delCookie('accent_adjust');
+	
+   	$(this).animate({opacity: "0.2"}, 200, function(){
+   		$(this).animate({opacity: "1"},200);
+   		showStressedLetter();
+   	});
+	
+}else{
+	setCookie('accent_adjust');
+	$(this).animate({opacity: "0.2"}, 200, function(){
+   		$(this).animate({opacity: "1"},200);
+   		showStressedLetter();
+   	});
+}
 
 
 });
+
+
+});
+
+
+function toggleTracription(obj) {
+	if (obj.attr('checked')) {
+		$(".r_transcript").css({opacity: '0'}).slideDown('linear').animate({opacity: '1'}) 
+	}else{
+   		$(".r_transcript").animate({opacity: '0'}).slideUp();
+	}
+}
+
+function toggleAccentMode(obj) {
+
+  if (obj.attr('checked')) {
+  
+		showStressedLetter();
+    
+    $("#stress_adjust").fadeIn();
+  }else{
+    $(".stressed_letter").each(function() {
+	   var tString = $(this).data('letter')
+  
+	   $(this).html(tString)
+    });
+    $("#stress_adjust").fadeOut();
+  }
+}
+
+function showStressedLetter() {
+
+if ( getCookie('accent_adjust') ) {
+	$(".stressed_letter").each(function() {
+		if($(this).data('letter')) {
+	   		var tString = $(this).data('letter')
+   		}else{
+			var tString = $(this).text()
+	    	$(this).data('letter', tString)
+		}
+		$(this).html('&#769;' + tString);
+    });
+
+}else{
+
+	$(".stressed_letter").each(function() {
+		if($(this).data('letter')) {
+	   		var tString = $(this).data('letter')
+   		}else{
+			var tString = $(this).text()
+	    	$(this).data('letter', tString)
+		}
+		$(this).html(tString + '&#769;');
+    });
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

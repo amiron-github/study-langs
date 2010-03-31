@@ -1,0 +1,366 @@
+<% @page_title = 'Reading in Russian: Text for reading: Introduction' %>
+<% @page_meta = {'description' => "Practice of reading in Russian: Introduction - audio text with stress marks, transcription, translation and comments on reading"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<% content_for :special_js_css do %>
+<%= javascript_include_tag 'reading_helper' %>
+<%= stylesheet_link_tag 'reading-helper' %>
+<%end%>
+
+<div class="hint_wrap">
+<div class="hint_button">
+  <div class="hint">
+      <div class="hint_list">
+        <span class="hint_string">Links and Settings</span>
+      </div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+        <ul>
+          <li><a href="reading_text_02.html">Text: Russia</a></li>
+          <li><a href="reading_text_03.html">Text: Moscow</a></li>
+          <li><a href="reading_text_04.html">Text: Saint Petersburg</a></li>
+          <li><a href="reading_text_05.html">Text: Russian Food</a></li>
+        </ul>
+        <%= render :partial => 'preload_option' %>
+  </div>
+</div>
+</div>
+<div id="pagecontent"><div id="content">
+
+<h2 class="page">Text: Introduction</h2>
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="russian-reading.html">Reading in Russian</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="russian-reading-texts.html">Texts for reading</a>
+	<span class="int-arrow">--&gt;</span> Introduction
+	</span>
+</h3>
+
+
+
+
+<p><input type="checkbox" id="hide_stressmark" /> Display stress marks &nbsp; &nbsp;<a href="javascript:;" id="stress_adjust">[adjust, if needed]</a>
+</p>
+<p><input type="checkbox" id="hide_transcription" /> Display transcription
+</p>
+<p><input type="checkbox" id="hide_translation" checked /> Display translation
+</p>
+
+
+
+<div class="hidden_soft hidden_stressed hidden_reduct hidden_unvoiced"> 
+
+<table class="highlight_options" cellpadding="0" cellspacing="0" border="0" align="center">
+	<tr>
+		<td colspan="4" class="highlight_info">
+			Choose a view mode of the following groups of letters
+		</td>
+	</tr>
+	<tr class="highlight_buttons">
+		<td class="highlight_stressed">
+			Stressed vowels
+		</td>
+		<td class="highlight_soft">
+			Soft consonants
+		</td>
+		<td class="highlight_unvoiced">
+			Unvoiced consonants
+		</td>
+		<td class="highlight_reduct">
+			Reduced vowels
+		</td>
+	</tr>
+</table>
+
+
+
+<br><br>
+
+<div class="r_text_container">
+<table>
+	<tr class="r_line">
+		<td>
+    	   <div class="r_string">
+    	   	<table onclick="playSound('reading/soundt01010.mp3')" class="audiotrans" cellpadding="0" cellspacing="0" border="0">
+             <tr>
+              <td>
+    				Здр<span class="stressed_letter">а</span>вствуй<span class="soft_letter">т</span>е<a class="r-up" href="#comment_01" title="Read comments below">1</a>. <br>
+              </td>
+
+              <td class="trs_td"><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div>
+              </td>
+             </tr>
+    		</table>
+    	   </div>
+    	   <div class="r_transcript">
+    	   	[zdr<span class="acct">a</span>stvooyt'e]
+    	   </div>
+    	   <div class="r_translate">
+    	   	Hello.
+    	   </div>
+		</td>
+	</tr>
+	
+	<tr class="r_line">
+		<td>
+	   <div class="r_string">
+	   	<table onclick="playSound('reading/soundt01020.mp3')" class="audiotrans" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+
+				<span class="soft_letter">М</span><span class="reduct_letter">е</span><span class="soft_letter">н</span><span class="stressed_letter">я</span> з<span class="reduct_letter">о</span>в<span class="stressed_letter">у</span>т <span class="soft_letter">Н</span>ик<span class="reduct_letter">о</span>л<span class="stressed_letter">а</span>й.<br>
+          </td>
+
+          <td class="trs_td"><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div>
+          </td>
+        </tr>
+		</table>
+	   </div>
+	   <div class="r_transcript">
+	   	[min'<span class="acct">a</span> zav<span class="acct">oo</span>t nikal<span class="acct">a</span>y]
+	   </div>
+	   <div class="r_translate">
+	   	My name is Nikolay.
+	   </div>
+		</td>
+	</tr>
+	
+	<tr class="r_line">
+		<td>
+    	   <div class="r_string">
+    	   	<table onclick="playSound('reading/soundt01030.mp3')" class="audiotrans" cellpadding="0" cellspacing="0" border="0">
+             <tr>
+              <td>
+    				М<span class="reduct_letter">о</span><span class="stressed_letter">я</span> фа<span class="soft_letter">м</span><span class="stressed_letter">и</span><span class="soft_letter">л</span>ия <span class="soft_letter">П</span><span class="reduct_letter">е</span>тр<span class="stressed_letter">о</span><span class="unvoiced_letter">в</span>.
+              </td>
+
+              <td class="trs_td"><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div>
+              </td>
+             </tr>
+    		</table>
+    	   </div>
+    	   <div class="r_transcript">
+    	   	[may<span class="acct">a</span> fam<span class="acct">i</span>liya pitr<span class="acct">o</span>f]
+    	   </div>
+    	   <div class="r_translate">
+    	   	My surname is Petrov.
+    	   </div>
+		</td>
+	</tr>
+	
+	<tr class="r_line">
+		<td>
+    	   <div class="r_string">
+    	   	<table onclick="playSound('reading/soundt01040.mp3')" class="audiotrans" cellpadding="0" cellspacing="0" border="0">
+             <tr>
+              <td>
+    				М<span class="soft_letter">н</span><span class="stressed_letter">е</span> дв<span class="stressed_letter">а</span><span class="unvoiced_letter">д</span>ца<span class="soft_letter">т</span>ь <span class="soft_letter">л</span><span class="stressed_letter">е</span>т.
+              </td>
+
+              <td class="trs_td"><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div>
+              </td>
+             </tr>
+    		</table>
+    	   </div>
+    	   <div class="r_transcript">
+    	   	[mn'<span class="acct">e</span> dv<span class="acct">a</span>tsat' l'<span class="acct">e</span>t]
+    	   </div>
+    	   <div class="r_translate">
+    	   	I'm 20 years old.
+    	   </div>
+		</td>
+	</tr>
+	
+	<tr class="r_line">
+		<td>
+    	   <div class="r_string">
+    	   	<table onclick="playSound('reading/soundt01050.mp3')" class="audiotrans" cellpadding="0" cellspacing="0" border="0">
+             <tr>
+              <td>
+    				Я жив<span class="stressed_letter">у</span><a class="r-up" href="#comment_2" title="Read comments below">2</a> в М<span class="reduct_letter">о</span>ск<span class="soft_letter">в</span><span class="stressed_letter">е</span>.
+              </td>
+
+              <td class="trs_td"><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div>
+              </td>
+             </tr>
+    		</table>
+    	   </div>
+    	   <div class="r_transcript">
+    	   	[y<span class="acct">a</span> j<span class="ry">i</span>v<span class="acct">oo</span> v maskv'<span class="acct">e</span>]
+    	   </div>
+    	   <div class="r_translate">
+    	   	I live in Moscow.
+    	   </div>
+		</td>
+	</tr>
+	
+	<tr class="r_line">
+		<td>
+    	   <div class="r_string">
+    	   	<table onclick="playSound('reading/soundt01060.mp3')" class="audiotrans" cellpadding="0" cellspacing="0" border="0">
+             <tr>
+              <td>
+    				Я сту<span class="soft_letter">д</span><span class="stressed_letter">е</span>нт.
+              </td>
+
+              <td class="trs_td"><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div>
+              </td>
+             </tr>
+    		</table>
+    	   </div>
+    	   <div class="r_transcript">
+    	   	[y<span class="acct">a</span> stood'<span class="acct">e</span>nt]
+    	   </div>
+    	   <div class="r_translate">
+    	   	I'm a student.
+    	   </div>
+		</td>
+	</tr>
+	
+	<tr class="r_line">
+		<td>
+    	   <div class="r_string">
+    	   	<table onclick="playSound('reading/soundt01070.mp3')" class="audiotrans" cellpadding="0" cellspacing="0" border="0">
+             <tr>
+              <td>
+    			   Я уч<span class="stressed_letter">у</span><span class="soft_letter">с</span>ь в у<span class="soft_letter">н</span>и<span class="soft_letter">в</span><span class="reduct_letter">е</span>р<span class="soft_letter">с</span>и<span class="soft_letter">т</span><span class="stressed_letter">е</span><span class="soft_letter">т</span>е.
+              </td>
+
+              <td class="trs_td"><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div>
+              </td>
+             </tr>
+    		</table>
+    	   </div>
+    	   <div class="r_transcript">
+    	   	[y<span class="acct">a</span> ooch<span class="acct">oo</span>s' v oonivirsit'<span class="acct">e</span>t'e]
+    	   </div>
+    	   <div class="r_translate">
+    	    	I study at a university.
+    	   </div>
+		</td>
+	</tr>
+	
+	<tr class="r_line">
+		<td>
+    	   <div class="r_string">
+    	   	<table onclick="playSound('reading/soundt01080.mp3')" class="audiotrans" cellpadding="0" cellspacing="0" border="0">
+             <tr>
+              <td>
+    				М<span class="stressed_letter">о</span>й <span class="stressed_letter">а</span>д<span class="soft_letter">р</span><span class="reduct_letter">е</span>с: <span class="stressed_letter">у</span><span class="soft_letter">л</span>ица Т<span class="soft_letter">в</span><span class="reduct_letter">е</span>рск<span class="stressed_letter">а</span>я, д<span class="stressed_letter">о</span>м <span class="soft_letter">п</span><span class="stressed_letter">я</span><span class="soft_letter">т</span>ь, квар<span class="soft_letter">т</span><span class="stressed_letter">и</span>ра <span class="soft_letter">с</span><span class="reduct_letter">е</span>мн<span class="stressed_letter">а</span><span class="unvoiced_letter">д</span>ца<span class="soft_letter">т</span>ь.
+              </td>
+
+              <td class="trs_td"><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div>
+              </td>
+             </tr>
+    		</table>
+    	   </div>
+    	   <div class="r_transcript">
+    	   	[m<span class="acct">o</span>y <span class="acct">a</span>dris <span class="acct">oo</span>litsa tvirsk<span class="acct">a</span>ya, d<span class="acct">o</span>m p'<span class="acct">a</span>t', kvart<span class="acct">i</span>ra simn<span class="acct">a</span>tsat']
+    	   </div>
+    	   <div class="r_translate">
+    	   	My address is Tverskaya street, 5, appartment 17.
+    	   </div>
+		</td>
+	</tr>
+	
+	<tr class="r_line">
+		<td>
+    	   <div class="r_string">
+    	   	<table onclick="playSound('reading/soundt01090.mp3')" class="audiotrans" cellpadding="0" cellspacing="0" border="0">
+             <tr>
+              <td>
+    				М<span class="reduct_letter">о</span><span class="stressed_letter">и</span> <span class="soft_letter">л</span>ю<span class="soft_letter">б</span><span class="stressed_letter">и</span>мые за<span class="soft_letter">н</span><span class="stressed_letter">я</span><span class="soft_letter">т</span>ия - ч<span class="soft_letter">т</span><span class="stressed_letter">е</span><span class="soft_letter">н</span>ие, м<span class="stressed_letter">у</span>зыка и <span class="soft_letter">р</span>ис<span class="reduct_letter">о</span>в<span class="stressed_letter">а</span><span class="soft_letter">н</span>ие.
+              </td>
+
+              <td class="trs_td"><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div>
+              </td>
+             </tr>
+    		</table>
+    	   </div>
+    	   <div class="r_transcript">
+    	   	[ma<span class="acct">i</span> l'oob<span class="acct">i</span>m<span class="ry">i</span>ye zan'<span class="acct">a</span>tiya cht'<span class="acct">e</span>niye, m<span class="acct">oo</span>z<span class="ry">i</span>ka i risav<span class="acct">a</span>niye]
+    	   </div>
+    	   <div class="r_translate">
+    	   	My hobbies are reading, music and drawing. 
+    	   </div>
+		</td>
+	</tr>
+	
+	<tr class="r_line">
+		<td>
+    	   <div class="r_string">
+    	   	<table onclick="playSound('reading/soundt01100.mp3')" class="audiotrans" cellpadding="0" cellspacing="0" border="0">
+             <tr>
+              <td>
+    			   М<span class="stressed_letter">о</span>й <span class="soft_letter">л</span>ю<span class="soft_letter">б</span><span class="stressed_letter">и</span>мый сп<span class="stressed_letter">о</span>рт - х<span class="reduct_letter">о</span><span class="soft_letter">кк</span><span class="stressed_letter">е</span>й.
+              </td>
+
+              <td class="trs_td"><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div>
+              </td>
+             </tr>
+    		</table>
+    	   </div>
+    	   <div class="r_transcript">
+    	   	[m<span class="acct">o</span>y l'oob<span class="acct">i</span>miy sp<span class="acct">o</span>rt hak'<span class="acct">e</span>y]
+    	   </div>
+    	   <div class="r_translate">
+    	   	My favorite sport is hockey.
+    	   </div>
+		</td>
+	</tr>
+	
+	
+	
+
+</table>
+</div>
+
+
+<div class="r_comments">
+
+<h3>Comments on reading</h3>
+
+<p>
+ <span class="r-up"  id="comment_01">1</span> the first <span class="letter">в</span> is not read in the combination of letters <span class="letter">вств</span>
+</p>
+<p>
+<span class="r-up"  id="comment_02">2</span> if the letter <span class="letter">и</span> occurs after the letter <span class="letter">ж</span>, it is read as [<span class="ry">i</span>] 
+</p>
+
+</div>
+
+
+
+
+
+<br>
+<br>
+
+
+
+</div>
+<br/>
+
+
+
+
+
+
+
+<br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+
+
+
+
+
+</div></div>
+
+<script type="text/javascript">
+currentSection="reading";
+</script>
