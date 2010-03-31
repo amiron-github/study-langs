@@ -283,8 +283,7 @@ $(".show_det").hover(function(){
 );
 
 $("table.sound-letter").each(function () {
-
-	$(this).find("tr.res_row:odd").css({backgroundColor: "#EFEFEF"});
+	$(this).find("tr.res_row:odd").css({backgroundColor: "#EFF3FF"});
 });
 
 

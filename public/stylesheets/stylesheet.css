@@ -1368,7 +1368,9 @@ float:left;
 display: block;
 background: url("/images/tabrightF.gif") no-repeat right -42px;
 padding: 5px 20px 4px 14px;
-
+-moz-user-select: none;
+-khtml-user-select: none;
+user-select: none;
 }
 
 .hon {
@@ -1395,7 +1397,29 @@ clear: both;
 padding: 20px;
 border: 1px solid #666;
 border-top: none;
+-moz-box-shadow: 4px 6px 4px #9F9F9F;
+-webkit-box-shadow: 4px 6px 4px #9F9F9F;
+box-shadow: 4px 6px 4px #9F9F9F;
+background: 
+-webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.12, rgb(247,247,247)),
+    color-stop(0.56, rgb(255,255,255))
+);
+background: 
+-moz-linear-gradient(
+    center bottom,
+    rgb(247,247,247) 12%,
+    rgb(255,255,255) 56%
+);
 }
+
+#show_sound_display div.display_in {
+background-color: transparent !important;
+}
+
 
 .inpBlock {
 min-height: 520px;
@@ -2086,7 +2110,6 @@ cursor: pointer;
 -moz-user-select: none;
 -khtml-user-select: none;
 user-select: none;
-
 }
 
 .highlight_stressed {
