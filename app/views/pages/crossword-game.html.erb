@@ -1,0 +1,1048 @@
+<% @page_title = 'Online Russian Grammar:  Nouns gender exercises' %>
+<% @page_meta = {'description' => "Russian online grammar exercises on nouns gender"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+
+<% content_for :special_js_css do %>
+
+
+<script type="text/javascript">
+
+
+function shuffle () {
+    len = shuffle.arguments[0] || this.length;
+    var sA = new Array();
+    for (var i=0; i < this.length; i++) {
+        sA[sA.length]=this[i];
+    }
+    var newArray = new Array();    for (var i=0; i<len; i++) {
+        var t = Math.round(Math.random()*(sA.length-1));
+        newArray.push(sA[t]);
+        sA.splice(t,1);
+    }
+    return newArray;
+}
+
+Array.prototype.shuffle = shuffle;
+
+///////////////////////////////////////////
+
+var workingVoc=new Array();
+var endVoc=new Array();
+
+var wordsNum=8;
+var rusWords=new Array();
+
+var selection=false;
+var mouseTapped=false;
+
+var startXSelection;
+var readyInRow;
+var forReady=false;
+var beReady = new Object;
+var firstSelected = new Object;
+var firstClicked = false;
+var tdDown;
+var firstClick=false;
+var wordIsFound=false;
+var crossWordDirection;
+var switchSounds;
+var switchMusic;
+var infoPanelClosed=false;
+
+var animation;
+var gameOver;
+
+var getFirstTd;
+
+var selectIt = new Object;
+
+var getMusic=true;
+
+var ruAlphabet=new Array(
+"а", "б", "в", "г","д","е","ё","ж","з","и","й","к","л","м","н","о","п","р","с","т","у","ф","х","ц","ч","ш","щ","ъ","ы","ь","э","ю","я"
+)
+
+
+$(document).ready(function(){
+
+$("#startCross").click(function() {
+	
+});
+
+$("table.cross_container tr").addClass("emptyTr"); 
+
+$("#choose_dir select").change(function () {
+  var crossWordDirectionNum=$("#choose_dir select option").index($("#choose_dir select option:selected"));
+  if (crossWordDirectionNum==0) {
+  	crossWordDirection="horizontal";
+  }else if (crossWordDirectionNum==1){
+  	crossWordDirection="vertical";
+  }
+}).change();
+
+
+$("#switch_sounds select").change(function () {
+  var switchSoundsNum=$("#switch_sounds option").index($("#switch_sounds select option:selected"));
+  if (switchSoundsNum==0) {
+  	switchSounds="on";
+  	
+  }else if (switchSoundsNum==1){
+  	switchSounds="off";
+  }
+}).change();
+
+
+
+$("#switch_animation select").change(function () {
+  var switchAnimationNum=$("#switch_animation option").index($("#switch_animation select option:selected"));
+  
+  if (switchAnimationNum==0) {
+  	animation="on";
+  	
+  }else if (switchAnimationNum==1){
+  	animation="off";
+  }
+}).change();
+
+
+$("#cross_info").toggle(function() {
+	$("#cross_checker").slideUp();
+	$(this).text("open the information panel");
+	infoPanelClosed=true;
+ }, function() {
+	$("#cross_checker").slideDown();
+	$(this).text("close the information panel");
+	infoPanelClosed=false;
+ }
+);
+
+
+$("#cross_info").mousemove(function(e) {
+		e.preventDefault();
+		return false;
+});
+
+
+
+$("table.cross_container td").mousedown(function(e) {
+
+
+		if (firstClicked) {
+		
+			//selectTd($(this));
+			//startXSelection=$(this).data("tr");
+			//mouseTapped=true;
+			selection=true;
+			firstClicked=false;
+
+			return false;
+		
+		} else {
+		
+			tdDown=$(this).attr("id");
+			
+			//startXSelection=$(this).data("tr");
+		
+			mouseTapped=true;
+	   		selection=true;
+
+			//selectTd($(this));
+		
+			startSelect($(this));
+	   }
+	   
+		$(this).addClass("selected");
+	   
+	   getFirstTd=$(this);
+	   
+	   
+	   e.preventDefault();
+		return false;
+	   
+	}).mouseup(function() {
+
+	if(gameOver) {
+		return false
+	} else {
+		if(tdDown == $(this).attr("id") ){
+			firstClicked = true;
+			
+			selection=false;
+	   		mouseTapped=false;
+			
+			return false;
+			
+			
+			
+		}else {
+		
+			selection=false;
+	   		mouseTapped=false;
+	   		finishSelect($(this));
+	   		
+	   		firstClicked=false;
+	   		tdDown=false;
+	   	}
+	   	
+	   	var selectedWord="";
+	   	
+	   	var selectedCells=$("table.cross_container td.selected");
+	   	
+	   	selectedCells.each(function(i) {
+	   		var letterIn=$(this).text();
+	   		
+	   		selectedWord=selectedWord+letterIn;
+	   	
+	   	});
+	   	
+	   	for (var i=0; i< workingVoc.length; i++) {
+	   	
+	   		if (workingVoc[i][0] == selectedWord) {
+	   		
+	   		   var firstSelected=$("table.cross_container td.selected").eq(0);
+	   			
+	   			selectedCells.removeClass("selected").addClass("found");
+	   			
+	   			var goodFind = checkForEnd(i,selectedWord);
+	   			
+	   			if (goodFind == "good") {
+	   		   
+	   		   		infoString("blue", "EXELLENT!!!");
+	   		   		if(animation=="on") {
+	   					wordFound(selectedWord, firstSelected, i);
+	   				}else {
+	   					$("#cross_task"+i).addClass("task_found");
+	   				}
+	   				playGood();
+	   				wordIsFound=true;
+	   			}else if (goodFind == "over") {
+	   				infoString("blue", "All words are found!!!");
+	   				
+	   				if(animation=="on") {
+	   					wordFound(selectedWord, firstSelected, i);
+	   				}else {
+	   					$("#cross_task"+i).addClass("task_found");
+	   				}
+	   				
+	   				wordIsFound=true;
+
+	   				gameOver=true;
+	   				playForGame('tada.mp3')
+	   			
+	   			}else if (goodFind == "already") {
+	   				infoString("red", "You have already found this!");
+	   				
+	   				playWrong();
+	   				wordIsFound=true;
+	   			}
+	   			
+	   			break;
+	   		}
+
+	   	}
+	   	
+	   	if(wordIsFound==false) {
+	   		infoString("red", "WRONG!!!"); 
+	   		playWrong();
+	   	}
+	   	
+	   	wordIsFound=false;
+	   	
+	   	selectedCells.removeClass("selected");
+	   	
+	  } 	
+	});
+	
+	
+$("body").mouseup(function() {
+	selection=false;
+	mouseTapped=false;
+	//$("table.cross_container td.selected").removeClass("selected");
+	
+})
+
+$("html").mousemove(function(e) {
+	if (selection) {
+		e.preventDefault();
+		return false;
+	}
+	
+})
+	
+
+$("table.cross_container td").mousemove(function(e) {
+		e.preventDefault();
+		return false;
+} );
+		
+$("table.cross_container td").mouseover(function(e) {
+	if (gameOver) {
+		return false;
+	}else {
+
+		var selectedXtd=$(this).data("tr");
+		var selectedYtd=$(this).data("td");
+		selectTd($(this), selectedYtd, selectedXtd);
+		selectString($(this));
+	}
+		e.preventDefault();
+		return false;
+	});
+	
+	
+//init();
+
+
+
+var soundCookie;
+
+soundCookie=getCookie('preload');
+
+preloadSound();
+
+if (soundCookie=="on") {
+	setCookie('preload', soundCookie);
+}else {
+	delCookie('preload');
+}
+
+
+});
+
+function infoString(tColor, string) {
+	if (infoPanelClosed){
+		if (gameOver) {
+  		   forGameOver();
+  		}
+		return false;
+	}else{
+    	if($.browser.msie){
+    		$("#cross_checker").stop().css({opacity: "1.0", fontSize: "1.8em", color: tColor}).text(string).animate({opacity: "0.0"}, 1200, function() {
+    		
+    			if (gameOver) {
+  					forGameOver();
+  				}
+    		
+    		});   	
+    	}else{
+    		$("#cross_checker").stop().css({opacity: "1.0", fontSize: "1.8em", color: tColor}).text(string).animate({fontSize: "1.8em"}, 500, function() {
+    		
+    	   		$("#cross_checker").animate({opacity: "0.0", fontSize: "1.2em"}, 700, function() {
+    	   			if (gameOver) {
+  						forGameOver();
+  					}
+    	   		
+    	   		});
+    	   		
+  				
+    	   	});
+    	}
+    }
+}
+
+function wordFound(word, jObject, taskNum) {
+   	var helperX = jObject.get(0).offsetLeft;
+  	var helperY = jObject.get(0).offsetTop;
+  	var aHelper;
+  	
+  	if ($("#helper").css("display")!="none") {
+  	  aHelper=$("#helper1");
+  	}else {
+  		aHelper=$("#helper");
+  	}
+  	
+  	if (selectIt.direction=="horizontal") {
+  		var inHelper=horizontalHelper(word);
+  	}else {
+		var inHelper=verticalHelper(word);
+  	}
+  		
+  	aHelper.html(inHelper).css({left: helperX, top: helperY, opacity: "0.9"}).show().animate({left: "0", top: "420px", opacity: "0.8"}, 1000, function() {
+  			
+  			aHelper.empty().css({display: "none", opacity: "1.0"});
+  			
+  			$("#cross_task"+taskNum).addClass("task_found");
+  			
+  	});
+
+  	
+  	
+}
+
+function horizontalHelper(word) {
+
+	var startHorizont='<table class="cross_container" cellpadding="0" cellspacing="0"><tr>';
+	var endHorizont='<\/tr><\/table>';
+	var innerHorizont=new Array();
+
+	for (var i=0; i < word.length; i ++ ) {
+		innerHorizont[i] = '<td>'+word.charAt(i)+'<\/td>';
+	}
+
+	var htmlHorizont=startHorizont + innerHorizont.join('')+ endHorizont;
+	return htmlHorizont;
+}
+
+function verticalHelper(word) {
+
+	var startHorizont='<table class="cross_container" cellpadding="0" cellspacing="0">';
+	var endHorizont='<\/table>';
+	var innerHorizont=new Array();
+
+	for (var i=0; i < word.length; i ++ ) {
+		innerHorizont[i] = '<tr><td>'+word.charAt(i)+'<\/td><\/tr>';
+	}
+
+	var htmlHorizont=startHorizont + innerHorizont.join('')+ endHorizont;
+	return htmlHorizont;
+}
+
+
+
+function selectString(currentTd) {
+
+if (selection) {
+	selectIt.startX = getFirstTd.data("td");
+	selectIt.startY = getFirstTd.data("tr");
+	selectIt.currentX = currentTd.data("td");
+	selectIt.currentY = currentTd.data("tr");
+	
+	if (selectIt.startY == selectIt.currentY) { // if horizontal selection 
+	
+		selectIt.direction = "horizontal"
+	
+		var differenceX = (Math.abs(selectIt.startX - selectIt.currentX))+1;
+		$("table.cross_container td.selected").removeClass("selected");
+		
+		if (selectIt.startX < selectIt.currentX) {
+		
+			for (var i=0; i< differenceX; i++ ) {
+				$("table.cross_container tr").eq(selectIt.startY).find("td").eq(selectIt.startX+i).addClass("selected");
+			}
+			
+		} else if (selectIt.startX > selectIt.currentX) {
+			for (var i=0; i< differenceX; i++ ) {
+				$("table.cross_container tr").eq(selectIt.startY).find("td").eq(selectIt.currentX + i).addClass("selected");
+			}
+		
+		}
+		
+	} else if (selectIt.startX == selectIt.currentX) {
+	
+		selectIt.direction = "vertical"
+	
+		var differenceY = (Math.abs(selectIt.startY - selectIt.currentY))+1;
+		
+		$("table.cross_container td.selected").removeClass("selected");
+		
+		if (selectIt.startY < selectIt.currentY) {
+		
+			for (var i=0; i< differenceY; i++ ) {
+				$("table.cross_container tr").eq(selectIt.startY+i).find("td").eq(selectIt.startX).addClass("selected");
+			}
+		} else if (selectIt.startY > selectIt.currentY) {
+			for (var i=0; i< differenceY; i++ ) {
+				$("table.cross_container tr").eq(selectIt.currentY+i).find("td").eq(selectIt.startX).addClass("selected");
+			}
+		}
+	}else{
+		return false;
+	}
+}else {
+	return false;
+}
+
+}
+
+
+
+
+
+
+
+function selectTd(jObject, atStart, row) {
+
+}
+
+
+function init() {
+
+	var tableTds=$("table.cross_container td");
+	var tableRows=$("table.cross_container tr");
+	
+	$("#cross_tasks").empty();
+		
+	tableTds.each(function() {
+	  var mapY=tableRows.index($(this).parent("tr"));
+	  var mapX=$(this).parent("tr").find("td").index($(this));
+	  $(this).empty().removeClass("selected").removeClass("found").removeData("withLetter");
+	  
+	  $(this).data("td", mapX);
+	  $(this).data("tr", mapY);
+	  $(this).attr("id", "tr"+mapY+ "td"+mapX)
+	  
+	});
+	
+	workingVoc=crossWords.shuffle(wordsNum);
+	
+	for (var i=0; i<workingVoc.length; i++ ) {
+		endVoc[i]=workingVoc[i];
+	}
+	
+
+	$("table.cross_container tr").removeClass("takenTr").addClass("emptyTr"); 
+	$("table.cross_container tr").eq(0).find("td").removeClass("takenCol").addClass("emptyCol");
+	
+	if (crossWordDirection=="horizontal") {
+		var emptyRowsLen=9;
+		
+    	for (var i=0; i<wordsNum; i++) {
+    		//вставляем задание вниз
+    		$("#cross_tasks").append('<div id="cross_task'+i+'">' + workingVoc[i][1]+ '<\/div>');
+    	
+    		// определяем один из свободных рядов
+    		tRowNum=Math.round(Math.random() * emptyRowsLen);
+    		var thisTableRow=$("table.cross_container tr.emptyTr").eq(tRowNum);
+    		thisTableRow.removeClass("emptyTr").addClass("takenTr"); 
+    		emptyRowsLen=emptyRowsLen - 1; 
+    		// берём русское слово и определяем начальную клетку
+    		rusWords[i]=workingVoc[i][0]; 
+    		initTd = Math.round(Math.random() * (9-rusWords[i].length)) ; // начальное td
+
+    		// вставляем буквы в td	
+    		var letterForTd;	
+    		var wordLength=rusWords[i].length
+    		for (var n=0; n < wordLength; n++) {
+    			letterForTd=rusWords[i].charAt(n);
+    			thisTableRow.find("td").eq(initTd+n).text(letterForTd).data("withLetter", "1");
+    		}
+    	}
+	} else {
+	
+		var emptyColsLen=9;
+		
+		for (var i=0; i<wordsNum; i++) {
+    		//вставляем задание вниз
+    		$("#cross_tasks").append('<div id="cross_task'+i+'">' + workingVoc[i][1]+ '<\/div>');
+    	
+    		// определяем одну из свободных колонок
+    		
+    		tColNum=Math.round(Math.random() * emptyColsLen);
+    		
+    		var thisTableCol=$("table.cross_container tr").eq(0).find("td.emptyCol").eq(tColNum).addClass("initTd");
+    		
+    		thisTableCol.removeClass("emptyCol").addClass("takenCol"); 
+    		
+    		var initTdNum=$("table.cross_container tr").eq(0).find("td").index($("td.initTd"));
+    		
+    		emptyColsLen=emptyColsLen - 1; 
+    		
+    		// берём русское слово и определяем начальную клетку
+    		rusWords[i]=workingVoc[i][0]; 
+    		initTr = Math.round(Math.random() * (9-rusWords[i].length)) ; // начальное tr
+
+    		// вставляем буквы в td	
+    		var letterForTd;	
+    		var wordLength=rusWords[i].length
+    		for (var n=0; n < wordLength; n++) {
+    			letterForTd=rusWords[i].charAt(n);
+    			
+    			$("table.cross_container tr").eq(initTr+n).find("td").eq(initTdNum).text(letterForTd).data("withLetter", "1");
+    		}
+    		
+    		$("table.cross_container td.initTd").removeClass("initTd");
+    	}
+	}
+	
+	$("table.cross_container td").each(function() {
+	
+		if($(this).data("withLetter")) {
+			
+		}else {
+			var ruLetterNum = Math.round(Math.random() * 32)
+		   $(this).text(ruAlphabet[ruLetterNum]);
+		}
+	});
+ if(switchSounds=="on"){
+ 	playForGame('start.mp3');
+ }
+ 
+$("#switch_music select").change(function () {
+  var switchMusicNum=$("#switch_music option").index($("#switch_music select option:selected"));
+  if (switchMusicNum==0) {
+  	switchMusic="on";
+  	playTrackGame('soundtrack.mp3');
+  }else if (switchMusicNum==1){
+  	switchMusic="off";
+  	$("#track_game").empty();
+  }
+}); 
+
+ if (getMusic==true) {
+ 		$("#switch_music select").change();
+ 		getMusic=false;
+ }
+ 
+ gameOver=false;
+ $("#cross_checker").css({opacity: "1.0", fontSize: "22px", color: "#5F5F5F"}).text("Select a word");
+
+}
+
+
+function startSelect(jObject) {
+	
+}
+
+
+function finishSelect(jObject) {
+	
+}
+
+
+function playForGame(slink) {
+        this.before = '<object type="application/x-shockwave-flash" data="player_norm.swf" width="20" height="20"><param name="movie" value="player_norm.swf"/><param name="FlashVars" value="mp3=/games/sounds/';
+        this.after = '&amp;autoplay=1&amp;loop=0" \/><\/object>';
+	this.all=this.before + slink + this.after;
+  document.getElementById("audio_game").innerHTML=this.all;
+}
+
+function playTrackGame(slink) {
+
+if (switchMusic=="on") {
+        this.before = '<object type="application/x-shockwave-flash" data="player_norm.swf" width="20" height="20"><param name="movie" value="player_norm.swf"/><param name="FlashVars" value="mp3=/games/sounds/';
+        this.after = '&amp;autoplay=1&amp;loop=1" \/><\/object>';
+	this.all=this.before + slink + this.after;
+  document.getElementById("track_game").innerHTML=this.all;
+  } else {
+  	$("#track_game").empty();
+  }
+}
+
+
+
+function playGood() {
+ if(switchSounds=="on"){
+	var prob=Math.random();
+	if ( prob < 0.4) {
+		playForGame('good01.mp3')
+	}else if ( prob > 0.4 && prob < 0.7) {
+		playForGame('good02.mp3');
+	}else {
+		playForGame('good03.mp3');
+	}
+ }else {
+ 	return false
+ }
+}
+
+function playWrong() {
+ if(switchSounds=="on"){
+	var prob=Math.random();
+	if ( prob < 0.4) {
+		playForGame('wrong01.mp3');
+	}else if ( prob > 0.4 && prob < 0.7) {
+		playForGame('wrong02.mp3');
+	}else {
+		playForGame('wrong03.mp3');
+	}
+ }else {
+ 	return false
+ }
+}
+
+function checkForEnd(num, thisWord) {
+	for (i=0; i < endVoc.length; i++ ) {
+		if (thisWord == endVoc[i][0]) {
+			endVoc.splice(i, 1);
+			if(endVoc.length == 0) {
+				return "over";
+			}else {
+			return "good";
+			}
+			break;
+		}else {
+			if (i == endVoc.length - 1) {
+				return "already";
+			}
+		}
+	}
+}
+
+function forGameOver () {
+
+	$("#cross_checker").stop().css({opacity: "1.0", fontSize: "1.8em", color: "blue"}).text("You're simply the best!!!");
+}
+
+
+
+</script>
+
+<style type="text/css">
+
+div#loading {
+visibility: hidden;
+}
+
+table.cross_container td {
+-moz-user-select: none;
+-khtml-user-select: none;
+user-select: none;
+}
+
+
+.noselect {
+-moz-user-select: none;
+-khtml-user-select: none;
+user-select: none;
+}
+
+
+#crossword_container {
+margin: 0px auto;
+text-align: left;
+position: relative;
+font-family: Times New Roman;
+min-height: 750px;
+height: auto !important;
+height: 750px;
+color: #000;
+}
+
+#container div {
+
+}
+
+table.cross_container {
+
+}
+
+table.cross_container td {
+width: 40px;
+height: 40px;
+text-align: center;
+background-image: url("games/crossword/cross-back.png");
+font-size: 30px;
+cursor: default;
+}
+
+.emptyTr {
+background-color: #566BF5;
+}
+
+.takenTr {
+background-color: #566BF5;
+}
+
+.found {
+background-color: #F53B38;
+
+}
+
+.selected {
+background-color: #12026E;
+color: #fff;
+}
+
+#helper,#helper1 {
+position: absolute;
+display: none;
+}
+
+#helper td,#helper1 td {
+background-image: url("games/crossword/cross-selected.png");
+color: #fff;
+
+}
+
+
+#cross_tasks {
+border: 1px solid #000;
+padding: 20px;
+padding-left: 10px;
+background-color: #fff;
+width: 360px;
+}
+
+#cross_tasks div {
+font-family: Verdana;
+font-size: 15px;
+padding-left: 15px;
+line-height: 20px;
+}
+
+#cross_checker {
+width: 400px;
+height: 80px;
+line-height: 80px;
+text-align: center;
+font-weight: bold;
+font-size: 22px;
+}
+
+#cross_info {
+background-color: #5F77FF;
+color: #fff;
+font-size: 12px;
+font-weight: bold;
+width: 400px;
+text-align: center;
+cursor: pointer;
+height: 20px;
+line-height: 20px;
+-moz-user-select: none;
+-khtml-user-select: none;
+user-select: none;
+}
+
+#cross_settings {
+position: absolute;
+margin-left: 420px;
+}
+
+#startCross {
+font-size:15px;
+font-weight:bold;
+}
+
+#audio_game, #track_game {
+position: absolute;
+top: -40px;
+}
+
+.task_found {
+background-image: url("yes.gif");
+background-repeat: no-repeat;
+padding-left: 15px;
+background-position: 0px 6px;
+color: #6F6F6F;
+
+}
+
+</style>
+
+
+
+
+
+<% end %> 
+ 
+
+
+
+
+<h2 style="margin-top: 0px;">Crossword Game</h2>
+
+
+<div id="track_game"></div>
+<div id="audio_game"></div>
+
+<div id="crossword_container">
+<div id="cross_settings"> 
+<p>
+<input type="button" onclick="init()" value="START" id="startCross"/>
+</p>
+
+<div id="choose_dir">
+<form>
+<p><b>Choose the direction</b><br/>
+<select name="OS">
+<option selected>Horizontal</option>
+<option>Vertical</option>
+</select></p>
+</form>
+</div>
+
+<div id="switch_music">
+<form>
+<p><b>Music</b><br/>
+<select name="music">
+<option selected>ON</option>
+<option>OFF</option>
+</select></p>
+</form>
+</div>
+
+<div id="switch_sounds">
+<form>
+<p><b>Sounds</b><br/>
+<select name="sounds">
+<option selected>ON</option>
+<option>OFF</option>
+</select></p>
+</form>
+</div>
+
+<div id="switch_animation">
+<form>
+<p><b>Animation</b><br/>
+<select name="animation">
+<option selected>ON</option>
+<option>OFF</option>
+</select></p>
+</form>
+</div>
+
+
+</div>
+<div id="cross_info">close the information panel</div>
+<div id="cross_checker"> Start the game!</div>
+<div style="height: 420px; width: 410px; position: relative; overflow: hidden;">
+
+<table class="cross_container" cellpadding="0" cellspacing="0">
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+
+<div id="helper"></div>
+<div id="helper1"></div>
+<div id="helper2"></div>
+</div>
+
+<div id="cross_tasks">
+
+
+
+
+</div>
+
+
+</div>
+
+<script type="text/javascript">
+
+var crossWords=new Array(['город','town'],['адрес','address'],['банк','bank'],['бар','bar'],['вокзал','railway station'],['дом','house'],['кинотеатр','cinema'],['ресторан','restaurant'] )
+
+</script>
+
+<script type="text/javascript">
+
+preloadFiles=new Array("/games/sounds/good01.mp3", "/games/sounds/good02.mp3", "/games/sounds/good03.mp3", "/games/sounds/wrong01.mp3", "/games/sounds/wrong02.mp3","/games/sounds/wrong03.mp3", "/games/sounds/start.mp3", "/games/sounds/tada.mp3", "/games/sounds/soundtrack.mp3")
+
+</script>
+
+
+
+
+<script type="text/javascript">
+currentSection="words";
+</script>

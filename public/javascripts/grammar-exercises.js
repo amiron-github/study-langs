@@ -153,7 +153,7 @@ function checkExFromList(elClass) {
 		}
 		tContainer.find(".ex_from_list_check").prepend('<span class="to_notify"><span class="check_notify" title="You have '+ errorNum + errorString +' from '+totalTasks+' tasks">'+ errorNum + errorString + '</span></span>');	
 	}else{
-	tContainer.find(".gexv_check").prepend('<span class="to_notify"><span class="check_notify" style="background-image: none; color: green; padding-left: 10px;"> No errors</span></span>');
+	tContainer.find(".ex_from_list_check").prepend('<span class="to_notify"><span class="check_notify" style="background-image: none; color: green; padding-left: 10px;"> No errors</span></span>');
 	}
 }
 
@@ -195,7 +195,7 @@ function checkExType(elClass) {
 		}
 		tContainer.find(".gext_check").prepend('<span class="to_notify"><span class="check_notify" title="You have '+ errorNum + errorString +' from '+totalTasks+' tasks">'+ errorNum + errorString + '</span></span>');	
 	}else{
-		tContainer.find(".gexv_check").prepend('<span class="to_notify"><span class="check_notify" style="background-image: none; color: green; padding-left: 10px;"> No errors</span></span>');
+		tContainer.find(".gext_check").prepend('<span class="to_notify"><span class="check_notify" style="background-image: none; color: green; padding-left: 10px;"> No errors</span></span>');
 	}
 	
 	

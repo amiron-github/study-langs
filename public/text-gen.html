@@ -1,0 +1,566 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd"> 
+<html> 
+<head> 
+  <title>Random Text Generator </title> 
+
+  
+ <script src="/javascripts/jquery.min.js" type="text/javascript"></script>
+ 
+ 
+ <script type="text/javascript"> 
+ 
+ 
+ function shuffle () {
+    len = shuffle.arguments[0] || this.length;
+    var sA = new Array();
+    for (var i=0; i < this.length; i++) {
+        sA[sA.length]=this[i];
+    }
+    var newArray = new Array();
+    for (var i=0; i<len; i++) {
+        var t = Math.round(Math.random()*(sA.length-1));
+        newArray.push(sA[t]);
+        sA.splice(t,1);
+    }
+    return newArray;
+}
+
+Array.prototype.shuffle = shuffle;
+ 
+ 
+//////////////////////////////////////////// 
+
+$(document).ready(function(){
+
+$("#launch").click(function() {
+	randomize();
+});
+
+$("#sort_it").click(function() {
+	sortIt();
+});
+
+$("#wrap_it").click(function() {
+	wrapIt();
+});
+
+$("#change_wrap").toggle(function() {
+	$(this).val("Cange to Smaller");
+	$("#string_prepend").replaceWith('<textarea id="string_prepend" rows="3" ></textarea>');
+	$("#string_append").replaceWith('<textarea id="string_append" rows="3"></textarea>');
+	
+}, function() {
+	$(this).val("Cange to Bigger");
+	$("#string_prepend").replaceWith('<input type="text" id="string_prepend">');
+	$("#string_append").replaceWith('<input type="text" id="string_append">');
+
+});
+
+$("#clear").click(function() {
+	$("#result textarea").val('');
+})
+
+$("#result_numerote").click(function() {
+	numerote();
+})
+
+
+$("#text_lower_case").click(function() {
+	var tString = $("#text textarea").val();
+	tString = tString.toLowerCase();
+	$("#text textarea").val(tString)
+})
+
+$("#line_lower_case").click(function() {
+
+linesToLower();
+ 
+})
+
+$("#result_lower_case").click(function() {
+	var tString = $("#result textarea").val();
+	tString = tString.toLowerCase();
+	$("#result textarea").val(tString)
+})
+
+
+$("#create_line_form").click(function() {
+	createLineForm();
+}).click();
+
+
+$("#line_generator").click(function() {
+	generateLine();
+});
+
+
+$("#show_line_generator").toggle(function() {
+	$("#line_generator_display").fadeOut();
+	$(this).val("show");
+}, function() {
+	$("#line_generator_display").fadeIn();
+	$(this).val("hide");
+
+});
+
+
+$("#show_wraping").toggle(function() {
+	$(".display_wrap").fadeIn();
+	$(this).val("hide");
+}, function() {
+	$(".display_wrap").fadeOut();
+	$(this).val("show");
+
+});
+
+
+
+$("#line_item_width").change(function() {
+
+var tWidth=eval($("#line_item_width option:selected").val());
+if(tWidth == 'normal') {
+ tWidth = 150;
+}
+$(".line_items").each(function() {
+	$(this).css({width: tWidth});
+});
+
+
+})
+
+
+$("#inserter_item_width").change(function() {
+
+var tWidth=eval($("#inserter_item_width option:selected").val());
+if(tWidth == 'normal') {
+ tWidth = 150;
+}
+$(".inserter_items").each(function() {
+	$(this).css({width: tWidth});
+});
+
+
+})
+
+
+});
+
+function linesToLower() {
+
+$(".line_items").each(function() {
+	var tString = $(this).val();
+	tString = tString.toLowerCase();
+	$(this).val(tString);
+ });
+
+}
+ 
+ 
+ function randomize() {
+ //var workText = $("#text textarea").val();
+ 
+ var textArray = new Array();
+ textArray = $("#text textarea").val().split(/\r\n|\n/);
+ 
+ //workText = workText.replace(/\n\r?/g, '</div><div>');
+// $("#result div").append(workText);
+ 
+ textArray = textArray.shuffle();
+ 
+for (var i = 0; i < textArray.length; i ++ ) {
+	//var tString = textArray[i] + '\n'
+}
+var resultText = textArray.join('\n');
+$("#result textarea").val(resultText);
+  
+ }
+ 
+ 
+function numerote() {
+ var textArray = new Array();
+ textArray = $("#result textarea").val().split(/\r\n|\n/);
+ 
+for (var i = 0; i < textArray.length; i ++ ) {
+
+	if (i < 9) {
+		textArray[i] = " " + (i+1) + ". " + textArray[i];
+	}else {
+		textArray[i] = (i+1) + ". " + textArray[i];
+	}
+	
+	// textArray[i] = (i+1) + ". " + textArray[i];
+}
+
+var resultText = textArray.join('\n');
+$("#result textarea").val(resultText);
+  
+ }
+ 
+ 
+function sortIt() {
+	var textArray = new Array();
+	textArray = $("#text textarea").val().split(/\r\n|\n/);
+	textArray = textArray.sort();
+	var resultText = textArray.join('\n');
+	$("#result textarea").val(resultText);
+}
+ 
+
+function wrapIt() {
+	var textArray = new Array();
+	textArray = $("#text textarea").val().split(/\r\n|\n/);
+	
+	var stringPrepend = $("#string_prepend").val();
+	var stringAppend = $("#string_append").val();
+
+	for (var i=0; i < textArray.length; i ++) {
+		textArray[i] = stringPrepend + textArray[i] + stringAppend;
+	}
+	
+	var resultText = textArray.join('\n');
+	$("#result textarea").val(resultText);
+}
+ 
+ 
+ 
+ function createLineForm() {
+ 
+ $("#line_generate").empty();
+ $("#line_inserter").empty();
+ 
+ var lineItemsLen = eval($("#line_items_length").val());
+ var lineRowsLen = eval($("#line_rows_length").val());
+
+ for (var r=0; r < lineRowsLen; r ++) {
+	$("#line_generate").append('<div id="line_row_'+r+'" class="line_rows"></div>');
+	
+	for (var i=0; i < lineItemsLen; i ++) {
+		$("#line_row_"+r).append('<input type="text" id="line_item_'+i+'" class="line_items"> ')
+	}
+ }
+ 
+ var insertersLen = lineItemsLen + 1;
+ 
+ 
+ for (var i=0; i < insertersLen; i ++ ) {
+	$("#line_inserter").append('<input type="text" id="inserter_item_'+i+'" class="inserter_items"> ')
+ }
+ 
+ $("#inserter_item_width").change(); 
+ $("#line_item_width").change();
+ }
+ 
+ 
+ function generateLine() {
+ 
+ 
+var endLine = $(".inserter_items:last").val();
+$("#generated_line").empty();
+
+var lineRowsLen = $(".line_rows").length;
+var lineItemsLen = $(".line_rows:first").find(".line_items").length;
+
+
+for (var r=0; r < lineRowsLen; r ++ ) {
+
+var tRow = $(".line_rows").eq(r);
+var tLineHtml = "";
+$("#generated_line").append('<div class="generated_line_items" id="generated_'+r+'"></div>')
+
+for (var i = 0; i < lineItemsLen; i ++ ) {
+	var lineItemValue = tRow.find(".line_items").eq(i).val();
+	var inserterItemValue = $(".inserter_items").eq(i).val();
+	tLineHtml =  tLineHtml + inserterItemValue + lineItemValue;
+}
+
+$("#generated_"+r).text(tLineHtml + endLine);
+
+}
+
+ }
+ 
+
+ 
+ </script>
+ 
+ 
+ 
+ 
+  
+<style type="text/css"> 
+
+body {
+margin: 20px;
+background-color: #2C508F;
+text-align: center;
+font-family: Verdana;
+font-size: 12px;
+}
+
+.container {
+width: 80%;
+min-height: 1290px;
+background-color: #fff;
+margin: 0 auto;
+text-align: left;
+padding: 40px;
+-moz-border-radius: 10px;
+-moz-box-shadow: 0px 0px 10px #111;
+-webkit-border-radius: 10px;
+-webkit-box-shadow: 0px 0px 10px #111;
+border-radius: 10px;
+box-shadow: 0px 0px 10px #111;
+}
+
+.display-container {
+padding: 20px;
+background-color: #EFF5FF;
+-moz-border-radius: 7px;
+-moz-box-shadow: 0px 0px 7px #18274F;
+-webkit-border-radius: 7px;
+-webkit-box-shadow: 0px 0px 7px #18274F;
+border-radius: 7px;
+box-shadow: 0px 0px 7px #18274F;
+}
+
+.ie_browser .display-container {
+border: 3px solid #B5BFCF;
+}
+
+.display-container {
+color: #333;
+}
+
+h1 {
+margin-top: 0px;
+text-align: center;
+text-shadow: 1px 1px 0 #FFFFFF, 0px 3px 5px #888;
+font-weight: normal;
+font-size: 30px;
+margin-bottom: 40px;
+}
+
+h2 {
+text-shadow: 0px 3px 5px #888;
+margin-top: 0px;
+color: #07366F;
+margin-bottom: 30px;
+}
+
+
+  
+input#string_prepend, input#string_append {
+width: 300px;
+}
+
+
+textarea#string_prepend, textarea#string_append {
+width: 500px;
+}
+
+#change_wrap {
+margin-left: 50px;
+font-size: 10px;
+}
+
+#wrap_entry {
+
+} 
+
+#generated_line {
+background-color: #fff;
+border: 1px dashed #000;
+padding: 10px;
+color: #000;
+}
+
+.generated_line_items {
+padding: 3px 0px;
+}
+
+.line_items {
+margin: 2px;
+width: 150px;
+}
+ 
+</style> 
+ 
+ 
+ 
+</head> 
+<body> 
+
+   
+	
+<div class="container">
+<!--[if IE]> <div class="ie_browser"> <![endif]-->
+
+
+<h1>Text and Tasks Generator</h1>
+
+<div class="display-container">
+
+<h2>Text randomizer/sorter</h2>
+
+<table>
+<tr valign="top">
+<td>
+<div id="text">
+<b>Enter the text</b><br>
+
+<textarea rows="10" cols="40"></textarea>
+<br>
+<input type="button" id="launch" value="Randomize"/> <input type="button" id="sort_it" value="Sort"/> 
+<input type="button" id="text_lower_case" value="Lower case" style="display: none;"/>
+
+<br>
+<br>
+
+</div>
+</td>
+<td>
+
+<div id="result">
+
+<b>Get the randomized/sorted text</b><br>
+
+<textarea rows="10" cols="40"></textarea>
+<br>
+<input type="button" id="clear" value="Clear"> <input type="button" id="result_numerote" value="Numerote"/> <input type="button" id="result_lower_case" value="Lower case"/>
+</div> 
+
+
+</td>
+
+</tr>
+</table>
+
+</div> <!-- end of display container-->
+<br><br><br>
+
+
+
+<div id="wrap_entry" class="display-container">
+
+<h2><b>List items wrapper</b> <input type="button" id="show_wraping" value="show" align="right"></h2>
+
+<div class="display_wrap" style="display: none;">
+
+<input type="button" id="wrap_it" value="Wrap Items with"/>
+
+<br>
+<br>
+
+<table>
+<tr>
+<td align="right">
+<input type="button" id="change_wrap" value="Change to Bigger"/><br>
+</td>
+</tr>
+
+<tr>
+<td>
+<b><i>Before:</i></b><br>
+<input type="text" id="string_prepend"><br>
+<br>
+<b><i>After:</i></b><br>
+<input type="text" id="string_append"><br><br>
+</td>
+</tr>
+</table>
+
+</div> <!-- end of display_wrap -->
+
+</div> <!-- end of display-container -->
+
+<br>
+<hr>
+<br>
+
+
+<div class="display-container">
+
+<h2><b>Line generator</b> <input type="button" id="show_line_generator" value="hide"></h2>
+
+<div id="line_generator_display"  style="dis-play: none">
+
+<h3>Settings: </h3>
+<table>
+<tr valign="top" >
+<td>
+<b><i>Entries number:</i></b> &nbsp; &nbsp; &nbsp; &nbsp;<input id="line_items_length" type="text" size="3" value="2"> <br>
+<b><i>Items rows number:</i></b> <input id="line_rows_length" type="text" size="3" value="1"><br>
+</td>
+<td style="padding-left: 20px;">
+<input type="button" id="create_line_form" value="create form">
+</td>
+</tr>
+</table>
+
+
+<br><br>
+<b>Enter the line example</b>
+<br><br>
+Width: 
+<select id="inserter_item_width">
+	<option>150</option>
+	<option>200</option>
+	<option>250</option>
+	<option>300</option>
+	<option>400</option>
+</select>
+<br>
+<br>
+<div id="line_inserter">
+
+</div>
+
+<br>
+<b>Enter line values</b>
+<br>
+<br>
+<input type="button" id="line_lower_case" value="Lower case"/> 
+
+Width: 
+<select id="line_item_width">
+	<option>150</option>
+	<option>200</option>
+	<option>250</option>
+	<option>300</option>
+	<option>400</option>
+</select>
+<br>
+<br>
+
+<div id="line_generate">
+
+</div>
+
+<br><br><br>
+
+<input type="button" id="line_generator" value="Generate" style="font-size: 14px; font-weight: bold;">
+<br><br>
+<div id="generated_line">
+
+</div>
+<br>
+
+
+
+</div> <!-- end of line generator display-->
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+	
+<!--[if IE]> </div> <![endif]-->	
+</div><!-- end of container -->	
+  
+</body> 
+</html> 
