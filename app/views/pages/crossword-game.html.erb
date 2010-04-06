@@ -1,10 +1,12 @@
-<% @page_title = 'Online Russian Grammar:  Nouns gender exercises' %>
+<% @page_title = 'Online Language Game:  Nouns gender exercises' %>
 <% @page_meta = {'description' => "Russian online grammar exercises on nouns gender"} %>
 <% @with_rec = true %>
 <% @has_audio = true %>
 
 
 <% content_for :special_js_css do %>
+
+<%= javascript_include_tag 'crossword_vocabulary' %>
 
 
 <script type="text/javascript">
@@ -50,6 +52,7 @@ var crossWordDirection;
 var switchSounds;
 var switchMusic;
 var infoPanelClosed=false;
+var wordsLang;
 
 var animation;
 var gameOver;
@@ -66,6 +69,32 @@ var ruAlphabet=new Array(
 
 
 $(document).ready(function(){
+
+
+$("#gTopic select").change(function () {
+
+var topic=$("#gTopic select option").index($("#gTopic select option:selected"));
+
+var topicName=$("#gTopic select option:selected").text();
+//$("#topic_name").text(topicName);
+
+thisTopic=topic;
+
+getTopic(topic);
+
+}).change();
+
+
+$("#words_lang select").change(function () {
+var wordsLangNum = $("#words_lang select option").index($("#words_lang select option:selected"));
+	if (wordsLangNum == 0) {
+		wordsLang = 'rus_eng';
+	}else {
+		wordsLang = 'rus_rus';
+	}
+}).change();
+
+
 
 $("#startCross").click(function() {
 	
@@ -128,14 +157,23 @@ $("#cross_info").mousemove(function(e) {
 
 $("table.cross_container td").mousedown(function(e) {
 
-
+if(gameOver) {
+		return false
+	} else {
+	
+	
 		if (firstClicked) {
 		
 			//selectTd($(this));
 			//startXSelection=$(this).data("tr");
 			//mouseTapped=true;
+			
+			//alert("ok")
+			
 			selection=true;
 			firstClicked=false;
+			
+			$(this).mouseover();
 
 			return false;
 		
@@ -160,20 +198,23 @@ $("table.cross_container td").mousedown(function(e) {
 	   
 	   e.preventDefault();
 		return false;
-	   
+}	   
 	}).mouseup(function() {
+	
 
 	if(gameOver) {
 		return false
 	} else {
+	
+	
 		if(tdDown == $(this).attr("id") ){
+
 			firstClicked = true;
 			
 			selection=false;
 	   		mouseTapped=false;
 			
 			return false;
-			
 			
 			
 		}else {
@@ -403,7 +444,7 @@ function verticalHelper(word) {
 
 function selectString(currentTd) {
 
-if (selection) {
+if (selection && getFirstTd) {
 	selectIt.startX = getFirstTd.data("td");
 	selectIt.startY = getFirstTd.data("tr");
 	selectIt.currentX = currentTd.data("td");
@@ -416,6 +457,7 @@ if (selection) {
 		var differenceX = (Math.abs(selectIt.startX - selectIt.currentX))+1;
 		$("table.cross_container td.selected").removeClass("selected");
 		
+		
 		if (selectIt.startX < selectIt.currentX) {
 		
 			for (var i=0; i< differenceX; i++ ) {
@@ -427,6 +469,8 @@ if (selection) {
 				$("table.cross_container tr").eq(selectIt.startY).find("td").eq(selectIt.currentX + i).addClass("selected");
 			}
 		
+		}else {
+				$("table.cross_container tr").eq(selectIt.startY).find("td").eq(selectIt.currentX).addClass("selected");
 		}
 		
 	} else if (selectIt.startX == selectIt.currentX) {
@@ -446,10 +490,13 @@ if (selection) {
 			for (var i=0; i< differenceY; i++ ) {
 				$("table.cross_container tr").eq(selectIt.currentY+i).find("td").eq(selectIt.startX).addClass("selected");
 			}
+		} else {
+				$("table.cross_container tr").eq(selectIt.currentY).find("td").eq(selectIt.startX).addClass("selected");
 		}
 	}else{
 		return false;
 	}
+		
 }else {
 	return false;
 }
@@ -485,10 +532,14 @@ function init() {
 	  
 	});
 	
-	workingVoc=crossWords.shuffle(wordsNum);
+	workingVoc=tasks.shuffle(wordsNum);
 	
+		
 	for (var i=0; i<workingVoc.length; i++ ) {
-		endVoc[i]=workingVoc[i];
+		workingVoc[i][0] = $.trim(workingVoc[i][0].toLowerCase())
+		//workingVoc[i][0]
+		
+		endVoc[i]= workingVoc[i];
 	}
 	
 
@@ -500,7 +551,13 @@ function init() {
 		
     	for (var i=0; i<wordsNum; i++) {
     		//вставляем задание вниз
-    		$("#cross_tasks").append('<div id="cross_task'+i+'">' + workingVoc[i][1]+ '<\/div>');
+			
+			if (wordsLang == 'rus_eng') {
+				$("#cross_tasks").append('<div id="cross_task'+i+'">' + workingVoc[i][1]+ '<\/div>');
+			}else{
+				$("#cross_tasks").append('<div id="cross_task'+i+'">' + workingVoc[i][0]+ '<\/div>');
+			}
+    		
     	
     		// определяем один из свободных рядов
     		tRowNum=Math.round(Math.random() * emptyRowsLen);
@@ -509,6 +566,10 @@ function init() {
     		emptyRowsLen=emptyRowsLen - 1; 
     		// берём русское слово и определяем начальную клетку
     		rusWords[i]=workingVoc[i][0]; 
+			
+			//rusWords[i] = rusWords[i].toLowerCase();
+			//rusWords[i] = $.trim(rusWords[i]);
+			
     		initTd = Math.round(Math.random() * (9-rusWords[i].length)) ; // начальное td
 
     		// вставляем буквы в td	
@@ -758,18 +819,29 @@ color: #fff;
 
 
 #cross_tasks {
-border: 1px solid #000;
+border: 1px solid #666;
 padding: 20px;
 padding-left: 10px;
 background-color: #fff;
 width: 360px;
+
+background-image:url(/images/sect-btm.gif);
+background-position:left bottom;
+background-repeat:repeat-x;
+
+-moz-box-shadow: 2px 3px 2px #BFBFBF;
+-webkit-box-shadow: 2px 3px 2px #BFBFBF;
+box-shadow: 2px 3px 2px #BFBFBF;
+min-height: 208px;
+
 }
 
 #cross_tasks div {
 font-family: Verdana;
-font-size: 15px;
-padding-left: 15px;
+font-size: 14px;
+padding: 3px 15px;
 line-height: 20px;
+color: #222;
 }
 
 #cross_checker {
@@ -798,7 +870,28 @@ user-select: none;
 
 #cross_settings {
 position: absolute;
-margin-left: 420px;
+margin-left: 440px;
+font-family: Verdana;
+font-size: 12px;
+color: #444;
+background-color: #fff;
+padding: 0px 30px 20px;
+border: 1px solid #333;
+min-height: 208px;
+
+-moz-box-shadow: 2px 3px 2px #BFBFBF;
+-webkit-box-shadow: 2px 3px 2px #BFBFBF;
+box-shadow: 2px 3px 2px #BFBFBF;
+
+-moz-bor-der-radius: 6px;
+-web-kit-bor-der-radius: 5px;
+bor-der-radius: 5px;
+
+}
+
+#cross_settings p b {
+display: block;
+padding-bottom: 3px;
 }
 
 #startCross {
@@ -811,12 +904,21 @@ position: absolute;
 top: -40px;
 }
 
-.task_found {
+#cross_tasks .task_found {
 background-image: url("yes.gif");
 background-repeat: no-repeat;
-padding-left: 15px;
+padd-ing-left: 15px;
 background-position: 0px 6px;
 color: #6F6F6F;
+}
+
+.settings-title {
+font-size: 15px;
+font-weight: bold;
+color: #111;
+margin-bottom: 0px;
+padding-bottom: 0px;
+padding-top: 15px;
 
 }
 
@@ -844,9 +946,29 @@ color: #6F6F6F;
 <input type="button" onclick="init()" value="START" id="startCross"/>
 </p>
 
+
+<div class="settings-title">Settings</div>
+
+<div id="gTopic">
+<p>
+	<b>Topic:</b>
+
+	<span id="topic_name" style="display: none;"></span>
+
+    <select>   
+    <option selected>Formulas of Politeness</option>  
+    <option >Transport</option>  
+    <option >Hotel</option>
+	<option >City</option>
+    <option >Sightseeing</option>  
+    <option >Meals</option>
+    </select>
+</p>
+</div>
+
 <div id="choose_dir">
 <form>
-<p><b>Choose the direction</b><br/>
+<p><b>Choose the direction</b>
 <select name="OS">
 <option selected>Horizontal</option>
 <option>Vertical</option>
@@ -856,7 +978,7 @@ color: #6F6F6F;
 
 <div id="switch_music">
 <form>
-<p><b>Music</b><br/>
+<p><b>Music</b>
 <select name="music">
 <option selected>ON</option>
 <option>OFF</option>
@@ -865,8 +987,8 @@ color: #6F6F6F;
 </div>
 
 <div id="switch_sounds">
-<form>
-<p><b>Sounds</b><br/>
+<form >
+<p><b>Sounds</b>
 <select name="sounds">
 <option selected>ON</option>
 <option>OFF</option>
@@ -875,8 +997,8 @@ color: #6F6F6F;
 </div>
 
 <div id="switch_animation">
-<form>
-<p><b>Animation</b><br/>
+<form >
+<p><b>Animation</b>
 <select name="animation">
 <option selected>ON</option>
 <option>OFF</option>
@@ -884,10 +1006,19 @@ color: #6F6F6F;
 </form>
 </div>
 
+<div id="words_lang">
+<p><b>Language</b>
+<select>
+<option selected> russian - english </option>
+<option> russian - russian </option>
+
+</select></p>
+</div>
+
 
 </div>
 <div id="cross_info">close the information panel</div>
-<div id="cross_checker"> Start the game!</div>
+<div id="cross_checker"> Click the "START" button => </div>
 <div style="height: 420px; width: 410px; position: relative; overflow: hidden;">
 
 <table class="cross_container" cellpadding="0" cellspacing="0">
@@ -1028,11 +1159,20 @@ color: #6F6F6F;
 
 </div>
 
-<script type="text/javascript">
-
-var crossWords=new Array(['город','town'],['адрес','address'],['банк','bank'],['бар','bar'],['вокзал','railway station'],['дом','house'],['кинотеатр','cinema'],['ресторан','restaurant'] )
-
-</script>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
 <script type="text/javascript">
 
