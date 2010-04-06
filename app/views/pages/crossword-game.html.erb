@@ -1,4 +1,4 @@
-<% @page_title = 'Online Language Game:  Nouns gender exercises' %>
+<% @page_title = 'Online Language Game:  Word Find Puzzle' %>
 <% @page_meta = {'description' => "Russian online grammar exercises on nouns gender"} %>
 <% @with_rec = true %>
 <% @has_audio = true %>
@@ -586,7 +586,14 @@ function init() {
 		
 		for (var i=0; i<wordsNum; i++) {
     		//вставляем задание вниз
-    		$("#cross_tasks").append('<div id="cross_task'+i+'">' + workingVoc[i][1]+ '<\/div>');
+			
+			
+			
+    		if (wordsLang == 'rus_eng') {
+				$("#cross_tasks").append('<div id="cross_task'+i+'">' + workingVoc[i][1]+ '<\/div>');
+			}else{
+				$("#cross_tasks").append('<div id="cross_task'+i+'">' + workingVoc[i][0]+ '<\/div>');
+			}
     	
     		// определяем одну из свободных колонок
     		
@@ -934,7 +941,17 @@ padding-top: 15px;
 
 
 
-<h2 style="margin-top: 0px;">Crossword Game</h2>
+<h2 style="margin-top: 0px;">Word Find Puzzle</h2>
+
+
+<p>Words are hidden randomly each time you try the puzzle, so you can play more than once.</p>
+<p>If you find a word, click at one end of the hidden word and drag the mouse to the end of the word, 
+or just click its initial and filanl letters (or vice versa)
+<br/>
+<br/>
+<br/>
+</p>
+
 
 
 <div id="track_game"></div>
