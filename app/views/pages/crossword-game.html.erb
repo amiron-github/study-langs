@@ -578,7 +578,7 @@ function init() {
 	
 	if (crossWordDirection=="horizontal") {
 		var emptyRowsLen=9;
-		
+		$("#cross_tasks").append('<h3>Words to find<\/h3>')
     	for (var i=0; i<wordsNum; i++) {
     		//вставляем задание вниз
 			
@@ -949,6 +949,14 @@ background-position: 0px 6px;
 color: #6F6F6F;
 }
 
+#cross_tasks h3 {
+margin-top: 0px;
+font-size: 17px;
+font-weight: normal;
+text-shadow: 1px 1px 1px #fff, 0 3px 5px #888888;
+font-family: Verdana;
+}
+
 .settings-title {
 font-size: 15px;
 font-weight: bold;
@@ -967,6 +975,8 @@ padding: 10px;
 border: 1px solid gray;
 background-color: #fff;
 }
+
+
 
 </style>
 
@@ -1212,9 +1222,9 @@ or just click its initial and final letters (or vice versa)
 <div id="helper1"></div>
 <div id="helper2"></div>
 </div>
-<h3>Words to find:</h3>
-<div id="cross_tasks">
 
+<div id="cross_tasks">
+<h3>Words to find</h3>
 
 
 
