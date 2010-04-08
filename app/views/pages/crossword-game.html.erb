@@ -123,6 +123,27 @@ $("#switch_sounds select").change(function () {
 }).change();
 
 
+if ($.browser.msie) {
+	$("#switch_animation select")
+		.find("option")
+		.removeAttr('selected')
+		.eq(1)
+		.attr('selected', 'selected');
+		
+	$("#switch_animation").hover(
+	function() {
+		$("#msie_prevent").fadeIn();
+	},function() {
+		$("#msie_prevent").fadeOut();
+	
+	}
+	
+	);
+		
+		
+}
+
+
 
 $("#switch_animation select").change(function () {
   var switchAnimationNum=$("#switch_animation option").index($("#switch_animation select option:selected"));
@@ -134,6 +155,8 @@ $("#switch_animation select").change(function () {
   	animation="off";
   }
 }).change();
+
+
 
 
 $("#cross_info").toggle(function() {
@@ -350,7 +373,14 @@ if (soundCookie=="on") {
 }
 
 
-});
+
+
+
+
+
+});  
+
+/// end of ready functions 
 
 function infoString(tColor, string) {
 	if (infoPanelClosed){
@@ -929,6 +959,15 @@ padding-top: 15px;
 
 }
 
+
+#msie_prevent {
+position: absolute; 
+margin-left: 60px;
+padding: 10px;
+border: 1px solid gray;
+background-color: #fff;
+}
+
 </style>
 
 
@@ -944,9 +983,9 @@ padding-top: 15px;
 <h2 style="margin-top: 0px;">Word Find Puzzle</h2>
 
 
-<p>Words are hidden randomly each time you try the puzzle, so you can play more than once.</p>
+<p>A list of Russian words is hidden within the field of random letters. Words are hidden randomly each time you start the puzzle, so you can play more than once.</p>
 <p>If you find a word, click at one end of the hidden word and drag the mouse to the end of the word, 
-or just click its initial and filanl letters (or vice versa)
+or just click its initial and final letters (or vice versa)
 <br/>
 <br/>
 <br/>
@@ -985,7 +1024,7 @@ or just click its initial and filanl letters (or vice versa)
 
 <div id="choose_dir">
 <form>
-<p><b>Choose the direction</b>
+<p><b>Words direction</b>
 <select name="OS">
 <option selected>Horizontal</option>
 <option>Vertical</option>
@@ -1013,7 +1052,15 @@ or just click its initial and filanl letters (or vice versa)
 </form>
 </div>
 
-<div id="switch_animation">
+<div id="switch_animation" style="position: relative;">
+<div id="msie_prevent" style="display: none; font-size: 11px;">
+
+<span style="white-space: nowrap;">The animation may work improperly</span> 
+<span style="white-space: nowrap;">in your browser - <b>Internet Explorer</b></span><br/> 
+<span style="white-space: nowrap;">Learn more about  <a rel="nofollow" href="http://www.killbillsbrowser.com/">Why IE sucks</a></span>
+
+
+</div>
 <form >
 <p><b>Animation</b>
 <select name="animation">
@@ -1026,8 +1073,8 @@ or just click its initial and filanl letters (or vice versa)
 <div id="words_lang">
 <p><b>Language</b>
 <select>
-<option selected> russian - english </option>
-<option> russian - russian </option>
+<option selected> Russian - English </option>
+<option> Russian - Russian </option>
 
 </select></p>
 </div>
@@ -1165,7 +1212,7 @@ or just click its initial and filanl letters (or vice versa)
 <div id="helper1"></div>
 <div id="helper2"></div>
 </div>
-
+<h3>Words to find:</h3>
 <div id="cross_tasks">
 
 
@@ -1175,6 +1222,19 @@ or just click its initial and filanl letters (or vice versa)
 
 
 </div>
+
+<br/>
+<br/>
+<br/>
+<p>If you need more information about this puzzle, you can find it on the page <a rel="nofollow" href="http://slodevelopers.wordpress.com/2010/04/08/word-find-puzzle/">Word Find Puzzle</a> of our blog.
+</p>
+<p>If you have any questions, suggestions or comments about this game, you can post them in our blog <a rel="nofollow" href="http://slodevelopers.wordpress.com/2010/04/08/word-find-puzzle/">slodevelopers.wordpress.com</a>
+or on the <a href="/contacts.html">Contact us page</a>. 
+</p>
+<p>
+You can also try other games on our website in the section <a href="vocabulary_games.html">Games</a>
+</p>
+
 
 <br/>
 <br/>
