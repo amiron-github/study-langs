@@ -2207,3 +2207,16 @@ font-style: italic;
 div.see-exercises  span {
 font-weight: bold;
 }
+
+.rss-ico {
+display: block;
+position: absolute;
+right: 0px;
+margin-top: -30px;
+}
+
+.rss-ico a {
+background-color: transparent !important;
+text-decoration: none !important;
+}
+

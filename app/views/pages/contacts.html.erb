@@ -1,14 +1,56 @@
 <% @page_title = 'Study-Languages-Online.com: Contact Information' %>
 <% @page_meta = {'description' => "Contact Information of Study Languages Online support service"} %>
 
+
+<% content_for :special_js_css do %>
+
+<style type="text/css">
+table iframe {
+height: 110px !important;
+}
+
+#twtr-widget-1  a {
+background-color: transparent;
+}
+
+.connect_top clearfix {
+width: 90px !important;
+}
+</style>
+<%end%>
+
 <h2 style="margin-top: 0px;">Contact information</h2>
 
 <p>
 If you have any questions or suggestions, please, contact us by email <a href="mailto:study.languages.online@gmail.com">study.languages.online@gmail.com</a>.
 </p>
+<p>Find us on <b>Facebook</b> or <b>Twitter</b>:</p>
+
+<table align="center" width="100%">
+<tr>
+<td valign="top" width="50%" height="120" align="center">
+<div>
+
+<script type="text/javascript" src="http://static.ak.connect.facebook.com/connect.php/en_US"></script><script type="text/javascript">FB.init("af5f682e8af66bbc3bab5589991dbb2b");</script><fb:fan profile_id="111268518902851" stream="0" connections="0" logobar="1" width="300" ></fb:fan><div style="font-size:8px; padding-left:10px;"><a href="http://www.facebook.com/pages/Study-Languages-Onlinecom/111268518902851">Study-Languages-Online.com</a> on Facebook</div>
+
+</div>
+</td>
+
+<td style="padding-left: 30px;" valign="top" align="center">
+
+<a href="http://www.twitter.com/SLO_support"><img src="/images/twitter-btn.png" alt="Follow SLO_support on Twitter"/></a>
+
+
+
+
+</td>
+
+</tr>
+</table>
+
 <br>
 <p>
-You can also use the Google Friend Connect Comments tool (see below) to ask your questions:
+You can also use the <b>Google Friend Connect</b> Comments tool (see below) to ask your questions:
 </p>
 
 <br>
@@ -34,7 +76,7 @@ skin['CONTENT_SECONDARY_TEXT_COLOR'] = '#666666';
 skin['CONTENT_HEADLINE_COLOR'] = '#333333';
 skin['DEFAULT_COMMENT_TEXT'] = '- Type here -';
 skin['HEADER_TEXT'] = 'Questions and Comments';
-skin['POSTS_PER_PAGE'] = '15';
+skin['POSTS_PER_PAGE'] = '10';
 google.friendconnect.container.setParentUrl('/' /* location of rpc_relay.html and canvas.html */);
 google.friendconnect.container.renderWallGadget(
  { id: 'div-3191648741602220733',
