@@ -1,0 +1,432 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd"> 
+<html> 
+<head> 
+  <title>Russian keyboard </title> 
+
+  
+ <script src="/javascripts/jquery.min.js" type="text/javascript"></script>
+ 
+ 
+ <script type="text/javascript"> 
+ 
+ 
+	var k_curPos;
+	var k_maxLength;
+	var k_textLength;
+	var k_availLength;
+	var k_afterCaret;
+	var k_beforeCaret;
+	var k_selectedText;
+	
+	var activeInput;
+	
+	
+
+
+/*
+** Returns the caret (cursor) position of the specified text field.
+** Return value range is 0-oField.length.
+*/
+function doGetCaretPosition (oField) {
+
+// Initialize
+var iCaretPos = 0;
+
+// IE Support
+if (document.selection) { 
+
+// Set focus on the element
+oField.focus ();
+
+// To get cursor position, get empty selection range
+var oSel = document.selection.createRange ();
+
+// Move selection start to 0 position
+oSel.moveStart ('character', -oField.value.length);
+
+// The caret position is selection length
+iCaretPos = oSel.text.length;
+}
+
+// Firefox support
+else if (oField.selectionStart || oField.selectionStart == '0')
+iCaretPos = oField.selectionStart;
+
+// Return results
+return (iCaretPos);
+}
+
+	
+	
+	
+/*
+** Sets the caret (cursor) position of the specified text field.
+** Valid positions are 0-oField.length.
+*/
+function doSetCaretPosition (oField, iCaretPos) {
+
+// IE Support
+if (document.selection) { 
+
+// Set focus on the element
+oField.focus ();
+
+// Create empty selection range
+var oSel = document.selection.createRange ();
+
+// Move selection start and end to 0 position
+oSel.moveStart ('character', -oField.value.length);
+
+// Move selection start and end to desired position
+oSel.moveStart ('character', iCaretPos);
+oSel.moveEnd ('character', 0);
+oSel.select ();
+}
+
+// Firefox support
+else if (oField.selectionStart || oField.selectionStart == '0') {
+oField.selectionStart = iCaretPos;
+oField.selectionEnd = iCaretPos;
+oField.focus ();
+}
+}	
+
+	
+	
+ // Author: Diego Perini <dperini@nwbox.com>
+var sb = new Array(
+	'leftbox', 'rightbox', 'scrollLeft', 'scrollRight', 
+	'caretPos', 'maxLength', 'textLength', 'availLength',
+	'beforeCaret', 'afterCaret', 'selectedText'
+)
+
+for (var i in sb) eval('var ' + sb[i] + ' = {}')
+
+var os = 0
+var oe = 0
+
+function update(o) {
+
+	var t = o.value,  s = getSelectionStart(o), e = getSelectionEnd(o)
+	if (s == os && e == oe) return
+	
+	//caretPos.firstChild.nodeValue = s
+	//maxLength.firstChild.nodeValue = o.getAttribute('maxLength')
+	//textLength.firstChild.nodeValue = t.length
+	//availLength.firstChild.nodeValue = o.getAttribute('maxLength') - t.length
+	//afterCaret.firstChild.nodeValue = t.substring(s).replace(/ /g, '\xa0') || '\xa0'
+	//beforeCaret.firstChild.nodeValue = t.substring(0, s).replace(/ /g, '\xa0') || '\xa0'
+	//selectedText.firstChild.nodeValue = t.substring(s, e).replace(/ /g, '\xa0') || '\xa0'
+	//rightbox.value = scrollRight.firstChild.nodeValue = t.substring(s).replace(/ /g, '\xa0') || '\xa0'
+	//leftbox.value = scrollLeft.firstChild.nodeValue = t.substring(0, s).replace(/ /g, '\xa0') || '\xa0'	
+	
+	k_curPos = s;
+	k_maxLength = o.getAttribute('maxLength');
+	k_textLength = t.length;
+	k_vailLength = o.getAttribute('maxLength') - t.length;
+	
+	var afterStr = t.substring(s).replace(/ /g, '\xa0') || '\xa0';
+	
+	if ( typeof(afterStr) == 'undefined') {
+	
+		k_afterCaret = '';
+	
+	}else{
+		k_afterCaret = afterStr;
+	};
+	
+	var beforeStr = t.substring(0, s).replace(/ /g, '\xa0') || '\xa0';
+	
+	alert(beforeStr)
+	
+	if ( typeof(beforeStr) == 'undefined') {
+	
+		
+		k_beforeCaret = '';
+	
+	}else{
+		k_beforeCaret = beforeStr;
+	};
+	
+	
+	
+	//k_selectedText = t.substring(s, e).replace(/ /g, '\xa0') || '\xa0';
+	
+	os = s
+	oe = e
+	
+	return true
+}
+
+function setup() {
+	//for (var i in sb) eval(sb[i] + ' = document.getElementById(sb[i])')
+	//update(document.getElementById('textbox'))
+}
+
+function getSelectionStart(o) {
+	if (o.createTextRange) {
+		r.moveEnd('character', o.value.length)
+		var r = document.selection.createRange().duplicate()
+		if (r.text == '') return o.value.length
+		return o.value.lastIndexOf(r.text)
+	} else return o.selectionStart
+}
+
+
+
+function getSelectionEnd(o) {
+	if (o.createTextRange) {
+		var r = document.selection.createRange().duplicate()
+		r.moveStart('character', -o.value.length)
+		return r.text.length
+	} else return o.selectionEnd
+}
+ 
+
+ 
+ 
+//////////////////////////////////////////// 
+
+/*
+
+			onclick="return(update(this))"
+			onkeyup="return(update(this))"
+			onkeydown="return(update(this))"
+			onkeypress="return(update(this))"
+			onmouseup="return(update(this))"
+			onmousedown="return(update(this))"
+
+
+*/
+
+
+
+$(document).ready(function(){
+
+$(".for_keyb").click(function() {
+
+	var tDom = $(this).get(0);
+	
+	activeInput = $(this);
+		
+	return(update(tDom));
+	
+	
+})
+
+
+/* 
+
+.keyup(function() {
+	var tDom = $(this).get(0);
+	return(update(tDom));
+}).keydown(function() {
+	var tDom = $(this).get(0);
+	return(update(tDom));
+}).keypress(function() {
+	var tDom = $(this).get(0);
+	return(update(tDom));
+}).mouseover(function() {
+	var tDom = $(this).get(0);
+	//return(update(tDom));
+}).mousedown(function() {
+	var tDom = $(this).get(0);
+	//return(update(tDom));
+})
+*/
+
+
+});
+
+
+
+
+function insertFromKeyboard(string) {
+
+	var tInput = activeInput;
+	
+	
+
+	var forValue = k_beforeCaret + string + k_afterCaret;
+
+	tInput.val(forValue);
+	
+	var oField = activeInput.get(0);
+	
+	//var toCaretPosition = k_beforeCaret.length + string.length;
+	
+	
+	
+	
+	
+	//doSetCaretPosition(oField, toCaretPosition);
+
+}
+
+
+
+	
+	
+	
+ 
+
+ 
+ </script>
+ 
+ 
+ 
+ 
+  
+<style type="text/css"> 
+
+body {
+margin: 20px;
+background-color: #2C508F;
+text-align: center;
+font-family: Verdana;
+font-size: 12px;
+}
+
+.container {
+width: 80%;
+min-height: 1290px;
+background-color: #fff;
+margin: 0 auto;
+text-align: left;
+padding: 40px;
+-moz-border-radius: 10px;
+-moz-box-shadow: 0px 0px 10px #111;
+-webkit-border-radius: 10px;
+-webkit-box-shadow: 0px 0px 10px #111;
+border-radius: 10px;
+box-shadow: 0px 0px 10px #111;
+}
+
+.display-container {
+padding: 20px;
+background-color: #EFF5FF;
+-moz-border-radius: 7px;
+-moz-box-shadow: 0px 0px 7px #18274F;
+-webkit-border-radius: 7px;
+-webkit-box-shadow: 0px 0px 7px #18274F;
+border-radius: 7px;
+box-shadow: 0px 0px 7px #18274F;
+}
+
+.ie_browser .display-container {
+border: 3px solid #B5BFCF;
+}
+
+.display-container {
+color: #333;
+}
+
+h1 {
+margin-top: 0px;
+text-align: center;
+text-shadow: 1px 1px 0 #FFFFFF, 0px 3px 5px #888;
+font-weight: normal;
+font-size: 30px;
+margin-bottom: 40px;
+}
+
+h2 {
+text-shadow: 0px 3px 5px #888;
+margin-top: 0px;
+color: #07366F;
+margin-bottom: 30px;
+}
+
+
+  
+input#string_prepend, input#string_append {
+width: 300px;
+}
+
+
+textarea#string_prepend, textarea#string_append {
+width: 500px;
+}
+
+#change_wrap {
+margin-left: 50px;
+font-size: 10px;
+}
+
+#wrap_entry {
+
+} 
+
+#generated_line {
+background-color: #fff;
+border: 1px dashed #000;
+padding: 10px;
+color: #000;
+}
+
+.generated_line_items {
+padding: 3px 0px;
+}
+
+.line_items {
+margin: 2px;
+width: 150px;
+}
+ 
+</style> 
+ 
+ 
+ 
+</head> 
+<body> 
+
+   
+	
+<div class="container">
+<!--[if IE]> <div class="ie_browser"> <![endif]-->
+
+
+<h1>Russaian keyboard</h1>
+
+<div class="display-container">
+
+<h2>Keyboard</h2>
+
+<div> 
+		<p><input type="input" class="for_keyb" maxlength="32" value="Do it here !!!" /></p> 
+</div> 
+
+
+<div> 
+		<p><input type="input" class="for_keyb" maxlength="32" value="Do it here !!!" /></p> 
+</div> 
+
+
+<p>
+<input type="button" onclick="insertFromKeyboard('str')" value="insert">
+</p>
+
+
+
+</div> <!-- end of display container-->
+
+<br><br><br>
+
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+	
+<!--[if IE]> </div> <![endif]-->	
+</div><!-- end of container -->	
+  
+</body> 
+</html> 

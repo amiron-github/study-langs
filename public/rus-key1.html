@@ -1,0 +1,807 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd"> 
+<html> 
+<head> 
+  <title>Russian keyboard </title> 
+
+  
+ <script src="/javascripts/jquery.min.js" type="text/javascript"></script>
+ 
+ 
+ <script type="text/javascript"> 
+ 
+ 
+	
+var activeInput = false;
+var caretPosition = 0;
+
+
+	
+
+/*
+** Returns the caret (cursor) position of the specified text field.
+** Return value range is 0-oField.length.
+*/
+function doGetCaretPosition (oField) {
+
+// Initialize
+var iCaretPos = 0;
+
+// IE Support
+if (document.selection) { 
+
+// Set focus on the element
+oField.focus ();
+
+// To get cursor position, get empty selection range
+var oSel = document.selection.createRange ();
+
+// Move selection start to 0 position
+oSel.moveStart ('character', -oField.value.length);
+
+// The caret position is selection length
+iCaretPos = oSel.text.length;
+}
+
+// Firefox support
+else if (oField.selectionStart || oField.selectionStart == '0')
+iCaretPos = oField.selectionStart;
+
+// Return results
+return (iCaretPos);
+}
+
+	
+	
+	
+/*
+** Sets the caret (cursor) position of the specified text field.
+** Valid positions are 0-oField.length.
+*/
+function doSetCaretPosition (oField, iCaretPos) {
+
+// IE Support
+if (document.selection) { 
+
+// Set focus on the element
+
+oField.focus ();
+
+// Create empty selection range
+var oSel = document.selection.createRange ();
+
+// Move selection start and end to 0 position
+oSel.moveStart ('character', -oField.value.length);
+
+// Move selection start and end to desired position
+oSel.moveStart ('character', iCaretPos);
+oSel.moveEnd ('character', 0);
+oSel.select ();
+}
+
+// Firefox support
+else if (oField.selectionStart || oField.selectionStart == '0') {
+oField.selectionStart = iCaretPos;
+oField.selectionEnd = iCaretPos;
+oField.focus ();
+}
+
+//oField.blur().focus();
+
+}	
+
+	
+
+
+
+ 
+ 
+//////////////////////////////////////////// 
+
+
+function useKeys() {
+
+$(document).keydown(function(event){
+
+//$(".active_input").blur().focus();
+
+switch (event.keyCode) {
+
+case 81: 
+	$(".k_81").mousedown().mouseup();
+	return false;
+	break;
+case 87: 
+	$(".k_87").mousedown().mouseup();
+	return false;
+	break;	
+case 69: 
+	$(".k_69").mousedown().mouseup();
+	return false;
+	break;	
+case 82: 
+	$(".k_82").mousedown().mouseup();
+	return false;
+	break;
+case 84: 
+	$(".k_84").mousedown().mouseup();
+	return false;
+	break;	
+case 89: 
+	$(".k_89").mousedown().mouseup();
+	return false;
+	break;
+case 85: 
+	$(".k_85").mousedown().mouseup();
+	return false;
+	break;
+case 73: 
+	$(".k_73").mousedown().mouseup();
+	return false;
+	break;	
+case 79: 
+	$(".k_79").mousedown().mouseup();
+	return false;
+	break;	
+case 80: 
+	$(".k_80").mousedown().mouseup();
+	return false;
+	break;
+case 219: 
+	$(".k_219").mousedown().mouseup();
+	return false;
+	break;
+case 221: 
+	$(".k_221").mousedown().mouseup();
+	return false;
+	break;
+	
+case 65: 
+	$(".k_65").mousedown().mouseup();
+	return false;
+	break;
+case 83: 
+	$(".k_83").mousedown().mouseup();
+	return false;
+	break;
+case 68: 
+	$(".k_68").mousedown().mouseup();
+	return false;
+	break;
+case 70: 
+	$(".k_70").mousedown().mouseup();
+	return false;
+	break;
+case 71: 
+	$(".k_71").mousedown().mouseup();
+	return false;
+	break;
+case 72: 
+	$(".k_72").mousedown().mouseup();
+	return false;
+	break;
+case 74: 
+	$(".k_74").mousedown().mouseup();
+	return false;
+	break;
+case 75: 
+	$(".k_75").mousedown().mouseup();
+	return false;
+	break;	
+case 76: 
+	$(".k_76").mousedown().mouseup();
+	return false;
+	break;	
+case 186: 
+	$(".k_186").mousedown().mouseup();
+	return false;
+	break;
+case 222: 
+	$(".k_222").mousedown().mouseup();
+	return false;
+	break;
+	
+case 90: 
+	$(".k_90").mousedown().mouseup();
+	return false;
+	break;
+case 88: 
+	$(".k_88").mousedown().mouseup();
+	return false;
+	break;
+case 67: 
+	$(".k_67").mousedown().mouseup();
+	return false;
+	break;
+case 86: 
+	$(".k_86").mousedown().mouseup();
+	return false;
+	break;
+case 66: 
+	$(".k_66").mousedown().mouseup();
+	return false;
+	break;
+case 78: 
+	$(".k_78").mousedown().mouseup();
+	return false;
+	break;
+case 77: 
+	$(".k_77").mousedown().mouseup();
+	return false;
+	break;
+case 188: 
+	$(".k_188").mousedown().mouseup();
+	return false;
+	break;	
+case 190: 
+	$(".k_190").mousedown().mouseup();
+	return false;
+	break;	
+
+default:
+	
+
+}
+
+});
+
+}
+
+function stopUseKeys() {
+
+$(document).unbind('keydown');
+
+}
+
+////////////////////////
+
+
+$(document).ready(function(){
+
+$("#use_keyboard").toggle(function() {
+
+useKeys();
+$(this).val("Stop Use Keyboard")
+
+}, function() {
+
+stopUseKeys();
+$(this).val("Use Keyboard")
+
+});
+
+
+
+$(".virtual_keyboard td").mousedown(function() {
+
+
+	var str = $(this).text();
+	
+	str=$.trim(str);
+	
+	//alert("'"+str+"'")
+	
+	insertFromKeyboard(str)
+	
+	if ( $(this).hasClass("k_32")) {
+		insertFromKeyboard(" ")
+	}
+	
+	$(this).addClass("k_active_key");
+
+	
+
+}).mouseup(function() {
+	$(this).removeClass("k_active_key");
+	
+	var activeEl = $(".active_input").get(0);
+	
+	doSetCaretPosition (activeEl, caretPosition)
+	
+	
+	
+}).mouseout(function() {
+
+	$(this).removeClass("k_active_key");
+	
+});
+
+
+
+$(".for_keyb").click(function() {
+
+	var tDom = $(this).get(0);
+	activeInput = $(this);
+	$(".for_keyb").css({border: "1px solid black"}).removeClass('active_input');
+	
+	activateInput($(this));
+	$("#caret").text(caretPosition);
+
+}).keyup(function() {
+
+	var tDom = $(this).get(0);
+	activeInput = $(this);
+	$(".for_keyb").css({border: "1px solid black"}).removeClass('active_input');
+	
+	activateInput($(this));
+	$("#caret").text(caretPosition);
+
+}).keydown(function() {
+
+	var tDom = $(this).get(0);
+	activeInput = $(this);
+	$(".for_keyb").css({border: "1px solid black"}).removeClass('active_input');
+	
+	activateInput($(this));
+	$("#caret").text(caretPosition);
+
+}).keypress(function() {
+
+	var tDom = $(this).get(0);
+	activeInput = $(this);
+	$(".for_keyb").css({border: "1px solid black"}).removeClass('active_input');
+	
+	activateInput($(this));
+	$("#caret").text(caretPosition);
+
+}).blur(function () {
+
+	//$(this).css({border: "1px solid black"}).removeClass('active_input')
+
+});
+
+
+/* 
+
+.keyup(function() {
+	var tDom = $(this).get(0);
+	return(update(tDom));
+}).keydown(function() {
+	var tDom = $(this).get(0);
+	return(update(tDom));
+}).keypress(function() {
+	var tDom = $(this).get(0);
+	return(update(tDom));
+}).mouseover(function() {
+	var tDom = $(this).get(0);
+	//return(update(tDom));
+}).mousedown(function() {
+	var tDom = $(this).get(0);
+	//return(update(tDom));
+})
+*/
+
+
+});
+
+
+
+
+function insertFromKeyboard(string) {
+
+	var activeInput = $(".active_input");
+	var activeEl = $(".active_input").get(0);
+	
+
+	//caretPosition = (doGetCaretPosition (obj.get(0)))
+	
+	
+	var t = activeEl.value,  s = caretPosition; // s = getSelectionStart(activeEl) //, e = getSelectionEnd(activeEl);
+	
+	var str= string;
+	
+	var beforStr = t.substring(0, s).replace(/ /g, '\xa0') || '\xa0';
+	
+	var afterStr = t.substring(s).replace(/ /g, '\xa0') || '\xa0';
+	
+	
+	
+	activeInput.val(beforStr + string + afterStr);
+	
+	
+	caretPosition = beforStr.length + string.length;
+	
+	//alert(caretPosition)
+	
+	
+	
+	//doSetCaretPosition (activeEl, caretPosition)
+	
+	$("#caret").text(caretPosition);
+	
+	
+}
+
+
+function activateInput(obj) {
+
+obj.css({border: "1px solid red"}).addClass("active_input");
+
+caretPosition = (doGetCaretPosition (obj.get(0)));
+
+$("#caret").text(caretPosition);
+
+}
+
+
+function getSelectionStart(o) {
+	if (o.createTextRange) {
+		r.moveEnd('character', o.value.length)
+		var r = document.selection.createRange().duplicate()
+		if (r.text == '') return o.value.length
+		return o.value.lastIndexOf(r.text)
+	} else return o.selectionStart
+}
+
+
+
+function getSelectionEnd(o) {
+	if (o.createTextRange) {
+		var r = document.selection.createRange().duplicate()
+		r.moveStart('character', -o.value.length)
+		return r.text.length
+	} else return o.selectionEnd
+}
+	
+	
+	
+ 
+
+ 
+ </script>
+ 
+ 
+ 
+ 
+  
+<style type="text/css"> 
+
+.for_keyb {
+border: 1px solid black;
+}
+
+body {
+margin: 20px;
+background-color: #2C508F;
+text-align: center;
+font-family: Verdana;
+font-size: 12px;
+}
+
+.container {
+width: 80%;
+min-height: 1290px;
+background-color: #fff;
+margin: 0 auto;
+text-align: left;
+padding: 40px;
+-moz-border-radius: 10px;
+-moz-box-shadow: 0px 0px 10px #111;
+-webkit-border-radius: 10px;
+-webkit-box-shadow: 0px 0px 10px #111;
+border-radius: 10px;
+box-shadow: 0px 0px 10px #111;
+}
+
+.display-container {
+padding: 20px;
+background-color: #EFF5FF;
+-moz-border-radius: 7px;
+-moz-box-shadow: 0px 0px 7px #18274F;
+-webkit-border-radius: 7px;
+-webkit-box-shadow: 0px 0px 7px #18274F;
+border-radius: 7px;
+box-shadow: 0px 0px 7px #18274F;
+}
+
+.ie_browser .display-container {
+border: 3px solid #B5BFCF;
+}
+
+.display-container {
+color: #333;
+}
+
+h1 {
+margin-top: 0px;
+text-align: center;
+text-shadow: 1px 1px 0 #FFFFFF, 0px 3px 5px #888;
+font-weight: normal;
+font-size: 30px;
+margin-bottom: 40px;
+}
+
+h2 {
+text-shadow: 0px 3px 5px #888;
+margin-top: 0px;
+color: #07366F;
+margin-bottom: 30px;
+}
+
+
+  
+input#string_prepend, input#string_append {
+width: 300px;
+}
+
+
+textarea#string_prepend, textarea#string_append {
+width: 500px;
+}
+
+#change_wrap {
+margin-left: 50px;
+font-size: 10px;
+}
+
+#wrap_entry {
+
+} 
+
+#generated_line {
+background-color: #fff;
+border: 1px dashed #000;
+padding: 10px;
+color: #000;
+}
+
+.generated_line_items {
+padding: 3px 0px;
+}
+
+.line_items {
+margin: 2px;
+width: 150px;
+}
+
+
+.virtual_keyboard td {
+font-size: 14px;
+font-weight: bold;
+cursor: pointer;
+min-width: 30px;
+line-height: 28px;
+
+text-align: center;
+border: 0px solid #999;
+background-color: #fff;
+-moz-border-radius: 4px;
+-webkit-border-radius: 4px;
+border-radius: 4px;
+text-transform: uppercase;
+}
+
+.keys_container table {
+background-color: #DFDFDF;
+border: 0px solid #999;
+
+}
+
+.virtual_keyboard td.k_active_key {
+background-color: #999;
+}
+ 
+</style> 
+ 
+ 
+ 
+</head> 
+<body> 
+
+   
+	
+<div class="container">
+<!--[if IE]> <div class="ie_browser"> <![endif]-->
+
+
+<h1>Russaian keyboard</h1>
+
+<div class="display-container">
+
+<h2>Keyboard</h2>
+
+<div> 
+		<p><input type="text" class="for_keyb"  value="Do it here !!!" /></p> 
+</div> 
+
+
+<div> 
+		<p><input type="text" class="for_keyb"  value="Do it here !!!" size="50"/></p> 
+</div>
+
+
+<div> 
+		<p><textarea cols="50" rows="6" class="for_keyb" ></textarea></p> 
+</div> 
+
+
+
+
+
+
+<div id="caret" >0</div>
+
+
+</div> <!-- end of display container-->
+
+<br><br><br>
+
+<input type="button" value="Use Keyboard" id="use_keyboard">
+
+
+<div class="keys_wrapper">
+
+
+
+
+
+
+<table class="keys_container" border="1" cellpadding="5" cellspacing="0" style="background-color: #DFDFDF">
+<tr>
+<td>
+
+
+<table class="virtual_keyboard" border="1" cellpadding="5" cellspacing="1" >
+<tr>
+
+<td class="k_81">
+й
+</td>
+<td class="k_87">
+ц
+</td>
+<td class="k_69">
+у
+</td>
+<td class="k_82">
+к
+</td>
+<td class="k_84">
+е
+</td>
+<td class="k_89">
+
+н
+
+</td>
+<td class="k_85">
+г
+</td>
+<td class="k_73">
+ш
+</td>
+<td class="k_79">
+щ
+</td>
+<td class="k_80">
+з
+</td>
+<td class="k_219">
+х
+</td>
+<td class="k_221">
+ъ
+</td>
+
+</tr>
+</table>
+
+<table class="virtual_keyboard" border="1" cellpadding="5" cellspacing="1" align="center">
+<tr>
+
+<td class="k_65">
+ф
+</td>
+<td class="k_83">
+ы
+</td>
+<td class="k_68">
+в
+</td>
+<td class="k_70">
+а
+</td>
+<td class="k_71">
+п
+</td>
+<td class="k_72">
+р
+
+</td>
+<td class="k_74">
+о
+</td>
+<td class="k_75">
+л
+</td>
+<td class="k_76">
+д
+</td>
+<td class="k_186">
+ж
+</td>
+<td class="k_222">
+э
+</td>
+
+
+</tr>
+</table>
+
+
+
+<table class="virtual_keyboard" border="1" cellpadding="5" cellspacing="1" align="center">
+<tr>
+
+<td class="k_90">
+я
+</td>
+<td class="k_88">
+ч
+</td>
+<td class="k_67">
+с
+</td>
+<td class="k_86">
+м
+</td>
+<td class="k_66">
+и
+</td>
+<td class="k_78">
+т
+</td>
+<td class="k_77">
+ь
+</td>
+<td class="k_188">
+б
+</td>
+<td class="k_190">
+ю
+</td>
+
+
+</tr>
+</table>
+
+
+
+<table class="virtual_keyboard" border="1" cellpadding="5" cellspacing="1" align="center">
+<tr>
+<td class="k_32">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</td>
+</tr>
+</table>
+
+
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+
+</div>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+	
+<!--[if IE]> </div> <![endif]-->	
+</div><!-- end of container -->	
+  
+</body> 
+</html> 

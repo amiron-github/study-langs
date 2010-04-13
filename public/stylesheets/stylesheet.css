@@ -2220,3 +2220,7 @@ background-color: transparent !important;
 text-decoration: none !important;
 }
 
+.see-also-list a {
+font-size: 11px;
+}
+
