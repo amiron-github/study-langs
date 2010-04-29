@@ -7,6 +7,80 @@
  <script src="/javascripts/jquery.min.js" type="text/javascript"></script>
  
  
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+
+
+    <script type="text/javascript">
+	
+	
+	var kbdElements = getElementsForKbd();
+
+      // Load the Google Onscreen Keyboard API
+      google.load("elements", "1", {
+          packages: "keyboard"
+        });
+
+      var kbd;  // A Keyboard object.
+
+      function onLoad() {
+        // Create an instance on Keyboard.
+        kbd = new google.elements.keyboard.Keyboard([
+          google.elements.keyboard.LayoutCode.RUSSIAN],
+          ['t1', 't2']);
+      }
+
+      // If the keyboard is visible, hide it.
+      // If the keyboard is invisible, show it.
+      function toggleVisible() {
+        var button = document.getElementById("btVisible");
+        if (kbd.isVisible()) {
+          kbd.setVisible(false);
+          document.getElementById('btVisible').value = "Show";
+        } else {
+          kbd.setVisible(true);
+          document.getElementById('btVisible').value = "Hide";
+        }
+      }
+
+      google.setOnLoadCallback(onLoad);
+	  
+	  
+	  
+	  function getElementsForKbd() {
+	  
+		var nA = new Array();
+		
+		$(".for_k").each(function(i, obj) {
+			
+			var id = "fk_" + i;
+			
+			$(obj).attr("id", id)
+			
+			nA.push(id)
+		
+		})
+	  
+	  alert(nA);
+	  
+	  
+	  }
+	  
+	  
+	  
+    </script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+ 
+ 
+ 
+ 
  <script type="text/javascript"> 
  
  
@@ -137,7 +211,7 @@ function update(o) {
 	
 	var beforeStr = t.substring(0, s).replace(/ /g, '\xa0') || '\xa0';
 	
-	alert(beforeStr)
+	//alert(beforeStr)
 	
 	if ( typeof(beforeStr) == 'undefined') {
 	
@@ -202,6 +276,8 @@ function getSelectionEnd(o) {
 
 
 $(document).ready(function(){
+
+
 
 $(".for_keyb").click(function() {
 
@@ -406,7 +482,11 @@ width: 150px;
 <input type="button" onclick="insertFromKeyboard('str')" value="insert">
 </p>
 
-
+This is a demo for setVisible/isVisible.<br/>
+This is a demo for setVisible/isVisible.<br/>
+  <input type="button" onclick="toggleVisible()" id="btVisible" value="Hide"></input><br/>
+  <textarea type="text" class="for_k" id="t1" style="width: 600px; height: 200px;"></textarea>
+  <textarea type="text" id="t2" class="for_k" style="width: 600px; height: 200px;"></textarea>
 
 </div> <!-- end of display container-->
 
