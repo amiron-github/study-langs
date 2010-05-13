@@ -4,7 +4,8 @@
 
 
 <% content_for :special_js_css do %>
-<%= stylesheet_link_tag 'stylesounds' %>
+
+<%= stylesheet_link_tag 'sign-forms' %>
 
 <style type="text/css">
 
@@ -21,10 +22,42 @@ font-size: 16px;
 font-weight: bold;
 text-align: center;
 margin: 40px 30px 30px;
+display: none  !important;
+display: block;
 }
 
-.errorExplanation li {
+html>body .errorExplanation h2 {
+display: block !important;
+}
+
+.errorExplanation li, .errorExplanation p {
 font-size: 11px;
+color: #666666;
+}
+
+.errorExplanation p {
+font-weight: bold;
+}
+
+.errorExplanation p, .errorExplanation ul {
+margin-left: 25px;
+}
+
+.errorExplanation ul {
+padding-left: 40px;
+
+}
+
+.module-content form {
+margin-bottom: 0px;
+}
+
+.submit-form {
+margin-bottom: 0px;
+}
+
+.module div {
+zoom: 1;
 }
 
 </style>
@@ -42,8 +75,49 @@ $(document).ready(function() {
 		}
 	
 	});
+	
+	
+	$(".submit-form input").mouseover(function() {
+	$(this).parent().addClass("sign-over");
+}).mouseout(function() {
+	$(this).parent().removeClass("sign-over");
+});
+
+$(".submit-form input").mousedown(function() {
+	$(this).css({position: "relative", top: "1px", left: "1px"});
+}).mouseup(function() {
+	$(this).css({position: "relative", top: "0px", left: "0px"});
+});
+
+
+
+if ($('#errorExplanation').length > 0) {
+
+		if ($.browser.msie && $.browser.version < 8) {
+			//$(".errorExplanation h2").css({display: "block"});
+		} else {
+		
+		var errMess= $('#errorExplanation h2').html();
+		$('#errorExplanation h2').remove();
+		$('.sign-notification').find('td:eq(0)').append(errMess);
+		
+		
+		setTimeout(function() {
+			$('.sign-notification-wrapper').css({opacity: "0"}).slideDown().animate({opacity: "1"});
+		}, 400);
+		
+		}
+}
+
+
+
 
 });
+
+
+
+
+
 
 </script>
 
@@ -51,9 +125,21 @@ $(document).ready(function() {
 <% end %>
 
 
-		
 <div class="module mod-in-log">
 <br/>
+
+<div class="sign-head-wrapper">
+	<div class="sign-rt">
+		<div class="sign-lft">
+			<h2 class="page sign-head">
+				<span class="sign-up-title">&nbsp</span>
+			</h2>
+		</div>
+	</div>
+</div>
+
+
+
 <div class="module-top">
 	<div class="module-t-left"></div>
 	<div class="module-t-right"></div>
@@ -64,9 +150,28 @@ $(document).ready(function() {
 
 <% form_for :user, :url => users_path do |f| -%>
 
-<h2 class="page">It's your first visit? Welcome!</h2>
+<h2 class="page" style="display: none">It's your first visit? Welcome!</h2>
 		
-<p align="center"><a href="login" style="font-size: 11px; font-weight: bold;">Already registered? Click here to sign in</a></p>
+<p align="center" style="display: none"><a href="login" style="font-size: 11px; font-weight: bold;">Already registered? Click here to sign in</a></p>
+
+
+
+			<table align="center" class="sign-options">
+				<tr>
+					<td>
+						<p al-ign="center" style="margin-top: 0px;">Already registered? <a href="login">Click here to sign in</a></p>
+
+					</td>
+				</tr>
+			</table>
+			
+<div class="sign-notification-wrapper" style="display: none;">	
+		
+<table class="sign-notification" align="center" ><tr><td style="position: relative;"><div class="notif-icon"></div> 	
+&nbsp;
+</td></tr></table>	
+
+</div>	
 
 <%= error_messages_for :user %>
 
@@ -92,7 +197,7 @@ $(document).ready(function() {
 	<tr>
 		<td>
 			<p align="center"><input type="checkbox" id="accpeptance"> I agree to the <a href="copyright.html">Terms</a></p>
-			<p align="center"><%= submit_tag 'Sign up' %> </p>
+			<p align="center" class="submit-form"><%= submit_tag '' %> </p>
 		</td>
 	</tr>
 </table>		

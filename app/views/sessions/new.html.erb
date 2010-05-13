@@ -4,6 +4,28 @@
 
 
 <% content_for :special_js_css do %>
+<%= stylesheet_link_tag 'sign-forms' %>
+
+<script type="text/javascript"> 
+ 
+$(document).ready(function(){
+	$(".sign-in input").mouseover(function() {
+		$(this).parent().addClass("sign-over");
+	}).mouseout(function() {
+		$(this).parent().removeClass("sign-over");
+	});
+	$(".sign-in input").mousedown(function() {
+		$(this).css({position: "relative", top: "1px", left: "1px"});
+	}).mouseup(function() {
+		$(this).css({position: "relative", top: "0px", left: "0px"});
+	});
+});
+
+
+</script>
+
+
+
 
 
 <% end %>
@@ -11,22 +33,51 @@
 <div class="module mod-in-log">
 <br/>
 
+<div class="sign-head-wrapper">
+	<div class="sign-rt">
+		<div class="sign-lft">
+			<h2 class="page sign-head">
+				<span class="sign-in-title">&nbsp</span>
+			</h2>
+		</div>
+	</div>
+</div>
+
 <div class="module-top">
 	<div class="module-t-left"></div>
 	<div class="module-t-right"></div>
 </div>
+
 <div class="module-right">
 <div class="module-left">
 <div class="module-content">
 
+
+
 <% form_tag session_path do %>
 
-<h2 class="page">Sign In</h2>
+			<table align="center" class="sign-options">
+				<tr>
+					<td>
+						<p al-ign="center" style="margin-top: 0px;">New User? <a href="signup">Register here</a></p>
 
-<p align="center"><a href="signup" style="font-size: 11px; font-weight: bold;">No account yet? Click here to sign up</a></p>
+					</td>
+				</tr>
+			</table>
 
-<%if @error_pas %> <p style="text-align: center; color: red; font-weight: bold;">ERROR: The email address or password you have entered does not match our records. Please try again. </p><%end%>
+<%if @error_pas %> <p style="text-align: center; color: red; font-weight: bold; display: none;">ERROR: Invalid email/password. </p>
 
+<table class="sign-notification" align="center">
+	<tr>
+		<td>
+			<div class="notif-icon"></div>
+			<div class="notif-string"> <b>ERROR:</b> Invalid email/password.</div>
+			
+		</td>
+	</tr>
+</table>
+
+<%end%>
 
 <%if flash[:notice]%>
 <p style="text-align: center; color: blue; font-weight: bold;"> <%= flash[:notice] %> </p>
@@ -35,7 +86,6 @@
 <table align="center">
 	<tr>
 		<td>
-		
 			<table class="form-entries">
 				<tr>
 					<td class="entry1">Email:</td>
@@ -48,13 +98,20 @@
 			</table>
 	<tr>
 		<td>
-			<p align="center"><%= submit_tag 'Sign in' %>  </p>
-			<p align="center"><%= link_to t('Forgotten Password'), forgot_password_path %></p>
+			<table align="center" class="sign-options">
+				<tr>
+					<td>
+
+						<p al-ign="center">Forgot password? <%= link_to 'Click here', forgot_password_path %></p>
+					</td>
+				</tr>
+			</table>
+			<p align="center" class="sign-in"><%= submit_tag '' %>  </p>
 		</td>
 	</tr>
 </table>
 
-  <%end%>
+<%end%>
 
 </div>
 </div>
