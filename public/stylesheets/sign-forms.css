@@ -167,12 +167,9 @@ margin: 40px 30px 30px;
 }
 
 
-
-
-
-
-
 .notif-icon {
+top: 0;
+left: 0;
 position: absolute;
 width: 40px;
 height: 40px;

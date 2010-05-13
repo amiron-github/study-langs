@@ -1,0 +1,287 @@
+
+h3 {
+font-size: 14px;
+font-style: italic;
+}
+
+
+.cs_place {
+width: 100%;
+background-color: #E2E6F2;
+border: 1px solid #EEF0F7;
+}
+
+.cs_place td {
+}
+
+.cs_beginner {
+background-image: url("/images/cs_beginner.jpg");
+background-repeat: no-repeat;
+background-position: 50% 50%;
+height: 242px;
+width: 150px;
+}
+
+.cs_everyday {
+background-image: url("/images/cs_everyday.jpg");
+background-repeat: no-repeat;
+background-position: 50% 50%;
+height: 242px;
+width: 150px;
+}
+
+.cs_icon {
+padding: 18px 0px 20px 20px;
+}
+
+.cs_wrapper {
+padding: 14px 13px 13px 13px;
+}
+
+.cs_container {
+position: relative;
+background-image: url("/images/cs_bg.gif");
+background-color: #fff;
+background-repeat: repeat-x;
+background-position: left bottom;
+}
+
+.cs_container div {
+zooom: 1;
+}
+
+.cs_top {
+height: 22px;
+margin: 0px 23px;
+position: relative;
+background-image: url("/images/course-section.png");
+background-repeat: repeat-x;
+background-position: left -106px;
+}
+
+.cs_clt {
+position: absolute;
+height: 22px;
+width: 23px;
+left: -23px;
+background-image: url("/images/course-section.png");
+background-repeat: no-repeat;
+background-position: left top;
+}
+
+.cs_crt {
+position: absolute;
+height: 22px;
+width: 23px;
+right: -23px;
+background-image: url("/images/course-section.png");
+background-repeat: no-repeat;
+background-position: left -26px;
+}
+
+.cs_btm {
+height: 23px;
+margin: 0px 23px;
+position: relative;
+background-image: url("/images/course-section.png");
+background-repeat: repeat-x;
+background-position: left bottom;
+}
+
+.cs_clb {
+position: absolute;
+height: 23px;
+width: 23px;
+left: -23px;
+background-image: url("/images/course-section.png");
+background-repeat: no-repeat;
+background-position: left -52px;
+}
+
+.cs_crb {
+position: absolute;
+height: 23px;
+width: 23px;
+right: -23px;
+background-image: url("/images/course-section.png");
+background-repeat: no-repeat;
+background-position: left -79px;
+}
+
+.cs_lft {
+background-image: url("/images/course-section-lft.png");
+background-repeat: repeat-y;
+background-position: left top;
+}
+
+.cs_rt {
+background-image: url("/images/course-section-rt.png");
+background-repeat: repeat-y;
+background-position: right top;
+padding: 0px 20px;
+min-height: 208px;
+}
+
+.cs_content {
+padding: 1px 10px;
+font-size: 11px;
+color: #444444;
+}
+
+.cs_title {
+position: relative;
+top: -5px;
+margin: 4px 0px 15px;
+font-weight: normal;
+color: #1745AE;
+font-style: normal;
+font-size: 20px;
+margin-right: 136px;
+text-shadow: 0px 1px 0px #fff, 1px 2px 4px #666;
+}
+
+.cs_badge {
+display: block;
+position: absolute;
+width: 136px;
+height: 37px;
+right: -146px;
+top: -5px;
+padding-top: 3px;
+line-height: 35px;
+color: #fff;
+font-style: italic;
+text-align: center;
+font-size: 20px;
+background-image: url(/images/cs_badge.png);
+background-position: left top;
+background-repeat: no-repeat;
+text-shadow: 0px 1px 9px #333;
+}
+
+.cs_content {
+}
+
+.cs_list {
+margin: 0;
+padding: 0;
+list-style: none;
+}
+
+.cs_list li {
+padding-bottom: 2px;
+}
+
+.cs_open .cs_course_list li {
+padding-bottom: 5px;
+}
+
+.cs_features {
+list-style: disc outside;
+margin-left: 10px;
+}
+
+.cs_features li { 
+padding-bottom: 3px;
+}
+
+.cs_add_list_item {
+di-splay: none;
+}
+
+.cs_content h4 {
+margin: 0 0 10px;
+font-size: 12px;
+font-weight: bold;
+}
+
+.cs_more {
+line-height: 20px;
+margin-bottom: 0;
+}
+
+.content a.cs_more_btn {
+display: block;
+position: relative;
+border: 0;
+padding: 0;
+margin: 0;
+background-image: url(/images/cs_more_btn.png);
+background-repeat: no-repeat;
+background-position: left -45px;
+background-color: transparent;
+width: 155px;
+height: 40px;
+line-height: 35px;
+font-size: 14px;
+color: #222222;
+text-decoration: none;
+text-shadow: 0px 1px 0px #fff;
+outline: none;
+}
+
+.cs_bigger a.cs_more_btn {
+left: -1px;
+}
+
+a.cs_more_btn:link {
+color: #222222;
+text-shadow: 0px 1px 0px #fff;
+}
+
+a.cs_more_btn:visited {
+color: #222222;
+text-shadow: 0px 1px 0px #fff;
+}
+
+a.cs_more_btn:hover {
+color: #fff;
+text-shadow: 0px -1px 0px #555;
+background-position: left top;
+}
+
+a.cs_more_btn:active {
+color: #fff;
+text-shadow: 0px -1px 0px #555;
+background-position: left top;
+}
+
+.cs_bigg-er a.cs_more_btn:link {
+background-position: left -90px;
+}
+
+.cs_bigg-er a.cs_more_btn:visited {
+background-position: left -90px;
+}
+
+.cs_bigg-er a.cs_more_btn:hover {
+background-position: left -135px;
+}
+
+.cs_bigg-er a.cs_more_btn:active {
+background-position: left -135px;
+}
+
+div.cs_to_show {
+display: none;
+padding: 1px 0px;
+}
+
+.cs_to_show {
+display: none;
+}
+
+.cs_to_show p {
+margin-top: 0px
+}
+
+.cs_further {
+color: #777;
+font-weight: bold;
+padding-left: 30px;
+font-size: 10px;
+}
+
+.cs_open .cs_further {
+display: none;
+}

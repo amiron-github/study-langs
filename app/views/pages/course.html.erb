@@ -1,190 +1,339 @@
 <% @page_title='Online Russian Course: Summary' %>
 <% @page_meta = {'description' => "Online Russian Lessons for beginners with exercises, tests and audio examples"} %>
 
+
+<% content_for :special_js_css do %>
+<%= stylesheet_link_tag 'cs_styles' %>
+
+<script type="text/javascript"> 
+
+$(document).ready(function() {
+	
+var cs_view = "small";	
+	
+$(".cs_more_btn").click(function() {
+	if ( ! $(this).parent().hasClass("cs_bigger") ) {
+		showCSDetails($(this));
+	} else {
+		hideCSDetails($(this));
+	}
+});	
+
+
+if (getCookie( 'cs_beginner') ) {
+	showCSAtStart ( $("#for_beginner") )
+}
+
+if (getCookie( 'cs_everyday') ) {
+	showCSAtStart ( $("#for_everyday") );
+}
+
+});
+
+function showCSDetails(jObj) {
+	jObj.parent().addClass("cs_bigger");
+	jObj.text("Hide details");
+	parentContainer = jObj.parent().parent();
+	parentContainer.find(".cs_to_show").slideDown(400, function() {
+		parentContainer.find("li.cs_to_show").css({display: "list-item"});
+		parentContainer.addClass("cs_open")
+	});
+	
+	jObj.blur();
+	if (jObj.attr('id') == 'for_beginner') {
+			setCookie('cs_beginner', 'open');
+	} else {
+			setCookie('cs_everyday', 'open');
+	}
+}
+
+
+
+
+function hideCSDetails(jObj) {
+	jObj.parent().removeClass("cs_bigger");
+	jObj.text("Read more");
+	jObj.parent().parent().find(".cs_to_show").slideUp(400, function() {
+		jObj.parent().parent().removeClass("cs_open");
+	});
+	jObj.blur();
+	if ( jObj.attr('id') == 'for_beginner') {
+		delCookie('cs_beginner');
+	} else {
+		delCookie('cs_everyday');
+	}
+}
+
+function showCSAtStart(jObj) {
+	jObj.parent().addClass("cs_bigger");
+	jObj.text("Hide details");
+	parentContainer = jObj.parent().parent();
+	parentContainer.find(".cs_to_show").show();
+	parentContainer.find("li.cs_to_show").css({display: "list-item"});
+	parentContainer.addClass("cs_open");
+	jObj.blur();
+}
+
+
+</script>
+
+<% end %>
+
+
+
+
 <h2 class="page">Online Russian Courses</h2>
+
+
+<p style="padding-bottom: 20px;" align="center">
+Here you can see which free and paid online Russian courses are available on our website:
+
+</p>
+
+<table class="cs_place" cellsppacing="0" id="beginner_course">
+	<tr valign="top">
+		<td width="150" class="cs_icon">
+			<div class="cs_beginner"></div>
+		</td>
+		<td class="cs_wrapper">
+
+		
+<div class="cs_container">
+
+<div class="cs_top">
+	<div class="cs_clt"></div>
+	<div class="cs_crt"></div>
+</div>
+
+<div class="cs_lft">
+	<div class="cs_rt">
+		<div class="cs_content">
+			<h3 class="cs_title">Russian Course for Beginners <span class="cs_badge">FREE</span></h3>
+			<p>
+				Online lessons that will help you to learn basic vocabulary and grammar, fine-tune your pronunciation and get essential language skills in Russian. 
+			</p>
+			<table width="100%" cellspacing="0">
+				<tr valign="top">
+					<td width="46%">
+					<h4>Content:</h4>
+					<ul class="cs_list cs_course_list"> 
+						<li><a href="beginner-lesson-01.html" title="Lesson 1">Lesson 1. <span class="ital">Greetings</span></a></li>
+						<li><a href="beginner-lesson-02.html" title="Lesson 2">Lesson 2. <span class="ital">Introducing yourself</span></a></li>
+						<li><a href="beginner-lesson-03.html" title="Lesson 3">Lesson 3. <span class="ital">Where are you from?</span></a></li>
+						<li><a href="beginner-lesson-04.html" title="Lesson 4">Lesson 4. <span class="ital">Professions</span></a></li>
+						<li><a href="beginner-lesson-05.html" title="Lesson 5">Lesson 5. <span class="ital">Languages skills</span></a></li>
+					</ul>
+
+					</td>
+					<td width="54%" style="padding-left: 10px; color: #3B3F4F;">
+					<h4>Features:</h4>
+					<ul class="cs_list cs_features"> 
+						<li>The most useful grammar and vocabulary</li>
+						<li>All words and expressions are accompanied by pronunciation</li>
+						<li>Plenty of practice opportunities</li>
+						<li class="cs_add_list_item cs_to_show">Explanations with numerous examples and exercises</li>
+					</ul>
+					
+					</td>
+				</tr>
+			</table>
+			
+			<p>
+				This course is designed for those who start learning Russian and would like to study the basics of this language.
+			</p>
+			
+			<div class="cs_to_show">
+			
+			<p>
+				Here you can learn Russian words and expressions used in greetings, farewells, requests, talking about yourself etc. There is also basic information about different particularities of Russian grammar: gender, number, cases and verbs conjugation.
+			</p>
+			
+			<p>
+				If you are a registered user, you can review the results of the exercises and tests you have done during the lessons<% if logged_in? %>
+				in your <a href="user_profile.html">Profile</a>
+			<%else%>. See the <a href="/signup">Registration page</a> 
+			<%end%>
+			</p>
+			
+			
+			</div>
+			
+			
+			<div class="cs_more" align="center">
+				<a href="javascript:;" class="cs_more_btn" id="for_beginner"> Read more</a>
+			</div>
+		</div>	
+	</div>
+</div>
+
+<div class="cs_btm">
+	<div class="cs_clb"></div>
+	<div class="cs_crb"></div>
+</div>
+</div>		
+		
+
+		</td>
+	</tr>
+</table>
+
+
+<br>
+
+
+
+<table class="cs_place" cellsppacing="0" id="everyday_course">
+	<tr valign="top">
+		<td width="150" class="cs_icon">
+			<div class="cs_everyday"></div>
+		</td>
+		<td class="cs_wrapper">
+
+		
+<div class="cs_container">
+
+<div class="cs_top">
+	<div class="cs_clt"></div>
+	<div class="cs_crt"></div>
+</div>
+
+<div class="cs_lft">
+	<div class="cs_rt">
+		<div class="cs_content">
+			<h3 class="cs_title">Everyday Russian Course <span class="cs_badge" style="font-size: 18px;">from $8.99 </span></h3>
+			<p>
+				Find an easy way to learn the language you need for most everyday situations. The 10 online lessons of this course include everything to enable you to to start speaking right away: dialogues, vocabulary lists, interactive exercises and tests.
+			</p>
+			<table width="100%" cellspacing="0">
+				<tr valign="top">
+					<td width="46%">
+					<h4>Content:</h4>
+					<ul class="cs_list cs_course_list"> 
+						<li><a href="unit01.html" title="Lesson 1">Lesson 1. <span class="ital">In the airport</span></a></li>
+						<li><a href="unit02.html" title="Lesson 2">Lesson 2. <span class="ital">Transport</span></a> </li>
+						<li><a href="unit03.html" title="Lesson 3">Lesson 3. <span class="ital">At the hotel</span></a> </li>
+						<li><a href="unit04.html" title="Lesson 4">Lesson 4. <span class="ital">In the street</span></a></li>
+						<li><a href="unit05.html" title="Lesson 5">Lesson 5. <span class="ital">Sightseeings</span></a> </li>
+						
+						<li><a href="unit06.html" title="Lesson 6">Lesson 6. <span class="ital">Shopping</span></a> </li>
+						<li><a href="unit07.html" title="Lesson 7">Lesson 7. <span class="ital">At the restaurant</span></a>  </li>
+						<li class="cs_add_list_item cs_to_show"><a href="unit08.html" title="Lesson 8">Lesson 8. <span class="ital">At the drugstore</span></a> </li>
+						<li class="cs_add_list_item cs_to_show"><a href="unit09.html" title="Lesson 9">Lesson 9. <span class="ital">Currency exchange</span></a></li>
+						<li class="cs_add_list_item cs_to_show"><a href="unit10.html" title="Lesson 10">Lesson 10. <span class="ital">Internet &amp; Telephone</span></a>  </li>
+					</ul>
+					
+					<div class="cs_further"> and more ... </span>
+
+					</td>
+					<td width="54%" style="padding-left: 10px; color: #3B3F4F;">
+					<h4>Features:</h4>
+					<ul class="cs_list cs_features"> 
+						<li>Work with realistic dialogues recorded by native speakers </li>
+						<li>Various interactive exercises</li>
+						<li>All words and phrases are accompanied by audio and transcription</li>
+						<li class="cs_add_list_item cs_to_show">Basic vocabulary and essential grammar constructions that you need to converse with locals</li>
+						<li class="cs_add_list_item cs_to_show">Step-by-step learning, from simple words to full sentences</li>
+						<li class="cs_add_list_item cs_to_show">No background in Russian is needed</li>
+					</ul>
+					<div class="cs_further"> and more ... </span>
+					</td>
+				</tr>
+			</table>
+			
+			<p>
+				<% if !(logged_in? && current_user.payment) %>
+				You can try for free the first lesson of this course and review a limited version of other lessons.
+				<br><br>
+				<a href="unit01.html" title="Try Lesson 1 for free" class="bold" style="text-decoration: none"><span style="text-decoration: underline">TRY LESSON 1 FOR FREE</span> >></a>
+				<%else%>
+					Every lesson in this course is devoted to a definite topic. The topics cover typical situations which a person visiting Russia may get into.
+				<%end%>
+			</p>
+			
+			<div class="cs_to_show">
+			
+			<p>
+				This online course will give you an opportunity to experience conversational language and learn the vocabulary for introductions, finding your way, shopping, using telephone and internet etc. 
+				
+				<% if !(logged_in? && current_user.payment) %>
+				Every lesson in this course is devoted to a definite topic. The topics cover typical situations which a person visiting Russia may get into.
+				<%end%>
+			</p>
+			
+			
+			<p>
+				If you are a registered user, you can review the results of the exercises and tests you have done during the lessons<% if logged_in? %>
+				in your <b>Profile</b>, in the <a href="/user_profile.html" title="Results" onclick = "nextActiveTab('2')">My Results section</a>
+			<%else%>. See the <a href="/signup">Registration page</a> 
+			<%end%>
+			</p>
+			
+			
+			
+			<% if !(logged_in? && current_user.payment) %>
+			<p>
+				We have the following options for those who would like to subscribe to this course:
+			</p>
+			
+			<ul class="ital">
+				<li> 2-month subscription - <b>$8.99 USD</b></li>
+				<li> 4-month subscription - <b>$14.99 USD</b></li>
+				<li> 6-month subscription - <b>$19.99 USD</b></li>
+			</ul>
+			<% end %>
+			
+			<% if  !logged_in? %>
+				<p>If you would like to subscribe to this  course, please, <a href="/signup">Sign Up</a> or <a href="login">Sign In</a> and complete the payment procedure.</p>
+			<% elsif (logged_in? && !current_user.payment) %>
+				<p>If you would like to subscribe to this  course, you can purchase a subscription in your <a href="user_profile.html"><strong>Profile</strong></a>.
+				<br><br>
+				<a href="user_profile.html#subscription" title="Subscribe to the Course" class="bold" style="text-decoration: none; color: red;"><span style="text-decoration: underline">SUBSCRIBE TO THE COURSE</span> >></a>
+				</p>
+			<%end%> 
+			
+			
+			<p>
+				The full version of this course is available for subscribed users. Other users have access to the full version of the first lesson and to a limited version of other lessons.
+			</p>
+			
+			
+			
+			</div>
+			
+			
+			<div class="cs_more" align="center">
+				<a href="javascript:;" class="cs_more_btn" id="for_everyday"> Read more</a>
+			</div>
+		</div>	
+	</div>
+</div>
+
+<div class="cs_btm">
+	<div class="cs_clb"></div>
+	<div class="cs_crb"></div>
+</div>
+</div>		
+		
+
+		</td>
+	</tr>
+</table>
+
+
+
+
+
+
+<br>
 
 <p>
 Before you begin one of our online courses, we recommend you to see the sections <a href="pronunciation.html">Russian Pronunciation</a> and <a href="russian-reading.html">Reading in Russian</a>. These sections are not necessary for the work with online Russian courses, but if you familiarize with them the work with a course will be easier, since when you do the exercises of the lessons you will devote less attention to the pronunciation and transcription of the words and expressions, and the tasks of the lessons will be simpler to fulfill. 
-
+</p>
+<p>
 We also advise to visit <a href="test-use.html">How to use tests</a> page to learn how to work with tests which you will find in the online lessons, and <a href="functions.html">Functions and settings</a> page to read information about available functions on our website that may make it easier to learn Russian.
 </p>
-<br><br>
-<hr id="beginner_course">
 
-<h2 style="font-size: 17pt;">Free Online Russian Course for Beginners</h2>
-
-<p>
-This course is designed for those who start learning Russian and would like to get basic language skills. Here you can learn Russian words and expressions used in greetings, farewells, requests, talking about yourself etc. 
-There is also basic information about different particularities of Russian grammar: gender, number, cases and verbs conjugation.
-</p>
-
-<h3>Content:</h3>
-
-<div class="inner-listing">
-<p class="bold">
-<a href="beginner-lesson-01.html" title="Lesson 1">Lesson 1. <span class="ital">Greetings and Farewells</span></a>
-</p>
-<p class="bold">
-<a href="beginner-lesson-02.html" title="Lesson 2">Lesson 2. <span class="ital">Introducing yourself</span></a>
-
-
-</p>
-<p class="bold">
-<a href="beginner-lesson-03.html" title="Lesson 3">Lesson 3. <span class="ital">Where are you from?</span></a>
-
-</p>
-<p class="bold">
-<a href="beginner-lesson-04.html" title="Lesson 4">Lesson 4. <span class="ital">Professions and Occupations</span></a>
-
-</p>
-<p class="bold">
-<a href="beginner-lesson-05.html" title="Lesson 5">Lesson 5. <span class="ital">Languages skills</span></a>
-
-</p>
-
-</div>
-
-<p>
-If you are a registered user, you can review the results of the exercises and tests you have done during the lessons<% if logged_in? %>
- in your <a href="user_profile.html">Profile</a>
-<%else%>. See the <a href="/signup">Registration page</a> 
-<%end%>
-</p>
-
-
-<br>
-<br>
-<hr id="everyday_course">
-
-<h2 style="font-size: 17pt;">Everyday Russian Course</h2>
-
-
-<p>
-Find an easy way to learn basic Russian with 10 lessons Everyday Russian Course. This course will give you an opportunity to really comunicate with Russian people.
-Every lesson in this course is devoted to a definite topic. The topics cover typical situations which a person visiting Russia may get into.
-</p>
-
- 
-<% if !(logged_in? && current_user.payment) %>
-	<p>
-	<u>
-	The full version of this course is available for subscribed users. Other users have access to the full version of the first lesson and to a limited version of other lessons.
-	</u>
-	</p>
-<% end %>
-
-
-
-
-<br/>
-<h3>Content:</h3>
-<div class="inner-listing">
-<p class="bold">
-<a href="unit01.html" title="Lesson 1">Lesson 1. <span class="ital">In the airport</span></a>
-</p>
-<p class="bold">
-<a href="unit02.html" title="Lesson 2">Lesson 2. <span class="ital">Transport</span></a>
-<% if !(logged_in? && current_user.payment) %>
-<span style="font-weight: normal; color: #5F5F5F;">(limited version)</span>
-<% end %>
-
-</p>
-<p class="bold">
-<a href="unit03.html" title="Lesson 3">Lesson 3. <span class="ital">At the hotel</span></a>
-<% if !(logged_in? && current_user.payment) %>
-<span style="font-weight: normal; color: #5F5F5F;">(limited version)</span>
-<% end %>
-</p>
-<p class="bold">
-<a href="unit04.html" title="Lesson 4">Lesson 4. <span class="ital">In the street</span></a>
-<% if !(logged_in? && current_user.payment) %>
-<span style="font-weight: normal; color: #5F5F5F;">(limited version)</span>
-<% end %>
-</p>
-<p class="bold">
-<a href="unit05.html" title="Lesson 5">Lesson 5. <span class="ital">Sightseeings</span></a>
-<% if !(logged_in? && current_user.payment) %>
-<span style="font-weight: normal; color: #5F5F5F;">(limited version)</span>
-<% end %>
-</p>
-<p class="bold">
-
-<a href="unit06.html" title="Lesson 6">Lesson 6. <span class="ital">Shopping</span></a>
-<% if !(logged_in? && current_user.payment) %>
-<span style="font-weight: normal; color: #5F5F5F;">(limited version)</span>
-<% end %>
-</p>
-<p class="bold">
-<a href="unit07.html" title="Lesson 7">Lesson 7. <span class="ital">At the restaurant</span></a>
-<% if !(logged_in? && current_user.payment) %>
-<span style="font-weight: normal; color: #5F5F5F;">(limited version)</span>
-<% end %>
-</p>
-<p class="bold">
-<a href="unit08.html" title="Lesson 8">Lesson 8. <span class="ital">At the drugstore</span></a>
-<% if !(logged_in? && current_user.payment) %>
-<span style="font-weight: normal; color: #5F5F5F;">(limited version)</span>
-<% end %>
-</p>
-<p class="bold">
-<a href="unit09.html" title="Lesson 9">Lesson 9. <span class="ital">Currency exchange</span></a>
-<% if !(logged_in? && current_user.payment) %>
-<span style="font-weight: normal; color: #5F5F5F;">(limited version)</span>
-<% end %>
-
-</p>
-<p class="bold">
-<a href="unit10.html" title="Lesson 10">Lesson 10. <span class="ital">Internet &amp; Telephone</span></a>
-<% if !(logged_in? && current_user.payment) %>
-<span style="font-weight: normal; color: #5F5F5F;">(limited version)</span>
-<% end %>
-</p>
-</div>
-<br/>
-
-<div class="if_no_payment">
-<% if  !logged_in? %>
-	<p>If you would like to subscribe to this  course, please, <a href="/signup">Sign Up</a> or <a href="login">Sign In</a> and purchase a subscription.</p>
-<% elsif (logged_in? && !current_user.payment) %>
-	<p>If you would like to subscribe to this  course, you can purchase a subscription in your <a href="user_profile.html"><strong>Profile</strong></a>.</p>
-<%end%> 
-
-<% if !(logged_in? && current_user.payment) %>
-	<p class="ital"><strong>Prices:</strong> </p>
-	<p class="ital">- $8.99 USD for 2-month subscription </p>
-	<p class="ital">- $14.99 USD for 4-month subscription </p>
-	<p class="ital">- $19.99 USD for 6-month subscription </p>
-<% end %>
-</div>
-
-<p>
-If you are a registered user, you can review the results of the exercises and tests you have done during the lessons<% if logged_in? %>
- in your <a href="user_profile.html">Profile</a>
-<%else%>. See the <a href="/signup">Registration page</a> 
-<%end%>
-</p>
-<p>
-Before you begin the next lesson you should revise the content of the previous lesson.
-</p>
-<p>
-Every lesson includes the following types of exercises:
-</p>
-<p>
-<span class="bold">Dialogue.</span> Dialogues contain main words and expression related to the topic of the lesson. In order you could understand the content of the dialogue there is a preliminary descriptions of the situation and the translation of all phrases of the dialogue. It is not necessary to learn the phrases from the dialogue. The work with the dialogue consists in repeating phrases after speaker and reading with/without the transcription.
-</p>
-<p>
-<span class="bold">Exercises with new words.</span> These exercises contain the most important words related the topic of the lesson. As a rule, while doing tasks of the exercises, it is required to use the expressions studied in the previous lessons. Some tasks come with right answers, so if your answer does not agree with the right version you should find the mistake in your answer and repeat the correct variant.
-</p>
-
-<p>
-<span class="bold">Exercises with new expressions and constructions.</span>  These exercises contain various constructions which can be used to build phrases related to different topics. Besides, they may be accompanied by grammar comments.
-</p>
-<!-- p>
-<span class="bold">Control/revision exercises.</span> The tasks of these exercises include words and expressions from the current lesson. This type of exercises gives an opportunity to assess how well you have learnt the lesson.
-</p -->
-<p>
-There is a list of recommended vocabulary topics for each lesson. It is advised to familiarize yourself with these topics before you begin the next lesson.
-</p>
+<br><br><br><br><br><br><br><br><br><br>
 
 <script type="text/javascript">
 currentSection="course";
