@@ -2224,3 +2224,41 @@ text-decoration: none !important;
 font-size: 11px;
 }
 
+hr.less-end {display: block;}
+
+h3.ex-title {
+padding: 7px 10px;
+background-color: #EFEFEF;
+border: 1px solid #999;
+margin: 40px 0 30px;
+text-shadow: 0px 1px 0px #fff;
+background-image: url("/images/h3-bg.png");
+background-position: left bottom;
+background-repeat: repeat-x;
+}
+
+.ex-area {
+padding: 0px 15px;
+}
+
+
+.content p.ex-task {
+padding: 4px 10px;
+background-color: #D1D9DF;
+border-left: 4px solid #A7B4BF;
+background-image: url('/images/task-bg.png');
+background-position: right bottom;
+background-repeat: repeat-y;
+padding-right: 50px;
+color: #000;
+position: relative;
+left: -5px;
+}
+
+.sub_hint {
+z-index: 20;
+}
+
+
+
+

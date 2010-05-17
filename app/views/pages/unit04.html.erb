@@ -28,6 +28,14 @@ width: 100px;
 height: 130px;
 }
 
+hr {
+display: none;
+}
+
+.content {
+padding: 20px 40px 40px 30px;
+}
+
 </style>
 
 <% end %>
@@ -56,13 +64,15 @@ height: 130px;
 	<%=@hide_title%>
 <% end %>
 <hr>
-<h3 class="exers">I. Asking the way</h3>
-
 
 
 <div id="pagecontent"><div id="content">
 
-<p class="task">a) Dialogues</p>
+
+<h3 class="exers ex-title">I. Asking the way</h3>
+<div class="ex-area">
+
+<p class="task ex-task">a) Dialogues</p>
 <p>
 A tourist doesn't know how to find the Lenin square. She asks a passer-by about the way to it, and he tells that she should reach a big house, turn to the right, cross the bridge and go along the street. The tourist asks him to repeat it once more since she does not speak Russian fluently, and then she thanks him for the help.
 </p>
@@ -73,7 +83,7 @@ A tourist doesn't know how to find the Lenin square. She asks a passer-by about 
 <table class="audio-task" cellspacing="0">        
 	<tr>
 		<td>
-		<p class="task">Listen to the dialogue and read the translation</p>
+		<p class="task ex-task">Listen to the dialogue and read the translation</p>
 		</td>
  		<td> 
         		<div class="player_swf"><span style="visibility: hidden">audios/audio04011100.mp3</span></div>
@@ -356,7 +366,7 @@ A tourist looks for a W.C. He asks a passer-by where the nearest W.C. is and she
 <table class="audio-task" cellspacing="0">        
 	<tr>
 		<td>
-		<p class="task">Listen to the dialogue and read the translation</p>
+		<p class="task ex-task">Listen to the dialogue and read the translation</p>
 		</td>
  		<td> 
         		<div class="player_swf"><span style="visibility: hidden">audios/audio04011200.mp3</span></div>
@@ -518,8 +528,10 @@ A tourist looks for a W.C. He asks a passer-by where the nearest W.C. is and she
 </table>
 </div>
 <%end%>
-<p class="task" style="padding-top: 20px;">b) Listen and repeat the dialogues phrase by phrase. </p>
-<p class="task">c) Listen to the phrases in Russian and choose the right translation.</p>
+
+<br><br>
+<p class="task ex-task" >b) Listen and repeat the dialogues phrase by phrase. </p>
+<p class="task ex-task">c) Listen to the phrases in Russian and choose the right translation.</p>
 <div id="test1">
 <script type="text/javascript">
 T['1']=['4','5','10','2','8','3','6','9','7','1']; // For Test#1 answers are '5' - for 1-st question, '2' - for second question
@@ -672,10 +684,14 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 </div>
 </form>
 <%end%>
-<hr>
-<h3 class="exers">II. Tell me the way to the Lenin square!</h3>
 
-<p class="task">a) <strong>Learn the following Russian words</strong>:</p>
+</div>
+
+<hr>
+<h3 class="exers ex-title">II. Tell me the way to the Lenin square!</h3>
+<div class="ex-area">
+
+<p class="task ex-task">a) <strong>Learn the following Russian words</strong>:</p>
 
 <div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
@@ -872,7 +888,7 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 </table>
 
 </div>
-<p class="task">b) Read the Russian words and choose the right translation from the list::</p>
+<p class="task ex-task">b) Read the Russian words and choose the right translation from the list::</p>
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
@@ -890,7 +906,7 @@ var t1 = new Test({dict: [
 </script>
 </div>
 <%end%>
-<p class="task">c) Translate into Russian and check yourself:</p>
+<p class="task ex-task">c) Translate into Russian and check yourself:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -1033,11 +1049,14 @@ var t1 = new Test({dict: [
 </div>
 
 <%end%>
+</div>
+
 <hr>
 
-<h3 class="exers">III. Go straight ahead!</h3>
+<h3 class="exers ex-title">III. Go straight ahead!</h3>
+<div class="ex-area">
 
-<p class="task">a) Learn the following Russian verbs: </p>
+<p class="task ex-task">a) Learn the following Russian verbs: </p>
 
 <div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
@@ -1265,7 +1284,7 @@ var t1 = new Test({dict: [
 </div>
 <%end%>
 
-<p class="task">b) Listen and choose the right transalation for the phrases:</p>
+<p class="task ex-task">b) Listen and choose the right transalation for the phrases:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -1386,7 +1405,7 @@ var t1 = new Test({dict: [
 </div>
 </form>
 <%end%>
-<p class="task">c) Translate into Russian and check yourself:</p>
+<p class="task ex-task">c) Translate into Russian and check yourself:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -1495,7 +1514,7 @@ var t1 = new Test({dict: [
 </table>
 </div>
 
-<p class="task">d) Learn the imperative of the verbs:</p>
+<p class="task ex-task">d) Learn the imperative of the verbs:</p>
 
 <table  cellspacing="0" >
 	<tr valign="top">
@@ -1612,7 +1631,7 @@ var t1 = new Test({dict: [
 
 <%end%>
 
-<p class="task">e) Listen to the mini-dialogues and do the following tasks:</p>
+<p class="task ex-task">e) Listen to the mini-dialogues and do the following tasks:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -1680,9 +1699,14 @@ var t1 = new Test({dict: [
 <%end%>
 
 <br>
+
+</div>
+
 <hr>
 
-<h3 class="exers">IV. How can I get to the Pushkin square?</h3>
+<h3 class="exers ex-title">IV. How can I get to the Pushkin square?</h3>
+<div class="ex-area">
+
 
 <p>In the dialogue above you have seen the following construction:</p>
 
@@ -1702,7 +1726,7 @@ var t1 = new Test({dict: [
 	</tr>
 </table>
 
-<p class="task">a) Learn the following expressions: </p>
+<p class="task ex-task">a) Learn the following expressions: </p>
 
 <div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
@@ -1783,7 +1807,7 @@ var t1 = new Test({dict: [
 
 </div>
 
-<p class="task">b) Translate into Russian and check yourself:</p>
+<p class="task ex-task">b) Translate into Russian and check yourself:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -1875,9 +1899,13 @@ var t1 = new Test({dict: [
 </table>
 </div>
 <%end%>
+
+</div>
+
 <hr>
 
-<h3 class="exers">V. There is a W.C. near the park.</h3>
+<h3 class="exers ex-title">V. There is a W.C. near the park.</h3>
+<div class="ex-area">
 
 <p>In the dialogue above you have seen the following construction:</p>
 
@@ -1897,7 +1925,7 @@ var t1 = new Test({dict: [
 	</tr>
 </table>
 
-<p class="task">Listen to the following phrases and complete the test: </p>
+<p class="task ex-task">Listen to the following phrases and complete the test: </p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -2001,10 +2029,12 @@ var t1 = new Test({dict: [
 </form>
 
 <%end%>
+</div>
 
 <hr>
 
-<h3 class="exers">VI. I'm a foreigner !</h3>
+<h3 class="exers ex-title">VI. I'm a foreigner !</h3>
+<div class="ex-area">
 
 <p>In the dialogue above you have seen the following phrase:</p>
 
@@ -2061,7 +2091,7 @@ var t1 = new Test({dict: [
 
 </div>
 
-<p class="task">a) Look, listen and reapeat the examples with these expressions:</p>
+<p class="task ex-task">a) Look, listen and reapeat the examples with these expressions:</p>
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
@@ -2188,7 +2218,7 @@ var t1 = new Test({dict: [
 
 </table>
 <%end%>
-<p class="task">b) Answer the questions in Russian following the model and check yourself:</p>
+<p class="task ex-task">b) Answer the questions in Russian following the model and check yourself:</p>
 
 <p style="margin-bottom: 0px;">Model:</p>
 
@@ -2284,7 +2314,7 @@ var t1 = new Test({dict: [
 	</tr>
 </table>
 <%end%>
-<p class="task">c) <strong>Learn the following Russian words and translate phrases into Russian</strong>:</p>
+<p class="task ex-task">c) <strong>Learn the following Russian words and translate phrases into Russian</strong>:</p>
 
 <div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
@@ -2466,9 +2496,13 @@ var t1 = new Test({dict: [
 </table>
 </div>
 <%end%>
+
+</div>
+
 <hr>
 
-<h3 class="exers">VII. Could you please repeat it!</h3>
+<h3 class="exers ex-title">VII. Could you please repeat it!</h3>
+<div class="ex-area">
 
 <p>In the dialogue above you have seen the following phrase:</p>
 
@@ -2490,7 +2524,7 @@ var t1 = new Test({dict: [
 
 <p>If you want to address another person with a polite request, you may use the expression  <span class="norm_txt nwr"><em>Вы не могл<span class="acco">и</span> бы&nbsp;<span class="sound" style="clear: left;" onclick="playAudio('audio04070001.mp3')">[v<span class="acct"><span class="ry">i</span></span> ni magl<span class="acct">i</span> b<span class="ry">i</span>]&nbsp;<span class="play_tip">&nbsp;&nbsp;&nbsp;</span></span></em></span> - "Could you please..."</p>
 
-<p class="task">a) Learn the following expressions: </p>
+<p class="task ex-task">a) Learn the following expressions: </p>
 
 <div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
@@ -2570,7 +2604,7 @@ var t1 = new Test({dict: [
 
 </div>
 
-<p class="task">b) Translate into Russian, using the expression <span class="norm_txt nwr"><em>Вы не могл<span class="acco">и</span> бы&nbsp;<span class="sound" style="clear: left;" onclick="playAudio('audio04070001.mp3')">[v<span class="acct"><span class="ry">i</span></span> ni magl<span class="acct">i</span> b<span class="ry">i</span>]&nbsp;<span class="play_tip">&nbsp;&nbsp;&nbsp;</span></span></em></span>,  and check yourself:</p>
+<p class="task ex-task">b) Translate into Russian, using the expression <span class="norm_txt nwr"><em>Вы не могл<span class="acco">и</span> бы&nbsp;<span class="sound" style="clear: left;" onclick="playAudio('audio04070001.mp3')">[v<span class="acct"><span class="ry">i</span></span> ni magl<span class="acct">i</span> b<span class="ry">i</span>]&nbsp;<span class="play_tip">&nbsp;&nbsp;&nbsp;</span></span></em></span>,  and check yourself:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -2662,15 +2696,19 @@ var t1 = new Test({dict: [
 </table>
 </div>
 <%end%>
+
+</div>
+
 <hr>
 
-<h3 class="exers">VIII. Numerals</h3>
+<h3 class="exers ex-title">VIII. Numerals</h3>
+<div class="ex-area">
 
-<p class="task">
+<p class="task ex-task">
 a) Revise numerals from the previous lessons. 
 </p>
 
-<p class="task">
+<p class="task ex-task">
 b) Listen, read and repeat the following examples:
 </p>
 
@@ -2842,7 +2880,7 @@ b) Listen, read and repeat the following examples:
 	</tr>
 </table>
 
-<p class="task">c) Listen to the Russian numeral and write it (with figures <span class="norm_txt">1, 2, 3 etc.</span>) in the text area:</p>
+<p class="task ex-task">c) Listen to the Russian numeral and write it (with figures <span class="norm_txt">1, 2, 3 etc.</span>) in the text area:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -2868,7 +2906,9 @@ var t2 = new Test({dict: [
 </script>
 </div>
 <%end%>
-<hr>
+</div>
+
+<hr class="less-end">
 
 <h3>In this lesson you have learnt:</h3> 
  

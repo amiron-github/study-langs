@@ -40,6 +40,14 @@ width: 100px;
 padding: 4px;
 }
 
+hr {
+display: none;
+}
+
+.content {
+padding: 20px 40px 40px 30px;
+}
+
 </style>
 
 <% end %>
@@ -65,14 +73,16 @@ padding: 4px;
 <% if !(logged_in? && current_user.payment) %>
 	<%=@hide_title%>
 <% end %>
+
+
 <hr>
-<h3 class="exers">I. Currency exchange</h3>
-
-
 
 <div id="pagecontent"><div id="content">
 
-<p class="task">a) Dialogues</p>
+<h3 class="exers ex-title">I. Currency exchange</h3>
+<div class="ex-area">
+
+<p class="task ex-task">a) Dialogues</p>
 <p>
 A tourist comes to the bank. She wants to changes euros for rubles. The bank teller tells her that the exchange value of euro is 40 rubles. The tourist changes 300 euros. She thanks the teller and says goodbye.
 </p>
@@ -85,7 +95,7 @@ A tourist comes to the bank. She wants to changes euros for rubles. The bank tel
 	<tr>
 
 		<td>
-		<p class="task">Listen to the dialogue and read the translation</p>
+		<p class="task ex-task">Listen to the dialogue and read the translation</p>
 		</td>
  		<td> 
         	<div class="player_swf"><span style="visibility: hidden">audios/audio09011100.mp3</span></div>
@@ -327,7 +337,7 @@ A tourist asks a passer-by where the nearest cash machine is. The passer-by answ
 <table class="audio-task" cellspacing="0">        
 	<tr>
 		<td>
-		<p class="task">Listen to the dialogue and read the translation</p>
+		<p class="task ex-task">Listen to the dialogue and read the translation</p>
 		</td>
  		<td> 
         	<div class="player_swf"><span style="visibility: hidden">audios/audio09011200.mp3</span></div>
@@ -451,8 +461,12 @@ A tourist asks a passer-by where the nearest cash machine is. The passer-by answ
 </table>
 </div>
 <%end%>
-<p class="task" style="padding-top: 20px;">b) Listen and repeat the dialogues phrase by phrase. </p>
-<p class="task">c) Listen to the phrases in Russian and choose the right translation.</p>
+
+<br>
+<br>
+
+<p class="task ex-task">b) Listen and repeat the dialogues phrase by phrase. </p>
+<p class="task ex-task">c) Listen to the phrases in Russian and choose the right translation.</p>
 <div id="test1">
 <script type="text/javascript">
 T['1']=['3','10','1','8','4','6','5','9','2','7']; // For Test#1 answers are '5' - for 1-st question, '2' - for second question
@@ -608,10 +622,14 @@ T['7']=['5','4','2','1','3'];
 </div>
 </form>
 <%end%>
-<hr>
-<h3 class="exers">II. Money, money, money.</h3>
 
-<p class="task">a) <strong>Learn the following Russian words:</strong></p>
+</div>
+
+<hr>
+<h3 class="exers ex-title">II. Money, money, money.</h3>
+<div class="ex-area">
+
+<p class="task ex-task">a) <strong>Learn the following Russian words:</strong></p>
 
 <div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
@@ -765,7 +783,7 @@ T['7']=['5','4','2','1','3'];
 
 </div>
 
-<p class="task">b) Listen to the questions in Russian and find the corresponding answers:</p>
+<p class="task ex-task">b) Listen to the questions in Russian and find the corresponding answers:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -886,12 +904,13 @@ T['7']=['5','4','2','1','3'];
 </div>
 </form>
 <%end%>
-
+</div>
 <hr>
 
-<h3 class="exers">III. Bank.</h3>
+<h3 class="exers ex-title">III. Bank.</h3>
+<div class="ex-area">
 
-<p class="task">a) <strong>Learn the Russian words</strong>: </p>
+<p class="task ex-task">a) <strong>Learn the Russian words</strong>: </p>
 
 <div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
@@ -1015,7 +1034,7 @@ T['7']=['5','4','2','1','3'];
 </table>
 </div>
 
-<p class="task">b) Read the English word and choose the corresponding translation in Russian:</p>
+<p class="task ex-task">b) Read the English word and choose the corresponding translation in Russian:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -1028,7 +1047,7 @@ var t1 = new Test({dict: [['bank','банк'],['cash machine','банкомат'
 </script>
 </div>
 <%end%>
-<p class="task">c) Ask a stranger where is:</p>
+<p class="task ex-task">c) Ask a stranger where is:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -1105,11 +1124,15 @@ var t1 = new Test({dict: [['bank','банк'],['cash machine','банкомат'
 </table>
 </div>
 <%end%>
+
+</div>
+
 <hr>
 
-<h3 class="exers">IV. Bank transactions</h3>
+<h3 class="exers ex-title">IV. Bank transactions</h3>
+<div class="ex-area">
 
-<p class="task">a) Learn the following expressions:</p>
+<p class="task ex-task">a) Learn the following expressions:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -1194,7 +1217,7 @@ var t1 = new Test({dict: [['bank','банк'],['cash machine','банкомат'
 
 </div>
 <%end%>
-<p class="task">b) Using the expression "<span style="font-weight: normal">мн<span class="acco">е</span> н<span class="acco">у</span>жно</span>" [m<span class="sftv">n</span><span class="sfty">y</span><span class="acct">e</span> n<span class="acct">oo</span>jna], translate into Russian and check yourself:</p>
+<p class="task ex-task">b) Using the expression "<span style="font-weight: normal">мн<span class="acco">е</span> н<span class="acco">у</span>жно</span>" [m<span class="sftv">n</span><span class="sfty">y</span><span class="acct">e</span> n<span class="acct">oo</span>jna], translate into Russian and check yourself:</p>
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
@@ -1301,7 +1324,7 @@ var t1 = new Test({dict: [['bank','банк'],['cash machine','банкомат'
 </table>
 </div>
 <%end%>
-<p class="task">
+<p class="task ex-task">
 c) Listen to the dialogues and putting an appropriate numeral in the text area. 
 In the dialogues you may hear the expression <span onMouseover="tooltip(this,' [kakooyoo soommoo?] ')" onMouseout="hide_info(this)">"<span class="txt-norm">Какую сумму?</span>"</span> which means "what amount?" or "how much?":
 </p>
@@ -1434,10 +1457,12 @@ In the dialogues you may hear the expression <span onMouseover="tooltip(this,' [
 	</tr>
  </table>
 <%end%>
+</div>
+
 <hr>
 
-<h3 class="exers">V. I'd like to exchange dollars!</h3>
-
+<h3 class="exers ex-title">V. I'd like to exchange dollars!</h3>
+<div class="ex-area">
 
 <p>In the dialogue above you have seen the following construction:</p>
 
@@ -1481,7 +1506,7 @@ In the dialogues you may hear the expression <span onMouseover="tooltip(this,' [
 
 </table>
 
-<p class="task">a) Look, listen and reapeat the examples:</p>
+<p class="task ex-task">a) Look, listen and reapeat the examples:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -1548,7 +1573,7 @@ In the dialogues you may hear the expression <span onMouseover="tooltip(this,' [
 
 </table>
 <%end%>
-<p class="task">b) Find the translation for the following phrases:</p>
+<p class="task ex-task">b) Find the translation for the following phrases:</p>
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
@@ -1610,7 +1635,7 @@ In the dialogues you may hear the expression <span onMouseover="tooltip(this,' [
  </table>
 </form>
 <%end%>
-<p class="task">c) Translate into Russian and check yourself:</p>
+<p class="task ex-task">c) Translate into Russian and check yourself:</p>
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
@@ -1718,9 +1743,14 @@ In the dialogues you may hear the expression <span onMouseover="tooltip(this,' [
 </table>
 </div>
 <%end%>
+
+</div>
+
 <hr>
 
-<h3 class="exers">VI. A problem with device.</h3>
+<h3 class="exers ex-title">VI. A problem with device.</h3>
+<div class="ex-area">
+
 <p>If you want to say in Russian that something works or does not work, you can use the following expression:</p>
 
 <table  cellspacing="0" >
@@ -1792,7 +1822,7 @@ In the dialogues you may hear the expression <span onMouseover="tooltip(this,' [
 	</tr>
 </table>
 
-<p class="task">a) Give a negative answer to the questions following the model:</p>
+<p class="task ex-task">a) Give a negative answer to the questions following the model:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -1944,7 +1974,7 @@ In the dialogues you may hear the expression <span onMouseover="tooltip(this,' [
 	</tr>
 </table>
 <%end%>
-<p class="task">b) Translate into Russian and check yourself:</p>
+<p class="task ex-task">b) Translate into Russian and check yourself:</p>
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
@@ -2052,7 +2082,12 @@ In the dialogues you may hear the expression <span onMouseover="tooltip(this,' [
 </table>
 </div>
 <%end%>
-<hr>
+</div>
+
+<br>
+<br>
+
+<hr class="less-end">
 
 <h3>In this lesson you have learnt:</h3>  
 

@@ -37,6 +37,14 @@ width: 150px;
 padding: 8px;
 }
 
+hr {
+display: none;
+}
+
+.content {
+padding: 20px 40px 40px 30px;
+}
+
 </style>
 
 <% end %>
@@ -64,13 +72,14 @@ padding: 8px;
 	<%=@hide_title%>
 <% end %>
 <hr>
-<h3 class="exers">I. At the restaurant</h3>
 
 
 
 <div id="pagecontent"><div id="content">
+<h3 class="exers ex-title">I. At the restaurant</h3>
+<div class="ex-area">
 
-<p class="task">a) Dialogue</p>
+<p class="task ex-task">a) Dialogue</p>
 <p>
 Tourists come to the restaurant and ask for a table for two persons. The waiter offers a table near the window. The tourists ask if there is a menu in English, but there is only a menu in Russian. Tourists ask if it is allowed to smoke in the restaurant, and the waiter explains that they may smoke only on the terrace.  Several minutes later, the tourist orders steak with fried potatoes, spaghetti carbonara, a bottle of red wine, one vanilla ice-cream, and chocolate mousse. They wait about 15 minutes for their order. After having lunch they order two coffees espresso and ask to bring the bill.
 </p>
@@ -83,7 +92,7 @@ Tourists come to the restaurant and ask for a table for two persons. The waiter 
 	<tr>
 
 		<td>
-		<p class="task">Listen to the dialogue and read the translation</p>
+		<p class="task ex-task">Listen to the dialogue and read the translation</p>
 		</td>
  		<td> 
         		<div class="player_swf"><span style="visibility: hidden">audios/audio07011100.mp3</span></div>
@@ -501,8 +510,11 @@ Tourists come to the restaurant and ask for a table for two persons. The waiter 
 </table>
 </div>
 <%end%>
-<p class="task" style="padding-top: 20px;">b) Listen and repeat the dialogues phrase by phrase. </p>
-<p class="task">c) Listen to the phrases in Russian and choose the right translation.</p>
+
+<br>
+<br>
+<p class="task ex-task">b) Listen and repeat the dialogues phrase by phrase. </p>
+<p class="task ex-task">c) Listen to the phrases in Russian and choose the right translation.</p>
 
 
 <div id="test1">
@@ -685,10 +697,15 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 </form>
 
 <%end%>
-<hr>
-<h3 class="exers">II. How much is the fish?</h3>
 
-<p class="task">a) <strong>Learn the following Russian words</strong>:</p>
+</div>
+
+<hr>
+<h3 class="exers ex-title">II. How much is the fish?</h3>
+<div class="ex-area">
+
+
+<p class="task ex-task">a) <strong>Learn the following Russian words</strong>:</p>
 
 <div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
@@ -842,7 +859,7 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 
 </div>
 
-<p class="task">b) Translate into Russian and check yourself:</p>
+<p class="task ex-task">b) Translate into Russian and check yourself:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -984,11 +1001,15 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 </table>
 </div>
 <%end%>
+
+</div>
+
 <hr>
 
-<h3 class="exers">III. Meat, fish ans sea products</h3>
+<h3 class="exers ex-title">III. Meat, fish ans sea products</h3>
+<div class="ex-area">
 
-<p class="task"><strong>a) Learn the Russian words</strong>: </p>
+<p class="task ex-task"><strong>a) Learn the Russian words</strong>: </p>
 
 <div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
@@ -1031,7 +1052,7 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 			</td>
 			<td width="30"><p>-</p>
 			<td>
-				<span>beef</span></td>
+				<span>beef</span>
 			</td>
 	</tr>
 </table>
@@ -1127,7 +1148,7 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 
 </div>
 
-<p class="task">b) Read Russian words and choose the right translation from the list:</p>
+<p class="task ex-task">b) Read Russian words and choose the right translation from the list:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -1139,11 +1160,15 @@ var t1 = new Test({dict:[['курица','chicken'],['свинина','pork'],['
 </script>
 </div>
 <%end%>
+
+</div>
+
 <hr>
 
-<h3 class="exers">IV. Vegetables and fruit</h3>
+<h3 class="exers ex-title">IV. Vegetables and fruit</h3>
+<div class="ex-area">
 
-<p class="task"><strong>a) Learn the following Russian words:</strong> </p>
+<p class="task ex-task"><strong>a) Learn the following Russian words:</strong> </p>
 
 <div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
@@ -1186,7 +1211,7 @@ var t1 = new Test({dict:[['курица','chicken'],['свинина','pork'],['
 			</td>
 			<td width="30"><p>-</p>
 			<td>
-				<span>cucumber</span></td>
+				<span>cucumber</span>
 			</td>
 	</tr>
 </table>
@@ -1355,7 +1380,7 @@ var t1 = new Test({dict:[['курица','chicken'],['свинина','pork'],['
 </table>
 </div>
 
-<p class="task">b) Read Russian words and choose the right translation from the list:</p>
+<p class="task ex-task">b) Read Russian words and choose the right translation from the list:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -1368,11 +1393,15 @@ var t2 = new Test({dict: [['картофель','potatoes'],['помидор','t
 
 </div>
 <%end%>
+
+</div>
+
 <hr>
 
-<h3 class="exers">V. What to order?</h3>
+<h3 class="exers ex-title">V. What to order?</h3>
+<div class="ex-area">
 
-<p class="task">a) Spot an odd one out:</p>
+<p class="task ex-task">a) Spot an odd one out:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -1413,7 +1442,7 @@ var t2 = new Test({dict: [['картофель','potatoes'],['помидор','t
 
 </form>
 <%end%>
-<p class="task">b) Listen to the lists of products and associate them with words below:</p>
+<p class="task ex-task">b) Listen to the lists of products and associate them with words below:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -1485,7 +1514,7 @@ var t2 = new Test({dict: [['картофель','potatoes'],['помидор','t
 </div>
 </form>
 <%end%>
-<p class="task">c) Associate Russian and English lists of products:</p>
+<p class="task ex-task">c) Associate Russian and English lists of products:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -1541,11 +1570,15 @@ var t2 = new Test({dict: [['картофель','potatoes'],['помидор','t
  </table>
 </form>
 <%end%>
+
+</div>
+
 <hr>
 
-<h3 class="exers">VI. Dessert.</h3>
+<h3 class="exers ex-title">VI. Dessert.</h3>
+<div class="ex-area">
 
-<p class="task">a) <strong>Learn the following Russian words:</strong></p>
+<p class="task ex-task">a) <strong>Learn the following Russian words:</strong></p>
 
 <div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
@@ -1759,7 +1792,7 @@ var t2 = new Test({dict: [['картофель','potatoes'],['помидор','t
 </div>
 
 
-<p class="task">b) Give a positive answer following the model:</p>
+<p class="task ex-task">b) Give a positive answer following the model:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -1891,7 +1924,7 @@ var t2 = new Test({dict: [['картофель','potatoes'],['помидор','t
 	</tr>
 </table>
 <%end%>
-<p class="task">c) Give a negative answer following the model:</p>
+<p class="task ex-task">c) Give a negative answer following the model:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -2024,13 +2057,17 @@ var t2 = new Test({dict: [['картофель','potatoes'],['помидор','t
 	</tr>
 </table>
 <%end%>
+
+</div>
+
 <hr>
 
-<h3 class="exers">VII. I love ice-cream!</h3>
+<h3 class="exers ex-title">VII. I love ice-cream!</h3>
+<div class="ex-area">
 
 <p>If you want to say that you like something (you love it) or you don't, you can use the expression "Я люблю .../ Я не люблю" (I love/I don't love). This expression means that the person likes something not in some concrete situation, but in general. For a concrete situation, usually the expression "Мне нравится/ мне не нравится" is used.</p>
 
-<p class="task">a) Learn the following examples:</p>
+<p class="task ex-task">a) Learn the following examples:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -2097,7 +2134,7 @@ var t2 = new Test({dict: [['картофель','potatoes'],['помидор','t
 
 </table>
 <%end%>
-<p class="task">b) Build phrases with the expression <span style="font-weight: normal">Я любл<span class="acco">ю</span></span>, using the following words:</p>
+<p class="task ex-task" style="">b) Build phrases with the expression <span style="font-weight: normal">Я любл<span class="acco">ю</span></span>, using the following words:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -2194,7 +2231,7 @@ var t2 = new Test({dict: [['картофель','potatoes'],['помидор','t
 	</tr>
 </table>
 <%end%>
-<p class="task">c) Build phrases with the expression <span style="font-weight: normal">Я не любл<span class="acco">ю</span></span>, using the following words:</p>
+<p class="task ex-task">c) Build phrases with the expression <span style="font-weight: normal">Я не любл<span class="acco">ю</span></span>, using the following words:</p>
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
@@ -2290,7 +2327,7 @@ var t2 = new Test({dict: [['картофель','potatoes'],['помидор','t
 	</tr>
 </table>
 <%end%>
-<p class="task">d) Notice that if the noun has <span style="font-weight: normal">-a</span> [-a] on its end, in this expression <span style="font-weight: normal">-a</span> will cnange to <span style="font-weight: normal">-у</span> [-oo]. Look at the following examples:</p>
+<p class="task ex-task">d) Notice that if the noun has <span style="font-weight: normal">-a</span> [-a] on its end, in this expression <span style="font-weight: normal">-a</span> will cnange to <span style="font-weight: normal">-у</span> [-oo]. Look at the following examples:</p>
 
 <table  cellspacing="0" >
 	<tr valign="top">
@@ -2333,7 +2370,7 @@ var t2 = new Test({dict: [['картофель','potatoes'],['помидор','t
 
 </table>
 
-<p class="task">Build phrases with the expression <span style="font-weight: normal">Я любл<span class="acco">ю</span></span>, using the following words:</p>
+<p class="task ex-task">Build phrases with the expression <span style="font-weight: normal">Я любл<span class="acco">ю</span></span>, using the following words:</p>
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
@@ -2429,7 +2466,10 @@ var t2 = new Test({dict: [['картофель','potatoes'],['помидор','t
 	</tr>
 </table>
 <%end%>
-<hr>
+
+</div>
+
+<hr class="less-end">
 
 <h3>In this lesson you have learnt:</h3>  
 

@@ -24,6 +24,14 @@ padding-left: 25px;
 padding-bottom: 20px;
 }
 
+hr {
+display: none;
+}
+
+.content {
+padding: 20px 40px 40px 30px;
+}
+
 </style>
 
 <% end %>
@@ -53,11 +61,13 @@ padding-bottom: 20px;
 	<%=@hide_title%>
 <% end %>
 <hr>
-<h3 class="exers">I. Transport</h3>
+
 
 <div id="pagecontent"><div id="content">
 
-<p class="task">a) Dialogues</p>
+<h3 class="exers ex-title">I. Transport</h3>
+<div class="ex-area">
+<p class="task ex-task">a) Dialogues</p>
 <h3>1. Underground</h3>
 <p>
 A tourist looks for the ticket office in the underground. He asks a passer-by where it is situated and he asks about the fare in the underground as well.
@@ -72,7 +82,7 @@ A tourist looks for the ticket office in the underground. He asks a passer-by wh
 <table class="audio-task" cellspacing="0">        
 	<tr>
 		<td>
-		<p class="task">Listen to the dialogue and read the translation</p>
+		<p class="task ex-task">Listen to the dialogue and read the translation</p>
 		</td>
 
  		<td> 
@@ -213,7 +223,7 @@ A tourist is going to take a taxi in order to get to the hotel. He asks the taxi
 <table class="audio-task" cellspacing="0">        
 	<tr>
 		<td>
-		<p class="task">Listen to the dialogue and read the translation</p>
+		<p class="task ex-task">Listen to the dialogue and read the translation</p>
 		</td>
  		<td> 
         	<div class="player_swf"><span style="visibility: hidden">audios/audio02011200.mp3</span></div>
@@ -372,7 +382,7 @@ A tourist takes a bus. He asks another passanger how many stops he should take t
 <table class="audio-task" cellspacing="0">        
 	<tr>
 		<td>
-		<p class="task">Listen to the dialogue and read the translation</p>
+		<p class="task ex-task">Listen to the dialogue and read the translation</p>
 		</td>
  		<td> 
         	<div class="player_swf"><span style="visibility: hidden">audios/audio02011300.mp3</span></div>
@@ -461,9 +471,9 @@ A tourist takes a bus. He asks another passanger how many stops he should take t
 </div>
 
 <% end %>
-
-<p class="task" style="padding-top: 20px;">b) Listen and repeat the dialogue phrase by phrase. </p>
-<p class="task">c) Listen to the phrases in Russian and choose the right translation.</p>
+<br>
+<p class="task ex-task" >b) Listen and repeat the dialogue phrase by phrase. </p>
+<p class="task ex-task">c) Listen to the phrases in Russian and choose the right translation.</p>
 <div id="test1">
 <script type="text/javascript">
 T['1']=['6','8','1','5','4','2','7','3']; // For Test#1 answers are '5' - for 1-st question, '2' - for second question
@@ -594,8 +604,12 @@ T['4']=['100','10','80','20','60']; // For Test#3
 
 </form>
 <%end%>
+</div>
+
 <hr>
-<h3 class="exers">II. Where is the bus stop?</h3>
+<h3 class="exers ex-title">II. Where is the bus stop?</h3>
+<div class="ex-area">
+
 <p>In the previous lesson you learned the following expression in Russian:</p>
 
 <table  cellspacing="0" >      
@@ -613,7 +627,7 @@ T['4']=['100','10','80','20','60']; // For Test#3
 	</tr>
 </table>
 
-<p class="task">a) <strong>Learn the Russian words</strong>:</p>
+<p class="task ex-task">a) <strong>Learn the Russian words</strong>:</p>
 
 <div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
@@ -783,7 +797,7 @@ T['4']=['100','10','80','20','60']; // For Test#3
 
 </div>
 
-<p class="task">b) Ask a stranger, where is:</p>
+<p class="task ex-task">b) Ask a stranger, where is:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 
@@ -878,12 +892,14 @@ T['4']=['100','10','80','20','60']; // For Test#3
 </table>
 </div>
 <%end%>
+</div>
+
 <hr>
 
-<h3 class="exers">III. To the airport! </h3>
+<h3 class="exers ex-title">III. To the airport! </h3>
+<div class="ex-area">
 
-
-<p class="task"><strong>a) Learn the following Russian words</strong>: </p>
+<p class="task ex-task"><strong>a) Learn the following Russian words</strong>: </p>
 
 <div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
@@ -963,7 +979,7 @@ T['4']=['100','10','80','20','60']; // For Test#3
 
 </div>
 
-<p class="task">b) Look at the pictures and answer the questions following the model:</p>
+<p class="task ex-task">b) Look at the pictures and answer the questions following the model:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 
@@ -1111,7 +1127,7 @@ T['4']=['100','10','80','20','60']; // For Test#3
 
 <%end%>
 
-<p class="task">c) Translate into Russian and check yourself:</p>
+<p class="task ex-task">c) Translate into Russian and check yourself:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 
@@ -1206,9 +1222,13 @@ T['4']=['100','10','80','20','60']; // For Test#3
 </table>
 </div>
 <%end%>
+</div>
+
 <hr>
 
-<h3 class="exers">IV. I need to go to the hotel.</h3>
+<h3 class="exers ex-title">IV. I need to go to the hotel.</h3>
+<div class="ex-area">
+
 <p>In the dialogue above you have seen the following construction:</p>
 
 <table  cellspacing="0" >      
@@ -1226,7 +1246,7 @@ T['4']=['100','10','80','20','60']; // For Test#3
 	</tr>
 </table>
 
-<p class="task">a) Learn the following expressions: </p>
+<p class="task ex-task">a) Learn the following expressions: </p>
 
 <div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
@@ -1306,7 +1326,7 @@ T['4']=['100','10','80','20','60']; // For Test#3
 </table>
 </div>					
 
-<p class="task">b) Translate into Russian and check yourself:</p>
+<p class="task ex-task">b) Translate into Russian and check yourself:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 
@@ -1400,10 +1420,12 @@ T['4']=['100','10','80','20','60']; // For Test#3
 </table>
 </div>
 <%end%>
-
+</div>
 <hr>
 
-<h3 class="exers">V. It's to the right.</h3>
+<h3 class="exers ex-title">V. It's to the right.</h3>
+<div class="ex-area">
+
 <p>In the dialogue above you have seen the following expression:</p>
 
 <table  cellspacing="0" >      
@@ -1421,7 +1443,7 @@ T['4']=['100','10','80','20','60']; // For Test#3
 	</tr>
 </table>
 
-<p class="task">a) <strong>Learn the following Russian words</strong>: </p>
+<p class="task ex-task">a) <strong>Learn the following Russian words</strong>: </p>
 
 <div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
@@ -1471,7 +1493,7 @@ T['4']=['100','10','80','20','60']; // For Test#3
 </table>
 </div>		
 
-<p class="task">b) Listen to the mini-dialogues and do the following tasks:</p>
+<p class="task ex-task">b) Listen to the mini-dialogues and do the following tasks:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 
@@ -1512,7 +1534,7 @@ T['4']=['100','10','80','20','60']; // For Test#3
 	</tr>
 </table>
 
-<p class="task" style="margin-top: 0px; clear: left;">Choose an appropriate variant to continue the phrase:</p>
+<p class="task ex-task" style="margin-top: 0px; clear: left;">Choose an appropriate variant to continue the phrase:</p>
 
 
 <form onsubmit="return check_test(this,2, 'c0102052.V.b)')" style="margin-bottom: 0px;">
@@ -1528,10 +1550,11 @@ T['4']=['100','10','80','20','60']; // For Test#3
 </form>
 <%end%>
 <br>
+</div>
 <hr>
 
-<h3 class="exers">VI. How much is the fare?</h3>
-
+<h3 class="exers ex-title">VI. How much is the fare?</h3>
+<div class="ex-area">
 <p>In the dialogue above you have seen the following construction:</p>
 
 <table  cellspacing="0" >      
@@ -1550,7 +1573,7 @@ T['4']=['100','10','80','20','60']; // For Test#3
 </table>
 
 
-<p class="task">a) Learn the following expressions: </p>
+<p class="task ex-task">a) Learn the following expressions: </p>
 
 <div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
@@ -1629,7 +1652,7 @@ T['4']=['100','10','80','20','60']; // For Test#3
 </table>
 </div>					
 
-<p class="task">b) Translate into Russian and check yourself:</p>
+<p class="task ex-task">b) Translate into Russian and check yourself:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 
@@ -1723,10 +1746,12 @@ T['4']=['100','10','80','20','60']; // For Test#3
 </table>
 </div>
 <%end%>
-
+</div>
 <hr>
-<h3 class="exers">VII. Numerals</h3>
-<p class="task">a) Learn the following Russian numerals:</p>
+<h3 class="exers ex-title">VII. Numerals</h3>
+<div class="ex-area">
+
+<p class="task ex-task">a) Learn the following Russian numerals:</p>
 
 <table cellpadding="0" cellspacing="0" border="0">
 	<tr>
@@ -2246,7 +2271,7 @@ T['4']=['100','10','80','20','60']; // For Test#3
 	</tr>
 </table>
 <%end%>
-<p class="task">b) Listen to the mini-dialogues and do the following tasks:</p>
+<p class="task ex-task">b) Listen to the mini-dialogues and do the following tasks:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 
@@ -2326,7 +2351,7 @@ T['4']=['100','10','80','20','60']; // For Test#3
 
 <%end%>
 
-<p class="task">c) Learn the following numerals in Russian:</p>
+<p class="task ex-task">c) Learn the following numerals in Russian:</p>
 
 <table cellpadding="0" cellspacing="0" border="0">
 	<tr>
@@ -2607,7 +2632,7 @@ T['4']=['100','10','80','20','60']; // For Test#3
 </table>
 <%end%>
 
-<p class="task">d) Listen to the mini-dialogues and do the following tasks:</p>
+<p class="task ex-task">d) Listen to the mini-dialogues and do the following tasks:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -2681,8 +2706,11 @@ T['4']=['100','10','80','20','60']; // For Test#3
 </form>
 
 <%end%>
+</div>
 
-<hr>
+<br><br>
+
+<hr class="less-end">
 
 <h3>In this lesson you have learnt:</h3> 
  

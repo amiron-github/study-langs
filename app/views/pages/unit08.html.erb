@@ -84,6 +84,14 @@ background-position: -0px 5px;
 padding-bottom: 10px;
 }
 
+hr {
+display: none;
+}
+
+.content {
+padding: 20px 40px 40px 30px;
+}
+
 </style>
 
 <% end %>
@@ -111,13 +119,16 @@ padding-bottom: 10px;
 	<%=@hide_title%>
 <% end %>
 <hr>
-<h3 class="exers">I. At the drugstore</h3>
+
 
 
 
 <div id="pagecontent"><div id="content">
+<h3 class="exers ex-title">I. At the drugstore</h3>
+<div class="ex-area">
 
-<p class="task">a) Dialogue</p>
+
+<p class="task ex-task">a) Dialogue</p>
 <p>
 A tourist comes to the drugstore and asks a medicine against cold. She has a running nose and a sore throat. The chemist advises to take a nasal spray, sore throat pastilles and an antiviral drug. He tells how to take these medicines. The tourist buys them and thanks the chemist for help.
 </p>
@@ -129,7 +140,7 @@ A tourist comes to the drugstore and asks a medicine against cold. She has a run
 	<tr>
 
 		<td>
-		<p class="task">Listen to the dialogue and read the translation</p>
+		<p class="task ex-task">Listen to the dialogue and read the translation</p>
 		</td>
  		<td> 
         		<div class="player_swf"><span style="visibility: hidden">audios/audio08011100.mp3</span></div>
@@ -362,8 +373,11 @@ A tourist comes to the drugstore and asks a medicine against cold. She has a run
 </table>
 </div>
 <%end%>
-<p class="task" style="padding-top: 20px;">b) Listen and repeat the dialogues phrase by phrase. </p>
-<p class="task">c) Listen to the phrases in Russian and choose the right translation.</p>
+
+<br>
+<br>
+<p class="task ex-task">b) Listen and repeat the dialogues phrase by phrase. </p>
+<p class="task ex-task">c) Listen to the phrases in Russian and choose the right translation.</p>
 <div id="test1">
 <script type="text/javascript">
 T['1']=['3','9','1','7','6','5','4','8','2']; // For Test#1 answers are '5' - for 1-st question, '2' - for second question
@@ -516,10 +530,14 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 </div>
 </form>
 <%end%>
-<hr>
-<h3 class="exers">II. Parts of body.</h3>
 
-<p class="task">a) <strong>Learn the following Russian words</strong>:</p>
+</div>
+
+<hr>
+<h3 class="exers ex-title">II. Parts of body.</h3>
+<div class="ex-area">
+
+<p class="task ex-task">a) <strong>Learn the following Russian words</strong>:</p>
 
 <div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
@@ -643,7 +661,7 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 
 </div>
 
-<p class="task">b) Listen to the Russian words and choose the right translation from the list:</p>
+<p class="task ex-task">b) Listen to the Russian words and choose the right translation from the list:</p>
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
@@ -654,12 +672,15 @@ var t1 = new Test({dict:[['audios/audio08021010.mp3','head'],['audios/audio08021
 </script>
 </div>
 <%end%>
+
+</div>
+
 <hr>
 
-<h3 class="exers">III. Organs.</h3>
+<h3 class="exers ex-title">III. Organs.</h3>
+<div class="ex-area">
 
-
-<p class="task"><strong>a) Learn the Russian words</strong>: </p>
+<p class="task ex-task"><strong>a) Learn the Russian words</strong>: </p>
 
 <div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
@@ -782,7 +803,7 @@ var t1 = new Test({dict:[['audios/audio08021010.mp3','head'],['audios/audio08021
 </table>
 </div>
 
-<p class="task">b) Associate parts of body and organs: </p>
+<p class="task ex-task">b) Associate parts of body and organs: </p>
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
@@ -841,14 +862,18 @@ var t1 = new Test({dict:[['audios/audio08021010.mp3','head'],['audios/audio08021
  </table>
 </form>
 <%end%>
+
+</div>
+
 <hr>
 
 
-<h3 class="exers">IV. I have a head ache.</h3>
+<h3 class="exers ex-title">IV. I have a head ache.</h3>
+<div class="ex-area">
 
 <p>If you feel some pain, you can tell about it with expression "У меня болит ..." [oo minya balit] indicating the location (part of the body or the organ) of the pain. In case the noun is in plural (e.g. eyes or teeth), it necessary to use "болят" [balyat] instead of "болит". Look at the following examples:</p>
 
-<p class="task">a) Look, listen and reapeat the examples:</p>
+<p class="task ex-task">a) Look, listen and reapeat the examples:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -916,7 +941,7 @@ var t1 = new Test({dict:[['audios/audio08021010.mp3','head'],['audios/audio08021
 	</tr>
 </table>
 <%end%>
-<p class="task">b) Look at the location of the pain and choose a corresponding Russian phrase.</p>
+<p class="task ex-task">b) Look at the location of the pain and choose a corresponding Russian phrase.</p>
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
@@ -928,7 +953,7 @@ var t2 = new Test({dict:[['<div class="corp head"></div>','У меня боли�
 </script>
 </div>
 <%end%>
-<p class="task">c) Translate into Russian and check yourself:</p>
+<p class="task ex-task">c) Translate into Russian and check yourself:</p>
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
@@ -1070,11 +1095,15 @@ var t2 = new Test({dict:[['<div class="corp head"></div>','У меня боли�
 </table>
 </div>
 <%end%>
+
+</div>
+
 <hr>
 
-<h3 class="exers">V. Health problems</h3>
+<h3 class="exers ex-title">V. Health problems</h3>
+<div class="ex-area">
 
-<p class="task"><strong>a) Learn the following Russian words:</strong></p>
+<p class="task ex-task"><strong>a) Learn the following Russian words:</strong></p>
 
 <div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
@@ -1242,7 +1271,7 @@ var t2 = new Test({dict:[['<div class="corp head"></div>','У меня боли�
 </table>
 </div>
 
-<p class="task">b) Give a positive answer following the model to the questions:</p>
+<p class="task ex-task">b) Give a positive answer following the model to the questions:</p>
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
@@ -1390,7 +1419,7 @@ var t2 = new Test({dict:[['<div class="corp head"></div>','У меня боли�
 </table>
 
 <%end%>
-<p class="task">c) In previous lessons you have learnt how to to ask someone for advice:</p>
+<p class="task ex-task">c) In previous lessons you have learnt how to to ask someone for advice. Look at the example and translate phrases from English into Russian:</p>
 
 <table  cellspacing="0" >
 	<tr valign="top">
@@ -1556,11 +1585,16 @@ var t2 = new Test({dict:[['<div class="corp head"></div>','У меня боли�
 </div>
 
 <%end%>
+
+</div>
+
 <hr>
 
-<h3 class="exers">VI. Remedy.</h3>
+<h3 class="exers ex-title">VI. Remedy.</h3>
+<div class="ex-area">
 
-<p class="task">a) <strong>Learn the following Russian words:</strong></p>
+
+<p class="task ex-task">a) <strong>Learn the following Russian words:</strong></p>
 
 <div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
@@ -1713,7 +1747,7 @@ var t2 = new Test({dict:[['<div class="corp head"></div>','У меня боли�
 </table>
 </div>
 
-<p class="task">b) Read the English word and choose the corresponding translation in Russian:</p>
+<p class="task ex-task">b) Read the English word and choose the corresponding translation in Russian:</p>
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
@@ -1724,7 +1758,7 @@ var t3 = new Test({dict: [['medicine','лекарство'],['remedy','сред�
 </script>
 </div>
 <%end%>
-<p class="task">c) Find the translation for remedies in Russian:</p>
+<p class="task ex-task">c) Find the translation for remedies in Russian:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -1828,11 +1862,15 @@ var t3 = new Test({dict: [['medicine','лекарство'],['remedy','сред�
  </table>
 </form>
 <%end%>
+
+</div>
+
 <hr>
 
-<h3 class="exers">VII. Take one capsule 3-4 times a day!</h3>
+<h3 class="exers ex-title">VII. Take one capsule 3-4 times a day!</h3>
+<div class="ex-area">
 
-<p class="task">a) Learn the following expressions:</p>
+<p class="task ex-task">a) Learn the following expressions:</p>
 
 <div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
@@ -1987,7 +2025,7 @@ var t3 = new Test({dict: [['medicine','лекарство'],['remedy','сред�
 
 </div>
 
-<p class="task">b) Listen to the recommendations and choose the right answer:</p>
+<p class="task ex-task">b) Listen to the recommendations and choose the right answer:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -2113,7 +2151,14 @@ var t3 = new Test({dict: [['medicine','лекарство'],['remedy','сред�
 	</table>
 </form>
 <%end%>
-<hr>
+
+</div>
+
+
+<br>
+<br>
+
+<hr class="less-end">
 
 <h3>In this lesson you have learnt:</h3>  
 

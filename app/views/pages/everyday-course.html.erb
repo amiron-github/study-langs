@@ -5,16 +5,25 @@
 <style type="text/css">
 
 
+h2.page {
+margin-bottom:0;
+}
+
 h3 {
 font-size: 14px;
 }
+
 .les-desc h4 {
 font-style: italic;
-padding-left: 5px;
+margin-top: 0px;
+margin-bottom: 10px;
+font-size: 13px;
+color: #333;
 }
 
 .les-desc p {
-text-indent: 10px;
+margin-top: 0px;
+margin-bottom: 20px;
 }
 
 .les-desc a {
@@ -23,6 +32,41 @@ font-weight: bold;
 font-size: 11px;
 }
 
+h3.course_item {
+border: 1px solid #BFBFBF;
+border-bottom: 1px solid #DFDFDF;
+border-bottom: 1px solid #BFBFBF;
+background-color: #E0E7EF;
+background-image: url('/images/h3-bg.png');
+background-position: left bottom;
+background-repeat: repeat-x;
+padding: 5px 20px 5px;
+margin: 0px 0 0px;
+color: #333;
+font-style: italic;
+text-shadow: 0px 1px 0px #fff;
+}
+
+.p-grd-rt {
+background-image: url("/images/p-bg-rt-s.gif");
+background-repeat: repeat-y;
+background-position: right top;
+border: 1px solid #BFBFBF;
+border-bottom: 0px solid #CFCFCF;
+border-top: 0px solid #CFCFCF;
+margin: 0px 1px 0px;
+}
+
+.p-grd-lft {
+background-image: url("/images/p-bg-lft.gif");
+background-repeat: repeat-y;
+background-position: -40px top;
+padding: 20px 30px 30px;
+}
+
+.p-last {
+border-bottom: 1px solid #BFBFBF;
+}
 
 
 </style>
@@ -31,7 +75,6 @@ font-size: 11px;
 
 <h2 class="page">Everyday Russian Course</h2>
 
-
 <h3 class="page-path">
 	<span class="int-links">
 	<a href="course.html">Online Russian Courses</a>
@@ -39,11 +82,14 @@ font-size: 11px;
 	</span>
 </h3>
 
+
 <p>
 Find an easy way to learn the language you need for most everyday situations. The 10 online lessons of this course include everything to enable you to to start speaking right away: dialogues, vocabulary lists, interactive exercises and tests.
 </p>
 
-<h3 class="ital">Content:</h3>
+<h3 class="course_item">Content</h3>
+<div class="p-grd-rt">
+<div class="p-grd-lft">
 
 <div class="inner-listing"  style="padding-left: 10px">
 <p class="bold">
@@ -108,8 +154,12 @@ Find an easy way to learn the language you need for most everyday situations. Th
 </p>
 </div>
 
+</div>
+</div>
 
-<h3 class="ital">Features:</h3>
+<h3 class="course_item">Features</h3>
+<div class="p-grd-rt">
+<div class="p-grd-lft">
 
 <ul class="ital" style="padding-left: 30px">
 	<li>Work with realistic dialogues recorded by native speakers
@@ -120,25 +170,18 @@ Find an easy way to learn the language you need for most everyday situations. Th
 	<li>No background in Russian is needed
 </ul>
 
+</div>
+</div>
 
+<h3 class="course_item">Overview</h3>
+<div class="p-grd-rt">
+<div class="p-grd-lft">
 
-			<p>
-				<% if !(logged_in? && current_user.payment) %>
-				You can try for free the first lesson of this course and review a limited version of other lessons.
-				<br><br>
-				<a href="unit01.html" title="Try Lesson 1 for free" class="bold" style="text-decoration: none"><span style="text-decoration: underline">TRY LESSON 1 FOR FREE</span> >></a>
-				<%else%>
-					Every lesson in this course is devoted to a definite topic. The topics cover typical situations which a person visiting Russia may get into.
-				<%end%>
-			</p>
 			
-			
+
 			<p>
 				This online course will give you an opportunity to experience conversational language and learn the vocabulary for introductions, finding your way, shopping, using telephone and internet etc. 
-				
-				<% if !(logged_in? && current_user.payment) %>
 				Every lesson in this course is devoted to a definite topic. The topics cover typical situations which a person visiting Russia may get into.
-				<%end%>
 			</p>
 			
 			
@@ -149,9 +192,27 @@ Find an easy way to learn the language you need for most everyday situations. Th
 			<%end%>
 			</p>
 			
-			
-			
-			<% if !(logged_in? && current_user.payment) %>
+			<p>
+				The full version of this course is available for subscribed users. Other users have access to the full version of the first lesson and to a limited version of other lessons.
+			</p>
+			<p>
+				<% if !(logged_in? && current_user.payment) %>
+				You can try for free the first lesson of this course and review a limited version of other lessons.
+				<br><br>
+				<a href="unit01.html" title="Try Lesson 1 for free" class="bold" style="text-decoration: none"><span style="text-decoration: underline">TRY LESSON 1 FOR FREE</span> >></a>
+				<%end%>
+			</p>
+</div>
+</div>
+		
+
+		
+<h3 class="course_item">Subscription</h3>			
+<div class="p-grd-rt">
+<div class="p-grd-lft">
+
+
+
 			<p>
 				We have the following options for those who would like to subscribe to this course:
 			</p>
@@ -161,7 +222,7 @@ Find an easy way to learn the language you need for most everyday situations. Th
 				<li> 4-month subscription - <b>$14.99 USD</b></li>
 				<li> 6-month subscription - <b>$19.99 USD</b></li>
 			</ul>
-			<% end %>
+
 			
 			<% if  !logged_in? %>
 				<p>If you would like to subscribe to this  course, please, <a href="/signup">Sign Up</a> or <a href="login">Sign In</a> and complete the payment procedure.</p>
@@ -173,15 +234,13 @@ Find an easy way to learn the language you need for most everyday situations. Th
 			<%end%> 
 			
 			
-			<p>
-				The full version of this course is available for subscribed users. Other users have access to the full version of the first lesson and to a limited version of other lessons.
-			</p>
-			
-			
-			
+</div>
+</div>
 
 
-<h3>Short description of each lesson:</h3>
+<h3 class="course_item">Short description of each lesson</h3>
+<div class="p-grd-rt">
+<div class="p-grd-lft">
 
 <div style="padding: 0 30px 0 0;" class="les-desc">
 
@@ -256,7 +315,12 @@ This lesson contains words and expressions related the topic "Means of Communica
 
 </div>
 
-<h3>Additional information:</h3>
+</div>
+</div>
+
+<h3 class="course_item">Additional information</h3>
+<div class="p-grd-rt">
+<div class="p-grd-lft">
 
 <p>Every lesson includes the following types of exercises:</p>
 
@@ -270,7 +334,12 @@ This lesson contains words and expressions related the topic "Means of Communica
 <strong>Exercises with new expressions and constructions.</strong> These exercises contain various constructions which can be used to build phrases related to different topics. Besides, they may be accompanied by grammar comments.
 </p>
 
-<h3>Recommendations:</h3>
+</div>
+</div>
+
+<h3 class="course_item">Recommendations</h3>
+<div class="p-grd-rt p-last">
+<div class="p-grd-lft">
 
 <p>
 Before you begin working with this course, we recommend you to see the sections <a href="pronunciation.html">Russian Pronunciation</a> and <a href="russian-reading.html">Reading in Russian</a>. If you familiarize with them the work with the course will be easier, since when you do the exercises of the lessons you will devote less attention to the pronunciation and transcription of the words and expressions, and the tasks of the lessons will be simpler to fulfill.
@@ -279,6 +348,8 @@ Before you begin working with this course, we recommend you to see the sections 
 We also advise to visit <a href="test-use.html">How to use tests</a> page to learn how to work with tests which you will find in the online lessons, and <a href="functions.html">Functions and settings</a>  page to read information about available functions on our website that may make it easier to learn Russian.
 </p>
 
+</div>
+</div>
 
 
 

@@ -47,6 +47,14 @@ padding:8px;
 width: 300px;
 }
 
+hr {
+display: none;
+}
+
+.content {
+padding: 20px 40px 40px 30px;
+}
+
 </style>
 
 <% end %>
@@ -73,13 +81,12 @@ width: 300px;
 	<%=@hide_title%>
 <% end %>
 <hr>
-<h3 class="exers">I. Internet &amp; Telephone</h3>
-
 
 
 <div id="pagecontent"><div id="content">
-
-<p class="task">a) Dialogues</p>
+<h3 class="exers ex-title">I. Internet &amp; Telephone</h3>
+<div class="ex-area">
+<p class="task ex-task">a) Dialogues</p>
 <p>
 A tourist has come to a cyber cafe. She needs to check her email and upload some photos. She asks about the fees in this cyber cafe. The fees are: 30 rubles for 15 minutes, 50 rubles for 30 minutes and 70 rubles for 1 hour. 
 The administrator tells the tourists to work on the computer 22. He adds that the tourist should pay after she finishes to work. 
@@ -93,7 +100,7 @@ The administrator tells the tourists to work on the computer 22. He adds that th
 <table class="audio-task" cellspacing="0">        
 	<tr>
 		<td>
-		<p class="task">Listen to the dialogue and read the translation</p>
+		<p class="task ex-task">Listen to the dialogue and read the translation</p>
 		</td>
  		<td> 
         	<div class="player_swf"><span style="visibility: hidden">audios/audio10011100.mp3</span></div>
@@ -230,7 +237,7 @@ In a hotel, a tourists asks the receptionist how to use the phone in the hotel r
 <table class="audio-task" cellspacing="0">        
 	<tr>
 		<td>
-		<p class="task">Listen to the dialogue and read the translation</p>
+		<p class="task ex-task">Listen to the dialogue and read the translation</p>
 		</td>
 
  		<td> 
@@ -413,8 +420,11 @@ In a hotel, a tourists asks the receptionist how to use the phone in the hotel r
 </table>
 </div>
 <%end%>
-<p class="task" style="padding-top: 20px;">b) Listen and repeat the dialogues phrase by phrase. </p>
-<p class="task">c) Listen to the phrases in Russian and choose the right translation.</p>
+
+<br>
+<br>
+<p class="task ex-task">b) Listen and repeat the dialogues phrase by phrase. </p>
+<p class="task ex-task">c) Listen to the phrases in Russian and choose the right translation.</p>
 
 <div id="test1">
 <script type="text/javascript">
@@ -571,10 +581,12 @@ T['7']=['5','4','2','1','3'];
 </div>
 </form>
 <%end%>
-<hr>
-<h3 class="exers">II. Internet.</h3>
+</div>
 
-<p class="task">a) <strong>Learn the following Russian words</strong>:</p>
+<hr>
+<h3 class="exers ex-title">II. Internet.</h3>
+<div class="ex-area">
+<p class="task ex-task">a) <strong>Learn the following Russian words</strong>:</p>
 
 <div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
@@ -773,7 +785,7 @@ T['7']=['5','4','2','1','3'];
 </table>
 </div>
 
-<p class="task">b) Read the English word and choose the corresponding translation in Russian:</p>
+<p class="task ex-task">b) Read the English word and choose the corresponding translation in Russian:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -786,7 +798,7 @@ var t1 = new Test({dict: [['Internet','Интернет'],['cyber cafe','инт�
 </script>
 </div>
 <%end%>
-<p class="task">c) Translate into Russian and check yourself:</p>
+<p class="task ex-task">c) Translate into Russian and check yourself:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -895,11 +907,15 @@ var t1 = new Test({dict: [['Internet','Интернет'],['cyber cafe','инт�
 </table>
 </div>
 <%end%>
+
+</div>
+
 <hr/>
 
-<h3 class="exers">III. Phone</h3>
+<h3 class="exers ex-title">III. Phone</h3>
+<div class="ex-area">
 
-<p class="task">a) <strong>Learn the Russian words:</strong></p>
+<p class="task ex-task">a) <strong>Learn the Russian words:</strong></p>
 
 <div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
@@ -1085,7 +1101,7 @@ var t1 = new Test({dict: [['Internet','Интернет'],['cyber cafe','инт�
 
 </div>
 
-<p class="task">b) Listen to the questions in Russian and find the corresponding answers:</p>
+<p class="task ex-task">b) Listen to the questions in Russian and find the corresponding answers:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -1181,7 +1197,7 @@ var t1 = new Test({dict: [['Internet','Интернет'],['cyber cafe','инт�
 </div>
 </form>
 <%end%>
-<p class="task">c) Translate into Russian and check yourself:</p>
+<p class="task ex-task">c) Translate into Russian and check yourself:</p>
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
@@ -1291,11 +1307,15 @@ var t1 = new Test({dict: [['Internet','Интернет'],['cyber cafe','инт�
 
 </div>
 <%end%>
+
+</div>
+
 <hr>
 
-<h3 class="exers">IV. I need a phone!</h3>
+<h3 class="exers ex-title">IV. I need a phone!</h3>
+<div class="ex-area">
 
-<p class="task">a) Choose <span style="font-weight: normal">нужен</span>, <span style="font-weight: normal">нужна</span>, <span style="font-weight: normal">нужно</span> or <span style="font-weight: normal">нужны</span> in the following phrases: </p>
+<p class="task ex-task">a) Choose <span style="font-weight: normal">нужен</span>, <span style="font-weight: normal">нужна</span>, <span style="font-weight: normal">нужно</span> or <span style="font-weight: normal">нужны</span> in the following phrases: </p>
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
@@ -1359,7 +1379,7 @@ var t1 = new Test({dict: [['Internet','Интернет'],['cyber cafe','инт�
 </table>
 </form>
 <%end%>
-<p class="task">b) Translate into Russian using words <span style="font-weight: normal">этот</span>, <span style="font-weight: normal">эта</span>, <span style="font-weight: normal">это</span> or <span style="font-weight: normal">эти</span> and check yourself:</p>
+<p class="task ex-task">b) Translate into Russian using words <span style="font-weight: normal">этот</span>, <span style="font-weight: normal">эта</span>, <span style="font-weight: normal">это</span> or <span style="font-weight: normal">эти</span> and check yourself:</p>
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
@@ -1499,10 +1519,13 @@ var t1 = new Test({dict: [['Internet','Интернет'],['cyber cafe','инт�
 </table>
 </div>
 <%end%>
-<hr>
-<h3 class="exers">V. Different situations</h3>
+</div>
 
-<p class="task">
+<hr>
+<h3 class="exers ex-title">V. Different situations</h3>
+<div class="ex-area">
+
+<p class="task ex-task">
 Listen to the dialogues and answer the questions choosing the answer or putting a numeral in the text area. 
 </p>
 <% if !(logged_in? && current_user.payment) %>
@@ -1628,11 +1651,16 @@ Listen to the dialogues and answer the questions choosing the answer or putting 
 	</tr>
  </table>
 <%end%>
+
+</div>
+
 <hr>
 
-<h3 class="exers">VI. Numbers and Time</h3>
+<h3 class="exers ex-title">VI. Numbers and Time</h3>
+<div class="ex-area">
 
-<p class="task">a) Listen to the numbers and write them in the text area:</p>
+
+<p class="task ex-task">a) Listen to the numbers and write them in the text area:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -1657,7 +1685,7 @@ var t3 = new Test({dict: [
 </script>
 </div>
 <%end%>
-<!--p class="task">b) Listen to the phrases and choose the corresponding time indication from the list:</p>
+<!--p class="task ex-task">b) Listen to the phrases and choose the corresponding time indication from the list:</p>
 
 <div id="t3">
 <script type="text/javascript">
@@ -1672,11 +1700,15 @@ var t3 = new Test({dict: [
 ],hide: 'di3',id:'t3', type: 'audio', how_questions: 6, how_show: 2});
 </script>
 </div-->
+
+</div>
+
 <hr/>
 
-<h3 class="exers">VII. Revision.</h3>
+<h3 class="exers ex-title">VII. Revision.</h3>
+<div class="ex-area">
 
-<p class="task">a) Read Russian phrases and find the translation from the list:</p>
+<p class="task ex-task">a) Read Russian phrases and find the translation from the list:</p>
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
@@ -1697,7 +1729,7 @@ var t4 = new Test({dict: [
 </script>
 </div>
 <%end%>
-<p class="task">b) Translate into Russian and check yourself:</p>
+<p class="task ex-task">b) Translate into Russian and check yourself:</p>
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
@@ -1872,7 +1904,11 @@ var t4 = new Test({dict: [
 </table>
 </div>
 <%end%>
-<hr>
+
+</div>
+<br>
+<br>
+<hr class="less-end">
 <h3>In this lesson you have learnt:</h3>  
 
 <p>Words and expressions on the topic "Means of Communication":</p> 
