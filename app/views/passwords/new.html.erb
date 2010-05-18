@@ -1,23 +1,220 @@
-<h2>Forgot Your Password?</h2>
+<% @page_title = 'Forgotten Password?' %>
+
+
+<% content_for :special_js_css do %>
+
+<%= stylesheet_link_tag 'sign-forms' %>
+
+<style type="text/css">
+
+
+.errorExplanation {
+text-align: left;
+margin-left: 30px;
+margin-right: 30px;
+}
+
+.errorExplanation h2 {
+color: red;
+font-size: 16px;
+font-weight: bold;
+text-align: center;
+margin: 40px 30px 30px;
+display: none  !important;
+display: block;
+}
+
+html>body .errorExplanation h2 {
+display: block !important;
+}
+
+.errorExplanation li, .errorExplanation p {
+font-size: 11px;
+color: #666666;
+}
+
+.errorExplanation p {
+font-weight: bold;
+}
+
+.errorExplanation p, .errorExplanation ul {
+margin-left: 25px;
+}
+
+.errorExplanation ul {
+padding-left: 40px;
+
+}
+
+.module-content form {
+margin-bottom: 0px;
+}
+
+.submit-form {
+margin-bottom: 0px;
+}
+
+.module div {
+zoom: 1;
+}
+
+</style>
+
+<script type="text/javascript"> 
+
+$(document).ready(function() {
+
+	
+	
+$(".submit-form input").mouseover(function() {
+	$(this).parent().addClass("sign-over");
+}).mouseout(function() {
+	$(this).parent().removeClass("sign-over");
+});
+
+$(".submit-form input").mousedown(function() {
+	$(this).css({position: "relative", top: "1px", left: "1px"});
+}).mouseup(function() {
+	$(this).css({position: "relative", top: "0px", left: "0px"});
+});
+
+
+
+if ($('#errorExplanation').length > 0) {
+
+		if ($.browser.msie && $.browser.version < 8) {
+			//$(".errorExplanation h2").css({display: "block"});
+		} else {
+		
+		var errMess= $('#errorExplanation h2').html();
+		$('#errorExplanation h2').remove();
+		$('.sign-notification').find('td:eq(0)').append(errMess);
+		
+		
+		setTimeout(function() {
+			$('.sign-notification-wrapper').css({opacity: "0"}).slideDown().animate({opacity: "1"});
+		}, 400);
+		
+		}
+}
+
+
+
+
+});
+
+
+
+
+
+
+</script>
+
+
+<% end %>
+
+
+<div class="module mod-in-log">
+<br/>
+
+<div class="sign-head-wrapper">
+	<div class="sign-rt">
+		<div class="sign-lft">
+			<h2 class="page sign-head">
+				<span class="sign-up-title sign-string">Forgot Password?</span>
+			</h2>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="module-top">
+	<div class="module-t-left"></div>
+	<div class="module-t-right"></div>
+</div>
+<div class="module-right">
+<div class="module-left">
+<div class="module-content">
+
+
+
+
+
+
+
+
 
 <% form_for(@password) do |f| %>
   
+  <h2 style="display: none;">Forgot Your Password?</h2>
+  
+  <p class="pass-form">That's okay!  We forget ours too.  Give us your email address and we'll send you a link to reset your password.</p>
+  
+<div class="sign-notification-wrapper" style="display: none;">	
+		
+<table class="sign-notification" align="center" ><tr><td style="position: relative;">
+	<div style="position: relative; text-align:  left;">
+				<div class="notif-icon"></div>
+	</div>	
+&nbsp;
+</td></tr></table>	
 
-  <p>That's okay!  We forget ours too.  Give us your email address and we'll send you a link to reset your password.</p>
+</div>	
+  
   
   <%= f.error_messages %>
   
-  <p>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.submit "Submit" %>
-  </p>
+  
+  
+  
+  
+  
+  <table align="center" class="pass-form">
+	<tr>
+		<td>
+		
+			<table class="form-entries">
+				<tr>
+					<td class="entry1">Enter your email address:</td>
+					<td><%= f.text_field :email %></td>
+				</tr>
+
+			</table>
+	<tr>
+		<td>
+			<p align="center" class="submit-form"><%= f.submit "" %> </p>
+		</td>
+	</tr>
+</table>	
+  
+  <%if flash[:notice]%>
+  
+	<style type="text/css">
+		.pass-form {
+			display: none;
+		}
+	</style>
+  
+	<p align="center" style="color: blue; font-weight: bold;" ><%= flash[:notice] %> </p>
+<%end%>
+  
+  
+  
 <% end %>
 
-<%if flash[:notice]%>
-<%= flash[:notice] %> 
-<%end%>
+
+
+</div>
+</div>
+</div>
+<div class="module-bottom">
+	<div class="module-b-left"></div>
+	<div class="module-b-right"></div>
+</div>
+</div>	
+
+
+
 
 

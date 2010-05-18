@@ -35,7 +35,7 @@ class SiteController < ApplicationController
     end
 	
 	@hide_html = '<div class="hidden_content">Available for subscribed users</div>'
-	@hide_title= '<div class="hidden_content" style="font-size: 18px;">The full version of the lesson is available for subscribed users<br/><span style="font-size: 10pt;">See details on the page <a href="/course.html">Course of Russian</a></span></div>'	
+	@hide_title= '<div class="hidden_content" style="font-size: 18px;">The full version of the lesson is available for subscribed users<br/><span style="font-size: 10pt;">See details on the page <a href="/everyday-course.html">Everyday Russian Course</a></span></div>'	
     if (((@file=='/user_profile.html')||(@file=='/user_profile1.html') )&& (!current_user ))
     redirect_back_or_default('/')
     else
