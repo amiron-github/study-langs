@@ -2260,13 +2260,14 @@ z-index: 20;
 }
 
 h3.page-p {
-padding: 5px 8px;
-background-color: #dfdfdf;
+padding: 6px 8px 7px;
+background-color: #cfcfcf;
 border-top: 1px solid #888;
-font-size: 15px;
+font-size: 16px;
 margin: 50px 0px 20px;
 position: relative;
 left: -5px;
+text-shadow: 0px 1px 0px #ffffff;
 }
 
 h4.page-pp {
@@ -2274,7 +2275,16 @@ font-size: 14px;
 margin: 30px 0 15px;
 padding: 4px 4px;
 border-bottom: 1px dotted #333;
-
 }
+
+.case-ind {
+font-size: 11px;
+color: #555555;
+}
+
+
+
+
+
 
 
