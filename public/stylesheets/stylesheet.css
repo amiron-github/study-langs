@@ -1082,6 +1082,8 @@ font-weight: bold;
 
 .hint_wrap {
 height: 45px;
+position: relative;
+z-index:20;
 }
 
 

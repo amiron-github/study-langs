@@ -21,6 +21,7 @@ class SiteController < ApplicationController
       @javascripts << 'test'
       @javascripts << 'test-text'
       @stylesheets << 'test-style'
+	  @stylesheets << 'grammar-exercises'
     when /reading-practice\d\.html$/
       @javascripts << 'test'
       @javascripts << 'test-text'

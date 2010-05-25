@@ -209,6 +209,9 @@ if(getCookie('preload')) {
 	$("#preload_on").addClass("checked");
 };
 
+
+//wrapTbTest();
+
 });
 ////////////////////////////// end of downloading
 //events for Content
@@ -976,6 +979,16 @@ function sendResults(id, total, right) {
 }
 
 
+function wrapTbTest() {
+var beforeTest = '<div class="block-clt"><div class="block-crt"><div class="block-top"></div></div></div>'  
+var afterTest = '<div class="block-clb"> <div class="block-crb"> <div class="block-btm"> </div> </div></div> ';
+
+$(".tbtest").each(function(i, obj) {
+	$(obj).wrap('<table align="center"><tr><td><div class="block"><div class="block-center"></div></div></td></tr></table>');
+	$(obj).parent().parent().prepend(beforeTest).append(afterTest);
+});
+
+}
 
 
 
