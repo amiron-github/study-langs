@@ -160,8 +160,8 @@ function checkKeycode(e) {
 	else if (e) keycode = e.which;
 	alert("keycode: " + keycode);
 }
-
 */
+
 
 	
 var keyboardCodes = new Array();
@@ -200,6 +200,8 @@ keyboardCodes = [
 [['77'],['ь'],['м']],
 [['188'],['б'],[',']],
 [['190'],['ю'],['.']],
+[['pl_rt'],['.'],['-']],
+[['l_rt'],[','],['ъ']],
 [['220'],['\\'],['э']],
 [['192'],['ё'],['ё']]
 //[['32'],[' ']]
@@ -382,6 +384,10 @@ case 192:
 	vKeyPress(192);
 	return false;
 	break;
+case 20: 
+	vKeyPress("caps_lock");
+	return false;
+	break;
 default:
 	
 
@@ -410,6 +416,19 @@ $(".k_" + code).mousedown().mouseup()
 
 ////////////////////////
 
+var itsFixed = false;
+
+
+function keyboardFixed() {
+	if (itsFixed) {
+		itsFixed = false;
+		$(".keys_poser").css({position: "absolute", bottom: "auto", top: "auto"});
+	} else {
+		itsFixed = true;
+		$(".keys_poser").css({position: "fixed", bottom: "10px", top: "auto"});
+	}
+}
+
 
 var curPosX;
 var curPosY;
@@ -417,11 +436,15 @@ var difX;
 var difY;
 var dragging = false;
 
+
 function dragItem(item, panel) {
 
 	$(".keys_wrapper").append('<div class="draggerClone" ><\/div>');
 	
 	panel.mousedown(function(e) {
+	
+	if (itsFixed) return false;
+	
 	dragging = true;
 	$("body").addClass("noselect");
 	
@@ -448,6 +471,8 @@ function dragItem(item, panel) {
 }).mousemove(function(e) {
 
 }).mouseup(function(e) {
+
+	if (itsFixed) return false;
 
 	dragging = false;
 	$("body").removeClass("noselect");
@@ -517,6 +542,8 @@ var layoutNum = $("#k_layout option").index($("#k_layout option:selected"));
 }).change();
 
 
+$("#k_use option:eq(0)").attr("selected", "selected");
+
 $("#k_use").change(function () {
 var useNum = $("#k_use option").index($("#k_use option:selected"));
 	if (useNum == 1 ) useKeys();
@@ -531,9 +558,7 @@ $(".show_keyboard").click(function() {
 	if( $(".active_input").length == 0 ) {                   //|| $(".active_input").offset().top < toY ) {
 		$(".keys_poser").add(".draggerClone").css({left: toX}, 200)
 	}
-	
 	$(".keys_poser").add(".draggerClone").animate({top: toY + 30}, 200);
-	
 	$(".keys_poser").show();
 });
 
@@ -580,14 +605,23 @@ if ( $(".active_input").length > 0 ) {
 });
 
 
+
 $(".virtual_keyboard td").mousedown(function() {
+
+	if ( $(".active_input").length == 0 ) {
+		alert("Click the field to type in");
+		return false;
+	}
+
 
 	if ( $(this).hasClass("k_32")) {
 		insertFromKeyboard(" ")
-	} else {
+	} else if ( $(this).hasClass("k_caps_lock") ) {
+		operateCaps();
+	}else {
 		var str = $(this).text();
 		str=$.trim(str);
-		insertFromKeyboard(str)
+		insertFromKeyboard(str);
 	}
 	
 	$(this).addClass("k_active_key");
@@ -601,7 +635,6 @@ $(".virtual_keyboard td").mousedown(function() {
 
 
 $(".for_keyb").one("click", function() {
-
 	if ( $(".keys_poser").is(":hidden") ) {
 		var elWidth = $(".keys_poser").width();
 		var toX = ( $(document).width() ) * .5 - elWidth * .5;
@@ -687,15 +720,24 @@ $(".for_keyb").click(function() {
 
 });
 
+var toCaps = false;
 
+function operateCaps() {
+	if ( $('.virtual_keyboard').hasClass("k_toCaps")) {
+		toCaps = false;
+		$('.virtual_keyboard').removeClass("k_toCaps");
+		$(".k_caps_lock div").text('⇑');
+	} else {
+		toCaps = true;
+		$('.virtual_keyboard').addClass("k_toCaps");
+		$(".k_caps_lock div").text('⇓');
+	}
+}
 
 
 function insertFromKeyboard(string) {
 
-	if ( $(".active_input").length == 0 ) {
-		alert("Click the field to type in");
-		return false;
-	}
+
 
 	var activeInput = $(".active_input");
 	var activeEl = $(".active_input").get(0);
@@ -703,7 +745,9 @@ function insertFromKeyboard(string) {
 	$("#caret").text(caretPosition);
 	
 	var t = activeEl.value,  s = caretPosition; // s = getSelectionStart(activeEl) //, e = getSelectionEnd(activeEl);
-	var str= string;
+
+	if (toCaps) string = string.toUpperCase();
+
 	var beforStr = t.substring(0, s).replace(/ /g, '\xa0') || '\xa0';
 	var afterStr = t.substring(s).replace(/ /g, '\xa0') || '\xa0';
 	
@@ -871,14 +915,19 @@ width: 150px;
 
 
 .virtual_keyboard td {
-font-size: 14px;
+font-size: 16px;
 font-weight: bold;
 cursor: pointer;
 
 
 text-align: center;
 
+text-transform: lowercase;
+}
+
+.k_toCaps td {
 text-transform: uppercase;
+font-size: 15px;
 }
 
 .keys_container table {
@@ -1363,7 +1412,7 @@ Real keyboard:
 
 <table class="virtual_keyboard" border="0" cellpadding="0" cellspacing="0" align="center">
 <tr>
-<td class=""><div title="Capitalize">⇑</div></td>
+<td class="k_caps_lock"><div title="Caps Lock">⇑</div></td>
 
 <td class="k_90"><div>я</div></td>
 <td class="k_88"><div>ч</div></td>
@@ -1374,8 +1423,8 @@ Real keyboard:
 <td class="k_77"><div>ь</div></td>
 <td class="k_188"><div>б</div></td>
 <td class="k_190"><div>ю</div></td>
-<td class="k_"><div>.</div></td>
-<td class=""><div style="text-transform: lowercase;">,</div></td>
+<td class="k_pl_rt"><div>.</div></td>
+<td class="k_l_rt"><div>,</div></td>
 
 </tr>
 </table>
