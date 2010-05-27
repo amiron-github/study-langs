@@ -3,7 +3,7 @@ requires:
 
 - keyboard css 
 - text inputs with class "for_keyb"
-- elements to show with class "show_keyboard", like <a class="show_keyboard" href="javascript:;">[ Virtual keyboard ]</a>
+- html elements to show with class "show_keyboard", like <a class="show_keyboard" href="javascript:;">[ Virtual keyboard ]</a>
 
 
 */
@@ -677,11 +677,11 @@ function operateCaps() {
 	if ( $('.virtual_keyboard').hasClass("k_toCaps")) {
 		toCaps = false;
 		$('.virtual_keyboard').removeClass("k_toCaps");
-		$(".k_caps_lock div").text('⇓');
+		$(".k_caps_lock div").text('⇑');
 	} else {
 		toCaps = true;
 		$('.virtual_keyboard').addClass("k_toCaps");
-		$(".k_caps_lock div").text('⇑');
+		$(".k_caps_lock div").text('⇓');
 	}
 }
 

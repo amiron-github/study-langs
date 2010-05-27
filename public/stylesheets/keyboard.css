@@ -257,3 +257,12 @@ font-size: 0px;
 *html .active_arrow {
 display: none;
 }
+
+a.show_keyboard {
+font-weight: bold;
+font-style: normal;
+font-size: 10px;
+padding: 2px 2px 3px;
+te-xt-transform: lowercase;
+outline: none;
+}

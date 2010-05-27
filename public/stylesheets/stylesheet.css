@@ -2285,7 +2285,29 @@ color: #555555;
 }
 
 
+#tinybox {
+position:fixed; 
+display:none; padding:10px; 
+padding: 35px;
+background:#fff url(images/preload.gif) no-repeat 50% 50%; 
+background-color: #EFF6FF;
+z-index:99999999; 
+-moz-border-radius: 10px;
+-moz-box-shadow: 0px 0px 15px #111;
+box-shadow: 0px 0px 15px #111;
+-webkit-border-radius: 10px;
+-webkit-box-shadow: 0px 0px 15px #111;
+box-shadow: 0px 0px 15px #111;
+/
+border:10px solid #e3e3e3;
+}
 
+#tinymask {position:fixed; display:none; top:0; left:0; height:100%; width:100%; background:#000; z-index:9999999}
+#tinycontent {
+background:#fff;
+max-height: 300px;
+
+}
 
 
 
