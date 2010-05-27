@@ -526,8 +526,6 @@ if ($.browser.opera) {
 }
 
 
-
-
 $("#k_position option:eq(0)").attr("selected", "selected");
 $("#k_position").change(function () {
 var posNum = $("#k_position option").index($("#k_position option:selected"));
@@ -570,7 +568,6 @@ $(".show_keyboard").click(function() {
 		}
 		$(".keys_poser").add(".draggerClone").animate({top: toY + 30}, 200);
 	}
-	
 	$(".keys_poser").show();
 	
 });
@@ -621,12 +618,11 @@ if ( $(".active_input").length > 0 ) {
 
 $(".virtual_keyboard td").mousedown(function() {
 
+
 	if ( $(".active_input").length == 0 ) {
 		alert("Click the field to type in");
 		return false;
 	}
-
-
 	if ( $(this).hasClass("k_32")) {
 		insertFromKeyboard(" ")
 	} else if ( $(this).hasClass("k_caps_lock") ) {
@@ -638,6 +634,8 @@ $(".virtual_keyboard td").mousedown(function() {
 	}
 	
 	$(this).addClass("k_active_key");
+
+	
 }).mouseup(function() {
 	$(this).removeClass("k_active_key");
 	var activeEl = $(".active_input").get(0);
@@ -691,60 +689,73 @@ function operateCaps() {
 
 
 function insertFromKeyboard(string) {
-
 	var activeInput = $(".active_input");
 	var activeEl = $(".active_input").get(0);
-	
-	$("#caret").text(caretPosition);
-	
 	var t = activeEl.value,  s = caretPosition; // s = getSelectionStart(activeEl) //, e = getSelectionEnd(activeEl);
-
 	if (toCaps) string = string.toUpperCase();
-
 	var beforStr = t.substring(0, s).replace(/ /g, '\xa0') || '\xa0';
 	var afterStr = t.substring(s).replace(/ /g, '\xa0') || '\xa0';
-	
 	activeInput.val( beforStr + string + afterStr  );
-	
 	caretPosition = beforStr.length + string.length;
-		
-	$("#caret").text(caretPosition);
-	
 }
 
+
+var ai_tip;
 
 function activateInput(obj) {
 
 if ( obj.hasClass("active_input") ) {
-	$(".for_keyb").removeClass('active_input');
+	$(".for_keyb").removeClass('active_input').removeAttr('title');
+	
+	obj.addClass("active_input").attr("title", "Text from virtual keyboard goes here");
+
+	
+	/*
 	$(".active_wrapper").stop().remove();
-	obj.addClass("active_input").before('<span class="active_wrapper"><span class="active_msg">Text from virtual keyboard<span></span>');
-	$(".active_wrapper").addClass("last_active").stop().animate({opacity: "0"}, 3000, function() {
-		$(".active_wrapper").not("last_active").remove();
-	});
+	clearTimeout(ai_tip);
+	if ( $('.keys_poser').is(':visible')) {
+		obj.addClass("active_input"); 
+		var ai_posX = obj.offset().left;
+		var ai_posY = obj.offset().top;
+		$('body').append('<div class="active_wrapper" style="left: '+ai_posX+'px; top: '+ai_posY+'px"><div class="active_arrow"></div><span class="active_msg">Text from virtual keyboard goes here</span></div>')
+		ai_tip = setTimeout(function() {
+			$(".active_wrapper").addClass("last_active").stop().animate({opacity: "0"}, 1000, function() {
+				$(".active_wrapper").not("last_active").remove();
+			});
+		}, 3000)
+	}
+	*/
 	
 } else {
-	$(".for_keyb").removeClass('active_input');
+	$(".for_keyb").removeClass('active_input').removeAttr('title');
+	
+	obj.addClass("active_input").attr("title", "Text from virtual keyboard goes here");
+
+	var ai_posY = obj.offset().top;
+	
+	/*
 	$(".active_wrapper").stop().remove();
-	obj.addClass("active_input").before('<span class="active_wrapper"><span class="active_msg">Text from virtual keyboard<span></span>');
-	$(".active_wrapper").addClass("last_active").stop().animate({opacity: "0"}, 3000, function() {
-		$(".active_wrapper").not("last_active").remove();
-	});
-
-	if (autoposition && !itsFixed) {
-
-		var activeInputTop = obj.offset().top;
-		$(".keys_poser").animate({top: activeInputTop + 60}, 200);
-		$(".draggerClone").css({top: activeInputTop + 60},200);
+	clearTimeout(ai_tip);
+	if ( $('.keys_poser').is(':visible')) {
+		obj.addClass("active_input"); 
+		var ai_posX = obj.offset().left;
+		var ai_posY = obj.offset().top;
+		$('body').append('<div class="active_wrapper" style="left: '+ai_posX+'px; top: '+ai_posY+'px"><div class="active_arrow"></div><span class="active_msg">Text from virtual keyboard goes here</span></div>')
+		ai_tip = setTimeout(function() {
+			$(".active_wrapper").addClass("last_active").stop().animate({opacity: "0"}, 1000, function() {
+				$(".active_wrapper").not("last_active").remove();
+			});
+		}, 3000)
 	}
 	
+	*/
+	
+	if (autoposition && !itsFixed) {
+		$(".keys_poser").animate({top: ai_posY + 60}, 200);
+		$(".draggerClone").css({top: ai_posY + 60},200);
+	}
 }
-
 caretPosition = (doGetCaretPosition (obj.get(0)));
-
-$("#caret").text(caretPosition);
-
-
 }
 
 
@@ -946,6 +957,12 @@ margin: 2px;
 width: 150px;
 }
 
+
+
+
+
+
+
 .keys_poser div {
 zoom: 1;
 }
@@ -1029,6 +1046,7 @@ width: 255px;
 position: absolute;
 top: 0;
 left: 0;
+z-index: 1000;
 zoom: 1;
 }
 
@@ -1164,19 +1182,44 @@ border: 2px solid #5981EF;
 }
 
 .active_wrapper {
-position: relative;
+position: absolute;
+display: block;
+margin-top: -25px;
+background-color: rgba(16, 42, 102, 0.85);
+background-color: rgb(16, 42, 102)\9;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+-moz-box-shadow: 0px 0px 3px #333;
+-webkit-box-shadow: 0px 0px 3px #333;
+box-shadow: 0px 0px 3px #333;
 }
 
 .active_msg {
 font-size: 10px;
-position: absolute;
-background-color: #333;
 color: #fff;
 white-space: nowrap;
-padding: 2px;
-margin-top: -15px;
-top: 0;
-left: 0;
+padding: 0px;
+display: block;
+padding: 3px 5px 4px 5px;
+}
+
+.active_arrow {
+border-color: transparent;
+border-top-color: rgba(16, 42, 102, 0.85);
+border-top-color: rgb(16, 42, 102)\9;
+border-style:solid;
+border-width: 5px 5px 0;
+bottom: -5px;
+height:0;
+left: 20px;
+position:absolute;
+width:0;
+font-size: 0px;
+}
+
+*html .active_arrow {
+display: none;
 }
  
 </style> 
@@ -1386,6 +1429,7 @@ left: 0;
 
 
 <div class="keys_wrapper">
+
 <div class="keys_poser" style="display: none;">
 <div class="drag-controls"><span>
 	<a href="javascript:;" title="Minimize" class="keys_minimize">&nbsp;_&nbsp;</a> 
@@ -1531,10 +1575,13 @@ Real&nbsp;keyboard:
 </div>
 
 </div>
+
+
+
 </div>
 
 
 
-  
+  <span style="left: 162px; top: 208px;" class="active_wrapper"><span class="active_msg">Text from virtual keyboard<span/></span></span>
 </body> 
 </html> 
