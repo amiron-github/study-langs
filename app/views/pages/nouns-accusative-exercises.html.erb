@@ -7,6 +7,14 @@
 <% content_for :special_js_css do %>
  <%= stylesheet_link_tag 'grammar-exercises' %>
  <%= javascript_include_tag 'grammar-exercises' %>
+ <%= stylesheet_link_tag 'keyboard' %>
+ 
+ <script type="text/javascript"> 
+ $(document).ready(function(){
+	$(".gext_task input").addClass("for_keyb")
+ });
+ </script>
+ <%= javascript_include_tag 'virtual-keyboard' %>
 <% end %> 
  
 
@@ -212,7 +220,7 @@
 				<div class="block-center">
 				
 
-<div class="task">Form the accusative singular (inanimate nouns):</div>
+<div class="task">Form the accusative singular (inanimate nouns). <a class="show_keyboard" href="javascript:;">[ Use virtual keyboard ]</a></div>
 
 <div  class="gr_ex_type">
 
@@ -341,7 +349,7 @@
 				<div class="block-center">
 				
 
-<div class="task">Form the accusative singular (animate nouns):</div>
+<div class="task">Form the accusative singular (animate nouns). <a class="show_keyboard" href="javascript:;">[ Use virtual keyboard ]</a></div>
 
 <div  class="gr_ex_type">
 
@@ -543,7 +551,7 @@
 				<div class="block-center">
 				
 
-<div class="task">Form the accusative plural of inanimate nouns:</div>
+<div class="task">Form the accusative plural of inanimate nouns. <a class="show_keyboard" href="javascript:;">[ Use virtual keyboard ]</a></div>
 
 <div  class="gr_ex_type">
 
@@ -701,7 +709,7 @@
 				<div class="block-center">
 				
 
-<div class="task">Form the accusative plural of animate nouns:</div>
+<div class="task">Form the accusative plural of animate nouns. <a class="show_keyboard" href="javascript:;">[ Use virtual keyboard ]</a></div>
 
 <div  class="gr_ex_type">
 
