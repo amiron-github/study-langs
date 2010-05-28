@@ -1,0 +1,101 @@
+<% @page_title = 'Sound [a]' %>
+
+<% content_for :special_js_css do %>
+
+ <style type="text/css">
+
+.first-info div.spacer {
+width: 120px;
+height: 1px;
+overflow: hidden;
+font-size: 0px;
+}
+
+.sound-desc {
+padding-bottom: 70px;
+}
+
+.sound-letter .thbrd {
+padding: 15px;
+font-weight: bold;
+font-size: 11pt;
+color: #222;
+}
+
+table.sound-letter {
+margin: 0px;
+width: 430px;
+}
+
+table.sound-letter tr {
+vertical-align: middle;
+}
+
+table.sound-letter td.desc {
+text-align: left;
+}
+
+table.sound-letter td.s-pict {
+pad ding: 0px;
+}
+
+td.s-pict img {
+display: block;
+bo rder: 1px dotted #444;
+margin: 0px auto;
+}
+
+.first-info {
+backgro und-color: #DFDFDF;
+font-weight: bold;
+font-style: italic;
+font-size: 8pt;
+}
+
+td.art-desc-name {
+vertical-align: top;
+}
+
+table.sound-letter td {
+padding: 10px;
+}
+
+</style>
+
+<%end%>
+
+
+<h3>Sound [a]</h3>
+
+<div class="sound-desc vowel">
+    <table class="sound-letter" cellspacing="0" >
+    	<tr>
+    		<th colspan="2" class="thbrd">Sound [a]</th>
+    	</tr>
+    	<tr>
+    		<td width="120" class="first-info">
+
+    			Audio sample: <div class="spacer"></div>
+    		</td>
+    		<td>
+    			<span class="sound" onclick="playTestSound('/sounds/sound201.mp3')">[a] <span class="play_tip">&nbsp; &nbsp;</span></span>
+    		</td>
+    	</tr>
+    	<tr>
+
+    		<td  class="first-info">
+    			Picture
+    		</td>
+    		<td class="s-pict">
+    			<img src="/images/sounds/sound-a.gif" alt="Articulation of the Russian sound [a]" />
+    		</td>
+    	</tr>
+    	<tr>
+    		<td class="first-info art-desc-name">Articulation description:</td>
+
+    		<td class="desc">
+    			The mouth is wide open. The lips are relaxed. The tip of the tongue is against the lower teeth. 
+    		</td>
+    	</tr>
+    </table>
+</div>

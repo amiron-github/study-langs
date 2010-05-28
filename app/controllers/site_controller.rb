@@ -5,6 +5,7 @@ class SiteController < ApplicationController
     logger.warn(@file)
     layout = @file.match(/\/comments\//) ? 'comments.html.erb' : 'application'
     layout = 'comment_audios.html.erb' if @file.match(/\/comments_audio\//)
+	layout = 'grammar_comments.html.erb' if @file.match(/\/grammar_comments\//)
 
     # configure javascripts and stylesheets based on page name
     @javascripts = []

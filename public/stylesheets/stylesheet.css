@@ -2306,7 +2306,11 @@ border:10px solid #e3e3e3;
 #tinycontent {
 background:#fff;
 max-height: 300px;
+}
 
+.end {
+font-weight: bold;
+font-style: italic;
 }
 
 
