@@ -497,8 +497,12 @@ function playTestSound(slink) {
 }
 /////////// End of Audio Blocks
 
-function open_comment(link){
-window.open(link,"_blank","toolbar=0, location=0, directories=no, status=0, menubar=0, scrollbars=yes, resizable=yes, titlebar=no, width=560, height=380, top=20");
+function open_comment(link,w,h){
+
+if (!w || w == 0) w=560;
+if (!h || h == 0) h=380;
+
+window.open(link,"_blank","toolbar=0, location=0, directories=no, status=0, menubar=0, scrollbars=yes, resizable=yes, titlebar=no, width="+w+", height="+h+", top=20");
 }
 
 ///////////////// Audio Files Preload
