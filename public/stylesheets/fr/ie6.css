@@ -1,0 +1,38 @@
+
+#fixWidh {
+width:expression(document.body.clientWidth > 1400? "1400px": "auto" );
+background-image: url("/images/corner.gif");
+}
+
+.corners {
+background-image: url("/images/corner.gif");
+}
+
+table.cross_container td {
+background-image: none;
+filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=/games/crossword/cross-back.png,sizingMethod=crop);
+
+}
+
+#helper td, #helper1 td {
+color: #fff;
+background-image: none;
+filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=/games/crossword/cross-selected.png,sizingMethod=crop);
+}
+
+
+div.module div {
+background-image: none;
+}
+
+.module h2 {
+padding-top: 20px;
+}
+
+.mod-in-log {
+padding: 40px 10px 80px 10px; 
+}
+
+div.module-content {
+border: 1px solid #ccc;
+}
