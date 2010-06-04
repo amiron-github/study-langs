@@ -1,5 +1,13 @@
 <% @page_title = 'Words list for the exercises: Genitive Plural ' %>
 
+
+
+<% content_for :special_js_css do %>
+
+<%= javascript_include_tag 'page_search' %>
+
+<%end%>
+
 <h3>Words list for the exercises</h3>
 
 <p>The table below represents words and phrases used in the exercises:</p>
@@ -48,7 +56,7 @@
 <tr><td>	санаторий 	-	sanatorium 	<tr><td>
 <tr><td>	словарь	-	dictionary 	<tr><td>
 <tr><td>	список 	-	list 	<tr><td>
-<tr><td>	столе 	-	table 	<tr><td>
+<tr><td>	стол 	-	table 	<tr><td>
 <tr><td>	студент	-	student 	<tr><td>
 <tr><td>	студентка	-	student 	<tr><td>
 <tr><td>	театр 	-	theater 	<tr><td>
@@ -70,8 +78,11 @@
 
 <tr><td>Нужно сделать - It is necessary to do </td></tr>
 <tr><td>У меня есть ... - I have ... </td></tr>
-<tr><td>У меня нет ... - I have no ... </td></tr>
+<tr><td id="end">У меня нет ... - I have no ... </td></tr>
 
 
 </table>
+
+
+
 

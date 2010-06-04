@@ -8,6 +8,9 @@
   <%= javascript_include_tag 'effects.js' %>
   <%= stylesheet_link_tag 'stylesheet.css' %>
   <%= stylesheet_link_tag 'stylesounds.css' %>
+  
+  
+  
 
 <style type="text/css">
 html {
@@ -40,7 +43,18 @@ padding: 0;
 .com-example {
 padding-left: 30px;
 }
+
+.found_string {
+background-color: #FEFFAF;
+font-weight: bold;
+}
+
+
 </style>
+
+<%= yield :special_js_css %>
+
+
 </head>
 <body>
   <div id="contentcell">
