@@ -2313,6 +2313,77 @@ font-weight: bold;
 font-style: italic;
 }
 
+input.search-bar {
+padding-left: 20px;
+background-image: url(/images/search.png);
+background-repeat: no-repeat;
+background-position: 2px 2px;
+width: 130px;
+font-size: 14px;
+height: 16px;
+border: 1px solid #666;
+margin-right: 1px;
+padding-top: 2px;
+}
+
+input.page-search-start {
+color: #777;
+font-style: italic;
+font-size: 13px;
+}
+
+.page-search-wrapper {
+pad-ding: 2px;
+bor-der: 1px solid #666;
+back-ground-color: #fff;
+white-space: nowrap;
+position: fixed;
+right: 4px;
+top: 20px;
+}
+
+*html .page-search-wrapper  {
+display: none;
+}
 
 
+.search-display {
+color: #999;
+font-weight: bold;
+font-size: 13px;
+border: 1px solid #999;
+background-color: #fff;
+padding: 0px 2px;
+}
+
+.search-display-over {
+background-color: #fff;
+color: #333;
+border: 1px solid #333;
+cursor: pointer;
+}
+
+.found_string {
+background-color: #FEFFAF;
+font-weight: bold;
+}
+
+.gr-list-head {
+color: #3B3DBF;
+font-weight: bold;
+margin: 0px 0px 5px 0px;
+background-color: #E2E6F2;
+padding: 2px 10px 3px 10px;
+}
+
+
+.gr-li-head {
+margin-top: 20px;
+}
+
+.gr-list {
+list-style: none;
+max-width: 500px;
+
+}
 

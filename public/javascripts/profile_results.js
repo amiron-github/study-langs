@@ -349,7 +349,7 @@ vocabularyDescription=new Array('Section: Vocabulary',
 ['Meals: Fish, fish dishes', '14'], ['Meals: Dairy produce', '15'], ['Meals: Vegetables', '16'], ['Meals: Fruit, berries', '17'],
 ['Meals: Confectionery', '18'],['Meals: Beverages, soft and strong drinks', '19'],['Shopping: Outdoor clothing', '20'],['Shopping: Lingerie and nightwear', '21'],
 ['Shopping: Sportswear', '22'],['Shopping: Shoes', '23'],['Shopping: Accessories', '24'],['Shopping: Perfumery', '25'],
-['Shopping: Jewelry', '26'],['Shopping: Audio, video and photo', '27'],['Numbers from 0 to 100', '28'],['Numbers more than 100', '29']],
+['Shopping: Jewelry', '26'],['Shopping: Audio, video and photo', '27'],['Numbers from 0 to 100', '28'],['Numbers more than 100', '29'],['Language Skills', '30']],
 'Test'
 ]
 

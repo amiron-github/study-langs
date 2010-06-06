@@ -1,0 +1,175 @@
+<% @page_title = 'Tests: Language Skills' %>
+<% @page_meta = {'description' => ""} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<% content_for :special_css do %>
+
+.quest  {
+width: 210px;
+}
+
+.variants  {
+width: 220px;
+}
+
+#t2 .quest {
+width: 220px;
+}
+
+<% end %>
+
+<div class="hint_wrap">
+<div class="hint_button">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Recommended links</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+     				<li><a href="language-skills.html">Language Skills</a></li>
+    		</ul>
+	</div>
+</div>
+</div>
+
+
+
+<h2 class="page">Language Skills (tests)</h2>
+
+<p class="task">Before completing the following tests, please revise the topic <a title="Language Skills" href="language-skills.html">Language Skills</a></p>
+<hr/>
+<br/>
+<h3>Test 1</h3>
+<p class="task">Listen to the phrase and сhoose the corresponding Russian expression.</p>
+
+<div id="t1">
+<script type="text/javascript">
+var t1 = new Test({dict: [
+
+['sounds/sound11101.mp3','Английский язык'],
+['sounds/sound11102.mp3','Русский язык'],
+['sounds/sound11104.mp3','Французский язык'],
+['sounds/sound11103.mp3','Немецкий язык'],
+['sounds/sound11105.mp3','Испанский язык'],
+['sounds/sound11106.mp3','Итальянский язык'],
+['sounds/sound11112.mp3','Я говорю ...'],
+['sounds/sound11113.mp3','Я понимаю ...'],
+['sounds/sound11114.mp3','Я не говорю ...'],
+['sounds/sound11115.mp3','Я говорю по-английски.'],
+['sounds/sound11116.mp3','Я говорю по-русски.'],
+['sounds/sound11117.mp3','Я говорю по-французски.'],
+['sounds/sound11119.mp3','Хорошо'],
+['sounds/sound11120.mp3','Немного'],
+['sounds/sound11121.mp3','Чуть-чуть'],
+['sounds/sound11123.mp3','Я хорошо говорю ...'],	
+['sounds/sound11124.mp3','Я немного понимаю ...'],
+['sounds/sound11128.mp3','Я знаю ...'],
+['sounds/sound11131.mp3','Я изучаю ...'],
+['sounds/sound11136.mp3','Я вас понимаю.'],
+['sounds/sound11137.mp3','Я вас не понимаю.'],
+['sounds/sound11138.mp3','Повторите, пожалуйста.'],
+['sounds/sound11139.mp3','Говорите, пожалуйста, медленнее.'],
+['sounds/sound11140.mp3','Мне нужен переводчик.'],
+['sounds/sound11141.mp3','Что это значит?'],
+['sounds/sound11142.mp3','Что значит это слово?'],
+['sounds/sound11143.mp3','Что здесь написано?'],
+['sounds/sound11144.mp3','Как это переводится?'],
+['sounds/sound11145.mp3','Как переводится это слово?'],
+['sounds/sound11146.mp3','Переведите, пожалуйста.']
+
+],hide: 'di1',id:'t1', type: 'audio', how_questions: 10, how_show: 2}, 'v0230010.1');
+</script>
+</div>
+
+<h3>Test 2</h3>
+<p class="task">Read the Russian phrase and choose the corresponding English expression.</p>
+
+<div id="t2">
+<script type="text/javascript">
+var t2 = new Test({dict: [
+
+['Английский язык',	'English language'],
+['Русский язык',	'Russian language'],
+['Французский язык',	'French language'],
+['Немецкий язык',	'German language'],
+['Испанский язык',	'Spanish language'],
+['Итальянский язык',	'Italian language'],
+['Я говорю ...',	'I speak ...'],
+['Я понимаю ...',	'I understand ...'],
+['Я не говорю ...',	'I do not speak ...'],
+['Я говорю по-английски.',	'I speak English.'],
+['Я говорю по-русски.',	'I speak Russian.'],
+['Я говорю по-французски.',	'I speak French.'],
+['Хорошо',	'Well'],
+['Немного',	'A little'],
+['Чуть-чуть',	'A little bit'],
+['Я хорошо говорю ...',	'I speak well ...'],
+['Я немного понимаю ...',	'I understand a little ...'],
+['Я знаю ...',	'I know ...'],
+['Я изучаю ...',	'I learn ...'],
+['Я вас понимаю.',	'I understand you.'],
+['Я вас не понимаю.',	'I don\'t understand you.'],
+['Повторите, пожалуйста.',	'Repeat, please.'],
+['Говорите, пожалуйста, медленнее.',	'Please, speak slower.'],
+['Мне нужен переводчик.',	'I need a translator.'],
+['Что это значит?',	'What does it mean?'],
+['Что значит это слово?',	'What does this word mean?'],
+['Что здесь написано?',	'What is written here?'],
+['Как это переводится?',	'How can you translate this?'],
+['Как переводится это слово?',	'How can you translate this word?'],
+['Переведите, пожалуйста.',	'Translate, please.']
+
+], hide:'di2',id:'t2',type: 'text', how_questions: 10, how_show: 2}, 'v0230020.2');
+</script>
+</div>
+
+<h3>Test 3</h3>
+<p class="task">Listen to the Russian phrases and сhoose their translation into English.</p>
+
+<div id="t3">
+
+<script type="text/javascript">
+var t3 = new Test({dict: [
+
+['sounds/sound11101.mp3'	,'English language'],
+['sounds/sound11102.mp3'	,'Russian language'],
+['sounds/sound11104.mp3'	,'French language'],
+['sounds/sound11103.mp3'	,'German language'],
+['sounds/sound11105.mp3'	,'Spanish language'],
+['sounds/sound11106.mp3'	,'Italian language'],
+['sounds/sound11112.mp3'	,'I speak ...'],
+['sounds/sound11113.mp3'	,'I understand ...'],
+['sounds/sound11114.mp3'	,'I do not speak ...'],
+['sounds/sound11115.mp3'	,'I speak English.'],
+['sounds/sound11116.mp3'	,'I speak Russian.'],
+['sounds/sound11117.mp3'	,'I speak French.'],
+['sounds/sound11119.mp3'	,'Well'],
+['sounds/sound11120.mp3'	,'A little'],
+['sounds/sound11121.mp3'	,'A little bit'],
+['sounds/sound11123.mp3'	,'I speak well ...'],
+['sounds/sound11124.mp3'	,'I understand a little ...'],
+['sounds/sound11128.mp3'	,'I know ...'],
+['sounds/sound11131.mp3'	,'I learn ...'],
+['sounds/sound11136.mp3'	,'I understand you.'],
+['sounds/sound11137.mp3'	,'I don\'t understand you.'],
+['sounds/sound11138.mp3'	,'Repeat, please.'],
+['sounds/sound11139.mp3'	,'Please, speak slower.'],
+['sounds/sound11140.mp3'	,'I need a translator.'],
+['sounds/sound11141.mp3'	,'What does it mean?'],
+['sounds/sound11142.mp3'	,'What does this word mean?'],
+['sounds/sound11143.mp3'	,'What is written here?'],
+['sounds/sound11144.mp3'	,'How can you translate this?'],
+['sounds/sound11145.mp3'	,'How can you translate this word?'],
+['sounds/sound11146.mp3'	,'Translate, please.']
+
+
+],hide: 'di3',id:'t3',type: 'audio', how_questions: 10, how_show: 2}, 'v0230030.3');
+</script>
+</div>
+
+
+<script type="text/javascript">
+currentSection="words";
+</script>

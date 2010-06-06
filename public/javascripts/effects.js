@@ -814,6 +814,9 @@ function sectionHighlight() {
 		case 'login':
 			pageMenuItem(7);
 			break;
+		case 'grammar':
+			pageMenuItem(8);
+			break;	
 		default: 
 		   	$("#menu_body .menu-item a").css({color: "#183A87"});
 	}
@@ -992,6 +995,10 @@ $(".tbtest").each(function(i, obj) {
 	$(obj).parent().parent().prepend(beforeTest).append(afterTest);
 });
 
+}
+
+function searchOnPage() {
+$.getScript("/javascripts/page_search.js");
 }
 
 
