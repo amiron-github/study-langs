@@ -1,8 +1,8 @@
 var T = new Object();
 var res     = "r"; //image result id suffix
-var good    = "yes.gif";
-var wrong   = "no.gif";
-var empty   = "pixel.gif";
+var good    = "/yes.gif";
+var wrong   = "/no.gif";
+var empty   = "/pixel.gif";
 function check_test(Form, test_number, tId) {
 	var answers = T[test_number];
 	var otv = new Array();
