@@ -1001,9 +1001,36 @@ function searchOnPage() {
 $.getScript("/javascripts/page_search.js");
 }
 
+function findTabInUrl() {
+	var lastPart = window.location.toString().split("#").pop();
+	var idString = lastPart.split("=");
+	if (idString[0] == 'tab') {
+		var tabId = parseInt(idString.pop());
+	} else {
+		var tabId = 'no';
+	}
+	return tabId;
+}
+
+function openTabFromUrl(tab) {
+/if the url is on the same page, bind onClick event/
+	if (tab) {
+		var tabToOpen = tab;
+	} else {
+		var tabToOpen = findTabInUrl();
+	}
+	if (tabToOpen == "no" ) return false;
+	$(function() {
+		$(".ptab").eq(tabToOpen-1).click();
+	});
+}
 
 
 
+function goToUrl(link) {
+	var toUrl=$(this).attr("href");
+	location.href=toUrl;
+}
 
 
 

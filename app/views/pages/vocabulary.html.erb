@@ -3,6 +3,16 @@
 
 <% content_for :special_js_css do %>
 
+<script type="text/javascript">
+
+<%if params[:tab] %>
+	openTabFromUrl(<%= params[:tab] %>);
+<%else%>
+	openTabFromUrl();
+<%end%>
+	
+</script>
+
 <style type="text/css">
 #prof_tabs {margin-top: 50px;}
 .inpBlock {min-height: 800px; height: auto !important; height: 800px;}
@@ -36,6 +46,7 @@ display: block;
 </style>
 
 <% end %>
+
 
 <h2 class="page">Vocabulary Topics</h2>
 

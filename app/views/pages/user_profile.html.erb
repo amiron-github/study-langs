@@ -10,13 +10,11 @@
 
 
 <script type="text/javascript">
-	
-$(document).ready(function () {
-
-var toTab='<%= params[:tab] %>';
- $('#tab0'+toTab).click();
-});
-
+<%if params[:tab] %>
+	openTabFromUrl(<%= params[:tab] %>);
+<%else%>
+	openTabFromUrl();
+<%end%>
 </script>	
 
 <style type="text/css">
