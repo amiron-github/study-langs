@@ -7,6 +7,17 @@
 <% content_for :special_js_css do %>
  <%= stylesheet_link_tag 'grammar-exercises' %>
  <%= javascript_include_tag 'grammar-exercises' %>
+<%= stylesheet_link_tag 'keyboard' %>
+ 
+ <script type="text/javascript"> 
+ $(document).ready(function(){
+	$(".gext_task input").addClass("for_keyb")
+ });
+ </script>
+ <%= javascript_include_tag 'virtual-keyboard' %> 
+ 
+ 
+ 
 <% end %> 
  
 
@@ -278,7 +289,7 @@
 				<div class="block-center">
 				
 
-<div class="task">Replace nouns with an appropriate form of personal pronouns:</div>
+<div class="task">Replace nouns with an appropriate form of personal pronouns. <a class="show_keyboard" href="javascript:;">[ Use virtual keyboard ]</a></div>
 
 <div  class="gr_ex_type">
 

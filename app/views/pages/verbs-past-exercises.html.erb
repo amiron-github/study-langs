@@ -1,5 +1,5 @@
 <% @page_title = 'Online Russian Grammar:  Exercises for the past tense of Russian verbs ' %>
-<% @page_meta = {'description' => "Russian online grammar exercises on past tense of Russian verbs"} %>
+<% @page_meta = {'description' => "Russian online grammar exercises on the past tense of Russian verbs"} %>
 <% @with_rec = true %>
 <% @has_audio = true %>
 
@@ -7,6 +7,14 @@
 <% content_for :special_js_css do %>
  <%= stylesheet_link_tag 'grammar-exercises' %>
  <%= javascript_include_tag 'grammar-exercises' %>
+ <%= stylesheet_link_tag 'keyboard' %>
+ 
+ <script type="text/javascript"> 
+ $(document).ready(function(){
+	$(".gext_task input").addClass("for_keyb")
+ });
+ </script>
+ <%= javascript_include_tag 'virtual-keyboard' %>
 <% end %> 
  
 
@@ -48,7 +56,7 @@
 				<div class="block-center">
 				
 
-<div class="task">Put the verbs in a past tense form:</div>
+<div class="task">Put the verbs in a past tense form. <a class="show_keyboard" href="javascript:;">[ Use virtual keyboard ]</a></div>
 
 <div  class="gr_ex_type">
 
@@ -251,7 +259,7 @@
 				
 
 <div class="task">Put the following verbs in an appropriate past tense form. Use the verb <span style="font-weight: normal">быть</span> 
-<span style="white-space: nowrap">instead of "-".</span> </div>
+<span style="white-space: nowrap">instead of "-".</span> <a class="show_keyboard" href="javascript:;">[ Use virtual keyboard ]</a> </div>
 
 <div  class="gr_ex_type">
 

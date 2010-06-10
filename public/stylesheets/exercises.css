@@ -32,6 +32,9 @@ border: 1px solid #DFDFDF;
 position: absolute;
 background-color: #fff;
 overflow: hidden;
+background-image: url("/images/exerc-light-bg.gif");
+background-position: left bottom;
+background-repeat: repeat-x;
 }
 
 .variant_tog div, td .task_tog {
