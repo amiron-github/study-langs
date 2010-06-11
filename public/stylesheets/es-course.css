@@ -1,0 +1,99 @@
+.dialog-t {
+min-width: 300px;
+background-image: url("/images/dialog-t-bg.gif");
+background-color: #fefefe;
+background-repeat: repeat-x;
+background-position: left bottom;
+border: 1px solid #e2e2e2;
+-moz-border-radius: 4px;
+-webkit-border-radius: 4px;
+border-radius: 4px;
+-moz-box-shadow: 2px 2px 5px #efefef;
+-webkit-box-shadow: 2px 2px 5px #efefef;
+box-shadow: 2px 2px 5px #efefef;
+}
+
+.dialog-t th {
+background-image: url("/images/dialog-th-bg-gr.gif");
+background-repeat: repeat-x;
+background-position: left bottom;
+background-color: #EBEBEB; /* for colored #ebf1f6, for grey f0f0f0*/
+color: #000;
+font-weight: bold;
+padding: 8px;
+padding-left: 20px;
+font-size: 12px;
+text-shadow: 0px 1px 0px #fff;
+}
+
+.dialog-t th.rus {
+border-right: 1px solid #e1e1e1;
+}
+
+.dialog-t tr {
+cursor: default;
+} 
+
+.dialog-t td {
+padding: 7px 15px;
+border-bottom: 1px solid #e1e1e1;
+}
+
+.dialog-t tr.trow_act {
+back-ground-color: #eef1f3;
+background-color: transparent;
+background-image: url("/images/dialog-tr-bg.png");
+background-repeat: repeat-x;
+background-position: left bottom;
+}
+
+.dialog-t tr.trow_act .d-rus {
+color: #000;
+}
+
+.dialog-t tr.trow_act .d-eng {
+color: #000;
+}
+
+.dialog-t .d-rus {
+border-right: 1px solid #e1e1e1;
+padding-left: 0px;
+padding-left: 18px;
+text-indent:-11px;
+color: #4F4F4F;
+}
+
+.dialog-t .d-eng {
+text-indent:-11px;
+padding-left: 20px;
+color: #5F5F5F;
+}
+
+
+.dialog-t td.d-first, .dialog-t th.d-first {
+padding: 0;
+}
+
+.dialog-t td.d-tfoot {
+background-color: #f4f4f4;
+padding: 5px 20px 5px 20px;
+}
+
+.dialog-t td.d-player-holder {
+padding: 12px 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

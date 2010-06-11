@@ -1,0 +1,346 @@
+<% @page_title='Essential Russian Course: Lesson 1' %>
+<% @page_meta = {'description' => "The first lesson of the Essential Russian Course"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+
+<% content_for :special_js_css do %>
+
+<%= javascript_include_tag 'jquery.dragsort-0.3.10.min.js' %>
+
+
+<script type="text/javascript">
+
+<%if params[:tab] %>
+	openTabFromUrl(<%= params[:tab] %>);
+<%else%>
+	openTabFromUrl();
+<%end%>
+
+
+$(document).ready(function() {
+
+$("ul.try-test").dragsort({ dragSelector: "li", dragEnd: function() { }, dragBetween: false, placeHolderTemplate: "<li></li>" });
+
+
+});
+	
+</script>
+
+<%= stylesheet_link_tag 'es-course' %>
+
+<style type="text/css">
+#prof_tabs {margin-top: 50px;}
+.inpBlock {min-height: 800px; height: auto !important; height: 800px;}
+.pBlock {padding: 40px 50px;}
+.ptab div {font-size: 12px;}
+
+
+
+</style>
+
+<% end %>
+
+<div class="hint_wrap">
+<div class="hint_button" style="float: right;">
+  <div class="hint">
+      <div class="hint_list">
+        <span class="hint_string">Links and Settings</span>
+      </div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+        <ul>
+            <li><a href="sounds-info.html">General Info about Russian Sounds</a></li>
+            <li><a href="phonetics-course.html">Phonetics course</a></li>
+        </ul>
+        <%= render :partial => 'down_accent' %>
+  </div>
+</div>
+</div>
+<div id="pagecontent"><div id="content">
+
+
+<h2 class="page">Lesson 1. Greetings</h2>
+
+
+
+
+<div id="prof_tabs">
+
+	<div id="tabs_row">
+            <div id="tab01" class="ptab  current_ptab"><div><a href="#1">Dialogue</a></div></div>
+            <div id="tab02" class="ptab"><div>Vocabulary</div></div>
+            <div id="tab03" class="ptab"><div>Grammar</div></div>
+			<div id="tab04" class="ptab"><div>Practice</div></div>
+			<div id="tab05" class="ptab"><div>Revision</div></div>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+
+<div id="for_tab01" class="pBlock" style="display: block">
+	<div class="inpBlock">
+
+		<h3>Diaogue 1</h3>
+		
+		
+		<table class="dialog-t" cellspacing="0" align="center" style="margin: 0 auto;">
+			<col width="2">
+			<col width="250">
+			<col width="260" >
+			<tr>
+				<th class="d-first">&nbsp;</th>
+				<th class="rus">Russian</th>
+				<th >English</th>
+			</tr>
+			
+			<tr>
+				<td colspan="3" class="d-player-holder">
+				
+				<object type="application/x-shockwave-flash" data="player.swf" width="200" height="20"> 
+                    <param name="movie" value="player.swf" /> 
+                    <param name="FlashVars" value="mp3=/audios/audio0101.mp3&amp;showinfo=0&amp;textcolor=666666&amp;loadingcolor=000000&amp;buttoncolor=666666&amp;buttonovercolor=000000&amp;bgcolor1=f1f1f1&amp;bgcolor2=dfdfdf&amp;bgcolor=f6f6f6&amp;sliderovercolor=333333" /> 
+                </object>
+				</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first">&nbsp;</td>
+				<td  class="d-rus">- Здравствуйте! </td>
+				<td class="d-eng">- Hello</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first">&nbsp;</td>
+				<td class="d-rus">- Добрый день! </td>
+				<td class="d-eng">- Good afternoon</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first">&nbsp;</td>
+				<td class="d-rus">- Как поживаете? </td>
+				<td class="d-eng">- How are you?</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first">&nbsp;</td>
+				<td class="d-rus">- Спасибо, хорошо. А у Вас как дела? </td>
+				<td class="d-eng">- Thanks, I'm fine. And how are you</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first">&nbsp;</td>
+				<td class="d-rus">- Отлично.</td>
+				<td class="d-eng">- Excellent.</td>
+			</tr>
+			<tr>
+				<td colspan="3" class="d-tfoot">
+				
+				&nbsp;
+
+				</td>
+			</tr>
+		</table>
+		
+	<br>	
+	<br>
+	<br>	
+	<br>
+	<br>	
+	<br>
+	
+			<h3>Diaogue 2</h3>
+		
+
+		<table class="dialog-t" cellspacing="0" align="center" style="margin: 0 auto;">
+			<col width="2">
+			<col width="250">
+			<col width="260" >
+			<tr>
+				<th class="d-first">&nbsp;</th>
+				<th class="rus">Russian</th>
+				<th >English</th>
+			</tr>
+			
+			<tr>
+				<td colspan="3" class="d-player-holder">
+				
+				<object type="application/x-shockwave-flash" data="player.swf" width="200" height="20"> 
+                    <param name="movie" value="player.swf" /> 
+                    <param name="FlashVars" value="mp3=/audios/audio0101.mp3&amp;showinfo=0&amp;textcolor=666666&amp;loadingcolor=000000&amp;buttoncolor=666666&amp;buttonovercolor=000000&amp;bgcolor1=f1f1f1&amp;bgcolor2=dfdfdf&amp;bgcolor=f6f6f6&amp;sliderovercolor=333333" /> 
+                </object>
+				</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first">&nbsp;</td>
+				<td  class="d-rus">- Здравствуйте! </td>
+				<td class="d-eng">- Hello</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first">&nbsp;</td>
+				<td class="d-rus">- Добрый день! </td>
+				<td class="d-eng">- Good afternoon</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first">&nbsp;</td>
+				<td class="d-rus">- Как поживаете? </td>
+				<td class="d-eng">- How are you?</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first">&nbsp;</td>
+				<td class="d-rus">- Спасибо, хорошо. А у Вас как дела? </td>
+				<td class="d-eng">- Thanks, I'm fine. And how are you</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first">&nbsp;</td>
+				<td class="d-rus">- Отлично.</td>
+				<td class="d-eng">- Excellent.</td>
+			</tr>
+			<tr>
+				<td colspan="3" class="d-tfoot">
+				
+				&nbsp;
+
+				</td>
+			</tr>
+		</table>
+		
+	<br>	
+	<br>		
+		
+	<ul id="list2">
+		<li><div>10</div></li>
+		<li><div>11</div></li>
+		<li><div>12</div></li>
+		<li><div>13</div></li>
+		<li><div>14</div></li>
+		<li><div>15</div></li>
+		<li><div>16</div></li>
+		<li><div>17</div></li>
+		<li><div>18</div></li>
+	</ul>
+	
+	<ul id="list1">
+		<li><div>1</div></li>
+		<li><div>2</div></li>
+		<li><div>3</div></li>
+		<li><div>4</div></li>
+		<li><div>5</div></li>
+		<li><div>6</div></li>
+		<li><div>7</div></li>
+		<li><div>8</div></li>
+		<li><div>9</div></li>
+	</ul>
+
+	<script type="text/javascript">
+		$("#list1, #list2").dragsort({ dragSelector: "div", dragBetween: true, dragEnd: saveOrder, placeHolderTemplate: "<li class='placeHolder'><div></div></li>" });
+		
+		function saveOrder() {
+			var serialStr = "";
+			$("#list1 li").each(function(i, elm) { serialStr += (i > 0 ? "|" : "") + $(elm).children().html(); });
+			$("input[name=list1SortOrder]").val(serialStr);
+		};
+	</script>
+	
+	
+<ul class="try-test">
+	<li>Item 1</li>
+	<li>Item 1</li>
+	<li>Item 1</li>
+<ul>
+		
+		
+		
+
+	</div>
+</div>
+<div id="for_tab02" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+	
+	2
+	
+	
+		
+
+
+
+	</div>
+</div>
+
+<div id="for_tab03" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+	
+	3
+	
+	
+		
+
+
+
+	</div>
+</div>
+
+<div id="for_tab04" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+	
+	4
+	
+	
+		
+
+
+
+	</div>
+</div>
+
+
+<div id="for_tab05" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+	
+	5
+	
+	
+		
+
+
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</div><!-- end of #content -->
+</div>
+
+
+
+<script type="text/javascript">
+currentSection="course";
+</script>
+
