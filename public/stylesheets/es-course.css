@@ -84,9 +84,55 @@ padding: 12px 20px;
 }
 
 
+.ds-table {
+background-color: #fff;
+margin: 0 auto;
+border: 1px solid #999;
+-moz-box-shadow: 2px 2px 5px #efefef;
+-webkit-box-shadow: 2px 2px 5px #efefef;
+box-shadow: 2px 2px 5px #efefef;
+}
+
+div.ds_dragged {
+padding: 10px 20px;
+text-align: left;
+
+}
+
+#ds_dragHelper  div {
+background-image:url("/images/dialog-tr-bg.png");
+background-position:right bottom;
+background-repeat:repeat-x;
+font-weight: bold;
+}
+
+#ds_dragHelper {
+-moz-box-shadow: 0px 2px 4px #555;
+-khtml-box-shadow: 0px 2px 4px #555;
+box-shadow: 0px 2px 4px #555;
+}
 
 
+.ds-table tr  td{
+border-bottom:  1px solid #999;
+background-image:url("/images/dialog-tr-bg.png");
+background-position:right bottom;
+background-repeat:repeat-x;
+}
 
+.ds-quest {
+border-right: 1px solid #999;
+text-align: center !important;
+}
+
+.ds_sort_item {
+line-height: 25px;
+}
+
+.ds_input {
+width: 20px;
+margin-right: 10px;
+}
 
 
 

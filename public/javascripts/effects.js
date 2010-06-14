@@ -432,19 +432,19 @@ $("tr.trow").each(function(){
 
 function accentOn() {
 	$("span.acco").each(function(){
-		$(this).replaceWith($(this).text() + "&#769;");
+		$(this).html($(this).text() + "&#769;");
 	});
 }
 
 function accentAdjust() {
 $("span.acco").each(function(){
-	$(this).replaceWith("&#769;" + $(this).text());
+	$(this).html("&#769;" + $(this).text());
 	});
 }
 
 function backAccent() {
 	$("span.acco").each(function(){
-		$(this).replaceWith($(this).text() + "&#769;");
+		$(this).html($(this).text() + "&#769;");
 	});
 }
 
@@ -456,7 +456,7 @@ function accentUn() {
 
 function accentOff() {
 	$("span.acco").each(function(){
-		$(this).replaceWith($(this).text());
+		$(this).html($(this).text());
 	});
 }
 
@@ -950,24 +950,19 @@ function InputHelperCreate(obj, text){
 		InputHelperOut(obj, text);
 }
 
-function InputHelperIn(obj, text)
-	{
-		if (obj.value == text)
-		{
+function InputHelperIn(obj, text) {
+		if (obj.value == text) {
 		    $( obj )
 		        .css({color: '#000'})
 		        .val('');
-		
 		}
 	}
 	
-function InputHelperOut(obj, text){
-
+function InputHelperOut(obj, text) {
 		if ( obj.value == '' || obj.value == text ) {
 		    $( obj )
 		        .css({color: '#666'})
 		        .val(text);
-			
 		}
 }
 

@@ -6,7 +6,8 @@
 
 <% content_for :special_js_css do %>
 
-<%= javascript_include_tag 'jquery.dragsort-0.3.10.min.js' %>
+<%= javascript_include_tag 'test-drag-sort' %>
+<%= javascript_include_tag 'test-dragin' %>
 
 
 <script type="text/javascript">
@@ -20,7 +21,6 @@
 
 $(document).ready(function() {
 
-$("ul.try-test").dragsort({ dragSelector: "li", dragEnd: function() { }, dragBetween: false, placeHolderTemplate: "<li></li>" });
 
 
 });
@@ -35,7 +35,7 @@ $("ul.try-test").dragsort({ dragSelector: "li", dragEnd: function() { }, dragBet
 .pBlock {padding: 40px 50px;}
 .ptab div {font-size: 12px;}
 
-
+.ds-test li {float: left; list-style: none; font-size: 18px;}
 
 </style>
 
@@ -202,49 +202,107 @@ $("ul.try-test").dragsort({ dragSelector: "li", dragEnd: function() { }, dragBet
 	<br>	
 	<br>		
 		
-	<ul id="list2">
-		<li><div>10</div></li>
-		<li><div>11</div></li>
-		<li><div>12</div></li>
-		<li><div>13</div></li>
-		<li><div>14</div></li>
-		<li><div>15</div></li>
-		<li><div>16</div></li>
-		<li><div>17</div></li>
-		<li><div>18</div></li>
-	</ul>
-	
-	<ul id="list1">
-		<li><div>1</div></li>
-		<li><div>2</div></li>
-		<li><div>3</div></li>
-		<li><div>4</div></li>
-		<li><div>5</div></li>
-		<li><div>6</div></li>
-		<li><div>7</div></li>
-		<li><div>8</div></li>
-		<li><div>9</div></li>
-	</ul>
 
-	<script type="text/javascript">
-		$("#list1, #list2").dragsort({ dragSelector: "div", dragBetween: true, dragEnd: saveOrder, placeHolderTemplate: "<li class='placeHolder'><div></div></li>" });
-		
-		function saveOrder() {
-			var serialStr = "";
-			$("#list1 li").each(function(i, elm) { serialStr += (i > 0 ? "|" : "") + $(elm).children().html(); });
-			$("input[name=list1SortOrder]").val(serialStr);
-		};
-	</script>
+
+	<br>	
+	<br>
+	<br>	
+
 	
 	
-<ul class="try-test">
-	<li>Item 1</li>
-	<li>Item 1</li>
-	<li>Item 1</li>
-<ul>
+		
+
+<div style="clear: both"></div>
+
+
+		
+<table class="dst-test ds-table" cellspacing="0" align="center">
+
+<col width="150">
+<col width="150">
+
+<tr>	
+	<td class="ds-quest" align="center">
+			&nbsp;
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+			&nbsp;
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		&nbsp;
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		a square
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		&nbsp;
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+
+</table>	
+
+
+<ul style="float: left;">
+
+	<li> 
+			<div class="ds_variant">Площадь   </div>
+	</li>
+	<li> 
+			<div class="ds_variant">Аэропорт  </div>
+	</li>
+	<li> 
+			<div class="ds_variant">Улица   </div>
+	</li>
+	<li> 
+			<div class="ds_variant">Вокзал   </div>
+	</li>
+	<li> 
+			<div class="ds_variant">Гостиница  </div>
+	</li>
+
+
+</ul>
+
+
 		
 		
+<div id="inf" style="clear: both">0</div>		
 		
+		
+	<br><br><br><br><br><br><br><br>	
 
 	</div>
 </div>

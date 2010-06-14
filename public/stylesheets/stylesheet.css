@@ -475,7 +475,6 @@ position: absolute;
 border: 1px solid #999999;
 width: 179px;
 border-top: 0px solid #fff;
-margin-left: 12px;
 }
 
 .sub_hint ul {
@@ -1953,7 +1952,7 @@ position: absolute;
 border: 1px solid #999999;
 width: 178px;
 border-top: 0px solid #fff;
-margin-left: 12px;
+left: 12px;
 -moz-box-shadow: 1px 3px 3px #BFBFBF;
 -webkit-box-shadow: 1px 3px 3px #BFBFBF;
 box-shadow: 1px 3px 3px #BFBFBF;
@@ -2385,5 +2384,11 @@ margin-top: 20px;
 list-style: none;
 max-width: 500px;
 
+}
+
+.noselect {
+-moz-user-select: none;
+-khtml-user-select: none;
+user-select: none;
 }
 
