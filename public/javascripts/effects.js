@@ -877,6 +877,13 @@ $("#tab04").click(function(){
 	$("#for_tab04").show();
 });
 
+$("#tab05").click(function(){
+	setCookie("voc", '05');
+	
+	$(".pBlock").hide();
+	$("#for_tab05").show();
+});
+
 //openTab();
 
 activeTab();

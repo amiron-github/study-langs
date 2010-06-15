@@ -8,6 +8,7 @@
 
 <%= javascript_include_tag 'test-drag-sort' %>
 <%= javascript_include_tag 'test-dragin' %>
+<%= javascript_include_tag 'multi-choice' %>
 
 
 <script type="text/javascript">
@@ -354,7 +355,53 @@ $(document).ready(function() {
 	<div class="inpBlock">
 	
 	
-	5
+	<br><br><br> 
+ 
+ 
+ 
+<div class="form-wrapper" id="mc1" style="width: 450px; margin: 0 auto;"> 
+	<div class="form-top"> 
+		<div class="form-top-left"></div> 
+		<div class="form-top-right"></div> 
+	</div> 
+ 
+	<div class="form-right"> 
+		<div class="form-left"> 
+			<div class="form-questionaire"> 
+				<div class="mc_question"> 
+            	</div> 
+			</div> 
+			   <div class="form-variants"> 
+			   		<div  class="mc_variants" style="height: 180px; overflow: hidden; position: relative;"> 
+			
+					</div> 
+			   </div> 
+		</div> 
+	</div> 
+	<div class="form-mid"> 
+		<div class="form-mid-left"></div> 
+		<div class="form-mid-right"></div> 
+	</div> 
+	<div class="form-bottom"> 
+		<div class="form-bottom-left"></div> 
+		<div class="form-bottom-right"> 
+			<div class="mc_counter"></div> 
+		</div> 
+	<div  class="mc_check" style="position: absolute; margin: 6px 0 0 15px; width: 250px;"></div> 
+	</div> 
+</div> 
+ 
+<script type="text/javascript"> 
+ 
+var mc1 = new mcTest( {tasks:[
+['How to say "hello" in Russian:', [['hello'], ['hi']], [0]], 
+['The snow is:', [['white'], ['green'], ['red']], [0]],
+['The grass is:', [['blue'], ['green']], [1]]
+], 
+buildId: 'mc1' } )
+ 
+ 
+</script>
 	
 	
 		

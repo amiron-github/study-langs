@@ -138,6 +138,253 @@ margin-right: 10px;
 
 
 
+//////////////////////
+
+.mc_variants {
+padding: 1px;
+overflow: hidden;
+ 
+}
+ 
+.mc_variants div {
+background-color: #fff;
+}
+ 
+div.answer {
+height: 10px;
+text-align: center;
+background-color: #AFAFAF;
+color: #fff;
+font-size: 0px;
+font-weight: bold;
+line-height: 0px;
+margin-bottom: 15px;
+border-top: 1px solid #6F6F6F;
+}
+ 
+.mc_check input {
+margin: 0;
+width: 70px;
+text-align: center;
+}
+ 
+.mc_results {
+font-size: 14px;
+padding: 20px 50px 20px 20px;
+text-align: center;
+}
+ 
+.mc_counter  {
+position: absolute;
+right: 70px;
+margin: 8px 0px 0px 0px;
+}
+ 
+ 
+/* form styles*/
+ 
+.block-wrapper {
+font-size: 0px;
+margin: 0px auto;
+position: relative;
+text-align: left;
+zoom: 1;
+ 
+-moz-box-shadow: 3px 3px 5px #0c1026;
+-webkit-box-shadow: 3px 3px 5px #0c1026;
+box-shadow: 3px 3px 5px #0c1026;
+ 
+}
+ 
+ 
+ 
+ 
+ 
+ 
+.form-wrapper {
+max-width: 600px;
+}
+ 
+ 
+.form-wrapper div {
+zoom: 1;
+}
+ 
+.form-left {
+position: relative;
+font-size: 12px;
+left: -9px;
+padding-left: 6px;
+background-image: url("/images/form/form-left-mid0.png");
+background-position: left top;
+background-repeat: repeat-y;
+}
+ 
+ 
+.form-right {
+position: relative;
+margin-left: 9px;
+background-image: url("/images/form/form-right-mid.png");
+background-position: right top;
+background-repeat: repeat-y;
+}
+ 
+ 
+.form-questionaire {
+position: relative;
+top: -4px;
+margin-right: 1px;
+background-color: #EEECE9;
+background-image: url("/images/form/form-quest.png");
+background-position: left top;
+background-repeat: repeat-y;
+border-bottom: 1px solid #BFBFBF;
+padding: 0px 50px 15px 20px;
+ 
+ 
+}
+ 
+.form-variants {
+position: relative;
+margin: -4px 1px -15px 2px;
+padd-ing: 10px 2px 25px 2px;
+bor_der: 1px solid red;
+overflow: hidden;
+}
+ 
+ 
+ 
+.form-top {
+position: relative;
+margin: 0px 400px 0px 24px;
+height: 24px;
+background-image: url("/images/form/form-top.png");
+background-position: left top;
+background-repeat: repeat-x;
+}
+ 
+.form-top-left {
+position: absolute;
+left: -24px;
+height: 24px;
+width: 24px;
+background-image: url("/images/form/form-left-crn.png");
+background-repeat: no-repeat;
+}
+ 
+.form-top-right {
+position: absolute;
+right: -400px;
+height: 24px;
+width: 400px;
+background-image: url("/images/form/form-right-crn.png");
+background-position: right top;
+background-repeat: no-repeat;
+}
+ 
+.form-bottom-wrapper {
+position: absolute;
+width: 100%;
+bottom: 0px;
+}
+ 
+.form-bottom {
+position: relative;
+margin: 0px 400px 0px 24px;
+height: 42px;
+background-image: url("/images/form/form-btm.png");
+background-position: left bottom;
+background-repeat: repeat-x;
+}
+ 
+.form-bottom-left {
+position: absolute;
+left: -24px;
+height: 42px;
+width: 24px;
+background-image: url("/images/form/form-left-bcrn.png");
+background-position: left bottom;
+background-repeat: no-repeat;
+}
+ 
+.form-bottom-right {
+position: absolute;
+right: -400px;
+height: 42px;
+width: 400px;
+background-image: url("/images/form/form-right-bcrn.png");
+background-position: right bottom;
+background-repeat: no-repeat;
+}
+ 
+ 
+.form-mid {
+position: relative;
+margin: 0px 24px 0px 24px;
+height: 14px;
+background-image: url("/images/form/form-mid.png");
+background-position: left bottom;
+background-repeat: repeat-x;
+font-size: 0px;
+}
+ 
+.form-mid-left {
+position: absolute;
+left: -24px;
+height: 14px;
+width: 24px;
+background-image: url("/images/form/form-left-mcrn.png");
+background-position: left bottom;
+background-repeat: no-repeat;
+}
+ 
+.form-mid-right {
+position: absolute;
+right: -24px;
+height: 14px;
+width: 24px;
+background-image: url("/images/form/form-right-mcrn.png");
+background-position: right bottom;
+background-repeat: no-repeat;
+}
+ 
+ 
+ 
+.form-wrapper p {
+margin: 0;
+}
+ 
+.mc_variant {
+padding: 8px 40px;
+font-size: 10px;
+cursor: default;
+}
+ 
+.mc_variant span {
+font-size: 16px;
+}
+ 
+.mc_question {
+font-size: 17px;
+font-weight: bold;
+padding-bottom: 5px;
+text-shadow: 1px 1px 3px #6F6F6F;
+text-align: center;
+}
+ 
+.mc_check {
+z-index: 100;
+}
+ 
+ 
+
+
+
+
+////////////////////////////
+
+
+
 
 
 
