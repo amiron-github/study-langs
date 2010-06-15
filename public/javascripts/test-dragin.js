@@ -69,10 +69,13 @@ function ds_dragging(dragHelper, difX, difY) {
 function ds_stopDragging(dragHelper, jObj, item) {
 
 $("body").one("mouseup", function(e) {
-	dragHelper.empty().removeClass("ds_ondrag");
-	$("body").unbind("mousemove");
+
+	
 	
 	var hitTarget = ds_collision(e.pageX,e.pageY);
+	
+	dragHelper.removeClass("ds_ondrag").empty();
+	$("body").unbind("mousemove");
 	
 	if ( hitTarget > -1) {
 		var tIndex = jObj.attr("ds_var")
@@ -139,7 +142,12 @@ item.mousedown(function(e) {
 	if ( $(this).parent().attr("taken") == "taken" ) {
 
 		$("body").addClass("noselect");
+		
+		
+		
 		$(this).parent().removeAttr("taken");
+		
+
 		
 		//ds_targetPos[].taken = false;
 		
@@ -156,7 +164,9 @@ item.mousedown(function(e) {
 		
 		ds_dragging($("#ds_dragHelper"), difX, difY);
 		
-		ds_stopDragFromTarget($("#ds_dragHelper"), $(this), item, returnTo);
+		ds_stopDragFromTarget($("#ds_dragHelper"), $(this), item, returnTo,tHtml);
+		
+		
 		
 		e.preventDefault();
 		return false;
@@ -168,20 +178,26 @@ item.mousedown(function(e) {
 }
 
 
-function ds_stopDragFromTarget(dragHelper, jObj, item, returnTo) {
+function ds_stopDragFromTarget(dragHelper, jObj, item, returnTo,tHtml) {  //jObj - one of targets, item - targets list, returnTo - variants list
 
 $("body").one("mouseup", function(e) {
 
+	
+	
+	var hitTarget = ds_collision(e.pageX,e.pageY); // target hitted
+	
 	dragHelper.empty().removeClass("ds_ondrag");
 	$("body").unbind("mousemove");
 	
-	var hitTarget = ds_collision(e.pageX,e.pageY);
 	
 	if ( hitTarget > -1) {
-		//hittedTarget(jObj,hitTarget)
+	
+		var takenFrom = jObj.parent().attr("by"); // taken from variant
+		hittedFromTarget(jObj, hitTarget,takenFrom, tHtml);
+		
 	}else{
 		var tReturn = jObj.parent().attr("by")
-		returnTo.eq(tReturn).css({visibility: "visible"})
+		returnTo.filter('[ds_var="'+tReturn+'"]').css({visibility: "visible"})
 		
 	}
 	
@@ -195,12 +211,47 @@ $("body").one("mouseup", function(e) {
 }
 
 
-function returnItem() {
-
+function hittedFromTarget(jObj, target, takenFrom, tHtml) {   // jObj
+	
+	if ( $( ds_targetPos[target].elem ).attr("taken") == "taken" ) {
+		
+		jObj.html(tHtml).parent().attr("taken", "taken").attr("by",takenFrom);
+		
+	}else {
+	
+		$( ds_targetPos[target].elem ).attr("taken", "taken").attr("by",takenFrom).children().html(" " + tHtml + " ");
+	}
 
 }
 
 
+
+
+/* 
+
+ determine target set on each dragstart 
+ use a correct and one target table
+ make it sortable if all targets are hitted
+ define so that several tests can be available on the page
+ remove some unnecessary info
+ 
+ 
+ Plan: 
+ 
+ 
+ 1. Create a common object with: test id, variants class and targets class.
+ 2. Inner functions that would work only with one test data
+ 3. All data about the current state are included in one place: 
+ 
+	Target Data:
+	- Coordinates
+	- Taken or not
+	- If taken, the variant
+	
+Consider the necessity of attributes
+ 
+
+*/
 
 
 
