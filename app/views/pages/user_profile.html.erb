@@ -73,7 +73,7 @@ font-weight: bold;
 		<tr>
 			<td class="item-name">Account created:
 			</td>
-			<td>    <%=current_user.created_at.strftime("%Y/%m/%d")%>
+			<td>    <%=current_user.created_at.strftime("%Y/%m/%d")%> <span style="font-size: 9px; font-style: italic">(<%= current_user.created_at.to_date.to_s(:long) %>)</span>
 			</td>
 		</tr>
 		</table>
@@ -96,9 +96,12 @@ font-weight: bold;
         <th class="thbrd">Expiration Date</th>
     </tr>
     <tr>
-        <td height="50" style="padding: 15px;">Subscription to the <a href="course.html">Everyday Russian Course</a><a/></td>
+        <td height="50" style="padding: 15px;">Subscription to the <a href="everyday-course.html">Everyday Russian Course</a><a/></td>
         <td style="padding: 15px;"><em>Active</em></td>
-        <td style="padding: 15px;"><%= current_user.expired %></td>
+        <td style="padding: 15px;">
+			<%= current_user.expired %><br>
+			<span style="font-size: 9px;font-style: italic">(<%= current_user.expiration_time.to_date.to_s(:long) %>)</span>
+		</td>
     </tr>
 </table>
 		
@@ -125,7 +128,7 @@ font-weight: bold;
 		</th>
 	</tr>
 	<tr>
-		<td style="padding: 15px;"><div style="font-size: 11px; line-height: 20px;" class="sbcr-free"> 2-month subscription to the <a href="course.html#everyday_course">Everyday&nbsp;Russian&nbsp;Course</a> </div>
+		<td style="padding: 15px;"><div style="font-size: 11px; line-height: 20px;" class="sbcr-free"> 2-month subscription to the <a href="everyday-course.html">Everyday&nbsp;Russian&nbsp;Course</a> </div>
 		</td>
 		<td style="padding: 15px;">$8.99&nbsp;USD
 		</td>
@@ -151,7 +154,7 @@ font-weight: bold;
 		</td>
 	</tr>
 	<tr>
-		<td style="padding: 15px;"><div style="font-size: 11px; line-height: 20px;" class="sbcr-free"> 4-month subscription to the <a href="course.html#everyday_course">Everyday&nbsp;Russian&nbsp;Course</a> </div>
+		<td style="padding: 15px;"><div style="font-size: 11px; line-height: 20px;" class="sbcr-free"> 4-month subscription to the <a href="everyday-course.html">Everyday&nbsp;Russian&nbsp;Course</a> </div>
 		</td>
 		<td style="padding: 15px;">$14.99&nbsp;USD
 		</td>
@@ -177,7 +180,7 @@ font-weight: bold;
 	</tr>
 	
 	<tr>
-		<td style="padding: 15px;"><div style="font-size: 11px; line-height: 20px;" class="sbcr-free"> 6-month subscription to the <a href="course.html#everyday_course">Everyday&nbsp;Russian&nbsp;Course</a> </div>
+		<td style="padding: 15px;"><div style="font-size: 11px; line-height: 20px;" class="sbcr-free"> 6-month subscription to the <a href="everyday-course.html">Everyday&nbsp;Russian&nbsp;Course</a> </div>
 		</td>
 		<td style="padding: 15px;">$19.99&nbsp;USD
 		</td>

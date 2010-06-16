@@ -7,7 +7,8 @@
 <% content_for :special_js_css do %>
 
 <%= javascript_include_tag 'test-drag-sort' %>
-<%= javascript_include_tag 'test-dragin' %>
+<%= javascript_include_tag 'test-drag-in' %>
+<%= javascript_include_tag 'test-drag-drop' %>
 <%= javascript_include_tag 'multi-choice' %>
 
 
@@ -274,7 +275,10 @@ $(document).ready(function() {
 	</td>
 </tr>
 
-</table>	
+</table>
+
+
+	
 
 
 <ul style="float: left;">
@@ -298,7 +302,14 @@ $(document).ready(function() {
 
 </ul>
 
+<script type="text/javascript"> 
+$(document).ready(function() {
 
+	var ds1 = new dragsort_test( {targets: $(".ds-answer"), answer_elem: $(".ds_sort_item"), variant_elem: $(".ds_variant") } )
+	
+});
+
+</script>
 		
 		
 <div id="inf" style="clear: both">0</div>		

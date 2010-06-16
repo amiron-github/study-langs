@@ -102,7 +102,7 @@ display: none;
 <p>
   <b>Payment:</b>
   <%if @user.payment %>
-	until <%= @user.expired %>
+	until <%= @user.expiration_time.to_s(:long) %>
   <%else%>
 	&nbsp; No payment &nbsp; &nbsp; &nbsp; &nbsp; <a class="a_button" href="javascript:;" id="show_edit_form">[edit]</a>
 	

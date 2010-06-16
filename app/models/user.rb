@@ -88,17 +88,30 @@ write_attribute :email, (value ? value.downcase : nil)
 			end
 
 			def expired
-	order = self.orders.find(:first, :conditions => 'status>0 and expired_at >= now()')
-#		self.orders.each do |t|
-#		logger.warn(t.expired_at)
-#		end                	
-	if order
-	logger.warn(order.expired_at.strftime("%m-%d-%Y"))
-	return order.expired_at.strftime("%m-%d-%Y")
-	else
-	return '1'
-	end
-	end
+				order = self.orders.find(:first, :conditions => 'status>0 and expired_at >= now()')
+		#		self.orders.each do |t|
+		#		logger.warn(t.expired_at)
+		#		end                	
+			 if order
+				logger.warn(order.expired_at.strftime("%m-%d-%Y"))
+				return order.expired_at.strftime("%m-%d-%Y")
+			  else
+				return '1'
+			  end
+			end
+			
+			def expiration_time
+				order = self.orders.find(:first, :conditions => 'status>0 and expired_at >= now()')
+		#		self.orders.each do |t|
+		#		logger.warn(t.expired_at)
+		#		end                	
+			 if order
+				logger.warn(order.expired_at.strftime("%d/%m/%Y"))
+				return order.expired_at
+			  else
+				return '1'
+			  end
+			end
 
 	protected
 
