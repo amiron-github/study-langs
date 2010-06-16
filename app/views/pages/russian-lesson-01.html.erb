@@ -217,7 +217,7 @@ $(document).ready(function() {
 <div style="clear: both"></div>
 
 
-		
+<div id="ds1">		
 <table class="dst-test ds-table" cellspacing="0" align="left" style="margin: auto">
 
 <col width="150">
@@ -301,14 +301,9 @@ $(document).ready(function() {
 
 
 </ul>
-
+</div>
 <script type="text/javascript"> 
-$(document).ready(function() {
-
-	var ds1 = new dragsort_test( {targets: $(".ds-answer"), answer_elem: $(".ds_sort_item"), variant_elem: $(".ds_variant") } )
-	
-});
-
+	var ds1 = new dragsort_test( {id: "ds1", targets: "ds-answer", answer_elem: "ds_sort_item", variant_elem: "ds_variant" } )
 </script>
 		
 		

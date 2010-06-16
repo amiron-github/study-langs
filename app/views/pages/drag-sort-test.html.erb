@@ -1,0 +1,129 @@
+<% @page_title = 'Drag and sort test' %>
+
+<% content_for :special_js_css do %>
+
+
+<%= javascript_include_tag 'test-drag-sort' %>
+<%= stylesheet_link_tag 'es-course' %>
+
+<style type="text/css">
+
+
+</style>
+
+<%end%>
+
+
+<h2 class="page">Drag and drop test</h2>
+
+
+<br>
+
+
+<div id="ds1">		
+<table class="dst-test ds-table" cellspacing="0" >
+
+<col width="150">
+<col width="150">
+
+<tr>	
+	<td class="ds-quest" align="center">
+			&nbsp;
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+
+</tr>
+<tr>
+	<td class="ds-quest">
+			&nbsp;
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		&nbsp;
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		a square
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		&nbsp;
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+
+</table>
+
+
+	
+
+
+<ul>
+
+	<li> 
+			<div class="ds_variant">Площадь   </div>
+	</li>
+	<li> 
+			<div class="ds_variant">Аэропорт  </div>
+	</li>
+	<li> 
+			<div class="ds_variant">Улица   </div>
+	</li>
+	<li> 
+			<div class="ds_variant">Вокзал   </div>
+	</li>
+	<li> 
+			<div class="ds_variant">Гостиница  </div>
+	</li>
+
+
+</ul>
+</div>
+<script type="text/javascript"> 
+	var ds1 = new dragsort_test( {id: "ds1", targets: "ds-answer", answer_elem: "ds_sort_item", variant_elem: "ds_variant" } )
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+
+

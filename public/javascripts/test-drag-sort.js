@@ -44,6 +44,8 @@ this.start = function() {
 	this.variants.mousedown(function(e) {
 		$("body").addClass("noselect");
 		var t = $(this);
+		
+		
 		var tHtml = t.html();
 		var x = t.offset().left;
 		var y = t.offset().top;
@@ -64,6 +66,9 @@ this.start = function() {
 		if ( $(this).parent().attr("taken") != "-1" ) {
 			$("body").addClass("noselect");
 			var t = $(this);
+			
+			tObj.targetTable();
+			
 			var fromVariant = t.parent().attr("taken");
 			t.parent().attr("taken", "-1");
 			var tHtml = t.html();
@@ -76,8 +81,11 @@ this.start = function() {
 		
 			dragHelper.addClass("ds_ondrag").html(tHtml).css({left: x, top: y, maxWidth: l, opacity: "0.8"});
 			tObj.dragging(difX, difY);
-			tObj.targetTable();
-			tObj.dropFromAnswer(t, fromVariant);
+			
+			tObj.dropFromAnswer(t, fromVariant,tHtml);
+			
+			//tObj.targetTable();
+			
 			e.preventDefault();
 			return false;
 	}
@@ -101,7 +109,7 @@ this.targetTable = function() {
 			var loc = $(elem).offset();
 			loc.right = loc.left + $(elem).width();
 			loc.bottom = loc.top + $(elem).height();
-			loc.html = $(elem).html();
+			loc.html = $(elem).children().html();
 			loc.elem = elem;
 			loc.taken = $(elem).attr("taken");
 			tObj.targetsData.push(loc);
@@ -140,13 +148,19 @@ this.hittedTarget = function (tVariant, hitted) {
 	}
 }
 
-this.dropFromAnswer = function(tAnswer, fromVariant) {
+this.dropFromAnswer = function(tAnswer, fromVariant, tHtml) { //jquery object of answer and index of variant
 	$("body").one("mouseup", function(e) {
 		var hitTarget = tObj.collision(e.pageX,e.pageY); // target hitted
 		dragHelper.removeClass("ds_ondrag").empty();
 		$("body").unbind("mousemove");
 		if ( hitTarget > -1) {
 			var hitted = hitTarget;
+			var hitter = tObj.answers.index(tAnswer);
+			
+			tObj.interchange(hitter, hitted, tHtml);
+			
+			
+			/*
 			var takenBy = fromVariant;
 			var tHtml = tObj.variants.eq(takenBy).html();
 			
@@ -155,6 +169,9 @@ this.dropFromAnswer = function(tAnswer, fromVariant) {
 			} else {
 				tAnswer.html(tHtml).parent().attr("taken", takenBy )
 			}
+			*/
+			
+			
 		} else {
 			tObj.variants.filter(":eq("+fromVariant+")").css({visibility: "visible"})
 		}
@@ -164,11 +181,55 @@ this.dropFromAnswer = function(tAnswer, fromVariant) {
 	});
 }
 
+this.interchange = function(fromIndex, toIndex, tHtml) {
+
+	//tObj.targetTable();
+
+
+	
+	//var htmlToRemove = tObj.targetsData[toIndex].html;  //remove from
+	
+	//var htmlToPlace = tHtml;
+	
+	//tObj.targetsData[toIndex].html = htmlToPlace;
+	//tObj.targetsData[fromIndex].html = htmlToRemove;
+	
+	var tEl = tObj.targetsData.splice(fromIndex, 1);  //remove from
+	
+	
+	     tObj.targetsData.splice(toIndex, 0, tEl);        //place to
+	
+	/*
+	tObj.answers.each (function(i,obj) {
+		alert(tObj.targetsData[i].html);
+	})
+	*/
+	
+	
+	tObj.answers.each (function(i,obj) {
+		$(obj).html(" " + tObj.targetsData[i].html + " ");
+	})
+
+
+
+
+}
+
+
 
 $(document).ready(function() {
 	tObj.start();
 });
 
+
+}
+
+function data() {
+
+for (var i=0; i < ds1.targetsData.length; i ++ ) {
+
+	alert( ds1.targetsData[i].html  )
+}
 
 }
 
