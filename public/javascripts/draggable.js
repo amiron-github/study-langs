@@ -71,6 +71,7 @@ $(".dragit").mousedown(function(e){
    	difX=e.pageX-curPosX-drugboxLeft;
    	difY=e.pageY-curPosY-drugboxTop;
 	var intarget=t.data("intarget");
+	
 
 	t.clone().css({left: "0", top: "0", position: "relative"}).appendTo("#dragHelper").end().css({visibility: "hidden"}).removeData("intarget");
 	$("#dragHelper").css({left: curPosX+drugboxLeft, top: curPosY+drugboxTop, zIndex: inZ, opacity: "0.8"});

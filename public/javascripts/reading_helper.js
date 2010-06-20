@@ -9,6 +9,11 @@ $(".highlight_options").each(function(i){
 
 });
 
+$(".stressed_letter").each(function() {
+	   var tString = $(this).text();
+	   $(this).data("letter", tString);
+    });
+
 
 /*vizualisation*/
 var defaultHighlight = 'Choose a view mode of the following groups of letters';
@@ -201,7 +206,7 @@ function toggleAccentMode(obj) {
     $(".stressed_letter").each(function() {
 	   var tString = $(this).data('letter')
   
-	   $(this).html(tString)
+	   $(this).html("" + tString+ "")
     });
     $("#stress_adjust").fadeOut();
   }

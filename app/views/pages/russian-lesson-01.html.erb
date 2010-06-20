@@ -6,9 +6,7 @@
 
 <% content_for :special_js_css do %>
 
-<%= javascript_include_tag 'test-drag-sor-t' %>
-<%= javascript_include_tag 'test-drag-in' %>
-<%= javascript_include_tag 'test-drag-drop' %>
+<%= javascript_include_tag 'test-drag-sort' %>
 <%= javascript_include_tag 'multi-choice' %>
 
 
@@ -206,18 +204,16 @@ $(document).ready(function() {
 		
 
 
-	<br>	
-	<br>
-	<br>	
-
-	
-	
-		
-
-<div style="clear: both"></div>
+<h3>Complete the test</h3>
 
 
 <div id="ds1">		
+
+<table>
+<tr>
+<td>
+
+
 <table class="dst-test ds-table" cellspacing="0" align="left" style="margin: auto">
 
 <col width="150">
@@ -232,7 +228,6 @@ $(document).ready(function() {
 			&nbsp;
 		</div>
 	</td>
-
 </tr>
 <tr>
 	<td class="ds-quest">
@@ -277,30 +272,34 @@ $(document).ready(function() {
 
 </table>
 
-
+</td>
+<td>
 	
 
 
-<ul style="float: left;">
+<ul style="float: left; list-style: none;">
 
 	<li> 
-			<div class="ds_variant">Площадь   </div>
+			<div class="ds_variant"><div class="ds_vholder">Здравствуйте!</div></div>
 	</li>
 	<li> 
-			<div class="ds_variant">Аэропорт  </div>
+			<div class="ds_variant"><div class="ds_vholder">Как поживаете?</div></div>
 	</li>
 	<li> 
-			<div class="ds_variant">Улица   </div>
+			<div class="ds_variant"><div class="ds_vholder">Добрый день!</div></div>
 	</li>
 	<li> 
-			<div class="ds_variant">Вокзал   </div>
+			<div class="ds_variant"><div class="ds_vholder">Спасибо, хорошо.</div></div>
 	</li>
 	<li> 
-			<div class="ds_variant">Гостиница  </div>
+			<div class="ds_variant"><div class="ds_vholder">Отлично.</div></div>
 	</li>
-
-
 </ul>
+
+</td>
+</tr>
+</table>
+
 </div>
 <script type="text/javascript"> 
 	var ds1 = new dragsort_test( {id: "ds1", targets: "ds-answer", answer_elem: "ds_sort_item", variant_elem: "ds_variant" } )

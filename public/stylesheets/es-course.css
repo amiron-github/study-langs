@@ -125,12 +125,20 @@ text-align: center !important;
 }
 
 .ds_sort_item {
-line-height: 25px;
+min-height: px;
+}
+
+td.ds-answer {
+height: 30px;
 }
 
 .ds_input {
 width: 20px;
 margin-right: 10px;
+}
+
+.ds_vholder {
+padding: 4px 8px;
 }
 
 
@@ -374,6 +382,8 @@ text-align: center;
 .mc_check {
 z-index: 100;
 }
+
+
  
  
 

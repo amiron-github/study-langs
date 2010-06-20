@@ -167,20 +167,27 @@ this.start = function() {
 	this.answers = this.container.find("." + this.answersClass);             // jquery elements with answers to check
 	this.variants = this.container.find("."+ tObj.variantsClass);          // jquery elements with variants which will be dragged and checked as answers
 
+	
+	this.targets.css({cursor: "default"});
+	this.variants.css({cursor: "default"});
+	
 	$("body").append('<div id="'+ this.id +'_dragHelper" class="ds_dragHelper noselect"></div>');
 	dragHelper = $('#'+ this.id +'_dragHelper');
 	this.targets.attr("taken", "-1");
+	
 	this.variants.mousedown(function(e) {
 		$("body").addClass("noselect");
 		var t = $(this);
 		var fromVariant = tObj.variants.index(t);
-		tObj.targetTable();               // shot of targets
 		var tHtml = t.html();
 		var x = t.offset().left;
 		var y = t.offset().top;
 		var l= t.width();
 		var difX=e.pageX-x;
 		var difY=e.pageY-y;
+		
+		tObj.targetTable();               // shot of targets
+		
 		t.css({visibility: "hidden"});
 		dragHelper.addClass("ds_ondrag").html(tHtml).css({left: x, top: y, maxWidth: l, opacity: "0.8"});
 		tObj.dragging(difX, difY);
@@ -194,16 +201,19 @@ this.start = function() {
 		if ( $(this).parent().attr("taken") != "-1" ) {
 			$("body").addClass("noselect");
 			var t = $(this);
-			var fromVariant = t.parent().attr("taken");
-			var tHtml = t.html();
-			t.parent().attr("taken", "-1");
-			t.html("&nbsp;");
-			tObj.targetTable();  // shot of the targets
 			var x = t.offset().left;
 			var y = t.offset().top;
 			var l= t.width();
 			var difX=e.pageX-x;
 			var difY=e.pageY-y;
+			
+			
+			var fromVariant = t.parent().attr("taken");
+			var tHtml = t.html();
+			t.parent().attr("taken", "-1");
+			t.html("&nbsp;");
+			tObj.targetTable();  // shot of the targets
+			
 			dragHelper.addClass("ds_ondrag").html(tHtml).css({left: x, top: y, maxWidth: l, opacity: "0.8"});
 			tObj.dragging(difX, difY);
 			tObj.dropping(fromVariant);
@@ -322,20 +332,9 @@ this.hittedTarget = function (fromVariant, hitted) {
 
 this.hittedAnimation = function(hitted) {
 
-if (!$.browser.safari) {
-			var curColor = tObj.targets.eq(hitted).css("background-color");
-			var iniColor = "#f1f1f1";
-			if (curColor != "transparent") iniColor = curColor;
-			tObj.targets.eq(hitted).addClass("ds_noImage").css({backgroundColor: "#feff8f"}).animate({backgroundColor: iniColor},500, function () {
-				tObj.targets.eq(hitted).css({backgroundColor: curColor}).removeClass("ds_noImage");
+			tObj.targets.eq(hitted).addClass("ds_noImage").stop().css({backgroundColor: "#feff8f"}).animate({backgroundColor: "#f1f1f1"},500, function () {
+				tObj.targets.eq(hitted).css({backgroundColor: "transparent"}).removeClass("ds_noImage");
 			});
-
-
-}
-
-			
-
-
 }
 
 
