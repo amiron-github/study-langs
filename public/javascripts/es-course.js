@@ -1,16 +1,25 @@
 
 
 $(document).ready(function() {
-	$("#jpId").jPlayer( {swfPath: "/javascripts/"});
+
+$("#jpId").jPlayer( {swfPath: "/javascripts/"});
+
+$("body").append('<div id="cJp"></div>');
+
+$("#cJp").jPlayer( {swfPath: "/javascripts/"});
+
 });
 
 
 /* example playJplayer('/sounds/sound101.mp3')    */
 
 
+
 function startJplayer(link) {
+	//if (tJplayer) tJplayer.attr("status", 0 );
+
 	$("#s-inf").text("Song Start");
-	$("#jpId").jPlayer("setFile", link ).jPlayer("play").jPlayer( "onSoundComplete", function() { $("#s-inf").text("End of song")} )
+	$("#jpId").jPlayer("setFile", link ).jPlayer("play").jPlayer( "onSoundComplete", function() {return false;} )
 }
 
 function pauseJplayer() {
@@ -20,36 +29,37 @@ function pauseJplayer() {
 
 
 
-function playJplayer(link,el) {
+var tJplayer=false;
 
-//alert( $(el).attr("status") )
+function cJplayer(link,el) {
 
-	if ($(el).attr("status") == "0" || $(el).attr("status") == undefined ) { // start sound if sound is not in progress (0,2)
-	
+var prevEl = tJplayer;
+var curEl = el;
 
-	
-		$(el).attr("status", "1").val("pause"); // show that sound is in progress 
-		$("#s-inf").text("Playing");
+if ( curEl != prevEl) {
+	$(prevEl).attr("status", 0).val("play");
+}
+
+tJplayer = el;
+
+var tEl = $(el);
+var tElStatus = $(el).attr("status");
+var containerJp = $("#cJp");
+
+	if ( tElStatus == "0" || tElStatus == undefined ) { // start sound if sound is not in progress (0,2)
+		tEl.attr("status", "1").val("pause"); // show that sound is in progress 
 		
-		$("#jpId").jPlayer("setFile", link ).jPlayer("play").jPlayer( "onSoundComplete", function() {  // start sound 
-			
-			$(el).attr("status", "0").val("play");  // reset status at the end of sound
-			$("#s-inf").text("End of song");
-			
+		containerJp.jPlayer("setFile", link ).jPlayer("play").jPlayer( "onSoundComplete", function() {  // start sound 
+			tEl.attr("status", "0").val("play");  														// reset status at the end of sound
 		} )
-	} else if ($(el).attr("status") == "2") {   // if this sound is paused  (2)
-	
+	} else if ( tElStatus == "2") {   					// if this sound is paused  (2)
 
-	
-		$(el).attr("status", "1").val("pause"); // show that sound is in progress 
-		$("#s-inf").text("Playing");            // restart the sound
-		
-		$("#jpId").jPlayer("play");
-	} else {									// if sound is in progress (1)
+		tEl.attr("status", "1").val("pause"); 			// show that sound is in progress 
+		containerJp.jPlayer("play");
+	} else {											// if sound is in progress (1)
 
-		$(el).attr("status", "2").val("play");  // 
-		$("#s-inf").text("Song Paused");
-		$("#jpId").jPlayer( "pause" );
+		tEl.attr("status", "2").val("play");  				 	
+		containerJp.jPlayer( "pause" );
 	}
 	
 
