@@ -41,6 +41,7 @@ border-bottom: 1px solid #e1e1e1;
 
 .dialog-t tr.trow_act {
 back-ground-color: #eef1f3;
+background-color: #fff;
 background-color: transparent;
 background-image: url("/images/dialog-tr-bg.png");
 background-repeat: repeat-x;
@@ -58,8 +59,7 @@ color: #000;
 .dialog-t .d-rus {
 border-right: 1px solid #e1e1e1;
 padding-left: 0px;
-padding-left: 18px;
-text-indent:-11px;
+padding-left: 12px;
 color: #4F4F4F;
 }
 
@@ -72,6 +72,16 @@ color: #5F5F5F;
 
 .dialog-t td.d-first, .dialog-t th.d-first {
 padding: 0;
+padding-left: 12px;
+}
+
+.dialog-t td.d-first img {
+opacity: 0.5;
+}
+
+tr.trow:hover img {
+opacity: 1;
+cursor: pointer;
 }
 
 .dialog-t td.d-tfoot {
