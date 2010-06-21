@@ -135,7 +135,7 @@
 var ds_style =""
 +"<style type='text/css'> "
 +".ds_dragHelper {left: 0; top: 0; position: absolute;}"
-+".ds_ondrag { cursor: default; border: 1px dotted #000; position: absolute; background-color: #fff}"
++".ds_ondrag { cursor: default; bor-der: 1px dotted #000; position: absolute; background-color: #fff}"
 +".ds_noImage { background-image: none !important}"
 +"</style>"
 

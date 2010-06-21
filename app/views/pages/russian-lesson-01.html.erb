@@ -8,6 +8,8 @@
 
 <%= javascript_include_tag 'test-drag-sort' %>
 <%= javascript_include_tag 'multi-choice' %>
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'es-course.js' %>
 
 
 <script type="text/javascript">
@@ -20,7 +22,6 @@
 
 
 $(document).ready(function() {
-
 
 
 });
@@ -62,7 +63,15 @@ $(document).ready(function() {
 
 <h2 class="page">Lesson 1. Greetings</h2>
 
+<p>
+<input type="button" value="play 1" onclick="playJplayer('/audios/audio0101.mp3', this) " > 
+<input type="button" value="play 2" onclick="startJplayer('/sounds/sound102.mp3') " > 
+<input type="button" value="pause" onclick="pauseJplayer()" >
+<br> <span id="s-inf">0</span>
+</p>
 
+
+<div id="jpId"></div>
 
 
 <div id="prof_tabs">
