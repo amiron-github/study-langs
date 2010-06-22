@@ -40,16 +40,26 @@ border-bottom: 1px solid #e1e1e1;
 }
 
 .dialog-t tr.trow_act {
-back-ground-color: #eef1f3;
+
 background-color: #fff;
+background-color: #EFEFEF;
 background-color: transparent;
 background-image: url("/images/dialog-tr-bg.png");
 background-repeat: repeat-x;
 background-position: left bottom;
 }
 
+.dialog-t  tr.current_track  {
+background-color: #eef1f3;
+
+}
+.dialog-t  tr.current_track td {
+color: #000 !important;
+}
+
 .dialog-t tr.trow_act .d-rus {
 color: #000;
+
 }
 
 .dialog-t tr.trow_act .d-eng {
@@ -61,6 +71,10 @@ border-right: 1px solid #e1e1e1;
 padding-left: 0px;
 padding-left: 12px;
 color: #4F4F4F;
+}
+
+.dialog-t .d-prephrases {
+padding-bottom: 0px;
 }
 
 .dialog-t .d-eng {
@@ -79,14 +93,65 @@ padding-left: 12px;
 opacity: 0.5;
 }
 
-tr.trow:hover img {
-opacity: 1;
+.dialog-t .jp_control {
+width: 16px;
+height: 16px;
+background-image: url(/images/c_play_inactive.png);
+background-repeat: no-repeat;
 cursor: pointer;
 }
 
+
+
+
+.dialog-t tr.trow_act .jp_control {
+width: 16px;
+height: 16px;
+background-image: url(/images/control_play.png);
+background-repeat: no-repeat;
+}
+
+
+
+.dialog-t tr.trow_act .jp_control:hover {
+background-image: url(/images/c_play_hover.png);
+}
+
+.dialog-t tr.trow_act .jp_pause {
+background-image: url(/images/c_pause_hover.png) !important;
+}
+
+.dialog-t tr .jp_pause {
+background-image: url(/images/control_pause.png) !important;
+}
+
+
 .dialog-t td.d-tfoot {
 background-color: #f4f4f4;
-padding: 5px 20px 5px 20px;
+padding: 8px 20px 8px 40px;
+text-align: center;
+}
+
+.d-tfoot div  {
+width: 24px;
+height: 24px;
+float: left;
+margin-right: 20px;
+cursor: pointer;
+}
+
+
+
+.dt_rewind {
+background-image: url(/images/dt_rewind_inactive.png);
+}
+
+.dt_play {
+background-image: url(/images/dt_play_inactive.png);
+}
+
+.dt_fast-forward {
+background-image: url(/images/dt_fast-forward_inactive.png);
 }
 
 .dialog-t td.d-player-holder {
@@ -150,6 +215,10 @@ margin-right: 10px;
 .ds_vholder {
 padding: 4px 8px;
 }
+
+
+
+
 
 
 
