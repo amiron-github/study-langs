@@ -32,11 +32,13 @@ border-right: 1px solid #e1e1e1;
 
 .dialog-t tr {
 cursor: default;
+background-image: none;
 } 
 
 .dialog-t td {
 padding: 7px 15px;
 border-bottom: 1px solid #e1e1e1;
+background-image: none;
 }
 
 .dialog-t tr.trow_act {
@@ -49,10 +51,11 @@ background-repeat: repeat-x;
 background-position: left bottom;
 }
 
-.dialog-t  tr.current_track  {
-background-color: #eef1f3;
-
+.dialog-t  tr.current_track  td {
+background-color: #efefef;
+background-image: none;
 }
+
 .dialog-t  tr.current_track td {
 color: #000 !important;
 }
@@ -71,6 +74,9 @@ border-right: 1px solid #e1e1e1;
 padding-left: 0px;
 padding-left: 12px;
 color: #4F4F4F;
+
+text-indent:-11px;
+padding-left: 10px;
 }
 
 .dialog-t .d-prephrases {
@@ -79,7 +85,7 @@ padding-bottom: 0px;
 
 .dialog-t .d-eng {
 text-indent:-11px;
-padding-left: 20px;
+padding-left: 30px;
 color: #5F5F5F;
 }
 
@@ -101,17 +107,12 @@ background-repeat: no-repeat;
 cursor: pointer;
 }
 
-
-
-
 .dialog-t tr.trow_act .jp_control {
 width: 16px;
 height: 16px;
 background-image: url(/images/control_play.png);
 background-repeat: no-repeat;
 }
-
-
 
 .dialog-t tr.trow_act .jp_control:hover {
 background-image: url(/images/c_play_hover.png);
@@ -132,31 +133,101 @@ padding: 8px 20px 8px 40px;
 text-align: center;
 }
 
-.d-tfoot div  {
+.dt_controls  div {
 width: 24px;
 height: 24px;
-float: left;
-margin-right: 20px;
 cursor: pointer;
 }
 
-
-
-.dt_rewind {
-background-image: url(/images/dt_rewind_inactive.png);
+.dt_controls  table {
+margin: 0 auto;
 }
 
+
+.dt_controls tr {
+background-color: transparent;
+}
+
+.dt_controls tr  td{
+background-color: transparent;
+border: 0px solid #fff;
+padding: 0px 12px;
+}
+
+
+.dialog-t .jp_control {
+visibility: hidden;
+}
+
+.dt_controls {
+margin: 0 auto;
+width: 260px;
+border: 1px solid #dfdfdf;
+background-color: #fff; /* #F4F4F4;*/
+background-image: url("/images/dialog-tr-bg.png");
+background-repeat: repeat-x;
+background-position: left bottom;
+padding: 6px 10px;
+-moz-border-radius: 4px;
+-webkit-border-radius: 4px;
+border-radius: 4px;
+-moz-box-shadow: 2px 2px 5px #efefef;
+-webkit-box-shadow: 2px 2px 5px #efefef;
+box-shadow: 2px 2px 5px #efefef;
+}
+
+
+
+
+
 .dt_play {
-background-image: url(/images/dt_play_inactive.png);
+background-image: url(/images/dt_play.png);
+}
+
+.dt_repeat {
+background-image: url(/images/dt_redo.png);
+}
+
+.dt_ready .dt_repeat {
+background-image: url(/images/dt_redo_inactive.png);
+}
+
+.dt_pause {
+background-image: url(/images/dt_pause.png);
+}
+
+.dt_stop {
+background-image: url(/images/dt_stop_inactive.png);
+margin-left: 15px;
 }
 
 .dt_fast-forward {
+background-image: url(/images/dt_fast-forward.png);
+}
+
+.dt_no_next .dt_fast-forward {
 background-image: url(/images/dt_fast-forward_inactive.png);
+}
+
+.dt_rewind {
+background-image: url(/images/dt_rewind.png);
+}
+
+.dt_ready  .dt_rewind, .dt_no_prev  .dt_rewind {
+background-image: url(/images/dt_rewind_inactive.png);
 }
 
 .dialog-t td.d-player-holder {
 padding: 12px 20px;
 }
+
+
+
+
+
+
+
+
 
 
 .ds-table {

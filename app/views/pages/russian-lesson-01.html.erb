@@ -63,15 +63,8 @@ $(document).ready(function() {
 
 <h2 class="page">Lesson 1. Greetings</h2>
 
-<p>
-<input type="button" value="play 1" onclick="cJplayer('/audios/audio0101.mp3', this) " > 
-<input type="button" value="play 2" onclick="cJplayer('/audios/audio0101.mp3', this) " > <br>
 
 
-<input type="button" value="play" onclick="startJplayer('/sounds/sound102.mp3') " > 
-<input type="button" value="pause" onclick="pauseJplayer()" >
-<br> <span id="s-inf">0</span>
-</p>
 
 
 <div id="jpId"></div>
@@ -92,8 +85,13 @@ $(document).ready(function() {
 <div id="for_tab01" class="pBlock" style="display: block">
 	<div class="inpBlock">
 
-		<h3>Diaogue 1</h3>
-		
+			<br>
+			<br>
+			<br>
+			
+			<p>
+				Listen to the dialogues and repeat after the speaker.
+			</p>
 		
 		<table id="dc1" class="dialog-t" cellspacing="0" align="center" style="margin: 0 auto;">
 			<col width="30">
@@ -101,46 +99,54 @@ $(document).ready(function() {
 			<col width="260" >
 			<tr>
 				<th class="d-first">&nbsp;</th>
-				<th class="rus">Russian</th>
-				<th >English</th>
+				<th>Dialogue 1. Formal greetings</th>
+				<th >&nbsp;</th>
 			</tr>
-			
 			<tr>
-				<td colspan="3" class="d-prephrases">
-				&nbsp;
+				<td colspan="3" class="d-pre-phrases" style="text-align: center">
+				
+				<div class="dt_controls">
+					<table cellspacing="0">
+					  <tr>
+						<td><div class="dt_rewind" title="Play Previous"></div></td>
+						<td><div class="dt_play" title="Play"></div></td>
+						<td><div class="dt_fast-forward" title="Play Next"></div></td>
+						<td><div class="dt_repeat" title="Repeat"></div></td>
+						<td><div class="dt_stop" title="Stop"></div></td>
+					  </tr>
+					</table>
+				</div>
+
 				</td>
 			</tr>
 			<tr class="trow">
 				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div></td>
-				<td  class="d-rus">Здравствуйте! </td>
+				<td  class="d-rus">- Здравствуйте! </td>
 				<td class="d-eng">- Hello</td>
 			</tr>
 			<tr class="trow">
 				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/sound01103.mp3', this)"></div></td>
-				<td class="d-rus">Добрый день! </td>
+				<td class="d-rus">- Добрый день! </td>
 				<td class="d-eng">- Good afternoon</td>
 			</tr>
 			<tr class="trow">
 				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/soundb01032021.mp3', this)"></div></td>
-				<td class="d-rus">Как поживаете? </td>
+				<td class="d-rus">- Как поживаете? </td>
 				<td class="d-eng">- How are you?</td>
 			</tr>
 			<tr class="trow">
 				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/soundb01051032.mp3', this)"></div></td>
-				<td class="d-rus">Спасибо, хорошо. А у Вас как дела? </td>
+				<td class="d-rus">- Спасибо, хорошо. А у Вас как дела? </td>
 				<td class="d-eng">- Thanks, I'm fine. And how are you</td>
 			</tr>
 			<tr class="trow">
 				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/sound01111.mp3', this)"></div></td>
-				<td class="d-rus">Прекрасно.</td>
+				<td class="d-rus">- Прекрасно.</td>
 				<td class="d-eng">- Excellent.</td>
 			</tr>
 			<tr>
 				<td colspan="2" class="d-tfoot">
-				
-				<div class="dt_rewind"></div><div class="dt_play"></div><div class="dt_fast-forward"></div><div id="d_inf"></div>
-				
-				
+
 				<script type="text/javascript"> 
 					var  dc1 = new dialog_controls( {
 					id: "dc1", 
@@ -162,67 +168,82 @@ $(document).ready(function() {
 	<br>
 	<br>	
 	<br>
-	<br>	
-	<br>
 	
-			<h3>Diaogue 2</h3>
-		
 
-		<table class="dialog-t" cellspacing="0" align="center" style="margin: 0 auto;">
+		<table id="dc2" class="dialog-t" cellspacing="0" align="center" style="margin: 0 auto;">
 			<col width="30">
 			<col width="250">
 			<col width="260" >
 			<tr>
 				<th class="d-first">&nbsp;</th>
-				<th class="rus">Russian</th>
-				<th >English</th>
+				<th>Dialogue 2. Informal greetings</th>
+				<th >&nbsp;</th>
 			</tr>
-			
 			<tr>
-				<td colspan="3" class="d-player-holder">
+				<td colspan="3" class="d-pre-phrases" style="text-align: center">
 				
-				<object type="application/x-shockwave-flash" data="player.swf" width="200" height="20"> 
-                    <param name="movie" value="player.swf" /> 
-                    <param name="FlashVars" value="mp3=/audios/audio0101.mp3&amp;showinfo=0&amp;textcolor=666666&amp;loadingcolor=000000&amp;buttoncolor=666666&amp;buttonovercolor=000000&amp;bgcolor1=f1f1f1&amp;bgcolor2=dfdfdf&amp;bgcolor=f6f6f6&amp;sliderovercolor=333333" /> 
-                </object>
+				<div class="dt_controls">
+					<table cellspacing="0">
+					  <tr>
+						<td><div class="dt_rewind" title="Play Previous"></div></td>
+						<td><div class="dt_play" title="Play"></div></td>
+						<td><div class="dt_fast-forward" title="Play Next"></div></td>
+						<td><div class="dt_repeat" title="Repeat"></div></td>
+						<td><div class="dt_stop" title="Stop"></div></td>
+					  </tr>
+					</table>
+				</div>
+
 				</td>
 			</tr>
 			<tr class="trow">
-				<td class="d-first"><div class="jp_control"></div></td>
+				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div></td>
 				<td  class="d-rus">- Здравствуйте! </td>
 				<td class="d-eng">- Hello</td>
 			</tr>
 			<tr class="trow">
-				<td class="d-first"><div class="jp_control"></div></td>
+				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/sound01103.mp3', this)"></div></td>
 				<td class="d-rus">- Добрый день! </td>
 				<td class="d-eng">- Good afternoon</td>
 			</tr>
 			<tr class="trow">
-				<td class="d-first"><div class="jp_control"></div></td>
+				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/soundb01032021.mp3', this)"></div></td>
 				<td class="d-rus">- Как поживаете? </td>
 				<td class="d-eng">- How are you?</td>
 			</tr>
 			<tr class="trow">
-				<td class="d-first"><div class="jp_control"></div></td>
+				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/soundb01051032.mp3', this)"></div></td>
 				<td class="d-rus">- Спасибо, хорошо. А у Вас как дела? </td>
 				<td class="d-eng">- Thanks, I'm fine. And how are you</td>
 			</tr>
 			<tr class="trow">
-				<td class="d-first"><div class="jp_control"></div></td>
-				<td class="d-rus">- Отлично.</td>
+				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/sound01111.mp3', this)"></div></td>
+				<td class="d-rus">- Прекрасно.</td>
 				<td class="d-eng">- Excellent.</td>
 			</tr>
 			<tr>
-				<td colspan="3" class="d-tfoot">
-				
-				&nbsp;
+				<td colspan="2" class="d-tfoot">
 
+				<script type="text/javascript"> 
+					var  dc2 = new dialog_controls( {
+					id: "dc2", 
+					file: "/audios/audio0101.mp3",
+					tracks: [0,1149,2300,4200,5000]
+					} )
+				</script>
+				
+				</td>
+				<td >
+				&nbsp;
+				
 				</td>
 			</tr>
 		</table>
 		
 	<br>	
-	<br>		
+	<br>
+	<br>	
+	<br>	
 		
 
 

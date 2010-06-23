@@ -25,17 +25,19 @@ $(".jp_controls").toggle(function() {
 
 
 
-function startJplayer(link) {
+function startJplayer(link,time) {
 	//if (tJplayer) tJplayer.attr("status", 0 );
 
 	$("#s-inf").text("Song Start");
-	$("#jpId").jPlayer("setFile", link ).jPlayer("play").jPlayer( "onSoundComplete", function() {return false;} )
+	$("#jpId").jPlayer("setFile", link ).jPlayer("play").jPlayer("pause").jPlayer("playHeadTime", time).jPlayer( "onSoundComplete", function() {return false;} )
 }
 
 function pauseJplayer() {
 	$("#s-inf").text("Song Paused");
 	$("#jpId").jPlayer( "pause" );
 }
+
+
 
 
 
@@ -72,120 +74,180 @@ tEl.removeClass("jp_play").removeClass("jp_pause").attr("title", "Click to Play"
 
 
 
+
+
+
+
 function dialog_controls(hash) {
 
 this.tracks = hash['tracks'];
 this.file = hash['file'];
 this.id = hash['id'];
-
 this.playedTracks = new Array();
+var tObj = this;
 
 this.shownTrack = -1;
 this.currentTrack = 0;
-
+this.playedTime = 0;
 this.status = "ready";
-
-var tObj = this; 
-
-
+ 
 this.start = function () {
 
-$("#d_inf").text("0");
+  $("body").append('<div id="'+tObj.id + '_player">');
 
 	tObj.container = $("#"+tObj.id);
 	tObj.playButton = tObj.container.find("div.dt_play");
 	tObj.rewindButton = tObj.container.find("div.dt_rewind");
 	tObj.forwardButton = tObj.container.find("div.dt_fast-forward");
-	tObj.jplayer = $("#cJp");
+	tObj.repeatButton = tObj.container.find("div.dt_repeat");
+	tObj.stopButton = tObj.container.find("div.dt_stop");
+	tObj.jplayer = $("#"+tObj.id + "_player");
+
+ tObj.container.addClass("dt_ready");
+	
+	
+tObj.jplayer.jPlayer( {
+	ready: function () {
+		tObj.jplayer.jPlayer("setFile", tObj.file );
+	}, 
+	swfPath: "/javascripts/",
+	nativeSupport: false
+});
+	
+	
 	
 	tObj.playButton.click(function() {
-		if (tObj.status == "ready") {
-			tObj.play();
-		} else if (tObj.status == "paused") {
-			tObj.continuePlay();
-		} else {               // if status "playing"
-			tObj.pause();
-		}
+		if (tObj.status == "playing") tObj.pause();
+		else tObj.play();         
 	});
 	
-	
+	tObj.stopButton.click(function() {
+		tObj.stop();         
+	});
 	
 	tObj.rewindButton.click(function() {
+		tObj.rewind(); 
+	});
 	
+	tObj.forwardButton.click(function() {
+		tObj.forward();
+	});
 	
-		return false;
-		var prevTrack = tObj.currentTrack -1;
-		var prevStart = tObj.tracks[prevTrack];
-		var prevEnd = tObj.tracks[tObj.currentTrack];
-		
-		
-	
-		tObj.jplayer.jPlayer("playHeadTime", prevStart);
-		
-		//alert(prevStart);
-		
-		tObj.getCurrentPlayed();
-		tObj.showPlayingTrack();
-		
-		
-	
-	
+	tObj.repeatButton.click(function() {
+		tObj.repeat();
 	});
 
 
 }
 	
-this.play = function () {
-	
-	tObj.status = "playing";
-	tObj.container.find(".jp_control").css({visibility: "hidden"});
-	tObj.jplayer.jPlayer("setFile", tObj.file ).jPlayer("play").jPlayer("onProgressChange", function(lp,ppr,ppa,pt,tt) {
-		
+this.play = function (time) {
+	if (!time) var time = tObj.playedTime;
+	tObj.status = "playing"; tObj.container.removeClass("dt_ready").removeClass("dt_paused");
+	tObj.playButton.addClass("dt_pause");
+	tObj.jplayer.jPlayer("playHeadTime", time ).jPlayer("onProgressChange", function(lp,ppr,ppa,pt,tt) {
+		tObj.playedTime = pt;
 		tObj.getCurrentPlayed();
 		tObj.showPlayingTrack();
-		
-		$("#d_inf").text(pt);
-	}).jPlayer( "onSoundComplete", function() {  
-		tObj.container.find(".current_track").removeClass("current_track");
-		tObj.status = "ready";
-		tObj.container.find(".jp_control").css({visibility: "visible"});
+	})
+	.jPlayer( "onSoundComplete", function() {
+		tObj.stop();
 	} );
+	
 }
 
-this.continuePlay = function () {
-	tObj.status = "playing";
-	tObj.jplayer.jPlayer("play");
+this.playOneTrack = function (track) {
+	tObj.status = "playing"; tObj.container.removeClass("dt_ready").removeClass("dt_paused");
+	tObj.playButton.addClass("dt_pause");
+	tObj.jplayer.jPlayer("playHeadTime", tObj.tracks[track] ).jPlayer("onProgressChange", function(lp,ppr,ppa,pt,tt) {
+		tObj.playedTime = pt;
+		if ( pt >= tObj.tracks[track + 1]) {
+			tObj.pause();
+			tObj.playedTime = tObj.playedTime - 100;
+		}
+	})
+}
+
+this.rewind = function() {
+	if ( tObj.currentTrack == 0) {
+		return false;
+	} else {
+	tObj.jplayer.jPlayer("onProgressChange",function(lp,ppr,ppa,pt,tt){return false}).jPlayer("pause");
+	tObj.playedTime = tObj.tracks[tObj.currentTrack - 1]
+	tObj.playOneTrack( tObj.currentTrack - 1 );
+	tObj.getCurrentPlayed();
+	tObj.showPlayingTrack();
+	
+	}
+}
+
+this.forward = function() {
+	if ( tObj.currentTrack == tObj.tracks.length - 1) {
+		return false;
+	} else {
+		tObj.jplayer.jPlayer("onProgressChange",function(lp,ppr,ppa,pt,tt){return false}).jPlayer("pause");
+	
+		if (tObj.status == "ready") {
+			tObj.playedTime = 0;
+			tObj.playOneTrack( 0 );
+		} else {
+			tObj.playedTime = tObj.tracks[tObj.currentTrack + 1];
+			tObj.playOneTrack( tObj.currentTrack + 1 );
+		}
+		tObj.getCurrentPlayed();
+		tObj.showPlayingTrack();
+	}
+}
+
+this.stop = function () {
+	tObj.jplayer.jPlayer("onProgressChange", function(lp,ppr,ppa,pt,tt) {return false}).jPlayer("stop");
+	tObj.playedTime = 0;
+	tObj.shownTrack = -1;
+	tObj.currentTrack = 0;
+	tObj.container.find(".current_track").removeClass("current_track");
+	tObj.status = "ready"; tObj.container.addClass("dt_ready").removeClass("dt_no_next").removeClass("dt_no_prev");
+	tObj.playButton.removeClass("dt_pause");
 }
 
 this.pause = function () {
-	tObj.status = "paused";
+	tObj.status = "paused"; tObj.container.addClass("dt_paused");
 	tObj.jplayer.jPlayer("pause");
+	tObj.playButton.removeClass("dt_pause");
 }
 
-
-this.showPlayingTrack = function ()  {
-
-	var current = tObj.currentTrack;
-	if (tObj.shownTrack != current ) {
-		tObj.shownTrack = current;
-		tObj.container.find(".current_track").removeClass("current_track");
-		
-		tObj.container.find("tr.trow").filter(":eq("+current+")").addClass("current_track")
+this.repeat = function() {
+	if (tObj.status == "ready") {
+		return false;
+	} else {
+		tObj.playOneTrack(tObj.currentTrack);
 	}
 }
 
 
+this.showPlayingTrack = function ()  {
+	var current = tObj.currentTrack;
+	if (tObj.shownTrack != current ) {
+		tObj.shownTrack = current;
+		tObj.container.find(".current_track").removeClass("current_track");
+		tObj.container.find("tr.trow").filter(":eq("+current+")").addClass("current_track");
+		if (tObj.shownTrack == 0 ) {
+			tObj.container.addClass("dt_no_prev");
+		} else if ( tObj.shownTrack == tObj.tracks.length -1 ) {
+			tObj.container.addClass("dt_no_next");
+		} else {
+			tObj.container.removeClass("dt_no_prev").removeClass("dt_no_next");
+		}
+	}
+}
+
 
 this.getCurrentPlayed = function() {
-
-	var pt = tObj.jplayer.jPlayer("getData", "diag.playedTime");
+	var pt = tObj.playedTime;
 	tObj.playedTracks = new Array();
 	for (var i = 0; i < tObj.tracks.length; i ++) {
 		if (pt >= tObj.tracks[i]) {
 			tObj.playedTracks.push(i);
 		}
 	}
-	
 	tObj.currentTrack = tObj.playedTracks.pop();
 }
 
@@ -196,97 +258,6 @@ $(document).ready(function() {
 }
 
 
-/*
-
-// Local copy of jQuery selectors, for performance.
-	var jpPlayTime = $("#jplayer_play_time");
-	var jpTotalTime = $("#jplayer_total_time");
-	var jpStatus = $("#demo_status"); // For displaying information about jPlayer's status in the demo page
- 
-	$("#jquery_jplayer").jPlayer({
-		ready: function() {
-			displayPlayList();
-			playListInit(true); // Parameter is a boolean for autoplay.
-			demoInstanceInfo(this.element, $("#demo_info")); // This displays information about jPlayer's configuration in the demo page
-		},
-		oggSupport: true
-	})
-	.jPlayer("onProgressChange", function(loadPercent, playedPercentRelative, playedPercentAbsolute, playedTime, totalTime) {
-		jpPlayTime.text($.jPlayer.convertTime(playedTime));
-		jpTotalTime.text($.jPlayer.convertTime(totalTime));
- 
-		demoStatusInfo(this.element, jpStatus); // This displays information about jPlayer's status in the demo page
-	})
-	.jPlayer("onSoundComplete", function() {
-		playListNext();
-	});
- 
-	$("#jplayer_previous").click( function() {
-		playListPrev();
-		$(this).blur();
-		return false;
-	});
- 
-	$("#jplayer_next").click( function() {
-		playListNext();
-		$(this).blur();
-		return false;
-	});
- 
-	function displayPlayList() {
-		$("#jplayer_playlist ul").empty();
-		for (i=0; i < myPlayList.length; i++) {
-			var listItem = (i == myPlayList.length-1) ? "<li class='jplayer_playlist_item_last'>" : "<li>";
-			listItem += "<a href='#' id='jplayer_playlist_item_"+i+"' tabindex='1'>"+ myPlayList[i].name +"</a></li>";
-			$("#jplayer_playlist ul").append(listItem);
-			$("#jplayer_playlist_item_"+i).data( "index", i ).click( function() {
-				var index = $(this).data("index");
-				if (playItem != index) {
-					playListChange( index );
-				} else {
-					$("#jquery_jplayer").jPlayer("play");
-				}
-				$(this).blur();
-				return false;
-			});
-		}
-	}
- 
-	function playListInit(autoplay) {
-		if(autoplay) {
-			playListChange( playItem );
-		} else {
-			playListConfig( playItem );
-		}
-	}
- 
-	function playListConfig( index ) {
-		$("#jplayer_playlist_item_"+playItem).removeClass("jplayer_playlist_current").parent().removeClass("jplayer_playlist_current");
-		$("#jplayer_playlist_item_"+index).addClass("jplayer_playlist_current").parent().addClass("jplayer_playlist_current");
-		playItem = index;
-		$("#jquery_jplayer").jPlayer("setFile", myPlayList[playItem].mp3, myPlayList[playItem].ogg);
-	}
- 
-	function playListChange( index ) {
-		playListConfig( index );
-		$("#jquery_jplayer").jPlayer("play");
-	}
- 
-	function playListNext() {
-		var index = (playItem+1 < myPlayList.length) ? playItem+1 : 0;
-		playListChange( index );
-	}
- 
-	function playListPrev() {
-		var index = (playItem-1 >= 0) ? playItem-1 : myPlayList.length-1;
-		playListChange( index );
-	}
-});
-
-
-
-
-*/
 
 
 
