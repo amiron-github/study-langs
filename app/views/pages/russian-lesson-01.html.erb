@@ -85,12 +85,9 @@ $(document).ready(function() {
 <div id="for_tab01" class="pBlock" style="display: block">
 	<div class="inpBlock">
 
-			<br>
-			<br>
-			<br>
 			
 			<p>
-				Listen to the dialogues and repeat after the speaker.
+				Listen to the dialogues and read the translation. Then, listen once again and repeat after the speaker.
 			</p>
 		
 		<table id="dc1" class="dialog-t" cellspacing="0" align="center" style="margin: 0 auto;">
@@ -146,18 +143,18 @@ $(document).ready(function() {
 			</tr>
 			<tr>
 				<td colspan="2" class="d-tfoot">
-
+					<div class="dt_inf" style="display: none"></div>
 				<script type="text/javascript"> 
 					var  dc1 = new dialog_controls( {
 					id: "dc1", 
-					file: "/audios/audio0101.mp3",
-					tracks: [0,1149,2300,4200,5000]
+					file: "/sounds/0-dt_test.mp3",
+					tracks: [0,1384,2400,4153,7602]
 				
 					} )
 				</script>
 				
 				</td>
-				<td >
+				<td class="d-tfoot">
 				&nbsp;
 				
 				</td>
@@ -198,28 +195,28 @@ $(document).ready(function() {
 			</tr>
 			<tr class="trow">
 				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div></td>
-				<td  class="d-rus">- Здравствуйте! </td>
-				<td class="d-eng">- Hello</td>
+				<td  class="d-rus">- Привет! </td>
+				<td class="d-eng">- Hi!</td>
 			</tr>
 			<tr class="trow">
 				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/sound01103.mp3', this)"></div></td>
-				<td class="d-rus">- Добрый день! </td>
-				<td class="d-eng">- Good afternoon</td>
+				<td class="d-rus">- Привет! </td>
+				<td class="d-eng">- Hi!</td>
 			</tr>
 			<tr class="trow">
 				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/soundb01032021.mp3', this)"></div></td>
-				<td class="d-rus">- Как поживаете? </td>
-				<td class="d-eng">- How are you?</td>
+				<td class="d-rus">- Как дела?  </td>
+				<td class="d-eng">- How are you? (informal)</td>
 			</tr>
 			<tr class="trow">
 				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/soundb01051032.mp3', this)"></div></td>
-				<td class="d-rus">- Спасибо, хорошо. А у Вас как дела? </td>
-				<td class="d-eng">- Thanks, I'm fine. And how are you</td>
+				<td class="d-rus">- Отлично. У тебя как? Нормально?  </td>
+				<td class="d-eng">- Perfect. What about you? Are you fine?</td>
 			</tr>
 			<tr class="trow">
 				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/sound01111.mp3', this)"></div></td>
-				<td class="d-rus">- Прекрасно.</td>
-				<td class="d-eng">- Excellent.</td>
+				<td class="d-rus">- Да, неплохо. </td>
+				<td class="d-eng">- Yes, not bad.</td>
 			</tr>
 			<tr>
 				<td colspan="2" class="d-tfoot">
@@ -227,13 +224,13 @@ $(document).ready(function() {
 				<script type="text/javascript"> 
 					var  dc2 = new dialog_controls( {
 					id: "dc2", 
-					file: "/audios/audio0101.mp3",
-					tracks: [0,1149,2300,4200,5000]
+					file: "/sounds/0-dt_test.mp3",
+					tracks: [0,1384,2400,4153,7602]
 					} )
 				</script>
 				
 				</td>
-				<td >
+				<td class="d-tfoot">
 				&nbsp;
 				
 				</td>
@@ -247,24 +244,32 @@ $(document).ready(function() {
 		
 
 
-<h3>Complete the test</h3>
+<h3 class="es-task">Match sounds and text</h3>
 
 
-<div id="ds1">		
+<div id="ds1" class="ds-wrapper" style="padding: 15px;">
 
-<table>
+<p style="font-size: 11px; text-align: center;">Listen to the phrases and find corresponding Russian expressions from the list below.</p>		
+
+<table align="center" style="margin: 0 auto;">
 <tr>
 <td>
 
 
-<table class="dst-test ds-table" cellspacing="0" align="left" style="margin: auto">
-
-<col width="150">
-<col width="150">
-
-<tr>	
+<table class="dst-test ds-table ds-audio" cellspacing="0" align="left" style="margin: auto">
+<col width="80">
+<col width="20">
+<col width="40">
+<col width="200">
+<tr>
 	<td class="ds-quest" align="center">
-			&nbsp;
+			Phrase 1 
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
 	</td>
 	<td class="ds-answer">
 		<div class="ds_sort_item">
@@ -274,7 +279,13 @@ $(document).ready(function() {
 </tr>
 <tr>
 	<td class="ds-quest">
-			&nbsp;
+			Phrase 2
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound01103.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
 	</td>
 	<td class="ds-answer">
 		<div class="ds_sort_item">
@@ -284,7 +295,13 @@ $(document).ready(function() {
 </tr>
 <tr>
 	<td class="ds-quest">
-		&nbsp;
+		Phrase 3
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound01111.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
 	</td>
 	<td class="ds-answer">
 		<div class="ds_sort_item">
@@ -294,7 +311,13 @@ $(document).ready(function() {
 </tr>
 <tr>
 	<td class="ds-quest">
-		a square
+		Phrase 4
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/soundb01032021.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
 	</td>	
 	<td class="ds-answer">
 		<div class="ds_sort_item">
@@ -304,8 +327,46 @@ $(document).ready(function() {
 </tr>
 <tr>
 	<td class="ds-quest">
-		&nbsp;
+		Phrase 5
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
 	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 6
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound01114.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 7
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound01110.mp3', this)"></div>
+	</td>	
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
 	<td class="ds-answer">
 		<div class="ds_sort_item">
 			&nbsp;
@@ -316,26 +377,53 @@ $(document).ready(function() {
 </table>
 
 </td>
+
+</tr>
+<tr>
+
 <td>
 	
+<br>
+<br>
 
+<table class="ds_variants_list" >
+<col width="170">
+<col width="150">
 
-<ul style="float: left; list-style: none;">
+<tr valign="top">
+<td>
+
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Здравствуйте!</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">4</span>Как поживаете?</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>Добрый день!</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">0</span>Спасибо, хорошо.</div></div>
+	</li>
+</ul>
+
+</td>
+<td>
+
+<ul class="no-list">
 
 	<li> 
-			<div class="ds_variant"><div class="ds_vholder">Здравствуйте!</div></div>
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">7</span>Как дела?</div></div>
 	</li>
 	<li> 
-			<div class="ds_variant"><div class="ds_vholder">Как поживаете?</div></div>
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">5</span>Привет!</div></div>
 	</li>
 	<li> 
-			<div class="ds_variant"><div class="ds_vholder">Добрый день!</div></div>
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>Прекрасно.</div></div>
 	</li>
 	<li> 
-			<div class="ds_variant"><div class="ds_vholder">Спасибо, хорошо.</div></div>
-	</li>
-	<li> 
-			<div class="ds_variant"><div class="ds_vholder">Отлично.</div></div>
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">6</span>Неплохо.</div></div>
 	</li>
 </ul>
 
@@ -343,13 +431,31 @@ $(document).ready(function() {
 </tr>
 </table>
 
+
+
+</td>
+</tr>
+</table>
+
+
+<div class="es_btn_wrapper">
+<a href="javascript:;" class="es_btn ds-check-button" >Check answers</a>
+</div>
+
+
 </div>
 <script type="text/javascript"> 
-	var ds1 = new dragsort_test( {id: "ds1", targets: "ds-answer", answer_elem: "ds_sort_item", variant_elem: "ds_variant" } )
+	var ds1 = new dragsort_test( {
+		id: "ds1", 
+		targets: "ds-answer", 
+		answer_elem: "ds_sort_item", 
+		variant_elem: "ds_variant",
+		answer_color: "#F7F6F6"
+		} )
 </script>
 		
 		
-<div id="inf" style="clear: both">0</div>		
+		
 		
 		
 	<br><br><br><br><br><br><br><br>	

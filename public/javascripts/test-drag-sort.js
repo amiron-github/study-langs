@@ -135,7 +135,7 @@
 var ds_style =""
 +"<style type='text/css'> "
 +".ds_dragHelper {left: 0; top: 0; position: absolute;}"
-+".ds_ondrag { cursor: default; bor-der: 1px dotted #000; position: absolute; background-color: #fff}"
++".ds_ondrag { cursor: default; border: 1px dotted #000; position: absolute; background-color: #fff}"
 +".ds_noImage { background-image: none !important}"
 +"</style>"
 
@@ -156,17 +156,26 @@ var dragHelper;
 this.targetsClass = hash['targets'];
 this.answersClass = hash['answer_elem'];
 this.variantsClass = hash['variant_elem'];
+this.autoCheck = hash['auto_check'];
 this.id = hash['id'];
+this.answerBColor = hash['answer_color'];
+this.checkClass="ds-rt";
+this.signClass="ds-sign";
+this.correctClass = "ds-correct-answer";
+this.errorClass = "ds-error-answer";
+
 
 this.targetsData = new Array();
 
 
 this.start = function() {
+
 	this.container = $('#'+this.id);
 	this.targets = this.container.find("." + this.targetsClass );			// jquery elements to put the variants in, wrappers of answers
 	this.answers = this.container.find("." + this.answersClass);             // jquery elements with answers to check
 	this.variants = this.container.find("."+ tObj.variantsClass);          // jquery elements with variants which will be dragged and checked as answers
-
+	
+	this.checkButton = tObj.container.find(".ds-check-button"); 
 	
 	this.targets.css({cursor: "default"});
 	this.variants.css({cursor: "default"});
@@ -174,6 +183,14 @@ this.start = function() {
 	$("body").append('<div id="'+ this.id +'_dragHelper" class="ds_dragHelper noselect"></div>');
 	dragHelper = $('#'+ this.id +'_dragHelper');
 	this.targets.attr("taken", "-1");
+	
+	this.checkButton.click(function() {
+		tObj.checkAnswers();
+	}).mousedown(function() {
+		tObj.checkButton.css({left: "1px", top: "1px"});
+	}).mouseup(function() {
+		tObj.checkButton.css({left: "0px", top: "0px"})
+	});
 	
 	this.variants.mousedown(function(e) {
 		$("body").addClass("noselect");
@@ -187,7 +204,6 @@ this.start = function() {
 		var difY=e.pageY-y;
 		
 		tObj.targetTable();               // shot of targets
-		
 		t.css({visibility: "hidden"});
 		dragHelper.addClass("ds_ondrag").html(tHtml).css({left: x, top: y, maxWidth: l, opacity: "0.8"});
 		tObj.dragging(difX, difY);
@@ -195,7 +211,6 @@ this.start = function() {
 		e.preventDefault();
 		return false;
 	});
-	
 	
 	this.answers.mousedown(function(e){
 		if ( $(this).parent().attr("taken") != "-1" ) {
@@ -206,14 +221,11 @@ this.start = function() {
 			var l= t.width();
 			var difX=e.pageX-x;
 			var difY=e.pageY-y;
-			
-			
 			var fromVariant = t.parent().attr("taken");
 			var tHtml = t.html();
 			t.parent().attr("taken", "-1");
 			t.html("&nbsp;");
 			tObj.targetTable();  // shot of the targets
-			
 			dragHelper.addClass("ds_ondrag").html(tHtml).css({left: x, top: y, maxWidth: l, opacity: "0.8"});
 			tObj.dragging(difX, difY);
 			tObj.dropping(fromVariant);
@@ -232,7 +244,6 @@ this.dragging = function (difX, difY) {
 		return false;
 	});
 }
-
 
 this.targetTable = function() {
 		this.targetsData = new Array();
@@ -269,6 +280,12 @@ this.dropping = function (fromVariant) {
 		else {
 			tObj.variants.filter(":eq("+fromVariant+")").css({visibility: "visible"});
 		}
+		
+		tObj.container.find("."+tObj.signClass).removeClass(tObj.correctClass).removeClass(tObj.errorClass);
+		if (tObj.autoCheck == true) {
+			tObj.checkAnswers();
+		}
+		
 		$("body").removeClass("noselect");
 		e.preventDefault();
 		return false;
@@ -283,7 +300,6 @@ this.hittedTarget = function (fromVariant, hitted) {
 		tObj.targets.eq(hitted).attr("taken", fromVariant ).children().html(" " + tVariantHtml + " ");
 		tObj.hittedAnimation(hitted);
 	}else {
-			
 		var firstFreeItem;
 		var freeTargets = new Array();
 		for (var i=0; i < tObj.targetsData.length; i++) {	
@@ -291,7 +307,6 @@ this.hittedTarget = function (fromVariant, hitted) {
 				freeTargets.push(i);
 			}
 		}
-		
 		if ( freeTargets.length == 0 ) {
 			tObj.variants.filter(":eq("+fromVariant+")").css({visibility: "visible"});
 			
@@ -308,14 +323,12 @@ this.hittedTarget = function (fromVariant, hitted) {
 					nearest = freeTargets[i];
 				}
 			}
-		
 			for (var i=0; i < tObj.targetsData.length; i++) {	
 				if (tObj.targetsData[i].taken == "-1") {
 					firstFreeItem = i;
 					break;
 				} 
 			}
-		
 			var helpItem = tObj.targetsData[nearest]          //tObj.targetsData[firstFreeItem];
 			tObj.targetsData.splice(nearest, 1);		//tObj.targetsData.splice(firstFreeItem, 1);
 			helpItem.html = tObj.variants.filter(":eq("+fromVariant+")").html();
@@ -331,14 +344,28 @@ this.hittedTarget = function (fromVariant, hitted) {
 }
 
 this.hittedAnimation = function(hitted) {
-
-			tObj.targets.eq(hitted).addClass("ds_noImage").stop().css({backgroundColor: "#feff8f"}).animate({backgroundColor: "#f1f1f1"},500, function () {
-				tObj.targets.eq(hitted).css({backgroundColor: "transparent"}).removeClass("ds_noImage");
+			if (tObj.answerBColor == undefined) {
+				var tColor = tObj.targets.eq(hitted).css("background-color");
+			} else {
+				var tColor = tObj.answerBColor;
+			}
+			tObj.targets.eq(hitted).addClass("ds_noImage").stop().css({backgroundColor: "#feff8f"}).animate({backgroundColor: tColor},500, function () {
+				tObj.targets.eq(hitted).css({backgroundColor: tColor}).removeClass("ds_noImage");
 			});
 }
 
-
-
+this.checkAnswers = function() {
+  tObj.answers.each(function(i, elem) {
+	if ( $(elem).find("."+tObj.checkClass).length > 0 ) {
+		var tValue = $(elem).find("."+tObj.checkClass).text();
+		if (tValue == (i +1)) {
+			tObj.container.find("."+tObj.signClass).filter(":eq("+i+")").addClass(tObj.correctClass);
+		} else {
+			tObj.container.find("."+tObj.signClass).filter(":eq("+i+")").addClass(tObj.errorClass);
+		}
+	}
+  });
+}
 
 $(document).ready(function() {
 	tObj.start();

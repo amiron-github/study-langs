@@ -113,26 +113,19 @@ tObj.jplayer.jPlayer( {
 	swfPath: "/javascripts/",
 	nativeSupport: false
 });
-	
-	
-	
 	tObj.playButton.click(function() {
 		if (tObj.status == "playing") tObj.pause();
 		else tObj.play();         
 	});
-	
 	tObj.stopButton.click(function() {
 		tObj.stop();         
 	});
-	
 	tObj.rewindButton.click(function() {
 		tObj.rewind(); 
 	});
-	
 	tObj.forwardButton.click(function() {
 		tObj.forward();
 	});
-	
 	tObj.repeatButton.click(function() {
 		tObj.repeat();
 	});
@@ -148,6 +141,7 @@ this.play = function (time) {
 		tObj.playedTime = pt;
 		tObj.getCurrentPlayed();
 		tObj.showPlayingTrack();
+		tObj.container.find("div.dt_inf").text(pt);
 	})
 	.jPlayer( "onSoundComplete", function() {
 		tObj.stop();
@@ -164,7 +158,10 @@ this.playOneTrack = function (track) {
 			tObj.pause();
 			tObj.playedTime = tObj.playedTime - 100;
 		}
-	})
+	}).jPlayer( "onSoundComplete", function() {
+		return false
+		
+	} );
 }
 
 this.rewind = function() {
