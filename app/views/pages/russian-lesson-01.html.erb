@@ -10,7 +10,8 @@
 <%= javascript_include_tag 'multi-choice' %>
 <%= javascript_include_tag 'jquery.jplayer.min.js' %>
 <%= javascript_include_tag 'es-course.js' %>
-
+<%= javascript_include_tag 'jquery.tablesorter.min.js' %>
+<%= javascript_include_tag 'es-yn-exercise.js' %>
 
 <script type="text/javascript">
 
@@ -467,134 +468,268 @@ $(document).ready(function() {
 	<div class="inpBlock">
 	
 	
-	<p>Look at the words below</p>
+	<p>Listen, repeat ad read the translation of words and expressions below.</p>
 	
 	
 	
-	<table class="es-words-list" >
-		<col width="200">
-		<col width="200">
+	<table class="es-words-list" cellspacing="1">
+	<col width="20">
+	<col width="200">
+	<col width="200">
+	<thead>
 		<tr>
-			<td>
-				Здравствуйте
+			<th>&nbsp;</th>
+			<th>Russian</th>
+			<th>English</th>
+		</tr>
+			
+	</thead>
+	<tbody>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
 			</td>
-			<td>
-				Hello
+			<td class="wl-rus">
+				Здравствуйте!
+			</td>
+			<td class="wl-eng">
+				Hello! 
 			</td>
 		</tr>
 		<tr>
-			<td>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01102.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
 				Доброе утро!
 			</td>
 			<td>
-				Hello
+				Good morning!
 			</td>
 		</tr>
 		<tr>
-			<td>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01103.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
 				Добрый день!
 			</td>
 			<td>
-				Hello
+				Good afternoon!
 			</td>
 		</tr>
+
 		<tr>
-			<td>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01104.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
 				Добрый вечер! 
 			</td>
 			<td>
-				Hello
+				Good evening!
 			</td>
 		</tr>
 		<tr>
-			<td>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01115.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
 				До свидания! 
 			</td>
 			<td>
-				Hello
+				Good bye!
 			</td>
 		</tr>
 		<tr>
-			<td>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01107.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
 				Как поживаете?
 			</td>
 			<td>
-				
+				How are you? (formal)
 			</td>
 		</tr>
 		<tr>
-			<td>
-				Хорошо
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01112.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				Хорошо.
 			</td>
 			<td>
-				
-			</td>
-		</tr>
-		<tr>
-			<td>
-				Отлично.
-			</td>
-			<td>
-				Thank you
+				I'm fine.
 			</td>
 		</tr>
 		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01111.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				Прекрасно.
+			</td>
 			<td>
+				Excellent!
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/soundb01031060.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
 				Нормально.
 			</td>
 			<td>
-				Hello
+				I'm OK.
 			</td>
 		</tr>
 		<tr>
-			<td>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01127.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
 				Спасибо
 			</td>
 			<td>
-				Hello
+				Thank you.
 			</td>
 		</tr>
 		<tr>
-			<td>
-				Здравствуйте
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				Привет!
 			</td>
 			<td>
-				Hello
-			</td>
-		</tr>
-		<tr>
-			<td>
-				Здравствуйте
-			</td>
-			<td>
-				Hello
+				Hi!
 			</td>
 		</tr>
 		<tr>
-			<td>
-				Здравствуйте
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01120.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				Пока!
 			</td>
 			<td>
-				Hello
-			</td>
-		</tr>
-		<tr>
-			<td>
-				Здравствуйте
-			</td>
-			<td>
-				Hello
+				Bye!
 			</td>
 		</tr>
 		<tr>
-			<td>
-				Здравствуйте
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01110.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				Как дела?
 			</td>
 			<td>
-				Hello
+				How are you? (informal)
 			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01122.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				Извините.
+			</td>
+			<td>
+				Excuse me. (formal)
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01126.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				Пожалуйста, ...
+			</td>
+			<td>
+				Please, ...
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01130.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				Пожалуйста.
+			</td>
+			<td>
+				You're welcome
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/yes.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				Да
+			</td>
+			<td>
+				Yes
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/no.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				Нет
+			</td>
+			<td>
+				No
+			</td>
+		</tr>
+	</tbody>
+	</table>
+	
+	<br>
+	<br>
+	
+	
+	
+	
+	<div id = "yn1">
+	
+	<input type="button" class="yn-start" value="start">
+	
+	<table style="background-color: #000;" cellspacing="1">
+		<tr>
+			<td><div class="yn-audio">&nbsp;</td>
+		</tr>
+		<tr>
+			<td><div class = "yn-trans">&nbsp;</div></td>
+		</tr>
+		<tr>
+			<td><div class="yn-btn"><input type="button" value="yes" class="yn-yes"><input type="button" value="no" class="yn-no"></div></td>
+		</tr>
+		<tr>
+			<td><div class="yn-alert">&nbsp;</div></td>
+		</tr>
+		<tr>
+			<td><div class="yn-info">&nbsp;</div></td>
 		</tr>
 	</table>
+	
+	</div>
+	
+<script type="text/javascript"> 
+	var yn1 = new yn_exercise( {
+		id: "yn1", 
+		basic_array: [
+		['sound01101.mp3',	'Здравствуйте'],
+		['sound01102.mp3',	'Доброе утро'],
+		['sound01103.mp3',	'Добрый день'],
+		['sound01104.mp3',	'Добрый вечер'],
+		['sound01105.mp3',	'Добро пожаловать!'],
+		['sound01106.mp3',	'Привет!']
+		]
+		} )
+</script>	
 	
 	
 		

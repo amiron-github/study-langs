@@ -17,7 +17,12 @@ $(".jp_controls").toggle(function() {
 
 
 
+});
 
+
+
+$(document).ready(function() { 
+    $("table.es-words-list").tablesorter({ headers: {0:{sorter: false}}, widgets: ['zebra'] });
 });
 
 
@@ -36,8 +41,6 @@ function pauseJplayer() {
 	$("#s-inf").text("Song Paused");
 	$("#jpId").jPlayer( "pause" );
 }
-
-
 
 
 
@@ -173,7 +176,6 @@ this.rewind = function() {
 	tObj.playOneTrack( tObj.currentTrack - 1 );
 	tObj.getCurrentPlayed();
 	tObj.showPlayingTrack();
-	
 	}
 }
 
@@ -182,7 +184,6 @@ this.forward = function() {
 		return false;
 	} else {
 		tObj.jplayer.jPlayer("onProgressChange",function(lp,ppr,ppa,pt,tt){return false}).jPlayer("pause");
-	
 		if (tObj.status == "ready") {
 			tObj.playedTime = 0;
 			tObj.playOneTrack( 0 );

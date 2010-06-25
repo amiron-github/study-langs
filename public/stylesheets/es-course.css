@@ -689,16 +689,80 @@ z-index: 100;
 }
 
 
- 
- 
+
+/* vocabulary section*/
+
+.es-words-list {
+background-color: #dfdfdf;
+margin: 0 auto;
+}
+
+.es-words-list td {
+background-color: #fff;
+padding: 5px 15px;
+}
+
+table.es-words-list thead tr th, table.tablesorter tfoot tr th {
+	background-color: #dfdfdf;
+	border: 1px solid #FFF;
+	font-size: 11px;
+	padding: 5px 10px;
+}
+
+
+table.es-words-list thead tr .header {
+	background-image: url(/images/tablesorter/bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.es-words-list tbody td {
+	color: #3D3D3D;
+	background-color: #FFF;
+	vertical-align: top;
+}
+table.es-words-list tbody tr.odd td {
+	background-color:#FAFAFA;
+}
+table.es-words-list thead tr .headerSortUp {
+	background-image: url(/images/tablesorter/asc.gif);
+}
+table.es-words-list thead tr .headerSortDown {
+	background-image: url(/images/tablesorter/desc.gif);
+}
+table.es-words-list thead tr .headerSortDown, table.es-words-list thead tr .headerSortUp {
+background-color: #bfbfbf;
+}
+
+table.es-words-list td.wl-audio {
+padding: 1px;
+text-align: center;
+vertical-align: middle;
+}
+
+table.es-words-list td.wl-audio .jp_control {
+margin: 0 auto;
+}
 
 
 
 
-////////////////////////////
+#yn1 td {
+background-color: #fff;
+padding: 10px;
+}
 
 
 
+
+
+
+
+
+
+
+
+/* end of vocabulary section*/
 
 
 
