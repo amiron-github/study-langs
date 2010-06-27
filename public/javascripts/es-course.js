@@ -9,15 +9,53 @@ $("body").append('<div id="cJp"></div>');
 $("#cJp").jPlayer( {swfPath: "/javascripts/"});
 
 
+$("body").append('<div id="exJp"></div>');
+$("#exJp").jPlayer( {swfPath: "/javascripts/", nativeSupport: false});
+
+
 $(".jp_controls").toggle(function() {
 	$(this).addClass("jp_paused")
 		}, function() {
 	$(this).removeClass("jp_paused")
 });
 
+$(".es-ex-audio-holder").mousedown(
+	function() {
+		$(this).addClass("ex-audio-holder-hover");
+		return false;
+	}).mouseup(function() {
+		//$(this).removeClass("ex-audio-holder-hover");
+	}
+);
 
 
+$(".es-yn-buttons input").hover(
+	function() {
+		$(this).addClass("yn-btn-hover");
+	}, function() {
+		$(this).removeClass("yn-btn-hover");
+	}).mousedown(function() {
+		$(this).addClass("yn-btn-down");
+	}).mouseup(function() {
+		$(this).removeClass("yn-btn-down");
 });
+	
+$(".es-yn-next").hover(
+	function() {
+		$(this).addClass("es-yn-next-hover");
+	}, function() {
+		$(this).removeClass("es-yn-next-hover");
+	}).mousedown(function() {
+		$(this).addClass("es-yn-next-down");
+	}).mouseup(function() {
+		$(this).removeClass("es-yn-next-down");
+});	
+	
+	
+	
+});
+
+
 
 
 
@@ -71,6 +109,42 @@ tEl.removeClass("jp_play").removeClass("jp_pause").attr("title", "Click to Play"
 	} else {											// if sound is in progress (1)
 		tEl.attr("status", "2").addClass("jp_play").attr("title", "Click to Pause");  		
 		containerJp.jPlayer( "pause" );
+	}
+}
+
+
+
+
+
+var exJplayer=false;
+var exJpForce = false;
+
+function ex_Jplayer(link,el,notPlay) {
+
+var prevEl = exJplayer;
+var curEl = el;
+
+if ( curEl != prevEl) {
+	$(prevEl).attr("status", 0).removeClass("ex-audio-holder-hover");
+}
+
+exJplayer = el;
+var tEl = $(el);
+var tElStatus = $(el).attr("status");
+var containerJp = $("#exJp");
+
+	if ( tElStatus == "0" || tElStatus == undefined || exJpForce) { // start sound if sound is not in progress ()
+		tEl.attr("status", "0").removeClass("ex-audio-holder-hover").attr("title", "Click to Play");
+		containerJp.jPlayer("setFile", link ).jPlayer("onProgressChange", function() { return false}).jPlayer( "onSoundComplete", function() {  // start sound 
+			tEl.attr("status", "0").removeClass("ex-audio-holder-hover").attr("title", "Click to Play");  										// reset status at the end of sound, show 'play'
+		} );
+		if (notPlay != 1) {
+			tEl.attr("status", "1").addClass("ex-audio-holder-hover").attr("title", "Playing"); // show that sound is in progress 
+			containerJp.jPlayer("play");
+		}
+		
+	} else {											// if sound is in progress (1)
+		return false;
 	}
 }
 
