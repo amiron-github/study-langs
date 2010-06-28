@@ -12,6 +12,7 @@
 <%= javascript_include_tag 'es-course.js' %>
 <%= javascript_include_tag 'jquery.tablesorter.min.js' %>
 <%= javascript_include_tag 'es-yn-exercise.js' %>
+<%= javascript_include_tag 'es-choice-exercise.js' %>
 
 <script type="text/javascript">
 
@@ -689,15 +690,13 @@ $(document).ready(function() {
 	
 	<br>
 	<br>
-	
+
+	<br>
 
 	
 
 	
-
-	
-
-	
+<br>	
 	
 <div id = "yn1" class="es-ex-wrapper es-audio-ex">
 
@@ -756,6 +755,8 @@ $(document).ready(function() {
 <script type="text/javascript"> 
 	var yn1 = new yn_exercise( {
 		id: "yn1", 
+		quest_num: 10,
+		auto_play: true,
 		basic_array: [
 		['/sounds/sound01101.mp3',	'Hello!'],
 		['/sounds/sound01102.mp3',	'Good morning!'],
@@ -776,18 +777,24 @@ $(document).ready(function() {
 </script>
 
 
-<br>
-<br>
+
 <br>
 <br>
 
+<br>
 
-<div class="es-ex-wrapper es-string-ex">
+<br><br>
 
-<div class="es-ex-alert-container"><div class="es-ex-alert-rt"><div class="es-ex-alert es-ex-alert-wrong"> WRONG  </div>   </div></div>
+<div id="ch1" class="es-ex-wrapper es-string-ex">
+
+<div class="es-ex-alert-container"><div class="es-ex-alert-rt"><div class="es-ex-alert yn-alert"> &nbsp;  </div>   </div></div>
 <div class="es-ex-top">
 
+<div class="es-ex-final"></div>
+
 </div>
+
+
 <table class="es-ex-content" cellspacing="0">
 	<tr>
 		<td class="es-ex-quest" width="40%" valign="middle" align="center">
@@ -796,9 +803,8 @@ $(document).ready(function() {
 		<div class="es-ex-string-holder">
 			<table>
 				<tr>
-					<td class="es-ex-string-wrapper">
+					<td class="es-ex-string-wrapper" style="height: 150px;">
 					
-						
 					
 					</td>
 				</tr>
@@ -815,11 +821,65 @@ $(document).ready(function() {
 	</tr>
 </table>
 <div class="es-ex-bottom">
+<input type="button" class="es-yn-next" value=" NEXT " style="font-size: 12px; visibility: hidden;">
+</div>
+
+<div class="es-ex-info-container">
 
 
+<table cellsapcing="0" align="center">
+  <tr>
+	<td style="padding-left: 20px;"><div class="es-ex-info yn-info"> &nbsp;  </div>
+	
+	</td>
+	<td>
+	<div class="es-yn-buttons">
+		<input type="button" class="es-yn-es-btn yn-start" value="RESTART"/>
+	</div>
+	
+	</td>
+  </tr>
+ </table>
+ 
 </div>
-<div class="es-ex-info-container"><div class="es-ex-info">   </div></div>
 </div>
+
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		//quest_num: 10,
+		auto_play: false,
+		variants_num: 4,
+		basic_array: [
+		
+		/*
+		['Здравствуйте!',	'Hello! '],
+		['Доброе утро!',	'Good morning!'],
+		['Добрый день!',	'Good afternoon!'],
+		['Добрый вечер',	'Good evening!'],
+		['До свидания!'	,'Good bye!'],
+		['Как дела?'	,'How are you? (formal)'],
+		['Хорошо.'	,'I\'m fine.'],
+		['Прекрасно.'	,'Excellent!'	],
+		['Нормально'	,'I\'m OK.'],
+		['Спасибо.'	,'Thank you.'	],
+		['Привет.'	,'Hi!'],
+		['Пока'	,'Bye!'],
+		['Как дела?','How are you? (informal)'],
+		['Простите.','Excuse me. (formal)']
+		*/
+		
+		['<img style="display: block; width: 135px; height: 86px; margin-bottom: 10px;" src="/images/street.jpg"/>',	'street'],
+		['<img style="display: block; width: 135px; height: 86px; margin-bottom: 10px;" src="images/airport.jpg"/>',	'airport'],
+		['<img style="display: block; width: 135px; height: 86px; margin-bottom: 10px;" src="images/square.jpg"/>',	'square'],
+		['<img style="display: block; width: 135px; height: 86px; margin-bottom: 10px;" src="images/hotel.jpg"/>',	'hotel'],
+		['<img style="display: block; width: 135px; height: 86px; margin-bottom: 10px;" src="images/station.jpg"/>',	'station']
+		]
+		} )
+</script>
+
+
 
 
 <br>

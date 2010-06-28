@@ -22,10 +22,13 @@ Array.prototype.shuffle = shuffle;
 
 
 
-function yn_exercise(hash) {
+function ch_exercise(hash) {
+
+
 
 this.basicArray = hash['basic_array'];
 this.id = hash['id'];
+this.variantsNum = hash['variants_num'];
 this.autoPlay = hash['auto_play'];
 
 this.counter = 0;
@@ -43,6 +46,8 @@ this.correctAswersNum=0;
 this.questNum = hash['quest_num'];
 if (this.questNum == undefined) this.questNum = this.basicArray.length;
 
+
+
 if (this.autoPlay == undefined) this.autoPlay = true; 
 
 var tObj = this;
@@ -52,8 +57,6 @@ tObj.correctClass = "es-ex-alert-correct";
 tObj.wrongClass = "es-ex-alert-wrong";
 tObj.wrongMsg = "WRONG";
 
-var toYes;
-var toNo;
 
 var toNextInt;
 
@@ -63,6 +66,7 @@ this.parseTest = function() {
 	this.container = $("#"+tObj.id);
 		tObj.contentHolder = tObj.container.find(".es-ex-content")
 		tObj.audioHolder = tObj.container.find(".es-ex-audio-holder");
+		tObj.stringHolder = tObj.container.find(".es-ex-string-wrapper");
 		tObj.transHolder = tObj.container.find(".yn-trans");
 		tObj.buttonsHolder = tObj.container.find(".yn-btn");
 		tObj.alertHolder = tObj.container.find(".yn-alert");
@@ -73,6 +77,10 @@ this.parseTest = function() {
 		tObj.nextButton = tObj.container.find(".es-yn-next");
 		tObj.finalSign = tObj.container.find(".es-ex-final");
 		tObj.startButton = tObj.container.find(".yn-start");
+		tObj.optionsHolder = tObj.container.find(".es-ex-tasks");
+		
+		if (tObj.variantsNum > 4 ) tObj.optionsHolder.addClass("es-ex-tasks-more-than-4");
+ 		
 		tObj.jplayer = $("#exJp");
 		
 		tObj.start();
@@ -137,8 +145,10 @@ this.restart = function() {
 		tObj.container.find(".es-ex-invisible").removeClass("es-ex-invisible");
 		tObj.nextButton.val("NEXT");
 
+
 		tObj.step();
-	
+		
+
 }
 
 
@@ -153,17 +163,10 @@ tObj.alertHolder.empty().removeClass(tObj.correctClass).removeClass(tObj.wrongCl
   
 	tObj.remain = tObj.questNum - tObj.counter;
 	tObj.infoHolder.text("Remaining: " + tObj.remain);
-		tObj.alertHolder.empty();
-		tObj.transHolder.html("" + tObj.workArray[tObj.counter][1] + ""); 
-
-			if (Math.random() < .5) {
-				toYes=true;
-				tObj.getCorrectSound(tObj.counter);
-			}else {
-				toYes=false;
-				tObj.getWrongSound(tObj.counter);
-			}
-			tObj.buttonsOn();
+	tObj.alertHolder.empty();
+		
+	tObj.stringHolder.html("" + tObj.workArray[tObj.counter][0] +"");
+	tObj.getOptions();
 			
 	if (this.questNum - this.counter == 1) tObj.nextButton.val("See results");		
 			
@@ -171,6 +174,133 @@ tObj.alertHolder.empty().removeClass(tObj.correctClass).removeClass(tObj.wrongCl
 	tObj.gotoEnd();
  }
 }
+
+
+
+this.getOptions = function() {
+
+    var option = new Array();
+	
+	var currentQuestIndex = tObj.counter;
+	var allIndexes = new Array();
+	var addIndexes = new Array();
+	
+	//alert(tObj.questNum);
+	
+	for (var i=0; i < tObj.questNum; i ++ ) { // create array of all indexes
+		allIndexes[i] = i;
+	}
+	
+	allIndexes.splice(currentQuestIndex, 1); // remove the current index
+	
+	addIndexes = allIndexes.shuffle( tObj.variantsNum - 1 ); // get random options
+	
+	addIndexes.push(currentQuestIndex) // add the current 
+
+	option = addIndexes.shuffle() // mix the array 
+
+
+	var startOptions = '<ul class="es-ex-tasks-list">';
+	var endOptions = '<ul class="no-list">';
+	
+	var optionsList = '';
+	var correctIndex;
+	
+	for (var i = 0; i < option.length; i ++ ) {
+		var tOption = '<li><input type="radio"> ' + tObj.workArray[option[i]][1] + '</li>'
+		if (option[i] == currentQuestIndex) {
+			correctIndex = i;
+		}
+		optionsList = optionsList + tOption;
+	}
+	
+	tObj.optionsHolder.html("" + startOptions + optionsList + endOptions +"");
+	
+	tObj.optionsHolder.find("li").eq(correctIndex).data("correct", "true");
+	
+	tObj.optionsHolder.find("li").each(function(i,elem){
+	
+		$(elem).click(function() {
+			$(elem).find("input").attr("checked", "checked")
+			if ($(elem).data('correct') == "true") {
+				tObj.correctAnswer();
+			} else {
+				tObj.wrongAnswer($(elem));
+				
+				
+			}
+		})
+	
+	})
+
+}
+
+
+
+
+this.correctAnswer = function () {
+	tObj.alertHolder.html("" + tObj.correctMsg + "").addClass(tObj.correctClass);
+	tObj.correctAswersNum ++;
+	tObj.buttonsOff();
+	
+	tObj.optionsHolder.find("li").unbind("click").each(function(i, elem) {
+		if ($(elem).data('correct') != 'true') {
+			tObj.highlightWrong($(elem));
+		} else {
+			$(elem).css({color: "green"}).find("input").attr("disabled", "disabled")
+		}
+	});
+	
+	if (tObj.autoPlay) {
+		toNextInt = setTimeout(function() {
+				tObj.gotoNext();
+		}, 1600);
+	}
+}
+
+this.wrongAnswer = function (jElem) {
+	tObj.alertHolder.html("" + tObj.wrongMsg + "").addClass(tObj.wrongClass);
+	
+	
+	
+	tObj.wrongAnswers.push(tObj.workArray[tObj.counter][1]);
+	tObj.wrongAswersNum++;
+	tObj.buttonsOff();
+	
+	tObj.optionsHolder.find("li").unbind("click").each(function(i, elem) {
+		if ($(elem).data('correct') != 'true') {
+			tObj.highlightWrong($(elem));
+		} else {
+			$(elem).css({color: "green"}).find("input").attr("disabled", "disabled")
+		}
+	});
+	
+	jElem.css({color: "red"});
+	
+	if (tObj.autoPlay) {
+		toNextInt = setTimeout(function() {
+				tObj.gotoNext();
+		}, 1600);
+	}
+}
+
+
+this.gotoNext = function() {
+	tObj.buttons.unbind("click");
+	tObj.counter++;
+	tObj.step();
+	if (tObj.autoPlay) { 
+		exJpForce = true;
+		tObj.audioHolder.mousedown();
+		exJpForce = false;
+	}
+}
+
+this.highlightWrong = function(jElem) {
+	jElem.css({textDecoration: "line-through", color: "#999", backgroundImage: "none", backgroundColor: "#dfdfdf"}).find("input").attr("disabled", "disabled");
+
+}
+
 
 
 this.getCorrectSound = function (counter) {
@@ -206,16 +336,7 @@ this.noAnswer = function () {
 	}
 }
 
-this.gotoNext = function() {
-	tObj.buttons.unbind("click");
-	tObj.counter++;
-	tObj.step();
-	if (tObj.autoPlay) { 
-		exJpForce = true;
-		tObj.audioHolder.mousedown();
-		exJpForce = false;
-	}
-}
+
 
 this.gotoEnd = function() {
 
@@ -245,30 +366,7 @@ this.buttonsOn = function() {
 }
 
 
-this.correctAnswer = function () {
-	tObj.alertHolder.html("" + tObj.correctMsg + "").addClass(tObj.correctClass);
-	tObj.correctAswersNum ++;
-	tObj.buttonsOff();
-	
-	if (tObj.autoPlay) {
-		toNextInt = setTimeout(function() {
-				tObj.gotoNext();
-		}, 1600);
-	}
-}
 
-this.wrongAnswer = function () {
-	tObj.alertHolder.html("" + tObj.wrongMsg + "").addClass(tObj.wrongClass);
-	tObj.wrongAnswers.push(tObj.workArray[tObj.counter][1]);
-	tObj.wrongAswersNum++;
-	tObj.buttonsOff();
-	
-	if (tObj.autoPlay) {
-		toNextInt = setTimeout(function() {
-				tObj.gotoNext();
-		}, 1600);
-	}
-}
 
 this.buttonsOff = function() {
 	tObj.buttons.unbind("click");

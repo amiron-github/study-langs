@@ -401,7 +401,7 @@ function coStep() {
 
 	if(coCounter < coQuestNum) {
 		$("#co_task div").text( coWorkArray[coCounter] [0] );
-		coGetOptions() ;
+		coGetOptions();
 		activateClick(coCounter);
 		coCounter++;
 	}else {

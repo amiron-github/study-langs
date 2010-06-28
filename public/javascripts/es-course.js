@@ -30,14 +30,17 @@ $(".es-ex-audio-holder").mousedown(
 
 
 $(".es-yn-buttons input").hover(
-	function() {
+	function(event) {
 		$(this).addClass("yn-btn-hover");
-	}, function() {
+		event.preventDefault();
+	}, function(event) {
 		$(this).removeClass("yn-btn-hover");
-	}).mousedown(function() {
+	}).mousedown(function(event) {
 		$(this).addClass("yn-btn-down");
-	}).mouseup(function() {
+		event.preventDefault();
+	}).mouseup(function(event) {
 		$(this).removeClass("yn-btn-down");
+		event.preventDefault();
 });
 	
 $(".es-yn-next").hover(
