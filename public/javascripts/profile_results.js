@@ -4,6 +4,7 @@ var phoneticResults=new Array();
 var readingResults=new Array();
 var coursesResults=new Array();
 var vocabResults=new Array();
+var grammarResults=new Array();
 
 $(document).ready(function(){
 
@@ -44,6 +45,9 @@ for (var i=0; i<userProgress.length; i++) {
   case 'c':
   	coursesResults.push(userProgress[i]);
   	break;
+  case 'g':
+  	grammarResults.push(userProgress[i]);
+  	break;
   case 'v':
   	vocabResults.push(userProgress[i]);
   	break;
@@ -56,7 +60,9 @@ for (var i=0; i<userProgress.length; i++) {
 parseResults(phoneticResults,phoneticDescription);
 parseResults(coursesResults,coursesDescription);
 parseResults(readingResults,readingDescription);
+parseResults(grammarResults,grammarDescription);
 parseResults(vocabResults,vocabularyDescription);
+
 
 }
 
@@ -382,6 +388,15 @@ readingDescription=new Array('Section: Reading in Russian',
 ]);
 
 
+
+grammarDescription=new Array('Section: Russian Grammar', 
+[
+['Grammar Exercises', '',
+[['Nouns gender','01'],['Nouns number', '02'],['Nouns cases', '03'],['Genitive singular','04'],
+['Genitive plural', '05'],['Dative Case', '06'], ['Accusative Case', '07'], ['Instrumental Cases', '08']
+],
+'Exercise']
+]);
 
 
 

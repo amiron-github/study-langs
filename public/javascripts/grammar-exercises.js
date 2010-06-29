@@ -71,6 +71,7 @@ function grExFromVariants(t, n) {
 
 
 var tContainer = t;
+var tID = tContainer.find("div.gr-ex-testid").text();
 
  tContainer.find(".gexv_task").each(function(i) {
  	$(this).parent("td").parent("tr").find("input").attr("name", "gexv_" + n + "_"+i );
@@ -122,6 +123,10 @@ if (errorNum > 0) {
 }else{
 	tContainer.find(".gexv_check").prepend('<span class="to_notify"><span class="check_notify" style="background-image: none; color: green; padding-left: 10px;"> No errors</span></span>');
 }
+
+
+	var correctNum = totalTasks - errorNum;
+	//sendResults(tID, totalTasks, correctNum);
 	
 	
 })
@@ -134,6 +139,7 @@ function checkExFromList(elClass) {
 	var errorNum = 0;
 	var errorString = ' errors'
 	var totalTasks = 0;
+	var tID = tContainer.find("div.gr-ex-testid").text();
 	tContainer.find(".gr_ex_unit").each(function(i) {
 	totalTasks++;
 	var userAnswer = $(this).find("select").find("option:selected").attr("class");
@@ -155,11 +161,15 @@ function checkExFromList(elClass) {
 	}else{
 	tContainer.find(".ex_from_list_check").prepend('<span class="to_notify"><span class="check_notify" style="background-image: none; color: green; padding-left: 10px;"> No errors</span></span>');
 	}
+	
+	var correctNum = totalTasks - errorNum;
+	//sendResults(tID, totalTasks, correctNum);
 }
 
 
 function checkExType(elClass) {
 	var tContainer = $(elClass).parent(".gr_ex_type");
+	var tID = tContainer.find("div.gr-ex-testid").text();
 	var errorNum = 0;
 	var errorString = ' errors'
 	var totalTasks = 0;
@@ -198,7 +208,9 @@ function checkExType(elClass) {
 		tContainer.find(".gext_check").prepend('<span class="to_notify"><span class="check_notify" style="background-image: none; color: green; padding-left: 10px;"> No errors</span></span>');
 	}
 	
-	
+	var correctNum = totalTasks - errorNum;
+	//alert (tID +" "+ totalTasks+" "+ correctNum)
+	//sendResults(tID, totalTasks, correctNum);	
 	
 }
 
@@ -206,7 +218,8 @@ function checkExType(elClass) {
 function checkExDisplay(elClass) {
 	var tContainer = $(elClass).parent(".gr_ex_display");
 	var errorNum = 0;
-
+	var tID = tContainer.find("div.gr-ex-testid").text();
+	
 	tContainer.find(".gexd_task").each(function(i) {
 	
 	var userAnswer = $(this).find("input:text").val();
@@ -236,6 +249,9 @@ function checkExDisplay(elClass) {
 	
 	
 	});
+	
+	
+	
 }
 
 

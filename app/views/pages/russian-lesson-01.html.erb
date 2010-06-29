@@ -805,7 +805,6 @@ $(document).ready(function() {
 				<tr>
 					<td class="es-ex-string-wrapper" style="height: 150px;">
 					
-					
 					</td>
 				</tr>
 			</table>
@@ -848,9 +847,11 @@ $(document).ready(function() {
 <script type="text/javascript"> 
 	var ch1 = new ch_exercise( {
 		id: "ch1", 
-		//quest_num: 10,
+		//quest_num: 8,
 		auto_play: false,
 		variants_num: 4,
+		random_order: true,
+		quest_type: 'image',
 		basic_array: [
 		
 		/*
@@ -859,22 +860,23 @@ $(document).ready(function() {
 		['Добрый день!',	'Good afternoon!'],
 		['Добрый вечер',	'Good evening!'],
 		['До свидания!'	,'Good bye!'],
-		['Как дела?'	,'How are you? (formal)'],
+		['Как дела?'	,'How are you? (informal)'],
 		['Хорошо.'	,'I\'m fine.'],
 		['Прекрасно.'	,'Excellent!'	],
 		['Нормально'	,'I\'m OK.'],
 		['Спасибо.'	,'Thank you.'	],
 		['Привет.'	,'Hi!'],
 		['Пока'	,'Bye!'],
-		['Как дела?','How are you? (informal)'],
+		['Как Ваши дела?','How are you? (formal)'],
 		['Простите.','Excuse me. (formal)']
 		*/
 		
-		['<img style="display: block; width: 135px; height: 86px; margin-bottom: 10px;" src="/images/street.jpg"/>',	'street'],
-		['<img style="display: block; width: 135px; height: 86px; margin-bottom: 10px;" src="images/airport.jpg"/>',	'airport'],
-		['<img style="display: block; width: 135px; height: 86px; margin-bottom: 10px;" src="images/square.jpg"/>',	'square'],
-		['<img style="display: block; width: 135px; height: 86px; margin-bottom: 10px;" src="images/hotel.jpg"/>',	'hotel'],
-		['<img style="display: block; width: 135px; height: 86px; margin-bottom: 10px;" src="images/station.jpg"/>',	'station']
+		['/images/street.jpg',	'street'],
+		['images/airport.jpg',	'airport'],
+		['images/square.jpg',	'square'],
+		['images/hotel.jpg"',	'hotel'],
+		['images/station.jpg',	'station']
+
 		]
 		} )
 </script>
@@ -885,6 +887,95 @@ $(document).ready(function() {
 <br>
 <br>
 <br>
+
+
+
+<div id = "ch2" class="es-ex-wrapper es-audio-ex">
+
+<div class="es-ex-alert-container"><div class="es-ex-alert-rt"><div class="es-ex-alert yn-alert"> &nbsp;  </div>   </div></div>
+<div class="es-ex-top">
+<div class="es-ex-final"></div>
+</div>
+<table class="es-ex-content" cellspacing="0">
+	<tr>
+		<td class="es-ex-quest" height="150" width="30%" valign="middle" align="center">
+		<div class="es-ex-audio-holder"><div class="es-ex-audio"></div></div>
+		</td>
+		<td class="es-ex-tasks" valign="top">
+		
+		Tasks
+		
+		</td>
+	
+	</tr>
+</table>
+<div class="es-ex-bottom">
+<input type="button" class="es-yn-next" value=" NEXT " style="font-size: 12px; visibility: hidden;">
+</div>
+<div class="es-ex-info-container">
+
+
+<table cellsapcing="0" align="center">
+  <tr>
+	<td style="padding-left: 20px;"><div class="es-ex-info yn-info"> &nbsp;  </div>
+	
+	</td>
+	<td>
+	<div class="es-yn-buttons">
+		<input type="button" class="es-yn-es-btn yn-start" value="RESTART"/>
+	</div>
+	
+	</td>
+  </tr>
+ </table>
+ 
+</div>
+</div>	
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch2", 
+		quest_num: 8,
+		auto_play: false,
+		variants_num: 4,
+		random_order: true,
+		quest_type: 'audio',
+		basic_array: [
+		
+		
+		['/sounds/sound01101.mp3',	'Hello!'],
+		['/sounds/sound01102.mp3',	'Good morning!'],
+		['/sounds/sound01103.mp3',	'Good afternoon!'],
+		['/sounds/sound01104.mp3',	'Good evening!'],
+		['/sounds/sound01115.mp3'	,'Good bye!'],
+		['/sounds/sound01107.mp3'	,'How are you? (formal)'],
+		['/sounds/sound01112.mp3'	,'I\'m fine.'],
+		['/sounds/sound01111.mp3'	,'Excellent!'	],
+		['/sounds/soundb01031060.mp3'	,'I\'m OK.'],
+		['/sounds/sound01127.mp3'	,'Thank you.'	],
+		['/sounds/sound01106.mp3'	,'Hi!'],
+		['/sounds/sound01120.mp3'	,'Bye!'],
+		['/sounds/sound01110.mp3','How are you? (informal)'],
+		['/sounds/sound01122.mp3','Excuse me. (formal)']
+		
+		/*
+		['<img style="display: block; width: 135px; height: 86px; margin-bottom: 10px;" src="/images/street.jpg"/>',	'street'],
+		['<img style="display: block; width: 135px; height: 86px; margin-bottom: 10px;" src="images/airport.jpg"/>',	'airport'],
+		['<img style="display: block; width: 135px; height: 86px; margin-bottom: 10px;" src="images/square.jpg"/>',	'square'],
+		['<img style="display: block; width: 135px; height: 86px; margin-bottom: 10px;" src="images/hotel.jpg"/>',	'hotel'],
+		['<img style="display: block; width: 135px; height: 86px; margin-bottom: 10px;" src="images/station.jpg"/>',	'station']
+		
+		*/
+		]
+		} )
+</script>
+
+
+
+
+
+
+
 <br>
 	
 	

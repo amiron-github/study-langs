@@ -30,6 +30,8 @@ this.basicArray = hash['basic_array'];
 this.id = hash['id'];
 this.variantsNum = hash['variants_num'];
 this.autoPlay = hash['auto_play'];
+this.randomOrder = hash['random_order'];
+this.questType = hash['quest_type'];
 
 this.counter = 0;
 this.remain = 0;
@@ -38,17 +40,19 @@ this.remain = 0;
 this.workArray = new Array();
 this.sounds = new Array;
 this.translations = new Array();
+this.straightOrderAnswers = new Array();
 
 this.wrongAnswers=new Array();
 this.wrongAswersNum=0;
 this.correctAswersNum=0;
 
 this.questNum = hash['quest_num'];
+
 if (this.questNum == undefined) this.questNum = this.basicArray.length;
-
-
-
+if (this.randomOrder == undefined) this.randomOrder = true;
 if (this.autoPlay == undefined) this.autoPlay = true; 
+if (this.questType == undefined) this.questType = 'html'; 
+
 
 var tObj = this;
 
@@ -79,7 +83,7 @@ this.parseTest = function() {
 		tObj.startButton = tObj.container.find(".yn-start");
 		tObj.optionsHolder = tObj.container.find(".es-ex-tasks");
 		
-		if (tObj.variantsNum > 4 ) tObj.optionsHolder.addClass("es-ex-tasks-more-than-4");
+		if (tObj.variantsNum > 4 || !tObj.randomOrder ) tObj.optionsHolder.addClass("es-ex-tasks-more-than-4");
  		
 		tObj.jplayer = $("#exJp");
 		
@@ -91,16 +95,17 @@ this.parseTest = function() {
 this.start = function () {
 
 		if( !tObj.autoPlay) tObj.nextButton.css({visibility: "visible"});
+		
 	
     	tObj.counter=0;
     	tObj.wrongAnswers=new Array();
     	tObj.wrongAswersNum=0;
     	tObj.correctAswersNum = 0;
-
     	tObj.workArray = tObj.basicArray.shuffle(tObj.questNum);
-		clearTimeout(toNextInt);
 		
-
+		if (!tObj.randomOrder) tObj.straightOrderAnswer = tObj.getAnswersOrder();
+		
+		clearTimeout(toNextInt);
 		tObj.alertHolder.empty().removeClass(tObj.correctClass);
 		tObj.container.removeClass("yn-final-bg");
 		
@@ -110,12 +115,11 @@ this.start = function () {
 		
     	tObj.startButton.click(function() {
 			tObj.restart();
-			if (tObj.autoPlay) { 
+			if (tObj.questType == 'audio') { 
 				exJpForce = true;
 				tObj.audioHolder.mousedown();
 				exJpForce = false;
 			}
-			
 		});
 		
 		tObj.nextButton.unbind("click").click(function() {
@@ -128,27 +132,23 @@ this.start = function () {
 this.restart = function() {
 
 		if( !tObj.autoPlay) tObj.nextButton.css({visibility: "visible"});
-	
     	tObj.counter=0;
     	tObj.wrongAnswers=new Array();
     	tObj.wrongAswersNum=0;
     	tObj.correctAswersNum = 0;
 
     	tObj.workArray = tObj.basicArray.shuffle(tObj.questNum);
+		
+		if (!tObj.randomOrder) tObj.straightOrderAnswer = tObj.getAnswersOrder();
 		clearTimeout(toNextInt);
 		
-
 		tObj.alertHolder.empty().removeClass(tObj.correctClass);
 		tObj.container.removeClass("yn-final-bg");
 		
 		tObj.finalSign.hide();
 		tObj.container.find(".es-ex-invisible").removeClass("es-ex-invisible");
 		tObj.nextButton.val("NEXT");
-
-
 		tObj.step();
-		
-
 }
 
 
@@ -164,8 +164,15 @@ tObj.alertHolder.empty().removeClass(tObj.correctClass).removeClass(tObj.wrongCl
 	tObj.remain = tObj.questNum - tObj.counter;
 	tObj.infoHolder.text("Remaining: " + tObj.remain);
 	tObj.alertHolder.empty();
+	
+	if (tObj.questType == 'audio'){
+	
+		tObj.makePlayer(tObj.workArray[tObj.counter][0]);
 		
-	tObj.stringHolder.html("" + tObj.workArray[tObj.counter][0] +"");
+	} else if (tObj.questType == 'image') {
+		tObj.stringHolder.html('<img src="' + tObj.workArray[tObj.counter][0] +'" />');
+	}
+	
 	tObj.getOptions();
 			
 	if (this.questNum - this.counter == 1) tObj.nextButton.val("See results");		
@@ -179,40 +186,57 @@ tObj.alertHolder.empty().removeClass(tObj.correctClass).removeClass(tObj.wrongCl
 
 this.getOptions = function() {
 
-    var option = new Array();
-	
-	var currentQuestIndex = tObj.counter;
-	var allIndexes = new Array();
-	var addIndexes = new Array();
+	var startOptions = '<ul class="es-ex-tasks-list">';
+	var endOptions = '<ul class="no-list">';
+	var optionsList = '';
+	var correctIndex;
+
+
+	if (tObj.randomOrder)	{
+
+		var option = new Array();
+		var currentQuestIndex = tObj.counter;
+		var allIndexes = new Array();
+		var addIndexes = new Array();
 	
 	//alert(tObj.questNum);
 	
-	for (var i=0; i < tObj.questNum; i ++ ) { // create array of all indexes
-		allIndexes[i] = i;
-	}
-	
-	allIndexes.splice(currentQuestIndex, 1); // remove the current index
-	
-	addIndexes = allIndexes.shuffle( tObj.variantsNum - 1 ); // get random options
-	
-	addIndexes.push(currentQuestIndex) // add the current 
-
-	option = addIndexes.shuffle() // mix the array 
-
-
-	var startOptions = '<ul class="es-ex-tasks-list">';
-	var endOptions = '<ul class="no-list">';
-	
-	var optionsList = '';
-	var correctIndex;
-	
-	for (var i = 0; i < option.length; i ++ ) {
-		var tOption = '<li><input type="radio"> ' + tObj.workArray[option[i]][1] + '</li>'
-		if (option[i] == currentQuestIndex) {
-			correctIndex = i;
+		for (var i=0; i < tObj.questNum; i ++ ) { // create array of all indexes
+			allIndexes[i] = i;
 		}
-		optionsList = optionsList + tOption;
+	
+		allIndexes.splice(currentQuestIndex, 1); // remove the current index
+	
+		addIndexes = allIndexes.shuffle( tObj.variantsNum - 1 ); // get random options
+	
+		addIndexes.push(currentQuestIndex) // add the current 
+
+		option = addIndexes.shuffle() // mix the array 
+	
+		for (var i = 0; i < option.length; i ++ ) {
+			var tOption = '<li><input type="radio"> ' + tObj.workArray[option[i]][1] + '</li>';
+			
+			if (option[i] == currentQuestIndex) {
+				correctIndex = i;
+			}
+			optionsList = optionsList + tOption;
+		}
+	
+	} else {
+			
+		for (var i = 0; i < tObj.workArray.length; i ++ ) {
+			var tOption = '<li><input type="radio"> ' + tObj.workArray[tObj.straightOrderAnswer[i] ][1] + '</li>';
+			optionsList = optionsList + tOption;
+		}
+	
+		for (var i = 0; i < tObj.straightOrderAnswer.length; i ++ ) {
+			if ( tObj.straightOrderAnswer[i] == tObj.counter) {
+				correctIndex = i;
+			} 
+		}
+
 	}
+	
 	
 	tObj.optionsHolder.html("" + startOptions + optionsList + endOptions +"");
 	
@@ -226,15 +250,23 @@ this.getOptions = function() {
 				tObj.correctAnswer();
 			} else {
 				tObj.wrongAnswer($(elem));
-				
-				
 			}
 		})
-	
 	})
-
+	
+	
 }
 
+
+this.getAnswersOrder = function() {
+	var answersOrder = new Array();
+	for (var i = 0; i < tObj.workArray.length; i ++) {
+		answersOrder[i] = i;
+	}
+	
+	answersOrder = answersOrder.shuffle();
+	return answersOrder;
+}
 
 
 
@@ -289,7 +321,8 @@ this.gotoNext = function() {
 	tObj.buttons.unbind("click");
 	tObj.counter++;
 	tObj.step();
-	if (tObj.autoPlay) { 
+	
+	if (tObj.questType == 'audio') { 
 		exJpForce = true;
 		tObj.audioHolder.mousedown();
 		exJpForce = false;
@@ -303,41 +336,6 @@ this.highlightWrong = function(jElem) {
 
 
 
-this.getCorrectSound = function (counter) {
-	var toSoundDiv = tObj.workArray[counter][0];
-	tObj.makePlayer(toSoundDiv);	
-}
-
-this.getWrongSound = function (counter) {
-	var wrongSoundIndex;
-	while (true) {
-		wrongSoundIndex = Math.round(Math.random() * (tObj.questNum-1));
-		if (wrongSoundIndex != counter) {
-			break;
-		}
-	}
-	var toSoundDiv = tObj.workArray[wrongSoundIndex][0];
-	tObj.makePlayer(toSoundDiv);
-}
-
-this.yesAnswer = function() {
-	if(toYes) {
-		tObj.correctAnswer();
-	}else {
-		tObj.wrongAnswer();
-	}
-}
-
-this.noAnswer = function () {
-	if(toYes) {
-		tObj.wrongAnswer() ;
-	}else{
-		tObj.correctAnswer();
-	}
-}
-
-
-
 this.gotoEnd = function() {
 
 tObj.audioHolder.unbind("mousedown");
@@ -346,12 +344,16 @@ tObj.infoHolder.empty();
 tObj.container.addClass("yn-final-bg");
 tObj.contentHolder.addClass("es-ex-invisible");
 tObj.nextButton.addClass("es-ex-invisible");
+
 var tResults = Math.round((tObj.correctAswersNum / tObj.questNum ) * 100)
 tObj.finalSign.html('<div><i> Total questions:</i> '+tObj.questNum+' <br><i>Correct answers:</i> '+ tObj.correctAswersNum +'<br><b><br><i>Your result</i></b>: '+tResults+'%</div>' ).fadeIn();
 
-exJpForce = true;
-ex_Jplayer('/sounds/yes.mp3', tObj.audioHolder.get(0),1);
-exJpForce = false;
+if (tObj.questType == 'audio') {
+	exJpForce = true;
+	ex_Jplayer('/sounds/yes.mp3', tObj.audioHolder.get(0),1);
+	exJpForce = false;
+}
+
 
 }
 
