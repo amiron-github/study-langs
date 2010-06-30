@@ -393,7 +393,13 @@ grammarDescription=new Array('Section: Russian Grammar',
 [
 ['Grammar Exercises', '',
 [['Nouns gender','01'],['Nouns number', '02'],['Nouns cases', '03'],['Genitive singular','04'],
-['Genitive plural', '05'],['Dative Case', '06'], ['Accusative Case', '07'], ['Instrumental Cases', '08']
+['Genitive plural', '05'],['Dative Case', '06'], ['Accusative Case', '07'], ['Instrumental Case', '08'],
+['Prepositional Case', '09'],['Cases Revision', '10'],['Declension of Adjectives', '11'],['Degrees of comparison', '12'],
+['Short forms of Adjectives', '13'],['Personal Pronouns', '14'], ['Possessive pronouns', '15'],['Demonstrative pronouns', '16'],
+['Interrogative Words', '17'], ['Relative pronouns', '18'],['Negative pronouns', '19'],['Indefinite pronouns', '20'], 
+['Cardinal numerals', '21'], ['Ordianl numerals', '22'], ['Russian prepositions', '23'],['Verbs: Present Tense', '24'],
+['Verbs: Past Tense', '25']
+
 ],
 'Exercise']
 ]);

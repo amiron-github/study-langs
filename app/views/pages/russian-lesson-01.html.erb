@@ -13,6 +13,8 @@
 <%= javascript_include_tag 'jquery.tablesorter.min.js' %>
 <%= javascript_include_tag 'es-yn-exercise.js' %>
 <%= javascript_include_tag 'es-choice-exercise.js' %>
+<%= javascript_include_tag 'grammar-exercises' %>
+
 
 <script type="text/javascript">
 
@@ -31,6 +33,7 @@ $(document).ready(function() {
 </script>
 
 <%= stylesheet_link_tag 'es-course' %>
+<%= stylesheet_link_tag 'grammar-exercises' %>
 
 <style type="text/css">
 #prof_tabs {margin-top: 50px;}
@@ -469,7 +472,7 @@ $(document).ready(function() {
 	<div class="inpBlock">
 	
 	
-	<p>Listen, repeat ad read the translation of words and expressions below.</p>
+	<h3 class="es-task-in">Listen, repeat ad read the translation of words and expressions below.</h3>
 	
 	
 	
@@ -691,12 +694,9 @@ $(document).ready(function() {
 	<br>
 	<br>
 
-	<br>
+	<br><br>
 
-	
-
-	
-<br>	
+<h3 class="es-task-in">Listen to the phrase and answer "yes" or  "no" </h3>	
 	
 <div id = "yn1" class="es-ex-wrapper es-audio-ex">
 
@@ -781,9 +781,9 @@ $(document).ready(function() {
 <br>
 <br>
 
-<br>
-
 <br><br>
+
+<h3 class="es-task-in">Read the Russian phrase and find its translation </h3>
 
 <div id="ch1" class="es-ex-wrapper es-string-ex">
 
@@ -791,10 +791,7 @@ $(document).ready(function() {
 <div class="es-ex-top">
 
 <div class="es-ex-final"></div>
-
 </div>
-
-
 <table class="es-ex-content" cellspacing="0">
 	<tr>
 		<td class="es-ex-quest" width="40%" valign="middle" align="center">
@@ -847,14 +844,14 @@ $(document).ready(function() {
 <script type="text/javascript"> 
 	var ch1 = new ch_exercise( {
 		id: "ch1", 
-		//quest_num: 8,
+		quest_num: 10,
 		auto_play: false,
 		variants_num: 4,
 		random_order: true,
-		quest_type: 'image',
+		quest_type: 'html',
 		basic_array: [
 		
-		/*
+		
 		['Здравствуйте!',	'Hello! '],
 		['Доброе утро!',	'Good morning!'],
 		['Добрый день!',	'Good afternoon!'],
@@ -869,13 +866,7 @@ $(document).ready(function() {
 		['Пока'	,'Bye!'],
 		['Как Ваши дела?','How are you? (formal)'],
 		['Простите.','Excuse me. (formal)']
-		*/
 		
-		['/images/street.jpg',	'street'],
-		['images/airport.jpg',	'airport'],
-		['images/square.jpg',	'square'],
-		['images/hotel.jpg"',	'hotel'],
-		['images/station.jpg',	'station']
 
 		]
 		} )
@@ -890,7 +881,7 @@ $(document).ready(function() {
 
 
 
-<div id = "ch2" class="es-ex-wrapper es-audio-ex">
+<!-- div id = "ch2" class="es-ex-wrapper es-audio-ex">
 
 <div class="es-ex-alert-container"><div class="es-ex-alert-rt"><div class="es-ex-alert yn-alert"> &nbsp;  </div>   </div></div>
 <div class="es-ex-top">
@@ -968,25 +959,10 @@ $(document).ready(function() {
 		*/
 		]
 		} )
-</script>
+</script -->
 
 
 
-
-
-
-
-<br>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 
 
@@ -997,11 +973,262 @@ $(document).ready(function() {
 	<div class="inpBlock">
 	
 	
-	3
+	<h2 class="es-tab-p ">Particularities of Russian phrase stucture</h2>
+	
+	<h3 class="es-tab-p-p">Word order</h3>
+		
+	<p>
+		Russian word order is very flexible. The parts of the Russian sentence (subject, predicate etc.) can go in almost any order. 
+	</p>	
+	
+<div class="es-egdiv">
+<h4>Example: </h4>
+<p>
+<em>Кошки едят мышей.</em> - Cats eat mice.
+</p>
+<p>
+The following sentences have the same meaning, although the word order is quite different: 
+</p>
+<p>
+<em>
+Мышей едят кошки. <br/>
+Едят кошки мышей. <br/>
+Едят мышей кошки. <br/>
+</em>
+</p>
+</div>
+	
+	<p>
+		Such a flexible word order is possible because of endings of words which will change depenging on the function of the word in a phrase. 
+		This is what is called "cases", and you will work on this later in other lessons. The only thing you should remember now is that the word order is flexible.
+	</p>	
+	
+<h3 class="es-tab-p-p">Subjects and verbs</h3>		
+
+<p>
+The presence of a subject or a verb is not always required in Russian sentences. 
+In particular, Russian often drop subjects expressed by personal pronouns, and the present tense of the Russian verb быть 'to be' is not used. 
+</p>
+		
+<div class="es-egdiv">
+<h4>Example: </h4>
+<p>
+<em>Как поживаете? </em> - How are you? (litterally: How are living?, formal)
+</p>
+<p>There is no equivalent of "you" in the Russian phrase</p>
+<p><em>А ты как?</em> -  And how are you? (litterally: And you how?, informal)</p>
+<p>There is no equivalent of "are" in the Russian phrase</p> 
+</div>		
+		
+<h3 class="es-tab-p-p">Articles</h3>		
+		
+<p>
+There are no articles, like English "a" or "the", in Russian.
+</p>
+
+		
+<br>
+<br>
+		
+<h2 class="es-tab-p ">Questions in Russian</h2>		
+		
+<p>	
+All questions can be devided into three categories:
+</p>	
+
+<ul>
+	<li>Simple questions: these are questions that require an answer "yes" or "no", like "Is this a book?"
+	<li>Alternative questions: these are questions which include two or more of answers in themselves, like "Is this a book or a magazine"
+	<li>Special questions: these are questions which use interrogative words "what", "how", "when" etc., and they require a more informative answer, 
+	like "What is this?"
+</ul>
+
+<p>All these types of questions are present in English, in Russian and other languages. The most important thing you should remember now about Russian questions, is that Russians do not use special grammar constructions or word to ask questions. Questions are commonly expressed by intonation.
+</p>
+
+		
+	<h3 class="es-tab-p-p">Russian simple questions</h3>	
+		
+		<p>
+			 These question are expressed by intonation. When answering simple questions in Russian, you can use words да 'yes' and нет 'no'. 
+		</p>
+		
+	<h3 class="es-tab-p-p">Russian alternative questions</h3>
+	
+	<p>
+		Russian alternative questions usually use the word "или" (or). 
+	</p>
+	
+	<h3 class="es-tab-p-p">Russian special questions</h3>
+	
+	<p>
+		Special questions are formed with diffrent interrogative words, for example что "what", как 'how' etc. 
+		Because of a flexible word order, the place of these words can change: they can occur at the beginning, at the end or in the middle of the question.
+	</p>
+	
 	
 	
 		
+		
+<br><br><br><br><br>
 
+<h3 class="es-task-in">Revise the information about Russian grammar and complete the test</h3>	
+
+
+<div class="block" >
+	<div class="block-clt">
+		 <div class="block-crt">
+			  <div class="block-top"></div>
+		 </div>
+	</div>
+	<div class="block-center">
+
+	
+<div class="task">Choose an answer to the following questions:</div>
+
+<div  class="gr_ex_variants">
+
+
+<table class="gr_ex_vars_tab gexv_options" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td>
+			<div class="gexv_task gexv_sign">
+				1. In Russian sentences, the subject and the verb can not change their place, their position is fixed.
+			</div>
+
+			
+			<div class="gexv_variant"><input type="checkbox">  True   </div>
+			<div class="gexv_variant"><input type="checkbox" class="ok"> False   </div>
+		
+		</td>
+	</tr>
+	<tr>
+
+		<td>
+			<div class="gexv_task gexv_sign">
+				 2. The presence of the verb is not always required in Russian sentences. 
+			</div>
+			
+			<div class="gexv_variant"><input type="checkbox" class="ok">  True  </div>
+			<div class="gexv_variant"><input type="checkbox">  False  </div>
+
+		
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="gexv_task gexv_sign">
+				  3. The Russian equivalent to the English article "a" is the word <b>тот</b>: 
+			</div>
+
+			
+			<div class="gexv_variant"><input type="checkbox">  True   </div>
+			<div class="gexv_variant"><input type="checkbox" class="ok">  False   </div>		
+		</td>
+	</tr>
+	<tr>
+
+		<td>
+			<div class="gexv_task gexv_sign">
+				  4. In Russian, there are no alternative questions. 
+			</div>
+			
+			<div class="gexv_variant"><input type="checkbox" >  True   </div>
+			<div class="gexv_variant"><input type="checkbox" class="ok">  False   </div>
+		
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="gexv_task gexv_sign">
+				  5. The question <b>Как дела?</b> is a : 
+			</div>
+
+			
+			<div class="gexv_variant"><input type="checkbox" > simple question   </div>
+			<div class="gexv_variant"><input type="checkbox"  class="ok">  special question   </div>
+		
+		</td>
+	</tr>
+	<tr>
+
+		<td>
+			<div class="gexv_task gexv_sign">
+				 6. The subject should always be present in Russian simple questions.  
+			</div>
+			
+			<div class="gexv_variant"><input type="checkbox">  True   </div>
+			<div class="gexv_variant"><input type="checkbox" class="ok">  False   </div>
+		
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="gexv_task gexv_sign">
+				  7. The word <b>что</b> is used in Russian special questions: 
+			</div>
+
+			
+			<div class="gexv_variant"><input type="checkbox" class="ok">  True   </div>
+			<div class="gexv_variant"><input type="checkbox" >  False   </div>
+		
+		</td>
+	</tr>
+	<tr>
+
+		<td>
+			<div class="gexv_task gexv_sign">
+				  8. To answer an alternative Russian question, the word <b>да</b> is often used in Russian.
+			</div>
+			
+			<div class="gexv_variant"><input type="checkbox" >  True   </div>
+			<div class="gexv_variant"><input type="checkbox" class="ok">  False   </div>
+
+
+		
+		</td>
+	</tr>
+
+</table>
+
+
+
+<p class="gexv_check"><input type="button" value="Check answers"></p>
+
+</div>
+
+
+</div>
+<div class="block-clb">
+     <div class="block-crb">
+    	  <div class="block-btm">
+    		   </div>
+    	  </div>
+
+     </div>		
+</div>
+
+
+<br/><br/><br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br><br><br><br><br>	
+		
+		
+		
 
 
 	</div>

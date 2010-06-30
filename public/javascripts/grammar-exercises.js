@@ -126,7 +126,7 @@ if (errorNum > 0) {
 
 
 	var correctNum = totalTasks - errorNum;
-	//sendResults(tID, totalTasks, correctNum);
+	sendResults(tID, totalTasks, correctNum);
 	
 	
 })
@@ -163,7 +163,7 @@ function checkExFromList(elClass) {
 	}
 	
 	var correctNum = totalTasks - errorNum;
-	//sendResults(tID, totalTasks, correctNum);
+	sendResults(tID, totalTasks, correctNum);
 }
 
 
@@ -210,7 +210,7 @@ function checkExType(elClass) {
 	
 	var correctNum = totalTasks - errorNum;
 	//alert (tID +" "+ totalTasks+" "+ correctNum)
-	//sendResults(tID, totalTasks, correctNum);	
+	sendResults(tID, totalTasks, correctNum);	
 	
 }
 

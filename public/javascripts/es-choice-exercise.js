@@ -24,12 +24,11 @@ Array.prototype.shuffle = shuffle;
 
 function ch_exercise(hash) {
 
-
-
 this.basicArray = hash['basic_array'];
 this.id = hash['id'];
-this.variantsNum = hash['variants_num'];
 this.autoPlay = hash['auto_play'];
+this.variantsNum = hash['variants_num'];
+
 this.randomOrder = hash['random_order'];
 this.questType = hash['quest_type'];
 
@@ -171,6 +170,8 @@ tObj.alertHolder.empty().removeClass(tObj.correctClass).removeClass(tObj.wrongCl
 		
 	} else if (tObj.questType == 'image') {
 		tObj.stringHolder.html('<img src="' + tObj.workArray[tObj.counter][0] +'" />');
+	} else {
+		tObj.stringHolder.html('' + tObj.workArray[tObj.counter][0] +'');
 	}
 	
 	tObj.getOptions();

@@ -1088,7 +1088,83 @@ margin-top: 0px;
 
 /* end of vocabulary section*/
 
+h3.es-task-in {
+margin-bottom: 40px;
+font-size: 13px;
+font-weight: bold;
+color: #333;
+font-style: italic;
+background-color:#DFDFDF;
+background-image:url(/images/task-bg.png);
+background-position:right bottom;
+background-repeat:repeat-y;
+border-left:4px solid #9F9F9F;
+left:-5px;
+padding:4px 50px 4px 10px;
+position:relative;
+}
 
+
+/* end of grammar section*/
+
+
+h2.es-tab-p {
+background-color:#dfdfdf;
+border-top:1px solid #888888;
+font-size:15px;
+font-weight: bold;
+left:-5px;
+margin:10px 0 20px;
+padding:6px 8px 7px;
+position:relative;
+text-shadow:0 1px 0 #FFFFFF;
+}
+
+
+h3.es-tab-p-p {
+border-bottom:1px dotted #333333;
+font-size:14px;
+margin:30px 0 15px;
+padding:4px;
+}
+
+
+.es-egdiv {
+display: none;
+padding: 10px 0px 10px;
+margin: 14pt 20px;
+background-color: #F6F6F6;
+border: 1px solid #CFCFCF;
+
+-moz-border-radius: 7px; 
+-webkit-border-radius: 7px; 
+-khtml-border-radius: 7px;
+border-radius: 7px;
+}
+
+.es-egdiv h4 {
+font-size: 14px;
+color: #444444;
+margin: 0 30px 14pt;
+font-weight: bold;
+font-style: italic;
+color: #555;
+border-bottom: 3px double #CFCFCF;
+back ground-color: #EFEFEF;
+padding: 0px 0px 4px;
+}
+
+.es-egdiv p {
+margin: 12px 45px;
+font-size:12px;
+line-height:16px;
+}
+
+
+
+
+
+/* end of grammar section*/
 
 
 
