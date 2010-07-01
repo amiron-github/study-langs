@@ -13,8 +13,8 @@
 <%= javascript_include_tag 'jquery.tablesorter.min.js' %>
 <%= javascript_include_tag 'es-yn-exercise.js' %>
 <%= javascript_include_tag 'es-choice-exercise.js' %>
-<%= javascript_include_tag 'grammar-exercises' %>
-
+<%= javascript_include_tag 'es-grammar-exercises' %>
+<%= javascript_include_tag 'es-test-drag-input' %>
 
 <script type="text/javascript">
 
@@ -27,10 +27,15 @@
 
 $(document).ready(function() {
 
-
+	$(".gext_task input").addClass("for_keyb")
 });
+
+
 	
 </script>
+
+ <%= javascript_include_tag 'es-virtual-keyboard' %>
+ <%= stylesheet_link_tag 'keyboard' %>
 
 <%= stylesheet_link_tag 'es-course' %>
 <%= stylesheet_link_tag 'grammar-exercises' %>
@@ -449,6 +454,7 @@ $(document).ready(function() {
 
 
 </div>
+
 <script type="text/javascript"> 
 	var ds1 = new dragsort_test( {
 		id: "ds1", 
@@ -735,7 +741,7 @@ $(document).ready(function() {
 <div class="es-ex-info-container">
 
 
-<table cellsapcing="0" align="center">
+<table cellspacing="0" align="center">
   <tr>
 	<td style="padding-left: 20px;"><div class="es-ex-info yn-info"> &nbsp;  </div>
 	
@@ -823,7 +829,7 @@ $(document).ready(function() {
 <div class="es-ex-info-container">
 
 
-<table cellsapcing="0" align="center">
+<table cellspacing="0" align="center">
   <tr>
 	<td style="padding-left: 20px;"><div class="es-ex-info yn-info"> &nbsp;  </div>
 	
@@ -1213,18 +1219,6 @@ All questions can be devided into three categories:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 <br><br><br><br><br><br><br>	
 		
 		
@@ -1238,10 +1232,312 @@ All questions can be devided into three categories:
 	<div class="inpBlock">
 	
 	
-	4
+	<h3 class="es-task-in">Read the text aloud, and then listen to the phrases and check your reading.</h3>	
+	
+
+	<div class="es-pr-read-container">
+		<h4>Dialogue 1</h4>
+	
+		<table cellspacing="0">
+			<tr>
+				<td class="wl-audio">
+					<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+				</td>
+				<td>
+					- Добрый день, Мария.
+				</td>
+			</tr>
+			<tr>
+				<td class="wl-audio">
+					<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+				</td>
+				<td>
+					- Здраствуйте, Александр.
+				</td>
+			</tr>
+			<tr>
+				<td class="wl-audio">
+					<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+				</td>
+				<td>
+					- Как у Вас дела?
+				</td>
+			</tr>
+			<tr>
+				<td class="wl-audio">
+					<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+				</td>
+				<td>
+					- Прекрасно! А как Вы поживаете?
+				</td>
+			</tr>
+			<tr>
+				<td class="wl-audio">
+					<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+				</td>
+				<td>
+					- Спасибо, хорошо.
+				</td>
+			</tr>
+		</table>
+		
+		<h4>Dialogue 2</h4>
+		<table cellspacing="0">
+			<tr>
+				<td class="wl-audio">
+					<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+				</td>
+				<td>
+					- Добрый день, Мария.
+				</td>
+			</tr>
+			<tr>
+				<td class="wl-audio">
+					<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+				</td>
+				<td>
+					- Здраствуйте, Александр.
+				</td>
+			</tr>
+			<tr>
+				<td class="wl-audio">
+					<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+				</td>
+				<td>
+					- Как у Вас дела?
+				</td>
+			</tr>
+			<tr>
+				<td class="wl-audio">
+					<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+				</td>
+				<td>
+					- Прекрасно! А как Вы поживаете?
+				</td>
+			</tr>
+			<tr>
+				<td class="wl-audio">
+					<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+				</td>
+				<td>
+					- Спасибо, хорошо.
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+	
+	<h3 class="es-task-in">Look through the dialogues above and complete the test.</h3>	
+	
+	
+	
+	<div class="block" >
+	<div class="block-clt">
+		 <div class="block-crt">
+			  <div class="block-top"></div>
+		 </div>
+	</div>
+	<div class="block-center">
+
+	
+<div class="task">Choose an answer to the following questions:</div>
+
+<div  class="gr_ex_variants">
+
+
+<table class="gr_ex_vars_tab gexv_options" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td>
+			<div class="gexv_task gexv_sign">
+				1. Alexander greets Maria.
+			</div>
+
+			
+			<div class="gexv_variant"><input type="checkbox">  True   </div>
+			<div class="gexv_variant"><input type="checkbox" class="ok"> False   </div>
+		
+		</td>
+	</tr>
+	<tr>
+
+		<td>
+			<div class="gexv_task gexv_sign">
+				 2. It's Alexander who has seen Maria first. 
+			</div>
+			
+			<div class="gexv_variant"><input type="checkbox" class="ok">  True  </div>
+			<div class="gexv_variant"><input type="checkbox">  False  </div>
+
+		
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="gexv_task gexv_sign">
+				  3. Alexander and Maria are close freinds. 
+			</div>
+
+			
+			<div class="gexv_variant"><input type="checkbox">  True   </div>
+			<div class="gexv_variant"><input type="checkbox" class="ok">  False   </div>		
+		</td>
+	</tr>
+	<tr>
+
+		<td>
+			<div class="gexv_task gexv_sign">
+				  4. Alexander is dooing well. 
+			</div>
+			
+			<div class="gexv_variant"><input type="checkbox" >  True   </div>
+			<div class="gexv_variant"><input type="checkbox" class="ok">  False   </div>
+		
+		</td>
+	</tr>
+</table>
+
+<p class="gexv_check"><input type="button" value="Check answers"></p>
+
+</div>
+
+</div>
+<div class="block-clb">
+     <div class="block-crb">
+    	  <div class="block-btm">
+    		   </div>
+    	  </div>
+
+     </div>		
+</div>
+	
+	<br><br>
+	
+<h3 class="es-task-in">Find appropriate replies to the phrases.</h3>	
+	
+	
+	
+	
+
+<div class="section-block" style="cursor: auto">
+				<div class="sect-crn clt">
+						<div class="sect-crn crt">
+							<div class="sect-mid">  </div>
+						</div>
+				</div>
+				<div class="section-content" style="height: auto; padding: 0px 40px;">
+
+
+<div id="di1">	
+				
+<p class="task">Drag and drop the following words or type them in the text fields. <a class="show_keyboard" href="javascript:;">[ Use virtual keyboard ]</a> </p> 
+
+<table style="cursor: pointer" class="di_variants">
+<tr>
+	<td>
+		<div>Добрый день!</div>
+	</td>
+	<td>
+		<div>Привет!</div>
+	</td>
+	<td>
+		<div>Спасибо, хорошо.</div>
+	</td>
+	<td>
+		<div>Да.</div>
+	</td>
+</tr>
+</table>
+<br>
+<br>
+
+
+
+<div  class="gr_ex_type">
+
+<div class="gext_task gext_sign"> 
+
+1. Здравствуйте! - <input type="text" style="width: 150px" value=""> <span class="gext_answer" style="display: none">Добрый день!</span>
+ 
+<div class="gext_show"><span>Здравствуйте! - <b>Добрый день!</b></span> &nbsp;</div>
+
+</div>
+
+<div class="gext_task gext_sign"> 
+
+2. Привет! - <input type="text" style="width: 150px" value=""> <span class="gext_answer" style="display: none">Привет!</span>
+ 
+<div class="gext_show"><span>Привет! - <b>Привет!</b></span> &nbsp;</div>
+
+</div>
+
+<div class="gext_task gext_sign"> 
+
+3. Как поживаете? - <input type="text" style="width: 150px" value=""> <span class="gext_answer" style="display: none">Спасибо, хорошо.</span>
+ 
+<div class="gext_show"><span>Как поживаете? - <b>Спасибо, хорошо.</b></span> &nbsp;</div>
+
+</div>
+
+<div class="gext_task gext_sign"> 
+
+4. Как дела? Нормально? - <input type="text" style="width: 150px" value=""> <span class="gext_answer" style="display: none">Да.</span>
+ 
+<div class="gext_show"><span>Как дела? Нормально? - <b>Да.</b></span> &nbsp;</div>
+
+</div>
+
+
+<p class="gext_check"><input type="button" class="gext_check_btn" value="Check answers" > <input type="button" value="Display answers" class="gext_answer_show"></p>
+
+
+</div>
+
+
+</div>
+
+
+</div> <!-- end of di1  -->
+
+
+<script type="text/javascript"> 
+	var di1 = new draginput_test( {
+		id: "di1", 
+		targets: "gext_task", 
+		in_targets: "input",
+		variant_elem: "di_variants div"
+		//targets_color: "#ffffff"
+
+		} )
+</script>
+
+
+				<div class="sect-btm">
+    				<div class="sect-clb">
+    					<div class="sect-crb">
+    						<div class="sect-btm-bg" style="height: 40px;">
+    							    				   			
+    						</div>
+    					</div>
+    				</div>
+				</div>
+			</div>
+
+
+
+
+	<br><br><br>	<br><br><br>	<br><br><br>	<br><br><br>
+
+
+
+	
+	
+	
 	
 	
 		
+
+
+
 
 
 

@@ -207,6 +207,11 @@ $("body").append("<div id=\"dragHelper\" style=\"position: absolute;\"><\/div>")
 $("div#dragHelper").css({opacity: "0.8"});
 
 
+
+
+
+
+
 $(".dragit").mousedown(function(e){
 	$("body").addClass("noselect");
 
@@ -276,6 +281,11 @@ function dragger(elEq,difX,difY) {
 }
 
 
+
+
+
+
+
 function draggerStop(elEq,difX,difY){
 	$("body").one("mouseup", function(e) {
 		$(this).unbind("mousemove").removeClass("noselect");
@@ -313,6 +323,7 @@ function placeText(el,hitted) {
 
 jObj = $(".dragit").eq(el);
 jTarg = $(".target").eq(hitted);
+
 var addValue= jObj.text();
 var domEl = jTarg.find('.drag_text_place').get(0);
 

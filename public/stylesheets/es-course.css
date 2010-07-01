@@ -1167,4 +1167,71 @@ line-height:16px;
 /* end of grammar section*/
 
 
+.es-pr-read-container {
+border: 1px solid #555;
+padding: 20px 30px 30px;
+margin: 0px 20px 30px 20px;
+
+-moz-b-order-radius: 5px;
+-webkit-b-order-radius: 5px;
+bor-der-radius: 5px;
+
+-moz-box-shadow: 2px 3px 4px #BFBFBF;
+-webkit-box-shadow: 2px 3px 4px #BFBFBF;
+box-shadow: 2px 3px 4px #BFBFBF;
+background: 
+-webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.12, rgb(240,237,240)),
+    color-stop(0.56, rgb(255,255,255))
+);
+background: 
+-moz-linear-gradient(
+    center bottom,
+    rgb(240,237,240) 12%,
+    rgb(255,255,255) 56%
+);
+
+}
+
+
+.es-pr-read-container td {
+padding: 5px 10px;
+font-size: 15px;
+}
+
+.gext_task input {
+background-color: #fff;
+margin: 0;
+padding-top: 2px;
+padding-bottom: 2px;
+border: 1px solid #7F9DB9;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
