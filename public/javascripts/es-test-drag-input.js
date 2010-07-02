@@ -25,8 +25,10 @@ this.variantsClass = hash['variant_elem'];
 this.id = hash['id'];
 this.targetBColor = hash['targets_color'];
 this.inTargets = hash['in_targets'];
+this.clearOption = hash['clear_option'];
 
 if (this.inTargets == undefined ) this.inTargets = false;
+if (this.clearOption == undefined ) this.inTargets = false;
 
 
 this.targetsData = new Array();
@@ -44,7 +46,31 @@ this.start = function() {
 	$("body").append('<div id="'+ this.id +'_dragHelper" class="di_dragHelper noselect"></div>');
 	dragHelper = $('#'+ this.id +'_dragHelper');
 	
-
+	if (this.clearOption) {
+		if (tObj.inTargets) {				
+			tObj.targets.each(function(i,elem) {
+				$(elem).find(tObj.inTargets).after('<a href="javascript:;" class="clear_placed_text" title="Reset">X</a>');
+			});
+		} else {
+			tObj.targets.each(function(i,elem) {
+				$(elem).after('<a href="javascript:;" class="clear_placed_text" title="Reset">X</a>');
+			});
+		
+		}
+	}
+	
+	
+	this.container.find(".clear_placed_text").click(function() {
+		if (tObj.inTargets) {
+			$(this).parent().find(tObj.inTargets).val("");
+		}else {
+			$(this).prev(tObj.targetsClass).val("");
+		}
+		
+	});
+	
+	
+	
 	this.variants.mousedown(function(e) {
 		$("body").addClass("noselect");
 		var t = $(this);
@@ -111,7 +137,9 @@ this.dropping = function (fromVariant) {
 			tObj.hittedTarget(fromVariant, hitTarget);
 		}
 		//else {
-			tObj.variants.filter(":eq("+fromVariant+")").css({visibility: "visible"});
+			tObj.variants.filter(":eq("+fromVariant+")")
+				.css({visibility: "visible", backgroundColor: "#8FE2FF"})
+				.animate({backgroundColor: "#ffffff"});
 		//}
 		
 		$("body").removeClass("noselect");
@@ -123,7 +151,6 @@ this.dropping = function (fromVariant) {
 
 
 this.hittedTarget = function (fromVariant, hitted) {
-
 		var tVariantHtml = tObj.variants.filter(":eq("+fromVariant+")").html();
 		var addValue= tVariantHtml;
 		if (tObj.inTargets) {
@@ -131,7 +158,6 @@ this.hittedTarget = function (fromVariant, hitted) {
 			var inTargetDomEl = tIntarget.get(0);
 			
 			if (inTargetDomEl.tagName == "INPUT" || inTargetDomEl.tagName == "TEXTAREA") {
-			
 				if ( !tIntarget.attr("disabled") ) {
 					var currentValue = tIntarget.val();
 					var tValue = currentValue +" " + addValue;
@@ -147,8 +173,7 @@ this.hittedTarget = function (fromVariant, hitted) {
 			}
 			
 			tObj.hittedAnimation(tIntarget);
-			
-			
+
 		} else {
 
 			var targetDomEl = tObj.targetsData[hitted].elem;

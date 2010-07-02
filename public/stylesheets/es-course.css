@@ -1211,11 +1211,64 @@ border: 1px solid #7F9DB9;
 }
 
 
+.content .clear_placed_text {
+border: 1px solid gray;
+cursor: pointer;
+padding: 0px 2px;
+font-weight: bold;
+outline: none;
+text-decoration: none !important;
+-moz-user-select: none;
+-khtml-user-select: none;
+user-select: none;
+}
 
 
+a:link.clear_placed_text {
+border: 1px solid gray;
+background-color: tranparent;
+color: #444;
+}
+
+a:visited.clear_placed_text {
+border: 1px solid gray;
+background-color: tranparent;
+color: #444;
+
+}
+
+a:hover.clear_placed_text {
+border: 1px solid #000;
+background-color: #BFDCFF;
+color: #000;
+
+}
+
+a:active.clear_placed_text {
+border: 1px solid #000;
+background-color: #2F71BF;
+color: #fff;
+
+}
 
 
+.rus_phr {
+font-weight: bold;
+}
 
+.es-quest-answ {
+border: 3px solid #CFCFCF;
+}
+
+.es-quest-answ  td {
+background-color: #fff;
+padding: 4px 10px;
+border-bottom: 1px solid #dfdfdf;
+}
+
+.es-quest-answ  td.rus_phr {
+background-color: #efefef;
+}
 
 
 

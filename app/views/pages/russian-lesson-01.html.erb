@@ -1410,13 +1410,79 @@ All questions can be devided into three categories:
      </div>		
 </div>
 	
-	<br><br>
+	<br><br><br><br>
 	
-<h3 class="es-task-in">Find appropriate replies to the phrases.</h3>	
+<h3 class="es-task-in">Answer the questions using phrases in brackets .</h3>	
+	
+
+
+<div class="es-egdiv" style="display: block">
+<h4>Model: </h4>
+
+<div style="padding: 0 20px 10px 40px; font-size: 11px;"> 
+<table cellspacing="0"> 
+	<tr valign="top"> 
+		<td width="250">
+		
+			<table cellspacing="0"> 
+				<tr valign="top"> 
+		 				<td width="110" class="bold"> 
+		 					Как поживаете?  
+		 				</td> 
+						<td width="15">- 
+                       	</td> 
+		 				<td width="110" > 
+		 					(I'm fine, thanks).<br> 
+		 						Хорошо, спасибо.<br> 
+		 				</td> 
+					</tr> 
+				</table> 
+		</td> 
+		<td valign="top" class="ital">How are you getting on? - I'm fine, thanks.
+		</td> 
+	</tr> 
+</table> 
+</div>
+
+ </div>
+ <br> <br>
+ 
+<table class="es-quest-answ" cellspacing="0" style="margin: 0 auto" align="center">
+	<tr>
+		<td class="rus_phr">Как дела?</td>
+		<td>- (Perfectly well.)</td>
+		<td><a href="javascript:;" class="es_btn ds-check-button" >Check yourself</a></td>
+	<tr>
+	<tr>
+		<td class="rus_phr">Как поживаете?</td>
+		<td>- (Not so bad, thanks.) </td>
+		<td><a href="javascript:;" class="es_btn ds-check-button" >Check yourself</a></td>
+	<tr>
+	<tr>
+		<td class="rus_phr">Привет! Как дела? </td>
+
+		<td>- (Good!) </td>
+		<td><a href="javascript:;" class="es_btn ds-check-button" >Check yourselfs</a></td>
+	<tr>
+	<tr>
+		<td class="rus_phr">Как поживаете? </td>
+		<td>- (Thanks, I'm fine.)</td>
+		<td><a href="javascript:;" class="es_btn ds-check-button" >Check yourself</a></td>
+	<tr>
+	<tr>
+		<td class="rus_phr">Как у Вас дела? </td>
+		<td>- (Perfectly, thanks)</td>
+		<td><a href="javascript:;" class="es_btn ds-check-button" >Check yourself</a></td>
+	<tr>
+</table>
+
+<br>
+<br>
+<br>
+<br><br><br>	
 	
 	
-	
-	
+<h3 class="es-task-in">Find appropriate replies to the phrases.</h3>
 
 <div class="section-block" style="cursor: auto">
 				<div class="sect-crn clt">
@@ -1430,8 +1496,8 @@ All questions can be devided into three categories:
 <div id="di1">	
 				
 <p class="task">Drag and drop the following words or type them in the text fields. <a class="show_keyboard" href="javascript:;">[ Use virtual keyboard ]</a> </p> 
-
-<table style="cursor: pointer" class="di_variants">
+<br>
+<table style="cursor: pointer; margin: 0 auto; border: 1px dashed #000" class="di_variants" cellspacing="14" align="center" >
 <tr>
 	<td>
 		<div>Добрый день!</div>
@@ -1439,7 +1505,9 @@ All questions can be devided into three categories:
 	<td>
 		<div>Привет!</div>
 	</td>
-	<td>
+</tr>
+<tr>
+	<td style="padding-right: 20px;">
 		<div>Спасибо, хорошо.</div>
 	</td>
 	<td>
@@ -1504,6 +1572,7 @@ All questions can be devided into three categories:
 		id: "di1", 
 		targets: "gext_task", 
 		in_targets: "input",
+		clear_option: true,
 		variant_elem: "di_variants div"
 		//targets_color: "#ffffff"
 
@@ -1562,7 +1631,7 @@ All questions can be devided into three categories:
 	<div class="form-right"> 
 		<div class="form-left"> 
 			<div class="form-questionaire"> 
-				<div class="mc_question"> 
+				<div class="mc_question" style="height: 40px;"> 
             	</div> 
 			</div> 
 			   <div class="form-variants"> 
@@ -1588,9 +1657,12 @@ All questions can be devided into three categories:
 <script type="text/javascript"> 
  
 var mc1 = new mcTest( {tasks:[
-['How to say "hello" in Russian:', [['hello'], ['hi']], [0]], 
-['The snow is:', [['white'], ['green'], ['red']], [0]],
-['The grass is:', [['blue'], ['green']], [1]]
+['How to say in Russian: <br> <span class="norm_txt">Hello!</span>', [['Здравствуйте!'], ['До свидания'], ['Спасибо']], [0]], 
+['How to say in Russian: <br> <span class="norm_txt">Bye!</span>', [['Отлично'], ['Привет'], ['Пока']], [2]],
+['How to say in Russian: <br> <span class="norm_txt">Thank you!</span>', [['Спасибо!'], ['Пожалуйста'], ['Не за что']], [0]],
+['How to say in Russian: <br> <span class="norm_txt">Please</span>', [['Привет'], ['Хорошо'], ['Пожалуйста']], [2]],
+['In Russian sentences, the word order is:', [['direct'], ['flexible']], [1]]
+
 ], 
 buildId: 'mc1' } )
  
