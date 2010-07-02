@@ -6,10 +6,15 @@ class SiteController < ApplicationController
     layout = @file.match(/\/comments\//) ? 'comments.html.erb' : 'application'
     layout = 'comment_audios.html.erb' if @file.match(/\/comments_audio\//)
 	layout = 'grammar_comments.html.erb' if @file.match(/\/grammar_comments\//)
-	layout = 'fr_application.rhtml' if @file.match(/\/fr\//)
-	 
-	 
+	
+
+	if @file.match(/\/fr\//)
+		@file = '/fr/index.html' if @file == '/fr/'
+		layout = 'fr_application.rhtml'
+	end
+	
 	if @file.match(/\/ru\//)  
+	
 		if @file.match(/\/ru\/fr\//) 
 			layout = 'ru_fr_application.rhtml'
 		elsif @file.match(/\/ru\/jp\//) 
