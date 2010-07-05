@@ -1,3 +1,5 @@
+var toStop = false
+
 
 /////////////////////////////////////////////////// перемешиваем варианты  
 
@@ -81,6 +83,9 @@ $("#" + tForm + " .mc_variants")
 				.wrapInner('<div id="mc_helper" style="position: absolute; top: 0px; width: '+tWidth+'px; height: '+tHeight+'px;"></div>')
 				
 
+				
+
+			
 setTimeout(function() {
 
 	$("#" + tForm + " .mc_variants")
@@ -102,8 +107,8 @@ this.gotoNext = function (stepNum) {
 
    	var correctVar = $("#" + this.id + " .mc_check").data("correct");
    	
-	$("#" + this.id + " div.mc_variant").eq(correctVar).css({backgroundColor: "#BFFFC8", fontWeight: "bold"});
-	
+	$("#" + this.id + " div.mc_variant").filter(":eq("+correctVar+")").css({backgroundColor: "#BFFFC8", fontWeight: "bold"});
+ 	
    	$("#" + this.id + " .mc_variant:not(:eq("+ correctVar +"))").css({opacity: "0.6"});
 	
 		$("#mc_alert").animate({opacity: "0"}, 300, function() {
