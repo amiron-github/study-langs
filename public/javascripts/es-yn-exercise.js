@@ -153,7 +153,10 @@ tObj.alertHolder.empty().removeClass(tObj.correctClass).removeClass(tObj.wrongCl
   
 	tObj.remain = tObj.questNum - tObj.counter;
 	tObj.infoHolder.text("Remaining: " + tObj.remain);
-		tObj.alertHolder.empty();
+	tObj.alertHolder.empty();
+		
+		
+		
 		tObj.transHolder.html("" + tObj.workArray[tObj.counter][1] + ""); 
 
 			if (Math.random() < .5) {

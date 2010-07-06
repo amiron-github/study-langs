@@ -72,21 +72,14 @@ min-height: 20px;
 
 .es-ex-bottom {
 bor-der-top: 1px solid #CDCDCD;
-padding: 3px 60px;
+padding: 3px 10px;
 min-height: 20px;
+text-align: center;
 }
 
 .es-ex-tasks {
 padding: 1px 20px;
 }
-
-.es-audio-ex .es-ex-quest {
-
-}
-
-.es-string-ex .es-ex-quest {
-}
-
 
 .es-ex-audio-wrapper {
 display: none;
@@ -100,8 +93,6 @@ display: block;
 display: none;
 }
 
-
-
 .es-ex-audio-wrapper  table  td {
 text-align: center;
 width: 157px;
@@ -109,7 +100,6 @@ background-color: #EEEDED;
 border: 1px solid #CDCDCD;
 bor-der-right: 1px solid #CDCDCD;
 }
-
 
 .es-ex-audio-holder {
 margin: 0 auto;
@@ -125,9 +115,9 @@ border: 1px solid #999999;
 -moz-border-radius: 5px;
 -webkit-border-radius: 5px;
 border-radius: 5px;
--moz-box-shadow: 1px 0px 5px #5F5F5F;
--webkit-box-shadow: 0px 1px 8px #8F8F8F;
-box-shadow: 2px 2px 5px #5F5F5F;
+-moz-box-shadow: 0px 2px 7px #8F8F8F;
+-webkit-box-shadow: 0px 2px 7px #8F8F8F;
+box-shadow:0px 2px 7px #8F8F8F;
 }
 
 .ex-audio-holder-hover {
@@ -136,7 +126,8 @@ cursor: pointer;
 top: 2px;
 background-color: #C1C1C1;
 -moz-box-shadow: 0px 0px 0px #5F5F5F;
--webkit-box-shadow: 0px 0px 0px #8F8F8F;
+-webkit-box-shadow: 0px 0px 0px #5F5F5F;
+box-shadow: 0px 0px 0px #5F5F5F;
 }
 
 .es-ex-audio {
@@ -155,7 +146,7 @@ cursor: pointer;
 
 .es-ex-string-holder {
 overflow: hidden;
-margin: 10px;
+margin: 0 10px 10px;
 mi-n-height: 200px;
 background-color: #fff;
 back-ground-image: url(/images/es-course/es-ex-play-bg.gif);
@@ -172,6 +163,11 @@ box-shadow: 0px 1px 8px #8F8F8F;
 
 .es-ex-string-wrapper {
 height: 200px;
+padding: 0 10px;
+}
+
+.yn-answer-type {
+display: none;
 }
 
 .es-yn-task-p {
@@ -201,11 +197,11 @@ min-height: 60px;
 margin-bottom: 20px;
 }
 
-.es-yn-buttons {
+.es-ex-buttons {
 text-align: center;
 }
 
-.es-yn-buttons input {
+.es-ex-buttons input {
 background-image:url(/images/es-course/buttons-30-lite.png);
 background-repeat: no-repeat;
 background-position:left top;
@@ -230,13 +226,13 @@ background-image:url(/images/es-course/buttons-30-stroke.png);
 font-size: 12px;
 }
 
-.es-yn-buttons input.yn-btn-hover {
+.es-ex-buttons input.ex-btn-hover {
 background-position:left -42px;
 color: #fff;
 text-shadow: 0px -1px 0px #555;
 }
 
-.yn-btn-down {
+.ex-btn-down {
 left: 1px;
 top: 1px;
 }
@@ -261,6 +257,7 @@ position: relative;
 fo-nt-weight: bold;
 cursor: pointer;
 text-align: center;
+outline: none;
 }
 
 .es-ex-next-hover {
@@ -292,6 +289,7 @@ visibility: hidden;
 
 .es-ex-top {
 position: relative;
+padding-bottom: 10px;
 }
 
 .es-ex-final {
@@ -324,7 +322,7 @@ list-style: none;
 padding: 0;
 margin: 0;
 padding-right: 10px;
-padding-top: 12px;
+padding-top: 2px;
 }
 
 .es-ex-tasks-list li {
@@ -357,5 +355,34 @@ position: relative;
 top: 3px;
 margin-top: 0px;
 }
+
+.es-ex-autoplay-wrapper {
+padding: 2px 35px;
+}
+
+.es-ex-autoplay-wrapper span {
+font-size: 11px;
+color: #333;
+}
+
+.es-ex-autoplay-wrapper input {
+position: relative;
+top: 2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

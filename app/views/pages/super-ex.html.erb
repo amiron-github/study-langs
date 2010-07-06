@@ -4,12 +4,10 @@
 
 <%= javascript_include_tag 'jquery.jplayer.min.js' %>
 <%= javascript_include_tag 'jquery.tablesorter.min.js' %>
-<%= javascript_include_tag 'es-course.js' %>
+
 
 
 <%= javascript_include_tag 'es-multiexercises' %>
-
-
 <%= stylesheet_link_tag 'es-exercise' %>
 
 
@@ -32,89 +30,61 @@
 
 
 <div id="ch1" class="es-ex-wrapper">
-
 <div class="es-ex-alert-container"><div class="es-ex-alert-rt"><div class="es-ex-alert"> &nbsp;  </div>   </div></div>
 <div class="es-ex-top">
-
-<div class="es-ex-final"></div>
+	<div class="es-ex-autoplay-wrapper"><input class="es-ex-autoplay" type="checkbox" /> <span>Auto play</span> </div>
+	<div class="es-ex-final"></div>
 </div>
 <table class="es-ex-content" cellspacing="0">
 	<tr>
 		<td class="es-ex-quest" width="40%" valign="middle" align="center">
-
 			<div class="es-ex-audio-wrapper">
-				<table>
-					<tr>
-						<td style="height: 140px;">
-							<div class="es-ex-audio-holder"><div class="es-ex-audio"></div></div>
-						</td>
-					</tr>
-				</table>
-				
+				<table><tr><td style="height: 140px;"><div class="es-ex-audio-holder"><div class="es-ex-audio"></div></div></td></tr></table>
 			</div>
-		
-		
-		
 			<div class="es-ex-string-holder">
-				<table>
-					<tr>
-						<td class="es-ex-string-wrapper" style="height: 150px;">
-								&nbsp;
-						</td>
-					</tr>
-				</table>
+				<table><tr><td class="es-ex-string-wrapper" style="height: 150px;">&nbsp;</td></tr></table>
 			</div>
-		
 		</td>
 		<td class="es-ex-tasks" valign="top">
-		&nbsp;
-
-		
+			<div class="yn-answer-type">
+					<p class="es-yn-task-p">Is this translated as:</p>
+					<div class="es-yn-variant-wrapper"><div class="es-yn-variant yn-trans">&nbsp;</div></div>
+					<div class="es-ex-buttons yn-btns">
+						<input type="button" class="es-ex-es-btn yn-yes" value="YES "/> &nbsp;&nbsp;&nbsp;&nbsp; <input value="NO" type="button"  class="es-ex-es-btn yn-no"/>
+					</div>
+			</div>
 		</td>
-	
+	</tr>
+	<tr>
+		<td><div class="es-ex-bottom"><input type="button" class="es-ex-next" value=" NEXT " style="font-size: 12px; visibility: hidden;"></div></td>
+		<td></td>
 	</tr>
 </table>
-<div class="es-ex-bottom">
-<input type="button" class="es-ex-next" value=" NEXT " style="font-size: 12px; visibility: hidden;">
-</div>
-
 <div class="es-ex-info-container">
-
-
-<table cellspacing="0" align="center">
-  <tr>
-	<td style="padding-left: 20px;"><div class="es-ex-info"> &nbsp;  </div>
-	
-	</td>
-	<td>
-	<div class="es-yn-buttons">
-		<input type="button" class="es-yn-es-btn yn-start" value="RESTART"/>
-	</div>
-	
-	</td>
-  </tr>
- </table>
- 
+	<table cellspacing="0" align="center">
+		<tr>
+			<td style="padding-left: 20px;"><div class="es-ex-info"> &nbsp;  </div></td>
+			<td><div class="es-ex-buttons"><input type="button" class="es-ex-es-btn es-ex-start" value="RESTART"/></div></td>
+		</tr>
+	</table>
 </div>
 </div>
-
-
-
-
 
 
 <script type="text/javascript"> 
 	var ch1 = new ch_exercise( {
-		id: "ch1", 
-		quest_num: 10,
-		auto_play: false,
-		variants_num: 4,
-		random_order: true,
-		quest_type: 'audio',
+		id: "ch1",  			// id of the text, obligatory
+		//quest_num: 20, 			// total number of questions, if more than basic array length or undefined is equal to it
+		//auto_play: true,    	// auto play option, default is true
+		//variants_num: 4,		// number of variants, default is 4
+		//quest_type: 'audio',  	// type of question, default is html, available html, audio, image
+		//random_order: true,     // random order of variants, if false - total number is equal to basic array length, variants are the same through the test
+		//answer_type: 'yn',	// if yn, answers are "yes" or "no"
+		
+		//texts: ['Правильно','Неправильно','Дальше','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+
 		basic_array: [
-		
-		
-		/*
+
 		['Здравствуйте!',	'Hello! '],
 		['Доброе утро!',	'Good morning!'],
 		['Добрый день!',	'Good afternoon!'],
@@ -129,8 +99,66 @@
 		['Пока'	,'Bye!'],
 		['Как Ваши дела?','How are you? (formal)'],
 		['Простите.','Excuse me. (formal)']
-		*/
-		
+		]
+		} )
+</script>
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+
+<div id="ch2" class="es-ex-wrapper">
+<div class="es-ex-alert-container"><div class="es-ex-alert-rt"><div class="es-ex-alert"> &nbsp;  </div>   </div></div>
+<div class="es-ex-top">
+	<div class="es-ex-autoplay-wrapper"><input class="es-ex-autoplay" type="checkbox" /> <span>Auto play</span> </div>
+	<div class="es-ex-final"></div>
+</div>
+<table class="es-ex-content" cellspacing="0">
+	<tr>
+		<td class="es-ex-quest" width="40%" valign="middle" align="center">
+			<div class="es-ex-audio-wrapper">
+				<table><tr><td style="height: 140px;"><div class="es-ex-audio-holder"><div class="es-ex-audio"></div></div></td></tr></table>
+			</div>
+			<div class="es-ex-string-holder">
+				<table><tr><td class="es-ex-string-wrapper" style="height: 150px;">&nbsp;</td></tr></table>
+			</div>
+		</td>
+		<td class="es-ex-tasks" valign="top">
+			<div class="yn-answer-type">
+					<p class="es-yn-task-p">Is this translated as:</p>
+					<div class="es-yn-variant-wrapper"><div class="es-yn-variant yn-trans">&nbsp;</div></div>
+					<div class="es-ex-buttons yn-btns">
+						<input type="button" class="es-ex-es-btn yn-yes" value="YES "/> &nbsp;&nbsp;&nbsp;&nbsp; <input value="NO" type="button"  class="es-ex-es-btn yn-no"/>
+					</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td><div class="es-ex-bottom"><input type="button" class="es-ex-next" value=" NEXT " style="font-size: 12px; visibility: hidden;"></div></td>
+		<td></td>
+	</tr>
+</table>
+<div class="es-ex-info-container">
+	<table cellspacing="0" align="center">
+		<tr>
+			<td style="padding-left: 20px;"><div class="es-ex-info"> &nbsp;  </div></td>
+			<td><div class="es-ex-buttons"><input type="button" class="es-ex-es-btn es-ex-start" value="RESTART"/></div></td>
+		</tr>
+	</table>
+</div>
+</div>
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch2",  
+		quest_num: 10,
+		quest_type: 'audio',  	
+		basic_array: [
+
 		['/sounds/sound01101.mp3',	'Hello!'],
 		['/sounds/sound01102.mp3',	'Good morning!'],
 		['/sounds/sound01103.mp3',	'Good afternoon!'],
@@ -145,31 +173,151 @@
 		['/sounds/sound01120.mp3'	,'Bye!'],
 		['/sounds/sound01110.mp3','How are you? (informal)'],
 		['/sounds/sound01122.mp3','Excuse me. (formal)']
-		
 
 		]
 		} )
 </script>
 
 
-
-
-<br>
-
-
-
-
-
-
-
-
-
-
-
-
 <br>
 <br>
 <br>
 <br>
+
+<div id="ch3" class="es-ex-wrapper">
+<div class="es-ex-alert-container"><div class="es-ex-alert-rt"><div class="es-ex-alert"> &nbsp;  </div>   </div></div>
+<div class="es-ex-top">
+	<div class="es-ex-autoplay-wrapper"><input class="es-ex-autoplay" type="checkbox" /> <span>Auto play</span> </div>
+	<div class="es-ex-final"></div>
+</div>
+<table class="es-ex-content" cellspacing="0">
+	<tr>
+		<td class="es-ex-quest" width="40%" valign="middle" align="center">
+			<div class="es-ex-audio-wrapper">
+				<table><tr><td style="height: 140px;"><div class="es-ex-audio-holder"><div class="es-ex-audio"></div></div></td></tr></table>
+			</div>
+			<div class="es-ex-string-holder">
+				<table><tr><td class="es-ex-string-wrapper" style="height: 150px;">&nbsp;</td></tr></table>
+			</div>
+		</td>
+		<td class="es-ex-tasks" valign="top">
+			<div class="yn-answer-type">
+					<p class="es-yn-task-p">Is this translated as:</p>
+					<div class="es-yn-variant-wrapper"><div class="es-yn-variant yn-trans">&nbsp;</div></div>
+					<div class="es-ex-buttons yn-btns">
+						<input type="button" class="es-ex-es-btn yn-yes" value="YES "/> &nbsp;&nbsp;&nbsp;&nbsp; <input value="NO" type="button"  class="es-ex-es-btn yn-no"/>
+					</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td><div class="es-ex-bottom"><input type="button" class="es-ex-next" value=" NEXT " style="font-size: 12px; visibility: hidden;"></div></td>
+		<td></td>
+	</tr>
+</table>
+<div class="es-ex-info-container">
+	<table cellspacing="0" align="center">
+		<tr>
+			<td style="padding-left: 20px;"><div class="es-ex-info"> &nbsp;  </div></td>
+			<td><div class="es-ex-buttons"><input type="button" class="es-ex-es-btn es-ex-start" value="RESTART"/></div></td>
+		</tr>
+	</table>
+</div>
+</div>
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch3",  
+		//variants_num: 3,
+		quest_num: 10,
+		quest_type: 'image', 
+		auto_play: false,
+		basic_array: [
+		
+		['/images/street.jpg',	'street'],
+		['/images/airport.jpg',	'airport'],
+		['/images/square.jpg',	'square'],
+		['/images/hotel.jpg',		'hotel'],
+		['/images/station.jpg',	'station']
+
+		]
+		} )
+</script>
+
+<br>
+<br>
+<br>
+<br>
+
+<div id="ch4" class="es-ex-wrapper">
+<div class="es-ex-alert-container"><div class="es-ex-alert-rt"><div class="es-ex-alert"> &nbsp;  </div>   </div></div>
+<div class="es-ex-top">
+	<div class="es-ex-autoplay-wrapper"><input class="es-ex-autoplay" type="checkbox" /> <span>Auto play</span> </div>
+	<div class="es-ex-final"></div>
+</div>
+<table class="es-ex-content" cellspacing="0">
+	<tr>
+		<td class="es-ex-quest" width="40%" valign="middle" align="center">
+			<div class="es-ex-audio-wrapper">
+				<table><tr><td style="height: 140px;"><div class="es-ex-audio-holder"><div class="es-ex-audio"></div></div></td></tr></table>
+			</div>
+			<div class="es-ex-string-holder">
+				<table><tr><td class="es-ex-string-wrapper" style="height: 150px;">&nbsp;</td></tr></table>
+			</div>
+		</td>
+		<td class="es-ex-tasks" valign="top">
+			<div class="yn-answer-type">
+					<p class="es-yn-task-p">Is this translated as:</p>
+					<div class="es-yn-variant-wrapper"><div class="es-yn-variant yn-trans">&nbsp;</div></div>
+					<div class="es-ex-buttons yn-btns">
+						<input type="button" class="es-ex-es-btn yn-yes" value="YES "/> &nbsp;&nbsp;&nbsp;&nbsp; <input value="NO" type="button"  class="es-ex-es-btn yn-no"/>
+					</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td><div class="es-ex-bottom"><input type="button" class="es-ex-next" value=" NEXT " style="font-size: 12px; visibility: hidden;"></div></td>
+		<td></td>
+	</tr>
+</table>
+<div class="es-ex-info-container">
+	<table cellspacing="0" align="center">
+		<tr>
+			<td style="padding-left: 20px;"><div class="es-ex-info"> &nbsp;  </div></td>
+			<td><div class="es-ex-buttons"><input type="button" class="es-ex-es-btn es-ex-start" value="RESTART"/></div></td>
+		</tr>
+	</table>
+</div>
+</div>
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch4",  
+		quest_num: 10,
+		quest_type: 'audio', 
+		answer_type: 'yn',
+		basic_array: [
+
+		['/sounds/sound01101.mp3',	'Hello!'],
+		['/sounds/sound01102.mp3',	'Good morning!'],
+		['/sounds/sound01103.mp3',	'Good afternoon!'],
+		['/sounds/sound01104.mp3',	'Good evening!'],
+		['/sounds/sound01115.mp3'	,'Good bye!'],
+		['/sounds/sound01107.mp3'	,'How are you? (formal)'],
+		['/sounds/sound01112.mp3'	,'I\'m fine.'],
+		['/sounds/sound01111.mp3'	,'Excellent!'	],
+		['/sounds/soundb01031060.mp3'	,'I\'m OK.'],
+		['/sounds/sound01127.mp3'	,'Thank you.'	],
+		['/sounds/sound01106.mp3'	,'Hi!'],
+		['/sounds/sound01120.mp3'	,'Bye!'],
+		['/sounds/sound01110.mp3','How are you? (informal)'],
+		['/sounds/sound01122.mp3','Excuse me. (formal)']
+
+		]
+		} )
+</script>
+
+
+<br><br><br><br><br><br><br><br><br><br><br>
 
 
