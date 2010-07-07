@@ -16,11 +16,14 @@ class SiteController < ApplicationController
 	if @file.match(/\/ru\//)  
 		@file = '/ru/jp/index.html' if @file == '/ru/jp/'
 		@file = '/ru/fr/index.html' if @file == '/ru/fr/'
+		@file = '/ru/en/index.html' if @file == '/ru/en/'
 		
 		if @file.match(/\/ru\/fr\//) 
 			layout = 'ru_fr_application.rhtml'
 		elsif @file.match(/\/ru\/jp\//) 
 			layout = 'ru_jp_application.rhtml'
+		elsif @file.match(/\/ru\/en\//) 
+			layout = 'ru_en_application.rhtml'
 		else 
 			layout = 'ru_application.rhtml'
 		end

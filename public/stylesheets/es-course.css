@@ -932,7 +932,14 @@ background-color: #efefef;
 }
 
 
+ul.rev-summary  {
+margin: 0px;
+padding: 5px 5px 5px 40px;
+}
 
+ul.rev-summary li {
+padding: 4px 0;
+}
 
 
 

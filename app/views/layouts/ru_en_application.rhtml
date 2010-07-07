@@ -1,0 +1,282 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title><%= @page_title %></title>
+<% unless @page_meta.nil? -%>
+  <% @page_meta.each do |name, content| -%>
+  <meta name="<%= name %>" content="<%= content %>" />
+  <% end %>
+<% end %>
+  <meta name="keywords" content="russian translation, russian language, learn russian, study russian, learn russian online, russian phrases, russian words, speak russian, speaking russian, learning russian, basic russian, learn russian language, beginners russian, russian language course, russian online lessons, russian vocabulary, russian for begginers" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf8"> 
+  <%= javascript_include_tag 'jquery.min.js' %>
+  <%= javascript_include_tag 'effects' %>
+  <%= stylesheet_link_tag 'stylesheet' %>
+  <%if @javascripts%>  
+  <% for js_file in @javascripts -%>
+  <%= javascript_include_tag js_file %>
+  <% end -%>
+  <% end %>
+
+  <%if @stylesheets%>  
+  <% for css_file in @stylesheets -%>
+    <%= stylesheet_link_tag css_file %>
+  <% end -%>
+  <%end%>
+ 
+ 
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <%= yield :special_js_css %>
+  <style type="text/css">
+  .never-existed {font-size: 10pt;}
+	<%= yield :special_css %>
+  </style>
+
+  <!--[if lte IE 6]>
+    <%= stylesheet_link_tag 'ie6.css' %>
+  <![endif]-->
+
+</head>
+<body>
+    <div id="fixWidh"><div id="container">
+        <!--[if lte IE 6]>
+        <table id="containit" cellspacing="0">
+          <tr valign="top">
+            <td>
+              <![endif]-->
+              <div id="head">
+                <div id="title_wrapper">
+                  <div id="title_name">
+                    <h1 class="title_site"><a href="/ru/en/index.html" title="На главную">Изучаем английский</a></h1>
+                    <div class="title_volume">Изучаем английский</div>
+                    <div class="title_shdw">Изучаем английский</div>
+					<div id="user_logged">
+					
+					<% if logged_in?%> 
+						 <strong style="font-size: 10px;"><%= current_user.email %></strong> | <%= link_to "Sign Out",{:controller => 'sessions', :action => 'destroy'} %>
+					<%else%>
+						&nbsp;
+					<%end%>
+					</div>					
+                  </div>
+                </div>
+              </div>
+              <div class="corners cont-clt">
+                <div class="corners cont-crt">
+                  <div class="cont-center"></div>
+                </div>
+              </div>
+              <div id="menu_content">
+                <div id="navigation">
+
+                  <div id="nav-pos">
+
+                    <div id="menu_body" align="left">
+                      <div id="nav1" class="menu-item">
+                        <div class="menu-item-front">
+                          <div class="item-top">
+                            <a href="/ru/en/index.html" style="margin-left: 40px;">Главная</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div id="nav2" class="menu-item">
+                        <div class="menu-item-front">
+                          <div class="item-top">
+                            <div class="list down"></div> 
+                            <a href="/course.html" style="margin-left: 40px;">Онлайн уроки</a>&nbsp;
+                          </div>
+                        </div>
+                      </div>
+                      <div class="sub" style="display: none">
+                        <ul style="padding-left: 16px;">
+                          <li style="padding-top: 10px; font-weight: bold;" ><a href="beginner-course.html">Russian for Beginners</a> </li>
+                          <li style="padding-bottom: 10px; padding-top: 10px; font-weight: bold;"><a href="everyday-course.html">Everyday Russian</a> </li>
+
+                        </ul>
+                      </div>
+                      <div id="nav3" class="menu-item">
+                        <div class="menu-item-front">
+                          <div class="item-top">
+                            <div class="list down"></div> 
+                            <a href="/vocabulary.html" style="margin-left: 40px;">Словарь</a>&nbsp;
+                          </div>
+                        </div>
+                      </div>
+                      <div class="sub" style="display: none">
+                        <ul>
+                          <li><a href="/politeness.html" title="Formulas of politeness">Politeness</a></li>
+                          <li><a href="/acquaintance.html" title="Making an acquaintance">Acquaintance</a></li>
+                          <li><a href="/transport.html" title="Transport">Transport</a></li>
+                          <li><a href="/hotel.html" title="Hotel">Hotel</a> </li>
+                          <li><a href="/sightseeing.html" title="Sightseeing">Sightseeing</a> </li>
+                          <li><a href="/meals.html" title="Meals">Meals</a> </li>
+                          <li><a href="/shopping.html" title="Shopping">Shopping</a> </li>
+                          <li><a href="/numerals00-100.html" title="Numerals">Numerals</a> </li>
+                          <li class="sub_high"><a href="/vocabulary_games.html" title="Language Games">Language games</a>  </li>
+                          <li class="sub_high"><a href="/vocabulary_tests.html" title="Tests">Lexical tests</a>  </li>
+                        </ul>
+                      </div>
+                      <div id="nav4" class="menu-item">
+                        <div class="menu-item-front">
+                          <div class="item-top">
+                            <div class="list down"></div> 
+                            <a href="/pronunciation.html" style="margin-left: 40px;">Писменность</a>&nbsp;
+                          </div>
+                        </div>
+                      </div>
+                      <div class="sub" style="display: none">
+                        <ul>
+                          <li><a href="/basic-sounds.html" title="Sounds in Russian">Sounds in Russian</a></li>
+                          <li><a href="/sounds-info.html" title="Infos">Info about sounds</a></li>
+                          <li><a href="/phonetics-course.html" title="Training">Phonetics course</a></li>
+                        </ul>
+                      </div>
+					  
+                      <div id="nav5" class="menu-item" style="display: none;">
+                        <div class="menu-item-front">
+                          <div class="item-top">
+                            <div class="list down"></div> 
+                            <a href="/russian-reading.html" >Reading in Russian</a>&nbsp;
+                          </div>
+                        </div>
+                      </div> 
+                      <div class="sub" style="display: none">
+                        <ul>
+                          <li><a href="/basic-letters.html" title="Alphabet">Russian Letters</a></li>
+                          <li><a href="/readingrules.html" title="Rules">Rules of reading</a> </li>
+                          <li><a href="/reading-practice.html" title="Training">Training exercises</a></li>
+                        </ul>
+                      </div>
+					  
+					
+				<% if logged_in?%>
+					
+				<div id="nav7" class="menu-item"  style="display: none">
+                      <div class="menu-item-front">
+                             <div class="item-top">
+                                 <div class="list down"></div> 
+                                 <a href="user_profile.html" style="margin-left: 42px !important;">&nbsp;&nbsp;&nbsp;My account</a>
+                             </div>
+                       </div>
+				</div>
+					<div class="sub" style="display: none">
+                            <ul>
+                                <li><a href="/user_profile.html" title="Profile">My Profile</a></li>
+								<li><a href="/user_profile.html" title="Results" onclick = "nextActiveTab('2')">My Results</a></li>
+								<li><%= link_to "Sign Out",{:controller => 'sessions', :action => 'destroy'} %> </li>
+                            </ul>
+                     </div>					
+
+				<%else%>
+				
+					<div id="nav7" class="menu-item" style="display: none">
+                      <div class="menu-item-front">
+                             <div class="item-top">
+                                 <div class="list down"></div> 	  
+                                          <%= link_to "Sign up/Sign in",{:controller => 'sessions', :action => 'new'} %>					  
+                                 </div>
+                              </div>
+                    </div>
+					<div class="sub" style="display: none">
+					<% if @page_title == 'Sign In' %>
+						<ul style="padding: 5px 1px 5px 28px;">
+							<li><%= link_to "Sign Up",{:controller => 'users', :action => 'new'} %></li>
+						</ul>
+					<% elsif @page_title == 'Sign Up' %>
+						<ul style="padding: 5px 1px 5px 28px;">
+							<li> <%= link_to "Sign in",{:controller => 'sessions', :action => 'new'} %></li>
+						</ul>
+					<%else%>
+						<% form_tag session_path do %>
+							<ul style="padding: 5px 20px 5px 18px;">
+								<li style="padding-bottom: 7px; text-align: center;"><a href="/signup">Click here to sign up!</a></li>
+								<li>
+									<span style="font-size: 10px; font-weight: bold;">Email address</span><br/>
+									<%= text_field_tag 'email', @email %>
+								</li>
+								<li>
+									<span style="font-size: 10px; font-weight: bold;">Password</span><br/>
+									<%= password_field_tag 'password', nil %>
+								</li>
+								<li style="text-align: center;">
+									<%= submit_tag 'Sign In' %>
+								</li>
+							</ul>
+						<% end -%>
+					<%end%>		 
+					</div>
+				<%end%>			
+                     
+
+					 
+                      <div id="nav6" class="menu-item">
+                        <div class="menu-item-front">
+                          <div class="item-top">
+                            <a href="/contacts.html" style="margin-left: 40px;">Контакты</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                  </div>
+
+                </div>
+                <div id="contentcell">
+                  <div id="contfield" class="<%= @with_rec ? 'content withRec' : 'content' %>">
+                    <% if @has_audio %>
+                      <div id="loading"><div id="progress"></div><div id="progressbar"><div id="progressStatus"></div></div></div>
+                      <div id="mess" class="sound_tip"><i>Tip</i></div>
+                      <div id="audiospan" style="position: absolute;"></div>
+                    <% end %>
+                    <%= yield %>
+                    <div id="divspace"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="corners cont-clb">
+                <div class="corners cont-crb">
+                  <div class="cont-center"></div>
+                </div>
+              </div>
+              <div class="photos">
+                <div id="photo1-pos"><div class="photo1"></div></div>
+                <div id="photo2-pos">
+                  <div style="float: right;">
+                    <div class="photo2"></div>
+                  </div>
+                </div>
+                <div id="photo3-pos">
+                  <div style="float: right;">
+                    <div class="photo3"></div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- end of #contain-border -->
+            <!--[if lte IE 6]>
+          </td>
+        </tr>
+      </table>
+      <![endif]-->
+      <div id="footer">
+
+        <div class="copy"><a href="/copyright.html">&copy;2009-2010 Study-Languages-Online.com</a> | <a href="/sitemap.html">Site map</a></div>
+
+      </div>
+    </div>
+<div id="analytic">
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+      try {
+        var pageTracker = _gat._getTracker("UA-8218265-1");
+        pageTracker._trackPageview();
+      } catch(err) {}</script>
+
+</div>
+	  
+  </body>
+</html>
