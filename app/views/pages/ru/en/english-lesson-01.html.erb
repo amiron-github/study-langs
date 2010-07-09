@@ -16,25 +16,15 @@
 <%= javascript_include_tag 'es-test-drag-input' %>
 
 <script type="text/javascript">
-
 <%if params[:tab] %>
 	openTabFromUrl(<%= params[:tab] %>);
 <%else%>
 	openTabFromUrl();
-<%end%>
+<%end%>	
 
-
-$(document).ready(function() {
-
-	$(".gext_task input").addClass("for_keyb")
-});
-
-
-	
+es_lang = 'rus';
 </script>
 
- <%= javascript_include_tag 'es-virtual-keyboard' %>
- <%= stylesheet_link_tag 'keyboard' %>
 
 <%= stylesheet_link_tag 'es-course' %>
 <%= stylesheet_link_tag 'es-exercise.css' %>
@@ -477,9 +467,9 @@ $(document).ready(function() {
 	<div class="inpBlock">
 	
 	
-	<h3 class="es-task-in">Listen, repeat ad read the translation of words and expressions below.</h3>
+	<h3 class="es-task-in">Слушайте, повторяйте и читайте перевод.</h3>
 	
-	
+	<h3 align="center">Основной список</h3>
 	
 	<table class="es-words-list" cellspacing="1">
 	<col width="20">
@@ -488,8 +478,8 @@ $(document).ready(function() {
 	<thead>
 		<tr>
 			<th>&nbsp;</th>
-			<th>Russian</th>
-			<th>English</th>
+			<th>Английский</th>
+			<th>Русский</th>
 		</tr>
 			
 	</thead>
@@ -499,10 +489,10 @@ $(document).ready(function() {
 				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
 			</td>
 			<td class="wl-rus">
-				Здравствуйте!
+				Hello! 
 			</td>
 			<td class="wl-eng">
-				Hello! 
+				Здравствуйте!
 			</td>
 		</tr>
 		<tr>
@@ -510,10 +500,10 @@ $(document).ready(function() {
 				<div class="jp_control" onclick="cJplayer('/sounds/sound01102.mp3', this)"></div>
 			</td>
 			<td class="wl-rus">
-				Доброе утро!
+				Good morning!
 			</td>
 			<td>
-				Good morning!
+				Доброе утро!
 			</td>
 		</tr>
 		<tr>
@@ -521,10 +511,10 @@ $(document).ready(function() {
 				<div class="jp_control" onclick="cJplayer('/sounds/sound01103.mp3', this)"></div>
 			</td>
 			<td class="wl-rus">
-				Добрый день!
+				Good afternoon!
 			</td>
 			<td>
-				Good afternoon!
+				Добрый день!
 			</td>
 		</tr>
 
@@ -533,10 +523,10 @@ $(document).ready(function() {
 				<div class="jp_control" onclick="cJplayer('/sounds/sound01104.mp3', this)"></div>
 			</td>
 			<td class="wl-rus">
-				Добрый вечер! 
+				Good evening!
 			</td>
 			<td>
-				Good evening!
+				Добрый вечер! 
 			</td>
 		</tr>
 		<tr>
@@ -544,10 +534,10 @@ $(document).ready(function() {
 				<div class="jp_control" onclick="cJplayer('/sounds/sound01115.mp3', this)"></div>
 			</td>
 			<td class="wl-rus">
-				До свидания! 
+				Good bye!
 			</td>
 			<td>
-				Good bye!
+				До свидания! 
 			</td>
 		</tr>
 		<tr>
@@ -555,10 +545,10 @@ $(document).ready(function() {
 				<div class="jp_control" onclick="cJplayer('/sounds/sound01107.mp3', this)"></div>
 			</td>
 			<td class="wl-rus">
-				Как поживаете?
+				How are you? 
 			</td>
 			<td>
-				How are you? (formal)
+				Как поживаете?
 			</td>
 		</tr>
 		<tr>
@@ -566,10 +556,10 @@ $(document).ready(function() {
 				<div class="jp_control" onclick="cJplayer('/sounds/sound01112.mp3', this)"></div>
 			</td>
 			<td class="wl-rus">
-				Хорошо.
+				I'm fine.
 			</td>
 			<td>
-				I'm fine.
+				Хорошо.
 			</td>
 		</tr>
 		<tr>
@@ -577,10 +567,10 @@ $(document).ready(function() {
 				<div class="jp_control" onclick="cJplayer('/sounds/sound01111.mp3', this)"></div>
 			</td>
 			<td class="wl-rus">
-				Прекрасно.
+				Excellent!
 			</td>
 			<td>
-				Excellent!
+				Прекрасно.
 			</td>
 		</tr>
 		<tr>
@@ -588,10 +578,10 @@ $(document).ready(function() {
 				<div class="jp_control" onclick="cJplayer('/sounds/soundb01031060.mp3', this)"></div>
 			</td>
 			<td class="wl-rus">
-				Нормально.
+				I'm OK.
 			</td>
 			<td>
-				I'm OK.
+				Нормально.
 			</td>
 		</tr>
 		<tr>
@@ -599,10 +589,10 @@ $(document).ready(function() {
 				<div class="jp_control" onclick="cJplayer('/sounds/sound01127.mp3', this)"></div>
 			</td>
 			<td class="wl-rus">
-				Спасибо
+				Thank you.
 			</td>
 			<td>
-				Thank you.
+				Спасибо
 			</td>
 		</tr>
 		<tr>
@@ -610,10 +600,10 @@ $(document).ready(function() {
 				<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
 			</td>
 			<td class="wl-rus">
-				Привет!
+				Hi!
 			</td>
 			<td>
-				Hi!
+				Привет!
 			</td>
 		</tr>
 		<tr>
@@ -621,10 +611,10 @@ $(document).ready(function() {
 				<div class="jp_control" onclick="cJplayer('/sounds/sound01120.mp3', this)"></div>
 			</td>
 			<td class="wl-rus">
-				Пока!
+				Bye!
 			</td>
 			<td>
-				Bye!
+				Пока!
 			</td>
 		</tr>
 		<tr>
@@ -632,10 +622,10 @@ $(document).ready(function() {
 				<div class="jp_control" onclick="cJplayer('/sounds/sound01110.mp3', this)"></div>
 			</td>
 			<td class="wl-rus">
-				Как дела?
+				How are you?
 			</td>
 			<td>
-				How are you? (informal)
+				Как дела?
 			</td>
 		</tr>
 		<tr>
@@ -643,10 +633,10 @@ $(document).ready(function() {
 				<div class="jp_control" onclick="cJplayer('/sounds/sound01122.mp3', this)"></div>
 			</td>
 			<td class="wl-rus">
-				Извините.
+				Excuse me. 
 			</td>
 			<td>
-				Excuse me. (formal)
+				Извините.
 			</td>
 		</tr>
 		<tr>
@@ -654,10 +644,10 @@ $(document).ready(function() {
 				<div class="jp_control" onclick="cJplayer('/sounds/sound01126.mp3', this)"></div>
 			</td>
 			<td class="wl-rus">
-				Пожалуйста, ...
+				Please, ...
 			</td>
 			<td>
-				Please, ...
+				Пожалуйста, ...
 			</td>
 		</tr>
 		<tr>
@@ -665,21 +655,73 @@ $(document).ready(function() {
 				<div class="jp_control" onclick="cJplayer('/sounds/sound01130.mp3', this)"></div>
 			</td>
 			<td class="wl-rus">
-				Пожалуйста.
+				You're welcome
 			</td>
 			<td>
-				You're welcome
+				Пожалуйста.
+			</td>
+		</tr>
+	</tbody>
+	</table>
+	<br><br>
+	<h3 align="center">Дополнительно</h3>
+	
+	<table class="es-words-list" cellspacing="1">
+	<col width="20">
+	<col width="200">
+	<col width="200">
+	<thead>
+		<tr>
+			<th class="{sorter: false}">&nbsp;</th>
+			<th class="{sorter: false}">Английский</th>
+			<th class="{sorter: false}">Русский</th>
+		</tr>
+			
+	</thead>
+	<tbody>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				I
+			</td>
+			<td class="wl-eng">
+				я
 			</td>
 		</tr>
 		<tr>
 			<td class="wl-audio">
-				<div class="jp_control" onclick="cJplayer('/sounds/yes.mp3', this)"></div>
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01102.mp3', this)"></div>
 			</td>
 			<td class="wl-rus">
-				Да
+				You
 			</td>
 			<td>
-				Yes
+				Ты
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01103.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				what
+			</td>
+			<td>
+				что
+			</td>
+		</tr>
+
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01104.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				How
+			</td>
+			<td>
+				как
 			</td>
 		</tr>
 		<tr>
@@ -687,10 +729,21 @@ $(document).ready(function() {
 				<div class="jp_control" onclick="cJplayer('/sounds/no.mp3', this)"></div>
 			</td>
 			<td class="wl-rus">
-				Нет
+				Yes
 			</td>
 			<td>
+				Да
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/no.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
 				No
+			</td>
+			<td>
+				Нет
 			</td>
 		</tr>
 	</tbody>
@@ -701,10 +754,10 @@ $(document).ready(function() {
 
 	<br><br>
 
-<h3 class="es-task-in">Listen to the phrase and answer "yes" or  "no" </h3>	
+<h3 class="es-task-in">Прослуйшайте фразы и выберите ответ "да" или "нет" </h3>	
 	
 <div id="ch1" class="es-ex-wrapper">
-	<%= render :partial => 'es_exercise' %>
+	<%= render :partial => 'es_exercise', :locals => {:lang => "rus"} %>
 </div>
 
 <script type="text/javascript"> 
@@ -713,21 +766,22 @@ $(document).ready(function() {
 		quest_num: 10,
 		answer_type: 'yn',
 		quest_type: 'audio',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
 		basic_array: [
-		['/sounds/sound01101.mp3',	'Hello!'],
-		['/sounds/sound01102.mp3',	'Good morning!'],
-		['/sounds/sound01103.mp3',	'Good afternoon!'],
-		['/sounds/sound01104.mp3',	'Good evening!'],
-		['/sounds/sound01115.mp3'	,'Good bye!'],
-		['/sounds/sound01107.mp3'	,'How are you? (formal)'],
-		['/sounds/sound01112.mp3'	,'I\'m fine.'],
-		['/sounds/sound01111.mp3'	,'Excellent!'	],
-		['/sounds/soundb01031060.mp3'	,'I\'m OK.'],
-		['/sounds/sound01127.mp3'	,'Thank you.'	],
-		['/sounds/sound01106.mp3'	,'Hi!'],
-		['/sounds/sound01120.mp3'	,'Bye!'],
-		['/sounds/sound01110.mp3','How are you? (informal)'],
-		['/sounds/sound01122.mp3','Excuse me. (formal)']
+		['/sounds/sound01101.mp3',	'Здравствуйте'],
+		['/sounds/sound01102.mp3',	'Доброе утро'],
+		['/sounds/sound01103.mp3',	'Добрый день'],
+		['/sounds/sound01104.mp3',	'Добрый вечер'],
+		['/sounds/sound01115.mp3'	,'До свидания'],
+		['/sounds/sound01107.mp3'	,'Как поживаете?'],
+		['/sounds/sound01112.mp3'	,'Хорошо'],
+		['/sounds/sound01111.mp3'	,'Отлично'	],
+		['/sounds/soundb01031060.mp3'	,'Нормально'],
+		['/sounds/sound01127.mp3'	,'Спасибо'	],
+		['/sounds/sound01106.mp3'	,'Привет'],
+		['/sounds/sound01120.mp3'	,'Пока'],
+		['/sounds/sound01110.mp3','Как дела?'],
+		['/sounds/sound01122.mp3','Извините']
 		]
 		} )
 </script>
@@ -739,10 +793,10 @@ $(document).ready(function() {
 
 <br><br>
 
-<h3 class="es-task-in">Read the Russian phrase and find its translation </h3>
+<h3 class="es-task-in">Прочитайте фразы на английском языке и выберите их перевод</h3>
 
 <div id="ch2" class="es-ex-wrapper">
-	<%= render :partial => 'es_exercise' %>
+	<%= render :partial => 'es_exercise', :locals => {:lang => "rus"} %>
 </div>
 
 
@@ -751,22 +805,23 @@ $(document).ready(function() {
 		id: "ch2", 
 		quest_num: 10,
 		variants_num: 4,
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
 		basic_array: [
 
-		['Здравствуйте!',	'Hello! '],
-		['Доброе утро!',	'Good morning!'],
-		['Добрый день!',	'Good afternoon!'],
-		['Добрый вечер',	'Good evening!'],
-		['До свидания!'	,'Good bye!'],
-		['Как дела?'	,'How are you? (informal)'],
-		['Хорошо.'	,'I\'m fine.'],
-		['Прекрасно.'	,'Excellent!'	],
-		['Нормально'	,'I\'m OK.'],
-		['Спасибо.'	,'Thank you.'	],
-		['Привет.'	,'Hi!'],
-		['Пока'	,'Bye!'],
-		['Как Ваши дела?','How are you? (formal)'],
-		['Простите.','Excuse me. (formal)']
+		['Hello! ','Здравствуйте!'],
+		['Good morning!','Доброе утро!'],
+		['Good afternoon!','Добрый день!'],
+		['Good evening!','Добрый вечер'],
+		['Good bye!','До свидания!'],
+		['How are you?','Как дела?'],
+		['I\'m fine.','Хорошо.'],
+		['Excellent!','Прекрасно.'],
+		['I\'m OK.','Нормально'],
+		['Thank you.','Спасибо.'],
+		['Hi!','Привет.'],
+		['Bye!','Пока'],
+		['How are you?','Как Ваши дела?'],
+		['Excuse me.','Простите.']
 		
 		]
 		} )
@@ -794,98 +849,93 @@ $(document).ready(function() {
 	<div class="inpBlock">
 	
 	
-	<h2 class="es-tab-p ">Particularities of Russian phrase stucture</h2>
+	<h2 class="es-tab-p ">Особенности структуры предложения в английском языке</h2>
 	
-	<h3 class="es-tab-p-p">Word order</h3>
-		
-	<p>
-		Russian word order is very flexible. The parts of the Russian sentence (subject, predicate etc.) can go in almost any order. 
-	</p>	
 	
+	
+<h3 class="es-tab-p-p">Подлежащее и сказуемое</h3>		
+
+<p>
+В английском предложнии практически всегда требуется наличие подлежащего и сказуемого. В русском языке они могут отсутсвовать. 
+Например, в русском языке глагол "быть" не употребляется в настоящем времени: <em>Он студент</em> - глагол "быть" подразумевается, но не употребляется (сравните: <em>Он <u>был</u> студентом, Он <u>будет</u> студентом</em>). 
+В английском языке употребление глагола "быть" в подобных случаях обязательно.
+</p>
+
+
 <div class="es-egdiv">
-<h4>Example: </h4>
+<h4>Примеры: </h4>
 <p>
-<em>Кошки едят мышей.</em> - Cats eat mice.
+<em>I <u>am</u> John.</em> - Я Джон. (дословно: Я есть Джон)
+<br>I - подлежащее, am - глагол-сказуемое
 </p>
 <p>
-The following sentences have the same meaning, although the word order is quite different: 
-</p>
-<p>
-<em>
-Мышей едят кошки. <br/>
-Едят кошки мышей. <br/>
-Едят мышей кошки. <br/>
-</em>
+В русском варианте глагол отсутсвует, в английском - обязателен. 
 </p>
 </div>
+<div class="show_ex_container"><a href="javascript:;" class="show_es_ex">Показать примеры</a></div>	
 	
+<h3 class="es-tab-p-p">Порядок членов предложения</h3>
+		
 	<p>
-		Such a flexible word order is possible because of endings of words which will change depenging on the function of the word in a phrase. 
-		This is what is called "cases", and you will work on this later in other lessons. The only thing you should remember now is that the word order is flexible.
-	</p>	
+		Для повествовательных предложений в английском языке характерен прямой порядок слов. 
+		Это означает, что подлежащее должно предшествовать сказуемому, а также что дополнение должно следовать за глаголом. 
+		Поскольку в английском языке нет падежей, роль слов в предложении в большой степени зависит порядка слов. Изменение порядка слов может привести к грамматической ошибке или изменению смысла всего предложения.
+	</p>
 	
-<h3 class="es-tab-p-p">Subjects and verbs</h3>		
 
-<p>
-The presence of a subject or a verb is not always required in Russian sentences. 
-In particular, Russian often drop subjects expressed by personal pronouns, and the present tense of the Russian verb быть 'to be' is not used. 
-</p>
-		
+	
 <div class="es-egdiv">
-<h4>Example: </h4>
+<h4>Примеры: </h4>
 <p>
-<em>Как поживаете? </em> - How are you? (litterally: How are living?, formal)
+<em>You are a student.</em> - Ты студент. (You - подлежащее, are - глагол-сказуемое)
 </p>
-<p>There is no equivalent of "you" in the Russian phrase</p>
-<p><em>А ты как?</em> -  And how are you? (litterally: And you how?, informal)</p>
-<p>There is no equivalent of "are" in the Russian phrase</p> 
-</div>		
-		
-<h3 class="es-tab-p-p">Articles</h3>		
-		
 <p>
-There are no articles, like English "a" or "the", in Russian.
+В русском языке в определённых условиях возможно изменение порядка слов (Студент я), при этом грамматической ошибки не будет. 
+В англйиском варианте представлен единственно возможный порядок данных слов, изменение которого приведет к грамматической ошибке.
+</p>
+<p>
+<em>Cats eat mice.</em> - Кошки едят мышей. (Cats - подлежащее, eat - глагол-сказуемое, mice - дополнение)
+</p>
+<p>
+В русском языке в определённых условиях возможно изменение порядка слов (Мышей едят кошки, едят кошки мышей), при этом смысл изменяться не будет. 
+В англйиском варианте изменение порядка слов в данном предложении приведет к изменению смысла или грамматической ошибке: 
+Mice eat cats (Мыши едят кошек), Eat cats mice (грамматически неправильный вариант).
 </p>
 
+</div>
+<div class="show_ex_container"><a href="javascript:;" class="show_es_ex">Показать примеры</a></div>	
+	
 		
 <br>
 <br>
 		
-<h2 class="es-tab-p ">Questions in Russian</h2>		
+<h2 class="es-tab-p ">Особенности вопросительного предложения в английском языке</h2>		
 		
 <p>	
-All questions can be devided into three categories:
-</p>	
-
-<ul>
-	<li>Simple questions: these are questions that require an answer "yes" or "no", like "Is this a book?"
-	<li>Alternative questions: these are questions which include two or more of answers in themselves, like "Is this a book or a magazine"
-	<li>Special questions: these are questions which use interrogative words "what", "how", "when" etc., and they require a more informative answer, 
-	like "What is this?"
-</ul>
-
-<p>All these types of questions are present in English, in Russian and other languages. The most important thing you should remember now about Russian questions, is that Russians do not use special grammar constructions or word to ask questions. Questions are commonly expressed by intonation.
+Основной особенностью вопросительных предложений в английском языке является то, что подлежащему в большинстве случаев должен предшествовать глагол, т.н. "инверсия".
 </p>
 
-		
-	<h3 class="es-tab-p-p">Russian simple questions</h3>	
-		
-		<p>
-			 These question are expressed by intonation. When answering simple questions in Russian, you can use words да 'yes' and нет 'no'. 
-		</p>
-		
-	<h3 class="es-tab-p-p">Russian alternative questions</h3>
+<div class="es-egdiv">
+<h4>Пример: </h4>
+<p>
+Повествовательное предложение: <br><em>You <u>are</u> a student.</em> - Ты студент. <br>You [подлежащее] предшедствует are [глагол-сказуемое]
+</p>
+<p>
+Вопросительное предложение: <br><em><u>Are</u> you  a student.</em> - Ты студент? <br>You [подлежащее] следует за are [глагол-сказуемое]
+</p>
+
+<p>
+В вопросительной форме подлежащее следует за глаголом.
+</p>
+</div>
+<div class="show_ex_container"><a href="javascript:;" class="show_es_ex">Показать примеры</a></div>
 	
-	<p>
-		Russian alternative questions usually use the word "или" (or). 
-	</p>
-	
-	<h3 class="es-tab-p-p">Russian special questions</h3>
-	
-	<p>
-		Special questions are formed with diffrent interrogative words, for example что "what", как 'how' etc. 
-		Because of a flexible word order, the place of these words can change: they can occur at the beginning, at the end or in the middle of the question.
-	</p>
+
+<p>
+Подробнее это грамматическое явление будет разбираться в следующих уроках. 
+На данном этапе Вам необходимо запомнить, что в вопросе подлежащее обычно (но не всегда!) следует за глаголом. 
+</p>		
+
 	
 	
 	
@@ -893,7 +943,7 @@ All questions can be devided into three categories:
 		
 <br><br><br><br><br>
 
-<h3 class="es-task-in">Revise the information about Russian grammar and complete the test</h3>	
+<h3 class="es-task-in">Повторите теоретический материал по грамматике и выполните тест:</h3>	
 
 
 <div class="block" >
@@ -905,7 +955,7 @@ All questions can be devided into three categories:
 	<div class="block-center">
 
 	
-<div class="task">Choose an answer to the following questions:</div>
+<div class="task">Выберите ответы на следующие вопросы:</div>
 
 <div  class="gr_ex_variants">
 
@@ -914,12 +964,54 @@ All questions can be devided into three categories:
 	<tr>
 		<td>
 			<div class="gexv_task gexv_sign">
-				1. In Russian sentences, the subject and the verb can not change their place, their position is fixed.
+				1. В английском языке порядок слов в предложении такой же как и в русском:
+			</div>
+			<div class="gexv_variant"><input type="checkbox">  Да  </div>
+			<div class="gexv_variant"><input type="checkbox" class="ok"> Нет  </div>
+		</td>
+	</tr>
+	<tr>
+
+		<td>
+			<div class="gexv_task gexv_sign">
+				 2. Инверсия - это явление, при котором:
+			</div>
+			<div class="gexv_variant"><input type="checkbox" >  глагол ставится на первое место в предложении  </div>
+			<div class="gexv_variant"><input type="checkbox">  глагол следует за подлежащим  </div>
+			<div class="gexv_variant"><input type="checkbox" class="ok">  глагол предшествует подлежащему  </div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="gexv_task gexv_sign">
+				  3. В английском повествовательном предложении глагол следует за подлежащим. 
+			</div>
+			<div class="gexv_variant"><input type="checkbox" class="ok">  Да    </div>
+			<div class="gexv_variant"><input type="checkbox" >  Нет   </div>		
+		</td>
+	</tr>
+	<tr>
+
+		<td>
+			<div class="gexv_task gexv_sign">
+				  4. В английском языке в предложении обычно требуется наличие глагола-сказуемого. 
+			</div>
+			
+			<div class="gexv_variant"><input type="checkbox" class="ok">  Да   </div>
+			<div class="gexv_variant"><input type="checkbox" >  Нет   </div>
+		
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="gexv_task gexv_sign">
+				  5. Для прямого порядка слов в предложении характерна структура: 
 			</div>
 
-			
-			<div class="gexv_variant"><input type="checkbox">  True   </div>
-			<div class="gexv_variant"><input type="checkbox" class="ok"> False   </div>
+			<div class="gexv_variant"><input type="checkbox"  >  подлежащее - дополнение - сказуемое   </div>
+			<div class="gexv_variant"><input type="checkbox" class="ok"> подлежащее - сказуемое - дополнение   </div>
+			<div class="gexv_variant"><input type="checkbox"  > сказуемое - подлежащее - дополнение </div>
+			<div class="gexv_variant"><input type="checkbox"  > любой из перечисленных вариантов </div>
 		
 		</td>
 	</tr>
@@ -927,89 +1019,14 @@ All questions can be devided into three categories:
 
 		<td>
 			<div class="gexv_task gexv_sign">
-				 2. The presence of the verb is not always required in Russian sentences. 
+				 6. В русском языке глагол "быть" не употребляется.  
 			</div>
 			
-			<div class="gexv_variant"><input type="checkbox" class="ok">  True  </div>
-			<div class="gexv_variant"><input type="checkbox">  False  </div>
-
-		
+			<div class="gexv_variant"><input type="checkbox">  Правильно   </div>
+			<div class="gexv_variant"><input type="checkbox" class="ok">  Неправильно  </div>
 		</td>
 	</tr>
-	<tr>
-		<td>
-			<div class="gexv_task gexv_sign">
-				  3. The Russian equivalent to the English article "a" is the word <b>тот</b>: 
-			</div>
-
-			
-			<div class="gexv_variant"><input type="checkbox">  True   </div>
-			<div class="gexv_variant"><input type="checkbox" class="ok">  False   </div>		
-		</td>
-	</tr>
-	<tr>
-
-		<td>
-			<div class="gexv_task gexv_sign">
-				  4. In Russian, there are no alternative questions. 
-			</div>
-			
-			<div class="gexv_variant"><input type="checkbox" >  True   </div>
-			<div class="gexv_variant"><input type="checkbox" class="ok">  False   </div>
-		
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<div class="gexv_task gexv_sign">
-				  5. The question <b>Как дела?</b> is a : 
-			</div>
-
-			
-			<div class="gexv_variant"><input type="checkbox" > simple question   </div>
-			<div class="gexv_variant"><input type="checkbox"  class="ok">  special question   </div>
-		
-		</td>
-	</tr>
-	<tr>
-
-		<td>
-			<div class="gexv_task gexv_sign">
-				 6. The subject should always be present in Russian simple questions.  
-			</div>
-			
-			<div class="gexv_variant"><input type="checkbox">  True   </div>
-			<div class="gexv_variant"><input type="checkbox" class="ok">  False   </div>
-		
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<div class="gexv_task gexv_sign">
-				  7. The word <b>что</b> is used in Russian special questions: 
-			</div>
-
-			
-			<div class="gexv_variant"><input type="checkbox" class="ok">  True   </div>
-			<div class="gexv_variant"><input type="checkbox" >  False   </div>
-		
-		</td>
-	</tr>
-	<tr>
-
-		<td>
-			<div class="gexv_task gexv_sign">
-				  8. To answer an alternative Russian question, the word <b>да</b> is often used in Russian.
-			</div>
-			
-			<div class="gexv_variant"><input type="checkbox" >  True   </div>
-			<div class="gexv_variant"><input type="checkbox" class="ok">  False   </div>
-
-
-		
-		</td>
-	</tr>
-
+	
 </table>
 
 
@@ -1310,7 +1327,7 @@ All questions can be devided into three categories:
 
 <div id="di1">	
 				
-<p class="task">Drag and drop the following words or type them in the text fields. <a class="show_keyboard" href="javascript:;">[ Use virtual keyboard ]</a> </p> 
+<p class="task">Drag and drop the following words or type them in the text fields. </p> 
 <br>
 <table style="cursor: pointer; margin: 0 auto; border: 1px dashed #000" class="di_variants" cellspacing="14" align="center" >
 <tr>

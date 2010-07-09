@@ -91,8 +91,11 @@ var errorNum = 0;
 var errorString = ' errors'
 var totalTasks = 0;
 tContainer.find(".gexv_task").each(function() {
+		
 		totalTasks++;
 	   var tRow = $(this).parent().parent("tr");
+	   tRow.find(".gexv_sign").removeClass("gr-ex-error").removeClass("gr-ex-correct");
+	   
 	   var checkedInputs =	tRow.find("input:checked").length ;
 			if ( checkedInputs > 0) {
 				var totalRes = "good";
@@ -101,13 +104,16 @@ tContainer.find(".gexv_task").each(function() {
 				});
 				if ( tRow.find("input:checked").length != tRow.find(".ok").length ) totalRes = "error";
 				if (totalRes == "error") {
-					tRow.find(".gexv_sign").css({backgroundImage: "url(/images/error1.png)"}); // loose index if error
+					//tRow.find(".gexv_sign").css({backgroundImage: "url(/images/error1.png)"}); // loose index if error
+					tRow.find(".gexv_sign").addClass("gr-ex-error");
 					errorNum ++;
 				}else{
-					tRow.find(".gexv_sign").css({backgroundImage: "url(/images/accept1.png)"}); // success index
+					//tRow.find(".gexv_sign").css({backgroundImage: "url(/images/accept1.png)"}); // success index
+					tRow.find(".gexv_sign").addClass("gr-ex-correct");
 				}
 			} else {
-				tRow.find(".gexv_sign").css({backgroundImage: "url(/images/error1.png)"}); // loose index if none
+				//tRow.find(".gexv_sign").css({backgroundImage: "url(/images/error1.png)"}); // loose index if none
+				tRow.find(".gexv_sign").addClass("gr-ex-error");
 				errorNum ++;
 			}
 	});

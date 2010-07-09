@@ -57,8 +57,9 @@ padding-bottom: 14px;
 }
 
 .gexv_sign {
-line-height: 25px;
-padding-left: 70px;
+li-ne-height: 25px;
+padding-left: 50px;
+padding-top: 1px;
 background-repeat: no-repeat;
 padding-bottom: 14px;
 text-indent: -20px;
@@ -245,3 +246,18 @@ height: 40px;
 .gr-ex-testid {
 display: none;
 }
+
+.gr-ex-error {
+background-image: url(/images/error-20.png);
+}
+
+.gr-ex-correct {
+background-image: url(/images/accept-20.png);
+}
+
+
+
+
+
+
+

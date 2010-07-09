@@ -793,7 +793,7 @@ padding:4px;
 .es-egdiv {
 display: none;
 padding: 10px 0px 10px;
-margin: 14pt 20px;
+margin: 14pt 20px 10pt;
 background-color: #F6F6F6;
 border: 1px solid #CFCFCF;
 
@@ -820,6 +820,48 @@ margin: 12px 45px;
 font-size:12px;
 line-height:16px;
 }
+
+.show_ex_container {
+padding-left: 20px;
+}
+
+.content a.show_es_ex {
+outline: none;
+font-size: 11px;
+font-weight: bold;
+padding: 1px 1px 0;
+}
+
+.content a.show_es_ex:link  {
+border-bottom: 1px dashed #3B7CEF;
+color: #3B7CEF;
+background-color: transparent;
+text-decoration: none;
+}
+
+.content a.show_es_ex:visited  {
+border-bottom: 1px dashed #3B7CEF;
+color: #3B7CEF;
+background-color: transparent;
+text-decoration: none;
+}
+
+.content a.show_es_ex:hover  {
+border-bottom: 1px dotted #0045FF;
+color: #0045FF;
+background-color: transparent;
+text-decoration: none;
+}
+
+.content a.show_es_ex:active {
+border-bottom: 1px dotted #002DFF;
+color: #002DFF;
+background-color: transparent;
+text-decoration: none;
+}
+
+
+
 
 
 

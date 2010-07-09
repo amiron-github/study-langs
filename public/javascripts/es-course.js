@@ -1,4 +1,4 @@
-
+var es_lang;
 
 $(document).ready(function() {
 
@@ -15,6 +15,36 @@ $(".jp_controls").toggle(function() {
 		}, function() {
 	$(this).removeClass("jp_paused")
 });
+
+
+$(".show_es_ex").click(function() {
+
+	var t = $(this);
+	var tEx = t.parent().prev();
+	
+	if ( es_lang == "rus") {
+		var hideTxt = "Скрыть примеры";
+		var showTxt = "Показать примеры";
+	} else {
+		var hideTxt = "Hide examples";
+		var showTxt = "Show examples";
+	}
+	
+	if (tEx.is(":visible")) {
+		tEx.stop().css({opacity: 1}).animate({opacity: 0}, 300, function() {
+			tEx.slideUp(300);
+		});
+		t.text(showTxt)
+	} else {
+		tEx.stop().css({opacity: 0}).slideDown(300, function() {
+			tEx.animate({opacity: 1}, 300);
+		});
+		t.text(hideTxt)
+	}
+	
+	t.focus().blur();
+
+})
 
 	
 	
