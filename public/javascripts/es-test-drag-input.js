@@ -11,7 +11,7 @@ var di_style =""
 
 
 $(document).ready(function() {
-	$("head").append(di_style);
+	$("head").append(di_style);	
 });
 
 
@@ -26,9 +26,11 @@ this.id = hash['id'];
 this.targetBColor = hash['targets_color'];
 this.inTargets = hash['in_targets'];
 this.clearOption = hash['clear_option'];
+this.oneUse = hash['one_use'];
 
 if (this.inTargets == undefined ) this.inTargets = false;
 if (this.clearOption == undefined ) this.inTargets = false;
+if (this.oneUse == undefined ) this.oneUse = false;
 
 
 this.targetsData = new Array();
@@ -63,9 +65,20 @@ this.start = function() {
 	this.container.find(".clear_placed_text").click(function() {
 		if (tObj.inTargets) {
 			$(this).parent().find(tObj.inTargets).val("");
+			
+			
+			
+			
 		}else {
 			$(this).prev(tObj.targetsClass).val("");
 		}
+		
+		if (tObj.oneUse) {
+			$(this).parent().prev().prev().find(":hidden")
+				.css({visibility: "visible", backgroundColor: "#8FE2FF"})
+				.animate({backgroundColor: "#ffffff"});
+		}
+		
 		
 	});
 	
@@ -135,12 +148,22 @@ this.dropping = function (fromVariant) {
 		
 		if ( hitTarget > -1) {
 			tObj.hittedTarget(fromVariant, hitTarget);
-		}
-		//else {
+		} 
+		
+		if (!tObj.oneUse) {
 			tObj.variants.filter(":eq("+fromVariant+")")
 				.css({visibility: "visible", backgroundColor: "#8FE2FF"})
 				.animate({backgroundColor: "#ffffff"});
-		//}
+		} else {
+		
+			if ( hitTarget < 0) {
+				tObj.variants.filter(":eq("+fromVariant+")")
+					.css({visibility: "visible", backgroundColor: "#8FE2FF"})
+					.animate({backgroundColor: "#ffffff"});
+			}
+		}
+			
+
 		
 		$("body").removeClass("noselect");
 		e.preventDefault();

@@ -12,6 +12,17 @@
 <%= javascript_include_tag 'exercise-yn' %>
 <%= stylesheet_link_tag 'test-style' %>
 <%= stylesheet_link_tag 'exercises' %>
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'es-multiexercises' %>
+<%= stylesheet_link_tag 'es-exercise.css' %>
+
+
+
+
+
+
+
+
 
 
 <style type="text/css">
@@ -70,6 +81,13 @@ font-size: 40px;
 .f-j-reading {
 font-size: 15px;
 }
+
+
+#ch2 .es-ex-string-wrapper {
+font-size: 25px;
+}
+
+
 
 </style>
 
@@ -261,7 +279,7 @@ font-size: 15px;
 </table>
 
 
-<p></p>
+<br><br>
 
 
 
@@ -269,16 +287,31 @@ font-size: 15px;
 
 <p class="task ex-task">Выполнить тест 3-4 раза.</p>
 
-<div id="t1">
-<script type="text/javascript">
-var t1 = new Test({dict: [
+<div id="ch2" class="es-ex-wrapper">
+	<%= render :partial => 'es_exercise', :locals => {:lang => "rus"} %>
+</div>
 
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		quest_num: 10,
+		variants_num: 4,
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
 ['あ','a'],['い','i'],['う','u '],['え','e'], ['お','o'],
 ['か','ka'],['き','ki'],['く','ku '],['け','ke'], ['こ','ko'],
-['が','ga'],['ぎ','gi'],['ぐ','gu '],['げ','ge'], ['ご','go'],
-], hide:'di1',id:'t1',type: 'text', how_questions: 9, how_show: 2});
+['が','ga'],['ぎ','gi'],['ぐ','gu '],['げ','ge'], ['ご','go']
+
+
+		]
+		} )
 </script>
-</div>
+
+
+
+
+
 
 
 

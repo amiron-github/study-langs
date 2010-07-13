@@ -84,6 +84,37 @@ $("#result_lower_case").click(function() {
 })
 
 
+$("#result_del_char").click(function() {
+
+
+		
+		//str = str.replace(/\[/g, 'A')
+
+	var tString = $("#result textarea").val();
+	var replaceThis= $("#replace_char_value").val();
+	var withThis= $("#replace_tochar_value").val();
+	
+	if (replaceThis == '[' || replaceThis == '.') {
+		if (replaceThis == '[') tString =  tString.replace( /\[/g, withThis )
+		if (replaceThis == '.') tString =  tString.replace( /\./g, withThis )
+	} else {
+		tString = tString.replace( new RegExp( replaceThis, 'g' ), withThis );
+	}
+	
+	
+	
+	
+	$("#result textarea").val(tString);
+
+})
+
+
+	//RegExp.quote = function(str) {
+    // return str.replace(/([.?*+^$[\]\\(){}-])/g, "\\$1");
+// };
+
+
+
 $("#create_line_form").click(function() {
 	createLineForm();
 }).click();
@@ -92,6 +123,27 @@ $("#create_line_form").click(function() {
 $("#line_generator").click(function() {
 	generateLine();
 });
+
+
+$("#text_splitter").click(function() {
+	var splitChar = $("#text_splitter_char").val()
+	splitChar = $.trim(splitChar);
+
+	splitLine(splitChar);
+});
+
+$("#clear_col").click(function() {
+	var colNum = parseInt($("#clear_col_num").val());
+	clearColumn(colNum);
+});
+
+
+$("#del_col").click(function() {
+	var colNum = parseInt($("#del_col_num").val());
+	removeColumn(colNum);
+});
+
+
 
 
 $("#show_line_generator").toggle(function() {
@@ -279,6 +331,53 @@ $("#generated_"+r).text(tLineHtml + endLine);
 
  }
  
+ 
+ function splitLine(splitChar) {
+ 
+	var textArray = new Array();
+	textArray = $("#text textarea").val().split(/\r\n|\n/);
+	$("#line_generate").empty();
+ 
+	for (var r = 0; r < textArray.length; r ++ ) {
+			$("#line_generate").append('<div id="line_row_'+r+'" class="line_rows"></div>');
+			textArray[r] = textArray[r].split(splitChar);
+		
+			for (var i=0; i < textArray[r].length; i ++) {
+				textArray[r][i] = $.trim(textArray[r][i]);
+				$("#line_row_"+r).append('<input type="text" id="line_item_'+i+'" class="line_items" value="'+textArray[r][i]+'"> ');
+			}
+	}
+ 
+ }
+ 
+ 
+function clearColumn(col) {
+ $(".line_rows").each(function(i, elem) {
+	$(elem).find('input:eq('+(col - 1) +')').val("");
+})
+ 
+}
+
+
+function removeColumn(col) {
+ $(".line_rows").each(function(i, elem) {
+	$(elem).find('input:eq('+(col - 1) +')').remove();
+})
+ 
+}
+
+function invertColumn() {
+	$(".line_rows").each(function(i, elem) {
+		var first = $(elem).find('input:eq(0)');
+		var second = $(elem).find('input:eq(1)');
+		first.remove();
+		second.after(first);
+	});
+}
+
+
+ 
+ 
 
  
  </script>
@@ -382,6 +481,10 @@ padding: 3px 0px;
 margin: 2px;
 width: 150px;
 }
+
+.col_options input {
+font-size: 11px;
+}
  
 </style> 
  
@@ -411,8 +514,8 @@ width: 150px;
 <textarea rows="10" cols="40"></textarea>
 <br>
 <input type="button" id="launch" value="Randomize"/> <input type="button" id="sort_it" value="Sort"/> 
-<input type="button" id="text_lower_case" value="Lower case" style="display: none;"/>
-
+<input type="button" id="text_lower_case" value="Lower case" style="display: none;"/><br><br>
+<input type="button" id="text_splitter" value="Split by" /><input id="text_splitter_char" type="text" value="," size="5">
 <br>
 <br>
 
@@ -427,6 +530,10 @@ width: 150px;
 <textarea rows="10" cols="40"></textarea>
 <br>
 <input type="button" id="clear" value="Clear"> <input type="button" id="result_numerote" value="Numerote"/> <input type="button" id="result_lower_case" value="Lower case"/>
+<br><br>
+
+<input type="button" value="Replace" id="result_del_char"/> <input type="text" id="replace_char_value" size="3"> with <input type="text" id="replace_tochar_value" size="3">
+
 </div> 
 
 
@@ -503,6 +610,7 @@ width: 150px;
 <br><br>
 Width: 
 <select id="inserter_item_width">
+	<option>50</option>
 	<option>150</option>
 	<option>200</option>
 	<option>250</option>
@@ -531,6 +639,16 @@ Width:
 </select>
 <br>
 <br>
+<br>
+
+<div class="col_options">
+	<input type="button" value="Invert" onclick="invertColumn()">&nbsp;&nbsp;&nbsp;&nbsp;
+	<input id="del_col" type="button" value="Delete Col" ><input id="del_col_num" size="2" type="text">&nbsp;&nbsp;&nbsp;
+	<input id="clear_col" type="button" value="Clear Col" ><input id="clear_col_num" size="2" type="text">
+</div>
+
+<br>
+
 
 <div id="line_generate">
 

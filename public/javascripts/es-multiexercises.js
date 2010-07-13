@@ -172,14 +172,14 @@ this.parseTest = function() {
 		tObj.autoPlayBox = tObj.container.find(".es-ex-autoplay");
 		tObj.autoPlayBoxContainer = tObj.container.find(".es-ex-autoplay-wrapper");
 		
-		
-		if (tObj.answerType == 'yn') {
-			tObj.ynContainer = tObj.container.find(".yn-answer-type");
+		tObj.ynContainer = tObj.container.find(".yn-answer-type");
 			tObj.transHolder = tObj.container.find(".yn-trans");
 			tObj.ynButtonsHolder = tObj.container.find(".yn-btns");
 			tObj.ynButtons = tObj.ynButtonsHolder.find("input");
 			tObj.yesButton = tObj.container.find("input.yn-yes");
 			tObj.noButton = tObj.container.find("input.yn-no");
+		
+		if (tObj.answerType == 'yn') {
 			tObj.ynContainer.show();
 		}
 		
@@ -276,7 +276,9 @@ tObj.alertHolder.empty().removeClass(tObj.correctClass).removeClass(tObj.wrongCl
 	
 	if (tObj.answerType == 'yn') {
 		tObj.getYnAnswers();
-	} else {
+	} else if ( tObj.answerType == 'type') {
+		tObj.getTypeAnswers();
+	}else {
 		tObj.getOptions();
 	}
 	if (this.questNum - this.counter == 1) tObj.nextButton.val(tObj.seeResultsTxt);			
@@ -306,6 +308,29 @@ this.getYnAnswers = function() {
 		tObj.yesButton.click(function() {tObj.correctAnswer();});
 		tObj.noButton.click(function() {tObj.wrongAnswer();});
 	}
+}
+
+this.getTypeAnswers = function() {
+	tObj.optionsHolder.html('<input type="text" class="es-ex-type-field" size="20"> <br><br><input type="button" class="es-ex-check-type" value="Check"><br><br><input type="button" class="es-ex-show-type" value="Show"><div class="es-ex-show-str-type" style="visibility: hidden;">'+tObj.workArray[tObj.counter][1]+'</div>');
+	tObj.optionsHolder.find(".es-ex-show-str-type").text(tObj.workArray[tObj.counter][1]);
+	
+	tObj.optionsHolder.find(".es-ex-show-type").click(function() {
+		tObj.optionsHolder.find(".es-ex-show-str-type").css({visibility: "visible"})
+	});
+	
+	
+	tObj.optionsHolder.find(".es-ex-check-type").click(function() {
+		if (tObj.optionsHolder.find(".es-ex-type-field").val() == tObj.workArray[tObj.counter][1] ) {
+			tObj.alertHolder.empty().removeClass(tObj.correctClass).removeClass(tObj.wrongClass);
+			if (tObj.autoPlay) tObj.optionsHolder.find(".es-ex-check-type").attr("disabled", "disabled")
+			tObj.correctAnswer();
+		} else {
+			tObj.alertHolder.empty().removeClass(tObj.correctClass).removeClass(tObj.wrongClass);
+			if (tObj.autoPlay) tObj.optionsHolder.find(".es-ex-check-type").attr("disabled", "disabled")
+			tObj.wrongAnswer();
+		}
+	});
+	
 }
 
 this.getOptions = function() {
@@ -379,7 +404,7 @@ this.correctAnswer = function () {
 	tObj.alertHolder.html("" + tObj.correctMsg + "").addClass(tObj.correctClass);
 	tObj.correctAswersNum ++;
 	
-	if (tObj.answerType != 'yn') {
+	if (tObj.answerType != 'yn' && tObj.answerType != 'type') {
 		tObj.optionsHolder.find("li").unbind("click").each(function(i, elem) {
 			if ($(elem).data('correct') != 'true') {
 				tObj.highlightWrong($(elem));
@@ -403,7 +428,7 @@ this.wrongAnswer = function (jElem) {
 	tObj.wrongAnswers.push(tObj.workArray[tObj.counter][1]);
 	tObj.wrongAswersNum++;
 
-	if (tObj.answerType != 'yn') {
+	if (tObj.answerType != 'yn' && tObj.answerType != 'type') {
 		tObj.optionsHolder.find("li").unbind("click").each(function(i, elem) {
 			if ($(elem).data('correct') != 'true') {
 				tObj.highlightWrong($(elem));
