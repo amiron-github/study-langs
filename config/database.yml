@@ -41,6 +41,7 @@ production:
 #  encoding: utf8
   database: study_production
   pool: 5
-  username: root
-  password: 
+  username: MySQLForever
+  password: frctcvfplfq
+  host: 169.254.10.10
   socket: /var/lib/mysql/mysql.sock
