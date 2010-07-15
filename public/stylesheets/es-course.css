@@ -926,6 +926,11 @@ text-decoration: none !important;
 user-select: none;
 }
 
+.es-pr-read-container .dial-reply {
+text-indent: -14px; 
+padding-left: 24px;
+}
+
 
 a:link.clear_placed_text {
 border: 1px solid gray;
@@ -982,7 +987,6 @@ padding: 5px 5px 5px 40px;
 ul.rev-summary li {
 padding: 4px 0;
 }
-
 
 
 

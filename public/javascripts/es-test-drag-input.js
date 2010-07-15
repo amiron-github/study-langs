@@ -74,7 +74,7 @@ this.start = function() {
 		}
 		
 		if (tObj.oneUse) {
-			$(this).parent().prev().prev().find(":hidden")
+			$(this).parent().find(".di_mix_variants").find(":hidden")
 				.css({visibility: "visible", backgroundColor: "#8FE2FF"})
 				.animate({backgroundColor: "#ffffff"});
 		}

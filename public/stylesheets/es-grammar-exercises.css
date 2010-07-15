@@ -256,6 +256,48 @@ background-image: url(/images/accept-20.png);
 }
 
 
+.di_mix .di_mix_variants {
+margin-bottom: 10px;
+margin-top: 10px;
+padding: 3px;
+border: 1px dashed #000;
+background-color: #efefef;
+width: 430px;
+}
+
+.di_mix .gext_sign  input {
+width: 430px !important;
+}
+
+ .di_mix_variants span {
+margin-left: 10px;
+background-color: #fff;
+color: #333;
+}
+
+.di_mix .di_mix_tobuild {
+line-height:20px;
+text-indent:0px;
+
+}
+
+.di_mix .gext_sign {
+padding-bottom: 17px;
+border-bottom: 1px dotted #666;
+}
+
+.di_mix_first {
+border-top: 1px dotted #666;
+}
+
+.di_mix .gext_sign {
+padding-top: 8px;
+padding-left:50px;
+text-indent:0px;
+background-position: 0 50%;
+}
+
+
 
 
 
