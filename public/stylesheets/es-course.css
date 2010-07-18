@@ -248,6 +248,9 @@ background-image: url(/images/control_pause.png) !important;
 }
 
 
+
+/*start of drag/drop test */
+
 .ds-audio  .ds-quest {
 font-weight: bold;
 font-size: 12px;
@@ -303,12 +306,14 @@ text-align: left;
 
 }
 
+
 #ds_dragHelper  div {
 background-image:url("/images/dialog-tr-bg.png");
 background-position:right bottom;
 background-repeat:repeat-x;
 font-weight: bold;
 }
+
 
 #ds_dragHelper {
 -moz-box-shadow: 0px 2px 4px #555;
@@ -327,6 +332,31 @@ background-repeat:repeat-x;
 .ds-quest {
 bor-der-right: 1px solid #999;
 text-align: center !important;
+}
+
+
+.ds-table th {
+background-color:#DFDFDF;
+background-image:none;
+text-align: center;
+padding: 5px;
+border-bottom: 1px solid #999;
+}
+
+.ds-table .ds-line-head {
+background-image: none;
+padding: 5px 10px;
+font-weight: bold;
+}
+
+.sl_item {
+background-color: #fff;
+margin: 2px;
+border: 1px dashed #DFDFDF;
+}
+
+.ds-border-right {
+border-right: 1px solid #999;
 }
 
 .ds_sort_item {
@@ -374,7 +404,14 @@ display: none;
 }
 
 
+.no-list {
+list-style: none;
+padding: 0;
+margin: 0;
+}
 
+
+/*end of drag/drop test */
 
 h3.es-task {
 margin-bottom: 0px;
@@ -387,13 +424,6 @@ font-size: 15px;
 
 
 
-
-
-.no-list {
-list-style: none;
-padding: 0;
-margin: 0;
-}
 
 //////////////////////
 

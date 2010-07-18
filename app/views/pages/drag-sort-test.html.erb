@@ -4,12 +4,10 @@
 
 
 <%= javascript_include_tag 'test-drag-sort' %>
+<%= javascript_include_tag 'test-drag-sort-list' %>
 <%= stylesheet_link_tag 'es-course' %>
 
-<style type="text/css">
 
-
-</style>
 
 <%end%>
 
@@ -64,7 +62,7 @@
 	</td>
 	<td class="ds-answer">
 		<div class="ds_sort_item">
-			
+			&nbsp;
 		</div>
 	</td>
 
@@ -141,14 +139,254 @@
 
 
 
+<div id="sl1" class="ds-wrapper drag-sort-list" style="padding: 15px;">
+		
+
+<table align="center" style="margin: 0 auto;">
+<tr>
+<td>
+
+
+<table class="dst-test ds-table ds-audio" cellspacing="0" align="left" style="margin: auto">
+
+<col width="150"><col width="150"><col width="150">
+
+<tr>
+	<th class="ds-border-right" >Greetings</th>
+	<th class="ds-border-right" >Farewells</th>
+	<th >Appologize</th>
+</tr>
+<tr>
+	<td class="ds-answer ds-border-right" style="vertical-align: top; height: 200px">
+		<div class="ds_sort_item">
+
+		</div>
+	</td>
+		<td class="ds-answer ds-border-right " style="vertical-align: top; height: 100px">
+		<div class="ds_sort_item">
+
+		</div>
+	</td>
+	<td class="ds-answer" style="vertical-align: top; height: 100px">
+		<div class="ds_sort_item">
+
+		</div>
+	</td>
+</tr>
+
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+	<td>
+	
+		<div class="ds_check_sign"></div>
+	
+	</td>
+</tr>
+<tr>
+
+<td>
+	
+
+
+<table class="ds_variants_list"  style="margin: 0 auto" align="center">
+<col width="170">
+<col width="150">
+
+<tr valign="top">
+<td>
+
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Здравствуйте!</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Как поживаете?</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Добрый день!</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Спасибо, хорошо, потому что хорошо.</div></div>
+	</li>
+</ul>
+
+</td>
+<td>
+
+<ul class="no-list">
+
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>Как дела?</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>Привет!</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>Прекрасно.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>Неплохо.</div></div>
+	</li>
+</ul>
+
+</td>
+</tr>
+</table>
 
 
 
+</td>
+</tr>
+</table>
+
+
+<div class="es_btn_wrapper">
+<a href="javascript:;" class="es_btn ds-check-button" >Check answers</a>
+</div>
+
+
+</div>
+
+<script type="text/javascript"> 
+	var sl1 = new sortlist_test( {
+		id: "sl1", 
+		targets: "ds-answer", 
+		answer_elem: "ds_sort_item", 
+		variant_elem: "ds_variant",
+		answer_color: "#fff",
+		auto_check: false
+		} )
+</script>
 
 
 <br>
 <br>
+
+
+
+<div id="sl2" class="ds-wrapper drag-sort-list" style="padding: 15px;">
+		
+
+<table align="center" style="margin: 0 auto;">
+<tr>
+<td>
+
+
+
+<table class="ds_variants_list"  style="margin: 0 auto" align="center">
+<col width="170">
+<col width="150">
+
+<tr valign="top">
+<td>
+
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Здравствуйте!</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Как поживаете?</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Добрый день!</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Спасибо, хорошо, потому что хорошо.</div></div>
+	</li>
+</ul>
+
+</td>
+<td>
+
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>Как дела?</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>Привет!</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>Прекрасно.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>Неплохо.</div></div>
+	</li>
+</ul>
+
+</td>
+</tr>
+</table>
+
 <br>
 <br>
 
+</td>
+</tr>
+<tr>
+<td>
 
+
+<table class="dst-test ds-table ds-audio" cellspacing="0" align="left" style="margin: auto">
+
+<col width="120"><col width="250">
+
+
+<tr>
+	<td class="ds-border-right ds-line-head" style="vertical-align: top; height: 100px">
+		Greetings
+	</td>
+	<td class="ds-answer" style="vertical-align:top;">
+		<div class="ds_sort_item">
+
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-border-right ds-line-head" style="vertical-align: top; height: 100px">
+		Farewaels
+	</td>
+	<td class="ds-answer" style="vertical-align:top;">
+		<div class="ds_sort_item">
+
+		</div>
+	</td>
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+
+
+
+</table>
+
+<div class="es_btn_wrapper">
+<a href="javascript:;" class="es_btn ds-check-button" >Check answers</a>
+</div>
+
+
+</div>
+
+<script type="text/javascript"> 
+	var sl2 = new sortlist_test( {
+		id: "sl2", 
+		targets: "ds-answer", 
+		answer_elem: "ds_sort_item", 
+		variant_elem: "ds_variant",
+		answer_color: "#fff",
+		auto_check: false
+		} )
+</script>
+<br>
+<br>
+
+<br>
+<br>

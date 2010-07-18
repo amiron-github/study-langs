@@ -127,11 +127,6 @@
 ///////////////////////////////////////////////////////////////////
 
 
-
-
-
-
-
 var ds_style =""
 +"<style type='text/css'> "
 +".ds_dragHelper {left: 0; top: 0; position: absolute;}"
@@ -374,14 +369,223 @@ $(document).ready(function() {
 
 }
 
-function data() {
 
-for (var i=0; i < ds1.targetsData.length; i ++ ) {
+function sortlist_test(hash) {
 
-	alert( ds1.targetsData[i].html  )
+var tObj = this;
+var dragHelper;
+
+this.targetsClass = hash['targets'];
+this.answersClass = hash['answer_elem'];
+this.variantsClass = hash['variant_elem'];
+this.autoCheck = hash['auto_check'];
+this.id = hash['id'];
+this.answerBColor = hash['answer_color'];
+this.checkClass="ds-rt";
+this.signClass="ds-sign";
+this.correctClass = "ds-correct-answer";
+this.errorClass = "ds-error-answer";
+
+
+this.targetsData = new Array();
+
+
+this.start = function() {
+
+	this.container = $('#'+this.id);
+	this.targets = this.container.find("." + this.targetsClass );			// jquery elements to put the variants in, wrappers of answers
+	this.answers = this.container.find("." + this.answersClass);             // jquery elements with answers to check
+	this.variants = this.container.find("."+ tObj.variantsClass);          // jquery elements with variants which will be dragged and checked as answers
+	
+	this.checkButton = tObj.container.find(".ds-check-button"); 
+	
+	this.targets.css({cursor: "default"});
+	this.variants.css({cursor: "default"});
+	
+	$("body").append('<div id="'+ this.id +'_dragHelper" class="ds_dragHelper noselect"></div>');
+	dragHelper = $('#'+ this.id +'_dragHelper');
+	this.targets.attr("taken", "-1");
+	
+	this.checkButton.click(function() {
+		tObj.checkAnswers();
+	}).mousedown(function() {
+		tObj.checkButton.css({left: "1px", top: "1px"});
+	}).mouseup(function() {
+		tObj.checkButton.css({left: "0px", top: "0px"})
+	});
+	
+	this.variants.mousedown(function(e) {
+		$("body").addClass("noselect");
+		var t = $(this);
+		var fromVariant = tObj.variants.index(t);
+		var tHtml = t.html();
+		var x = t.offset().left;
+		var y = t.offset().top;
+		var l= t.width();
+		var difX=e.pageX-x;
+		var difY=e.pageY-y;
+		
+		tObj.targetTable();               // shot of targets
+		t.css({visibility: "hidden"});
+		dragHelper.addClass("ds_ondrag").html(tHtml).css({left: x, top: y, maxWidth: l, opacity: "0.8"});
+		tObj.dragging(difX, difY);
+		tObj.dropping(fromVariant);
+		e.preventDefault();
+		return false;
+	});
+	
 }
 
+
+this.dragging = function (difX, difY) {
+	$("body").bind("mousemove",function(e){
+		dragHelper.css({left: e.pageX-difX, top: e.pageY-difY});
+		e.preventDefault();
+		return false;
+	});
 }
+
+this.targetTable = function() {
+		this.targetsData = new Array();
+		this.targets.each(function(i,elem) {
+			var loc = $(elem).offset();
+			loc.right = loc.left + $(elem).width();
+			loc.bottom = loc.top + $(elem).height();
+			loc.html = $(elem).children().html();
+			loc.elem = elem;
+			loc.taken = $(elem).attr("taken");
+			tObj.targetsData.push(loc);
+		});
+}
+
+
+this.collision = function (x,y) {
+	for (var i = 0; i < tObj.targetsData.length; i++) {
+		if ( tObj.targetsData[i].left < x && tObj.targetsData[i].right > x && tObj.targetsData[i].top < y && tObj.targetsData[i].bottom > y)
+			return i;
+		}
+	return -1;
+}
+
+this.dropping = function (fromVariant) {
+
+	$("body").one("mouseup", function(e) {
+		var hitTarget = tObj.collision(e.pageX,e.pageY);   // determine if a target is hitted
+		dragHelper.removeClass("ds_ondrag").empty();       // remove drag helper
+		$("body").unbind("mousemove");
+		
+		if ( hitTarget > -1) {
+			tObj.hittedTarget(fromVariant, hitTarget);
+		}
+		else {
+			tObj.variants.filter(":eq("+fromVariant+")").css({visibility: "visible"});
+		}
+		
+		tObj.container.find("."+tObj.signClass).removeClass(tObj.correctClass).removeClass(tObj.errorClass);
+		if (tObj.autoCheck == true) {
+			tObj.checkAnswers();
+		}
+		
+		$("body").removeClass("noselect");
+		e.preventDefault();
+		return false;
+	});
+}
+
+
+
+this.hittedTarget = function (fromVariant, hitted) {
+	
+		var tVariantHtml = tObj.variants.filter(":eq("+fromVariant+")").html();
+		
+		tObj.targets.eq(hitted).children().append('<div taken="'+fromVariant+'" class="sl_item">' + tVariantHtml + '</div> ');
+		tObj.hittedAnimation(hitted);
+			
+		this.answers.find("div.sl_item").mousedown(function(e){
+
+			$("body").addClass("noselect");
+			var t = $(this);
+			var x = t.offset().left;
+			var y = t.offset().top;
+			var l= t.width();
+			var difX=e.pageX-x;
+			var difY=e.pageY-y;
+			var fromVariant = t.attr("taken");
+
+			var tHtml = t.html();
+			t.parent().attr("taken", "-1");
+			t.remove();
+			tObj.targetTable();  // shot of the targets
+			dragHelper.addClass("ds_ondrag").html(tHtml).css({left: x, top: y, maxWidth: l, opacity: "0.8", textAlign: "left"});
+			tObj.dragging(difX, difY);
+			tObj.dropping(fromVariant);
+			e.preventDefault();
+			return false;
+
+	});
+		
+}
+
+this.hittedAnimation = function(hitted) {
+			if (tObj.answerBColor == undefined) {
+				var tColor = tObj.targets.eq(hitted).css("background-color");
+			} else {
+				var tColor = tObj.answerBColor;
+			}
+			tObj.targets.eq(hitted).find(".sl_item:last").addClass("ds_noImage").stop().css({backgroundColor: "#feff8f"}).animate({backgroundColor: tColor},500, function () {
+				tObj.targets.eq(hitted).find(".sl_item:last").css({backgroundColor: tColor}).removeClass("ds_noImage");
+			});
+}
+
+this.checkAnswers = function() {
+	
+	var totalVariants = tObj.variants.length;
+	var correctLen = 0;
+	var errorLen = 0;
+
+  tObj.answers.each(function(i, elem) {
+	$(elem).find("."+tObj.checkClass).each(function(a, item) {
+		var toCol = $(item).text();
+		if (toCol -1 == i) {
+			$(item).parent().parent().css({color: "green"});
+			correctLen ++;
+		}else {
+			$(item).parent().parent().css({color: "red", borderColor: "#FF7F7F"});
+			errorLen ++;
+		}
+	
+	})
+	
+  });
+  
+  var untouch = totalVariants - correctLen - errorLen;
+  
+  tObj.container.find('.ds_check_sign').text('Correct: '+ correctLen + ', errors: '+errorLen+ ", untouch: "+ untouch+", total: "+ totalVariants);
+  
+}
+
+$(document).ready(function() {
+	tObj.start();
+});
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
