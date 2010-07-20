@@ -565,12 +565,16 @@ $(".show_keyboard").click(function() {
 	var elWidth = $(".keys_poser").width();
 	var toX = ( $(document).width()) * .5 - elWidth * .5;
 	var toY = $(this).offset().top;
+	var distance;
+	
+	if ($(this).find(".kb_offset_top").length > 0 ) distance = parseInt ( $(this).find(".kb_offset_top").text());
+	else distance = 30;
 	
 	if (!itsFixed) {
 		if( $(".active_input").length == 0 ) {                   //|| $(".active_input").offset().top < toY ) {
 			$(".keys_poser").add(".draggerClone").css({left: toX}, 200)
 		}
-		$(".keys_poser").add(".draggerClone").animate({top: toY + 30}, 200);
+		$(".keys_poser").add(".draggerClone").animate({top: toY + distance}, 200);
 	}
 	$(".keys_poser").show();
 	

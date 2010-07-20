@@ -1,0 +1,687 @@
+<% @page_title = 'Study Russian Online: Russian alphabet exercises, part 1' %>
+<% @page_meta = {'description' => ""} %>
+
+<% content_for :special_js_css do %>
+
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'jquery.tablesorter.min.js' %>
+<%= javascript_include_tag 'alphabet-exercises' %>
+
+<%= javascript_include_tag 'es-grammar-exercises' %>
+<%= javascript_include_tag 'es-test-drag-input' %>
+<%= stylesheet_link_tag 'es-course' %>
+<%= stylesheet_link_tag 'es-exercise.css' %>
+ <%= javascript_include_tag 'es-virtual-keyboard' %>
+ <%= stylesheet_link_tag 'keyboard' %>
+
+
+<style type="text/css">
+
+</style>
+
+<% end %>
+
+
+
+<h2 class="page">Russian alphabet <br> Vowels</h2>
+
+
+
+<h3 class="es-task-in">Listen and repeat</h3>
+	
+	
+	
+	<table class="es-words-list" cellspacing="1">
+	
+	<thead>
+		<tr>
+			<th class="{sorter: false}">Uppercase</th>
+			<th class="{sorter: false}">Lowercase</th>
+			<th class="{sorter: false}">Sound</th>
+			<th class="{sorter: false}">Name</th>
+		</tr>
+			
+	</thead>
+	<tbody>
+		<tr>
+			<td class="wl-rus">
+				A
+			</td>
+			<td class="wl-rus">
+				а
+			</td>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound101.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				[a]
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-rus">
+				Е
+			</td>
+			<td class="wl-rus">
+				е
+			</td>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound106.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				[ye]
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-rus">
+				Ё
+			</td>
+			<td class="wl-rus">
+				ё
+			</td>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound107.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				[yo]
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-rus">
+				И
+			</td>
+			<td class="wl-rus">
+				и
+			</td>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound110.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				[i]
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-rus">
+				О
+			</td>
+			<td class="wl-rus">
+				о
+			</td>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound116.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				[o]
+			</td>
+		</tr>
+		<tr>
+			
+			<td class="wl-rus">
+				У
+			</td>
+			<td class="wl-rus">
+				у
+			</td>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound121.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				[oo]
+			</td>
+		</tr>
+		<tr>
+			
+			<td class="wl-rus">
+				Ы
+			</td>
+			<td class="wl-rus">
+				ы
+			</td>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound129.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				[<s>i</s>]
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-rus">
+				Э
+			</td>
+			<td class="wl-rus">
+				э
+			</td>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound131.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				[e]
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-rus">
+				Ю
+			</td>
+			<td class="wl-rus">
+				ю
+			</td>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound132.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				[yoo]
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-rus">
+				Я
+			</td>
+			<td class="wl-rus">
+				я
+			</td>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound133.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				[ya]
+			</td>
+		</tr>
+	</tbody>
+	</table>
+	
+	<br>
+	<br>
+
+<h3 class="es-task-in">Сделайте перевод фраз, используя изученные выражения</h3>
+
+	
+<div id="ch1" class="es-ex-wrapper">
+	<%= render :partial => 'es_exercise' %>
+</div>
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		quest_num: 10,
+		answer_type: 'yn',
+		quest_type: 'audio',
+		basic_array: [
+		
+['/sounds/sound101.mp3','А'],
+['/sounds/sound106.mp3','Е'],
+['/sounds/sound107.mp3','Ё'],
+['/sounds/sound110.mp3','И'],
+['/sounds/sound116.mp3','О'],
+['/sounds/sound121.mp3','У'],
+['/sounds/sound129.mp3','Ы'],
+['/sounds/sound131.mp3','Э'],
+['/sounds/sound132.mp3','Ю'],
+['/sounds/sound133.mp3','Я']
+
+		]
+		} )
+</script>
+
+
+
+<br><br><br>
+
+<h3 class="es-task-in">Прочитайте фразы и выберите ответ  </h3>	
+	
+<div id="ch2" class="es-ex-wrapper">
+	<%= render :partial => 'es_exercise' %>
+</div>
+
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		quest_num: 10,
+		quest_type: 'audio',
+		basic_array: [
+		
+['/sounds/sound101.mp3','А а'],
+['/sounds/sound106.mp3','Е е'],
+['/sounds/sound107.mp3','Ё ё'],
+['/sounds/sound110.mp3','И и'],
+['/sounds/sound116.mp3','О о'],
+['/sounds/sound121.mp3','У у'],
+['/sounds/sound129.mp3','Ы ы'],
+['/sounds/sound131.mp3','Э э'],
+['/sounds/sound132.mp3','Ю ю'],
+['/sounds/sound133.mp3','Я я']
+
+		]
+		} )
+</script>
+	
+
+
+<br><br>
+
+
+
+
+
+
+<h3 class="es-task-in">Сделайте перевод фраз, используя изученные выражения</h3>
+
+<h3 class="es-task">Match sounds and text</h3>
+
+
+<div id="ds1" class="ds-wrapper" style="padding: 15px;">
+
+<p style="font-size: 11px; text-align: center;">Listen to the phrases and find corresponding Russian expressions from the list below.</p>		
+
+<table align="center" style="margin: 0 auto;">
+
+
+<tr>
+<td>
+
+
+<table class="dst-test ds-table ds-audio" cellspacing="0" align="left" style="margin: auto">
+<col width="80">
+<col width="20">
+<col width="40">
+<col width="100">
+<tr>
+	<td class="ds-quest" align="center">
+			Sound 1 
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound132.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+			Sound 2
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound106.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Sound 3
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound116.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Sound 4
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound121.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Sound 5
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound133.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Sound 6
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound101.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Sound 7
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound110.mp3', this)"></div>
+	</td>	
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Sound 8
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound129.mp3', this)"></div>
+	</td>	
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Sound 9
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound131.mp3', this)"></div>
+	</td>	
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Sound 10
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound107.mp3', this)"></div>
+	</td>	
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+
+</table>
+
+</td>
+
+
+
+<td style="padding-left: 30px;">
+	
+<table class="ds_variants_list" >
+<col width="100">
+
+<tr valign="top">
+<td >
+
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">6</span>A а</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>Е е</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">10</span>Ё ё</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">7</span>И и</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>О о</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">4</span>У у</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">8</span>Ы ы</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">9</span>Э э</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Ю ю</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">5</span>Я я</div></div>
+	</li>
+</ul>
+
+</td>
+
+</tr>
+</table>
+
+
+</td>
+</tr>
+</table>
+
+<br><br>
+<div class="es_btn_wrapper">
+<a href="javascript:;" class="es_btn ds-check-button" >Check answers</a>
+</div>
+
+
+</div>
+
+<script type="text/javascript"> 
+	var ds1 = new dragsort_test( {
+		id: "ds1", 
+		targets: "ds-answer", 
+		answer_elem: "ds_sort_item", 
+		variant_elem: "ds_variant",
+		answer_color: "#F7F6F6",
+		auto_check: false
+		} )
+</script>
+		
+		
+		
+		
+		
+	<br><br>
+
+
+<br><br>
+
+
+
+<h3 class="es-task-in">Прочитайте фразы и выберите ответ  </h3>	
+	
+<div id="ch3" class="es-ex-wrapper">
+	<div class="es-ex-alert-container"><div class="es-ex-alert-rt"><div class="es-ex-alert"> &nbsp;</div></div></div>
+<div class="es-ex-top">
+	<div class="es-ex-autoplay-wrapper"><input class="es-ex-autoplay" type="checkbox" /> <span>Auto play</span> </div>
+	<div class="es-ex-final"></div>
+</div>
+<table class="es-ex-content" cellspacing="0">
+	<tr>
+		<td class="es-ex-quest" width="40%" valign="middle" align="center">
+			<div class="es-ex-audio-wrapper">
+
+				<table><tr><td style="height: 140px;"><div class="es-ex-audio-holder"><div class="es-ex-audio"></div></div></td></tr></table>
+			</div>
+			<div class="es-ex-string-holder">
+				<table><tr><td class="es-ex-string-wrapper" style="height: 150px;">&nbsp;</td></tr></table>
+			</div>
+		</td>
+		<td class="es-ex-tasks" valign="top">
+			<input type="text" class="es-ex-type-field for_keyb" size="20"/> 
+			
+			<div class="es-ex-type-elements">
+				
+			</div>
+			
+			<a class="show_keyboard" href="javascript:;">[ Use virtual keyboard ]<span class="kb_offset_top" style="display: none;">100</span></a>
+			
+		</td>
+	</tr>
+	<tr>
+
+		<td><div class="es-ex-bottom"><input type="button" class="es-ex-next" value="NEXT" style="font-size: 12px; visibility: hidden;"></div></td>
+		<td></td>
+	</tr>
+</table>
+<div class="es-ex-info-container">
+	<table cellspacing="0" align="center">
+		<tr>
+			<td style="padding-left: 20px;"><div class="es-ex-info"> &nbsp;  </div></td>
+			<td><div class="es-ex-buttons"><input type="button" class="es-ex-es-btn es-ex-start" value="RESTART"/></div></td>
+
+		</tr>
+	</table>
+</div>
+
+
+</div>
+
+<script type="text/javascript"> 
+	var ch3 = new ch_exercise( {
+		id: "ch3", 
+		quest_num: 10,
+		answer_type: "type",
+		quest_type: "audio",
+		basic_array: [
+		
+['/sounds/sound101.mp3','А'],
+['/sounds/sound106.mp3','Е'],
+['/sounds/sound107.mp3','Ё'],
+['/sounds/sound110.mp3','И'],
+['/sounds/sound116.mp3','О'],
+['/sounds/sound121.mp3','У'],
+['/sounds/sound129.mp3','Ы'],
+['/sounds/sound131.mp3','Э'],
+['/sounds/sound132.mp3','Ю'],
+['/sounds/sound133.mp3','Я']
+
+		]
+		} )
+</script>
+
+
+<h3 class="es-task-in">Прочитайте фразы и выберите ответ  </h3>	
+	
+<div id="ch4" class="es-ex-wrapper">
+	<div class="es-ex-alert-container"><div class="es-ex-alert-rt"><div class="es-ex-alert"> &nbsp;</div></div></div>
+<div class="es-ex-top">
+	<div class="es-ex-autoplay-wrapper"><input class="es-ex-autoplay" type="checkbox" /> <span>Auto play</span> </div>
+	<div class="es-ex-final"></div>
+</div>
+<table class="es-ex-content" cellspacing="0">
+	<tr>
+		<td class="es-ex-quest" width="40%" valign="middle" align="center">
+			<div class="es-ex-audio-wrapper">
+
+				<table><tr><td style="height: 140px;"><div class="es-ex-audio-holder"><div class="es-ex-audio"></div></div></td></tr></table>
+			</div>
+			<div class="es-ex-string-holder">
+				<table><tr><td class="es-ex-string-wrapper" style="height: 150px;">&nbsp;</td></tr></table>
+			</div>
+		</td>
+		<td class="es-ex-tasks" valign="top">
+			<input type="text" class="es-ex-type-field for_keyb" size="20"/> 
+			
+			<div class="es-ex-type-elements">
+				
+			</div>
+			
+			<a class="show_keyboard" href="javascript:;">[ Use virtual keyboard ]<span class="kb_offset_top" style="display: none;">100</span></a>
+			
+		</td>
+	</tr>
+	<tr>
+
+		<td><div class="es-ex-bottom"><input type="button" class="es-ex-next" value="NEXT" style="font-size: 12px; visibility: hidden;"></div></td>
+		<td></td>
+	</tr>
+</table>
+<div class="es-ex-info-container">
+	<table cellspacing="0" align="center">
+		<tr>
+			<td style="padding-left: 20px;"><div class="es-ex-info"> &nbsp;  </div></td>
+			<td><div class="es-ex-buttons"><input type="button" class="es-ex-es-btn es-ex-start" value="RESTART"/></div></td>
+
+		</tr>
+	</table>
+</div>
+
+
+</div>
+
+<script type="text/javascript"> 
+	var ch4 = new ch_exercise( {
+		id: "ch4", 
+		quest_num: 3,
+		answer_type: "type",
+		quest_type: "audio",
+		mix_basic: false,
+		basic_array: [
+		
+['/sounds/sound101.mp3','А'],
+['/sounds/sound106.mp3','Е'],
+['/sounds/sound107.mp3','Ё'],
+['/sounds/sound110.mp3','И'],
+['/sounds/sound116.mp3','О'],
+['/sounds/sound121.mp3','У'],
+['/sounds/sound129.mp3','Ы'],
+['/sounds/sound131.mp3','Э'],
+['/sounds/sound132.mp3','Ю'],
+['/sounds/sound133.mp3','Я']
+
+		]
+		} )
+</script>
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
+<script type="text/javascript">
+//currentSection="";
+</script>
