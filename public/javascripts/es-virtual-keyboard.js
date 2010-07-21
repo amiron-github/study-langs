@@ -77,7 +77,7 @@ var keyboardHtml = ''
 +'</table>'
 +'<table class="virtual_keyboard" border="0" cellpadding="0" cellspacing="0" align="center">'
 +'<tr>'
-+'<td class="k_caps_lock"><div title="Caps Lock">?</div></td>'
++'<td class="k_caps_lock"><div title="Caps Lock">⇑</div></td>'
 +'<td class="k_90"><div>я</div></td>'
 +'<td class="k_88"><div>ч</div></td>'
 +'<td class="k_67"><div>с</div></td>'
@@ -683,11 +683,11 @@ function operateCaps() {
 	if ( $('.virtual_keyboard').hasClass("k_toCaps")) {
 		toCaps = false;
 		$('.virtual_keyboard').removeClass("k_toCaps");
-		$(".k_caps_lock div").text('?');
+		$(".k_caps_lock div").text('⇑');
 	} else {
 		toCaps = true;
 		$('.virtual_keyboard').addClass("k_toCaps");
-		$(".k_caps_lock div").text('?');
+		$(".k_caps_lock div").text('⇓');
 	}
 }
 

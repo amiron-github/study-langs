@@ -92,7 +92,7 @@ $(".es-ex-buttons input").hover(
 		$(this).addClass("ex-btn-hover");
 		event.preventDefault();
 	}, function(event) {
-		$(this).removeClass("ex-btn-hover");
+		$(this).removeClass("ex-btn-hover").removeClass("ex-btn-down");
 	}).mousedown(function(event) {
 		$(this).addClass("ex-btn-down");
 		event.preventDefault();
@@ -291,7 +291,6 @@ this.start = function () {
 					}
 				});
 			}
-
 		}
 		
 		if (tObj.autoPlay) tObj.autoPlayBox.attr("checked", "checked");
@@ -388,12 +387,12 @@ this.getYnAnswers = function() {
 
 this.getTypeAnswers = function() {
 	tObj.optionsHolder.find(".es-ex-type-field").val("");
-	tObj.optionsHolder.find(".es-ex-type-elements").html('<br><input type="button" class="es-ex-check-type" value="Check"><br><br><input type="button" class="es-ex-show-type" value="Show"><span class="es-ex-show-str-type" style="visibility: hidden;">'+tObj.workArray[tObj.counter][1]+'</span>');
+	tObj.optionsHolder.find(".es-ex-type-elements").html('<a href="javascript:;" class="es-ex-show-type">Show the answer</a>');
 	tObj.optionsHolder.find(".es-ex-show-str-type").text(tObj.workArray[tObj.counter][1]);
 	
 	
 	
-	tObj.optionsHolder.find(".es-ex-check-type").click(function() {
+	tObj.optionsHolder.find(".es-ex-check-type").removeClass("es-ex-invisible").unbind("click").click(function() {
 		var userAnswer = tObj.optionsHolder.find(".es-ex-type-field").val();
 		
 		userAnswer=userAnswer.replace(/[!.,;-?]/g, "").replace(/\s\s+/g, " ").replace(/\s/g, " ");
@@ -402,11 +401,11 @@ this.getTypeAnswers = function() {
 		
 		if ( userAnswer.toUpperCase() == tObj.workArray[tObj.counter][1].toUpperCase() ) {
 			tObj.alertHolder.empty().removeClass(tObj.correctClass).removeClass(tObj.wrongClass);
-			if (tObj.autoPlay) tObj.optionsHolder.find(".es-ex-check-type").attr("disabled", "disabled")
+			if (tObj.autoPlay) tObj.optionsHolder.find(".es-ex-check-type").unbind("click");
 			tObj.correctAnswer();
 		} else {
 			tObj.alertHolder.empty().removeClass(tObj.correctClass).removeClass(tObj.wrongClass);
-			if (tObj.autoPlay) tObj.optionsHolder.find(".es-ex-check-type").attr("disabled", "disabled")
+			if (tObj.autoPlay) tObj.optionsHolder.find(".es-ex-check-type").unbind("click");
 			tObj.wrongAnswer();
 		}
 		
@@ -417,10 +416,19 @@ this.getTypeAnswers = function() {
 	});
 	
 	tObj.optionsHolder.find(".es-ex-show-type").click(function() {
-		tObj.optionsHolder.find(".es-ex-show-str-type").css({visibility: "visible"});
-		tObj.optionsHolder.find(".es-ex-check-type").click().attr("disabled", "disabled");
-		$(this).attr("disabled", "disabled");
-
+		$(this).remove(); 
+		tObj.optionsHolder.find(".es-ex-type-elements").html('<span class="es-ex-show-str-type" style="display: none">'+tObj.workArray[tObj.counter][1]+'</span>');
+		tObj.optionsHolder.find(".es-ex-show-str-type").fadeIn(200, function() {
+		
+			if (tObj.autoPlay) {
+				tObj.optionsHolder.find(".es-ex-type-elements").append('<a href="javascript:;" class="es-ex-show-type">Go to next</a>');
+				tObj.optionsHolder.find(".es-ex-show-type").click(function() {
+					tObj.gotoNext();
+				})
+			}
+			
+		});
+		tObj.optionsHolder.find(".es-ex-check-type").addClass("es-ex-invisible");
 	});
 	
 }
