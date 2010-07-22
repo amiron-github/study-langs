@@ -60,6 +60,10 @@ margin-bottom: 0px;
 zoom: 1;
 }
 
+.sound_tip {
+z-index: 20000;
+}
+
 </style>
 
 <script type="text/javascript"> 
@@ -90,40 +94,25 @@ $(".submit-form input").mousedown(function() {
 });
 
 
-
 if ($('#errorExplanation').length > 0) {
-
 		if ($.browser.msie && $.browser.version < 8) {
 			//$(".errorExplanation h2").css({display: "block"});
 		} else {
-		
 		var errMess= $('#errorExplanation h2').html();
 		$('#errorExplanation h2').remove();
 		$('.sign-notification').find('td:eq(0)').append(errMess);
-		
-		
 		setTimeout(function() {
 			$('.sign-notification-wrapper').css({opacity: "0"}).slideDown().animate({opacity: "1"});
 		}, 400);
-		
 		}
 }
 
-
-
-
 });
-
-
-
-
-
 
 </script>
 
-
 <% end %>
-
+<div id="mess" class="sound_tip"><i>Tip</i></div>
 
 <div class="module mod-in-log">
 <br/>
@@ -153,13 +142,10 @@ if ($('#errorExplanation').length > 0) {
 <h2 class="page" style="display: none">It's your first visit? Welcome!</h2>
 		
 <p align="center" style="display: none"><a href="login" style="font-size: 11px; font-weight: bold;">Already registered? Click here to sign in</a></p>
-
-
-
 			<table align="center" class="sign-options">
 				<tr>
 					<td>
-						<p al-ign="center" style="margin-top: 0px;">Already registered? <a href="login">Click here to sign in</a></p>
+						<p style="margin-top: 0px;">Already registered? <a href="login">Click here to sign in</a></p>
 
 					</td>
 				</tr>
@@ -185,12 +171,12 @@ if ($('#errorExplanation').length > 0) {
 		
 			<table class="form-entries">
 				<tr>
-					<td class="entry1">Email address:</td>
-					<td><%= f.text_field :email %></td>
+					<td class="entry1" >Email address:</td>
+					<td onmouseout="hide_info(this)" onmouseover="tooltip(this,'A real email is needed for account activation')"><%= f.text_field :email %></td>
 				</tr>
 				<tr>
 					<td class="entry1">Password:</td>
-					<td> <%= f.password_field :password %></td>
+					<td onmouseout="hide_info(this)" onmouseover="tooltip(this,'Minimum is 6 characters')"> <%= f.password_field :password %></td>
 				</tr>
 				<tr>
 					<td class="entry1">Confirm Password:</td>

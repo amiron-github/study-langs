@@ -530,13 +530,24 @@ if (mp3) {
         mp3[i] = mp3[i].replace(/playAudio\('/,"");
         mp3g.push('audios/'+ mp3[i])
 }}
+
+rE = new RegExp("cJplayer\\('[0-9a-zA-Z/]+\\.mp3","g");
+mp3 = html.match(rE);
+if (mp3) {
+    for (var i = 0; i < mp3.length; i++) {
+        mp3[i] = mp3[i].replace(/cJplayer\('/,"");
+		//alert(mp3[i]);
+        mp3g.push(mp3[i])
+ }}
+ 
 rE = new RegExp("playTestSound\\('\\w+\\.mp3","g");
 mp3 = html.match(rE);
 if (mp3) {
     for (var i = 0; i < mp3.length; i++) {
         mp3[i] = mp3[i].replace(/playTestSound\('/,"");
         mp3g.push(mp3[i])
-    }}
+ }}	
+	
 if (preloadFiles.length) {
     for (var i = 0; i < preloadFiles.length; i++) {
         mp3g.push(preloadFiles[i])
@@ -593,7 +604,7 @@ function tooltip(el,txt)
 function hide_info(el)
 {
 	d.getElementById('mess').style.visibility='hidden';
-	d.getElementById('mess').style.left='-100px';
+	d.getElementById('mess').style.left='-500px';
 	el.onmousemove='';
 }
 

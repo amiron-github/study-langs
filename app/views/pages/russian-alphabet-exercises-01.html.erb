@@ -1,6 +1,7 @@
 <% @page_title = 'Study Russian Online: Russian alphabet exercises, part 1' %>
 <% @page_meta = {'description' => ""} %>
 <% @has_audio = true %>
+<% @with_rec = true %>
 <% content_for :special_js_css do %>
 
 <%= javascript_include_tag 'jquery.jplayer.min.js' %>
@@ -21,19 +22,44 @@
 
 <% end %>
 
+<div class="hint_wrap">
+<div class="hint_button" style="float: right">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Links and Settings</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+     				<li><a href="basic-letters.html">Russian Letters</a></li>
+     				<li><a href="/russian-reading-alphabet.html" >Learn Russian alphabet</a></li>
+    		</ul>
+        <%= render :partial => 'preload_option' %>
+	</div>
+</div>
+</div>
 
 
-<h2 class="page">Russian alphabet: <br> Vowels</h2>
+<h2 class="page"> Russian letters denoting <br>vowel sounds</h2>
 
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="russian-reading.html">Reading in Russian</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="/russian-reading-alphabet.html">Learn Russian alphabet</a>
+
+	<span class="int-arrow">--&gt;</span> Lesson 1
+	</span>
+</h3>
 
 
 
 <p>
-In this lesson, you can work with Russian letters denoting vowel sounds. Their basic meanings are the same as their alphabetical names. 
+In this lesson, you can work with Russian letters denoting vowel sounds. Their <a href="/basic-letters.html#basic">basic meanings</a> are the same as their alphabetical names. 
 </p>
 <p>
-Russian letters <span class="letter">a</span> and <span class="letter">о</span> look and sound similar to English speaking learners. Other letters require more attention and efforts to be memorized. 
-The letter <span class="letter">ы</span> denote the Russian sound <span class="sound" onclick="playSound('sound206.mp3')">[<span class="ry">i</span>] <span class="play_tip">&nbsp; &nbsp;</span></span> which is one of the most difficult sounds of the Russian language. 
+Russian letters <span class="letter">А</span> and <span class="letter">О</span> look and sound similar to English speaking learners. Other letters require more attention and efforts to be memorized. 
+The letter <span class="letter">Ы</span> denote the Russian sound <span class="sound" onclick="playSound('sound206.mp3')">[<span class="ry">i</span>] <span class="play_tip">&nbsp; &nbsp;</span></span> which is one of the most difficult sounds of the Russian language. 
 You can find more information about the sound <span class="sound" onclick="playSound('sound206.mp3')">[<span class="ry">i</span>] <span class="play_tip">&nbsp; &nbsp;</span></span> (as well as about other sounds) in the section Russian Pronunciation.
 </p>
 
@@ -63,7 +89,7 @@ You can find more information about the sound <span class="sound" onclick="playS
 				а
 			</td>
 			<td class="wl-audio">
-				<div class="jp_control" onclick="cJplayer('/sounds/sound101.mp3', this)"></div>
+				<div class="jp_control" onclick="cJplayer('sounds/sound101.mp3', this)"></div>
 			</td>
 			<td class="wl-eng">
 				[a]
@@ -707,7 +733,7 @@ You can find more information about the sound <span class="sound" onclick="playS
 <br><br>
 <br><br>
 <hr/>
-
+<a href="/russian-alphabet-exercises-02.html"><b>Next lesson >></b></a>
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br>
 
