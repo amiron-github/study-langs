@@ -1,0 +1,312 @@
+<% @page_title = 'Лексика-14' %>
+<% @page_meta = {'description' => ""} %>
+
+
+
+
+<h2 class="page" >К 14 уроку</h2>
+
+
+<% content_for :special_js_css do %>
+<%= javascript_include_tag 'test-drag-sort' %>
+<%= javascript_include_tag 'multi-choice' %>
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'es-course.js' %>
+<%= javascript_include_tag 'jquery.tablesorter.min.js' %>
+<%= javascript_include_tag 'es-multiexercises' %>
+<%= javascript_include_tag 'es-grammar-exercises' %>
+<%= javascript_include_tag 'es-test-drag-input' %>
+<%= stylesheet_link_tag 'es-course' %>
+<%= stylesheet_link_tag 'es-exercise.css' %>
+<%= stylesheet_link_tag 'es-grammar-exercises' %>
+
+<style type="text/css">
+#ch2 .es-ex-string-wrapper {
+font-size: 25px;
+}
+
+#ch1 .es-ex-string-wrapper {
+font-size: 19px;
+}
+
+
+
+.di_mixs_variants {
+margin-left: 70px;
+margin-bottom: 10px;
+margin-top: 10px;
+padding: 3px;
+border: 1px dashed #000;
+background-color: #efefef;
+width: 450px;
+}
+
+.di_mixs_variants span {
+margin-left: 10px;
+background-color: #fff;
+color: #333;
+}
+
+.di_mixs_tobuild {
+line-height:20px;
+text-indent:0px;
+margin-left: 70px;
+}
+
+#di1 .gext_task  input {
+font-size: 17px;
+}
+
+#di1 .di_mix_variants span, #di1_dragHelper {
+font-size: 16px;
+}
+
+.ge-xt_sign {
+padding-bottom: 17px;
+border-bottom: 1px dotted #666;
+}
+
+.gex-t_show {
+font-size: 15px;
+}
+
+
+</style>
+
+
+<% end %>
+
+<h3 class="es-task-in">Прослуйшайте фразы и выберите ответ "да" или "нет" </h3>	
+	
+<div id="ch1" class="es-ex-wrapper">
+	<%= render :partial => 'es_exercise', :locals => {:lang => "rus"} %>
+</div>
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		quest_num: 10,
+		//answer_type: 'yn',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+['учитель','先生 (せんせい)'],
+['сколько человек','なんにん (何人)'],
+['один человек','一人 (ひとり)'],
+['два человека','二人 (ふたり)'],
+['три человека','三人 (さんにん)'],
+['семья','かぞく'],
+['кошка','ねこ'],
+['одна особь','一ひき (いっぴき)'],
+['еще','もう'],
+['птица','鳥 (とり)'],
+['сколько птиц','何わ (なんわ)'],
+['одна птица','一わ (いちわ)'],
+['лошадь','馬 (うま)'],
+['корова','牛 (うし)'],
+['сколько голов','何とう (なんとう)'],
+['одна голова','一とう (いっと)']
+
+
+		]
+		} )
+</script>
+
+
+
+<br><br><br>
+
+<h3 class="es-task-in">Прочитайте фразы и выберите ответ  </h3>	
+	
+<div id="ch2" class="es-ex-wrapper">
+	<%= render :partial => 'es_exercise', :locals => {:lang => "rus"} %>
+</div>
+
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		quest_num: 10,
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+['先生 <br>(せんせい)','учитель'],
+['なんにん <br>(何人)','сколько человек'],
+['一人 <br>(ひとり)','один человек'],
+['二人 <br>(ふたり)','два человека'],
+['三人 <br>(さんにん)','три человека'],
+['かぞく','семья'],
+['ねこ','кошка'],
+['一ひき <br>(いっぴき)','одна особь'],
+['もう','еще'],
+['鳥 <br>(とり)','птица'],
+['何わ <br>(なんわ)','сколько птиц'],
+['一わ <br>(いちわ)','одна птица'],
+['馬 <br>(うま)','лошадь'],
+['牛 <br>(うし)','корова'],
+['何とう <br>(なんとう)','сколько голов'],
+['一とう <br>(いっと)','одна голова']
+
+		]
+		} )
+</script>
+	
+
+
+<br><br>
+
+
+
+
+
+
+<h3 class="es-task-in">Сделайте перевод фраз, используя изученные выражения</h3>
+
+<div class="section-block" style="cursor: auto">
+				<div class="sect-crn clt">
+						<div class="sect-crn crt">
+							<div class="sect-mid">  </div>
+						</div>
+				</div>
+				<div class="section-content" style="height: auto; padding: 0px 40px;">
+
+
+<div id="di1">	
+				
+<p class="task">Перетащите варианты или напечатайте текст в поле для ответа. </p> 
+<br>
+
+
+<div  class="gr_ex_type di_mix">
+
+<div class="gext_task gext_sign di_mix_first"> 
+<div class="di_mix_tobuild">Кто есть в аудитории?</div>
+<div class="di_mix_variants">きょうしつ に だれ が います か</div>
+
+<input type="text" style="width: 450px" value=""> <span class="gext_answer" style="display: none">きょうしつ に だれ が います か</span>
+<div class="gext_show"><span><b>きょうしつ に だれ が います か</b></span> &nbsp;</div>
+
+</div>
+
+<div class="gext_task gext_sign">
+<div class="di_mix_tobuild">сколько человек в Вашей семье?</div>
+<div class="di_mix_variants">ご かぞく は 何 人 です か</div>
+<input type="text" style="width: 450px" value=""> <span class="gext_answer" style="display: none">ご かぞく は 何 人 です か</span>
+
+<div class="gext_show"><span><b>ご かぞく は 何 人 です か</b></span> &nbsp;</div>
+
+</div>
+<div class="gext_task gext_sign">
+<div class="di_mix_tobuild">В саду есть лошади и коровы.</div>
+<div class="di_mix_variants">にわ に 馬 や 牛 が います</div>
+<input type="text" style="width: 450px" value=""> <span class="gext_answer" style="display: none">にわ に 馬 や 牛 が います</span>
+<div class="gext_show"><span><b>にわ に 馬 や 牛 が います</b></span> &nbsp;</div>
+
+</div>
+
+<div class="gext_task gext_sign"> 
+<div class="di_mix_tobuild">Сколько их человек? </div>
+<div class="di_mix_variants">なん 人 います か</div>
+<input type="text" style="width: 450px" value=""> <span class="gext_answer" style="display: none">なん 人 います か</span>
+<div class="gext_show"><span><b>なん 人 います か</b></span> &nbsp;</div>
+
+</div>
+<div class="gext_task gext_sign"> 
+<div class="di_mix_tobuild">Четыре студента и один преподаватель.</div>
+<div class="di_mix_variants">学生 が 四 人 と 先生 が 一 人 います</div>
+<input type="text" style="width: 450px" value=""> <span class="gext_answer" style="display: none">学生 が 四 人 と 先生 が 一 人 います</span>
+
+<div class="gext_show"><span><b>学生 が 四 人 と 先生 が 一 人 います</b></span> &nbsp;</div>
+
+</div>
+
+
+
+<p class="gext_check"><input type="button" class="gext_check_btn" value="Check answers" > <input type="button" value="Display answers" class="gext_answer_show"></p>
+
+
+</div>
+
+
+</div>
+
+
+</div> <!-- end of di1  -->
+
+<script type="text/javascript"> 
+	var di1 = new draginput_test( {
+		id: "di1", 
+		targets: "gext_task", 
+		in_targets: "input",
+		clear_option: true,
+		one_use: true,
+		variant_elem: "di_mix_variants span"
+		//targets_color: "#ffffff"
+
+		} )
+</script>
+
+
+				<div class="sect-btm">
+    				<div class="sect-clb">
+    					<div class="sect-crb">
+    						<div class="sect-btm-bg" style="height: 40px;">
+    							    				   			
+    						</div>
+    					</div>
+    				</div>
+				</div>
+			</div>
+
+
+
+
+<br><br>
+
+
+
+<h3 class="es-task-in">Прочитайте фразы и выберите ответ  </h3>	
+	
+<div id="ch3" class="es-ex-wrapper">
+	<%= render :partial => 'es_exercise', :locals => {:lang => "rus"} %>
+</div>
+
+<script type="text/javascript"> 
+	var ch3 = new ch_exercise( {
+		id: "ch3", 
+		quest_num: 4,
+		answer_type: "type",
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+['учитель','先生 (せんせい)'],
+['сколько человек','なんにん (何人)'],
+['один человек','一人 (ひとり)'],
+['два человека','二人 (ふたり)'],
+['три человека','三人 (さんにん)'],
+['семья','かぞく'],
+['кошка','ねこ'],
+['одна особь','一ひき (いっぴき)'],
+['еще','もう'],
+['птица','鳥 (とり)'],
+['сколько птиц','何わ (なんわ)'],
+['одна птица','一わ (いちわ)'],
+['лошадь','馬 (うま)'],
+['корова','牛 (うし)'],
+['сколько голов','何とう (なんとう)'],
+['одна голова','一とう (いっと)']
+
+		]
+		} )
+</script>
+
+
+
+
+
+<br><br><br><br><br>
+
+
+
+<script type="text/javascript">
+//currentSection="";
+</script>
