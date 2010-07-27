@@ -1,0 +1,318 @@
+<% @page_title = 'Лексика-14' %>
+<% @page_meta = {'description' => ""} %>
+
+
+
+
+<h2 class="page" >К 14 уроку</h2>
+
+
+<% content_for :special_js_css do %>
+<%= javascript_include_tag 'test-drag-sort' %>
+<%= javascript_include_tag 'multi-choice' %>
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'es-course.js' %>
+<%= javascript_include_tag 'jquery.tablesorter.min.js' %>
+<%= javascript_include_tag 'es-multiexercises' %>
+<%= javascript_include_tag 'es-grammar-exercises' %>
+<%= javascript_include_tag 'es-test-drag-input' %>
+<%= stylesheet_link_tag 'es-course' %>
+<%= stylesheet_link_tag 'es-exercise.css' %>
+<%= stylesheet_link_tag 'es-grammar-exercises' %>
+
+<style type="text/css">
+#ch2 .es-ex-string-wrapper {
+font-size: 25px;
+}
+
+#ch1 .es-ex-string-wrapper {
+font-size: 19px;
+}
+
+
+
+.di_mixs_variants {
+margin-left: 70px;
+margin-bottom: 10px;
+margin-top: 10px;
+padding: 3px;
+border: 1px dashed #000;
+background-color: #efefef;
+width: 450px;
+}
+
+.di_mixs_variants span {
+margin-left: 10px;
+background-color: #fff;
+color: #333;
+}
+
+.di_mixs_tobuild {
+line-height:20px;
+text-indent:0px;
+margin-left: 70px;
+}
+
+#di1 .gext_task  input {
+font-size: 17px;
+}
+
+#di1 .di_mix_variants span, #di1_dragHelper {
+font-size: 16px;
+}
+
+.ge-xt_sign {
+padding-bottom: 17px;
+border-bottom: 1px dotted #666;
+}
+
+.gex-t_show {
+font-size: 15px;
+}
+
+
+</style>
+
+
+<% end %>
+
+<h3 class="es-task-in">Прослуйшайте фразы и выберите ответ "да" или "нет" </h3>	
+	
+<div id="ch1" class="es-ex-wrapper">
+	<%= render :partial => 'es_exercise', :locals => {:lang => "rus"} %>
+</div>
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		quest_num: 10,
+		//answer_type: 'yn',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+['сколько','いくつ'],
+['один','一つ (ひとつ)'],
+['два','二つ (ふたつ)'],
+['три','三つ (みっつ)'],
+['четыре','四つ (よっつ)'],
+['пять','五つ (いつつ)'],
+['шесть','六つ (むっつ)'],
+['семь','七つ (ななつ)'],
+['восемь','八つ (やっつ)'],
+['девять','九つ (ここのつ)'],
+['десять','十 (とお)'],
+['одиннадцать','十一 (じゅういち)'],
+['островная страна','しま国 (しまぐに)'],
+['три тысячи','三千 (さんぜん)'],
+['примерно','ぐらい'],
+['Добро пожаловать!','いらっしゃいませ。'],
+['гамбургер','ハンバーガー'],
+['кола','コーラ']
+
+
+		]
+		} )
+</script>
+
+
+
+<br><br><br>
+
+<h3 class="es-task-in">Прочитайте фразы и выберите ответ  </h3>	
+	
+<div id="ch2" class="es-ex-wrapper">
+	<%= render :partial => 'es_exercise', :locals => {:lang => "rus"} %>
+</div>
+
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		quest_num: 10,
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+['いくつ','сколько'],
+['一つ <br>(ひとつ)','один'],
+['二つ <br>(ふたつ)','два'],
+['三つ <br>(みっつ)','три'],
+['四つ <br>(よっつ)','четыре'],
+['五つ <br>(いつつ)','пять'],
+['六つ <br>(むっつ)','шесть'],
+['七つ <br>(ななつ)','семь'],
+['八つ <br>(やっつ)','восемь'],
+['九つ <br>(ここのつ)','девять'],
+['十 <br>(とお)','десять'],
+['十一 <br>(じゅういち)','одиннадцать'],
+['しま国 <br>(しまぐに)','островная страна'],
+['三千 <br>(さんぜん)','три тысячи'],
+['ぐらい','примерно'],
+['いらっしゃいませ。','Добро пожаловать!'],
+['ハンバーガー','гамбургер'],
+['コーラ','кола']
+
+		]
+		} )
+</script>
+	
+
+
+<br><br>
+
+
+
+
+
+
+<h3 class="es-task-in">Сделайте перевод фраз, используя изученные выражения</h3>
+
+<div class="section-block" style="cursor: auto">
+				<div class="sect-crn clt">
+						<div class="sect-crn crt">
+							<div class="sect-mid">  </div>
+						</div>
+				</div>
+				<div class="section-content" style="height: auto; padding: 0px 40px;">
+
+
+<div id="di1">	
+				
+<p class="task">Перетащите варианты или напечатайте текст в поле для ответа. </p> 
+<br>
+
+
+<div  class="gr_ex_type di_mix">
+
+<div class="gext_task gext_sign di_mix_first"> 
+<div class="di_mix_tobuild">В аудитории есть письменные столы.</div>
+<div class="di_mix_variants">きょうしつ に つくえ が あります</div>
+
+<input type="text" style="width: 450px" value=""> <span class="gext_answer" style="display: none">きょうしつ に つくえ が あります</span>
+<div class="gext_show"><span><b>きょうしつ に つくえ が あります</b></span> &nbsp;</div>
+
+</div>
+
+<div class="gext_task gext_sign">
+<div class="di_mix_tobuild">Япония - островная страна</div>
+<div class="di_mix_variants">日本 は しま 国 です</div>
+<input type="text" style="width: 450px" value=""> <span class="gext_answer" style="display: none">日本 は しま 国 です</span>
+
+<div class="gext_show"><span><b日本 は しま 国 です</b></span> &nbsp;</div>
+
+</div>
+<div class="gext_task gext_sign">
+<div class="di_mix_tobuild">Сколько имеется больших островов?</div>
+<div class="di_mix_variants">大きい しま は いくつ あります か</div>
+<input type="text" style="width: 450px" value=""> <span class="gext_answer" style="display: none">大きい しま は いくつ あります か</span>
+<div class="gext_show"><span><b>大きい しま は いくつ あります か</b></span> &nbsp;</div>
+
+</div>
+
+<div class="gext_task gext_sign"> 
+<div class="di_mix_tobuild">Маленьких островов - примерно три тысячи. </div>
+<div class="di_mix_variants">小さい しま は 三 千 ぐらい あります</div>
+<input type="text" style="width: 450px" value=""> <span class="gext_answer" style="display: none">小さい しま は 三 千 ぐらい あります</span>
+<div class="gext_show"><span><b>小さい しま は 三 千 ぐらい あります</b></span> &nbsp;</div>
+
+</div>
+<div class="gext_task gext_sign"> 
+<div class="di_mix_tobuild">Три гамбургера, два сока</div>
+<div class="di_mix_variants">ハンバーガー が 三つ ジュース が 二つ</div>
+<input type="text" style="width: 450px" value=""> <span class="gext_answer" style="display: none">ハンバーガー が 三つ ジュース が 二つ</span>
+
+<div class="gext_show"><span><b>ハンバーガー が 三つ ジュース が 二つ</b></span> &nbsp;</div>
+
+</div>
+
+
+
+<p class="gext_check"><input type="button" class="gext_check_btn" value="Check answers" > <input type="button" value="Display answers" class="gext_answer_show"></p>
+
+
+</div>
+
+
+</div>
+
+
+</div> <!-- end of di1  -->
+
+<script type="text/javascript"> 
+	var di1 = new draginput_test( {
+		id: "di1", 
+		targets: "gext_task", 
+		in_targets: "input",
+		clear_option: true,
+		one_use: true,
+		variant_elem: "di_mix_variants span"
+		//targets_color: "#ffffff"
+
+		} )
+</script>
+
+
+				<div class="sect-btm">
+    				<div class="sect-clb">
+    					<div class="sect-crb">
+    						<div class="sect-btm-bg" style="height: 40px;">
+    							    				   			
+    						</div>
+    					</div>
+    				</div>
+				</div>
+			</div>
+
+
+
+
+<br><br>
+
+
+
+<h3 class="es-task-in">Прочитайте фразы и выберите ответ  </h3>	
+	
+<div id="ch3" class="es-ex-wrapper">
+	<%= render :partial => 'es_exercise', :locals => {:lang => "rus"} %>
+</div>
+
+<script type="text/javascript"> 
+	var ch3 = new ch_exercise( {
+		id: "ch3", 
+		quest_num: 4,
+		answer_type: "type",
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+['сколько','いくつ'],
+['один','一つ (ひとつ)'],
+['два','二つ (ふたつ)'],
+['три','三つ (みっつ)'],
+['четыре','四つ (よっつ)'],
+['пять','五つ (いつつ)'],
+['шесть','六つ (むっつ)'],
+['семь','七つ (ななつ)'],
+['восемь','八つ (やっつ)'],
+['девять','九つ (ここのつ)'],
+['десять','十 (とお)'],
+['одиннадцать','十一 (じゅういち)'],
+['островная страна','しま国 (しまぐに)'],
+['три тысячи','三千 (さんぜん)'],
+['примерно','ぐらい'],
+['Добро пожаловать!','いらっしゃいませ。'],
+['гамбургер','ハンバーガー'],
+['кола','コーラ']
+
+		]
+		} )
+</script>
+
+
+
+
+
+<br><br><br><br><br>
+
+
+
+<script type="text/javascript">
+//currentSection="";
+</script>

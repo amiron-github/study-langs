@@ -53,8 +53,6 @@ $(".show_es_ex").click(function() {
 
 
 
-
-
 $(document).ready(function() { 
     $("table.es-words-list").tablesorter({ headers: {0:{sorter: false}}, widgets: ['zebra'] });
 });
@@ -145,7 +143,7 @@ tObj.jplayer.jPlayer( {
 		tObj.jplayer.jPlayer("setFile", tObj.file );
 	}, 
 	swfPath: "/javascripts/",
-	nativeSupport: false
+	//nativeSupport: false
 });
 	tObj.playButton.click(function() {
 		if (tObj.status == "playing") tObj.pause();

@@ -1,0 +1,1566 @@
+<% @page_title='Essential Russian Course: Lesson 1' %>
+<% @page_meta = {'description' => "The first lesson of the Essential Russian Course"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+
+<% content_for :special_js_css do %>
+
+<%= javascript_include_tag 'test-drag-sort' %>
+<%= javascript_include_tag 'multi-choice' %>
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'es-course.js' %>
+<%= javascript_include_tag 'jquery.tablesorter.min.js' %>
+<%= javascript_include_tag 'es-multiexercises' %>
+<%= javascript_include_tag 'es-grammar-exercises' %>
+<%= javascript_include_tag 'es-test-drag-input' %>
+
+<script type="text/javascript">
+
+<%if params[:tab] %>
+	openTabFromUrl(<%= params[:tab] %>);
+<%else%>
+	openTabFromUrl();
+<%end%>
+
+
+$(document).ready(function() {
+
+	$(".gext_task input").addClass("for_keyb")
+});
+
+
+	
+</script>
+
+ <%= javascript_include_tag 'es-virtual-keyboard' %>
+ <%= stylesheet_link_tag 'keyboard' %>
+
+<%= stylesheet_link_tag 'es-course' %>
+<%= stylesheet_link_tag 'es-exercise.css' %>
+<%= stylesheet_link_tag 'es-grammar-exercises' %>
+
+<style type="text/css">
+#prof_tabs {margin-top: 50px;}
+.inpBlock {min-height: 800px; height: auto !important; height: 800px;}
+.pBlock {padding: 40px 50px;}
+.ptab div {font-size: 12px;}
+
+.ds-test li {float: left; list-style: none; font-size: 18px;}
+
+</style>
+
+<% end %>
+
+<div class="hint_wrap">
+<div class="hint_button" style="float: right;">
+  <div class="hint">
+      <div class="hint_list">
+        <span class="hint_string">Links and Settings</span>
+      </div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+        <ul>
+            <li><a href="sounds-info.html">General Info about Russian Sounds</a></li>
+            <li><a href="phonetics-course.html">Phonetics course</a></li>
+        </ul>
+        <%= render :partial => 'down_accent' %>
+  </div>
+</div>
+</div>
+<div id="pagecontent"><div id="content">
+
+
+<h2 class="page">Lesson 1. Greetings</h2>
+
+
+
+
+
+<div id="jpId"></div>
+
+
+<div id="prof_tabs">
+
+	<div id="tabs_row">
+            <div id="tab01" class="ptab  current_ptab"><div><a href="#1">Dialogue</a></div></div>
+            <div id="tab02" class="ptab"><div>Vocabulary</div></div>
+            <div id="tab03" class="ptab"><div>Grammar</div></div>
+			<div id="tab04" class="ptab"><div>Practice</div></div>
+			<div id="tab05" class="ptab"><div>Revision</div></div>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+
+<div id="for_tab01" class="pBlock" style="display: block">
+	<div class="inpBlock">
+
+			
+			<p>
+				Listen to the dialogues and read the translation. Then, listen once again and repeat after the speaker.
+			</p>
+		
+		<table id="dc1" class="dialog-t" cellspacing="0" align="center" style="margin: 0 auto;">
+			<col width="30">
+			<col width="250">
+			<col width="260" >
+			<tr>
+				<th class="d-first">&nbsp;</th>
+				<th>Dialogue 1. Formal greetings</th>
+				<th >&nbsp;</th>
+			</tr>
+			<tr>
+				<td colspan="3" class="d-pre-phrases" style="text-align: center">
+				
+				<div class="dt_controls">
+					<table cellspacing="0">
+					  <tr>
+						<td><div class="dt_rewind" title="Play Previous"></div></td>
+						<td><div class="dt_play" title="Play"></div></td>
+						<td><div class="dt_fast-forward" title="Play Next"></div></td>
+						<td><div class="dt_repeat" title="Repeat"></div></td>
+						<td><div class="dt_stop" title="Stop"></div></td>
+					  </tr>
+					</table>
+				</div>
+
+				</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div></td>
+				<td  class="d-rus">- Здравствуйте! </td>
+				<td class="d-eng">- Hello</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/sound01103.mp3', this)"></div></td>
+				<td class="d-rus">- Добрый день! </td>
+				<td class="d-eng">- Good afternoon</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/soundb01032021.mp3', this)"></div></td>
+				<td class="d-rus">- Как поживаете? </td>
+				<td class="d-eng">- How are you?</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/soundb01051032.mp3', this)"></div></td>
+				<td class="d-rus">- Спасибо, хорошо. А у Вас как дела? </td>
+				<td class="d-eng">- Thanks, I'm fine. And how are you</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/sound01111.mp3', this)"></div></td>
+				<td class="d-rus">- Прекрасно.</td>
+				<td class="d-eng">- Excellent.</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="d-tfoot">
+					<div class="dt_inf" style="display: none"></div>
+				<script type="text/javascript"> 
+					var  dc1 = new dialog_controls( {
+					id: "dc1", 
+					file: "/sounds/0-dt_test.mp3",
+					tracks: [0,1384,2400,4153,7602]
+				
+					} )
+				</script>
+				
+				</td>
+				<td class="d-tfoot">
+				&nbsp;
+				
+				</td>
+			</tr>
+		</table>
+		
+	<br>	
+	<br>
+	<br>	
+	<br>
+	
+
+		<table id="dc2" class="dialog-t" cellspacing="0" align="center" style="margin: 0 auto;">
+			<col width="30">
+			<col width="250">
+			<col width="260" >
+			<tr>
+				<th class="d-first">&nbsp;</th>
+				<th>Dialogue 2. Informal greetings</th>
+				<th >&nbsp;</th>
+			</tr>
+			<tr>
+				<td colspan="3" class="d-pre-phrases" style="text-align: center">
+				
+				<div class="dt_controls">
+					<table cellspacing="0">
+					  <tr>
+						<td><div class="dt_rewind" title="Play Previous"></div></td>
+						<td><div class="dt_play" title="Play"></div></td>
+						<td><div class="dt_fast-forward" title="Play Next"></div></td>
+						<td><div class="dt_repeat" title="Repeat"></div></td>
+						<td><div class="dt_stop" title="Stop"></div></td>
+					  </tr>
+					</table>
+				</div>
+
+				</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div></td>
+				<td  class="d-rus">- Привет! </td>
+				<td class="d-eng">- Hi!</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/sound01103.mp3', this)"></div></td>
+				<td class="d-rus">- Привет! </td>
+				<td class="d-eng">- Hi!</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/soundb01032021.mp3', this)"></div></td>
+				<td class="d-rus">- Как дела?  </td>
+				<td class="d-eng">- How are you? (informal)</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/soundb01051032.mp3', this)"></div></td>
+				<td class="d-rus">- Отлично. У тебя как? Нормально?  </td>
+				<td class="d-eng">- Perfect. What about you? Are you fine?</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/sound01111.mp3', this)"></div></td>
+				<td class="d-rus">- Да, неплохо. </td>
+				<td class="d-eng">- Yes, not bad.</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="d-tfoot">
+
+				<script type="text/javascript"> 
+					var  dc2 = new dialog_controls( {
+					id: "dc2", 
+					file: "/sounds/0-dt_test.mp3",
+					tracks: [0,1384,2400,4153,7602]
+					} )
+				</script>
+				
+				</td>
+				<td class="d-tfoot">
+				&nbsp;
+				
+				</td>
+			</tr>
+		</table>
+		
+	<br>	
+	<br>
+	<br>	
+	<br>	
+		
+
+
+<h3 class="es-task">Match sounds and text</h3>
+
+
+<div id="ds1" class="ds-wrapper" style="padding: 15px;">
+
+<p style="font-size: 11px; text-align: center;">Listen to the phrases and find corresponding Russian expressions from the list below.</p>		
+
+<table align="center" style="margin: 0 auto;">
+<tr>
+<td>
+
+
+<table class="dst-test ds-table ds-audio" cellspacing="0" align="left" style="margin: auto">
+<col width="80">
+<col width="20">
+<col width="40">
+<col width="200">
+<tr>
+	<td class="ds-quest" align="center">
+			Phrase 1 
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+			Phrase 2
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound01103.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 3
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound01111.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 4
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/soundb01032021.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 5
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 6
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound01114.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 7
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound01110.mp3', this)"></div>
+	</td>	
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+
+<td>
+	
+<br>
+<br>
+
+<table class="ds_variants_list" >
+<col width="170">
+<col width="150">
+
+<tr valign="top">
+<td>
+
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Здравствуйте!</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">4</span>Как поживаете?</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>Добрый день!</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">0</span>Спасибо, хорошо.</div></div>
+	</li>
+</ul>
+
+</td>
+<td>
+
+<ul class="no-list">
+
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">7</span>Как дела?</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">5</span>Привет!</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>Прекрасно.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">6</span>Неплохо.</div></div>
+	</li>
+</ul>
+
+</td>
+</tr>
+</table>
+
+
+
+</td>
+</tr>
+</table>
+
+
+<div class="es_btn_wrapper">
+<a href="javascript:;" class="es_btn ds-check-button" >Check answers</a>
+</div>
+
+
+</div>
+
+<script type="text/javascript"> 
+	var ds1 = new dragsort_test( {
+		id: "ds1", 
+		targets: "ds-answer", 
+		answer_elem: "ds_sort_item", 
+		variant_elem: "ds_variant",
+		answer_color: "#F7F6F6",
+		auto_check: false
+		} )
+</script>
+		
+		
+		
+		
+		
+	<br><br><br><br><br><br><br><br>	
+
+	</div>
+</div>
+<div id="for_tab02" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+	
+	<h3 class="es-task-in">Listen, repeat ad read the translation of words and expressions below.</h3>
+	
+	
+	
+	<table class="es-words-list" cellspacing="1">
+	<col width="20">
+	<col width="200">
+	<col width="200">
+	<thead>
+		<tr>
+			<th>&nbsp;</th>
+			<th>Russian</th>
+			<th>English</th>
+		</tr>
+			
+	</thead>
+	<tbody>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				Здравствуйте!
+			</td>
+			<td class="wl-eng">
+				Hello! 
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01102.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				Доброе утро!
+			</td>
+			<td>
+				Good morning!
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01103.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				Добрый день!
+			</td>
+			<td>
+				Good afternoon!
+			</td>
+		</tr>
+
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01104.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				Добрый вечер! 
+			</td>
+			<td>
+				Good evening!
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01115.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				До свидания! 
+			</td>
+			<td>
+				Good bye!
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01107.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				Как поживаете?
+			</td>
+			<td>
+				How are you? (formal)
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01112.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				Хорошо.
+			</td>
+			<td>
+				I'm fine.
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01111.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				Прекрасно.
+			</td>
+			<td>
+				Excellent!
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/soundb01031060.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				Нормально.
+			</td>
+			<td>
+				I'm OK.
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01127.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				Спасибо
+			</td>
+			<td>
+				Thank you.
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				Привет!
+			</td>
+			<td>
+				Hi!
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01120.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				Пока!
+			</td>
+			<td>
+				Bye!
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01110.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				Как дела?
+			</td>
+			<td>
+				How are you? (informal)
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01122.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				Извините.
+			</td>
+			<td>
+				Excuse me. (formal)
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01126.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				Пожалуйста, ...
+			</td>
+			<td>
+				Please, ...
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01130.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				Пожалуйста.
+			</td>
+			<td>
+				You're welcome
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/yes.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				Да
+			</td>
+			<td>
+				Yes
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/no.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				Нет
+			</td>
+			<td>
+				No
+			</td>
+		</tr>
+	</tbody>
+	</table>
+	
+	<br>
+	<br>
+
+	<br><br>
+
+<h3 class="es-task-in">Listen to the phrase and answer "yes" or  "no" </h3>	
+	
+<div id="ch1" class="es-ex-wrapper">
+	<%= render :partial => 'es_exercise' %>
+</div>
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		quest_num: 10,
+		answer_type: 'yn',
+		quest_type: 'audio',
+		basic_array: [
+		['/sounds/sound01101.mp3',	'Hello!'],
+		['/sounds/sound01102.mp3',	'Good morning!'],
+		['/sounds/sound01103.mp3',	'Good afternoon!'],
+		['/sounds/sound01104.mp3',	'Good evening!'],
+		['/sounds/sound01115.mp3'	,'Good bye!'],
+		['/sounds/sound01107.mp3'	,'How are you? (formal)'],
+		['/sounds/sound01112.mp3'	,'I\'m fine.'],
+		['/sounds/sound01111.mp3'	,'Excellent!'	],
+		['/sounds/soundb01031060.mp3'	,'I\'m OK.'],
+		['/sounds/sound01127.mp3'	,'Thank you.'	],
+		['/sounds/sound01106.mp3'	,'Hi!'],
+		['/sounds/sound01120.mp3'	,'Bye!'],
+		['/sounds/sound01110.mp3','How are you? (informal)'],
+		['/sounds/sound01122.mp3','Excuse me. (formal)']
+		]
+		} )
+</script>
+
+
+
+<br>
+<br>
+
+<br><br>
+
+<h3 class="es-task-in">Read the Russian phrase and find its translation </h3>
+
+<div id="ch2" class="es-ex-wrapper">
+	<%= render :partial => 'es_exercise' %>
+</div>
+
+
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		quest_num: 10,
+		variants_num: 4,
+		basic_array: [
+
+		['Здравствуйте!',	'Hello! '],
+		['Доброе утро!',	'Good morning!'],
+		['Добрый день!',	'Good afternoon!'],
+		['Добрый вечер',	'Good evening!'],
+		['До свидания!'	,'Good bye!'],
+		['Как дела?'	,'How are you? (informal)'],
+		['Хорошо.'	,'I\'m fine.'],
+		['Прекрасно.'	,'Excellent!'	],
+		['Нормально'	,'I\'m OK.'],
+		['Спасибо.'	,'Thank you.'	],
+		['Привет.'	,'Hi!'],
+		['Пока'	,'Bye!'],
+		['Как Ваши дела?','How are you? (formal)'],
+		['Простите.','Excuse me. (formal)']
+		
+		]
+		} )
+</script>
+
+
+
+
+<br>
+<br>
+<br>
+
+
+
+
+
+
+	
+
+
+	</div>
+</div>
+
+<div id="for_tab03" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+	
+	<h2 class="es-tab-p ">Particularities of Russian phrase stucture</h2>
+	
+	<h3 class="es-tab-p-p">Word order</h3>
+		
+	<p>
+		Russian word order is very flexible. The parts of the Russian sentence (subject, predicate etc.) can go in almost any order. 
+	</p>	
+	
+<div class="es-egdiv">
+<h4>Example: </h4>
+<p>
+<em>Кошки едят мышей.</em> - Cats eat mice.
+</p>
+<p>
+The following sentences have the same meaning, although the word order is quite different: 
+</p>
+<p>
+<em>
+Мышей едят кошки. <br/>
+Едят кошки мышей. <br/>
+Едят мышей кошки. <br/>
+</em>
+</p>
+</div>
+
+<div class="show_ex_container"><a href="javascript:;" class="show_es_ex">Show examples</a></div>		
+
+
+
+	<p>
+		Such a flexible word order is possible because of endings of words which will change depenging on the function of the word in a phrase. 
+		This is what is called "cases", and you will work on this later in other lessons. The only thing you should remember now is that the word order is flexible.
+	</p>	
+	
+<h3 class="es-tab-p-p">Subjects and verbs</h3>		
+
+<p>
+The presence of a subject or a verb is not always required in Russian sentences. 
+In particular, Russian often drop subjects expressed by personal pronouns, and the present tense of the Russian verb быть 'to be' is not used. 
+</p>
+		
+<div class="es-egdiv">
+<h4>Example: </h4>
+<p>
+<em>Как поживаете? </em> - How are you? (litterally: How are living?, formal)
+</p>
+<p>There is no equivalent of "you" in the Russian phrase</p>
+<p><em>А ты как?</em> -  And how are you? (litterally: And you how?, informal)</p>
+<p>There is no equivalent of "are" in the Russian phrase</p> 
+</div>	
+
+<div class="show_ex_container"><a href="javascript:;" class="show_es_ex">Show examples</a></div>		
+
+	
+		
+<h3 class="es-tab-p-p">Articles</h3>		
+		
+<p>
+There are no articles, like English "a" or "the", in Russian.
+</p>
+
+		
+<br>
+<br>
+		
+<h2 class="es-tab-p ">Questions in Russian</h2>		
+		
+<p>	
+All questions can be devided into three categories:
+</p>	
+
+<ul>
+	<li>Simple questions: these are questions that require an answer "yes" or "no", like "Is this a book?"
+	<li>Alternative questions: these are questions which include two or more of answers in themselves, like "Is this a book or a magazine"
+	<li>Special questions: these are questions which use interrogative words "what", "how", "when" etc., and they require a more informative answer, 
+	like "What is this?"
+</ul>
+
+<p>All these types of questions are present in English, in Russian and other languages. The most important thing you should remember now about Russian questions, is that Russians do not use special grammar constructions or word to ask questions. Questions are commonly expressed by intonation.
+</p>
+
+		
+	<h3 class="es-tab-p-p">Russian simple questions</h3>	
+		
+		<p>
+			 These question are expressed by intonation. When answering simple questions in Russian, you can use words да 'yes' and нет 'no'. 
+		</p>
+		
+	<h3 class="es-tab-p-p">Russian alternative questions</h3>
+	
+	<p>
+		Russian alternative questions usually use the word "или" (or). 
+	</p>
+	
+	<h3 class="es-tab-p-p">Russian special questions</h3>
+	
+	<p>
+		Special questions are formed with diffrent interrogative words, for example что "what", как 'how' etc. 
+		Because of a flexible word order, the place of these words can change: they can occur at the beginning, at the end or in the middle of the question.
+	</p>
+	
+	
+	
+		
+		
+<br><br><br><br><br>
+
+<h3 class="es-task-in">Revise the information about Russian grammar and complete the test</h3>	
+
+
+<div class="block" >
+	<div class="block-clt">
+		 <div class="block-crt">
+			  <div class="block-top"></div>
+		 </div>
+	</div>
+	<div class="block-center">
+
+	
+<div class="task">Choose an answer to the following questions:</div>
+
+<div  class="gr_ex_variants">
+
+
+<table class="gr_ex_vars_tab gexv_options" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td>
+			<div class="gexv_task gexv_sign">
+				1. In Russian sentences, the subject and the verb can not change their place, their position is fixed.
+			</div>
+
+			
+			<div class="gexv_variant"><input type="checkbox">  True   </div>
+			<div class="gexv_variant"><input type="checkbox" class="ok"> False   </div>
+		
+		</td>
+	</tr>
+	<tr>
+
+		<td>
+			<div class="gexv_task gexv_sign">
+				 2. The presence of the verb is not always required in Russian sentences. 
+			</div>
+			
+			<div class="gexv_variant"><input type="checkbox" class="ok">  True  </div>
+			<div class="gexv_variant"><input type="checkbox">  False  </div>
+
+		
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="gexv_task gexv_sign">
+				  3. The Russian equivalent to the English article "a" is the word <b>тот</b>: 
+			</div>
+
+			
+			<div class="gexv_variant"><input type="checkbox">  True   </div>
+			<div class="gexv_variant"><input type="checkbox" class="ok">  False   </div>		
+		</td>
+	</tr>
+	<tr>
+
+		<td>
+			<div class="gexv_task gexv_sign">
+				  4. In Russian, there are no alternative questions. 
+			</div>
+			
+			<div class="gexv_variant"><input type="checkbox" >  True   </div>
+			<div class="gexv_variant"><input type="checkbox" class="ok">  False   </div>
+		
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="gexv_task gexv_sign">
+				  5. The question <b>Как дела?</b> is a : 
+			</div>
+
+			
+			<div class="gexv_variant"><input type="checkbox" > simple question   </div>
+			<div class="gexv_variant"><input type="checkbox"  class="ok">  special question   </div>
+		
+		</td>
+	</tr>
+	<tr>
+
+		<td>
+			<div class="gexv_task gexv_sign">
+				 6. The subject should always be present in Russian simple questions.  
+			</div>
+			
+			<div class="gexv_variant"><input type="checkbox">  True   </div>
+			<div class="gexv_variant"><input type="checkbox" class="ok">  False   </div>
+		
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="gexv_task gexv_sign">
+				  7. The word <b>что</b> is used in Russian special questions: 
+			</div>
+
+			
+			<div class="gexv_variant"><input type="checkbox" class="ok">  True   </div>
+			<div class="gexv_variant"><input type="checkbox" >  False   </div>
+		
+		</td>
+	</tr>
+	<tr>
+
+		<td>
+			<div class="gexv_task gexv_sign">
+				  8. To answer an alternative Russian question, the word <b>да</b> is often used in Russian.
+			</div>
+			
+			<div class="gexv_variant"><input type="checkbox" >  True   </div>
+			<div class="gexv_variant"><input type="checkbox" class="ok">  False   </div>
+
+
+		
+		</td>
+	</tr>
+
+</table>
+
+
+
+<p class="gexv_check"><input type="button" value="Check answers"></p>
+
+</div>
+
+
+</div>
+<div class="block-clb">
+     <div class="block-crb">
+    	  <div class="block-btm">
+    		   </div>
+    	  </div>
+
+     </div>		
+</div>
+
+
+<br/><br/><br/>
+
+
+
+<br><br><br><br><br><br><br>	
+		
+		
+		
+
+
+	</div>
+</div>
+
+<div id="for_tab04" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+	
+	<h3 class="es-task-in">Read the text aloud, and then listen to the phrases and check your reading.</h3>	
+	
+
+	<div class="es-pr-read-container">
+		<h4>Dialogue 1</h4>
+	
+		<table cellspacing="0">
+			<tr>
+				<td class="wl-audio">
+					<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+				</td>
+				<td>
+					- Добрый день, Мария.
+				</td>
+			</tr>
+			<tr>
+				<td class="wl-audio">
+					<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+				</td>
+				<td>
+					- Здраствуйте, Александр.
+				</td>
+			</tr>
+			<tr>
+				<td class="wl-audio">
+					<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+				</td>
+				<td>
+					- Как у Вас дела?
+				</td>
+			</tr>
+			<tr>
+				<td class="wl-audio">
+					<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+				</td>
+				<td>
+					- Прекрасно! А как Вы поживаете?
+				</td>
+			</tr>
+			<tr>
+				<td class="wl-audio">
+					<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+				</td>
+				<td>
+					- Спасибо, хорошо.
+				</td>
+			</tr>
+		</table>
+		
+		<h4>Dialogue 2</h4>
+		<table cellspacing="0">
+			<tr>
+				<td class="wl-audio">
+					<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+				</td>
+				<td>
+					- Добрый день, Мария.
+				</td>
+			</tr>
+			<tr>
+				<td class="wl-audio">
+					<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+				</td>
+				<td>
+					- Здраствуйте, Александр.
+				</td>
+			</tr>
+			<tr>
+				<td class="wl-audio">
+					<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+				</td>
+				<td>
+					- Как у Вас дела?
+				</td>
+			</tr>
+			<tr>
+				<td class="wl-audio">
+					<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+				</td>
+				<td>
+					- Прекрасно! А как Вы поживаете?
+				</td>
+			</tr>
+			<tr>
+				<td class="wl-audio">
+					<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+				</td>
+				<td>
+					- Спасибо, хорошо.
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+	
+	<h3 class="es-task-in">Look through the dialogues above and complete the test.</h3>	
+	
+	
+	
+	<div class="block" >
+	<div class="block-clt">
+		 <div class="block-crt">
+			  <div class="block-top"></div>
+		 </div>
+	</div>
+	<div class="block-center">
+
+	
+<div class="task">Choose an answer to the following questions:</div>
+
+<div  class="gr_ex_variants">
+
+
+<table class="gr_ex_vars_tab gexv_options" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td>
+			<div class="gexv_task gexv_sign">
+				1. Alexander greets Maria.
+			</div>
+
+			
+			<div class="gexv_variant"><input type="checkbox">  True   </div>
+			<div class="gexv_variant"><input type="checkbox" class="ok"> False   </div>
+		
+		</td>
+	</tr>
+	<tr>
+
+		<td>
+			<div class="gexv_task gexv_sign">
+				 2. It's Alexander who has seen Maria first. 
+			</div>
+			
+			<div class="gexv_variant"><input type="checkbox" class="ok">  True  </div>
+			<div class="gexv_variant"><input type="checkbox">  False  </div>
+
+		
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="gexv_task gexv_sign">
+				  3. Alexander and Maria are close freinds. 
+			</div>
+
+			
+			<div class="gexv_variant"><input type="checkbox">  True   </div>
+			<div class="gexv_variant"><input type="checkbox" class="ok">  False   </div>		
+		</td>
+	</tr>
+	<tr>
+
+		<td>
+			<div class="gexv_task gexv_sign">
+				  4. Alexander is dooing well. 
+			</div>
+			
+			<div class="gexv_variant"><input type="checkbox" >  True   </div>
+			<div class="gexv_variant"><input type="checkbox" class="ok">  False   </div>
+		
+		</td>
+	</tr>
+</table>
+
+<p class="gexv_check"><input type="button" value="Check answers"></p>
+
+</div>
+
+</div>
+<div class="block-clb">
+     <div class="block-crb">
+    	  <div class="block-btm">
+    		   </div>
+    	  </div>
+
+     </div>		
+</div>
+	
+	<br><br><br><br>
+	
+<h3 class="es-task-in">Answer the questions using phrases in brackets .</h3>	
+	
+
+
+<div class="es-egdiv" style="display: block">
+<h4>Model: </h4>
+
+<div style="padding: 0 20px 10px 40px; font-size: 11px;"> 
+<table cellspacing="0"> 
+	<tr valign="top"> 
+		<td width="250">
+		
+			<table cellspacing="0"> 
+				<tr valign="top"> 
+		 				<td width="110" class="bold"> 
+		 					Как поживаете?  
+		 				</td> 
+						<td width="15">- 
+                       	</td> 
+		 				<td width="110" > 
+		 					(I'm fine, thanks).<br> 
+		 						Хорошо, спасибо.<br> 
+		 				</td> 
+					</tr> 
+				</table> 
+		</td> 
+		<td valign="top" class="ital">How are you getting on? - I'm fine, thanks.
+		</td> 
+	</tr> 
+</table> 
+</div>
+
+ </div>
+ <br> <br>
+ 
+<table class="es-quest-answ" cellspacing="0" style="margin: 0 auto" align="center">
+	<tr>
+		<td class="rus_phr">Как дела?</td>
+		<td>- (Perfectly well.)</td>
+		<td><a href="javascript:;" class="es_btn ds-check-button" >Check yourself</a></td>
+	</tr>
+	<tr>
+		<td class="rus_phr">Как поживаете?</td>
+		<td>- (Not so bad, thanks.) </td>
+		<td><a href="javascript:;" class="es_btn ds-check-button" >Check yourself</a></td>
+	</tr>
+	<tr>
+		<td class="rus_phr">Привет! Как дела? </td>
+
+		<td>- (Good!) </td>
+		<td><a href="javascript:;" class="es_btn ds-check-button" >Check yourselfs</a></td>
+	</tr>
+	<tr>
+		<td class="rus_phr">Как поживаете? </td>
+		<td>- (Thanks, I'm fine.)</td>
+		<td><a href="javascript:;" class="es_btn ds-check-button" >Check yourself</a></td>
+	</tr>
+	<tr>
+		<td class="rus_phr">Как у Вас дела? </td>
+		<td>- (Perfectly, thanks)</td>
+		<td><a href="javascript:;" class="es_btn ds-check-button" >Check yourself</a></td>
+	</tr>
+</table>
+
+<br>
+<br>
+<br>
+<br><br><br>	
+	
+	
+<h3 class="es-task-in">Find appropriate replies to the phrases.</h3>
+
+<div class="section-block" style="cursor: auto">
+				<div class="sect-crn clt">
+						<div class="sect-crn crt">
+							<div class="sect-mid">  </div>
+						</div>
+				</div>
+				<div class="section-content" style="height: auto; padding: 0px 40px;">
+
+
+<div id="di1">	
+				
+<p class="task">Drag and drop the following words or type them in the text fields. <a class="show_keyboard" href="javascript:;">[ Use virtual keyboard ]</a> </p> 
+<br>
+<table style="cursor: pointer; margin: 0 auto; border: 1px dashed #000" class="di_variants" cellspacing="14" align="center" >
+<tr>
+	<td>
+		<div>Добрый день!</div>
+	</td>
+	<td>
+		<div>Привет!</div>
+	</td>
+</tr>
+<tr>
+	<td style="padding-right: 20px;">
+		<div>Спасибо, хорошо.</div>
+	</td>
+	<td>
+		<div>Да.</div>
+	</td>
+</tr>
+</table>
+<br>
+<br>
+
+
+
+<div  class="gr_ex_type">
+
+<div class="gext_task gext_sign"> 
+
+1. Здравствуйте! - <input type="text" style="width: 150px" value=""> <span class="gext_answer" style="display: none">Добрый день!</span>
+ 
+<div class="gext_show"><span>Здравствуйте! - <b>Добрый день!</b></span> &nbsp;</div>
+
+</div>
+
+<div class="gext_task gext_sign"> 
+
+2. Привет! - <input type="text" style="width: 150px" value=""> <span class="gext_answer" style="display: none">Привет!</span>
+ 
+<div class="gext_show"><span>Привет! - <b>Привет!</b></span> &nbsp;</div>
+
+</div>
+
+<div class="gext_task gext_sign"> 
+
+3. Как поживаете? - <input type="text" style="width: 150px" value=""> <span class="gext_answer" style="display: none">Спасибо, хорошо.</span>
+ 
+<div class="gext_show"><span>Как поживаете? - <b>Спасибо, хорошо.</b></span> &nbsp;</div>
+
+</div>
+
+<div class="gext_task gext_sign"> 
+
+4. Как дела? Нормально? - <input type="text" style="width: 150px" value=""> <span class="gext_answer" style="display: none">Да.</span>
+ 
+<div class="gext_show"><span>Как дела? Нормально? - <b>Да.</b></span> &nbsp;</div>
+
+</div>
+
+
+<p class="gext_check"><input type="button" class="gext_check_btn" value="Check answers" > <input type="button" value="Display answers" class="gext_answer_show"></p>
+
+
+</div>
+
+
+</div>
+
+
+</div> <!-- end of di1  -->
+
+
+<script type="text/javascript"> 
+	var di1 = new draginput_test( {
+		id: "di1", 
+		targets: "gext_task", 
+		in_targets: "input",
+		clear_option: true,
+		variant_elem: "di_variants div"
+		//targets_color: "#ffffff"
+
+		} )
+</script>
+
+
+				<div class="sect-btm">
+    				<div class="sect-clb">
+    					<div class="sect-crb">
+    						<div class="sect-btm-bg" style="height: 40px;">
+    							    				   			
+    						</div>
+    					</div>
+    				</div>
+				</div>
+			</div>
+
+
+
+
+	<br><br><br>	<br><br><br>	<br><br><br>	<br><br><br>
+
+
+
+	</div>
+</div>
+
+
+<div id="for_tab05" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+	
+	<br><br><br> 
+ 
+ 
+ 
+<div class="form-wrapper" id="mc1" style="width: 450px; margin: 0 auto;"> 
+	<div class="form-top"> 
+		<div class="form-top-left"></div> 
+		<div class="form-top-right"></div> 
+	</div> 
+ 
+	<div class="form-right"> 
+		<div class="form-left"> 
+			<div class="form-questionaire"> 
+				<div class="mc_question" style="height: 40px;"> 
+            	</div> 
+			</div> 
+			   <div class="form-variants"> 
+			   		<div  class="mc_variants" style="height: 180px; overflow: hidden; position: relative;"> 
+			
+					</div> 
+			   </div> 
+		</div> 
+	</div> 
+	<div class="form-mid"> 
+		<div class="form-mid-left"></div> 
+		<div class="form-mid-right"></div> 
+	</div> 
+	<div class="form-bottom"> 
+		<div class="form-bottom-left"></div> 
+		<div class="form-bottom-right"> 
+			<div class="mc_counter"></div> 
+		</div> 
+	<div  class="mc_check" style="position: absolute; margin: 6px 0 0 15px; width: 250px;"></div> 
+	</div> 
+</div> 
+ 
+<script type="text/javascript"> 
+ 
+var mc1 = new mcTest( {tasks:[
+['How to say in Russian: <br> <span class="norm_txt">Hello!<\/span>', [['Здравствуйте!'], ['До свидания'], ['Спасибо']], [0]], 
+['How to say in Russian: <br> <span class="norm_txt">Bye!<\/span>', [['Отлично'], ['Привет'], ['Пока']], [2]],
+['How to say in Russian: <br> <span class="norm_txt">Thank you!<\/span>', [['Спасибо!'], ['Пожалуйста'], ['Не за что']], [0]],
+['How to say in Russian: <br> <span class="norm_txt">Please<\/span>', [['Привет'], ['Хорошо'], ['Пожалуйста']], [2]],
+['How to say in Russian: <br> <span class="norm_txt">Excuse me<\/span>', [['Прекрасно'], ['Извините'], ['Пожалуйста']], [1]],
+['Questions are usually expressed by intonation in Russian.', [['true'], ['false']], [0]],
+['Russian interrogative words occur:', [['at the beginning of the question'],['in the middle of the question'], ['anywhere in the question']], [2]],
+['In Russian sentences, the word order is:', [['direct'], ['flexible']], [1]]
+
+], 
+buildId: 'mc1' } )
+ 
+</script>
+	
+<br><br><br><br>		
+	
+<h2 class="es-tab-p ">In this lesson you have learnt:</h2>		
+	
+	
+<ul class="rev-summary">
+	<li>Russian words and expressions to to greet, to say goodbye, to thank, to appologize etc.</li>
+	<li>General information about pecularities of Russian phrases structure. </li>
+	<li>General information about Russian questions</li>
+	<li>You have also practised to read in Russian and and translate into Russian.</li>
+</ul>
+
+<br><br><br>
+
+<h2 class="es-tab-p ">In case you want to work more on this lesson:</h2>		
+	
+	
+<ul class="rev-summary">
+	<li>Read aloud or learn by heart the dialogue(s)  from the section <a href="javascript:;" onclick="openTabFromUrl(1)">Dialogues</a>.</li>
+	<li>Get familiar with vocabulary topic  <a href="/politeness.html" title="Formulas of politeness">Formulas of politeness</a></li>
+	<li>Read the following articles about Russian grammar: <br>
+		- <a href="russian-words-order.html">Words order in Russian sentences</a><br>
+		- <a href="russian-address-forms.html">Polite and familiar address in Russian</a>
+	</li>
+</ul>	
+	
+	
+<br><br><br><br><br><br>	
+	
+	
+	
+	
+	
+	
+	
+		
+
+
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</div><!-- end of #content -->
+</div>
+
+
+
+<script type="text/javascript">
+currentSection="course";
+</script>
+

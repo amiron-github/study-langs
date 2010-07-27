@@ -94,9 +94,10 @@ $("#result_del_char").click(function() {
 	var replaceThis= $("#replace_char_value").val();
 	var withThis= $("#replace_tochar_value").val();
 	
-	if (replaceThis == '[' || replaceThis == '.') {
+	if (replaceThis == '[' || replaceThis == '.'|| replaceThis == '*') {
 		if (replaceThis == '[') tString =  tString.replace( /\[/g, withThis )
 		if (replaceThis == '.') tString =  tString.replace( /\./g, withThis )
+		if (replaceThis == '*') tString =  tString.replace( /\*/g, withThis )
 	} else {
 		tString = tString.replace( new RegExp( replaceThis, 'g' ), withThis );
 	}

@@ -13,7 +13,7 @@ $(document).ready(function() {
     $("table.es-words-list").tablesorter({ headers: {0:{sorter: false}}, widgets: ['zebra'] });
 	$("body").append('<div id="cJp"></div>');
 
-	$("#cJp").jPlayer( {swfPath: "/javascripts/", nativeSupport: false});
+	$("#cJp").jPlayer( {swfPath: "/javascripts/"}); //, nativeSupport: false
 });
 
 
