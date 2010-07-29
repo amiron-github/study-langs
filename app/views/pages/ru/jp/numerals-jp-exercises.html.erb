@@ -1,0 +1,166 @@
+<% @page_title = 'Лексика: Японские числительные' %>
+<% @page_meta = {'description' => ""} %>
+
+
+
+
+<h2 class="page" >Упражнения: Японские числительные</h2>
+
+
+<% content_for :special_js_css do %>
+<%= javascript_include_tag 'test-drag-sort' %>
+<%= javascript_include_tag 'multi-choice' %>
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'es-course.js' %>
+<%= javascript_include_tag 'jquery.tablesorter.min.js' %>
+<%= javascript_include_tag 'es-multiexercises' %>
+<%= javascript_include_tag 'es-grammar-exercises' %>
+<%= javascript_include_tag 'es-test-drag-input' %>
+<%= stylesheet_link_tag 'es-course' %>
+<%= stylesheet_link_tag 'es-exercise.css' %>
+<%= stylesheet_link_tag 'es-grammar-exercises' %>
+
+<style type="text/css">
+#ch2 .es-ex-string-wrapper {
+font-size: 25px;
+}
+
+#ch1 .es-ex-string-wrapper {
+font-size: 19px;
+}
+
+
+
+.di_mixs_variants {
+margin-left: 70px;
+margin-bottom: 10px;
+margin-top: 10px;
+padding: 3px;
+border: 1px dashed #000;
+background-color: #efefef;
+width: 450px;
+}
+
+.di_mixs_variants span {
+margin-left: 10px;
+background-color: #fff;
+color: #333;
+}
+
+.di_mixs_tobuild {
+line-height:20px;
+text-indent:0px;
+margin-left: 70px;
+}
+
+#di1 .gext_task  input {
+font-size: 17px;
+}
+
+#di1 .di_mix_variants span, #di1_dragHelper {
+font-size: 16px;
+}
+
+.ge-xt_sign {
+padding-bottom: 17px;
+border-bottom: 1px dotted #666;
+}
+
+.gex-t_show {
+font-size: 15px;
+}
+
+
+</style>
+
+
+<% end %>
+
+
+<h3 class="es-task-in">Прочитайте фразы и выберите ответ  </h3>	
+	
+<div id="ch1" class="es-ex-wrapper">
+	<%= render :partial => 'es_exercise', :locals => {:lang => "rus"} %>
+</div>
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		quest_num: 10,
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+['ひとつ','один'],
+['ふたつ','два'],
+['みっつ','три'],
+['よっつ','четыре'],
+['いつつ','пять'],
+['むっつ','шесть'],
+['ななつ','семь'],
+['やっつ','восемь'],
+['ここのつ','девять'],
+['とお','десять']
+
+		]
+		} )
+</script>
+	
+
+
+<br><br>
+
+
+
+<h3 class="es-task-in">Прочитайте фразы и выберите ответ  </h3>	
+	
+<div id="ch2" class="es-ex-wrapper">
+	<%= render :partial => 'es_exercise', :locals => {:lang => "rus"} %>
+</div>
+
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		quest_num: 10,
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+['一つ','один'],
+['二つ','два'],
+['三つ ','три'],
+['四つ','четыре'],
+['五つ','пять'],
+['六つ','шесть'],
+['七つ','семь'],
+['八つ','восемь'],
+['九つ','девять'],
+['十','десять']
+
+		]
+		} )
+</script>
+	
+
+
+<br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br><br><br>
+
+
+
+<script type="text/javascript">
+//currentSection="";
+</script>

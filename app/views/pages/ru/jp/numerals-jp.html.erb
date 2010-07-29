@@ -1,0 +1,223 @@
+<% @page_title = 'Изучаем японский: Японские числительные' %>
+<% @page_meta = {'description' => "Russian online vocabulary for learning Russian numerals from 100"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+
+<% content_for :special_js_css do %>
+
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'es-course.js' %>
+<%= javascript_include_tag 'jquery.tablesorter.min.js' %>
+
+<%= stylesheet_link_tag 'es-course' %>
+
+
+<style type="text/css">
+.wl-jap {
+font-size: 17px;
+
+}
+</style>
+
+<% end %>
+
+
+
+<div class="hint_wrap">
+<div class="hint_button" style="float: right;">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Links and Settings</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+     				<li><a href="numerals100-test.html"> Tests: Numerals</a></li>
+    				<li><a href="pronunciation.html">Pronunciation training</a></li>
+     				<li><a href="reading.html">Reading in Russian</a></li>
+    		</ul>     				
+        <%= render :partial => 'colorder_accent' %>
+	</div>
+</div>
+</div>
+
+
+
+<h2 class="page">Японские числительные</h2>
+
+<div id="pagecontent"><div id="content">
+
+
+	<table class="es-words-list" cellspacing="1">
+	<col width="20">
+	<col width="150">
+	<col width="180">
+	<col width="150">
+	<thead>
+		<tr>
+			<th>&nbsp;</th>
+			<th>Слово</th>
+			<th>Хирагана</th>
+			<th>Русский</th>
+		</tr>
+			
+	</thead>
+	<tbody>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-jap">
+				一つ
+			</td>
+			<td class="wl-jap">
+				ひとつ
+			</td>
+			<td class="wl-rus">
+				один
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-jap">
+				二つ
+			</td>
+			<td class="wl-jap">
+				ふたつ
+			</td>
+			<td class="wl-rus">
+				два
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-jap">
+				三つ
+			</td>
+			<td class="wl-jap">
+				みっつ
+			</td>
+			<td class="wl-rus">
+				три
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-jap">
+				四つ
+			</td>
+			<td class="wl-jap">
+				よっつ
+			</td>
+			<td class="wl-rus">
+				четыре
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-jap">
+				五つ
+			</td>
+			<td class="wl-jap">
+				いつつ
+			</td>
+			<td class="wl-rus">
+				пять
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-jap">
+				六つ
+			</td>
+			<td class="wl-jap">
+				むっつ
+			</td>
+			<td class="wl-rus">
+				шесть
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-jap">
+				七つ
+			</td>
+			<td class="wl-jap">
+				ななつ
+			</td>
+			<td class="wl-rus">
+				семь
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-jap">
+				八つ
+			</td>
+			<td class="wl-jap">
+				やっつ
+			</td>
+			<td class="wl-rus">
+				восемь
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-jap">
+				九つ
+			</td>
+			<td class="wl-jap">
+				ここのつ
+			</td>
+			<td class="wl-rus">
+				девять
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-jap">
+				十 
+			</td>
+			<td class="wl-jap">
+				とお
+			</td>
+			<td class="wl-rus">
+				десять
+			</td>
+		</tr>
+	</tbody>
+	</table>
+	
+	<br>
+	<br>
+
+<p class="after_dic">Упражнения с данными словами: <a href="numerals-jp-exercises.html">Упражнения: Японские числительные</a></p>
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript">
+currentSection="words";
+</script>
