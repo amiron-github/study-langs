@@ -210,7 +210,7 @@ if(getCookie('preload')) {
 };
 
 
-//wrapTbTest();
+wrapTbTest();
 
 });
 ////////////////////////////// end of downloading

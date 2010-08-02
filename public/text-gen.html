@@ -184,13 +184,27 @@ $(".line_items").each(function() {
 
 $("#inserter_item_width").change(function() {
 
-var tWidth=eval($("#inserter_item_width option:selected").val());
+var tWidth=$("#inserter_item_width option:selected").val();
+
+if(tWidth == 'textarea') {
+  insertersTextarea();
+ 
+} else {
+
+tWidth=eval(tWidth);
+
 if(tWidth == 'normal') {
  tWidth = 150;
 }
+
+
 $(".inserter_items").each(function() {
 	$(this).css({width: tWidth});
 });
+
+}
+
+
 
 
 })
@@ -304,6 +318,22 @@ function wrapIt() {
  }
  
  
+ function insertersTextarea() {
+
+ 
+ $("#line_inserter .inserter_items").each(function(i, elem) {
+ 
+ var tId = $(elem).attr("id");
+ 
+ $(elem).replaceWith('<textarea id="'+tId+'" class="inserter_items"></textarea><br>')
+ 
+ 
+ })
+ 
+ 
+ }
+ 
+ 
  function generateLine() {
  
  
@@ -329,6 +359,12 @@ for (var i = 0; i < lineItemsLen; i ++ ) {
 $("#generated_"+r).text(tLineHtml + endLine);
 
 }
+
+
+$("#generated_line").wrapInner("<pre></pre>");
+
+$(".generated_line_items:even").css({backgroundColor: "#dfdfdf"})
+
 
  }
  
@@ -611,12 +647,15 @@ font-size: 11px;
 <br><br>
 Width: 
 <select id="inserter_item_width">
+	
 	<option>50</option>
 	<option>150</option>
 	<option>200</option>
 	<option>250</option>
 	<option>300</option>
 	<option>400</option>
+	<option>textarea</option>
+	
 </select>
 <br>
 <br>
