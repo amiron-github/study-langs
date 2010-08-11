@@ -178,12 +178,20 @@ function checkExType(elClass) {
 		var userAnswer = $(this).find("input:text").val();
 		var tAnswer= $(this).find(".gext_answer").text();
 		
-	    userAnswer = $.trim(userAnswer); 			
-		tAnswer = $.trim(tAnswer);                
+		tAnswer=tAnswer.replace(/[.,;]/g, "").replace(/\s\s+/g, " ").toUpperCase().replace(/Ё/g, 'Е');
+		tAnswer = $.trim(tAnswer);
 		
-		tAnswer=tAnswer.replace(/[.,;]/g, "").replace(/\s\s+/g, " ");
+	    tContainer.append('<span id="extp_help" style="display: none;">'+userAnswer+'</span>');
+
+		userAnswer = String(tContainer.find("#extp_help").html());
 		
-		userAnswer=userAnswer.replace(/[.,;-]/g, "").replace(/\s\s+/g, " ");
+		tContainer.find("#extp_help").remove();
+		                
+		userAnswer=userAnswer.replace(/[.,;-]/g, "").replace(/&nbsp;/g, " ").replace(/&nbsp/g, " ").replace(/\s\s+/g, " ").toUpperCase().replace(/Ё/g, 'Е');
+		
+		userAnswer = $.trim(userAnswer);
+		
+		//alert("'"+userAnswer+"'");
 		
 		if( userAnswer.toUpperCase() == tAnswer.toUpperCase() ) {
 			$(this).css({backgroundImage: "url(/images/accept1.png)"}).parent().removeAttr("title");

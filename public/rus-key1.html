@@ -10,6 +10,29 @@
  <script type="text/javascript"> 
  
  
+ function copyThat() {
+
+ var str = $("#copy_from").val()
+ 
+ //str = $.trim(str)
+ 
+// str = str.replace(/\s/g, ""); 
+ 
+$("#copy_to").html( '<pre style="background-color: red;">'+str +'</pre>');
+ 
+ }
+ 
+ function copyThat1() {
+ 
+var str = String($("#copy_to pre").html()).replace(/&nbsp;/g, " ");
+
+str = $.trim(str)
+ 
+ $("#copy_to1").text(str);
+  alert($("#copy_to1").html())
+ }
+ 
+ 
 (function(jQuery){
 	jQuery.each(['backgroundColor', 'borderBottomColor', 'borderLeftColor', 'borderRightColor', 'borderTopColor', 'color', 'outlineColor'], function(i,attr){
 		jQuery.fx.step[attr] = function(fx){
@@ -1245,17 +1268,18 @@ display: none;
 
 
 <div> 
-		<p><input type="text" class="for_keyb"  value="Do it here !!!" size="50"/></p> 
+		<p><input id="copy_from" type="text" class="for_keyb"  value="Do it here !!!" size="50"/></p> 
 </div>
 
 
-<div> 
-		<p><textarea cols="50" rows="6" class="for_keyb" ></textarea></p> 
-</div> 
+<br><input type="button" value="copy" onclick="copyThat()"> <br><table cellpadding="0" cellspacing=0 border=1><tr><td id="copy_to" style="background-color: red"></td></tr></table>
 
 
 
 
+<input type="button" value="copy" onclick="copyThat1()">
+
+<span id="copy_to1" style="background-color: yellow"></span>
 
 
 <div id="caret" >0</div>

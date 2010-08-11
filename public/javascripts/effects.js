@@ -286,8 +286,6 @@ if($(".dragit").length){
  $.getScript("/javascripts/draggable.js");
 }
 
-
-
 }
 
 //end of events for Content
@@ -295,23 +293,30 @@ if($(".dragit").length){
 /////////// Content building 
 
 function changeContent() {
+
 if($("span#nOrder").hasClass("checked")) {
 	newOrder();
-	};
+}
+
 if($("span.accent_on").hasClass("checked")) {
+
 	$("#accent_adjust").slideDown();
+	
 	if($("#accent_adjust").hasClass("adjusted")) {
 	accentAdjust();
 	}else{
 	accentOn();
 	}
- };
+}
+ 
 if($("span.accent_un").hasClass("checked")) {
 	accentUn();
- };
+}
+ 
 if($("span#soft_on").hasClass("checked")) {
 	softOn();
- };
+}
+ 
 effectsContent();
 }
 /////////// End of Content building
@@ -338,7 +343,6 @@ effectsContent();
 }
 
 function accentUnClick() {
-$("div#content").html(gContent);
 if($("div#accents").find("span.tcheck").hasClass("checked")){
 	$("div#accents").find("span.tcheck").removeClass("checked");
 	};
@@ -347,11 +351,11 @@ $("span.accent_show").addClass("checked");
 $("span.accent_un").addClass("checked");
 setCookie('accent_un', 'yes');
 delCookie('accent_on');
-changeContent();
+adjustView();
+accentUn();
 }
 
 function accentOnClick() {
-$("div#content").html(gContent);
 if($("div#accents").find("span.tcheck").hasClass("checked")){
 	$("div#accents").find("span.tcheck").removeClass("checked");
 	};
@@ -359,24 +363,40 @@ $("span.accent_show").addClass("checked");
 $("span.accent_on").addClass("checked");
 setCookie('accent_on', 'yes');
 delCookie('accent_un');
-changeContent();
+adjustView();
+
+if($("#accent_adjust").hasClass("adjusted")) {
+		accentAdjust();
+		}else{
+		accentOn();
+};
 }
 
 function accentAdjustClick() {
-$("div#content").html(gContent);
+
+$("#accent_adjust").fadeOut().fadeIn();
+
 if($("#accent_adjust").hasClass("adjusted")) {
 		$("#accent_adjust").removeClass("adjusted");
 		delCookie('accent_adjust');
+		accentOn();
 		}else{
 		$("#accent_adjust").addClass("adjusted");
 		setCookie('accent_adjust', 'yes');
-	};
-changeContent();
-$("#accent_adjust").fadeOut().fadeIn();
+		accentAdjust();
+};
+
 }
 
+function adjustView() {
+if($("span.accent_on").hasClass("checked")) {
+	$("#accent_adjust").slideDown();
+
+}
+}
+
+
 function accentOffClick() {
-$("div#content").html(gContent);
 if($("div#accents").find("span.tcheck").hasClass("checked")){
 	$("div#accents").find("span.tcheck").removeClass("checked");
 	};
@@ -384,7 +404,8 @@ $("#accent_adjust").hide();
 $("span.accent_off").addClass("checked");
 delCookie('accent_on');
 delCookie('accent_un');
-changeContent();
+adjustView();
+accentOff();
 }
 
 function softOnClick() {
@@ -394,7 +415,6 @@ if($("div#softs").find("span.tcheck").hasClass("checked")){
 	};
 $("span#soft_on").addClass("checked");
 setCookie('softness','on');
-effectsContent();
 }
 
 function softOffClick() {
@@ -404,7 +424,6 @@ if($("div#softs").find("span.tcheck").hasClass("checked")){
 	};
 $("span#soft_off").addClass("checked");
 delCookie('softness');
-effectsContent();
 }
 /////////// End of Settings Clicks
 
@@ -432,31 +451,38 @@ $("tr.trow").each(function(){
 
 function accentOn() {
 	$("span.acco").each(function(){
-		$(this).html($(this).text() + "&#769;");
+		var tVal = $(this).text().replace(/[́]/g, "");
+		$(this).html( tVal + "&#769;");
+		
 	});
 }
 
 function accentAdjust() {
 $("span.acco").each(function(){
-	$(this).html("&#769;" + $(this).text());
+	var tVal = $(this).text().replace(/[́]/g, "");
+	$(this).html("&#769;" + tVal);
+	
 	});
 }
 
 function backAccent() {
 	$("span.acco").each(function(){
-		$(this).html($(this).text() + "&#769;");
+		var tVal = $(this).text().replace(/[́]/g, "");
+		$(this).html(tVal + "&#769;");
 	});
 }
 
 function accentUn() {
 	$("span.acco").each(function(){
-		$(this).replaceWith("<u>" + $(this).text() + "</u>");
+		var tVal = $(this).text().replace(/[́]/g, "")
+		$(this).html("<u>" + tVal + "</u>");
 	});
 }
 
 function accentOff() {
 	$("span.acco").each(function(){
-		$(this).html($(this).text());
+		var tVal = $(this).text().replace(/[́]/g, "")
+		$(this).html("" + tVal + "");
 	});
 }
 

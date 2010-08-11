@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
 $("div.gr_exercise_container").each(function(i){
-
 	var tParent = $(this).parent("div");
 	tParent.find("div.gr_exercise_dec").attr("id", "ge_e"+i);
 

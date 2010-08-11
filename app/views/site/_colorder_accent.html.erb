@@ -7,10 +7,8 @@
 
 <% if @file =~ /unit\d\d\.html/ %>
 
- <%= render :partial => 'everyday_course_links' %>
+<%= render :partial => 'everyday_course_links' %>
  
-<%end%>
-
 <div class="drop_1 toopen"><span style="padding-left: 12px;">Audio files preloading</span></div>
 	<div class="drop_2">
 		<div id="preload_options" class="drop_2bl" style="display: none">
@@ -18,9 +16,17 @@
 			<div class="drop_2x"><span id="preload_on" onclick="preloadSound()" class="tcheck">ON</span></div>
 		</div>	
 	</div>
-
-<div class="hint-vspace"></div>
-
+<div class="hint-vspace"></div> 
+ 
+<%else%>
+<div class="drop_1 toopen"><span style="padding-left: 12px;">Audio files preloading</span></div>
+	<div class="drop_2">
+		<div id="preload_options" class="drop_2bl" style="display: none">
+			<div class="drop_2x"><span id="preload_off" class="tcheck checked">OFF</span></div>
+			<div class="drop_2x"><span id="preload_on" onclick="preloadSound()" class="tcheck">ON</span></div>
+		</div>	
+	</div>
+<div class="hint-vspace"></div> 
 <div class="drop_1 toopen"><span style="padding-left: 12px;">Columns order</span></div>
 	<div class="drop_2">
 		<div id="columns" class="drop_2bl" style="display: none">
@@ -28,8 +34,8 @@
 			<div class="drop_2x"><span id="nOrder" class="tcheck">EN-<b>RU</b></span></div>
 		</div>	
 	</div>
-
 <div class="hint-vspace"></div>
+<%end%>
 
 <div class="drop_1 toopen"><span style="padding-left: 12px;">Stresses settings</span></div>
 	<div class="drop_2">

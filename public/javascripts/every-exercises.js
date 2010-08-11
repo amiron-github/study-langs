@@ -10,10 +10,13 @@ example: super-ex.html
 
 
 $(document).ready(function() { 
-    $("table.es-words-list").tablesorter({ headers: {0:{sorter: false}}, widgets: ['zebra'] });
 	$("body").append('<div id="cJp"></div>');
 
-	$("#cJp").jPlayer( {swfPath: "/javascripts/"}); //, nativeSupport: false
+	$("#cJp").jPlayer( {swfPath: "/javascripts/", nativeSupport: false}); //
+	
+	$(".diction ").find(".trow:odd").addClass("odd-dict");
+	
+	
 });
 
 
@@ -147,7 +150,8 @@ function ex_Jplayer(link,el,notPlay) {
 function ch_exercise(hash) {
 
 this.basicArray = hash['basic_array'];
-this.id = hash['id'];						
+this.id = hash['id'];	
+this.testID = hash['test_id'];				
 this.autoPlay = hash['auto_play'];			// default - true, option: false
 this.variantsNum = hash['variants_num'];	// default - 4
 this.randomOrder = hash['random_order'];    // default - true, option: false
@@ -395,13 +399,10 @@ this.getTypeAnswers = function() {
 	tObj.optionsHolder.find(".es-ex-check-type").removeClass("es-ex-invisible").unbind("click").click(function() {
 		var userAnswer = tObj.optionsHolder.find(".es-ex-type-field").val();
 		
-		tObj.optionsHolder.append('<span class="tp_helper" style="display: none;">'+userAnswer+'</span>')
-		userAnswer = String( tObj.optionsHolder.find("span.tp_helper").html() ).replace(/&nbsp;/g, " ").replace(/&nbsp/g, " ");
-		userAnswer = $.trim(userAnswer);
-
-		tObj.optionsHolder.find("span.tp_helper").remove();
+		userAnswer=userAnswer.replace(/[!.,;-?]/g, "").replace(/\s\s+/g, " ").replace(/\s/g, " ");
 		
-
+		userAnswer = $.trim(userAnswer);
+		
 		if ( userAnswer.toUpperCase() == tObj.workArray[tObj.counter][1].toUpperCase() ) {
 			tObj.alertHolder.empty().removeClass(tObj.correctClass).removeClass(tObj.wrongClass);
 			if (tObj.autoPlay) tObj.optionsHolder.find(".es-ex-check-type").unbind("click");
@@ -587,6 +588,15 @@ this.gotoEnd = function() {
 		ex_Jplayer('/sounds/yes.mp3', tObj.audioHolder.get(0),1);
 		exJpForce = false;
 	}
+	
+	var totalTasks = tObj.questNum;
+	var tID = tObj.testID;
+	var correctNum = tObj.correctAswersNum;
+	//alert(tID +" "+totalTasks+" "+correctNum);
+	if (tID != undefined) sendResults(tID, totalTasks, correctNum);
+	
+	
+	
 }
 
 
@@ -775,6 +785,7 @@ this.checkClass="ds-rt";
 this.signClass="ds-sign";
 this.correctClass = "ds-correct-answer";
 this.errorClass = "ds-error-answer";
+this.testID = hash['test_id'];
 
 
 this.targetsData = new Array();
@@ -967,16 +978,29 @@ this.hittedAnimation = function(hitted) {
 }
 
 this.checkAnswers = function() {
+
+var correctNum = 0;
+
   tObj.answers.each(function(i, elem) {
 	if ( $(elem).find("."+tObj.checkClass).length > 0 ) {
 		var tValue = $(elem).find("."+tObj.checkClass).text();
 		if (tValue == (i +1)) {
 			tObj.container.find("."+tObj.signClass).filter(":eq("+i+")").addClass(tObj.correctClass);
+			correctNum++;
 		} else {
 			tObj.container.find("."+tObj.signClass).filter(":eq("+i+")").addClass(tObj.errorClass);
 		}
 	}
   });
+  
+  
+ var totalTasks = tObj.answers.length;
+ var tID = tObj.testID;
+	//alert(tID +" "+totalTasks+" "+correctNum)
+	
+if (tID != undefined) sendResults(tID, totalTasks, correctNum); 
+	
+  
 }
 
 $(document).ready(function() {
@@ -1110,14 +1134,11 @@ this.dropping = function (fromVariant) {
 }
 
 
-
 this.hittedTarget = function (fromVariant, hitted) {
-	
 		var tVariantHtml = tObj.variants.filter(":eq("+fromVariant+")").html();
 		
 		tObj.targets.eq(hitted).children().append('<div taken="'+fromVariant+'" class="sl_item">' + tVariantHtml + '</div> ');
 		tObj.hittedAnimation(hitted);
-			
 		this.answers.find("div.sl_item").mousedown(function(e){
 
 			$("body").addClass("noselect");
@@ -1176,9 +1197,7 @@ this.checkAnswers = function() {
   });
   
   var untouch = totalVariants - correctLen - errorLen;
-  
   tObj.container.find('.ds_check_sign').text('Correct: '+ correctLen + ', errors: '+errorLen+ ", untouch: "+ untouch+", total: "+ totalVariants);
-  
 }
 
 $(document).ready(function() {
@@ -1189,11 +1208,458 @@ $(document).ready(function() {
 }
 
 
+var di_style =""
++"<style type='text/css'> "
++".di_dragHelper {left: 0; top: 0; position: absolute;}"
++".di_ondrag { cursor: default; border: 1px dotted #000; position: absolute; background-color: #fff}"
++".di_noImage { background-image: none !important}"
++"</style>"
+
+
+$(document).ready(function() {
+	$("head").append(di_style);	
+});
+
+
+function draginput_test(hash) {
+
+var tObj = this;
+var dragHelper;
+
+this.targetsClass = hash['targets'];
+this.variantsClass = hash['variant_elem'];
+this.id = hash['id'];
+this.targetBColor = hash['targets_color'];
+this.inTargets = hash['in_targets'];
+this.clearOption = hash['clear_option'];
+this.oneUse = hash['one_use'];
+
+if (this.inTargets == undefined ) this.inTargets = false;
+if (this.clearOption == undefined ) this.inTargets = false;
+if (this.oneUse == undefined ) this.oneUse = false;
+
+this.targetsData = new Array();
+
+this.start = function() {
+
+	this.container = $('#'+this.id);
+	this.targets = this.container.find("." + this.targetsClass );			// jquery elements to put the variants in, wrappers of answers
+	this.variants = this.container.find("."+ tObj.variantsClass);          // jquery elements with variants which will be dragged and checked as answers
+	
+	this.variants.css({cursor: "default"});
+	
+	$("body").append('<div id="'+ this.id +'_dragHelper" class="di_dragHelper noselect"></div>');
+	dragHelper = $('#'+ this.id +'_dragHelper');
+	
+	if (this.clearOption) {
+		if (tObj.inTargets) {				
+			tObj.targets.each(function(i,elem) {
+				$(elem).find(tObj.inTargets).after('<a href="javascript:;" class="clear_placed_text" title="Reset">X</a>');
+			});
+		} else {
+			tObj.targets.each(function(i,elem) {
+				$(elem).after('<a href="javascript:;" class="clear_placed_text" title="Reset">X</a>');
+			});
+		
+		}
+	}
+	
+	this.container.find(".clear_placed_text").click(function() {
+		if (tObj.inTargets) {
+			$(this).parent().find(tObj.inTargets).val("");
+			
+		}else {
+			$(this).prev(tObj.targetsClass).val("");
+		}
+		
+		if (tObj.oneUse) {
+			$(this).parent().find(".di_mix_variants").find(":hidden")
+				.css({visibility: "visible", backgroundColor: "#8FE2FF"})
+				.animate({backgroundColor: "#ffffff"});
+		}
+		
+	});
+	
+	
+	this.variants.mousedown(function(e) {
+		$("body").addClass("noselect");
+		var t = $(this);
+		var fromVariant = tObj.variants.index(t);
+		var tHtml = t.html();
+		var x = t.offset().left;
+		var y = t.offset().top;
+		var l= t.width();
+		var difX=e.pageX-x;
+		var difY=e.pageY-y;
+		
+		tObj.targetTable();               // shot of targets
+		t.css({visibility: "hidden"});
+		dragHelper.addClass("di_ondrag").html(tHtml).css({left: x, top: y, maxWidth: l, opacity: "0.8"});
+		tObj.dragging(difX, difY);
+		tObj.dropping(fromVariant);
+		e.preventDefault();
+		return false;
+	});
+	
+}
+
+this.dragging = function (difX, difY) {
+	$("body").bind("mousemove",function(e){
+		dragHelper.css({left: e.pageX-difX, top: e.pageY-difY});
+		e.preventDefault();
+		return false;
+	});
+}
+
+this.targetTable = function() {
+		this.targetsData = new Array();
+		this.targets.each(function(i,elem) {
+			var loc = $(elem).offset();
+			loc.right = loc.left + $(elem).width();
+			loc.bottom = loc.top + $(elem).height();
+			loc.elem = elem;
+			tObj.targetsData.push(loc);
+		});
+}
+
+this.collision = function (x,y) {
+	for (var i = 0; i < tObj.targetsData.length; i++) {
+		if ( tObj.targetsData[i].left < x && tObj.targetsData[i].right > x && tObj.targetsData[i].top < y && tObj.targetsData[i].bottom > y)
+			return i;
+		}
+	return -1;
+}
+
+this.dropping = function (fromVariant) {
+
+	$("body").one("mouseup", function(e) {
+	
+		var hitTarget = tObj.collision(e.pageX,e.pageY);   // determine if a target is hitted
+		dragHelper.removeClass("di_ondrag").empty();       // remove drag helper
+		$("body").unbind("mousemove");
+		if ( hitTarget > -1) {
+			tObj.hittedTarget(fromVariant, hitTarget);
+		} 
+		
+		if (!tObj.oneUse) {
+			tObj.variants.filter(":eq("+fromVariant+")")
+				.css({visibility: "visible", backgroundColor: "#8FE2FF"})
+				.animate({backgroundColor: "#ffffff"});
+		} else {
+		
+			if ( hitTarget < 0) {
+				tObj.variants.filter(":eq("+fromVariant+")")
+					.css({visibility: "visible", backgroundColor: "#8FE2FF"})
+					.animate({backgroundColor: "#ffffff"});
+			}
+		}
+		
+		$("body").removeClass("noselect");
+		e.preventDefault();
+		return false;
+	});
+}
+
+this.hittedTarget = function (fromVariant, hitted) {
+		var tVariantHtml = tObj.variants.filter(":eq("+fromVariant+")").html();
+		var addValue= tVariantHtml;
+		if (tObj.inTargets) {
+			var tIntarget = tObj.targets.eq(hitted).find(tObj.inTargets);
+			var inTargetDomEl = tIntarget.get(0);
+			
+			if (inTargetDomEl.tagName == "INPUT" || inTargetDomEl.tagName == "TEXTAREA") {
+				if ( !tIntarget.attr("disabled") ) {
+					var currentValue = tIntarget.val();
+					var tValue = currentValue +" " + addValue;
+					tValue = $.trim(tValue)
+					tIntarget.val(tValue);
+				}
+					
+			} else {
+				var currentValue =tIntarget.html();
+				var tValue = currentValue +" " + addValue;
+				tValue = $.trim(tValue)
+				tIntarget.html(tValue);
+			}
+			
+			tObj.hittedAnimation(tIntarget);
+
+		} else {
+
+			var targetDomEl = tObj.targetsData[hitted].elem;
+			if (targetDomEl.tagName == "INPUT" || targetDomEl.tagName == "TEXTAREA") {
+			
+				if ( !tObj.targets.attr("disabled") ) {
+					var currentValue =tObj.targets.eq(hitted).val();
+					var tValue = currentValue +" " + addValue;
+					tValue = $.trim(tValue)
+					tObj.targets.eq(hitted).val(tValue);
+				}
+			} else {
+				var currentValue =tObj.targets.eq(hitted).html();
+				var tValue = currentValue +" " + addValue;
+				tValue = $.trim(tValue)
+				tObj.targets.eq(hitted).html(tValue);
+			}
+			
+			tObj.hittedAnimation(tObj.targets.eq(hitted));
+			
+		}	
+		
+}
+
+
+this.hittedAnimation = function(hitted) {
+			if (tObj.targetBColor == undefined) {
+				var tColor = hitted.css("background-color");
+				if (tColor == "transparent" || tColor == "rgba(0, 0, 0, 0)" ) {
+					var endColor = "#ffffff";
+				} else {
+					var endColor = tColor;
+				}
+				
+				hitted.addClass("ds_noImage").stop().css({backgroundColor: "#feff8f"}).animate({backgroundColor: endColor},500, function () {
+					hitted.css({backgroundColor: tColor}).removeClass("ds_noImage");
+				});
+
+			} else {
+				var tColor = tObj.targetBColor;
+				hitted.addClass("ds_noImage").stop().css({backgroundColor: "#feff8f"}).animate({backgroundColor: tColor},500, function () {
+					hitted.css({backgroundColor: tColor}).removeClass("ds_noImage");
+				});
+				
+			}
+}
+
+$(document).ready(function() {
+	tObj.start();
+});
+
+}
+
+	
+$(document).ready(function() {
+
+$("div.gr_exercise_container").each(function(i){
+	var tParent = $(this).parent("div");
+	tParent.find("div.gr_exercise_dec").attr("id", "ge_e"+i);
+
+});
+
+$(".ex_from_list_check").each(function(i) {
+	$(this).addClass("fromList_ex"+i);
+	$(this).find("input").click(function() {
+		checkExFromList(".fromList_ex"+i);
+	});
+});
+
+
+$(".gext_check").each(function(i) {
+	$(this).addClass("gext_ex"+i);
+	$(this).find("input.gext_check_btn").click(function() {
+		checkExType(".gext_ex"+i);
+	});
+});
+
+$(".gext_answer_show").each(function(i) {
+	$(this).toggle(function() {
+		$(".gr_ex_type").eq(i).find(".gext_task input").attr('disabled', 'disabled').addClass("gr-input-disabled");
+		                                               ////.css({opacity: "0", display: "inline"}).animate({opacity: "1"});
+		$(".gr_ex_type").eq(i).find("div.gext_show").slideDown(function() {
+		   $(this).find("span").fadeIn();
+		   $(".gext_answer_show").eq(i).val('Hide answers')
+		});      
+	}, function(){
+		$(".gr_ex_type").eq(i).find(".gext_task input").removeAttr('disabled').removeClass("gr-input-disabled");
+		$(".gr_ex_type").eq(i).find("div.gext_show").slideUp(function(){
+			$(this).find("span").hide();
+			$(".gext_answer_show").eq(i).val('Display answers')
+		} );
+	});
+});
+
+
+$(".gexd_check").each(function(i) {
+	$(this).addClass("gexd_ex"+i);
+	$(this).find("input").click(function() {
+		checkExDisplay(".gexd_ex"+i);
+	});
+});
+
+
+$(".gr_ex_variants").each(function(i) {
+t = $(this);
+grExFromVariants(t,i)
+
+});
 
 
 
+$(".di_mix_variants").each(function(i, elem) {
+
+	var tStr = $(elem).text();
+	$(elem).empty();
+	tStr = tStr.replace(/[!.,;-?]/g, "").split(" ");
+	tStr = tStr.shuffle();
+	for (var n=0; n < tStr.length; n ++ ) {
+		$(elem).append("<span>" + tStr[n] + "</span>")
+	}
+});
+
+});
 
 
+
+function grExFromVariants(t, n) {
+
+
+var tContainer = t;
+var tID = tContainer.find("div.gr-ex-testid").text();
+
+ tContainer.find(".gexv_task").each(function(i) {
+ 	$(this).parent("td").parent("tr").find("input").attr("name", "gexv_" + n + "_"+i );
+ })
+
+
+tContainer.find("input:checkbox").click(function() {
+  var tName=$(this).attr("name");
+  tContainer.find("input[name='"+ tName +"']").removeAttr("checked");
+  $(this).attr("checked", "checked");
+});
+
+
+
+tContainer.find(".gexv_check").find("input").click(function() {
+var errorNum = 0;
+var errorString = ' errors'
+var totalTasks = 0;
+tContainer.find(".gexv_task").each(function() {
+		
+		totalTasks++;
+	   var tRow = $(this).parent().parent("tr");
+	   tRow.find(".gexv_sign").removeClass("gr-ex-error").removeClass("gr-ex-correct");
+	   
+	   var checkedInputs =	tRow.find("input:checked").length ;
+			if ( checkedInputs > 0) {
+				var totalRes = "good";
+				tRow.find("input:checked").each(function (i) {
+					if ($(this).attr("class") != "ok") totalRes = "error";
+				});
+				if ( tRow.find("input:checked").length != tRow.find(".ok").length ) totalRes = "error";
+				if (totalRes == "error") {
+					//tRow.find(".gexv_sign").css({backgroundImage: "url(/images/error1.png)"}); // loose index if error
+					tRow.find(".gexv_sign").addClass("gr-ex-error");
+					errorNum ++;
+				}else{
+					//tRow.find(".gexv_sign").css({backgroundImage: "url(/images/accept1.png)"}); // success index
+					tRow.find(".gexv_sign").addClass("gr-ex-correct");
+				}
+			} else {
+				//tRow.find(".gexv_sign").css({backgroundImage: "url(/images/error1.png)"}); // loose index if none
+				tRow.find(".gexv_sign").addClass("gr-ex-error");
+				errorNum ++;
+			}
+	});
+
+	
+tContainer.find(".gexv_check").find(".to_notify").remove();
+
+if (errorNum > 0) {
+	if (errorNum == 1)	{
+		errorString = ' error'
+	}
+	tContainer.find(".gexv_check").prepend('<span class="to_notify"><span class="check_notify" title="You have '+ errorNum + errorString +' from '+totalTasks+' tasks">'+ errorNum + errorString + '</span></span>');	
+}else{
+	tContainer.find(".gexv_check").prepend('<span class="to_notify"><span class="check_notify" style="background-image: none; color: green; padding-left: 10px;"> No errors</span></span>');
+}
+	var correctNum = totalTasks - errorNum;
+	sendResults(tID, totalTasks, correctNum);
+	
+	
+})
+
+}
+
+
+function checkExFromList(elClass) {
+	var tContainer = $(elClass).parent(".gr_ex_from_list");
+	var errorNum = 0;
+	var errorString = ' errors'
+	var totalTasks = 0;
+	var tID = tContainer.find("div.gr-ex-testid").text();
+	tContainer.find(".gr_ex_unit").each(function(i) {
+	totalTasks++;
+	var userAnswer = $(this).find("select").find("option:selected").attr("class");
+	if(userAnswer == "ok") {
+		$(this).css({backgroundImage: "url(/images/accept1.png)"}).attr("title", "")
+	}else {
+		$(this).css({backgroundImage: "url(/images/error1.png)"}).attr("title", "");
+		errorNum ++;
+	}
+	});
+	
+	tContainer.find(".ex_from_list_check").find(".to_notify").remove();
+
+	if (errorNum > 0) {
+		if (errorNum == 1)	{
+			errorString = ' error'
+		}
+		tContainer.find(".ex_from_list_check").prepend('<span class="to_notify"><span class="check_notify" title="You have '+ errorNum + errorString +' from '+totalTasks+' tasks">'+ errorNum + errorString + '</span></span>');	
+	}else{
+	tContainer.find(".ex_from_list_check").prepend('<span class="to_notify"><span class="check_notify" style="background-image: none; color: green; padding-left: 10px;"> No errors</span></span>');
+	}
+	
+	var correctNum = totalTasks - errorNum;
+	sendResults(tID, totalTasks, correctNum);
+}
+
+
+function checkExType(elClass) {
+	var tContainer = $(elClass).parent(".gr_ex_type");
+	var tID = tContainer.find("div.gr-ex-testid").text();
+	var errorNum = 0;
+	var errorString = ' errors'
+	var totalTasks = 0;
+	$("#t_inf").empty();
+	tContainer.find(".gext_task").each(function(i) {
+		totalTasks++;
+		var userAnswer = $(this).find("input:text").val();
+		var tAnswer= $(this).find(".gext_answer").text();
+		
+		tAnswer=tAnswer.replace(/[!.,;-?]/g, "").replace(/\s\s+/g, " ").replace(/¸/g, "å").replace(/\s/g, " ");
+		userAnswer=userAnswer.replace(/[!.,;-?]/g, "").replace(/\s\s+/g, " ").replace(/¸/g, "å").replace(/\s/g, " ");
+		userAnswer = $.trim(userAnswer); 			
+		tAnswer = $.trim(tAnswer); 
+		
+		$(this).removeClass("ev-ex-correct").removeClass("ev-ex-error");
+		
+		if( userAnswer.toUpperCase() == tAnswer.toUpperCase() ) {
+			$(this).addClass("ev-ex-correct");
+   		}else {
+			$(this).addClass("ev-ex-error");
+			errorNum++;
+		}
+	});
+
+	tContainer.find(".gext_check").find(".to_notify").remove();
+	
+	if (errorNum > 0) {
+		if (errorNum == 1)	{
+			errorString = ' error'
+		}
+		tContainer.find(".gext_check").prepend('<span class="to_notify"><span class="check_notify" title="You have '+ errorNum + errorString +' from '+totalTasks+' tasks">'+ errorNum + errorString + '</span></span>');	
+	}else{
+		tContainer.find(".gext_check").prepend('<span class="to_notify"><span class="check_notify" style="background-image: none; color: green; padding-left: 10px;"> No errors</span></span>');
+	}
+	
+	
+	
+	var correctNum = totalTasks - errorNum;
+	
+	//alert(tID+" "+totalTasks+" "+correctNum)
+	sendResults(tID, totalTasks, correctNum);	
+	
+}
 
 
 
