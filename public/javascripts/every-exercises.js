@@ -15,7 +15,7 @@ $(document).ready(function() {
 	$("#cJp").jPlayer( {swfPath: "/javascripts/", nativeSupport: false}); //
 	
 	$(".diction ").find(".trow:odd").addClass("odd-dict");
-	
+	$("form img[src='pixel.gif']").addClass("ev-test-img");
 	
 });
 

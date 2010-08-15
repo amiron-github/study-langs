@@ -41,10 +41,7 @@ class SiteController < ApplicationController
       @javascripts << 'test-text'
       @stylesheets << 'test-style'
     when /unit\d\d\.html$/
-      @javascripts << 'test'
-      @javascripts << 'test-text'
-      @stylesheets << 'test-style'
-	  @stylesheets << 'grammar-exercises'
+      @javascripts << 'ev-test'
     when /reading-practice\d\.html$/
       @javascripts << 'test'
       @javascripts << 'test-text'

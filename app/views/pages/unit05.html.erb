@@ -4,7 +4,9 @@
 <% @has_audio = true %>
 
 <% content_for :special_js_css do %>
-
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'every-exercises' %>
+<%= stylesheet_link_tag 'every-exercises' %>
 
 <style type="text/css">
 
@@ -76,7 +78,7 @@ padding: 20px 40px 40px 30px;
 <div class="ex-area">
 
 <p class="task ex-task">a) Dialogues</p>
-<p>
+<p class="pre-diction">
 An American speaks to his Russian business partner. He is going to have a day free of work and asks what places he should see in the town. The Russian recommends to go to the Fine Arts Museum. The American asks to show him this museum on the map and he asks when it is open and how much the entrance price is. The Russian tells that the museum is open every day since about 10 o'clock.
 </p>
 
@@ -98,6 +100,9 @@ An American speaks to his Russian business partner. He is going to have a day fr
 
 
 <div class="dict_wrapper">
+<table class="dict_bord" align="center">
+<tr>
+<td>
 <table class="diction"  cellspacing="0" align="center">
 	<tr class="trow">
 		<td class="original" valign="top">- З<span class="acco">а</span>втра у мен<span class="acco">я</span> своб<span class="acco">о</span>дный день. Что Вы мне посов<span class="acco">е</span>туете посет<span class="acco">и</span>ть в В<span class="acco">а</span>шем г<span class="acco">о</span>роде?
@@ -320,11 +325,14 @@ An American speaks to his Russian business partner. He is going to have a day fr
 		<td class="translation" valign="top">- Yes, you may take pictures but without flash.
 		</td>
 	</tr>
-
+</table>
+</td>
+</tr>
 </table>
 </div>
 <%end%>
-<p style="margin-top: 25px;">
+<br>
+<p style="margin-top: 25px;" class="pre-diction">
 A tourist wants to take a picture of himself in front of the cathedral and she asks a passer-by for help. The passer-by agrees and takes a picture. The tourist asks to do it twice and thanks the passer-by for the help.
 </p>
 
@@ -346,6 +354,9 @@ A tourist wants to take a picture of himself in front of the cathedral and she a
 
 
 <div class="dict_wrapper">
+<table class="dict_bord" align="center">
+<tr>
+<td>
 <table class="diction"  cellspacing="0" align="center">
 	<tr class="trow">
 		<td class="original" valign="top">- Извин<span class="acco">и</span>те, пож<span class="acco">а</span>луйста, вы не могл<span class="acco">и</span> бы мен<span class="acco">я</span> сфотограф<span class="acco">и</span>ровать на ф<span class="acco">о</span>не соб<span class="acco">о</span>ра?
@@ -565,7 +576,9 @@ A tourist wants to take a picture of himself in front of the cathedral and she a
 		<td class="translation" valign="top">- You're welcome.
 		</td>
 	</tr>
-
+</table>
+</td>
+</tr>
 </table>
 </div>
 <%end%>
@@ -587,143 +600,225 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
-<form onsubmit="return check_test(this,1, 'c0105013.I.c)')">
-<table class="tbtest" cellspacing="0" cellpadding="3" align="center">
-	<tr>
-		<td>&nbsp;
 
-		</td>
-		<td class="put"><i>Put the phrase<br />number  in the<br /> text area.</i><br />&nbsp;
-		</td>
-	</tr>
-	<tr>
-		<td width="250" valign="top">
-			<div class="key">
 
-   				<div>
-					<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio05013010.mp3')">Phrase 1 &nbsp;</div>
-				</div>
-			</div>
-		</td>
-		<td><img src="pixel.gif" width="10" height="10" id="r11"><input type="text" size="2"><span class="test-space">And what button should I press?</span>
-		</td>
-	</tr>
+<div id="ds1" class="ds-wrapper" style="padding: 15px; margin: 20px 30px;">
 
-	<tr>
-		<td>
-			<div class="key">
-   				<div>
-					<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio05013020.mp3')">Phrase 2 &nbsp;</div>
-				</div>
-			</div>
-		</td>
+<p style="font-size: 11px; text-align: center;">
+Listen to the phrases. Drag the English phrases from the list below <br>and drop them into the corresponding fields.
+</p>		
 
-		<td><img src="pixel.gif" width="10" height="10" id="r12"><input type="text" size="2"><span class="test-space">Could you please take a picture of me in front of the cathedral?</span>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<div class="key">
-   				<div>
-					<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio05013030.mp3')">Phrase 3 &nbsp;</div>
+<table align="center" style="margin: 0 auto;">
+<tr>
+<td>
 
-				</div>
-			</div>
-		</td>
-		<td><img src="pixel.gif" width="10" height="10" id="r13"><input type="text" size="2"><span class="test-space">Here it is, not far from the bridge.</span>
-		</td>
-	</tr>
-	<tr>
-		<td>
 
-			 <div class="key">
-   				<div>
-					<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio05013040.mp3')">Phrase 4 &nbsp;</div>
-				</div>
-			</div>
-		</td>
-		<td><img src="pixel.gif" width="10" height="10" id="r14"><input type="text" size="2"><span class="test-space">You may take pictures but without flash.</span>
-		</td>
+<table class="dst-test ds-table ds-audio" cellspacing="0" align="center" style="margin: 0 auto">
+<col width="80">
+<col width="20">
+<col width="40">
+<col width="360">
+<tr>
+	<td class="ds-quest" align="center">
+			Phrase 1 
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio05013010.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+			Phrase 2
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio05013020.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 3
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio05013030.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 4
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio05013040.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 5
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio05013050.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 6
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio05013060.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 7
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio05013070.mp3', this)"></div>
+	</td>	
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 8
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio05013080.mp3', this)"></div>
+	</td>	
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+</table>
 
-	</tr>
-	<tr>
-		<td>
-			<div class="key">
-   				<div>
-					<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio05013050.mp3')">Phrase 5 &nbsp;</div>
-				</div>
-			</div>
+</td>
 
-		</td>
-		<td><img src="pixel.gif" width="10" height="10" id="r15"><input type="text" size="2"><span class="test-space">At what time does it open? </span>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<div class="key">
-   				<div>
+</tr>
+<tr>
 
-					<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio05013060.mp3')">Phrase 6 &nbsp;</div>
-				</div>
-			</div>
-		</td>
-		<td><img src="pixel.gif" width="10" height="10" id="r16"><input type="text" size="2"><span class="test-space">I recommend you to visit the Fine Arts Museum.</span>
-		</td>
-	</tr>
-	<tr>
+<td>
+	
+<br>
+<br>
 
-		<td>
-			<div class="key">
-   				<div>
-					<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio05013070.mp3')">Phrase 7 &nbsp;</div>
-				</div>
-			</div>
-		</td>
-		<td><img src="pixel.gif" width="10" height="10" id="r17"><input type="text" size="2"><span class="test-space">Could you please show it to me on the map of the town?</span>
+<table class="ds_variants_list" style="margin: 0 auto;" align="center">
 
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<div class="key">
-   				<div>
-					<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio05013080.mp3')">Phrase 8 &nbsp;</div>
-				</div>
+<tr valign="top">
+<td colspan="2">
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>And what button should I press?</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Here it is, not far from the bridge.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">5</span>At what time does it open?</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">7</span>Is taking pictures allowed there?</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">8</span>You may take pictures but without flash.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">4</span>I recommend you to visit the Fine Arts Museum.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>Could you please take a picture of me in front of the cathedral?</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">6</span>Could you please show it to me on the map of the town?</div></div>
+	</li>
+</ul>
+</td>
+</tr>
+</table>
 
-			</div>
-		</td>
-		<td><img src="pixel.gif" width="10" height="10" id="r18"><input type="text" size="2"><span class="test-space">Is taking pictures allowed there?</span>
-		</td>
-	</tr>
-	<!-- <tr>
-		<td>
-			<div class="key">
-   				<div>
-					<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio05013090.mp3')">Phrase 9 &nbsp;</div>
-				</div>
-			</div>
-		</td>
-		<td><img src="pixel.gif" width="10" height="10" id="r19"><input type="text" size="2"><span class="test-space">I don't know exactly.</span>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<div class="key">
-   				<div>
-					<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio05013100.mp3')">Phrase 10</div>
-				</div>
-			</div>
-		</td>
-		<td><img src="pixel.gif" width="10" height="10" id="r110"><input type="text" size="2"><span class="test-space"> This button.</span>
-		</td>
-	</tr> -->
- </table>
- 
-<div style="margin: 15px 0px 20px 0px;" align="center">
 
-	<input type="submit" value="Check">
+</td>
+</tr>
+</table>
+
+
+<div class="es_btn_wrapper">
+<a href="javascript:;" class="es_btn ds-check-button" >Check answers</a>
 </div>
-</form>
+
+
+</div>
+
+<script type="text/javascript"> 
+	var ds1 = new dragsort_test( {
+		id: "ds1", 
+		test_id: "c0105013.I.c)",
+		targets: "ds-answer", 
+		answer_elem: "ds_sort_item", 
+		variant_elem: "ds_variant",
+		answer_color: "#F7F6F6",
+		auto_check: false
+		} )
+</script>
+		
+<br>
+
 <%end%>
 
 </div>
@@ -735,7 +830,7 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 
 <p class="task ex-task">a) <strong>Learn the following Russian words</strong>:</p>
 
-<div class="voc_inter">
+<div class="voc_inter ev-wordlist">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 
@@ -879,142 +974,141 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 	<%= @hide_html %> 
 <% else %>
 
-<div class="task_transl">
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-			<td width="400">
-				<p>1. Excuse me, please, where is the picture gallery?
-				</p>
-			</td>
-			<td>
-
-				<div class="key check">
-					<div>
-						<div class="sound"  onclick="playAudio('audio05022010.mp3')">Check&nbsp;yourself</div>
-					</div>
-				</div>
-			</td>
-	</tr>
+<table class="ev-quest-answ" cellspacing="0" align="center" style="margin: 0 auto">
+<tr>
+	<th colspan="3">Phrases to translate</th>
+</tr>
+<tr>
+	<td class="qa_task">
+		<p>1. Excuse me, please, where is the picture gallery?
+		</p>
+	</td>
+	<td width="60">
+		   -  ...  
+	</td>
+	<td>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playAudio('audio05022010.mp3')">Check&nbsp;yourself</div>
+			</div>
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="qa_task">
+		<p>2. The cinema is near the subway.
+		</p>
+	</td>
+	<td>
+		   -  ...  
+	</td>
+	<td>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playAudio('audio05022020.mp3')">Check&nbsp;yourself</div>
+			</div>
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="qa_task">
+		<p>3. It's a palace.
+		</p>
+	</td>
+	<td>
+		   -  ...  
+	</td>
+	<td>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playAudio('audio05022030.mp3')">Check&nbsp;yourself</div>
+			</div>
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="qa_task">
+		<p>4. Could you please show where the cafe is situated?
+		</p>
+	</td>
+	<td>
+		   -  ...  
+	</td>
+	<td>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playAudio('audio05022040.mp3')">Check&nbsp;yourself</div>
+			</div>
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="qa_task">
+		<p>5. Where is the church?
+		</p>
+	</td>
+	<td>
+		   -  ...  
+	</td>
+	<td>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playAudio('audio05022050.mp3')">Check&nbsp;yourself</div>
+			</div>
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="qa_task">
+		<p>6. It's an exhibition.
+		</p>
+	</td>
+	<td>
+		   -  ...  
+	</td>
+	<td>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playAudio('audio05022060.mp3')">Check&nbsp;yourself</div>
+			</div>
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="qa_task">
+		<p>7. The theatre is on the right.
+		</p>
+	</td>
+	<td>
+		   -  ...  
+	</td>
+	<td>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playAudio('audio05022070.mp3')">Check&nbsp;yourself</div>
+			</div>
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="qa_task">
+		<p>8. Could you please show where the monument is situated?
+		</p>
+	</td>
+	<td>
+		   -  ...  
+	</td>
+	<td>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playAudio('audio05022080.mp3')">Check&nbsp;yourself</div>
+			</div>
+		</div>
+	</td>
+</tr>
 </table>
 
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-			<td width="400">
-				<p>2. The cinema is near the subway.
-				</p>
-			</td>
-			<td>
-				<div class="key check">
-					<div>
-						<div class="sound"  onclick="playAudio('audio05022020.mp3')">Check&nbsp;yourself</div>
-
-					</div>
-				</div>
-			</td>
-	</tr>
-</table>
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-			<td width="400">
-				<p>3. It's a palace.
-				</p>
-
-			</td>
-			<td>
-				<div class="key check">
-					<div>
-						<div class="sound"  onclick="playAudio('audio05022030.mp3')">Check&nbsp;yourself</div>
-					</div>
-				</div>
-			</td>
-
-	</tr>
-</table>
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-			<td width="400">
-				<p>4. Could you please show where the cafe is situated?
-				</p>
-			</td>
-			<td>
-				<div class="key check">
-
-					<div>
-						<div class="sound"  onclick="playAudio('audio05022040.mp3')">Check&nbsp;yourself</div>
-					</div>
-				</div>
-			</td>
-	</tr>
-</table>
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-
-			<td width="400">
-				<p>5. Where is the church?
-				</p>
-			</td>
-			<td>
-				<div class="key check">
-					<div>
-						<div class="sound"  onclick="playAudio('audio05022050.mp3')">Check&nbsp;yourself</div>
-
-					</div>
-				</div>
-			</td>
-	</tr>
-</table>
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-			<td width="400">
-				<p>6. It's an exhibition.
-				</p>
-
-			</td>
-			<td>
-				<div class="key check">
-					<div>
-						<div class="sound"  onclick="playAudio('audio05022060.mp3')">Check&nbsp;yourself</div>
-					</div>
-				</div>
-			</td>
-
-	</tr>
-</table>
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-			<td width="400">
-				<p>7. The theatre is on the right.
-				</p>
-			</td>
-			<td>
-				<div class="key check">
-
-					<div>
-						<div class="sound"  onclick="playAudio('audio05022070.mp3')">Check&nbsp;yourself</div>
-					</div>
-				</div>
-			</td>
-	</tr>
-</table>
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-
-			<td width="400">
-				<p>8. Could you please show where the monument is situated?
-				</p>
-			</td>
-			<td>
-				<div class="key check">
-					<div>
-						<div class="sound"  onclick="playAudio('audio05022080.mp3')">Check&nbsp;yourself</div>
-
-					</div>
-				</div>
-			</td>
-	</tr>
-</table>
-</div>
-
+<br><br>
 <%end%>
 </div>
 <hr>
@@ -1024,7 +1118,7 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 
 <p class="task ex-task">a) <strong>Learn the Russian words</strong>: </p>
 
-<div class="voc_inter">
+<div class="voc_inter ev-wordlist">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="120">
@@ -1152,125 +1246,125 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 	<%= @hide_html %> 
 <% else %>
 
-<div class="task_transl">
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-			<td width="400">
-				<p>1. I have a photo camera.
-				</p>
-
-			</td>
-			<td>
-				<div class="key check">
-					<div>
-						<div class="sound"  onclick="playAudio('audio05032010.mp3')">Check&nbsp;yourself</div>
-					</div>
-				</div>
-			</td>
-
-	</tr>
+<table class="ev-quest-answ" cellspacing="0" align="center" style="margin: 0 auto">
+<tr>
+	<th colspan="3">Phrases to translate</th>
+</tr>
+<tr>
+	<td class="qa_task">
+		<p>1. I have a photo camera.
+		</p>
+	</td>
+	<td>
+		   -  ...  
+	</td>
+	<td>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playAudio('audio05032010.mp3')">Check&nbsp;yourself</div>
+			</div>
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="qa_task">
+		<p>2. Do you have the plan of the exhibition?
+		</p>
+	</td>
+	<td>
+		   -  ...  
+	</td>
+	<td>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playAudio('audio05032020.mp3')">Check&nbsp;yourself</div>
+			</div>
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="qa_task">
+		<p>3. I have the plan of the museum.
+		</p>
+	</td>
+	<td>
+		   -  ...  
+	</td>
+	<td>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playAudio('audio05032030.mp3')">Check&nbsp;yourself</div>
+			</div>
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="qa_task">
+		<p>4. I have the map.
+		</p>
+	</td>
+	<td>
+		   -  ...  
+	</td>
+	<td>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playAudio('audio05032040.mp3')">Check&nbsp;yourself</div>
+			</div>
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="qa_task">
+		<p>5. Do you have a souvenir?
+		</p>
+	</td>
+	<td>
+		   -  ...  
+	</td>
+	<td>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playAudio('audio05032050.mp3')">Check&nbsp;yourself</div>
+			</div>
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="qa_task">
+		<p>6. I have a video camera.
+		</p>
+	</td>
+	<td>
+		   -  ...  
+	</td>
+	<td>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playAudio('audio05032060.mp3')">Check&nbsp;yourself</div>
+			</div>
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="qa_task">
+		<p>7. Excuse me, please, do you have the plan of the city?
+		</p>
+	</td>
+	<td>
+		   -  ...  
+	</td>
+	<td>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playAudio('audio05032070.mp3')">Check&nbsp;yourself</div>
+			</div>
+		</div>
+	</td>
+</tr>
 </table>
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-			<td width="400">
-				<p>2. Do you have the plan of the exhibition?
-				</p>
-			</td>
-			<td>
-				<div class="key check">
 
-					<div>
-						<div class="sound"  onclick="playAudio('audio05032020.mp3')">Check&nbsp;yourself</div>
-					</div>
-				</div>
-			</td>
-	</tr>
-</table>
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-
-			<td width="400">
-				<p>3. I have the plan of the museum.
-				</p>
-			</td>
-			<td>
-				<div class="key check">
-					<div>
-						<div class="sound"  onclick="playAudio('audio05032030.mp3')">Check&nbsp;yourself</div>
-
-					</div>
-				</div>
-			</td>
-	</tr>
-</table>
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-			<td width="400">
-				<p>4. I have the map.
-				</p>
-
-			</td>
-			<td>
-				<div class="key check">
-					<div>
-						<div class="sound"  onclick="playAudio('audio05032040.mp3')">Check&nbsp;yourself</div>
-					</div>
-				</div>
-			</td>
-
-	</tr>
-</table>
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-			<td width="400">
-				<p>5. Do you have a souvenir?
-				</p>
-			</td>
-			<td>
-				<div class="key check">
-
-					<div>
-						<div class="sound"  onclick="playAudio('audio05032050.mp3')">Check&nbsp;yourself</div>
-					</div>
-				</div>
-			</td>
-	</tr>
-</table>
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-
-			<td width="400">
-				<p>6. I have a video camera.
-				</p>
-			</td>
-			<td>
-				<div class="key check">
-					<div>
-						<div class="sound"  onclick="playAudio('audio05032060.mp3')">Check&nbsp;yourself</div>
-
-					</div>
-				</div>
-			</td>
-	</tr>
-</table>
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-			<td width="400">
-				<p>7. Excuse me, please, do you have the plan of the city?
-				</p>
-
-			</td>
-			<td>
-				<div class="key check">
-					<div>
-						<div class="sound"  onclick="playAudio('audio05032070.mp3')">Check&nbsp;yourself</div>
-					</div>
-				</div>
-			</td>
-
-	</tr>
-</table>
-</div>
+<br><br>
 
 <%end%>
 
@@ -1279,6 +1373,8 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 <hr>
 <h3 class="exers ex-title">IV. What would you advise me to see?</h3>
 <div class="ex-area">
+
+<div class="ev-comment">
 
 <p>If you want to ask someone for advice you can do it using the following constructions:</p>
 
@@ -1323,13 +1419,14 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 
 	</tr>
 </table>
+</div>
 <p class="task ex-task">a) Learn the following verbs: </p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
 
-<div class="voc_inter">
+<div class="voc_inter ev-wordlist">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="120">
@@ -1400,95 +1497,96 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 	<%= @hide_html %> 
 <% else %>
 
-<div class="task_transl">
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-			<td width="400">
-				<p>1. What can you recommend to buy?
-				</p>
-			</td>
-			<td>
-
-				<div class="key check">
-					<div>
-						<div class="sound"  onclick="playAudio('audio05042010.mp3')">Check&nbsp;yourself</div>
-					</div>
-				</div>
-			</td>
-	</tr>
+<table class="ev-quest-answ" cellspacing="0" align="center" style="margin: 0 auto">
+<tr>
+	<th colspan="3">Phrases to translate</th>
+</tr>
+<tr>
+	<td class="qa_task">
+		<p>1. What can you recommend to buy?
+		</p>
+	</td>
+	<td width="60">
+		   -  ...  
+	</td>
+	<td>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playAudio('audio05042010.mp3')">Check&nbsp;yourself</div>
+			</div>
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="qa_task">
+		<p>2. What can you advise me to see?
+		</p>
+	</td>
+	<td>
+		   -  ...  
+	</td>
+	<td>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playAudio('audio05042020.mp3')">Check&nbsp;yourself</div>
+			</div>
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="qa_task">
+		<p>3. What can you advise me to shoot?
+		</p>
+	</td>
+	<td>
+		   -  ...  
+	</td>
+	<td>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playAudio('audio05042030.mp3')">Check&nbsp;yourself</div>
+			</div>
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="qa_task">
+		<p>4. What can you recommend to visit?
+		</p>
+	</td>
+	<td>
+		   -  ...  
+	</td>
+	<td>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playAudio('audio05042040.mp3')">Check&nbsp;yourself</div>
+			</div>
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="qa_task">
+		<p>5. What can you advise me to buy?
+		</p>
+	</td>
+	<td>
+		   -  ...  
+	</td>
+	<td>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playAudio('audio05042050.mp3')">Check&nbsp;yourself</div>
+			</div>
+		</div>
+	</td>
+</tr>
 </table>
-
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-			<td width="400">
-				<p>2. What can you advise me to see?
-				</p>
-			</td>
-			<td>
-				<div class="key check">
-					<div>
-						<div class="sound"  onclick="playAudio('audio05042020.mp3')">Check&nbsp;yourself</div>
-
-					</div>
-				</div>
-			</td>
-	</tr>
-</table>
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-			<td width="400">
-				<p>3. What can you advise me to shoot?
-				</p>
-
-			</td>
-			<td>
-				<div class="key check">
-					<div>
-						<div class="sound"  onclick="playAudio('audio05042030.mp3')">Check&nbsp;yourself</div>
-					</div>
-				</div>
-			</td>
-
-	</tr>
-</table>
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-			<td width="400">
-				<p>4. What can you recommend to visit?
-				</p>
-			</td>
-			<td>
-				<div class="key check">
-
-					<div>
-						<div class="sound"  onclick="playAudio('audio05042040.mp3')">Check&nbsp;yourself</div>
-					</div>
-				</div>
-			</td>
-	</tr>
-</table>
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-
-			<td width="400">
-				<p>5. What can you advise me to buy?
-				</p>
-			</td>
-			<td>
-				<div class="key check">
-					<div>
-						<div class="sound"  onclick="playAudio('audio05042050.mp3')">Check&nbsp;yourself</div>
-
-					</div>
-				</div>
-			</td>
-	</tr>
-</table>
-</div>
-
+<br><br>
 <%end%>
 <p class="task ex-task">c) Learn the following expressions and complete the test:</p>
 
+<div class="ev-comment">
 <table  cellspacing="0" >
 	<tr valign="top">
 		<td width="200">
@@ -1528,8 +1626,8 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 		</td>
 	</tr>
 </table>
-
-<p class="task">Listen and choose the right transalation for the phrases:</p>
+</div>
+<p class="task ex-task">Listen and choose the right transalation for the phrases:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
@@ -1621,7 +1719,7 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 
 <h3 class="exers ex-title">V. Is taking pictures allowed there?</h3>
 <div class="ex-area">
-
+<div class="ev-comment">
 <p>In the dialogue above you have seen the following construction:</p>
 
 <table  cellspacing="0" >      
@@ -1641,13 +1739,14 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 </table>
 
 <p><span class="sound" onclick="playAudio('audio05050002.mp3')"><strong>Можно</strong> <span class="play_tip">&nbsp; &nbsp;</span></span> may indicate the possibility to do something and can be translated like "it is possible" or "it is allowed, it is permissible", depending on the context.</p>
-
+</div>
 
 <p class="task ex-task">a) Look at the examples with this expression:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
+<div class="ev-ex-area" style="margin: 0;">
 
 <table  cellspacing="0" >
 	<tr valign="top">
@@ -1726,13 +1825,13 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 		<td valign="top"><p class="ital">May I take pictures here?</p>
 		</td>
 	</tr>
-
 </table>
+</div>
 <%end%>
 <p class="task ex-task">b) <strong>Learn the following Russian words and expressions:</strong> </p>
 
 
-<div class="voc_inter">
+<div class="voc_inter ev-wordlist">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="100">
@@ -1812,7 +1911,8 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 
 <p class="task ex-task">c) Translate into Russian following the model and check yourself:</p>
 
-<p class="ital">Model:</p>
+<div class="model">
+<h4>Model</h4>
 <table  cellspacing="0" >
 	<tr valign="top">
 		<td valign="top" width="200"><p class="ital">May I photograph here?</p>
@@ -1832,110 +1932,152 @@ T['5']=['44','25','81', '38','61']; // For Test#5
 		</td>
 	</tr>
 </table>
+</div>
 
-<p class="ital">Phrases to translate:</p>
+<br>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
 
-<div class="task_transl">
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-			<td width="320">
-				<p>1. May I smoke here?
-				</p>
-			</td>
-			<td>
-				<div class="key check">
-					<div>
 
-						<div class="sound"  onclick="playAudio('audio05053010.mp3')">Check&nbsp;yourself</div>
-					</div>
+
+
+<div class="section-block" style="cursor: auto; margin: 20px 30px">
+				<div class="sect-crn clt">
+						<div class="sect-crn crt">
+							<div class="sect-mid">  </div>
+						</div>
 				</div>
-			</td>
-	</tr>
+				<div class="section-content" style="height: auto; padding: 0px 40px;">
+<div id="di1">	
+				
+<p class="task">Drag and drop the following words to build phrases in Russian. You can listen and read correct answers by clicking the button "Display answers" </p> 
+<br>
+
+<table style="margin: 0 auto; border: 1px dashed #000" class="di_variants" cellspacing="14" align="center" >
+<tr>
+	<td>
+		<div>Здесь</div>
+	</td>
+	<td>
+		<div>можно</div>
+	</td>
+	<td>
+		<div>посетить</div>
+	</td>
+	<td>
+		<div>снимать</div>
+	</td>
+	<td>
+		<div>курить</div>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">
+		<div>говорить по телефону</div>
+	</td>
+	<td colspan="2">
+		<div>купить билет</div>
+	</td>
+	<td>
+		<div>сесть</div>
+	</td>
+</tr>
 </table>
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-			<td width="320">
+<br>
+<br>
 
-				<p>2. May I sit here?
-				</p>
-			</td>
-			<td>
-				<div class="key check">
-					<div>
-						<div class="sound"  onclick="playAudio('audio05053020.mp3')">Check&nbsp;yourself</div>
-					</div>
+<div  class="gr_ex_type">
+<div class="gr-ex-testid">c0105053.V.c)</div>
 
-				</div>
-			</td>
-	</tr>
-</table>
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-			<td width="320">
-				<p>3. May I buy a ticket here?
-				</p>
-			</td>
-
-			<td>
-				<div class="key check">
-					<div>
-						<div class="sound"  onclick="playAudio('audio05053030.mp3')">Check&nbsp;yourself</div>
-					</div>
-				</div>
-			</td>
-	</tr>
-
-</table>
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-			<td width="320">
-				<p>4. May I shoot on video here?
-				</p>
-			</td>
-			<td>
-				<div class="key check">
-					<div>
-
-						<div class="sound"  onclick="playAudio('audio05053040.mp3')">Check&nbsp;yourself</div>
-					</div>
-				</div>
-			</td>
-	</tr>
-</table>
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-			<td width="320">
-
-				<p>5. May I speak over the phone here?
-				</p>
-			</td>
-			<td>
-				<div class="key check">
-					<div>
-						<div class="sound"  onclick="playAudio('audio05053050.mp3')">Check&nbsp;yourself</div>
-					</div>
-
-				</div>
-			</td>
-	</tr>
-</table>
+<div class="gext_task gext_sign"> 
+	1. May I smoke here?
+	<br><input type="text" style="width: 300px" value=""><span class="gext_answer" style="display: none">Здесь можно курить</span>.
+	<div class="gext_show gext_sh_audio">
+		<div class="jp_control" onclick="cJplayer('/audios/audio05053010.mp3', this)"></div>
+		<span><b>Здесь можно курить?</b></span> &nbsp;
+	</div>
 </div>
+<div class="gext_task gext_sign"> 
+	2. May I sit here? <br> 
+	<input type="text" style="width: 300px" value=""><span class="gext_answer" style="display: none">Здесь можно сесть</span>.
+	<div class="gext_show gext_sh_audio">
+		<div class="jp_control" onclick="cJplayer('/audios/audio05053020.mp3', this)"></div>
+		<span><b>Здесь можно сесть?</b></span> &nbsp;
+	</div>
+</div>
+<div class="gext_task gext_sign"> 
+	3. May I buy a ticket here?<br>
+	<input type="text" style="width: 300px" value=""><span class="gext_answer" style="display: none">Здесь можно купить билет</span>.
+	<div class="gext_show gext_sh_audio">
+		<div class="jp_control" onclick="cJplayer('/audios/audio05053030.mp3', this)"></div>
+		<span><b>Здесь можно купить билет?</b></span> &nbsp;
+	</div>
+</div>
+<div class="gext_task gext_sign"> 
+	4. May I shoot on video here? <br>
+	<input type="text" style="width: 300px" value=""><span class="gext_answer" style="display: none">Здесь можно снимать</span>.
+	<div class="gext_show gext_sh_audio">
+		<div class="jp_control" onclick="cJplayer('/audios/audio05053040.mp3', this)"></div>
+		<span><b>Здесь можно снимать?</b></span> &nbsp;
+	</div>
+</div>
+<div class="gext_task gext_sign"> 
+	5. May I speak over the phone here? <br>
+	<input type="text" style="width: 300px" value=""><span class="gext_answer" style="display: none">Здесь можно говорить по телефону</span>.
+	<div class="gext_show gext_sh_audio">
+		<div class="jp_control" onclick="cJplayer('/audios/audio05053050.mp3', this)"></div>
+		<span><b>Здесь можно говорить по телефону?</b></span> &nbsp;
+	</div>
+</div>
+
+<p class="gext_check"><input type="button" class="gext_check_btn" value="Check answers" > <input type="button" value="Display answers" class="gext_answer_show"></p>
+
+</div>
+
+</div>
+
+</div> <!-- end of di1  -->
+
+<script type="text/javascript"> 
+	var di1 = new draginput_test( {
+		id: "di1", 
+		targets: "gext_task", 
+		in_targets: "input",
+		clear_option: true,
+		variant_elem: "di_variants div",
+		targets_color: "#ffffff"
+
+		} )
+</script>
+				<div class="sect-btm">
+    				<div class="sect-clb">
+    					<div class="sect-crb">
+
+    						<div class="sect-btm-bg" style="height: 40px;">
+    							    				   			
+    						</div>
+    					</div>
+    				</div>
+				</div>
+			</div>
+
+<br><br>
 
 <%end%>
 </div>
 
 <hr>
-<h3 class="exers ex-title">VI. Time</h3>
+<h3 class="exers ex-title">VI. Telling time</h3>
 <div class="ex-area">
 
 <p class="task ex-task">
 a) Learn how to tell about the time in Russian:
 </p>
 
+
+<div class="ev-wordlist">
 <p>Minutes</p>
 
 <table cellpadding="0" cellspacing="0" border="0">
@@ -2215,11 +2357,15 @@ a) Learn how to tell about the time in Russian:
 
 <%end%>
 
+</div>
+
 <p class="task ex-task">b) Listen, read and repeat the following examples:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
+
+<div class="ev-ex-area">
 
 <table  cellspacing="0" >
 	<tr valign="top">
@@ -2341,7 +2487,7 @@ a) Learn how to tell about the time in Russian:
 	</tr>
 
 </table>
-
+</div>
 <%end%>
 <p class="task ex-task">c) Translate into Russian and check yourself:</p>
 
@@ -2349,95 +2495,99 @@ a) Learn how to tell about the time in Russian:
 	<%= @hide_html %> 
 <% else %>
 
-<div class="task_transl">
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-			<td width="400">
-				<p>1. 1 hour 40 minutes (1.40)
-				</p>
-			</td>
-			<td>
-
-				<div class="key check">
-					<div>
-						<div class="sound"  onclick="playAudio('audio05062010.mp3')">Check&nbsp;yourself</div>
-					</div>
-				</div>
-			</td>
-	</tr>
+<table class="ev-quest-answ" cellspacing="0" align="center" style="margin: 0 auto">
+<tr>
+	<th colspan="3">Phrases to translate</th>
+</tr>
+<tr>
+	<td class="qa_task">
+		<p>1. 1 hour 40 minutes (1.40)
+		</p>
+	</td>
+	<td width="60">
+		   -  ...  
+	</td>
+	<td>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playAudio('audio05062010.mp3')">Check&nbsp;yourself</div>
+			</div>
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="qa_task">
+		<p>2. 4 hours 15 minutes (4.15)
+		</p>
+	</td>
+	<td>
+		   -  ...  
+	</td>
+	<td>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playAudio('audio05062020.mp3')">Check&nbsp;yourself</div>
+			</div>
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="qa_task">
+		<p>3. 10 hours 30 minutes (10.30)
+		</p>
+	</td>
+	<td>
+		   -  ...  
+	</td>
+	<td>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playAudio('audio05062030.mp3')">Check&nbsp;yourself</div>
+			</div>
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="qa_task">
+		<p>4. 7 hours 45 minutes (7.45)
+		</p>
+	</td>
+	<td>
+		   -  ...  
+	</td>
+	<td>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playAudio('audio05062040.mp3')">Check&nbsp;yourself</div>
+			</div>
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="qa_task">
+		<p>5. 3 hours 20 minutes (3.20)
+		</p>
+	</td>
+	<td>
+		   -  ...  
+	</td>
+	<td>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playAudio('audio05062050.mp3')">Check&nbsp;yourself</div>
+			</div>
+		</div>
+	</td>
+</tr>
 </table>
 
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-			<td width="400">
-				<p>2. 4 hours 15 minutes (4.15)
-				</p>
-			</td>
-			<td>
-				<div class="key check">
-					<div>
-						<div class="sound"  onclick="playAudio('audio05062020.mp3')">Check&nbsp;yourself</div>
-
-					</div>
-				</div>
-			</td>
-	</tr>
-</table>
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-			<td width="400">
-				<p>3. 10 hours 30 minutes (10.30)
-				</p>
-
-			</td>
-			<td>
-				<div class="key check">
-					<div>
-						<div class="sound"  onclick="playAudio('audio05062030.mp3')">Check&nbsp;yourself</div>
-					</div>
-				</div>
-			</td>
-
-	</tr>
-</table>
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-			<td width="400">
-				<p>4. 7 hours 45 minutes (7.45)
-				</p>
-			</td>
-			<td>
-				<div class="key check">
-
-					<div>
-						<div class="sound"  onclick="playAudio('audio05062040.mp3')">Check&nbsp;yourself</div>
-					</div>
-				</div>
-			</td>
-	</tr>
-</table>
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-
-			<td width="400">
-				<p>5. 3 hours 20 minutes (3.20)
-				</p>
-			</td>
-			<td>
-				<div class="key check">
-					<div>
-						<div class="sound"  onclick="playAudio('audio05062050.mp3')">Check&nbsp;yourself</div>
-
-					</div>
-				</div>
-			</td>
-	</tr>
-</table>
-</div>
+<br>
 <%end%>
 
 <p class="task ex-task">d) In order to say at what time an action happens, the preposition <span class="norm_txt">в</span> is used in Russian. Look at the examples, paying attention to the questions "what time is it?", "at what time?" and "when?":</p>
 
+
+<div class="ev-ex-area">
 <table cellspacing="0" >
 	<tr valign="top">
 		<td width="330">
@@ -2489,7 +2639,6 @@ a) Learn how to tell about the time in Russian:
 		<td valign="top"><p class="ital">At what time? - At 3 o'clock.</p>
 		</td>
 	</tr>
-
 </table>
 
 <% if !(logged_in? && current_user.payment) %>
@@ -2578,9 +2727,10 @@ a) Learn how to tell about the time in Russian:
 </table>
 
 <%end%>
-
+</div>
 <p class="task ex-task">e) Learn the following expressions and transplate from Enflish into  Russian:</p>
 
+<div class="ev-wordlist">
 <table  cellspacing="0" >
 	<tr valign="top">
 		<td width="280">
@@ -2620,98 +2770,102 @@ a) Learn how to tell about the time in Russian:
 		</td>
 	</tr>
 </table>
-
-<p class="task">Translate into Russian and check yourself:</p>
+</div>
+<br>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
 
-<div class="task_transl">
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-			<td width="400">
-				<p>1. The restaurant opens at 9.
-				</p>
-			</td>
-			<td>
-				<div class="key check">
-					<div>
 
-						<div class="sound"  onclick="playAudio('audio05064010.mp3')">Check&nbsp;yourself</div>
-					</div>
-				</div>
-			</td>
-	</tr>
+
+<table class="ev-quest-answ" cellspacing="0" align="center" style="margin: 0 auto">
+<tr>
+	<th colspan="3">Phrases to translate</th>
+</tr>
+<tr>
+	<td class="qa_task">
+		<p>1. The restaurant opens at 9.
+		</p>
+	</td>
+	<td width="60">
+		   -  ...  
+	</td>
+	<td>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playAudio('audio05064010.mp3')">Check&nbsp;yourself</div>
+			</div>
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="qa_task">
+		<p>2. The bar opens at 7.30.
+		</p>
+	</td>
+	<td>
+		   -  ...  
+	</td>
+	<td>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playAudio('audio05064020.mp3')">Check&nbsp;yourself</div>
+			</div>
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="qa_task">
+		<p>3. The café closes at 21.
+		</p>
+	</td>
+	<td>
+		   -  ...  
+	</td>
+	<td>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playAudio('audio05064030.mp3')">Check&nbsp;yourself</div>
+			</div>
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="qa_task">
+		<p>4. The museum opens at 10.
+		</p>
+	</td>
+	<td>
+		   -  ...  
+	</td>
+	<td>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playAudio('audio05064040.mp3')">Check&nbsp;yourself</div>
+			</div>
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="qa_task">
+		<p>5. The shop closes at 20.30.
+		</p>
+	</td>
+	<td>
+		   -  ...  
+	</td>
+	<td>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playAudio('audio05064050.mp3')">Check&nbsp;yourself</div>
+			</div>
+		</div>
+	</td>
+</tr>
 </table>
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-			<td width="400">
 
-				<p>2. The bar opens at 7.30.
-				</p>
-			</td>
-			<td>
-				<div class="key check">
-					<div>
-						<div class="sound"  onclick="playAudio('audio05064020.mp3')">Check&nbsp;yourself</div>
-					</div>
-
-				</div>
-			</td>
-	</tr>
-</table>
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-			<td width="400">
-				<p>3. The caf&#233; closes at 21.
-				</p>
-
-			</td>
-			<td>
-				<div class="key check">
-					<div>
-						<div class="sound"  onclick="playAudio('audio05064030.mp3')">Check&nbsp;yourself</div>
-					</div>
-				</div>
-			</td>
-
-	</tr>
-</table>
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-			<td width="400">
-				<p>4. The museum opens at 10.
-				</p>
-			</td>
-			<td>
-				<div class="key check">
-
-					<div>
-						<div class="sound"  onclick="playAudio('audio05064040.mp3')">Check&nbsp;yourself</div>
-					</div>
-				</div>
-			</td>
-	</tr>
-</table>
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-
-			<td width="400">
-				<p>5. The shop closes at 20.30.
-				</p>
-			</td>
-			<td>
-				<div class="key check">
-					<div>
-						<div class="sound"  onclick="playAudio('audio05064050.mp3')">Check&nbsp;yourself</div>
-
-					</div>
-				</div>
-			</td>
-	</tr>
-</table>
-</div>
+<br><br>
 
 <%end%>
 
@@ -2724,9 +2878,10 @@ a) Learn how to tell about the time in Russian:
 
 <p class="task ex-task">
 a) Learn the following numerals in Russian:
-
 </p>
 
+
+<div class="ev-wordlist">
 <table cellpadding="0" cellspacing="0" border="0">
 	<tr>
 		<td valign="top" width="280">
@@ -2865,7 +3020,7 @@ a) Learn the following numerals in Russian:
             			</td>
             			<td width="30"><p>-</p>
             			<td width="220">
-            				<p><span>девятьс<span class="acct">о</span>т</span><br />
+            				<p><span>девятьс<span class="acco">о</span>т</span><br />
 
             					<span class="sound" onclick="playSound('num00900.mp3')">[divits<span class="acct">o</span>t]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
             				</p>
@@ -2892,6 +3047,8 @@ a) Learn the following numerals in Russian:
 		</td>
 	</tr>
 </table>
+</div>
+
 
 <p class="task ex-task">
 b) Listen, read and repeat the following examples:
@@ -2901,6 +3058,8 @@ b) Listen, read and repeat the following examples:
 	<%= @hide_html %> 
 <% else %>
 
+
+<div class="ev-ex-area" style="margin: 0">
 <table cellpadding="0" cellspacing="0" border="0">
 	<tr>
 		<td valign="top" width="280">
@@ -3039,7 +3198,7 @@ b) Listen, read and repeat the following examples:
 		</td>
 	</tr>
 </table>
-
+</div>
 <%end%>
 
 <p class="task ex-task">c) Listen to the following phrases and complete the test:</p>
@@ -3048,6 +3207,14 @@ b) Listen, read and repeat the following examples:
 	<%= @hide_html %> 
 <% else %>
 
+<div class="section-block" style="cursor: auto; margin: 20px 30px"> 
+	<div class="sect-crn clt"> 
+		<div class="sect-crn crt"> 
+			<div class="sect-mid">  </div> 
+		</div> 
+	</div> 
+	<div class="section-content" style="height: auto; padding: 0px 40px;">
+<br>
 <table class="mini-dialog" cellpadding="0" cellspacing="0" border="0">
 	<tr>
 		<td>
@@ -3115,6 +3282,17 @@ b) Listen, read and repeat the following examples:
 
 <p><input type="submit" value="Check">
 </form>
+
+	</div><!-- end of section-content -->
+	<div class="sect-btm"> 
+    		<div class="sect-clb"> 
+    			<div class="sect-crb"> 
+    				<div class="sect-btm-bg" style="height: 40px;"></div> 
+    			</div> 
+    		</div> 
+	</div> 
+</div> 
+
 
 <%end%>
 

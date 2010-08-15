@@ -1,13 +1,11 @@
 <% @page_title = 'Russian Lessons Online: Lesson 8' %>
-<% @page_meta = {'description' => "Online Russian lesson which helps to learn basic Russian words and phrases related to health care"} %>
+<% @page_meta = {'description' => "Online Russian lesson which helps to learn basic Russian words and phrases related to health care", 'robots' => "noindex"} %>
 <% @with_rec = true %>
 <% @has_audio = true %>
 
 <% content_for :special_js_css do %>
 
-<%= javascript_include_tag 'jquery.jplayer.min.js' %>
-<%= javascript_include_tag 'every-exercises' %>
-<%= stylesheet_link_tag 'every-exercises' %>
+
 <style type="text/css">
 
 
@@ -42,7 +40,7 @@ width: 200px;
 #t2 .quest {
 } 
 
-#ch2 .es-ex-string-wrapper {
+#t2 .task-string {
 background-image: url('images/corpus.gif'); 
 background-repeat: no-repeat;
 background-position: 50% 50%;
@@ -131,7 +129,7 @@ padding: 20px 40px 40px 30px;
 
 
 <p class="task ex-task">a) Dialogue</p>
-<p class="pre-diction">
+<p>
 A tourist comes to the drugstore and asks a medicine against cold. She has a running nose and a sore throat. The chemist advises to take a nasal spray, sore throat pastilles and an antiviral drug. He tells how to take these medicines. The tourist buys them and thanks the chemist for help.
 </p>
 
@@ -151,9 +149,6 @@ A tourist comes to the drugstore and asks a medicine against cold. She has a run
 </table>
 
 <div class="dict_wrapper">
-<table class="dict_bord" align="center">
-<tr>
-<td>
 <table class="diction"  cellspacing="0" align="center">
 	<tr class="trow">
 		<td class="original" valign="top">- Здр<span class="acco">а</span>вствуйте.
@@ -373,11 +368,8 @@ A tourist comes to the drugstore and asks a medicine against cold. She has a run
 		</td>
 		<td class="translation" valign="top"><span onmouseout="hide_info(this)" onmouseover="tooltip(this,'The&nbsp;litteral&nbsp;translation&nbsp;is:<br/><b>To&nbsp;your&nbsp;health!</b>')">- You're welcome*.</span>
 		</td>
-	</tr>
-</table>
 
-</td>
-</tr>
+	</tr>
 </table>
 </div>
 <%end%>
@@ -395,265 +387,148 @@ T['4']=['2','1','2', '2', '1']; // For Test#4
 T['5']=['44','25','81', '38','61']; // For Test#5
 </script>
 </div>
-
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
+<form onsubmit="return check_test(this,1, 'c0108013.I.c)')">
+<table class="tbtest" cellspacing="0" cellpadding="3" align="center">
+	<tr>
 
+		<td>&nbsp;
+		</td>
+		<td class="put"><i>Put the phrase<br />number  in the<br /> text area.</i><br />&nbsp;
+		</td>
+	</tr>
+	<tr>
+		<td width="250" valign="top">
 
-<div id="ds1" class="ds-wrapper" style="padding: 15px; margin: 20px 30px;">
+			<div class="key">
+   				<div>
+					<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio08013010.mp3')">Phrase 1 &nbsp;</div>
+				</div>
+			</div>
+		</td>
+		<td><img src="pixel.gif" width="10" height="10" id="r11"><input type="text" size="2"><span class="test-space">I recommend you to buy this antiviral drug.</span>
+		</td>
 
-<p style="font-size: 11px; text-align: center;">
-Listen to the phrases. Drag the English phrases from the list below <br>and drop them into the corresponding fields.
-</p>		
+	</tr>
+	<tr>
+		<td>
+			<div class="key">
+   				<div>
+					<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio08013020.mp3')">Phrase 2 &nbsp;</div>
+				</div>
+			</div>
 
-<table align="center" style="margin: 0 auto;">
-<tr>
-<td>
+		</td>
+		<td><img src="pixel.gif" width="10" height="10" id="r12"><input type="text" size="2"><span class="test-space">The total sum is 312 roubles.</span>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="key">
+   				<div>
 
+					<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio08013030.mp3')">Phrase 3 &nbsp;</div>
+				</div>
+			</div>
+		</td>
+		<td><img src="pixel.gif" width="10" height="10" id="r13"><input type="text" size="2"><span class="test-space">I have a running nose and a sore throat.</span>
+		</td>
+	</tr>
+	<tr>
 
-<table class="dst-test ds-table ds-audio" cellspacing="0" align="center" style="margin: 0 auto">
-<col width="80">
-<col width="20">
-<col width="40">
-<col width="320">
-<tr>
-	<td class="ds-quest" align="center">
-			Phrase 1 
-	</td>
-	<td class="ds-audio-listen" align="center">
-			<div class="jp_control" onclick="cJplayer('/audios/audio08013010.mp3', this)"></div>
-	</td>
-	<td class="ds-audio-correctness">
-		<div class="ds-sign"></div>
-	</td>
-	<td class="ds-answer">
-		<div class="ds_sort_item">
-			&nbsp;
-		</div>
-	</td>
-</tr>
-<tr>
-	<td class="ds-quest">
-			Phrase 2
-	</td>
-	<td class="ds-audio-listen" align="center">
-			<div class="jp_control" onclick="cJplayer('/audios/audio08013020.mp3', this)"></div>
-	</td>
-	<td class="ds-audio-correctness">
-		<div class="ds-sign"></div>
-	</td>
-	<td class="ds-answer">
-		<div class="ds_sort_item">
-			&nbsp;
-		</div>
-	</td>
-</tr>
-<tr>
-	<td class="ds-quest">
-		Phrase 3
-	</td>
-	<td class="ds-audio-listen" align="center">
-			<div class="jp_control" onclick="cJplayer('/audios/audio08013030.mp3', this)"></div>
-	</td>
-	<td class="ds-audio-correctness">
-		<div class="ds-sign"></div>
-	</td>
-	<td class="ds-answer">
-		<div class="ds_sort_item">
-			&nbsp;
-		</div>
-	</td>
-</tr>
-<tr>
-	<td class="ds-quest">
-		Phrase 4
-	</td>
-	<td class="ds-audio-listen" align="center">
-			<div class="jp_control" onclick="cJplayer('/audios/audio08013040.mp3', this)"></div>
-	</td>
-	<td class="ds-audio-correctness">
-		<div class="ds-sign"></div>
-	</td>	
-	<td class="ds-answer">
-		<div class="ds_sort_item">
-			&nbsp;
-		</div>
-	</td>
-</tr>
-<tr>
-	<td class="ds-quest">
-		Phrase 5
-	</td>
-	<td class="ds-audio-listen" align="center">
-			<div class="jp_control" onclick="cJplayer('/audios/audio08013050.mp3', this)"></div>
-	</td>
-	<td class="ds-audio-correctness">
-		<div class="ds-sign"></div>
-	</td>	
-	<td class="ds-answer">
-		<div class="ds_sort_item">
-			&nbsp;
-		</div>
-	</td>
-</tr>
-<tr>
-	<td class="ds-quest">
-		Phrase 6
-	</td>
-	<td class="ds-audio-listen" align="center">
-			<div class="jp_control" onclick="cJplayer('/audios/audio08013060.mp3', this)"></div>
-	</td>
-	<td class="ds-audio-correctness">
-		<div class="ds-sign"></div>
-	</td>	
-	<td class="ds-answer">
-		<div class="ds_sort_item">
-			&nbsp;
-		</div>
-	</td>
-</tr>
-<tr>
-	<td class="ds-quest">
-		Phrase 7
-	</td>
-	<td class="ds-audio-listen" align="center">
-			<div class="jp_control" onclick="cJplayer('/audios/audio08013070.mp3', this)"></div>
-	</td>	
-	<td class="ds-audio-correctness">
-		<div class="ds-sign"></div>
-	</td>
-	<td class="ds-answer">
-		<div class="ds_sort_item">
-			&nbsp;
-		</div>
-	</td>
-</tr>
-<tr>
-	<td class="ds-quest">
-		Phrase 8
-	</td>
-	<td class="ds-audio-listen" align="center">
-			<div class="jp_control" onclick="cJplayer('/audios/audio08013080.mp3', this)"></div>
-	</td>	
-	<td class="ds-audio-correctness">
-		<div class="ds-sign"></div>
-	</td>
-	<td class="ds-answer">
-		<div class="ds_sort_item">
-			&nbsp;
-		</div>
-	</td>
-</tr>
-<tr>
-	<td class="ds-quest">
-		Phrase 9
-	</td>
-	<td class="ds-audio-listen" align="center">
-			<div class="jp_control" onclick="cJplayer('/audios/audio08013090.mp3', this)"></div>
-	</td>	
-	<td class="ds-audio-correctness">
-		<div class="ds-sign"></div>
-	</td>
-	<td class="ds-answer">
-		<div class="ds_sort_item">
-			&nbsp;
-		</div>
-	</td>
-</tr>
-</table>
+		<td>
+			 <div class="key">
+   				<div>
+					<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio08013040.mp3')">Phrase 4 &nbsp;</div>
+				</div>
+			</div>
+		</td>
+		<td><img src="pixel.gif" width="10" height="10" id="r14"><input type="text" size="2"><span class="test-space">I'll give you nasal spray.</span>
 
-</td>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="key">
+   				<div>
+					<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio08013050.mp3')">Phrase 5 &nbsp;</div>
+				</div>
 
-</tr>
-<tr>
+			</div>
+		</td>
+		<td><img src="pixel.gif" width="10" height="10" id="r15"><input type="text" size="2"><span class="test-space">Could you please recommend me some good medicine?</span>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="key">
 
-<td>
-	
-<br>
-<br>
+   				<div>
+					<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio08013060.mp3')">Phrase 6 &nbsp;</div>
+				</div>
+			</div>
+		</td>
+		<td><img src="pixel.gif" width="10" height="10" id="r16"><input type="text" size="2"><span class="test-space">During 3 days at the very least.</span>
+		</td>
+	</tr>
 
-<table class="ds_variants_list" style="margin: 0 auto;" align="center">
-<col width="220">
-<col width="230">
+	<tr>
+		<td>
+			<div class="key">
+   				<div>
+					<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio08013070.mp3')">Phrase 7 &nbsp;</div>
+				</div>
+			</div>
+		</td>
 
-<tr valign="top">
-<td>
-<ul class="no-list">
-	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">9</span>The total sum is 312 roubles.</div></div>
-	</li>
-	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">7</span>I'll give you nasal spray.</div></div>
-	</li>
-</ul>
+		<td><img src="pixel.gif" width="10" height="10" id="r17"><input type="text" size="2"><span class="test-space">Use them twice a day: in the morning and in the evening.</span>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="key">
+   				<div>
+					<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio08013080.mp3')">Phrase 8 &nbsp;</div>
 
-</td>
-<td>
+				</div>
+			</div>
+		</td>
+		<td><img src="pixel.gif" width="10" height="10" id="r18"><input type="text" size="2"><span class="test-space">Adhibit one pastille every 4 hours.</span>
+		</td>
+	</tr>
+	<tr>
+		<td>
 
-<ul class="no-list">
+			<div class="key">
+   				<div>
+					<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio08013090.mp3')">Phrase 9 &nbsp;</div>
+				</div>
+			</div>
+		</td>
+		<td><img src="pixel.gif" width="10" height="10" id="r19"><input type="text" size="2"><span class="test-space">Do you have a high temperature?</span>
+		</td>
 
-	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">5</span>During 3 days at the very least.</div></div>
-	</li>
-	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">8</span>Take one pastille every 4 hours.</div></div>
-	</li>
+	</tr>
+	<!-- tr>
+		<td>
+			<div class="key">
+   				<div>
+					<div class="sound" style="padding-right: 20px;" onclick="playAudio('audio08013100.mp3')">Phrase 10</div>
+				</div>
+			</div>
 
-</ul>
-
-</td>
-</tr>
-<tr valign="top">
-<td colspan="2">
-<ul class="no-list">
-	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>I recommend you to buy this antiviral drug.</div></div>
-	</li>
-	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>I have a running nose and a sore throat.</div></div>
-	</li>
-	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">6</span>Could you please recommend me some good medicine?</div></div>
-	</li>
-	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">4</span>Use it twice a day: in the morning and in the evening.</div></div>
-	</li>
-	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>Do you have a high temperature?</div></div>
-	</li>
-</ul>
-</td>
-</tr>
-</table>
-
-
-</td>
-</tr>
-</table>
-
-
-<div class="es_btn_wrapper">
-<a href="javascript:;" class="es_btn ds-check-button" >Check answers</a>
+		</td>
+		<td><img src="pixel.gif" width="10" height="10" id="r110"><input type="text" size="2"><span class="test-space">Take one capsule 3-4 times a day.</span>
+		</td>
+	</tr -->
+ </table>
+ 
+<div style="margin: 15px 0px 20px 0px;" align="center">
+	<input type="submit" value="Check">
 </div>
-
-
-</div>
-
-<script type="text/javascript"> 
-	var ds1 = new dragsort_test( {
-		id: "ds1", 
-		test_id: "c0108013.I.c)",
-		targets: "ds-answer", 
-		answer_elem: "ds_sort_item", 
-		variant_elem: "ds_variant",
-		answer_color: "#F7F6F6",
-		auto_check: false
-		} )
-</script>
-		
-<br>
-
+</form>
 <%end%>
 
 </div>
@@ -664,7 +539,7 @@ Listen to the phrases. Drag the English phrases from the list below <br>and drop
 
 <p class="task ex-task">a) <strong>Learn the following Russian words</strong>:</p>
 
-<div class="voc_inter ev-wordlist">
+<div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="100">
@@ -790,70 +665,12 @@ Listen to the phrases. Drag the English phrases from the list below <br>and drop
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
+<div id="t1">
 
-<div id="ch1" class="es-ex-wrapper">
-<div class="es-ex-alert-container"><div class="es-ex-alert-rt"><div class="es-ex-alert"> &nbsp;</div></div></div>
-<div class="es-ex-top">
-	<div class="es-ex-autoplay-wrapper"><input class="es-ex-autoplay" type="checkbox" /> <span>Go to next automatically</span> </div>
-	<div class="es-ex-final"></div>
-
-</div>
-<table class="es-ex-content" cellspacing="0">
-	<tr>
-		<td class="es-ex-quest" width="40%" valign="middle" align="center">
-			<div class="es-ex-audio-wrapper">
-				<table><tr><td style="height: 140px;"><div class="es-ex-audio-holder"><div class="es-ex-audio"></div></div></td></tr></table>
-			</div>
-			<div class="es-ex-string-holder">
-				<table><tr><td class="es-ex-string-wrapper" style="height: 150px;">&nbsp;</td></tr></table>
-			</div>
-
-		</td>
-		<td class="es-ex-tasks" valign="top">
-			<div class="yn-answer-type">
-					<p class="es-yn-task-p">This word is translated as:</p>
-					<div class="es-yn-variant-wrapper"><div class="es-yn-variant yn-trans">&nbsp;</div></div>
-					<div class="es-ex-buttons yn-btns">
-						<input type="button" class="es-ex-es-btn yn-yes" value="Yes"/> &nbsp;&nbsp;&nbsp;&nbsp; <input value="NO" type="button"  class="es-ex-es-btn yn-no"/>
-
-					</div>
-			</div>
-		</td>
-	</tr>
-	<tr>
-		<td><div class="es-ex-bottom"><input type="button" class="es-ex-next" value="NEXT" style="font-size: 12px; visibility: hidden;"></div></td>
-		<td></td>
-	</tr>
-</table>
-
-<div class="es-ex-info-container">
-	<table cellspacing="0" align="center">
-		<tr>
-			<td style="padding-left: 20px;"><div class="es-ex-info"> &nbsp;  </div></td>
-			<td><div class="es-ex-buttons"><input type="button" class="es-ex-es-btn es-ex-start" value="RESTART"/></div></td>
-		</tr>
-	</table>
-</div>
-</div>
-
-<script type="text/javascript"> 
-	var ch1 = new ch_exercise( {
-		id: "ch1", 
-		test_id: "c0108022.II.b)",
-		quest_type: 'audio',
-		basic_array: [
-		
-['/audios/audio08021010.mp3','head'],['/audios/audio08021020.mp3','neck'],['/audios/audio08021030.mp3','arm'],
-['/audios/audio08021040.mp3','finger'],['/audios/audio08021050.mp3','breast'],['/audios/audio08021060.mp3','belly'],
-['/audios/audio08021070.mp3','leg'],['/audios/audio08021080.mp3','foot']
-
-		]
-		} )
+<script type="text/javascript">
+var t1 = new Test({dict:[['audios/audio08021010.mp3','head'],['audios/audio08021020.mp3','neck'],['audios/audio08021030.mp3','arm'],['audios/audio08021040.mp3','finger'],['audios/audio08021050.mp3','breast'],['audios/audio08021060.mp3','belly'],['audios/audio08021070.mp3','leg'],['audios/audio08021080.mp3','foot']],hide:'di1',id:'t1',type: 'audio',how_questions: 8, how_show: 2}, 'c0108022.II.b)');
 </script>
-
-<br><br>
-
-
+</div>
 <%end%>
 
 </div>
@@ -865,7 +682,7 @@ Listen to the phrases. Drag the English phrases from the list below <br>and drop
 
 <p class="task ex-task"><strong>a) Learn the Russian words</strong>: </p>
 
-<div class="voc_inter ev-wordlist">
+<div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="120">
@@ -991,16 +808,6 @@ Listen to the phrases. Drag the English phrases from the list below <br>and drop
 	<%= @hide_html %> 
 <% else %>
 
-
-<div class="section-block" style="cursor: auto; margin: 20px 30px"> 
-	<div class="sect-crn clt"> 
-		<div class="sect-crn crt"> 
-			<div class="sect-mid">  </div> 
-		</div> 
-	</div> 
-	<div class="section-content" style="height: auto; padding: 0px 40px;">
-
-
 <form onsubmit="return check_test(this,2, 'c0108032.III.b)')">
 <table cellspacing=0 cellpadding="0" align="center">
 	<tr>
@@ -1054,16 +861,6 @@ Listen to the phrases. Drag the English phrases from the list below <br>and drop
 
  </table>
 </form>
-	</div><!-- end of section-content -->
-	<div class="sect-btm"> 
-    		<div class="sect-clb"> 
-    			<div class="sect-crb"> 
-    				<div class="sect-btm-bg" style="height: 40px;"></div> 
-    			</div> 
-    		</div> 
-	</div> 
-</div>
-
 <%end%>
 
 </div>
@@ -1074,17 +871,14 @@ Listen to the phrases. Drag the English phrases from the list below <br>and drop
 <h3 class="exers ex-title">IV. I have a head ache.</h3>
 <div class="ex-area">
 
-<div class="ev-comment">
-<p>If you feel some pain, you can tell about it with expression "У меня болит ..." [oo minya balit] indicating the location (part of the body or the organ) of the pain. 
-In case the noun is in plural (e.g. eyes or teeth), it necessary to use "болят" [balyat] instead of "болит".</p>
-</div>
+<p>If you feel some pain, you can tell about it with expression "У меня болит ..." [oo minya balit] indicating the location (part of the body or the organ) of the pain. In case the noun is in plural (e.g. eyes or teeth), it necessary to use "болят" [balyat] instead of "болит". Look at the following examples:</p>
+
 <p class="task ex-task">a) Look, listen and reapeat the examples:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
 
-<div class="ev-ex-area">
 <table  cellspacing="0" >
 	<tr valign="top">
 
@@ -1146,225 +940,160 @@ In case the noun is in plural (e.g. eyes or teeth), it necessary to use "бол�
 		</td>
 	</tr>
 </table>
-</div>
 <%end%>
 <p class="task ex-task">b) Look at the location of the pain and choose a corresponding Russian phrase.</p>
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
 
+<div id="t2">
+<script type="text/javascript">
+var t2 = new Test({dict:[['<div class="corp head"></div>','У меня болит голова.'],['<div class="corp eyes"></div>','У меня болят глаза.'],['<div class="corp hand"></div>','У меня болит рука.'],['<div class="corp throat"></div>','У меня болит горло.'],['<div class="corp teeth"></div>','У меня болят зубы.'],['<div class="corp stomach"></div>','У меня болит живот.']],hide:'di2',id:'t2',type: 'text',how_questions: 6, how_show: 2}, 'c0108042.IV.b)');
 
-
-
-
-<div id="ch2" class="es-ex-wrapper">
-<div class="es-ex-alert-container"><div class="es-ex-alert-rt"><div class="es-ex-alert"> &nbsp;</div></div></div>
-<div class="es-ex-top">
-	<div class="es-ex-autoplay-wrapper"><input class="es-ex-autoplay" type="checkbox" /> <span>Go to next automatically</span> </div>
-	<div class="es-ex-final"></div>
-
-</div>
-<table class="es-ex-content" cellspacing="0">
-	<tr>
-		<td class="es-ex-quest" width="40%" valign="middle" align="center">
-			<div class="es-ex-audio-wrapper">
-				<table><tr><td style="height: 140px;"><div class="es-ex-audio-holder"><div class="es-ex-audio"></div></div></td></tr></table>
-			</div>
-			<div class="es-ex-string-holder">
-				<table><tr><td class="es-ex-string-wrapper" style="height: 150px;">&nbsp;</td></tr></table>
-			</div>
-
-		</td>
-		<td class="es-ex-tasks" valign="top">
-			<div class="yn-answer-type">
-					<p class="es-yn-task-p">This word is translated as:</p>
-					<div class="es-yn-variant-wrapper"><div class="es-yn-variant yn-trans">&nbsp;</div></div>
-					<div class="es-ex-buttons yn-btns">
-						<input type="button" class="es-ex-es-btn yn-yes" value="Yes"/> &nbsp;&nbsp;&nbsp;&nbsp; <input value="NO" type="button"  class="es-ex-es-btn yn-no"/>
-
-					</div>
-			</div>
-		</td>
-	</tr>
-	<tr>
-		<td><div class="es-ex-bottom"><input type="button" class="es-ex-next" value="NEXT" style="font-size: 12px; visibility: hidden;"></div></td>
-		<td></td>
-	</tr>
-</table>
-
-<div class="es-ex-info-container">
-	<table cellspacing="0" align="center">
-		<tr>
-			<td style="padding-left: 20px;"><div class="es-ex-info"> &nbsp;  </div></td>
-			<td><div class="es-ex-buttons"><input type="button" class="es-ex-es-btn es-ex-start" value="RESTART"/></div></td>
-		</tr>
-	</table>
-</div>
-</div>
-
-<script type="text/javascript"> 
-	var ch2 = new ch_exercise( {
-		id: "ch2", 
-		random_order: false,
-		test_id: "c0108042.IV.b)",
-		quest_type: 'html',
-		basic_array: [
-		
-['<div class="corp head"></div>','У меня болит голова.'],
-['<div class="corp eyes"></div>','У меня болят глаза.'],
-['<div class="corp hand"></div>','У меня болит рука.'],
-['<div class="corp throat"></div>','У меня болит горло.'],
-['<div class="corp teeth"></div>','У меня болят зубы.'],
-['<div class="corp stomach"></div>','У меня болит живот.']
-
-		]
-		} )
 </script>
-
-<br><br>
-
-
+</div>
 <%end%>
 <p class="task ex-task">c) Translate into Russian and check yourself:</p>
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
 
+<div class="task_transl">
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="380">
 
-<table class="ev-quest-answ" cellspacing="0" align="center" style="margin: 0 auto">
-<tr>
-	<th colspan="3">Phrases to translate</th>
-</tr>
-<tr>
-	<td class="qa_task" width="220">
-		<p>1. I have a stomach-ache.
-		</p>
-	</td>
-	<td width="60">
-		   -  ...  
-	</td>
-	<td>
-		<div class="key check">
-			<div>
-				<div class="sound"  onclick="playAudio('audio08043010.mp3')">Check&nbsp;yourself</div>
-			</div>
-		</div>
-	</td>
-</tr>
-<tr>
-	<td class="qa_task">
-		<p>2. I have a sore throat.
-		</p>
-	</td>
-	<td>
-		   -  ...  
-	</td>
-	<td>
-		<div class="key check">
-			<div>
-				<div class="sound"  onclick="playAudio('audio08043020.mp3')">Check&nbsp;yourself</div>
-			</div>
-		</div>
-	</td>
-</tr>
-<tr>
-	<td class="qa_task">
-		<p>3. I have a toothache.
-		</p>
-	</td>
-	<td>
-		   -  ...  
-	</td>
-	<td>
-		<div class="key check">
-			<div>
-				<div class="sound"  onclick="playAudio('audio08043030.mp3')">Check&nbsp;yourself</div>
-			</div>
-		</div>
-	</td>
-</tr>
-<tr>
-	<td class="qa_task">
-		<p>4. I have a headache.
-		</p>
-	</td>
-	<td>
-		   -  ...  
-	</td>
-	<td>
-		<div class="key check">
-			<div>
-				<div class="sound"  onclick="playAudio('audio08043040.mp3')">Check&nbsp;yourself</div>
-			</div>
-		</div>
-	</td>
-</tr>
-<tr>
-	<td class="qa_task">
-		<p>5. I feel pain in my leg.
-		</p>
-	</td>
-	<td>
-		   -  ...  
-	</td>
-	<td>
-		<div class="key check">
-			<div>
-				<div class="sound"  onclick="playAudio('audio08043050.mp3')">Check&nbsp;yourself</div>
-			</div>
-		</div>
-	</td>
-</tr>
-<tr>
-	<td class="qa_task">
-		<p>6. My eyes heart me.
-		</p>
-	</td>
-	<td>
-		   -  ...  
-	</td>
-	<td>
-		<div class="key check">
-			<div>
-				<div class="sound"  onclick="playAudio('audio08043060.mp3')">Check&nbsp;yourself</div>
-			</div>
-		</div>
-	</td>
-</tr>
-<tr>
-	<td class="qa_task">
-		<p>7. I have pain in my finger.
-		</p>
-	</td>
-	<td>
-		   -  ...  
-	</td>
-	<td>
-		<div class="key check">
-			<div>
-				<div class="sound"  onclick="playAudio('audio08043070.mp3')">Check&nbsp;yourself</div>
-			</div>
-		</div>
-	</td>
-</tr>
-<tr>
-	<td class="qa_task">
-		<p>8. I have a chest pain.
-		</p>
-	</td>
-	<td>
-		   -  ...  
-	</td>
-	<td>
-		<div class="key check">
-			<div>
-				<div class="sound"  onclick="playAudio('audio08043080.mp3')">Check&nbsp;yourself</div>
-			</div>
-		</div>
-	</td>
-</tr>
+				<p>1. I have a stomach-ache.
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio08043010.mp3')">Check&nbsp;yourself</div>
+					</div>
+
+				</div>
+			</td>
+	</tr>
 </table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="380">
+				<p>2. I have a sore throat.
+				</p>
+			</td>
 
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio08043020.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+			</td>
+	</tr>
+
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="380">
+				<p>3. I have a toothache.
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+
+						<div class="sound"  onclick="playAudio('audio08043030.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="380">
+
+				<p>4. I have a headache.
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio08043040.mp3')">Check&nbsp;yourself</div>
+					</div>
+
+				</div>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="380">
+				<p>5.  I feel pain in my leg.
+				</p>
+			</td>
+
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio08043050.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+			</td>
+	</tr>
+
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="380">
+				<p>6. My eyes heart me.
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+
+						<div class="sound"  onclick="playAudio('audio08043060.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="380">
+
+				<p>7. I have pain in my finger.
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio08043070.mp3')">Check&nbsp;yourself</div>
+					</div>
+
+				</div>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="380">
+				<p>8. I have a chest pain.
+				</p>
+			</td>
+
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio08043080.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+			</td>
+	</tr>
+
+</table>
+</div>
 <%end%>
 
 </div>
@@ -1376,7 +1105,7 @@ In case the noun is in plural (e.g. eyes or teeth), it necessary to use "бол�
 
 <p class="task ex-task"><strong>a) Learn the following Russian words:</strong></p>
 
-<div class="voc_inter ev-wordlist">
+<div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="140">
@@ -1547,8 +1276,7 @@ In case the noun is in plural (e.g. eyes or teeth), it necessary to use "бол�
 	<%= @hide_html %> 
 <% else %>
 
-<div class="model">
-<h4>Model</h4>
+<p class="ital">Model:</p>
 
 <table  cellspacing="0" >
 	<tr valign="top">
@@ -1576,124 +1304,123 @@ In case the noun is in plural (e.g. eyes or teeth), it necessary to use "бол�
 		<td valign="top"><p class="ital">Do you have a running nose? -Yes, I have a running nose.</p>
 		</td>
 	</tr>
-</table>
-</div>
 
-<table class="ev-quest-answ" cellspacing="0" align="center" style="margin: 0 auto">
-<tr>
-	<th colspan="3">Questions</th>
-</tr>
-<tr>
-	<td class="qa_task" width="230">
-				<p>У Вас температ<span class="acco">у</span>ра? <br />
+</table>
+
+<p class="ital">Questions</p>
+
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="260">
+				<p>У Вас температ<span class="acco">у</span>ра? - ... <br />
 					<span class="sound" onclick="playAudio('audio08052011.mp3')">[oo v<span class="acct">a</span>s timpirat<span class="acct">oo</span>ra?] <span class="play_tip">&nbsp; &nbsp;</span></span>
+
 				</p>
-	</td>
-	<td width="60">
-		   -  ...  
-	</td>
-	<td>
-		<div class="key check">
-			<div>
-				<div class="sound"  onclick="playAudio('audio08052012.mp3')">Check&nbsp;yourself</div>
-			</div>
-		</div>
-	</td>
-</tr>
-<tr>
-	<td class="qa_task">
-				<p>У Вас аллерг<span class="acco">и</span><i></i>я?   <br />
-					<span class="sound" onclick="playAudio('audio08052021.mp3')">[oo v<span class="acct">a</span>s alirg<span class="acct">i</span>ya?] <span class="play_tip">&nbsp; &nbsp;</span></span>
-				</p>
-	</td>
-	<td>
-		   -  ...  
-	</td>
-	<td>
-		<div class="key check">
-			<div>
-				<div class="sound"  onclick="playAudio('audio08052022.mp3')">Check&nbsp;yourself</div>
-			</div>
-		</div>
-	</td>
-</tr>
-<tr>
-	<td class="qa_task">
-				<p>У Вас тошнот<span class="acco">а</span>?  <br />
-					<span class="sound" onclick="playAudio('audio08052031.mp3')">[oo v<span class="acct">a</span>s tashnat<span class="acct">a</span>?] <span class="play_tip">&nbsp; &nbsp;</span></span>
-				</p>
-	</td>
-	<td>
-		   -  ...  
-	</td>
-	<td>
-		<div class="key check">
-			<div>
-				<div class="sound"  onclick="playAudio('audio08052032.mp3')">Check&nbsp;yourself</div>
-			</div>
-		</div>
-	</td>
-</tr>
-<tr>
-	<td class="qa_task">
-				<p>У Вас зубн<span class="acco">а</span><i></i>я боль?  <br />
-					<span class="sound" onclick="playAudio('audio08052041.mp3')">[oo v<span class="acct">a</span>s zoobn<span class="acct">a</span>ya b<span class="acct">o</span><span class="sftc">l</span>?] <span class="play_tip">&nbsp; &nbsp;</span></span>
-				</p>
-	</td>
-	<td>
-		   -  ...  
-	</td>
-	<td>
-		<div class="key check">
-			<div>
-				<div class="sound"  onclick="playAudio('audio08052042.mp3')">Check&nbsp;yourself</div>
-			</div>
-		</div>
-	</td>
-</tr>
-<tr>
-	<td class="qa_task">
-				<p>У Вас к<span class="acco">а</span>шель?    <br />
-					<span class="sound" onclick="playAudio('audio08052051.mp3')">[oo v<span class="acct">a</span>s k<span class="acct">a</span>sh<span class="ry">i</span><span class="sftc">l</span>?] <span class="play_tip">&nbsp; &nbsp;</span></span>
-				</p>
-	</td>
-	<td>
-		   -  ...  
-	</td>
-	<td>
-		<div class="key check">
-			<div>
-				<div class="sound"  onclick="playAudio('audio08052052.mp3')">Check&nbsp;yourself</div>
-			</div>
-		</div>
-	</td>
-</tr>
-<tr>
-	<td class="qa_task">
-				<p>У Вас есть воспал<span class="acco">е</span>ние?   <br />
-					<span class="sound" onclick="playAudio('audio08052061.mp3')">[oo v<span class="acct">a</span>s y<span class="acct">e</span><span class="sftc">s</span><span class="sftc">t</span> vaspa<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>niye?] <span class="play_tip">&nbsp; &nbsp;</span></span>
-				</p>
-	</td>
-	<td>
-		   -  ...  
-	</td>
-	<td>
-		<div class="key check">
-			<div>
-				<div class="sound"  onclick="playAudio('audio08052062.mp3')">Check&nbsp;yourself</div>
-			</div>
-		</div>
-	</td>
-</tr>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio08052012.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+
+			</td>
+	</tr>
 </table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="260">
+				<p>У Вас аллерг<span class="acco">и</span><i></i>я? - ...  <br />
+					<span class="sound" onclick="playAudio('audio08052021.mp3')">[oo v<span class="acct">a</span>s alirg<span class="acct">i</span>ya?] <span class="play_tip">&nbsp; &nbsp;</span></span>
 
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio08052022.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
 
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="260">
+				<p>У Вас тошнот<span class="acco">а</span>? - ...  <br />
+					<span class="sound" onclick="playAudio('audio08052031.mp3')">[oo v<span class="acct">a</span>s tashnat<span class="acct">a</span>?] <span class="play_tip">&nbsp; &nbsp;</span></span>
+
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio08052032.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="260">
+				<p>У Вас зубн<span class="acco">а</span><i></i>я боль? - ... <br />
+					<span class="sound" onclick="playAudio('audio08052041.mp3')">[oo v<span class="acct">a</span>s zoobn<span class="acct">a</span>ya b<span class="acct">o</span><span class="sftc">l</span>?] <span class="play_tip">&nbsp; &nbsp;</span></span>
+
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio08052042.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="260">
+				<p>У Вас к<span class="acco">а</span>шель? - ...   <br />
+					<span class="sound" onclick="playAudio('audio08052051.mp3')">[oo v<span class="acct">a</span>s k<span class="acct">a</span>sh<span class="ry">i</span><span class="sftc">l</span>?] <span class="play_tip">&nbsp; &nbsp;</span></span>
+
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio08052052.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="260">
+				<p>У Вас есть воспал<span class="acco">е</span>ние? - ...  <br />
+					<span class="sound" onclick="playAudio('audio08052061.mp3')">[oo v<span class="acct">a</span>s y<span class="acct">e</span><span class="sftc">s</span><span class="sftc">t</span> vaspa<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>niye?] <span class="play_tip">&nbsp; &nbsp;</span></span>
+
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio08052062.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+
+			</td>
+	</tr>
+</table>
 
 <%end%>
 <p class="task ex-task">c) In previous lessons you have learnt how to to ask someone for advice. Look at the example and translate phrases from English into Russian:</p>
 
-<div class="model">
-<h4>Model</h4>
 <table  cellspacing="0" >
 	<tr valign="top">
 		<td width="320">
@@ -1712,151 +1439,150 @@ In case the noun is in plural (e.g. eyes or teeth), it necessary to use "бол�
 		<td valign="top"><p class="ital">What can you advise me?</p>
 		</td>
 	</tr>
+
 </table>
-</div>
-<br><br>
 
-
+<p class="task">Translate into Russian and check yourself:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
 
+<div class="task_transl">
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="380">
+				<p>1. I have a cough. What can you advise me?
+				</p>
+			</td>
+			<td>
 
-<table class="ev-quest-answ" cellspacing="0" align="center" style="margin: 0 auto">
-<tr>
-	<th colspan="3">Phrases to translate</th>
-</tr>
-<tr>
-	<td class="qa_task">
-		<p>1. I have a cough. What can you advise me?
-		</p>
-	</td>
-	<td>
-		   -  ...  
-	</td>
-	<td>
-		<div class="key check">
-			<div>
-				<div class="sound"  onclick="playAudio('audio08053010.mp3')">Check&nbsp;yourself</div>
-			</div>
-		</div>
-	</td>
-</tr>
-<tr>
-	<td class="qa_task">
-		<p>2. I have a corn. What can you advise me?
-		</p>
-	</td>
-	<td>
-		   -  ...  
-	</td>
-	<td>
-		<div class="key check">
-			<div>
-				<div class="sound"  onclick="playAudio('audio08053020.mp3')">Check&nbsp;yourself</div>
-			</div>
-		</div>
-	</td>
-</tr>
-<tr>
-	<td class="qa_task">
-		<p>3. I have a high temperature. What can you advise me?
-		</p>
-	</td>
-	<td>
-		   -  ...  
-	</td>
-	<td>
-		<div class="key check">
-			<div>
-				<div class="sound"  onclick="playAudio('audio08053030.mp3')">Check&nbsp;yourself</div>
-			</div>
-		</div>
-	</td>
-</tr>
-<tr>
-	<td class="qa_task">
-		<p>4. I have a running nose. What can you advise me?
-		</p>
-	</td>
-	<td>
-		   -  ...  
-	</td>
-	<td>
-		<div class="key check">
-			<div>
-				<div class="sound"  onclick="playAudio('audio08053040.mp3')">Check&nbsp;yourself</div>
-			</div>
-		</div>
-	</td>
-</tr>
-<tr>
-	<td class="qa_task">
-		<p>5. I have an allergy. What can you advise me?
-		</p>
-	</td>
-	<td>
-		   -  ...  
-	</td>
-	<td>
-		<div class="key check">
-			<div>
-				<div class="sound"  onclick="playAudio('audio08053050.mp3')">Check&nbsp;yourself</div>
-			</div>
-		</div>
-	</td>
-</tr>
-<tr>
-	<td class="qa_task">
-		<p>6. I have sickness. What can you advise me?
-		</p>
-	</td>
-	<td>
-		   -  ...  
-	</td>
-	<td>
-		<div class="key check">
-			<div>
-				<div class="sound"  onclick="playAudio('audio08053060.mp3')">Check&nbsp;yourself</div>
-			</div>
-		</div>
-	</td>
-</tr>
-<tr>
-	<td class="qa_task">
-		<p>7. I have an inflammation. What can you advise me?
-		</p>
-	</td>
-	<td>
-		   -  ...  
-	</td>
-	<td>
-		<div class="key check">
-			<div>
-				<div class="sound"  onclick="playAudio('audio08053070.mp3')">Check&nbsp;yourself</div>
-			</div>
-		</div>
-	</td>
-</tr>
-<tr>
-	<td class="qa_task">
-		<p>8. I have a toothache. What can you advise me?
-		</p>
-	</td>
-	<td>
-		   -  ...  
-	</td>
-	<td>
-		<div class="key check">
-			<div>
-				<div class="sound"  onclick="playAudio('audio08053080.mp3')">Check&nbsp;yourself</div>
-			</div>
-		</div>
-	</td>
-</tr>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio08053010.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+			</td>
+	</tr>
 </table>
-<br>
+
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="380">
+				<p>2. I have a corn. What can you advise me?
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio08053020.mp3')">Check&nbsp;yourself</div>
+
+					</div>
+				</div>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="380">
+				<p>3. I have a high temperature. What can you advise me?
+				</p>
+
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio08053030.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+			</td>
+
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="380">
+				<p>4. I have a running nose. What can you advise me?
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+
+					<div>
+						<div class="sound"  onclick="playAudio('audio08053040.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+
+			<td width="380">
+				<p>5. I have an allergy. What can you advise me?
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio08053050.mp3')">Check&nbsp;yourself</div>
+
+					</div>
+				</div>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="380">
+				<p>6. I have sickness. What can you advise me?
+				</p>
+
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio08053060.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+			</td>
+
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="380">
+				<p>7. I have an inflammation. What can you advise me?
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+
+					<div>
+						<div class="sound"  onclick="playAudio('audio08053070.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+
+			<td width="380">
+				<p>8. I have a toothache. What can you advise me?
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio08053080.mp3')">Check&nbsp;yourself</div>
+
+					</div>
+				</div>
+			</td>
+	</tr>
+</table>
+</div>
 
 <%end%>
 
@@ -1870,7 +1596,7 @@ In case the noun is in plural (e.g. eyes or teeth), it necessary to use "бол�
 
 <p class="task ex-task">a) <strong>Learn the following Russian words:</strong></p>
 
-<div class="voc_inter ev-wordlist">
+<div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="100">
@@ -2025,86 +1751,18 @@ In case the noun is in plural (e.g. eyes or teeth), it necessary to use "бол�
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
-
-
-
-<div id="ch3" class="es-ex-wrapper">
-<div class="es-ex-alert-container"><div class="es-ex-alert-rt"><div class="es-ex-alert"> &nbsp;</div></div></div>
-<div class="es-ex-top">
-	<div class="es-ex-autoplay-wrapper"><input class="es-ex-autoplay" type="checkbox" /> <span>Go to next automatically</span> </div>
-	<div class="es-ex-final"></div>
-
-</div>
-<table class="es-ex-content" cellspacing="0">
-	<tr>
-		<td class="es-ex-quest" width="40%" valign="middle" align="center">
-			<div class="es-ex-audio-wrapper">
-				<table><tr><td style="height: 140px;"><div class="es-ex-audio-holder"><div class="es-ex-audio"></div></div></td></tr></table>
-			</div>
-			<div class="es-ex-string-holder">
-				<table><tr><td class="es-ex-string-wrapper" style="height: 150px;">&nbsp;</td></tr></table>
-			</div>
-
-		</td>
-		<td class="es-ex-tasks" valign="top">
-			<div class="yn-answer-type">
-					<p class="es-yn-task-p">This word is translated as:</p>
-					<div class="es-yn-variant-wrapper"><div class="es-yn-variant yn-trans">&nbsp;</div></div>
-					<div class="es-ex-buttons yn-btns">
-						<input type="button" class="es-ex-es-btn yn-yes" value="Yes"/> &nbsp;&nbsp;&nbsp;&nbsp; <input value="NO" type="button"  class="es-ex-es-btn yn-no"/>
-
-					</div>
-			</div>
-		</td>
-	</tr>
-	<tr>
-		<td><div class="es-ex-bottom"><input type="button" class="es-ex-next" value="NEXT" style="font-size: 12px; visibility: hidden;"></div></td>
-		<td></td>
-	</tr>
-</table>
-
-<div class="es-ex-info-container">
-	<table cellspacing="0" align="center">
-		<tr>
-			<td style="padding-left: 20px;"><div class="es-ex-info"> &nbsp;  </div></td>
-			<td><div class="es-ex-buttons"><input type="button" class="es-ex-es-btn es-ex-start" value="RESTART"/></div></td>
-		</tr>
-	</table>
-</div>
-</div>
-
-<script type="text/javascript"> 
-	var ch3 = new ch_exercise( {
-		id: "ch3", 
-		test_id: "c0108062.VI.b)",
-		//quest_type: 'audio',
-		basic_array: [
-		
-['medicine','лекарство'],['remedy','средство'],['pill','таблетка'],['capsule','капсула'],['pastille','пастилка'],
-['drops','капли'],['syrup','сироп'],['ointment','мазь'],['plaster','пластырь'],['bandage','бинт']
-
-		]
-		} )
+<div id="t3">
+<script type="text/javascript">
+var t3 = new Test({dict: [['medicine','лекарство'],['remedy','средство'],['pill','таблетка'],['capsule','капсула'],['pastille','пастилка'],
+['drops','капли'],['syrup','сироп'],['ointment','мазь'],['plaster','пластырь'],['bandage','бинт']],hide: 'di3',id:'t3',type: 'text', how_questions: 8, how_show: 2}, 'c0108062.VI.b)');
 </script>
-
-<br><br>
-
+</div>
 <%end%>
 <p class="task ex-task">c) Find the translation for remedies in Russian:</p>
 
 <% if !(logged_in? && current_user.payment) %>
 	<%= @hide_html %> 
 <% else %>
-
-
-
-<div class="section-block" style="cursor: auto; margin: 20px 30px"> 
-	<div class="sect-crn clt"> 
-		<div class="sect-crn crt"> 
-			<div class="sect-mid">  </div> 
-		</div> 
-	</div> 
-	<div class="section-content" style="height: auto; padding: 0px 40px;">
 
 <form onsubmit="return check_test(this,3, 'c0108063.VI.c)')">
 <table cellspacing="0" cellpadding="3" align="center">
@@ -2203,17 +1861,6 @@ In case the noun is in plural (e.g. eyes or teeth), it necessary to use "бол�
 	</tr>
  </table>
 </form>
-
-	</div><!-- end of section-content -->
-	<div class="sect-btm"> 
-    		<div class="sect-clb"> 
-    			<div class="sect-crb"> 
-    				<div class="sect-btm-bg" style="height: 40px;"></div> 
-    			</div> 
-    		</div> 
-	</div> 
-</div> 
-
 <%end%>
 
 </div>
@@ -2225,7 +1872,7 @@ In case the noun is in plural (e.g. eyes or teeth), it necessary to use "бол�
 
 <p class="task ex-task">a) Learn the following expressions:</p>
 
-<div class="voc_inter ev-wordlist">
+<div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 
@@ -2384,15 +2031,6 @@ In case the noun is in plural (e.g. eyes or teeth), it necessary to use "бол�
 	<%= @hide_html %> 
 <% else %>
 
-
-<div class="section-block" style="cursor: auto; margin: 20px 30px"> 
-	<div class="sect-crn clt"> 
-		<div class="sect-crn crt"> 
-			<div class="sect-mid">  </div> 
-		</div> 
-	</div> 
-	<div class="section-content" style="height: auto; padding: 0px 40px;">
-
 <form onsubmit="return check_test(this,4, 'c0108072.VII.b)')">
 	<table border="0">
 		<tr>
@@ -2512,17 +2150,6 @@ In case the noun is in plural (e.g. eyes or teeth), it necessary to use "бол�
 		</tr>
 	</table>
 </form>
-
-	</div><!-- end of section-content -->
-	<div class="sect-btm"> 
-    		<div class="sect-clb"> 
-    			<div class="sect-crb"> 
-    				<div class="sect-btm-bg" style="height: 40px;"></div> 
-    			</div> 
-    		</div> 
-	</div> 
-</div> 
-
 <%end%>
 
 </div>
