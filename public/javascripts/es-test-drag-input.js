@@ -27,10 +27,12 @@ this.targetBColor = hash['targets_color'];
 this.inTargets = hash['in_targets'];
 this.clearOption = hash['clear_option'];
 this.oneUse = hash['one_use'];
+this.nospace = hash['nospace'];
 
 if (this.inTargets == undefined ) this.inTargets = false;
 if (this.clearOption == undefined ) this.inTargets = false;
 if (this.oneUse == undefined ) this.oneUse = false;
+if (this.nospace == undefined ) this.nospace = false;
 
 
 this.targetsData = new Array();
@@ -65,9 +67,6 @@ this.start = function() {
 	this.container.find(".clear_placed_text").click(function() {
 		if (tObj.inTargets) {
 			$(this).parent().find(tObj.inTargets).val("");
-			
-			
-			
 			
 		}else {
 			$(this).prev(tObj.targetsClass).val("");
@@ -183,14 +182,22 @@ this.hittedTarget = function (fromVariant, hitted) {
 			if (inTargetDomEl.tagName == "INPUT" || inTargetDomEl.tagName == "TEXTAREA") {
 				if ( !tIntarget.attr("disabled") ) {
 					var currentValue = tIntarget.val();
-					var tValue = currentValue +" " + addValue;
+					if (tObj.nospace) {
+						var tValue = currentValue + addValue;
+					} else {
+						var tValue = currentValue +" " + addValue;
+					}
 					tValue = $.trim(tValue)
 					tIntarget.val(tValue);
 				}
 					
 			} else {
 				var currentValue =tIntarget.html();
-				var tValue = currentValue +" " + addValue;
+					if (tObj.nospace) {
+						var tValue = currentValue + addValue;
+					} else {
+						var tValue = currentValue +" " + addValue;
+					}
 				tValue = $.trim(tValue)
 				tIntarget.html(tValue);
 			}
@@ -204,13 +211,20 @@ this.hittedTarget = function (fromVariant, hitted) {
 			
 				if ( !tObj.targets.attr("disabled") ) {
 					var currentValue =tObj.targets.eq(hitted).val();
-					var tValue = currentValue +" " + addValue;
+						
+
+					
 					tValue = $.trim(tValue)
 					tObj.targets.eq(hitted).val(tValue);
 				}
 			} else {
 				var currentValue =tObj.targets.eq(hitted).html();
-				var tValue = currentValue +" " + addValue;
+				if (tObj.nospace) {
+					var tValue = currentValue + addValue;
+				} else {
+					var tValue = currentValue +" " + addValue;
+				}
+				
 				tValue = $.trim(tValue)
 				tObj.targets.eq(hitted).html(tValue);
 			}

@@ -961,6 +961,9 @@ background-color: #dfdfdf;
 color: #666;
 font-size: 10px;
 color: #666;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
 }
 
 .content a.es-ex-show-type:link {
@@ -968,7 +971,6 @@ text-decoration: none;
 background-color: #dfdfdf;
 font-weight: bold;
 padding: 1px 5px;
--moz-border-radius: 3px;
 }
 
 .content a.es-ex-show-type:visited {

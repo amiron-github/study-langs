@@ -1,0 +1,1946 @@
+<% @page_title='Essential Russian Course: Lesson 3' %>
+<% @page_meta = {'description' => "The third lesson of the Essential Russian Course"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+
+<% content_for :special_js_css do %>
+
+<%= javascript_include_tag 'test-drag-sort' %>
+<%= javascript_include_tag 'multi-choice' %>
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'es-course.js' %>
+<%= javascript_include_tag 'jquery.tablesorter.min.js' %>
+<%= javascript_include_tag 'es-multiexercises' %>
+<%= javascript_include_tag 'es-grammar-exercises' %>
+<%= javascript_include_tag 'es-test-drag-input' %>
+
+<script type="text/javascript">
+
+<%if params[:tab] %>
+	openTabFromUrl(<%= params[:tab] %>);
+<%else%>
+	openTabFromUrl();
+<%end%>
+
+
+$(document).ready(function() {
+
+	$(".gext_task input").addClass("for_keyb")
+});
+
+
+	
+</script>
+
+ <%= javascript_include_tag 'es-virtual-keyboard' %>
+ <%= stylesheet_link_tag 'keyboard' %>
+
+<%= stylesheet_link_tag 'es-course' %>
+<%= stylesheet_link_tag 'es-exercise.css' %>
+<%= stylesheet_link_tag 'es-grammar-exercises' %>
+
+<style type="text/css">
+#prof_tabs {margin-top: 50px;}
+.inpBlock {min-height: 800px; height: auto !important; height: 800px;}
+.pBlock {padding: 40px 50px;}
+.ptab div {font-size: 12px;}
+
+.ds-test li {float: left; list-style: none; font-size: 18px;}
+
+</style>
+
+<% end %>
+
+<div class="hint_wrap">
+<div class="hint_button" style="float: right;">
+  <div class="hint">
+      <div class="hint_list">
+        <span class="hint_string">Links and Settings</span>
+      </div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+        <ul>
+            <li><a href="sounds-info.html">General Info about Russian Sounds</a></li>
+            <li><a href="phonetics-course.html">Phonetics course</a></li>
+        </ul>
+        <%= render :partial => 'down_accent' %>
+  </div>
+</div>
+</div>
+<div id="pagecontent"><div id="content">
+
+
+<h2 class="page">Lesson 3. Professions and Occupations</h2>
+
+
+
+
+
+<div id="jpId"></div>
+
+
+<div id="prof_tabs">
+
+	<div id="tabs_row">
+            <div id="tab01" class="ptab  current_ptab"><div><a href="#1">Dialogue</a></div></div>
+            <div id="tab02" class="ptab"><div>Vocabulary</div></div>
+            <div id="tab03" class="ptab"><div>Grammar</div></div>
+			<div id="tab04" class="ptab"><div>Practice</div></div>
+			<div id="tab05" class="ptab"><div>Revision</div></div>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+
+<div id="for_tab01" class="pBlock" style="display: block">
+	<div class="inpBlock">
+
+			
+			<p>
+				Listen to the dialogues and read the translation. Then, listen once again and repeat after the speaker.
+			</p>
+		
+		<table id="dc1" class="dialog-t" cellspacing="0" align="center" style="margin: 0 auto;">
+			<col width="30">
+			<col width="250">
+			<col width="260" >
+			<tr>
+				<th class="d-first">&nbsp;</th>
+				<th>Dialogue 1. Interview</th>
+				<th >&nbsp;</th>
+			</tr>
+			<tr>
+				<td colspan="3" class="d-pre-phrases" style="text-align: center">
+				
+				<div class="dt_controls">
+					<table cellspacing="0">
+					  <tr>
+						<td><div class="dt_rewind" title="Play Previous"></div></td>
+						<td><div class="dt_play" title="Play"></div></td>
+						<td><div class="dt_fast-forward" title="Play Next"></div></td>
+						<td><div class="dt_repeat" title="Repeat"></div></td>
+						<td><div class="dt_stop" title="Stop"></div></td>
+					  </tr>
+					</table>
+				</div>
+
+				</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div></td>
+				<td  class="d-rus">- Добрый день!  </td>
+				<td class="d-eng">- Good afternoon!</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/sound01103.mp3', this)"></div></td>
+				<td class="d-rus">- Здравствуйте! </td>
+				<td class="d-eng">- Hello!</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/soundb01032021.mp3', this)"></div></td>
+				<td class="d-rus">- Как Вас зовут? </td>
+				<td class="d-eng">- What is your name?</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/soundb01051032.mp3', this)"></div></td>
+				<td class="d-rus">- Алексей.</td>
+				<td class="d-eng">- Alexey.</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/sound01111.mp3', this)"></div></td>
+				<td class="d-rus">- Вы русский?</td>
+				<td class="d-eng">- Are you Russian</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/sound01111.mp3', this)"></div></td>
+				<td class="d-rus">- Да. </td>
+				<td class="d-eng">- Yes (, I am).</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/sound01111.mp3', this)"></div></td>
+				<td class="d-rus">- А кто Вы по профессии?</td>
+				<td class="d-eng">- What is your profession?</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/sound01111.mp3', this)"></div></td>
+				<td class="d-rus">- Я доктор. </td>
+				<td class="d-eng">- I'm a doctor</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="d-tfoot">
+					<div class="dt_inf" style="display: none"></div>
+				<script type="text/javascript"> 
+					var  dc1 = new dialog_controls( {
+					id: "dc1", 
+					file: "/sounds/0-dt_test.mp3",
+					tracks: [0,1384,2400,4153,7602]
+				
+					} )
+				</script>
+				
+				</td>
+				<td class="d-tfoot">
+				&nbsp;
+				
+				</td>
+			</tr>
+		</table>
+		
+	<br>	
+	<br>
+	<br>	
+	<br>
+		
+
+		<table id="dc2" class="dialog-t" cellspacing="0" align="center" style="margin: 0 auto;">
+			<col width="30">
+			<col width="250">
+			<col width="260" >
+			<tr>
+				<th class="d-first">&nbsp;</th>
+				<th>Dialogue 2. Introduction</th>
+				<th >&nbsp;</th>
+			</tr>
+			<tr>
+				<td colspan="3" class="d-pre-phrases" style="text-align: center">
+				
+				<div class="dt_controls">
+					<table cellspacing="0">
+					  <tr>
+						<td><div class="dt_rewind" title="Play Previous"></div></td>
+						<td><div class="dt_play" title="Play"></div></td>
+						<td><div class="dt_fast-forward" title="Play Next"></div></td>
+						<td><div class="dt_repeat" title="Repeat"></div></td>
+						<td><div class="dt_stop" title="Stop"></div></td>
+					  </tr>
+					</table>
+				</div>
+
+				</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div></td>
+				<td  class="d-rus">- Здравствуйте, Алекс. </td>
+				<td class="d-eng">- Hello, Alex!</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/sound01103.mp3', this)"></div></td>
+				<td class="d-rus">- Здравствуйте.  </td>
+				<td class="d-eng">- Hello!</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/soundb01032021.mp3', this)"></div></td>
+				<td class="d-rus">- Познакомьтесь. Это Линда и Стен.  </td>
+				<td class="d-eng">- Meet Linda and Stan.</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/soundb01051032.mp3', this)"></div></td>
+				<td class="d-rus">- Рад познакомиться.  </td>
+				<td class="d-eng">- Nice to meet you</td>
+			</tr>
+			<tr class="trow">
+				<td class="d-first"><div class="jp_control" onclick="cJplayer('/sounds/sound01111.mp3', this)"></div></td>
+				<td class="d-rus">- Линда и Стен - преподаватели из США.  </td>
+				<td class="d-eng">- Linda and Stan are teachers from the USA.</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="d-tfoot">
+
+				<script type="text/javascript"> 
+					var  dc2 = new dialog_controls( {
+					id: "dc2", 
+					file: "/sounds/0-dt_test.mp3",
+					tracks: [0,1384,2400,4153,7602]
+					} )
+				</script>
+				
+				</td>
+				<td class="d-tfoot">
+				&nbsp;
+				
+				</td>
+			</tr>
+		</table>
+		
+	<br>	
+	<br>
+	<br>	
+	<br>
+
+<h3 class="es-task">Match sounds and text</h3>
+
+
+<div id="ds1" class="ds-wrapper" style="padding: 15px;">
+
+<p style="font-size: 11px; text-align: center;">Listen to the phrases and find corresponding Russian expressions from the list below.</p>		
+
+<table align="center" style="margin: 0 auto;">
+<tr>
+<td>
+
+
+<table class="dst-test ds-table ds-audio" cellspacing="0" align="left" style="margin: auto">
+<col width="80">
+<col width="20">
+<col width="40">
+<col width="200">
+<tr>
+	<td class="ds-quest" align="center">
+			Phrase 1 
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+			Phrase 2
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound01103.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 3
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound01111.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 4
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/soundb01032021.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 5
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 6
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound01114.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 7
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound01110.mp3', this)"></div>
+	</td>	
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+
+<td>
+	
+<br>
+<br>
+
+<table class="ds_variants_list" >
+<col width="170">
+<col width="190">
+
+<tr valign="top">
+<td>
+
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Вы русский?</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">4</span>Познакомьтесь.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>Кто Вы по профессии?</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">0</span>Рад познакомиться.</div></div>
+	</li>
+</ul>
+
+</td>
+<td>
+
+<ul class="no-list">
+
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">7</span>Это Линда и Стен.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">5</span>Я доктор.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>Преподаватели из США.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">6</span>Как Вас зовут?</div></div>
+	</li>
+</ul>
+
+</td>
+</tr>
+</table>
+
+
+
+</td>
+</tr>
+</table>
+
+
+<div class="es_btn_wrapper">
+<a href="javascript:;" class="es_btn ds-check-button" >Check answers</a>
+</div>
+
+
+</div>
+
+<script type="text/javascript"> 
+	var ds1 = new dragsort_test( {
+		id: "ds1", 
+		targets: "ds-answer", 
+		answer_elem: "ds_sort_item", 
+		variant_elem: "ds_variant",
+		answer_color: "#F7F6F6",
+		auto_check: false
+		} )
+</script>
+		
+		
+		
+		
+		
+	<br><br><br><br><br><br><br><br>	
+
+	</div>
+</div>
+<div id="for_tab02" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+	
+	<h3 class="es-task-in">Listen, repeat ad read the translation of words and expressions below.</h3>
+	
+	
+	<h3 align="center">Professions and occupations</h3>
+	
+	
+	<table class="es-words-list" cellspacing="1">
+	<col width="20">
+	<col width="200">
+	<col width="200">
+	<thead>
+		<tr>
+			<th>&nbsp;</th>
+			<th>Russian</th>
+			<th>English</th>
+		</tr>
+			
+	</thead>
+	<tbody>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				актёр
+			</td>
+			<td class="wl-eng">
+				actor
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				актриса
+			</td>
+			<td class="wl-eng">
+				actress
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				дипломат
+			</td>
+			<td class="wl-eng">
+				diplomat
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				журналист
+			</td>
+			<td class="wl-eng">
+				journalist
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				инженер
+			</td>
+			<td class="wl-eng">
+				engineer
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				менеджер
+			</td>
+			<td class="wl-eng">
+				manager
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				музыкант
+			</td>
+			<td class="wl-eng">
+				musician
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				пилот
+			</td>
+			<td class="wl-eng">
+				pilot
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				преподаватель
+			</td>
+			<td class="wl-eng">
+				teacher, lecturer
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				программист
+			</td>
+			<td class="wl-eng">
+				programmer
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				секретарь
+			</td>
+			<td class="wl-eng">
+				secretary
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				Кто .... по профессии? 
+			</td>
+			<td class="wl-eng">
+				What is (your, his etc.) profession? (literally: Who is/are (he, she, you etc.) by profession?)
+			</td>
+		</tr>
+	</tbody>
+	</table>
+	
+	<br>
+	<br>
+	
+	
+		<h3 align="center">Additional vocabulary</h3>
+	
+	
+	<table class="es-words-list" cellspacing="1">
+	<col width="20">
+	<col width="200">
+	<col width="200">
+	<thead>
+		<tr>
+			<th>&nbsp;</th>
+			<th >Russian</th>
+			<th>English</th>
+		</tr>
+			
+	</thead>
+	<tbody>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				Познакомьтесь.
+			</td>
+			<td class="wl-eng">
+				 Meet (a formal expression used to introduce a person)
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				Познакомься. 
+			</td>
+			<td class="wl-eng">
+				Meet (a informal expression used to introduce a person)
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01102.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				рад
+			</td>
+			<td>
+				glad, happy (masculine form)
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01102.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				рада
+			</td>
+			<td>
+				glad, happy (feminine form)
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01102.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				кто
+			</td>
+			<td>
+				who
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-rus">
+				профессия
+			</td>
+			<td class="wl-eng">
+				 profession
+			</td>
+		</tr>
+	</tbody>
+	</table>
+	
+
+	<br><br><br><br>
+
+<h3 class="es-task-in">Listen to the phrase and answer "yes" or  "no" </h3>	
+	
+<div id="ch1" class="es-ex-wrapper">
+	<%= render :partial => 'es_exercise' %>
+</div>
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		quest_num: 10,
+		answer_type: 'yn',
+		basic_array: [
+		
+['актёр','actor'],
+['актриса','actress'],
+['дипломат','diplomat'],
+['журналист','journalist'],
+['инженер','engineer'],
+['менеджер','manager'],
+['музыкант','musician'],
+['пилот','pilot'],
+['преподаватель','teacher, lecturer'],
+['программист','programmer'],
+['секретарь','secretary']
+		
+		
+		
+		]
+		} )
+</script>
+
+
+
+<br>
+<br>
+
+<br><br>
+
+<h3 class="es-task-in">Read the Russian phrase and find its translation </h3>
+
+<div id="ch2" class="es-ex-wrapper">
+	<%= render :partial => 'es_exercise' %>
+</div>
+
+
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		quest_num: 10,
+		variants_num: 4,
+		basic_array: [
+
+['актёр','actor'],
+['актриса','actress'],
+['дипломат','diplomat'],
+['журналист','journalist'],
+['инженер','engineer'],
+['менеджер','manager'],
+['музыкант','musician'],
+['пилот','pilot'],
+['преподаватель','teacher, lecturer'],
+['программист','programmer'],
+['секретарь','secretary']
+		
+		]
+		} )
+</script>
+
+
+
+
+<br>
+<br>
+<br>
+
+
+
+	</div>
+</div>
+
+
+
+
+<div id="for_tab03" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+	
+	<h2 class="es-tab-p ">Grammatical cases </h2>
+	
+	
+	<p>
+		Russian nouns have special word forms to represent their grammatical function in a sentence. 
+		Most often, these word forms are built with help of word endings: words may add or change their ending. 
+		These endings are divided into several groups called cases.
+	</p>
+	<p>
+		The Russian language has six cases: nominative, accusative, prepositional, genitive, dative, and instrumental. 
+		In each case, words have a form for singular and a form for plural. 
+		In this lesson we will talk about the nominative case of Russian nouns. 
+	</p>	
+<br>
+<br>
+
+		
+<h2 class="es-tab-p ">Nominative Case</h2>	
+<h3 class="es-tab-p-p">Basic info about the nominative case</h3>	
+ 	
+<p>
+The nominative case is the basic form of Russian nouns which is usually given in dictionaries.
+It functions primarily as the naming case, and is used in the most independant syntactical positions. 
+Its main functions are as follows:
+</p>
+<ul>
+	<li>To show the grammatical subject of the sentence. </li>
+	<li>As the predicate after the verb быть 'to be' (which is not used in the present tense, as you know).</li>
+</ul>
+<p>
+In our previous lessons, we already used nouns in the nominative case with the above mentioned functions.
+</p>
+
+<h3 class="es-tab-p-p">Nominative Singular</h3>
+
+<p>
+The nominative case forms are given in dictionaries. 
+So, you don't need to change a noun taken from a dictionary or vocabulary list if you are going to use it in the nominative singular.
+</p>
+
+<h3 class="es-tab-p-p">Nominative plural </h3>
+
+<p>
+In this lesson, we will discuss essential rules to form nominative singular. 
+However,  you should keep in mind, that there are many particular cases that do not conform to these rules
+</p>
+
+<p>
+So, nominative plural endings are -ы/-и for masculine and neuter nouns and -а/-я for neuter nouns. 
+These endings are added to the stem of nouns, which is formed by dropping nominative singular endings. 
+The endings -и and -я (for neuter nouns) are used if the last consonant of the stem is soft (so, called soft stem). 
+</p>
+<p>
+Formally, we can represent the first rules to build nominative plural from nominative singular: 
+</p>
+<p class="bold">1. Masculine nouns: </p>
+<ul>
+	<li>add the ending -ы if they end in a consonant</li>
+	<li>add the ending -и, if they end in -ь or -й (i.e. -ь or -й  is replaced by -и)*</li>
+</ul>
+<p>
+In some masculine nouns with a stressed final syllable in the stem, the change from singular to plural is accompanied by a shift of the stress from stem to the ending. This stress shift is usually shown in the dictionary. 
+</p>
+
+<p class="bold">2. Feminine nouns:</p>
+<ul>
+	<li>add the ending -ы to the stem, if they end in -а</li>
+	<li>add the ending -и to the stem, if thy end in -я or -ь*</li>
+</ul>
+
+<p class="bold">3. Neuter nouns </p>
+<ul>
+	<li>add the ending -а to the stem, if they end in -о</li>
+	<li> add the ending -я to the stem, if thy end in -е or -ё.</li>
+</ul>
+<p>
+In many two-syllable neuter nouns the change from singular to plural is accompanied by a shift of the stress: the syllable that is unstressed in singular becomes stressed in plural. 
+</p>
+<p>
+* -ь and -й are not considered to be endings of nouns, they are part of the stem in the nominative singular. At the same time, they will be dropped in other cases. 
+</p>
+
+<h3 class="es-tab-p-p">Endings of the Nominative</h3>
+
+<p>
+The following table represents regular endings of the nominative case in Russian:
+</p>
+
+
+<table class="st-table" cellspacing="0" align="center" style="margin: 0 auto;">
+	<col width="100">
+	<col width="100">
+	<col width="100">
+	<tr style="vertical-align: middle;">
+		<th>Gender</th>
+		<th >Singular</th>
+		<th style="padding-top: 8px; padding-bottom: 8px;" class="thbrd"> Plural</th>
+	</tr>
+	<tr>
+		<td class="case-name">masculine</td>
+		<td>-Ø</td>
+		<td>-ы/-и</td>
+	</tr>
+	<tr>
+		<td class="case-name">feminine</td>
+		<td>-а/-я/-Ø</td>
+		<td>-ы/-и</td>
+
+	</tr>
+	<tr>
+		<td  class="case-name">neuter</td>
+		<td>-о/-е/-ё
+		</td>
+		<td style="vertical-align: middle">-а/-я</td>
+	</tr>
+</table>
+
+	
+<br>
+<br>	
+
+<h2 class="es-tab-p ">Grammatical gender of nouns denoting professions</h2>		
+		
+<p>	
+Many Russian nouns denoting professions are masculine and they may be used to refer both to men and women. 
+It mainly concerns nouns denoting occupations that were once largely dominated by men. 
+This is not usual for Russian grammar, since nouns (as well as adjectives and pronouns) should agree in gender with another noun they refer to. 
+In conversational Russian, however, such nouns may have feminine forms whose usage is considered to be informal. 
+</p>	
+	
+	
+		
+		
+<br><br><br><br><br>
+
+
+
+
+
+<h3 class="es-task-in">Choose an appropriate form of Russian nouns.</h3>
+
+
+
+<div class="block" >
+				<div class="block-clt">
+						<div class="block-crt">
+							<div class="block-top"></div>
+						</div>
+				</div>
+				<div class="block-center">
+				
+<div class="task">Choose the singular or nominative form depending on the meaning of the sentence:</div> 				
+
+<div  class="gr_ex_from_list">
+
+<div class="gr_ex_unit"> 
+
+1. Сандра -
+<select>
+<option class="ok">аткриса</option>
+<option>актрисы</option>
+</select>. 
+
+</div>
+
+<div class="gr_ex_unit"> 
+
+2. Они  
+<select>
+<option>программист</option>
+<option class="ok">программисты</option>
+</select>.  
+
+</div>
+
+<div class="gr_ex_unit"> 
+
+3. Мария -   
+<select>
+<option class="ok">секретарь</option>
+<option>секретари</option>
+</select>? 
+
+</div>
+
+<div class="gr_ex_unit"> 
+
+4. Анна и Вера - 
+<select>
+<option>менеджер</option>
+<option class="ok">менеджеры</option>
+</select>. 
+
+</div>
+
+<div class="gr_ex_unit"> 
+
+5. Эрик - 
+<select>
+<option  class="ok">программист</option>
+<option >программисты</option>
+</select>.
+  
+</div>
+
+
+<p class="ex_from_list_check"><input type="button" value="Check answers" ></p>
+
+</div>
+
+
+</div>
+<div class="block-clb">
+     <div class="block-crb">
+    	  <div class="block-btm">
+    		   </div>
+    	  </div>
+     </div>		
+</div>
+
+
+
+
+<br/><br/>
+
+
+
+<h3 class="es-task-in">Form the nominative plural form of Russian nouns.</h3>
+
+<div class="section-block" style="cursor: auto">
+				<div class="sect-crn clt">
+						<div class="sect-crn crt">
+							<div class="sect-mid">  </div>
+						</div>
+				</div>
+				<div class="section-content" style="height: auto; padding: 0px 40px;">
+
+
+<div id="di1">	
+				
+<p class="task">Drag and drop endings or type them in the text fields. <a class="show_keyboard" href="javascript:;">[ Use virtual keyboard ]</a> </p> 
+<br>
+<div  class="gr_ex_type">
+
+<div class="exer_part">
+a) Add an appropriate ending to the stem of masculine nouns
+</div>
+
+
+<table style="margin: 0 auto; border: 1px dashed #000" class="di_variants" cellspacing="14" align="center" >
+<tr>
+	<td>
+		<div>ы</div>
+	</td>
+	<td>
+		<div>и</div>
+	</td>
+</tr>
+</table>
+<br>
+<br>
+
+
+
+<div class="gext_task gext_sign"> 
+1. магазин (shop) -  <input type="text" style="width: 100px" value="магазин"> <span class="gext_answer" style="display: none">магазины</span>
+<div class="gext_show"><span>магазин - <b>магазины</b></span> &nbsp;</div>
+</div>
+
+<div class="gext_task gext_sign"> 
+2. театр (theater) -  <input type="text" style="width: 100px" value="театр"> <span class="gext_answer" style="display: none">театры</span>
+<div class="gext_show"><span>театр - <b>театры</b></span> &nbsp;</div>
+</div>
+
+<div class="gext_task gext_sign"> 
+3. словарь (dictionary) -  <input type="text" style="width: 100px" value="словар"> <span class="gext_answer" style="display: none">словари</span>
+<div class="gext_show"><span>словарь - <b>словари</b></span> &nbsp;</div>
+</div>
+
+<div class="gext_task gext_sign"> 
+4. билет (ticket) -  <input type="text" style="width: 100px" value="билет"> <span class="gext_answer" style="display: none">билеты</span>
+<div class="gext_show"><span>билет - <b>билеты</b></span> &nbsp;</div>
+</div>
+
+<div class="gext_task gext_sign"> 
+5. музей (museum) -  <input type="text" style="width: 100px" value="музе"> <span class="gext_answer" style="display: none">музеи</span>
+<div class="gext_show"><span>музей - <b>музеи</b></span> &nbsp;</div>
+</div>
+
+<div class="gext_task gext_sign"> 
+6. отель (hotel) -  <input type="text" style="width: 100px" value="отел"> <span class="gext_answer" style="display: none">отели</span>
+<div class="gext_show"><span>отель - <b>отели</b></span> &nbsp;</div>
+</div>
+
+<br><br>
+<div class="exer_part">
+b) Add an appropriate ending to the stem of feminine nouns
+</div>
+<table style="margin: 0 auto; border: 1px dashed #000" class="di_variants" cellspacing="14" align="center" >
+<tr>
+	<td>
+		<div>ы</div>
+	</td>
+	<td>
+		<div>и</div>
+	</td>
+</tr>
+</table>
+<br>
+<br>
+
+<div class="gext_task gext_sign"> 
+1. проблема (problem) -  <input type="text" style="width: 100px" value="проблем"> <span class="gext_answer" style="display: none">проблемы</span>
+<div class="gext_show"><span>проблема - <b>проблемы</b></span> &nbsp;</div>
+</div>
+
+<div class="gext_task gext_sign"> 
+2. площадь (square) -  <input type="text" style="width: 100px" value="площад"> <span class="gext_answer" style="display: none">площади</span>
+<div class="gext_show"><span>площадь - <b>площади</b></span> &nbsp;</div>
+</div>
+
+<div class="gext_task gext_sign"> 
+3. станция (station) -  <input type="text" style="width: 100px" value="станци"> <span class="gext_answer" style="display: none">станции</span>
+<div class="gext_show"><span>станция - <b>станции</b></span> &nbsp;</div>
+</div>
+
+<div class="gext_task gext_sign"> 
+4. актриса (actress) -  <input type="text" style="width: 100px" value="актрис"> <span class="gext_answer" style="display: none">актрисы</span>
+<div class="gext_show"><span>актриса - <b>актрисы</b></span> &nbsp;</div>
+</div>
+
+<div class="gext_task gext_sign"> 
+5. фотография (photo) -  <input type="text" style="width: 100px" value="фотографи"> <span class="gext_answer" style="display: none">фотографии</span>
+<div class="gext_show"><span>фотография - <b>фотографии</b></span> &nbsp;</div>
+</div>
+
+<div class="gext_task gext_sign"> 
+6. машина (car) -  <input type="text" style="width: 100px" value="машин"> <span class="gext_answer" style="display: none">машины</span>
+<div class="gext_show"><span>машина - <b>машины</b></span> &nbsp;</div>
+</div>
+
+<div class="gext_task gext_sign"> 
+7. кровать (bed) -  <input type="text" style="width: 100px" value="кроват"> <span class="gext_answer" style="display: none">кровати</span>
+<div class="gext_show"><span>кровать - <b>кровати</b></span> &nbsp;</div>
+</div>
+
+<br><br>
+<div class="exer_part">
+c) Add an appropriate ending to the stem of neuter nouns
+</div>
+<table style="margin: 0 auto; border: 1px dashed #000" class="di_variants" cellspacing="14" align="center" >
+<tr>
+	<td>
+		<div>а</div>
+	</td>
+	<td>
+		<div>я</div>
+	</td>
+</tr>
+</table>
+<br>
+<br>
+
+<div class="gext_task gext_sign"> 
+1. письмо (letter) -  <input type="text" style="width: 100px" value="письм"> <span class="gext_answer" style="display: none">письма</span>
+<div class="gext_show"><span>письмо - <b>письма</b></span> &nbsp;</div>
+</div>
+
+<div class="gext_task gext_sign"> 
+2. здание (building) -  <input type="text" style="width: 100px" value="здани"> <span class="gext_answer" style="display: none">здания</span>
+<div class="gext_show"><span>здание - <b>здания</b></span> &nbsp;</div>
+</div>
+
+<div class="gext_task gext_sign"> 
+3. окно (window) -  <input type="text" style="width: 100px" value="окн"> <span class="gext_answer" style="display: none">окна</span>
+<div class="gext_show"><span>окно - <b>окна</b></span> &nbsp;</div>
+</div>
+
+<div class="gext_task gext_sign"> 
+4. задание (task) -  <input type="text" style="width: 100px" value="задани"> <span class="gext_answer" style="display: none">задания</span>
+<div class="gext_show"><span>задание - <b>задания</b></span> &nbsp;</div>
+</div>
+
+<div class="gext_task gext_sign"> 
+5. море (sea) -  <input type="text" style="width: 100px" value="мор"> <span class="gext_answer" style="display: none">моря</span>
+<div class="gext_show"><span>море - <b>моря</b></span> &nbsp;</div>
+</div>
+
+<div class="gext_task gext_sign"> 
+6. вино (wine) -  <input type="text" style="width: 100px" value="вин"> <span class="gext_answer" style="display: none">вина</span>
+<div class="gext_show"><span>вино - <b>вина</b></span> &nbsp;</div>
+</div>
+
+
+<p class="gext_check"><input type="button" class="gext_check_btn" value="Check answers" > <input type="button" value="Display answers" class="gext_answer_show"></p>
+
+
+</div>
+
+
+</div>
+
+
+</div> <!-- end of di1  -->
+
+
+<script type="text/javascript"> 
+	var di1 = new draginput_test( {
+		id: "di1", 
+		targets: "gext_task", 
+		in_targets: "input",
+		clear_option: false,
+		nospace: true,
+		variant_elem: "di_variants div"
+		//targets_color: "#ffffff"
+
+		} )
+</script>
+
+
+				<div class="sect-btm">
+    				<div class="sect-clb">
+    					<div class="sect-crb">
+    						<div class="sect-btm-bg" style="height: 40px;">
+    							    				   			
+    						</div>
+    					</div>
+    				</div>
+				</div>
+			</div>
+
+
+
+
+	<br><br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br><br><br><br><br>	
+		
+		
+		
+
+
+	</div>
+</div>
+
+<div id="for_tab04" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+	
+	<h3 class="es-task-in">Read the text aloud, and then listen to the phrases and check your reading.</h3>	
+	
+
+	<div class="es-pr-read-container">
+		<h4>Introductions</h4>
+	
+		<table cellspacing="0">
+			<tr>
+				<td class="wl-audio">
+					<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+				</td>
+				<td>
+					Добрый день. Меня зовут Алексей. Я русский. Я программист.
+				</td>
+			</tr>
+			<tr>
+				<td class="wl-audio">
+					<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+				</td>
+				<td>
+					Здравствуйте. Я Стелла. Я американка. Я журналист.
+				</td>
+			</tr>
+			<tr>
+				<td class="wl-audio">
+					<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+				</td>
+				<td>
+					Привет. Меня зовут Майк. Я канадец. Я инжинер.
+				</td>
+			</tr>
+			<tr>
+				<td class="wl-audio" valign="top">
+					<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+				</td>
+				<td >
+					Это Джейн. Она из США. Джейн - актриса.
+				</td>
+			</tr>
+		</table>
+		
+		<h4>Dialogue </h4>
+		<table cellspacing="0">
+			<tr>
+				<td class="wl-audio">
+					<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+				</td>
+				<td>
+					- Привет.
+				</td>
+			</tr>
+			<tr>
+				<td class="wl-audio">
+					<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+				</td>
+				<td>
+					- Привет. 
+				</td>
+			</tr>
+			<tr>
+				<td class="wl-audio">
+					<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+				</td>
+				<td>
+					- Ты русская?
+				</td>
+			</tr>
+			<tr>
+				<td class="wl-audio">
+					<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+				</td>
+				<td>
+					- Да. А ты? 
+				</td>
+			</tr>
+			<tr>
+				<td class="wl-audio">
+					<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+				</td>
+				<td>
+					- Я канадец.
+				</td>
+			</tr>
+			<tr>
+				<td class="wl-audio">
+					<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+				</td>
+				<td>
+					- Ты кто по профессии? Я журналист. 
+				</td>
+			</tr>
+			<tr>
+				<td class="wl-audio">
+					<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
+				</td>
+				<td>
+					- А я доктор. 
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+	
+	<h3 class="es-task-in">Look through the dialogues above and complete the test.</h3>	
+	
+	
+
+
+<div id="ds2" class="ds-wrapper" style="padding: 15px;">
+
+<p style="font-size: 11px; text-align: center;">Listen to the phrases and find corresponding Russian expressions from the list below.</p>		
+
+<table align="center" style="margin: 0 auto;">
+<tr>
+<td>
+
+
+<table class="dst-test ds-table ds-audio" cellspacing="0" align="left" style="margin: auto">
+<col width="80">
+<col width="40">
+<col width="200">
+<tr>
+	<td class="ds-quest ds-audio-listen" align="center">
+			Stella is 
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest ds-audio-listen ">
+			Alexey is
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest ds-audio-listen ">
+		Mike is
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest ds-audio-listen ">
+		Jane is
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+</table>
+
+</td>
+
+</tr>
+<tr>
+
+<td>
+	
+<br>
+<br>
+
+<table class="ds_variants_list" >
+<col width="300">
+<tr valign="top">
+<td>
+
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>journalist from the USA</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>engeneer from Canada</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">4</span>actress from the USA</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>programmer from Russia</div></div>
+	</li>
+</ul>
+
+</td>
+</tr>
+</table>
+
+
+
+</td>
+</tr>
+</table>
+
+
+<div class="es_btn_wrapper">
+<a href="javascript:;" class="es_btn ds-check-button" >Check answers</a>
+</div>
+
+
+</div>
+
+<script type="text/javascript"> 
+	var ds2 = new dragsort_test( {
+		id: "ds2", 
+		targets: "ds-answer", 
+		answer_elem: "ds_sort_item", 
+		variant_elem: "ds_variant",
+		answer_color: "#F7F6F6",
+		auto_check: false
+		} )
+</script>	
+	
+	
+	
+
+
+
+	
+	<br><br><br><br>
+	
+<h3 class="es-task-in">Answer the questions following the model. Replace names with personal pronouns where possible.</h3>	
+	
+
+
+<div class="es-egdiv" style="display: block">
+<h4>Model: </h4>
+
+<div style="padding: 0 20px 10px 40px; font-size: 11px;"> 
+<table cellspacing="0"> 
+	<tr valign="top"> 
+		<td width="330">
+			<table cellspacing="0"> 
+				<tr valign="top"> 
+		 				<td width="200" class="bold"> 
+		 					Ирина и Анна - актрисы?  
+		 				</td> 
+						<td width="15">- 
+                       	</td> 
+		 				<td width="150" class="bold"> 
+		 					   Да, они актрисы.<br>  
+		 				</td> 
+					</tr> 
+				</table> 
+		</td> 
+		<td valign="top" class="ital">Are Irina and Anna actresses? - Yes, they are actresses.<br><br> 
+		</td> 
+	</tr> 
+</table> 
+</div>
+ </div>
+ <br> <br>
+ 
+<table class="es-quest-answ" cellspacing="0" style="margin: 0 auto" align="center">
+	<tr>
+		<td class="rus_phr">Лесли и Сара - музыканты?</td>
+		<td>- ...</td>
+		<td><a href="javascript:;" class="es_btn ds-check-button" >Check yourself</a></td>
+	</tr>
+	<tr>
+		<td class="rus_phr">Кайл и Натан - журналисты?</td>
+		<td>- ... </td>
+		<td><a href="javascript:;" class="es_btn ds-check-button" >Check yourself</a></td>
+	</tr>
+	<tr>
+		<td class="rus_phr">Игорь и Павел - менеджеры? </td>
+
+		<td>- ... </td>
+		<td><a href="javascript:;" class="es_btn ds-check-button" >Check yourselfs</a></td>
+	</tr>
+	<tr>
+		<td class="rus_phr">Джейк и Томас - актёры? </td>
+		<td>- ...</td>
+		<td><a href="javascript:;" class="es_btn ds-check-button" >Check yourself</a></td>
+	</tr>
+	<tr>
+		<td class="rus_phr">Диана и Клэр - преподаватели? </td>
+		<td>- ...</td>
+		<td><a href="javascript:;" class="es_btn ds-check-button" >Check yourself</a></td>
+	</tr>
+	<tr>
+		<td class="rus_phr">Любовь и Наталья - инжинеры? </td>
+		<td>- ...</td>
+		<td><a href="javascript:;" class="es_btn ds-check-button" >Check yourself</a></td>
+	</tr>
+	<tr>
+		<td class="rus_phr">Владимир и Глеб - дипломаты? </td>
+		<td>- ...</td>
+		<td><a href="javascript:;" class="es_btn ds-check-button" >Check yourself</a></td>
+	</tr>
+</table>
+
+<br>
+<br>
+
+
+
+<h3 class="es-task-in">Listen to a Russian person. Choose an appropriate phrase for each person</h3>
+
+
+<div id="sl1" class="ds-wrapper drag-sort-list" style="padding: 15px;">
+		
+
+<table align="center" style="margin: 0 auto;">
+<tr>
+<td>
+
+
+<table class="dst-test ds-table ds-audio" cellspacing="0" align="center" style="margin: 0 auto">
+
+<col width="150"><col width="150"><col width="150">
+
+<tr>
+	<th class="ds-border-right" >
+		<table class="ds-table" cellspacing="0" align="center">
+			<tr>
+				<td style="border-width:0; padding: 3px">Person 1</td>
+				<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div></td>
+			</tr>
+		</table>
+	</th>
+	<th class="ds-border-right" >
+		<table class="ds-table" cellspacing="0" align="center">
+			<tr>
+				<td style="border-width:0; padding: 3px">Person 2</td>
+				<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div></td>
+			</tr>
+		</table>	
+	</th>
+	<th class="ds-border-right" >
+		<table class="ds-table" cellspacing="0" align="center">
+			<tr>
+				<td style="border-width:0; padding: 3px">Person 3</td>
+				<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div></td>
+			</tr>
+		</table>	
+	</th>
+</tr>
+<tr>
+	<td class="ds-answer ds-border-right" style="vertical-align: top; height: 150px">
+		<div class="ds_sort_item">
+		</div>
+		&nbsp;
+	</td>
+	<td class="ds-answer ds-border-right " style="vertical-align: top; height: 150px">
+		<div class="ds_sort_item">
+		</div>
+		&nbsp;
+	</td>
+	<td class="ds-answer ds-border-right " style="vertical-align: top; height: 150px">
+		<div class="ds_sort_item">
+			
+		</div>
+		&nbsp;
+	</td>
+</tr>
+
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+	<td>
+	
+		<!-- div class="ds_check_sign"></div -->
+	
+	</td>
+</tr>
+<tr>
+
+<td>
+	
+
+
+<table class="ds_variants_list"  style="margin: 0 auto" align="center">
+<col width="150">
+<col width="150">
+<col width="150">
+<tr valign="top">
+<td>
+
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Это Джейн.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>Это Стив.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>Это Роберт.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">0</span>Он музыкант</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Она музыкант.</div></div>
+	</li>
+	
+</ul>
+
+</td>
+<td>
+
+<ul class="no-list">
+
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Она канадка.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>Он канадец.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">0</span>Она русская</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>Он русский.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">0</span>Он американец.</div></div>
+	</li>
+</ul>
+
+</td>
+
+<td>
+
+<ul class="no-list">
+
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">0</span>Он доктор.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">0</span>Она музыкант.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>Он актёр.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>Он дипломат.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">0</span>Она актриса.</div></div>
+	</li>
+</ul>
+
+</td>
+</tr>
+</table>
+
+
+
+</td>
+</tr>
+</table>
+
+
+<div class="es_btn_wrapper">
+<a href="javascript:;" class="es_btn ds-check-button" >Check answers</a>
+</div>
+
+
+</div>
+
+<script type="text/javascript"> 
+	var sl1 = new sortlist_test( {
+		id: "sl1", 
+		targets: "ds-answer", 
+		answer_elem: "ds_sort_item", 
+		variant_elem: "ds_variant",
+		answer_color: "#fff",
+		auto_check: false
+		} )
+</script>
+
+
+<br>
+<br>
+
+
+
+
+
+
+
+
+
+<br>
+<br><br><br>	
+	
+	
+	<br><br><br>	<br><br><br>	<br><br><br>
+
+
+
+	</div>
+</div>
+
+
+<div id="for_tab05" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+	
+	<br><br><br> 
+ 
+ 
+ 
+<div class="form-wrapper" id="mc1" style="width: 450px; margin: 0 auto;"> 
+	<div class="form-top"> 
+		<div class="form-top-left"></div> 
+		<div class="form-top-right"></div> 
+	</div> 
+ 
+	<div class="form-right"> 
+		<div class="form-left"> 
+			<div class="form-questionaire"> 
+				<div class="mc_question" style="height: 40px;"> 
+            	</div> 
+			</div> 
+			   <div class="form-variants"> 
+			   		<div  class="mc_variants" style="height: 180px; overflow: hidden; position: relative;"> 
+			
+					</div> 
+			   </div> 
+		</div> 
+	</div> 
+	<div class="form-mid"> 
+		<div class="form-mid-left"></div> 
+		<div class="form-mid-right"></div> 
+	</div> 
+	<div class="form-bottom"> 
+		<div class="form-bottom-left"></div> 
+		<div class="form-bottom-right"> 
+			<div class="mc_counter"></div> 
+		</div> 
+	<div  class="mc_check" style="position: absolute; margin: 6px 0 0 15px; width: 250px;"></div> 
+	</div> 
+</div> 
+ 
+<script type="text/javascript"> 
+ 
+var mc1 = new mcTest( {tasks:[
+['How to say in Russian: <br> <span class="norm_txt">Nice to meet you!<\/span>', [['Здравствуйте!'], ['До свидания'], ['Приятно познакомиться']], [2]], 
+['How to say in Russian: <br> <span class="norm_txt">What is your name?<\/span>', [['Как тебя зовут?'], ['Как поживаете?'], ['Как дела?']], [0]],
+['How many genders does the Russian language have?', [['1'], ['2'], ['3']], [2]],
+['Most Russian feminine nouns end in: ', [['-о/-е'], ['-а/-я'], ['consonant/-й']], [1]],
+['Most Russian masculine nouns end in: ', [['-о/-е'], ['-а/-я'], ['consonant/-й']], [2]],
+['Most Russian neuter nouns end in: ', [['-о/-е'], ['-а/-я'], ['consonant/-й']], [0]],
+['How to say in Russian: <br> <span class="norm_txt">My last name is ...<\/span>', [['Моя фамилия ... '], ['Моё имя ... '], ['Меня зовут ... ']], [0]],
+
+], 
+buildId: 'mc1' } )
+ 
+</script>
+	
+<br><br><br><br>		
+	
+<h2 class="es-tab-p ">In this lesson you have learnt:</h2>		
+	
+	
+<ul class="rev-summary">
+	<li>Russian words and expressions used to make acquantance, and words for some nationalities.</li>
+	<li>General information about gender in Russian. </li>
+	<li>General information about Russian personal pronouns</li>
+	<li>You have also practised to read in Russian and and translate into Russian.</li>
+</ul>
+
+<br><br><br>
+
+<h2 class="es-tab-p ">In case you want to work more on this lesson:</h2>		
+	
+	
+<ul class="rev-summary">
+	<li>Read aloud or learn by heart the dialogue(s)  from the section <a href="#tab=1" onclick="openTabFromUrl(1)">Dialogues</a>.</li>
+	<li>Get familiar with vocabulary topic  <a href="/acquaintance.html" >Making acquaintance</a></li>
+	<li>Read the following articles about Russian grammar: <br>
+		- <a href="russian-words-order.html">Words order in Russian sentences</a><br>
+		- <a href="russian-address-forms.html">Polite and familiar address in Russian</a>
+	</li>
+</ul>	
+	
+	
+<br><br><br><br><br><br>	
+	
+	
+	
+	
+	
+	
+	
+		
+
+
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</div><!-- end of #content -->
+</div>
+
+
+
+<script type="text/javascript">
+currentSection="course";
+</script>
+
