@@ -1282,7 +1282,7 @@ this.start = function() {
 	
 	
 	this.variants.mousedown(function(e) {
-		$("body").addClass("noselect");
+		$("body").addClass("noselect").blur();
 		var t = $(this);
 		var fromVariant = tObj.variants.index(t);
 		var tHtml = t.html();
@@ -1291,7 +1291,7 @@ this.start = function() {
 		var l= t.width();
 		var difX=e.pageX-x;
 		var difY=e.pageY-y;
-		
+		$("")
 		tObj.targetTable();               // shot of targets
 		t.css({visibility: "hidden"});
 		dragHelper.addClass("di_ondrag").html(tHtml).css({left: x, top: y, maxWidth: l, opacity: "0.8"});
