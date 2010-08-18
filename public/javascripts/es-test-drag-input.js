@@ -182,6 +182,7 @@ this.hittedTarget = function (fromVariant, hitted) {
 			if (inTargetDomEl.tagName == "INPUT" || inTargetDomEl.tagName == "TEXTAREA") {
 				if ( !tIntarget.attr("disabled") ) {
 					var currentValue = tIntarget.val();
+					
 					if (tObj.nospace) {
 						var tValue = currentValue + addValue;
 					} else {
@@ -207,12 +208,17 @@ this.hittedTarget = function (fromVariant, hitted) {
 		} else {
 
 			var targetDomEl = tObj.targetsData[hitted].elem;
+			
 			if (targetDomEl.tagName == "INPUT" || targetDomEl.tagName == "TEXTAREA") {
 			
 				if ( !tObj.targets.attr("disabled") ) {
 					var currentValue =tObj.targets.eq(hitted).val();
 						
-
+					if (tObj.nospace) {
+						var tValue = currentValue + addValue;
+					} else {
+						var tValue = currentValue +" " + addValue;
+					}
 					
 					tValue = $.trim(tValue)
 					tObj.targets.eq(hitted).val(tValue);
