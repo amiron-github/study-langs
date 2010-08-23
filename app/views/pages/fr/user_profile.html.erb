@@ -1,0 +1,295 @@
+<% @page_title = 'Study-Languages-Online.com: Profile' %>
+<% @page_meta = {'description' => "User Profile"} %>
+
+<!-- !!! -->
+
+
+<% content_for :special_js_css do %>
+<%= stylesheet_link_tag 'profile' %>
+ <%= javascript_include_tag 'profile_results' %>
+
+
+<script type="text/javascript">
+<%if params[:tab] %>
+	openTabFromUrl(<%= params[:tab] %>);
+<%else%>
+	openTabFromUrl();
+<%end%>
+</script>	
+
+<style type="text/css">
+
+.inpBlock {
+margin-left: 50px;
+}
+
+.inpBlock h3 {
+}
+
+.item-name {
+font-size: 14px;
+font-weight: bold;
+}
+
+</style>
+
+<% end %>
+
+
+<% if current_user.email == 'mirumir.sasha@gmail.com'%>
+	<div align="right">
+		<%= link_to 'View userdata', {:controller => 'userdata'} %> 
+	</div>
+<% end %>
+
+
+<div id="prof_tabs">
+	<div id="tabs_row">
+            <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Profil</a></div></div>
+            <div id="tab02" class="ptab"><div><a href="#">Resultats</a></div></div>
+            <div id="tab03" class="ptab"><div><a href="#">Réglage</a></div></div>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+
+
+
+<div id="for_tab01" class="pBlock" style="display: block">
+
+	<div class="inpBlock">
+	
+		<h3>Profile</h3>
+		
+		<p style="font-size: 10px; font-style: italic;">* You can change your profile info in the tab <strong>Settings</strong></p>
+		<hr/>
+		<div class="pr_hsp"> 
+		<table cellpadding="0" cellspacing="20">
+		<tr>
+			<td class="item-name" width="200">Email: 
+			</td>
+			<td><%= current_user.email %>
+			</td>
+		</tr>
+		<tr>
+			<td class="item-name">Account created:
+			</td>
+			<td>    <%=current_user.created_at.strftime("%Y/%m/%d")%> <span style="font-size: 9px; font-style: italic">(<%= current_user.created_at.to_date.to_s(:long) %>)</span>
+			</td>
+		</tr>
+		</table>
+		</div>
+	
+	
+	
+	
+		<% if current_user.payment%>
+
+<hr/>
+<p class="ital"> <strong>Subscriptions</strong></p>
+
+<p class="ital">You have the following subscriptions:</p>
+
+<table class="st-table">
+	<tr>
+        <th>Name</th>
+        <th>Status</th>
+        <th class="thbrd">Expiration Date</th>
+    </tr>
+    <tr>
+        <td height="50" style="padding: 15px;">Subscription to the <a href="everyday-course.html">Everyday Russian Course</a><a/></td>
+        <td style="padding: 15px;"><em>Active</em></td>
+        <td style="padding: 15px;">
+			<%= current_user.expired %><br>
+			<span style="font-size: 9px;font-style: italic">(<%= current_user.expiration_time.to_date.to_s(:long) %>)</span>
+		</td>
+    </tr>
+</table>
+		
+		
+		<% else %>
+
+<hr/>
+<p class="ital"> <strong>Subscriptions</strong>: <span class="ital" style="font-size: 11px"> You have no active subscriptions </span> </p>
+
+<div class="if_no_payment">
+<p style="font-size: 11px; margin-bottom:10px; margin-top: 40px">Subscriptions on <i>Study-Languages-Online.com</i> offered by <span class="ital bold">EgretSoftware Inc.</span>:</p>
+
+
+<table class="st-table" id="subscription">
+	<tr>
+		<th>Name
+		</th>
+		<th>&nbsp;&nbsp;Price&nbsp;&nbsp;
+		</th>
+		<th class="thbrd">Subscribe*
+		</th>
+	</tr>
+	<tr>
+		<td style="padding: 15px;"><div style="font-size: 11px; line-height: 20px;" class="sbcr-free"> 2-month subscription to the <a href="everyday-course.html">Everyday&nbsp;Russian&nbsp;Course</a> </div>
+		</td>
+		<td style="padding: 15px;">$8.99&nbsp;USD
+		</td>
+		<td style="padding: 15px;">
+		
+		
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" onsubmit="$.ajax({url:'/order?product_id=1',async:false, success:function(data){$('#ord_id1').attr('value',data)}})">
+<input type="hidden" name="custom" id="ord_id1" value=1>
+<input type=hidden name=return value="http://study-languages-online.com/success">
+<input type=hidden name=cancel_return value="http://study-languages-online.com/cancel.html">
+<input type="hidden" name="notify_url" value="https://study-languages-online.com/ppipn">
+<input type="hidden" name="cpp_header_image" value="https://www.health-science-report.com/images/head-paypal.jpg">
+
+
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="J92TCPKLHGM24">
+<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+	
+		
+		</td>
+	</tr>
+	<tr>
+		<td style="padding: 15px;"><div style="font-size: 11px; line-height: 20px;" class="sbcr-free"> 4-month subscription to the <a href="everyday-course.html">Everyday&nbsp;Russian&nbsp;Course</a> </div>
+		</td>
+		<td style="padding: 15px;">$14.99&nbsp;USD
+		</td>
+		<td style="padding: 15px;">
+		
+		
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" onsubmit="$.ajax({url:'/order?product_id=2',async:false, success:function(data){$('#ord_id2').attr('value',data)}})">
+<input type="hidden" name="custom" id="ord_id2" value=1>
+<input type=hidden name=return value="http://study-languages-online.com/success">
+<input type=hidden name=cancel_return value="http://study-languages-online.com/cancel.html">
+<input type="hidden" name="notify_url" value="https://study-languages-online.com/ppipn">
+<input type="hidden" name="cpp_header_image" value="https://www.health-science-report.com/images/head-paypal.jpg">
+
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="W6K9X5U8K5YRA">
+<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+	
+		
+		</td>
+	</tr>
+	
+	<tr>
+		<td style="padding: 15px;"><div style="font-size: 11px; line-height: 20px;" class="sbcr-free"> 6-month subscription to the <a href="everyday-course.html">Everyday&nbsp;Russian&nbsp;Course</a> </div>
+		</td>
+		<td style="padding: 15px;">$19.99&nbsp;USD
+		</td>
+		<td style="padding: 15px;">
+		
+		
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" onsubmit="$.ajax({url:'/order?product_id=3',async:false, success:function(data){$('#ord_id3').attr('value',data)}})">
+<input type="hidden" name="custom" id="ord_id3" value=1>
+<input type=hidden name=return value="http://study-languages-online.com/success">
+<input type=hidden name=cancel_return value="http://study-languages-online.com/cancel.html">
+<input type="hidden" name="notify_url" value="https://study-languages-online.com/ppipn">
+<input type="hidden" name="cpp_header_image" value="https://www.health-science-report.com/images/head-paypal.jpg">
+
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+">
+<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+	
+		
+		</td>
+	</tr>
+</table>
+
+<p style="font-size: 11px; text-align: center;">* All payments are made through <span class="ital bold">PayPal</span> services - the safer, easier way to pay online!</p>
+</div>
+		<%end%>
+
+		
+
+	</div>
+</div>
+<div id="for_tab02" class="pBlock" style="display: none">
+	<div class="inpBlock">
+		
+		<h3>Tests and exercises results: </h3>
+		<p style="font-size: 10px; font-style: italic;">* You can delete all the results in the tab <strong>Settings</strong></p>
+		
+		<div id="no_results"  class="bold"><hr/> You have no results yet.</div>
+		
+        <div id="results_container">
+		
+		
+		</div>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		
+	
+	</div>
+</div>
+<div id="for_tab03" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+		<h3>Account Settings: </h3>
+		<p style="font-size: 10px; font-style: italic;">* Click the links below to perform the following actions</p>
+		<hr/>
+	   
+	   <table cellpadding="0" cellspacing="20">
+		<!-- tr>
+			<td class="item-name" width="200"><a href="/user">Change my email </a>
+			</td>
+			<td>
+			</td -->
+		</tr>
+		<tr>
+			<td class="item-name"><a href="/userp">Change my password</a>
+			</td>
+			<td>
+			</td>
+		</tr>
+		<tr>
+			<td class="item-name"><a href="/del_stat">Delete my results</a>
+			</td>
+			<td>
+			</td>
+		</tr>
+		<tr>
+			<td class="item-name"><a href="/userd">Delete my account </a>
+			</td>
+			<td>
+			</td>
+		</tr>
+		</table>
+
+
+	</div>
+</div>
+
+
+<script type="text/javascript">
+
+
+<% if logged_in?%>
+<%=current_user.get_tests%>
+<%end%>
+
+ 
+</script>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+currentSection="login";
+</script>

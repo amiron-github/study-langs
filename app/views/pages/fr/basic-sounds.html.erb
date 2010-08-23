@@ -1,0 +1,186 @@
+<% @page_title = 'Russian Language Online: Russian sounds and their transcription' %>
+<% @page_meta = {'description' => "Russian sounds with audio examples and transcription"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<% content_for :special_js_css do %>
+<%= stylesheet_link_tag 'stylesounds' %>
+<style type="text/css">
+h2.page {margin-bottom: 0px;}
+</style>
+<% end %>
+
+<div class="hint_wrap">
+<div class="hint_button" style="float: right;">
+  <div class="hint">
+      <div class="hint_list">
+        <span class="hint_string">Links and Settings</span>
+      </div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+        <ul>
+            <li><a href="sounds-info.html">General Info about Russian Sounds</a></li>
+            <li><a href="phonetics-course.html">Phonetics course</a></li>
+        </ul>
+        <%= render :partial => 'preload_option' %>
+  </div>
+</div>
+</div>
+<div id="pagecontent"><div id="content">
+
+
+<h2 class="page">Les sons russes essentiels<br/> et leur transcription</h2>
+<h3 class="page-path"><span class="int-links"><a href="/fr/pronunciation.html">Prononciation</a> <span class="int-arrow">--&gt;</span> Les sons russes essentiels</span></h3>
+<p>
+Le russe et le français ont des sons semblables, et même sans un entraînement spécial 
+vous pourrez prononcer des mots russes de maniere compréhensible pour les russophones. 
+En même temps, notez que la prononciation russe a ses propres particularités et 
+nous sommes convaincus qu'il sera très utile pour vous d'en apprendre davantage sur les sons russes sur notre site et de suivre notre cours de phonétique russe.
+
+
+</p>
+<p>
+Pour commencer, nous vous conseillons d'apprendre les sons essentiels de la langue russe. 
+Notre but n'est pas de donner une description linguistique détaillée  du système phonétique russe. 
+Ici, nous présentons le matériel qui nous semble suffisant pour acquérir des compétences essentielles dans la prononciation russe.
+</p> 
+<p>
+Ainsi, la langue russe dispose de 42 sons essentiels: 6 voyelles et 36 consonnes. 
+Le tableau ci-dessous représente les signes (transcription) qui sont utilisés sur notre site pour désigner les sons russes. 
+Vous pouvez écouter tous les sons représentés en cliquant sur l'icône <span class="sound" ><span class="play_tip">&nbsp; &nbsp;</span></span>.</p>
+
+<h3 style="text-align: center">Les sons russes essentiels</h3>
+
+<table class="sound-letter vowels" cellspacing="0" align="center">
+  <tr>
+    <th class="thbrd">Voyelles</th>
+  </tr>
+  <tr class="trow">
+    <td width="140"><span class="sound" onclick="playSound('sound201.mp3')">[a] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td><span class="sound" onclick="playSound('sound202.mp3')">[e] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td><span class="sound" onclick="playSound('sound203.mp3')">[o] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td><span class="sound" onclick="playSound('sound204.mp3')">[ou] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td><span class="sound" onclick="playSound('sound205.mp3')">[ i ] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr class="trow">
+    <td><span class="sound" onclick="playSound('sound206.mp3')">[ <span class="ry">i</span> ] <span class="play_tip">&nbsp; &nbsp; </span></span></td>
+  </tr>
+</table>
+
+<br><br>
+
+<table class="sound-letter consonants" cellspacing="0" align="center">
+  <tr>
+   <th colspan="2" class="thbrd">Consonnes</th>
+  </tr>
+  <tr class="second-th">
+    <td valign="top" width="140">
+    Consonnes sonores
+    </td>
+    <td valign="top" width="140">
+    Consonnes sourdes
+    </td>
+  </tr>
+  <tr>
+    <td class="trow"><span class="sound" onclick="playSound('sound207.mp3')">[b] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td class="trow"><span class="sound" onclick="playSound('sound209.mp3')">[p] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr>
+    <td class="trow"><span class="sound" onclick="playSound('sound208.mp3')">[b'] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td class="trow"><span class="sound" onclick="playSound('sound210.mp3')">[p'] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr>
+    <td class="trow"><span class="sound" onclick="playSound('sound211.mp3')">[v] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td class="trow"><span class="sound" onclick="playSound('sound213.mp3')">[f] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr>
+    <td class="trow"><span class="sound" onclick="playSound('sound212.mp3')">[v'] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td class="trow"><span class="sound" onclick="playSound('sound214.mp3')">[f'] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr>
+    <td class="trow"><span class="sound" onclick="playSound('sound215.mp3')">[z] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td class="trow"><span class="sound" onclick="playSound('sound217.mp3')">[s] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr>
+    <td class="trow"><span class="sound" onclick="playSound('sound216.mp3')">[z'] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td class="trow"><span class="sound" onclick="playSound('sound218.mp3')">[s'] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr>
+    <td class="trow"><span class="sound" onclick="playSound('sound219.mp3')">[d] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td class="trow"><span class="sound" onclick="playSound('sound221.mp3')">[t] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr>
+    <td class="trow"><span class="sound" onclick="playSound('sound220.mp3')">[d'] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td class="trow"><span class="sound" onclick="playSound('sound222.mp3')">[t'] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr>
+    <td class="trow"><span class="sound" onclick="playSound('sound223.mp3')">[g] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td class="trow"><span class="sound" onclick="playSound('sound225.mp3')">[k] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr>
+    <td class="trow"><span class="sound" onclick="playSound('sound224.mp3')">[g'] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td class="trow"><span class="sound" onclick="playSound('sound226.mp3')">[k'] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr>
+    <td class="trow"><span class="sound" onclick="playSound('sound227.mp3')">[j] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td class="trow"><span class="sound" onclick="playSound('sound228.mp3')">[ch] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr>
+    <td class="trow"><span class="sound" onclick="playSound('sound229.mp3')">[m] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td class="trow"><span class="sound" onclick="playSound('sound238.mp3')">[sch] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr>
+    <td class="trow"><span class="sound" onclick="playSound('sound230.mp3')">[m'] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td class="trow"><span class="sound" onclick="playSound('sound239.mp3')">[tch] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr>
+    <td class="trow"><span class="sound" onclick="playSound('sound231.mp3')">[n] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td class="trow"><span class="sound" onclick="playSound('sound240.mp3')">[ts] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr>
+    <td class="trow"><span class="sound" onclick="playSound('sound232.mp3')">[n'] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td class="trow"><span class="sound" onclick="playSound('sound241.mp3')">[h] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr>
+    <td class="trow"><span class="sound" onclick="playSound('sound233.mp3')">[ l ] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td class="trow"><span class="sound" onclick="playSound('sound242.mp3')">[h'] <span class="play_tip">&nbsp; &nbsp; </span></span></td>
+  </tr>
+  <tr>
+    <td class="trow"><span class="sound" onclick="playSound('sound234.mp3')">[ l' ] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+    <td rowspan="4"></td>
+  </tr>
+  <tr>
+    <td class="trow"><span class="sound" onclick="playSound('sound235.mp3')">[r] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+
+  </tr>
+  <tr>
+    <td class="trow"><span class="sound" onclick="playSound('sound236.mp3')">[r'] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+  <tr>
+    <td class="trow"><span class="sound" onclick="playSound('sound237.mp3')">[y] <span class="play_tip">&nbsp; &nbsp;</span></span></td>
+  </tr>
+</table>
+
+<p>
+Sur notre site, les mots  et les phrases russes sont accompagnées de la transcription qui représente les sons de la langue russe par le biais de l'orthographe française. 
+Toutes les transcriptions sur le site sont mis entre crochets.
+</p>
+<p>
+Les transcriptions sont suivies par le signe <span class="sound" onclick="playSound()"> <span class="play_tip">&nbsp;&nbsp;</span></span> qui signifie 
+que vous pouvez écouter la phrase transcrite. La plupart des sons, des mots et des phrases représentées dans les transcriptions sur notre site sont accompagnés d'exemples audio.
+</p>
+
+<br><br><br><br><br><br><br><br><br><br>
+
+
+<script type="text/javascript">
+currentSection="phonetic";
+</script>
