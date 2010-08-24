@@ -1,0 +1,123 @@
+<% @page_title = 'Russian Language Online: Information générale sur les sons russes' %>
+<% @page_meta = {'description' => "Russian sounds description with audio examples and transcription"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<%= stylesheet_link_tag 'stylesounds' %>
+<% content_for :special_js_css do %>
+<style type="text/css">
+h2.page {margin-bottom: 0px;}
+</style>
+<% end %>
+
+<div class="hint_wrap">
+<div class="hint_button" style="float: right;">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Links and Settings</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+     				<li><a href="basic-sounds.html">Basic Russian sounds</a></li>
+    				<li><a href="phonetics-course.html">Phonetics course</a></li>
+    		</ul>
+        <%= render :partial => 'preload_option' %>
+	</div>
+</div>
+</div>
+
+<h2 class="page">Le système des sons russes</h2>
+<h3 class="page-path"><span class="int-links"><a href="pronunciation.html">Prononciation</a> <span class="int-arrow">--&gt;</span> Système des sons russes</span></h3>
+<div id="pagecontent"><div id="content">
+
+<p>
+La langue russe dispose de 42 sons essentiels: 6 voyelles et 36 consonnes.
+</p>
+
+<h3 class="page-p">Voyelles</h3> 
+<p>
+Les voyelles russes essentielles sont les sons [a], [e], [o], [oo], [i], [i]. 
+Il y a aussi quelques autres voyelles qui peuvent se produire dans les syllabes atones, 
+mais elles sont très semblables aux sons mentionnés ci-dessus et ont des nuances acoustiques à peine perceptibles. 
+Ainsi, pour des raisons pratiques, nous n'utilisons que les sons essentiels dans toutes les transcriptions sur notre site. 
+Notez également que, les voyelles atones sont plus courtes et prononcées avec moins de tension que voyelles accentuées.<br />
+<span style="line-height: 20px;" >
+<span class="open_popup_link" onClick="open_comment('/comments_audio/comment_vowels.html')">Cliquez ici pour ouvrir une fenêtre popup et écouter ces sons</span>
+</span>
+</p>
+
+<h3 class="page-p">Consonnes</h3> 
+<p>
+La langue russe a 36 consonnes essentielles: 
+</p>
+<p>
+[b], [b'], [p], [p'], [v], [v'], [f], [f'], [z], [z'], [s], [s'], [d], [d'], [t], [t'], [g], [g'], [k], [k'], [j], [ch], [m], [m'], [sch], [n], [n'], [tsh], [ l ], [ l' ], [ts], [r], [r'], [h], [h'], [y]. 
+<br />
+<span style="line-height: 20px;" >
+<span class="open_popup_link" onClick="open_comment('/comments_audio/comment_consonants.html')">Cliquez ici pour ouvrir une fenêtre popup et écouter ces sons</span>
+</span>
+</p>
+
+<p>
+Dans les différentes régions de la Russie on peut prononcer les consonnes de manière légèrement différente, mais, pour des raisons pratiques, 
+nous n'utilisons que les signes décrits ci-dessus dans les transcriptions sur notre site.</p>
+<p>
+Une particularité importante du système phonétique russe est la distinction basée sur la palatalisation de la plupart des consonnes. 
+Le terme "palatalisation" ou "mouillure" signifie que la langue est  étirée vers la partie avant du palais pendant et après l'articulation de la consonne. 
+Cette position de la langue est similaire à l'articulation de la voyelle [i].  
+On remarquera qu'il y a de manière presque systématique des "couples" de consonnes <em>non palatalisées/palatalisées</em>, avec la même articulation, sauf ce trait particulier.
+Les consonnes russes non palatalisées sont aussi appelées consonnes dures, et les consonnes palatalisées sont aussi appelées consonnes molles.
+
+</p>
+<p>
+Dans la transcription, la mouillure  est généralement indiquée par le signe ['].
+Sur notre site, nous utilisons ce signe par défaut pour indiquer les consonnes molles dans les sections <strong>Prononciation russe</strong> et <strong>Lire en russe</strong>.
+Dans d'autres sections nous ne montrons pas les consonnes molles par défaut,
+car cela peut être une source de confusion pour les internautes qui n'ont pas lu cet article.
+Si vous le souhaitez, vous pouvez toujours choisir l'option pour visualiser les signes de mouillure.
+Il est aussi à noter que les consonnes sont toujours molles avant le son [i], c'est pourquoi nous ne démontrons pas le signe ['] avant ce son.
+Si vous vous familiarisez avec les règles de la lecture vous pourrez facilement déterminer les occurrences de consonnes molles, même sans consultant la transcription.
+</p>
+
+<p>
+La langue russe possède 15 paires <em>consonne dure/consonne molle</em>: [p - p', b - b', m - m', f - f', v - v', t - t', d - d', s - s', z - z', l - l', n - n', r - r', k - k', g - g', h - h']. 
+Les autres consonnes n'ont pas de paires, ce sont les consonnes dures [j, ch, ts] et les consonnes molles [sch, tch, y]. 
+<br />
+<span style="line-height: 20px;" >
+<span class="open_popup_link" onClick="open_comment('/comments_audio/comment_hard_soft.html')">Cliquez ici pour ouvrir une fenêtre popup et écouter ces sons</span>
+</span>
+</p>
+<p>
+Une autre caractéristique importante du système phonétique russe est l'opposition des consonnes sonores vs. consonnes sourdes.
+Les consonnes sonores sont prononcées avec une vibration des cordes vocales, alors que les consonnes sourdes sont produites sans la vibration des cordes vocales.
+La langue russe possède 11 paires <em>consonne sonore/consonne sourde</em>: [b - p, b' - p', v - f, v' - f', z - s, z’ - s', d - t, d' - t', j - sh, g - k, g' - k']. 
+Les autres consonnes n'ont pas de paires, ce sont les consonnes sonores [m, m', n, n', l, l', r, r', y] et les consonnes sourdes [ts, tch, h, sch].
+<br />
+<span style="line-height: 20px;" >
+<span class="open_popup_link" onClick="open_comment('/comments_audio/comment_voiced_unvoiced.html')">Cliquez ici pour ouvrir une fenêtre popup et écouter ces sons</span>
+</span>
+</p>
+
+<p>
+Il est aussi à noter que les sons russes sont prononcées avec moins de tension que les son français.
+Si vous voulez avoir un bon accent russe, nous vous recommendons de prêter une attention particulière à ce fait.
+</p>
+<br><br>
+
+<br><br><br><br><br><br><br>
+
+
+
+</div></div>
+
+
+<script type="text/javascript">
+
+preloadFiles=new Array("sounds/sound201.mp3", "sounds/sound202.mp3", "sounds/sound203.mp3", "sounds/sound204.mp3", "sounds/sound205.mp3", "sounds/sound206.mp3", "sounds/sound207.mp3", "sounds/sound208.mp3", "sounds/sound209.mp3", "sounds/sound210.mp3", "sounds/sound211.mp3", "sounds/sound212.mp3", "sounds/sound213.mp3", "sounds/sound214.mp3", "sounds/sound215.mp3", "sounds/sound216.mp3", "sounds/sound217.mp3", "sounds/sound218.mp3", "sounds/sound219.mp3", "sounds/sound220.mp3", "sounds/sound221.mp3", "sounds/sound222.mp3", "sounds/sound223.mp3", "sounds/sound224.mp3", "sounds/sound225.mp3", "sounds/sound226.mp3", "sounds/sound227.mp3", "sounds/sound228.mp3", "sounds/sound229.mp3", "sounds/sound230.mp3", "sounds/sound231.mp3", "sounds/sound232.mp3", "sounds/sound233.mp3", "sounds/sound234.mp3", "sounds/sound235.mp3", "sounds/sound236.mp3", "sounds/sound237.mp3", "sounds/sound238.mp3", "sounds/sound239.mp3", "sounds/sound240.mp3", "sounds/sound241.mp3", "sounds/sound242.mp3")
+
+</script>
+
+<script type="text/javascript">
+currentSection="phonetic";
+</script>
