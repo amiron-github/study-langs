@@ -87,11 +87,14 @@ this.parseTest = function() {
 	tObj.translateHolder = tObj.container.find(".fl-translate");
 	tObj.soundHolder = tObj.container.find(".fl-sound");
 	tObj.articleHolder = tObj.container.find(".fl-article-wrapper");
+	tObj.articleWrapper = tObj.container.find(".fl-article-list");
 	tObj.testsHolder = tObj.container.find(".fl-tests");
+	tObj.activityHolder = tObj.container.find(".fl-activity-wrapper");
 	
 	tObj.nextButton = tObj.container.find(".fl-next");
 	tObj.startButton = tObj.container.find(".fl-start");
 	tObj.stopButton = tObj.container.find(".fl-stop");
+	tObj.cancelButton = tObj.container.find(".fl-cancel");
 	
 	tObj.verifyButton = tObj.container.find(".fl-verify");
 	
@@ -103,6 +106,10 @@ this.parseTest = function() {
 		tObj.start();
 	});
 	
+	tObj.cancelButton.click(function() {
+		tObj.cancelTest();
+	});
+	
 	tObj.stopButton.click(function() {
 		tObj.stop();
 	});
@@ -112,33 +119,52 @@ this.parseTest = function() {
 
 
 this.prestart = function() {
-if (tObj.basicArray.length > 12) tObj.wordListContainer.addClass('fl-scroll')
+//if (tObj.basicArray.length > 11) tObj.wordListContainer.addClass('fl-scroll');
+
+
+var startList = '<table class="fl-prestart-list" cellspacing="0" width="100%">';
+var endList = '</table>';
+var wordList = new Array();
+
 for (var i = 0; i< tObj.basicArray.length; i ++) {
-	tObj.wordListContainer.append('<span class="fl-list"><input type="checkbox" checked class="st">'+tObj.basicArray[i][1]+'</span><br/>');
+	wordList[i] = '<tr class="fl-list"><td><input type="checkbox" checked class="st"></td><td class="fl-wordlist-origin">'+tObj.basicArray[i][0]+'</td><td>'+tObj.basicArray[i][1]+'</td></tr>'
+	//tObj.wordListContainer.append('<span class="fl-list"><input type="checkbox" checked class="st">'+tObj.basicArray[i][1]+'</span><br/>');
 	tObj.wordListContainer.find(".fl-list:eq(i)").data("index",i);
 }
+var wordListHtml = wordList.join('');
+
+tObj.wordListContainer.append(""+startList+wordListHtml+endList+"");
+
+if (tObj.container.find(".fl-prestart-list").height() > 330) tObj.wordListContainer.addClass('fl-scroll');
+
+tObj.wordListContainer.find(".fl-prestart-list tr:even").css({backgroundColor: "#efefef"}) 
 
 
 }
 
 this.formArray = function() {
 	tObj.usersArray = new Array();
-	tObj.container.find(".fl-prestart span").each(function(i,elem){
-		if ( $(elem).find("input").is(":checked") ) {
+	
+	tObj.container.find(".fl-prestart tr.fl-list").each(function(i,elem){
+	
+		if ( $(elem).find("input[type='checkbox']").is(":checked") ) {
 				var tItemData = new Array();
 				tItemData['data'] = tObj.basicArray[i];
 				tItemData ['base'] = i;
-				tObj.usersArray[i] = tItemData;
+				tObj.usersArray.push(tItemData);
 		}
+		
 	})
+	
+	//alert(tObj.usersArray.length);
 }
 
 
 this.stop = function () {
-	tObj.testsHolder.empty();
 	tObj.workContainer.hide();
 	tObj.initContainer.fadeIn(300);
 }
+
 
 
 
@@ -148,7 +174,8 @@ this.start = function () {
 	tObj.initContainer.fadeOut(260, function() {
 		tObj.workContainer.show();
 	});
-	tObj.articleHolder.find("div").css({opacity: "1"})
+	tObj.articleWrapper.css({opacity: "1"});
+	tObj.articleHolder.find("div").css({opacity: "1"});
 	tObj.counter=0;
     tObj.missedItems=new Array();
     tObj.wrongAswersNum=0;
@@ -163,7 +190,7 @@ this.start = function () {
 	activeEl = 0;
 	cicleLen = tObj.workArray.length;
 	knowInCicle = new Array();
-	$("#gessed").empty();
+
 	
 	
 	for (var i = 0; i <  tObj.workArray.length; i ++ ) {
@@ -189,16 +216,15 @@ this.start = function () {
 }
 
 this.step = function () {
-	$("#counter").text(activeEl)
-	tObj.verifyButton.show();
+
+	if (tObj.activityHolder.is(":hidden")) tObj.activityHolder.fadeIn();
 	
-	$("#missed").empty();
-	
-	for (var i=0; i < tObj.missedItems.length; i++ ) {
-		$("#missed").append( "<b>"+tObj.missedItems[i]+"</b>" )
-	}
-	
+
 	if (tObj.missedItems.length > 0 ) {
+		
+		
+		//alert(tObj.workArray.length +"; "+ tObj.missedItems.length +" ;"+ activeEl)
+		
 		
 		tObj.originHolder.html( tObj.workArray[tObj.missedItems[activeEl]]['data'][0])
 		tObj.translateHolder.html( tObj.workArray[tObj.missedItems[activeEl]]['data'][1])
@@ -212,10 +238,9 @@ this.step = function () {
 }
 
 
+
 this.gotoNext = function() {
-	tObj.testsHolder.empty();
-	//tObj.articleHolder.find("div").css({opacity: "1"})
-	tObj.testsHolder.animate({height: 40})
+	
 	activeEl++;
 	 
 	if (activeEl >=cicleLen ) {
@@ -246,38 +271,64 @@ this.gotoNext = function() {
 		cicleLen = tObj.missedItems.length;
 	}
 	
-	tObj.articleHolder.find("div").stop().animate({opacity: 0}, function() {
+	clearTimeout(toNextInt);
+	tObj.testsHolder.find(".fl-test-task").hide(400);
+	tObj.testsHolder.stop().hide(400)
+	tObj.articleWrapper.stop().animate({opacity: 0}, function() {
+		tObj.testsHolder.find(".fl-test-option").remove().end().find(".fl-cancel-wrapper").hide();
+		
 		tObj.step();
+		tObj.articleWrapper.css({opacity: "1"});
 		tObj.articleHolder.find("div").css({opacity: "1"});
+		tObj.testsHolder.find(".fl-test-task").show();
 	})
 		
-		
+}
+
+this.cancelTest = function () {
+
+	clearTimeout(toNextInt);
 	
+	tObj.testsHolder.find(".fl-test-task").hide(400);
+	tObj.testsHolder.stop().hide(400, function() {
+		tObj.testsHolder.find(".fl-test-option").remove().end().find(".fl-cancel-wrapper").hide();
+		if (tObj.activityHolder.is(":hidden")) tObj.activityHolder.fadeIn();
+		tObj.articleWrapper.css({opacity: "1"});
+		tObj.articleHolder.find("div").css({opacity: "1"});
+		tObj.testsHolder.find(".fl-test-task").show();
+	});
 	
+
+
 }
 
 
 this.verify = function() {
 	tObj.testManager(1);
-	tObj.verifyButton.hide();
+	tObj.activityHolder.hide();
 }
 
 
 this.exclude = function (num) {
-	$("#gessed").append(""+tObj.missedItems[num]+"")
 	knowInCicle.push(num);
 }
 
 
 this.testManager = function (testOrder) {
-	tObj.articleHolder.find("div").css({opacity: "1"})
-
+	tObj.articleWrapper.css({opacity: "1"})
+	tObj.articleHolder.find("div").css({opacity: "1"});
+	
 	if ( testOrder == 1 ) {
-		tObj.launchTest('audio');
+		tObj.launchTest('origin');
 	} else if (testOrder == 2) {
 		tObj.launchTest('translate');
 	}else {
 		tObj.exclude(activeEl);
+		alert("Great! We'll take this item off your word list");
+		
+		var currentQuestIndex = tObj.workArray[ tObj.missedItems[activeEl] ]['base'];
+		tObj.wordListContainer.find("tr.fl-list:eq("+currentQuestIndex+")").addClass("fl-learned").find("input").removeAttr("checked");
+		
 		tObj.gotoNext();
 	}
 	
@@ -287,15 +338,14 @@ this.launchTest = function(testType) {
 	var dataType = 0;
 	var nextTextType = 0;
 	
-	
-	if (testType == 'audio') {
-		dataType= 1;
+	if (testType == 'origin') {
+		dataType= 0;
 		nextTestType = 2;
 		var toHide = tObj.originHolder
 	} else if (testType == 'translate') {
-		dataType= 2;
+		dataType= 1;
 		nextTestType = 3;
-		var toHide = tObj.transcriptHolder
+		var toHide = tObj.translateHolder
 	}
 
 	var correctIndex;
@@ -316,7 +366,7 @@ this.launchTest = function(testType) {
 	
 	for (var i = 0; i < option.length; i ++ ) {
 	
-		var tOption = '<div style="display: none"> <input type="radio" > ' + tObj.basicArray[option[i]][dataType] + '</div>';
+		var tOption = '<div style="display: none" class="fl-test-option"> <input type="radio" > ' + tObj.basicArray[option[i]][dataType] + '</div>';
 			
 		if (option[i] == currentQuestIndex) {
 				correctIndex = i;
@@ -325,28 +375,44 @@ this.launchTest = function(testType) {
 	}
 	
 	
-	
-	tObj.testsHolder.html("" + optionsList + "");
-	tObj.testsHolder.find("div").eq(correctIndex).data("correct", "true");
-	tObj.testsHolder.animate({height: 140})
+	tObj.testsHolder.find("div.fl-test-option").remove();
+	tObj.testsHolder.append("" + optionsList + "");
+	tObj.testsHolder.find("div.fl-test-option").eq(correctIndex).data("correct", "true");
+	tObj.testsHolder.animate({height: 170})
 	tObj.testsHolder.find("div").show(400);
-	toHide.animate({opacity: 0}, 400)
-	tObj.testsHolder.find("div").each(function(i,elem){
+	
+	toHide.css({opacity: 0}, 400);
+	
+	tObj.testsHolder.find("div.fl-test-option").each(function(i,elem){
 	
 		$(elem).click(function() {
-			//$(elem).find("input").attr("checked", "checked")
+			tObj.testsHolder.find("div.fl-test-option").each(function (n, inel) {
+				$(inel).unbind("click").find("input").attr("disabled", "disabled");
+				
+				if ( $(inel).data('correct') == "true") {
+					$(inel).css({color: "green"})
+				}else {
+					$(inel).addClass("fl-not-answer");
+				}
+			})
+			
+			
+			
+			$(elem).find("input").attr("checked", "checked")
 			if ($(elem).data('correct') == "true") {
-				
-				$(elem).css({color: "green"}).find("input").attr("disabled", "disabled");
-				
-				
-				
+			
 				toNextInt = setTimeout(function() {
 					tObj.testManager( nextTestType );
 				}, 1600);
 				
 			} else {
-				alert("wrong")	//tObj.wrongAnswer($(elem));
+			
+				$(elem).css({color: "red"});
+			
+				toNextInt = setTimeout(function() {
+					tObj.testManager( nextTestType -1);//tObj.cancelTest();
+				}, 1600);
+				
 			}
 		})
 	})

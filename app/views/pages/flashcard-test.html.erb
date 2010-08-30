@@ -12,20 +12,20 @@
 border: 3px solid #99B2DF;
 background-image: url("/images/fl-bg.png");
 margin: 0 auto;
-padding: 40px 40px;
+padding: 40px 40px 20px;
 background-color: #AFCCFF;
 text-align: left;
 max-width: 550px;
 }
 
 .fl-window {
-min-height: 450px;
+min-height: 570px;
 }
 
 .fl-prestart {
-height: 230px;
+height: 330px;
 border: 1px solid #999;
-padding: 15px;
+padding: 15px 3px;
 background-color: #fff;
 }
 
@@ -35,7 +35,6 @@ overflow-y: scroll;
 }
 
 .fl-init {
-
 background-color: #fff;
 bor-der: 1px solid #A4BFEF;
 padding: 40px 40px 20px;
@@ -84,16 +83,29 @@ text-align: center;
 .fl-translate {
 }
 
-.fl-tests div {
+.fl-tests div.fl-test-option {
 background-color: #EFEFEF;
 padding: 6px 20px;
 margin: 2px 20px;
 border: 1px solid #A7BBDF;
 cursor: default;
+font-weight: bold;
+color: #444444;
 }
 
-.fl-tests div:hover {
+.fl-tests div.fl-test-option:hover {
 background-color: #fff;
+color: #111111;
+}
+
+.fl-tests div.fl-not-answer {
+background-color: #dfdfdf !important;
+text-decoration: line-through;
+color: #999999;
+}
+
+.fl-tests div.fl-not-answer:hover {
+color: #999999;
 }
 
 .fl-next {
@@ -143,9 +155,8 @@ background-color: #7FA1FF;
 }
 
 .fl-stop {
-width: 60px;
 position: relative;
-padding: 5px 10px 5px 10px ;
+padding: 3px 10px;
 border: 1px solid #8E95AF;
 font-size: 14px;
 font-wei-ght: bold;
@@ -159,9 +170,48 @@ background-repeat:no-repeat;
 overflow: hidden;
 }
 
-.fl-stop:hover {
-background-color: #FFF04F;
+.fl-cancel {
+text-align: center;
+padding: 3px 10px;
+cursor: pointer;
+border: 1px solid #8E95AF;
+background-image:url(/images/btn-grd.png);
+background-position:50%;
+background-repeat:no-repeat;
+-webkit-box-shadow: 1px 2px 3px #555;
+}
+
+.fl-cancel:hover {
+background-color: #FF8C2F;
 font-weight: bold;
+}
+
+.fl-cancel {
+width: 60px;
+position: absolute;
+right: 15px;
+top: 0;
+}
+
+
+.fl-cancel-wrapper {
+position: relative;
+overflow: hidden;
+}
+
+.fl-test-task {
+padding-right: 110px;
+height: 35px;
+line-height: 16px;
+margin-bottom: 4px;
+font-size: 12px;
+color: #22456F;
+}
+
+.fl-stop:hover {
+background-color:#FF2F2F;
+font-weight: bold;
+color: #111;
 }
 
 .fl-next:hover {
@@ -191,11 +241,32 @@ background-repeat:no-repeat;
 -webkit-box-shadow: 1px 2px 3px #555;
 }
 
-
-
 .fl-verify:hover {
 background-color: #00FF3A;
+font-weight: bold;
 }
+
+table.fl-prestart-list td {
+padding: 1px 5px;
+font-size: 12px;
+color: #444;
+}
+.fl-wordlist-origin {
+font-weight: bold;
+}
+
+.fl-activity div {
+white-space: nowrap;
+}
+.fl-activity-wrapper {
+margin-top: 20px;
+}
+
+.fl-learned td {
+text-decoration: line-through;
+}
+
+
 
 
 
@@ -224,16 +295,18 @@ background-color: #00FF3A;
 
 <div class="fl-work">
 <div class="fl-article-wrapper">
+  <div class="fl-article-list">
 	<div class="fl-original"></div>
 	<div class="fl-sound"></div>
 	<div class="fl-transcript"></div>
 	<div class="fl-translate"></div>
+  </div>
 </div>
 <div class="fl-buttons-wrapper">
 <table style="margin: 0 auto;" width="100%">
 <col width="30%"><col width="40%"><col width="30%">
 <tr>
-<td style="text-align: left;"> <div class="fl-stop noselect">Stop</div></td>
+<td style="text-align: left;"> </td>
 <td>
 	<div class="fl-next noselect">Next >></div>
 </td>
@@ -244,17 +317,33 @@ background-color: #00FF3A;
 
 </div>
 
-<div class="fl-check">
-	
-<table width="100%">
-<tr>
-<td height="160">
-	<div class="fl-check-it">Do you know this word? <span class="fl-verify" > Yes </span></div>
-<div class="fl-tests" style="height: 40px"></div>
+<div class="fl-check" style="min-height: 190px;">
+	<div class="fl-tests" style="display: none;">
+		<div class="fl-cancel-wrapper" style="display: none;">
+		
+			<div class="fl-test-task">Find the translation of this word/expression</div>
 
-</td>
-</tr>
-</table>	
+			<div class="fl-cancel"> Cancel </div>
+
+		</div>
+	</div>
+	<div class="fl-activity-wrapper">
+	<table class="fl-activity">
+		<!-- tr>
+			<td>Would like to type this word?</td>
+			<td> <div class="fl-verify"> Spell Practice </div></td>
+		</tr -->
+		<tr>
+			<td>Would you like to check how you know this words</td>
+			<td style="width:70px;"> <div class="fl-verify noselect"> Qizzes </div></td>
+		</tr>
+		<tr>
+			<td style="padding-top: 15px;">Would you like to stop and return to the main menu?</td>
+			<td style="padding-top: 15px;"> <div class="fl-stop noselect">Stop</div></td>
+		</tr>
+	</table>
+	</div>
+	
 	
 </div>
 
@@ -285,12 +374,15 @@ background-color: #00FF3A;
 ['Доброе утро','Good morning','/sounds/sound01102.mp3','dobraye ootra'],
 ['Добрый день','Good afternoon','/sounds/sound01103.mp3','dobriy dyen'],
 ['Добрый вечер','Good evening','/sounds/sound01104.mp3','dobriy vechir'],
-['Добро пожаловать!','Welcome!','/sounds/sound01105.mp3','dabro pajalavat'],
-['Привет!','Hi! (informal)','/sounds/sound01106.mp3','privyet'],
+['Добро пожаловать','Welcome!','/sounds/sound01105.mp3','dabro pajalavat'],
+['Привет','Hi! (informal)','/sounds/sound01106.mp3','privyet'],
 ['Как поживаете?','How are you getting on?','/sounds/sound01107.mp3','kak pajivaiti?'],
 ['Как поживаешь?','How are things? (informal)','/sounds/sound01108.mp3','kak pajivaish'],
 ['Как Ваши дела?','How are you?','/sounds/sound01109.mp3','kak vashi dila'],
 ['Как дела?','How are you? (informal)','/sounds/sound01110.mp3','kak dila'],
+
+
+
 ['Прекрасно','Perfectly well','/sounds/sound01111.mp3','prikrasna']
 
 		]
