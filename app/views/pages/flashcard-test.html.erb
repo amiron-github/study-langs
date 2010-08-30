@@ -1,0 +1,311 @@
+<% @page_title = 'Flashcard' %>
+
+<% content_for :special_js_css do %>
+
+
+<%= javascript_include_tag 'flashcard' %>
+
+
+<style type="text/css">
+
+.fl-container {
+border: 3px solid #99B2DF;
+background-image: url("/images/fl-bg.png");
+margin: 0 auto;
+padding: 40px 40px;
+background-color: #AFCCFF;
+text-align: left;
+max-width: 550px;
+}
+
+.fl-window {
+min-height: 450px;
+}
+
+.fl-prestart {
+height: 230px;
+border: 1px solid #999;
+padding: 15px;
+background-color: #fff;
+}
+
+.fl-scroll {
+overflow-x: hidden;
+overflow-y: scroll;
+}
+
+.fl-init {
+
+background-color: #fff;
+bor-der: 1px solid #A4BFEF;
+padding: 40px 40px 20px;
+-webkit-border-radius: 20px;
+-webkit-box-shadow: 1px 5px 10px #555;
+overflow: hidden;
+}
+
+.fl-work {
+display: none;
+back-ground-color: #DFEBFF;
+padding: 5px 30px 40px;
+
+}
+
+.fl-article-wrapper {
+background-color: #fff;
+padding: 20px;
+margin: 0 30px;
+min-height: 150px;
+-webkit-border-radius: 12px;
+-webkit-box-shadow: 1px 3px 10px #555;
+overflow: hidden;
+}
+
+.fl-article-wrapper div {
+min-height: 40px;
+text-align: center;
+}
+
+.fl-start-wrapper {
+text-align: center;
+padding: 15px;
+}
+
+.fl-original {
+font-size: 25px;
+color: #3F3F3F;
+}
+
+.fl-buttons-wrapper {
+padding: 20px 0;
+text-align: center;
+}
+
+.fl-translate {
+}
+
+.fl-tests div {
+background-color: #EFEFEF;
+padding: 6px 20px;
+margin: 2px 20px;
+border: 1px solid #A7BBDF;
+cursor: default;
+}
+
+.fl-tests div:hover {
+background-color: #fff;
+}
+
+.fl-next {
+width: 100px;
+height: 22px;
+line-height: 22px;
+margin: 0 auto;
+position: relative;
+padding: 5px 10px 5px 20px ;
+border: 1px solid #818FCF;
+font-size: 18px;
+font-wei-ght: bold;
+text-align: center;
+color: #353D5F;
+cursor: pointer;
+background-image:url(/images/btn-grd.png);
+background-position:50%;
+background-repeat:no-repeat;
+-webkit-box-shadow: 1px 2px 3px #555;
+overflow: hidden;
+}
+
+.fl-start {
+width: 100px;
+height: 22px;
+line-height: 22px;
+margin: 0 auto;
+position: relative;
+padding: 5px 10px 5px 20px ;
+border: 1px solid #6F6F6F;
+background-color:#CFCFCF;
+font-size: 18px;
+font-wei-ght: bold;
+text-align: center;
+color: #000;
+text-shadow: 0px 1px 0px #fff;
+cursor: pointer;
+background-image:url(/images/btn-grd.png);
+background-position:50%;
+background-repeat:no-repeat;
+-webkit-box-shadow: 1px 2px 3px #555;
+overflow: hidden;
+}
+
+.fl-start:hover {
+background-color: #7FA1FF;
+}
+
+.fl-stop {
+width: 60px;
+position: relative;
+padding: 5px 10px 5px 10px ;
+border: 1px solid #8E95AF;
+font-size: 14px;
+font-wei-ght: bold;
+text-align: center;
+color: #4D515F;
+cursor: pointer;
+background-image:url(/images/btn-grd.png);
+background-position:50%;
+background-repeat:no-repeat;
+-webkit-box-shadow: 1px 2px 3px #555;
+overflow: hidden;
+}
+
+.fl-stop:hover {
+background-color: #FFF04F;
+font-weight: bold;
+}
+
+.fl-next:hover {
+background-color: #BFD6FF;
+}
+
+.fl-next-down {
+top: 1px;
+left: 1px;
+-webkit-box-shadow: 0px 1px 2px #555;
+}
+
+.fl-check {
+background-image: url(/images/transparent-30.png);
+padding: 20px;
+border: 5px solid #A4BFEF;
+-webkit-box-shadow: 1px 2px 4px #555;
+}
+
+.fl-verify {
+padding: 3px 10px;
+cursor: pointer;
+border: 1px solid #8E95AF;
+background-image:url(/images/btn-grd.png);
+background-position:50%;
+background-repeat:no-repeat;
+-webkit-box-shadow: 1px 2px 3px #555;
+}
+
+
+
+.fl-verify:hover {
+background-color: #00FF3A;
+}
+
+
+
+</style>
+
+<%end%>
+
+
+<h2 class="page">Flashcard</h2>
+
+
+<div  id="fl1" style="min-height: 600px; text-align: center;">
+
+<div class="fl-container" >
+
+<div class="fl-window">
+
+<div class="fl-init">
+<div class="fl-prestart"></div>
+<div class="fl-start-wrapper">
+
+<div class="fl-start noselect"> START </div>
+
+</div>
+</div>
+
+<div class="fl-work">
+<div class="fl-article-wrapper">
+	<div class="fl-original"></div>
+	<div class="fl-sound"></div>
+	<div class="fl-transcript"></div>
+	<div class="fl-translate"></div>
+</div>
+<div class="fl-buttons-wrapper">
+<table style="margin: 0 auto;" width="100%">
+<col width="30%"><col width="40%"><col width="30%">
+<tr>
+<td style="text-align: left;"> <div class="fl-stop noselect">Stop</div></td>
+<td>
+	<div class="fl-next noselect">Next >></div>
+</td>
+<td></td>
+</tr>
+</table>
+
+
+</div>
+
+<div class="fl-check">
+	
+<table width="100%">
+<tr>
+<td height="160">
+	<div class="fl-check-it">Do you know this word? <span class="fl-verify" > Yes </span></div>
+<div class="fl-tests" style="height: 40px"></div>
+
+</td>
+</tr>
+</table>	
+	
+</div>
+
+
+
+ </div>
+
+
+
+</div><!-- end of fl-window -->
+</div><!-- end of flcontainer-->
+
+
+
+</div><!-- end of fl1 -->
+
+
+
+
+
+<script type="text/javascript"> 
+	var fl1 = new flashcard( {
+		id: "fl1", 
+		quest_num: 5,
+		basic_array: [
+		
+['Здравствуйте','Hello','/sounds/sound01101.mp3','zdrastvooytye'],
+['Доброе утро','Good morning','/sounds/sound01102.mp3','dobraye ootra'],
+['Добрый день','Good afternoon','/sounds/sound01103.mp3','dobriy dyen'],
+['Добрый вечер','Good evening','/sounds/sound01104.mp3','dobriy vechir'],
+['Добро пожаловать!','Welcome!','/sounds/sound01105.mp3','dabro pajalavat'],
+['Привет!','Hi! (informal)','/sounds/sound01106.mp3','privyet'],
+['Как поживаете?','How are you getting on?','/sounds/sound01107.mp3','kak pajivaiti?'],
+['Как поживаешь?','How are things? (informal)','/sounds/sound01108.mp3','kak pajivaish'],
+['Как Ваши дела?','How are you?','/sounds/sound01109.mp3','kak vashi dila'],
+['Как дела?','How are you? (informal)','/sounds/sound01110.mp3','kak dila'],
+['Прекрасно','Perfectly well','/sounds/sound01111.mp3','prikrasna']
+
+		]
+		} )
+</script>
+
+
+
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+
+
