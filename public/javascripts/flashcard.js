@@ -106,8 +106,6 @@ this.id = hash['id'];
 this.autoPlay = hash['auto_play'];			// default - true, option: false
 this.variantsNum = hash['variants_num'];	// default - 4
 this.randomOrder = hash['random_order'];    // default - true, option: false
-this.questType = hash['quest_type'];  		// default - html, options audio, image
-this.answerType = hash['answer_type'];  	// default - variants, option: yn
 this.texts = hash['texts'];					// default - english
 this.questNum = hash['quest_num'];			// default - basic array length
 
@@ -136,6 +134,7 @@ this.straightOrderAnswers = new Array();
 
 if (this.questNum == undefined || this.questNum > this.basicArray.length ) this.questNum = this.basicArray.length;
 if (this.variantsNum == undefined) this.variantsNum = 4; 
+if (this.randomOrder == undefined) this.randomOrder = true;
 
 
 this.parseTest = function() {
@@ -180,6 +179,13 @@ this.parseTest = function() {
 		tObj.container.addClass("msie-sucks");
 	}
 	
+	tObj.container.find(".fl-settings").mouseover(function() {
+		tObj.container.find(".fl-set-list").stop().show();
+	}).mouseout(function() {
+		tObj.container.find(".fl-set-list").stop().hide();
+	})
+	
+	
 	tObj.prestart();
 }
 
@@ -192,8 +198,13 @@ var startList = '<table class="fl-prestart-list" cellspacing="0" width="100%">';
 var endList = '</table>';
 var wordList = new Array();
 
+$("body").append('<div id="fl-temp" style="display: none; position: absolute">');
+
 for (var i = 0; i< tObj.basicArray.length; i ++) {
-	wordList[i] = '<tr class="fl-list"><td><input type="checkbox" checked class="st"></td><td class="fl-wordlist-origin">'+tObj.basicArray[i][0]+'</td><td>'+tObj.basicArray[i][1]+'</td></tr>'
+
+	$("#fl-temp").html(tObj.basicArray[i][0]);
+	var text = $("#fl-temp").text();
+	wordList[i] = '<tr class="fl-list"><td><input type="checkbox" checked class="st"></td><td class="fl-wordlist-origin">'+text+'</td><td>'+tObj.basicArray[i][1]+'</td></tr>'
 }
 var wordListHtml = wordList.join('');
 
@@ -201,7 +212,32 @@ tObj.wordListContainer.append(""+startList+wordListHtml+endList+"");
 
 if (tObj.container.find(".fl-prestart-list").height() > 330) tObj.wordListContainer.addClass('fl-scroll');
 
-tObj.wordListContainer.find(".fl-prestart-list tr:even").css({backgroundColor: "#efefef"}) 
+tObj.wordListContainer.find(".fl-prestart-list tr:even").css({backgroundColor: "#efefef"});
+
+
+tObj.container.find(".fl-set-none").click(function() {
+	tObj.wordListContainer.find(".fl-prestart-list input[type='checkbox']").removeAttr("checked")
+}); 
+
+tObj.container.find(".fl-set-all").click(function() {
+	tObj.wordListContainer.find(".fl-prestart-list input[type='checkbox']").attr("checked","checked")
+});
+
+tObj.container.find(".fl-set-not-worked").click(function() {
+	tObj.wordListContainer.find(".fl-prestart-list tr:not('.fl-learned') ").find("input[type='checkbox']").attr("checked","checked")
+});
+
+tObj.container.find(".fl-auto-off").click(function() {
+	tObj.container.find("input.fl-autoplay").removeAttr("checked")
+});
+
+tObj.container.find(".fl-random").click(function() {
+	tObj.randomOrder = true;
+});
+
+tObj.container.find(".fl-direct").click(function() {
+	tObj.randomOrder = false;
+});
 
 
 }
@@ -242,18 +278,21 @@ this.start = function () {
 	} else {
 		tObj.container.find(".fl-start-note").hide();
 	}
-	
-	
-	
+
 	tObj.articleWrapper.css({opacity: "1"});
 	tObj.articleHolder.find("div").css({opacity: "1"});
 	tObj.counter=0;
     tObj.missedItems=new Array();
     tObj.wrongAswersNum=0;
     tObj.correctAswersNum = 0;
-	
-	
-	tObj.workArray = tObj.usersArray.shuffle();
+	tObj.workArray = new Array();
+	if (tObj.randomOrder) {
+		tObj.workArray = tObj.usersArray.shuffle();
+	} else {
+		for (var i=0; i < tObj.usersArray.length; i ++) {
+			tObj.workArray[i] = tObj.usersArray[i]
+		}
+	}
 	
 	activeEl = 0;
 	cicleLen = tObj.workArray.length;
@@ -281,6 +320,8 @@ this.start = function () {
 		tObj.workContainer.show();
 		tObj.step();
 	});
+	
+	
 
 	
 }
@@ -471,10 +512,14 @@ this.launchTest = function(testType) {
 	tObj.testsHolder.find("div.fl-test-option").remove();
 	tObj.testsHolder.append("" + optionsList + "");
 	tObj.testsHolder.find("div.fl-test-option").eq(correctIndex).data("correct", "true");
-	tObj.testsHolder.animate({height: 170})
+	 tObj.cancelButton.addClass("fl-back");
+	tObj.testsHolder.animate({height: 170}, function() {
+		 tObj.cancelButton.removeClass("fl-back");
+	});
+	
 	tObj.testsHolder.find("div").show(400);
 	
-	toHide.css({opacity: 0}, 400);
+	toHide.css({opacity: 0});
 	
 	tObj.testsHolder.find("div.fl-test-option").each(function(i,elem){
 	
@@ -529,7 +574,7 @@ this.launchTest = function(testType) {
 
 this.accents = function(container) {
 
-	if ( getCookie('accent_on') ) {
+		if ( getCookie('accent_on') ) {
 			container.find("span.acco").each(function(){
 				var tVal = $(this).text().replace(/[́]/g, "");
 				$(this).html( tVal + "&#769;");
@@ -542,6 +587,19 @@ this.accents = function(container) {
 				var tVal = $(this).text().replace(/[́]/g, "");
 				$(this).html("&#769;" + tVal);
 			});
+		}
+		
+		if(getCookie('accent_un')) {
+			container.find("span.acco").each(function(){
+				var tVal = $(this).text().replace(/[́]/g, "")
+				$(this).html("<u>" + tVal + "</u>");
+			});
+		}
+		
+		if(getCookie('softness')) {
+			tObj.transcriptHolder.find("span.sfts").remove();
+			tObj.transcriptHolder.find("span.sfty").remove();
+			tObj.transcriptHolder.find("span.sftc, span.sftv").after("<span class=\"sfts\">\'<\/span>");
 		}
 
 }
@@ -562,7 +620,10 @@ tObj.container.find(".fl-end-list").html(""+startList+wordListHtml+endList+"");
 tObj.container.find(".fl-end-wordlist tr:even").css({backgroundColor: "#efefef"});
 
 	tObj.workContainer.hide();
-	tObj.endContainer.fadeIn(300);
+	 tObj.endContainer.addClass("fl-back");
+	tObj.endContainer.fadeIn(300, function() {
+		 tObj.endContainer.removeClass("fl-back");
+	});
 	
 	
 tObj.accents(tObj.container.find(".fl-end-list"))

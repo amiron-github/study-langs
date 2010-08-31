@@ -1072,32 +1072,44 @@ function goToUrl(link) {
 }
 
 function getVocabulary() {
-$("body").prepend('<div id="gv" style="position: absolute; top: 0; left: 0; max-width: 900px; z-index: 10000; background-color: #efefef; text-align: left; padding: 30px"></div>');
-
+$("body").prepend('<div id="gv" style="position: absolute; top: 0; left: 0; max-wi-dth: 900px; z-index: 10000; background-color: #efefef; text-align: left; padding: 30px"></div>');
 	$(".diction tr.trow").each(function(i, elem) {
-
 	$("#gv").append('<div id="gv_'+i+'"></div>');
-	
-	var tOrigin = $(elem).find("td.original").text();
-	var tTranscript = $(elem).find("td.transcript").text();
-	var tTranslation = $(elem).find("td.translation").text();
-/*	
-	
-var html = $(elem).find("td.transcript");
-var rE = new RegExp("playSound\\('[0-9a-zA-Z/]+\\.mp3","g");
-/var mp3 = html.match(rE);
-//mp3g = new Array();
-
-if (mp3) {
-    mp3 = mp3.replace(/playSound\('/,"");
-}	
-	
-	
-//	$('#gv_'+i).append("['"+tOrigin+"','"+tTranscript+"','"+tTranslation+"','"+mp3+"'],")
-
+	var tOrigin = $(elem).find("td.original").html();
+	var tTranscript = $(elem).find(".audiotrans").find("td:eq(0)").html();
+	if ( tOrigin == '&nbsp; ' || tTranscript == null) {
+	}else{
+		var tTranslation = $(elem).find("td.translation").text();
+		var html = $(elem).find("td.transcript").html();
+		var rE = new RegExp("playSound\\('[0-9a-zA-Z/]+\\.mp3","g");
+		var mp3 = html.match(rE);
+		tTranscript = tTranscript.replace(/\[/g,"").replace(/\]/g,"");
+		tTranslation = tTranslation.replace(/\'/g,"\\'")
+		$('#gv_'+i).text("['"+tOrigin+"','"+tTranslation+"','/sounds/"+mp3+"','"+tTranscript+"'],")
+		$('#gv_'+i).text($('#gv_'+i).text().replace(/playSound\('/,"").replace(/<b>/g,'<span class="acct">').replace(/<\/b>/g,'</span>').replace(/<s>/g,'<span class="ry">').replace(/<\/s>/g,'</span>'));
+	}
 })
-*/
 
+}
+
+function getVocSounds() {
+
+$("body").prepend('<div id="gv" style="position: absolute; top: 0; left: 0; max-width: 900px; z-index: 10000; background-color: #efefef; text-align: left; padding: 30px"></div>');
+	$(".diction tr.trow").each(function(i, elem) {
+	$("#gv").append('<span id="gv_'+i+'"></span>');
+	
+	var tOrigin = $(elem).find("td.original").html();
+	var tTranscript = $(elem).find(".audiotrans").find("td:eq(0)").html();
+	if ( tOrigin == '&nbsp; ' || tTranscript == null) {
+	}else{
+		var html = $(elem).find("td.transcript").html();
+		var rE = new RegExp("playSound\\('[0-9a-zA-Z/]+\\.mp3","g");
+		var mp3 = html.match(rE);
+
+		$('#gv_'+i).text("'/sounds/"+mp3+"', ")
+		$('#gv_'+i).text($('#gv_'+i).text().replace(/playSound\('/,"").replace(/<b>/g,'<span class="acct">').replace(/<\/b>/g,'</span>').replace(/<s>/g,'<span class="ry">').replace(/<\/s>/g,'</span>'));
+	}
+})
 
 }
 

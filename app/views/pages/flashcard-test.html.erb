@@ -1,4 +1,7 @@
 <% @page_title = 'Flashcard' %>
+<% @page_meta = {'description' => "Online Russian Course for Beginners - Lesson 1: how to greet people in Russian, how to say goodbye, to thank and apologize in Russian."} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
 
 <% content_for :special_js_css do %>
 
@@ -27,7 +30,6 @@ background-image: url(/images/c_pause_hover.png) !important;
 .jp_pause {
 background-image: url(/images/control_pause.png) !important;
 }
-
 
 .fl-sound {
 position: relative;
@@ -76,11 +78,60 @@ min-height: 570px;
 }
 
 .fl-prestart {
+position: relative;
 height: 330px;
 border: 1px solid #999;
 padding: 15px 3px;
 background-color: #fff;
 }
+
+.fl-settings {
+position: absolute;
+left: 0;
+top: 0;
+background-image:url(/games/tip-ground.png);
+border: 1px solid #dfdfdf;
+padding:2px;
+text-align:left;
+font-size: 11px;
+font-weight: bold;
+color: #666;
+}
+
+.fl-set-list {
+display: none;
+font-weight: normal;
+padding: 5px 10px 5px 5px;
+line-height: 15px;
+}
+
+.fl-set-list a {
+color: #555 !important;
+background-color: transparent;
+text-decoration: none;
+padding: 2px;
+}
+
+.fl-set-list a:link {
+color: #555 !important;
+background-color: transparent;
+text-decoration: none !important;
+}
+.fl-set-list a:visited {
+color: #555 !important;
+background-color: transparent;
+}
+.fl-set-list a:hover {
+color: #fff !important;
+background-color: #555!important;
+}
+.fl-set-list a:active {
+color: #fff !important;
+background-color: #555!important;
+}
+
+
+
 
 .fl-scroll {
 overflow-x: hidden;
@@ -99,7 +150,6 @@ border-radius: 20px;
 box-shadow: 1px 3px 6px #45546F;
 overflow: hidden;
 }
-
 
 .fl-work {
 display: none;
@@ -130,7 +180,10 @@ border:5px solid #A8B6CF;
 max-width: 390px;
 }
 
-
+.msie-sucks .fl-back {
+background-color: #C6DBFF;
+background-image: none;
+}
 
 .fl-article-wrapper div {
 text-align: center;
@@ -280,8 +333,6 @@ color: #111;
 background-color: #BFD6FF;
 }
 
-
-
 .fl-check {
 text-align: left;
 background-image: url(/images/transparent-30.png);
@@ -298,7 +349,6 @@ padding: 3px 10px;
 text-align: center;
 cursor: pointer;
 border: 1px solid #8E95AF;
-
 }
 
 .fl-verify:hover {
@@ -341,7 +391,6 @@ left: auto;
 margin-top: 1px;
 margin-left: 1px;
 }
-
 
 table.fl-prestart-list td {
 padding: 1px 5px;
@@ -386,7 +435,6 @@ background-color: #fff;
 font-weight: bold;
 color: #555;
 }
-
 
 .fl-notes {
 display: none;
@@ -473,19 +521,45 @@ top: 2px;
 </style>
 
 <%end%>
-
+<div class="hint_wrap">
+<div class="hint_button" style="float: right;">
+  <div class="hint">
+      <div class="hint_list">
+        <span class="hint_string">Links and Settings</span>
+      </div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+        <ul>
+            <li><a href="politeness.html">Formulas of politeness</a></li>
+        </ul>
+        <%= render :partial => 'down_accent' %>
+  </div>
+</div>
+</div>
 
 <h2 class="page">Flashcard</h2>
 
 
 <div  id="fl1" style="min-height: 600px; text-align: center;">
 
-<div class="fl-container" >
-
+<div class="fl-container">
 <div class="fl-window">
 
 <div class="fl-init">
-	<div class="fl-prestart"></div>
+	<div class="fl-prestart">
+		<div class="fl-settings" style="display: none;">
+		Settings
+			<div class="fl-set-list">
+				<a class="fl-set-none" href="javascript:;">Deselect all</a><br>
+				<a class="fl-set-all" href="javascript:;">Select all</a><br>
+				<a class="fl-set-not-worked" href="javascript:;">Not learnt yet</a><br>
+				<a class="fl-auto-off" href="javascript:;">Switch off autoplay</a><br>
+				<a class="fl-random" href="javascript:;">Random order</a><br>
+				<a class="fl-direct" href="javascript:;">Direct order</a>
+			</div>
+		
+		</div>
+	</div>
 	<div class="fl-start-wrapper">
 		<div class="fl-start fl-btn noselect"> START </div>
 		<div class="fl-start-note-wrapper">
@@ -552,47 +626,30 @@ top: 2px;
 		</tr>
 	</table>
 	</div>
-	
-	
 </div>
 
-
-
- </div>
-
-
+</div>
 
 </div><!-- end of fl-window -->
 </div><!-- end of flcontainer-->
-
-
-
 </div><!-- end of fl1 -->
-
-
 
 
 
 <script type="text/javascript"> 
 	var fl1 = new flashcard( {
 		id: "fl1", 
-		quest_num: 5,
+		random_order: false,
 		basic_array: [
 		
-['Здр<span class="acco">а</span>вствуйте','Hello','/sounds/sound01101.mp3',''],
-['Д<span class="acco">о</span>брое утро','Good morning','/sounds/sound01102.mp3','dobraye ootra'],
-['Д<span class="acco">о</span>брый день','Good afternoon','/sounds/sound01103.mp3','dobriy dyen'],
-['Д<span class="acco">о</span>брый вечер','Good evening','/sounds/sound01104.mp3','dobriy vechir'],
-//['Добро пожаловать','Welcome!','/sounds/sound01105.mp3','dabro pajalavat'],
-//['Привет','Hi! (informal)','/sounds/sound01106.mp3','privyet'],
-//['Как поживаете?','How are you getting on?','/sounds/sound01107.mp3','kak pajivaiti?'],
-//['Как поживаешь?','How are things? (informal)','/sounds/sound01108.mp3','kak pajivaish'],
-//['Как Ваши дела?','How are you?','/sounds/sound01109.mp3','kak vashi dila'],
-//['Как дела?','How are you? (informal)','/sounds/sound01110.mp3','kak dila'],
+['Больш<span class="acco">о</span>е спас<span class="acco">и</span>бо ','Thank you very much ','/sounds/sound01128.mp3','ba<span class="sftc">l</span>sh<span class="acct">o</span>ye spas<span class="acct">i</span>ba'],
+['Огр<span class="acco">о</span>мное спас<span class="acco">и</span>бо ','Thanks a lot ','/sounds/sound01129.mp3','agr<span class="acct">o</span>mnaye spas<span class="acct">i</span>ba'],
+['Пож<span class="acco">а</span>луйста ','You\'re welcome ','/sounds/sound01130.mp3','paj<span class="acct">a</span>loosta '],
+['Н<span class="acco">е</span> за что ','Don’t mention it ','/sounds/sound01131.mp3','<span class="sftv">n</span><span class="sfty">y</span><span class="acct">e</span>zashta'],
+['Не ст<span class="acco">о</span><i></i>ит ','That\'s all right ','/sounds/sound01132.mp3','ni st<span class="acct">o</span>it']
 
 
 
-['Прекрасно','Perfectly well','/sounds/sound01111.mp3','prikrasna']
 
 		]
 		} )
@@ -600,7 +657,18 @@ top: 2px;
 
 
 
-
+<script type="text/javascript">
+preloadFiles=new Array(
+'/sounds/sound01101.mp3', '/sounds/sound01102.mp3', '/sounds/sound01103.mp3', '/sounds/sound01104.mp3', 
+'/sounds/sound01105.mp3', '/sounds/sound01106.mp3', '/sounds/sound01107.mp3', '/sounds/sound01108.mp3', 
+'/sounds/sound01109.mp3', '/sounds/sound01110.mp3', '/sounds/sound01111.mp3', '/sounds/sound01112.mp3', 
+'/sounds/sound01113.mp3', '/sounds/sound01114.mp3', '/sounds/sound01115.mp3', '/sounds/sound01116.mp3', 
+'/sounds/sound01117.mp3', '/sounds/sound01118.mp3', '/sounds/sound01119.mp3', '/sounds/sound01120.mp3', 
+'/sounds/sound01121.mp3', '/sounds/sound01122.mp3', '/sounds/sound01123.mp3', '/sounds/sound01124.mp3', 
+'/sounds/sound01125.mp3', '/sounds/sound01126.mp3', '/sounds/sound01127.mp3', '/sounds/sound01128.mp3', 
+'/sounds/sound01129.mp3', '/sounds/sound01130.mp3', '/sounds/sound01131.mp3', '/sounds/sound01132.mp3'
+)
+</script>
 
 
 
