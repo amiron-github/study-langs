@@ -233,6 +233,7 @@ border: 5px solid #A4BFEF;
 
 .fl-verify {
 padding: 3px 10px;
+text-align: center;
 cursor: pointer;
 border: 1px solid #8E95AF;
 background-image:url(/images/btn-grd.png);
@@ -264,6 +265,40 @@ margin-top: 20px;
 
 .fl-learned td {
 text-decoration: line-through;
+}
+
+.fl-wrong-note {
+display: block;
+border: 1px solid red;
+background-color: #FFCFCF;
+font-weight: bold;
+color: #555;
+}
+
+.fl-correct-note {
+display: block;
+border: 1px solid #00FF22;
+background-color: #DFFFE3;
+font-weight: bold;
+color: #555;
+}
+
+.fl-exclude-note {
+display: block;
+border: 1px solid blue;
+background-color: #fff;
+font-weight: bold;
+color: #555;
+}
+
+
+.fl-notes {
+display: none;
+position: absolute;
+padding: 3px 10px;
+postion: absolute;
+top: 0;
+left: 20px;
 }
 
 
@@ -321,7 +356,12 @@ text-decoration: line-through;
 	<div class="fl-tests" style="display: none;">
 		<div class="fl-cancel-wrapper" style="display: none;">
 		
-			<div class="fl-test-task">Find the translation of this word/expression</div>
+			<div class="fl-test-task">
+				<span class="fl-wrong-note fl-notes">Wrong! Try again</span>
+				<span class="fl-correct-note fl-notes">Great! This is correct</span>
+				<span class="fl-exclude-note fl-notes">We'll take this item off your word list</span>
+				<span class="fl-task-string">Find the translation of this word/expression</span>
+			</div>
 
 			<div class="fl-cancel"> Cancel </div>
 
@@ -335,7 +375,7 @@ text-decoration: line-through;
 		</tr -->
 		<tr>
 			<td>Would you like to check how you know this words</td>
-			<td style="width:70px;"> <div class="fl-verify noselect"> Qizzes </div></td>
+			<td style="width:75px;"> <div class="fl-verify noselect"> Qizzes </div></td>
 		</tr>
 		<tr>
 			<td style="padding-top: 15px;">Would you like to stop and return to the main menu?</td>

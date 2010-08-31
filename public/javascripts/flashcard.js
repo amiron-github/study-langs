@@ -181,8 +181,6 @@ this.start = function () {
     tObj.wrongAswersNum=0;
     tObj.correctAswersNum = 0;
 	
-
-	
 	tObj.formArray();
 	
 	tObj.workArray = tObj.usersArray.shuffle();
@@ -191,14 +189,11 @@ this.start = function () {
 	cicleLen = tObj.workArray.length;
 	knowInCicle = new Array();
 
-	
-	
 	for (var i = 0; i <  tObj.workArray.length; i ++ ) {
 	
 		tObj.missedItems[i] =   i
 	}
 	
-	//tObj.nextButton.css({border: "1px solid red"})
 	
 	tObj.nextButton.unbind("click").click(function() {
 		tObj.gotoNext();
@@ -218,14 +213,9 @@ this.start = function () {
 this.step = function () {
 
 	if (tObj.activityHolder.is(":hidden")) tObj.activityHolder.fadeIn();
-	
 
 	if (tObj.missedItems.length > 0 ) {
-		
-		
-		//alert(tObj.workArray.length +"; "+ tObj.missedItems.length +" ;"+ activeEl)
-		
-		
+				
 		tObj.originHolder.html( tObj.workArray[tObj.missedItems[activeEl]]['data'][0])
 		tObj.translateHolder.html( tObj.workArray[tObj.missedItems[activeEl]]['data'][1])
 		tObj.transcriptHolder.html('['+ tObj.workArray[tObj.missedItems[activeEl]]['data'][3]+']')
@@ -273,7 +263,10 @@ this.gotoNext = function() {
 	
 	clearTimeout(toNextInt);
 	tObj.testsHolder.find(".fl-test-task").hide(400);
-	tObj.testsHolder.stop().hide(400)
+	tObj.testsHolder.stop().hide(400, function() {
+		tObj.container.find(".fl-task-string").show();
+		tObj.container.find(".fl-notes").hide();
+	});
 	tObj.articleWrapper.stop().animate({opacity: 0}, function() {
 		tObj.testsHolder.find(".fl-test-option").remove().end().find(".fl-cancel-wrapper").hide();
 		
@@ -296,10 +289,10 @@ this.cancelTest = function () {
 		tObj.articleWrapper.css({opacity: "1"});
 		tObj.articleHolder.find("div").css({opacity: "1"});
 		tObj.testsHolder.find(".fl-test-task").show();
+		tObj.container.find(".fl-task-string").show();
+		tObj.container.find(".fl-notes").hide();
+		
 	});
-	
-
-
 }
 
 
@@ -324,12 +317,25 @@ this.testManager = function (testOrder) {
 		tObj.launchTest('translate');
 	}else {
 		tObj.exclude(activeEl);
-		alert("Great! We'll take this item off your word list");
 		
+		
+		tObj.container.find(".fl-exclude-note").css({display: "block"});
+		tObj.cancelButton.hide();
+		
+		toNextInt = setTimeout(function() {
+			tObj.container.find(".fl-exclude-note").fadeOut(200, function() {
+				tObj.container.find(".fl-task-string").show();
+				tObj.cancelButton.show();
+			});
+			
+			tObj.gotoNext();
+		}, 2500);
+		
+		
+		
+	
 		var currentQuestIndex = tObj.workArray[ tObj.missedItems[activeEl] ]['base'];
 		tObj.wordListContainer.find("tr.fl-list:eq("+currentQuestIndex+")").addClass("fl-learned").find("input").removeAttr("checked");
-		
-		tObj.gotoNext();
 	}
 	
 }
@@ -396,20 +402,36 @@ this.launchTest = function(testType) {
 				}
 			})
 			
-			
+			tObj.container.find(".fl-task-string").hide();
 			
 			$(elem).find("input").attr("checked", "checked")
 			if ($(elem).data('correct') == "true") {
-			
+				
+				tObj.container.find(".fl-correct-note").css({display: "block"});
 				toNextInt = setTimeout(function() {
-					tObj.testManager( nextTestType );
+					
+					if (nextTestType == 3) {
+						tObj.container.find(".fl-correct-note").hide();
+						tObj.testManager( nextTestType );
+					} else {
+						tObj.container.find(".fl-correct-note").fadeOut(200, function() {
+							tObj.container.find(".fl-task-string").show();
+						});
+						tObj.testManager( nextTestType );
+					
+					}
+
 				}, 1600);
 				
 			} else {
-			
+				
 				$(elem).css({color: "red"});
-			
+				tObj.container.find(".fl-wrong-note").css({display: "block"});
 				toNextInt = setTimeout(function() {
+					
+					tObj.container.find(".fl-wrong-note").fadeOut(200, function() {
+					tObj.container.find(".fl-task-string").show();
+					});
 					tObj.testManager( nextTestType -1);//tObj.cancelTest();
 				}, 1600);
 				
