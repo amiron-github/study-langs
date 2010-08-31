@@ -1071,7 +1071,35 @@ function goToUrl(link) {
 	location.href=toUrl;
 }
 
+function getVocabulary() {
+$("body").prepend('<div id="gv" style="position: absolute; top: 0; left: 0; max-width: 900px; z-index: 10000; background-color: #efefef; text-align: left; padding: 30px"></div>');
 
+	$(".diction tr.trow").each(function(i, elem) {
+
+	$("#gv").append('<div id="gv_'+i+'"></div>');
+	
+	var tOrigin = $(elem).find("td.original").text();
+	var tTranscript = $(elem).find("td.transcript").text();
+	var tTranslation = $(elem).find("td.translation").text();
+/*	
+	
+var html = $(elem).find("td.transcript");
+var rE = new RegExp("playSound\\('[0-9a-zA-Z/]+\\.mp3","g");
+/var mp3 = html.match(rE);
+//mp3g = new Array();
+
+if (mp3) {
+    mp3 = mp3.replace(/playSound\('/,"");
+}	
+	
+	
+//	$('#gv_'+i).append("['"+tOrigin+"','"+tTranscript+"','"+tTranslation+"','"+mp3+"'],")
+
+})
+*/
+
+
+}
 
 
 

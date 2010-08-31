@@ -24,17 +24,78 @@ function shuffle () {
 
 Array.prototype.shuffle = shuffle;
 
+(function($) {
+	$.fn.customFadeIn = function(speed, callback) {
+		$(this).fadeIn(speed, function() {
+			if(!$.support.opacity)
+				$(this).get(0).style.removeAttribute('filter');
+			if(callback != undefined)
+				callback();
+		});
+	};
+	$.fn.customFadeOut = function(speed, callback) {
+		$(this).fadeOut(speed, function() {
+			if(!$.support.opacity)
+				$(this).get(0).style.removeAttribute('filter');
+			if(callback != undefined)
+				callback();
+		});
+	};
+	$.fn.customFadeTo = function(speed,to,callback) {
+		return this.animate({opacity: to}, speed, function() {
+			if (to == 1 && jQuery.browser.msie)
+				this.style.removeAttribute('filter');
+			if (jQuery.isFunction(callback))
+				callback();
+		});
+	};
+})(jQuery);
+
 ///////////////////////////////////////////
 
 $(document).ready(function() {
 
-	$(".fl-next").mousedown(function(){
-		$(this).addClass("fl-next-down");
+	$(".fl-btn").mousedown(function(){
+		$(this).addClass("fl-btn-down");
 	}).mouseup(function(){
-		$(this).removeClass("fl-next-down");
+		$(this).removeClass("fl-btn-down");
 	})
+
+$("body").append('<div id="cJp"></div>');
+$("#cJp").jPlayer( {swfPath: "/javascripts/"});
 	
 });
+
+
+var tJplayer=false;
+
+function cJplayer(link,el) {
+
+var prevEl = tJplayer;
+var curEl = el;
+
+if ( curEl != prevEl) {
+	$(prevEl).attr("status", 0).removeClass("jp_play").removeClass("jp_pause");;
+}
+
+tJplayer = el;
+var tEl = $(el);
+var tElStatus = $(el).attr("status");
+var containerJp = $("#cJp");
+tEl.removeClass("jp_play").removeClass("jp_pause");
+	if ( tElStatus == "0" || tElStatus == undefined ) { // start sound if sound is not in progress (0,2)
+		tEl.attr("status", "1").addClass("jp_pause"); // show that sound is in progress 
+		containerJp.jPlayer("setFile", link ).jPlayer("play").jPlayer("onProgressChange", function() { return false}).jPlayer( "onSoundComplete", function() {  // start sound 
+			tEl.attr("status", "0").removeClass("jp_pause").removeClass("jp_play");  										// reset status at the end of sound, show 'play'
+		} )
+	} else if ( tElStatus == "2") {   					// if this sound is paused  (2)
+		tEl.attr("status", "1").addClass("jp_pause"); 	// show that sound is in progress 
+		containerJp.jPlayer("play");
+	} else {											// if sound is in progress (1)
+		tEl.attr("status", "2").addClass("jp_play");  		
+		containerJp.jPlayer( "pause" );
+	}
+}
 
 
 
@@ -90,6 +151,7 @@ this.parseTest = function() {
 	tObj.articleWrapper = tObj.container.find(".fl-article-list");
 	tObj.testsHolder = tObj.container.find(".fl-tests");
 	tObj.activityHolder = tObj.container.find(".fl-activity-wrapper");
+	tObj.endContainer = tObj.container.find(".fl-end");
 	
 	tObj.nextButton = tObj.container.find(".fl-next");
 	tObj.startButton = tObj.container.find(".fl-start");
@@ -114,6 +176,10 @@ this.parseTest = function() {
 		tObj.stop();
 	});
 	
+	if ($.browser.msie) {
+		tObj.container.addClass("msie-sucks");
+	}
+	
 	tObj.prestart();
 }
 
@@ -128,8 +194,6 @@ var wordList = new Array();
 
 for (var i = 0; i< tObj.basicArray.length; i ++) {
 	wordList[i] = '<tr class="fl-list"><td><input type="checkbox" checked class="st"></td><td class="fl-wordlist-origin">'+tObj.basicArray[i][0]+'</td><td>'+tObj.basicArray[i][1]+'</td></tr>'
-	//tObj.wordListContainer.append('<span class="fl-list"><input type="checkbox" checked class="st">'+tObj.basicArray[i][1]+'</span><br/>');
-	tObj.wordListContainer.find(".fl-list:eq(i)").data("index",i);
 }
 var wordListHtml = wordList.join('');
 
@@ -162,6 +226,7 @@ this.formArray = function() {
 
 this.stop = function () {
 	tObj.workContainer.hide();
+	tObj.endContainer.hide();
 	tObj.initContainer.fadeIn(300);
 }
 
@@ -170,10 +235,16 @@ this.stop = function () {
 
 this.start = function () {
 
+	tObj.formArray();
+	if (tObj.usersArray.length < 1) {
+		tObj.container.find(".fl-start-note").hide().fadeIn(300);
+		return false;
+	} else {
+		tObj.container.find(".fl-start-note").hide();
+	}
 	
-	tObj.initContainer.fadeOut(260, function() {
-		tObj.workContainer.show();
-	});
+	
+	
 	tObj.articleWrapper.css({opacity: "1"});
 	tObj.articleHolder.find("div").css({opacity: "1"});
 	tObj.counter=0;
@@ -181,7 +252,6 @@ this.start = function () {
     tObj.wrongAswersNum=0;
     tObj.correctAswersNum = 0;
 	
-	tObj.formArray();
 	
 	tObj.workArray = tObj.usersArray.shuffle();
 	
@@ -206,8 +276,13 @@ this.start = function () {
 	tObj.verifyButton.unbind("click").click(function() {
 		tObj.verify();
 	});
+	
+	tObj.initContainer.fadeOut(260, function() {
+		tObj.workContainer.show();
+		tObj.step();
+	});
 
-	tObj.step();
+	
 }
 
 this.step = function () {
@@ -218,9 +293,23 @@ this.step = function () {
 				
 		tObj.originHolder.html( tObj.workArray[tObj.missedItems[activeEl]]['data'][0])
 		tObj.translateHolder.html( tObj.workArray[tObj.missedItems[activeEl]]['data'][1])
-		tObj.transcriptHolder.html('['+ tObj.workArray[tObj.missedItems[activeEl]]['data'][3]+']')
 		
-		tObj.soundHolder.html( tObj.workArray[tObj.missedItems[activeEl]]['data'][2])
+		if (tObj.workArray[tObj.missedItems[activeEl]]['data'][3] =='') {
+			tObj.transcriptHolder.hide();
+		}else{
+			tObj.transcriptHolder.show();
+			tObj.transcriptHolder.html('['+ tObj.workArray[tObj.missedItems[activeEl]]['data'][3]+']')
+		}
+		
+		tObj.accents(tObj.originHolder);
+		
+		
+		
+		tObj.soundHolder.html( '<div onclick="cJplayer(\''+tObj.workArray[tObj.missedItems[activeEl]]['data'][2]+'\', this)" class="jp_control"></div>' )
+
+		if ( tObj.container.find(".fl-autoplay").is(":checked") ) {
+			cJplayer(tObj.workArray[tObj.missedItems[activeEl]]['data'][2], tObj.soundHolder.find(".jp_control").get(0))
+		}
 		
 	}else {
 		tObj.gotoEnd();
@@ -263,7 +352,7 @@ this.gotoNext = function() {
 	
 	clearTimeout(toNextInt);
 	tObj.testsHolder.find(".fl-test-task").hide(400);
-	tObj.testsHolder.stop().hide(400, function() {
+	tObj.testsHolder.hide(400, function() {
 		tObj.container.find(".fl-task-string").show();
 		tObj.container.find(".fl-notes").hide();
 	});
@@ -331,9 +420,6 @@ this.testManager = function (testOrder) {
 			tObj.gotoNext();
 		}, 2500);
 		
-		
-		
-	
 		var currentQuestIndex = tObj.workArray[ tObj.missedItems[activeEl] ]['base'];
 		tObj.wordListContainer.find("tr.fl-list:eq("+currentQuestIndex+")").addClass("fl-learned").find("input").removeAttr("checked");
 	}
@@ -347,7 +433,8 @@ this.launchTest = function(testType) {
 	if (testType == 'origin') {
 		dataType= 0;
 		nextTestType = 2;
-		var toHide = tObj.originHolder
+		var toHide = tObj.originHolder.add(tObj.transcriptHolder).add(tObj.soundHolder)
+
 	} else if (testType == 'translate') {
 		dataType= 1;
 		nextTestType = 3;
@@ -438,16 +525,52 @@ this.launchTest = function(testType) {
 			}
 		})
 	})
-	
-	
 }
 
+this.accents = function(container) {
 
+	if ( getCookie('accent_on') ) {
+			container.find("span.acco").each(function(){
+				var tVal = $(this).text().replace(/[́]/g, "");
+				$(this).html( tVal + "&#769;");
+			});
+		}
+		
+		
+		if (getCookie('accent_adjust')) {
+			container.find("span.acco").each(function(){
+				var tVal = $(this).text().replace(/[́]/g, "");
+				$(this).html("&#769;" + tVal);
+			});
+		}
 
+}
 
 this.gotoEnd = function() {
-	alert("end");
-	tObj.stop();
+
+var startList = '<table class="fl-end-wordlist" cellspacing="0" width="100%"><col width="20px"><col><col>';
+var endList = '</table>';
+var wordList = new Array();
+
+for (var i = 0; i< tObj.usersArray.length; i ++) {
+	wordList[i] = '<tr class="fl-endlist-row"><td><div onclick="cJplayer(\''+tObj.usersArray[i]['data'][2]+'\', this)" class="jp_control"/></td><td class="fl-endlist-origin">'+tObj.usersArray[i]['data'][0]+'</td><td>'+tObj.usersArray[i]['data'][1]+'</td></tr>'
+}
+var wordListHtml = wordList.join('');
+
+tObj.container.find(".fl-end-list").html(""+startList+wordListHtml+endList+"");
+
+tObj.container.find(".fl-end-wordlist tr:even").css({backgroundColor: "#efefef"});
+
+	tObj.workContainer.hide();
+	tObj.endContainer.fadeIn(300);
+	
+	
+tObj.accents(tObj.container.find(".fl-end-list"))
+
+if ( tObj.container.find(".fl-end-wordlist").height() > 330) {
+	tObj.container.find(".fl-end-list").addClass('fl-scroll');
+}
+
 }
 
 

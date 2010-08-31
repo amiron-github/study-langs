@@ -2,11 +2,64 @@
 
 <% content_for :special_js_css do %>
 
-
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
 <%= javascript_include_tag 'flashcard' %>
+
+<%= javascript_include_tag 'es-virtual-keyboard' %>
+<%= stylesheet_link_tag 'keyboard' %>
 
 
 <style type="text/css">
+
+.jp_control {
+width: 16px;
+height: 16px;
+background-image: url(/images/control_play.png);
+background-repeat: no-repeat;
+cursor: pointer;
+}
+.jp_control:hover {
+background-image: url(/images/c_play_hover.png);
+}
+.jp_pause {
+background-image: url(/images/c_pause_hover.png) !important;
+}
+.jp_pause {
+background-image: url(/images/control_pause.png) !important;
+}
+
+
+.fl-sound {
+position: relative;
+overflow: visible;
+width: 27px;
+height: 27px;
+}
+
+.fl-transcript {
+padding: 1px 4px 2px 15px;
+}
+.fl-sound .jp_control {
+width: 27px;
+height: 27px;
+background-image: url(/images/play-25.png);
+background-repeat: no-repeat;
+background-position: 50% 50%;
+background-color: #fff;
+cursor: pointer;
+}
+
+.jp_con-trol:hover {
+background-image: url(/images/c_play_hover.png);
+}
+.fl-sound  .jp_pause {
+background-image: url(/images/pause-25.png) !important;
+}
+
+.jp_pau-se {
+background-image: url(/images/control_pause.png) !important;
+}
+
 
 .fl-container {
 border: 3px solid #99B2DF;
@@ -38,50 +91,76 @@ overflow-y: scroll;
 background-color: #fff;
 bor-der: 1px solid #A4BFEF;
 padding: 40px 40px 20px;
+-moz-border-radius: 20px;
 -webkit-border-radius: 20px;
--webkit-box-shadow: 1px 5px 10px #555;
+border-radius: 20px;
+-moz-box-shadow: 1px 3px 6px #45546F;
+-webkit-box-shadow: 1px 3px 6px #45546F;
+box-shadow: 1px 3px 6px #45546F;
 overflow: hidden;
 }
+
 
 .fl-work {
 display: none;
 back-ground-color: #DFEBFF;
 padding: 5px 30px 40px;
-
+text-align: center;
 }
 
 .fl-article-wrapper {
 background-color: #fff;
-padding: 20px;
-margin: 0 30px;
-min-height: 150px;
+padding: 15px 20px 5px;
+margin: 0px 30px;
+min-height: 170px;
+-moz-border-radius: 12px;
 -webkit-border-radius: 12px;
--webkit-box-shadow: 1px 3px 10px #555;
+border-radius: 12px;
+-moz-box-shadow: 1px 3px 6px #45546F;
+-webkit-box-shadow: 1px 3px 6px #45546F;
+box-shadow: 1px 3px 6px #45546F;
 overflow: hidden;
 }
 
+.msie-sucks .fl-init, .msie-sucks .fl-article-wrapper {
+border:5px solid #A8B6CF;
+}
+
+.msie-sucks .fl-article-wrapper {
+max-width: 390px;
+}
+
+
+
 .fl-article-wrapper div {
-min-height: 40px;
 text-align: center;
+background-color: #fff;
 }
 
 .fl-start-wrapper {
 text-align: center;
-padding: 15px;
+padding: 15px 15px 0;
+}
+
+.fl-translate {
+margin-top: 10px;
+font-size: 15px;
+font-weight: bold;
+min-height: 40px;
+line-height: 18px;
 }
 
 .fl-original {
 font-size: 25px;
 color: #3F3F3F;
+line-height: 32px;
 }
 
 .fl-buttons-wrapper {
-padding: 20px 0;
+padding: 0px 0 20px;
 text-align: center;
 }
 
-.fl-translate {
-}
 
 .fl-tests div.fl-test-option {
 background-color: #EFEFEF;
@@ -121,10 +200,6 @@ font-wei-ght: bold;
 text-align: center;
 color: #353D5F;
 cursor: pointer;
-background-image:url(/images/btn-grd.png);
-background-position:50%;
-background-repeat:no-repeat;
--webkit-box-shadow: 1px 2px 3px #555;
 overflow: hidden;
 }
 
@@ -143,10 +218,6 @@ text-align: center;
 color: #000;
 text-shadow: 0px 1px 0px #fff;
 cursor: pointer;
-background-image:url(/images/btn-grd.png);
-background-position:50%;
-background-repeat:no-repeat;
--webkit-box-shadow: 1px 2px 3px #555;
 overflow: hidden;
 }
 
@@ -161,12 +232,8 @@ border: 1px solid #8E95AF;
 font-size: 14px;
 font-wei-ght: bold;
 text-align: center;
-color: #4D515F;
+color: #222222;
 cursor: pointer;
-background-image:url(/images/btn-grd.png);
-background-position:50%;
-background-repeat:no-repeat;
--webkit-box-shadow: 1px 2px 3px #555;
 overflow: hidden;
 }
 
@@ -175,10 +242,6 @@ text-align: center;
 padding: 3px 10px;
 cursor: pointer;
 border: 1px solid #8E95AF;
-background-image:url(/images/btn-grd.png);
-background-position:50%;
-background-repeat:no-repeat;
--webkit-box-shadow: 1px 2px 3px #555;
 }
 
 .fl-cancel:hover {
@@ -192,7 +255,6 @@ position: absolute;
 right: 15px;
 top: 0;
 }
-
 
 .fl-cancel-wrapper {
 position: relative;
@@ -209,7 +271,7 @@ color: #22456F;
 }
 
 .fl-stop:hover {
-background-color:#FF2F2F;
+background-color:#FF5F5F;
 font-weight: bold;
 color: #111;
 }
@@ -218,34 +280,68 @@ color: #111;
 background-color: #BFD6FF;
 }
 
-.fl-next-down {
-top: 1px;
-left: 1px;
--webkit-box-shadow: 0px 1px 2px #555;
-}
+
 
 .fl-check {
+text-align: left;
 background-image: url(/images/transparent-30.png);
 padding: 20px;
 border: 5px solid #A4BFEF;
--webkit-box-shadow: 1px 2px 4px #555;
+-moz-box-shadow: 1px 2px 4px #45546F;
+-webkit-box-shadow: 1px 2px 4px #45546F;
+box-shadow: 1px 2px 4px #45546F;
 }
 
 .fl-verify {
+position: relative;
 padding: 3px 10px;
 text-align: center;
 cursor: pointer;
 border: 1px solid #8E95AF;
-background-image:url(/images/btn-grd.png);
-background-position:50%;
-background-repeat:no-repeat;
--webkit-box-shadow: 1px 2px 3px #555;
+
 }
 
 .fl-verify:hover {
 background-color: #00FF3A;
 font-weight: bold;
 }
+
+.fl-btn {
+background-image:url(/images/btn-grd.png);
+background-position:50%;
+background-repeat:no-repeat;
+-moz-box-shadow: 1px 2px 3px #45546F;
+-webkit-box-shadow: 1px 2px 3px #45546F;
+box-shadow: 1px 2px 3px #45546F;
+}
+
+.fl-start-wrapper .fl-btn {
+-moz-box-shadow: 1px 2px 3px #555;
+-webkit-box-shadow: 1px 2px 3px #555;
+box-shadow: 1px 2px 3px #555;
+}
+
+.fl-btn-down {
+top: 1px;
+left: 1px;
+-moz-box-shadow: 0px 1px 2px #45546F;
+-webkit-box-shadow: 0px 1px 2px #45546F;
+box-shadow: 0px 1px 2px #45546F;
+}
+
+.fl-start-wrapper .fl-btn {
+-moz-box-shadow: 0px 1px 2px #666;
+-webkit-box-shadow: 0px 1px 2px #666;
+box-shadow: 0px 1px 2px #666;
+}
+
+.fl-cancel-wrapper .fl-btn-down {
+top: 0px;
+left: auto;
+margin-top: 1px;
+margin-left: 1px;
+}
+
 
 table.fl-prestart-list td {
 padding: 1px 5px;
@@ -301,9 +397,78 @@ top: 0;
 left: 20px;
 }
 
+.fl-start-note-wrapper {
+height: 40px;
+margin-top: 20px;
+text-align: center;
+}
 
+.fl-start-note {
+display: none;
+width: 230px;
+border: 1px solid red;
+background-color: #FFEFEF;
+font-weight: bold;
+color: #444;
+padding: 5px 10px;
+margin: 0 auto;
+font-size: 11px;
+}
 
+.fl-end {
+display: none;
+background-image:url(/images/transparent-30.png);
+border:5px solid #A4BFEF;
+padding:20px;
+-moz-box-shadow: 0px 1px 2px #45546F;
+-webkit-box-shadow: 0px 1px 2px #45546F;
+box-shadow: 0px 1px 2px #45546F;
+}
 
+.fl-end-list {
+background-color:#FFFFFF;
+border:1px solid #999999;
+height:330px;
+padding:15px 3px;
+}
+
+.fl-end-wrapper .fl-stop {
+width: 70px;
+margin: 15px auto 0;
+font-size: 16px; 
+font-weight: bold;
+text-shadow: 0px 1px 0px #fff;
+}
+
+.fl-end-notice {
+color:#22456F;
+font-size:12px;
+line-height:16px;
+padding: 0 15px 15px;
+text-align: left;
+}
+
+table.fl-end-wordlist td {
+padding: 1px 5px;
+font-size: 12px;
+color: #444;
+}
+.fl-endlist-origin {
+font-weight: bold;
+}
+
+.fl-auto-wrapper {
+text-align: right;
+margin: 0 30px;
+font-size: 11px;
+padding: 5px 10px;
+color: #1F427F;
+}
+.fl-auto-wrapper input {
+margin: 0;
+position: relative;
+top: 2px;
+}
 
 </style>
 
@@ -320,36 +485,40 @@ left: 20px;
 <div class="fl-window">
 
 <div class="fl-init">
-<div class="fl-prestart"></div>
-<div class="fl-start-wrapper">
-
-<div class="fl-start noselect"> START </div>
-
+	<div class="fl-prestart"></div>
+	<div class="fl-start-wrapper">
+		<div class="fl-start fl-btn noselect"> START </div>
+		<div class="fl-start-note-wrapper">
+			<div class="fl-start-note">At least one word/expression <br>should be selected</div>
+		</div>
+	</div>
 </div>
+
+<div class="fl-end">
+	<div class="fl-end-notice">Here you can see words and expressions that you have just worked with:</div>
+	<div class="fl-end-list"></div>
+	<div class="fl-end-wrapper">
+		<div class="fl-stop fl-btn noselect"> Finish </div>
+	</div>
 </div>
 
 <div class="fl-work">
 <div class="fl-article-wrapper">
   <div class="fl-article-list">
-	<div class="fl-original"></div>
-	<div class="fl-sound"></div>
-	<div class="fl-transcript"></div>
+	<table  style="margin: 0 auto" align="center"><tr><td height="70">
+		<div class="fl-original"></div>
+	</td></tr></table>
+	<table  style="margin: 0 auto" align="center"><tr>
+		<td><div class="fl-transcript"></div></td>
+		<td style="text-align: left; height:19px;"> <div class="fl-sound"> </div> </td>
+	</tr></table>
 	<div class="fl-translate"></div>
   </div>
 </div>
+<div class="fl-auto-wrapper"><input type="checkbox" class="fl-autoplay" checked> Autoplay </div>
+
 <div class="fl-buttons-wrapper">
-<table style="margin: 0 auto;" width="100%">
-<col width="30%"><col width="40%"><col width="30%">
-<tr>
-<td style="text-align: left;"> </td>
-<td>
-	<div class="fl-next noselect">Next >></div>
-</td>
-<td></td>
-</tr>
-</table>
-
-
+	<div class="fl-next fl-btn noselect">Next >></div>
 </div>
 
 <div class="fl-check" style="min-height: 190px;">
@@ -363,7 +532,7 @@ left: 20px;
 				<span class="fl-task-string">Find the translation of this word/expression</span>
 			</div>
 
-			<div class="fl-cancel"> Cancel </div>
+			<div class="fl-cancel fl-btn"> Cancel </div>
 
 		</div>
 	</div>
@@ -371,15 +540,15 @@ left: 20px;
 	<table class="fl-activity">
 		<!-- tr>
 			<td>Would like to type this word?</td>
-			<td> <div class="fl-verify"> Spell Practice </div></td>
+			<td> <div class="fl-verify fl-btn"> Spell Practice </div></td>
 		</tr -->
 		<tr>
 			<td>Would you like to check how you know this words</td>
-			<td style="width:75px;"> <div class="fl-verify noselect"> Qizzes </div></td>
+			<td style="width:75px;"> <div class="fl-verify fl-btn noselect"> Qizzes </div></td>
 		</tr>
 		<tr>
 			<td style="padding-top: 15px;">Would you like to stop and return to the main menu?</td>
-			<td style="padding-top: 15px;"> <div class="fl-stop noselect">Stop</div></td>
+			<td style="padding-top: 15px;"> <div class="fl-stop fl-btn noselect">Stop</div></td>
 		</tr>
 	</table>
 	</div>
@@ -410,16 +579,16 @@ left: 20px;
 		quest_num: 5,
 		basic_array: [
 		
-['Здравствуйте','Hello','/sounds/sound01101.mp3','zdrastvooytye'],
-['Доброе утро','Good morning','/sounds/sound01102.mp3','dobraye ootra'],
-['Добрый день','Good afternoon','/sounds/sound01103.mp3','dobriy dyen'],
-['Добрый вечер','Good evening','/sounds/sound01104.mp3','dobriy vechir'],
-['Добро пожаловать','Welcome!','/sounds/sound01105.mp3','dabro pajalavat'],
-['Привет','Hi! (informal)','/sounds/sound01106.mp3','privyet'],
-['Как поживаете?','How are you getting on?','/sounds/sound01107.mp3','kak pajivaiti?'],
-['Как поживаешь?','How are things? (informal)','/sounds/sound01108.mp3','kak pajivaish'],
-['Как Ваши дела?','How are you?','/sounds/sound01109.mp3','kak vashi dila'],
-['Как дела?','How are you? (informal)','/sounds/sound01110.mp3','kak dila'],
+['Здр<span class="acco">а</span>вствуйте','Hello','/sounds/sound01101.mp3',''],
+['Д<span class="acco">о</span>брое утро','Good morning','/sounds/sound01102.mp3','dobraye ootra'],
+['Д<span class="acco">о</span>брый день','Good afternoon','/sounds/sound01103.mp3','dobriy dyen'],
+['Д<span class="acco">о</span>брый вечер','Good evening','/sounds/sound01104.mp3','dobriy vechir'],
+//['Добро пожаловать','Welcome!','/sounds/sound01105.mp3','dabro pajalavat'],
+//['Привет','Hi! (informal)','/sounds/sound01106.mp3','privyet'],
+//['Как поживаете?','How are you getting on?','/sounds/sound01107.mp3','kak pajivaiti?'],
+//['Как поживаешь?','How are things? (informal)','/sounds/sound01108.mp3','kak pajivaish'],
+//['Как Ваши дела?','How are you?','/sounds/sound01109.mp3','kak vashi dila'],
+//['Как дела?','How are you? (informal)','/sounds/sound01110.mp3','kak dila'],
 
 
 
