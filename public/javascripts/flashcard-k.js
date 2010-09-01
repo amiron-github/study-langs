@@ -152,13 +152,18 @@ this.parseTest = function() {
 	tObj.testsHolder = tObj.container.find(".fl-tests");
 	tObj.activityHolder = tObj.container.find(".fl-activity-wrapper");
 	tObj.endContainer = tObj.container.find(".fl-end");
+	tObj.spellHolder = tObj.container.find(".fl-spell");
+	tObj.spellField = tObj.container.find(".fl-spell-field");
+	tObj.spellCheckButton = tObj.container.find(".fl-spell-check");
 	
 	tObj.nextButton = tObj.container.find(".fl-next");
 	tObj.startButton = tObj.container.find(".fl-start");
 	tObj.stopButton = tObj.container.find(".fl-stop");
 	tObj.cancelButton = tObj.container.find(".fl-cancel");
+	tObj.cancelSpellButton = tObj.container.find(".fl-cancel-spell");
 	
 	tObj.verifyButton = tObj.container.find(".fl-verify");
+	tObj.spellButton = tObj.container.find(".fl-spell-btn");
 	
 	tObj.wordListContainer = tObj.container.find(".fl-prestart");
 	tObj.initContainer = tObj.container.find(".fl-init");
@@ -171,6 +176,10 @@ this.parseTest = function() {
 	tObj.cancelButton.click(function() {
 		tObj.cancelTest();
 	});
+	
+	tObj.cancelSpellButton.click(function() {
+		tObj.cancelSpell();
+	}); 
 	
 	tObj.stopButton.click(function() {
 		tObj.stop();
@@ -185,6 +194,20 @@ this.parseTest = function() {
 	}).mouseout(function() {
 		$(this).removeClass("fl-set-on");
 	})
+	
+var kb_link = tObj.spellHolder.find(".show_keyboard"); 
+	if (kb_link.length > 0 ) {
+			kb_link.click(function() {
+				if (autoposition) {
+					autoposition = false;
+					tObj.spellHolder.find("input.for_keyb").click().focus();
+					autoposition = true
+				} else {
+					tObj.spellHolder.find("input.for_keyb").click().focus();
+					}
+				});
+	}	
+	
 	
 	
 	tObj.prestart();
@@ -319,14 +342,11 @@ this.formArray = function() {
 	
 }
 
-
 this.stop = function () {
 	tObj.workContainer.hide();
 	tObj.endContainer.hide();
 	tObj.initContainer.fadeIn(300);
 }
-
-
 
 
 this.start = function () {
@@ -376,15 +396,85 @@ this.start = function () {
 		tObj.verify();
 	});
 	
+	tObj.spellButton.unbind("click").click(function() {
+		tObj.spellPractice();
+	});
+	
 	tObj.initContainer.fadeOut(260, function() {
 		tObj.workContainer.show();
 		tObj.step();
 	});
-	
-	
-
-	
 }
+
+tObj.spellPractice = function() {
+
+tObj.activityHolder.hide();
+tObj.spellHolder.show();
+tObj.spellHolder.find("div").show(400);
+tObj.launchSpellTest();
+
+}
+
+this.launchSpellTest = function() {
+tObj.spellField.val("").focus();
+
+tObj.spellCheckButton.unbind("click").click(function() {
+var userAnswer = tObj.spellField.val();
+
+tObj.spellHolder.append('<span class="tp_helper" style="display: none;">'+userAnswer+'</span>');
+userAnswer = String( tObj.spellHolder.find("span.tp_helper").html() );
+
+userAnswer=userAnswer.replace(/[.,;-]/g, "").replace(/&nbsp;/g, " ").replace(/&nbsp/g, " ").replace(/\s\s+/g, " ").toUpperCase().replace(/Ё/g, 'Е');	
+userAnswer = $.trim(userAnswer);
+
+tObj.spellHolder.find("span.tp_helper").html(tObj.workArray[tObj.missedItems[activeEl]]['data'][0]);
+
+var tWord = String( tObj.spellHolder.find("span.tp_helper").text() )
+
+tWord=tWord.replace(/[.,;-?]/g, "").replace(/&nbsp;/g, " ").replace(/&nbsp/g, " ").replace(/\s\s+/g, " ").toUpperCase().replace(/Ё/g, 'Е');	
+tWord = $.trim(tWord);
+tObj.spellHolder.find("span.tp_helper").remove();
+
+tObj.container.find(".fl-task-spell").hide();
+tObj.container.find(".fl-spell-notes").hide();
+
+		if ( userAnswer.toUpperCase() == tWord.toUpperCase() ) {
+			tObj.spellHolder.find(".fl-correct-spell").css({display: "block"});
+			 setTimeout(function(){
+				tObj.spellHolder.find(".fl-task-spell").show();
+				tObj.spellHolder.find(".fl-spell-notes").hide();
+			},3000)
+			
+		} else {
+			tObj.container.find(".fl-wrong-spell").css({display: "block"});
+			setTimeout(function(){
+				tObj.spellHolder.find(".fl-task-spell").show();
+				tObj.spellHolder.find(".fl-spell-notes").hide();
+			},3000)
+		}
+})
+
+
+
+}
+
+
+tObj.cancelSpell = function() {
+	
+	tObj.spellHolder.find(".fl-task-spell").hide(400);
+	if ($("div.keys_poser").is(":visible")) $("div.keys_poser").find(".keys_close").click();
+	tObj.spellHolder.stop().hide(400, function() {
+		tObj.spellHolder.find(".fl-spell-cancel-wrapper").hide();
+		if (tObj.activityHolder.is(":hidden")) tObj.activityHolder.fadeIn();
+
+		//tObj.spellHolder.find(".fl-spell-task").show();
+		tObj.spellHolder.find(".fl-task-spell").show();
+		tObj.spellHolder.find(".fl-spell-notes").hide();
+		
+		
+	});
+}
+
 
 this.step = function () {
 
@@ -450,6 +540,8 @@ this.gotoNext = function() {
 	}
 	
 	clearTimeout(toNextInt);
+	if (tObj.spellHolder.is(":visible")) tObj.cancelSpell();
+	
 	tObj.testsHolder.find(".fl-test-task").hide(400);
 	tObj.testsHolder.hide(400, function() {
 		tObj.container.find(".fl-task-string").show();
