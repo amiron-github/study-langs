@@ -121,11 +121,11 @@ if (this.variantsNum == undefined) this.variantsNum = 4;
 if (this.variantsNum > this.questNum ) this.variantsNum = this.questNum;
 
 if (tObj.texts == undefined) {
-	tObj.correctMsg = "CORRECT";
-	tObj.wrongMsg = "WRONG";
+	tObj.correctMsg = "Great! This is correct";
+	tObj.wrongMsg = "Wrong answer";
 	tObj.nextButtonVal = "NEXT";
 	tObj.seeResultsTxt = "See results";
-	tObj.remainingTxt = "Remaining";
+	tObj.remainingTxt = "<b>Remaining</b>";
 	tObj.totalQuestionsTxt = "Total questions";
 	tObj.correctAnswersTxt = "Correct answers";
 	tObj.yourResultTxt = "Your result";
@@ -185,6 +185,7 @@ this.parseTest = function() {
 		
 		if (tObj.variantsNum > 4 || !tObj.randomOrder ) tObj.optionsHolder.addClass("es-ex-tasks-more-than-4");
 		if (tObj.questType == 'audio') tObj.container.addClass("es-audio-ex");
+		if ($.browser.msie) tObj.container.addClass("msie-sucks");
 		tObj.jplayer = $("#exJp");
 		tObj.start();
 }
@@ -263,7 +264,7 @@ tObj.alertHolder.empty().removeClass(tObj.correctClass).removeClass(tObj.wrongCl
 
   if (this.counter < this.questNum) {
 	tObj.remain = tObj.questNum - tObj.counter;
-	tObj.infoHolder.text(tObj.remainingTxt + ": " + tObj.remain);
+	tObj.infoHolder.html(tObj.remainingTxt + ": " + tObj.remain);
 	tObj.alertHolder.empty();
 	
 	if (tObj.questType == 'audio'){
@@ -401,7 +402,7 @@ this.getAnswersOrder = function() {
 }
 
 this.correctAnswer = function () {
-	tObj.alertHolder.html("" + tObj.correctMsg + "").addClass(tObj.correctClass);
+	tObj.alertHolder.html("" + tObj.correctMsg + "").addClass(tObj.correctClass).css({opacity: '0.8'});
 	tObj.correctAswersNum ++;
 	
 	if (tObj.answerType != 'yn' && tObj.answerType != 'type') {
@@ -424,7 +425,7 @@ this.correctAnswer = function () {
 }
 
 this.wrongAnswer = function (jElem) {
-	tObj.alertHolder.html("" + tObj.wrongMsg + "").addClass(tObj.wrongClass);
+	tObj.alertHolder.html("" + tObj.wrongMsg + "").addClass(tObj.wrongClass).css({opacity: '0.8'});
 	tObj.wrongAnswers.push(tObj.workArray[tObj.counter][1]);
 	tObj.wrongAswersNum++;
 
@@ -464,7 +465,7 @@ this.gotoNext = function() {
 }
 
 this.highlightWrong = function(jElem) {
-	 jElem.css({textDecoration: "line-through", color: "#999", backgroundImage: "none", backgroundColor: "#dfdfdf"}).find("input").attr("disabled", "disabled");
+	 jElem.addClass("es-ex-incorrect").css({textDecoration: "line-through", color: "#999"}).find("input").attr("disabled", "disabled");
 }
 
 this.gotoEnd = function() {
