@@ -1,16 +1,12 @@
-<% @page_title = 'Flashcard' %>
-<% @page_meta = {'description' => "Online Russian Course for Beginners - Lesson 1: how to greet people in Russian, how to say goodbye, to thank and apologize in Russian."} %>
+<% @page_title = 'Learn Russian alphabet: Flashcards' %>
+<% @page_meta = {'description' => "Online flashcards for learning Russian alphabet, with audio samples and quizzes"} %>
 <% @with_rec = true %>
 <% @has_audio = true %>
 
 <% content_for :special_js_css do %>
 
 <%= javascript_include_tag 'jquery.jplayer.min.js' %>
-<%= javascript_include_tag 'flashcard-k' %>
-
-<%= javascript_include_tag 'es-virtual-keyboard' %>
-<%= stylesheet_link_tag 'keyboard' %>
-
+<%= javascript_include_tag 'alphabet-flashcard' %>
 
 <style type="text/css">
 
@@ -230,8 +226,8 @@ max-width: 390px;
 }
 
 .msie-sucks .fl-back {
-background-color: #C6DBFF !impoartant;
-background-image: none !important;
+background-color: #C6DBFF;
+background-image: none;
 }
 
 .fl-article-wrapper div {
@@ -435,13 +431,6 @@ box-shadow: 0px 1px 2px #45546F;
 box-shadow: 0px 1px 2px #666;
 }
 
-.fl-spell-cancel-wrapper .fl-btn-down {
-top: 0px;
-left: auto;
-margin-top: 1px;
-margin-left: 1px;
-}
-
 .fl-cancel-wrapper .fl-btn-down {
 top: 0px;
 left: auto;
@@ -582,107 +571,10 @@ font-weight: bold;
 text-decoration: line-through;
 }
 
-
-
-
-
-.fl-spell-cancel-wrapper {
-overflow:hidden;
-position:relative;
-}
-
-.fl-spell-task {
+.fl-btn-info {
+font-size: 12px;
 color:#22456F;
-font-size:12px;
-height:35px;
-line-height:16px;
-margin-bottom:4px;
-padding-right:110px;
 }
-
-
-.fl-wrong-spell {
-background-color:#FFCFCF;
-border:1px solid red;
-color:#555555;
-display:block;
-font-weight:bold;
-}
-
-.fl-correct-spell {
-background-color:#DFFFE3;
-border:1px solid #00FF22;
-color:#555555;
-display:block;
-font-weight:bold;
-}
-
-.fl-task-spell {
-color:#22456F;
-font-size:12px;
-line-height:16px;
-}
-
-.fl-spell-notes {
-display:none;
-left:20px;
-padding:3px 10px;
-position:absolute;
-top:0;
-}
-
-
-.fl-cancel-spell {
-text-align: center;
-padding: 3px 10px;
-cursor: pointer;
-border: 1px solid #8E95AF;
-width: 60px;
-position: absolute;
-right: 15px;
-top: 0;
-}
-
-.fl-cancel-spell:hover {
-background-color: #FF8C2F;
-font-weight: bold;
-}
-
-.fl-spell-check {
-text-align: center;
-padding: 3px 10px;
-cursor: pointer;
-border: 1px solid #8E95AF;
-width: 60px;
-margin: 0 auto;
-}
-
-.fl-spell-check-wrapper {
-padding-top: 15px;
-max-width: 300px;
-text-align: center;
-}
-
-
-.fl-spell-field {
-background-image:url(/images/sign/input-text-bg.gif);
-background-repeat:no-repeat;
-border:1px solid #999999;
-font-size:17px;
-padding:3px 5px;
-width: 275px;
-}
-
-.fl-spell-btn {
-border:1px solid #8E95AF;
-cursor:pointer;
-padding:3px 10px;
-position:relative;
-text-align:center;
-}
-
-
-
 
 </style>
 
@@ -696,14 +588,15 @@ text-align:center;
     </div>
     <div class="sub_hint" style="display: none;">
         <ul>
-            <li><a href="politeness.html">Formulas of politeness</a></li>
+            <li><a href="/alphabet.html">Russian alphabet</a></li>
+			<li><a href="basic-letters.html">Russian Letters</a></li>
         </ul>
-        <%= render :partial => 'down_accent' %>
+        <%= render :partial => 'preload_option' %>
   </div>
 </div>
 </div>
 
-<h2 class="page">Flashcard</h2>
+<h2 class="page">Russian Alphabet: Flashcards</h2>
 
 
 <div  id="fl1" style="min-height: 600px; text-align: center;">
@@ -719,7 +612,7 @@ text-align:center;
 			<table>
 				<tr>
 					<td style="border-right: 1px dotted #999; padding-right: 22px">
-					<b>Word list selection</b>
+					<b>Letters list selection</b>
 					<ul>
 						<li><span class="fl-set-all fl-act" >> Select all</span></li>
 						<li><span class="fl-set-none fl-act" >> Deselect all</span></li>
@@ -730,7 +623,7 @@ text-align:center;
 					<td style="padding-left: 10px">
 					<b>Flashcards settings</b>
 					<ul>
-						<li><span class="fl-act fl-switch-order" >> Words order</span><br>
+						<li><span class="fl-act fl-switch-order" >> Letters order</span><br>
 							&nbsp;&nbsp;<span class="fl-direct tcheck checked fl-act" >normal order</span><br>
 							&nbsp;&nbsp;<span class="fl-random tcheck fl-act">random order</span>
 						</li>
@@ -750,15 +643,15 @@ text-align:center;
 		<div class="fl-start fl-btn noselect"> START </div>
 		
 		<div class="fl-start-note-wrapper">
-			<div class="fl-start-note">At least one word/expression <br>should be selected</div>
+			<div class="fl-start-note">At least one letter <br>must be selected</div>
 		</div>
 	</div>
 </div>
 <div class="fl-end">
-	<div class="fl-end-notice">Here you can see words and expressions that you have just worked with:</div>
+	<div class="fl-end-notice">Here you can see letters that you have just worked with:</div>
 	<div class="fl-end-list"></div>
 	<div class="fl-end-wrapper">
-		<div class="fl-stop fl-btn noselect"> Finish </div>
+		<div class="fl-stop fl-btn noselect"> Close </div>
 	</div>
 </div>
 
@@ -784,49 +677,27 @@ text-align:center;
 <div class="fl-check" style="min-height: 190px;">
 	<div class="fl-tests" style="display: none;">
 		<div class="fl-cancel-wrapper" style="display: none;">
+		
 			<div class="fl-test-task">
 				<span class="fl-wrong-note fl-notes">Wrong! Try again</span>
 				<span class="fl-correct-note fl-notes">Great! This is correct</span>
-				<span class="fl-exclude-note fl-notes">We'll take this item off your word list</span>
-				<span class="fl-task-string">Find the translation of this word/expression</span>
+				<span class="fl-exclude-note fl-notes">We'll take this letter off your word list</span>
+				<span class="fl-task-string">Find this letter in the list below</span>
 			</div>
-			<div class="fl-cancel fl-btn"> Cancel </div>
+
+			<div class="fl-cancel fl-btn noselect"> Cancel </div>
+
 		</div>
 	</div>
-	
-	
-	
-	<div class="fl-spell" style="display: none;">
-		<div class="fl-spell-cancel-wrapper" style="display: none;">
-			<div class="fl-spell-task">
-				<span class="fl-wrong-spell fl-spell-notes">Wrong! Try again</span>
-				<span class="fl-correct-spell fl-spell-notes">Great! This is correct</span>
-				<span class="fl-task-spell">Type the Russian word/phrase in the field below</span>
-			</div>
-			<div class="fl-cancel-spell fl-btn"> Finish </div>
-		</div>
-		<div class="fl-spell-test"><input class="fl-spell-field for_keyb" type="text" /></div>
-		<div class="fl-spell-check-wrapper">
-			<div class="fl-spell-check fl-btn"> Check </div>
-		</div>
-		<p><a href="javascript:;" class="show_keyboard">[ Use virtual keyboard ]<span style="display: none;" class="kb_offset_top">0</span></a></p>
-	</div>
-	
-	
-	
 	<div class="fl-activity-wrapper">
 	<table class="fl-activity">
 		<tr>
-			<td>Would you like to check how you know this words</td>
-			<td style="width:120px;"> <div class="fl-verify fl-btn noselect"> Qizzes </div></td>
+			<td style="padding-right: 15px;" class="fl-btn-info">Would you like to check how you know this letter? Click the 'Quizzes' button to complete simple tests</td>
+			<td style="width:75px;"> <div class="fl-verify fl-btn noselect"> Qizzes </div></td>
 		</tr>
 		<tr>
-			<td>Would like to type this word?</td>
-			<td> <div class="fl-spell-btn fl-btn"> Spell Practice </div></td>
-		</tr>
-		<tr>
-			<td style="padding-top: 15px;">Would you like to stop and return to the main menu?</td>
-			<td style="padding-top: 15px;"> <div class="fl-stop fl-btn noselect">Stop</div></td>
+			<td style="padding-top: 30px; padding-right: 15px;" class="fl-btn-info">Would you like to stop and return to the main menu? Click the 'Stop' button</td>
+			<td style="padding-top: 30px;"> <div class="fl-stop fl-btn noselect">Stop</div></td>
 		</tr>
 	</table>
 	</div>
@@ -846,23 +717,39 @@ text-align:center;
 		random_order: false,
 		basic_array: [
 		
-['К<span class="acco">а</span>к В<span class="acco">а</span>с з<span class="acco">о</span>вут? ','What is your name? ','/sounds/sound01201.mp3','k<span class="acct">a</span>k v<span class="acct">a</span>s zav<span class="acct">oo</span>t? '],
-['В<span class="acco">ы</span> господ<span class="acco">и</span>н … ? ','Are you Mr ... ? ','/sounds/sound01202.mp3','v<span class="acct"><span class="ry">i</span></span> gaspad<span class="acct">i</span>n ... ? '],
-['В<span class="acco">ы</span> госпож<span class="acco">а</span> ... ? ','Are you Mrs ... ? ','/sounds/sound01203.mp3','v<span class="acct"><span class="ry">i</span></span> gaspaj<span class="acct">a</span> ... ? '],
-['К<span class="acco">а</span>к В<span class="acco">а</span>ше <span class="acco">и</span>мя? ','What is your first name ...? ','/sounds/sound01204.mp3','k<span class="acct">a</span>k v<span class="acct">a</span>she <span class="acct">i</span><span class="sftv">m</span><span class="sfty">y</span>a? '],
-['К<span class="acco">а</span>к В<span class="acco">а</span>ша фам<span class="acco">и</span>лия? ','What is your last name? ','/sounds/sound01205.mp3','k<span class="acct">a</span>k v<span class="acct">a</span>sha fam<span class="acct">i</span>liya? '],
-['Мен<span class="acco">я</span> зов<span class="acco">у</span>т ... ','My name is ... ','/sounds/sound01206.mp3','mi<span class="sftv">n</span><span class="sfty">y</span><span class="acct">a</span> zav<span class="acct">oo</span>t ... '],
-['Моё <span class="acco">и</span>мя ... ','My first name is ... ','/sounds/sound01207.mp3','may<span class="acct">o</span> <span class="acct">i</span><span class="sftv">m</span><span class="sfty">y</span>a ... '],
-['Мо<span class="acco">я</span> фам<span class="acco">и</span>лия ... ','My last name is ... ','/sounds/sound01208.mp3','may<span class="acct">a</span> fam<span class="acct">i</span>liya ... '],
-['Я ... ','I\'m ... ','/sounds/sound01209.mp3','ya ... '],
-['При<span class="acco">я</span>тно познак<span class="acco">о</span>миться. ','Nice to meet you. ','/sounds/sound01210.mp3','priy<span class="acct">a</span>tna paznak<span class="acct">o</span>mitsa '],
-['<span class="acco">О</span>чень при<span class="acco">я</span>тно. ','Pleased to meet you. ','/sounds/sound01211.mp3','<span class="acct">o</span>chi<span class="sftc">n</span> priy<span class="acct">a</span>tna '],
-['Из как<span class="acco">о</span>й В<span class="acco">ы</span> стран<span class="acco">ы</span>? ','What country are you from? ','/sounds/sound01212.mp3','is kak<span class="acct">o</span>y v<span class="acct"><span class="ry">i</span></span> stran<span class="acct"><span class="ry">i</span></span>? '],
-['Отк<span class="acco">у</span>да В<span class="acco">ы</span>? ','Where are you from? ','/sounds/sound01213.mp3','atk<span class="acct">oo</span>da v<span class="acct"><span class="ry">i</span></span>? '],
-['В<span class="acco">ы</span> из СШ<span class="acco">А</span>? ','Are you from the USA? ','/sounds/sound01214.mp3','v<span class="acct"><span class="ry">i</span></span> is se she <span class="acct">a</span>? '],
-['<span class="acco">Я</span> <span class="acco">и</span>з … ','I\'m from ... ','/sounds/sound01215.mp3','y<span class="acct">a</span> is '],
-['<span class="acco">Я</span> америк<span class="acco">а</span>нец. ','I\'m American. ','/sounds/sound01216.mp3','y<span class="acct">a</span> amirik<span class="acct">a</span>nits ']
-
+['A	a','[a]','/sounds/sound101.mp3',''],
+['Б	б','[be]','/sounds/sound102.mp3',''],
+['В	в','[ve]','/sounds/sound103.mp3',''],
+['Г	г','[ge]','/sounds/sound104.mp3',''],
+['Д	д','[de]','/sounds/sound105.mp3',''],
+['Е	е','[ye]','/sounds/sound106.mp3',''],
+['Ё	ё','[yo]','/sounds/sound107.mp3',''],
+['Ж	ж','[je]','/sounds/sound108.mp3',''],
+['З	з','[ze]','/sounds/sound109.mp3',''],
+['И	и','[i]','/sounds/sound110.mp3',''],
+['Й	й','[i kratkaye]','/sounds/sound111.mp3',''],
+['К	к','[ka]','/sounds/sound112.mp3',''],
+['Л	л','[el]','/sounds/sound113.mp3',''],
+['М	м','[em]','/sounds/sound114.mp3',''],
+['Н	н','[en]','/sounds/sound115.mp3',''],
+['О	о','[o]','/sounds/sound116.mp3',''],
+['П	п','[pe]','/sounds/sound117.mp3',''],
+['Р	р','[er]','/sounds/sound118.mp3',''],
+['С	с','[es]','/sounds/sound119.mp3',''],
+['Т	т','[te]','/sounds/sound120.mp3',''],
+['У	у','[oo]','/sounds/sound121.mp3',''],
+['Ф	ф','[ef]','/sounds/sound122.mp3',''],
+['Х	х','[ha]','/sounds/sound123.mp3',''],
+['Ц	ц','[tse]','/sounds/sound124.mp3',''],
+['Ч	ч','[che]','/sounds/sound125.mp3',''],
+['Ш	ш','[sha]','/sounds/sound126.mp3',''],
+['Щ	щ','[scha]','/sounds/sound127.mp3',''],
+['Ъ	ъ','[tv\'ordiy znak]','/sounds/sound128.mp3',''],
+['Ы	ы','[<s>i</s>]','/sounds/sound129.mp3',''],
+['Ь	ь','[m\'ahkiy znak]','/sounds/sound130.mp3',''],
+['Э	э','[e]','/sounds/sound131.mp3',''],
+['Ю	ю','[yoo]','/sounds/sound132.mp3',''],
+['Я	я','[ya]','/sounds/sound133.mp3','']
 
 		]
 		} )
@@ -872,10 +759,40 @@ text-align:center;
 
 <script type="text/javascript">
 preloadFiles=new Array(
-'/sounds/sound01201.mp3', '/sounds/sound01202.mp3', '/sounds/sound01203.mp3', '/sounds/sound01204.mp3', 
-'/sounds/sound01205.mp3', '/sounds/sound01206.mp3', '/sounds/sound01207.mp3', '/sounds/sound01208.mp3', 
-'/sounds/sound01209.mp3', '/sounds/sound01210.mp3', '/sounds/sound01211.mp3', '/sounds/sound01212.mp3', 
-'/sounds/sound01213.mp3', '/sounds/sound01214.mp3', '/sounds/sound01215.mp3', '/sounds/sound01216.mp3'
+
+'/sounds/sound101.mp3',
+'/sounds/sound102.mp3',
+'/sounds/sound103.mp3',
+'/sounds/sound104.mp3',
+'/sounds/sound105.mp3',
+'/sounds/sound106.mp3',
+'/sounds/sound107.mp3',
+'/sounds/sound108.mp3',
+'/sounds/sound109.mp3',
+'/sounds/sound110.mp3',
+'/sounds/sound111.mp3',
+'/sounds/sound112.mp3',
+'/sounds/sound113.mp3',
+'/sounds/sound114.mp3',
+'/sounds/sound115.mp3',
+'/sounds/sound116.mp3',
+'/sounds/sound117.mp3',
+'/sounds/sound118.mp3',
+'/sounds/sound119.mp3',
+'/sounds/sound120.mp3',
+'/sounds/sound121.mp3',
+'/sounds/sound122.mp3',
+'/sounds/sound123.mp3',
+'/sounds/sound124.mp3',
+'/sounds/sound125.mp3',
+'/sounds/sound126.mp3',
+'/sounds/sound127.mp3',
+'/sounds/sound128.mp3',
+'/sounds/sound129.mp3',
+'/sounds/sound130.mp3',
+'/sounds/sound131.mp3',
+'/sounds/sound132.mp3',
+'/sounds/sound133.mp3'
 )
 </script>
 
@@ -886,4 +803,7 @@ preloadFiles=new Array(
 <br>
 <br>
 
+<script type="text/javascript">
+currentSection="reading";
+</script>
 

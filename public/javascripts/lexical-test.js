@@ -32,7 +32,6 @@ $(document).ready(function() {
 $("body").append('<div id="exJp"></div>');
 $("#exJp").jPlayer( {swfPath: "/javascripts/", nativeSupport: false});
 
-
 $(".es-ex-audio-holder").mousedown(
 	function() {
 		$(this).addClass("ex-audio-holder-hover");
@@ -41,6 +40,17 @@ $(".es-ex-audio-holder").mousedown(
 		//$(this).removeClass("ex-audio-holder-hover");
 	}
 );
+
+$(".l-test-container").css("min-height", $(".l-test-container").height())
+
+$(".lt-test-closer").toggle(function() {
+		$(this).parent().next(".lt-holder").slideUp();
+		$(this).addClass("lt-hidden");
+	}, function() {
+		$(this).parent().next(".lt-holder").slideDown();
+		$(this).removeClass("lt-hidden");
+	}
+)
 
 $(".es-ex-buttons input").hover(
 	function(event) {

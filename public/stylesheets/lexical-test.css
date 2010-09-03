@@ -3,7 +3,7 @@
 .l-test-container {
 background-image: url(/images/ltl-bg.gif);
 border: 2px solid #CFE0FF;
-padding: 0px 50px 50px;
+padding: 50px 50px 50px;
 overflow: hidden;
 -moz-border-radius: 4px;
 
@@ -445,20 +445,88 @@ background-color: #D3E1F8;
 .test-task {
 position: relative;
 left: -20px;
-margin: 50px 0px 40px;
+margin: 0px 0px 10px;
 margin-right: -40px;
 border: 2px solid #9FC2FF;
 background-color:#fff;
-padding: 8px 20px;
+padding: 8px 80px 8px 20px;
 font-size: 12px;
-color: #333;
+color: #31394F;
 text-shadow: 0px 1px 0px #fff, 1px 1px 3px #8EA7CF;
 -moz-border-radius: 9px;
+-webkit-border-radius: 9px;
+border-radius: 9px;
 -moz-box-shadow: 1px 1px 0px #627EAF, 1px 2px 3px #3E556F;
 -webkit-box-shadow: 1px 1px 0px #627EAF, 1px 2px 3px #3E556F;
 box-shadow: 1px 1px 0px #627EAF, 1px 2px 3px #3E556F;
 }
 
+.lt-spacer {
+padding: 50px 0 100px;
+}
+
+.content a.lt-test-closer {
+position: absolute;
+display: block;
+min-height: 14px;
+line-height: 14px;
+padding: 2px 3px;
+font-size: 10px;
+text-align: center;
+width: 60px;
+right: 10px;
+outline: none;
+top: 0;
+margin-top: 5px;
+text-shadow: 0px 0px 0px #fff;
+border:1px solid #8E95AF !important;
+background-image:url(/images/btn-grd.png);
+background-position:50% 50%;
+background-repeat:no-repeat;
+background-color: #BFD6FF;
+}
+
+.content a.lt-test-closer:link {
+text-decoration: none;
+color: #222;
+font-weight: normal;
+}
+
+.content a.lt-test-closer:visited {
+color: #222;
+text-decoration: none;
+font-weight: normal;
+}
+
+.content a.lt-test-closer:hover {
+color: #222;
+text-decoration: none;
+font-weight: bold;
+}
+
+.content a.lt-test-closer:active {
+color: #222;
+margin-top: 6px;
+text-decoration: none;
+font-weight: bold;
+}
+
+.lt-hidden .lt-sh {
+display: block;
+}
+.lt-sh {
+display: none;
+}
+.lt-hidden .lt-h {
+display: none;
+}
+
+.content .test-task-final a:link  {
+color: #0000FF;
+}
+.content .test-task-final a:visited {
+color: #0000FF;
+}
 
 
 
