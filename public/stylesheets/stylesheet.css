@@ -2395,4 +2395,127 @@ user-select: none;
 
 
 
+/* vocabulary list  */
+
+.vo-c-wordlist {
+padding: 30px 20px;
+background-image:url(/images/ltl-bg.gif);
+border:2px solid #CFE0FF;
+overflow:hidden;
+}
+
+.voc-wordlist  .diction {
+background-color: #fff;
+background-image:url(/images/cs_bg.gif);
+background-position:left bottom;
+background-repeat:repeat-x;
+border: 1px solid #99B9DF;
+border-right: none;
+}
+
+.voc-wordlist .voc_bord {
+margin: 0 auto;
+border: 1px solid #99B9DF;
+background-image:url(/images/lt-bg.gif);
+background-color: #E0E7EF;
+-moz-box-shadow: 1px 2px 6px #A8BBCF;
+-webkit-box-shadow: 1px 2px 6px #A8BBCF;
+box-shadow: 1px 2px 6px #A8BBCF;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+}
+
+
+.voc-wordlist .voc_bord  td{
+padding: 7px;
+color: #222;
+}
+
+
+.voc-wordlist .diction td {
+border-right: 1px solid #B5C1CF;
+color: #222;
+margin: 0px;
+padding-top: 7px;
+padding-bottom: 7px;
+padding-left: 15px;
+}
+
+.voc-wordlist .original {
+width: 32%;
+padding-right: 15px;
+font-weight: bold;
+}
+
+ .voc-wordlist .transcript {
+width: 36%;
+padding-left: 15px;
+padding-right: 6px;
+}
+
+.voc-wordlist .transcript table td {
+margin: 0px;
+padding: 0px;
+border: 0px;
+cursor: pointer;
+}
+
+.voc-wordlist .sdict {
+width: 22px;
+height: 18px;
+background-image: url("/images/sound.gif");
+background-position: 100% 3px;
+background-repeat: no-repeat;
+cursor: pointer;
+float:left;
+font-weight:normal;
+}
+
+.voc-wordlist .translation {
+width: 32%;
+padding-right: 15px;
+}
+
+.voc-wordlist .trow_act {
+background-color: #EFF5FF;
+}
+
+.voc-wordlist tr.trow_act  td {
+color: #000;
+}
+
+.voc-wordlist tr.trow_act  td .preplay  td {
+color: #0000ff;
+}
+
+.voc-links {
+position: relative;
+margin: 30px 100px 5px;
+border: 2px solid #9FC2FF;
+background-color: #EFF5FF;
+padding: 8px 80px 8px 20px;
+font-size: 12px;
+color: #31394F;
+text-shadow: 0px 1px 0px #fff, 1px 1px 3px #8EA7CF;
+-moz-border-radius: 9px;
+-webkit-border-radius: 9px;
+border-radius: 9px;
+-moz-box-shadow: 1px 1px 0px #627EAF, 1px 2px 3px #3E556F;
+-webkit-box-shadow: 1px 1px 0px #627EAF, 1px 2px 3px #3E556F;
+box-shadow: 1px 1px 0px #627EAF, 1px 2px 3px #3E556F;
+}
+
+.content .voc-links a:link  {
+color: #0000FF;
+}
+.content .voc-links a:visited {
+color: #0000FF;
+}
+
+
+/* end of voc list */
+
+
+
 
