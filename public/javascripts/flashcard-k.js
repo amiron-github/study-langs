@@ -407,10 +407,13 @@ this.start = function () {
 }
 
 tObj.spellPractice = function() {
-
+tObj.cancelSpellButton.addClass("fl-back");
 tObj.activityHolder.hide();
 tObj.spellHolder.show();
-tObj.spellHolder.find("div").show(400);
+
+tObj.spellHolder.find("div").show(400, function() {
+	tObj.cancelSpellButton.removeClass("fl-back");
+});
 tObj.launchSpellTest();
 
 }
@@ -463,10 +466,11 @@ tObj.cancelSpell = function() {
 	
 	tObj.spellHolder.find(".fl-task-spell").hide(400);
 	if ($("div.keys_poser").is(":visible")) $("div.keys_poser").find(".keys_close").click();
+	tObj.spellCheckButton.add(tObj.cancelSpellButton).addClass("fl-back");
 	tObj.spellHolder.stop().hide(400, function() {
 		tObj.spellHolder.find(".fl-spell-cancel-wrapper").hide();
 		if (tObj.activityHolder.is(":hidden")) tObj.activityHolder.fadeIn();
-
+		tObj.spellCheckButton.add(tObj.cancelSpellButton).removeClass("fl-back");
 		//tObj.spellHolder.find(".fl-spell-task").show();
 		tObj.spellHolder.find(".fl-task-spell").show();
 		tObj.spellHolder.find(".fl-spell-notes").hide();
