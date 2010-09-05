@@ -1,75 +1,87 @@
-<% @page_title = 'Tests: Shoes' %>
-<% @page_meta = {'description' => ""} %>
+<% @page_title = 'Shoes :: Online Russian lexical tests' %>
+<% @page_meta = {'description' => "Learn Russian vocabulary topic Shoes with online lexical tests"} %>
 <% @with_rec = true %>
 <% @has_audio = true %>
 
-<% content_for :special_css do %>
-
-.quest  {
-width: 210px;
-}
-
-.variants  {
-width: 220px;
-}
-
-#t1 .variants  {
-width: 260px;
-}
-
-#t2 .quest {
-width: 220px;
-}
-
+<% content_for :special_js_css do %>
+<style type="text/css">
+h2.page {margin-bottom: 0px;font-size: 19pt;}
+</style>
 <% end %>
 
 <div class="hint_wrap">
 <div class="hint_button">
 	<div class="hint">
     	<div class="hint_list">
-    		<span class="hint_string">Recommended links</span>
+    		<span class="hint_string">Links and Settings</span>
     	</div>
     </div>
     <div class="sub_hint" style="display: none;">
     		<ul>
-     				<li><a href="shoes.html">Shoes</a></li>
-     				<li><a href="shoes-exercise.html">Exercises: Shoes</a></li>
+     				<li><a href="/shoes.html">Shoes</a></li>
+					<li><a href="/shoes-flashcards.html"> Flashcards: Shoes</a></li>
     		</ul>
+			<%= render :partial => 'preload_option' %>
 	</div>
 </div>
 </div>
 
+<h2 class="page">Tests:  Shoes</h2>
 
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="/vocabulary.html">Vocabulary</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="/shoes.html">Shoes</a>
+	<span class="int-arrow">--&gt;</span> Tests
+	</span>
+</h3>
 
-<h2 class="page">Shoes (tests)</h2>
+<div class="l-test-container">
 
-<p class="task">Before completing the following tests, please revise the topic <a title="Shoes" href="shoes.html">Shoes</a></p>
-<hr/>
-<br/>
-<h3>Test 1</h3>
-<p class="task">Listen to the phrase and сhoose the corresponding Russian expression.</p>
+<h3 class="test-task">Test 1. Listen to the Russian phrase and find it in the list.
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Hide test</span><span class="lt-sh">Show test</span></a>
+</h3>
 
-<div id="t1">
-<script type="text/javascript">
-var t1 = new Test({dict: [
+<div id="ch1" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => 'lexical_test' %>
+</div>
+</div><!-- end of lt-holder -->
 
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		test_id: "v0223010.1",
+		quest_num: 10,
+		variants_num: 5,
+		quest_type: 'audio',
+		basic_array: [
 ['sounds/sound09401.mp3','обувь'],['sounds/sound09402.mp3','босоножки'], ['sounds/sound09403.mp3','мокасины'],
 ['sounds/sound09404.mp3','полусапожки'],['sounds/sound09405.mp3','туфли-лодочки'],['sounds/sound09406.mp3','сандалии'],['sounds/sound09407.mp3','туфли'],
 ['sounds/sound09408.mp3','ботинки'],['sounds/sound09409.mp3','сапоги'],['sounds/sound09410.mp3','полуботинки'],
 ['sounds/sound09411.mp3','тапочки'],['sounds/sound09412.mp3','средства для ухода за обувью'],['sounds/sound09413.mp3','крем для обуви'],['sounds/sound09414.mp3','рожок для обуви'],
 ['sounds/sound09415.mp3','растяжка для обуви'],['sounds/sound09416.mp3','щётка для обуви']
-
-],hide: 'di1',id:'t1', type: 'audio', how_questions: 8, how_show: 2}, 'v0223010.1');
+		]
+		} )
 </script>
+
+<h3 class="test-task">Test 2. Read the Russian phrase and find its English equivalent.
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Hide test</span><span class="lt-sh">Show test</span></a>
+</h3>
+
+<div id="ch2" class="lt-holder">
+<div class="lt-spacer">
+<%= render :partial => 'lexical_test' %>
 </div>
-
-<h3>Test 2</h3>
-<p class="task">Read the Russian phrase and choose the corresponding English expression.</p>
-
-<div id="t2">
-<script type="text/javascript">
-var t2 = new Test({dict: [
-
+</div><!-- end of lt-holder -->
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		test_id: "v0223020.2",
+		quest_num: 10,
+		variants_num: 5,
+		basic_array: [
 ['босоножки','peep-toes'],
 //['высокие сапоги','high shoes'],
 ['мокасины','loafers'],
@@ -78,28 +90,48 @@ var t2 = new Test({dict: [
 //['кроссовки','jogging shoes'],
 ['тапочки','slippers'],['средства для ухода за обувью','shoe care products'],['крем для обуви','shoe polish'],['рожок для обуви','shoehorn'],
 ['растяжка для обуви','shoe tree'],['щётка для обуви','polishing brush']
-
-], hide:'di2',id:'t2',type: 'text', how_questions: 8, how_show: 2}, 'v0223020.2');
+		]
+		} )
 </script>
+
+<h3 class="test-task">Test 3. 
+Listen to the phrase and find its translation into English.
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Hide test</span><span class="lt-sh">Show test</span></a>
+</h3>
+
+<div id="ch3" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => 'lexical_test' %>
 </div>
+</div><!-- end of lt-holder -->
 
-<h3>Test 3</h3>
-<p class="task">Listen to the Russian phrases and сhoose their translation into English.</p>
-
-<div id="t3">
-<script type="text/javascript">
-var t3 = new Test({dict: [
-
+<script type="text/javascript"> 
+	var ch3 = new ch_exercise( {
+		id: "ch3", 
+		test_id: "v0223030.3",
+		quest_num: 10,
+		variants_num: 5,
+		quest_type: 'audio',
+		basic_array: [
+		
 ['sounds/sound09402.mp3','peep-toes'],['sounds/sound09403.mp3','loafers'],
 ['sounds/sound09404.mp3','bottines'],['sounds/sound09405.mp3','court shoes'],['sounds/sound09406.mp3','sandals'],['sounds/sound09407.mp3','shoes'],
 ['sounds/sound09408.mp3','lace-boots'],['sounds/sound09409.mp3','boots'],['sounds/sound09410.mp3','low shoes'],
 ['sounds/sound09411.mp3','slippers'],['sounds/sound09412.mp3','shoe care products'],['sounds/sound09413.mp3','shoe polish'],['sounds/sound09414.mp3','shoehorn'],
 ['sounds/sound09415.mp3','shoe tree'],['sounds/sound09416.mp3','polishing brush']
-
-],hide: 'di3',id:'t3',type: 'audio', how_questions: 8, how_show: 2}, 'v0223030.3');
+		]
+		} )
 </script>
-</div>
 
+<h3 class="test-task test-task-final" style="text-align: center">Review the topic &nbsp;&nbsp;&nbsp;&nbsp;<a href="/shoes.html">Shoes >></a></h3>
+
+<script type="text/javascript">
+preloadFiles=new Array(
+
+)
+</script>
+
+</div><!-- end of lt-container -->
 
 <script type="text/javascript">
 currentSection="words";

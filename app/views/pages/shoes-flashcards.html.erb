@@ -1,0 +1,85 @@
+<% @page_title = 'Online Russian Flashcards: Shoes' %>
+<% @page_meta = {'description' => "Learn Russian vocabulary topic Shoes with online flashcards: words with audio samples, quizzes and spell practice"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<% content_for :special_js_css do %>
+<style type="text/css">
+h2.page {
+margin-bottom: 0px;
+font-size: 19pt;
+}
+</style>
+
+<%end%>
+<div class="hint_wrap">
+<div class="hint_button" style="float: right;">
+  <div class="hint">
+      <div class="hint_list">
+        <span class="hint_string">Links and Settings</span>
+      </div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+        <ul>
+            <li><a href="/shoes.html">Shoes</a></li>
+			<li><a href="/shoes-test.html">Tests: Shoes</a></li>
+        </ul>
+        <%= render :partial => 'down_accent' %>
+  </div>
+</div>
+</div>
+
+<h2 class="page">Flashcards: Shoes</h2>
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="/vocabulary.html">Vocabulary</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="/shoes.html">Shoes</a>
+	<span class="int-arrow">--&gt;</span> Flashcards
+	</span>
+</h3>
+
+<div  id="fl1" style="min-height: 600px; text-align: center;">
+<%= render :partial => 'flashcard' %>
+</div><!-- end of fl1 -->
+
+<script type="text/javascript"> 
+	var fl1 = new flashcard( {
+		id: "fl1", 
+		random_order: false,
+		basic_array: [
+		
+['<span class="acco">О</span>бувь ','Shoes ','/sounds/sound09401.mp3','<span class="acct">o</span>boo<span class="sftc">f</span>  '],
+['Босон<span class="acco">о</span>жки ','Peep-toes ','/sounds/sound09402.mp3','basan<span class="acct">o</span>shki '],
+['Мокас<span class="acco">и</span>ны ','Loafers ','/sounds/sound09403.mp3','makas<span class="acct">i</span>n<span class="ry">i</span> '],
+['Полусап<span class="acco">о</span>жки ','Bottines ','/sounds/sound09404.mp3','poloosap<span class="acct">o</span>shki '],
+['Т<span class="acco">у</span>фли-л<span class="acco">о</span>дочки ','Court shoes, pumps ','/sounds/sound09405.mp3','t<span class="acct">oo</span>fli l<span class="acct">o</span>dachki '],
+['Санд<span class="acco">а</span>лии ','Sandals ','/sounds/sound09406.mp3','sand<span class="acct">a</span>lii '],
+['Т<span class="acco">у</span>фли ','Shoes ','/sounds/sound09407.mp3','t<span class="acct">oo</span>fli '],
+['Бот<span class="acco">и</span>нки ','Lace-boots ','/sounds/sound09408.mp3','bat<span class="acct">i</span>nki '],
+['Сапог<span class="acco">и</span> ','Boots ','/sounds/sound09409.mp3','sapag<span class="acct">i</span> '],
+['Полубот<span class="acco">и</span>нки ','Low shoes ','/sounds/sound09410.mp3','poloobat<span class="acct">i</span>nki '],
+['Т<span class="acco">а</span>почки ','Slippers ','/sounds/sound09411.mp3','t<span class="acct">a</span>pachki '],
+['Ср<span class="acco">е</span>дства для ух<span class="acco">о</span>да за <span class="acco">о</span>бувью ','Shoe care products ','/sounds/sound09412.mp3','s<span class="sftv">r</span><span class="sfty">y</span><span class="acct">e</span>tstva d<span class="sftv">l</span><span class="sfty">y</span>a ooh<span class="acct">o</span>da za <span class="acct">o</span>boo<span class="sftc">v</span>yoo '],
+['Крем для <span class="acco">о</span>буви ','Shoe polish ','/sounds/sound09413.mp3','k<span class="sftv">r</span><span class="sfty">y</span><span class="acct">e</span>m d<span class="sftv">l</span><span class="sfty">y</span>a <span class="acct">o</span>boovi '],
+['Рож<span class="acco">о</span>к для <span class="acco">о</span>буви ','Shoehorn ','/sounds/sound09414.mp3','raj<span class="acct">o</span>k d<span class="sftv">l</span><span class="sfty">y</span>a <span class="acct">o</span>boovi '],
+['Раст<span class="acco">я</span>жка для <span class="acco">о</span>буви ','Shoe tree ','/sounds/sound09415.mp3','ras<span class="sftv">t</span><span class="sfty">y</span><span class="acct">a</span>ashka d<span class="sftv"></span><span class="sfty">y</span>la <span class="acct">o</span>boovi '],
+['Щётка для <span class="acco">о</span>буви ','Polishing brush ','/sounds/sound09416.mp3','sch<span class="acct">o</span>tka d<span class="sftv">l</span><span class="sfty">y</span>a <span class="acct">o</span>boovi ']
+		]
+		} )
+</script>
+
+
+<table class="voc-links voc-link-first voc-link-last" align="center" cellspacing="0"><tr>
+	<td class="voc-space">Check how you know this topic with our &nbsp;<a href="/shoes-test.html">Lexical tests >></a></td>
+</tr></table>
+
+
+<script type="text/javascript">
+preloadFiles=new Array(
+'/sounds/sound09401.mp3', '/sounds/sound09402.mp3', '/sounds/sound09403.mp3', '/sounds/sound09404.mp3', 
+'/sounds/sound09405.mp3', '/sounds/sound09406.mp3', '/sounds/sound09407.mp3', '/sounds/sound09408.mp3', 
+'/sounds/sound09409.mp3', '/sounds/sound09410.mp3', '/sounds/sound09411.mp3', '/sounds/sound09412.mp3', 
+'/sounds/sound09413.mp3', '/sounds/sound09414.mp3', '/sounds/sound09415.mp3', '/sounds/sound09416.mp3'
+)
+</script>

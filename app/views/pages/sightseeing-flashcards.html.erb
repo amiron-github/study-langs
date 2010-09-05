@@ -1,0 +1,99 @@
+<% @page_title = 'Online Russian Flashcards: Sightseeing' %>
+<% @page_meta = {'description' => "Learn Russian vocabulary topic Sightseeing with online flashcards: words with audio samples, quizzes and spell practice"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<% content_for :special_js_css do %>
+<style type="text/css">
+h2.page {
+margin-bottom: 0px;
+font-size: 19pt;
+}
+</style>
+
+<%end%>
+<div class="hint_wrap">
+<div class="hint_button" style="float: right;">
+  <div class="hint">
+      <div class="hint_list">
+        <span class="hint_string">Links and Settings</span>
+      </div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+        <ul>
+            <li><a href="/sightseeing.html">Sightseeing</a></li>
+			<li><a href="/sightseeing-test.html">Tests: Sightseeing</a></li>
+        </ul>
+        <%= render :partial => 'down_accent' %>
+  </div>
+</div>
+</div>
+
+<h2 class="page">Flashcards: Sightseeing</h2>
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="/vocabulary.html">Vocabulary</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="/sightseeing.html">Sightseeing</a>
+	<span class="int-arrow">--&gt;</span> Flashcards
+	</span>
+</h3>
+
+<div  id="fl1" style="min-height: 600px; text-align: center;">
+<%= render :partial => 'flashcard' %>
+</div><!-- end of fl1 -->
+
+<script type="text/javascript"> 
+	var fl1 = new flashcard( {
+		id: "fl1", 
+		random_order: false,
+		basic_array: [
+['Достопримеч<span class="acco">а</span>тельности ','Sightseeings ','/sounds/sound07101.mp3','dastaprimich<span class="acct">a</span>ti<span class="sftc">l</span>na<span class="sftc">s</span>ti '],
+['Двор<span class="acco">е</span>ц ','Palace ','/sounds/sound07102.mp3','dva<span class="sftv">r</span><span class="sfty">y</span><span class="acct">e</span>ts '],
+['З<span class="acco">а</span>мок ','Castle ','/sounds/sound07103.mp3','z<span class="acct">a</span>mak '],
+['Карт<span class="acco">и</span>нная гал<span class="acco">е</span>рея ','Picture-gallery ','/sounds/sound07104.mp3','kart<span class="acct">i</span>naya gali<span class="sftv">r</span><span class="sfty">y</span><span class="acct">e</span>ya '],
+['В<span class="acco">ы</span>ставка ','Exhibition ','/sounds/sound07105.mp3','v<span class="acct"><span class="ry">i</span></span>stafka '],
+['Муз<span class="acco">е</span>й ','Museum ','/sounds/sound07106.mp3','moo<span class="sftv">z</span><span class="sfty">y</span><span class="acct">e</span>y '],
+['Муз<span class="acco">е</span>й изобраз<span class="acco">и</span>тельных иск<span class="acco">у</span>сств ','Museum of fine arts ','/sounds/sound07107.mp3','moo<span class="sftv">z</span><span class="sfty">y</span><span class="acct">e</span>y izabraz<span class="acct">i</span>ti<span class="sftc">l</span>n<span class="ry">i</span>h isk<span class="acct">oo</span>stf '],
+['Истор<span class="acco">и</span>ческий муз<span class="acco">е</span>й ','Historical museum ','/sounds/sound07108.mp3','istar<span class="acct">i</span>chiskiy moo<span class="sftv">z</span><span class="sfty">y</span><span class="acct">e</span>y '],
+['П<span class="acco">а</span>мятник ','Monument ','/sounds/sound07109.mp3','p<span class="acct">a</span>mitnik '],
+['Фонт<span class="acco">а</span>н ','Fountain ','/sounds/sound07110.mp3','fant<span class="acct">a</span>n '],
+['Пл<span class="acco">о</span>щадь ','Square ','/sounds/sound07111.mp3','pl<span class="acct">o</span>scha<span class="sftc">t</span> '],
+['Парк ','Park ','/sounds/sound07112.mp3','p<span class="acct">a</span>rk '],
+['Сквер ','Public garden ','/sounds/sound07113.mp3','sk<span class="sftv">v</span><span class="sfty">y</span><span class="acct">e</span>r '],
+['Сокр<span class="acco">о</span>вищница ','Treasure-house ','/sounds/sound07114.mp3','sakr<span class="acct">o</span>vischnitsa '],
+['Тур<span class="acco">и</span>ст ','Tourist ','/sounds/sound07115.mp3','toor<span class="acct">i</span>st '],
+['Соб<span class="acco">о</span>р ','Cathedral ','/sounds/sound07116.mp3','sab<span class="acct">o</span>r '],
+['Ц<span class="acco">е</span>рковь ','Church ','/sounds/sound07117.mp3','ts<span class="acct">e</span>rka<span class="sftc">f</span> '],
+['Экск<span class="acco">у</span>рсия ','Excursion ','/sounds/sound07118.mp3','iksk<span class="acct">oo</span>rsiya '],
+['Экск<span class="acco">у</span>рсия с гидом ','Guided excursion ','/sounds/sound07119.mp3','iksk<span class="acct">oo</span>rsiya z g<span class="acct">i</span>dam '],
+['К<span class="acco">а</span>рта г<span class="acco">о</span>рода ','City plan ','/sounds/sound07120.mp3','k<span class="acct">a</span>rta g<span class="acct">o</span>rada '],
+['Фотограф<span class="acco">и</span>ровать ','Photograph ','/sounds/sound07121.mp3','fatagraf<span class="acct">i</span>rava<span class="sftc">t</span> '],
+['Сд<span class="acco">е</span>лать сн<span class="acco">и</span>мок ','Take a picture ','/sounds/sound07122.mp3','<span class="sftc">z</span><span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span>la<span class="sftc">t</span> sn<span class="acct">i</span>mak '],
+['Сним<span class="acco">а</span>ть ','Shoot ','/sounds/sound07123.mp3','<span class="sftc">s</span>nim<span class="acct">a</span><span class="sftc">t</span> '],
+['Где нах<span class="acco">о</span>дится&nbsp;…? ','Where is ... ? ','/sounds/sound07124.mp3','g<span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span> nah<span class="acct">o</span>ditsa&nbsp;...? '],
+['М<span class="acco">о</span>жно ли здесь фотогр<span class="acco">а</span>фировать? ','Is photographing allowed here? ','/sounds/sound07125.mp3','m<span class="acct">o</span>jna li <span class="sftc">z</span><span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span><span class="sftc">s</span> fatagraf<span class="acct">i</span>rava<span class="sftc">t</span>? '],
+['С как<span class="acco">о</span>го ч<span class="acco">а</span>са раб<span class="acco">о</span>тает&nbsp;...? ','Since what time is ... open? ','/sounds/sound07126.mp3','s kak<span class="acct">o</span>va ch<span class="acco">a</span>sa rab<span class="acct">o</span>tait&nbsp;...? '],
+['По как<span class="acco">и</span>м дням м<span class="acco">о</span>жно посет<span class="acco">и</span>ть&nbsp;...? ','What week-days is ... open? ','/sounds/sound07127.mp3','pa kak<span class="acct">i</span>m d<span class="sftv">n</span><span class="sfty">y</span><span class="acct">a</span>m m<span class="acct">o</span>jna pasit<span class="acct">i</span><span class="sftc">t</span> ']		
+
+		]
+		} )
+</script>
+
+
+<table class="voc-links voc-link-first voc-link-last" align="center" cellspacing="0"><tr>
+	<td class="voc-space">Check how you know this topic with our &nbsp;<a href="/sightseeing-test.html">Lexical tests >></a></td>
+</tr></table>
+
+
+<script type="text/javascript">
+preloadFiles=new Array(
+'/sounds/sound07101.mp3', '/sounds/sound07102.mp3', '/sounds/sound07103.mp3', '/sounds/sound07104.mp3', 
+'/sounds/sound07105.mp3', '/sounds/sound07106.mp3', '/sounds/sound07107.mp3', '/sounds/sound07108.mp3', 
+'/sounds/sound07109.mp3', '/sounds/sound07110.mp3', '/sounds/sound07111.mp3', '/sounds/sound07112.mp3', 
+'/sounds/sound07113.mp3', '/sounds/sound07114.mp3', '/sounds/sound07115.mp3', '/sounds/sound07116.mp3', 
+'/sounds/sound07117.mp3', '/sounds/sound07118.mp3', '/sounds/sound07119.mp3', '/sounds/sound07120.mp3', 
+'/sounds/sound07121.mp3', '/sounds/sound07122.mp3', '/sounds/sound07123.mp3', '/sounds/sound07124.mp3', 
+'/sounds/sound07125.mp3', '/sounds/sound07126.mp3', '/sounds/sound07127.mp3'
+)
+</script>

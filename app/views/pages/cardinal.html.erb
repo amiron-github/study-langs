@@ -2,7 +2,11 @@
 <% @page_meta = {'description' => "Russian online vocabulary for learning Russian Ordinal numerals"} %>
 <% @with_rec = true %>
 <% @has_audio = true %>
-
+<% content_for :special_js_css do %>
+<style type="text/css">
+h2.page {margin-bottom: 0px;}
+</style>
+<% end %>
 <div class="hint_wrap">
 <div class="hint_button" style="float: right;">
 	<div class="hint">
@@ -13,7 +17,7 @@
     <div class="sub_hint" style="display: none;">
     		<ul>
      				<li><a href="numerals00-100.html">Numerals from 0 to 100</a></li>
-     				<li><a href="numerals100.html">Numerals more than 1000</a></li>
+     				<li><a href="numerals100.html">Numerals more than 100</a></li>
     		</ul>     				
         <%= render :partial => 'colorder_accent' %>
 	</div>
@@ -23,12 +27,28 @@
 
 
 <h2 class="page">Ordinal numerals</h2>
+<h3 class="page-path"> 
+<span class="int-links"><a href="/vocabulary.html">Vocabulary</a> <span class="int-arrow">--></span> Ordinal numerals</span>
+</h3>
 
 <div id="pagecontent"><div id="content">
 
-
 <div class="dict_wrapper">
+
+<div class="voc-wordlist">
+<table class="voc_bord" align="center" cellspacing="0">
+<tr>
+<td>
+
 <table class="diction" cellpadding="0" cellspacing="0" align="center">
+<thead>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+</thead>
+<tbody>
 	<tr class="trow">
 		<td class="original" valign="top">п<span class="acco">е</span>рвый 
 		</td>
@@ -783,13 +803,29 @@
 		<td class="translation" valign="top">2002d
 		</td>
 	</tr>
-	
+</tbody>
+<tfoot>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+</tfoot>  
 </table>
+
+</td>
+</tr>
+</table>
+</div><!-- end of voc-wordlist-->
+
 </div>
-<p class="after_dic">If you want to check how you know these words, go to <a title="Hotel tests" href="numerals00-100-test.html"> Tests: Numerals</a></p>
 
-
-
+<!-- table class="voc-links voc-link-first " align="center" cellspacing="0"><tr>
+	<td class="voc-space">Learn these words and expressions with our &nbsp;<a href="$link-flashcards.html">Flashcards >></a></td>
+</tr></table>
+<table class="voc-links voc-link-last" align="center" cellspacing="0"><tr>
+	<td class="voc-space">Check how you know this topic with our &nbsp;<a href="$link-test.html">Lexical tests >></a></td>
+</tr></table -->
 
 </div>
 </div>
@@ -797,3 +833,9 @@
 <script type="text/javascript">
 currentSection="words";
 </script>
+
+
+
+
+
+

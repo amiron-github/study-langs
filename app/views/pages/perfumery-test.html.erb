@@ -1,59 +1,62 @@
-<% @page_title = 'Tests: Perfumery' %>
-<% @page_meta = {'description' => ""} %>
+<% @page_title = 'Perfumery :: Online Russian lexical tests' %>
+<% @page_meta = {'description' => "Learn Russian vocabulary topic Perfumery with online lexical tests"} %>
 <% @with_rec = true %>
 <% @has_audio = true %>
 
-<% content_for :special_css do %>
-
-.quest  {
-width: 210px;
-}
-
-.variants  {
-width: 220px;
-}
-
-#t1 .variants  {
-width: 240px;
-}
-
-#t2 .quest {
-width: 220px;
-}
-
+<% content_for :special_js_css do %>
+<style type="text/css">
+h2.page {margin-bottom: 0px;font-size: 19pt;}
+</style>
 <% end %>
 
 <div class="hint_wrap">
 <div class="hint_button">
 	<div class="hint">
     	<div class="hint_list">
-    		<span class="hint_string">Recommended links</span>
+    		<span class="hint_string">Links and Settings</span>
     	</div>
     </div>
     <div class="sub_hint" style="display: none;">
     		<ul>
-     				<li><a href="perfumery.html">Perfumery</a></li>
-     				<li><a href="perfumery-exercise.html"> Exercises: Perfumery</a></li>
-
+     				<li><a href="/perfumery.html">Perfumery</a></li>
+					<li><a href="/perfumery-flashcards.html"> Flashcards: Perfumery</a></li>
     		</ul>
+			<%= render :partial => 'preload_option' %>
 	</div>
 </div>
 </div>
 
+<h2 class="page">Tests:  Perfumery</h2>
 
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="/vocabulary.html">Vocabulary</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="/perfumery.html">Perfumery</a>
+	<span class="int-arrow">--&gt;</span> Tests
+	</span>
+</h3>
 
-<h2 class="page">Perfumery (tests)</h2>
+<div class="l-test-container">
 
-<p class="task">Before completing the following tests, please revise the topic <a title="Perfumery" href="perfumery.html">Perfumery</a></p>
-<hr/>
-<br/>
-<h3>Test 1</h3>
-<p class="task">Listen to the phrase and сhoose the corresponding Russian expression.</p>
+<h3 class="test-task">Test 1. Listen to the Russian phrase and find it in the list.
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Hide test</span><span class="lt-sh">Show test</span></a>
+</h3>
 
-<div id="t1">
-<script type="text/javascript">
-var t1 = new Test({dict: [
+<div id="ch1" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => 'lexical_test' %>
+</div>
+</div><!-- end of lt-holder -->
 
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		test_id: "v0225010.1",
+		quest_num: 10,
+		variants_num: 5,
+		quest_type: 'audio',
+		basic_array: [
 ['sounds/sound09601.mp3','блеск для губ'],['sounds/sound09602.mp3','дезодорант'],['sounds/sound09603.mp3','духи'],['sounds/sound09604.mp3','жидкость для снятия лака'],
 ['sounds/sound09605.mp3','карандаш для глаз'],['sounds/sound09606.mp3','карандаш для губ'],['sounds/sound09607.mp3','краска для волос'],['sounds/sound09608.mp3','крем'],
 ['sounds/sound09609.mp3','крем для бритья'],['sounds/sound09610.mp3','крем для загара'],['sounds/sound09611.mp3','лак для волос'],['sounds/sound09612.mp3','лак для ногтей'],
@@ -61,35 +64,56 @@ var t1 = new Test({dict: [
 ['sounds/sound09617.mp3','помада'],['sounds/sound09618.mp3','пудра'],['sounds/sound09619.mp3','румяна'],['sounds/sound09620.mp3','тени для век'],
 ['sounds/sound09621.mp3','тональный крем'],['sounds/sound09622.mp3','тушь'],['sounds/sound09623.mp3','шампунь']
 
-],hide: 'di1',id:'t1', type: 'audio', how_questions: 10, how_show: 2}, 'v0225010.1');
+		]
+		} )
 </script>
+
+<h3 class="test-task">Test 2. Read the Russian phrase and find its English equivalent.
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Hide test</span><span class="lt-sh">Show test</span></a>
+</h3>
+
+<div id="ch2" class="lt-holder">
+<div class="lt-spacer">
+<%= render :partial => 'lexical_test' %>
 </div>
-
-<h3>Test 2</h3>
-<p class="task">Read the Russian phrase and choose the corresponding English expression.</p>
-
-<div id="t2">
-<script type="text/javascript">
-var t2 = new Test({dict: [
-
+</div><!-- end of lt-holder -->
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		test_id: "v0225020.2",
+		quest_num: 10,
+		variants_num: 5,
+		basic_array: [
 ['блеск для губ','lip-gloss'],['дезодорант','deodorant'],['духи','perfume'],['жидкость для снятия лака','varnish remover'],
 ['карандаш для глаз','eyeliner'],['карандаш для губ','lip pencil'],['краска для волос','hair-dye'],['крем','cream'],
 ['крем для бритья','shaving cream'],['крем для загара','tanning cream'],['лак для волос','hair spray'],['лак для ногтей','nail polish'],
 ['лосьон','lotion'],['лосьон после бритья','after shave lotion'],['мыло','soap'],['пилочка для ногтей','fingernail file'],
 ['помада','lipstick'],['пудра','loose powder'],['румяна','powder blusher'],['тени для век','eyeshadow'],
 ['тональный крем','make-up foundation'],['тушь','mascara'],['шампунь','shampoo']
-
-], hide:'di2',id:'t2',type: 'text', how_questions: 10, how_show: 2}, 'v0225020.2');
+		]
+		} )
 </script>
+
+<h3 class="test-task">Test 3. 
+Listen to the phrase and find its translation into English.
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Hide test</span><span class="lt-sh">Show test</span></a>
+</h3>
+
+<div id="ch3" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => 'lexical_test' %>
 </div>
+</div><!-- end of lt-holder -->
 
-<h3>Test 3</h3>
-<p class="task">Listen to the Russian phrases and сhoose their translation into English.</p>
-
-<div id="t3">
-<script type="text/javascript">
-var t3 = new Test({dict: [
-
+<script type="text/javascript"> 
+	var ch3 = new ch_exercise( {
+		id: "ch3", 
+		test_id: "v0225030.3",
+		quest_num: 10,
+		variants_num: 5,
+		quest_type: 'audio',
+		basic_array: [
+		
 ['sounds/sound09601.mp3','lip-gloss'],['sounds/sound09602.mp3','deodorant'],['sounds/sound09603.mp3','perfume'],['sounds/sound09604.mp3','varnish remover'],
 ['sounds/sound09605.mp3','eyeliner'],['sounds/sound09606.mp3','lip pencil'],['sounds/sound09607.mp3','hair-dye'],['sounds/sound09608.mp3','cream'],
 ['sounds/sound09609.mp3','shaving cream'],['sounds/sound09610.mp3','tanning cream'],['sounds/sound09611.mp3','hair spray'],['sounds/sound09612.mp3','nail polish'],
@@ -97,11 +121,19 @@ var t3 = new Test({dict: [
 ['sounds/sound09617.mp3','lipstick'],['sounds/sound09618.mp3','loose powder'],['sounds/sound09619.mp3','powder blusher'],['sounds/sound09620.mp3','eyeshadow'],
 ['sounds/sound09621.mp3','make-up foundation'],['sounds/sound09622.mp3','mascara'],['sounds/sound09623.mp3','shampoo']
 
-
-],hide: 'di3',id:'t3',type: 'audio', how_questions: 10, how_show: 2}, 'v0225030.3');
+		]
+		} )
 </script>
-</div>
 
+<h3 class="test-task test-task-final" style="text-align: center">Review the topic &nbsp;&nbsp;&nbsp;&nbsp;<a href="/perfumery.html">Perfumery >></a></h3>
+
+<script type="text/javascript">
+preloadFiles=new Array(
+
+)
+</script>
+
+</div><!-- end of lt-container -->
 
 <script type="text/javascript">
 currentSection="words";

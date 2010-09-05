@@ -1,86 +1,147 @@
-<% @page_title = 'Tests: City transport' %>
-<% @page_meta = {'description' => ""} %>
+<% @page_title = 'Bus, trolley, tram :: Online Russian lexical tests' %>
+<% @page_meta = {'description' => "Learn Russian vocabulary topic Bus, trolley, tram with online lexical tests"} %>
 <% @with_rec = true %>
 <% @has_audio = true %>
 
-<% content_for :special_css do %>
-.quest  {
-width: 210px;
-}
-.variants  {
-width: 220px;
-}
-#t2 .quest {
-width: 220px;
-}
+<% content_for :special_js_css do %>
+<style type="text/css">
+h2.page {margin-bottom: 0px;font-size: 19pt;}
+</style>
 <% end %>
 
 <div class="hint_wrap">
 <div class="hint_button">
 	<div class="hint">
     	<div class="hint_list">
-    		<span class="hint_string">Recommended links</span>
+    		<span class="hint_string">Links and Settings</span>
     	</div>
     </div>
     <div class="sub_hint" style="display: none;">
     		<ul>
-     				<li><a href="bus.html">Bus, trolley, tram</a></li>
-     				<li><a href="bus-exercise.html"> Exercises: City transport</a></li>
-
+     				<li><a href="/bus.html">Bus, trolley, tram</a></li>
+					<li><a href="/bus-flashcards.html"> Flashcards: Bus, trolley, tram</a></li>
     		</ul>
+			<%= render :partial => 'preload_option' %>
 	</div>
 </div>
 </div>
 
+<h2 class="page">Tests:  Bus, trolley, tram</h2>
 
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="/vocabulary.html">Vocabulary</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="/bus.html">Bus, trolley, tram</a>
+	<span class="int-arrow">--&gt;</span> Tests
+	</span>
+</h3>
 
-<h2 class="page">Bus, trolley, tram <br/> (tests)</h2>
+<div class="l-test-container">
 
-<p class="task">Before completing the following tests, please revise the topic <a title="City transport tests" href="bus.html">Bus, trolley, tram</a></p>
-<hr/>
-<br/>
+<h3 class="test-task">Test 1. Listen to the Russian phrase and find it in the list.
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Hide test</span><span class="lt-sh">Show test</span></a>
+</h3>
 
-<h3>Test 1</h3>
-<p class="task">Listen to the phrase and сhoose the corresponding Russian expression.</p>
-
-<div id="t1">
-<script type="text/javascript">
-var t1 = new Test({dict: [['sounds/sound02101.mp3','автобус'],['sounds/sound02102.mp3','троллейбус'],['sounds/sound02103.mp3','трамвай'],['sounds/sound02104.mp3','билет'],['sounds/sound02105.mp3','вход'],
-['sounds/sound02106.mp3','выход'],['sounds/sound02107.mp3','кондуктор'],['sounds/sound02108.mp3','маршрут'],
-['sounds/sound02109.mp3','остановка'],['sounds/sound02110.mp3','схема маршрутов'],['sounds/sound02111.mp3','штраф'],['sounds/sound02114.mp3','конечная остановка']],hide: 'di1',id:'t1', type: 'audio', how_questions: 8, how_show: 2}, 'v0204010.1');
-</script>
+<div id="ch1" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => 'lexical_test' %>
 </div>
+</div><!-- end of lt-holder -->
 
-<h3>Test 2</h3>
-<p class="task">Read the Russian phrase and choose the corresponding English expression.</p>
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		test_id: "v0204010.1",
+		quest_num: 10,
+		variants_num: 5,
+		quest_type: 'audio',
+		basic_array: [
+['/sounds/sound02101.mp3','автобус'],
+['/sounds/sound02102.mp3','троллейбус'],
+['/sounds/sound02103.mp3','трамвай'],
+['/sounds/sound02104.mp3','билет'],
+['/sounds/sound02105.mp3','вход'],
+['/sounds/sound02106.mp3','выход'],
+['/sounds/sound02107.mp3','кондуктор'],
+['/sounds/sound02108.mp3','маршрут'],
+['/sounds/sound02109.mp3','остановка'],
+['/sounds/sound02110.mp3','схема маршрутов'],
+['/sounds/sound02111.mp3','штраф'],
+['/sounds/sound02114.mp3','конечная остановка']
+		]
+		} )
+</script>
 
-<div id="t2">
-<script type="text/javascript">
-var t2 = new Test({dict: [
+<h3 class="test-task">Test 2. Read the Russian phrase and find its English equivalent.
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Hide test</span><span class="lt-sh">Show test</span></a>
+</h3>
 
+<div id="ch2" class="lt-holder">
+<div class="lt-spacer">
+<%= render :partial => 'lexical_test' %>
+</div>
+</div><!-- end of lt-holder -->
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		test_id: "v0204020.2",
+		quest_num: 10,
+		variants_num: 5,
+		basic_array: [
+		
 ['автобус','bus'],['троллейбус','trolleybus'],['трамвай','tramway'],['билет','ticket'],['вход','entrance'],
 ['выход','exit'],['кондуктор','conductor'],['маршрут','route'],
 ['остановка','stop'],['схема маршрутов','route plan'],['штраф','penalty'],['конечная остановка','route terminal']
-
-], hide:'di1',id:'t2',type: 'text', how_questions: 8, how_show: 2}, 'v0204020.2');
+		]
+		} )
 </script>
+
+<h3 class="test-task">Test 3. 
+Listen to the phrase and find its translation into English.
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Hide test</span><span class="lt-sh">Show test</span></a>
+</h3>
+
+<div id="ch3" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => 'lexical_test' %>
 </div>
+</div><!-- end of lt-holder -->
 
-<h3>Test 3</h3>
-<p class="task">Listen to the Russian phrases and сhoose their translation into English.</p>
+<script type="text/javascript"> 
+	var ch3 = new ch_exercise( {
+		id: "ch3", 
+		test_id: "v0204030.3",
+		quest_num: 10,
+		variants_num: 5,
+		quest_type: 'audio',
+		basic_array: [
+		
+['/sounds/sound02101.mp3','bus'],
+['/sounds/sound02102.mp3','trolleybus'],
+['/sounds/sound02103.mp3','tramway'],
+['/sounds/sound02104.mp3','ticket'],
+['/sounds/sound02105.mp3','entrance'],
+['/sounds/sound02106.mp3','exit'],
+['/sounds/sound02107.mp3','conductor'],
+['/sounds/sound02108.mp3','route'],
+['/sounds/sound02109.mp3','stop'],
+['/sounds/sound02110.mp3','route plan'],
+['/sounds/sound02111.mp3','penalty'],
+['/sounds/sound02114.mp3','route terminal']
+		]
+		} )
+</script>
 
-<div id="t3">
+<h3 class="test-task test-task-final" style="text-align: center">Review the topic &nbsp;&nbsp;&nbsp;&nbsp;<a href="/bus.html">Bus, trolley, tram >></a></h3>
+
 <script type="text/javascript">
-var t3 = new Test({dict: [
+preloadFiles=new Array(
 
-['sounds/sound02101.mp3','bus'],['sounds/sound02102.mp3','trolleybus'],['sounds/sound02103.mp3','tramway'],['sounds/sound02104.mp3','ticket'],['sounds/sound02105.mp3','entrance'],
-['sounds/sound02106.mp3','exit'],['sounds/sound02107.mp3','conductor'],['sounds/sound02108.mp3','route'],
-['sounds/sound02109.mp3','stop'],['sounds/sound02110.mp3','route plan'],['sounds/sound02111.mp3','penalty'],
-['sounds/sound02114.mp3','route terminal']
-
-],hide: 'di1',id:'t3',type: 'audio', how_questions: 8, how_show: 2}, 'v0204030.3');
+)
 </script>
-</div>
+
+</div><!-- end of lt-container -->
 
 <script type="text/javascript">
 currentSection="words";

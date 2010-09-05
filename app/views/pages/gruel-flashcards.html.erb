@@ -1,0 +1,72 @@
+<% @page_title = 'Online Russian Flashcards: Gruels and porridges' %>
+<% @page_meta = {'description' => "Learn Russian vocabulary topic Gruels and porridges with online flashcards: words with audio samples, quizzes and spell practice"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<% content_for :special_js_css do %>
+<style type="text/css">
+h2.page {
+margin-bottom: 0px;
+font-size: 19pt;
+}
+</style>
+
+<%end%>
+<div class="hint_wrap">
+<div class="hint_button" style="float: right;">
+  <div class="hint">
+      <div class="hint_list">
+        <span class="hint_string">Links and Settings</span>
+      </div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+        <ul>
+            <li><a href="/gruel.html">Gruels and porridges</a></li>
+			<li><a href="/gruel-test.html">Tests: Gruels and porridges</a></li>
+        </ul>
+        <%= render :partial => 'down_accent' %>
+  </div>
+</div>
+</div>
+
+<h2 class="page">Flashcards: Gruels and porridges</h2>
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="/vocabulary.html">Vocabulary</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="/gruel.html">Gruels and porridges</a>
+	<span class="int-arrow">--&gt;</span> Flashcards
+	</span>
+</h3>
+
+<div  id="fl1" style="min-height: 600px; text-align: center;">
+<%= render :partial => 'flashcard' %>
+</div><!-- end of fl1 -->
+
+<script type="text/javascript"> 
+	var fl1 = new flashcard( {
+		id: "fl1", 
+		random_order: false,
+		basic_array: [
+		
+['Ж<span class="acco">и</span>дкая к<span class="acco">а</span>ша ','Gruel ','/sounds/sound08201.mp3','j<span class="acct"><span class="ry">i</span></span>tkaya k<span class="acct">a</span>sha '],
+['Мол<span class="acco">о</span>чная к<span class="acco">а</span>ша ','Milk porridge ','/sounds/sound08202.mp3','mal<span class="acct">o</span>chnaya k<span class="acct">a</span>sha '],
+['Овс<span class="acco">я</span>ная к<span class="acco">а</span>ша, овс<span class="acco">я</span>нка ','Oatmeal, porridge ','/sounds/sound08203.mp3','af<span class="sftv">s</span><span class="sfty">y</span><span class="acct">a</span>naya k<span class="acct">a</span>sha, af<span class="sftv">s</span><span class="sfty">y</span><span class="acct">a</span>nka '],
+['М<span class="acco">а</span>нная к<span class="acco">а</span>ша ','Semolina ','/sounds/sound08204.mp3','m<span class="acct">a</span>naya k<span class="acct">a</span>sha '],
+['Р<span class="acco">и</span>совая к<span class="acco">а</span>ша ','Boiled rice ','/sounds/sound08205.mp3','r<span class="acct">i</span>savaya k<span class="acct">a</span>sha '],
+['Гр<span class="acco">е</span>чневая к<span class="acco">а</span>ша ','Boiled buckwheat ','/sounds/sound08206.mp3','g<span class="sftv">r</span><span class="sfty">y</span><span class="acct">e</span>chnivaya k<span class="acct">a</span>sha ']
+		]
+		} )
+</script>
+
+
+<table class="voc-links voc-link-first voc-link-last" align="center" cellspacing="0"><tr>
+	<td class="voc-space">Check how you know this topic with our &nbsp;<a href="/gruel-test.html">Lexical tests >></a></td>
+</tr></table>
+
+
+<script type="text/javascript">
+preloadFiles=new Array(
+'/sounds/sound08201.mp3', '/sounds/sound08202.mp3', '/sounds/sound08203.mp3', '/sounds/sound08204.mp3', '/sounds/sound08205.mp3', '/sounds/sound08206.mp3'
+)
+</script>

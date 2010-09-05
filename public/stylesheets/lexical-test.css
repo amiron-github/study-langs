@@ -4,6 +4,7 @@
 background-image: url(/images/ltl-bg.gif);
 border: 2px solid #CFE0FF;
 padding: 50px 50px 50px;
+margin-bottom: 200px;
 overflow: hidden;
 -moz-border-radius: 4px;
 
@@ -521,11 +522,23 @@ display: none;
 display: none;
 }
 
+.test-task-final {
+padding-right: 20px;
+}
 .content .test-task-final a:link  {
 color: #0000FF;
 }
 .content .test-task-final a:visited {
 color: #0000FF;
+}
+
+.content .test-task-final a:hover  {
+color: #0000FF;
+text-decoration: none;
+}
+.content .test-task-final a:active {
+color: #0000FF;
+text-decoration: none;
 }
 
 

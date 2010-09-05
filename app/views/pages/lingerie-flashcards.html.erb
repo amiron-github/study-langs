@@ -1,0 +1,83 @@
+<% @page_title = 'Online Russian Flashcards: Lingerie and nightwear' %>
+<% @page_meta = {'description' => "Learn Russian vocabulary topic Lingerie and nightwear with online flashcards: words with audio samples, quizzes and spell practice"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<% content_for :special_js_css do %>
+<style type="text/css">
+h2.page {
+margin-bottom: 0px;
+font-size: 19pt;
+}
+</style>
+
+<%end%>
+<div class="hint_wrap">
+<div class="hint_button" style="float: right;">
+  <div class="hint">
+      <div class="hint_list">
+        <span class="hint_string">Links and Settings</span>
+      </div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+        <ul>
+            <li><a href="/lingerie.html">Lingerie and nightwear</a></li>
+			<li><a href="/lingerie-test.html">Tests: Lingerie and nightwear</a></li>
+        </ul>
+        <%= render :partial => 'down_accent' %>
+  </div>
+</div>
+</div>
+
+<h2 class="page">Flashcards: Lingerie and nightwear</h2>
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="/vocabulary.html">Vocabulary</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="/lingerie.html">Lingerie and nightwear</a>
+	<span class="int-arrow">--&gt;</span> Flashcards
+	</span>
+</h3>
+
+<div  id="fl1" style="min-height: 600px; text-align: center;">
+<%= render :partial => 'flashcard' %>
+</div><!-- end of fl1 -->
+
+<script type="text/javascript"> 
+	var fl1 = new flashcard( {
+		id: "fl1", 
+		random_order: false,
+		basic_array: [
+		
+['Н<span class="acco">и</span>жнее бельё ','Underwear ','/sounds/sound09201.mp3','n<span class="acct">i</span>jniye bi<span class="sftv">l</span><span class="sfty">y</span><span class="acct">o</span> '],
+['Од<span class="accto">е</span>жда для сна ','Nightwear ','/sounds/sound09202.mp3','a<span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span>jda d<span class="sftv">l</span><span class="sfty">y</span>a sn<span class="acct">a</span> '],
+['Бюстг<span class="acco">а</span>льтер ','Bra ','/sounds/sound09203.mp3','<span class="sftv">b</span><span class="sfty">y</span>oostg<span class="acct">a</span>l<span class="sftv">t</span><span class="sfty">y</span>er '],
+['Корс<span class="acco">е</span>т ','Corset ','/sounds/sound09204.mp3','kar<span class="sftv">s</span><span class="sfty">y</span><span class="acct">e</span>t '],
+['М<span class="acco">а</span>йка ','Tank top, sleeveless T-shirt ','/sounds/sound09205.mp3','m<span class="acct">a</span>yka '],
+['Трус<span class="acco">ы</span> ','Pants, panties ','/sounds/sound09206.mp3','troos<span class="acct"><span class="ry">i</span></span> '],
+['Стр<span class="acco">и</span>нги ','Thongs ','/sounds/sound09207.mp3','str<span class="acct">i</span>ngi '],
+['Б<span class="acco">о</span>ксеры ','Boxer briefs ','/sounds/sound09208.mp3','b<span class="acct">o</span>ksiri '],
+['Чулк<span class="acco">и</span> ','Stockings ','/sounds/sound09209.mp3','choolk<span class="acct">i</span> '],
+['Колг<span class="acco">о</span>тки ','Tights ','/sounds/sound09210.mp3','kalg<span class="acct">o</span>tki '],
+['Носк<span class="acco">и</span> ','Socks ','/sounds/sound09211.mp3','nask<span class="acct">i</span> '],
+['Ночн<span class="acco">а</span><i></i>я руб<span class="acco">а</span>шка ','Nightie ','/sounds/sound09212.mp3','nachn<span class="acct">a</span>ya roob<span class="acct">a</span>shka '],
+['Пиж<span class="acco">а</span>ма ','Pijamas ','/sounds/sound09213.mp3','pij<span class="acct">a</span>ma '],
+['Хал<span class="acco">а</span>т ','Dressing gown ','/sounds/sound09214.mp3','hal<span class="acct">a</span>t ']
+		]
+		} )
+</script>
+
+
+<table class="voc-links voc-link-first voc-link-last" align="center" cellspacing="0"><tr>
+	<td class="voc-space">Check how you know this topic with our &nbsp;<a href="/lingerie-test.html">Lexical tests >></a></td>
+</tr></table>
+
+
+<script type="text/javascript">
+preloadFiles=new Array(
+'/sounds/sound09201.mp3', '/sounds/sound09202.mp3', '/sounds/sound09203.mp3', '/sounds/sound09204.mp3', 
+'/sounds/sound09205.mp3', '/sounds/sound09206.mp3', '/sounds/sound09207.mp3', '/sounds/sound09208.mp3', 
+'/sounds/sound09209.mp3', '/sounds/sound09210.mp3', '/sounds/sound09211.mp3', '/sounds/sound09212.mp3', 
+'/sounds/sound09213.mp3', '/sounds/sound09214.mp3'
+)
+</script>

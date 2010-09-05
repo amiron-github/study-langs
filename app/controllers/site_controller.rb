@@ -40,6 +40,9 @@ class SiteController < ApplicationController
       @javascripts << 'test'
       @javascripts << 'test-text'
       @stylesheets << 'test-style'
+	  @javascripts << 'jquery.jplayer.min.js'
+	  @javascripts << 'lexical-test'
+      @stylesheets << 'lexical-test'
     when /unit\d\d\.html$/
       @javascripts << 'ev-test'
     when /reading-practice\d\.html$/
@@ -47,6 +50,12 @@ class SiteController < ApplicationController
       @javascripts << 'test-text'
       @stylesheets << 'test-style'
       @stylesheets << 'stylesounds'
+	when /-flashcards\.html$/
+      @javascripts << 'jquery.jplayer.min.js'
+      @javascripts << 'flashcard-k'
+      @stylesheets << 'flashcard'
+	  @javascripts << 'virtual-keyboard'
+	  @stylesheets << 'keyboard'
     when /phonetics\d\d\.html$/
       @javascripts << 'test-text'
       @stylesheets << 'test-style'

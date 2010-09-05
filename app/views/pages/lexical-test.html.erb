@@ -1,41 +1,41 @@
-<% @page_title = 'Test (tests)' %>
-<% @page_meta = {'description' => ""} %>
+<% @page_title = 'Making acquaintance :: Online Russian lexical tests' %>
+<% @page_meta = {'description' => "Learn Russian vocabulary topic Making acquaintance with online lexical tests"} %>
 <% @with_rec = true %>
 <% @has_audio = true %>
 
 <% content_for :special_js_css do %>
-
-<%= javascript_include_tag 'jquery.jplayer.min.js' %>
-<%= javascript_include_tag 'lexical-test' %>
-<%= stylesheet_link_tag 'lexical-test' %>
-
-
+<style type="text/css">
+h2.page {margin-bottom: 0px;font-size: 19pt;}
+</style>
 <% end %>
 
 <div class="hint_wrap">
 <div class="hint_button">
 	<div class="hint">
     	<div class="hint_list">
-    		<span class="hint_string">Recommended links</span>
+    		<span class="hint_string">Links and Settings</span>
     	</div>
     </div>
     <div class="sub_hint" style="display: none;">
     		<ul>
      				<li><a href="acquaintance.html">Making acquaintance</a></li>
-					<li><a href="acquaintance-l-flashcard.html"> Flashcards: Making acquaintance</a></li>
+					<li><a href="acquaintance-flashcards.html"> Flashcards: Making acquaintance</a></li>
     		</ul>
 			<%= render :partial => 'preload_option' %>
 	</div>
 </div>
 </div>
 
+<h2 class="page">Tests:  Making acquaintance</h2>
 
-
-<h2 class="page">Making acquaintance <br/>(tests)</h2>
-<p >Before completing the following tests, please revise the topic <a title="Making acquaintance" href="acquaintance.html">Making acquaintance</a></p>
-
-<br/>
-
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="/vocabulary.html">Vocabulary</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="/acquaintance.html">Making acquaintance</a>
+	<span class="int-arrow">--&gt;</span> Tests
+	</span>
+</h3>
 
 <div class="l-test-container">
 
@@ -43,142 +43,48 @@
 <a href="javascript:;" class="lt-test-closer"><span class="lt-h">Hide test</span><span class="lt-sh">Show test</span></a>
 </h3>
 
-<div class="lt-holder">
+<div id="ch1" class="lt-holder">
 <div class="lt-spacer">	
-
-<div id="ch1" class="es-ex-wrapper">
-<div class="es-ex-alert-container"><div class="es-ex-alert-rt"><div class="es-ex-alert"> &nbsp;</div></div></div>
-<div class="es-ex-top">
-	<div class="es-ex-autoplay-wrapper"><input class="es-ex-autoplay" type="checkbox" /> <span>Go to next automatically</span> </div>
-	<div class="es-ex-final"></div>
-
+<%= render :partial => 'lexical_test' %>
 </div>
-<table class="es-ex-content" cellspacing="0">
-	<tr>
-		<td class="es-ex-quest" width="40%" valign="middle" align="center">
-			<div class="es-ex-audio-wrapper">
-				<table><tr><td style="height: 140px;"><div class="es-ex-audio-holder"><div class="es-ex-audio"></div></div></td></tr></table>
-			</div>
-			<div class="es-ex-string-holder">
-				<table><tr><td class="es-ex-string-wrapper" style="height: 150px;">&nbsp;</td></tr></table>
-			</div>
-
-		</td>
-		<td class="es-ex-tasks" height="180">
-			<div class="yn-answer-type">
-					<p class="es-yn-task-p">This sound corresponds to the letter</p>
-					<div class="es-yn-variant-wrapper"><div class="es-yn-variant yn-trans">&nbsp;</div></div>
-					<div class="es-ex-buttons yn-btns">
-						<input type="button" class="es-ex-es-btn yn-yes" value="Yes"/> &nbsp;&nbsp;&nbsp;&nbsp; <input value="NO" type="button"  class="es-ex-es-btn yn-no"/>
-
-					</div>
-			</div>
-		</td>
-	</tr>
-	<tr>
-		<td><div class="es-ex-bottom"><input type="button" class="es-ex-next" value="NEXT" style="font-size: 12px; visibility: hidden;"></div></td>
-		<td></td>
-	</tr>
-</table>
-
-<div class="es-ex-info-container">
-	<table cellspacing="0" align="center">
-		<tr>
-			<td style="padding-left: 20px;"><div class="es-ex-info"> &nbsp;  </div></td>
-			<td><div class="es-ex-buttons">&nbsp;&nbsp;&nbsp;<input type="button" class="es-ex-es-btn es-ex-start" value="RESTART"/></div></td>
-		</tr>
-	</table>
-</div>
-
-</div>
+</div><!-- end of lt-holder -->
 
 <script type="text/javascript"> 
 	var ch1 = new ch_exercise( {
 		id: "ch1", 
-		quest_num: 8,
+		test_id: "v0202010.1",
+		quest_num: 10,
 		variants_num: 5,
-		//answer_type: 'yn',
 		quest_type: 'audio',
 		basic_array: [
-		
-['/sounds/sound01201.mp3','Как Вас зовут?'],
-['/sounds/sound01206.mp3','Меня зовут ...'],
-['/sounds/sound01207.mp3','Мое имя ...'],
-['/sounds/sound01208.mp3','Моя фамилия...'],
-['/sounds/sound01210.mp3','Приятно познакомиться'],
-['/sounds/sound01212.mp3','Из какой Вы страны?'],
-['/sounds/sound01213.mp3','Откуда Вы?'],
-['/sounds/sound01215.mp3','Я из …']
-
+['sounds/sound01201.mp3','Как Вас зовут?'],
+['sounds/sound01206.mp3','Меня зовут ...'],
+['sounds/sound01207.mp3','Мое имя ...'],
+['sounds/sound01208.mp3','Моя фамилия...'],
+['sounds/sound01210.mp3','Приятно познакомиться'],
+['sounds/sound01212.mp3','Из какой Вы страны?'],
+['sounds/sound01213.mp3','Откуда Вы?'],
+['sounds/sound01215.mp3','Я из ...']
 		]
 		} )
 </script>
-
-</div>
-</div><!-- end of lt-holder -->
 
 <h3 class="test-task">Test 2. Read the Russian phrase and find its English equivalent.
 <a href="javascript:;" class="lt-test-closer"><span class="lt-h">Hide test</span><span class="lt-sh">Show test</span></a>
 </h3>
 
-<div class="lt-holder">
+<div id="ch2" class="lt-holder">
 <div class="lt-spacer">
-
-<div id="ch2" class="es-ex-wrapper">
-<div class="es-ex-alert-container"><div class="es-ex-alert-rt"><div class="es-ex-alert"> &nbsp;</div></div></div>
-<div class="es-ex-top">
-	<div class="es-ex-autoplay-wrapper"><input class="es-ex-autoplay" type="checkbox" /> <span>Go to next automatically</span> </div>
-	<div class="es-ex-final"></div>
-
+<%= render :partial => 'lexical_test' %>
 </div>
-<table class="es-ex-content" cellspacing="0">
-	<tr>
-		<td class="es-ex-quest" width="40%" valign="middle" align="center">
-			<div class="es-ex-audio-wrapper">
-				<table cellspacing="0"><tr><td style="height: 140px;"><div class="es-ex-audio-holder"><div class="es-ex-audio"></div></div></td></tr></table>
-			</div>
-			<div class="es-ex-string-holder">
-				<table><tr><td class="es-ex-string-wrapper" style="height: 150px;">&nbsp;</td></tr></table>
-			</div>
-
-		</td>
-		<td class="es-ex-tasks" height="180">
-			<div class="yn-answer-type">
-					<p class="es-yn-task-p">This can be translated as:</p>
-					<div class="es-yn-variant-wrapper"><div class="es-yn-variant yn-trans">&nbsp;</div></div>
-					<div class="es-ex-buttons yn-btns">
-						<input type="button" class="es-ex-es-btn yn-yes" value="Yes"/> &nbsp;&nbsp;&nbsp;&nbsp; <input value="No" type="button"  class="es-ex-es-btn yn-no"/>
-
-					</div>
-			</div>
-		</td>
-	</tr>
-	<tr>
-		<td><div class="es-ex-bottom"><input type="button" class="es-ex-next" value="NEXT" style="font-size: 12px; visibility: hidden;"></div></td>
-		<td></td>
-	</tr>
-</table>
-
-<div class="es-ex-info-container">
-	<table cellspacing="0" align="center">
-		<tr>
-			<td style="padding-left: 20px;"><div class="es-ex-info"> &nbsp;  </div></td>
-			<td><div class="es-ex-buttons">&nbsp;&nbsp;&nbsp;<input type="button" class="es-ex-es-btn es-ex-start" value="RESTART"/></div></td>
-		</tr>
-	</table>
-</div>
-
-</div>
-
+</div><!-- end of lt-holder -->
 <script type="text/javascript"> 
 	var ch2 = new ch_exercise( {
 		id: "ch2", 
-		quest_num: 8,
+		test_id: "v0202020.2",
+		quest_num: 10,
 		variants_num: 5,
-		//answer_type: 'yn',
-		//quest_type: 'audio',
 		basic_array: [
-		
 ['Как Вас зовут?','What is your name?'],
 ['Меня зовут ...','My name is ...'],
 ['Мое имя ...','My first name is ...'],
@@ -186,97 +92,44 @@
 ['Приятно познакомиться','Nice to meet you'],
 ['Из какой Вы страны?','What country are you from?'],
 ['Откуда Вы?','Where are you from?'],
-['Я из …','I\'m from ...']
-
+['Я из ...','I\'m from ...']
 		]
 		} )
 </script>
-
-</div>
-</div><!-- end of lt-holder -->
-
 
 <h3 class="test-task">Test 3. 
 Listen to the phrase and find its translation into English.
 <a href="javascript:;" class="lt-test-closer"><span class="lt-h">Hide test</span><span class="lt-sh">Show test</span></a>
 </h3>
 
-<div class="lt-holder">
+<div id="ch3" class="lt-holder">
 <div class="lt-spacer">	
-
-<div id="ch3" class="es-ex-wrapper">
-<div class="es-ex-alert-container"><div class="es-ex-alert-rt"><div class="es-ex-alert"> &nbsp;</div></div></div>
-<div class="es-ex-top">
-	<div class="es-ex-autoplay-wrapper"><input class="es-ex-autoplay" type="checkbox" /> <span>Go to next automatically</span> </div>
-	<div class="es-ex-final"></div>
-
+<%= render :partial => 'lexical_test' %>
 </div>
-<table class="es-ex-content" cellspacing="0">
-	<tr>
-		<td class="es-ex-quest" width="40%" valign="middle" align="center">
-			<div class="es-ex-audio-wrapper">
-				<table><tr><td style="height: 140px;"><div class="es-ex-audio-holder"><div class="es-ex-audio"></div></div></td></tr></table>
-			</div>
-			<div class="es-ex-string-holder">
-				<table><tr><td class="es-ex-string-wrapper" style="height: 150px;">&nbsp;</td></tr></table>
-			</div>
-
-		</td>
-		<td class="es-ex-tasks" height="180">
-			<div class="yn-answer-type">
-					<p class="es-yn-task-p">This sound corresponds to the letter</p>
-					<div class="es-yn-variant-wrapper"><div class="es-yn-variant yn-trans">&nbsp;</div></div>
-					<div class="es-ex-buttons yn-btns">
-						<input type="button" class="es-ex-es-btn yn-yes" value="Yes"/> &nbsp;&nbsp;&nbsp;&nbsp; <input value="NO" type="button"  class="es-ex-es-btn yn-no"/>
-
-					</div>
-			</div>
-		</td>
-	</tr>
-	<tr>
-		<td><div class="es-ex-bottom"><input type="button" class="es-ex-next" value="NEXT" style="font-size: 12px; visibility: hidden;"></div></td>
-		<td></td>
-	</tr>
-</table>
-
-<div class="es-ex-info-container">
-	<table cellspacing="0" align="center">
-		<tr>
-			<td style="padding-left: 20px;"><div class="es-ex-info"> &nbsp;  </div></td>
-			<td><div class="es-ex-buttons">&nbsp;&nbsp;&nbsp;<input type="button" class="es-ex-es-btn es-ex-start" value="RESTART"/></div></td>
-		</tr>
-	</table>
-</div>
-
-</div>
+</div><!-- end of lt-holder -->
 
 <script type="text/javascript"> 
 	var ch3 = new ch_exercise( {
 		id: "ch3", 
-		quest_num: 8,
+		test_id: "v0202030.3",
+		quest_num: 10,
 		variants_num: 5,
-		//answer_type: 'yn',
 		quest_type: 'audio',
 		basic_array: [
 		
-['/sounds/sound01201.mp3','Как Вас зовут?'],
-['/sounds/sound01206.mp3','Меня зовут ...'],
-['/sounds/sound01207.mp3','Мое имя ...'],
-['/sounds/sound01208.mp3','Моя фамилия...'],
-['/sounds/sound01210.mp3','Приятно познакомиться'],
-['/sounds/sound01212.mp3','Из какой Вы страны?'],
-['/sounds/sound01213.mp3','Откуда Вы?'],
-['/sounds/sound01215.mp3','Я из …']
-
+['/sounds/sound01201.mp3','What is your name?'],
+['/sounds/sound01206.mp3','My name is ...'],
+['/sounds/sound01207.mp3','My first name is ...'],
+['/sounds/sound01208.mp3','My last name is ...'],
+['/sounds/sound01210.mp3','Nice to meet you'],
+['/sounds/sound01212.mp3','What country are you from?'],
+['/sounds/sound01213.mp3','Where are you from?'],
+['/sounds/sound01215.mp3','I\'m from ...']
 		]
 		} )
 </script>
 
-</div>
-</div><!-- end of lt-holder -->
-
-<h3 class="test-task test-task-final" style="text-align: center">Back to the topic &nbsp;&nbsp;&nbsp;&nbsp;<a title="Making acquaintance" href="acquaintance.html">Making acquaintance >></a></h3>
-
+<h3 class="test-task test-task-final" style="text-align: center">Review the topic &nbsp;&nbsp;&nbsp;&nbsp;<a title="Making acquaintance" href="acquaintance.html">Making acquaintance >></a></h3>
 
 <script type="text/javascript">
 preloadFiles=new Array(
@@ -288,18 +141,10 @@ preloadFiles=new Array(
 '/sounds/sound01212.mp3',
 '/sounds/sound01213.mp3',
 '/sounds/sound01215.mp3'
-
 )
 </script>
 
-
-
-
 </div><!-- end of lt-container -->
-
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
 
 <script type="text/javascript">
 currentSection="words";

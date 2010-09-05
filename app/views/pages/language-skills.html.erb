@@ -1,40 +1,56 @@
-<% @page_title = 'Online Russian Vocabulary:  Language skills' %>
-<% @page_meta = {'description' => "Russian online vocabulary for learning words and phrases related to the topic Language Skills: phrases like I speak Russian a little, I don't speak Russian etc."} %>
+<% @page_title = 'Online Russian Vocabulary: Language Skills' %>
+<% @page_meta = {'description' => "Russian online vocabulary for learning words and phrases related to the topic Language Skills"} %>
 <% @with_rec = true %>
 <% @has_audio = true %>
-
-
-
-
-
+<% content_for :special_js_css do %>
+<style type="text/css">
+h2.page {margin-bottom: 0px;}
+</style>
+<% end %>
 <div class="hint_wrap">
 <div class="hint_button">
-	<div class="hint">
-    	<div class="hint_list">
-    		<span class="hint_string">Links and Settings</span>
-    	</div>
+  <div class="hint">
+      <div class="hint_list">
+        <span class="hint_string">Links and Settings</span>
+      </div>
     </div>
     <div class="sub_hint" style="display: none;">
-    		<ul>
-					<li> <a href="language-skills-exercise.html" title="Language Skills">Exercises: Language Skills</a></li>
-    				<li><a href="language-skills-test.html" title="Language Skills">Tests: Language Skills</a></li>
-
-
-    		</ul>
-        <%= render :partial => 'colorder_accent' %>
-	</div>
+        <ul>
+            <li><a href="language-skills-flashcards.html"> Flashcards: Language Skills</a></li>
+            <li><a href="language-skills-test.html"> Tests: Language Skills</a></li>
+        </ul>
+        <%= render :partial => 'colorder_accent' %> 
+  </div>
 </div>
 </div>
 
 
 
 <h2 class="page">Language Skills</h2>
+<h3 class="page-path"> 
+<span class="int-links"><a href="/vocabulary.html">Vocabulary</a> <span class="int-arrow">--></span> Language Skills</span>
+</h3>
 
 <div id="pagecontent"><div id="content">
 
-
 <div class="dict_wrapper">
+
+<div class="voc-wordlist">
+<table class="voc_bord" align="center" cellspacing="0">
+<tr>
+<td>
+
 <table class="diction" cellpadding="0" cellspacing="0" align="center">
+<thead>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+</thead>
+<tbody>
+
+
 	<tr class="trow">
 		<td class="original" valign="top">Англ<span class="acco">и</span>йский яз<span class="acct"><span class="acco">ы</span></span>к
 		</td>
@@ -867,13 +883,29 @@
 	</tr>
 	
 	
-	
+</tbody>
+<tfoot>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+</tfoot>  
 </table>
+
+</td>
+</tr>
+</table>
+</div><!-- end of voc-wordlist-->
+
 </div>
-<p class="after_dic">If you want to check how you know these words, go to <a href="language-skills-test.html" title="Language Skills">Tests: Language Skills</a></p>
 
-
-
+<table class="voc-links voc-link-first " align="center" cellspacing="0"><tr>
+	<td class="voc-space">Learn these words and expressions with our &nbsp;<a href="language-skills-flashcards.html">Flashcards >></a></td>
+</tr></table>
+<table class="voc-links voc-link-last" align="center" cellspacing="0"><tr>
+	<td class="voc-space">Check how you know this topic with our &nbsp;<a href="language-skills-test.html">Lexical tests >></a></td>
+</tr></table>
 
 </div>
 </div>

@@ -1,0 +1,90 @@
+<% @page_title = 'Online Russian Flashcards: Fish, fish dishes' %>
+<% @page_meta = {'description' => "Learn Russian vocabulary topic Fish, fish dishes with online flashcards: words with audio samples, quizzes and spell practice"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<% content_for :special_js_css do %>
+<style type="text/css">
+h2.page {
+margin-bottom: 0px;
+font-size: 19pt;
+}
+</style>
+
+<%end%>
+<div class="hint_wrap">
+<div class="hint_button" style="float: right;">
+  <div class="hint">
+      <div class="hint_list">
+        <span class="hint_string">Links and Settings</span>
+      </div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+        <ul>
+            <li><a href="/fish.html">Fish, fish dishes</a></li>
+			<li><a href="/fish-test.html">Tests: Fish, fish dishes</a></li>
+        </ul>
+        <%= render :partial => 'down_accent' %>
+  </div>
+</div>
+</div>
+
+<h2 class="page">Flashcards: Fish, fish dishes</h2>
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="/vocabulary.html">Vocabulary</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="/fish.html">Fish, fish dishes</a>
+	<span class="int-arrow">--&gt;</span> Flashcards
+	</span>
+</h3>
+
+<div  id="fl1" style="min-height: 600px; text-align: center;">
+<%= render :partial => 'flashcard' %>
+</div><!-- end of fl1 -->
+
+<script type="text/javascript"> 
+	var fl1 = new flashcard( {
+		id: "fl1", 
+		random_order: false,
+		basic_array: [
+		
+['Р<span class="acco">ы</span>ба ','Fish ','/sounds/sound08401.mp3','r<span class="acct"><span class="ry">i</span></span>ba '],
+['Карп ','Carp ','/sounds/sound08402.mp3','k<span class="acct">a</span>rp '],
+['Лещ ','Bream ','/sounds/sound08403.mp3','<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>sch '],
+['Лос<span class="acco">о</span>сь ','Salmon ','/sounds/sound08404.mp3','las<span class="acct">o</span><span class="sftc">s</span> '],
+['Осётр ','Sturgeon ','/sounds/sound08405.mp3','a<span class="sftv">s</span><span class="sfty">y</span><span class="acct">o</span>tr '],
+['<span class="acco">О</span>кунь ','Perch ','/sounds/sound08406.mp3','<span class="acct">o</span>koo<span class="sftc">n</span> '],
+['Селёдка ','Herring ','/sounds/sound08407.mp3','si<span class="sftv">l</span><span class="sfty">y</span><span class="acct">o</span>tka '],
+['Треск<span class="acco">а</span> ','Cod ','/sounds/sound08408.mp3','trisk<span class="acct">a</span> '],
+['Щ<span class="acco">у</span>ка ','Pike ','/sounds/sound08409.mp3','sch<span class="acct">oo</span>ka '],
+['Фор<span class="acco">е</span>ль ','Trout ','/sounds/sound08410.mp3','far<span class="acct">e</span><span class="sftc">l</span> '],
+['<span class="acco">У</span>горь ','Eel ','/sounds/sound08411.mp3','<span class="acct">oo</span>ga<span class="sftc">r</span> '],
+['Икр<span class="acco">а</span> ','Caviar ','/sounds/sound08412.mp3','ikr<span class="acct">a</span> '],
+['Кр<span class="acco">а</span>сная икр<span class="acco">а</span> ','Red caviar ','/sounds/sound08413.mp3','kr<span class="acct">a</span>snaya ikr<span class="acct">a</span> '],
+['Бел<span class="acco">у</span>жья икр<span class="acco">а</span> ','Beluga caviar ','/sounds/sound08414.mp3','bil<span class="acct">oo</span>jya ikr<span class="acct">a</span> '],
+['Треск<span class="acco">о</span>вая п<span class="acco">е</span>чень ','Cod liver ','/sounds/sound08415.mp3','trisk<span class="acct">o</span>vaya <span class="sftv">p</span><span class="sfty">y</span><span class="acct">e</span>che<span class="sftc">n</span> '],
+['В<span class="acco">я</span>леная р<span class="acco">ы</span>ба ','Dried fish ','/sounds/sound08416.mp3','<span class="sftv">v</span><span class="sfty">y</span><span class="acct">a</span>linaya r<span class="acct"><span class="ry">i</span></span>ba '],
+['Ух<span class="acco">а</span> ','Fish soup ','/sounds/sound08417.mp3','ooh<span class="acct">a</span> '],
+['Ж<span class="acco">а</span>реная р<span class="acco">ы</span>ба ','Fried fish ','/sounds/sound08418.mp3','j<span class="acct">a</span>rinaya r<span class="acct"><span class="ry">i</span></span>ba '],
+['Солёная р<span class="acco">ы</span>ба ','Salted fish ','/sounds/sound08419.mp3','sa<span class="sftv">l</span><span class="sfty">y</span><span class="acct">o</span>naya r<span class="acct"><span class="ry">i</span></span>ba '],
+['Копчёная р<span class="acco">ы</span>ба ','Smoked fish ','/sounds/sound08420.mp3','kapch<span class="acct">o</span>naya r<span class="acct"><span class="ry">i</span></span>ba ']
+		]
+		} )
+</script>
+
+
+<table class="voc-links voc-link-first voc-link-last" align="center" cellspacing="0"><tr>
+	<td class="voc-space">Check how you know this topic with our &nbsp;<a href="/fish-test.html">Lexical tests >></a></td>
+</tr></table>
+
+
+<script type="text/javascript">
+preloadFiles=new Array(
+'/sounds/sound08401.mp3', '/sounds/sound08402.mp3', '/sounds/sound08403.mp3', '/sounds/sound08404.mp3', 
+'/sounds/sound08405.mp3', '/sounds/sound08406.mp3', '/sounds/sound08407.mp3', '/sounds/sound08408.mp3', 
+'/sounds/sound08409.mp3', '/sounds/sound08410.mp3', '/sounds/sound08411.mp3', '/sounds/sound08412.mp3', 
+'/sounds/sound08413.mp3', '/sounds/sound08414.mp3', '/sounds/sound08415.mp3', '/sounds/sound08416.mp3', 
+'/sounds/sound08417.mp3', '/sounds/sound08418.mp3', '/sounds/sound08419.mp3', '/sounds/sound08420.mp3'
+)
+</script>

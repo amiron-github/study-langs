@@ -1,56 +1,62 @@
-<% @page_title = 'Tests: Outdoor clothing' %>
-<% @page_meta = {'description' => ""} %>
+<% @page_title = 'Outdoor clothing :: Online Russian lexical tests' %>
+<% @page_meta = {'description' => "Learn Russian vocabulary topic Outdoor clothing with online lexical tests"} %>
 <% @with_rec = true %>
 <% @has_audio = true %>
 
-<% content_for :special_css do %>
-
-.quest  {
-width: 210px;
-}
-
-.variants  {
-width: 220px;
-}
-
-#t2 .quest {
-width: 220px;
-}
-
-
+<% content_for :special_js_css do %>
+<style type="text/css">
+h2.page {margin-bottom: 0px;font-size: 19pt;}
+</style>
 <% end %>
 
 <div class="hint_wrap">
 <div class="hint_button">
 	<div class="hint">
     	<div class="hint_list">
-    		<span class="hint_string">Recommended links</span>
+    		<span class="hint_string">Links and Settings</span>
     	</div>
     </div>
     <div class="sub_hint" style="display: none;">
     		<ul>
-     				<li><a href="clothing.html">Outdoor clothing</a></li>
-     				<li><a href="clothing-exercise.html"> Exercises: Outdoor clothing</a></li>
-
+     				<li><a href="/clothing.html">Outdoor clothing</a></li>
+					<li><a href="/clothing-flashcards.html"> Flashcards: Outdoor clothing</a></li>
     		</ul>
+			<%= render :partial => 'preload_option' %>
 	</div>
 </div>
 </div>
 
+<h2 class="page">Tests:  Outdoor clothing</h2>
 
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="/vocabulary.html">Vocabulary</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="/clothing.html">Outdoor clothing</a>
+	<span class="int-arrow">--&gt;</span> Tests
+	</span>
+</h3>
 
-<h2 class="page">Outdoor clothing <br/>(tests)</h2>
+<div class="l-test-container">
 
-<p class="task">Before completing the following tests, please revise the topic <a title="Outdoor clothing" href="clothing.html">Outdoor clothing</a></p>
-<hr/>
-<br/>
-<h3>Test 1</h3>
-<p class="task">Listen to the phrase and сhoose the corresponding Russian expression.</p>
+<h3 class="test-task">Test 1. Listen to the Russian phrase and find it in the list.
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Hide test</span><span class="lt-sh">Show test</span></a>
+</h3>
 
-<div id="t1">
-<script type="text/javascript">
-var t1 = new Test({dict: [
+<div id="ch1" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => 'lexical_test' %>
+</div>
+</div><!-- end of lt-holder -->
 
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		test_id: "v0220010.1",
+		quest_num: 10,
+		variants_num: 5,
+		quest_type: 'audio',
+		basic_array: [
 ['sounds/sound09101.mp3','верхняя одежда'],['sounds/sound09102.mp3','блузка'],['sounds/sound09103.mp3','брюки'],['sounds/sound09104.mp3','джинсы'],
 ['sounds/sound09105.mp3','жилет'],['sounds/sound09106.mp3','костюм'],['sounds/sound09107.mp3','куртка'],['sounds/sound09108.mp3','пальто'],
 ['sounds/sound09109.mp3','пиджак'],['sounds/sound09110.mp3','платье'],['sounds/sound09111.mp3','плащ'],['sounds/sound09112.mp3','рубашка'],
@@ -60,18 +66,26 @@ var t1 = new Test({dict: [
 ['sounds/sound09125.mp3','бархат'],['sounds/sound09126.mp3','вельвет '],['sounds/sound09127.mp3','замша'],['sounds/sound09128.mp3','кожа'],
 ['sounds/sound09129.mp3','трикотаж'],['sounds/sound09130.mp3','шёлк'],['sounds/sound09131.mp3','шерсть']
 
-
-],hide: 'di1',id:'t1', type: 'audio', how_questions: 10, how_show: 2}, 'v0220010.1');
+		]
+		} )
 </script>
+
+<h3 class="test-task">Test 2. Read the Russian phrase and find its English equivalent.
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Hide test</span><span class="lt-sh">Show test</span></a>
+</h3>
+
+<div id="ch2" class="lt-holder">
+<div class="lt-spacer">
+<%= render :partial => 'lexical_test' %>
 </div>
-
-<h3>Test 2</h3>
-<p class="task">Read the Russian phrase and choose the corresponding English expression.</p>
-
-<div id="t2">
-<script type="text/javascript">
-var t2 = new Test({dict: [
-
+</div><!-- end of lt-holder -->
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		test_id: "v0220020.2",
+		quest_num: 10,
+		variants_num: 5,
+		basic_array: [
 ['верхняя одежда','outerwear'],['блузка','blouse'],['брюки','trousers'],['джинсы','jeans'],
 ['жилет','vest'],['костюм','suit'],['куртка','outdoor coat'],['пальто','overcoat'],
 ['пиджак','jacket'],['платье ','dress'],['плащ','raincoat'],['рубашка','shirt'],
@@ -80,18 +94,30 @@ var t2 = new Test({dict: [
 ['кепка','(cloth) cap'],['шапка','cap'],['шляпа','hat'],['материал','material'],
 ['бархат','velvet'],['вельвет','velveteen'],['замша','chamois'],['кожа','leather'],
 ['трикотаж','knitwear'],['шёлк','silk'],['шерсть','wool']
-
-], hide:'di2',id:'t2',type: 'text', how_questions: 10, how_show: 2}, 'v0220020.2');
+		]
+		} )
 </script>
+
+<h3 class="test-task">Test 3. 
+Listen to the phrase and find its translation into English.
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Hide test</span><span class="lt-sh">Show test</span></a>
+</h3>
+
+<div id="ch3" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => 'lexical_test' %>
 </div>
+</div><!-- end of lt-holder -->
 
-<h3>Test 3</h3>
-<p class="task">Listen to the Russian phrases and сhoose their translation into English.</p>
-
-<div id="t3">
-<script type="text/javascript">
-var t3 = new Test({dict: [
-
+<script type="text/javascript"> 
+	var ch3 = new ch_exercise( {
+		id: "ch3", 
+		test_id: "v0220030.3",
+		quest_num: 10,
+		variants_num: 5,
+		quest_type: 'audio',
+		basic_array: [
+		
 ['sounds/sound09101.mp3','outerwear'],['sounds/sound09102.mp3','blouse'],['sounds/sound09103.mp3','trousers'],['sounds/sound09104.mp3','jeans'],
 ['sounds/sound09105.mp3','vest'],['sounds/sound09106.mp3','suit'],['sounds/sound09107.mp3','outdoor coat'],['sounds/sound09108.mp3','overcoat'],
 ['sounds/sound09109.mp3','jacket'],['sounds/sound09110.mp3','dress'],['sounds/sound09111.mp3','raincoat'],['sounds/sound09112.mp3','shirt'],
@@ -100,12 +126,19 @@ var t3 = new Test({dict: [
 ['sounds/sound09121.mp3','(cloth) cap'],['sounds/sound09122.mp3','cap'],['sounds/sound09123.mp3','hat'],['sounds/sound09124.mp3','material'],
 ['sounds/sound09125.mp3','velvet'],['sounds/sound09126.mp3','velveteen'],['sounds/sound09127.mp3','chamois'],['sounds/sound09128.mp3','leather'],
 ['sounds/sound09129.mp3','knitwear'],['sounds/sound09130.mp3','silk'],['sounds/sound09131.mp3','wool']
-
-
-],hide: 'di3',id:'t3',type: 'audio', how_questions: 10, how_show: 2}, 'v0220030.3');
+		]
+		} )
 </script>
-</div>
 
+<h3 class="test-task test-task-final" style="text-align: center">Review the topic &nbsp;&nbsp;&nbsp;&nbsp;<a href="/clothing.html">Outdoor clothing >></a></h3>
+
+<script type="text/javascript">
+preloadFiles=new Array(
+
+)
+</script>
+
+</div><!-- end of lt-container -->
 
 <script type="text/javascript">
 currentSection="words";

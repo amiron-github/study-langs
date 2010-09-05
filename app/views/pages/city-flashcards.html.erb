@@ -1,0 +1,117 @@
+<% @page_title = 'Online Russian Flashcards: City' %>
+<% @page_meta = {'description' => "Learn Russian vocabulary topic City with online flashcards: words with audio samples, quizzes and spell practice"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<% content_for :special_js_css do %>
+<style type="text/css">
+h2.page {
+margin-bottom: 0px;
+font-size: 19pt;
+}
+</style>
+
+<%end%>
+<div class="hint_wrap">
+<div class="hint_button" style="float: right;">
+  <div class="hint">
+      <div class="hint_list">
+        <span class="hint_string">Links and Settings</span>
+      </div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+        <ul>
+            <li><a href="/city.html">City</a></li>
+			<li><a href="/city-test.html">Tests: City</a></li>
+        </ul>
+        <%= render :partial => 'down_accent' %>
+  </div>
+</div>
+</div>
+
+<h2 class="page">Flashcards: City</h2>
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="/vocabulary.html">Vocabulary</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="/city.html">City</a>
+	<span class="int-arrow">--&gt;</span> Flashcards
+	</span>
+</h3>
+
+<div  id="fl1" style="min-height: 600px; text-align: center;">
+<%= render :partial => 'flashcard' %>
+</div><!-- end of fl1 -->
+
+<script type="text/javascript"> 
+	var fl1 = new flashcard( {
+		id: "fl1", 
+		random_order: false,
+		basic_array: [
+		
+['Г<span class="acco">о</span>род ','City, town ','/sounds/sound06101.mp3','g<span class="acct">o</span>rat '],
+['Автовокз<span class="acco">а</span>л ','Bus station ','/sounds/sound06102.mp3','aftavagz<span class="acct">a</span>l '],
+['Автосто<i></i><span class="acco">я</span>нка ','Car parking ','/sounds/sound06103.mp3','aftastay<span class="acct">a</span>nka '],
+['<span class="acco">А</span>дрес ','Address ','/sounds/sound06104.mp3','<span class="acct">a</span>dris '],
+['Банк ','Bank ','/sounds/sound06105.mp3','b<span class="acct">a</span>nk '],
+['Бар ','Bar ','/sounds/sound06106.mp3','b<span class="acct">a</span>r '],
+['Вокз<span class="acco">а</span>л ','Railway station ','/sounds/sound06107.mp3','vagz<span class="acct">a</span>l '],
+['Дом ','House ','/sounds/sound06108.mp3','d<span class="acct">o</span>m '],
+['Запр<span class="acco">а</span>вка ','Gas station ','/sounds/sound06109.mp3','zapr<span class="acct">a</span>fka '],
+['Зд<span class="acco">а</span>ние ','Building ','/sounds/sound06110.mp3','zd<span class="acct">a</span>niye '],
+['Кварт<span class="acco">а</span>л ','Quarter, block ','/sounds/sound06111.mp3','kvart<span class="acct">a</span>l '],
+['Мост ','Bridge ','/sounds/sound06112.mp3','m<span class="acct">o</span>st '],
+['Н<span class="acco">а</span>бережная ','Quay ','/sounds/sound06113.mp3','n<span class="acct">a</span>birijnaya '],
+['Остан<span class="acco">о</span>вка ','Bus station ','/sounds/sound06114.mp3','astan<span class="acct">o</span>fka '],
+['П<span class="acco">а</span>мятник ','Monument ','/sounds/sound06115.mp3','p<span class="acct">a</span>mitnik '],
+['Парк ','Park ','/sounds/sound06116.mp3','p<span class="acct">a</span>rk '],
+['Перекрёсток ','Crossroad ','/sounds/sound06117.mp3','pirik<span class="sftc">r</span><span class="sfty">y</span><span class="acct">o</span>stak '],
+['Пере<span class="acco">у</span>лок ','Alley ','/sounds/sound06118.mp3','piri<span class="acct">oo</span>lak '],
+['Перех<span class="acco">о</span>д ','Pedestrian crossing ','/sounds/sound06119.mp3','pirih<span class="acct">o</span>t '],
+['Пл<span class="acco">о</span>щадь ','Square ','/sounds/sound06120.mp3','pl<span class="acct">o</span>scha<span class="sftc">t</span> '],
+['Повор<span class="acco">о</span>т ','Turning ','/sounds/sound06121.mp3','pavar<span class="acct">o</span>t '],
+['Подз<span class="acco">е</span>мный перех<span class="acco">о</span>д ','Pedestrian subway ','/sounds/sound06122.mp3','pad<span class="sftv">z</span><span class="sfty">y</span><span class="acct">e</span>mn<span class="ry">i</span>y pirih<span class="acct">o</span>t '],
+['П<span class="acco">о</span>чта ','Post office ','/sounds/sound06123.mp3','p<span class="acct">o</span>chta '],
+['Просп<span class="acco">е</span>кт ','Avenue ','/sounds/sound06124.mp3','pras<span class="sftv">p</span><span class="sfty">y</span><span class="acct">e</span>kt '],
+['Рестор<span class="acco">а</span>н ','Restaurant ','/sounds/sound06125.mp3','ristar<span class="acct">a</span>n '],
+['Р<span class="acco">ы</span>нок ','Market ','/sounds/sound06126.mp3','r<span class="acct"><span class="ry">i</span></span>nak '],
+['Светоф<span class="acco">о</span>р ','Traffic lights ','/sounds/sound06127.mp3','svitaf<span class="acct">o</span>r '],
+['Ст<span class="acco">а</span>нция метр<span class="acco">о</span> ','Subway station ','/sounds/sound06128.mp3','st<span class="acct">a</span>nts<span class="ry">i</span>ya mitr<span class="acct">o</span> '],
+['Телеф<span class="acco">о</span>н-автом<span class="acco">а</span>т ','Pay phone ','/sounds/sound06129.mp3','tilif<span class="acct">o</span>n aftam<span class="acct">a</span>t '],
+['Троту<i></i><span class="acco">а</span>р ','Pavement, sidewalk ','/sounds/sound06130.mp3','tratoo<span class="acct">a</span>r '],
+['Туал<span class="acco">е</span>т ','W.C. ','/sounds/sound06131.mp3','tooa<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>t '],
+['<span class="acco">У</span>лица ','Street ','/sounds/sound06132.mp3','<span class="acct">oo</span>litsa '],
+['Фонт<span class="acco">а</span>н ','Fountain ','/sounds/sound06133.mp3','fant<span class="acct">a</span>n '],
+['Ц<span class="acco">е</span>нтр г<span class="acco">о</span>рода ','City centre ','/sounds/sound06134.mp3','ts<span class="acct">e</span>ntr g<span class="acct">o</span>rada '],
+['Где ближ<span class="acco">а</span>йший&nbsp;...? ','Where is the nearest ... ? ','/sounds/sound06135.mp3','g<span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span> blij<span class="acct">a</span>ysh<span class="ry">i</span>y&nbsp;...? '],
+['Где нах<span class="acco">о</span>дится&nbsp;...? ','Where is ... ? ','/sounds/sound06136.mp3','g<span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span> nah<span class="acct">o</span>ditsa ? '],
+['Как пройт<span class="acco">и</span> к&nbsp;...? ','How can I get to ...? ','/sounds/sound06137.mp3','k<span class="acct">a</span>k prayt<span class="acct">i</span>&nbsp;...? '],
+['Я ищ<span class="acco">у</span> … . ','I\'m looking for ... . ','/sounds/sound06138.mp3','y<span class="acct">a</span> isch<span class="acct">oo</span>&nbsp;... '],
+['Я забл<span class="acco">у</span>дился. ','I\'m lost. ','/sounds/sound06139.mp3','y<span class="acct">a</span> zablood<span class="acct">i</span>l<span class="sftv">s</span><span class="sfty">y</span>a '],
+['Как мне туд<span class="acco">а</span> дойт<span class="acco">и</span>? ','How can I get there? ','/sounds/sound06140.mp3','k<span class="acct">a</span>k m<span class="sftv">n</span><span class="sfty">y</span><span class="acct">e</span> tood<span class="acct">a</span> dayt<span class="acct">i</span>? '],
+['Есть ли здесь побл<span class="acco">и</span>зости&nbsp;... ? ','Is there ... hereabout? ','/sounds/sound06141.mp3','y<span class="acct">e</span><span class="sftc">s</span><span class="sftc">t</span> li <span class="sftc">z</span><span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span><span class="sftc">s</span> pabl<span class="acct">i</span>za<span class="sftc">s</span>ti&nbsp;...? ']
+		]
+		} )
+</script>
+
+
+<table class="voc-links voc-link-first voc-link-last" align="center" cellspacing="0"><tr>
+	<td class="voc-space">Check how you know this topic with our &nbsp;<a href="/city-test.html">Lexical tests >></a></td>
+</tr></table>
+
+
+<script type="text/javascript">
+preloadFiles=new Array(
+'/sounds/sound06101.mp3', '/sounds/sound06102.mp3', '/sounds/sound06103.mp3', '/sounds/sound06104.mp3', 
+'/sounds/sound06105.mp3', '/sounds/sound06106.mp3', '/sounds/sound06107.mp3', '/sounds/sound06108.mp3', 
+'/sounds/sound06109.mp3', '/sounds/sound06110.mp3', '/sounds/sound06111.mp3', '/sounds/sound06112.mp3', 
+'/sounds/sound06113.mp3', '/sounds/sound06114.mp3', '/sounds/sound06115.mp3', '/sounds/sound06116.mp3', 
+'/sounds/sound06117.mp3', '/sounds/sound06118.mp3', '/sounds/sound06119.mp3', '/sounds/sound06120.mp3', 
+'/sounds/sound06121.mp3', '/sounds/sound06122.mp3', '/sounds/sound06123.mp3', '/sounds/sound06124.mp3', 
+'/sounds/sound06125.mp3', '/sounds/sound06126.mp3', '/sounds/sound06127.mp3', '/sounds/sound06128.mp3', 
+'/sounds/sound06129.mp3', '/sounds/sound06130.mp3', '/sounds/sound06131.mp3', '/sounds/sound06132.mp3', 
+'/sounds/sound06133.mp3', '/sounds/sound06134.mp3', '/sounds/sound06135.mp3', '/sounds/sound06136.mp3', 
+'/sounds/sound06137.mp3', '/sounds/sound06138.mp3', '/sounds/sound06139.mp3', '/sounds/sound06140.mp3', 
+'/sounds/sound06141.mp3'
+)
+</script>

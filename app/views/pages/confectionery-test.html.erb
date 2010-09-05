@@ -1,94 +1,125 @@
-<% @page_title = '' %>
-<% @page_meta = {'description' => ""} %>
+<% @page_title = 'Confectionery :: Online Russian lexical tests' %>
+<% @page_meta = {'description' => "Learn Russian vocabulary topic Confectionery with online lexical tests"} %>
 <% @with_rec = true %>
 <% @has_audio = true %>
 
-<% content_for :special_css do %>
-
-.quest  {
-width: 210px;
-}
-
-.variants  {
-width: 220px;
-}
-
-#t2 .quest {
-width: 220px;
-}
-
-
-
+<% content_for :special_js_css do %>
+<style type="text/css">
+h2.page {margin-bottom: 0px;font-size: 19pt;}
+</style>
 <% end %>
 
 <div class="hint_wrap">
 <div class="hint_button">
 	<div class="hint">
     	<div class="hint_list">
-    		<span class="hint_string">Recommended links</span>
+    		<span class="hint_string">Links and Settings</span>
     	</div>
     </div>
     <div class="sub_hint" style="display: none;">
     		<ul>
-    				
-     				<li><a href="confectionery.html">Confectionery</a></li>
-     				<li><a href="confectionery-exercise.html"> Exercises: Confectionery</a></li>
-
+     				<li><a href="/confectionery.html">Confectionery</a></li>
+					<li><a href="/confectionery-flashcards.html"> Flashcards: Confectionery</a></li>
     		</ul>
+			<%= render :partial => 'preload_option' %>
 	</div>
 </div>
 </div>
 
+<h2 class="page">Tests:  Confectionery</h2>
 
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="/vocabulary.html">Vocabulary</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="/confectionery.html">Confectionery</a>
+	<span class="int-arrow">--&gt;</span> Tests
+	</span>
+</h3>
 
-<h2 class="page">Confectionery (tests)</h2>
+<div class="l-test-container">
 
-<p class="task">Before completing the following tests, please revise the topic <a title="Confectionery" href="confectionery.html">Confectionery</a></p>
-<hr/>
-<br/>
-<h3>Test 1</h3>
-<p class="task">Listen to the phrase and сhoose the corresponding Russian expression.</p>
+<h3 class="test-task">Test 1. Listen to the Russian phrase and find it in the list.
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Hide test</span><span class="lt-sh">Show test</span></a>
+</h3>
 
-<div id="t1">
-<script type="text/javascript">
-var t1 = new Test({dict: [
+<div id="ch1" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => 'lexical_test' %>
+</div>
+</div><!-- end of lt-holder -->
 
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		test_id: "v0218010.1",
+		quest_num: 10,
+		variants_num: 5,
+		quest_type: 'audio',
+		basic_array: [
 ['sounds/sound08801.mp3','кондитерские изделия'],['sounds/sound08802.mp3','варенье, джем'],['sounds/sound08803.mp3','мёд'],['sounds/sound08804.mp3','мороженое'],
 ['sounds/sound08805.mp3','конфеты'],['sounds/sound08806.mp3','шоколад']
-
-],hide: 'di1',id:'t1', type: 'audio', how_questions: 6, how_show: 2}, 'v0218010.1');
+		]
+		} )
 </script>
+
+<h3 class="test-task">Test 2. Read the Russian phrase and find its English equivalent.
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Hide test</span><span class="lt-sh">Show test</span></a>
+</h3>
+
+<div id="ch2" class="lt-holder">
+<div class="lt-spacer">
+<%= render :partial => 'lexical_test' %>
 </div>
-
-<h3>Test 2</h3>
-<p class="task">Read the Russian phrase and choose the corresponding English expression.</p>
-
-<div id="t2">
-<script type="text/javascript">
-var t2 = new Test({dict: [
-
+</div><!-- end of lt-holder -->
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		test_id: "v0218020.2",
+		quest_num: 10,
+		variants_num: 5,
+		basic_array: [
 ['кондитерские изделия','confectionery'],['варенье, джем','jam'],['мёд','honey'],['мороженое','ice-cream'],
 ['конфеты','sweets'],['шоколад','chocolate']
-
-
-
-], hide:'di2',id:'t2',type: 'text', how_questions: 6, how_show: 2}, 'v0218020.2');
+		]
+		} )
 </script>
+
+<h3 class="test-task">Test 3. 
+Listen to the phrase and find its translation into English.
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Hide test</span><span class="lt-sh">Show test</span></a>
+</h3>
+
+<div id="ch3" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => 'lexical_test' %>
 </div>
+</div><!-- end of lt-holder -->
 
-<h3>Test 3</h3>
-<p class="task">Listen to the Russian phrases and сhoose their translation into English.</p>
-
-<div id="t3">
-<script type="text/javascript">
-var t3 = new Test({dict: [
-
+<script type="text/javascript"> 
+	var ch3 = new ch_exercise( {
+		id: "ch3", 
+		test_id: "v0218030.3",
+		quest_num: 10,
+		variants_num: 5,
+		quest_type: 'audio',
+		basic_array: [
+		
 ['sounds/sound08801.mp3','confectionery'],['sounds/sound08802.mp3','jam'],['sounds/sound08803.mp3','honey'],['sounds/sound08804.mp3','ice-cream'],
 ['sounds/sound08805.mp3','sweets'],['sounds/sound08806.mp3','chocolate']
-
-],hide: 'di3',id:'t3',type: 'audio', how_questions: 6, how_show: 2}, 'v0218030.3');
+		]
+		} )
 </script>
-</div>
+
+<h3 class="test-task test-task-final" style="text-align: center">Review the topic &nbsp;&nbsp;&nbsp;&nbsp;<a href="/confectionery.html">Confectionery >></a></h3>
+
+<script type="text/javascript">
+preloadFiles=new Array(
+
+)
+</script>
+
+</div><!-- end of lt-container -->
 
 <script type="text/javascript">
 currentSection="words";

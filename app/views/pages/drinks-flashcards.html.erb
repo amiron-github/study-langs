@@ -1,0 +1,99 @@
+<% @page_title = 'Online Russian Flashcards: Beverages' %>
+<% @page_meta = {'description' => "Learn Russian vocabulary topic Beverages with online flashcards: words with audio samples, quizzes and spell practice"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<% content_for :special_js_css do %>
+<style type="text/css">
+h2.page {
+margin-bottom: 0px;
+font-size: 19pt;
+}
+</style>
+
+<%end%>
+<div class="hint_wrap">
+<div class="hint_button" style="float: right;">
+  <div class="hint">
+      <div class="hint_list">
+        <span class="hint_string">Links and Settings</span>
+      </div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+        <ul>
+            <li><a href="/drinks.html">Beverages</a></li>
+			<li><a href="/drinks-test.html">Tests: Beverages</a></li>
+        </ul>
+        <%= render :partial => 'down_accent' %>
+  </div>
+</div>
+</div>
+
+<h2 class="page">Flashcards: Beverages</h2>
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="/vocabulary.html">Vocabulary</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="/drinks.html">Beverages</a>
+	<span class="int-arrow">--&gt;</span> Flashcards
+	</span>
+</h3>
+
+<div  id="fl1" style="min-height: 600px; text-align: center;">
+<%= render :partial => 'flashcard' %>
+</div><!-- end of fl1 -->
+
+<script type="text/javascript"> 
+	var fl1 = new flashcard( {
+		id: "fl1", 
+		random_order: false,
+		basic_array: [
+['Нап<span class="acco">и</span>тки ','Beverages, drinks ','/sounds/sound08901.mp3','nap<span class="acct">i</span>tki '],
+['Как<span class="acco">а</span><i></i>о ','Cocoa ','/sounds/sound08902.mp3','kak<span class="acct">a</span>o '],
+['Кокт<span class="acco">е</span>йль ','Cocktail ','/sounds/sound08903.mp3','kakt<span class="acct">e</span><span class="sftc">l</span> '],
+['К<span class="acco">о</span>фе ','Coffee ','/sounds/sound08904.mp3','k<span class="acct">o</span><span class="sftv">f</span><span class="sfty">y</span>e '],
+['К<span class="acco">о</span>фе с молок<span class="acco">о</span>м ','White coffee ','/sounds/sound08905.mp3','k<span class="acct">o</span><span class="sftv">f</span><span class="sfty">y</span>e s malak<span class="acct">o</span>m '],
+['Лимонад ','Lemonade ','/sounds/sound08906.mp3','liman<span class="acct">a</span>t '],
+['Минер<span class="acco">а</span>льная вод<span class="acco">а</span> ','Mineral water ','/sounds/sound08907.mp3','minir<span class="acct">a</span><span class="sftc">l</span>naya vad<span class="acct">a</span> '],
+['Питьев<span class="acco">а</span><i></i>я вод<span class="acco">а</span> ','Drinking water ','/sounds/sound08908.mp3','pi<span class="sftc">t</span>yiv<span class="acct">a</span>ya vad<span class="acct">a</span> '],
+['Фрукт<span class="acco">о</span>вые в<span class="acco">о</span>ды ','Soft drinks ','/sounds/sound08909.mp3','frookt<span class="acct">o</span>v<span class="ry">i</span>ye v<span class="acct">o</span>d<span class="ry">i</span> '],
+['Чай ','Tea ','/sounds/sound08910.mp3','ch<span class="acct">a</span>y '],
+['Кр<span class="acco">е</span>пкий чай ','Strong tea ','/sounds/sound08911.mp3','k<span class="sftv">r</span><span class="sfty">y</span><span class="acct">e</span>pkiy ch<span class="acct">a</span>y '],
+['Сл<span class="acco">а</span>бый чай ','Weak tea ','/sounds/sound08912.mp3','sl<span class="acct">a</span>b<span class="ry">i</span>y ch<span class="acct">a</span>y '],
+['Крепкие напитки ','Strong drinks ','/sounds/sound08913.mp3','k<span class="sftv">r</span><span class="sfty">y</span><span class="acct">e</span>pkiye nap<span class="acct">i</span>tki '],
+['Вин<span class="acco">о</span> ','Wine ','/sounds/sound08914.mp3','vin<span class="acct">o</span> '],
+['Сл<span class="acco">а</span>дкое вин<span class="acco">о</span> ','Sweet wine ','/sounds/sound08915.mp3','sl<span class="acct">a</span>tkaye vin<span class="acct">o</span> '],
+['Стол<span class="acco">о</span>вое вин<span class="acco">о</span> ','Table wine ','/sounds/sound08916.mp3','stal<span class="acct">o</span>vaye vin<span class="acct">o</span> '],
+['Сух<span class="acco">о</span>е вин<span class="acco">о</span> ','Dry wine ','/sounds/sound08917.mp3','sooh<span class="acct">o</span>ye vin<span class="acct">o</span> '],
+['Кр<span class="acco">а</span>сное вин<span class="acco">о</span> ','Red wine ','/sounds/sound08918.mp3','kr<span class="acct">a</span>snaye vin<span class="acct">o</span> '],
+['Б<span class="acco">е</span>лое вин<span class="acco">о</span> ','White wine ','/sounds/sound08919.mp3','<span class="sftv">b</span><span class="sfty">y</span><span class="acct">e</span>laye vin<span class="acct">o</span> '],
+['В<span class="acco">ы</span>держанное вин<span class="acco">о</span> ','Old wine ','/sounds/sound08920.mp3','v<span class="acct"><span class="ry">i</span></span>dirjenaye vin<span class="acct">o</span> '],
+['В<span class="acco">и</span>ски ','Whisky ','/sounds/sound08921.mp3','v<span class="acct">i</span>ski '],
+['Вишнёвая нал<span class="acco">и</span>вка ','Cherry-brandy ','/sounds/sound08922.mp3','vish<span class="sftc">n</span><span class="sfty">y</span><span class="acct">o</span>vaya nal<span class="acct">i</span>fka '],
+['В<span class="acco">о</span>дка ','Vodka ','/sounds/sound08923.mp3','v<span class="acct">o</span>tka '],
+['Конь<span class="acco">я</span>к ','Brandy ','/sounds/sound08924.mp3','ka<span class="sftc">n</span>y<span class="acct">a</span>k '],
+['П<span class="acco">и</span>во ','Beer ','/sounds/sound08925.mp3','p<span class="acct">i</span>va '],
+['Св<span class="acco">е</span>тлое п<span class="acco">и</span>во ','Light beer ','/sounds/sound08926.mp3','s<span class="sftv">v</span><span class="sfty">y</span><span class="acct">e</span>tlaye p<span class="acct">i</span>va '],
+['Тёмное п<span class="acco">и</span>во ','Dark beer ','/sounds/sound08927.mp3','<span class="sftv">t</span><span class="sfty">y</span><span class="acct">o</span>mnaye p<span class="acct">i</span>va ']		
+
+		]
+		} )
+</script>
+
+
+<table class="voc-links voc-link-first voc-link-last" align="center" cellspacing="0"><tr>
+	<td class="voc-space">Check how you know this topic with our &nbsp;<a href="/drinks-test.html">Lexical tests >></a></td>
+</tr></table>
+
+
+<script type="text/javascript">
+preloadFiles=new Array(
+'/sounds/sound08901.mp3', '/sounds/sound08902.mp3', '/sounds/sound08903.mp3', '/sounds/sound08904.mp3', 
+'/sounds/sound08905.mp3', '/sounds/sound08906.mp3', '/sounds/sound08907.mp3', '/sounds/sound08908.mp3', 
+'/sounds/sound08909.mp3', '/sounds/sound08910.mp3', '/sounds/sound08911.mp3', '/sounds/sound08912.mp3', 
+'/sounds/sound08913.mp3', '/sounds/sound08914.mp3', '/sounds/sound08915.mp3', '/sounds/sound08916.mp3', 
+'/sounds/sound08917.mp3', '/sounds/sound08918.mp3', '/sounds/sound08919.mp3', '/sounds/sound08920.mp3', 
+'/sounds/sound08921.mp3', '/sounds/sound08922.mp3', '/sounds/sound08923.mp3', '/sounds/sound08924.mp3', 
+'/sounds/sound08925.mp3', '/sounds/sound08926.mp3', '/sounds/sound08927.mp3'
+)
+</script>

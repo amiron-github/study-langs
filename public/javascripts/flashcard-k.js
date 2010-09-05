@@ -104,7 +104,8 @@ tEl.removeClass("jp_play").removeClass("jp_pause");
 function flashcard(hash) {
 
 this.basicArray = hash['basic_array'];
-this.id = hash['id'];						
+this.id = hash['id'];
+						
 this.autoPlay = hash['auto_play'];			// default - true, option: false
 this.variantsNum = hash['variants_num'];	// default - 4
 this.randomOrder = hash['random_order'];    // default - true, option: false
@@ -439,14 +440,14 @@ var userAnswer = tObj.spellField.val();
 tObj.spellHolder.append('<span class="tp_helper" style="display: none;">'+userAnswer+'</span>');
 userAnswer = String( tObj.spellHolder.find("span.tp_helper").html() );
 
-userAnswer=userAnswer.replace(/[.,;-]/g, "").replace(/&nbsp;/g, " ").replace(/&nbsp/g, " ").replace(/\s\s+/g, " ").toUpperCase().replace(/Ё/g, 'Е');	
+userAnswer=userAnswer.replace(/[.,;]/g, "").replace(/-/g, " ").replace(/&nbsp;/g, " ").replace(/&nbsp/g, " ").replace(/\s\s+/g, " ").toUpperCase().replace(/Ё/g, 'Е');	
 userAnswer = $.trim(userAnswer);
 
 tObj.spellHolder.find("span.tp_helper").html(tObj.workArray[tObj.missedItems[activeEl]]['data'][0]);
 
 var tWord = String( tObj.spellHolder.find("span.tp_helper").text() )
 
-tWord=tWord.replace(/[.,;-?]/g, "").replace(/&nbsp;/g, " ").replace(/&nbsp/g, " ").replace(/\s\s+/g, " ").toUpperCase().replace(/Ё/g, 'Е');	
+tWord=tWord.replace(/[.,;?]/g, "").replace(/-/g, " ").replace(/&nbsp;/g, " ").replace(/&nbsp/g, " ").replace(/\s\s+/g, " ").toUpperCase().replace(/Ё/g, 'Е');	
 tWord = $.trim(tWord);
 tObj.spellHolder.find("span.tp_helper").remove();
 
@@ -461,6 +462,7 @@ tObj.container.find(".fl-spell-notes").hide();
 			},3000)
 			
 		} else {
+			//alert( userAnswer.toUpperCase() + ' - '+ tWord.toUpperCase())
 			tObj.container.find(".fl-wrong-spell").css({display: "block"});
 			setTimeout(function(){
 				tObj.spellHolder.find(".fl-task-spell").show();
@@ -486,6 +488,7 @@ tObj.cancelSpell = function() {
 		//tObj.spellHolder.find(".fl-spell-task").show();
 		tObj.spellHolder.find(".fl-task-spell").show();
 		tObj.spellHolder.find(".fl-spell-notes").hide();
+		tObj.spellHolder.find(".kb-show-wrapper").hide();
 		
 		
 	});

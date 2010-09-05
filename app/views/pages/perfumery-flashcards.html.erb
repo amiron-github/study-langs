@@ -1,0 +1,99 @@
+<% @page_title = 'Online Russian Flashcards: Perfumery' %>
+<% @page_meta = {'description' => "Learn Russian vocabulary topic Perfumery with online flashcards: words with audio samples, quizzes and spell practice"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<% content_for :special_js_css do %>
+<style type="text/css">
+h2.page {
+margin-bottom: 0px;
+font-size: 19pt;
+}
+</style>
+
+<%end%>
+<div class="hint_wrap">
+<div class="hint_button" style="float: right;">
+  <div class="hint">
+      <div class="hint_list">
+        <span class="hint_string">Links and Settings</span>
+      </div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+        <ul>
+            <li><a href="/perfumery.html">Perfumery</a></li>
+			<li><a href="/perfumery-test.html">Tests: Perfumery</a></li>
+        </ul>
+        <%= render :partial => 'down_accent' %>
+  </div>
+</div>
+</div>
+
+<h2 class="page">Flashcards: Perfumery</h2>
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="/vocabulary.html">Vocabulary</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="/perfumery.html">Perfumery</a>
+	<span class="int-arrow">--&gt;</span> Flashcards
+	</span>
+</h3>
+
+<div  id="fl1" style="min-height: 600px; text-align: center;">
+<%= render :partial => 'flashcard' %>
+</div><!-- end of fl1 -->
+
+<script type="text/javascript"> 
+	var fl1 = new flashcard( {
+		id: "fl1", 
+		random_order: false,
+		basic_array: [
+		
+['Бл<span class="acco">е</span>ск для губ ','Lip-gloss ','/sounds/sound09601.mp3','b<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>sk d<span class="sftv">l</span><span class="sfty">y</span>a g<span class="acct">oo</span>p '],
+['Дезодор<span class="acco">а</span>нт ','Deodorant ','/sounds/sound09602.mp3','dizadar<span class="acct">a</span>nt '],
+['Дух<span class="acco">и</span> ','Perfume ','/sounds/sound09603.mp3','dooh<span class="acct">i</span> '],
+['Ж<span class="acco">и</span>дкость для сн<span class="acco">я</span>тия л<span class="acco">а</span>ка ','Varnish remover ','/sounds/sound09604.mp3','j<span class="acct"><span class="ry">i</span></span>tka<span class="sftc">s</span><span class="sftc">t</span> d<span class="sftv">l</span><span class="sfty">y</span>a s<span class="sftv">n</span><span class="sfty">y</span><span class="acct">a</span>tiya l<span class="acct">a</span>ka '],
+['Каранд<span class="acco">а</span>ш для глаз ','Eyeliner ','/sounds/sound09605.mp3','karand<span class="acct">a</span>sh d<span class="sftv">l</span><span class="sfty">y</span>a gl<span class="acct">a</span>s '],
+['Каранд<span class="acco">а</span>ш для губ ','Lip pencil ','/sounds/sound09606.mp3','karand<span class="acct">a</span>sh d<span class="sftv">l</span><span class="sfty">y</span>a g<span class="acct">oo</span>p '],
+['Кр<span class="acco">а</span>ска для вол<span class="acco">о</span>с ','Hair-dye ','/sounds/sound09607.mp3','kr<span class="acct">a</span>ska d<span class="sftv">l</span><span class="sfty">y</span>a val<span class="acct">o</span>s '],
+['Крем ','Cream ','/sounds/sound09608.mp3','k<span class="sftv">r</span><span class="sfty">y</span><span class="acct">e</span>m '],
+['Крем (пена, гель) для брить<span class="acco">я</span> ','Shaving cream (foam, gel) ','/sounds/sound09609.mp3','k<span class="sftv">r</span><span class="sfty">y</span><span class="acct">e</span>m, <span class="sftv">p</span><span class="sfty">y</span><span class="acct">e</span>na, <span class="sftv">g</span><span class="sfty">y</span><span class="acct">e</span><span class="sftc">l</span> d<span class="sftv">l</span><span class="sfty">y</span>a bri<span class="sftc">t</span>y<span class="acct">a</span> '],
+['Крем для заг<span class="acco">а</span>ра ','Tanning cream ','/sounds/sound09610.mp3','k<span class="sftv">r</span><span class="sfty">y</span><span class="acct">e</span>m d<span class="sftv">l</span><span class="sfty">y</span>a zag<span class="acct">a</span>ra '],
+['Лак для вол<span class="acco">о</span>с ','Hair spray ','/sounds/sound09611.mp3','l<span class="acct">a</span>k d<span class="sftv">l</span><span class="sfty">y</span>a val<span class="acct">o</span>s '],
+['Лак для ногтей ','Nail polish ','/sounds/sound09612.mp3','l<span class="acct">a</span>k d<span class="sftv">l</span><span class="sfty">y</span>a nak<span class="sftv">t</span><span class="sfty">y</span><span class="acct">e</span>y '],
+['Лось<span class="acco">о</span>н ','Lotion ','/sounds/sound09613.mp3','la<span class="sftc">s</span>y<span class="acct">o</span>n '],
+['Лось<span class="acco">о</span>н п<span class="acco">о</span>сле брить<span class="acco">я</span> ','After shave lotion ','/sounds/sound09614.mp3','la<span class="sftc">s</span>y<span class="acct">o</span>n p<span class="acct">o</span>s<span class="sftv">l</span><span class="sfty">y</span>e bri<span class="sftc">t</span>y<span class="acct">a</span> '],
+['М<span class="acco">ы</span>ло ','Soap ','/sounds/sound09615.mp3','m<span class="acct"><span class="ry">i</span></span>la '],
+['П<span class="acco">и</span>лочка для ногт<span class="acco">е</span>й ','Fingernail file ','/sounds/sound09616.mp3','p<span class="acct">i</span>lachka d<span class="sftv">l</span><span class="sfty">y</span>a nak<span class="sftv">t</span><span class="sfty">y</span><span class="acct">e</span>y '],
+['Пом<span class="acco">а</span>да ','Lipstick ','/sounds/sound09617.mp3','pam<span class="acct">a</span>da '],
+['П<span class="acco">у</span>дра ','Loose powder ','/sounds/sound09618.mp3','p<span class="acct">oo</span>dra '],
+['Рум<span class="acco">я</span>на ','Powder blusher ','/sounds/sound09619.mp3','roo<span class="sftv">m</span><span class="sfty">y</span><span class="acct">a</span>na '],
+['Т<span class="acco">е</span>ни для век ','Eyeshadow ','/sounds/sound09620.mp3','<span class="sftv">t</span><span class="sfty">y</span><span class="acct">e</span>ni d<span class="sftv">l</span><span class="sfty">y</span>a <span class="sftv">v</span><span class="sfty">y</span><span class="acct">e</span>k '],
+['Тон<span class="acco">а</span>льный крем ','Make-up foundation ','/sounds/sound09621.mp3','tan<span class="acct">a</span><span class="sftc">l</span>n<span class="ry">i</span>y k<span class="sftv">r</span><span class="sfty">y</span><span class="acct">e</span>m '],
+['Тушь ','Mascara ','/sounds/sound09622.mp3','t<span class="acct">oo</span>sh '],
+['Шамп<span class="acco">у</span>нь ','Shampoo ','/sounds/sound09623.mp3','shamp<span class="acct">oo</span><span class="sftc">n</span> '],
+['У Вас есть дух<span class="acco">и</span> ф<span class="acco">и</span>рмы Кристи<i></i><span class="acco">а</span>н Ди<i></i><span class="acco">о</span>р? ','Have you any Christian Dior perfume (fragrances)? ','/sounds/sound09624.mp3','oo v<span class="acct">a</span>s y<span class="acct">e</span><span class="sftc">s</span><span class="sftc">t</span> dooh<span class="acct">i</span> f<span class="acct">i</span>rm<span class="ry">i</span> kri<span class="sftc">s</span>ti<span class="acct">a</span>n di<span class="acct">o</span>r? '],
+['Пок<span class="acco">а</span>жите, пож<span class="acco">а</span>луйста, ... ','Could you please show me ...? ','/sounds/sound09625.mp3','pakaj<span class="acct"><span class="ry">i</span></span>ti paj<span class="acct">a</span>loosta '],
+['Ск<span class="acco">о</span>лько ст<span class="acco">о</span><i></i>ят <span class="acco">э</span>ти дух<span class="acco">и</span>? ','How much does this perfume cost? ','/sounds/sound09626.mp3','sk<span class="acct">o</span><span class="sftc">l</span>ka st<span class="acct">o</span>yat <span class="acct">e</span>ti dooh<span class="acct">i</span>? '],
+['Ск<span class="acco">о</span>лько ст<span class="acco">о</span><i></i>ит <span class="acco">э</span>тот шамп<span class="acco">у</span>нь? ','How much does this shampoo cost? ','/sounds/sound09627.mp3','sk<span class="acct">o</span><span class="sftc">l</span>ka st<span class="acct">o</span>it <span class="acct">e</span>tat shamp<span class="acct">oo</span><span class="sftc">n</span>? ']
+		]
+		} )
+</script>
+
+
+<table class="voc-links voc-link-first voc-link-last" align="center" cellspacing="0"><tr>
+	<td class="voc-space">Check how you know this topic with our &nbsp;<a href="/perfumery-test.html">Lexical tests >></a></td>
+</tr></table>
+
+
+<script type="text/javascript">
+preloadFiles=new Array(
+'/sounds/sound09601.mp3', '/sounds/sound09602.mp3', '/sounds/sound09603.mp3', '/sounds/sound09604.mp3', 
+'/sounds/sound09605.mp3', '/sounds/sound09606.mp3', '/sounds/sound09607.mp3', '/sounds/sound09608.mp3', 
+'/sounds/sound09609.mp3', '/sounds/sound09610.mp3', '/sounds/sound09611.mp3', '/sounds/sound09612.mp3', 
+'/sounds/sound09613.mp3', '/sounds/sound09614.mp3', '/sounds/sound09615.mp3', '/sounds/sound09616.mp3', 
+'/sounds/sound09617.mp3', '/sounds/sound09618.mp3', '/sounds/sound09619.mp3', '/sounds/sound09620.mp3', 
+'/sounds/sound09621.mp3', '/sounds/sound09622.mp3', '/sounds/sound09623.mp3', '/sounds/sound09624.mp3', 
+'/sounds/sound09625.mp3', '/sounds/sound09626.mp3', '/sounds/sound09627.mp3'
+)
+</script>

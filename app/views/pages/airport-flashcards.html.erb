@@ -1,0 +1,96 @@
+<% @page_title = 'Online Russian Flashcards: Airport' %>
+<% @page_meta = {'description' => "Learn Russian vocabulary topic Airport with online flashcards: words with audio samples, quizzes and spell practice"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<% content_for :special_js_css do %>
+<style type="text/css">
+h2.page {
+margin-bottom: 0px;
+font-size: 19pt;
+}
+</style>
+
+<%end%>
+<div class="hint_wrap">
+<div class="hint_button" style="float: right;">
+  <div class="hint">
+      <div class="hint_list">
+        <span class="hint_string">Links and Settings</span>
+      </div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+        <ul>
+            <li><a href="/airport.html">Airport</a></li>
+			<li><a href="/airport-test.html">Tests: Airport</a></li>
+        </ul>
+        <%= render :partial => 'down_accent' %>
+  </div>
+</div>
+</div>
+
+<h2 class="page">Flashcards: Airport</h2>
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="/vocabulary.html">Vocabulary</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="/airport.html">Airport</a>
+	<span class="int-arrow">--&gt;</span> Flashcards
+	</span>
+</h3>
+
+<div  id="fl1" style="min-height: 600px; text-align: center;">
+<%= render :partial => 'flashcard' %>
+</div><!-- end of fl1 -->
+
+<script type="text/javascript"> 
+	var fl1 = new flashcard( {
+		id: "fl1", 
+		random_order: false,
+		basic_array: [
+		
+['Самолёт ','Plane ','/sounds/sound01301.mp3','sama<span class="sftv">l</span><span class="sfty">y</span><span class="acct">o</span>t '],
+['На борт<span class="acco">у</span> ','On board ','/sounds/sound01302.mp3','na bart<span class="acct">oo</span> '],
+['Взлёт ','Take-off ','/sounds/sound01303.mp3','vz<span class="sftv">l</span><span class="sfty">y</span><span class="acct">o</span>t '],
+['Полёт ','Flight ','/sounds/sound01304.mp3','pa<span class="sftv">l</span><span class="sfty">y</span><span class="acct">o</span>t '],
+['Пос<span class="acco">а</span>дка ','Landing ','/sounds/sound01305.mp3','pas<span class="acct">a</span>tka '],
+['Р<span class="acco">е</span>йс ','Flight ','/sounds/sound01306.mp3','<span class="sftv">r</span><span class="sfty">y</span><span class="acct">e</span>ys '],
+['Междунар<span class="acco">о</span>дный р<span class="acco">е</span>йс ','International flight ','/sounds/sound01307.mp3','mijdoonar<span class="acct">o</span>dn<span class="ry">i</span>y <span class="sftv">r</span><span class="sfty">y</span><span class="acct">e</span>ys '],
+['Отправл<span class="acco">е</span>ние ','Departure ','/sounds/sound01308.mp3','atprav<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>niye '],
+['Пункт назнач<span class="acco">е</span>ния ','Destination ','/sounds/sound01309.mp3','p<span class="acct">oo</span>nkt naznach<span class="acct">e</span>niya '],
+['Приб<span class="acco">ы</span>тие ','Arrival ','/sounds/sound01310.mp3','prib<span class="acct"><span class="ry">i</span></span>tiye '],
+['Зад<span class="acco">е</span>рживается ','Delayed ','/sounds/sound01311.mp3','za<span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span>rj<span class="ry">i</span>vaitsa '],
+['Отменён ','Cancelled ','/sounds/sound01312.mp3','atmi<span class="sftv">n</span><span class="sfty">y</span><span class="acct">o</span>n '],
+['Регистр<span class="acco">а</span>ция ','Check-in ','/sounds/sound01313.mp3','rigistr<span class="acct">a</span>ts<span class="ry">i</span>ya '],
+['М<span class="acco">е</span>сто регистр<span class="acco">а</span>ции ','Check-in desk ','/sounds/sound01314.mp3','<span class="sftv">m</span><span class="sfty">y</span><span class="acct">e</span>sta rigistr<span class="acct">a</span>ts<span class="ry">i</span>i '],
+['П<span class="acco">а</span>спортный контр<span class="acco">о</span>ль ','Passport control ','/sounds/sound01315.mp3','p<span class="acct">a</span>spartn<span class="ry">i</span>y kantr<span class="acct">o</span><span class="sftc">l</span> '],
+['Сл<span class="acco">у</span>жащий п<span class="acco">а</span>спортного контр<span class="acco">о</span>ля ','Passport control officer ','/sounds/sound01316.mp3','sl<span class="acct">oo</span>jaschiy p<span class="acct">a</span>spartnava kantr<span class="acct">o</span><span class="sftv">l</span><span class="sfty">y</span>a '],
+['Там<span class="acco">о</span>жня ','Customs ','/sounds/sound01317.mp3','tam<span class="acct">o</span>j<span class="sftv">n</span><span class="sfty">y</span>a '],
+['Там<span class="acco">о</span>женная деклар<span class="acco">а</span>ция ','Customs declaration ','/sounds/sound01318.mp3','tam<span class="acct">o</span>j<span class="ry">i</span>naya diklar<span class="acct">a</span>ts<span class="ry">i</span>ya '],
+['Баг<span class="acco">а</span>ж ','Luggage ','/sounds/sound01319.mp3','bag<span class="acct">a</span>sh '],
+['Ручн<span class="acco">о</span>й баг<span class="acco">а</span>ж ','Hand luggage ','/sounds/sound01320.mp3','roochn<span class="acct">o</span>y bag<span class="acct">a</span>sh '],
+['В<span class="acco">ы</span>дача багаж<span class="acco">а</span> ','Baggage claim area ','/sounds/sound01321.mp3','v<span class="acct"><span class="ry">i</span></span>dacha bagaj<span class="acct">a</span> '],
+['Ярл<span class="acco">ы</span>к к багажу ','Luggage tag ','/sounds/sound01322.mp3','yirl<span class="acct"><span class="ry">i</span></span>k k bagaj<span class="acct">oo</span> '],
+['Спр<span class="acco">а</span>вочная ','Information office ','/sounds/sound01323.mp3','spr<span class="acct">a</span>vachnaya '],
+['Вход ','Entrance ','/sounds/sound01324.mp3','fh<span class="acct">o</span>t '],
+['В<span class="acco">ы</span>ход ','Exit ','/sounds/sound01325.mp3','v<span class="acct"><span class="ry">i</span></span>hat ']
+		]
+		} )
+</script>
+
+
+<table class="voc-links voc-link-first voc-link-last" align="center" cellspacing="0"><tr>
+	<td class="voc-space">Check how you know this topic with our &nbsp;<a href="/airport-test.html">Lexical tests >></a></td>
+</tr></table>
+
+
+<script type="text/javascript">
+preloadFiles=new Array(
+'/sounds/sound01301.mp3', '/sounds/sound01302.mp3', '/sounds/sound01303.mp3', '/sounds/sound01304.mp3', 
+'/sounds/sound01305.mp3', '/sounds/sound01306.mp3', '/sounds/sound01307.mp3', '/sounds/sound01308.mp3', 
+'/sounds/sound01309.mp3', '/sounds/sound01310.mp3', '/sounds/sound01311.mp3', '/sounds/sound01312.mp3', 
+'/sounds/sound01313.mp3', '/sounds/sound01314.mp3', '/sounds/sound01315.mp3', '/sounds/sound01316.mp3', 
+'/sounds/sound01317.mp3', '/sounds/sound01318.mp3', '/sounds/sound01319.mp3', '/sounds/sound01320.mp3', 
+'/sounds/sound01321.mp3', '/sounds/sound01322.mp3', '/sounds/sound01323.mp3', '/sounds/sound01324.mp3', '/sounds/sound01325.mp3'
+)
+</script>

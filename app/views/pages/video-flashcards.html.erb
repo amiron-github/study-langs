@@ -1,0 +1,99 @@
+<% @page_title = 'Online Russian Flashcards: Audio, video and photo' %>
+<% @page_meta = {'description' => "Learn Russian vocabulary topic Audio, video and photo with online flashcards: words with audio samples, quizzes and spell practice"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<% content_for :special_js_css do %>
+<style type="text/css">
+h2.page {
+margin-bottom: 0px;
+font-size: 19pt;
+}
+</style>
+
+<%end%>
+<div class="hint_wrap">
+<div class="hint_button" style="float: right;">
+  <div class="hint">
+      <div class="hint_list">
+        <span class="hint_string">Links and Settings</span>
+      </div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+        <ul>
+            <li><a href="/video.html">Audio, video and photo</a></li>
+			<li><a href="/video-test.html">Tests: Audio, video and photo</a></li>
+        </ul>
+        <%= render :partial => 'down_accent' %>
+  </div>
+</div>
+</div>
+
+<h2 class="page">Flashcards: Audio, video and photo</h2>
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="/vocabulary.html">Vocabulary</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="/video.html">Audio, video and photo</a>
+	<span class="int-arrow">--&gt;</span> Flashcards
+	</span>
+</h3>
+
+<div  id="fl1" style="min-height: 600px; text-align: center;">
+<%= render :partial => 'flashcard' %>
+</div><!-- end of fl1 -->
+
+<script type="text/javascript"> 
+	var fl1 = new flashcard( {
+		id: "fl1", 
+		random_order: false,
+		basic_array: [
+		
+['CD-пл<span class="acco">е</span><i></i>ер ','CD player ','/sounds/sound09801.mp3','sid<span class="acct">i</span> pl<span class="acct">e</span>yer '],
+['DVD-пл<span class="acco">е</span><i></i>ер ','DVD player ','/sounds/sound09802.mp3','divid<span class="acct">i</span> pl<span class="acct">e</span>yer '],
+['MP3-пл<span class="acco">е</span><i></i>ер ','MP3 player ','/sounds/sound09803.mp3','empe tr<span class="acct">i</span> pl<span class="acct">e</span>yer '],
+['В<span class="acco">и</span>деоплеер ','Video player ','/sounds/sound09804.mp3','v<span class="acct">i</span>dio pl<span class="acct">e</span>yer '],
+['Дин<span class="acco">а</span>мики ','Loud speakers ','/sounds/sound09805.mp3','din<span class="acct">a</span>miki '],
+['Касс<span class="acco">е</span>тный видеомагнитоф<span class="acco">о</span>н ','VHS video recorder ','/sounds/sound09806.mp3','ka<span class="sftv">s</span><span class="sfty">y</span><span class="acct">e</span>tn<span class="ry">i</span>y vidiomagnitaf<span class="acct">o</span>n '],
+['Магнитоф<span class="acco">о</span>н ','Tape recorder ','/sounds/sound09807.mp3','magnitaf<span class="acct">o</span>n '],
+['На<span class="acco">у</span>шники ','Headphones ','/sounds/sound09808.mp3','na<span class="acct">oo</span>shniki '],
+['Пл<span class="acco">е</span><i></i>ер ','Walkman ','/sounds/sound09809.mp3','pl<span class="acct">e</span>yer '],
+['Пульт дистанци<i></i><span class="acco">о</span>нного управл<span class="acco">е</span>ния ','Remote control ','/sounds/sound09810.mp3','p<span class="acct">oo</span><span class="sftc">l</span>t distants<span class="ry">i</span><span class="acct">o</span>nnava ooprav<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>niya '],
+['Радиоприёмник ','Radio set ','/sounds/sound09811.mp3','radiopriy<span class="acct">o</span>mnik '],
+['Стереосист<span class="acco">е</span>ма ','Stereo system ','/sounds/sound09812.mp3','steriosi<span class="sftc">s</span><span class="sftv">t</span><span class="sfty">y</span><span class="acct">e</span>ma '],
+['Телев<span class="acco">и</span>зор ','Television set ','/sounds/sound09813.mp3','tiliv<span class="acct">i</span>zar '],
+['Аудиоокасс<span class="acco">е</span>та ','Audio cassette ','/sounds/sound09814.mp3','aoodioka<span class="sftv">s</span><span class="sfty">y</span><span class="acct">e</span>ta '],
+['Видеокасс<span class="acco">е</span>та ','Video cassette ','/sounds/sound09815.mp3','vidioka<span class="sftv">s</span><span class="sfty">y</span><span class="acct">e</span>ta '],
+['Диск ','Disk ','/sounds/sound09816.mp3','d<span class="acct">i</span>sk '],
+['Батар<span class="acco">е</span>йки ','Batteries ','/sounds/sound09817.mp3','bata<span class="sftv">r</span><span class="sfty">y</span><span class="acct">e</span>yki '],
+['Аккумул<span class="acco">я</span>торы ','Accumulators ','/sounds/sound09818.mp3','akoomoo<span class="sftv">l</span><span class="sfty">y</span><span class="acct">a</span>tary '],
+['Видеок<span class="acco">а</span>мера ','Video camera ','/sounds/sound09819.mp3','vidiok<span class="acct">a</span>mira '],
+['Фотоаппар<span class="acco">а</span>т ','Photo camera ','/sounds/sound09820.mp3','fataapar<span class="acct">a</span>t '],
+['Цифров<span class="acco">а</span><i></i>я видеок<span class="acco">а</span>мера ','Digital video camera ','/sounds/sound09821.mp3','ts<span class="ry">i</span>frav<span class="acct">a</span>ya vidiok<span class="acct">a</span>mira '],
+['Цифров<span class="acco">о</span>й фотоаппар<span class="acct">а</span>т ','Digital photo camera ','/sounds/sound09822.mp3','ts<span class="ry">i</span>frav<span class="acct">o</span>y fataapar<span class="acct">a</span>t '],
+['Всп<span class="acco">ы</span>шка ','Flash ','/sounds/sound09823.mp3','fsp<span class="acct"><span class="ry">i</span></span>shka '],
+['Плёнка ','Film ','/sounds/sound09824.mp3','p<span class="sftv">l</span><span class="sfty">y</span><span class="acct">o</span>nka '],
+['К<span class="acco">а</span>рта п<span class="acco">а</span>мяти ','Memory card ','/sounds/sound09825.mp3','k<span class="acct">a</span>rta p<span class="acct">a</span>miti '],
+['Фотогр<span class="acco">а</span>фия ','Photograph ','/sounds/sound09826.mp3','fatagr<span class="acct">a</span>fiya '],
+['Фотобум<span class="acco">а</span>га (гл<span class="acco">я</span>нцевая, м<span class="acco">а</span>товая) ','Photograph paper (glossy, matte) ','/sounds/sound09827.mp3','fotaboom<span class="acct">a</span>ga, g<span class="sftv">l</span><span class="sfty">y</span><span class="acct">a</span>nts<span class="ry">i</span>vaya, m<span class="acct">a</span>tavaya ']
+		]
+		} )
+</script>
+
+
+<table class="voc-links voc-link-first voc-link-last" align="center" cellspacing="0"><tr>
+	<td class="voc-space">Check how you know this topic with our &nbsp;<a href="/video-test.html">Lexical tests >></a></td>
+</tr></table>
+
+
+<script type="text/javascript">
+preloadFiles=new Array(
+'/sounds/sound09801.mp3', '/sounds/sound09802.mp3', '/sounds/sound09803.mp3', '/sounds/sound09804.mp3', 
+'/sounds/sound09805.mp3', '/sounds/sound09806.mp3', '/sounds/sound09807.mp3', '/sounds/sound09808.mp3', 
+'/sounds/sound09809.mp3', '/sounds/sound09810.mp3', '/sounds/sound09811.mp3', '/sounds/sound09812.mp3', 
+'/sounds/sound09813.mp3', '/sounds/sound09814.mp3', '/sounds/sound09815.mp3', '/sounds/sound09816.mp3', 
+'/sounds/sound09817.mp3', '/sounds/sound09818.mp3', '/sounds/sound09819.mp3', '/sounds/sound09820.mp3', 
+'/sounds/sound09821.mp3', '/sounds/sound09822.mp3', '/sounds/sound09823.mp3', '/sounds/sound09824.mp3', 
+'/sounds/sound09825.mp3', '/sounds/sound09826.mp3', '/sounds/sound09827.mp3'
+)
+</script>

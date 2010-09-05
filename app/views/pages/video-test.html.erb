@@ -1,61 +1,62 @@
-<% @page_title = 'Tests: Audio, video and photo' %>
-<% @page_meta = {'description' => ""} %>
+<% @page_title = 'Audio, video and photo :: Online Russian lexical tests' %>
+<% @page_meta = {'description' => "Learn Russian vocabulary topic Audio, video and photo with online lexical tests"} %>
 <% @with_rec = true %>
 <% @has_audio = true %>
 
-<% content_for :special_css do %>
-
-.quest  {
-width: 210px;
-}
-
-.variants  {
-width: 220px;
-}
-
-#t1 .variants  {
-width: 290px;
-}
-
-
-#t2 .quest {
-width: 220px;
-}
-
-
+<% content_for :special_js_css do %>
+<style type="text/css">
+h2.page {margin-bottom: 0px;font-size: 19pt;}
+</style>
 <% end %>
 
 <div class="hint_wrap">
 <div class="hint_button">
 	<div class="hint">
     	<div class="hint_list">
-    		<span class="hint_string">Recommended links</span>
+    		<span class="hint_string">Links and Settings</span>
     	</div>
     </div>
     <div class="sub_hint" style="display: none;">
     		<ul>
-     				<li><a href="video.html">Audio &amp; Video</a></li>
-     				<li><a href="video-exercise.html"> Exercises:  Audio &amp; Video</a></li>
-
+     				<li><a href="/video.html">Audio, video and photo</a></li>
+					<li><a href="/video-flashcards.html"> Flashcards: Audio, video and photo</a></li>
     		</ul>
+			<%= render :partial => 'preload_option' %>
 	</div>
 </div>
 </div>
 
+<h2 class="page">Tests:  Audio, video and photo</h2>
 
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="/vocabulary.html">Vocabulary</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="/video.html">Audio, video and photo</a>
+	<span class="int-arrow">--&gt;</span> Tests
+	</span>
+</h3>
 
-<h2 class="page">Audio, video and photo <br.> (tests)</h2>
+<div class="l-test-container">
 
-<p class="task">Before completing the following tests, please revise the topic <a title="Audio, video and photo" href="video.html">Audio, video and photo</a></p>
-<hr/>
-<br/>
-<h3>Test 1</h3>
-<p class="task">Listen to the phrase and сhoose the corresponding Russian expression.</p>
+<h3 class="test-task">Test 1. Listen to the Russian phrase and find it in the list.
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Hide test</span><span class="lt-sh">Show test</span></a>
+</h3>
 
-<div id="t1">
-<script type="text/javascript">
-var t1 = new Test({dict: [
+<div id="ch1" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => 'lexical_test' %>
+</div>
+</div><!-- end of lt-holder -->
 
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		test_id: "v0227010.1",
+		quest_num: 10,
+		variants_num: 5,
+		quest_type: 'audio',
+		basic_array: [
 ['sounds/sound09801.mp3','CD-плеер'],['sounds/sound09802.mp3','DVD-плеер'],['sounds/sound09803.mp3','MP3-плеер'],['sounds/sound09804.mp3','видеоплеер'],
 ['sounds/sound09805.mp3','динамики'],['sounds/sound09806.mp3','кассетный видеомагнитофон'],['sounds/sound09807.mp3','магнитофон'],['sounds/sound09808.mp3','наушники'],
 ['sounds/sound09809.mp3','плеер'],['sounds/sound09810.mp3','пульт дистанционного управления'],['sounds/sound09811.mp3','радиоприёмник'],['sounds/sound09812.mp3','стереосистема'],
@@ -64,18 +65,26 @@ var t1 = new Test({dict: [
 ['sounds/sound09821.mp3','цифровая видеокамера'],['sounds/sound09822.mp3','цифровой фотоаппарат'],['sounds/sound09823.mp3','вспышка'],['sounds/sound09824.mp3','плёнка'],
 ['sounds/sound09825.mp3','карта памяти'],['sounds/sound09826.mp3','фотография'],['sounds/sound09827.mp3','фотобумага']
 
-
-],hide: 'di1',id:'t1', type: 'audio', how_questions: 8, how_show: 2}, 'v0227010.1');
+		]
+		} )
 </script>
+
+<h3 class="test-task">Test 2. Read the Russian phrase and find its English equivalent.
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Hide test</span><span class="lt-sh">Show test</span></a>
+</h3>
+
+<div id="ch2" class="lt-holder">
+<div class="lt-spacer">
+<%= render :partial => 'lexical_test' %>
 </div>
-
-<h3>Test 2</h3>
-<p class="task">Read the Russian phrase and choose the corresponding English expression.</p>
-
-<div id="t2">
-<script type="text/javascript">
-var t2 = new Test({dict: [
-
+</div><!-- end of lt-holder -->
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		test_id: "v0227020.2",
+		quest_num: 10,
+		variants_num: 5,
+		basic_array: [
 ['CD-плеер','CD player'],['DVD-плеер','DVD player'],['MP3-плеер','MP3 player'],['видеоплеер ','video player'],
 ['динамики','loud speakers'],['кассетный видеомагнитофон','VHS video recorder'],['магнитофон','tape recorder'],['наушники','headphones'],
 ['плеер','walkman'],['пульт дистанционного управления','remote control'],['радиоприёмник','radio set'],['стереосистема','stereo system'],
@@ -83,18 +92,30 @@ var t2 = new Test({dict: [
 ['батарейки','batteries'],['аккумуляторы','accumulators'],['видеокамера','video camera'],['фотоаппарат','photo camera'],
 ['цифровая видеокамера','digital video camera'],['цифровой фотоаппарат','digital photo camera '],['вспышка','flash'],['плёнка','film'],
 ['карта памяти','memory card'],['фотография','photograph'],['фотобумага','photograph paper']
-
-], hide:'di2',id:'t2',type: 'text', how_questions: 8, how_show: 2}, 'v0227020.2');
+		]
+		} )
 </script>
+
+<h3 class="test-task">Test 3. 
+Listen to the phrase and find its translation into English.
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Hide test</span><span class="lt-sh">Show test</span></a>
+</h3>
+
+<div id="ch3" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => 'lexical_test' %>
 </div>
+</div><!-- end of lt-holder -->
 
-<h3>Test 3</h3>
-<p class="task">Listen to the Russian phrases and сhoose their translation into English.</p>
-
-<div id="t3">
-<script type="text/javascript">
-var t3 = new Test({dict: [
-
+<script type="text/javascript"> 
+	var ch3 = new ch_exercise( {
+		id: "ch3", 
+		test_id: "v0227030.3",
+		quest_num: 10,
+		variants_num: 5,
+		quest_type: 'audio',
+		basic_array: [
+		
 ['sounds/sound09801.mp3','CD player'],['sounds/sound09802.mp3','DVD player'],['sounds/sound09803.mp3','MP3 player'],['sounds/sound09804.mp3','video player'],
 ['sounds/sound09805.mp3','loud speakers'],['sounds/sound09806.mp3','VHS video recorder'],['sounds/sound09807.mp3','tape recorder'],['sounds/sound09808.mp3','headphones'],
 ['sounds/sound09809.mp3','walkman'],['sounds/sound09810.mp3','remote control'],['sounds/sound09811.mp3','radio set'],['sounds/sound09812.mp3','stereo system'],
@@ -103,11 +124,19 @@ var t3 = new Test({dict: [
 ['sounds/sound09821.mp3','digital video camera'],['sounds/sound09822.mp3','digital photo camera'],['sounds/sound09823.mp3','flash'],['sounds/sound09824.mp3','film'],
 ['sounds/sound09825.mp3','memory card'],['sounds/sound09826.mp3','photograph'],['sounds/sound09827.mp3','photograph paper']
 
-
-],hide: 'di3',id:'t3',type: 'audio', how_questions: 8, how_show: 2}, 'v0227030.3');
+		]
+		} )
 </script>
-</div>
 
+<h3 class="test-task test-task-final" style="text-align: center">Review the topic &nbsp;&nbsp;&nbsp;&nbsp;<a href="/video.html">Audio, video and photo >></a></h3>
+
+<script type="text/javascript">
+preloadFiles=new Array(
+
+)
+</script>
+
+</div><!-- end of lt-container -->
 
 <script type="text/javascript">
 currentSection="words";

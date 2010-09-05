@@ -112,7 +112,8 @@ function ex_Jplayer(link,el,notPlay) {
 function ch_exercise(hash) {
 
 this.basicArray = hash['basic_array'];
-this.id = hash['id'];						
+this.id = hash['id'];			
+this.testID = hash['test_id'];			
 this.autoPlay = hash['auto_play'];			// default - true, option: false
 this.variantsNum = hash['variants_num'];	// default - 4
 this.randomOrder = hash['random_order'];    // default - true, option: false
@@ -495,6 +496,12 @@ this.gotoEnd = function() {
 		ex_Jplayer('/sounds/yes.mp3', tObj.audioHolder.get(0),1);
 		exJpForce = false;
 	}
+
+	var totalTasks = tObj.questNum;
+	var tID = tObj.testID;
+	var correctNum = tObj.correctAswersNum;
+	alert(tID +" "+totalTasks+" "+correctNum);
+	if (tID != undefined) sendResults(tID, totalTasks, correctNum);
 }
 
 

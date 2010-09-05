@@ -1,87 +1,128 @@
-<% @page_title = 'Tests: Dairy produce and fats' %>
-<% @page_meta = {'description' => ""} %>
+<% @page_title = 'Dairy produce and fats :: Online Russian lexical tests' %>
+<% @page_meta = {'description' => "Learn Russian vocabulary topic Dairy produce and fats with online lexical tests"} %>
 <% @with_rec = true %>
 <% @has_audio = true %>
 
-<% content_for :special_css do %>
-.quest  {
-width: 210px;
-}
-.variants  {
-width: 220px;
-}
-#t2 .quest {
-width: 220px;
-}
+<% content_for :special_js_css do %>
+<style type="text/css">
+h2.page {margin-bottom: 0px;font-size: 19pt;}
+</style>
 <% end %>
 
 <div class="hint_wrap">
 <div class="hint_button">
 	<div class="hint">
     	<div class="hint_list">
-    		<span class="hint_string">Recommended links</span>
+    		<span class="hint_string">Links and Settings</span>
     	</div>
     </div>
     <div class="sub_hint" style="display: none;">
     		<ul>
-     				<li><a href="dairy.html">Dairy produce</a></li>
-     				<li><a href="dairy-exercise.html"> Exercises: Dairy produce</a></li>
-
+     				<li><a href="/dairy.html">Dairy produce</a></li>
+					<li><a href="/dairy-flashcards.html"> Flashcards: Dairy produce</a></li>
     		</ul>
+			<%= render :partial => 'preload_option' %>
 	</div>
 </div>
 </div>
 
-<h2 class="page">Dairy produce and fats (tests)</h2>
+<h2 class="page">Tests:  Dairy produce and fats</h2>
 
-<p class="task">Before completing the following tests, please revise the topic <a title="Dairy produce and fats" href="dairy.html">Dairy produce and fats</a></p>
-<hr/>
-<br/>
-<h3>Test 1</h3>
-<p class="task">Listen to the phrase and сhoose the corresponding Russian expression.</p>
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="/vocabulary.html">Vocabulary</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="/dairy.html">Dairy produce and fats</a>
+	<span class="int-arrow">--&gt;</span> Tests
+	</span>
+</h3>
 
-<div id="t1">
-<script type="text/javascript">
-var t1 = new Test({dict: [
+<div class="l-test-container">
 
+<h3 class="test-task">Test 1. Listen to the Russian phrase and find it in the list.
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Hide test</span><span class="lt-sh">Show test</span></a>
+</h3>
+
+<div id="ch1" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => 'lexical_test' %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		test_id: "v0215010.1",
+		quest_num: 10,
+		variants_num: 5,
+		quest_type: 'audio',
+		basic_array: [
 ['sounds/sound08501.mp3','молоко'],['sounds/sound08502.mp3','масло'],['sounds/sound08503.mp3','сливки'],['sounds/sound08504.mp3','творог'],
 ['sounds/sound08505.mp3','простокваша'],['sounds/sound08506.mp3','сметана'],['sounds/sound08507.mp3','кефир'],['sounds/sound08508.mp3','йогурт'],
 ['sounds/sound08509.mp3','сыр'],['sounds/sound08510.mp3','плавленный сыр']
-
-],hide: 'di1',id:'t1', type: 'audio', how_questions: 8, how_show: 2}, 'v0215010.1');
+		]
+		} )
 </script>
+
+<h3 class="test-task">Test 2. Read the Russian phrase and find its English equivalent.
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Hide test</span><span class="lt-sh">Show test</span></a>
+</h3>
+
+<div id="ch2" class="lt-holder">
+<div class="lt-spacer">
+<%= render :partial => 'lexical_test' %>
 </div>
-
-<h3>Test 2</h3>
-<p class="task">Read the Russian phrase and choose the corresponding English expression.</p>
-
-<div id="t2">
-<script type="text/javascript">
-var t2 = new Test({dict: [
-
+</div><!-- end of lt-holder -->
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		test_id: "v0215020.2",
+		quest_num: 10,
+		variants_num: 5,
+		basic_array: [
 ['молоко','milk'],['масло','butter'],['сливки','cream'],['творог','curds'],
 ['простокваша','sour milk'],['сметана','sour cream'],['кефир','youghurt, kefir'],['йогурт','yoghurt'],
 ['сыр','cheese'],['плавленный сыр','cream cheese spread']
-
-], hide:'di2',id:'t2',type: 'text', how_questions: 8, how_show: 2}, 'v0215020.2');
+		]
+		} )
 </script>
+
+<h3 class="test-task">Test 3. 
+Listen to the phrase and find its translation into English.
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Hide test</span><span class="lt-sh">Show test</span></a>
+</h3>
+
+<div id="ch3" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => 'lexical_test' %>
 </div>
+</div><!-- end of lt-holder -->
 
-<h3>Test 3</h3>
-<p class="task">Listen to the Russian phrases and сhoose their translation into English.</p>
-
-<div id="t3">
-<script type="text/javascript">
-var t3 = new Test({dict: [
-
+<script type="text/javascript"> 
+	var ch3 = new ch_exercise( {
+		id: "ch3", 
+		test_id: "v0215030.3",
+		quest_num: 10,
+		variants_num: 5,
+		quest_type: 'audio',
+		basic_array: [
+		
 ['sounds/sound08501.mp3','milk'],['sounds/sound08502.mp3','butter'],['sounds/sound08503.mp3','cream'],['sounds/sound08504.mp3','curds'],
 ['sounds/sound08505.mp3','sour milk'],['sounds/sound08506.mp3','sour cream'],['sounds/sound08507.mp3','youghurt, kefir'],['sounds/sound08508.mp3','yoghurt'],
 ['sounds/sound08509.mp3','cheese'],['sounds/sound08510.mp3','cream cheese spread']
-
-
-],hide: 'di3',id:'t3',type: 'audio', how_questions: 8, how_show: 2}, 'v0215030.3');
+		]
+		} )
 </script>
-</div>
+
+<h3 class="test-task test-task-final" style="text-align: center">Review the topic &nbsp;&nbsp;&nbsp;&nbsp;<a href="/dairy.html">Dairy produce and fats >></a></h3>
+
+<script type="text/javascript">
+preloadFiles=new Array(
+
+)
+</script>
+
+</div><!-- end of lt-container -->
 
 <script type="text/javascript">
 currentSection="words";
