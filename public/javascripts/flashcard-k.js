@@ -440,14 +440,14 @@ var userAnswer = tObj.spellField.val();
 tObj.spellHolder.append('<span class="tp_helper" style="display: none;">'+userAnswer+'</span>');
 userAnswer = String( tObj.spellHolder.find("span.tp_helper").html() );
 
-userAnswer=userAnswer.replace(/[.,;]/g, "").replace(/-/g, " ").replace(/&nbsp;/g, " ").replace(/&nbsp/g, " ").replace(/\s\s+/g, " ").toUpperCase().replace(/Ё/g, 'Е');	
+userAnswer=userAnswer.replace(/[.,;?!]/g, "").replace(/-/g, " ").replace(/&nbsp;/g, " ").replace(/&nbsp/g, " ").replace(/\s\s+/g, " ").toUpperCase().replace(/Ё/g, 'Е');	
 userAnswer = $.trim(userAnswer);
 
 tObj.spellHolder.find("span.tp_helper").html(tObj.workArray[tObj.missedItems[activeEl]]['data'][0]);
 
 var tWord = String( tObj.spellHolder.find("span.tp_helper").text() )
 
-tWord=tWord.replace(/[.,;?]/g, "").replace(/-/g, " ").replace(/&nbsp;/g, " ").replace(/&nbsp/g, " ").replace(/\s\s+/g, " ").toUpperCase().replace(/Ё/g, 'Е');	
+tWord=tWord.replace(/[.,;?!]/g, "").replace(/-/g, " ").replace(/&nbsp;/g, " ").replace(/&nbsp/g, " ").replace(/\s\s+/g, " ").toUpperCase().replace(/Ё/g, 'Е');	
 tWord = $.trim(tWord);
 tObj.spellHolder.find("span.tp_helper").remove();
 

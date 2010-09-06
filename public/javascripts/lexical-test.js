@@ -500,7 +500,7 @@ this.gotoEnd = function() {
 	var totalTasks = tObj.questNum;
 	var tID = tObj.testID;
 	var correctNum = tObj.correctAswersNum;
-	alert(tID +" "+totalTasks+" "+correctNum);
+	//alert(tID +" "+totalTasks+" "+correctNum);
 	if (tID != undefined) sendResults(tID, totalTasks, correctNum);
 }
 
