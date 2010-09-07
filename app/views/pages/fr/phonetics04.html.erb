@@ -1,0 +1,596 @@
+<% @page_title = 'Online Phonetics Course: the most difficult Russian sounds' %>
+<% @page_meta = {'description' => "Online lesson to train the pronunciation of the most difficult Russian sounds"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+
+<% content_for :special_js_css do %>
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'jquery.tablesorter.min.js' %>
+<%= javascript_include_tag 'alphabet-exercises' %>
+
+<%= stylesheet_link_tag 'alphabet-exercises' %>
+<style type="text/css">
+h2.page {margin-bottom: 0px;}
+.es-words-list td {padding: 10px 15px; text-align: left;}
+.es-words-list {margin: 0}
+.es-ex-final div {padding: 20px 15px;}
+#ch2 .es-ex-string-wrapper div.jp_control {
+margin: 10px auto 0;
+}
+
+#ch2 .es-ex-string-wrapper div.written {
+color: #111;
+font-size: 14px;
+font-weight: bold;
+}
+
+
+</style>
+<% end %>
+
+
+
+<div class="hint_wrap">
+<div class="hint_button" style="float: right">
+  <div class="hint">
+      <div class="hint_list">
+        <span class="hint_string">Links and Settings</span>
+      </div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+        <ul>
+            <li><a href="phonetics-course.html" >Phonetics course</a></li>
+            <li><a href="phonetics01.html">Vowels</a></li>
+            <li><a href="phonetics02.html" >Hard consonants</a></li>
+            <li><a href="phonetics03.html" >Soft consonants</a></li>
+        </ul>
+        <%= render :partial => 'preload_option' %>
+  </div>
+</div>
+</div>
+
+<h2 class="page">Leçon 4. Les sons les plus difficiles</h2>
+
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="pronunciation.html">Phonétique russe</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="phonetics-course.html">Cours de phonétique </a>
+	<span class="int-arrow">--&gt;</span> Consonnes molles
+	</span>
+</h3>
+
+<p>
+Cette leçon porte sur les consonnes et les voyelles russes qui ont peu de traits communs avec les sons français et présentent la plus grande difficulté pour ceux qui apprennent le russe. 
+</p>
+<br><br><br>
+
+<h3 class="es-task-in">Exercice 1. Ecoutez et répétez les sons et les syllabes</h3>
+
+
+<table class="es-words-list" cellspacing="1">
+	<col width="30">
+	<col width="450">
+	<thead>
+		<tr>
+			<th class="{sorter: false}">Son</th>
+			<th class="{sorter: false}">Transcription</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/phonetic/soundp040001.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				<strong>[<s>i</s>] </strong>
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/phonetic/soundp040002.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				[p<s>i</s> – b<s>i</s>, f<s>i</s> – v<s>i</s>, t<s>i</s> – d<s>i</s>, s<s>i</s> – z<s>i</s>, k<s>i</s> – g<s>i</s>, m<s>i</s> – n<s>i</s>]
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/phonetic/soundp040003.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				[pi – p<s>i</s>, bi – b<s>i</s>,  vi – v<s>i</s>, ti – t<s>i</s>, di – d<s>i</s>, si – s<s>i</s>, zi – z<s>i</s>, ki – k<s>i</s>, gi – g<s>i</s>, mi – m<s>i</s>, ni – n<s>i</s>]
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/phonetic/soundp040004.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				[pou – p<s>i</s>, bou – b<s>i</s>, fou – f<s>i</s>, vou – v<s>i</s>, tou – t<s>i</s>, dou – d<s>i</s>, sou – s<s>i</s>, zou – z<s>i</s>, kou – k<s>i</s>, gou – g<s>i</s>, mou – m<s>i</s>, nou – n<s>i</s>]
+			</td>
+		</tr>
+	</tbody>
+</table>
+<br>
+<hr>
+<br>
+
+<table class="es-words-list" cellspacing="1">
+	<col width="30">
+	<col width="450">
+	<thead>
+		<tr>
+			<th class="{sorter: false}">Son</th>
+			<th class="{sorter: false}">Transcription</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/phonetic/soundp040005.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				<strong>[sch] </strong>
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/phonetic/soundp040006.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				[scha – scho – schou – sche – schi]
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/phonetic/soundp040007.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				[ascha – oscho – ouschou – esche – ischi]
+			</td>
+		</tr>
+	</tbody>
+</table>
+<br>
+<hr>
+<br>
+
+<table class="es-words-list" cellspacing="1">
+	<col width="30">
+	<col width="450">
+	<thead>
+		<tr>
+			<th class="{sorter: false}">Son</th>
+			<th class="{sorter: false}">Transcription</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/phonetic/soundp040008.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				<strong>[ts] </strong>
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/phonetic/soundp040009.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				[tsa – tso – tsou – tse – ts]
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/phonetic/soundp040010.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				[atsa – otso – outsou – etse – its]
+			</td>
+		</tr>
+	</tbody>
+</table>
+<br>
+<hr>
+<br>
+
+<table class="es-words-list" cellspacing="1">
+	<col width="30">
+	<col width="450">
+	<thead>
+		<tr>
+			<th class="{sorter: false}">Son</th>
+			<th class="{sorter: false}">Transcription</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/phonetic/soundp020052.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				<strong>[h]  </strong> 
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/phonetic/soundp020053.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				[ha – ho – hou – he] 
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/phonetic/soundp020054.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				[ah – oh – ouh – eh] 
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/phonetic/soundp030043.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				<strong>[h'] </strong>
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/phonetic/soundp030044.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				[ha – hi, ha – h'a, ho – h'o, hou – h'ou, he – h'e]
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/phonetic/soundp030045.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				[ha – hi – h'yi, ha – h'a – h'ya, ho – h'o – h'yo, ho – h'ou – h'you]
+			</td>
+		</tr>
+	</tbody>
+</table>
+<br>
+<hr>
+<br>
+<table class="es-words-list" cellspacing="1">
+	<col width="30">
+	<col width="450">
+	<thead>
+		<tr>
+			<th class="{sorter: false}">Son</th>
+			<th class="{sorter: false}">Transcription</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/phonetic/soundp040011.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				<strong>[r] </strong>
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/phonetic/soundp040012.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				[ra – ro – rou – re]
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/phonetic/soundp040013.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				[ar – or – our – er – ir]
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/phonetic/soundp040014.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				[ara – oro – ourou – ere ]
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/phonetic/soundp040015.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				[pra – bra, fra – vra, tra – dra, sra – zra, kra – gra, mra – nra]
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/phonetic/soundp040016.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				<strong>[r'] </strong>
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/phonetic/soundp040017.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				[r'a – r'o – r'ou – r'e – ri]
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/phonetic/soundp040018.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				[ar' – or' – our' – er' – ir']
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/phonetic/soundp040019.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				[ar'a – or'o – our'ou – er'e – iri]
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/phonetic/soundp040020.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				[pri – bri, fri – vri, tri – dri, sri – zri, kri – gri, mri – nri]
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/phonetic/soundp040021.mp3', this)"></div>
+			</td>
+			<td class="wl-eng">
+				[pr'a – br'a, fr'a – vr'a, tr'a – dr'a, sr'a – zr'a, kr'a – gr'a, mr'a – nr'a]
+			</td>
+		</tr>
+	</tbody>
+</table>
+<br>
+<hr>
+<br>
+<br><br>
+
+<h3 class="es-task-in">Exercice 2. Ecoutez et répétez les mots russes suivants.</h3>
+
+<p>
+<span class="sound" onclick="playSound('phonetic/soundp040101.mp3')">[frants<span class="ry">i</span>ya] <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+
+<span class="sound" onclick="playSound('phonetic/soundp040102.mp3')">[madrit] <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('phonetic/soundp040104.mp3')">[sara] <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('phonetic/soundp040105.mp3')">[richart] <span class="play_tip">&nbsp; &nbsp;</span></span>,  
+<span class="sound" onclick="playSound('phonetic/soundp040107.mp3')">[mark] <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+
+<span class="sound" onclick="playSound('phonetic/soundp040108.mp3')">[alj<span class="ry">i</span>r] <span class="play_tip">&nbsp; &nbsp;</span></span>
+</p>
+
+<p style="line-height: 17pt;">
+<span class="sound" onclick="playSound('phonetic/soundp040109.mp3')">[tsezar'] <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('phonetic/soundp040110.mp3')">[tsar'] <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('phonetic/soundp040111.mp3')">[ts<span class="ry">i</span>ment] <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+
+<span class="sound" onclick="playSound('phonetic/soundp040112.mp3')">[ts<span class="ry">i</span>klon] <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('phonetic/soundp040113.mp3')">[schit] <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('phonetic/soundp040114.mp3')">[mooschina] <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('phonetic/soundp040115.mp3')">[schas't'ye] <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('phonetic/soundp040116.mp3')">[schochik] <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+
+<span class="sound" onclick="playSound('phonetic/soundp040117.mp3')">[schot] <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('phonetic/soundp040118.mp3')">[stants<span class="ry">i</span>ya] <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('phonetic/soundp040119.mp3')">[ts<span class="ry">i</span>kl] <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('phonetic/soundp040120.mp3')">[ts<span class="ry">i</span>lindr] <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+
+<span class="sound" onclick="playSound('phonetic/soundp040121.mp3')">[ts<span class="ry">i</span>rk] <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('phonetic/soundp040122.mp3')">[ts<span class="ry">i</span>fra] <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('phonetic/soundp040123.mp3')">[j<span class="ry">i</span>raf] <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('phonetic/soundp040124.mp3')">[ch<span class="ry">i</span>mpanze] <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+
+<span class="sound" onclick="playSound('phonetic/soundp040125.mp3')">[mach<span class="ry">i</span>na] <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('phonetic/soundp040126.mp3')">[sooch<span class="ry">i</span>] <span class="play_tip">&nbsp; &nbsp;</span></span>,
+<span class="sound" onclick="playSound('phonetic/soundp040127.mp3')">[kros] <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('phonetic/soundp040128.mp3')">[tsentr] <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('phonetic/soundp040129.mp3')">[sport] <span class="play_tip">&nbsp; &nbsp;</span></span>,
+
+<span class="sound" onclick="playSound('phonetic/soundp030221.mp3')">[himiya] <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('phonetic/soundp030248.mp3')">[hit] <span class="play_tip">&nbsp; &nbsp;</span></span>,  
+
+<span class="sound" onclick="playSound('phonetic/soundp040130.mp3')">[sort] <span class="play_tip">&nbsp; &nbsp;</span></span>,  
+<span class="sound" onclick="playSound('phonetic/soundp040131.mp3')">[port] <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('phonetic/soundp040132.mp3')">[kours] <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('phonetic/soundp040133.mp3')">[mer] <span class="play_tip">&nbsp; &nbsp;</span></span>,  
+<span class="sound" onclick="playSound('phonetic/soundp040135.mp3')">[froukt] <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('phonetic/soundp040136.mp3')">[toor] <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+
+<span class="sound" onclick="playSound('phonetic/soundp040137.mp3')">[raman] <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('phonetic/soundp040138.mp3')">[robat] <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('phonetic/soundp040139.mp3')">[pradookt] <span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('phonetic/soundp040140.mp3')">[garash] <span class="play_tip">&nbsp; &nbsp;</span></span>
+</p>
+<br><br><br>
+<h3 class="es-task-in">Exercice 3. Ecoutez et trouvez la traduction:</h3>
+
+<div id="ch1" class="es-ex-wrapper">
+<div class="es-ex-alert-container"><div class="es-ex-alert-rt"><div class="es-ex-alert"> &nbsp;</div></div></div>
+<div class="es-ex-top">
+	<div class="es-ex-autoplay-wrapper"><input class="es-ex-autoplay" type="checkbox" /> <span>Continuer automatiquement</span> </div>
+	<div class="es-ex-final"></div>
+
+</div>
+<table class="es-ex-content" cellspacing="0">
+	<tr>
+		<td class="es-ex-quest" width="40%" valign="middle" align="center">
+			<div class="es-ex-audio-wrapper">
+				<table><tr><td style="height: 140px;"><div class="es-ex-audio-holder"><div class="es-ex-audio"></div></div></td></tr></table>
+			</div>
+			<div class="es-ex-string-holder">
+				<table><tr><td class="es-ex-string-wrapper" style="height: 150px;">&nbsp;</td></tr></table>
+			</div>
+
+		</td>
+		<td class="es-ex-tasks" valign="top">
+			<div class="yn-answer-type">
+					<p class="es-yn-task-p">This sound corresponds to the letter</p>
+					<div class="es-yn-variant-wrapper"><div class="es-yn-variant yn-trans">&nbsp;</div></div>
+					<div class="es-ex-buttons yn-btns">
+						<input type="button" class="es-ex-es-btn yn-yes" value="Oui"/> &nbsp;&nbsp;&nbsp;&nbsp; <input value="Non" type="button"  class="es-ex-es-btn yn-no"/>
+
+					</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td><div class="es-ex-bottom"><input type="button" class="es-ex-next" value="Suivant" style="font-size: 12px; visibility: hidden;"></div></td>
+		<td></td>
+	</tr>
+</table>
+
+<div class="es-ex-info-container">
+	<table cellspacing="0" align="center">
+		<tr>
+			<td style="padding-left: 20px;"><div class="es-ex-info"> &nbsp;  </div></td>
+			<td><div class="es-ex-buttons"><input type="button" class="es-ex-es-btn es-ex-start" value="RESTART"/></div></td>
+		</tr>
+	</table>
+</div>
+</div>
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		test_id: "p0104030.3", 
+		quest_num: 10,
+		quest_type: 'audio',
+		texts: ['Correct','Incorrect','Suivant','Résultat','Encore','Nombre de questions','Réponses corrects','Résultat'],
+		basic_array: [
+['/sounds/phonetic/soundp040101.mp3','France'],
+['/sounds/phonetic/soundp040102.mp3','Madrid'],
+['/sounds/phonetic/soundp040109.mp3','César'],
+['/sounds/phonetic/soundp040110.mp3','tzar'],
+['/sounds/phonetic/soundp040111.mp3','ciment'],
+['/sounds/phonetic/soundp040112.mp3','cyclone'],
+['/sounds/phonetic/soundp040118.mp3','station'],
+['/sounds/phonetic/soundp040119.mp3','cycle'],
+['/sounds/phonetic/soundp040120.mp3','cylindre '],
+['/sounds/phonetic/soundp040121.mp3','cirque'],
+['/sounds/phonetic/soundp040123.mp3','girafe'],
+['/sounds/phonetic/soundp040124.mp3','chimpanzé'],
+['/sounds/phonetic/soundp040125.mp3','machine'],
+['/sounds/phonetic/soundp040126.mp3','sushi'],
+['/sounds/phonetic/soundp040128.mp3','centre'],
+['/sounds/phonetic/soundp040129.mp3','sport'],
+['/sounds/phonetic/soundp040132.mp3','cours'],
+['/sounds/phonetic/soundp040135.mp3','fruit'],
+['/sounds/phonetic/soundp040137.mp3','romance'],
+['/sounds/phonetic/soundp040138.mp3','robot'],
+['/sounds/phonetic/soundp040139.mp3','produit'],
+['/sounds/phonetic/soundp040140.mp3','garage']
+
+		]
+		} )
+</script>
+	
+
+<br><br><br>
+
+<h3 class="es-task-in">Exercice 4. Lisez, écoutez et trouvez la traduction:</h3>
+
+<div id="ch2" class="es-ex-wrapper">
+<div class="es-ex-alert-container"><div class="es-ex-alert-rt"><div class="es-ex-alert"> &nbsp;</div></div></div>
+<div class="es-ex-top">
+	<div class="es-ex-autoplay-wrapper"><input class="es-ex-autoplay" type="checkbox" /> <span>Continuer automatiquement</span> </div>
+	<div class="es-ex-final"></div>
+
+</div>
+<table class="es-ex-content" cellspacing="0">
+	<tr>
+		<td class="es-ex-quest" width="40%" valign="middle" align="center">
+			<div class="es-ex-audio-wrapper">
+				<table><tr><td style="height: 140px;"><div class="es-ex-audio-holder"><div class="es-ex-audio"></div></div></td></tr></table>
+			</div>
+			<div class="es-ex-string-holder">
+				<table><tr><td class="es-ex-string-wrapper" style="height: 150px;">&nbsp;</td></tr></table>
+			</div>
+
+		</td>
+		<td class="es-ex-tasks" valign="top">
+			<div class="yn-answer-type">
+					<p class="es-yn-task-p">This sound corresponds to the letter</p>
+					<div class="es-yn-variant-wrapper"><div class="es-yn-variant yn-trans">&nbsp;</div></div>
+					<div class="es-ex-buttons yn-btns">
+						<input type="button" class="es-ex-es-btn yn-yes" value="Oui"/> &nbsp;&nbsp;&nbsp;&nbsp; <input value="Non" type="button"  class="es-ex-es-btn yn-no"/>
+
+					</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td><div class="es-ex-bottom"><input type="button" class="es-ex-next" value="Suivant" style="font-size: 12px; visibility: hidden;"></div></td>
+		<td></td>
+	</tr>
+</table>
+
+<div class="es-ex-info-container">
+	<table cellspacing="0" align="center">
+		<tr>
+			<td style="padding-left: 20px;"><div class="es-ex-info"> &nbsp;  </div></td>
+			<td><div class="es-ex-buttons"><input type="button" class="es-ex-es-btn es-ex-start" value="RESTART"/></div></td>
+		</tr>
+	</table>
+</div>
+</div>
+
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		test_id: "p0104040.4", 
+		quest_num: 10,
+		//quest_type: 'audio',
+		texts: ['Correct','Incorrect','Suivant','Résultat','Encore','Nombre de questions','Réponses corrects','Résultat'],
+		basic_array: [
+['<div class="written">[londan]<\/div><div class="jp_control" onclick="cJplayer(\'/sounds/phonetic/soundp020203.mp3\', this)"><\/div>','Londres'],
+['<div class="written">[maskva]<\/div><div class="jp_control" onclick="cJplayer(\'/sounds/phonetic/soundp020204.mp3\', this)"><\/div>','Moscou'], 
+['<div class="written">[foodbol]<\/div><div class="jp_control" onclick="cJplayer(\'/sounds/phonetic/soundp020211.mp3\', this)"><\/div>','football'], 
+['<div class="written">[koka-kola]<\/div><div class="jp_control" onclick="cJplayer(\'/sounds/phonetic/soundp020212.mp3\', this)"><\/div>','Coca-Cola'], 
+['<div class="written">[tabak]<\/div><div class="jp_control" onclick="cJplayer(\'/sounds/phonetic/soundp020215.mp3\', this)"><\/div>','tabac'], 
+['<div class="written">[gandbol]<\/div><div class="jp_control" onclick="cJplayer(\'/sounds/phonetic/soundp020218.mp3\', this)"><\/div>','handball'], 
+['<div class="written">[masash]<\/div><div class="jp_control" onclick="cJplayer(\'/sounds/phonetic/soundp020221.mp3\', this)"><\/div>','massage'],
+['<div class="written">[katalok]<\/div><div class="jp_control" onclick="cJplayer(\'/sounds/phonetic/soundp020222.mp3\', this)"><\/div>','catalogue'], 
+['<div class="written">[biznes]<\/div><div class="jp_control" onclick="cJplayer(\'/sounds/phonetic/soundp030201.mp3\', this)"><\/div>','business'], 
+['<div class="written">[simval]<\/div><div class="jp_control" onclick="cJplayer(\'/sounds/phonetic/soundp030203.mp3\', this)"><\/div>','symbole'], 
+['<div class="written">[bialogiya]<\/div><div class="jp_control" onclick="cJplayer(\'/sounds/phonetic/soundp030204.mp3\', this)"><\/div>','biologie'], 
+['<div class="written">[viza]<\/div><div class="jp_control" onclick="cJplayer(\'/sounds/phonetic/soundp030205.mp3\', this)"><\/div>','visa'], 
+['<div class="written">[biatlon]<\/div><div class="jp_control" onclick="cJplayer(\'/sounds/phonetic/soundp030208.mp3\', this)"><\/div>','biathlon'], 
+['<div class="written">[git]<\/div><div class="jp_control" onclick="cJplayer(\'/sounds/phonetic/soundp030209.mp3\', this)"><\/div>','guide'], 
+['<div class="written">[pik]<\/div><div class="jp_control" onclick="cJplayer(\'/sounds/phonetic/soundp030210.mp3\', this)"><\/div>','pic'], 
+
+
+		]
+		} )
+</script>
+	
+
+<br><br><br>
+
+
+<hr>
+<p>
+<a href="/fr/phonetics03.html" ><span class="bold"><< Previous part </span></a>
+</p>
+<br><br><br><br><br><br>
+<script type="text/javascript">
+currentSection="phonetic";
+</script>
