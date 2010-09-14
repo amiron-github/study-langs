@@ -18,7 +18,37 @@ before_filter :is_admin
       format.xml  { render :xml => @user }
     end
   end
+  
 
+  def make_admin
+	user = User.find(params[:user_id])
+	if !user.has_role?("admin")
+		user.roles << Role.find_by_name("admin")
+	end
+	if request.xhr?
+		render :update do |page|
+			page << '$("#user_'+ params[:user_id]+'").find("td:eq(0)").css({border: "1px solid yellow"});'
+		end
+	else
+		redirect_to(:back)
+	end
+  end
+  
+ def disadmin
+	user = User.find(params[:id])
+	if user.has_role?("admin")
+		user.roles.delete( Role.find_by_name("admin") )
+	end
+	if request.xhr?
+		render :update do |page|
+			page << '$(".role_admin").remove()'
+		end
+	else
+		redirect_to(:back)
+	end
+  end
+  
+  
   
   def edit_state
 	user = User.find(params[:id])
@@ -26,13 +56,13 @@ before_filter :is_admin
 	if user.activated_at == nil 
 		user.update_attribute(:activated_at, params[:time])
 	end
-	redirect_to(:action =>:show) 
+	redirect_to(:back) 
   end
   
   def edit_payment
 	user = User.find(params[:id])
 	user.orders.create(:type_id =>0, :status => 2)
-	redirect_to(:action =>:show)
+	redirect_to(:back)
   end
   
  

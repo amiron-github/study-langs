@@ -1,0 +1,307 @@
+<% @page_title = 'Изучаем японский: Месяца и времена года' %>
+<% @page_meta = {'description' => "Russian online vocabulary for learning Russian numerals from 100"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+
+<% content_for :special_js_css do %>
+
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'es-course.js' %>
+<%= javascript_include_tag 'jquery.tablesorter.min.js' %>
+
+<%= stylesheet_link_tag 'es-course' %>
+
+
+<style type="text/css">
+.wl-jap {
+font-size: 17px;
+
+}
+</style>
+
+<% end %>
+
+
+
+<div class="hint_wrap">
+<div class="hint_button" style="float: right;">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Links and Settings</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+     				<li><a href="numerals100-test.html"> Tests: Numerals</a></li>
+    				<li><a href="pronunciation.html">Pronunciation training</a></li>
+     				<li><a href="reading.html">Reading in Russian</a></li>
+    		</ul>     				
+        <%= render :partial => 'colorder_accent' %>
+	</div>
+</div>
+</div>
+
+
+
+<h2 class="page">Временя года и месяца</h2>
+
+<div id="pagecontent"><div id="content">
+
+
+	<table class="es-words-list" cellspacing="1">
+	<col width="20">
+	<col width="150">
+	<col width="180">
+	<col width="150">
+	<thead>
+		<tr>
+			<th>&nbsp;</th>
+			<th>Слово</th>
+			<th>Хирагана</th>
+			<th>Русский</th>
+		</tr>
+			
+	</thead>
+	<tbody>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-jap">
+				一月
+			</td>
+			<td class="wl-jap">
+				いちがつ
+			</td>
+			<td class="wl-rus">
+				январь
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-jap">
+				ニ月
+			</td>
+			<td class="wl-jap">
+				にがつ
+			</td>
+			<td class="wl-rus">
+				февраль
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-jap">
+				三月
+			</td>
+			<td class="wl-jap">
+				さんがつ
+			</td>
+			<td class="wl-rus">
+				март
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-jap">
+				四月
+			</td>
+			<td class="wl-jap">
+				しがつ
+			</td>
+			<td class="wl-rus">
+				апрель
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-jap">
+				五月
+			</td>
+			<td class="wl-jap">
+				ごがつ
+			</td>
+			<td class="wl-rus">
+				май
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-jap">
+				六月
+			</td>
+			<td class="wl-jap">
+				ろくがつ
+			</td>
+			<td class="wl-rus">
+				июнь
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-jap">
+				七月
+			</td>
+			<td class="wl-jap">
+				しちがつ
+			</td>
+			<td class="wl-rus">
+				июль
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-jap">
+				八月
+			</td>
+			<td class="wl-jap">
+				はちがつ
+			</td>
+			<td class="wl-rus">
+				август
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-jap">
+				九月
+			</td>
+			<td class="wl-jap">
+				くがつ
+			</td>
+			<td class="wl-rus">
+				сентябрь
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-jap">
+				十月
+			</td>
+			<td class="wl-jap">
+				じゅうがつ
+			</td>
+			<td class="wl-rus">
+				октябрь
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-jap">
+				十一月
+			</td>
+			<td class="wl-jap">
+				じゅういちがつ
+			</td>
+			<td class="wl-rus">
+				ноябрь
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-jap">
+				十二月
+			</td>
+			<td class="wl-jap">
+				じゅうにがつ
+			</td>
+			<td class="wl-rus">
+				декабрь
+			</td>
+		</tr>
+				<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-jap">
+				夏
+			</td>
+			<td class="wl-jap">
+				なつ
+			</td>
+			<td class="wl-rus">
+				лето
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-jap">
+				秋
+			</td>
+			<td class="wl-jap">
+				あき
+			</td>
+			<td class="wl-rus">
+				осень
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-jap">
+				冬
+			</td>
+			<td class="wl-jap">
+				ふゆ
+			</td>
+			<td class="wl-rus">
+				зима
+			</td>
+		</tr>
+		<tr>
+			<td class="wl-audio">
+				<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
+			</td>
+			<td class="wl-jap">
+				春
+			</td>
+			<td class="wl-jap">
+				はる
+			</td>
+			<td class="wl-rus">
+				весна
+			</td>
+		</tr>
+	</tbody>
+	</table>
+	
+	<br>
+	<br>
+
+<p class="after_dic">Упражнения с данными словами: <a href="numerals-jp-exercises.html">Упражнения: Японские числительные</a></p>
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript">
+currentSection="words";
+</script>

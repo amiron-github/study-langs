@@ -1,8 +1,14 @@
+
 <% content_for :special_js_css do %>
+ <%= javascript_include_tag 'jrails' %>
+
  <%= stylesheet_link_tag 'tablesorter' %>
  <%= javascript_include_tag 'jquery.tablesorter.min.js' %>
  <%= javascript_include_tag 'jquery.tablesorter.pager.js' %>
 
+ 
+
+ 
 <script type="text/javascript">
 
 $(document).ready(function() { 
@@ -18,34 +24,40 @@ $("#show_deleted").click(function() {
 });
 </script>
 
-
 <style>
 div#contentcell {
 height:auto !important;
 min-height:950px;
 }
-
 .deleted {
 display: none;
 }
-
 #show_deleted {
 text-decoration: none !important;
 outline: none;
 }
-
 .with_payment {
 color: #238F46 !important;
 }
-
 </style>
 
 <%end%>
 
 <h2>User Data</h2>
 <hr>
-<br><br>
 
+
+
+<div>
+<% form_remote_tag :url => { :controller=> 'userdata', :action => 'make_admin' } do %>
+		Make admin with ID: <%= text_field_tag :user_id, '0', :size => 10 %>
+	<%= submit_tag "Save" %>
+<% end %>
+</div>
+
+
+
+<br><br>
 <div id="pager" class="pager"> 
 	<form> 
 		<img title="First Page" src="/images/tablesorter/first.png" class="first"/> 
@@ -74,7 +86,7 @@ color: #238F46 !important;
 <table class="stt-table tablesorter" cellspacing="1" cellpadding="0" border="0">
 <thead>
 <tr>
-	<th >ID</th>
+	<th>ID</th>
 	<th>Email</th>
 	<th>Created</th>
 	<th >State</th>
@@ -85,14 +97,14 @@ color: #238F46 !important;
 <tbody>
 <% for user in @users -%>
 
-<tr <%if user.state == 'deleted' %> class="deleted" <%end%> >
+<tr <%if user.state == 'deleted' %> class="deleted" <%end%> id="user_<%= user.id%>">
 
-<td><%= user.id %></td>
+<td <%if user.has_role?("admin") %> style="border: 1px solid yellow" <%end%> ><%= user.id %></td>
 <td style="text-align: left;" <%if user.payment %> class="with_payment"<%end%> ><%= user.email %></td>
 <td><%=h user.created_at.strftime("%Y/%m/%d") %></td>
 <td><%= user.state %></td>
 <td><%= user.tests_number %></td>
-<td><%= link_to 'Show', {:controller => 'userdata', :action => 'show', :id => user} %><br/></td>
+<td><%= link_to 'Show', { :action => 'show', :id => user} %><br/></td>
 
 </tr>
 

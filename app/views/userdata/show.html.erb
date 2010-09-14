@@ -69,6 +69,15 @@ display: none;
 Current time: <%= Time.now.to_s(:long) %>
 </p>
 
+<% if @user.has_role?("admin") %>
+<div class="role_admin">
+
+	<% form_remote_tag :url => { :controller=> 'userdata', :action => 'disadmin' } do %>
+		<%= submit_tag "Disable admin" %>
+	<% end %>
+</div>
+<% end %>
+
 <p>
   <b>Email:</b>
   <%=h @user.email %>

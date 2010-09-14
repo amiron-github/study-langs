@@ -2,40 +2,34 @@ ActionController::Routing::Routes.draw do |map|
   map.forgot_password '/forgot_password',             :controller => 'passwords', :action => 'new'
   map.change_password '/change_password/:reset_code', :controller => 'passwords', :action => 'reset'
   map.change_password '/update_password/', :controller => 'passwords', :action => 'update_after_forgetting'
-
   map.resources :passwords
-  
   map.order '/order', :controller => 'users', :action => 'new_order'
-
   map.success '/success', :controller => 'users', :action => 'success_pp'
-	map.buy '/buy', :controller => 'users', :action => 'buy'
-
+  map.buy '/buy', :controller => 'users', :action => 'buy'
   map.ppipn '/gettrial', :controller => 'users', :action => 'gettrial'
-
   map.ppipn '/ppipn', :controller => 'orders', :action => 'paypal_ipn'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
-
   map.cart '/cart', :controller => 'users', :action => 'show_cart'
-
   map.user '/user', :controller => 'users', :action => 'update_user'
   map.userp '/userp', :controller => 'users', :action => 'update_pass'
   map.userd '/userd', :controller => 'users', :action => 'del'
   map.del_stat '/del_stat', :controller => 'users', :action => 'del_stat'
-
   map.get_stat '/set_stat', :controller => 'users', :action => 'set_stat'
-
   map.edit '/edit', :controller => 'users', :action => 'save_user'
   map.psedit '/psedit', :controller => 'users', :action => 'save_pass'
   
-  map.userdata '/userdata', :controller => 'userdata', :action => 'index'
-  map.userdata '/userdata/:id', :controller => 'userdata', :action => 'show'
+  map.userdata "/userdata" , :controller => 'userdata', :action => 'index'
+  map.userdata '/userdata/make_admin', :controller => 'userdata', :action => 'make_admin'
   map.userdata '/userdata/edit_state/:id', :controller => 'userdata', :action => 'edit_state'
   map.userdata '/userdata/edit_payment/:id', :controller => 'userdata', :action => 'edit_payment'
-  
+  map.userdata '/userdata/disadmin/:id', :controller => 'userdata', :action => 'disadmin'
+  map.userdata "/userdata/:action/:id" , :controller => 'userdata'
+  map.userdata "/userdata/:action" , :controller => 'userdata'
+
   map.resources :users, :member => { :suspend => :put, :unsuspend => :put, :purge => :delete }
   map.resource :session
 
