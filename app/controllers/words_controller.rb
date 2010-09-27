@@ -126,26 +126,25 @@ layout "admin"
   end  
   
   def quick_show
+	#ERB::Util.html_escape()
 	enword = Word.find(params[:id])
-	#@attributes = []
-	#@attributes = [ 
-	#['ID', enword.id],
-	#['Text', enword.text],
-	#['Translation', enword.translate.to_s.gsub(/'/,"\'") ],
-	#['Transcript', enword.transcribe.to_s.gsub(/'/,"\'") ],
-	#['HTML', enword.html.to_s.gsub(/'/,"\'") ],
-#	['Sound link', enword.sound_url],
-#	[ 'Image link', enword.image_url],
+	@attributes = []
+	@attributes = [ 
+	['ID', enword.id],
+	['Text', enword.text],
+	['Translation', enword.translate ],
+	['Transcript', enword.transcribe ],
+	['HTML', enword.html ],
+	['Sound link', enword.sound_url],
+	[ 'Image link', enword.image_url]
 #	['Updated', enword.updated_at.to_s(:short)]
-#	]
-#	text = ''
-#	@attributes.each  do |attribute|
-#		pair = '<tr><td style="padding-right: 15px; text-align: right"><b>'+attribute[0].to_s+':</b> </td><td> '+attribute[1].to_s+'</td></tr>' 
-#		text += pair 
-#	end
-	info = enword.translate
-
-	render :js => 'quick_info(\'<table>'+info.gsub(/'/, "\\\'").to_s+'</table>\', '+enword.id.to_s+')'
+	]
+	text = ''
+	@attributes.each  do |attribute|
+		pair = '<tr><td style="padding-right: 15px; text-align: right"><b>'+attribute[0].to_s+':</b> </td><td> '+attribute[1].to_s.gsub(/'/,"’")+'</td></tr>' 
+		text += pair 
+	end
+	render :js => 'quick_info(\'<table>'+text+'</table>\', '+enword.id.to_s+')'
   end
 
   def quick_edit
@@ -163,11 +162,12 @@ layout "admin"
   end
   
   def quick_create
+  	#ERB::Util.html_escape()
 		@enword = Word.new(params[:enword])
 		@enword.save
 	if request.xhr?
 		last_saved = @enword
-		render :js => 'show_last_created('+last_saved.id.to_s+',"'+last_saved.text+'","'+last_saved.html+'","'+last_saved.translate+'","'+last_saved.transcribe+'","'+last_saved.sound_url+'","'+last_saved.image_url+'",'+last_saved.order_num.to_s+')'
+		render :js => 'show_last_created('+last_saved.id.to_s+',"'+ERB::Util.html_escape(last_saved.text)+'","'+ERB::Util.html_escape(last_saved.html)+'","'+ERB::Util.html_escape(last_saved.translate)+'","'+ERB::Util.html_escape(last_saved.transcribe)+'","'+last_saved.sound_url+'","'+last_saved.image_url+'",'+last_saved.order_num.to_s+')'
 	else
 		redirect_to('/words')
 	end

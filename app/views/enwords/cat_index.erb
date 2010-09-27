@@ -140,16 +140,16 @@ var links ='<div style="margin: 10px 10px 10px 35px;"><a href="/enwords/'+id+'/e
 		<tbody>
 			<tr>
 				<td>
-					<input disabled style="width: 100%" type="text" name="enword[<%= num %>][text]" value="<%= enword.text %>" />
+					<input disabled style="width: 100%" type="text" name="enword[<%= num %>][text]" value="<%=h enword.text %>" />
 				</td>
 				<td>
-					<input disabled style="width: 100%" type="text" name="enword[<%= num %>][html]" value="<%= enword.html %>"/>
+					<input disabled style="width: 100%" type="text" name="enword[<%= num %>][html]" value="<%=h enword.html %>"/>
 				</td>
 				<td>
-					<input disabled style="width: 100%" type="text" name="enword[<%= num %>][translate]" value="<%= enword.translate %>"/>
+					<input disabled style="width: 100%" type="text" name="enword[<%= num %>][translate]" value="<%=h enword.translate %>"/>
 				</td>
 				<td>
-					<input disabled style="display: none; width: 100%" type="text" name="enword[<%= num %>][transcribe]" value="<%= enword.transcribe %>"/>
+					<input disabled style="display: none; width: 100%" type="text" name="enword[<%= num %>][transcribe]" value="<%=h enword.transcribe %>"/>
 				</td>
 				<td>
 					<input disabled style="display: none; width: 100%" type="text" name="enword[<%= num %>][sound_url]" value="<%= enword.sound_url %>"/>

@@ -132,18 +132,18 @@ layout "admin"
 	['ID', enword.id],
 	['Text', enword.text],
 	['Translation', enword.translate],
-	['Transcript', enword.translate],
-	['HTML', enword.html],
+	['Transcript', enword.transcribe ],
+	['HTML', enword.html ],
 	['Sound link', enword.sound_url],
-	[ 'Image link', enword.image_url],
-	['Updated', enword.updated_at.to_s(:short)]
+	[ 'Image link', enword.image_url]
+#	['Updated', enword.updated_at.to_s(:short)]
 	]
 	text = ''
 	@attributes.each  do |attribute|
-		pair = '<tr><td style=\"padding-right: 15px; text-align: right\"><b>'+attribute[0].to_s+':</b> </td><td> '+attribute[1].to_s+'</td></tr>' 
+		pair = '<tr><td style="padding-right: 15px; text-align: right"><b>'+attribute[0].to_s+':</b> </td><td> '+attribute[1].to_s.gsub(/'/,"’")+'</td></tr>' 
 		text += pair 
 	end
-	render :js => 'quick_info("<table>'+text+'</table>", '+enword.id.to_s+')'
+	render :js => 'quick_info(\'<table>'+text+'</table>\', '+enword.id.to_s+')'
   end
   
   def quick_edit
@@ -165,7 +165,7 @@ layout "admin"
 		@enword.save
 	if request.xhr?
 		last_saved = @enword
-		render :js => 'show_last_created('+last_saved.id.to_s+',"'+last_saved.text+'","'+last_saved.html+'","'+last_saved.translate+'","'+last_saved.transcribe+'","'+last_saved.sound_url+'","'+last_saved.image_url+'",'+last_saved.order_num.to_s+')'
+		render :js => 'show_last_created('+last_saved.id.to_s+',"'+ERB::Util.html_escape(last_saved.text)+'","'+ERB::Util.html_escape(last_saved.html)+'","'+ERB::Util.html_escape(last_saved.translate)+'","'+ERB::Util.html_escape(last_saved.transcribe)+'","'+last_saved.sound_url+'","'+last_saved.image_url+'",'+last_saved.order_num.to_s+')'
 	else
 		redirect_to('/enwords')
 	end

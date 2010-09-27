@@ -1,5 +1,30 @@
 <% content_for :special_js_css do %>
+ <%= javascript_include_tag 'jquery.jplayer.min.js' %>
+  <%= javascript_include_tag 'admin' %>
+  
 <style type="text/css">
+
+.jp_control {
+width: 16px;
+height: 16px;
+background-image: url(/images/control_play.png);
+background-repeat: no-repeat;
+cursor: pointer;
+}
+
+.jp_control:hover {
+background-image: url(/images/c_play_hover.png);
+}
+
+.jp_pause {
+background-image: url(/images/c_pause_hover.png) !important;
+}
+
+.jp_pause {
+background-image: url(/images/control_pause.png) !important;
+}
+
+
 .display-container {
 padding: 30px 30px;
 background-color: #EFF5FF;
@@ -129,8 +154,10 @@ var links ='<div style="margin: 10px 10px 10px 35px;"><a href="/words/'+id+'/edi
 <li id="enw_<%= enword.id %>" style="border: 1px solid #999; background-color: #ffffff; position: relative">
 <table>
   <tr>
-	<td><span class="enw-order-num"><%= enword.order_num %></span> <input type="hidden" name="enword[<%= num %>][order_num]" size="3" value="<%= enword.order_num %>">  </td>
+	<td style="width: 20px; text-align: left"><span class="enw-order-num"><%= enword.order_num %></span>. <input type="hidden" name="enword[<%= num %>][order_num]" size="3" value="<%= enword.order_num %>">  </td>
   	<td style="padding: 0"> <input type="hidden" name="enword[<%= num %>][id]" size="3" value="<%= enword.id %>">  </td>
+	<td style="padding: 0"><div class="jp_control" onclick="cJplayer('<%=h enword.sound_url %>', this)"></div></td>
+
     <td style="font-weight: bold" class="ci-enw-text"><%=h enword.text %></td>
     <td  class="ci-enw-translate"><%=h enword.translate %></td>
 	<td> 
@@ -138,13 +165,13 @@ var links ='<div style="margin: 10px 10px 10px 35px;"><a href="/words/'+id+'/edi
 		<tbody>
 			<tr>
 				<td>
-					<input disabled style="width: 100%" type="text" name="enword[<%= num %>][text]" value="<%= enword.text %>" />
+					<input disabled style="width: 100%" type="text" name="enword[<%= num %>][text]" value="<%=h enword.text %>" />
 				</td>
 				<td>
 					<input disabled style="width: 100%" type="text" name="enword[<%= num %>][html]" value="<%=h enword.html %>"/>
 				</td>
 				<td>
-					<input disabled style="width: 100%" type="text" name="enword[<%= num %>][translate]" value="<%= enword.translate %>"/>
+					<input disabled style="width: 100%" type="text" name="enword[<%= num %>][translate]" value="<%=h enword.translate %>"/>
 				</td>
 				<td>
 					<input disabled style="display: none; width: 100%" type="text" name="enword[<%= num %>][transcribe]" value="<%=h enword.transcribe %>"/>

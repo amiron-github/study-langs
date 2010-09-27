@@ -256,16 +256,22 @@ tContainer.find("div.enw-links").find("a").each(function(i, obj) {
 	tValue = tValue.replace(/num0/, el_id )
 	$(obj).attr("href", tValue)
 })
+$("body").append('<div id="str-fixer" style="position: absolute; top: -10000px"></div>')
 tContainer.find("span.f-num").text(nameNum);
 var idValue = tContainer.find("input[name*='[id]']").attr("name").replace(/num0/, nameNum );
 tContainer.find("input[name*='[id]']").val( el_id ).attr("name", idValue);
 tContainer.find("span.enw-order-num").text(el_order_num)
-tContainer.find("input.enw-ntext").val(el_text);
-tContainer.find("input.enw-nhtml").val(el_html);
-tContainer.find("input.enw-ntranslate").val(el_translate);
-tContainer.find("input.enw-ntranscribe").val(el_transcribe);
+$("#str-fixer").html(el_text);
+tContainer.find("input.enw-ntext").val($("#str-fixer").text());
+$("#str-fixer").html(el_html);
+tContainer.find("input.enw-nhtml").val($("#str-fixer").text());
+$("#str-fixer").html(el_translate);
+tContainer.find("input.enw-ntranslate").val($("#str-fixer").text());
+$("#str-fixer").html(el_transcribe);
+tContainer.find("input.enw-ntranscribe").val($("#str-fixer").text());
 tContainer.find("input.enw-nsound_url").val(el_sound_url);
 tContainer.find("input.enw-nimage_url").val(el_image_url);
+$("#str-fixer").remove();
 
 tContainer.find("input").not("input[type='checkbox']").each(function(i,elem) {
 		var tValue = $(elem).val();
@@ -345,10 +351,10 @@ Display:
 <tr>
 	<td><input class="changes_checker" type="checkbox" disabled></td>
 	<td><span class="f-num"><%= num %></span><span class="enw-order-num"><%= enword.order_num %></span> <input type="hidden" disabled name="enword[<%= num %>][id]" value="<%= enword.id %>"></td>
-    <td><span class="in-name">enword[<%= num %>][text]</span><input class="enw-ntext" style="width: 100%" type="text" value="<%= enword.text %>"></td>
-	<td><span class="in-name">enword[<%= num %>][html]</span><input style="width: 100%;"  type="text"  value="<%= enword.html %>"></td>
-	<td><span class="in-name">enword[<%= num %>][translate]</span><input  style="width: 100%"  type="text" value="<%= enword.translate %>"></td>
-	<td><span class="in-name">enword[<%= num %>][transcribe]</span><input style="width: 100%"  type="text" value="<%= enword.transcribe %>"></td>
+    <td><span class="in-name">enword[<%= num %>][text]</span><input class="enw-ntext" style="width: 100%" type="text" value="<%=h enword.text %>"></td>
+	<td><span class="in-name">enword[<%= num %>][html]</span><input style="width: 100%;"  type="text"  value="<%=h enword.html %>"></td>
+	<td><span class="in-name">enword[<%= num %>][translate]</span><input  style="width: 100%"  type="text" value="<%=h enword.translate %>"></td>
+	<td><span class="in-name">enword[<%= num %>][transcribe]</span><input style="width: 100%"  type="text" value="<%=h enword.transcribe %>"></td>
 	<td><span class="in-name">enword[<%= num %>][sound_url]</span><input style="width: 100%" type="text"  value="<%= enword.sound_url %>"></td>
 	<td><span class="in-name">enword[<%= num %>][image_url]</span><input style="width: 100%"  type="text" value="<%= enword.image_url %>"></td -->
 	<td>
