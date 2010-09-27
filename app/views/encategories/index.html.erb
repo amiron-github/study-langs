@@ -1,0 +1,26 @@
+<h1>Listing encategories</h1>
+
+<%= link_to "Words", :controller => 'enwords', :action => 'index' %>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Title ru</th>
+    <th>Order num</th>
+  </tr>
+
+<% @encategories.each do |encategory| %>
+  <tr>
+    <td><%=h encategory.title %></td>
+    <td><%=h encategory.title_ru %></td>
+    <td><%=h encategory.order_num %></td>
+    <td><%= link_to 'Show', encategory %></td>
+    <td><%= link_to 'Edit', edit_encategory_path(encategory) %></td>
+    <td><%= link_to 'Destroy', encategory, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New encategory', new_encategory_path %>

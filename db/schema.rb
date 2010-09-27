@@ -9,7 +9,40 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100319104727) do
+ActiveRecord::Schema.define(:version => 20100926103344) do
+
+  create_table "categories", :force => true do |t|
+    t.string   "title"
+    t.string   "title_ru"
+    t.integer  "order_num"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "encategories", :force => true do |t|
+    t.string   "title"
+    t.string   "title_ru"
+    t.integer  "order_num"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "enwords", :force => true do |t|
+    t.text     "text"
+    t.text     "html"
+    t.text     "translate"
+    t.text     "transcribe"
+    t.string   "sound_url"
+    t.string   "image_url"
+    t.integer  "encategory_id"
+    t.integer  "order_num"
+    t.text     "grammar"
+    t.text     "forms"
+    t.text     "translate_fr"
+    t.text     "transcribe_fr"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "orders", :force => true do |t|
     t.integer  "user_id",                                                                :null => false
@@ -91,5 +124,22 @@ ActiveRecord::Schema.define(:version => 20100319104727) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+
+  create_table "words", :force => true do |t|
+    t.text     "text"
+    t.text     "html"
+    t.text     "translate"
+    t.text     "transcribe"
+    t.string   "sound_url"
+    t.string   "image_url"
+    t.integer  "category_id"
+    t.integer  "order_num"
+    t.text     "grammar"
+    t.text     "forms"
+    t.text     "translate_fr"
+    t.text     "transcribe_fr"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

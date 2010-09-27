@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  title_ru: MyString
+  order_num: 1
+
+two:
+  title: MyString
+  title_ru: MyString
+  order_num: 1

@@ -1,0 +1,278 @@
+<% content_for :special_js_css do %>
+<style type="text/css">
+.display-container {
+padding: 30px 30px;
+background-color: #EFF5FF;
+-moz-border-radius: 7px;
+-moz-box-shadow: 0px 0px 7px #18274F;
+-webkit-border-radius: 7px;
+-webkit-box-shadow: 0px 0px 7px #18274F;
+border-radius: 7px;
+box-shadow: 0px 0px 7px #18274F;
+}
+.first-wform {
+font-size: 12px;
+}
+.f-body th {
+font-size: 12px
+}
+#form_display span {
+color: #555;
+}
+#form_display input {
+position: relative;
+top: 3px;
+margin: 0 3px 0 6px;
+}
+.m-info {
+text-align: left;
+font-size: 12px;
+}
+.m-info table {
+margin-left: 20px;
+}
+	#sortable { list-style-type: none; margin: 0; padding: 0; ; }
+	#sortable li { margin: 0 3px 3px 3px; cursor: pointer;}
+	#sortable li td { padding: 5px 10px;}
+	#sortable li td a { font-size: 11px }
+</style>
+<script type="text/javascript">
+	
+$(function() {
+		$("#sortable").sortable( { update: function() { 
+			setOrder();
+		}});
+		
+		$("#sortable").disableSelection();
+		
+		$(".quick_edit").click(function() {
+			var tAttr = $(this).parent("div").parent("li").find(".enword_attr tr").html();
+			$("#qick_form").find("tr.wform").html(tAttr).find("input").removeAttr("disabled");
+			$("#form_display input").change();
+			 $(".enw-update-note").empty();
+			var tTitle = $("#qick_form .wform").find("input[name*='text']").val()
+			$("#qick_form").dialog( {title: 'Attributes for the entry: '+tTitle+' '});
+			$("#qick_form").dialog('open');
+		});
+		
+		$( "#qick_form" ).dialog({
+			autoOpen: false,
+			show: 'blind',
+			hide: 'blind',
+			width: 700,
+			modal: true
+		});
+		
+	var dcHeight = $(".display-container").height();
+	$(".display-container").css({minHeight: dcHeight+30})
+	
+$("#form_display input").change(function() {
+	var tIndex = $("#form_display input").index($(this))
+	if ($(this).attr("checked")) {
+		$(".wform").each(function(i, obj) {
+			$(obj).find("input:eq("+tIndex+")").show()
+		})
+		$(".f-body").find("span.f-head:eq("+tIndex+")").show();
+	} else {
+		$(".wform").each(function(i, obj) {
+			$(obj).find("input:eq("+tIndex+")").hide()
+		})
+		$(".f-body").find("span.f-head:eq("+tIndex+")").hide();
+		
+	}
+});
+
+	
+}); 
+// end of events 
+	
+	function setOrder() {
+		$("#sortable li ").each(function(i, obj) {
+			var tIndex = i+1;
+			$(obj).find("input[name*='order_num']").val(tIndex);
+			
+			$(obj).find(".enw-order-num").text(tIndex);
+		});
+	}
+	
+function show_updates(id) {
+var tContainer = $("#enw_"+id);
+tContainer.find(".ci-enw-text").text( $("#qick_form").find("input[name*='[text]']").val() )
+tContainer.find(".ci-enw-translate").text( $( "#qick_form").find("input[name*='[translate]']").val() )
+}
+
+function quick_info(html, id) {
+
+var links ='<div style="margin: 10px 10px 10px 35px;"><a href="/enwords/'+id+'/edit">Edit page</a> | <a href="/enwords/'+id+'">Show page</a></div>'
+
+
+	$("<div class=\"m-info\"></div>")
+	.html(' ' + html + ' <br> ' + links +'')
+	.dialog({
+		modal: true, 
+		width: 400,
+		title: "Entry info", close: function() { $(this).dialog("destroy"); $(".m-info").remove()}, 
+		buttons: {"OK": function() {$( this ).dialog( "close" )}}})
+}
+	
+</script>
+<% end %>
+
+<h3 class="admin-p-name">Listing words in category <%= @encategory.title %></h3>
+
+<div style="margin-bottom: 20px;"><%= link_to "All categories", :action => 'index' %> | <%= link_to 'Edit category', :action=> 'cat_edit', :encategory => @encategory %></div>
+
+<div class="display-container">
+<div align="right" style="padding-right: 10px; padding-bottom: 10px; font-weight: bold; font-size: 11px; ">Quick links</div>
+<% form_remote_tag :url => { :action => 'save_enword_attributes'} do %>
+
+<ul id="sortable">
+<% @words.each_with_index do |enword, num| %>
+<li id="enw_<%= enword.id %>" style="border: 1px solid #999; background-color: #ffffff; position: relative">
+<table>
+  <tr>
+	<td><span class="enw-order-num"><%= enword.order_num %></span> <input type="hidden" name="enword[<%= num %>][order_num]" size="3" value="<%= enword.order_num %>">  </td>
+  	<td style="padding: 0"> <input type="hidden" name="enword[<%= num %>][id]" size="3" value="<%= enword.id %>">  </td>
+    <td style="font-weight: bold" class="ci-enw-text"><%=h enword.text %></td>
+    <td  class="ci-enw-translate"><%=h enword.translate %></td>
+	<td> 
+		<table class="enword_attr" style="display: none">
+		<tbody>
+			<tr>
+				<td>
+					<input disabled style="width: 100%" type="text" name="enword[<%= num %>][text]" value="<%= enword.text %>" />
+				</td>
+				<td>
+					<input disabled style="width: 100%" type="text" name="enword[<%= num %>][html]" value="<%= enword.html %>"/>
+				</td>
+				<td>
+					<input disabled style="width: 100%" type="text" name="enword[<%= num %>][translate]" value="<%= enword.translate %>"/>
+				</td>
+				<td>
+					<input disabled style="display: none; width: 100%" type="text" name="enword[<%= num %>][transcribe]" value="<%= enword.transcribe %>"/>
+				</td>
+				<td>
+					<input disabled style="display: none; width: 100%" type="text" name="enword[<%= num %>][sound_url]" value="<%= enword.sound_url %>"/>
+				</td>
+				<td>
+					<input disabled style="display: none" type="text" name="enword[<%= num %>][encategory_id]"  size="2" value="<%= enword.encategory_id %>"/>
+				</td>
+				<td>
+					<input disabled style="display: none; width: 100%" type="text" name="enword[<%= num %>][image_url]" value="<%= enword.image_url %>"/>
+				</td>
+				<td>
+					<input disabled style="display: none" size="3" type="text" name="enword[<%= num %>][order_num]" value="<%= enword.order_num %>" />
+				</td>
+				<td>
+					<input disabled  style="display: none; width: 100%" type="text" name="enword[<%= num %>][grammar]" value="<%= enword.grammar %>"/>
+				</td>
+				<td>
+					<input disabled style="display: none; width: 100%" type="text" name="enword[<%= num %>][forms]" value="<%= enword.forms %>" />
+				</td>
+				<td>
+					<input disabled style="display: none;" type="hidden" name="enword[<%= num %>][id]" value="<%= enword.id %>" />
+				</td>
+			</tr>
+		</tbody>
+		</table>
+	</td>
+  </tr>
+  </table>
+  
+<div style="position: absolute; font-size: 10px; right: 3px; padding: 4px 10px; border: 1px solid #ccc; top: 3px;">  
+  <%= link_to_remote 'View', :url => {:action => 'quick_show', :id => enword.id } %> 
+  
+  | <a href="javascript:;" class="quick_edit"> Edit </a>
+</div>	
+</li>
+<% end %>
+
+</ul>
+<br>
+<input type="submit" value="Save order" name="commit"/>
+<% end %>
+
+</div>
+
+<br><br><br><br>
+
+<div id="qick_form">
+
+<% form_remote_tag :url => { :action => 'quick_edit'} do %>
+<br>
+<div id="form_display">
+Display: 
+<span style="font-size: 10px; font-weight: bold">
+<input type="checkbox" class="check_text" checked> Text 
+<input type="checkbox" class="check_html"> Html
+<input type="checkbox" class="check_translate" checked> Translate
+<input type="checkbox" class="check_transcribe" checked> Transcribe
+<input type="checkbox" class="check_sound"> Sound
+<input type="checkbox" class="check_category"> Category
+<input type="checkbox" class="check_image"> Image
+<input type="checkbox" class="check_order"> Order
+</span>
+</div>
+
+<br>
+<div style="background-color: #efefef; padding: 5px 2px 20px; border: 1px dotted #AFAFAF;">
+<table class="f-body" width="99%" style="margin: 0 auto"  align="center" cellspacing="0" cellpadding="0">
+	<thead>
+	<tr>
+		<th><span class="f-head">Text</span></th>
+		<th><span class="f-head">Html</span></th>
+		<th><span class="f-head">Translate</span></th>
+		<th><span class="f-head">Transcribe</span></th>
+		<th><span class="f-head">Sound</span></th>
+		<th><span class="f-head">Cat</span></th>
+		<th><span class="f-head">Image</span></th>
+		<th><span class="f-head">Order</span></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr class="wform first-wform">
+		<td>
+			<input class="text" style="width: 100%" type="text" name="enword[0][text]" />
+		</td>
+		<td>
+			<input class="html" style="width: 100%" type="text" name="enword[0][html]" />
+		</td>
+		<td>
+			<input class="translate" style="width: 100%" type="text" name="enword[0][translate]" />
+		</td>
+		<td>
+			<input class="transcribe" style="display: none; width: 100%" type="text" name="enword[0][transcribe]" />
+		</td>
+		<td>
+			<input class="sound_url" style="display: none; width: 100%" type="text" name="enword[0][sound_url]" />
+		</td>
+		<td>
+			<input class="category" style="display: none" type="text" name="enword[0][encategory_id]"  size="2" value=""/>
+		</td>
+		<td>
+			<input class="image" style="display: none; width: 100%" type="text" name="enword[0][image_url]" />
+		</td>
+		<td>
+			<input style="display: none" size="3" type="text" name="enword[0][order_num]" value="1" />
+		</td>
+		<td>
+			<input class="grammar" style="display: none; width: 100%" type="text" name="enword[0][grammar]" />
+		</td>
+		<td>
+			<input style="display: none; width: 100%" type="text" name="enword[0][forms]" />
+		</td>
+	</tr>
+	</tbody>
+</table>
+</div>
+<br>
+    <input type="submit" value="Update" name="commit"/>
+	
+<% end %>
+
+<div class="enw-update-note" style="min-height: 20px; font-weight: bold; margin: 15px 100px 20px; color: green"></div>
+
+</div>
+
+
+

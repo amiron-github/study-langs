@@ -1081,11 +1081,12 @@ $("body").prepend('<div id="gv" style="position: absolute; top: 0; left: 0; max-
 	}else{
 		var tTranslation = $(elem).find("td.translation").text();
 		var html = $(elem).find("td.transcript").html();
+		var text = $(elem).find("td.original").text();
 		var rE = new RegExp("playSound\\('[0-9a-zA-Z/]+\\.mp3","g");
 		var mp3 = html.match(rE);
 		tTranscript = tTranscript.replace(/\[/g,"").replace(/\]/g,"");
 		tTranslation = tTranslation.replace(/\'/g,"\\'")
-		$('#gv_'+i).text("['"+tOrigin+"','"+tTranslation+"','/sounds/"+mp3+"','"+tTranscript+"'],")
+		$('#gv_'+i).text(""+text+" # "+tOrigin+"#"+tTranslation+" # "+tTranscript+" # /sounds/"+mp3+"")
 		$('#gv_'+i).text($('#gv_'+i).text().replace(/playSound\('/,"").replace(/<b>/g,'<span class="acct">').replace(/<\/b>/g,'</span>').replace(/<s>/g,'<span class="ry">').replace(/<\/s>/g,'</span>'));
 	}
 })

@@ -1,0 +1,29 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  text: MyText
+  html: MyText
+  translate: MyText
+  transcribe: MyText
+  sound_url: MyString
+  image_url: MyString
+  category_id: 1
+  order_num: 1
+  grammar: MyText
+  forms: MyText
+  translate_fr: MyText
+  transcribe_fr: MyText
+
+two:
+  text: MyText
+  html: MyText
+  translate: MyText
+  transcribe: MyText
+  sound_url: MyString
+  image_url: MyString
+  category_id: 1
+  order_num: 1
+  grammar: MyText
+  forms: MyText
+  translate_fr: MyText
+  transcribe_fr: MyText

@@ -1,0 +1,54 @@
+
+<% content_for :special_js_css do %>
+<style type="text/css">
+	#sortable { list-style-type: none; margin: 0; padding: 0; ; }
+	#sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; height: 18px; }
+	#sortable li span { position: absolute; margin-left: -1.3em; }
+	</style>
+	<script type="text/javascript">
+	$(function() {
+		$("#sortable").sortable();
+		$("#sortable").disableSelection();
+		$("#sortable").sortable("widget");
+
+		$("#accordion").accordion({ collapsible: true, active: false, autoHeight: false });
+	});
+</script>
+<% end %>
+
+
+<h3 class="admin-p-name">Words and Categories listing</h3>
+<div> <%= link_to "Manage categories", :controller => 'categories', :action => 'index' %></div>
+<div align="right"><%= link_to 'Add a word', :action => 'new' %> | <%= link_to 'New list', :action => 'new_list' %> </div>
+<br>
+
+<div id="accordion">
+
+<% @encategory.each do |category| %>
+<h3 style="padding: 5px 30px; text-transform: capitalize; font-size: 12px;"><%= category.title %></h3>
+	<div>
+		<div style="margin-bottom: 10px;">
+			<%= link_to "Review words",  :action => "cat_index", :encategory => category %> |
+			<%= link_to "Edit words", :action => "cat_edit", :encategory => category %> 
+		</div>
+		<div style="font-size: 12px;">
+			<table>
+			<% category.words.each do |word| %><!-- #to_fix -->
+				<tr>
+					<td><%= word.text %></td>
+				</tr>
+			<% end %>
+			</table>
+			<br>
+			<b>Total: <%= category.words.length %></b><!-- #to_fix -->
+		</div>
+	</div>
+<% end %>
+</div>
+
+
+<br />
+
+
+
+<br /><br /><br /><br /><br />

@@ -1,6 +1,6 @@
 class UserdataController < ApplicationController
 before_filter :is_admin
-
+layout "admin"
 
   def index
     @users = User.all
@@ -48,7 +48,18 @@ before_filter :is_admin
 	end
   end
   
-  
+  def edit_expiration_date
+	user = User.find(params[:id])
+	order = user.orders.find(:first, :conditions => 'status>0 and expired_at >= now()')
+	
+	if order.update_attribute(:expired_at, params[:expiration_date])
+		info = order.expired_at.to_s(:long)
+		
+		render :js => '$(".exp_time").text("'+info+'").css({backgroundColor: "#FDFF00"}).animate({backgroundColor: "#fff"}, 1000)'
+	else 
+		render :js => 'alert("Update fails")'
+	end 
+  end
   
   def edit_state
 	user = User.find(params[:id])

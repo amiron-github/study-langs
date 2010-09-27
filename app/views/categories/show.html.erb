@@ -1,0 +1,18 @@
+<p>
+  <b>Title:</b>
+  <%=h @category.title %>
+</p>
+
+<p>
+  <b>Title ru:</b>
+  <%=h @category.title_ru %>
+</p>
+
+<p>
+  <b>Order num:</b>
+  <%=h @category.order_num %>
+</p>
+
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>

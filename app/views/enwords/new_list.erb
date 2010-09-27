@@ -1,0 +1,293 @@
+<% content_for :special_js_css do %>
+<style type="text/css">
+
+.display-container {
+padding: 10px 20px;
+background-color: #EFF5FF;
+-moz-border-radius: 7px;
+-moz-box-shadow: 0px 0px 7px #18274F;
+-webkit-border-radius: 7px;
+-webkit-box-shadow: 0px 0px 7px #18274F;
+border-radius: 7px;
+box-shadow: 0px 0px 7px #18274F;
+}
+
+#form_display input {
+position: relative;
+top: 3px;
+margin: 0 3px 0 6px;
+}
+.first-wform .f-delete-row {
+visibility: hidden;
+}
+
+</style>
+<script type="text/javascript">
+$(function() {
+
+$("#words_array").resizable();
+$("#show_field").click( function() {
+	if ( $(".display_wrap").is(":hidden") ) {
+		$(".display_wrap").fadeIn();
+		$(this).val("hide");
+	} else {
+		$(".display_wrap").fadeOut();
+		$(this).val("show");
+	}
+});
+
+$(".display_wrap").hide();
+
+
+$("#form_display input").change(function() {
+	var tIndex = $("#form_display input").index($(this))
+	if ($(this).attr("checked")) {
+		$(".wform").each(function(i, obj) {
+			$(obj).find("input:eq("+tIndex+")").show()
+		})
+		$(".f-body").find("span.f-head:eq("+tIndex+")").show();
+	} else {
+		$(".wform").each(function(i, obj) {
+			$(obj).find("input:eq("+tIndex+")").hide()
+		})
+		$(".f-body").find("span.f-head:eq("+tIndex+")").hide();
+		
+	}
+}).change();
+
+$("#cat_select").change(function() {
+	var tCatId = $(this).find("option:selected").attr("rel")
+	$(".f-body tbody input.category").val(tCatId);
+}).change()
+
+
+$("#text_splitter").click(function() {
+	var splitChar = $("#text_splitter_char").val()
+	splitChar = $.trim(splitChar);
+	splitLine(splitChar);
+	
+});
+
+$(".display-container input, .display-container select").attr("autocomplete", "off")
+
+		
+});
+// end of events 
+
+function f_add_row() {
+	var fRow = $(".f-body tbody tr:eq(0)").html();
+	var catVal = $(".f-body tbody tr:eq(0) input.category").val();
+	$(".f-body tbody").append('<tr class="wform new_f_row">'+ fRow + '</tr>');
+	var tIndex = $(".f-body tbody tr").index($("tr.new_f_row"));
+	
+	$(".f-body tr.new_f_row").find("input").each(function(i,elem) {
+		$(elem).not(".category").val("");
+		if ( $(elem).hasClass("category")) $(elem).val( catVal )
+	})
+	$(".f-body tr.new_f_row").removeClass("new_f_row");
+	f_name_rows();
+}
+
+function f_name_rows() {
+
+var initOrderNum = $(".f-body tbody tr:eq(0) input[name*='order_num']").val();
+$(".f-body tbody tr").not(":eq(0)").each(function(n, el) {
+	$(el).find("input").each( function(i,obj){
+		var tRowNum = n+1
+		var tName = $(obj).attr("name");
+		tName = tName.replace(/[0-9]+/g, tRowNum )
+		$(obj).attr("name", tName);
+	})
+	
+	initOrderNum++
+	$(el).find("input[name*='order_num']").val(initOrderNum)
+})
+
+
+}
+
+function f_delete_row(el) {
+	$(el).css({backgroundColor: "red"});
+	$(el).parent("td").parent("tr").remove();
+	f_name_rows();
+}
+
+
+
+function splitLine(splitChar) {
+ 
+	var textArray = new Array();
+	textArray = $("#words_array").val().split(/\r\n|\n/);
+	$(".f-body tbody tr").not("tr:eq(0)").remove();
+	
+	for (var r = 0; r < textArray.length; r ++ ) {
+			if (r!= 0) f_add_row();
+			var tInputs = $(".f-body tbody tr:last").find("input:visible");
+			textArray[r] = textArray[r].split(splitChar);
+			for (var i=0; i < textArray[r].length; i ++) {
+				textArray[r][i] = $.trim(textArray[r][i]);
+				$(tInputs[i]).val( textArray[r][i] );
+			}
+	}
+ }
+
+</script>
+<% end %>
+
+<h3 class="admin-p-name">New list</h3>
+
+<div style="margin-bottom: 20px;">
+<%= link_to "All categories", :action => 'index' %> 
+<% if params[:encategory] %>
+ | <%= link_to 'View category', :action=> 'cat_index', :encategory => params[:encategory] %> 
+ | <%= link_to 'Edit category', :action=> 'cat_edit', :encategory => params[:encategory] %> 
+ <%end%>
+</div>
+
+<br>
+<div class="display-container">
+<p style="margin: 0;"><b>New array</b> <input type="button" id="show_field" value="show" align="right"></p>
+<div class="display_wrap" style="disp-lay: none;">
+<br>
+<br>
+<textarea id="words_array" style="width: 500px; height: 100px;"></textarea>
+
+<input type="button" id="text_splitter" value="Split by" /><input id="text_splitter_char" type="text" value="#" size="5">
+
+</div> <!-- end of display_wrap -->
+
+</div> <!-- end of display-container -->
+
+<br><br>
+<div class="display-container">
+
+<p style="margin: 0;"><b>Form</b> 
+</p>
+
+<div>
+
+Select category 
+<select id="cat_select">
+
+<% @encategories.each do |cat|%>
+		<% if @encategory.id == cat.id %>
+			<option selected rel="<%= cat.id %>">
+		<% else %>
+			<option rel="<%= cat.id %>">
+		<% end %>
+			<%= cat.title %>
+			</option>
+<% end %>
+
+</select>
+</div>
+<br>
+<div id="form_display">
+Display: 
+<span style="font-size: 10px; font-weight: bold">
+<input type="checkbox" class="check_text" checked> Text 
+<input type="checkbox" class="check_html"> Html
+<input type="checkbox" class="check_translate" checked> Translate
+<input type="checkbox" class="check_transcribe"> Transcribe
+<input type="checkbox" class="check_sound"> Sound
+<input type="checkbox" class="check_category"> Category
+<input type="checkbox" class="check_image"> Image
+<input type="checkbox" class="check_order"> Order
+</span>
+</div>
+
+<div>
+<br>
+<br>
+
+
+<% form_remote_tag :url => { :action => 'create_list'} do %>
+<table class="f-body" width="100%">
+	<thead>
+	<tr>
+		<th> </th>
+		<th><span class="f-head">Text</span></th>
+		<th><span class="f-head">Html</span></th>
+		<th><span class="f-head">Translate</span></th>
+		<th><span class="f-head">Transcribe</span></th>
+		<th><span class="f-head">Sound</span></th>
+		<th><span class="f-head">Cat</span></th>
+		<th><span class="f-head">Image</span></th>
+		<th><span class="f-head">Order</span></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr class="wform first-wform">
+		<td> <a href="javascript:;" class="f-delete-row" style="text-decoration: none; font-weight: bold" onclick="f_delete_row(this)"> - </a>
+		</td>
+		<td>
+			<input class="text" style="width: 100%" type="text" name="enword[0][text]" />
+		</td>
+		<td>
+			<input class="html" style="width: 100%" type="text" name="enword[0][html]" />
+		</td>
+		<td>
+			<input class="translate" style="width: 100%" type="text" name="enword[0][translate]" />
+		</td>
+		<td>
+			<input class="transcribe" style="display: none; width: 100%" type="text" name="enword[0][transcribe]" />
+		</td>
+		<td>
+			<input class="sound_url" style="display: none; width: 100%" type="text" name="enword[0][sound_url]" />
+		</td>
+		<td>
+			<input class="category" style="display: none" type="text" name="enword[0][encategory_id]"  size="2" 
+			value="<%if params[:encategory]%><%= params[:encategory]%><%else%>1<%end%>"/>
+		</td>
+		<td>
+			<input class="image" style="display: none; width: 100%" type="text" name="enword[0][image_url]" />
+		</td>
+		<td>
+			<input style="display: none" size="3" type="text" name="enword[0][order_num]" 
+			value="<%= @last+1 %>" />
+		</td>
+		<td>
+			<input class="grammar" style="display: none; width: 100%" type="text" name="enword[0][grammar]" />
+		</td>
+		<td>
+			<input style="display: none;width: 100%" type="text" name="enword[0][forms]" />
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+<br>
+<a href="javascript: f_add_row();" class="f_plus">+ New row</a>
+<br>
+<br>	
+	
+    <input type="submit" value="Create" name="commit"/>
+	
+<% end %>
+
+
+<br><br>
+</div> <!-- end of display_wrap -->
+
+</div> <!-- end of display-container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

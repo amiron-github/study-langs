@@ -25,8 +25,17 @@ $("#show_status_form").toggle(
 		$(".status_buttons").hide();
 		$(this).text(' [edit] ')
 	} 
-
 );
+
+$("#product_exp").attr("autocomplete", "off") 
+
+$(".change_exp").toggle(function() {
+		$(".exp_date").show();
+		$(this).text("[ hide form ]")
+	}, function() {
+		$(".exp_date").hide();
+		$(this).text("[ edit ]")
+})
 
 });
 </script>
@@ -115,7 +124,14 @@ Current time: <%= Time.now.to_s(:long) %>
 <p>
   <b>Payment:</b>
   <%if @user.payment %>
-	until <%= @user.expiration_time.to_s(:long) %>
+	until <span class="exp_time"><%= @user.expiration_time.to_s(:long) %></span> <a href="javascript:;" class="a_button change_exp">[edit]</a>
+	
+	<div class="exp_date" style="display: none;">
+	<% form_remote_tag :url => { :controller=> 'userdata', :action => 'edit_expiration_date'}  do %>
+			<input  id="product_exp" size="25" type="text" name="expiration_date" value="<%= @user.expiration_time.to_s %>" />
+			<%= submit_tag "Edit" %>
+	<% end %>
+	</div>	
   <%else%>
 	&nbsp; No payment &nbsp; &nbsp; &nbsp; &nbsp; <a class="a_button" href="javascript:;" id="show_edit_form">[edit]</a>
 	
