@@ -2531,6 +2531,148 @@ color: #0000FF;
 
 /* end of voc list */
 
+#menu_remover {
+position: absolute;
+margin-left: 10px;
+top: -10px;
+z-index: 300;
+font-weight: bold;
+font-size: 10px;
+cursor: pointer;
+padding: 1px 4px 2px;
+color: #fff;
+text-decoration: underline;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+}
+#menu_remover:hover {
+background-color: #ccc;
+text-decoration: none;
+}
+.m-menu-hidden .menu-shown {
+display: none;
+}
+.m-menu-hidden #menu_remover {
+color: #555;
+}
+.menu-hidden {
+display: none;
+}
+.m-menu-hidden .menu-hidden {
+display: inline;
+}
+.m-menu-hidden #nav-pos {
+display: none;
+}
+.m-menu-hidden div#contentcell  {
+margin-left: 30px;
+}
+
+#mini-menu {
+position: absolute;
+font-size: 11px;
+width: 380px;
+left: 50%;
+margin-left: -200px;
+display: none;
+text-align: center;
+background-color: #fff;
+back-ground-image: url(/games/tip-ground.png);
+border: 1px solid #C3CDDF;
+overlflow: hidden;
+padding: 4px 10px 6px 10px;
+top: -25px;
+-moz-border-radius: 7px;
+-webkit-border-radius: 7px;
+border-radius: 7px;
+-moz-box-shadow: 1px 1px 0px #627EAF, 1px 2px 3px #3E556F;
+-webkit-box-shadow: 1px 1px 0px #627EAF, 1px 2px 3px #3E556F;
+box-shadow: 1px 1px 0px #627EAF, 1px 2px 3px #3E556F;
+}
+
+#mini-menu a {
+font-weight: bold;
+font-size: 10px;
+}
+
+#mini-menu a:link {
+color: #002DFF;
+text-decoration: none;
+outline: none;
+background-color: transparent;
+}
+#mini-menu a:visited {
+color: #002DFF;
+text-decoration: none;
+outline: none;
+background-color: transparent;
+}
+#mini-menu a:hover {
+color: #00015F;
+text-decoration: underline;
+outline: none;
+background-color: transparent;
+}
+
+#mini-menu a:active {
+color: #FF0000;
+text-decoration: underline;
+outline: none;
+background-color: transparent;
+}
+
+
+.m-menu-hidden #mini-menu {
+display: block;
+}
+
+
+#header_remover {
+position: absolute;
+right: 15px;
+top: -10px;
+z-index: 300;
+font-weight: bold;
+font-size: 10px;
+cursor: pointer;
+padding: 1px 4px 2px;
+color: #fff;
+text-decoration: underline;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+}
+
+#header_remover:hover {
+background-color: #ccc;
+text-decoration: none;
+}
+.m-header-hidden .header-shown {
+display: none;
+}
+.m-header-hidden #header_remover {
+color: #555;
+}
+.header-hidden {
+display: none;
+}
+.m-header-hidden .header-hidden {
+display: inline;
+}
+.m-header-hidden #fixWidh {
+position: relative;
+top: -150px;
+}
+
+.dark_body #header_remover, .dark_body #menu_remover {
+display: none;
+}
+
+
+
+
+
 
 
 

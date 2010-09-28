@@ -11,6 +11,37 @@ function startDragTest(arr) {
 $(document).ready(function(){
 gContent = $("#content").html();
 
+
+$("#header_remover").click( function() {
+	if ( $("body").hasClass("m-header-hidden") ) {
+		$("#fixWidh").animate({top: "0px"}, function() {
+			$("body").removeClass("m-header-hidden");
+		});		
+		delCookie('no_header')
+	} else{
+		$("#fixWidh").css({position: "relative"}).animate({top: "-150px"}, function() {
+			$("body").addClass("m-header-hidden");
+		});
+		setCookie('no_header', 'yes')
+	}
+});
+
+$("#menu_remover").click( function() {
+	if ( $("#nav-pos").is(":hidden") ) {
+		$("div#contentcell").animate({marginLeft: "200px"}, function() {
+			$("#nav-pos").fadeIn(300);
+			$("#menu_content").removeClass("m-menu-hidden");
+		});		
+		delCookie('no_menu')
+	} else {
+		$("#nav-pos").fadeOut(200, function() {
+			$("div#contentcell").animate({marginLeft: "30px"});
+			$("#menu_content").addClass("m-menu-hidden");
+		});
+		setCookie('no_menu', 'yes')
+	}
+});
+
 // menu hover
 $("div.menu-item").mouseover(function(){  
 	var t=$(this);
@@ -1113,6 +1144,8 @@ $("body").prepend('<div id="gv" style="position: absolute; top: 0; left: 0; max-
 })
 
 }
+
+
 
 
 

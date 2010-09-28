@@ -33,7 +33,7 @@
 		</div>
 		<div style="font-size: 12px;">
 			<table>
-			<% category.words.each do |word| %><!-- #to_fix -->
+			<% for word in category.words.find(:all, :order => 'order_num') %><!-- #to_fix -->
 				<tr>
 					<td><%= word.text %></td>
 				</tr>
