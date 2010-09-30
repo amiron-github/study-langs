@@ -2665,8 +2665,15 @@ position: relative;
 top: -150px;
 }
 
+.dark_body #mini-menu {
+display: none;
+}
 .dark_body #header_remover, .dark_body #menu_remover {
 display: none;
+}
+
+.m-header-hidden .sound_tip {
+margin-top: 150px;
 }
 
 
