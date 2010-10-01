@@ -13,6 +13,8 @@ layout "admin"
   
   def show
     @user = User.find(params[:id])
+	category = 2
+	@cat_exercises = @user.user_tests.all(:joins => 'left outer join exercises ON `exercises`.test_id = `user_tests`.test_id', :conditions => {'exercises.category_id' => 2})
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }

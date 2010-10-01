@@ -8,20 +8,14 @@
     <%= f.text_field :test_id %>
   </p>
   <p>
-    <%= f.label :category_id %><br />
-    <%= f.text_field :category_id %>
+	<%=
+		@cats = Category.find(:all).map {|c| [c.title, c.id] }
+		f.select(:category_id, @cats)
+	%> 
   </p>
   <p>
     <%= f.label :title %><br />
     <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :title_ru %><br />
-    <%= f.text_field :title_ru %>
-  </p>
-  <p>
-    <%= f.label :title_fr %><br />
-    <%= f.text_field :title_fr %>
   </p>
   <p>
     <%= f.submit 'Update' %>

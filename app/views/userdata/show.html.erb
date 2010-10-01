@@ -149,6 +149,13 @@ Current time: <%= Time.now.to_s(:long) %>
 
 <div id="results_container">
 		No results yet.
+		<br>
+		
+		<% @cat_exercises.each do |ct| %>
+			<%= ct.correct %>
+		<%end%>
+
+		<br>
 		
 </div>
 

@@ -1,26 +1,44 @@
-<h1>Listing exercises</h1>
+<% content_for :special_js_css do %>
+ <%= stylesheet_link_tag 'tablesorter' %>
+ <%= javascript_include_tag 'jquery.tablesorter.min.js' %>
+ <%= javascript_include_tag 'jquery.tablesorter.pager.js' %>
 
-<table>
+<script type="text/javascript">
+
+$(document).ready(function() { 
+    $("table.tablesorter") 
+    .tablesorter({widthFixed: true, sortList: [[0,0]], headers: {3: {sorter: 'digit'}, 5:{sorter: false}},widgets: ['zebra'] }) 
+    //.tablesorterPager({container: $("#pager"), size: 30,positionFixed: false}); 
+});
+</script> 
+ 
+ <%end%>
+
+<h3 class="admin-p-name">Listing exercises</h3>
+
+<table class="tablesorter">
+<thead>
   <tr>
-    <th>Test</th>
+	<th>ID &nbsp;</th>
+    <th>Ex num</th>
     <th>Category</th>
-    <th>Title</th>
-    <th>Title ru</th>
-    <th>Title fr</th>
+	<th>Cat №</th>
+    <th>Ex title</th>
+	<th>Actions</th>
   </tr>
-
+</thead>
+<tbody>
 <% @exercises.each do |exercise| %>
   <tr>
+	<td><%=h exercise.id %></td>
     <td><%=h exercise.test_id %></td>
+	<td><%=h exercise.category.title %></td>
     <td><%=h exercise.category_id %></td>
     <td><%=h exercise.title %></td>
-    <td><%=h exercise.title_ru %></td>
-    <td><%=h exercise.title_fr %></td>
-    <td><%= link_to 'Show', exercise %></td>
-    <td><%= link_to 'Edit', edit_exercise_path(exercise) %></td>
-    <td><%= link_to 'Destroy', exercise, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', exercise %> | <%= link_to 'Edit', edit_exercise_path(exercise) %> | <%= link_to 'Destroy', exercise, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
 
 <br />

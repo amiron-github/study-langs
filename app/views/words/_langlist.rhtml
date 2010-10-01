@@ -1,0 +1,13 @@
+   <div id="tabs-<%= tab_id %>" class="ui-tab">
+		<div style="margin-bottom: 10px;">
+			<%= link_to "Words listing for this language",  :action => "index_lang" %>
+		</div>
+		<h4>Listing categories</h4>
+		<table style="margin-left: 20px;" cellspacing="5">
+		<% lang_categories.each do |category| %>
+			<tr style="font-size: 12px;">
+				<td><%= category.title %></td><td style="font-size: 11px;"> <%= link_to "View",  :action => "cat_index", :encategory=> category.id %></td>
+			</tr>
+		<% end %>
+		</table>
+   </div>

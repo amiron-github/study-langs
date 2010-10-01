@@ -306,7 +306,7 @@ margin-bottom:20px;
                     <% end %>
 					<div id="menu_display" style="position: absolute"><input type="button" value="<% if cookies[:no_menu] %> >> Menu  <%else%> << Menu <%end%>"></div>
 					<h2 class="admin-layout page">Website administration</h2>
-					<div class="admin-navigate"><%= link_to "Users", '/userdata' %> | <%= link_to "Languages", :controller => 'words', :action => 'index' %> | <%= link_to "Russian words", :controller => 'words', :action => 'index_lang' %> | <%= link_to "English words", :controller => 'words', :action => 'index_lang' %> </div>
+					<div class="admin-navigate"><%= link_to "Users", '/userdata' %> | <%= link_to "Categories", :controller => 'categories', :action => 'index' %> | <%= link_to "Languages", :controller => 'words', :action => 'index' %> | <%= link_to "RU", :controller => 'words', :action => 'index_lang' %> | <%= link_to "EN", :controller => 'words', :action => 'index_lang', :lang=> "en" %> </div>
 					
 					<div class="admin-area" style="min-height: 700px;">
 					

@@ -1,10 +1,15 @@
 class ExercisesController < ApplicationController
+require_role "admin"
 layout "admin"
-
   # GET /exercises
   # GET /exercises.xml
+  
+  #User.find($).user_tests.all(:include => :exercise, :conditions => {'exercises.category_id' => 2}) // user and category id 
+  # User.find($).user_tests.all(:include => {:exercise => :category} , :conditions => {'categories.title' => 'Formulas of politeness'}) // user and category id
+  
   def index
     @exercises = Exercise.all
+	@categories = Category.all
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @exercises }
@@ -15,7 +20,6 @@ layout "admin"
   # GET /exercises/1.xml
   def show
     @exercise = Exercise.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @exercise }
@@ -26,7 +30,7 @@ layout "admin"
   # GET /exercises/new.xml
   def new
     @exercise = Exercise.new
-
+	@categories = Category.all
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @exercise }
@@ -36,6 +40,8 @@ layout "admin"
   # GET /exercises/1/edit
   def edit
     @exercise = Exercise.find(params[:id])
+	@categories = Category.all
+	#@test_category = @test.category_id
   end
 
   # POST /exercises

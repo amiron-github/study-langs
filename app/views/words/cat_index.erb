@@ -156,7 +156,7 @@ var links ='<div style="margin: 10px 10px 10px 35px;"><a href="/words/'+id+'/edi
   <tr>
 	<td style="width: 20px; text-align: left"><span class="enw-order-num"><%= enword.order_num %></span>. <input type="hidden" name="enword[<%= num %>][order_num]" size="3" value="<%= enword.order_num %>">  </td>
   	<td style="padding: 0"> <input type="hidden" name="enword[<%= num %>][id]" size="3" value="<%= enword.id %>">  </td>
-	<td style="padding: 0"><div class="jp_control" onclick="cJplayer('<%=h enword.sound_url %>', this)"></div></td>
+	<td style="padding: 0"><% if enword.sound_url != '' %><div class="jp_control" onclick="cJplayer('<%=h enword.sound_url %>', this)"><%end%></div></td>
 
     <td style="font-weight: bold" class="ci-enw-text"><%=h enword.text %></td>
     <td  class="ci-enw-translate"><%=h enword.translate %></td>

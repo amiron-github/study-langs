@@ -36,7 +36,6 @@ min-height: 400px;
 
 
 <h3 class="admin-p-name">Words and Categories listing</h3>
-<div> <%= link_to "Manage categories", :controller => 'categories', :action => 'index' %></div>
 <div align="right"><%= link_to 'Add a word', :action => 'new' %> | <%= link_to 'New list', :action => 'new_list' %> </div>
 <br>
 
@@ -47,52 +46,23 @@ min-height: 400px;
       <li><a href="#tabs-3">French</a></li>
 	  <li><a href="#tabs-4">Japanese</a></li>
    </ul>
-   <div id="tabs-1" class="ui-tab">
-      
-	  <div style="margin-bottom: 10px;">
-			<%= link_to "Category's main page",  :action => "index_lang" %>
-		</div>
-		
-		<% @ru_categories.each do |category| %>
-		<div style="font-size: 12px;">
-		<%= category.title %> <%= link_to "View",  :action => "cat_index", :encategory=> category.id %>
-		</div>
-		<% end %>
-	  
-   </div>
-   <div id="tabs-2" class="ui-tab">
-      <div style="margin-bottom: 10px;">
-			<%= link_to "Category's main page",  :action => "index_lang", :lang=> 'ru' %>
-		</div>
-		
-		<% @en_categories.each do |category| %>
-		<div style="font-size: 12px;">
-		<%= category.title %> <%= link_to "View",  :action => "cat_index", :encategory=> category.id %>
-		</div>
-		<% end %>
-   </div>
-   <div id="tabs-3" class="ui-tab">
-      <div style="margin-bottom: 10px;">
-			<%= link_to "Category's main page",  :action => "index_lang", :lang=> 'fr' %>
-		</div>
-		
-		<% @fr_categories.each do |category| %>
-		<div style="font-size: 12px;">
-		<%= category.title %> <%= link_to "View",  :action => "cat_index", :encategory=> category.id %>
-		</div>
-		<% end %>
-   </div>
-   <div id="tabs-4" class="ui-tab">
-      <div style="margin-bottom: 10px;">
-			<%= link_to "Category's main page",  :action => "index_lang", :lang=> 'jp' %>
-		</div>
-		
-		<% @jp_categories.each do |category| %>
-		<div style="font-size: 12px;">
-			<%= category.title %> <%= link_to "View",  :action => "cat_index", :encategory=> category.id %>
-		</div>
-		<% end %>
-   </div>
+   <%= render(:partial => "langlist" ,
+							:locals => { :tab_id => '1',
+										 :lang => 'ru',
+										 :lang_categories => @ru_categories }) %>
+ 
+	<%= render(:partial => "langlist" ,
+							:locals => { :tab_id => '2',
+										 :lang => 'en',
+										 :lang_categories => @en_categories }) %>
+	<%= render(:partial => "langlist" ,
+							:locals => { :tab_id => '3',
+										 :lang => 'fr',
+										 :lang_categories => @fr_categories }) %>
+	<%= render(:partial => "langlist" ,
+							:locals => { :tab_id => '4',
+										 :lang => 'jp',
+										 :lang_categories => @jp_categories }) %>
 </div>
 
 

@@ -1,10 +1,10 @@
 class Category < ActiveRecord::Base
 has_many :words
-
+has_many :exercises
 LANG = [
 # Displayed stored in db
-[ "English", "en" ],
 [ "Russian" , "ru" ],
+[ "English", "en" ],
 [ "French", "fr" ],
 [ "Japan" , "jp" ]
 ]
