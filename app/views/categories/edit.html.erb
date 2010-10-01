@@ -14,7 +14,13 @@
   <p>
     <%= f.label :order_num %><br />
     <%= f.text_field :order_num %>
-  </p>
+	
+  </p><%= f.label :lang %><br />
+	<%=
+		f.select :lang,
+			Category::LANG,
+			:prompt => "Select the language"
+	%>
   <p>
     <%= f.submit 'Update' %>
   </p>

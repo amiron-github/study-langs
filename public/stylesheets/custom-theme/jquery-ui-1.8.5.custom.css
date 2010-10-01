@@ -60,24 +60,24 @@
 .ui-widget .ui-widget { font-size: 1em; }
 .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: Verdana, Arial, sans-serif; font-size: 1em; }
 .ui-widget-content { border: 1px solid #708089; background: #fcfdfd url(images/ui-bg_inset-hard_100_fcfdfd_1x100.png) 50% bottom repeat-x; color: #222222; }
-.ui-widget-content a { color: #222222; }
+.content .ui-widget-content a { color: #222222; }
 .ui-widget-header { border: 1px solid #708089; background: #4b87fb url(images/ui-bg_gloss-wave_55_4b87fb_500x100.png) 50% 50% repeat-x; color: #ffffff; font-weight: bold; }
-.ui-widget-header a { color: #ffffff; }
+.content .ui-widget-header a { color: #ffffff; }
 
 /* Interaction states
 ----------------------------------*/
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 1px solid #708089; background: #e1eefe url(images/ui-bg_glass_85_e1eefe_1x400.png) 50% 50% repeat-x; font-weight: bold; color: #31383f; }
-.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #31383f; text-decoration: none; }
+.content .ui-state-default a, .content .ui-state-default a:link, .content .ui-state-default a:visited { color: #31383f; text-decoration: none; }
 .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 1px solid #424e57; background: #b4d8f8 url(images/ui-bg_glass_75_b4d8f8_1x400.png) 50% 50% repeat-x; font-weight: bold; color: #15232d; }
-.ui-state-hover a, .ui-state-hover a:hover { color: #15232d; text-decoration: none; }
+.content .ui-state-hover a, .content .ui-state-hover a:hover { color: #15232d; text-decoration: none; }
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 1px solid #708089; background: #f5f8f9 url(images/ui-bg_inset-hard_100_f5f8f9_1x100.png) 50% 50% repeat-x; font-weight: bold; color: #0d1221; }
-.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #0d1221; text-decoration: none; }
+.content .ui-state-active a, .content .ui-state-active a:link, .content .ui-state-active a:visited { color: #0d1221; text-decoration: none; }
 .ui-widget :active { outline: none; }
 
 /* Interaction Cues
 ----------------------------------*/
 .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight  {border: 1px solid #2c5fe8; background: #e1edff url(images/ui-bg_flat_55_e1edff_40x100.png) 50% 50% repeat-x; color: #363636; }
-.ui-state-highlight a, .ui-widget-content .ui-state-highlight a,.ui-widget-header .ui-state-highlight a { color: #363636; }
+.content .ui-state-highlight a, .ui-widget-content .ui-state-highlight a,.ui-widget-header .content .ui-state-highlight a { color: #363636; }
 .ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error {border: 1px solid #cd0a0a; background: #fef1ec url(images/ui-bg_glass_95_fef1ec_1x400.png) 50% 50% repeat-x; color: #cd0a0a; }
 .ui-state-error a, .ui-widget-content .ui-state-error a, .ui-widget-header .ui-state-error a { color: #cd0a0a; }
 .ui-state-error-text, .ui-widget-content .ui-state-error-text, .ui-widget-header .ui-state-error-text { color: #cd0a0a; }
@@ -380,7 +380,7 @@
 	clear: left;
 	width: 100%;
 }
-.ui-menu .ui-menu-item a {
+.content .ui-menu .ui-menu-item a {
 	text-decoration:none;
 	display:block;
 	padding:.2em .4em;
@@ -486,7 +486,7 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
 .ui-tabs { position: relative; padding: .2em; zoom: 1; } /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
 .ui-tabs .ui-tabs-nav { margin: 0; padding: .2em .2em 0; }
 .ui-tabs .ui-tabs-nav li { list-style: none; float: left; position: relative; top: 1px; margin: 0 .2em 1px 0; border-bottom: 0 !important; padding: 0; white-space: nowrap; }
-.ui-tabs .ui-tabs-nav li a { float: left; padding: .5em 1em; text-decoration: none; }
+.content .ui-tabs .ui-tabs-nav li a { float: left; padding: .5em 1em; text-decoration: none; }
 .ui-tabs .ui-tabs-nav li.ui-tabs-selected { margin-bottom: 0; padding-bottom: 1px; }
 .ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-state-processing a { cursor: text; }
 .ui-tabs .ui-tabs-nav li a, .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a { cursor: pointer; } /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */

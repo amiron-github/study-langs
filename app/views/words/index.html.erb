@@ -4,14 +4,32 @@
 	#sortable { list-style-type: none; margin: 0; padding: 0; ; }
 	#sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; height: 18px; }
 	#sortable li span { position: absolute; margin-left: -1.3em; }
-	</style>
+	
+.content a:link {
+background-color: transparent;
+outline: none;
+}
+.content .ui-tabs-nav a:visited {
+background-color: transparent;
+outline: none;
+}
+	
+.content .ui-tabs-nav a:hover {
+background-color: transparent;
+outline: none;
+}
+.content  .ui-tabs-nav a:active {
+background-color: transparent;
+outline: none;
+}
+
+.ui-tab	 {
+min-height: 400px;
+}
+</style>
 	<script type="text/javascript">
 	$(function() {
-		$("#sortable").sortable();
-		$("#sortable").disableSelection();
-		$("#sortable").sortable("widget");
-
-		$("#accordion").accordion({ collapsible: true, active: false, autoHeight: false });
+		$("#tabs").tabs();
 	});
 </script>
 <% end %>
@@ -22,33 +40,62 @@
 <div align="right"><%= link_to 'Add a word', :action => 'new' %> | <%= link_to 'New list', :action => 'new_list' %> </div>
 <br>
 
-<div id="accordion">
-
-<% @encategory.each do |category| %>
-<h3 style="padding: 5px 30px; text-transform: capitalize; font-size: 12px;"><%= category.title %></h3>
-	<div>
-		<div style="margin-bottom: 10px;">
-			<%= link_to "Review words",  :action => "cat_index", :encategory => category %> |
-			<%= link_to "Edit words", :action => "cat_edit", :encategory => category %> 
+<div id="tabs">
+   <ul>
+      <li><a href="#tabs-1">Russian</a></li>
+      <li><a href="#tabs-2">English</a></li>
+      <li><a href="#tabs-3">French</a></li>
+	  <li><a href="#tabs-4">Japanese</a></li>
+   </ul>
+   <div id="tabs-1" class="ui-tab">
+      
+	  <div style="margin-bottom: 10px;">
+			<%= link_to "Category's main page",  :action => "index_lang" %>
 		</div>
+		
+		<% @ru_categories.each do |category| %>
 		<div style="font-size: 12px;">
-			<table>
-			<% for word in category.words.find(:all, :order => 'order_num') %><!-- #to_fix -->
-				<tr>
-					<td><%= word.text %></td>
-				</tr>
-			<% end %>
-			</table>
-			<br>
-			<b>Total: <%= category.words.length %></b><!-- #to_fix -->
+		<%= category.title %> <%= link_to "View",  :action => "cat_index", :encategory=> category.id %>
 		</div>
-	</div>
-<% end %>
+		<% end %>
+	  
+   </div>
+   <div id="tabs-2" class="ui-tab">
+      <div style="margin-bottom: 10px;">
+			<%= link_to "Category's main page",  :action => "index_lang", :lang=> 'ru' %>
+		</div>
+		
+		<% @en_categories.each do |category| %>
+		<div style="font-size: 12px;">
+		<%= category.title %> <%= link_to "View",  :action => "cat_index", :encategory=> category.id %>
+		</div>
+		<% end %>
+   </div>
+   <div id="tabs-3" class="ui-tab">
+      <div style="margin-bottom: 10px;">
+			<%= link_to "Category's main page",  :action => "index_lang", :lang=> 'fr' %>
+		</div>
+		
+		<% @fr_categories.each do |category| %>
+		<div style="font-size: 12px;">
+		<%= category.title %> <%= link_to "View",  :action => "cat_index", :encategory=> category.id %>
+		</div>
+		<% end %>
+   </div>
+   <div id="tabs-4" class="ui-tab">
+      <div style="margin-bottom: 10px;">
+			<%= link_to "Category's main page",  :action => "index_lang", :lang=> 'jp' %>
+		</div>
+		
+		<% @jp_categories.each do |category| %>
+		<div style="font-size: 12px;">
+			<%= category.title %> <%= link_to "View",  :action => "cat_index", :encategory=> category.id %>
+		</div>
+		<% end %>
+   </div>
 </div>
 
 
 <br />
-
-
 
 <br /><br /><br /><br /><br />

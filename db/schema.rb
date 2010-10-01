@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100926103344) do
+ActiveRecord::Schema.define(:version => 20101001075419) do
 
   create_table "categories", :force => true do |t|
     t.string   "title"
@@ -17,29 +17,17 @@ ActiveRecord::Schema.define(:version => 20100926103344) do
     t.integer  "order_num"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "supercategory"
+    t.string   "title_fr"
+    t.string   "lang"
   end
 
-  create_table "encategories", :force => true do |t|
+  create_table "exercises", :force => true do |t|
+    t.integer  "test_id"
+    t.integer  "category_id"
     t.string   "title"
     t.string   "title_ru"
-    t.integer  "order_num"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "enwords", :force => true do |t|
-    t.text     "text"
-    t.text     "html"
-    t.text     "translate"
-    t.text     "transcribe"
-    t.string   "sound_url"
-    t.string   "image_url"
-    t.integer  "encategory_id"
-    t.integer  "order_num"
-    t.text     "grammar"
-    t.text     "forms"
-    t.text     "translate_fr"
-    t.text     "transcribe_fr"
+    t.string   "title_fr"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

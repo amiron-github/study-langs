@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :exercises
   map.connect 'words/new_list', :controller => 'words', :action => 'new_list'
   map.connect 'words/create_list', :controller => 'words', :action => 'create_list'
   map.connect 'words/save_enword_attributes', :controller => 'words', :action => 'save_enword_attributes'
@@ -7,20 +8,10 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'words/quick_create', :controller => 'words', :action => 'quick_create'
   map.connect 'words/quick_show', :controller => 'words', :action => 'quick_show'
   map.connect 'words/cat_edit', :controller => 'words', :action => 'cat_edit'
-  map.connect 'words/cat_index', :controller => 'words', :action => 'cat_index'  
+  map.connect 'words/cat_index', :controller => 'words', :action => 'cat_index' 
+  map.connect 'words/index_lang', :controller => 'words', :action => 'index_lang'    
   map.resources :words
   map.resources :categories
-  map.resources :encategories
-  map.connect 'enwords/new_list', :controller => 'enwords', :action => 'new_list'
-  map.connect 'enwords/create_list', :controller => 'enwords', :action => 'create_list'
-  map.connect 'enwords/save_enword_attributes', :controller => 'enwords', :action => 'save_enword_attributes'
-  map.connect 'enwords/save_enword_changes', :controller => 'enwords', :action => 'save_enword_changes'
-  map.connect 'enwords/quick_edit', :controller => 'enwords', :action => 'quick_edit'
-  map.connect 'enwords/quick_create', :controller => 'enwords', :action => 'quick_create'
-  map.connect 'enwords/quick_show', :controller => 'enwords', :action => 'quick_show'
-  map.connect 'enwords/cat_edit', :controller => 'enwords', :action => 'cat_edit'
-  map.connect 'enwords/cat_index', :controller => 'enwords', :action => 'cat_index'
-  map.resources :enwords
 
   map.forgot_password '/forgot_password',             :controller => 'passwords', :action => 'new'
   map.change_password '/change_password/:reset_code', :controller => 'passwords', :action => 'reset'

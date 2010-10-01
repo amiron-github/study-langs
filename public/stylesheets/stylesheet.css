@@ -2550,6 +2550,11 @@ border-radius: 3px;
 background-color: #ccc;
 text-decoration: none;
 }
+
+.show-menu-remover #menu_remover {
+background-color: #ccc;
+}
+
 .m-menu-hidden .menu-shown {
 display: none;
 }

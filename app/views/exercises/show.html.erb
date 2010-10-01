@@ -1,0 +1,28 @@
+<p>
+  <b>Test:</b>
+  <%=h @exercise.test_id %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%=h @exercise.category_id %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%=h @exercise.title %>
+</p>
+
+<p>
+  <b>Title ru:</b>
+  <%=h @exercise.title_ru %>
+</p>
+
+<p>
+  <b>Title fr:</b>
+  <%=h @exercise.title_fr %>
+</p>
+
+
+<%= link_to 'Edit', edit_exercise_path(@exercise) %> |
+<%= link_to 'Back', exercises_path %>

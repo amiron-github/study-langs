@@ -7,6 +7,24 @@ layout "admin"
   def index
     @enwords = Word.all
 	@encategory = Category.all
+	@ru_categories = Category.find(:all, :conditions => ['lang=?', 'ru'])
+	@en_categories = Category.find(:all, :conditions => ['lang=?', 'en'])
+	@fr_categories = Category.find(:all, :conditions => ['lang=?', 'fr'])
+	@jp_categories = Category.find(:all, :conditions => ['lang=?', 'jp'])
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @words }
+    end
+  end
+  
+  def index_lang
+	if !params[:lang]
+		lang = 'ru'
+	else
+		lang=params[:lang]
+	end
+    @enwords = Word.all
+	@encategory = Category.find(:all, :conditions => ['lang=?', lang])
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @words }

@@ -11,6 +11,9 @@ function startDragTest(arr) {
 $(document).ready(function(){
 gContent = $("#content").html();
 
+if ($("#contfield").width() < 600) {
+	$("#contentcell").addClass("show-menu-remover");
+}
 
 $("#header_remover").click( function() {
 	if ( $("body").hasClass("m-header-hidden") ) {

@@ -10,7 +10,6 @@
 		$("#sortable").sortable();
 		$("#sortable").disableSelection();
 		$("#sortable").sortable("widget");
-
 		$("#accordion").accordion({ collapsible: true, active: false, autoHeight: false });
 	});
 </script>
@@ -18,9 +17,7 @@
 
 
 <h3 class="admin-p-name">Words and Categories listing</h3>
-
-<div> <%= link_to "Manage categories", :controller => 'encategories', :action => 'index' %></div>
-
+<div> <%= link_to "Manage categories", :controller => 'categories', :action => 'index' %></div>
 <div align="right"><%= link_to 'Add a word', :action => 'new' %> | <%= link_to 'New list', :action => 'new_list' %> </div>
 <br>
 
@@ -35,14 +32,14 @@
 		</div>
 		<div style="font-size: 12px;">
 			<table>
-			<% category.enwords.each do |word| %><!-- #to_fix -->
+			<% for word in category.words.find(:all, :order => 'order_num') %><!-- #to_fix -->
 				<tr>
 					<td><%= word.text %></td>
 				</tr>
 			<% end %>
 			</table>
 			<br>
-			<b>Total: <%= category.enwords.length %></b><!-- #to_fix -->
+			<b>Total: <%= category.words.length %></b><!-- #to_fix -->
 		</div>
 	</div>
 <% end %>
