@@ -7,8 +7,8 @@
 
 $(document).ready(function() { 
     $("table.tablesorter") 
-    .tablesorter({widthFixed: true, sortList: [[0,0]], headers: {0: {sorter: 'digit'}, 3:{sorter: false}},widgets: ['zebra'] }) 
-    //.tablesorterPager({container: $("#pager"), size: 30,positionFixed: false}); 
+    .tablesorter({widthFixed: true, sortList: [[0,1]], headers: {0: {sorter: 'digit'}, 3:{sorter: false}, 4:{sorter: false}},widgets: ['zebra'] }) 
+    .tablesorterPager({container: $("#pager"), size: 30,positionFixed: false}); 
 });
 </script> 
  
@@ -16,14 +16,37 @@ $(document).ready(function() {
 
 <h3 class="admin-p-name">Listing categories</h3>
 
-<div style="margin-bottom: 20px;"><%= link_to "Manage exercises", :controller => 'exercises', :action => 'index' %>
+<div style="margin-bottom: 20px;"><%= link_to "Manage exercises", :controller => 'exercises', :action => 'index' %></div>
+<div id="pager" class="pager"> 
+	<form> 
+		<img title="First Page" src="/images/tablesorter/first.png" class="first"/> 
+		<img title="Previous Page" src="/images/tablesorter/prev.png" class="prev"/> 
+		<input type="text" class="pagedisplay"/> 
+		<img title="Next Page" src="/images/tablesorter/next.png" class="next"/> 
+		<img title="Last Page" src="/images/tablesorter/last.png" class="last"/> 
+		
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<b>Display rows:</b>
+		<select class="pagesize"> 
+			<option  value="30" selected="selected">30</option> 
+			<option value="50">50</option> 
+			<option  value="100">100</option> 
+			<option  value="200">200</option>
+			<option  value="500">500</option>
+			<option  value="1000">1000</option>
+		</select> 
+	</form> 
+</div>
 
-<table class="tablesorter">
+<div><br><%= link_to '+ New category', new_category_path %><br></div>
+
+<table class="tablesorter" cellspacing="1">
 <thead>
   <tr>
 	<th>ID &nbsp;</th>
     <th>Title</th>
-    <th>Language</th>
+    <th>Lang</th>
+	<th>Links</th>
 	<th>Actions</th>
   </tr>
 </thead>
@@ -31,10 +54,11 @@ $(document).ready(function() {
 
 <% @categories.each do |category| %>
   <tr>
-	<td><%=h category.id %></td>
+	<td width="25"><%=h category.id %></td>
     <td><%=h category.title %></td>
-    <td><%=h category.lang %></td>
-    <td><%= link_to 'Show', category %> | <%= link_to 'Edit', edit_category_path(category) %> | <%= link_to 'Destroy', category, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td width="45"><%=h category.lang %></td>
+	<td width="120"><%= link_to 'Visit', :controller => 'words', :action => 'cat_index', :encategory => category.id %> | <%= link_to 'Edit words', :controller => 'words', :action => 'cat_edit', :encategory => category.id %></td>
+    <td width="120"><%= link_to 'Show', category %> | <%= link_to 'Edit', edit_category_path(category) %> | <%= link_to 'Delete', category, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </tbody>
@@ -42,4 +66,4 @@ $(document).ready(function() {
 
 <br />
 
-<%= link_to 'New category', new_category_path %>
+<%= link_to '+ New category', new_category_path %>

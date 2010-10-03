@@ -535,6 +535,15 @@ function softOff() {
 /////////// End of Settings basics
 
 /////////// Audio Blocks
+
+function playFile(slink) {
+        this.before = '<object type="application/x-shockwave-flash" data="player_norm.swf" width="20" height="20"><param name="movie" value="player_norm.swf"/><param name="FlashVars" value="mp3=';
+        this.after = '&amp;autoplay=1" /></object>';
+	this.all=this.before + slink + this.after;
+  document.getElementById("audiospan").innerHTML=this.all;
+}
+
+
 function playSound(slink) {
         this.before = '<object type="application/x-shockwave-flash" data="player_norm.swf" width="20" height="20"><param name="movie" value="player_norm.swf"/><param name="FlashVars" value="mp3=/sounds/';
         this.after = '&amp;autoplay=1" /></object>';
@@ -600,6 +609,15 @@ if (mp3) {
         mp3g.push(mp3[i])
  }}
  
+rE = new RegExp("playFile\\('[0-9a-zA-Z/]+\\.mp3","g");
+mp3 = html.match(rE);
+if (mp3) {
+    for (var i = 0; i < mp3.length; i++) {
+        mp3[i] = mp3[i].replace(/playFile\('/,"");
+		//alert(mp3[i]);
+        mp3g.push(mp3[i])
+ }}
+ 
 rE = new RegExp("playTestSound\\('\\w+\\.mp3","g");
 mp3 = html.match(rE);
 if (mp3) {
@@ -607,6 +625,7 @@ if (mp3) {
         mp3[i] = mp3[i].replace(/playTestSound\('/,"");
         mp3g.push(mp3[i])
  }}	
+	
 	
 if (preloadFiles.length) {
     for (var i = 0; i < preloadFiles.length; i++) {
@@ -1105,7 +1124,7 @@ function goToUrl(link) {
 	location.href=toUrl;
 }
 
-function getVocabulary() {
+function getVocabulary(type) {
 $("body").prepend('<div id="gv" style="position: absolute; top: 0; left: 0; max-wi-dth: 900px; z-index: 10000; background-color: #efefef; text-align: left; padding: 30px"></div>');
 	$(".diction tr.trow").each(function(i, elem) {
 	$("#gv").append('<div id="gv_'+i+'"></div>');
@@ -1120,7 +1139,18 @@ $("body").prepend('<div id="gv" style="position: absolute; top: 0; left: 0; max-
 		var mp3 = html.match(rE);
 		tTranscript = tTranscript.replace(/\[/g,"").replace(/\]/g,"");
 		tTranslation = tTranslation.replace(/\'/g,"\\'")
-		$('#gv_'+i).text(""+text+" # "+tOrigin+"#"+tTranslation+" # "+tTranscript+" # /sounds/"+mp3+"")
+		
+		
+		if (type == 1) {
+			$('#gv_'+i).text(""+tOrigin+"");
+		} else if (type == 2) {
+			$('#gv_'+i).text(""+tTranscript+"");
+		} else if (type == 3) {
+			$('#gv_'+i).text(""+tTranslation+"");
+		} else {
+			$('#gv_'+i).text(""+text+" # "+tOrigin+"#"+tTranslation+" # "+tTranscript+" # /sounds/"+mp3+"")
+		}
+		
 		$('#gv_'+i).text($('#gv_'+i).text().replace(/playSound\('/,"").replace(/<b>/g,'<span class="acct">').replace(/<\/b>/g,'</span>').replace(/<s>/g,'<span class="ry">').replace(/<\/s>/g,'</span>'));
 	}
 })

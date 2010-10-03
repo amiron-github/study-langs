@@ -1,12 +1,12 @@
    <div id="tabs-<%= tab_id %>" class="ui-tab">
 		<div style="margin-bottom: 10px;">
-			<%= link_to "Words listing for this language",  :action => "index_lang" %>
+			<%= link_to "Words listing for this language",  :action => "index_lang", :lang => lang %>
 		</div>
 		<h4>Listing categories</h4>
 		<table style="margin-left: 20px;" cellspacing="5">
-		<% lang_categories.each do |category| %>
+		<% lang_categories.each_with_index do |category, index| %>
 			<tr style="font-size: 12px;">
-				<td><%= category.title %></td><td style="font-size: 11px;"> <%= link_to "View",  :action => "cat_index", :encategory=> category.id %></td>
+				<td width="20" align="right"><%= index+1 %>. </td><td> <%= link_to category.title,  :action => "cat_index", :encategory=> category.id %>
 			</tr>
 		<% end %>
 		</table>

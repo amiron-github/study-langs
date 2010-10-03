@@ -1,30 +1,75 @@
-<h1>Editing category</h1>
+<% content_for :special_js_css do %>
+<style type="text/css">
+label {font-weight: bold;color: #333;}
+<% end %>
+
+<h3 class="admin-p-name">Editing category</h3>
+
+<div style="margin-bottom: 20px;">
+<%= link_to 'List of categories', categories_path %> | <%= link_to 'Show ', @category %>
+</div>
+<div class="display-container">
 
 <% form_for(@category) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :title %><br />
+<table cellspacing="8">  
+<tr>
+  <td >
+    <%= f.label :title %>
+  </td>
+  <td>
     <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :title_ru %><br />
-    <%= f.text_field :title_ru %>
-  </p>
-  <p>
-    <%= f.label :order_num %><br />
-    <%= f.text_field :order_num %>
-	
-  </p><%= f.label :lang %><br />
+  </td>
+<tr>
+<tr>
+  <td >
+    <%= f.label :lang %>
+  </td>
+  <td>
 	<%=
 		f.select :lang,
 			Category::LANG,
 			:prompt => "Select the language"
 	%>
+  </td>
+<tr>
+<tr>
+  <td >
+    <%= f.label :title_ru %>
+  </td>
+  <td >
+    <%= f.text_field :title_ru %>
+  </td>
+<tr>
+<tr>
+  <td >
+    <%= f.label :title_fr %>
+  </td>
+  <td >
+    <%= f.text_field :title_fr %>
+  </td>
+<tr>
+<tr>
+  <td >
+    <%= f.label :supercat %>
+  </td>
+  <td >
+    <%= f.text_field :supercategory %>
+  </td>
+<tr>
+<tr>
+  <td >
+    <%= f.label :order %>
+  </td>
+  <td>
+    <%= f.text_field :order_num %>
+  </td>
+<tr>
+</table>
   <p>
     <%= f.submit 'Update' %>
   </p>
 <% end %>
+</div>
 
-<%= link_to 'Show', @category %> |
-<%= link_to 'Back', categories_path %>

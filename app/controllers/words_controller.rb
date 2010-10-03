@@ -50,6 +50,16 @@ layout "admin"
       format.xml  { render :xml => @word }
     end
   end
+  
+  def cat_edit_fr
+	cat = Category.find(params[:encategory])
+	@encategory = cat
+	@words = cat.words.find(:all, :order =>"order_num")
+	respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @word }
+    end
+  end
 
   # GET /words/1
   # GET /words/1.xml

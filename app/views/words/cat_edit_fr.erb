@@ -63,6 +63,10 @@ position: relative;
 display: none;
 }
 
+#ent_list_textarea {
+width: auto !important;
+}
+
 </style>
 <script type="text/javascript">
 $(function() {
@@ -86,6 +90,29 @@ $("#enw_edit_words input[type='checkbox']").change(function() {
 })
 
 $("#commit_btn").attr("disabled", "disabled");
+
+$(".show_enter_list").click(function() {
+	$("#enter_list").dialog('open');
+});
+
+$("#enter_list").dialog({
+			autoOpen: false,
+			show: 'blind',
+			hide: 'blind',
+			width: 400,
+			title: "Enter list into fields",
+});
+
+$("#ent_list_textarea").resizable({ handles: 's' });
+
+$("#select_enter_list").change(function() {
+	var enterData = $("#select_enter_list option:selected").val();
+	enterData ++
+	$("#enter_list_tag").text( $(".f_col_title:eq("+enterData+")").text() )
+	
+}).change();
+
+
 
 $("#saved_changes").dialog({
 			autoOpen: false,
@@ -285,6 +312,21 @@ tContainer.show().effect("highlight", 2000);
 
 }
 
+function splitLine() {
+	var textArray = new Array();
+	textArray = $("#words_array").val().split(/\r\n|\n/);
+	for (var r = 0; r < textArray.length; r ++ ) {		
+			var row = r+1
+			tInputsIndex = $("#select_enter_list option:selected").val()
+			tInputsIndex ++;
+			var tInput = $("#enw_edit_words tbody tr:eq("+row+")").find("td:eq("+tInputsIndex+")").find("input[type='text']");
+			tInput.val(textArray[r])
+	}
+	$("#enw_edit_words tbody tr input[type='text']").each(function(i, obj) {
+		f_check_value($(obj));
+	});
+}
+
 
 	
 </script>
@@ -293,22 +335,16 @@ tContainer.show().effect("highlight", 2000);
 
 <h3 class="admin-p-name">Listing words in category <%= @encategory.title %></h3>
 
-<div style="margin-bottom: 20px;"><%= link_to "All categories", :action => 'index' %> 
-| <%= link_to 'View category', :action=> 'cat_index', :encategory => @encategory %>
-| <%= link_to 'Edit French', :action=> 'cat_edit_fr', :encategory => @encategory %>
-</div>
-
+<div style="margin-bottom: 20px;"><%= link_to "All categories", :action => 'index' %> | <%= link_to 'View category', :action=> 'cat_index', :encategory => @encategory %></div>
 <div class="display-container">
 
 <div id="f_toggle_show">
 Display: 
 <span style="font-size: 10px; font-weight: bold">
 <input type="checkbox" class="check_text" checked> Text 
-<input type="checkbox" class="check_html"> Html
 <input type="checkbox" class="check_translate" checked> Translate
 <input type="checkbox" class="check_transcribe" checked> Transcribe
-<input type="checkbox" class="check_sound"> Sound
-<input type="checkbox" class="check_image"> Image
+
 </span>
 </div>
 <p style="font-size: 10px; font-style: italic; margin-bottom: 10px;">
@@ -322,12 +358,8 @@ Display:
 		<th style="font-size: 9px;"><span class="f_col_title">undo</span></th>
 		<th><span class="f_col_title">№</span></th>
 		<th><span class="f_col_title">text</span></th>
-		<th><span class="f_col_title">html</span></th>
 		<th><span class="f_col_title">translate</span></th>
 		<th><span class="f_col_title">transcribe</span></th>
-		<th><span class="f_col_title">sound</span></th>
-		<th><span class="f_col_title">image</span></th>
-		<th>Links</th>
 	</tr>
 </thead>
 <tbody>
@@ -337,11 +369,8 @@ Display:
 	<td><input class="changes_checker" type="checkbox" disabled></td>
 	<td><span class="f-num">num0</span><span class="enw-order-num">x</span> <input type="hidden" disabled name="enword[num0][id]" value=""></td>
     <td><span class="in-name">enword[num0][text]</span><input class="enw-ntext" style="width: 100%" type="text" value=""></td>
-	<td><span class="in-name">enword[num0][html]</span><input class="enw-nhtml"  style="width: 100%;"  type="text"  value=""></td>
-	<td><span class="in-name">enword[num0][translate]</span><input class="enw-ntranslate" style="width: 100%"  type="text" value=""></td>
-	<td><span class="in-name">enword[num0][transcribe]</span><input class="enw-ntranscribe" style="width: 100%"  type="text" value=""></td>
-	<td><span class="in-name">enword[num0][sound_url]</span><input class="enw-nsound_url" style="width: 100%" type="text"  value=""></td>
-	<td><span class="in-name">enword[num0][image_url]</span><input class="enw-nimage_url" style="width: 100%"  type="text" value=""></td>
+	<td><span class="in-name">enword[num0][translate_fr]</span><input class="enw-ntranslate" style="width: 100%"  type="text" value=""></td>
+	<td><span class="in-name">enword[num0][transcribe_fr]</span><input class="enw-ntranscribe" style="width: 100%"  type="text" value=""></td>
 	<td>
 		<div class="enw-links" style="float: right; margin-left: 5px; background-color: #fff; position: relative; font-size: 10px; margin-right: 3px; padding: 4px 10px; border: 1px solid #ccc; margin-top: 2px; white-space: nowrap">  
 			<a href="/words/num0">View</a>
@@ -354,19 +383,14 @@ Display:
 </tr>
 <% @words.each_with_index do |enword,num| %>
 <tr>
-	<td><input class="changes_checker" type="checkbox" disabled></td>
-	<td><span class="f-num"><%= num %></span><span class="enw-order-num"><%= enword.order_num %></span> <input type="hidden" disabled name="enword[<%= num %>][id]" value="<%= enword.id %>"></td>
+	<td width="25"><input class="changes_checker" type="checkbox" disabled></td>
+	<td width="25"><span class="f-num"><%= num %></span><span class="enw-order-num"><%= enword.order_num %></span> <input type="hidden" disabled name="enword[<%= num %>][id]" value="<%= enword.id %>"></td>
     <td><span class="in-name">enword[<%= num %>][text]</span><input class="enw-ntext" style="width: 100%" type="text" value="<%=h enword.text %>"></td>
-	<td><span class="in-name">enword[<%= num %>][html]</span><input style="width: 100%;"  type="text"  value="<%=h enword.html %>"></td>
-	<td><span class="in-name">enword[<%= num %>][translate]</span><input  style="width: 100%"  type="text" value="<%=h enword.translate %>"></td>
-	<td><span class="in-name">enword[<%= num %>][transcribe]</span><input style="width: 100%"  type="text" value="<%=h enword.transcribe %>"></td>
-	<td><span class="in-name">enword[<%= num %>][sound_url]</span><input style="width: 100%" type="text"  value="<%= enword.sound_url %>"></td>
-	<td><span class="in-name">enword[<%= num %>][image_url]</span><input style="width: 100%"  type="text" value="<%= enword.image_url %>"></td -->
-	<td>
+	<td><span class="in-name">enword[<%= num %>][translate_fr]</span><input  style="width: 100%"  type="text" value="<%=h enword.translate_fr %>"></td>
+	<td><span class="in-name">enword[<%= num %>][transcribe_fr]</span><input style="width: 100%"  type="text" value="<%=h enword.transcribe_fr %>"></td>
+	<td style="width: 60px;">
 		<div class="enw-links" style="float: right; margin-left: 5px; background-color: #fff; position: relative; font-size: 10px; margin-right: 3px; padding: 4px 10px; border: 1px solid #ccc; margin-top: 2px; white-space: nowrap">  
-			<%= link_to 'View', enword %> |
-			<%= link_to 'Edit', edit_word_path(enword) %> |
-			<%= link_to 'Del', enword, :confirm => 'Are you sure?', :method => :delete %>
+			<%= link_to 'Edit', edit_word_path(enword) %> 
 		</div>	<!-- #to_fix -->
 		<div style="clear: both"></div>
 	</td>
@@ -382,11 +406,8 @@ Display:
 
 <% end %>
 <div style="padding-left: 20px;">
-<a href="javascript:;" class="quick_add" style="font-size: 12px;"><b>+ Add an entry</b> (quick)</a>
+<a href="javascript:;" class="show_enter_list" style="font-size: 12px;"><b>Enter list data</b></a>
 <br>
-<%= link_to '<b>+ New entry</b>', :action=> 'new', :encategory => @encategory %> 
-<br>
-<%= link_to '<b>+ New list</b>', :action => 'new_list', :encategory => @encategory %>
 </div>
 </div>
 
@@ -395,7 +416,7 @@ Display:
 
 <div id="edit_text" > 
 <b>Edit the element</b> <span class="el-name"></span><br>
-<div>
+<div style="width: auto !important">
 <textarea style="width: 100%;" rows="3"></textarea>
 </div>
 </div>
@@ -404,80 +425,27 @@ Display:
 <b>Changes have been saved</b>
 </div>
 
+<div id="enter_list" align="left">
+Choose the fields column 
 
-<div id="add_form">
+<select style="width: 70px" id="select_enter_list">
+	<option>1</option>
+	<option>2</option>
+	<option>3</option>
+	<option>4</option>
+	<option>5</option>
+	<option>6</option>
+</select>
 
-<% form_remote_tag :url => { :action => 'quick_create'} do %>
-<br>
-<div id="form_display">
-Display: 
-<span style="font-size: 10px; font-weight: bold">
-<input type="checkbox" class="check_text" checked> Text 
-<input type="checkbox" class="check_html"> Html
-<input type="checkbox" class="check_translate" checked> Translate
-<input type="checkbox" class="check_transcribe" checked> Transcribe
-<input type="checkbox" class="check_sound"> Sound
-<input type="checkbox" class="check_image"> Image
-<input type="checkbox" class="check_order"> Order
-</span>
+<span id="enter_list_tag" style="font-weight: bold"></span>
+
+<br><br><br>
+
+
+<div id="ent_list_textarea">
+<textarea style="width: 100%; height: 100%;" id="words_array"></textarea>
 </div>
-
-<br>
-<div style="background-color: #efefef; padding: 5px 2px 20px; border: 1px dotted #AFAFAF;">
-<table class="f-body" width="99%" style="margin: 0 auto"  align="center" cellspacing="0" cellpadding="0">
-	<thead>
-	<tr>
-		<th><span class="f-head">Text</span></th>
-		<th><span class="f-head">Html</span></th>
-		<th><span class="f-head">Translate</span></th>
-		<th><span class="f-head">Transcribe</span></th>
-		<th><span class="f-head">Sound</span></th>
-		<th><span class="f-head">Image</span></th>
-		<th><span class="f-head">Order</span></th>
-	</tr>
-	</thead>
-	<tbody>
-	<tr class="wform first-wform">
-				<td>
-					<input style="width: 100%" type="text" name="enword[text]" value="" />
-				</td>
-				<td>
-					<input style="width: 100%" type="text" name="enword[html]" value=""/>
-				</td>
-				<td>
-					<input  style="width: 100%" type="text" name="enword[translate]" value=""/>
-				</td>
-				<td>
-					<input  style="display: none; width: 100%" type="text" name="enword[transcribe]" value=""/>
-				</td>
-				<td>
-					<input style="display: none; width: 100%" type="text" name="enword[sound_url]" value=""/>
-				</td>
-				<td>
-					<input style="display: none; width: 100%" type="text" name="enword[image_url]" value=""/>
-				</td>
-				<td>
-					<input style="display: none" size="3" type="text" name="enword[order_num]" value="" />
-				</td>
-				<td>
-					<input  style="display: none; width: 100%" type="text" name="enword[grammar]" value=""/>
-				</td>
-				<td>
-					<input style="display: none; width: 100%" type="text" name="enword[forms]" value="" />
-				</td>
-				<td>
-					<input style="display: none" type="text" name="enword[category_id]"  size="2" />
-				</td>
-		</tr>
-	</tbody>
-</table>
-</div>
-<br>
-    <input type="submit" value="Create" name="commit"/>
-	
-<% end %>
-
-<div class="enw-update-note" style="min-height: 20px; font-weight: bold; margin: 15px 100px 20px; color: green"></div>
+<input type="button" value="Insert data" onclick="splitLine()">
 
 </div>
 

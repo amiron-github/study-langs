@@ -1,24 +1,66 @@
-<h1>New exercise</h1>
+<% content_for :special_js_css do %>
+<style type="text/css">
+label {font-weight: bold;color: #333;}
+<% end %>
+
+<h3 class="admin-p-name">New exercise</h3>
+
+<div style="margin-bottom: 20px;">
+<%= link_to 'List of exercises', exercises_path %>
+</div>
+
+<div class="display-container">
 
 <% form_for(@exercise) do |f| %>
   <%= f.error_messages %>
 
-  <p>
+<table cellspacing="8">  
+<tr>
+  <td >
     <%= f.label :test_id %>
+  </td>
+  <td>
     <%= f.text_field :test_id %>
-  </p>
-  <p> <%= f.label :categories %>
+  </td>
+<tr>
+<tr>
+  <td >
+	<%= f.label :category %>
+  </td>
+  <td>
 	<%=
 		@cats = Category.find(:all).map {|c| [c.title, c.id] }
 		f.select(:category_id, @cats)
 	%> 
-  <p>
+  </td>
+<tr>
+<tr>
+  <td >
     <%= f.label :title %>
+  </td>
+  <td>
     <%= f.text_field :title %>
-  </p>
-  <p>
+  </td>
+<tr>
+<tr>
+  <td >
+    <%= f.label :title_ru %>
+  </td>
+  <td>
+    <%= f.text_field :title_ru %>
+  </td>
+<tr>
+<tr>
+  <td >
+    <%= f.label :title_fr %>
+  </td>
+  <td>
+    <%= f.text_field :title_fr %>
+  </td>
+<tr>
+</table>
     <%= f.submit 'Create' %>
   </p>
 <% end %>
 
-<%= link_to 'Back', exercises_path %>
+</div>

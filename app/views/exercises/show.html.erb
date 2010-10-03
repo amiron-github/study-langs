@@ -1,3 +1,13 @@
+<h3 class="admin-p-name">Show: <span style="font-size: 17px"><%= @exercise.test_id %></span></h3>
+
+<div style="margin-bottom: 20px;">
+<%= link_to 'List of exercises', exercises_path %>
+| <%= link_to 'Edit', edit_exercise_path(@exercise) %>
+</div>
+
+<div style="margin: 0 20px; border: 1px solid #666; padding: 10px 30px 30px; ">
+
+
 <p>
   <b>Test:</b>
   <%=h @exercise.test_id %>
@@ -5,7 +15,7 @@
 
 <p>
   <b>Category:</b>
-  <%=h @exercise.category_id %>
+  <%=h @exercise.category.title %>
 </p>
 
 <p>
@@ -13,6 +23,15 @@
   <%=h @exercise.title %>
 </p>
 
+<p>
+  <b>Title ru:</b>
+  <%=h @exercise.title_ru %>
+</p>
 
-<%= link_to 'Edit', edit_exercise_path(@exercise) %> |
-<%= link_to 'Back', exercises_path %>
+<p>
+  <b>Title fr:</b>
+  <%=h @exercise.title_fr %>
+</p>
+
+
+</div>

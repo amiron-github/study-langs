@@ -8,7 +8,7 @@
 $(document).ready(function() { 
     $("table.tablesorter") 
     .tablesorter({widthFixed: true, sortList: [[0,0]], headers: {3: {sorter: 'digit'}, 5:{sorter: false}},widgets: ['zebra'] }) 
-    //.tablesorterPager({container: $("#pager"), size: 30,positionFixed: false}); 
+    .tablesorterPager({container: $("#pager"), size: 30,positionFixed: false}); 
 });
 </script> 
  
@@ -16,7 +16,33 @@ $(document).ready(function() {
 
 <h3 class="admin-p-name">Listing exercises</h3>
 
-<table class="tablesorter">
+<div style="margin-bottom: 20px;">
+<%= link_to 'List of categories', categories_path %>
+</div>
+
+<div id="pager" class="pager"> 
+	<form> 
+		<img title="First Page" src="/images/tablesorter/first.png" class="first"/> 
+		<img title="Previous Page" src="/images/tablesorter/prev.png" class="prev"/> 
+		<input type="text" class="pagedisplay"/> 
+		<img title="Next Page" src="/images/tablesorter/next.png" class="next"/> 
+		<img title="Last Page" src="/images/tablesorter/last.png" class="last"/> 
+		
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<b>Display rows:</b>
+		<select class="pagesize"> 
+			<option  value="30" selected="selected">30</option> 
+			<option value="50">50</option> 
+			<option  value="100">100</option> 
+			<option  value="200">200</option>
+			<option  value="500">500</option>
+			<option  value="1000">1000</option>
+		</select> 
+	</form> 
+</div>
+<div><br><%= link_to '+ New exercise', new_exercise_path %><br></div>
+
+<table class="tablesorter" cellspacing="1">
 <thead>
   <tr>
 	<th>ID &nbsp;</th>
@@ -30,17 +56,16 @@ $(document).ready(function() {
 <tbody>
 <% @exercises.each do |exercise| %>
   <tr>
-	<td><%=h exercise.id %></td>
+	<td width="25"><%=h exercise.id %></td>
     <td><%=h exercise.test_id %></td>
 	<td><%=h exercise.category.title %></td>
     <td><%=h exercise.category_id %></td>
     <td><%=h exercise.title %></td>
-    <td><%= link_to 'Show', exercise %> | <%= link_to 'Edit', edit_exercise_path(exercise) %> | <%= link_to 'Destroy', exercise, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td width="120"><%= link_to 'Show', exercise %> | <%= link_to 'Edit', edit_exercise_path(exercise) %> | <%= link_to 'Destroy', exercise, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </tbody>
 </table>
 
 <br />
-
-<%= link_to 'New exercise', new_exercise_path %>
+<%= link_to '+ New exercise', new_exercise_path %>

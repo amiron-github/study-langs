@@ -1,0 +1,64 @@
+<% @spaces = defined?(spaces) ? spaces : [] %>
+<% @lang = defined?(lang) ? lang : "en" %>
+
+<div class="voc-wordlist">
+<table class="voc_bord" align="center" cellspacing="0">
+<tr>
+<td>
+
+<table class="diction" cellpadding="0" cellspacing="0" align="center">
+<thead>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+</thead>
+<tbody>
+<%
+@t_words = Category.find( t_category ).words.find(:all, :order => 'order_num')
+@t_words.each_with_index do |word, index|
+%>
+  <% @spaces.each do |s|%>
+	<% if index == s %>
+  <tr class="trow">
+    <td class="original" valign="top">&nbsp;
+    </td>
+    <td class="transcript" valign="top">&nbsp;
+    </td>
+    <td class="translation" valign="top">&nbsp;
+    </td>
+  </tr>
+	<%end -%>
+<%end -%>
+<tr class="trow">
+    <td class="original" valign="top"><%= word.html %>
+    </td>
+    <td class="transcript" valign="top">
+      <table onclick="playFile('<%= word.sound_url %>')" class="audiotrans" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>[<% if @lang == "fr" %><%= word.transcribe_fr %><%else%><%= word.transcribe %><%end%>]
+          </td>
+          <td class="trs_td"><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div>
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td class="translation" valign="top"><% if @lang == "fr" %><%= word.translate_fr %><%else%><%= word.translate %><%end%>
+    </td>
+  </tr>
+<%end -%>
+</tbody>
+<tfoot>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+</tfoot>  
+</table>
+
+</td>
+</tr>
+</table>
+</div><!-- end of voc-wordlist-->

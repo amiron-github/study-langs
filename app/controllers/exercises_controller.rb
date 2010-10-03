@@ -52,7 +52,7 @@ layout "admin"
     respond_to do |format|
       if @exercise.save
         flash[:notice] = 'Exercise was successfully created.'
-        format.html { redirect_to(@exercise) }
+        format.html { redirect_to(exercises_url) }
         format.xml  { render :xml => @exercise, :status => :created, :location => @exercise }
       else
         format.html { render :action => "new" }
@@ -69,7 +69,7 @@ layout "admin"
     respond_to do |format|
       if @exercise.update_attributes(params[:exercise])
         flash[:notice] = 'Exercise was successfully updated.'
-        format.html { redirect_to(@exercise) }
+        format.html { redirect_to(exercises_url) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
