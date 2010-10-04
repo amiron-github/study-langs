@@ -291,11 +291,13 @@ tContainer.show().effect("highlight", 2000);
 <% end %>
 
 
-<h3 class="admin-p-name">Listing words in category <%= @encategory.title %></h3>
+<h3 class="admin-p-name">Words in category <%= @encategory.title %></h3>
 
-<div style="margin-bottom: 20px;"><%= link_to "All categories", :action => 'index' %> 
+<div style="margin-bottom: 20px;">
+<%= link_to "Language categories", :action => 'index_lang', :lang=> @encategory.lang %> 
 | <%= link_to 'View category', :action=> 'cat_index', :encategory => @encategory %>
 | <%= link_to 'Edit French', :action=> 'cat_edit_fr', :encategory => @encategory %>
+| <%= link_to 'Full data', :action=> 'cat_data', :encategory => @encategory %>
 </div>
 
 <div class="display-container">
@@ -334,7 +336,7 @@ Display:
 
 
 <tr style="display: none">
-	<td><input class="changes_checker" type="checkbox" disabled></td>
+	<td ><input class="changes_checker" type="checkbox" disabled></td>
 	<td><span class="f-num">num0</span><span class="enw-order-num">x</span> <input type="hidden" disabled name="enword[num0][id]" value=""></td>
     <td><span class="in-name">enword[num0][text]</span><input class="enw-ntext" style="width: 100%" type="text" value=""></td>
 	<td><span class="in-name">enword[num0][html]</span><input class="enw-nhtml"  style="width: 100%;"  type="text"  value=""></td>
@@ -342,7 +344,7 @@ Display:
 	<td><span class="in-name">enword[num0][transcribe]</span><input class="enw-ntranscribe" style="width: 100%"  type="text" value=""></td>
 	<td><span class="in-name">enword[num0][sound_url]</span><input class="enw-nsound_url" style="width: 100%" type="text"  value=""></td>
 	<td><span class="in-name">enword[num0][image_url]</span><input class="enw-nimage_url" style="width: 100%"  type="text" value=""></td>
-	<td>
+	<td >
 		<div class="enw-links" style="float: right; margin-left: 5px; background-color: #fff; position: relative; font-size: 10px; margin-right: 3px; padding: 4px 10px; border: 1px solid #ccc; margin-top: 2px; white-space: nowrap">  
 			<a href="/words/num0">View</a>
 				| <!-- #to_fix -->
@@ -354,15 +356,15 @@ Display:
 </tr>
 <% @words.each_with_index do |enword,num| %>
 <tr>
-	<td><input class="changes_checker" type="checkbox" disabled></td>
-	<td><span class="f-num"><%= num %></span><span class="enw-order-num"><%= enword.order_num %></span> <input type="hidden" disabled name="enword[<%= num %>][id]" value="<%= enword.id %>"></td>
+	<td width="25"><input class="changes_checker" type="checkbox" disabled></td>
+	<td width="25"><span class="f-num"><%= num %></span><span class="enw-order-num"><%= enword.order_num %></span> <input type="hidden" disabled name="enword[<%= num %>][id]" value="<%= enword.id %>"></td>
     <td><span class="in-name">enword[<%= num %>][text]</span><input class="enw-ntext" style="width: 100%" type="text" value="<%=h enword.text %>"></td>
 	<td><span class="in-name">enword[<%= num %>][html]</span><input style="width: 100%;"  type="text"  value="<%=h enword.html %>"></td>
 	<td><span class="in-name">enword[<%= num %>][translate]</span><input  style="width: 100%"  type="text" value="<%=h enword.translate %>"></td>
 	<td><span class="in-name">enword[<%= num %>][transcribe]</span><input style="width: 100%"  type="text" value="<%=h enword.transcribe %>"></td>
 	<td><span class="in-name">enword[<%= num %>][sound_url]</span><input style="width: 100%" type="text"  value="<%= enword.sound_url %>"></td>
 	<td><span class="in-name">enword[<%= num %>][image_url]</span><input style="width: 100%"  type="text" value="<%= enword.image_url %>"></td -->
-	<td>
+	<td width="120">
 		<div class="enw-links" style="float: right; margin-left: 5px; background-color: #fff; position: relative; font-size: 10px; margin-right: 3px; padding: 4px 10px; border: 1px solid #ccc; margin-top: 2px; white-space: nowrap">  
 			<%= link_to 'View', enword %> |
 			<%= link_to 'Edit', edit_word_path(enword) %> |

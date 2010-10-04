@@ -41,6 +41,33 @@ layout "admin"
     end
   end
   
+  def cat_data
+	cat = Category.find(params[:encategory])
+	@encategory = cat
+	@words = cat.words.find(:all, :order =>"order_num")
+	respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @enword }
+    end
+  end
+  
+  def list_attributes
+	#ERB::Util.html_escape()
+	category = Category.find(params[:category])
+	attribute = params[:attribute]
+	words = category.words.find(:all, :order =>"order_num")
+	attributes = []
+	modal = params[:modal]
+	if modal != 'false' 
+		modal = 'true'
+	end
+	words.each do |word|
+		attributes << '<div>'+ERB::Util.html_escape(word[attribute])+'</div>'
+	end
+	attributes = attributes.join(" ")
+	render :js => '$("<div class=\"w-data\"></div>").html("<div style=\"text-align: left; padding: 20px 25px;\">'+attributes+'</div>").dialog({minWidth: 500, modal: '+modal+',title: "Attributes array: '+attribute.to_s+'", buttons: { "Close": function() { $(this).dialog("close"); } }, close: function() { $(this).dialog("destroy"); $(this).remove();}})'
+  end
+  
   def cat_edit
 	cat = Category.find(params[:encategory])
 	@encategory = cat

@@ -9,6 +9,8 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'words/quick_show', :controller => 'words', :action => 'quick_show'
   map.connect 'words/cat_edit', :controller => 'words', :action => 'cat_edit'
   map.connect 'words/cat_edit_fr', :controller => 'words', :action => 'cat_edit_fr'
+  map.connect 'words/cat_data', :controller => 'words', :action => 'cat_data'
+  map.connect 'words/list_attributes', :controller => 'words', :action => 'list_attributes'
   map.connect 'words/cat_index', :controller => 'words', :action => 'cat_index' 
   map.connect 'words/index_lang', :controller => 'words', :action => 'index_lang'    
   map.resources :words

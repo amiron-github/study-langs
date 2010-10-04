@@ -1,22 +1,49 @@
 
 <% content_for :special_js_css do %>
 <style type="text/css">
-	#sortable { list-style-type: none; margin: 0; padding: 0; ; }
-	#sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; height: 18px; }
-	#sortable li span { position: absolute; margin-left: -1.3em; }
-	</style>
-	<script type="text/javascript">
+#sortable { list-style-type: none; margin: 0; padding: 0; ; }
+#sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; height: 18px; }
+#sortable li span { position: absolute; margin-left: -1.3em; }
+.w-data div div {
+padding: 2px 4px;
+font-size: 11px;
+}
+
+.attr_getter {
+padding: 10px 10px;
+}
+
+.attr_getter input {
+font-size: 11px;
+}
+
+.w-data div div {
+padding: 2px 4px;
+font-size: 11px;
+}
+
+.w-data div div:nth-child(odd) {
+background-color: #efefef;
+}
+
+
+</style>
+<script type="text/javascript">
 	$(function() {
 		$("#sortable").sortable();
 		$("#sortable").disableSelection();
 		$("#sortable").sortable("widget");
 		$("#accordion").accordion({ collapsible: true, active: false, autoHeight: false });
+		
+		$(".attr_getter select").attr("autocomplete", "off")
 	});
+	
+	
 </script>
 <% end %>
 
 
-<h3 class="admin-p-name">Words and Categories listing</h3>
+<h3 class="admin-p-name">Words and Categories: <%= params[:lang].to_s.upcase %></h3>
 <div align="right"><%= link_to 'Add a word', :action => 'new' %> | <%= link_to 'New list', :action => 'new_list' %> </div>
 <br>
 
@@ -26,19 +53,35 @@
 <h3 style="padding: 5px 30px; text-transform: capitalize; font-size: 12px;"><%= category.title %></h3>
 	<div>
 		<div style="margin-bottom: 10px;">
-			<%= link_to "Review words",  :action => "cat_index", :encategory => category %> |
-			<%= link_to "Edit words", :action => "cat_edit", :encategory => category %> 
+			<%= link_to "Review words",  :action => "cat_index", :encategory => category %> 
+			| <%= link_to "Edit words", :action => "cat_edit", :encategory => category %> 
+			| <%= link_to "Edit French", :action => "cat_edit_fr", :encategory => category %> 
+			| <%= link_to "Full data", :action => "cat_data", :encategory => category %> 
 		</div>
+		
+		<div  class="attr_getter">
+			<% form_remote_tag(:url => {:action => 'list_attributes', :modal => 'false'} ) do %>
+			<input type="hidden" name="category" value="<%= category.id %>">
+			<%= submit_tag 'Review attributes' %> 
+			<select name="attribute">
+				<option value="text" selected> text </option>
+				<option value="html"> html </option>
+				<option value="translate"> translate </option>
+				<option value="translate_fr"> translate_fr </option>
+				<option value="transcribe"> transcribe </option>
+				<option value="transcribe_fr"> transcribe_fr </option>
+				<option value="sound_url"> sound_url </option>
+				<option value="image_url"> image_url </option>
+				<option value="id"> id </option>
+			</select>
+
+			<% end %>		
+		</div>
+		
 		<div style="font-size: 12px;">
-			<table>
-			<% for word in category.words.find(:all, :order => 'order_num') %><!-- #to_fix -->
-				<tr>
-					<td><%= word.text %></td>
-				</tr>
-			<% end %>
-			</table>
+
 			<br>
-			<b>Total: <%= category.words.length %></b><!-- #to_fix -->
+			<b>Total items: <%= category.words.length %></b><!-- #to_fix -->
 		</div>
 	</div>
 <% end %>

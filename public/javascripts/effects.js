@@ -537,7 +537,7 @@ function softOff() {
 /////////// Audio Blocks
 
 function playFile(slink) {
-        this.before = '<object type="application/x-shockwave-flash" data="player_norm.swf" width="20" height="20"><param name="movie" value="player_norm.swf"/><param name="FlashVars" value="mp3=';
+        this.before = '<object type="application/x-shockwave-flash" data="/player_norm.swf" width="20" height="20"><param name="movie" value="/player_norm.swf"/><param name="FlashVars" value="mp3=';
         this.after = '&amp;autoplay=1" /></object>';
 	this.all=this.before + slink + this.after;
   document.getElementById("audiospan").innerHTML=this.all;

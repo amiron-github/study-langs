@@ -86,8 +86,6 @@ $("#result_lower_case").click(function() {
 
 $("#result_del_char").click(function() {
 
-
-		
 		//str = str.replace(/\[/g, 'A')
 
 	var tString = $("#result textarea").val();
@@ -101,18 +99,35 @@ $("#result_del_char").click(function() {
 	} else {
 		tString = tString.replace( new RegExp( replaceThis, 'g' ), withThis );
 	}
-	
-	
-	
-	
-	$("#result textarea").val(tString);
 
+	$("#result textarea").val(tString);
 })
 
 
 	//RegExp.quote = function(str) {
     // return str.replace(/([.?*+^$[\]\\(){}-])/g, "\\$1");
 // };
+
+$("#result_lower_case").click(function() {
+	var tString = $("#result textarea").val();
+	tString = tString.toLowerCase();
+	$("#result textarea").val(tString)
+})
+
+
+$("#fr_pronounce").click(function() {
+
+		//str = str.replace(/\[/g, 'A')
+
+	var tString = $("#result textarea").val();
+
+	tString = tString.replace(/oo/g, 'ou' );
+	tString = tString.replace(/ch/g, 'tch' );
+	tString = tString.replace(/sh/g, 'ch' );
+	tString = tString.replace(/stch/g, 'sch' );
+	
+	$("#result textarea").val(tString);
+})
 
 
 
@@ -567,6 +582,7 @@ font-size: 11px;
 <textarea rows="10" cols="40"></textarea>
 <br>
 <input type="button" id="clear" value="Clear"> <input type="button" id="result_numerote" value="Numerote"/> <input type="button" id="result_lower_case" value="Lower case"/>
+<input type="button" value="To French" id="fr_pronounce"/>
 <br><br>
 
 <input type="button" value="Replace" id="result_del_char"/> <input type="text" id="replace_char_value" size="3"> with <input type="text" id="replace_tochar_value" size="3">

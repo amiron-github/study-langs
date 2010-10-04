@@ -7,7 +7,7 @@
 
 $(document).ready(function() { 
     $("table.tablesorter") 
-    .tablesorter({widthFixed: true, sortList: [[0,0]], headers: {3: {sorter: 'digit'}, 5:{sorter: false}},widgets: ['zebra'] }) 
+    .tablesorter({widthFixed: true, sortList: [[0,1]], headers: {3: {sorter: 'digit'}, 5:{sorter: false}},widgets: ['zebra'] }) 
     .tablesorterPager({container: $("#pager"), size: 30,positionFixed: false}); 
 });
 </script> 

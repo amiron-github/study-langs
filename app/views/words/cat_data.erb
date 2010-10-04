@@ -1,0 +1,144 @@
+<% @has_audio = true %>
+<% content_for :special_js_css do %>
+<style type="text/css">
+.column-title {
+font-weight: bold;color: #333;
+text-align: right;
+padding: 0 10px 0 3px;
+}
+
+.w-data div div {
+padding: 2px 4px;
+font-size: 11px;
+}
+
+.w-data div div:nth-child(odd) {
+background-color: #efefef;
+}
+
+span.acco {
+text-decoration: underline;
+color: #0C1CCF;
+font-weight: bold;
+}
+</style>
+<% end %>
+
+<h3 class="admin-p-name">Words data in category <%= @encategory.title %></h3>
+
+<div style="margin-bottom: 20px;">
+<%= link_to "Language categories", :action => 'index_lang', :lang=> @encategory.lang %> 
+| <%= link_to 'Category index', :action=> 'cat_index', :encategory => @encategory %>
+| <%= link_to 'Edit category', :action=> 'cat_edit', :encategory => @encategory %>
+| <%= link_to 'Edit French', :action=> 'cat_edit_fr', :encategory => @encategory %>
+</div>
+
+<div>
+<% form_remote_tag(:url => {:action => 'list_attributes'} ) do %>
+<input type="hidden" name="category" value="<%= @encategory.id %>">
+<%= submit_tag 'Get array of' %> 
+
+<select name="attribute">
+	<option value="text"> text </option>
+	<option value="html"> html </option>
+	<option value="translate"> translate </option>
+	<option value="translate_fr"> translate_fr </option>
+	<option value="transcribe"> transcribe </option>
+	<option value="transcribe_fr"> transcribe_fr </option>
+	<option value="sound_url"> sound_url </option>
+	<option value="image_url"> image_url </option>
+	<option value="id"> id </option>
+</select>
+
+<% end %>
+
+<br>
+</div>
+
+<table width="100%" cellspacing="1" style="background-color: #dfdfdf">
+<% @words.each_with_index do |word, num| %>
+<tr <%= cycle('style="background-color: #efefef"', 'style="background-color: #fff"') %>>
+	<td style="padding: 5px 10px">
+	<table>
+		<tr>
+			<td class="column-title">ID
+			</td>
+			<td class="entry-value"><%= word.id %>
+			</td>
+		</tr>
+		
+		<tr>
+			<td class="column-title">text
+			</td>
+			<td class="entry-value"><%= word.text %>
+			</td>
+		</tr>
+		<tr>
+			<td class="column-title">html
+			</td>
+			<td class="entry-value"><%= word.html %>
+			</td>
+		</tr>
+		<tr>
+			<td class="column-title">translate
+			</td>
+			<td class="entry-value"><%= word.translate %>
+			</td>
+		</tr>
+		<tr>
+			<td class="column-title">french
+			</td>
+			<td class="entry-value"><%= word.translate_fr %>
+			</td>
+		</tr>
+		<tr>
+			<td class="column-title">transcribe
+			</td>
+			<td class="entry-value"><%= word.transcribe  %>
+			</td>
+		</tr>
+		<tr>
+			<td class="column-title">french
+			</td>
+			<td class="entry-value"><%= word.transcribe_fr %>
+			</td>
+		</tr>
+		<tr>
+			<td class="column-title">sound_url
+			</td>
+			<td class="entry-value"><%= word.sound_url %> <% if word.sound_url != ''%><span class="sound" onclick="playFile('<%= word.sound_url%>')"><b>[play]</b> <span class="play_tip">&nbsp; &nbsp;</span></span><%end%>
+			</td>
+		</tr>
+		<tr>
+			<td class="column-title">image_url
+			</td>
+			<td class="entry-value"> <%= word.image_url %>
+			</td>
+		</tr>
+		<tr>
+			<td class="column-title">grammar
+			</td>
+			<td class="entry-value"><%= word.grammar %>
+			</td>
+		</tr>
+		<tr>
+			<td class="column-title">forms 
+			</td>
+			<td class="entry-value"><%= word.forms %>
+			</td>
+		</tr>
+		<tr>
+			<td> <%= link_to 'Show', word %> | <%= link_to 'Edit', edit_word_path(word) %>
+			</td>
+			<td class="entry-value"><%= word.forms %>
+			</td>
+		</tr>
+	</table>
+
+			
+	
+	
+	</td>
+</tr>
+<%end%>
+</table>

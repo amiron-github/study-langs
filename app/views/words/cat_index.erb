@@ -143,7 +143,12 @@ var links ='<div style="margin: 10px 10px 10px 35px;"><a href="/words/'+id+'/edi
 
 <h3 class="admin-p-name">Listing words in category <%= @encategory.title %></h3>
 
-<div style="margin-bottom: 20px;"><%= link_to "All categories", :action => 'index' %> | <%= link_to 'Edit category', :action=> 'cat_edit', :encategory => @encategory %></div>
+<div style="margin-bottom: 20px;">
+<%= link_to "Language categories", :action => 'index_lang', :lang=> @encategory.lang %> 
+| <%= link_to 'Edit category', :action=> 'cat_edit', :encategory => @encategory %>
+| <%= link_to 'Edit French', :action=> 'cat_edit_fr', :encategory => @encategory %>
+| <%= link_to 'Full data', :action=> 'cat_data', :encategory => @encategory %>
+</div>
 
 <div class="display-container">
 <div align="right" style="padding-right: 10px; padding-bottom: 10px; font-weight: bold; font-size: 11px; ">Quick links</div>
@@ -206,7 +211,6 @@ var links ='<div style="margin: 10px 10px 10px 35px;"><a href="/words/'+id+'/edi
   
 <div style="position: absolute; font-size: 10px; right: 3px; padding: 4px 10px; border: 1px solid #ccc; top: 3px;">  
   <%= link_to_remote 'View', :url => {:action => 'quick_show', :id => enword.id } %> 
-  
   | <a href="javascript:;" class="quick_edit"> Edit </a>
 </div>	
 </li>

@@ -67,6 +67,24 @@ display: none;
 width: auto !important;
 }
 
+.attr_getter {
+padding: 0px 10px;
+text-align: right;
+}
+
+.attr_getter input {
+font-size: 11px;
+}
+
+.w-data div div {
+padding: 2px 4px;
+font-size: 11px;
+}
+
+.w-data div div:nth-child(odd) {
+background-color: #efefef;
+}
+
 </style>
 <script type="text/javascript">
 $(function() {
@@ -333,9 +351,13 @@ function splitLine() {
 <% end %>
 
 
-<h3 class="admin-p-name">Listing words in category <%= @encategory.title %></h3>
+<h3 class="admin-p-name">French values of the category: <%= @encategory.title %></h3>
 
-<div style="margin-bottom: 20px;"><%= link_to "All categories", :action => 'index' %> | <%= link_to 'View category', :action=> 'cat_index', :encategory => @encategory %></div>
+<div style="margin-bottom: 20px;">
+<%= link_to "Language categories", :action => 'index_lang', :lang=> @encategory.lang %>
+| <%= link_to 'View category', :action=> 'cat_index', :encategory => @encategory %>
+| <%= link_to 'Edit category', :action=> 'cat_edit', :encategory => @encategory %>
+</div>
 <div class="display-container">
 
 <div id="f_toggle_show">
@@ -350,6 +372,24 @@ Display:
 <p style="font-size: 10px; font-style: italic; margin-bottom: 10px;">
 * Click the field to edit. Double click to edit the element in a textarea
 </p>
+		<div  class="attr_getter" >
+			<% form_remote_tag(:url => {:action => 'list_attributes', :modal => 'false'} ) do %>
+			<input type="hidden" name="category" value="<%= @encategory.id %>">
+			<%= submit_tag 'Review attributes' %> 
+			<select name="attribute">
+				<option value="text" selected> text </option>
+				<option value="html"> html </option>
+				<option value="translate"> translate </option>
+				<option value="translate_fr"> translate_fr </option>
+				<option value="transcribe"> transcribe </option>
+				<option value="transcribe_fr"> transcribe_fr </option>
+				<option value="sound_url"> sound_url </option>
+				<option value="image_url"> image_url </option>
+				<option value="id"> id </option>
+			</select>
+
+			<% end %>		
+		</div>
 <% form_remote_tag :url => { :action => 'save_enword_changes'} do %>
 <div style="background-color: #fff; border: 2px solid #D1DFEF; padding: 15px;">
 <table id="enw_edit_words" width="100%" style="background-color: transparent">
@@ -358,8 +398,8 @@ Display:
 		<th style="font-size: 9px;"><span class="f_col_title">undo</span></th>
 		<th><span class="f_col_title">№</span></th>
 		<th><span class="f_col_title">text</span></th>
-		<th><span class="f_col_title">translate</span></th>
-		<th><span class="f_col_title">transcribe</span></th>
+		<th><span class="f_col_title">translate French</span></th>
+		<th><span class="f_col_title">transcribe French</span></th>
 	</tr>
 </thead>
 <tbody>
@@ -443,7 +483,7 @@ Choose the fields column
 
 
 <div id="ent_list_textarea">
-<textarea style="width: 100%; height: 100%;" id="words_array"></textarea>
+<textarea style="width: 100%; height: 100%;" id="words_array" rows="12"></textarea>
 </div>
 <input type="button" value="Insert data" onclick="splitLine()">
 
