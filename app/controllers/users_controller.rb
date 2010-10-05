@@ -85,6 +85,22 @@ class UsersController < ApplicationController
     render :text => '', :layout =>false
     end
   end
+  
+  def set_word 
+    if !current_user
+	  render :nothing => true
+    else
+		learned = current_user.words.find(:first, :conditions => ['word_id=?', params[:word_id]])
+		if learned
+			entry = current_user.user_words.find(:first, :conditions => ['word_id=?', params[:word_id]])
+			entry.update_attribute(:occurred, entry.occurred+=1 )
+		else
+			word = Word.find(params[:word_id])
+			current_user.words << word
+		end
+	  render :js => 'alert("okey")'
+    end
+  end
 
 	def buy
 #		ord_id = rand(36**20).to_s(36)

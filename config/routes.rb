@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :clusters
+
   map.resources :exercises
   map.connect 'words/new_list', :controller => 'words', :action => 'new_list'
   map.connect 'words/create_list', :controller => 'words', :action => 'create_list'
@@ -36,6 +38,7 @@ ActionController::Routing::Routes.draw do |map|
   map.userd '/userd', :controller => 'users', :action => 'del'
   map.del_stat '/del_stat', :controller => 'users', :action => 'del_stat'
   map.get_stat '/set_stat', :controller => 'users', :action => 'set_stat'
+  map.set_word '/set_word', :controller => 'users', :action => 'set_word'
   map.edit '/edit', :controller => 'users', :action => 'save_user'
   map.psedit '/psedit', :controller => 'users', :action => 'save_pass'
   

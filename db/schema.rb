@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101001140324) do
+ActiveRecord::Schema.define(:version => 20101005221511) do
 
   create_table "categories", :force => true do |t|
     t.string   "title"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(:version => 20101001140324) do
     t.string   "supercategory"
     t.string   "title_fr"
     t.string   "lang"
+    t.string   "tag"
+  end
+
+  create_table "clusters", :force => true do |t|
+    t.string   "title"
+    t.string   "tag"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "exercises", :force => true do |t|
@@ -33,13 +42,13 @@ ActiveRecord::Schema.define(:version => 20101001140324) do
   end
 
   create_table "orders", :force => true do |t|
-    t.integer  "user_id",                                                                :null => false
+    t.integer  "user_id",                                                 :default => 0, :null => false
     t.decimal  "amount",                    :precision => 3, :scale => 2
     t.integer  "item_id"
     t.integer  "status",                                                  :default => 0
     t.string   "txn_id",     :limit => 100
     t.string   "ord_id",     :limit => 100
-    t.integer  "type_id",                                                                :null => false
+    t.integer  "type_id",                                                 :default => 0, :null => false
     t.datetime "expired_at",                                                             :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -74,7 +83,7 @@ ActiveRecord::Schema.define(:version => 20101001140324) do
   end
 
   create_table "sessions", :force => true do |t|
-    t.string   "session_id", :null => false
+    t.string   "session_id", :default => "", :null => false
     t.text     "data"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -84,8 +93,8 @@ ActiveRecord::Schema.define(:version => 20101001140324) do
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "user_tests", :force => true do |t|
-    t.integer  "user_id",    :null => false
-    t.string   "test_id",    :null => false
+    t.integer  "user_id",    :default => 0,  :null => false
+    t.string   "test_id",    :default => "", :null => false
     t.integer  "total"
     t.integer  "correct"
     t.datetime "created_at"
@@ -95,7 +104,16 @@ ActiveRecord::Schema.define(:version => 20101001140324) do
   add_index "user_tests", ["test_id"], :name => "index_user_tests_on_test_id"
   add_index "user_tests", ["user_id"], :name => "index_user_tests_on_user_id"
 
+  create_table "user_words", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "word_id"
+    t.integer  "occurred",   :default => 1
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", :force => true do |t|
+    t.string   "login",                     :limit => 40
     t.string   "name",                      :limit => 100, :default => ""
     t.string   "email",                     :limit => 100
     t.string   "crypted_password",          :limit => 40
@@ -108,9 +126,10 @@ ActiveRecord::Schema.define(:version => 20101001140324) do
     t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "status",                                   :default => 0,         :null => false
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["login"], :name => "index_users_on_login", :unique => true
 
   create_table "words", :force => true do |t|
     t.text     "text"
@@ -127,6 +146,11 @@ ActiveRecord::Schema.define(:version => 20101001140324) do
     t.text     "transcribe_fr"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "words_clusters", :id => false, :force => true do |t|
+    t.integer "cluster_id"
+    t.integer "word_id"
   end
 
 end

@@ -150,7 +150,8 @@ Current time: <%= Time.now.to_s(:long) %>
 <div id="results_container">
 		No results yet.
 		<br>
-		
+		Words: <%= @user.words.length %>
+		<br>
 		<% @cat_exercises.each do |ct| %>
 			<%= ct.correct %>
 		<%end%>

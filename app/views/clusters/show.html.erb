@@ -1,0 +1,18 @@
+<p>
+  <b>Title:</b>
+  <%=h @cluster.title %>
+</p>
+
+<p>
+  <b>Tag:</b>
+  <%=h @cluster.tag %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @cluster.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_cluster_path(@cluster) %> |
+<%= link_to 'Back', clusters_path %>
