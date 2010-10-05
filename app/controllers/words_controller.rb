@@ -65,7 +65,7 @@ layout "admin"
 		attributes << '<div>'+ERB::Util.html_escape(word[attribute])+'</div>'
 	end
 	attributes = attributes.join(" ")
-	render :js => '$("<div class=\"w-data\"></div>").html("<div style=\"text-align: left; padding: 20px 25px;\">'+attributes+'</div>").dialog({minWidth: 500, modal: '+modal+',title: "Attributes array: '+attribute.to_s+'", buttons: { "Close": function() { $(this).dialog("close"); } }, close: function() { $(this).dialog("destroy"); $(this).remove();}})'
+	render :js => '$("<div class=\"w-data\"></div>").html("<div style=\"text-align: left; padding: 20px 25px;\">'+attributes+'</div>").dialog({width: 500, modal: '+modal+',title: "Attributes array: '+attribute.to_s+'", buttons: { "Close": function() { $(this).dialog("close"); } }, close: function() { $(this).dialog("destroy"); $(this).remove();}})'
   end
   
   def cat_edit
