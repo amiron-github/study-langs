@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  cluster_id: 1
+  word_id: 1
+  order_num: 1
+
+two:
+  cluster_id: 1
+  word_id: 1
+  order_num: 1

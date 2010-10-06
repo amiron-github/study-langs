@@ -1,3 +1,47 @@
+
+<% content_for :special_js_css do %>
+  
+<style type="text/css">
+#words-to-add table tr {
+vertical-align: top;
+}
+
+#words-to-add table {
+width: 100%;
+}
+
+#words-to-add table tr div {
+padding-left: 25px;
+text-indent: -20px;
+}
+
+
+</style>
+<script type="text/javascript">
+	
+$(function() {
+	$("#sortable").sortable( { update: function() { 
+		setOrder();
+	}});
+$("#sortable").disableSelection();
+
+		
+$("#words-to-add").dialog({
+	autoOpen: false,
+		show: 'blind',
+		width: 430,
+		hide: 'blind',
+		modal: true
+	});
+	
+});
+		
+</script>
+
+<% end %>
+
+
+
 <p>
   <b>Title:</b>
   <%=h @cluster.title %>
@@ -14,5 +58,65 @@
 </p>
 
 
+<div style="margin: 0 20px; border: 1px solid #666; padding: 10px 30px 30px; ">
+<% @words.each do |word| %>
+	<%= word.translate %><br> 
+<%end%>
+
+</div>
+<br><br>
+
+<% form_remote_tag(:url => {:action => 'words_to_add'} ) do %>
+			<input type="hidden" value="false" name="modal">
+			 Add from
+			<select name="category" style="width: 150px">
+				<% @categories.each do |category| %>
+					<option value="<%= category.id %>"><%= category.title %> | <%= category.lang.to_s.upcase %></option>
+				<% end %>
+			</select>
+			<%= submit_tag 'Review' %>
+<% end %>
+
+
+<br><br>
+
+<hr>
+<div>
+<% form_tag :action => 'remove_from_cluster' do %>
+	<input type="hidden" value="<%= @cluster.id %>" name="id">
+	
+	<% @words.each_with_index do |word, index|%>
+		<div><input type="checkbox" value="<%= word.id%>" name="word[<%= index %>]"> <%= word.translate %></div>
+	<% end %>
+<br>
+<%= submit_tag "Remove from cluster" %>
+<% end %>
+
+</div>
+
+<br><br><br><br>
+
 <%= link_to 'Edit', edit_cluster_path(@cluster) %> |
 <%= link_to 'Back', clusters_path %>
+
+
+
+<div id="words-to-add">
+<% form_tag :action => 'add_to_cluster' do %>
+	<input type="hidden" value="<%= @cluster.id %>" name="id">
+	<div id="to_add_list">
+	<input type="checkbox" value="word_id" name="word[0]"> Word
+	</div>
+<%= submit_tag "Add selected to cluster" %>
+<% end %>
+</div>
+
+
+
+
+
+
+
+
+
+

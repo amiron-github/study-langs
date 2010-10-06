@@ -1,4 +1,7 @@
 class ClustersController < ApplicationController
+layout "admin"
+require_role "admin"
+
   # GET /clusters
   # GET /clusters.xml
   def index
@@ -14,11 +17,61 @@ class ClustersController < ApplicationController
   # GET /clusters/1.xml
   def show
     @cluster = Cluster.find(params[:id])
-
+	@categories = Category.all
+	@words = @cluster.words.find(:all)
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @cluster }
     end
+  end
+  
+  def add_to_cluster
+  
+	cluster = Cluster.find(params[:id])
+	params[:word].values.each do |word_id|
+		word = Word.find(word_id)
+		cluster.involves(word)
+	end
+	redirect_to(cluster)
+  end
+  
+  def words_to_add
+	#ERB::Util.html_escape()
+	category = Category.find(params[:category])
+	words = category.words.find(:all, :order =>"order_num")
+	
+	modal = params[:modal]
+	if modal != 'false' 
+		modal = 'true'
+	end
+	attributes = ['<table><tr>']
+	words.each_with_index do |word,index|
+	
+		if index % 16 == 0
+			attributes << '<td>'
+		end
+		attributes << '<div><input type=\"checkbox\" value=\"'+word.id.to_s+'\" name=\"word['+index.to_s+']\">'+ERB::Util.html_escape(word.translate)+'</div>'
+		if index % 16 == 15 && index != words.length 
+			attributes << '</td>'
+		end
+	end
+	attributes << '</td></tr></table>'
+	
+	attributes = attributes.join(" ")
+	render :js => '$("#to_add_list").html("<div style=\"text-align: left; padding: 20px 30px\">'+attributes+'</div>"); $("#words-to-add").dialog("open") '
+  end 
+  
+  
+  def remove_from_cluster
+	cluster = Cluster.find(params[:id])
+	
+	params[:word].values.each do |word_id|
+		word = Word.find(word_id)
+		cluster.removes(word)
+	end
+
+	#cluster.removes(word)
+	redirect_to(cluster)
   end
 
   # GET /clusters/new
