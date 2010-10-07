@@ -1,4 +1,5 @@
 class SiteController < ApplicationController
+
   def page
     @file = request.path
     @file = '/index.html' if @file == '/'
@@ -7,7 +8,6 @@ class SiteController < ApplicationController
     layout = 'comment_audios.html.erb' if @file.match(/\/comments_audio\//)
 	layout = 'grammar_comments.html.erb' if @file.match(/\/grammar_comments\//)
 	
-
 	if @file.match(/\/fr\//)
 		@file = '/fr/index.html' if @file == '/fr/'
 		layout = 'fr_application.rhtml'
@@ -63,7 +63,7 @@ class SiteController < ApplicationController
     when /(memory|balloon-game)\.html$/
       @javascripts << 'vocabulary'
     end
-	
+
 	@hide_html = '<div class="hidden_content">Available for subscribed users</div>'
 	@hide_title= '<div class="hidden_content" style="font-size: 18px;">The full version of the lesson is available for subscribed users<br/><span style="font-size: 10pt;">See details on the page <a href="/everyday-course.html">Everyday Russian Course</a></span></div>'	
     if (((@file=='/user_profile.html')||(@file=='/user_profile1.html') )&& (!current_user ))
@@ -72,9 +72,26 @@ class SiteController < ApplicationController
     logger.warn("pages#{@file}.erb")
     render :file => "pages#{@file}.erb", :layout => layout	
     end
+	
+
 
   rescue StandardError => e
     logger.warn e
     render :file => "pages/404.html", :status => '404 Not Found', :layout => layout	
   end
+  
+
+  
+  
+  
 end
+
+
+
+
+
+
+
+
+
+

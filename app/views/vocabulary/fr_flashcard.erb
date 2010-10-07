@@ -1,0 +1,79 @@
+<% 
+
+@page_title = 'Cartes mémoire en ligne: '+@category_title+' '  %>
+<% @page_meta = {'description' => "Apprenez les mots et les phrases de la rubrique "+@category_title+" avec nos cartes mémoire"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+
+<% content_for :special_js_css do %>
+<style type="text/css">
+h2.page {
+margin-bottom: 0px;
+font-size: 19pt;
+}
+</style>
+
+<%end%>
+
+<div class="hint_wrap">
+<div class="hint_button" style="float: right;">
+  <div class="hint">
+      <div class="hint_list">
+        <span class="hint_string">Links and Settings</span>
+      </div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+        <ul>
+            <li><a href="/fr/ru/vocabulary/<%= @category.tag %>"><%= @category_title %></a></li>
+			<li><a href="#">Tests: <%= @category_title %></a></li>
+        </ul>
+        <%= render :partial => 'site/down_accent' %>
+  </div>
+</div>
+</div>
+
+
+<h2 class="page">Cartes mémoire: <%= @category_title %></h2>
+
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="/fr/vocabulary.html">Vocabulaire</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="/fr/ru/vocabulary/<%= @category.tag %>"><%= @category_title %></a>
+	<span class="int-arrow">--&gt;</span> Cartes mémoire
+	</span>
+</h3>
+
+
+<div  id="fl1" style="min-height: 600px; text-align: center;">
+<%= render :partial => 'site/flashcard' %>
+</div><!-- end of fl1 -->
+
+<script type="text/javascript"> 
+	var fl1 = new flashcard( {
+		id: "fl1", 
+		random_order: false,
+		basic_array: [
+<% 
+@last_item_index = (@words.length)-1
+@words.each_with_index  do |word, index| %><% unless (word.translate_fr == '#none#' || word.translate_fr == '' ) %>
+['<%= word.text %>', '<%= word.translate_fr.to_s.gsub(/'/,"’") %>', '<%= word.sound_url %>', '<%= word.transcribe_fr %>']<% if index!= @last_item_index %>,<%end -%>	
+<%end-%>
+<%end -%>
+		]
+		} )
+</script>
+
+
+<table class="voc-links voc-link-first voc-link-last" align="center" cellspacing="0"><tr>
+	<td class="voc-space">Evaluez comment vous avez appris ces mots  à l'aide de nos &nbsp;<a href="/<%= @category.tag %>-test.html">Tests lexicaux >></a></td>
+</tr></table>
+
+
+
+
+
+
+
+

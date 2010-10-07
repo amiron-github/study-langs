@@ -251,6 +251,9 @@ layout "admin"
       end
     end
   end
+  
+ 
+  
 
   # PUT /words/1
   # PUT /words/1.xml

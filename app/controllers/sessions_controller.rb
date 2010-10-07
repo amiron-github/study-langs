@@ -2,7 +2,7 @@
 class SessionsController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
-
+layout :determine_layout
   # render new.rhtml
   def new
   end
@@ -34,6 +34,16 @@ class SessionsController < ApplicationController
     #flash[:notice] = "You have been logged out."
     redirect_back_or_default('/')
   end
+  
+private
+	def determine_layout
+		layout_lang = params[:lang]
+		if layout_lang == 'fr'
+			'fr_application.rhtml'
+		else
+			'application'
+		end
+	end
 
 protected
   # Track failed login attempts
@@ -41,4 +51,7 @@ protected
     flash[:error] = "Couldn't log you in as '#{params[:login]}'"
     logger.warn "Failed login for '#{params[:login]}' from #{request.remote_ip} at #{Time.now.utc}"
   end
+  
+  
+  
 end

@@ -18,7 +18,8 @@ require_role "admin"
   def show
     @cluster = Cluster.find(params[:id])
 	@categories = Category.all
-	@words = @cluster.words.find(:all)
+	@words = @cluster.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+	
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @cluster }

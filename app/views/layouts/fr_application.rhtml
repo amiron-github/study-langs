@@ -174,7 +174,7 @@
                       <div class="menu-item-front">
                              <div class="item-top">
                                  <div class="list down"></div> 	  
-                                          <%= link_to "Se connecter",{:controller => 'sessions', :action => 'new'} %>					  
+                                          <%= link_to "Se connecter",{:controller => 'sessions', :action => 'new', :lang=> 'fr'} %>					  
                                  </div>
                               </div>
                     </div>
@@ -190,7 +190,7 @@
 					<%else%>
 						<% form_tag session_path do %>
 							<ul style="padding: 5px 20px 5px 18px;">
-								<li style="padding-bottom: 7px; text-align: center;"><a href="/signup">Click here to sign up!</a></li>
+								<li style="padding-bottom: 7px; text-align: center;"><a href="/fr/signup">Click here to sign up!</a></li>
 								<li>
 									<span style="font-size: 10px; font-weight: bold;">Email address</span><br/>
 									<%= text_field_tag 'email', @email %>
@@ -207,9 +207,7 @@
 					<%end%>		 
 					</div>
 				<%end%>			
-                     
 
-					 
                       <div id="nav6" class="menu-item">
                         <div class="menu-item-front">
                           <div class="item-top">

@@ -2,7 +2,9 @@ class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
   include ActiveMerchant::Billing::Integrations
-
+  layout :determine_layout
+  
+  
   # Protect these actions behind an admin login
   # before_filter :admin_required, :only => [:suspend, :unsuspend, :destroy, :purge]
   skip_before_filter :verify_authenticity_token, :only => [:success_pp]
@@ -269,7 +271,15 @@ class UsersController < ApplicationController
   # smart -- make sure you check that the visitor is authorized to do so, that they
   # supply their old password along with a new one to update it, etc.
 
-
+private
+	def determine_layout
+		layout_lang = params[:lang]
+		if layout_lang == 'fr'
+			'fr_application.rhtml'
+		else
+			'application'
+		end
+	end
 
 
 protected

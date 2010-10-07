@@ -1,5 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
-
+  map.vocabulary '/:lang/:to_lang/vocabulaire/:category/', :controller => 'vocabulary', :action => 'build_vocabulary'
+  map.flashcard '/:lang/:to_lang/flashcards/:category/', :controller => 'vocabulary', :action => 'build_flashcard'
+  map.vocabulary '/:lang/:to_lang/vocabulary/:category/', :controller => 'vocabulary', :action => 'build_vocabulary'
   map.connect 'clusters/words_to_add', :controller => 'clusters', :action => 'words_to_add'
   map.connect 'clusters/remove_from_cluster', :controller => 'clusters', :action => 'remove_from_cluster'
   map.connect 'clusters/add_to_cluster', :controller => 'clusters', :action => 'add_to_cluster'
@@ -32,8 +34,10 @@ ActionController::Routing::Routes.draw do |map|
   map.ppipn '/ppipn', :controller => 'orders', :action => 'paypal_ipn'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
+  map.login '/:lang/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'
+  map.signup ':lang/signup', :controller => 'users', :action => 'new'
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
   map.cart '/cart', :controller => 'users', :action => 'show_cart'
   map.user '/user', :controller => 'users', :action => 'update_user'

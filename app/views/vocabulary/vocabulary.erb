@@ -1,0 +1,53 @@
+<% 
+if @category.tag == 'politeness'
+	@list_spaces = [6,14,20,24,26]
+end
+
+%>
+
+
+<% @page_title = 'Online Russian Vocabulary: '+@category_title+' '  %>
+<% @page_meta = {'description' => "Learn Russian vocabulary topic "+@category_title+" with online flashcards: words with audio samples, quizzes and spell practice"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+
+<div class="hint_wrap">
+<div class="hint_button" style="float: right;">
+  <div class="hint">
+      <div class="hint_list">
+        <span class="hint_string">Links and Settings</span>
+      </div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+        <ul>
+            <li><a href="/<%= @category.tag %>.html">Flashcasrds: <%= @category_title %></a></li>
+			<li><a href="/<%= @category.tag %>-test.html">Tests: <%= @category_title %></a></li>
+        </ul>
+        <%= render :partial => 'site/down_accent' %>
+  </div>
+</div>
+</div>
+
+
+<h2 class="page"><%= @category_title %></h2>
+
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="/vocabulary.html">Vocabulary</a>
+	<span class="int-arrow">--&gt;</span> <%= @category_title %>
+	</span>
+</h3>
+
+ <%= render(:partial => "site/vocabulary_list" , :locals => { :t_category  => @category.id,
+														 :spaces => @list_spaces,
+														 :lang => @lang
+																			}) %>
+
+
+
+
+
+
+
+
