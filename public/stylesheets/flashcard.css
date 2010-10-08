@@ -692,3 +692,7 @@ font-size: 11px;
 padding-right: 10px;
 }
 
+.fl-nospell .fl-spell-activity {
+display: none;
+}
+

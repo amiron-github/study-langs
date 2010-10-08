@@ -100,7 +100,6 @@ tEl.removeClass("jp_play").removeClass("jp_pause");
 }
 
 
-
 function flashcard(hash) {
 
 this.basicArray = hash['basic_array'];
@@ -111,6 +110,7 @@ this.variantsNum = hash['variants_num'];	// default - 4
 this.randomOrder = hash['random_order'];    // default - true, option: false
 this.texts = hash['texts'];					// default - english
 this.questNum = hash['quest_num'];			// default - basic array length
+this.trainSpell = hash['train_spell']; // default - true,
 
 var tObj = this;
 
@@ -139,7 +139,7 @@ if (this.questNum == undefined || this.questNum > this.basicArray.length ) this.
 if (this.variantsNum == undefined) this.variantsNum = 4; 
 if (this.randomOrder == undefined) this.randomOrder = true;
 if (this.autoPlay == undefined) this.autoPlay = true;
-
+if (this.trainSpell == undefined) this.trainSpell = true;
 
 this.parseTest = function() {
 
@@ -171,6 +171,7 @@ this.parseTest = function() {
 	tObj.wordListContainer = tObj.container.find(".fl-prestart");
 	tObj.initContainer = tObj.container.find(".fl-init");
 	tObj.workContainer = tObj.container.find(".fl-work");
+	if (!tObj.trainSpell) tObj.contentHolder.addClass("fl-nospell")
 	
 	tObj.startButton.click(function() {
 		tObj.start();
@@ -326,8 +327,6 @@ tObj.container.find("input.fl-autoplay").change(function() {
 })
 
 
-
-
 }
 
 this.formArray = function() {
@@ -412,9 +411,6 @@ this.start = function () {
 }
 
 
-
-
-
 tObj.spellPractice = function() {
 
 
@@ -471,8 +467,6 @@ tObj.container.find(".fl-spell-notes").hide();
 		}
 })
 
-
-
 }
 
 
@@ -489,8 +483,7 @@ tObj.cancelSpell = function() {
 		tObj.spellHolder.find(".fl-task-spell").show();
 		tObj.spellHolder.find(".fl-spell-notes").hide();
 		tObj.spellHolder.find(".kb-show-wrapper").hide();
-		
-		
+
 	});
 }
 
@@ -512,9 +505,11 @@ this.step = function () {
 		}
 		
 		tObj.accents(tObj.originHolder);
-
-		tObj.soundHolder.html( '<div onclick="cJplayer(\''+tObj.workArray[tObj.missedItems[activeEl]]['data'][2]+'\', this)" class="jp_control"></div>' )
-
+		if ( tObj.workArray[tObj.missedItems[activeEl]]['data'][2] == '') {
+			tObj.soundHolder.hide()
+		}else{
+			tObj.soundHolder.show().html( '<div onclick="cJplayer(\''+tObj.workArray[tObj.missedItems[activeEl]]['data'][2]+'\', this)" class="jp_control"></div>' )
+		}
 		if ( tObj.container.find(".fl-autoplay").is(":checked") ) {
 			cJplayer(tObj.workArray[tObj.missedItems[activeEl]]['data'][2], tObj.soundHolder.find(".jp_control").get(0))
 		}
@@ -525,11 +520,9 @@ this.step = function () {
 }
 
 
-
 this.gotoNext = function() {
 	
 	activeEl++;
-	 
 	if (activeEl >=cicleLen ) {
 	 
 		var newMissed = new Array();
@@ -574,7 +567,6 @@ this.gotoNext = function() {
 		tObj.articleHolder.find("div").css({opacity: "1"});
 		tObj.testsHolder.find(".fl-test-task").show();
 	})
-		
 }
 
 this.cancelTest = function () {
@@ -590,7 +582,6 @@ this.cancelTest = function () {
 		tObj.testsHolder.find(".fl-test-task").show();
 		tObj.container.find(".fl-task-string").show();
 		tObj.container.find(".fl-notes").hide();
-		
 	});
 }
 
@@ -600,11 +591,9 @@ this.verify = function() {
 	tObj.activityHolder.hide();
 }
 
-
 this.exclude = function (num) {
 	knowInCicle.push(num);
 }
-
 
 this.testManager = function (testOrder) {
 	tObj.articleWrapper.css({opacity: "1"})
@@ -616,8 +605,6 @@ this.testManager = function (testOrder) {
 		tObj.launchTest('translate');
 	}else {
 		tObj.exclude(activeEl);
-		
-		
 		tObj.container.find(".fl-exclude-note").css({display: "block"});
 		tObj.cancelButton.hide();
 		
@@ -633,7 +620,6 @@ this.testManager = function (testOrder) {
 		var currentQuestIndex = tObj.workArray[ tObj.missedItems[activeEl] ]['base'];
 		tObj.wordListContainer.find("tr.fl-list:eq("+currentQuestIndex+")").addClass("fl-learned").find("input").removeAttr("checked");
 	}
-	
 }
 
 this.launchTest = function(testType) {
@@ -684,7 +670,6 @@ this.launchTest = function(testType) {
 	
 	$("#fl-temp").remove();	
 	
-	
 	tObj.testsHolder.find("div.fl-test-option").remove();
 	tObj.testsHolder.append("" + optionsList + "");
 	tObj.testsHolder.find("div.fl-test-option").eq(correctIndex).data("correct", "true");
@@ -726,7 +711,6 @@ this.launchTest = function(testType) {
 							tObj.container.find(".fl-task-string").show();
 						});
 						tObj.testManager( nextTestType );
-					
 					}
 
 				}, 1600);
@@ -742,21 +726,18 @@ this.launchTest = function(testType) {
 					});
 					tObj.testManager( nextTestType -1);//tObj.cancelTest();
 				}, 1600);
-				
 			}
 		})
 	})
 }
 
 this.accents = function(container) {
-
 		if ( getCookie('accent_on') ) {
 			container.find("span.acco").each(function(){
 				var tVal = $(this).text().replace(/[́]/g, "");
 				$(this).html( tVal + "&#769;");
 			});
 		}
-		
 		
 		if (getCookie('accent_adjust')) {
 			container.find("span.acco").each(function(){
