@@ -2,6 +2,21 @@
 <% content_for :special_js_css do %>
   
 <style type="text/css">
+
+#remove_from_list table tr {
+vertical-align: top;
+}
+
+#remove_from_list table {
+width: 100%;
+}
+
+#remove_from_list table tr div {
+padding-left: 25px;
+text-indent: -20px;
+}
+
+
 #words-to-add table tr {
 vertical-align: top;
 }
@@ -15,15 +30,44 @@ padding-left: 25px;
 text-indent: -20px;
 }
 
+#sortable {
+list-style: none;
+}
+
+#sortable li {
+list-style: none;
+padding: 3px 6px;
+cursor: default;
+font-size: 12px;
+}
+
+#sortable .ui-sortable-helper {
+border: 1px dotted #ccc;
+background-color: #fff;
+width: auto !important;
+}
+
+
+
+
 
 </style>
 <script type="text/javascript">
 	
 $(function() {
-	$("#sortable").sortable( { update: function() { 
+	$("#sortable").sortable( { stop: function() { 
 		setOrder();
 	}});
+	$("#sortable").sortable({ helper: 'clone' });
 $("#sortable").disableSelection();
+
+$("#select-all-to-add").click(function() {
+	$("#words-to-add td div input[type='checkbox']").attr("checked", "checked")
+})
+
+$("#select-all-to-remove").click(function() {
+	$("#remove_from_list td div input[type='checkbox']").attr("checked", "checked")
+})
 
 		
 $("#words-to-add").dialog({
@@ -32,14 +76,50 @@ $("#words-to-add").dialog({
 		width: 430,
 		hide: 'blind',
 		modal: true
-	});
+});
+
+	
+$("#words_to_remove").dialog({
+	autoOpen: false,
+		show: 'blind',
+		width: 430,
+		hide: 'blind',
+		modal: true
+});	
 	
 });
+
+function setOrder() {
+		$("#sortable li ").each(function(i, obj) {
+			var tIndex = i+1;
+			$(obj).find("input[name*='order_num']").val(tIndex);
+			//$(obj).find(".w-order-num").text(tIndex);
+		});
+}
+
+function showOrder() {
+		$("#sortable li ").each(function(i, obj) {
+			var tIndex = i+1;
+			$(obj).find(".w-order-num").text(tIndex);
+		});
+}
+
+
+
 		
 </script>
 
 <% end %>
 
+
+
+<h3 class="admin-p-name">Cluster:  <%= @cluster.title %></h3>
+
+<div style="margin-bottom: 20px;">
+<%= link_to 'See all clusters', clusters_path %> 
+| <%= link_to 'Edit this cluster', edit_cluster_path(@cluster) %>
+
+</div>
 
 
 <p>
@@ -58,12 +138,47 @@ $("#words-to-add").dialog({
 </p>
 
 
-<div style="margin: 0 20px; border: 1px solid #666; padding: 10px 30px 30px; ">
-<% @words.each do |word| %>
-	<%= word.translate %>     <br> 
+<div style="margin: 0 20px; border: 1px solid #666; padding: 30px 30px 30px; ">
+<div style="padding-bottom: 15px; font-size: 10px; font-style: italic;">* Drag and drop items to change their order.</div>
+
+<% form_remote_tag :url => { :action => 'save_cluster_order'} do %>
+<input type="hidden" name="cluster_id" value="<%= @cluster.id %>">
+<ul id="sortable">
+<% @words.each_with_index do |word, index| %>
+	<% @t_num = word.cluster_words.find(:first, :conditions => ['word_id=?', word.id]).order_num.to_s %>
+	<li> <span class="w-order-num"><%= @t_num %></span>.  
+		<%= word.translate %>
+		<input type="hidden" name="word[<%= index %>][order_num]" value="<%= @t_num %>">
+		<input type="hidden" name="word[<%= index %>][id]" value="<%= word.id %>">
+	</li>
+	
+<%end%>
+</ul>
+<div style="padding: 20px 20px 10px 40px; ">
+<%= submit_tag 'Save order' %>
+</div>
 <%end%>
 
 </div>
+
+
+<br><br>
+
+<div style="padding: 20px 20px 30px 20px; margin: 10px 40px; border: 1px dotted #555;">
+<b>Actions:</b>
+<hr>
+<br>
+<% form_remote_tag :url => { :action => 'select_to_remove', :id=> @cluster.id } do %>
+Select words to remove by
+
+			<select name="attr">
+					<option value="text" selected>text</option>
+					<option value="translate" >translate</option>
+					<option value="translate_fr">translate_fr</option>
+			</select>
+
+ <%= submit_tag 'Select' %>
+<%end%>
 <br><br>
 
 <% form_remote_tag(:url => {:action => 'words_to_add'} ) do %>
@@ -74,40 +189,56 @@ $("#words-to-add").dialog({
 					<option value="<%= category.id %>"><%= category.title %> | <%= category.lang.to_s.upcase %></option>
 				<% end %>
 			</select>
+			
+			<select name="attr">
+					<option value="text" selected>text</option>
+					<option value="translate" >translate</option>
+					<option value="translate_fr">translate_fr</option>
+			</select>
+			
 			<%= submit_tag 'Review' %>
 <% end %>
-
+</div>
 
 <br><br>
 
 <hr>
-<div>
+
+<br><br>
+
+<div id="words_to_remove">
+<div align="left" style="margin: 20px 10px 0; font-size: 10px;">
+<input type="button" id="select-all-to-remove" value="Select all" >
+</div>
 <% form_tag :action => 'remove_from_cluster' do %>
 	<input type="hidden" value="<%= @cluster.id %>" name="id">
-	
-	<% @words.each_with_index do |word, index|%>
-		<div><input type="checkbox" value="<%= word.id%>" name="word[<%= index %>]"> <%= word.translate %></div>
-	<% end %>
-<br>
+	<div id="remove_from_list">
+	</div>
+<div style="padding: 15px 10px 20px; border-top: 1px dotted #333;">
 <%= submit_tag "Remove from cluster" %>
+</div>
 <% end %>
 
 </div>
 
-<br><br><br><br>
+<br>
 
-<%= link_to 'Edit', edit_cluster_path(@cluster) %> |
-<%= link_to 'Back', clusters_path %>
+
 
 
 
 <div id="words-to-add">
+<div align="left" style="margin: 20px 10px 0; font-size: 10px;">
+<input type="button" id="select-all-to-add" value="Select all" >
+</div>
 <% form_tag :action => 'add_to_cluster' do %>
 	<input type="hidden" value="<%= @cluster.id %>" name="id">
 	<div id="to_add_list">
 	<input type="checkbox" value="word_id" name="word[0]"> Word
 	</div>
+<div style="padding: 15px 10px 20px; border-top: 1px dotted #333;">
 <%= submit_tag "Add selected to cluster" %>
+</div>
 <% end %>
 </div>
 

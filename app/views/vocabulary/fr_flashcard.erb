@@ -58,7 +58,7 @@ font-size: 19pt;
 <% 
 @last_item_index = (@words.length)-1
 @words.each_with_index  do |word, index| %><% unless (word.translate_fr == '#none#' || word.translate_fr == '' ) %>
-['<%= word.text %>', '<%= word.translate_fr.to_s.gsub(/'/,"’") %>', '<%= word.sound_url %>', '<%= word.transcribe_fr %>']<% if index!= @last_item_index %>,<%end -%>	
+['<%= word.text %>', '<%= word.translate_fr.to_s.gsub(/'/,"’") %>', '<%= word.sound_url %>', '<%= word.transcribe_fr %>'<%if current_user %>, '<%= word.id%>' ,'<%= current_user.word_status(word.id) %>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
 <%end-%>
 <%end -%>
 		]

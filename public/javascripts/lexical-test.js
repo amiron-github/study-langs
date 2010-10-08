@@ -395,6 +395,13 @@ this.getOptions = function() {
 			$(elem).find("input").attr("checked", "checked")
 			if ($(elem).data('correct') == "true") {
 				tObj.correctAnswer();
+				/*
+				if ( tObj.workArray[tObj.counter].length > 2 ) {
+					var studied = tObj.workArray[tObj.counter][2]
+					$.post("/set_word", {words: [studied]} ); 
+				}
+				*/
+				
 			} else {
 				tObj.wrongAnswer($(elem));
 			}
@@ -415,6 +422,7 @@ this.getAnswersOrder = function() {
 this.correctAnswer = function () {
 	tObj.alertHolder.html("" + tObj.correctMsg + "").addClass(tObj.correctClass).css({opacity: '0.8'});
 	tObj.correctAswersNum ++;
+
 	
 	if (tObj.answerType != 'yn' && tObj.answerType != 'type') {
 		tObj.optionsHolder.find("li").unbind("click").each(function(i, elem) {

@@ -18,7 +18,7 @@ require_role "admin"
   def show
     @cluster = Cluster.find(params[:id])
 	@categories = Category.all
-	@words = @cluster.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+	@words = @cluster.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num, order_num')
 	
     respond_to do |format|
       format.html # show.html.erb
@@ -26,9 +26,19 @@ require_role "admin"
     end
   end
   
-  def add_to_cluster
+  def save_cluster_order 
+  	cluster = Cluster.find(params[:cluster_id])
+	params[:word].values.each do |t|
+		entry = cluster.cluster_words.find(:first, :conditions=> ['word_id=?', t[:id]])
+		entry.update_attribute(:order_num, t[:order_num])
+	end
+	render :js => '$("<div></div>").html("<div style=\"padding: 20px 25px;\"><b>The order have been saved.</b></div>").dialog({width: 400, modal: true,title: "Saving attributes: Items order  ", buttons: { "Close": function() { $(this).dialog("close"); } }, close: function() { $(this).dialog("destroy");$(this).remove();}}); showOrder();'
   
+  end 
+  
+  def add_to_cluster
 	cluster = Cluster.find(params[:id])
+
 	params[:word].values.each do |word_id|
 		word = Word.find(word_id)
 		cluster.involves(word)
@@ -36,10 +46,44 @@ require_role "admin"
 	redirect_to(cluster)
   end
   
+  
+  
+  
+  def select_to_remove
+	cluster = Cluster.find(params[:id])
+	words = cluster.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+	if params[:attr]
+		t_attr = params[:attr]
+	else 
+		t_attr = 'translate'
+	end
+	
+	attributes = ['<table><tr>']
+	words.each_with_index do |word,index|
+		if index % 16 == 0
+			attributes << '<td>'
+		end
+		attributes << '<div><input type=\"checkbox\" value=\"'+word.id.to_s+'\" name=\"word['+index.to_s+']\">'+ERB::Util.html_escape(word[t_attr])+'</div>'
+		if index % 16 == 15 && index != words.length 
+			attributes << '</td>'
+		end
+	end
+	attributes << '</td></tr></table>'
+	attributes = attributes.join(" ")
+	render :js => '$("#remove_from_list").html("<div style=\"text-align: left; padding: 20px 30px\">'+attributes+'</div>"); $("#words_to_remove").dialog("open") '
+  
+  
+  end
+  
   def words_to_add
 	#ERB::Util.html_escape()
 	category = Category.find(params[:category])
 	words = category.words.find(:all, :order =>"order_num")
+	if params[:attr]
+		t_attr = params[:attr]
+	else 
+		t_attr = 'translate'
+	end
 	
 	modal = params[:modal]
 	if modal != 'false' 
@@ -47,11 +91,10 @@ require_role "admin"
 	end
 	attributes = ['<table><tr>']
 	words.each_with_index do |word,index|
-	
 		if index % 16 == 0
 			attributes << '<td>'
 		end
-		attributes << '<div><input type=\"checkbox\" value=\"'+word.id.to_s+'\" name=\"word['+index.to_s+']\">'+ERB::Util.html_escape(word.translate)+'</div>'
+		attributes << '<div><input type=\"checkbox\" value=\"'+word.id.to_s+'\" name=\"word['+index.to_s+']\">'+ERB::Util.html_escape(word[t_attr])+'</div>'
 		if index % 16 == 15 && index != words.length 
 			attributes << '</td>'
 		end

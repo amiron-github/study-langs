@@ -1,6 +1,16 @@
 <% @page_title='La langue russe en ligne: Vocabulaire russe' %>
 <% @page_meta = {'description' => "Russian online vocabulary sorted by topics with audio examples, transcription and translation"} %>
 
+
+<%
+
+@categories = Category.find(:all, :conditions=> ["lang=? and tag!=?", 'ru', ''])
+
+%>
+
+
+
+
 <% content_for :special_js_css do %>
 
 <script type="text/javascript">
@@ -86,6 +96,14 @@ We advise to visit <a href="functions.html">Functions and settings</a> page to r
 	
 	<h3>Content: </h3>
 
+	<% @categories.each do |category| %>
+	
+		- <%= link_to category.title_fr, :controller => 'vocabulary', :action => 'build_vocabulary', :category => category.tag, :lang=> 'fr', :to_lang => 'ru' %><br>
+	
+	<% end %>
+	
+	
+<div style="display: none;">	
 	
       <div class="bold inner-listing">
 	  
@@ -149,6 +167,10 @@ We advise to visit <a href="functions.html">Functions and settings</a> page to r
 	<p style="display: none;"><a href="language-skills.html" title="Language Skills">XI. Language skills</a></p> 
 	 <p style="display: none;"><a href="parts-of-body.html" title="Parts of Human Body">XII. Parts of Human Body</a></p> 
 	 <p style="display: none;"><a href="bank.html" title="Bank and Money">XIII. Bank and Money</a></p>
+
+</div>
+
+
 
 
 

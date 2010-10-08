@@ -5,6 +5,8 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'clusters/words_to_add', :controller => 'clusters', :action => 'words_to_add'
   map.connect 'clusters/remove_from_cluster', :controller => 'clusters', :action => 'remove_from_cluster'
   map.connect 'clusters/add_to_cluster', :controller => 'clusters', :action => 'add_to_cluster'
+  map.connect 'clusters/save_cluster_order', :controller => 'clusters', :action => 'save_cluster_order'
+  map.connect 'clusters/select_to_remove', :controller => 'clusters', :action => 'select_to_remove'
   map.resources :clusters
   map.resources :exercises
   map.connect 'words/new_list', :controller => 'words', :action => 'new_list'

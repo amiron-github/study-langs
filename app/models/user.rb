@@ -67,7 +67,17 @@ write_attribute :email, (value ? value.downcase : nil)
 	def tests_number 
 	self.user_tests.size
 	end
-
+	
+	def word_status(word_id)
+		learned = self.words.find(:first, :conditions=> ['word_id=?',word_id])
+		if !learned
+			status ='0'
+		else 
+			status = '1'
+		end
+		return status
+	end
+	
 	def get_tests 
 	res='var userProgress=new Array('
 			first = true

@@ -1,24 +1,90 @@
-<h1>Listing clusters</h1>
+<% content_for :special_js_css do %>
+ <%= stylesheet_link_tag 'tablesorter' %>
+ <%= javascript_include_tag 'jquery.tablesorter.min.js' %>
+ <%= javascript_include_tag 'jquery.tablesorter.pager.js' %>
 
-<table>
+<script type="text/javascript">
+
+$(document).ready(function() { 
+    $("table.tablesorter") 
+    .tablesorter({widthFixed: true, sortList: [[0,1]], headers: {0: {sorter: 'digit'}, 3:{sorter: false}},widgets: ['zebra'] }) 
+    .tablesorterPager({container: $("#pager"), size: 30,positionFixed: false}); 
+});
+</script> 
+ 
+ <%end%>
+
+
+
+<h3 class="admin-p-name">Listing  clusters</h3>
+
+<div style="margin-bottom: 20px;">
+<%= link_to 'List of categories', categories_path %>
+</div>
+
+
+<div id="pager" class="pager"> 
+	<form> 
+		<img title="First Page" src="/images/tablesorter/first.png" class="first"/> 
+		<img title="Previous Page" src="/images/tablesorter/prev.png" class="prev"/> 
+		<input type="text" class="pagedisplay"/> 
+		<img title="Next Page" src="/images/tablesorter/next.png" class="next"/> 
+		<img title="Last Page" src="/images/tablesorter/last.png" class="last"/> 
+		
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<b>Display rows:</b>
+		<select class="pagesize"> 
+			<option  value="30" selected="selected">30</option> 
+			<option value="50">50</option> 
+			<option  value="100">100</option> 
+			<option  value="200">200</option>
+			<option  value="500">500</option>
+			<option  value="1000">1000</option>
+		</select> 
+	</form> 
+</div>
+<div><br><%= link_to '+ New cluster', new_cluster_path %><br></div>
+
+
+
+<table class="tablesorter" cellspacing="1">
+<thead>
   <tr>
+	<th>ID &nbsp;</th>
     <th>Title</th>
     <th>Tag</th>
-    <th>Description</th>
+	<th>Actions</th>
   </tr>
+</thead>
+<tbody>
+
 
 <% @clusters.each do |cluster| %>
   <tr>
+	<td width="25"><%=h cluster.id %></td>
     <td><%=h cluster.title %></td>
     <td><%=h cluster.tag %></td>
-    <td><%=h cluster.description %></td>
-    <td><%= link_to 'Show', cluster %></td>
-    <td><%= link_to 'Edit', edit_cluster_path(cluster) %></td>
-    <td><%= link_to 'Destroy', cluster, :confirm => 'Are you sure?', :method => :delete %></td>
+
+    <td width="120"><%= link_to 'Show', cluster %> | <%= link_to 'Edit', edit_cluster_path(cluster) %> | <%= link_to 'Destroy', cluster, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
 
 <br />
 
-<%= link_to 'New cluster', new_cluster_path %>
+<%= link_to '+ New cluster', new_cluster_path %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

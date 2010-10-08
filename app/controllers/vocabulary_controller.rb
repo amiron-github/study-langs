@@ -5,7 +5,7 @@ layout :determine_layout
 	@javascripts = []
 	@stylesheets = []
 	@javascripts << 'jquery.jplayer.min.js'
-    @javascripts << 'flashcard-k'
+    @javascripts << 'flashcard-u'
     @stylesheets << 'flashcard'
 	@javascripts << 'virtual-keyboard'
 	@stylesheets << 'keyboard'
@@ -13,9 +13,11 @@ layout :determine_layout
 	
 	@category = Category.find(:first, :conditions=> ['tag=?', params[:category]])
 	@words = words_for_flash(params[:category], @lang)
+	
 	if @lang == 'fr'
 		@category_title = @category.title_fr
 		render(:action => 'fr_flashcard' )
+			
 	else 
 		@category_title = @category.title
 		render(:action => 'flashcard' )

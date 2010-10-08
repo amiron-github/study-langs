@@ -89,18 +89,22 @@ class UsersController < ApplicationController
   end
   
   def set_word 
+  #for POST like $.post("/set_word", {words: [1,2,3]} ); 
     if !current_user
 	  render :nothing => true
     else
-		learned = current_user.words.find(:first, :conditions => ['word_id=?', params[:word_id]])
+	words = params[:words]
+	words.each do |word_id|
+		learned = current_user.words.find(:first, :conditions => ['word_id=?', word_id])
 		if learned
-			entry = current_user.user_words.find(:first, :conditions => ['word_id=?', params[:word_id]])
+			entry = current_user.user_words.find(:first, :conditions => ['word_id=?', word_id])
 			entry.update_attribute(:occurred, entry.occurred+=1 )
 		else
-			word = Word.find(params[:word_id])
+			word = Word.find(word_id)
 			current_user.words << word
 		end
-	  render :js => 'alert("okey")'
+	end	
+	  render :nothing => true
     end
   end
 
