@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+  map.lexictest '/:lang/:to_lang/lexical-test/:category/', :controller => 'vocabulary', :action => 'build_test'
   map.vocabulary '/:lang/:to_lang/vocabulaire/:category/', :controller => 'vocabulary', :action => 'build_vocabulary'
   map.flashcard '/:lang/:to_lang/flashcards/:category/', :controller => 'vocabulary', :action => 'build_flashcard'
   map.vocabulary '/:lang/:to_lang/vocabulary/:category/', :controller => 'vocabulary', :action => 'build_vocabulary'
@@ -9,6 +10,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'clusters/select_to_remove', :controller => 'clusters', :action => 'select_to_remove'
   map.resources :clusters
   map.resources :exercises
+  map.connect 'words/words_index', :controller => 'words', :action => 'words_index'
   map.connect 'words/new_list', :controller => 'words', :action => 'new_list'
   map.connect 'words/create_list', :controller => 'words', :action => 'create_list'
   map.connect 'words/save_enword_attributes', :controller => 'words', :action => 'save_enword_attributes'

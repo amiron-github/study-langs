@@ -26,7 +26,7 @@ font-size: 19pt;
     <div class="sub_hint" style="display: none;">
         <ul>
             <li><a href="/fr/ru/vocabulary/<%= @category.tag %>"><%= @category_title %></a></li>
-			<li><a href="#">Tests: <%= @category_title %></a></li>
+			<li><a href="/fr/ru/lexical-test/<%= @category.tag %>">Tets: <%= @category_title %></a></li>
         </ul>
         <%= render :partial => 'site/down_accent' %>
   </div>

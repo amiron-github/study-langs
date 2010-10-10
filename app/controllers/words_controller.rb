@@ -31,6 +31,10 @@ layout "admin"
     end
   end
   
+  def words_index
+		@words = Word.all(:order=> 'id DESC')
+	end
+  
   def cat_index
 	cat = Category.find(params[:encategory])
 	@encategory = cat

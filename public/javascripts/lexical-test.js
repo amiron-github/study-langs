@@ -395,13 +395,10 @@ this.getOptions = function() {
 			$(elem).find("input").attr("checked", "checked")
 			if ($(elem).data('correct') == "true") {
 				tObj.correctAnswer();
-				/*
 				if ( tObj.workArray[tObj.counter].length > 2 ) {
 					var studied = tObj.workArray[tObj.counter][2]
-					$.post("/set_word", {words: [studied]} ); 
+					sendWordsResults(studied)
 				}
-				*/
-				
 			} else {
 				tObj.wrongAnswer($(elem));
 			}

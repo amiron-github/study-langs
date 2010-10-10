@@ -1,0 +1,71 @@
+<% content_for :special_js_css do %>
+ <%= stylesheet_link_tag 'tablesorter' %>
+ <%= javascript_include_tag 'jquery.tablesorter.min.js' %>
+ <%= javascript_include_tag 'jquery.tablesorter.pager.js' %>
+
+<script type="text/javascript">
+
+$(document).ready(function() { 
+    $("table.tablesorter") 
+    .tablesorter({widthFixed: true, headers: {0: {sorter: 'digit'}, 3:{sorter: false}, 4:{sorter: false}},widgets: ['zebra'] }) 
+    .tablesorterPager({container: $("#pager"), size: 30,positionFixed: false}); 
+});
+</script> 
+ 
+ <%end%>
+ 
+ <h3 class="admin-p-name">Listing words</h3>
+
+<div style="margin-bottom: 20px;">
+<%= link_to "Manage exercises", :controller => 'exercises', :action => 'index' %>
+| <%= link_to "Manage clusters", :controller => 'clusters', :action => 'index' %>
+
+</div>
+<div id="pager" class="pager"> 
+	<form> 
+		<img title="First Page" src="/images/tablesorter/first.png" class="first"/> 
+		<img title="Previous Page" src="/images/tablesorter/prev.png" class="prev"/> 
+		<input type="text" class="pagedisplay"/> 
+		<img title="Next Page" src="/images/tablesorter/next.png" class="next"/> 
+		<img title="Last Page" src="/images/tablesorter/last.png" class="last"/> 
+		
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<b>Display rows:</b>
+		<select class="pagesize"> 
+			<option  value="30" selected="selected">30</option> 
+			<option value="50">50</option> 
+			<option  value="100">100</option> 
+			<option  value="200">200</option>
+			<option  value="500">500</option>
+			<option  value="1000">1000</option>
+		</select> 
+	</form> 
+</div>
+
+<div><br><%= link_to '+ New word', new_word_path %><br></div>
+
+<table class="tablesorter" cellspacing="1">
+<thead>
+  <tr>
+	<th>ID &nbsp;</th>
+    <th>Text</th>
+    <th>Lang</th>
+	<th>Actions</th>
+  </tr>
+</thead>
+<tbody>
+
+<% @words.each do |word| %>
+  <tr>
+	<td width="25"><%=h word.id %></td>
+    <td><%=h word.text %></td>
+    <td width="45"><%=h word.category.lang %></td>
+    <td width="120"><%= link_to 'Show', word %> | <%= link_to 'Edit', edit_word_path(word) %> | <%= link_to 'Delete', word, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<br />
+
+

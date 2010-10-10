@@ -1077,6 +1077,13 @@ function sendResults(id, total, right) {
 	}
 }
 
+function sendWordsResults(words) {
+	if (words) {
+		$.post("/set_word", {words: [words]} ); 
+	}
+
+}
+
 
 function wrapTbTest() {
 var beforeTest = '<div class="block-clt"><div class="block-crt"><div class="block-top"></div></div></div>'  
