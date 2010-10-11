@@ -63,6 +63,28 @@ position: relative;
 display: none;
 }
 
+#ent_list_textarea {
+width: auto !important;
+}
+
+.attr_getter {
+padding: 0px 10px;
+text-align: right;
+}
+
+.attr_getter input {
+font-size: 11px;
+}
+
+.w-data div div {
+padding: 2px 4px;
+font-size: 11px;
+}
+
+.w-data div div:nth-child(odd) {
+background-color: #efefef;
+}
+
 </style>
 <script type="text/javascript">
 $(function() {
@@ -70,6 +92,28 @@ $(function() {
 		
 var dcHeight = $(".display-container").height();
 $(".display-container").css({minHeight: dcHeight+30})
+
+$(".show_enter_list").click(function() {
+	$("#enter_list").dialog('open');
+});
+
+$("#enter_list").dialog({
+			autoOpen: false,
+			show: 'blind',
+			hide: 'blind',
+			width: 400,
+			title: "Enter list into fields",
+});
+
+$("#ent_list_textarea").resizable({ handles: 's' });
+
+$("#select_enter_list").change(function() {
+	var enterData = $("#select_enter_list option:selected").val();
+	enterData ++
+	$("#enter_list_tag").text( $(".f_col_title:eq("+enterData+")").text() )
+	
+}).change();
+
 
 
 $("#enw_edit_words input").not("input[type='checkbox']").focus(function() {
@@ -285,7 +329,20 @@ tContainer.show().effect("highlight", 2000);
 
 }
 
-
+function splitLine() {
+	var textArray = new Array();
+	textArray = $("#words_array").val().split(/\r\n|\n/);
+	for (var r = 0; r < textArray.length; r ++ ) {		
+			var row = r+1
+			tInputsIndex = $("#select_enter_list option:selected").val()
+			tInputsIndex ++;
+			var tInput = $("#enw_edit_words tbody tr:eq("+row+")").find("td:eq("+tInputsIndex+")").find("input[type='text']");
+			tInput.val(textArray[r])
+	}
+	$("#enw_edit_words tbody tr input[type='text']").each(function(i, obj) {
+		f_check_value($(obj));
+	});
+}
 	
 </script>
 <% end %>
@@ -390,6 +447,13 @@ Display:
 <br>
 <%= link_to '<b>+ New list</b>', :action => 'new_list', :encategory => @encategory %>
 </div>
+
+<div style="padding-left: 20px; padding-top: 15px">
+<a href="javascript:;" class="show_enter_list" style="font-size: 12px;"><b>Enter list data</b></a>
+<br>
+</div>
+
+
 </div>
 
 <br><br>
@@ -485,7 +549,29 @@ Display:
 
 
 
+<div id="enter_list" align="left">
+Choose the fields column 
 
+<select style="width: 70px" id="select_enter_list">
+	<option>1</option>
+	<option>2</option>
+	<option>3</option>
+	<option>4</option>
+	<option>5</option>
+	<option>6</option>
+</select>
+
+<span id="enter_list_tag" style="font-weight: bold"></span>
+
+<br><br><br>
+
+
+<div id="ent_list_textarea">
+<textarea style="width: 100%; height: 100%;" id="words_array" rows="12"></textarea>
+</div>
+<input type="button" value="Insert data" onclick="splitLine()">
+
+</div>
 
 
 

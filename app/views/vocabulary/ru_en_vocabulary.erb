@@ -1,0 +1,109 @@
+<% 
+@list_spaces = []
+case @category_tag 
+	when 'greetings_en'
+		@list_spaces = [6, 13]
+end
+
+%>
+
+
+<% @page_title = ' '+@category_title+' :: Англо-русский словарь '  %>
+<% @page_meta = {'description' => "Изучайте английские слова по теме "+@category_title+" онлайн"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+
+<div class="hint_wrap">
+<div class="hint_button" style="float: right;">
+  <div class="hint">
+      <div class="hint_list">
+        <span class="hint_string">Links and Settings</span>
+      </div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+        <ul>
+            <li><a href="/<%= @category.tag %>.html">Flashcasrds: <%= @category_title %></a></li>
+			<li><a href="/<%= @category.tag %>-test.html">Tests: <%= @category_title %></a></li>
+        </ul>
+        <%= render :partial => 'site/down_accent' %>
+  </div>
+</div>
+</div>
+
+
+<h2 class="page"><%= @category_title %></h2>
+
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="/ru/en/vocabulary.html">Словарь</a>
+	<span class="int-arrow">--&gt;</span> <%= @category_title %>
+	</span>
+</h3>
+
+
+
+
+<div class="voc-wordlist">
+<table class="voc_bord" align="center" cellspacing="0">
+<tr>
+<td>
+
+<table style="width: 500px" class="diction" cellpadding="0" cellspacing="0" align="center">
+<thead>
+<tr>
+	<td></td>
+	<td></td>
+</tr>
+</thead>
+<tbody>
+<%
+@words.each_with_index do |word, index|
+%>
+  <% @list_spaces.each do |s|%>
+	<% if index == s %>
+  <tr class="trow">
+    <td class="original" valign="top">&nbsp;
+    </td>
+
+    <td class="translation" valign="top">&nbsp;
+    </td>
+  </tr>
+	<%end -%>
+<%end -%>
+<tr class="trow">
+    <td class="original" valign="top"><%= word.text %>
+    </td>
+    <td class="transcript" valign="top" style="display: none;">
+      <table onclick="playFile('<%= word.sound_url %>')" class="audiotrans" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="trs_td"><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div>
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td class="translation" valign="top"><%= word.translate %>
+    </td>
+  </tr>
+<%end -%>
+</tbody>
+<tfoot>
+<tr>
+	<td></td>
+	<td></td>
+</tr>
+</tfoot>  
+</table>
+
+</td>
+</tr>
+</table>
+</div><!-- end of voc-wordlist-->
+
+
+
+
+
+
+
+

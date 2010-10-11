@@ -9,7 +9,7 @@
 <% end %>
   <meta name="keywords" content="russian translation, russian language, learn russian, study russian, learn russian online, russian phrases, russian words, speak russian, speaking russian, learning russian, basic russian, learn russian language, beginners russian, russian language course, russian online lessons, russian vocabulary, russian for begginers" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf8"> 
-  <%= javascript_include_tag 'jquery.min.js' %>
+  <script type="text/javascript" src="/javascripts/jquery-1.4.2.min.js"></script>
   <%= javascript_include_tag 'effects' %>
   <%= stylesheet_link_tag 'stylesheet' %>
   <%if @javascripts%>  
@@ -38,7 +38,7 @@
   <![endif]-->
 
 </head>
-<body>
+<body <% if cookies[:no_header] %>class="m-header-hidden"<%end%>>
     <div id="fixWidh"><div id="container">
         <!--[if lte IE 6]>
         <table id="containit" cellspacing="0">
@@ -67,7 +67,7 @@
                   <div class="cont-center"></div>
                 </div>
               </div>
-              <div id="menu_content">
+              <div id="menu_content" <% if cookies[:no_menu] %>class="m-menu-hidden"<%end%>>
                 <div id="navigation">
 
                   <div id="nav-pos">
@@ -84,7 +84,7 @@
                         <div class="menu-item-front">
                           <div class="item-top">
                             <div class="list down"></div> 
-                            <a href="/course.html" style="margin-left: 40px;">Онлайн уроки</a>&nbsp;
+                            <a href="/ru/en/course.html" style="margin-left: 40px;">Онлайн уроки</a>&nbsp;
                           </div>
                         </div>
                       </div>
@@ -99,7 +99,7 @@
                         <div class="menu-item-front">
                           <div class="item-top">
                             <div class="list down"></div> 
-                            <a href="/vocabulary.html" style="margin-left: 40px;">Словарь</a>&nbsp;
+                            <a href="/ru/en/vocabulary.html" style="margin-left: 40px;">Словарь</a>&nbsp;
                           </div>
                         </div>
                       </div>
@@ -224,6 +224,11 @@
 
                 </div>
                 <div id="contentcell">
+				<div style="position: relative; z-index: 300">
+						<div id="menu_remover"><span class="menu-shown">Hide menu</span><span class="menu-hidden">Show menu</span></div>
+						<div id="mini-menu"><a href="index.html">Home</a> | <a href="course.html">Courses</a> | <a href="vocabulary.html">Vocabulary</a> | <a href="russian-grammar.html">Grammar</a> | <a href="russian-sounds-letters.html">Sounds &amp; Letters</a></div>
+						<div id="header_remover"><span class="header-shown">Hide header</span><span class="header-hidden">Show header</span></div>
+					</div>
                   <div id="contfield" class="<%= @with_rec ? 'content withRec' : 'content' %>">
                     <% if @has_audio %>
                       <div id="loading"><div id="progress"></div><div id="progressbar"><div id="progressStatus"></div></div></div>

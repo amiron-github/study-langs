@@ -10,6 +10,7 @@ layout :determine_layout
 	@javascripts << 'virtual-keyboard'
 	@stylesheets << 'keyboard'
 	@lang = params[:lang]
+	@add_lang = params[:to_lang]
 	
 	@category = Category.find(:first, :conditions=> ['tag=?', params[:category]])
 	@words = words_for_flash(params[:category], @lang)
@@ -34,7 +35,8 @@ layout :determine_layout
 	 @javascripts << 'lexical-test'
      @stylesheets << 'lexical-test'
 	@lang = params[:lang]
-	
+	@add_lang = params[:to_lang]
+
 	@category = Category.find(:first, :conditions=> ['tag=?', params[:category]])
 	@words = words_for_test(params[:category], @lang)
 	@test_ids = ids_for_test(@category)
@@ -51,11 +53,27 @@ layout :determine_layout
   
     def build_vocabulary
 	@lang = params[:lang]
-	@category = Category.find(:first, :conditions => ['tag=?', params[:category]])
+	@add_lang = params[:to_lang]
+	@category_tag = params[:category]
+	@category_title == ''
+	if @add_lang == 'en'
+		@category_tag =  @category_tag+'_en'
+	elsif @add_lang == 'jp'
+		@category_tag =  @category_tag+'_jp'
+	end 
+	@category = Category.find(:first, :conditions => ['tag=?', @category_tag ])
 	@words = @category.words.find(:all, :order => 'order_num')
 	if @lang == 'fr'
 		@category_title = @category.title_fr
 		render(:action => 'fr_vocabulary')
+	elsif @lang == 'ru'
+		if @add_lang == 'en'
+			@category_title =  @category.title_ru
+			render(:action => 'ru_en_vocabulary')
+
+		else 
+			render(:action => 'vocabulary' )
+		end
 	else 
 		@category_title = @category.title
 		render(:action => 'vocabulary' )
@@ -67,11 +85,19 @@ layout :determine_layout
 private
 	def determine_layout
 		layout_lang = params[:lang]
-		if layout_lang == 'fr'
-			'fr_application.rhtml'
-		else
-			'application'
+		add_lang = params[:to_lang]
+		layout = 'application'
+		case layout_lang 
+			when 'fr'
+			 layout =  'fr_application.rhtml'
+			when 'ru'
+				if add_lang == 'en'
+					layout =  'ru_en_application.rhtml'
+				elsif add_lang == 'jp'
+					layout =  'ru_jp_application.rhtml'
+				end
 		end
+		return layout
 	end
 	
 	def ids_for_test(category)
