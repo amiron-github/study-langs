@@ -1,0 +1,65 @@
+
+<% @lang %>
+<% @lang = defined?(lang) ? lang : "eng" %>
+
+<%  if @lang == "eng" 
+		@esex_auto_play = "Auto play"
+		@esex_next = "NEXT"
+		@esex_translated_as = "Is this translated as:"
+		@esex_yes = "YES"
+		@esex_no = "NO"
+		@esex_restart = "RESTART"
+	elsif @lang == "rus" 
+		@esex_auto_play = "Авто переход"
+		@esex_next = "Далее"
+		@esex_translated_as = "Это переводится как:"
+		@esex_yes = "Да"
+		@esex_no = "Нет"
+		@esex_restart = "Заново"
+	end
+%>
+
+<div class="es-ex-wrapper">
+
+<div class="es-ex-alert-container"><div class="es-ex-alert-rt"><div class="es-ex-alert"> &nbsp;</div></div></div>
+<div class="es-ex-top">
+	<div class="es-ex-autoplay-wrapper"><input class="es-ex-autoplay" type="checkbox" /> <span><%= @esex_auto_play %> </div>
+	<div class="es-ex-final"></div>
+
+</div>
+<table class="es-ex-content" cellspacing="0">
+	<tr>
+		<td class="es-ex-quest" width="40%" valign="middle" align="center">
+			<div class="es-ex-audio-wrapper">
+				<table><tr><td style="height: 140px;"><div class="es-ex-audio-holder"><div class="es-ex-audio"></div></div></td></tr></table>
+			</div>
+			<div class="es-ex-string-holder">
+				<table><tr><td class="es-ex-string-wrapper" style="height: 150px;">&nbsp;</td></tr></table>
+			</div>
+
+		</td>
+		<td class="es-ex-tasks" height="180">
+			<div class="yn-answer-type">
+					<p class="es-yn-task-p">This sound corresponds to the letter</p>
+					<div class="es-yn-variant-wrapper"><div class="es-yn-variant yn-trans">&nbsp;</div></div>
+					<div class="es-ex-buttons yn-btns">
+						<input type="button" class="es-ex-es-btn yn-yes" value="Yes"/> &nbsp;&nbsp;&nbsp;&nbsp; <input value="NO" type="button"  class="es-ex-es-btn yn-no"/>
+
+					</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td><div class="es-ex-bottom"><input type="button" class="es-ex-next" value="<%= @esex_next%>" style="font-size: 12px; visibility: hidden;"></div></td>
+		<td></td>
+	</tr>
+</table>
+<div class="es-ex-info-container">
+	<table cellspacing="0" align="center">
+		<tr>
+			<td style="padding-left: 20px;"><div class="es-ex-info"> &nbsp;  </div></td>
+			<td><div class="es-ex-buttons">&nbsp;&nbsp;&nbsp;<input type="button" class="es-ex-es-btn es-ex-start" value="<%=@esex_restart%>"/></div></td>
+		</tr>
+	</table>
+</div>
+</div>
