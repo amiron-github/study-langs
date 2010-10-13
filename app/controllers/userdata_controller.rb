@@ -78,7 +78,19 @@ layout "admin"
 	redirect_to(:back)
   end
   
- 
+  def see_user_words
+	user = User.find(params[:user])
+	words = user.words
+	uw = []
+	words.each do |word|
+		uw << ERB::Util.html_escape(word.text)
+	end
+		uw = uw.join("<br>")
+	render :js => '$("<div style=\"text-align: left; padding-left: 30px;\"></div>").html("'+uw+'").dialog({height: 400, modal: true, title: "User words", buttons: { "Ok": function() { $(this).dialog("close"); } } })'
+	
+  end
+
+  
 private 
 
   def is_admin

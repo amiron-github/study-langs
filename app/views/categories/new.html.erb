@@ -1,6 +1,17 @@
 <% content_for :special_js_css do %>
 <style type="text/css">
 label {font-weight: bold;color: #333;}
+.errorExplanation {
+background-color: #fff;
+border: 1px dotted #666;
+padding: 20px;
+}
+
+.errorExplanation h2 {
+margin: 0px 0px 20px;
+text-align: left;
+}
+
 <% end %>
 
 <h3 class="admin-p-name">New category</h3>
@@ -33,6 +44,14 @@ label {font-weight: bold;color: #333;}
 			Category::LANG,
 			:prompt => "Select the language"
 	%>
+  </td>
+<tr>
+<tr>
+  <td >
+    <%= f.label :tag %>
+  </td>
+  <td >
+    <%= f.text_field :tag %>
   </td>
 <tr>
 <tr>

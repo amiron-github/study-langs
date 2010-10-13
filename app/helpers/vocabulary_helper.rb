@@ -11,21 +11,13 @@ module VocabularyHelper
 	return list_spaces
   end
   
-  
   def except_from_flash(index)
 	exceptions = []
 	case @category_tag 
 		when 'greetings_en'
+			#exceptions = [1,2]
 	end
 	return exceptions.include?(index)
   end
   
-  def except_from_test(index)
-	exceptions = []
-	case @category_tag 
-		when 'greetings_en'
-	end
-	return exceptions.include?(index)
-  end
-
 end

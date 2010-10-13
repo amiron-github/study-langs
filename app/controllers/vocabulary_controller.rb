@@ -21,6 +21,10 @@ layout :determine_layout
 			@category_short_tag = params[:category]
 			@category_title =  @category.title_ru
 			render(:action => 'ru_en_vocabulary')
+		elsif @add_lang == 'jp'
+			@category_short_tag = params[:category]
+			@category_title =  @category.title_ru
+			render(:action => 'ru_jp_vocabulary')
 		else 
 			render(:action => 'vocabulary' )
 		end
@@ -45,7 +49,6 @@ layout :determine_layout
 		@javascripts << 'virtual-keyboard'
 		@stylesheets << 'keyboard'
 	end
-	
 	if @add_lang == 'en'
 		@category_tag =  @category_tag+'_en'
 	elsif @add_lang == 'jp'
@@ -59,11 +62,13 @@ layout :determine_layout
 		@category_title = @category.title_fr
 		render(:action => 'fr_flashcard' )
 	elsif @lang == 'ru'
+		@category_short_tag = params[:category]
+		@category_title =  @category.title_ru
 		if @add_lang == 'en'
-			@category_short_tag = params[:category]
-			@category_title =  @category.title_ru
 			render(:action => 'ru_en_flashcard')
-		else 
+		elsif @add_lang == 'jp'
+			render(:action => 'ru_jp_flashcard')
+		else
 			render(:action => 'flashcard' )
 		end
 	else 
@@ -98,10 +103,13 @@ layout :determine_layout
 		@category_title = @category.title_fr
 		render(:action => 'fr_test' )
 	elsif @lang == 'ru'
+		@category_short_tag = params[:category]
+		@category_title =  @category.title_ru
+		
 		if @add_lang == 'en'
-			@category_short_tag = params[:category]
-			@category_title =  @category.title_ru
 			render(:action => 'ru_en_test')
+		elsif @add_lang == 'jp'
+			render(:action => 'ru_jp_test')
 		else 
 			render(:action => 'test' )
 		end
@@ -111,9 +119,6 @@ layout :determine_layout
 	end
   end
   
-
-
-
 private
 	def determine_layout
 		layout_lang = params[:lang]
@@ -174,12 +179,10 @@ private
 				new_words = []
 				to_exclude = t[:except]
 				words.each_with_index do |word, ind|
-				
 					unless to_exclude.include?(ind)
 						new_words << word
 					end
 				end
-				
 				words = new_words
 			end
 		end

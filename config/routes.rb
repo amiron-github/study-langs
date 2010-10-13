@@ -54,6 +54,7 @@ ActionController::Routing::Routes.draw do |map|
   map.psedit '/psedit', :controller => 'users', :action => 'save_pass'
   
   map.userdata "/userdata" , :controller => 'userdata', :action => 'index'
+  map.userdata "/userdata/see_user_words" , :controller => 'userdata', :action => 'see_user_words'
   map.userdata '/userdata/make_admin', :controller => 'userdata', :action => 'make_admin'
   map.userdata '/userdata/edit_state/:id', :controller => 'userdata', :action => 'edit_state'
   map.userdata '/userdata/edit_payment/:id', :controller => 'userdata', :action => 'edit_payment'

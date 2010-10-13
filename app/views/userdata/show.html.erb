@@ -150,10 +150,14 @@ Current time: <%= Time.now.to_s(:long) %>
 <div id="results_container">
 		No results yet.
 		<br>
+
+<div  class="attr_getter">
+	<% form_remote_tag(:url => {:action => 'see_user_words', :user => @user } ) do %>
+		<%= submit_tag "Show user's words" %>
+	<% end %>		
+</div>		
+
 		Words: 
-		<% @user.words.each do |word| %>
-			<%= word.text %><br>
-		<%end%>
 		
 		<br>
 		<% @cat_exercises.each do |ct| %>

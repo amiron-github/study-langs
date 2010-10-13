@@ -111,7 +111,7 @@ this.randomOrder = hash['random_order'];    // default - true, option: false
 this.texts = hash['texts'];					// default - english
 this.questNum = hash['quest_num'];			// default - basic array length
 this.trainSpell = hash['train_spell']; // default - true,
-
+this.transBracket = hash['trans_bracket']; // default true
 var tObj = this;
 
 
@@ -140,6 +140,7 @@ if (this.variantsNum == undefined) this.variantsNum = 4;
 if (this.randomOrder == undefined) this.randomOrder = true;
 if (this.autoPlay == undefined) this.autoPlay = true;
 if (this.trainSpell == undefined) this.trainSpell = true;
+if (this.transBracket == undefined) this.transBracket = true;
 
 this.parseTest = function() {
 
@@ -508,7 +509,11 @@ this.step = function () {
 			tObj.transcriptHolder.hide();
 		}else{
 			tObj.transcriptHolder.show();
+			if (tObj.transBracket) {
 			tObj.transcriptHolder.html('['+ tObj.workArray[tObj.missedItems[activeEl]]['data'][3]+']')
+			} else {
+				tObj.transcriptHolder.html(''+ tObj.workArray[tObj.missedItems[activeEl]]['data'][3]+'')
+			}
 		}
 		
 		tObj.accents(tObj.originHolder);
@@ -780,7 +785,13 @@ var endList = '</table>';
 var wordList = new Array();
 
 for (var i = 0; i< tObj.usersArray.length; i ++) {
-	wordList[i] = '<tr class="fl-endlist-row"><td><div onclick="cJplayer(\''+tObj.usersArray[i]['data'][2]+'\', this)" class="jp_control"/></td><td class="fl-endlist-origin">'+tObj.usersArray[i]['data'][0]+'</td><td>'+tObj.usersArray[i]['data'][1]+'</td></tr>'
+
+	if ( tObj.usersArray[i]['data'][2] == '') {
+		wordList[i] = '<tr class="fl-endlist-row"><td> </td><td class="fl-endlist-origin">'+tObj.usersArray[i]['data'][0]+'</td><td>'+tObj.usersArray[i]['data'][1]+'</td></tr>'
+	} else {
+		wordList[i] = '<tr class="fl-endlist-row"><td><div onclick="cJplayer(\''+tObj.usersArray[i]['data'][2]+'\', this)" class="jp_control"></div></td><td class="fl-endlist-origin">'+tObj.usersArray[i]['data'][0]+'</td><td>'+tObj.usersArray[i]['data'][1]+'</td></tr>'
+	}
+	
 }
 var wordListHtml = wordList.join('');
 
