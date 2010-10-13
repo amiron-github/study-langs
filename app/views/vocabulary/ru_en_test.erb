@@ -30,10 +30,10 @@ h2.page {margin-bottom: 0px;font-size: 19pt;}
 
 <h3 class="page-path">
 	<span class="int-links">
-	<a href="/ru/en/vocabulary.html">Vocabulary</a>
+	<a href="/ru/en/vocabulary.html">Словарь</a>
 	<span class="int-arrow">--&gt;</span> 
 	<a href="/ru/en/vocabulary/<%= @category_short_tag %>"><%= @category_title %></a>
-	<span class="int-arrow">--&gt;</span> Tests lexicaux
+	<span class="int-arrow">--&gt;</span> Тесты
 	</span>
 </h3>
 
@@ -61,12 +61,12 @@ h2.page {margin-bottom: 0px;font-size: 19pt;}
 		quest_type: 'audio',
 		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
 		basic_array: [
-<% @last_item_index = (@words.length)-1 %>
-<% @words.each_with_index  do |word, index| %>
-	<% unless (word.translate_fr == '#none#' || word.translate_fr == '' ) %>
-		['<%= word.sound_url %>', "<%= word.text.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
-	<%end-%>
+		
+<% @last_item_index = (@words.length)-1 -%>
+<% @words.each_with_index  do |word, index| -%>
+['<%= word.sound_url %>', "<%= word.text.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
 <%end -%>
+
 		]
 		
 		} )
@@ -90,13 +90,9 @@ h2.page {margin-bottom: 0px;font-size: 19pt;}
 		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
 		basic_array: [
 		
-
-<% @words.each_with_index  do |word, index| %>
-	<% unless (word.translate_fr == '#none#' || word.translate_fr == '' ) %>
+<% @words.each_with_index  do |word, index| -%>
 		["<%= word.text.to_s.gsub(/"/,'\"') %>", '<%= word.translate.to_s.gsub(/'/,"’") %>'<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
-	<%end-%>
 <%end -%>
-
 
 		]
 		} )
@@ -123,10 +119,8 @@ h2.page {margin-bottom: 0px;font-size: 19pt;}
 		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
 		basic_array: [
 		
-<% @words.each_with_index  do |word, index| %>
-	<% unless (word.translate_fr == '#none#' || word.translate_fr == '' ) %>
-		["<%= word.text.to_s.gsub(/"/,'\"') %>", '<%= word.translate.to_s.gsub(/'/,"’") %>'<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
-	<%end-%>
+<% @words.each_with_index  do |word, index| -%>
+["<%= word.sound_url %>", "<%= word.translate.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
 <%end -%>
 
 		]

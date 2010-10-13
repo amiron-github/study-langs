@@ -1,11 +1,3 @@
-<% 
-@list_spaces = []
-case @category_tag 
-	when 'greetings_en'
-		@list_spaces = [6, 13]
-end
-%>
-
 <% @page_title = ' '+@category_title+' :: Англо-русский словарь '  %>
 <% @page_meta = {'description' => "Изучайте английские слова по теме "+@category_title+" онлайн"} %>
 <% @with_rec = true %>
@@ -91,7 +83,8 @@ margin-left: -25px;
 <%
 @words.each_with_index do |word, index|
 -%>
-<% @list_spaces.each do |s| -%>
+
+<% voc_spaces.each do |s| -%>
 <% if index == s -%>
   <tr>
     <td class="original" valign="top">&nbsp;

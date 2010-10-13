@@ -91,7 +91,7 @@ layout :determine_layout
 		@category_tag =  @category_tag+'_jp'
 	end 
 	@category = Category.find(:first, :conditions=> ['tag=?', @category_tag])
-	@words = words_for_test(@category_tag, @lang)
+	@words = words_for_test(@category, @add_lang, @lang)
 	@test_ids = ids_for_test(@category)
 	
 	if @lang == 'fr'
@@ -161,27 +161,29 @@ private
 		return words
 	end
 	
-	def words_for_test(category_tag, lang)
-		fr_attr = []; ru_attr = []; en_attr = []
-		attr = []
-		fr_attr << {:url=> 'politieness', :tag => 'politeness_ru_fr'}
-		case lang 
+	def words_for_test(category, original, translate_to)
+		words = category.words.find(:all, :order => 'order_num')
+		exceptions = []
+		category_tag = category.tag
+		case translate_to
 			when 'ru'
-				attr = ru_attr
-			when 'fr'
-				attr = fr_attr
+		      exceptions << {:tag => 'politeness_en', :except=> [5,12] }
 		end
-		words = false
-		attr.each do |a|
-			if url_name == a[:url]
-				cat = Cluster.find(:first, :conditions => ['tag=?', a[:tag]])
-				words = cat.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+		exceptions.each do |t|
+			if category_tag == t[:tag]
+				new_words = []
+				to_exclude = t[:except]
+				words.each_with_index do |word, ind|
+				
+					unless to_exclude.include?(ind)
+						new_words << word
+					end
+				end
+				
+				words = new_words
 			end
 		end
-		if !words 
-			cat = Category.find(:first, :conditions=> ['tag=?', category_tag])
-			words = cat.words.find(:all, :order => 'order_num')
-		end
+		
 		return words
 	end
 
