@@ -223,9 +223,11 @@ var links ='<div style="margin: 10px 10px 10px 35px;"><a href="/words/'+id+'/edi
 
 </div>
 <br><br>
-<%= link_to 'Russian Vocabulary', :controller => 'vocabulary', :action => 'build_vocabulary', :lang => 'ru', :to_lang => @encategory.lang, :category=> @encategory.tag.gsub(/_en/, '').gsub(/_jp/, '') %>
+<%= link_to 'English Voc', :controller => 'vocabulary', :action => 'build_vocabulary', :lang => 'en', :to_lang => @encategory.lang, :category=> @encategory.tag.gsub(/_en/, '').gsub(/_jp/, '') %>
 | 
-<%= link_to 'French Vocabulary', :controller => 'vocabulary', :action => 'build_vocabulary', :lang => 'fr', :to_lang => @encategory.lang, :category=> @encategory.tag.gsub(/_en/, '').gsub(/_jp/, '') %>
+<%= link_to 'Russian Voc', :controller => 'vocabulary', :action => 'build_vocabulary', :lang => 'ru', :to_lang => @encategory.lang, :category=> @encategory.tag.gsub(/_en/, '').gsub(/_jp/, '') %>
+| 
+<%= link_to 'French Voc', :controller => 'vocabulary', :action => 'build_vocabulary', :lang => 'fr', :to_lang => @encategory.lang, :category=> @encategory.tag.gsub(/_en/, '').gsub(/_jp/, '') %>
 
 <br><br><br><br>
 

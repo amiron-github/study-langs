@@ -96,7 +96,7 @@ margin-left: -25px;
 <%end -%>
 <tr class="trow">
     <td class="original" valign="top">
-	<div class="jp_control" onclick="cJplayer('/sounds/sound106.mp3', this)"></div>
+	<%unless word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div><%end%>
 	<%= word.text %>
 	
     </td>

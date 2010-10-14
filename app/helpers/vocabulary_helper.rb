@@ -3,6 +3,8 @@ module VocabularyHelper
   def voc_spaces 
 	list_spaces = []
 	case @category_tag 
+		when 'politeness'
+			list_spaces = [6,14,20,24,26]
 		when 'greetings_en'
 			list_spaces = [6, 13]
 		when 'politeness_en'

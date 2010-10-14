@@ -13,6 +13,7 @@ layout :determine_layout
 	end 
 	@category = Category.find(:first, :conditions => ['tag=?', @category_tag ])
 	@words = @category.words.find(:all, :order => 'order_num')
+	
 	if @lang == 'fr'
 		@category_title = @category.title_fr
 		render(:action => 'fr_vocabulary')
@@ -26,6 +27,7 @@ layout :determine_layout
 			@category_title =  @category.title_ru
 			render(:action => 'ru_jp_vocabulary')
 		else 
+			@category_title = @category.title
 			render(:action => 'vocabulary' )
 		end
 	else 

@@ -750,19 +750,19 @@ this.launchTest = function(testType) {
 
 this.accents = function(container) {
 		if ( getCookie('accent_on') ) {
+			if (getCookie('accent_adjust')) {
+				container.find("span.acco").each(function(){
+					var tVal = $(this).text().replace(/[́]/g, "");
+					$(this).html("&#769;" + tVal);
+				});
+			} else {
 			container.find("span.acco").each(function(){
 				var tVal = $(this).text().replace(/[́]/g, "");
 				$(this).html( tVal + "&#769;");
 			});
+			}
 		}
-		
-		if (getCookie('accent_adjust')) {
-			container.find("span.acco").each(function(){
-				var tVal = $(this).text().replace(/[́]/g, "");
-				$(this).html("&#769;" + tVal);
-			});
-		}
-		
+
 		if(getCookie('accent_un')) {
 			container.find("span.acco").each(function(){
 				var tVal = $(this).text().replace(/[́]/g, "")

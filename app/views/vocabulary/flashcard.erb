@@ -24,8 +24,8 @@ font-size: 19pt;
     </div>
     <div class="sub_hint" style="display: none;">
         <ul>
-            <li><a href="/<%= @category.tag %>.html"><%= @category_title %></a></li>
-			<li><a href="/<%= @category.tag %>-test.html">Tests: <%= @category_title %></a></li>
+            <li><a href="/en/ru/vocabulary/<%= @category.tag %>"><%= @category_title %></a></li>
+			<li><a href="/en/ru/lexical-test/<%= @category.tag %>">Tests: <%= @category_title %></a></li>
         </ul>
         <%= render :partial => 'site/down_accent' %>
   </div>
@@ -57,30 +57,19 @@ font-size: 19pt;
 		random_order: false,
 		basic_array: [
 
-<%@last_item_index = (@words.length)-1 %>
-
-<%if @lang == 'fr'%>
-
-<% @words.each_with_index  do |word, index| %>
-
-['<%= word.html %>', '<%= word.translate_fr.to_s.gsub(/'/,"’") %>', '<%= word.sound_url %>', '<%= word.transcribe_fr %>']<% if index!= @last_item_index %>,<%end%>	
-<%end%>
-<% else %>	
-<% @words.each_with_index  do |word, index| %>
+<%@last_item_index = (@words.length)-1 -%>
+<% @words.each_with_index  do |word, index| -%>
 ['<%= word.html %>', '<%= word.translate.to_s.gsub(/'/,"’") %>', '<%= word.sound_url %>', '<%= word.transcribe %>', '<%= word.id %>'
 <%if current_user %>,'<%= current_user.word_status(word.id) %>'<%end%>
 ]<% if index!= @last_item_index %>,<%end%>	
-<%end%>
-<% end %>	
-
+<%end-%>
 		]
 		} )
 </script>
 
-<%= @lang %>
 
 <table class="voc-links voc-link-first voc-link-last" align="center" cellspacing="0"><tr>
-	<td class="voc-space">Check how you know this topic with our &nbsp;<a href="/<%= @category.tag %>-test.html">Lexical tests >></a></td>
+	<td class="voc-space">Check how you know this topic with our &nbsp;<a href="/ru/en/lexical-test/<%= @category.tag %>">Lexical tests >></a></td>
 </tr></table>
 
 
