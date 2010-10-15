@@ -1,11 +1,23 @@
-<% @page_title = 'Sound [a]' %>
+<% @sounds = Category.find(:first, :conditions => ['tag=?','russian-sounds']).words
+	@sound = @sounds.find(:first, :conditions => ['translate=?', params[:sound]])
+	@html = @sound.html
+	@text = @sound.text
+	@translate = @sound.translate
+	@desc= @sound.grammar
+	@mp3 = @sound.sound_url
+	@image = @sound.image_url
+	
+%>
 
-<h3>Sound [a]</h3>
+
+<% @page_title = "Sound ["+@translate+"]" %>
+
+<h3>Sound [<%= @html %>]</h3>
 
 <div class="sound-desc vowel">
     <table class="sound-letter" cellspacing="0" >
     	<tr>
-    		<th colspan="2" class="thbrd">Sound [a]</th>
+    		<th colspan="2" class="thbrd">Sound [<%= @html %>]</th>
     	</tr>
     	<tr>
     		<td width="120" class="first-info">
@@ -13,23 +25,29 @@
     			Audio sample: <div class="spacer"></div>
     		</td>
     		<td>
-    			<span class="sound" onclick="playTestSound('/sounds/sound201.mp3')">[a] <span class="play_tip">&nbsp; &nbsp;</span></span>
+    			<span class="sound" onclick="playFile('<%= @mp3%>')">[<%= @html %>] <span class="play_tip">&nbsp; &nbsp;</span></span>
     		</td>
     	</tr>
     	<tr>
-
     		<td  class="first-info">
     			Picture
     		</td>
     		<td class="s-pict">
-    			<img src="/images/sounds/sound-a.gif" alt="Articulation of the Russian sound [a]" />
+    			<img src="<%= @image %>" />
+    		</td>
+    	</tr>
+    	<tr>
+    		<td  class="first-info">
+    			Russian transcription
+    		</td>
+    		<td class="s-pict">
+    			[<%= @text %>]
     		</td>
     	</tr>
     	<tr>
     		<td class="first-info art-desc-name">Articulation description:</td>
-
     		<td class="desc">
-    			The mouth is wide open. The lips are relaxed. The tip of the tongue is against the lower teeth. 
+    			<%= @desc %> 
     		</td>
     	</tr>
     </table>
@@ -47,7 +65,7 @@ overflow: hidden;
 font-size: 0px;
 }
 .sound-desc {
-padding-bottom: 70px;
+padding-bottom: 20px;
 }
 .sound-letter .thbrd {
 padding: 15px;
