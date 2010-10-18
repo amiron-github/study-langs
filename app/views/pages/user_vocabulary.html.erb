@@ -1,0 +1,119 @@
+<% @page_title = 'Study-Languages-Online.com: Profile' %>
+<% @page_meta = {'description' => "User Profile"} %>
+
+<% content_for :special_js_css do %>
+<%= stylesheet_link_tag 'profile' %>
+
+
+
+<script type="text/javascript">
+<%if params[:tab] %>
+	openTabFromUrl(<%= params[:tab] %>);
+<%else%>
+	openTabFromUrl();
+<%end%>
+</script>	
+
+<style type="text/css">
+
+.inpBlock {
+margin-left: 50px;
+}
+
+.inpBlock h3 {
+}
+
+.item-name {
+font-size: 14px;
+font-weight: bold;
+}
+
+</style>
+
+<% end %>
+
+
+<% if current_user.email == 'mirumir.sasha@gmail.com'%>
+	<div align="right">
+		<%= link_to 'View userdata', {:controller => 'userdata'} %> 
+	</div>
+<% end %>
+
+
+<div id="prof_tabs">
+	<div id="tabs_row">
+            <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Vocabulary</a></div></div>
+            <div id="tab02" class="ptab"><div><a href="#">Results</a></div></div>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+
+
+
+<div id="for_tab01" class="pBlock" style="display: block">
+
+	<div class="inpBlock">
+	
+	<h3>Profile</h3>
+		<p style="font-size: 10px; font-style: italic;">* You can change your profile info in the tab <strong>Settings</strong></p>
+		<hr/>
+
+	<br>
+	
+	
+	
+	<% current_user.categories_by_language('ru').each do |t| %>
+		<div id="topic_<%= t[:category].tag %>">
+		<b><%= t[:category].title %></b><br>
+		<% t[:words].each do |word| %>
+			<%= word.text %><br>
+		<% end %>
+		
+		<% form_remote_tag :url => {:controller => 'users', :action => 'delete_topic_words', :topic => t[:category].id} do %>
+				<%= submit_tag "Remove words" %>
+		<% end %>
+		<br>
+		
+		<% t[:user_tests].each do |user_test| %>
+			<%= user_test.exercise.title %><br>
+		<% end %>
+		
+		</div>
+		<br>
+	<% end %>
+	
+		
+
+	</div>
+</div>
+<div id="for_tab02" class="pBlock" style="display: none">
+	<div class="inpBlock">
+		
+		<h3>Tests and exercises results: </h3>
+		<p style="font-size: 10px; font-style: italic;">* See results <strong>Settings</strong></p>
+		
+		
+		
+		<% current_user.get_categories_and_exercises.each do |ex| %>
+		
+			<%= ex[:category] %>: <%= ex[:title] %> - <%= ex[:result] %><br>
+		
+		<% end %>
+		
+		
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		
+	
+	</div>
+</div>
+
+
+
+
+<script type="text/javascript">
+currentSection="login";
+</script>

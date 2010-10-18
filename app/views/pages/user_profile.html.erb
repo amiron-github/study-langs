@@ -38,6 +38,8 @@ font-weight: bold;
 
 <% if current_user.email == 'mirumir.sasha@gmail.com'%>
 	<div align="right">
+		<a href="/user_vocabulary.html">Vocabulary</a>
+		|
 		<%= link_to 'View userdata', {:controller => 'userdata'} %> 
 	</div>
 <% end %>

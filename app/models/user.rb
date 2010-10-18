@@ -78,6 +78,51 @@ write_attribute :email, (value ? value.downcase : nil)
 		return status
 	end
 	
+	def words_by_language(lang)
+		words = self.words.find(:all)
+		words_by_lang = []
+		words.each do |word|
+			if word.word_lang == lang
+				words_by_lang << word
+			end
+		end
+		return 	words_by_lang	
+	end
+	
+	def categories_by_language(lang)
+		user_categories = words.find(:all, :select=> "distinct category_id", :order => 'category_id');
+		user_cat = []
+		user_categories.each do |t|
+			category_id = t[:category_id]
+			category = Category.find(category_id)
+			cat_words = words.find(:all, :conditions => ['category_id=?', category_id], :order=> 'order_num');
+			cat_tests = user_tests.all(:joins => 'left outer join exercises ON `exercises`.test_id = `user_tests`.test_id', :conditions => {'exercises.category_id' => category_id})
+			
+			user_cat << {:category => category, :words => cat_words, :user_tests => cat_tests}
+		end
+	return user_cat
+	end
+	
+	def remove_words_by_topic(category_id)
+		words_to_delete = words.find(:all, :conditions=> ['category_id=?', category_id])
+		words.delete(words_to_delete)
+	end
+	
+	def get_categories_and_exercises
+		cat_and_ex  = []
+		user_tests.each do |ut|
+			test = Exercise.find(:first, :conditions => ['test_id=?', ut.test_id])
+			if test
+				category_name = test.category.title
+				test_name = test.title
+				results = (ut.correct/ut.total)*100
+				result = results
+				cat_and_ex << {:category => category_name, :title => test_name, :result=> result}
+			end 
+		end
+		return cat_and_ex
+	end
+	
 	def get_tests 
 	res='var userProgress=new Array('
 			first = true
