@@ -91,7 +91,6 @@ $("#result_del_char").click(function() {
 	var tString = $("#result textarea").val();
 	var replaceThis= $("#replace_char_value").val();
 	var withThis= $("#replace_tochar_value").val();
-	
 	if (replaceThis == '[' || replaceThis == '.'|| replaceThis == '*') {
 		if (replaceThis == '[') tString =  tString.replace( /\[/g, withThis )
 		if (replaceThis == '.') tString =  tString.replace( /\./g, withThis )
@@ -99,7 +98,6 @@ $("#result_del_char").click(function() {
 	} else {
 		tString = tString.replace( new RegExp( replaceThis, 'g' ), withThis );
 	}
-
 	$("#result textarea").val(tString);
 })
 
@@ -107,6 +105,15 @@ $("#result_del_char").click(function() {
 	//RegExp.quote = function(str) {
     // return str.replace(/([.?*+^$[\]\\(){}-])/g, "\\$1");
 // };
+
+
+$("#numbers_in_row").click(function() {
+
+		//str = str.replace(/\[/g, 'A')
+
+	var tString = $("#text textarea").val();
+
+})
 
 $("#result_lower_case").click(function() {
 	var tString = $("#result textarea").val();
@@ -396,6 +403,11 @@ $(".generated_line_items:even").css({backgroundColor: "#dfdfdf"})
 		
 			for (var i=0; i < textArray[r].length; i ++) {
 				textArray[r][i] = $.trim(textArray[r][i]);
+				var num = r + 1
+				if (r <  9) num = '0'+num
+				
+				textArray[r][i] = textArray[r][i].replace(/@num/g, num )
+				
 				$("#line_row_"+r).append('<input type="text" id="line_item_'+i+'" class="line_items" value="'+textArray[r][i]+'"> ');
 			}
 	}

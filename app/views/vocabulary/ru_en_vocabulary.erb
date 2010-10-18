@@ -6,9 +6,28 @@
 <% content_for :special_js_css do %>
 <%= javascript_include_tag 'jquery.jplayer.min.js' %>
 <%= javascript_include_tag 'jp-control' %>
+<script type="text/javascript">
+$(document).ready(function() {
+$(".trans-display").change(function(){
+	if ($(this).is(":checked")) {
+		$(".original div.ru-transcript").show();
+	}else{
+		$(".original div.ru-transcript").hide();
+	}
+}).change();
+});
+</script>
 <style type="text/css">
 .voc-wordlist .diction td {
 border-bottom: 1px solid #efefef;
+}
+
+.trans-display-wrapper {
+font-size: 11px;
+color: #444;
+position: relative;
+top: -50px;
+margin-bottom: -15px;
 }
 
 .voc-wordlist .diction td.original {
@@ -16,6 +35,12 @@ position: relative;
 width: auto;
 padding-left: 35px;
 cursor: default;
+}
+
+.voc-wordlist .diction td.original div.ru-transcript {
+display: none;
+font-size: 11px;
+color: #555;font-weight: normal;
 }
 
 .voc-wordlist .diction td.translation {
@@ -64,8 +89,6 @@ margin-left: -25px;
 </h3>
 
 
-
-
 <div class="voc-wordlist">
 <table class="voc_bord" align="center" cellspacing="0">
 <tr>
@@ -75,7 +98,7 @@ margin-left: -25px;
 <col width="50%"><col width="50%">
 <thead>
 <tr>
-	<td></td>
+	<td> <div class="trans-display-wrapper"><input type="checkbox" class="trans-display" /> Транскрипция </div> </td>
 	<td></td>
 </tr>
 </thead>
@@ -99,6 +122,7 @@ margin-left: -25px;
     <td class="original" valign="top">
 	<%unless word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div><%end%>
 	<%= word.text %>
+	<div class="ru-transcript">[<%= word.transcribe %>]</div>
 	
     </td>
     <td class="translation" valign="top"><%= word.translate %>

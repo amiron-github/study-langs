@@ -205,7 +205,7 @@ width: 100px;
 @last_item_index = (@words.length)-1
 @words.each_with_index  do |word, index| %><% unless (word.translate == '#none#' || word.translate == '' )%>
 <% unless except_from_flash(index) -%>
-["<%= word.text.to_s.gsub(/"/,'\"') %>", '<%= word.translate.to_s.gsub(/'/,"’") %>', '<%= word.sound_url %>', '<%= word.transcribe.to_s.gsub(/'/,"’") %>'<%if current_user %>, '<%= word.id%>' ,'<%= current_user.word_status(word.id) %>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>
+["<%= word.text.to_s.gsub(/"/,'\"') %>", '<%= word.translate.to_s.gsub(/'/,"’") %>', '<%= word.sound_url %>', "<%= word.transcribe.to_s.gsub(/"/,'\"') %>"<%if current_user %>, '<%= word.id%>' ,'<%= current_user.word_status(word.id) %>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>
 <%end -%>
 <%end-%>
 <%end -%>
