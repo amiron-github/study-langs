@@ -92,7 +92,18 @@ font-weight: bold;
 		<h3>Tests and exercises results: </h3>
 		<p style="font-size: 10px; font-style: italic;">* See results <strong>Settings</strong></p>
 		
-		
+		<%current_user.get_cat_ex.each do |t| %>
+			<b><%= t[:category].title %></b>.<br>
+			
+			<% t[:exercises].each do |test| %>
+			
+				<%= test.exercise.title %>: <%= test.result_percent %><br>
+				
+			<%end%>
+			
+			<br><br>
+		<%end%>
+		<br>
 		
 		<% current_user.get_categories_and_exercises.each do |ex| %>
 		

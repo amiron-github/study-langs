@@ -95,10 +95,11 @@ write_attribute :email, (value ? value.downcase : nil)
 		user_categories.each do |t|
 			category_id = t[:category_id]
 			category = Category.find(category_id)
-			cat_words = words.find(:all, :conditions => ['category_id=?', category_id], :order=> 'order_num');
-			cat_tests = user_tests.all(:joins => 'left outer join exercises ON `exercises`.test_id = `user_tests`.test_id', :conditions => {'exercises.category_id' => category_id})
-			
-			user_cat << {:category => category, :words => cat_words, :user_tests => cat_tests}
+			if category.lang == lang
+				cat_words = words.find(:all, :conditions => ['category_id=?', category_id], :order=> 'order_num');
+				cat_tests = user_tests.all(:joins => 'left outer join exercises ON `exercises`.test_id = `user_tests`.test_id', :conditions => {'exercises.category_id' => category_id})
+				user_cat << {:category => category, :words => cat_words, :user_tests => cat_tests}
+			end
 		end
 	return user_cat
 	end
@@ -115,12 +116,31 @@ write_attribute :email, (value ? value.downcase : nil)
 			if test
 				category_name = test.category.title
 				test_name = test.title
-				results = (ut.correct/ut.total)*100
-				result = results
+				results = (ut.correct.to_f/ut.total.to_f*100).to_i
+				result = results.to_s+'%'
 				cat_and_ex << {:category => category_name, :title => test_name, :result=> result}
 			end 
 		end
 		return cat_and_ex
+	end
+	
+	def get_cat_ex
+	
+	 test_categories =  user_tests.all(:joins => 'left outer join exercises ON `exercises`.test_id = `user_tests`.test_id', :select => 'distinct exercises.category_id')
+	 list = []
+	 test_categories.each do |tc|
+		category_id = tc.category_id
+		if category_id != nil
+			category = Category.find(category_id)
+			cat_tests = user_tests.all(:joins => 'left outer join exercises ON `exercises`.test_id = `user_tests`.test_id', :conditions => {'exercises.category_id' => category_id})
+			
+		
+			list << {:category => category, :exercises => cat_tests}
+		end
+	 end
+	 
+	 
+	return list
 	end
 	
 	def get_tests 
