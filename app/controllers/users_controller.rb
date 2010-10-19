@@ -85,7 +85,7 @@ class UsersController < ApplicationController
     render :text => '', :layout =>false
     end
   end
-  
+    
   def set_word 
   #for POST like $.post("/set_word", {words: [1,2,3]} ); 
     if !current_user

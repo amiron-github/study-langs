@@ -32,7 +32,7 @@ layout "admin"
   end
   
   def words_index
-		@words = Word.all(:order=> 'id DESC')
+		@words = Word.paginate :page => params[:page], :order => 'created_at DESC'
 	end
   
   def cat_index

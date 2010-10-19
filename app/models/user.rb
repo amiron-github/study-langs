@@ -125,23 +125,63 @@ write_attribute :email, (value ? value.downcase : nil)
 	end
 	
 	def get_cat_ex
-	
 	 test_categories =  user_tests.all(:joins => 'left outer join exercises ON `exercises`.test_id = `user_tests`.test_id', :select => 'distinct exercises.category_id')
 	 list = []
 	 test_categories.each do |tc|
 		category_id = tc.category_id
 		if category_id != nil
 			category = Category.find(category_id)
-			cat_tests = user_tests.all(:joins => 'left outer join exercises ON `exercises`.test_id = `user_tests`.test_id', :conditions => {'exercises.category_id' => category_id})
-			
-		
-			list << {:category => category, :exercises => cat_tests}
+			unless category.tag == 'everyday_course' || category.tag =='beginner_course'
+				cat_tests = get_test_by_category(category_id)
+				total = 0
+				cat_tests.each do |test|
+					total += test.result_percent
+				end
+				average = total / cat_tests.length
+				list << {:category => category, :exercises => cat_tests, :total => average}
+			end
 		end
 	 end
-	 
-	 
 	return list
 	end
+	
+	def get_test_by_category(category_id)
+		tests = user_tests.all(:joins => 'left outer join exercises ON `exercises`.test_id = `user_tests`.test_id', :conditions => {'exercises.category_id' => category_id})
+		return tests
+	end
+	
+	def get_course_results(map, tag)
+		course = Category.find(:first, :conditions=> ['tag=?', tag])
+		user_tests = get_test_by_category(course.id)
+		course_map = map
+		course_name = course_map[:name]
+		list =[]
+		course_map[:parts].each do |lesson|
+			empty_lesson = true
+			user_exercises = []
+			total = 0
+			lesson[:exercises].each do |exercise|
+				user_tests.each do |test|
+					if test.test_id == exercise               #if test found
+						lesson[:exercises].delete(exercise)
+						empty_lesson = false
+						user_exercises << test
+						total += test.result_percent
+					end
+				end		
+			end
+			if !empty_lesson
+				average = total/user_exercises.length
+				list << {:category => lesson[:name], :exercises => user_exercises, :total => average}
+			end
+		end
+		course_data = {:name=> course_name, :results=> list}
+		return course_data
+	end
+	
+	
+	
+	
 	
 	def get_tests 
 	res='var userProgress=new Array('

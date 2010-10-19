@@ -12,6 +12,62 @@
 <%else%>
 	openTabFromUrl();
 <%end%>
+
+$(document).ready(function() { 
+
+var detZIndex=1000;
+
+$("div.pr-detail-block").each(function(i) {
+	$(this).css({zIndex: (1000-i)})
+	}
+);
+
+$(".show_det").hover(function(){
+		$(this).css({textDecoration: "underline"});
+	}, function(){
+		$(this).css({textDecoration: "none"});
+	}
+);
+
+$("table.sound-letter").each(function () {
+	$(this).find("tr.res_row:odd").css({backgroundColor: "#EFF3FF"});
+});
+
+
+$("span.show_det").toggle(
+
+ function() {
+   
+   $(this).parent("td").parent("tr").parent().find(".open_det").click();
+   
+ 	$(this).addClass("open_det").text("Hide");
+ 	var parentRow=$(this).parent("td").parent("tr");
+ 	parentRow.css({fontWeight: "bold"}).find("div.pr-detail-block").css({fontWeight: "normal"});
+	parentRow.find("div.pr-detail-block").css({display: "block"});
+	var detHeight=parentRow.find("div.pr-detail-block").height();
+	parentRow.find("div.pr-detail").animate({height: detHeight+5});
+ 	parentRow.find("div.pr-detail-block div").css({marginLeft: "0px", marginTop: -(detHeight+5)}).animate({marginTop: "1px"}, "normal")
+ },
+ function() {
+ 
+ 	$(this).removeClass("open_det").text("Show");
+	var parentRow=$(this).parent("td").parent("tr");
+	parentRow.css({fontWeight: "normal"});
+ 	var detHeight=parentRow.find("div.pr-detail-block").height();
+ 	parentRow.find("div.pr-detail").animate({height: "0px"});
+ 	parentRow.find("div.pr-detail-block div").animate({marginTop: -(detHeight+5)}, "normal", function(){
+ 		parentRow.find("div.pr-detail-block").css({display: "none"});
+ 		parentRow.find("div.pr-detail-block div").css({marginLeft: "-500px", marginTop: "0px"});
+ 	});
+ }
+
+);
+
+});
+
+
+
+
 </script>	
 
 <style type="text/css">
@@ -92,24 +148,73 @@ font-weight: bold;
 		<h3>Tests and exercises results: </h3>
 		<p style="font-size: 10px; font-style: italic;">* See results <strong>Settings</strong></p>
 		
-		<%current_user.get_cat_ex.each do |t| %>
-			<b><%= t[:category].title %></b>.<br>
-			
-			<% t[:exercises].each do |test| %>
-			
-				<%= test.exercise.title %>: <%= test.result_percent %><br>
-				
-			<%end%>
-			
-			<br><br>
-		<%end%>
-		<br>
 		
-		<% current_user.get_categories_and_exercises.each do |ex| %>
-		
-			<%= ex[:category] %>: <%= ex[:title] %> - <%= ex[:result] %><br>
-		
-		<% end %>
+<table class="sound-letter" cellspacing="0">
+<tr>
+	<th class="page">Page</th>
+	<th class="results">Results</th>
+	<th class="thbrd">More info</th>
+</tr>
+<% @vocabulary_exercises.each do |t| %>
+<tr class="res_row"> 
+	<td style="width: 190px;">			  	
+			<%= t[:category].title %>				  
+		<div class="pr-detail">
+			<div class="pr-detail-block">
+				<div>
+					<table cellpadding="0" cellspacing="0" border="0">
+						<% t[:exercises].each_with_index do |test, index| -%>
+						<tr>
+							<td>				
+								<%if test.exercise.title != '' %><%= test.exercise.title %><%else%>Test <%= index+1 %><%end%>
+							</td>
+							<td class="res_perc">						  
+								<%= test.result_percent %>%
+							</td>
+						</tr>
+						<%end%>
+					</table>
+				</div>
+			</div>
+		</div>
+	</td>
+	<td> &nbsp;
+	<%= t[:total] %>
+	</td>
+	<td><span class="show_det">Show</span></td>  
+	</tr>		
+<%end%>
+</table>
+
+
+<br><br>
+
+<% if @course_exercises.length > 0 %>
+<hr>
+ <%= render(:partial => "course_user_results" , :locals => { :course_data  => @course_exercises
+																			}) %>
+<% end %>
+
+<% if @beginner_exercises.length > 0 %>
+<hr>
+ <%= render(:partial => "course_user_results" , :locals => { :course_data  => @beginner_exercises
+																			}) %>
+<% end %>
+
+
+
+
+
+
+<br><br><br><br>
+
+
+
+
+
+
+
+
 		
 		
 		<br/>

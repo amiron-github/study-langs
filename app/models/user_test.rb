@@ -9,9 +9,7 @@ attr_accessible :test_id, :user_id, :total, :correct
 	correct = self.correct
 	total = self.total
 	results = (correct.to_f/total.to_f*100).to_i
-	result = results.to_s+'%'
-	return result
+	return results
  end
-
 
 end

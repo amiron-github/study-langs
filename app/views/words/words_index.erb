@@ -8,7 +8,7 @@
 $(document).ready(function() { 
     $("table.tablesorter") 
     .tablesorter({widthFixed: true, headers: {0: {sorter: 'digit'}, 3:{sorter: false}, 4:{sorter: false}},widgets: ['zebra'] }) 
-    .tablesorterPager({container: $("#pager"), size: 30,positionFixed: false}); 
+    //.tablesorterPager({container: $("#pager"), size: 30,positionFixed: false}); 
 });
 </script> 
  
@@ -21,7 +21,7 @@ $(document).ready(function() {
 | <%= link_to "Manage clusters", :controller => 'clusters', :action => 'index' %>
 
 </div>
-<div id="pager" class="pager"> 
+<div id="pager" class="pager" style="display: none"> 
 	<form> 
 		<img title="First Page" src="/images/tablesorter/first.png" class="first"/> 
 		<img title="Previous Page" src="/images/tablesorter/prev.png" class="prev"/> 
@@ -43,6 +43,8 @@ $(document).ready(function() {
 </div>
 
 <div><br><%= link_to '+ New word', new_word_path %><br></div>
+
+<div align="right"><%= will_paginate @words %></div>
 
 <table class="tablesorter" cellspacing="1">
 <thead>
@@ -67,5 +69,5 @@ $(document).ready(function() {
 </table>
 
 <br />
-
+<div align="right"><%= will_paginate @words %></div>
 

@@ -62,6 +62,10 @@ class SiteController < ApplicationController
       @stylesheets << 'stylesounds'
     when /(memory|balloon-game)\.html$/
       @javascripts << 'vocabulary'
+	when /(user_profile|user_vocabulary)\.html$/
+		@vocabulary_exercises = current_user.get_cat_ex
+		@course_exercises = current_user.get_course_results(Exercise::EVERYDAY_RU, 'everyday_course')
+		@beginner_exercises = current_user.get_course_results(Exercise::BEGINNER_RU, 'beginner_course')
     end
 
 	@hide_html = '<div class="hidden_content">Available for subscribed users</div>'
