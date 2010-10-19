@@ -189,13 +189,14 @@ font-weight: bold;
 
 <br><br>
 
-<% if @course_exercises.length > 0 %>
+<% if @course_exercises[:results].length > 0 %>
 <hr>
  <%= render(:partial => "course_user_results" , :locals => { :course_data  => @course_exercises
 																			}) %>
 <% end %>
 
-<% if @beginner_exercises.length > 0 %>
+
+<% if @beginner_exercises[:results].length > 0 %>
 <hr>
  <%= render(:partial => "course_user_results" , :locals => { :course_data  => @beginner_exercises
 																			}) %>
