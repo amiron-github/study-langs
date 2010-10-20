@@ -1,10 +1,14 @@
 <% @page_title = 'Study-Languages-Online.com: Profile' %>
 <% @page_meta = {'description' => "User Profile"} %>
+<% @jquery_version = 'latest' %>
+<%= javascript_include_tag 'jquery-ui-1.8.4.custom.min.js' %>
+<%= stylesheet_link_tag 'custom-theme/jquery-ui-1.8.5.custom.css' %>
 
 <% content_for :special_js_css do %>
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'jp-control' %>
+
 <%= stylesheet_link_tag 'profile' %>
-
-
 
 <script type="text/javascript">
 <%if params[:tab] %>
@@ -16,6 +20,16 @@
 $(document).ready(function() { 
 
 var detZIndex=1000;
+
+$(".voc-details").toggle(function(){
+		$(this).parent().find(".voc-topic-details").slideDown();
+		$(this).parent().removeClass("details-hidden");
+	},function(){
+		$(this).parent().find(".voc-topic-details").slideUp();
+		$(this).parent().addClass("details-hidden");
+});
+
+$(".myvoc-wrapper").css({minHeight: ($(".myvoc-wrapper").height()+600) });
 
 $("div.pr-detail-block").each(function(i) {
 	$(this).css({zIndex: (1000-i)})
@@ -84,6 +98,126 @@ font-size: 14px;
 font-weight: bold;
 }
 
+
+/* styles for vocabulary*/
+
+.voc-word-list-wrapper {
+
+}
+
+.voc-results {
+border: 1px solid #C3CDDF;
+background-color: #E2E6F2;
+background-color:#AFCCFF;
+background-image:url(/images/fl-bg.png);
+border:3px solid #99B2DF;
+padding: 1px;
+max-width: 620px;
+}
+
+.voc-details {
+position: absolute;
+right: 10px;
+top: 10px;
+padding: 3px 5px;
+font-size: 10px;
+color: #666;
+cursor: pointer;
+-moz-border-radius: 4px;
+-webkit-border-radius: 4px;
+border-radius: 4px;
+text-shadow: 0px 0px 0px #fff;
+border:1px solid #8E95AF;
+background-image:url(/images/btn-grd.png);
+background-position:50% 50%;
+background-repeat:no-repeat;
+background-color: #BFD6FF;
+}
+
+.voc-details:hover {
+color: #111;
+border: 1px solid #676C7F;
+}
+
+.details-hidden .mv-details {
+display: block;
+}
+
+.details-hidden .mv-no-details {
+display:none;
+}
+
+.mv-details {
+display: none;
+}
+
+.voc-item {
+overflow: hidden;
+background-color:#FFFFFF;
+background-image:url(/images/transparent-80.png);
+bor-der: 1px solid #95B8EF;
+color: #333;
+-moz-box-shadow: 0px 1px 3px #45546F;
+-webkit-box-shadow: 0px 1px 3px #45546F;
+box-shadow: 0px 1px 3px #45546F;
+margin: 5px 3px;
+
+position: relative;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+border-radius: 10px;
+}
+
+.details-hidden {
+background-color: transparent;
+}
+
+.voc-item:hover {
+background-color:#FFFFFF;
+}
+
+.voc-top-topic {
+background-color: #fff;
+color: #1A3F8F;
+font-size: 17px;
+padding: 10px 20px;
+col-or: #31394F;
+text-shadow: 0px 1px 0px #fff, 1px 1px 3px #8EA7CF;
+
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+border-radius: 10px;
+}
+
+.voc-topic-content {
+}
+
+.voc-topic-content-last {
+border-bottom: 1px solid #dfdfdf;
+}
+
+.voc-words-list td {
+color:#444444;
+font-size:12px;
+padding:1px 5px;
+}
+
+.voc-topic-details {
+display: none;
+}
+
+
+.voc-list-original {
+font-weight: bold;
+}
+
+.voc-remove-topic input {
+font-size: 10px;
+font-weight: bold;
+}
+
+
+
 </style>
 
 <% end %>
@@ -110,33 +244,81 @@ font-weight: bold;
 
 	<div class="inpBlock">
 	
-	<h3>Profile</h3>
-		<p style="font-size: 10px; font-style: italic;">* You can change your profile info in the tab <strong>Settings</strong></p>
+	<h3>My vocabulary</h3>
+		<p style="font-size: 10px; font-style: italic;">* Here you can see word and expressions sorted by topics that you have studied</p>
 		<hr/>
-
 	<br>
 	
+<% @words_statistics = current_user.categories_by_language('ru')
+	@words_last = @words_statistics.length-1
+%>	
+<div class="myvoc-wrapper">	
+	<h4>Total progress</h4>
+
+	<%= @words_statistics.length %> categories studied
+	<br><br><br>
+
+
+<div class="voc-results">	
+<% @words_statistics.each_with_index do |t, index| %>
+	<div id="topic_<%= t[:category].tag %>" class="voc-item details-hidden">
+		<div class="voc-top-topic"><span><%= t[:category].title %></span></div>
+		<div class="voc-details"><span class="mv-details">Show details</span><span class="mv-no-details">Hide details</span></div>
+		<div class="voc-topic-content">
+			<div style="font-size: 11px; color: #333; padding-left: 10px;">
+				Total items:  <b><%= t[:category].words.length %></b><br>
+				Studied:  <b><%= t[:words].length %></b> (<%= (t[:words].length.to_f / t[:category].words.length*100).to_i %>%)  <br>
+				Tests completed: <b><%= t[:user_tests].length %></b><br><br>
+			</div>
+			
+			
+		
+		
+		
+		<div class="voc-topic-details">
+		<a href="/en/ru/vocabulary/<%= t[:category].tag %>">Review topic</a> | <a href="/en/ru/flashcards/<%= t[:category].tag %>">Flashcards</a> | <a href="/en/ru/lexical-test/<%= t[:category].tag %>">Tests</a>	
+	
+		
+		<h4>Details</h4>
 	
 	
-	<% current_user.categories_by_language('ru').each do |t| %>
-		<div id="topic_<%= t[:category].tag %>">
-		<b><%= t[:category].title %></b><br>
+		<div class="voc-word-list-wrapper">
+		<table class="voc-words-list" cellpadding="0" cellspacing="0" width="400">
+		<col width="20">
 		<% t[:words].each do |word| %>
-			<%= word.text %><br>
+			<tr <%= cycle('style="background-color: #efefef"', 'style="background-color: #ffffff"')  %>>
+				<td><%unless word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div><%end%></td>
+				<td class="voc-list-original"><%= word.text %></td>
+				<td><%= word.translate %></td>
+			</tr>
 		<% end %>
+		</table>
+		</div>
 		
+		
+		<div class="voc-remove-topic">
 		<% form_remote_tag :url => {:controller => 'users', :action => 'delete_topic_words', :topic => t[:category].id} do %>
-				<%= submit_tag "Remove words" %>
+				<%= submit_tag "Remove this topic" %>
 		<% end %>
-		<br>
+		</div>
 		
+		
+		
+		<br>
 		<% t[:user_tests].each do |user_test| %>
 			<%= user_test.exercise.title %><br>
 		<% end %>
 		
 		</div>
-		<br>
-	<% end %>
+		</div>
+	</div>
+<% end %>
+</div>
+
+
+
+</div><!-- end of myvoc-wrapper -->
+
 	
 		
 
