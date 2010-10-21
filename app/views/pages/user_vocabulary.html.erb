@@ -114,7 +114,7 @@ font-weight: bold;
 border: 1px solid #C3CDDF;
 background-color: #E2E6F2;
 background-color:#AFCCFF;
-background-image:url(/images/fl-bg.png);
+back-ground-image:url(/images/fl-bg.png);
 border:1px solid #99B2DF;
 padding: 1px;
 max-width: 620px;
@@ -151,7 +151,6 @@ background-color: #fff;
 margin-top: 0px;
 color: #374C6F;
 }
-
 
 .voc-details:hover {
 color: #111;
@@ -297,45 +296,60 @@ font-weight: bold;
 /* styles for tabs */
 
 
+.user-area h3.tab-head {
+font-size: 20px;
+font-weight: normal;
+color: #555;
+padding-bottom: 5px;
+border-bottom: 1px solid #777;
+margin: 0 0 20px 0;
+}
+
+p.tab-info {
+font-size: 10px;
+font-style: italic;
+}
+
 .user-area {
 background-color: #fff;
+border: 1px solid #708089;
+padding: 3px;
 position: relative;
-margin-top: 30px;
+padding: 4px;
 background-color:#fff;
-/*
--moz-border-radius: 9px;
--webkit-border-radius: 9px;
-border-radius: 9px;
--moz-box-shadow: 1px 1px 0px #627EAF, 1px 2px 3px #3E556F;
--webkit-box-shadow: 1px 1px 0px #627EAF, 1px 2px 3px #3E556F;
-box-shadow: 1px 1px 0px #627EAF, 1px 2px 3px #3E556F;
-*/
-
-
+-moz-bo-rder-radius: 6px;
+-webkit-border-radius: 6px;
+border-radius: 6px;
+-moz-box-shadow: 1px 2px 8px #999;
+-webkit-box-shadow: 1px 2px 8px #999;
+box-shadow: 1px 2px 8px #999;
 }
 
 
 .ptab {
 float:left;
-background-color: #efefef;
-background-image: none;
+back-ground-color: #efefef;
+background-image: url(/images/transparent-60.png);
+background-repeat: repeat;
 margin:0;
 padding:0 0 0 4px;
 text-decoration:none;
 cursor: pointer;
-border-bottom: 0px solid #666;
 color:#666;
 margin-left: 2px;
-border: 3px solid #819DCF;
-border-bottom: 0px solid #9FC2FF;
+border: 1px solid #8F9FBF;
+border-bottom: 0px solid #fff;
 position: relative;
-top: 7px;
+top: 3px;
 }
 
 .current_ptab {
-top: 3px;
+border: 1px solid #708089;
+border-bottom: 0px solid #fff;
+background-image: none;
+top: 0px;
 background-color: #fff;
-padding-bottom: 6px;
+padding-bottom: 3px;
 color: #111;
 }
 
@@ -345,14 +359,21 @@ position: relative;
 }
 
 #prof_tabs {
-border-bottom: 4px solid #819DCF;
+border: 1px solid #708089;
+width: auto;
+padding-top: 10px;
+background:#4B87FB url(/stylesheets/custom-theme/images/ui-bg_gloss-wave_55_4b87fb_500x100.png) repeat-x scroll 50%;
+-moz-bo-rder-radius: 6px;
+-webkit-border-radius: 4px;
+border-radius: 4px;
+
 }
 
 .pBlock {
 clear: both;
-padding: 20px;
-border: 4px solid #819DCF;
-border-top: 0px solid #9FC2FF;
+padding: 20px 30px 10px 40px;
+border: 0px solid #819DCF;
+bor-der-top: 0px solid #9FC2FF;
 margin-bottom: 30px;
 
 -moz-box-shadow: 0px 0px 0px #9F9F9F;
@@ -373,55 +394,7 @@ div.current_ptab div {
 
 
 
-.tab-head-wrapper {
-display: none;
-}
 
-.tab-head-rt {
-position: absolute;
-top: -30px;
-background-image: url(/images/sign/sign-head.png);
-background-repeat: no-repeat;
-background-position: right bottom;
-width: 250px;
-}
-
-.tab-head-lft {
-background-image: url(/images/sign/sign-head.png);
-background-repeat: no-repeat;
-background-position: left top;
-} 
-
-.tab-head {
-m-in-width: 400px;
-m-ax-width: 450px;
-background-image: url(/images/sign/sign-head.png);
-background-repeat: repeat-x;
-background-position: left -70px;
-border-top: 0px solid #fff;
-padding: 0px;
-margin: 0px 9px 0px 9px;
-min-height: 61px;
-l-ine-height: 50px;
-}
-
-.tab-title {
-display: block;
-height: 60px;
-back-ground-image: url(/images/sign/sign-up.png);
-background-position: 50% 50%;
-background-repeat: no-repeat;
-text-align: center;
-}
-
-.tab-string {
-background-image: none;
-color: #fff;
-font-size: 28px;
-fo-nt-weight: bold;
-line-height: 54px;
-text-shadow: 0px 0px 1px #22376F, 0px 1px 6px #555;
-}
 
 
 </style>
@@ -429,16 +402,13 @@ text-shadow: 0px 0px 1px #22376F, 0px 1px 6px #555;
 <% end %>
 
 
+
+<div class="user-area">
 <% if current_user.email == 'mirumir.sasha@gmail.com'%>
-	<div align="right">
+	<div align="right" style="position: absolute; z-index: 200; right: 10px; top: 10px;">
 		<%= link_to 'View userdata', {:controller => 'userdata'} %> 
 	</div>
 <% end %>
-
-
-
-
-<div class="user-area">
 
 <div id="prof_tabs">
 	<div id="tabs_row">
@@ -450,19 +420,14 @@ text-shadow: 0px 0px 1px #22376F, 0px 1px 6px #555;
 </div>
 
 
-
 <div id="for_tab01" class="pBlock" style="display: block">
-
 	<div class="inpBlock">
 	
-<div class="tab-head-wrapper">
-	<div class="tab-head-rt">
-		<div class="tab-head-lft">
-			<div class="tab-head"><span class="tab-title tab-string">Vocabulary</span></div>
-		</div>
-	</div>
-</div>	
-	
+<h3 class="tab-head">My vocabulary </h3>
+
+<p class="tab-info">Here you can see topics that you have learned on our website, together with studied words and expressions, as well as tests related the topis.</p>
+<br>
+
 <% @words_statistics = current_user.categories_by_language('ru')
 	@words_last = @words_statistics.length-1
 %>	
@@ -552,14 +517,7 @@ text-shadow: 0px 0px 1px #22376F, 0px 1px 6px #555;
 <div id="for_tab02" class="pBlock" style="display: none">
 	<div class="inpBlock">
 		
-<div class="tab-head-wrapper">
-	<div class="tab-head-rt">
-		<div class="tab-head-lft">
-			<div class="tab-head"><span class="tab-title tab-string">Results</span></div>
-		</div>
-	</div>
-</div>
-		
+<h3 class="tab-head">Results </h3>
 
 <div class="voc-results section-tests">	
 <% @vocabulary_exercises.each_with_index do |t, index| %>
@@ -630,19 +588,9 @@ text-shadow: 0px 0px 1px #22376F, 0px 1px 6px #555;
 <div id="for_tab03" class="pBlock" style="display: none">
 	<div class="inpBlock">
 
-<div class="tab-head-wrapper">
-	<div class="tab-head-rt">
-		<div class="tab-head-lft">
-			<div class="tab-head"><span class="tab-title tab-string">Settings</span></div>
-		</div>
-	</div>
-</div>	
-	
-	
-	
-		<h3>Account Settings: </h3>
+<h3 class="tab-head">Account </h3>
+
 		<p style="font-size: 10px; font-style: italic;">* Click the links below to perform the following actions</p>
-		<hr/>
 	   
 	   <table cellpadding="0" cellspacing="20">
 		<!-- tr>
