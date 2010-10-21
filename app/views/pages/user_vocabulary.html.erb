@@ -1,8 +1,6 @@
 <% @page_title = 'Study-Languages-Online.com: Profile' %>
 <% @page_meta = {'description' => "User Profile"} %>
-<% @jquery_version = 'latest' %>
-<%= javascript_include_tag 'jquery-ui-1.8.4.custom.min.js' %>
-<%= stylesheet_link_tag 'custom-theme/jquery-ui-1.8.5.custom.css' %>
+
 
 <% content_for :special_js_css do %>
 <%= javascript_include_tag 'jquery.jplayer.min.js' %>
@@ -21,11 +19,22 @@ $(document).ready(function() {
 
 var detZIndex=1000;
 
+$(".voc-details-content").css({opacity: 0})
+
+$(".voc-words-list").each(function(i,elem){
+	$(elem).find("tr:even").addClass("voc-list-even");
+}); 
+
 $(".voc-details").toggle(function(){
-		$(this).parent().find(".voc-topic-details").slideDown();
+		$(this).parent().find(".voc-topic-details").slideDown(function() {
+					$(this).parent().find(".voc-details-content").animate({opacity: 1},200);
+		})
 		$(this).parent().removeClass("details-hidden");
 	},function(){
-		$(this).parent().find(".voc-topic-details").slideUp();
+		
+		$(this).parent().find(".voc-details-content").animate({opacity: 0},200, function() {
+			$(this).parent(".voc-topic-details").slideUp();
+		})
 		$(this).parent().addClass("details-hidden");
 });
 
@@ -101,24 +110,22 @@ font-weight: bold;
 
 /* styles for vocabulary*/
 
-.voc-word-list-wrapper {
-
-}
-
 .voc-results {
 border: 1px solid #C3CDDF;
 background-color: #E2E6F2;
 background-color:#AFCCFF;
 background-image:url(/images/fl-bg.png);
-border:3px solid #99B2DF;
+border:1px solid #99B2DF;
 padding: 1px;
 max-width: 620px;
 }
 
+
+
 .voc-details {
 position: absolute;
 right: 10px;
-top: 10px;
+top: 8px;
 padding: 3px 5px;
 font-size: 10px;
 color: #666;
@@ -133,6 +140,18 @@ background-position:50% 50%;
 background-repeat:no-repeat;
 background-color: #BFD6FF;
 }
+
+.voc-details-content {
+opacity: 0;
+padding: 10px 15px 10px 30px;
+background-color: #fff;
+}
+
+.voc-details-content h4 {
+margin-top: 0px;
+color: #374C6F;
+}
+
 
 .voc-details:hover {
 color: #111;
@@ -158,6 +177,7 @@ background-color:#FFFFFF;
 backg-round-image:url(/images/transparent-80.png);
 bor-der: 1px solid #95B8EF;
 color: #333;
+padding-bottom: 10px;
 -moz-box-shadow: 0px 1px 3px #45546F;
 -webkit-box-shadow: 0px 1px 3px #45546F;
 box-shadow: 0px 1px 3px #45546F;
@@ -166,6 +186,11 @@ position: relative;
 -moz-border-radius: 10px;
 -webkit-border-radius: 10px;
 border-radius: 10px;
+}
+
+
+.section-tests .voc-item {
+margin: 3px 3px;
 }
 
 .details-hidden {
@@ -178,14 +203,21 @@ background-color:#FFFFFF;
 opacity:1;
 }
 
+.voc-quick-info {
+padding-top: 10px;
+font-size: 11px; 
+color: #31394F; 
+padding-left: 30px;
+}
+
 .voc-top-topic {
 color: #1A3F8F;
 font-size: 17px;
-padding: 10px 20px;
+padding: 10px 80px 5px 5px;
+margin: 0 10px 0;
+border-bottom: 1px dotted #537ABF;
 col-or: #31394F;
 text-shadow: 0px 1px 0px #fff, 1px 1px 3px #8EA7CF;
-
-
 }
 
 .voc-topic-content {
@@ -195,8 +227,22 @@ text-shadow: 0px 1px 0px #fff, 1px 1px 3px #8EA7CF;
 border-bottom: 1px solid #dfdfdf;
 }
 
+.voc-word-list-wrapper {
+max-width: 450px;
+border: 1px solid #C3CDDF;
+padding: 3px;
+}
+
+.voc-words-list {
+width: 100%;
+}
+
+.voc-list-even {
+background-color: #EFF5FF;
+}
+
 .voc-words-list td {
-color:#444444;
+color:#45494F;
 font-size:12px;
 padding:1px 5px;
 }
@@ -205,9 +251,42 @@ padding:1px 5px;
 display: none;
 }
 
-
 .voc-list-original {
 font-weight: bold;
+}
+
+.voc-tests {
+padding-top: 20px;
+}
+
+.voc-tests-list {
+background-color: #C3CDDF;
+}
+
+.voc-tests-list td {
+background-color: #fff;
+padding: 4px 15px;
+color:#45494F;
+}
+
+.voc-tests-list th {
+border: 1px solid #EFF5FF;
+background-color: #D1DDEF;
+font-size: 10px;
+padding: 4px 15px;
+color:#45494F;
+}
+
+.voc-test-title {
+font-weight: bold;
+}
+
+.voc-test-result {
+text-align: center;
+}
+
+.voc-remove-topic {
+padding-top: 30px;
 }
 
 .voc-remove-topic input {
@@ -215,6 +294,134 @@ font-size: 10px;
 font-weight: bold;
 }
 
+/* styles for tabs */
+
+
+.user-area {
+background-color: #fff;
+position: relative;
+margin-top: 30px;
+background-color:#fff;
+/*
+-moz-border-radius: 9px;
+-webkit-border-radius: 9px;
+border-radius: 9px;
+-moz-box-shadow: 1px 1px 0px #627EAF, 1px 2px 3px #3E556F;
+-webkit-box-shadow: 1px 1px 0px #627EAF, 1px 2px 3px #3E556F;
+box-shadow: 1px 1px 0px #627EAF, 1px 2px 3px #3E556F;
+*/
+
+
+}
+
+
+.ptab {
+float:left;
+background-color: #efefef;
+background-image: none;
+margin:0;
+padding:0 0 0 4px;
+text-decoration:none;
+cursor: pointer;
+border-bottom: 0px solid #666;
+color:#666;
+margin-left: 2px;
+border: 3px solid #819DCF;
+border-bottom: 0px solid #9FC2FF;
+position: relative;
+top: 7px;
+}
+
+.current_ptab {
+top: 3px;
+background-color: #fff;
+padding-bottom: 6px;
+color: #111;
+}
+
+.ptab div {
+background-image: none;
+position: relative;
+}
+
+#prof_tabs {
+border-bottom: 4px solid #819DCF;
+}
+
+.pBlock {
+clear: both;
+padding: 20px;
+border: 4px solid #819DCF;
+border-top: 0px solid #9FC2FF;
+margin-bottom: 30px;
+
+-moz-box-shadow: 0px 0px 0px #9F9F9F;
+-webkit-box-shadow: 0px 0px 0px #9F9F9F;
+box-shadow: 0px 0px 0px #9F9F9F;
+
+}
+
+.inpBlock {
+margin-left: 0;
+}
+
+
+
+div.current_ptab div {
+
+}
+
+
+
+.tab-head-wrapper {
+display: none;
+}
+
+.tab-head-rt {
+position: absolute;
+top: -30px;
+background-image: url(/images/sign/sign-head.png);
+background-repeat: no-repeat;
+background-position: right bottom;
+width: 250px;
+}
+
+.tab-head-lft {
+background-image: url(/images/sign/sign-head.png);
+background-repeat: no-repeat;
+background-position: left top;
+} 
+
+.tab-head {
+m-in-width: 400px;
+m-ax-width: 450px;
+background-image: url(/images/sign/sign-head.png);
+background-repeat: repeat-x;
+background-position: left -70px;
+border-top: 0px solid #fff;
+padding: 0px;
+margin: 0px 9px 0px 9px;
+min-height: 61px;
+l-ine-height: 50px;
+}
+
+.tab-title {
+display: block;
+height: 60px;
+back-ground-image: url(/images/sign/sign-up.png);
+background-position: 50% 50%;
+background-repeat: no-repeat;
+text-align: center;
+}
+
+.tab-string {
+background-image: none;
+color: #fff;
+font-size: 28px;
+fo-nt-weight: bold;
+line-height: 54px;
+text-shadow: 0px 0px 1px #22376F, 0px 1px 6px #555;
+}
 
 
 </style>
@@ -229,10 +436,15 @@ font-weight: bold;
 <% end %>
 
 
+
+
+<div class="user-area">
+
 <div id="prof_tabs">
 	<div id="tabs_row">
             <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Vocabulary</a></div></div>
             <div id="tab02" class="ptab"><div><a href="#">Results</a></div></div>
+			<div id="tab03" class="ptab"><div><a href="#">Settings</a></div></div>
 	</div>
 	<div style="clear: both;"></div>
 </div>
@@ -243,78 +455,92 @@ font-weight: bold;
 
 	<div class="inpBlock">
 	
-	<h3>My vocabulary</h3>
-		<p style="font-size: 10px; font-style: italic;">* Here you can see word and expressions sorted by topics that you have studied</p>
-		<hr/>
-	<br>
+<div class="tab-head-wrapper">
+	<div class="tab-head-rt">
+		<div class="tab-head-lft">
+			<div class="tab-head"><span class="tab-title tab-string">Vocabulary</span></div>
+		</div>
+	</div>
+</div>	
 	
 <% @words_statistics = current_user.categories_by_language('ru')
 	@words_last = @words_statistics.length-1
 %>	
+
 <div class="myvoc-wrapper">	
-	<h4>Total progress</h4>
 
-	<%= @words_statistics.length %> categories studied
-	<br><br><br>
+<% if @words_statistics.length < 1 %>
+<p>There is no enough information to display.</p>
+<p><b><a href="/vocabulary.html">Start learning Russian vocabulary</a></b></p>
 
-
+<% else %>
+	
 <div class="voc-results">	
 <% @words_statistics.each_with_index do |t, index| %>
 	<div id="topic_<%= t[:category].tag %>" class="voc-item details-hidden">
 		<div class="voc-top-topic"><span><%= t[:category].title %></span></div>
 		<div class="voc-details"><span class="mv-details">Show details</span><span class="mv-no-details">Hide details</span></div>
 		<div class="voc-topic-content">
-			<div style="font-size: 11px; color: #333; padding-left: 10px;">
+			<div class="voc-quick-info">
 				Total items:  <b><%= t[:category].words.length %></b><br>
 				Studied:  <b><%= t[:words].length %></b> (<%= (t[:words].length.to_f / t[:category].words.length*100).to_i %>%)  <br>
 				Tests completed: <b><%= t[:user_tests].length %></b><br><br>
 			</div>
-			
-			
-		
-		
-		
+
 		<div class="voc-topic-details">
-		<a href="/en/ru/vocabulary/<%= t[:category].tag %>">Review topic</a> | <a href="/en/ru/flashcards/<%= t[:category].tag %>">Flashcards</a> | <a href="/en/ru/lexical-test/<%= t[:category].tag %>">Tests</a>	
-	
+			<div class="voc-details-content">
+				<h4>Studied items:</h4>
+				<div class="voc-word-list-wrapper">
+					<table class="voc-words-list" cellpadding="0" cellspacing="0">
+					<col width="20">
+					<% t[:words].each do |word| %>
+						<tr>
+							<td><%unless word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div><%end%></td>
+							<td class="voc-list-original"><%= word.text %></td>
+							<td><%= word.translate %></td>
+						</tr>
+					<% end %>
+				</table>
+				</div>
+				<br>
+				<a href="/en/ru/vocabulary/<%= t[:category].tag %>">Review topic</a> | <a href="/en/ru/flashcards/<%= t[:category].tag %>">Flashcards</a> | <a href="/en/ru/lexical-test/<%= t[:category].tag %>">Tests</a>	
+				
+				<% if t[:user_tests].length > 0 %>
+				<div class="voc-tests">
+					<h4>Tests results:</h4>	
+					<table class="voc-tests-list" cellspacing="1">
+						<col width="200"><col width="100">
+					<tr>
+						<th>Title</th>
+						<th align="center">Result</th>
+					</tr>
+					<% t[:user_tests].each do |user_test| %>
+					<tr>
+						<td class="voc-test-title"><%= user_test.exercise.title %></td>
+						<td class="voc-test-result"><%= (user_test.correct.to_f / user_test.total.to_f * 100).to_i %>%</td>
+					</tr>
+					<% end %>
+					</table>
+				</div>
+				<% end %>
 		
-		<h4>Details</h4>
-	
-	
-		<div class="voc-word-list-wrapper">
-		<table class="voc-words-list" cellpadding="0" cellspacing="0" width="400">
-		<col width="20">
-		<% t[:words].each do |word| %>
-			<tr <%= cycle('style="background-color: #efefef"', 'style="background-color: #ffffff"')  %>>
-				<td><%unless word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div><%end%></td>
-				<td class="voc-list-original"><%= word.text %></td>
-				<td><%= word.translate %></td>
-			</tr>
-		<% end %>
-		</table>
-		</div>
 		
-		
-		<div class="voc-remove-topic">
-		<% form_remote_tag :url => {:controller => 'users', :action => 'delete_topic_words', :topic => t[:category].id} do %>
-				<%= submit_tag "Remove this topic" %>
-		<% end %>
-		</div>
-		
-		
-		
-		<br>
-		<% t[:user_tests].each do |user_test| %>
-			<%= user_test.exercise.title %><br>
-		<% end %>
-		
+				<div class="voc-remove-topic" align="center">
+				<% form_remote_tag (:url => {:controller => 'users', :action => 'delete_topic_words_and_tests', :topic => t[:category].id},
+														:confirm => "Are you sure you want to remove this topic?") do %>
+						<%= submit_tag "Remove this topic" %>
+				<% end %>
+				</div>
+				
+				
+			</div><!-- end of voc-details-content -->
 		</div>
 		</div>
 	</div>
 <% end %>
 </div>
 
-
+<%end%>
 
 </div><!-- end of myvoc-wrapper -->
 
@@ -326,46 +552,52 @@ font-weight: bold;
 <div id="for_tab02" class="pBlock" style="display: none">
 	<div class="inpBlock">
 		
-		<h3>Tests and exercises results: </h3>
-		<p style="font-size: 10px; font-style: italic;">* See results <strong>Settings</strong></p>
-		
-		
-<table class="sound-letter" cellspacing="0">
-<tr>
-	<th class="page">Page</th>
-	<th class="results">Results</th>
-	<th class="thbrd">More info</th>
-</tr>
-<% @vocabulary_exercises.each do |t| %>
-<tr class="res_row"> 
-	<td style="width: 190px;">			  	
-			<%= t[:category].title %>				  
-		<div class="pr-detail">
-			<div class="pr-detail-block">
-				<div>
-					<table cellpadding="0" cellspacing="0" border="0">
-						<% t[:exercises].each_with_index do |test, index| -%>
-						<tr>
-							<td>				
-								<%if test.exercise.title != '' %><%= test.exercise.title %><%else%>Test <%= index+1 %><%end%>
-							</td>
-							<td class="res_perc">						  
-								<%= test.result_percent %>%
-							</td>
-						</tr>
-						<%end%>
-					</table>
-				</div>
-			</div>
+<div class="tab-head-wrapper">
+	<div class="tab-head-rt">
+		<div class="tab-head-lft">
+			<div class="tab-head"><span class="tab-title tab-string">Results</span></div>
 		</div>
-	</td>
-	<td> &nbsp;
-	<%= t[:total] %>
-	</td>
-	<td><span class="show_det">Show</span></td>  
-	</tr>		
-<%end%>
-</table>
+	</div>
+</div>
+		
+
+<div class="voc-results section-tests">	
+<% @vocabulary_exercises.each_with_index do |t, index| %>
+	<div class="voc-item details-hidden">
+		<div class="voc-top-topic"><span><%= t[:category].title %></span></div>
+		<div class="voc-details"><span class="mv-details">Show details</span><span class="mv-no-details">Hide details</span></div>
+		<div class="voc-topic-content">
+			<div class="voc-quick-info">
+				Average result:  <b><%= t[:total] %>%</b>
+			</div>
+		<div class="voc-topic-details">
+			<div class="voc-details-content">
+				<div class="voc-tests" style="padding-top: 2px;">
+					<h4>Results Info:</h4>	
+					<table class="voc-tests-list" cellspacing="1">
+						<col width="200"><col width="100">
+					<tr>
+						<th>Title</th>
+						<th align="center">Result</th>
+					</tr>
+					<% t[:exercises].each_with_index do |user_test, counter| %>
+					<tr>
+						<td class="voc-test-title"><% if user_test.exercise.title != ''%><%= user_test.exercise.title %><%else%>Test <%= counter+1 %><% end %></td>
+						<td class="voc-test-result"><%= (user_test.correct.to_f / user_test.total.to_f * 100).to_i %>%</td>
+					</tr>
+					<% end %>
+					</table>
+					<br><br>
+				</div>		
+			</div><!-- end of voc-details-content -->
+		</div>
+		</div>
+	</div>
+<% end %>
+</div>
+
+
+
 
 
 <br><br>
@@ -383,22 +615,7 @@ font-weight: bold;
 																			}) %>
 <% end %>
 
-
-
-
-
-
-<br><br><br><br>
-
-
-
-
-
-
-
-
-		
-		
+<br><br><br><br>	
 		<br/>
 		<br/>
 		<br/>
@@ -410,6 +627,55 @@ font-weight: bold;
 </div>
 
 
+<div id="for_tab03" class="pBlock" style="display: none">
+	<div class="inpBlock">
+
+<div class="tab-head-wrapper">
+	<div class="tab-head-rt">
+		<div class="tab-head-lft">
+			<div class="tab-head"><span class="tab-title tab-string">Settings</span></div>
+		</div>
+	</div>
+</div>	
+	
+	
+	
+		<h3>Account Settings: </h3>
+		<p style="font-size: 10px; font-style: italic;">* Click the links below to perform the following actions</p>
+		<hr/>
+	   
+	   <table cellpadding="0" cellspacing="20">
+		<!-- tr>
+			<td class="item-name" width="200"><a href="/user">Change my email </a>
+			</td>
+			<td>
+			</td -->
+		</tr>
+		<tr>
+			<td class="item-name"><a href="/userp">Change my password</a>
+			</td>
+			<td>
+			</td>
+		</tr>
+		<tr>
+			<td class="item-name"><a href="/del_stat">Delete my results</a>
+			</td>
+			<td>
+			</td>
+		</tr>
+		<tr>
+			<td class="item-name"><a href="/userd">Delete my account </a>
+			</td>
+			<td>
+			</td>
+		</tr>
+		</table>
+
+
+	</div>
+</div>
+
+</div><!-- end of user-area -->
 
 
 <script type="text/javascript">

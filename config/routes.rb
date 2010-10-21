@@ -44,7 +44,7 @@ ActionController::Routing::Routes.draw do |map|
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
   map.cart '/cart', :controller => 'users', :action => 'show_cart'
   map.user '/user', :controller => 'users', :action => 'update_user'
-  map.delete_topic_words '/delete_topic_words', :controller => 'users', :action => 'delete_topic_words'
+  map.delete_topic '/delete_topic_words_and_tests', :controller => 'users', :action => 'delete_topic_words_and_tests'
   map.userp '/userp', :controller => 'users', :action => 'update_pass'
   map.userd '/userd', :controller => 'users', :action => 'del'
   map.del_stat '/del_stat', :controller => 'users', :action => 'del_stat'

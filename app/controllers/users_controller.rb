@@ -106,11 +106,12 @@ class UsersController < ApplicationController
     end
   end
   
-  def delete_topic_words
+  def delete_topic_words_and_tests
 	category_id =  params[:topic]
 	category_tag = Category.find(category_id).tag
 	current_user.remove_words_by_topic(category_id)
-	render :js => ' $("#topic_'+category_tag.to_s+'").slideUp(function(){ $(this).remove() }) '
+	current_user.remove_tests_by_topic(category_id)
+	render :js => ' $("#topic_'+category_tag.to_s+'").fadeOut(function(){ $(this).remove() }) '
   end
 
 	def buy

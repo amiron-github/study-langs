@@ -1,37 +1,37 @@
 <h3><%= course_data[:name]%></h3>
-<table class="sound-letter" cellspacing="0">
-<tr>
-	<th class="page">Page</th>
-	<th class="results">Results</th>
-	<th class="thbrd">More info</th>
-</tr>
-<% course_data[:results].each do |t| -%>
-<tr class="res_row"> 
-	<td style="width: 190px;">			  	
-	<%= t[:category] -%>				  
-		<div class="pr-detail">
-			<div class="pr-detail-block">
-				<div>
-					<table cellpadding="0" cellspacing="0" border="0">
-						<% t[:exercises].each_with_index do |test, index| -%>
-						<tr>
-							<td>				
-								<%if test.exercise.title != '' -%><%= test.exercise.title -%><%else-%>Test <%= index+1 -%><%end-%>
-							</td>
-							<td class="res_perc">						  
-								<%= test.result_percent -%>%
-							</td>
-						</tr>
-						<%end-%>
-					</table>
-				</div>
+
+<div class="voc-results section-tests">	
+<% course_data[:results].each_with_index do |t, index| %>
+	<div class="voc-item details-hidden">
+		<div class="voc-top-topic"><span><%= t[:category] %></span></div>
+		<div class="voc-details"><span class="mv-details">Show details</span><span class="mv-no-details">Hide details</span></div>
+		<div class="voc-topic-content">
+			<div class="voc-quick-info">
+				Average result:  <b><%= t[:total] %>%</b>
 			</div>
+		<div class="voc-topic-details">
+			<div class="voc-details-content">
+				<div class="voc-tests" style="padding-top: 2px;">
+					<h4>Results Info:</h4>	
+					<table class="voc-tests-list" cellspacing="1">
+						<col width="200"><col width="100">
+					<tr>
+						<th>Title</th>
+						<th align="center">Result</th>
+					</tr>
+					<% t[:exercises].each_with_index do |user_test, counter| %>
+					<tr>
+						<td class="voc-test-title"><% if user_test.exercise.title != ''%><%= user_test.exercise.title %><%else%>Test <%= counter+1 %><% end %></td>
+						<td class="voc-test-result"><%= (user_test.correct.to_f / user_test.total.to_f * 100).to_i %>%</td>
+					</tr>
+					<% end %>
+					</table>
+					<br><br>
+				</div>		
+			</div><!-- end of voc-details-content -->
 		</div>
-	</td>
-	<td> &nbsp;
-	<%= t[:total] -%>
-	</td>
-	<td><span class="show_det">Show</span></td>  
-</tr>		
-<%end-%>
-</table>
+		</div>
+	</div>
+<% end %>
+</div>
+

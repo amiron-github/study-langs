@@ -109,6 +109,13 @@ write_attribute :email, (value ? value.downcase : nil)
 		words.delete(words_to_delete)
 	end
 	
+	def remove_tests_by_topic(category_id)
+		tests_to_delete = get_test_by_category(category_id)
+		user_tests.delete(tests_to_delete)
+	end
+	
+	
+	
 	def get_categories_and_exercises
 		cat_and_ex  = []
 		user_tests.each do |ut|
