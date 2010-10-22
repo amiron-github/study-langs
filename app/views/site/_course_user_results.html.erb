@@ -1,8 +1,8 @@
-<h3><%= course_data[:name]%></h3>
+<h4 class="tit-head"><span><%= course_data[:name]%></span></h4>
 
 <div class="voc-results section-tests">	
 <% course_data[:results].each_with_index do |t, index| %>
-	<div class="voc-item details-hidden">
+	<div class="voc-item details-hidden" id="category_<%= t[:category_id] %>">
 		<div class="voc-top-topic"><span><%= t[:category] %></span></div>
 		<div class="voc-details"><span class="mv-details">Show details</span><span class="mv-no-details">Hide details</span></div>
 		<div class="voc-topic-content">
@@ -26,7 +26,6 @@
 					</tr>
 					<% end %>
 					</table>
-					<br><br>
 				</div>		
 			</div><!-- end of voc-details-content -->
 		</div>

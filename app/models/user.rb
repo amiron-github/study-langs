@@ -114,8 +114,6 @@ write_attribute :email, (value ? value.downcase : nil)
 		user_tests.delete(tests_to_delete)
 	end
 	
-	
-	
 	def get_categories_and_exercises
 		cat_and_ex  = []
 		user_tests.each do |ut|
@@ -125,7 +123,7 @@ write_attribute :email, (value ? value.downcase : nil)
 				test_name = test.title
 				results = (ut.correct.to_f/ut.total.to_f*100).to_i
 				result = results.to_s+'%'
-				cat_and_ex << {:category => category_name, :title => test_name, :result=> result}
+				cat_and_ex << {:category => category_name, :category_id => test.category.id, :title => test_name, :result=> result}
 			end 
 		end
 		return cat_and_ex

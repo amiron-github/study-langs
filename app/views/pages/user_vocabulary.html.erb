@@ -25,6 +25,27 @@ $(".voc-words-list").each(function(i,elem){
 	$(elem).find("tr:even").addClass("voc-list-even");
 }); 
 
+$(".tab-in-tab-list a").click(function() {
+	$(".tab-in-tab-list a").removeClass("tab-in-current");
+	$(this).addClass("tab-in-current");
+
+});
+
+$(".tab-in-tab-list a").not(".all-in-tab").click(function() {
+	var tMinHeight = $(this).parent().parent().height()
+	$(this).parent().parent().css({minHeight:  tMinHeight});
+	$(".tab-in-tab").hide();
+	tInd = $(".tab-in-tab-list a").index($(this));
+	$(".tab-in-tab:eq("+(tInd-1)+")").fadeIn(300);
+});
+
+$(".tab-in-tab-list a.all-in-tab").click(function(){
+	var tMinHeight = $(this).parent().parent().height()
+	$(this).parent().parent().css({minHeight:  tMinHeight});
+	$(".tab-in-tab").hide().show()
+
+})
+
 $(".voc-details").toggle(function(){
 		$(this).parent().find(".voc-topic-details").slideDown(function() {
 					$(this).parent().find(".voc-details-content").animate({opacity: 1},200);
@@ -210,13 +231,14 @@ padding-left: 30px;
 }
 
 .voc-top-topic {
-color: #1A3F8F;
-font-size: 17px;
+color: #04193F;
+font-size: 15px;
+font-weight: bold;
 padding: 10px 80px 5px 5px;
 margin: 0 10px 0;
 border-bottom: 1px dotted #537ABF;
 col-or: #31394F;
-text-shadow: 0px 1px 0px #fff, 1px 1px 3px #8EA7CF;
+text-sh-adow: 0px 1px 0px #fff, 1px 1px 3px #8EA7CF;
 }
 
 .voc-topic-content {
@@ -295,7 +317,6 @@ font-weight: bold;
 
 /* styles for tabs */
 
-
 .user-area h3.tab-head {
 font-size: 20px;
 font-weight: normal;
@@ -317,12 +338,23 @@ padding: 3px;
 position: relative;
 padding: 4px;
 background-color:#fff;
--moz-bo-rder-radius: 6px;
+min-height: 700px;
+
+-moz-border-radius: 6px;
 -webkit-border-radius: 6px;
 border-radius: 6px;
--moz-box-shadow: 1px 2px 8px #999;
+-moz-box-shadow: 1px 2px 7px #999;
 -webkit-box-shadow: 1px 2px 8px #999;
 box-shadow: 1px 2px 8px #999;
+
+background-color:#FFFFFF;
+background-image:url(/images/cs_bg.gif);
+background-position:left bottom;
+background-repeat:repeat-x;
+-moz-box-shadow: 1px 1px 9px #B3B7BF;
+-webkit-box-shadow: 1px 1px 9px #B3B7BF;
+box-shadow: 1px 1px 9px #B3B7BF;
+
 }
 
 
@@ -370,29 +402,61 @@ border-radius: 4px;
 }
 
 .pBlock {
+background-color: transparent;
 clear: both;
 padding: 20px 30px 10px 40px;
 border: 0px solid #819DCF;
 bor-der-top: 0px solid #9FC2FF;
 margin-bottom: 30px;
-
 -moz-box-shadow: 0px 0px 0px #9F9F9F;
 -webkit-box-shadow: 0px 0px 0px #9F9F9F;
 box-shadow: 0px 0px 0px #9F9F9F;
-
 }
 
 .inpBlock {
 margin-left: 0;
 }
 
+.tab-in-tab-list {
+margin-bottom: 20px;
+color: #3F61FF;
+padding-bottom: 5px;
+border-bottom: 1px dotted #3F61FF;
+}
 
+h4.tit-head {
+color: #6F767F;
+font-size: 18px;
+margin: 30px 10px 20px;
+} 
 
-div.current_ptab div {
+h4.tit-head span {
+border-bottom: 1px dashed #6F767F;
+}
 
+.content .tab-in-tab-list a {
+color: #0E20EF;
+text-decoration: none;
+font-size: 10px;
+font-weight: bold;
+outline: none;
+white-space: nowrap;
+padding: 1px 4px 2px;
 }
 
 
+
+.content .tab-in-tab-list a.tab-in-current {
+color: #fff;
+background-color: #4F7EFF;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+-moz-box-shadow: 0px 1px 3px #9F9F9F;
+-webkit-box-shadow: 0px 1px 3px #9F9F9F;
+box-shadow: 0px 1px 3px #9F9F9F;
+}
+ 
 
 
 
@@ -519,6 +583,21 @@ div.current_ptab div {
 		
 <h3 class="tab-head">Results </h3>
 
+<p class="tab-info">Here you can review resuls of tests and exrcises completed on our website.</p>
+<br>
+
+<div class="tab-in-tab-list">
+<a href="javascript:;" class="all-in-tab tab-in-current">Show all</a>
+| <a href="javascript:;">Online courses</a> 
+| <a href="javascript:;">Vocabulary topics</a> 
+| <a href="javascript:;">Russian grammar</a> 
+| <a href="javascript:;">Sounds and Letters</a>
+
+
+</div>
+
+<div class="tab-in-tab">
+<h4 class="tit-head"><span>Vocabulary topics</span></h4>
 <div class="voc-results section-tests">	
 <% @vocabulary_exercises.each_with_index do |t, index| %>
 	<div class="voc-item details-hidden">
@@ -554,24 +633,23 @@ div.current_ptab div {
 <% end %>
 </div>
 
+</div>
 
-
-
-
-<br><br>
 
 <% if @course_exercises[:results].length > 0 %>
-<hr>
- <%= render(:partial => "course_user_results" , :locals => { :course_data  => @course_exercises
-																			}) %>
+<div class="tab-in-tab">
+ <%= render(:partial => "course_user_results" , :locals => { :course_data  => @course_exercises}) %>
+</div> 															
 <% end %>
 
 
 <% if @beginner_exercises[:results].length > 0 %>
-<hr>
- <%= render(:partial => "course_user_results" , :locals => { :course_data  => @beginner_exercises
-																			}) %>
+<div class="tab-in-tab">
+ <%= render(:partial => "course_user_results" , :locals => { :course_data  => @beginner_exercises}) %>
+</div>
 <% end %>
+
+
 
 <br><br><br><br>	
 		<br/>

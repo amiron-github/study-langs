@@ -1401,20 +1401,6 @@ border-top: none;
 -moz-box-shadow: 4px 6px 4px #9F9F9F;
 -webkit-box-shadow: 4px 6px 4px #9F9F9F;
 box-shadow: 4px 6px 4px #9F9F9F;
-background: 
--webkit-gradient(
-    linear,
-    left bottom,
-    left top,
-    color-stop(0.12, rgb(247,247,247)),
-    color-stop(0.56, rgb(255,255,255))
-);
-background: 
--moz-linear-gradient(
-    center bottom,
-    rgb(247,247,247) 12%,
-    rgb(255,255,255) 56%
-);
 }
 
 #show_sound_display div.display_in {
