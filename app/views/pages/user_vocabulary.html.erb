@@ -596,45 +596,11 @@ box-shadow: 0px 1px 3px #9F9F9F;
 
 </div>
 
+<% if @vocabulary_exercises[:results].length > 0 %>
 <div class="tab-in-tab">
-<h4 class="tit-head"><span>Vocabulary topics</span></h4>
-<div class="voc-results section-tests">	
-<% @vocabulary_exercises.each_with_index do |t, index| %>
-	<div class="voc-item details-hidden">
-		<div class="voc-top-topic"><span><%= t[:category].title %></span></div>
-		<div class="voc-details"><span class="mv-details">Show details</span><span class="mv-no-details">Hide details</span></div>
-		<div class="voc-topic-content">
-			<div class="voc-quick-info">
-				Average result:  <b><%= t[:total] %>%</b>
-			</div>
-		<div class="voc-topic-details">
-			<div class="voc-details-content">
-				<div class="voc-tests" style="padding-top: 2px;">
-					<h4>Results Info:</h4>	
-					<table class="voc-tests-list" cellspacing="1">
-						<col width="200"><col width="100">
-					<tr>
-						<th>Title</th>
-						<th align="center">Result</th>
-					</tr>
-					<% t[:exercises].each_with_index do |user_test, counter| %>
-					<tr>
-						<td class="voc-test-title"><% if user_test.exercise.title != ''%><%= user_test.exercise.title %><%else%>Test <%= counter+1 %><% end %></td>
-						<td class="voc-test-result"><%= (user_test.correct.to_f / user_test.total.to_f * 100).to_i %>%</td>
-					</tr>
-					<% end %>
-					</table>
-					<br><br>
-				</div>		
-			</div><!-- end of voc-details-content -->
-		</div>
-		</div>
-	</div>
+ <%= render(:partial => "course_user_results" , :locals => { :course_data  => @vocabulary_exercises}) %>
+</div> 															
 <% end %>
-</div>
-
-</div>
-
 
 <% if @course_exercises[:results].length > 0 %>
 <div class="tab-in-tab">

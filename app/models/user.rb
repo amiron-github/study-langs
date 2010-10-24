@@ -114,20 +114,6 @@ write_attribute :email, (value ? value.downcase : nil)
 		user_tests.delete(tests_to_delete)
 	end
 	
-	def get_categories_and_exercises
-		cat_and_ex  = []
-		user_tests.each do |ut|
-			test = Exercise.find(:first, :conditions => ['test_id=?', ut.test_id])
-			if test
-				category_name = test.category.title
-				test_name = test.title
-				results = (ut.correct.to_f/ut.total.to_f*100).to_i
-				result = results.to_s+'%'
-				cat_and_ex << {:category => category_name, :category_id => test.category.id, :title => test_name, :result=> result}
-			end 
-		end
-		return cat_and_ex
-	end
 	
 	def get_cat_ex
 	 test_categories =  user_tests.all(:joins => 'left outer join exercises ON `exercises`.test_id = `user_tests`.test_id', :select => 'distinct exercises.category_id')
@@ -136,25 +122,23 @@ write_attribute :email, (value ? value.downcase : nil)
 		category_id = tc.category_id
 		if category_id != nil
 			category = Category.find(category_id)
-			unless category.tag == 'everyday_course' || category.tag =='beginner_course'
+			unless category.tag == 'everyday_course' || category.tag =='beginner_course' || category.tag =='phonetics_course'||category.tag =='grammar_course'||category.tag =='reading_course'
 				cat_tests = get_test_by_category(category_id)
 				total = 0
+				category_title = category.title
 				cat_tests.each do |test|
 					total += test.result_percent
 				end
-				average = total / cat_tests.length
-				list << {:category => category, :exercises => cat_tests, :total => average}
+				average = total/cat_tests.length
+				list << {:category => category_title, :exercises => cat_tests, :total => average}
 			end
 		end
 	 end
-	return list
+	 course_data = {:name=> 'Vocabulary topics', :results=> list}
+	return course_data
 	end
 	
-	def get_test_by_category(category_id)
-		tests = user_tests.all(:joins => 'left outer join exercises ON `exercises`.test_id = `user_tests`.test_id', :conditions => {'exercises.category_id' => category_id})
-		return tests
-	end
-	
+
 	def get_course_results(map, tag)
 		course = Category.find(:first, :conditions=> ['tag=?', tag])
 		user_tests = get_test_by_category(course.id)
@@ -168,7 +152,7 @@ write_attribute :email, (value ? value.downcase : nil)
 			lesson[:exercises].each do |exercise|
 				user_tests.each do |test|
 					if test.test_id == exercise               #if test found
-						lesson[:exercises].delete(exercise)
+						#lesson[:exercises].delete(exercise)
 						empty_lesson = false
 						user_exercises << test
 						total += test.result_percent
@@ -184,8 +168,10 @@ write_attribute :email, (value ? value.downcase : nil)
 		return course_data
 	end
 	
-	
-	
+	def get_test_by_category(category_id)
+		tests = user_tests.all(:joins => 'left outer join exercises ON `exercises`.test_id = `user_tests`.test_id', :conditions => {'exercises.category_id' => category_id})
+		return tests
+	end	
 	
 	
 	def get_tests 
