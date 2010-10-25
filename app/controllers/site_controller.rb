@@ -62,10 +62,13 @@ class SiteController < ApplicationController
       @stylesheets << 'stylesounds'
     when /(memory|balloon-game)\.html$/
       @javascripts << 'vocabulary'
-	when /(user_profile|user_vocabulary)\.html$/
+	when /(user_profile|user_profile1|user_vocabulary)\.html$/
 		@vocabulary_exercises = current_user.get_cat_ex
 		@course_exercises = current_user.get_course_results(Exercise::EVERYDAY_RU, 'everyday_course')
 		@beginner_exercises = current_user.get_course_results(Exercise::BEGINNER_RU, 'beginner_course')
+		@phonetics_exercises = current_user.get_course_results(Exercise::PHONETICS_RU, 'phonetics_course')
+		@reading_exercises = current_user.get_course_results(Exercise::READING_RU, 'reading_course')
+		@grammar_exercises = current_user.get_course_results(Exercise::GRAMMAR_RU, 'grammar_course')
     end
 
 	@hide_html = '<div class="hidden_content">Available for subscribed users</div>'

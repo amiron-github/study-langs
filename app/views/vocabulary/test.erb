@@ -1,0 +1,140 @@
+<% @page_title = ''+@category_title+' :: Online Russian lexical tests' %>
+<% @page_meta = {'description' => "Learn Russian vocabulary topic "+@category_title+" with online lexical tests"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<% content_for :special_js_css do %>
+<style type="text/css">
+h2.page {margin-bottom: 0px;font-size: 19pt;}
+</style>
+<% end %>
+
+<div class="hint_wrap">
+<div class="hint_button">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Links and Settings</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+     				<li><a href="/en/ru/vocabulary/<%= @category_tag %>"><%= @category_title %></a></li>
+					<li><a href="/en/ru/flashcards/<%= @category_tag %>">Flashacrds: <%= @category_title %></a></li>
+    		</ul>
+			<%= render :partial => 'site/preload_option' %>
+	</div>
+</div>
+</div>
+
+<h2 class="page">Tests: <%= @category_title %></h2>
+
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="/vocabulary.html">Vocabulary</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="/en/ru/vocabulary/<%= @category_tag %>"><%= @category_title %></a>
+	<span class="int-arrow">--&gt;</span> Tests
+	</span>
+</h3>
+
+
+
+
+<div class="l-test-container">
+
+<h3 class="test-task">Test 1. Listen to the Russian phrase and find it in the list. 
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Hide test</span><span class="lt-sh">Show test</span></a>
+</h3>
+
+<div id="ch1" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => 'lexical_test' %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		<% unless @test_ids[0] == nil || @test_ids[0]==''%>test_id: "<%= @test_ids[0].test_id %>",<%end%>
+		quest_num: 10,
+		variants_num: 5,
+		quest_type: 'audio',
+		basic_array: [
+		
+<% @last_item_index = (@words.length)-1 -%>
+<% @words.each_with_index  do |word, index| -%>
+['<%= word.sound_url %>', "<%= word.text.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
+		} )
+</script>
+
+<h3 class="test-task">Test 2. Read the Russian phrase and find its English equivalent.
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Hide test</span><span class="lt-sh">Show test</span></a>
+</h3>
+
+<div id="ch2" class="lt-holder">
+<div class="lt-spacer">
+<%= render :partial => 'lexical_test' %>
+</div>
+</div><!-- end of lt-holder -->
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		<% unless @test_ids[1] == nil || @test_ids[1]==''%>test_id: "<%= @test_ids[1].test_id %>",<%end%>
+		quest_num: 10,
+		variants_num: 5,
+		basic_array: [
+		
+<% @words.each_with_index  do |word, index| -%>
+		["<%= word.text.to_s.gsub(/"/,'\"') %>", '<%= word.translate.to_s.gsub(/'/,"’") %>'<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		} )
+</script>
+
+<h3 class="test-task">Тест 3. 
+Listen to the phrase and find its translation into English.
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Hide test</span><span class="lt-sh">Show test</span></a>
+</h3>
+
+<div id="ch3" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => 'lexical_test' %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch3 = new ch_exercise( {
+		id: "ch3", 
+		<% unless @test_ids[2] == nil || @test_ids[2]==''%>test_id: "<%= @test_ids[2].test_id %>",<%end%>
+		quest_num: 10,
+		variants_num: 5,
+		quest_type: 'audio',
+		basic_array: [
+		
+<% @words.each_with_index  do |word, index| -%>
+["<%= word.sound_url %>", "<%= word.translate.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		} )
+</script>
+
+<h3 class="test-task test-task-final" style="text-align: center">Review the topic &nbsp;&nbsp;&nbsp;&nbsp;<a href="/en/ru/vocabulary/<%= @category_tag %>"><%= @category_title %> >></a></h3>
+
+
+<script type="text/javascript">
+preloadFiles=new Array(
+
+)
+</script>
+
+</div><!-- end of lt-container -->
+
+<script type="text/javascript">
+currentSection="words";
+</script>

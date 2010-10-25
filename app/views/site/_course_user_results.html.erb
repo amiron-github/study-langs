@@ -2,7 +2,7 @@
 
 <div class="voc-results section-tests">	
 <% course_data[:results].each_with_index do |t, index| %>
-	<div class="voc-item details-hidden" id="category_<%= t[:category_id] %>">
+	<div class="voc-item details-hidden">
 		<div class="voc-top-topic"><span><%= t[:category] %></span></div>
 		<div class="voc-details"><span class="mv-details">Show details</span><span class="mv-no-details">Hide details</span></div>
 		<div class="voc-topic-content">
@@ -14,7 +14,7 @@
 				<div class="voc-tests" style="padding-top: 2px;">
 					<h4>Results Info:</h4>	
 					<table class="voc-tests-list" cellspacing="1">
-						<col width="200"><col width="100">
+						<col width="250"><col width="100">
 					<tr>
 						<th>Title</th>
 						<th align="center">Result</th>
@@ -23,9 +23,11 @@
 					<tr>
 						<td class="voc-test-title"><% if user_test.exercise.title != ''%><%= user_test.exercise.title %><%else%>Test <%= counter+1 %><% end %></td>
 						<td class="voc-test-result"><%= (user_test.correct.to_f / user_test.total.to_f * 100).to_i %>%</td>
+						<td class="voc-test-result"><%= user_test.correct%> /<%= user_test.total%></td>
 					</tr>
 					<% end %>
 					</table>
+					<br>
 				</div>		
 			</div><!-- end of voc-details-content -->
 		</div>

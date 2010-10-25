@@ -82,9 +82,6 @@ layout :determine_layout
   def build_test
 	@javascripts = []
 	@stylesheets = []
-	 @javascripts << 'test'
-     @javascripts << 'test-text'
-     @stylesheets << 'test-style'
 	 @javascripts << 'jquery.jplayer.min.js'
 	 @javascripts << 'lexical-test'
      @stylesheets << 'lexical-test'
@@ -107,7 +104,6 @@ layout :determine_layout
 	elsif @lang == 'ru'
 		@category_short_tag = params[:category]
 		@category_title =  @category.title_ru
-		
 		if @add_lang == 'en'
 			render(:action => 'ru_en_test')
 		elsif @add_lang == 'jp'

@@ -78,8 +78,8 @@ class UsersController < ApplicationController
       if !test
       current_user.user_tests.create(:test_id=>params[:test_id].to_s,:total=>params[:total],:correct=>params[:correct])
       else
-       if test.correct<params[:correct].to_i
-	     test.update_attribute(:correct,params[:correct])
+       if test.correct<params[:correct].to_i || test.total != params[:total].to_i
+	     test.update_attributes(:correct => params[:correct], :total => params[:total])
        end 
       end  
     render :text => '', :layout =>false

@@ -61,51 +61,7 @@ $(".voc-details").toggle(function(){
 
 $(".myvoc-wrapper").css({minHeight: ($(".myvoc-wrapper").height()+600) });
 
-$("div.pr-detail-block").each(function(i) {
-	$(this).css({zIndex: (1000-i)})
-	}
-);
 
-$(".show_det").hover(function(){
-		$(this).css({textDecoration: "underline"});
-	}, function(){
-		$(this).css({textDecoration: "none"});
-	}
-);
-
-$("table.sound-letter").each(function () {
-	$(this).find("tr.res_row:odd").css({backgroundColor: "#EFF3FF"});
-});
-
-
-$("span.show_det").toggle(
-
- function() {
-   
-   $(this).parent("td").parent("tr").parent().find(".open_det").click();
-   
- 	$(this).addClass("open_det").text("Hide");
- 	var parentRow=$(this).parent("td").parent("tr");
- 	parentRow.css({fontWeight: "bold"}).find("div.pr-detail-block").css({fontWeight: "normal"});
-	parentRow.find("div.pr-detail-block").css({display: "block"});
-	var detHeight=parentRow.find("div.pr-detail-block").height();
-	parentRow.find("div.pr-detail").animate({height: detHeight+5});
- 	parentRow.find("div.pr-detail-block div").css({marginLeft: "0px", marginTop: -(detHeight+5)}).animate({marginTop: "1px"}, "normal")
- },
- function() {
- 
- 	$(this).removeClass("open_det").text("Show");
-	var parentRow=$(this).parent("td").parent("tr");
-	parentRow.css({fontWeight: "normal"});
- 	var detHeight=parentRow.find("div.pr-detail-block").height();
- 	parentRow.find("div.pr-detail").animate({height: "0px"});
- 	parentRow.find("div.pr-detail-block div").animate({marginTop: -(detHeight+5)}, "normal", function(){
- 		parentRow.find("div.pr-detail-block").css({display: "none"});
- 		parentRow.find("div.pr-detail-block div").css({marginLeft: "-500px", marginTop: "0px"});
- 	});
- }
-
-);
 
 });
 
@@ -115,6 +71,11 @@ $("span.show_det").toggle(
 </script>	
 
 <style type="text/css">
+
+#tabs_row {
+padding-left: 30px;
+}
+
 
 .inpBlock {
 margin-left: 50px;
@@ -555,8 +516,8 @@ box-shadow: 0px 1px 3px #9F9F9F;
 		
 		
 				<div class="voc-remove-topic" align="center">
-				<% form_remote_tag (:url => {:controller => 'users', :action => 'delete_topic_words_and_tests', :topic => t[:category].id},
-														:confirm => "Are you sure you want to remove this topic?") do %>
+				<% form_remote_tag(:url => {:controller => 'users', :action =>'delete_topic_words_and_tests', :topic => t[:category].id},
+														:confirm=>"Are you sure you want to remove this topic?") do %>
 						<%= submit_tag "Remove this topic" %>
 				<% end %>
 				</div>
@@ -573,9 +534,6 @@ box-shadow: 0px 1px 3px #9F9F9F;
 
 </div><!-- end of myvoc-wrapper -->
 
-	
-		
-
 	</div>
 </div>
 <div id="for_tab02" class="pBlock" style="display: none">
@@ -588,13 +546,27 @@ box-shadow: 0px 1px 3px #9F9F9F;
 
 <div class="tab-in-tab-list">
 <a href="javascript:;" class="all-in-tab tab-in-current">Show all</a>
-| <a href="javascript:;">Online courses</a> 
-| <a href="javascript:;">Vocabulary topics</a> 
-| <a href="javascript:;">Russian grammar</a> 
-| <a href="javascript:;">Sounds and Letters</a>
-
-
+<% if @course_exercises[:results].length > 0 || @beginner_exercises[:results].length > 0 %>| <a href="javascript:;">Online courses</a> <%end%>
+<% if @vocabulary_exercises[:results].length > 0 %>| <a href="javascript:;">Vocabulary topics</a> <%end%>
+<% if @grammar_exercises[:results].length > 0 %>| <a href="javascript:;">Russian grammar</a> <%end%>
+<% if @phonetics_exercises[:results].length > 0 || @reading_exercises[:results].length > 0 %>| <a href="javascript:;">Sounds and Letters</a><%end%>
 </div>
+
+<% unless @course_exercises[:results].length > 0 || @beginner_exercises[:results].length > 0 || @vocabulary_exercises[:results].length > 0 || @grammar_exercises[:results].length > 0 || @phonetics_exercises[:results].length > 0 || @reading_exercises[:results].length > 0 %>
+
+<p>There is no enough information to display.</p>
+
+<% else %>
+<% if @course_exercises[:results].length > 0 || @beginner_exercises[:results].length > 0 %>
+<div class="tab-in-tab">
+	<% if @course_exercises[:results].length > 0 %>
+		<%= render(:partial => "course_user_results" , :locals => { :course_data  => @course_exercises}) %>
+	<%end%>
+	<% if @beginner_exercises[:results].length > 0 %>
+		<%= render(:partial => "course_user_results" , :locals => { :course_data  => @beginner_exercises}) %>
+	<% end %>
+</div> 															
+<% end %>
 
 <% if @vocabulary_exercises[:results].length > 0 %>
 <div class="tab-in-tab">
@@ -602,20 +574,23 @@ box-shadow: 0px 1px 3px #9F9F9F;
 </div> 															
 <% end %>
 
-<% if @course_exercises[:results].length > 0 %>
+<% if @grammar_exercises[:results].length > 0 %>
 <div class="tab-in-tab">
- <%= render(:partial => "course_user_results" , :locals => { :course_data  => @course_exercises}) %>
+ <%= render(:partial => "course_user_results" , :locals => { :course_data  => @grammar_exercises}) %>
 </div> 															
 <% end %>
 
-
-<% if @beginner_exercises[:results].length > 0 %>
+<% if @phonetics_exercises[:results].length > 0 || @reading_exercises[:results].length > 0 %>
 <div class="tab-in-tab">
- <%= render(:partial => "course_user_results" , :locals => { :course_data  => @beginner_exercises}) %>
-</div>
+	<% if @phonetics_exercises[:results].length > 0 %>
+		<%= render(:partial => "course_user_results" , :locals => { :course_data  => @phonetics_exercises}) %>
+	<%end%>
+	<% if @reading_exercises[:results].length > 0 %>
+		<%= render(:partial => "course_user_results" , :locals => { :course_data  => @reading_exercises}) %>
+	<% end %>
+</div> 															
 <% end %>
-
-
+<%end%>
 
 <br><br><br><br>	
 		<br/>
