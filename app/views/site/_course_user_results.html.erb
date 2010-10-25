@@ -23,7 +23,7 @@
 					<tr>
 						<td class="voc-test-title"><% if user_test.exercise.title != ''%><%= user_test.exercise.title %><%else%>Test <%= counter+1 %><% end %></td>
 						<td class="voc-test-result"><%= (user_test.correct.to_f / user_test.total.to_f * 100).to_i %>%</td>
-						<td class="voc-test-result"><%= user_test.correct%> /<%= user_test.total%></td>
+						<!-- td class="voc-test-result"><%= user_test.correct%> /<%= user_test.total%></td -->
 					</tr>
 					<% end %>
 					</table>
