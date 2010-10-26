@@ -1,0 +1,49 @@
+
+<div class="tab-in-tab-list">
+<a href="javascript:;" class="all-in-tab tab-in-current">Show all</a>
+<% if @course_exercises[:results].length > 0 || @beginner_exercises[:results].length > 0 %>| <a href="javascript:;">Online courses</a> <%end%>
+<% if @vocabulary_exercises[:results].length > 0 %>| <a href="javascript:;">Vocabulary topics</a> <%end%>
+<% if @grammar_exercises[:results].length > 0 %>| <a href="javascript:;">Russian grammar</a> <%end%>
+<% if @phonetics_exercises[:results].length > 0 || @reading_exercises[:results].length > 0 %>| <a href="javascript:;">Sounds and Letters</a><%end%>
+</div>
+
+<% unless @course_exercises[:results].length > 0 || @beginner_exercises[:results].length > 0 || @vocabulary_exercises[:results].length > 0 || @grammar_exercises[:results].length > 0 || @phonetics_exercises[:results].length > 0 || @reading_exercises[:results].length > 0 %>
+
+<p>There is no enough information to display.</p>
+
+<% else %>
+<% if @course_exercises[:results].length > 0 || @beginner_exercises[:results].length > 0 %>
+<div class="tab-in-tab">
+	<% if @course_exercises[:results].length > 0 %>
+		<%= render(:partial => "course_user_results" , :locals => { :course_data  => @course_exercises}) %>
+	<%end%>
+	<% if @beginner_exercises[:results].length > 0 %>
+		<%= render(:partial => "course_user_results" , :locals => { :course_data  => @beginner_exercises}) %>
+	<% end %>
+</div> 															
+<% end %>
+
+<% if @vocabulary_exercises[:results].length > 0 %>
+<div class="tab-in-tab">
+ <%= render(:partial => "course_user_results" , :locals => { :course_data  => @vocabulary_exercises}) %>
+</div> 															
+<% end %>
+
+<% if @grammar_exercises[:results].length > 0 %>
+<div class="tab-in-tab">
+ <%= render(:partial => "course_user_results" , :locals => { :course_data  => @grammar_exercises}) %>
+</div> 															
+<% end %>
+
+<% if @phonetics_exercises[:results].length > 0 || @reading_exercises[:results].length > 0 %>
+<div class="tab-in-tab">
+	<% if @phonetics_exercises[:results].length > 0 %>
+		<%= render(:partial => "course_user_results" , :locals => { :course_data  => @phonetics_exercises}) %>
+	<%end%>
+	<% if @reading_exercises[:results].length > 0 %>
+		<%= render(:partial => "course_user_results" , :locals => { :course_data  => @reading_exercises}) %>
+	<% end %>
+</div> 															
+<% end %>
+<%end%>
+

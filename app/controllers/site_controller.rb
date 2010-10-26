@@ -5,6 +5,7 @@ class SiteController < ApplicationController
     @file = '/index.html' if @file == '/'
     logger.warn(@file)
     layout = @file.match(/\/comments\//) ? 'comments.html.erb' : 'application'
+	layout = 'ajax.rhtml' if @file.match(/\/ajax\//)
     layout = 'comment_audios.html.erb' if @file.match(/\/comments_audio\//)
 	layout = 'grammar_comments.html.erb' if @file.match(/\/grammar_comments\//)
 	
@@ -62,7 +63,9 @@ class SiteController < ApplicationController
       @stylesheets << 'stylesounds'
     when /(memory|balloon-game)\.html$/
       @javascripts << 'vocabulary'
-	when /(user_profile|user_profile1|user_vocabulary)\.html$/
+	when /(ru_words)\.html$/
+		@vocabulary_exercises = current_user.get_cat_ex
+	when /(ru_results)\.html$/
 		@vocabulary_exercises = current_user.get_cat_ex
 		@course_exercises = current_user.get_course_results(Exercise::EVERYDAY_RU, 'everyday_course')
 		@beginner_exercises = current_user.get_course_results(Exercise::BEGINNER_RU, 'beginner_course')

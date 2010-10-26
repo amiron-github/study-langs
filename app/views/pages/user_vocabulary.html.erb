@@ -17,53 +17,58 @@
 
 $(document).ready(function() { 
 
-var detZIndex=1000;
+$("#u-vocabulary").load("/ajax/ru_words.html", function() {
+	loadedEvents($("#u-vocabulary"));
+})
 
-$(".voc-details-content").css({opacity: 0})
+$("#u-results").load("/ajax/ru_results.html", function() {
+	loadedEvents($("#u-results"));
+})
 
-$(".voc-words-list").each(function(i,elem){
+});
+
+
+function loadedEvents(container) {
+
+container.find(".voc-details-content").css({opacity: 0})
+
+container.find(".voc-words-list").each(function(i,elem){
 	$(elem).find("tr:even").addClass("voc-list-even");
 }); 
 
-$(".tab-in-tab-list a").click(function() {
-	$(".tab-in-tab-list a").removeClass("tab-in-current");
+container.find(".tab-in-tab-list a").click(function() {
+	container.find(".tab-in-tab-list a").removeClass("tab-in-current");
 	$(this).addClass("tab-in-current");
-
 });
 
-$(".tab-in-tab-list a").not(".all-in-tab").click(function() {
+container.find(".tab-in-tab-list a").not(".all-in-tab").click(function() {
 	var tMinHeight = $(this).parent().parent().height()
 	$(this).parent().parent().css({minHeight:  tMinHeight});
-	$(".tab-in-tab").hide();
+	container.find(".tab-in-tab").hide();
 	tInd = $(".tab-in-tab-list a").index($(this));
-	$(".tab-in-tab:eq("+(tInd-1)+")").fadeIn(300);
+	container.find(".tab-in-tab:eq("+(tInd-1)+")").fadeIn(300);
 });
 
-$(".tab-in-tab-list a.all-in-tab").click(function(){
+container.find(".tab-in-tab-list a.all-in-tab").click(function(){
 	var tMinHeight = $(this).parent().parent().height()
 	$(this).parent().parent().css({minHeight:  tMinHeight});
-	$(".tab-in-tab").hide().show()
-
+	container.find(".tab-in-tab").hide().show()
 })
 
-$(".voc-details").toggle(function(){
+container.find(".voc-details").toggle(function(){
 		$(this).parent().find(".voc-topic-details").slideDown(function() {
 					$(this).parent().find(".voc-details-content").animate({opacity: 1},200);
 		})
 		$(this).parent().removeClass("details-hidden");
 	},function(){
-		
 		$(this).parent().find(".voc-details-content").animate({opacity: 0},200, function() {
 			$(this).parent(".voc-topic-details").slideUp();
 		})
 		$(this).parent().addClass("details-hidden");
 });
 
-$(".myvoc-wrapper").css({minHeight: ($(".myvoc-wrapper").height()+600) });
-
-
-
-});
+container.find(".myvoc-wrapper").css({minHeight: ($(".myvoc-wrapper").height()+600) });
+}
 
 
 
@@ -450,90 +455,11 @@ box-shadow: 0px 1px 3px #9F9F9F;
 	
 <h3 class="tab-head">My vocabulary </h3>
 
-<p class="tab-info">Here you can see topics that you have learned on our website, together with studied words and expressions, as well as tests related the topis.</p>
+	<p class="tab-info">Here you can see topics that you have learned on our website, together with studied words and expressions, as well as tests related the topis.</p>
 <br>
 
-<% @words_statistics = current_user.categories_by_language('ru')
-	@words_last = @words_statistics.length-1
-%>	
-
-<div class="myvoc-wrapper">	
-
-<% if @words_statistics.length < 1 %>
-<p>There is no enough information to display.</p>
-<p><b><a href="/vocabulary.html">Start learning Russian vocabulary</a></b></p>
-
-<% else %>
-	
-<div class="voc-results">	
-<% @words_statistics.each_with_index do |t, index| %>
-	<div id="topic_<%= t[:category].tag %>" class="voc-item details-hidden">
-		<div class="voc-top-topic"><span><%= t[:category].title %></span></div>
-		<div class="voc-details"><span class="mv-details">Show details</span><span class="mv-no-details">Hide details</span></div>
-		<div class="voc-topic-content">
-			<div class="voc-quick-info">
-				Total items:  <b><%= t[:category].words.length %></b><br>
-				Studied:  <b><%= t[:words].length %></b> (<%= (t[:words].length.to_f / t[:category].words.length*100).to_i %>%)  <br>
-				Tests completed: <b><%= t[:user_tests].length %></b><br><br>
-			</div>
-
-		<div class="voc-topic-details">
-			<div class="voc-details-content">
-				<h4>Studied items:</h4>
-				<div class="voc-word-list-wrapper">
-					<table class="voc-words-list" cellpadding="0" cellspacing="0">
-					<col width="20">
-					<% t[:words].each do |word| %>
-						<tr>
-							<td><%unless word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div><%end%></td>
-							<td class="voc-list-original"><%= word.text %></td>
-							<td><%= word.translate %></td>
-						</tr>
-					<% end %>
-				</table>
-				</div>
-				<br>
-				<a href="/en/ru/vocabulary/<%= t[:category].tag %>">Review topic</a> | <a href="/en/ru/flashcards/<%= t[:category].tag %>">Flashcards</a> | <a href="/en/ru/lexical-test/<%= t[:category].tag %>">Tests</a>	
-				
-				<% if t[:user_tests].length > 0 %>
-				<div class="voc-tests">
-					<h4>Tests results:</h4>	
-					<table class="voc-tests-list" cellspacing="1">
-						<col width="200"><col width="100">
-					<tr>
-						<th>Title</th>
-						<th align="center">Result</th>
-					</tr>
-					<% t[:user_tests].each do |user_test| %>
-					<tr>
-						<td class="voc-test-title"><%= user_test.exercise.title %></td>
-						<td class="voc-test-result"><%= (user_test.correct.to_f / user_test.total.to_f * 100).to_i %>%</td>
-					</tr>
-					<% end %>
-					</table>
-				</div>
-				<% end %>
+		<div id="u-vocabulary"><center><b style="color: #555">Loading data</b> <img src="/images/load.gif"/></center></div>
 		
-		
-				<div class="voc-remove-topic" align="center">
-				<% form_remote_tag(:url => {:controller => 'users', :action =>'delete_topic_words_and_tests', :topic => t[:category].id},
-														:confirm=>"Are you sure you want to remove this topic?") do %>
-						<%= submit_tag "Remove this topic" %>
-				<% end %>
-				</div>
-				
-				
-			</div><!-- end of voc-details-content -->
-		</div>
-		</div>
-	</div>
-<% end %>
-</div>
-
-<%end%>
-
-</div><!-- end of myvoc-wrapper -->
-
 	</div>
 </div>
 <div id="for_tab02" class="pBlock" style="display: none">
@@ -544,53 +470,9 @@ box-shadow: 0px 1px 3px #9F9F9F;
 <p class="tab-info">Here you can review resuls of tests and exrcises completed on our website.</p>
 <br>
 
-<div class="tab-in-tab-list">
-<a href="javascript:;" class="all-in-tab tab-in-current">Show all</a>
-<% if @course_exercises[:results].length > 0 || @beginner_exercises[:results].length > 0 %>| <a href="javascript:;">Online courses</a> <%end%>
-<% if @vocabulary_exercises[:results].length > 0 %>| <a href="javascript:;">Vocabulary topics</a> <%end%>
-<% if @grammar_exercises[:results].length > 0 %>| <a href="javascript:;">Russian grammar</a> <%end%>
-<% if @phonetics_exercises[:results].length > 0 || @reading_exercises[:results].length > 0 %>| <a href="javascript:;">Sounds and Letters</a><%end%>
-</div>
-
-<% unless @course_exercises[:results].length > 0 || @beginner_exercises[:results].length > 0 || @vocabulary_exercises[:results].length > 0 || @grammar_exercises[:results].length > 0 || @phonetics_exercises[:results].length > 0 || @reading_exercises[:results].length > 0 %>
-
-<p>There is no enough information to display.</p>
-
-<% else %>
-<% if @course_exercises[:results].length > 0 || @beginner_exercises[:results].length > 0 %>
-<div class="tab-in-tab">
-	<% if @course_exercises[:results].length > 0 %>
-		<%= render(:partial => "course_user_results" , :locals => { :course_data  => @course_exercises}) %>
-	<%end%>
-	<% if @beginner_exercises[:results].length > 0 %>
-		<%= render(:partial => "course_user_results" , :locals => { :course_data  => @beginner_exercises}) %>
-	<% end %>
-</div> 															
-<% end %>
-
-<% if @vocabulary_exercises[:results].length > 0 %>
-<div class="tab-in-tab">
- <%= render(:partial => "course_user_results" , :locals => { :course_data  => @vocabulary_exercises}) %>
-</div> 															
-<% end %>
-
-<% if @grammar_exercises[:results].length > 0 %>
-<div class="tab-in-tab">
- <%= render(:partial => "course_user_results" , :locals => { :course_data  => @grammar_exercises}) %>
-</div> 															
-<% end %>
-
-<% if @phonetics_exercises[:results].length > 0 || @reading_exercises[:results].length > 0 %>
-<div class="tab-in-tab">
-	<% if @phonetics_exercises[:results].length > 0 %>
-		<%= render(:partial => "course_user_results" , :locals => { :course_data  => @phonetics_exercises}) %>
-	<%end%>
-	<% if @reading_exercises[:results].length > 0 %>
-		<%= render(:partial => "course_user_results" , :locals => { :course_data  => @reading_exercises}) %>
-	<% end %>
-</div> 															
-<% end %>
-<%end%>
+<div id="u-results">
+<center><b style="color: #555">Loading data</b> <img src="/images/load.gif"/></center>
+</div><!-- end of u-results -->
 
 <br><br><br><br>	
 		<br/>
@@ -616,8 +498,8 @@ box-shadow: 0px 1px 3px #9F9F9F;
 			<td class="item-name" width="200"><a href="/user">Change my email </a>
 			</td>
 			<td>
-			</td -->
-		</tr>
+			</td>
+		</tr -->
 		<tr>
 			<td class="item-name"><a href="/userp">Change my password</a>
 			</td>

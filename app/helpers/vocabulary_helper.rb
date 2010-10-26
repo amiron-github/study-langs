@@ -5,6 +5,34 @@ module VocabularyHelper
 	case @category_tag 
 		when 'politeness'
 			list_spaces = [6,14,20,24,26]
+		when 'acquaintance'
+			list_spaces = [5,9,11]
+		when 'bus'
+			list_spaces = [14]
+		when 'subway'
+			list_spaces = [12]
+		when 'taxi'
+			list_spaces = [9]
+		when 'hotel'
+			list_spaces = [24]
+		when 'services'
+			list_spaces = [23]
+		when 'city'
+			list_spaces = [34]
+		when 'sightseeing'
+			list_spaces = [23]
+		when 'clothing'
+			list_spaces = [23]	
+		when 'perfumery'
+			list_spaces = [23]
+		when 'jewelry'
+			list_spaces = [14, 26, 34]
+		when 'language-skills'
+			list_spaces = [6,11,18,26,30]
+		when 'bank'
+			list_spaces = [10,17,21,28]
+		when 'telephone'
+			list_spaces = [18]	
 		when 'greetings_en'
 			list_spaces = [6, 13]
 		when 'politeness_en'

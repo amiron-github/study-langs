@@ -17,53 +17,54 @@
 
 $(document).ready(function() { 
 
-var detZIndex=1000;
+$("#u-results").load("/ajax/ru_results.html", function() {
+	loadedEvents($("#u-results"));
+})
 
-$(".voc-details-content").css({opacity: 0})
+});
 
-$(".voc-words-list").each(function(i,elem){
+
+function loadedEvents(container) {
+
+container.find(".voc-details-content").css({opacity: 0})
+
+container.find(".voc-words-list").each(function(i,elem){
 	$(elem).find("tr:even").addClass("voc-list-even");
 }); 
 
-$(".tab-in-tab-list a").click(function() {
-	$(".tab-in-tab-list a").removeClass("tab-in-current");
+container.find(".tab-in-tab-list a").click(function() {
+	container.find(".tab-in-tab-list a").removeClass("tab-in-current");
 	$(this).addClass("tab-in-current");
-
 });
 
-$(".tab-in-tab-list a").not(".all-in-tab").click(function() {
+container.find(".tab-in-tab-list a").not(".all-in-tab").click(function() {
 	var tMinHeight = $(this).parent().parent().height()
 	$(this).parent().parent().css({minHeight:  tMinHeight});
-	$(".tab-in-tab").hide();
+	container.find(".tab-in-tab").hide();
 	tInd = $(".tab-in-tab-list a").index($(this));
-	$(".tab-in-tab:eq("+(tInd-1)+")").fadeIn(300);
+	container.find(".tab-in-tab:eq("+(tInd-1)+")").fadeIn(300);
 });
 
-$(".tab-in-tab-list a.all-in-tab").click(function(){
+container.find(".tab-in-tab-list a.all-in-tab").click(function(){
 	var tMinHeight = $(this).parent().parent().height()
 	$(this).parent().parent().css({minHeight:  tMinHeight});
-	$(".tab-in-tab").hide().show()
-
+	container.find(".tab-in-tab").hide().show()
 })
 
-$(".voc-details").toggle(function(){
+container.find(".voc-details").toggle(function(){
 		$(this).parent().find(".voc-topic-details").slideDown(function() {
 					$(this).parent().find(".voc-details-content").animate({opacity: 1},200);
 		})
 		$(this).parent().removeClass("details-hidden");
 	},function(){
-		
 		$(this).parent().find(".voc-details-content").animate({opacity: 0},200, function() {
 			$(this).parent(".voc-topic-details").slideUp();
 		})
 		$(this).parent().addClass("details-hidden");
 });
 
-$(".myvoc-wrapper").css({minHeight: ($(".myvoc-wrapper").height()+600) });
-
-
-
-});
+container.find(".myvoc-wrapper").css({minHeight: ($(".myvoc-wrapper").height()+600) });
+}
 
 
 
@@ -609,53 +610,9 @@ box-shadow: 0px 1px 3px #9F9F9F;
 <p class="tab-info">Here you can review resuls of tests and exrcises completed on our website. You can delete all the results in the tab <b>Settings</b></p>
 <br>
 
-<div class="tab-in-tab-list">
-<a href="javascript:;" class="all-in-tab tab-in-current">Show all</a>
-<% if @course_exercises[:results].length > 0 || @beginner_exercises[:results].length > 0 %>| <a href="javascript:;">Online courses</a> <%end%>
-<% if @vocabulary_exercises[:results].length > 0 %>| <a href="javascript:;">Vocabulary topics</a> <%end%>
-<% if @grammar_exercises[:results].length > 0 %>| <a href="javascript:;">Russian grammar</a> <%end%>
-<% if @phonetics_exercises[:results].length > 0 || @reading_exercises[:results].length > 0 %>| <a href="javascript:;">Sounds and Letters</a><%end%>
-</div>
-
-<% unless @course_exercises[:results].length > 0 || @beginner_exercises[:results].length > 0 || @vocabulary_exercises[:results].length > 0 || @grammar_exercises[:results].length > 0 || @phonetics_exercises[:results].length > 0 || @reading_exercises[:results].length > 0 %>
-
-<p>There is no enough information to display.</p>
-
-<% else %>
-<% if @course_exercises[:results].length > 0 || @beginner_exercises[:results].length > 0 %>
-<div class="tab-in-tab">
-	<% if @course_exercises[:results].length > 0 %>
-		<%= render(:partial => "course_user_results" , :locals => { :course_data  => @course_exercises}) %>
-	<%end%>
-	<% if @beginner_exercises[:results].length > 0 %>
-		<%= render(:partial => "course_user_results" , :locals => { :course_data  => @beginner_exercises}) %>
-	<% end %>
-</div> 															
-<% end %>
-
-<% if @vocabulary_exercises[:results].length > 0 %>
-<div class="tab-in-tab">
- <%= render(:partial => "course_user_results" , :locals => { :course_data  => @vocabulary_exercises}) %>
-</div> 															
-<% end %>
-
-<% if @grammar_exercises[:results].length > 0 %>
-<div class="tab-in-tab">
- <%= render(:partial => "course_user_results" , :locals => { :course_data  => @grammar_exercises}) %>
-</div> 															
-<% end %>
-
-<% if @phonetics_exercises[:results].length > 0 || @reading_exercises[:results].length > 0 %>
-<div class="tab-in-tab">
-	<% if @phonetics_exercises[:results].length > 0 %>
-		<%= render(:partial => "course_user_results" , :locals => { :course_data  => @phonetics_exercises}) %>
-	<%end%>
-	<% if @reading_exercises[:results].length > 0 %>
-		<%= render(:partial => "course_user_results" , :locals => { :course_data  => @reading_exercises}) %>
-	<% end %>
-</div> 															
-<% end %>
-<%end%>
+<div id="u-results">
+<center><b style="color: #555">Loading data</b> <img src="/images/load.gif"/></center>
+</div><!-- end of u-results -->
 
 <br><br><br><br>	
 		<br/>

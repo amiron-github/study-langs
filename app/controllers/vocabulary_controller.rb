@@ -171,6 +171,8 @@ private
 		case translate_to
 			when 'ru'
 		      exceptions << {:tag => 'politeness_en', :except=> [5,12] }
+			when 'fr'
+		      exceptions << {:tag => 'politeness', :except=> [] }
 		end
 		exceptions.each do |t|
 			if category_tag == t[:tag]
