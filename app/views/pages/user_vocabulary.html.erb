@@ -17,12 +17,29 @@
 
 $(document).ready(function() { 
 
+$("#u-vocabulary").html('<center><b style="color: #555">Loading data</b> <img src="/images/load.gif"/></center>');
 $("#u-vocabulary").load("/ajax/ru_words.html", function() {
 	loadedEvents($("#u-vocabulary"));
 })
 
 $("#u-results").load("/ajax/ru_results.html", function() {
 	loadedEvents($("#u-results"));
+})
+
+$("#en_voc").click(function(){
+$("#u-vocabulary").css({minHeight: ($("#u-vocabulary").height()) });
+$("#u-vocabulary").html('<center>Loading data <img src="/images/load.gif"></center>');
+$("#u-vocabulary").load("/ajax/en_words.html", function() {
+	loadedEvents($("#u-vocabulary"));
+})
+})
+
+$("#ru_voc").click(function(){
+$("#u-vocabulary").css({minHeight: ($("#u-vocabulary").height()) })
+$("#u-vocabulary").html('<center><b style="color: #555">Loading data</b> <img src="/images/load.gif"/></center>');
+$("#u-vocabulary").load("/ajax/ru_words.html", function() {
+	loadedEvents($("#u-vocabulary"));
+})
 })
 
 });
@@ -457,8 +474,9 @@ box-shadow: 0px 1px 3px #9F9F9F;
 
 	<p class="tab-info">Here you can see topics that you have learned on our website, together with studied words and expressions, as well as tests related the topis.</p>
 <br>
-
-		<div id="u-vocabulary"><center><b style="color: #555">Loading data</b> <img src="/images/load.gif"/></center></div>
+<input type="button" value="EN-RU" id="en_voc"> <input type="button" value="RU-EN" id="ru_voc">
+<br>
+		<div id="u-vocabulary"></div>
 		
 	</div>
 </div>

@@ -168,6 +168,28 @@ write_attribute :email, (value ? value.downcase : nil)
 		return course_data
 	end
 	
+	def record_words(words_to_record)
+		words_to_record.each do |word_id|
+			learned = words.find(:first, :conditions => ['word_id=?', word_id])
+			if learned
+				entry = user_words.find(:first, :conditions => ['word_id=?', word_id])
+				entry.update_attribute(:occurred, entry.occurred+=1 )
+			else
+				word = Word.find(word_id)
+				words << word
+			end
+		end
+	end
+	
+	def check_new_category(category_id)
+		started = words.find(:first, :conditions=>['category_id=?',category_id])
+		if !started
+			return Category.find(category_id)
+		else
+			return false
+		end
+	end
+	
 	def get_test_by_category(category_id)
 		tests = user_tests.all(:joins => 'left outer join exercises ON `exercises`.test_id = `user_tests`.test_id', :conditions => {'exercises.category_id' => category_id})
 		return tests

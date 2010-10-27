@@ -65,6 +65,10 @@ class SiteController < ApplicationController
       @javascripts << 'vocabulary'
 	when /(ru_words)\.html$/
 		@vocabulary_exercises = current_user.get_cat_ex
+		@words_statistics = current_user.categories_by_language('ru')
+	when /(en_words)\.html$/
+		@vocabulary_exercises = current_user.get_cat_ex
+		@words_statistics = current_user.categories_by_language('en')
 	when /(ru_results)\.html$/
 		@vocabulary_exercises = current_user.get_cat_ex
 		@course_exercises = current_user.get_course_results(Exercise::EVERYDAY_RU, 'everyday_course')

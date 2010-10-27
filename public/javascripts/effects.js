@@ -1066,22 +1066,24 @@ function InputHelperOut(obj, text) {
 
 //////////////////////// end of text in input for login
 
-
+var sendData = false
 function sendResults(id, total, right) {
+  if (sendData) {
     if (!id || !total) {
 		return false;
 	}else{
-	
     if (!right) right = 0;
-    $.get("/set_stat?test_id="+id+"&total="+ total+"&correct="+right ); 
+		$.ajax({type: 'post', url: "/set_stat", data: {test_id: id, correct: right, total: total}} ); 
 	}
+  }
 }
 
-function sendWordsResults(words) {
-	if (words) {
-		$.post("/set_word", {words: [words]} ); 
+function sendWordsResults(word) {
+  if (sendData) {
+	if (word) {
+		$.ajax({dataType: 'script', type: 'post', url: "/set_word", data: {words: word}}); 
 	}
-
+  }
 }
 
 
@@ -1185,7 +1187,16 @@ $("body").prepend('<div id="gv" style="position: absolute; top: 0; left: 0; max-
 
 }
 
-
+var messTime;
+function messageIt(html) {
+$("#alert_mess").remove();
+clearTimeout(messTime);
+$("body").append('<div id="alert_mess"><div>'+html+'</div></div>');
+$("#alert_mess").fadeIn();
+messTime = setTimeout(function(){
+	$("#alert_mess").fadeOut()
+},8000)
+}
 
 
 

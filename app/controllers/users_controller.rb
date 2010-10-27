@@ -72,37 +72,55 @@ class UsersController < ApplicationController
 
   def set_stat 
     if !current_user
-    redirect_back_or_default('/')
+		render :nothing => true
     else
       test = current_user.user_tests.find(:first, :conditions => 'test_id=\''+params[:test_id].to_s+'\'')
+	  good_boy = false
+	  average=0
       if !test
-      current_user.user_tests.create(:test_id=>params[:test_id].to_s,:total=>params[:total],:correct=>params[:correct])
+		current_user.user_tests.create(:test_id=>params[:test_id].to_s,:total=>params[:total],:correct=>params[:correct])
       else
-       if test.correct<params[:correct].to_i || test.total != params[:total].to_i
+		category_id = Exercise.find(:first, :conditions=>['test_id=?', params[:test_id]], :select=>'category_id').category_id
+		completed = current_user.get_test_by_category(category_id)
+		category_words = Category.find(category_id).words
+		result = params[:correct].to_f/params[:total].to_f*100
+		completed.each do |done|
+			average = done.correct.to_f/done.total.to_f*100
+			if average > 90 && category_words.length > 0 && done.test_id !=params[:test_id] && result > 90
+				good_boy = true
+				current_user.record_words(category_words)
+			end
+		end
+		if test.correct<params[:correct].to_i || test.total != params[:total].to_i
 	     test.update_attributes(:correct => params[:correct], :total => params[:total])
-       end 
-      end  
-    render :text => '', :layout =>false
+		end 
+	   end
+	   if good_boy
+			render :nothing => true
+	   else 
+			render :nothing => true
+	   end
     end
   end
     
-  def set_word 
-  #for POST like $.post("/set_word", {words: [1,2,3]} ); 
+  def set_word  
     if !current_user
 	  render :nothing => true
     else
-	words = params[:words]
-	words.each do |word_id|
-		learned = current_user.words.find(:first, :conditions => ['word_id=?', word_id])
-		if learned
-			entry = current_user.user_words.find(:first, :conditions => ['word_id=?', word_id])
-			entry.update_attribute(:occurred, entry.occurred+=1 )
-		else
-			word = Word.find(word_id)
-			current_user.words << word
+		twords = params[:words]
+		tword_id = twords.to_i
+		t_word = Word.find(tword_id)
+		new_cat = false
+		if t_word
+			category_id = t_word.category.id
+			new_cat = current_user.check_new_category(category_id)
 		end
-	end	
-	  render :nothing => true
+		current_user.record_words(twords)
+		if new_cat
+			render :js => 'messageIt("A new topic in your vocabulary:<b>'+new_cat.title.to_s+'</b> <span>You can review studied items<br> in your <i>Account</i></span>")'
+		else
+			render :nothing => true
+		end
     end
   end
   

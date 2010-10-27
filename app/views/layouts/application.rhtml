@@ -294,8 +294,11 @@
         var pageTracker = _gat._getTracker("UA-8218265-1");
         pageTracker._trackPageview();
       } catch(err) {}</script>
-
 </div>
-	  
+<% if current_user -%>
+<script type="text/javascript">
+sendData=true
+</script>
+<%end-%>  
   </body>
 </html>

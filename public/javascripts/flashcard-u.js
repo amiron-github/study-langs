@@ -632,7 +632,7 @@ this.testManager = function (testOrder) {
 		var currentQuestIndex = tObj.workArray[ tObj.missedItems[activeEl] ]['base'];
 		if ( tObj.workArray[ tObj.missedItems[activeEl] ]['data'].length > 4 ) {
 			var studied = tObj.workArray[ tObj.missedItems[activeEl] ]['data'][4]
-			$.post("/set_word", {words: [studied]} ); 
+			sendWordsResults(studied)
 		}
 		
 		tObj.wordListContainer.find("tr.fl-list:eq("+currentQuestIndex+")").addClass("fl-learned").find("input").removeAttr("checked");

@@ -13,7 +13,7 @@
 <div class="voc-results">	
 <% @words_statistics.each_with_index do |t, index| %>
 	<div id="topic_<%= t[:category].tag %>" class="voc-item details-hidden">
-		<div class="voc-top-topic"><span><%= t[:category].title %></span></div>
+		<div class="voc-top-topic"><span><%= t[:category].title_ru %></span></div>
 		<div class="voc-details"><span class="mv-details">Show details</span><span class="mv-no-details">Hide details</span></div>
 		<div class="voc-topic-content">
 			<div class="voc-quick-info">
@@ -38,7 +38,7 @@
 				</table>
 				</div>
 				<br>
-				<a href="/en/ru/vocabulary/<%= t[:category].tag %>">Review topic</a> | <a href="/en/ru/flashcards/<%= t[:category].tag %>">Flashcards</a> | <a href="/en/ru/lexical-test/<%= t[:category].tag %>">Tests</a>	
+				<a href="/ru/en/vocabulary/<%= short_tag(t[:category].tag) %>">Review topic</a> | <a href="/ru/en/flashcards/<%= short_tag(t[:category].tag) %>">Flashcards</a> | <a href="/ru/en/lexical-test/<%= short_tag(t[:category].tag) %>">Tests</a>	
 				
 				<% if t[:user_tests].length > 0 %>
 				<div class="voc-tests">
