@@ -77,20 +77,21 @@ class UsersController < ApplicationController
       test = current_user.user_tests.find(:first, :conditions => 'test_id=\''+params[:test_id].to_s+'\'')
 	  good_boy = false
 	  average=0
-      if !test
-		current_user.user_tests.create(:test_id=>params[:test_id].to_s,:total=>params[:total],:correct=>params[:correct])
-      else
-		category_id = Exercise.find(:first, :conditions=>['test_id=?', params[:test_id]], :select=>'category_id').category_id
-		completed = current_user.get_test_by_category(category_id)
-		category_words = Category.find(category_id).words
-		result = params[:correct].to_f/params[:total].to_f*100
-		completed.each do |done|
+	  category_id = Exercise.find(:first, :conditions=>['test_id=?', params[:test_id]], :select=>'category_id').category_id
+	  completed = current_user.get_test_by_category(category_id)
+	  category_words = Category.find(category_id).words
+	  result = params[:correct].to_f/params[:total].to_f*100
+	  completed.each do |done|
 			average = done.correct.to_f/done.total.to_f*100
-			if average > 90 && category_words.length > 0 && done.test_id !=params[:test_id] && result > 90
+			if average > 90 && category_words.length > 0 && done.test_id !=params[:test_id] && result > 89
 				good_boy = true
 				current_user.record_words(category_words)
 			end
-		end
+	  end	  
+	  
+      if !test
+		current_user.user_tests.create(:test_id=>params[:test_id].to_s,:total=>params[:total],:correct=>params[:correct])
+      else
 		if test.correct<params[:correct].to_i || test.total != params[:total].to_i
 	     test.update_attributes(:correct => params[:correct], :total => params[:total])
 		end 
