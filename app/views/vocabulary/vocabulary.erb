@@ -2,7 +2,11 @@
 <% @page_meta = {'description' => "Learn Russian vocabulary topic "+@category_title+" with online flashcards: words with audio samples, quizzes and spell practice"} %>
 <% @with_rec = true %>
 <% @has_audio = true %>
-
+<% content_for :special_js_css do %>
+<style type="text/css">
+h2.page {margin-bottom: 0px;}
+</style>
+<% end %>
 
 <div class="hint_wrap">
 <div class="hint_button" style="float: right;">

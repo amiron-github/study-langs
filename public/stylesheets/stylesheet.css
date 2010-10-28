@@ -1701,8 +1701,8 @@ margin: 30px 20px;
 .egdiv {
 padding: 10px 0px 10px;
 margin: 14pt 20px;
-background-color: #F6F6F6;
-border: 1px solid #CFCFCF;
+background-color: #f3f6fb;
+border: 1px solid #b7cdec;
 
 -moz-border-radius: 7px; 
 -webkit-border-radius: 7px; 
@@ -1712,12 +1712,11 @@ border-radius: 7px;
 
 .egdiv h4 {
 font-size: 14px;
-color: #444444;
+color: #4d6485;
 margin: 0 30px 14pt;
 font-weight: bold;
 font-style: italic;
-color: #555;
-border-bottom: 3px double #CFCFCF;
+border-bottom: 3px double #a1bce4;
 back ground-color: #EFEFEF;
 padding: 0px 0px 4px;
 }
@@ -2153,10 +2152,6 @@ background-color: #FFA26F;
 color: #222;
 }
 
-
-
-
-
 .highlight_buttons .stressed_active {
 background-color: #FFD100;
 color: #000;
@@ -2248,8 +2243,8 @@ z-index: 20;
 
 h3.page-p {
 padding: 6px 8px 7px;
-background-color: #cfcfcf;
-border-top: 1px solid #888;
+background-color: #dde7f5;
+border-top: 1px solid #678ACF;
 font-size: 16px;
 margin: 50px 0px 20px;
 position: relative;

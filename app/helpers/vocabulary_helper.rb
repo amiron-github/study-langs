@@ -50,4 +50,24 @@ module VocabularyHelper
 	return exceptions.include?(index)
   end
   
+  def quest_num_from(item)
+		quest_num =15
+		unless item == nil || item == ''
+			unless item.quest_num == nil || item.quest_num == ''
+				quest_num = item.quest_num
+			end
+		end
+		
+		return quest_num
+  end
+  
 end
+
+
+
+
+
+
+
+
+

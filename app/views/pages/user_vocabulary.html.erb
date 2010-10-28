@@ -17,14 +17,9 @@
 
 $(document).ready(function() { 
 
-$("#u-vocabulary").html('<center><b style="color: #555">Loading data</b> <img src="/images/load.gif"/></center>');
-$("#u-vocabulary").load("/ajax/ru_words.html", function() {
-	loadedEvents($("#u-vocabulary"));
-})
+updateUserWords()
 
-$("#u-results").load("/ajax/ru_results.html", function() {
-	loadedEvents($("#u-results"));
-})
+updateUserResults()
 
 $("#en_voc").click(function(){
 $("#u-vocabulary").css({minHeight: ($("#u-vocabulary").height()) });
@@ -43,6 +38,21 @@ $("#u-vocabulary").load("/ajax/ru_words.html", function() {
 })
 
 });
+
+function updateUserWords() {
+$("#u-vocabulary").html('<center><b style="color: #555">Loading data</b> <img src="/images/load.gif"/></center>');
+$("#u-vocabulary").load("/ajax/ru_words.html", function() {
+	loadedEvents($("#u-vocabulary"));
+})
+}
+
+function updateUserResults() {
+$("#u-results").html('<center><b style="color: #555">Loading data</b> <img src="/images/load.gif"/></center>');
+$("#u-results").load("/ajax/ru_results.html", function() {
+	loadedEvents($("#u-results"));
+})
+}
+
 
 
 function loadedEvents(container) {

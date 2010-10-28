@@ -96,7 +96,7 @@ layout :determine_layout
 	end 
 	@category = Category.find(:first, :conditions=> ['tag=?', @category_tag])
 	@words = words_for_test(@category, @add_lang, @lang)
-	@test_ids = ids_for_test(@category)
+	@test_data = data_for_test(@category)
 	
 	if @lang == 'fr'
 		@category_title = @category.title_fr
@@ -135,7 +135,7 @@ private
 		return layout
 	end
 	
-	def ids_for_test(category)
+	def data_for_test(category)
 		tests = category.exercises.find(:all)
 		return tests
 	end
@@ -168,18 +168,29 @@ private
 		words = category.words.find(:all, :order => 'order_num')
 		exceptions = []
 		category_tag = category.tag
-		case translate_to
-			when 'ru'
+		case original
+			when 'en'
 		      exceptions << {:tag => 'politeness_en', :except=> [5,12] }
 			when 'fr'
 		      exceptions << {:tag => 'politeness', :except=> [] }
+			when 'ru'
+		      exceptions << {:tag => 'politeness', :except=> [7,8,21,28,30] }
+			  exceptions << {:tag => 'acquaintance', :except=> [2,3,10,14,16] }
+			  exceptions << {:tag => 'airport', :except=> [14,16,22] }
+			  exceptions << {:tag => 'bus', :except=> [18,19] }
+			  exceptions << {:tag => 'bus', :except=> [15,16] }
+			  exceptions << {:tag => 'taxi', :except=> [14,15] }
+			  exceptions << {:tag => 'hotel', :except=> [3,4,5,25,29] }
+			  exceptions << {:tag => 'services', :except=> [8,15,25,26,28,29] }
+			  exceptions << {:tag => 'city', :except=> [35,36,38,41] }
+			  exceptions << {:tag => 'sightseeing', :except=> [23,24,25,26,27] }
 		end
 		exceptions.each do |t|
 			if category_tag == t[:tag]
 				new_words = []
 				to_exclude = t[:except]
 				words.each_with_index do |word, ind|
-					unless to_exclude.include?(ind)
+					unless to_exclude.include?(ind+1)
 						new_words << word
 					end
 				end
