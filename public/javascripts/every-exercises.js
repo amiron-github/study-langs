@@ -505,6 +505,7 @@ this.getAnswersOrder = function() {
 }
 
 this.correctAnswer = function () {
+
 	tObj.alertHolder.html("" + tObj.correctMsg + "").addClass(tObj.correctClass);
 	tObj.correctAswersNum ++;
 	
@@ -520,11 +521,17 @@ this.correctAnswer = function () {
 		tObj.ynButtons.unbind("click");
 	}
 	
+	if ( tObj.workArray[tObj.counter].length > 2 ) {
+		var studied = tObj.workArray[tObj.counter][2]
+		//sendWordsResults(studied)
+	}
+	
 	if (tObj.autoPlay) {
 		toNextInt = setTimeout(function() {
 				tObj.gotoNext();
 		}, 1600);
 	}
+	
 }
 
 this.wrongAnswer = function (jElem) {
