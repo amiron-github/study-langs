@@ -1,6 +1,7 @@
 var gContent;
 var preloadFiles = new Array();
 var currentSection;
+var wrapTests = true;
 
 function startDragTest(arr) {
         for (var i=0; i<arr.length; i++) {
@@ -243,8 +244,10 @@ if(getCookie('preload')) {
 	$("#preload_on").addClass("checked");
 };
 
-
+if (wrapTests) {
 wrapTbTest();
+}
+
 
 });
 ////////////////////////////// end of downloading

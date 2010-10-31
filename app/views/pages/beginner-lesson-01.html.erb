@@ -4,16 +4,11 @@
 <% @has_audio = true %>
 
 <% content_for :special_js_css do %>
-
-<%= stylesheet_link_tag 'test-style' %>
-
-<%= javascript_include_tag 'test' %>
-<%= javascript_include_tag 'test-text' %>
-<%= javascript_include_tag 'exercise-yn' %>
-<%= stylesheet_link_tag 'test-style' %>
-<%= stylesheet_link_tag 'exercises' %>
-
-
+<%= javascript_include_tag 'ev-test' %>
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'every-exercises' %>
+<%= stylesheet_link_tag 'every-exercises' %>
+<script type="text/javascript">wrapTests = false;</script>
 <style type="text/css">
 
 .diction td.original {
@@ -110,7 +105,7 @@ In this lesson, you will find the most frequently used formulas of politeness in
 <p class="task ex-task">Listen to the most frequently used Russian formulas of politeness. Listen and repeat after the speaker :</p>
 
 
-<div class="voc_inter">
+<div class="voc_inter ev-ex-area">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="130">
@@ -244,6 +239,8 @@ Notice also that certain formulas of politeness (e.g. <span class="eg">до св
 
 <p class="task ex-task">a) Listen and repeat:</p>
 
+
+<div class="ev-wordlist">
 <p><em>Russian Greetings</em></p>
 
 <div class="voc_inter">
@@ -345,6 +342,21 @@ Notice also that certain formulas of politeness (e.g. <span class="eg">до св
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="130">
+				<p class="t1_di1"><span>Уд<span class="acco">а</span>чи!</span><br />
+
+					<span class="sound" onclick="playSound('sound01117.mp3')">[ood<span class="acct">a</span>chi]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+				</p>
+			</td>
+			<td width="30"><p>–</p></td>
+
+			<td>
+				<span>Good luck! (formal and informal)</span>
+			</td>
+	</tr>
+</table>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="130">
 				<p class="t1_di1"><span>До свид<span class="acco">а</span>ния! </span><br />
 					<span class="sound" onclick="playSound('soundb01021070.mp3')">[da svid<span class="acct">a</span>niya]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
 
@@ -371,41 +383,88 @@ Notice also that certain formulas of politeness (e.g. <span class="eg">до св
 			</td>
 	</tr>
 </table>
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-			<td width="130">
-				<p class="t1_di1"><span>Счастл<span class="acco">и</span>во!</span><br />
 
-					<span class="sound" onclick="playSound('soundb01021090.mp3')">[schisl<span class="acct">i</span>va]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
-				</p>
-			</td>
-			<td width="30"><p>–</p></td>
-
-			<td>
-				<span>Good luck! (informal)</span>
-			</td>
-	</tr>
-</table>
 
 </div>
 
-
+</div>
 
 
 
 <p class="task ex-task">b) Listen to the Russian words and choose the right translation from the list:</p>
-<div id="t1">
 
-<script type="text/javascript">
-var t1 = new Test({dict:[
 
-['sounds/soundb01011010.mp3','Hello!'],['sounds/soundb01021020.mp3','Hi!'],['sounds/soundb01021030.mp3','Good morning!'],['sounds/soundb01021040.mp3','Good afternoon!'],
-['sounds/soundb01021050.mp3','Good evening!'], ['sounds/soundb01021060.mp3','All the best!'], ['sounds/soundb01021070.mp3','Goodbye!'], ['sounds/soundb01021080.mp3','Bye-bye!'], 
-['sounds/soundb01021090.mp3','Good luck!']
+<div id="ch1" class="es-ex-wrapper">
+<div class="es-ex-alert-container"><div class="es-ex-alert-rt"><div class="es-ex-alert"> &nbsp;</div></div></div>
+<div class="es-ex-top">
+	<div class="es-ex-autoplay-wrapper"><input class="es-ex-autoplay" type="checkbox" /> <span>Go to next automatically</span> </div>
+	<div class="es-ex-final"></div>
 
-],hide:'di1',id:'t1',type: 'audio',how_questions: 7, how_show: 2}, 'c0201022.II.b)');
-</script>
 </div>
+<table class="es-ex-content" cellspacing="0">
+	<tr>
+		<td class="es-ex-quest" width="40%" valign="middle" align="center">
+			<div class="es-ex-audio-wrapper">
+				<table><tr><td style="height: 140px;"><div class="es-ex-audio-holder"><div class="es-ex-audio"></div></div></td></tr></table>
+			</div>
+			<div class="es-ex-string-holder">
+				<table><tr><td class="es-ex-string-wrapper" style="height: 150px;">&nbsp;</td></tr></table>
+			</div>
+
+		</td>
+		<td class="es-ex-tasks" valign="top">
+			<div class="yn-answer-type">
+					<p class="es-yn-task-p">Is this translated as:</p>
+					<div class="es-yn-variant-wrapper"><div class="es-yn-variant yn-trans">&nbsp;</div></div>
+					<div class="es-ex-buttons yn-btns">
+						<input type="button" class="es-ex-es-btn yn-yes" value="Yes"/> &nbsp;&nbsp;&nbsp;&nbsp; <input value="NO" type="button"  class="es-ex-es-btn yn-no"/>
+
+					</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td><div class="es-ex-bottom"><input type="button" class="es-ex-next" value="NEXT" style="font-size: 12px; visibility: hidden;"></div></td>
+		<td></td>
+	</tr>
+</table>
+
+<div class="es-ex-info-container">
+	<table cellspacing="0" align="center">
+		<tr>
+			<td style="padding-left: 20px;"><div class="es-ex-info"> &nbsp;  </div></td>
+			<td><div class="es-ex-buttons"><input type="button" class="es-ex-es-btn es-ex-start" value="RESTART"/></div></td>
+		</tr>
+	</table>
+</div>
+</div>
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		test_id: "c0201022.II.b)",
+		quest_type: 'audio',
+		quest_num: 9,
+		answer_type: 'audio',
+		basic_array: [
+		
+['/sounds/soundb01011010.mp3','Hello!',17],
+['/sounds/soundb01021020.mp3','Hi!',33],
+['/sounds/soundb01021030.mp3','Good morning!',19],
+['/sounds/soundb01021040.mp3','Good afternoon!',22],
+['/sounds/soundb01021050.mp3','Good evening!',26], 
+['/sounds/soundb01021060.mp3','All the best!',14], 
+['/sounds/soundb01021070.mp3','Goodbye!',12], 
+['/sounds/soundb01021080.mp3','Bye-bye!',27], 
+['/sounds/sound01117.mp3','Good luck!',17]
+
+		]
+		} )
+</script>
+
+<br><br>
+
+
 </div>
 <hr>
 
@@ -414,8 +473,11 @@ var t1 = new Test({dict:[
 
 <p class="task ex-task">a) Listen and repeat the following expressions: </p>
 
-<p><em>Russian expressions to ask another person how he or she is doing:</em></p>
 
+
+
+<div class="ev-wordlist">
+<p style="margin-top: 0;"><em>Russian expressions to ask another person how he or she is doing:</em></p>
 <div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
@@ -499,21 +561,7 @@ var t1 = new Test({dict:[
 			</td>
 	</tr>
 </table>
-<table class="tab1 inter"  cellspacing="0" >
-	<tr valign="top">
-			<td width="150">
-				<p><span>Норм<span class="acco">а</span>льно.</span><br />
 
-					<span class="sound" onclick="playSound('soundb01031060.mp3')">[narm<span class="acct">a</span><span class="sftc">l</span>na]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
-				</p>
-			</td>
-			<td width="30"><p>–</p></td>
-
-			<td>
-				<span>Good. (informal)</span>
-			</td>
-	</tr>
-</table>
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="150">
@@ -589,10 +637,12 @@ var t1 = new Test({dict:[
 </table>
 </div>
 
+</div>
+
 <p class="task ex-task">b) Answer the questions using phrases in brackets: </p>
 
-<p class="ital">Model:</p>
-
+<div class="model">
+<h4>Model:</h4>
 <table class="tab1" cellspacing="0">
 	<tr valign="top">
 		<td width="340">
@@ -619,8 +669,11 @@ var t1 = new Test({dict:[
 		</td>
 	</tr>
 </table>
+</div>
 
-<p class="ital">Questions:</p>
+<div class="ev-ex-area">
+
+<p style="margin-top: 0" class="ital bold">Questions:</p>
 
 <table class="tab1 inter" cellspacing="0">
    <tr valign="top">
@@ -746,6 +799,7 @@ var t1 = new Test({dict:[
 			</td>
 	</tr>
 </table>
+</div>
 <br>
 </div>
 
@@ -756,7 +810,8 @@ var t1 = new Test({dict:[
 
 <p class="task ex-task">a) Listen and repeat the following expressions: </p>
 
-<p><em>How to say "please" in Russian:</em></p>
+<div class="ev-wordlist">
+<p style="margin-top: 0"><em>How to say "please" in Russian:</em></p>
 
 <div class="voc_inter">
 <table class="tab1 inter"  cellspacing="0" >
@@ -843,7 +898,7 @@ var t1 = new Test({dict:[
 			<td width="30"><p>–</p></td>
 			<td>
 
-				<span>Not at all. (formal and informal)</span>
+				<span>Not at all/Don't mention it. (formal and informal)</span>
 			</td>
 	</tr>
 </table>
@@ -862,63 +917,79 @@ var t1 = new Test({dict:[
 			</td>
 	</tr>
 </table>
-
+</div>
 </div>
 
 <p class="task ex-task">
 b) Listen and choose "yes" or "no":
 </p>
 
-<div class="start_btn">
-<input type="button" value="START" onclick="startYN()" />
+<div id="ch2" class="es-ex-wrapper">
+<div class="es-ex-alert-container"><div class="es-ex-alert-rt"><div class="es-ex-alert"> &nbsp;</div></div></div>
+<div class="es-ex-top">
+	<div class="es-ex-autoplay-wrapper"><input class="es-ex-autoplay" type="checkbox" /> <span>Go to next automatically</span> </div>
+	<div class="es-ex-final"></div>
+
 </div>
-<div id="yn_box">
-
-	<div id="yn_place">
-
-
-		<div id="trans_wrapper">
-			<div id="yn_trans" style="background-color: transparent; border-width: 0px;">
-				<div>&nbsp;
-				</div>
+<table class="es-ex-content" cellspacing="0">
+	<tr>
+		<td class="es-ex-quest" width="40%" valign="middle" align="center">
+			<div class="es-ex-audio-wrapper">
+				<table><tr><td style="height: 140px;"><div class="es-ex-audio-holder"><div class="es-ex-audio"></div></div></td></tr></table>
 			</div>
-		</div>
-
-		<div id="yn_sound">
-
-			<div class="play">
-			
+			<div class="es-ex-string-holder">
+				<table><tr><td class="es-ex-string-wrapper" style="height: 150px;">&nbsp;</td></tr></table>
 			</div>
-		</div>
+
+		</td>
+		<td class="es-ex-tasks" valign="top">
+			<div class="yn-answer-type">
+					<p class="es-yn-task-p">Is this translated as:</p>
+					<div class="es-yn-variant-wrapper"><div class="es-yn-variant yn-trans">&nbsp;</div></div>
+					<div class="es-ex-buttons yn-btns">
+						<input type="button" class="es-ex-es-btn yn-yes" value="Yes"/> &nbsp;&nbsp;&nbsp;&nbsp; <input value="NO" type="button"  class="es-ex-es-btn yn-no"/>
+
+					</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td><div class="es-ex-bottom"><input type="button" class="es-ex-next" value="NEXT" style="font-size: 12px; visibility: hidden;"></div></td>
+		<td></td>
+	</tr>
+</table>
+
+<div class="es-ex-info-container">
+	<table cellspacing="0" align="center">
+		<tr>
+			<td style="padding-left: 20px;"><div class="es-ex-info"> &nbsp;  </div></td>
+			<td><div class="es-ex-buttons"><input type="button" class="es-ex-es-btn es-ex-start" value="RESTART"/></div></td>
+		</tr>
+	</table>
+</div>
+</div>
+
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		test_id: "c0201042.IV.b)",
+		quest_type: 'audio',
+		quest_num: 5,
+		answer_type: 'yn',
+		basic_array: [
 		
-		<div>Is this a correct translation? </div>
-		<br/>
-		<div id="yn_btns">
-		<input id="yes_btn" type="button" value="YES" /> <input id="no_btn" type="button" value="NO" />
-		</div>
+['sounds/soundb01041010.mp3','Will you be so kind as ...',10],
+['sounds/soundb01041020.mp3','Please, ...',13],
+['sounds/soundb01041030.mp3','Thank you',15],
+['sounds/soundb01041040.mp3','Thank you very much',18],
+['sounds/soundb01041050.mp3',"Don’t mention it.",25]
 
-		<div id="show_check"></div>
-		<br>
-		<div id="yn_info"></div>
-	</div>
-
-</div>
-
-<script type="text/javascript">
-
-/////////////////////// array for yes/no
-
-var massive=new Array(
-
-['sounds/soundb01041010.mp3','Would you be so kind as ...'],['sounds/soundb01041020.mp3','Please, ...'],['sounds/soundb01041030.mp3','Thank you'],['sounds/soundb01041040.mp3','Thank you very much'],
-['sounds/soundb01041050.mp3','Not at all.']
-
-);
-
-ynQuestNum=5;
-ynIdToSend = 'c0201042.IV.b)'
-
+		]
+		} )
 </script>
+
+<br><br>
+
 </div>
 <hr/>
 
@@ -933,8 +1004,18 @@ T['1']=['5','1','2','3','4','6']; // For Test#1
 </script>
 </div>
 
+
+
+<div class="section-block" style="cursor: auto; margin: 20px 30px"> 
+	<div class="sect-crn clt"> 
+		<div class="sect-crn crt"> 
+			<div class="sect-mid">  </div> 
+		</div> 
+	</div> 
+	<div class="section-content" style="height: auto; padding: 0px 40px;">
+	
 <form onsubmit="return check_test(this,1,'c0201050.V')">
-<table class="tbtest" cellspacing="0" cellpadding="3" align="center">
+<table class="tbtest" cellspacing="6" cellpadding="3" align="center">
 	<tr>
 		<td>&nbsp;
 
@@ -1020,7 +1101,7 @@ T['1']=['5','1','2','3','4','6']; // For Test#1
 		</span>
 		</td>
 	</tr>
-	<tr>
+	<!-- tr>
 		<td>
 			<div class="key">
    				<div>
@@ -1033,28 +1114,40 @@ T['1']=['5','1','2','3','4','6']; // For Test#1
 			<span class="sound" onclick="playSound('soundb01051062.mp3')"> Счастливо!&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
 		</span>
 		</td>
-	</tr>
-	<!-- tr>
+	</tr -->
+	<tr>
 
 		<td>
 			<div class="key">
    				<div>
-					<div class="sound" style="padding-right: 20px;" onclick="playSound('soundb01051071.mp3')">Phrase 7</div>
+					<div class="sound" style="padding-right: 20px;" onclick="playSound('soundb01041040.mp3')">Phrase 6</div>
 				</div>
 			</div>
 		</td>
-		<td><img src="pixel.gif" width="10" height="10" id="r17"><input type="text" size="2"><span class="test-space">
-			<span class="sound" onclick="playSound('soundb01051072.mp3')">Не за что.&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+		<td><img src="pixel.gif" width="10" height="10" id="r16"><input type="text" size="2"><span class="test-space">
+			<span class="sound" onclick="playSound('sound01131.mp3')">Не за что.&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
 		</span>
 
 		</td>
-	</tr -->
+	</tr>
  </table>
 <div style="margin: 15px 0px 20px 0px;" align="center">
 	<input type="submit" value="Check">
 </div>
 
 </form>
+
+	</div><!-- end of section-content -->
+	<div class="sect-btm"> 
+    		<div class="sect-clb"> 
+    			<div class="sect-crb"> 
+    				<div class="sect-btm-bg" style="height: 40px;"></div> 
+    			</div> 
+    		</div> 
+	</div> 
+</div> 
+
+
 
 </div>
 <hr>
@@ -1063,7 +1156,7 @@ T['1']=['5','1','2','3','4','6']; // For Test#1
 </div></div>
 
 
-
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 
 

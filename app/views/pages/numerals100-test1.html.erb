@@ -1,0 +1,100 @@
+<% @page_title = 'Tests: Numerals' %>
+<% @page_meta = {'description' => ""} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<% content_for :special_js_css do %>
+
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'lexical-test' %>
+<%= stylesheet_link_tag 'lexical-test' %>
+
+<%end%>
+
+<% content_for :special_css do %>
+
+.hint_button {
+float: right;
+}
+
+.quest  {
+width: 166px;
+}
+
+.variants  {
+width: 166px;
+}
+
+<% end %>
+
+<div class="hint_wrap">
+<div class="hint_button">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Recommended links</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+     				<li><a href="numerals100.html">Numerals (part 2)</a></li>
+    		</ul>
+	</div>
+</div>
+</div>
+
+
+
+<h2 class="page">Numerals (tests)</h2>
+
+<p class="task">Before completing the following tests, please revise the topic <a title="Numerals" href="numerals100.html">Numerals (part 2)</a></p>
+<hr/>
+<br/>
+
+<h3>Test 1</h3>
+<p class="task">Listen to the phrase and type the corresponding Russian numeral (from 100 to 1000).</p>
+
+
+<div class="l-test-container">
+
+<h3 class="test-task">Test 1. Listen to the Russian phrase and find it in the list. 
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Hide test</span><span class="lt-sh">Show test</span></a>
+</h3>
+
+<div id="ch1" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test' %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		test_id: "v0229010.1",
+		quest_num: 15,
+		variants_num: 5,
+		quest_type: 'audio',
+		//answer_type: 'type',
+		basic_array: [
+		
+['sounds/num00100.mp3','100'],['sounds/num00200.mp3','200'],['sounds/num00300.mp3','300'],['sounds/num00400.mp3','400'],
+['sounds/num00500.mp3','500'],['sounds/num00600.mp3','600'],['sounds/num00700.mp3','700'],['sounds/num00800.mp3','800'],
+['sounds/num00900.mp3','900'],
+['sounds/num00110.mp3','110'],['sounds/num00120.mp3','120'],['sounds/num00130.mp3','130'],['sounds/num00140.mp3','140'],['sounds/num00150.mp3','150'],
+['sounds/num00160.mp3','160'],['sounds/num00170.mp3','170'],['sounds/num00180.mp3','180'],['sounds/num00190.mp3','190'],
+['sounds/num00210.mp3','210'],['sounds/num00220.mp3','220'],['sounds/num00230.mp3','230'],['sounds/num00240.mp3','240'],['sounds/num00250.mp3','250'],
+['sounds/num00260.mp3','260'], ['sounds/num00270.mp3','270'],['sounds/num00280.mp3','280'],['sounds/num00290.mp3','290']
+
+		]
+		
+		} )
+</script>
+
+
+
+
+
+</div><!-- end of lt-container -->
+
+<script type="text/javascript">
+currentSection="words";
+</script>

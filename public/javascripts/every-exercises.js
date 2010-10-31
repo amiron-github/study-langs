@@ -523,7 +523,7 @@ this.correctAnswer = function () {
 	
 	if ( tObj.workArray[tObj.counter].length > 2 ) {
 		var studied = tObj.workArray[tObj.counter][2]
-		//sendWordsResults(studied)
+		sendWordsResults(studied)
 	}
 	
 	if (tObj.autoPlay) {

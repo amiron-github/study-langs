@@ -390,8 +390,6 @@ this.getTypeAnswers = function() {
 	tObj.optionsHolder.find(".es-ex-type-elements").html('<a href="javascript:;" class="es-ex-show-type">Show the answer</a>');
 	tObj.optionsHolder.find(".es-ex-show-str-type").text(tObj.workArray[tObj.counter][1]);
 	
-	
-	
 	tObj.optionsHolder.find(".es-ex-check-type").removeClass("es-ex-invisible").unbind("click").click(function() {
 		var userAnswer = tObj.optionsHolder.find(".es-ex-type-field").val();
 		
@@ -400,8 +398,6 @@ this.getTypeAnswers = function() {
 		userAnswer = $.trim(userAnswer);
 
 		tObj.optionsHolder.find("span.tp_helper").remove();
-		
-
 		if ( userAnswer.toUpperCase() == tObj.workArray[tObj.counter][1].toUpperCase() ) {
 			tObj.alertHolder.empty().removeClass(tObj.correctClass).removeClass(tObj.wrongClass);
 			if (tObj.autoPlay) tObj.optionsHolder.find(".es-ex-check-type").unbind("click");

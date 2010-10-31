@@ -121,6 +121,7 @@ this.questType = hash['quest_type'];  		// default - html, options audio, image
 this.answerType = hash['answer_type'];  	// default - variants, option: yn
 this.texts = hash['texts'];					// default - english
 this.questNum = hash['quest_num'];			// default - basic array length
+this.virtKeys = hash['virt_keys'];			// default - false
 
 var tObj = this;
 
@@ -130,6 +131,7 @@ if (this.autoPlay == undefined) this.autoPlay = true;
 if (this.questType == undefined) this.questType = 'html'; 
 if (this.variantsNum == undefined) this.variantsNum = 4; 
 if (this.variantsNum > this.questNum ) this.variantsNum = this.questNum;
+if (this.virtKeys == undefined) this.virtKeys = false; 
 
 if (tObj.texts == undefined) {
 	tObj.correctMsg = "Great! This is correct";
@@ -236,6 +238,23 @@ this.start = function () {
 			tObj.gotoNext();
 		});
 		
+		if (tObj.answerType == "type") {
+			if (tObj.virtKeys) tObj.optionsHolder.css({paddingTop: "0"}).find(".kb-show-wrapper").show()
+			
+			var kb_link = tObj.optionsHolder.find(".show_keyboard"); 
+			if (kb_link.length > 0 ) {
+				kb_link.click(function() {
+					if (autoposition) {
+						autoposition = false;
+						tObj.optionsHolder.find("input.for_keyb").click();
+						autoposition = true
+					} else {
+						tObj.optionsHolder.find("input.for_keyb").click();
+					}
+				});
+			}
+		}
+		
 		if (tObj.autoPlay) tObj.autoPlayBox.attr("checked", "checked");
 		else  tObj.autoPlayBox.removeAttr("checked", "checked");
 		
@@ -323,27 +342,54 @@ this.getYnAnswers = function() {
 }
 
 this.getTypeAnswers = function() {
-	tObj.optionsHolder.html('<input type="text" class="es-ex-type-field" size="20"> <br><br><input type="button" class="es-ex-check-type" value="Check"><br><br><input type="button" class="es-ex-show-type" value="Show"><div class="es-ex-show-str-type" style="visibility: hidden;">'+tObj.workArray[tObj.counter][1]+'</div>');
+	tObj.optionsHolder.find(".es-ex-type-field").val("");
+	tObj.optionsHolder.find(".es-ex-type-elements").html('<a href="javascript:;" class="es-ex-show-type">Show the answer</a>');
 	tObj.optionsHolder.find(".es-ex-show-str-type").text(tObj.workArray[tObj.counter][1]);
 	
-	tObj.optionsHolder.find(".es-ex-show-type").click(function() {
-		tObj.optionsHolder.find(".es-ex-show-str-type").css({visibility: "visible"})
-	});
-	
-	
-	tObj.optionsHolder.find(".es-ex-check-type").click(function() {
-		if (tObj.optionsHolder.find(".es-ex-type-field").val() == tObj.workArray[tObj.counter][1] ) {
+	tObj.optionsHolder.find(".es-ex-check-type").removeClass("es-ex-invisible").unbind("click").click(function() {
+		var userAnswer = tObj.optionsHolder.find(".es-ex-type-field").val();
+		
+		tObj.optionsHolder.append('<span class="tp_helper" style="display: none;">'+userAnswer+'</span>')
+		userAnswer = String( tObj.optionsHolder.find("span.tp_helper").html() ).replace(/&nbsp;/g, " ").replace(/&nbsp/g, " ");
+		userAnswer = $.trim(userAnswer);
+
+		tObj.optionsHolder.find("span.tp_helper").remove();
+		if ( userAnswer.toUpperCase() == tObj.workArray[tObj.counter][1].toUpperCase() ) {
 			tObj.alertHolder.empty().removeClass(tObj.correctClass).removeClass(tObj.wrongClass);
-			if (tObj.autoPlay) tObj.optionsHolder.find(".es-ex-check-type").attr("disabled", "disabled")
+			if (tObj.autoPlay) tObj.optionsHolder.find(".es-ex-check-type").unbind("click");
 			tObj.correctAnswer();
 		} else {
 			tObj.alertHolder.empty().removeClass(tObj.correctClass).removeClass(tObj.wrongClass);
-			if (tObj.autoPlay) tObj.optionsHolder.find(".es-ex-check-type").attr("disabled", "disabled")
+			if (tObj.autoPlay) tObj.optionsHolder.find(".es-ex-check-type").unbind("click");
 			tObj.wrongAnswer();
 		}
+		
+		if ($(".keys_poser").is(":visible")) {
+			tObj.optionsHolder.find(".es-ex-type-field").click();
+		}
+		
+	});
+	
+	tObj.optionsHolder.find(".es-ex-show-type").click(function() {
+		$(this).remove(); 
+		tObj.optionsHolder.find(".es-ex-type-elements").html('<span class="es-ex-show-str-type" style="display: none">'+tObj.workArray[tObj.counter][1]+'</span>');
+		tObj.optionsHolder.find(".es-ex-show-str-type").fadeIn(200, function() {
+		
+			if (tObj.autoPlay) {
+				tObj.optionsHolder.find(".es-ex-type-elements").append('<a href="javascript:;" class="es-ex-show-type">Go to next</a>');
+				tObj.optionsHolder.find(".es-ex-show-type").click(function() {
+					tObj.gotoNext();
+				})
+			}
+			
+		});
+		tObj.optionsHolder.find(".es-ex-check-type").addClass("es-ex-invisible");
 	});
 	
 }
+
+
+
 
 this.getOptions = function() {
 

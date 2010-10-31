@@ -3,7 +3,7 @@
 <% @lang = defined?(lang) ? lang : "eng" %>
 
 <%  if @lang == "eng" 
-		@esex_auto_play = "Auto play"
+		@esex_auto_play = "Go to next automatically"
 		@esex_next = "NEXT"
 		@esex_translated_as = "Is this translated as:"
 		@esex_yes = "YES"
@@ -44,9 +44,20 @@
 					<div class="es-yn-variant-wrapper"><div class="es-yn-variant yn-trans">&nbsp;</div></div>
 					<div class="es-ex-buttons yn-btns">
 						<input type="button" class="es-ex-es-btn yn-yes" value="Yes"/> &nbsp;&nbsp;&nbsp;&nbsp; <input value="NO" type="button"  class="es-ex-es-btn yn-no"/>
-
 					</div>
 			</div>
+		<div class="es-ex-type-elem">
+			<div class="kb-show-wrapper">
+			<a class="show_keyboard" href="javascript:;">[ Use virtual keyboard ]<span class="kb_offset_top" style="display: none;">220</span></a>
+			</div>
+				<div style="margin-right: 10px"><input type="text" class="es-ex-type-field for_keyb ex-txt-letters" /> </div>
+			<div class="es-ex-buttons es-ex-type-check-wrapper">
+				<input type="button" class="es-ex-check-type" value="Check">
+			</div>
+			<div class="es-ex-type-elements">
+				
+			</div>
+		</div>			
 		</td>
 	</tr>
 	<tr>
