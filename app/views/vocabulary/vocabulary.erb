@@ -53,7 +53,7 @@ h2.page {margin-bottom: 0px;}
 @words.each_with_index do |word, index|
 %>
   <% voc_spaces.each do |s|%>
-	<% if index == s %>
+	<% if word.id == s %>
   <tr>
     <td class="original" valign="top">&nbsp;
     </td>
@@ -68,11 +68,11 @@ h2.page {margin-bottom: 0px;}
     <td class="original" valign="top"><%= word.html %>
     </td>
     <td class="transcript" valign="top">
-      <table onclick="playFile('<%= word.sound_url %>')" class="audiotrans" cellpadding="0" cellspacing="0" border="0">
+      <table <%unless word.sound_url == ''%>onclick="playFile('<%= word.sound_url %>')" class="audiotrans"<%end%> cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td>[<% if @lang == "fr" %><%= word.transcribe_fr %><%else%><%= word.transcribe %><%end%>]
           </td>
-          <td class="trs_td"><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div>
+          <td class="trs_td"><%unless word.sound_url == ''%><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div><%end%>
           </td>
         </tr>
       </table>

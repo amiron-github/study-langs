@@ -82,10 +82,11 @@ color: #238F46 !important;
 <thead>
 <tr>
 	<th>ID</th>
-	<th>Email</th>
-	<th>Created</th>
-	<th >State</th>
-	<th >Tests</th>
+	<th>email</th>
+	<th>created</th>
+	<th >status</th>
+	<th >words</th>
+	<th >tests</th>
 	<th class="thbrd">Show</th>
 </tr>
 </thead>
@@ -98,6 +99,7 @@ color: #238F46 !important;
 <td style="text-align: left;" <%if user.payment %> class="with_payment"<%end%> ><%= user.email %></td>
 <td><%=h user.created_at.strftime("%Y/%m/%d") %></td>
 <td><%= user.state %></td>
+<td><%= user.words.length %></td>
 <td><%= user.tests_number %></td>
 <td><%= link_to 'Show', { :action => 'show', :id => user} %><br/></td>
 

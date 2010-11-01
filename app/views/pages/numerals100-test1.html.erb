@@ -46,17 +46,18 @@ width: 166px;
 
 <h2 class="page">Numerals (tests)</h2>
 
-<p class="task">Before completing the following tests, please revise the topic <a title="Numerals" href="numerals100.html">Numerals (part 2)</a></p>
-<hr/>
-<br/>
-
-<h3>Test 1</h3>
-<p class="task">Listen to the phrase and type the corresponding Russian numeral (from 100 to 1000).</p>
-
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="/vocabulary.html">Vocabulary</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="/numerals100.html">Numerals (part 2)</a>
+	<span class="int-arrow">--&gt;</span> Tests
+	</span>
+</h3>
 
 <div class="l-test-container">
 
-<h3 class="test-task">Test 1. Listen to the Russian phrase and find it in the list. 
+<h3 class="test-task">Test 1. Listen and type the corresponding numeral (from 100 to 1000).
 <a href="javascript:;" class="lt-test-closer"><span class="lt-h">Hide test</span><span class="lt-sh">Show test</span></a>
 </h3>
 
@@ -73,7 +74,7 @@ width: 166px;
 		quest_num: 15,
 		variants_num: 5,
 		quest_type: 'audio',
-		//answer_type: 'type',
+		answer_type: 'type',
 		basic_array: [
 		
 ['sounds/num00100.mp3','100'],['sounds/num00200.mp3','200'],['sounds/num00300.mp3','300'],['sounds/num00400.mp3','400'],
@@ -90,8 +91,37 @@ width: 166px;
 </script>
 
 
+<h3 class="test-task">Test 2. Listen and type the corresponding numeral (higher than 1000).
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Hide test</span><span class="lt-sh">Show test</span></a>
+</h3>
 
+<div id="ch2" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test' %>
+</div>
+</div><!-- end of lt-holder -->
 
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		test_id: "v0229020.2",
+		quest_num: 15,
+		variants_num: 5,
+		quest_type: 'audio',
+		answer_type: 'type',
+		basic_array: [
+		
+['sounds/num01000.mp3','1000'],['sounds/num02000.mp3','2000'],['sounds/num03000.mp3','3000'],['sounds/num04000.mp3','4000'],
+['sounds/num05000.mp3','5000'],['sounds/num06000.mp3','6000'],['sounds/num07000.mp3','7000'],['sounds/num08000.mp3','8000'],
+['sounds/num09000.mp3','9000'],['sounds/num10000.mp3','10000'], 
+['sounds/num12000.mp3','12000'],['sounds/num63000.mp3','63000'],['sounds/num04500.mp3','4500'],['sounds/num27300.mp3','27300'],
+['sounds/num20000.mp3','20000'],['sounds/num30000.mp3','30000'],['sounds/num40000.mp3','40000'],['sounds/num50000.mp3','50000'],
+['sounds/num60000.mp3','60000'],['sounds/num70000.mp3','70000'],['sounds/num80000.mp3','80000'],['sounds/num90000.mp3','90000']
+
+		]
+		
+		} )
+</script>
 
 </div><!-- end of lt-container -->
 

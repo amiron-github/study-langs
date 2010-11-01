@@ -174,23 +174,23 @@ private
 			when 'fr'
 		      exceptions << {:tag => 'politeness', :except=> [] }
 			when 'ru'
-		      exceptions << {:tag => 'politeness', :except=> [7,8,21,28,30] }
-			  exceptions << {:tag => 'acquaintance', :except=> [2,3,10,14,16] }
-			  exceptions << {:tag => 'airport', :except=> [14,16,22] }
-			  exceptions << {:tag => 'bus', :except=> [18,19] }
-			  exceptions << {:tag => 'bus', :except=> [15,16] }
-			  exceptions << {:tag => 'taxi', :except=> [14,15] }
-			  exceptions << {:tag => 'hotel', :except=> [3,4,5,25,29] }
-			  exceptions << {:tag => 'services', :except=> [8,15,25,26,28,29] }
-			  exceptions << {:tag => 'city', :except=> [35,36,38,41] }
-			  exceptions << {:tag => 'sightseeing', :except=> [23,24,25,26,27] }
+		      exceptions << {:tag => 'politeness', :except=> [2,5,28,21,24,29]}
+			  exceptions << {:tag => 'acquaintance', :except=> [44,45,40,39,42]}
+			  exceptions << {:tag => 'airport', :except=> [57,61,73]}
+			  exceptions << {:tag => 'bus', :except=> [87,89,82,83]}
+			  exceptions << {:tag => 'subway', :except=> [101,102]}
+			  exceptions << {:tag => 'taxi', :except=> [117,119]}
+			  exceptions << {:tag => 'hotel', :except=> [147,150,153,135,146]}
+			  exceptions << {:tag => 'services', :except=> [160,167,165,168,173,176]}
+			  exceptions << {:tag => 'city', :except=> [220,224,228,240,239] }
+			  exceptions << {:tag => 'sightseeing', :except=> [188,191,194,197,199] }
 		end
 		exceptions.each do |t|
 			if category_tag == t[:tag]
 				new_words = []
 				to_exclude = t[:except]
 				words.each_with_index do |word, ind|
-					unless to_exclude.include?(ind+1)
+					unless to_exclude.include?(word.id)
 						new_words << word
 					end
 				end
