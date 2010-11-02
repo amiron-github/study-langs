@@ -1,3 +1,9 @@
+<%
+@category = Category.find(:first, :conditions => ['id=?', 50 ])
+@words1 = @category.words.find(:all, :order => 'order_num', :select=> "id,text, sound_url, translate", :limit=> 20, :offset=> 1)
+@words2 = @category.words.find(:all, :order => 'order_num', :select=> "id,text, sound_url, translate", :limit=> 9, :offset=> 20)
+%>
+
 <% @page_title = 'Tests: Numerals' %>
 <% @page_meta = {'description' => ""} %>
 <% @with_rec = true %>
@@ -46,6 +52,7 @@ width: 166px;
 
 <h2 class="page">Numerals (tests)</h2>
 
+
 <h3 class="page-path">
 	<span class="int-links">
 	<a href="/vocabulary.html">Vocabulary</a>
@@ -76,14 +83,10 @@ width: 166px;
 		quest_type: 'audio',
 		answer_type: 'type',
 		basic_array: [
-		
-['sounds/num00000.mp3','0'],['sounds/num00001.mp3','1'],['sounds/num00002.mp3','2'],['sounds/num00003.mp3','3'],
-['sounds/num00004.mp3','4'],['sounds/num00005.mp3','5'],['sounds/num00006.mp3','6'],['sounds/num00007.mp3','7'],
-['sounds/num00008.mp3','8'],['sounds/num00009.mp3','9'],['sounds/num00010.mp3','10'],['sounds/num00011.mp3','11'],
-['sounds/num00012.mp3','12'],['sounds/num00013.mp3','13'],['sounds/num00014.mp3','14'],['sounds/num00015.mp3','15'],
-['sounds/num00016.mp3','16'],['sounds/num00017.mp3','17'],['sounds/num00018.mp3','18'],['sounds/num00019.mp3','19'],
-['sounds/num00020.mp3','20']
 
+<% @words1.each_with_index do |word,index| -%>
+	["<%= word.sound_url %>","<%= word.translate %>",<%= word.id %>]<% unless index==@words1.length-1 %>,<%end%>
+<%end-%>		
 		]
 		
 		} )
@@ -110,17 +113,17 @@ width: 166px;
 		answer_type: 'type',
 		basic_array: [
 		
-['sounds/num00020.mp3','20'],['sounds/num00030.mp3','30'],['sounds/num00040.mp3','40'],['sounds/num00050.mp3','50'],
-['sounds/num00060.mp3','60'],['sounds/num00070.mp3','70'],['sounds/num00080.mp3','80'],['sounds/num00090.mp3','90'],
-
-['sounds/num00021.mp3','21'],['sounds/num00022.mp3','22'],['sounds/num00023.mp3','23'],['sounds/num00024.mp3','24'],['sounds/num00025.mp3','25'],
-['sounds/num00026.mp3','26'],['sounds/num00027.mp3','27'],['sounds/num00028.mp3','28'],['sounds/num00029.mp3','29'],
-['sounds/num00031.mp3','31'],['sounds/num00032.mp3','32'],['sounds/num00033.mp3','33'],['sounds/num00034.mp3','34'],['sounds/num00035.mp3','35'],
-['sounds/num00036.mp3','36'],['sounds/num00037.mp3','37'],['sounds/num00038.mp3','38'],['sounds/num00039.mp3','39'],
-['sounds/num00041.mp3','41'],['sounds/num00042.mp3','42'],['sounds/num00043.mp3','43'],['sounds/num00044.mp3','44'],['sounds/num00045.mp3','45'],
-['sounds/num00046.mp3','46'],['sounds/num00047.mp3','47'],['sounds/num00048.mp3','48'],['sounds/num00049.mp3','49'],
-['sounds/num00051.mp3','51'],['sounds/num00052.mp3','52'],['sounds/num00053.mp3','53'],['sounds/num00054.mp3','54'],['sounds/num00055.mp3','55'],
-['sounds/num00056.mp3','56'],['sounds/num00057.mp3','57'],['sounds/num00058.mp3','58'],['sounds/num00059.mp3','59']
+<% @words2.each_with_index do |word,index| -%>
+	["<%= word.sound_url %>","<%= word.translate %>",<%= word.id %>],
+<%end-%>
+['sounds/num00021.mp3','21',1122],['sounds/num00022.mp3','22',1122],['sounds/num00023.mp3','23',1122],['sounds/num00024.mp3','24',1122],['sounds/num00025.mp3','25',1122],
+['sounds/num00026.mp3','26',1122],['sounds/num00027.mp3','27',1122],['sounds/num00028.mp3','28',1122],['sounds/num00029.mp3','29',1122],
+['sounds/num00031.mp3','31',1125],['sounds/num00032.mp3','32',1125],['sounds/num00033.mp3','33',1125],['sounds/num00034.mp3','34',1125],['sounds/num00035.mp3','35',1125],
+['sounds/num00036.mp3','36'],['sounds/num00037.mp3','37',1125],['sounds/num00038.mp3','38',1125],['sounds/num00039.mp3','39',1125],
+['sounds/num00041.mp3','41'],['sounds/num00042.mp3','42',1100],['sounds/num00043.mp3','43',1100],['sounds/num00044.mp3','44',1100],['sounds/num00045.mp3','45',1100],
+['sounds/num00046.mp3','46'],['sounds/num00047.mp3','47',1100],['sounds/num00048.mp3','48',1100],['sounds/num00049.mp3','49',1100],
+['sounds/num00051.mp3','51'],['sounds/num00052.mp3','52',1103],['sounds/num00053.mp3','53',1103],['sounds/num00054.mp3','54',1103],['sounds/num00055.mp3','55',1103],
+['sounds/num00056.mp3','56'],['sounds/num00057.mp3','57',1103],['sounds/num00058.mp3','58',1103],['sounds/num00059.mp3','59',1103]
 
 		]
 		

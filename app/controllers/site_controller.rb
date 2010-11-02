@@ -38,12 +38,7 @@ class SiteController < ApplicationController
       @javascripts << 'exercises'
       @stylesheets << 'exercises'
     when /-test\.html$/
-      @javascripts << 'test'
-      @javascripts << 'test-text'
-      @stylesheets << 'test-style'
-	  @javascripts << 'jquery.jplayer.min.js'
-	  @javascripts << 'lexical-test'
-      @stylesheets << 'lexical-test'
+
     when /unit\d\d\.html$/
       @javascripts << 'ev-test'
     when /reading-practice\d\.html$/
