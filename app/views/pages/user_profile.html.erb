@@ -15,13 +15,31 @@
 	openTabFromUrl();
 <%end%>
 
+
+
 $(document).ready(function() { 
 
+updateUserWords()
+
+updateUserResults()
+
+});
+
+function updateUserWords() {
+$("#u-vocabulary").html('<center><b style="color: #555">Loading data</b> <img src="/images/load.gif"/></center>');
+$("#u-vocabulary").load("/ajax/ru_words.html", function() {
+	loadedEvents($("#u-vocabulary"));
+})
+}
+
+function updateUserResults() {
+$("#u-results").html('<center><b style="color: #555">Loading data</b> <img src="/images/load.gif"/></center>');
 $("#u-results").load("/ajax/ru_results.html", function() {
 	loadedEvents($("#u-results"));
 })
+}
 
-});
+
 
 
 function loadedEvents(container) {
@@ -379,12 +397,12 @@ box-shadow: 0px 1px 3px #9F9F9F;
 <div id="prof_tabs">
 	<div id="tabs_row">
             <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Profile</a></div></div>
-            <div id="tab02" class="ptab"><div><a href="#">Results</a></div></div>
-			<div id="tab03" class="ptab"><div><a href="#">Settings</a></div></div>
+			<div id="tab02" class="ptab"><div><a href="#">Vocabulary</a></div></div>
+            <div id="tab03" class="ptab"><div><a href="#">Results</a></div></div>
+			<div id="tab04" class="ptab"><div><a href="#">Settings</a></div></div>
 	</div>
 	<div style="clear: both;"></div>
 </div>
-
 
 <div id="for_tab01" class="pBlock" style="display: block">
 	<div class="inpBlock">
@@ -537,7 +555,24 @@ box-shadow: 0px 1px 3px #9F9F9F;
 
 	</div>
 </div>
+
 <div id="for_tab02" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="tab-head">My vocabulary </h3>
+
+	<p class="tab-info">Here you can see topics that you have learned on our website, together with studied words and expressions, as well as tests related the topis.</p>
+<br>
+
+		<div id="u-vocabulary"></div>
+		
+	</div>
+</div>
+
+
+
+
+<div id="for_tab03" class="pBlock" style="display: none">
 	<div class="inpBlock">
 		
 <h3 class="tab-head">Tests and exercises results:</h3>
@@ -560,7 +595,7 @@ box-shadow: 0px 1px 3px #9F9F9F;
 </div>
 
 
-<div id="for_tab03" class="pBlock" style="display: none">
+<div id="for_tab04" class="pBlock" style="display: none">
 	<div class="inpBlock">
 
 <h3 class="tab-head">Account Settings:</h3>

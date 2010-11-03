@@ -118,8 +118,7 @@ class UsersController < ApplicationController
 		end
 		current_user.record_words(twords)
 		if new_cat
-			render :nothing => true
-			#render :js => 'messageIt("A new topic in your vocabulary:<b>'+new_cat.title.to_s+'</b> <span>You can review studied items<br> in your <i>Account</i></span>")'
+			render :js => 'messageIt("A new topic in your vocabulary:<b>'+new_cat.title.to_s+'</b> <span>You can review studied items<br> in your <i>Account</i></span>")'
 		else
 			render :nothing => true
 		end
@@ -131,7 +130,7 @@ class UsersController < ApplicationController
 	category_tag = Category.find(category_id).tag
 	current_user.remove_words_by_topic(category_id)
 	current_user.remove_tests_by_topic(category_id)
-	render :js => ' $("#topic_'+category_tag.to_s+'").fadeOut(function(){ $(this).remove() }) '
+	render :js => ' $("#topic_'+category_tag.to_s+'").fadeOut(function(){ $(this).remove() }); updateUserResults() '
   end
   
 
