@@ -87,6 +87,18 @@ container.find(".myvoc-wrapper").css({minHeight: ($(".myvoc-wrapper").height()+6
 </script>	
 
 <style type="text/css">
+
+.new_item {
+opacity: 0.8;
+filter: alpha(opacity=80)
+}
+
+.current_ptab .new_item {
+opacity: 1;
+filter: alpha(opacity=100)
+}
+
+
 #tabs_row {
 padding-left: 30px;
 }
@@ -397,7 +409,7 @@ box-shadow: 0px 1px 3px #9F9F9F;
 <div id="prof_tabs">
 	<div id="tabs_row">
             <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Profile</a></div></div>
-			<div id="tab02" class="ptab"><div><a href="#">Vocabulary</a></div></div>
+			<div id="tab02" class="ptab"><div><a href="#">Vocabulary</a></div><span class="new_item" style="right: -2px; top: -8px;">&nbsp;NEW&nbsp;</span></div>
             <div id="tab03" class="ptab"><div><a href="#">Results</a></div></div>
 			<div id="tab04" class="ptab"><div><a href="#">Settings</a></div></div>
 	</div>
@@ -561,11 +573,9 @@ box-shadow: 0px 1px 3px #9F9F9F;
 	
 <h3 class="tab-head">My vocabulary </h3>
 
-	<p class="tab-info">Here you can see topics that you have learned on our website, together with studied words and expressions, as well as tests related the topis.</p>
+	<p class="tab-info">Here you can see topics that you have studied on our website, together with studied words and expressions, as well as tests related to the topics.</p>
 <br>
-
 		<div id="u-vocabulary"></div>
-		
 	</div>
 </div>
 

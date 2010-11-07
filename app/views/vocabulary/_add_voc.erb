@@ -1,0 +1,68 @@
+<%
+add_words = []
+
+case @category.tag
+	when 'ordinal_numerals'
+		add_words << {:html=> 'дв<span class="acco">а</span>дцать п<span class="acco">е</span>рвый', 
+						:sound_url=> '/sounds/numc00021.mp3', 
+						:transcribe=> 'dv<span class="acct">a</span>tsa<span class="sftc">t</span> <span class="sftv">p</span><span class="sfty">y</span><span class="acct">e</span>rv<span class="ry">i</span>y', 
+						:translate => '21st'}
+		add_words << {:html=> 'сто третий', 
+						:sound_url=> '/sounds/numc00103.mp3', 
+						:transcribe=> 'st<span class="acct">o</span> t<span class="sftv">r</span><span class="sfty">y</span><span class="acct">e</span>tiy', 
+						:translate => '103d'}
+		add_words << {:html=> 'тр<span class="acco">и</span>ста пятн<span class="acco">а</span>дцатый', 
+						:sound_url=> '/sounds/numc00315.mp3', 
+						:transcribe=> 'tr<span class="acct">i</span>sta pitn<span class="acct">a</span>ts<span class="ry">i</span>t<span class="ry">i</span>y', 
+						:translate => '315th'}
+		add_words << {:html=> 'четыреста тридцатый', 
+						:sound_url=> '/sounds/numc00430.mp3', 
+						:transcribe=> 'chit<span class="acct"><span class="ry">i</span></span>rista trits<span class="acct">a</span>t<span class="ry">i</span>y', 
+						:translate => '430th'}
+		add_words << {:html=> 'девятьс<span class="acco">о</span>т в<span class="acco">о</span>семнадцать втор<span class="acco">о</span>й', 
+						:sound_url=> '/sounds/numc00982.mp3', 
+						:transcribe=> 'divits<span class="acct">o</span>t v<span class="acct">o</span>simdi<span class="sftv">s</span><span class="sfty">y</span>at ftar<span class="acct">o</span>y', 
+						:translate => '982d'}
+		add_words << {:html=> 'одн<span class="acco">а</span> т<span class="acco">ы</span>сяча девятьс<span class="acco">о</span>т в<span class="acco">о</span>семьдесят п<span class="acco">е</span>рвый', 
+						:sound_url=> '/sounds/numc01981.mp3', 
+						:transcribe=> 'adn<span class="acct">a</span> t<span class="acct"><span class="ry">i</span></span>sicha divits<span class="acct">o</span>t v<span class="acct">o</span>simdi<span class="sftv">s</span><span class="sfty">y</span>at <span class="sftv">p</span><span class="sfty">y</span><span class="acct">e</span>rv<span class="ry">i</span>y', 
+						:translate => '1981st '}
+		add_words << {:html=> 'двухт<span class="acco">ы</span>сячный', 
+						:sound_url=> '/sounds/numc02000.mp3', 
+						:transcribe=> 'dvooht<span class="acct"><span class="ry">i</span></span>sischn<span class="ry">i</span>y', 
+						:translate => '2000th'}
+		add_words << {:html=> 'две т<span class="acco">ы</span>сячи втор<span class="acco">о</span>й', 
+						:sound_url=> '/sounds/numc02002.mp3', 
+						:transcribe=> 'd<span class="sftv">v</span><span class="sfty">y</span><span class="acct">e</span> t<span class="acct"><span class="ry">i</span></span>sichi ftar<span class="acct">o</span>y', 
+						:translate => '2002d'}
+end
+%>
+
+<% if add_words.length > 0%>
+  <tr>
+    <td class="original" valign="top">&nbsp;
+    </td>
+    <td class="transcript" valign="top">&nbsp;
+    </td>
+    <td class="translation" valign="top">&nbsp;
+    </td>
+  </tr>
+<%end%>
+<% add_words.each do |word| %>
+<tr class="trow">
+    <td class="original" valign="top"><%= word[:html] %>
+    </td>
+    <td class="transcript" valign="top">
+      <table <%unless word[:sound_url] == ''%>onclick="playFile('<%= word[:sound_url]  %>')" class="audiotrans"<%end%> cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>[<%= word[:transcribe] %>]
+          </td>
+          <td class="trs_td"><%unless word[:sound_url]  == ''%><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div><%end%>
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td class="translation" valign="top"><%= word[:translate] %>
+    </td>
+</tr>
+<%end%>

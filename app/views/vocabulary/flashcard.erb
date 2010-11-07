@@ -73,7 +73,13 @@ font-size: 19pt;
 </tr></table>
 
 
-
+<script type="text/javascript">
+preloadFiles=new Array(
+<% @words.each_with_index do |word,index| -%>
+'<%= word.sound_url %>'<% if index!= @last_item_index %>,<%end%>	
+<%end-%>
+)
+</script>
 
 
 

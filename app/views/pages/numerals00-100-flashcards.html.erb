@@ -1,3 +1,7 @@
+<%
+@words = Category.find(50).words.find(:all, :order=>'order_num')
+%>
+
 <% @page_title = 'Online Russian Flashcards: Numerals from 0 to 100' %>
 <% @page_meta = {'description' => "Learn Russian vocabulary topic Numerals from 0 to 100 with online flashcards: words with audio samples, quizzes and spell practice"} %>
 <% @with_rec = true %>
@@ -48,35 +52,12 @@ font-size: 19pt;
 		id: "fl1", 
 		random_order: false,
 		basic_array: [
-['ноль ','0 ','/sounds/num00000.mp3','n<span class="acct">o</span><span class="sftc">l</span>  '],
-['од<span class="acco">и</span>н ','1 ','/sounds/num00001.mp3','ad<span class="acct">i</span>n '],
-['два ','2 ','/sounds/num00002.mp3','dv<span class="acct">a</span> '],
-['три ','3 ','/sounds/num00003.mp3','tr<span class="acct">i</span> '],
-['чет<span class="acco">ы</span>ре ','4 ','/sounds/num00004.mp3','chit<span class="acct"><span class="ry">i</span></span>ri '],
-['пять ','5 ','/sounds/num00005.mp3','py<span class="acct">a</span><span class="sftc">t</span> '],
-['шесть ','6 ','/sounds/num00006.mp3','sh<span class="acct">e</span><span class="sftc">s</span><span class="sftc">t</span> '],
-['семь ','7 ','/sounds/num00007.mp3','sy<span class="acct">e</span><span class="sftc">m</span> '],
-['в<span class="acco">о</span>семь ','8 ','/sounds/num00008.mp3','v<span class="acct">o</span>si<span class="sftc">m</span> '],
-['д<span class="acco">е</span>вять ','9 ','/sounds/num00009.mp3','<span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span>vi<span class="sftc">t</span> '],
-['д<span class="acco">е</span>сять ','10 ','/sounds/num00010.mp3','<span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span>si<span class="sftc">t</span> '],
-['од<span class="acco">и</span>надцать ','11 ','/sounds/num00011.mp3','ad<span class="acct">i</span>natsa<span class="sftc">t</span> '],
-['двен<span class="acct">а</span>дцать ','12 ','/sounds/num00012.mp3','dvin<span class="acct">a</span>tsa<span class="sftc">t</span> '],
-['трин<span class="acco">а</span>дцать ','13 ','/sounds/num00013.mp3','trin<span class="acct">a</span>tsa<span class="sftc">t</span> '],
-['чет<span class="acco">ы</span>рнадцать ','14 ','/sounds/num00014.mp3','chit<span class="acct"><span class="ry">i</span></span>rnatsa<span class="sftc">t</span> '],
-['пятн<span class="acco">а</span>дцать ','15 ','/sounds/num00015.mp3','pitn<span class="acct">a</span>tsa<span class="sftc">t</span> '],
-['шестн<span class="acco">а</span>дцать ','16 ','/sounds/num00016.mp3','sh<span class="ry">i</span>sn<span class="acct">a</span>tsa<span class="sftc">t</span> '],
-['семн<span class="acco">а</span>дцать ','17 ','/sounds/num00017.mp3','simn<span class="acct">a</span>tsa<span class="sftc">t</span> '],
-['восемн<span class="acco">а</span>дцать ','18 ','/sounds/num00018.mp3','vasimn<span class="acct">a</span>tsa<span class="sftc">t</span> '],
-['девятн<span class="acco">а</span>дцать ','19 ','/sounds/num00019.mp3','divitn<span class="acct">a</span>tsa<span class="sftc">t</span> '],
-['дв<span class="acco">а</span>дцать ','20 ','/sounds/num00020.mp3','dv<span class="acct">a</span>tsa<span class="sftc">t</span> '],
-['тр<span class="acco">и</span>дцать ','30 ','/sounds/num00030.mp3','tr<span class="acct">i</span>tsa<span class="sftc">t</span> '],
-['с<span class="acco">о</span>рок ','40 ','/sounds/num00040.mp3','s<span class="acct">o</span>rak '],
-['пятьдес<span class="acco">я</span>т ','50 ','/sounds/num00050.mp3','piddi<span class="sftv">s</span><span class="sfty">y</span><span class="acct">a</span>t '],
-['шестьдес<span class="acco">я</span>т ','60 ','/sounds/num00060.mp3','sh<span class="ry">i</span><span class="sftc">z</span>di<span class="sftv">s</span><span class="sfty">y</span><span class="acct">a</span>t '],
-['с<span class="acco">е</span>мьдесят ','70 ','/sounds/num00070.mp3','<span class="sftv">s</span><span class="sfty">y</span><span class="acct">e</span>mdi<span class="sftv">s</span><span class="sfty">y</span>at '],
-['в<span class="acco">о</span>семьдесят ','80 ','/sounds/num00080.mp3','v<span class="acct">o</span>simdi<span class="sftv">s</span><span class="sfty">y</span>at '],
-['девян<span class="acco">о</span>сто ','90 ','/sounds/num00090.mp3','divin<span class="acct">o</span>sta '],
-['сто ','100 ','/sounds/num00100.mp3','st<span class="acct">o</span> ']
+<%@last_item_index = (@words.length)-1 -%>
+<% @words.each_with_index  do |word, index| -%>
+['<%= word.html %>', '<%= word.translate.to_s.gsub(/'/,"’") %>', '<%= word.sound_url %>', '<%= word.transcribe %>', '<%= word.id %>'
+<%if current_user %>,'<%= current_user.word_status(word.id) %>'<%end%>
+]<% if index!= @last_item_index %>,<%end%>	
+<%end-%>
 
 	]
 		} )

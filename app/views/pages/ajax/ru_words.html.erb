@@ -41,9 +41,7 @@
 				<% if t[:category].tag == 'numeral-1-100'%>
 					<a href="/numerals00-100-test.html">Review topic</a> | <a href="/numerals00-100-test.html">Tests</a>	
 				<%elsif t[:category].tag == 'numerals100'%>
-					<a href="/numerals00-100-test.html">Review topic</a> | <a href="/numerals00-100-test.html">Tests</a>
-				<%elsif t[:category].tag == 'ordinal_numerals'%>
-					<a href="/cardinal.html">Review topic</a> 
+					<a href="/numerals00-100-test.html">Review topic</a> | <a href="/numerals00-100-test.html">Tests</a> 
 				<%else%>
 				<a href="/en/ru/vocabulary/<%= t[:category].tag %>">Review topic</a> | <a href="/en/ru/flashcards/<%= t[:category].tag %>">Flashcards</a> | <a href="/en/ru/lexical-test/<%= t[:category].tag %>">Tests</a>	
 				<%end%>

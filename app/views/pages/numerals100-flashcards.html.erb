@@ -1,3 +1,8 @@
+<%
+@words = Category.find(51).words
+%>
+
+
 <% @page_title = 'Online Russian Flashcards: Numerals heigher than 100' %>
 <% @page_meta = {'description' => "Learn Russian vocabulary topic Numerals heigher than 100 with online flashcards: words with audio samples, quizzes and spell practice"} %>
 <% @with_rec = true %>
@@ -49,32 +54,13 @@ font-size: 19pt;
 		random_order: false,
 		basic_array: [
 		
-['сто ','100 ','/sounds/num00100.mp3','st<span class="acct">o</span>  '],
-['дв<span class="acco">е</span>сти ','200 ','/sounds/num00200.mp3','d<span class="sftv">v</span><span class="sfty">y</span><span class="acct">e</span><span class="sftc">s</span>ti '],
-['тр<span class="acco">и</span>ста ','300 ','/sounds/num00300.mp3','tr<span class="acct">i</span>sta '],
-['чет<span class="acco">ы</span>реста ','400 ','/sounds/num00400.mp3','chit<span class="acct"><span class="ry">i</span></span>rista '],
-['пятьс<span class="acco">о</span>т ','500 ','/sounds/num00500.mp3','pits<span class="acct">o</span>t '],
-['шестьс<span class="acco">о</span>т ','600 ','/sounds/num00600.mp3','sh<span class="ry">i</span>ss<span class="acct">o</span>t '],
-['семьс<span class="acco">о</span>т ','700 ','/sounds/num00700.mp3','sims<span class="acct">o</span>t '],
-['весемьс<span class="acco">о</span>т ','800 ','/sounds/num00800.mp3','vasims<span class="acct">o</span>t '],
-['девятьс<span class="acco">о</span>т ','900 ','/sounds/num00900.mp3','divits<span class="acct">o</span>t '],
-['т<span class="acco">ы</span>сяча ','1000 ','/sounds/num01000.mp3','t<span class="acct"><span class="ry">i</span></span>sicha '],
-['две т<span class="acco">ы</span>сячи ','2000 ','/sounds/num02000.mp3','d<span class="sftv">v</span><span class="sfty">y</span><span class="acct">e</span> t<span class="acct"><span class="ry">i</span></span>sichi '],
-['три т<span class="acco">ы</span>сячи ','3000 ','/sounds/num03000.mp3','tr<span class="acct">i</span> t<span class="acct"><span class="ry">i</span></span>sichi '],
-['чет<span class="acco">ы</span>ре т<span class="acco">ы</span>сячи ','4000 ','/sounds/num04000.mp3','chit<span class="acct">i</span>ri t<span class="acct"><span class="ry">i</span></span>sichi '],
-['пять т<span class="acco">ы</span>сяч ','5000 ','/sounds/num05000.mp3','<span class="sftv">p</span><span class="sfty">y</span><span class="acct">a</span><span class="sftc">t</span> t<span class="acct"><span class="ry">i</span></span>sich '],
-['шесть т<span class="acco">ы</span>сяч ','6000 ','/sounds/num06000.mp3','sh<span class="acct">e</span><span class="sftc">s</span><span class="sftc">t</span> t<span class="acct"><span class="ry">i</span></span>sich '],
-['семь т<span class="acco">ы</span>сяч ','7000 ','/sounds/num07000.mp3','<span class="sftv">s</span><span class="sfty">y</span><span class="acct">e</span><span class="sftc">m</span> t<span class="acct"><span class="ry">i</span></span>sich '],
-['в<span class="acco">о</span>семь т<span class="acco">ы</span>сяч ','8000 ','/sounds/num08000.mp3','v<span class="acct">o</span>si<span class="sftc">m</span> t<span class="acct"><span class="ry">i</span></span>sich '],
-['д<span class="acco">е</span>вять т<span class="acco">ы</span>сяч ','9000 ','/sounds/num09000.mp3','<span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span>vi<span class="sftc">t</span> t<span class="acct"><span class="ry">i</span></span>sich '],
-['д<span class="acco">е</span>сять т<span class="acco">ы</span>сяч ','10 000 ','/sounds/num10000.mp3','<span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span>si<span class="sftc">t</span> t<span class="acct"><span class="ry">i</span></span>sich '],
-['сто т<span class="acco">ы</span>сяч ','100 000 ','/sounds/num100000.mp3','st<span class="acct">o</span> t<span class="acct"><span class="ry">i</span></span>sich '],
-['пятьс<span class="acco">о</span>т т<span class="acco">ы</span>сяч ','500 000 ','/sounds/num500000.mp3','pits<span class="acct">o</span>t t<span class="acct"><span class="ry">i</span></span>sich '],
-['милли<span class="acco">о</span>н ','1 000 000 ','/sounds/num1000000.mp3','mili<span class="acct">o</span>n '],
-['милли<span class="acco">а</span>рд ','1 000 000 000 ','/sounds/num11000000.mp3','mili<span class="acct">a</span>rt '],
-['чет<span class="acco">ы</span>ре т<span class="acco">ы</span>сячи пятьс<span class="acco">о</span>т ','4500 ','/sounds/num04500.mp3','chit<span class="acct"><span class="ry">i</span></span>ri t<span class="acct"><span class="ry">i</span></span>sichi pits<span class="acct">o</span>t '],
-['дв<span class="acco">а</span>дцать семь т<span class="acco">ы</span>сяч тр<span class="acco">и</span>ста ','27 300 ','/sounds/num27300.mp3','dv<span class="acct">a</span>tsa<span class="sftc">t</span> <span class="sftv">s</span><span class="sfty">y</span><span class="acct">e</span><span class="sftc">m</span> t<span class="acct"><span class="ry">i</span></span>sich tr<span class="acct">i</span>sta '],
-['пятьдес<span class="acco">я</span>т т<span class="acco">ы</span>сяч ','50 000 ','/sounds/num50000.mp3','piddi<span class="sftv">s</span><span class="sfty">y</span><span class="acct">a</span>t t<span class="acct"><span class="ry">i</span></span>sich ']
+<%@last_item_index = (@words.length)-1 -%>
+<% @words.each_with_index  do |word, index| -%>
+['<%= word.html %>', '<%= word.translate.to_s.gsub(/'/,"’") %>', '<%= word.sound_url %>', '<%= word.transcribe %>', '<%= word.id %>'
+<%if current_user %>,'<%= current_user.word_status(word.id) %>'<%end%>
+]<% if index!= @last_item_index %>,<%end%>	
+<%end-%>
+
 		]
 		} )
 </script>

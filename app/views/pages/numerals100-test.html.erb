@@ -1,3 +1,9 @@
+<%
+@category = Category.find(:first, :conditions => ['id=?', 51 ])
+@words1 = @category.words.find(:all, :order => 'order_num', :select=> "id,text, sound_url, translate", :limit=> 9, :offset=> 0)
+@words2 = @category.words.find(:all, :order => 'order_num', :select=> "id,text, sound_url, translate", :limit=> 11, :offset=> 9)
+%>
+
 <% @page_title = 'Tests: Numerals' %>
 <% @page_meta = {'description' => ""} %>
 <% @with_rec = true %>
@@ -75,15 +81,16 @@ width: 166px;
 		variants_num: 5,
 		quest_type: 'audio',
 		answer_type: 'type',
+		tp_no_space: true,
 		basic_array: [
 		
-['sounds/num00100.mp3','100'],['sounds/num00200.mp3','200'],['sounds/num00300.mp3','300'],['sounds/num00400.mp3','400'],
-['sounds/num00500.mp3','500'],['sounds/num00600.mp3','600'],['sounds/num00700.mp3','700'],['sounds/num00800.mp3','800'],
-['sounds/num00900.mp3','900'],
-['sounds/num00110.mp3','110'],['sounds/num00120.mp3','120'],['sounds/num00130.mp3','130'],['sounds/num00140.mp3','140'],['sounds/num00150.mp3','150'],
-['sounds/num00160.mp3','160'],['sounds/num00170.mp3','170'],['sounds/num00180.mp3','180'],['sounds/num00190.mp3','190'],
-['sounds/num00210.mp3','210'],['sounds/num00220.mp3','220'],['sounds/num00230.mp3','230'],['sounds/num00240.mp3','240'],['sounds/num00250.mp3','250'],
-['sounds/num00260.mp3','260'], ['sounds/num00270.mp3','270'],['sounds/num00280.mp3','280'],['sounds/num00290.mp3','290']
+<% @words1.each_with_index do |word,index| -%>
+	["<%= word.sound_url %>","<%= word.translate %>",<%= word.id %>],
+<%end-%>
+['sounds/num00110.mp3','110',1136],['sounds/num00120.mp3','120',1136],['sounds/num00130.mp3','130',1136],['sounds/num00140.mp3','140',1136],['sounds/num00150.mp3','150',1136],
+['sounds/num00160.mp3','160',1136],['sounds/num00170.mp3','170',1136],['sounds/num00180.mp3','180',1136],['sounds/num00190.mp3','190',1136],
+['sounds/num00210.mp3','210',1138],['sounds/num00220.mp3','220',1138],['sounds/num00230.mp3','230',1138],['sounds/num00240.mp3','240',1138],['sounds/num00250.mp3','250',1138],
+['sounds/num00260.mp3','260',1138], ['sounds/num00270.mp3','270',1138],['sounds/num00280.mp3','280',1138],['sounds/num00290.mp3','290',1138]
 
 		]
 		
@@ -109,19 +116,23 @@ width: 166px;
 		variants_num: 5,
 		quest_type: 'audio',
 		answer_type: 'type',
+		tp_no_space: true,
 		basic_array: [
 		
-['sounds/num01000.mp3','1000'],['sounds/num02000.mp3','2000'],['sounds/num03000.mp3','3000'],['sounds/num04000.mp3','4000'],
-['sounds/num05000.mp3','5000'],['sounds/num06000.mp3','6000'],['sounds/num07000.mp3','7000'],['sounds/num08000.mp3','8000'],
-['sounds/num09000.mp3','9000'],['sounds/num10000.mp3','10000'], 
-['sounds/num12000.mp3','12000'],['sounds/num63000.mp3','63000'],['sounds/num04500.mp3','4500'],['sounds/num27300.mp3','27300'],
-['sounds/num20000.mp3','20000'],['sounds/num30000.mp3','30000'],['sounds/num40000.mp3','40000'],['sounds/num50000.mp3','50000'],
-['sounds/num60000.mp3','60000'],['sounds/num70000.mp3','70000'],['sounds/num80000.mp3','80000'],['sounds/num90000.mp3','90000']
+<% @words2.each_with_index do |word,index| -%>
+	["<%= word.sound_url %>","<%= word.translate %>",<%= word.id %>],
+<%end-%> 
+
+['sounds/num12000.mp3','12 000',1133],['sounds/num63000.mp3','63 000',1133],['sounds/num04500.mp3','4 500',1133],['sounds/num27300.mp3','27 300',1133],
+['sounds/num20000.mp3','20 000',1133],['sounds/num30000.mp3','30 000',1133],['sounds/num40000.mp3','40 000',1133],['sounds/num50000.mp3','50 000',1133],
+['sounds/num60000.mp3','60 000',1133],['sounds/num70000.mp3','70 000',1133],['sounds/num80000.mp3','80 000',1133],['sounds/num90000.mp3','90 000',1133]
 
 		]
 		
 		} )
 </script>
+
+<h3 class="test-task test-task-final" style="text-align: center">Review the topic &nbsp;&nbsp;&nbsp;&nbsp;<a href="/numerals100.html">Numerals (part 2) >></a></h3>
 
 </div><!-- end of lt-container -->
 

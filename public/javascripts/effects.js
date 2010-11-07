@@ -1194,8 +1194,11 @@ var messTime;
 function messageIt(html) {
 $("#alert_mess").remove();
 clearTimeout(messTime);
-$("body").append('<div id="alert_mess"><div>'+html+'</div></div>');
-$("#alert_mess").fadeIn();
+$("body").append('<div id="alert_mess" title="Click to close" style="cursor: pointer"><div>'+html+'</div></div>');
+$("#alert_mess").fadeIn().click(function() {
+	$("#alert_mess").fadeOut(200)
+	clearTimeout(messTime);
+});
 messTime = setTimeout(function(){
 	$("#alert_mess").fadeOut()
 },8000)

@@ -122,6 +122,7 @@ this.answerType = hash['answer_type'];  	// default - variants, option: yn
 this.texts = hash['texts'];					// default - english
 this.questNum = hash['quest_num'];			// default - basic array length
 this.virtKeys = hash['virt_keys'];			// default - false
+this.tpNoSpace = hash['tp_no_space'];			// default - false
 
 var tObj = this;
 
@@ -132,6 +133,7 @@ if (this.questType == undefined) this.questType = 'html';
 if (this.variantsNum == undefined) this.variantsNum = 4; 
 if (this.variantsNum > this.questNum ) this.variantsNum = this.questNum;
 if (this.virtKeys == undefined) this.virtKeys = false; 
+if (this.tpNoSpace == undefined) this.tpNoSpace = false;
 
 if (tObj.texts == undefined) {
 	tObj.correctMsg = "Great! This is correct";
@@ -350,11 +352,23 @@ this.getTypeAnswers = function() {
 		var userAnswer = tObj.optionsHolder.find(".es-ex-type-field").val();
 		
 		tObj.optionsHolder.append('<span class="tp_helper" style="display: none;">'+userAnswer+'</span>')
-		userAnswer = String( tObj.optionsHolder.find("span.tp_helper").html() ).replace(/&nbsp;/g, " ").replace(/&nbsp/g, " ");
+
+		userAnswer = String( tObj.optionsHolder.find("span.tp_helper").html() )
+		
+		userAnswer=userAnswer.replace(/[.,;?!]/g, "").replace(/-/g, " ").replace(/&nbsp;/g, " ").replace(/&nbsp/g, " ").replace(/\s\s+/g, " ").toUpperCase().replace(/¨/g, 'Å');	
 		userAnswer = $.trim(userAnswer);
 
 		tObj.optionsHolder.find("span.tp_helper").remove();
-		if ( userAnswer.toUpperCase() == tObj.workArray[tObj.counter][1].toUpperCase() ) {
+		
+		var tWord = tObj.workArray[tObj.counter][1]
+		tWord=tWord.replace(/[.,;?!]/g, "").replace(/-/g, " ").replace(/&nbsp;/g, " ").replace(/&nbsp/g, " ").replace(/\s\s+/g, " ").toUpperCase().replace(/¨/g, 'Å');	
+		
+		if (tObj.tpNoSpace) {
+			tWord=tWord.replace(/&nbsp;/g, "").replace(/\s\s+/g, "").replace(/\s+/g, "")
+			userAnswer = userAnswer.replace(/&nbsp;/g, "").replace(/\s\s+/g, "").replace(/\s+/g, "")
+		}
+		
+		if ( userAnswer.toUpperCase() == tWord.toUpperCase() ) {
 			tObj.alertHolder.empty().removeClass(tObj.correctClass).removeClass(tObj.wrongClass);
 			if (tObj.autoPlay) tObj.optionsHolder.find(".es-ex-check-type").unbind("click");
 			tObj.correctAnswer();
@@ -441,10 +455,6 @@ this.getOptions = function() {
 			$(elem).find("input").attr("checked", "checked")
 			if ($(elem).data('correct') == "true") {
 				tObj.correctAnswer();
-				if ( tObj.workArray[tObj.counter].length > 2 ) {
-					var studied = tObj.workArray[tObj.counter][2]
-					sendWordsResults(studied)
-				}
 			} else {
 				tObj.wrongAnswer($(elem));
 			}
@@ -478,7 +488,10 @@ this.correctAnswer = function () {
 	} else {
 		tObj.ynButtons.unbind("click");
 	}
-	
+	if ( tObj.workArray[tObj.counter].length > 2 ) {
+			var studied = tObj.workArray[tObj.counter][2]
+			sendWordsResults(studied)
+	}
 	if (tObj.autoPlay) {
 		toNextInt = setTimeout(function() {
 				tObj.gotoNext();

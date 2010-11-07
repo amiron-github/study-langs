@@ -132,7 +132,9 @@ Listen to the phrase and find its translation into English.
 
 <script type="text/javascript">
 preloadFiles=new Array(
-
+<% @words.each_with_index do |word,index| -%>
+'<%= word.sound_url %>'<% if index!= @last_item_index %>,<%end%>	
+<%end-%>
 )
 </script>
 

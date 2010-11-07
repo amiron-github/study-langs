@@ -455,6 +455,7 @@ tWord=tWord.replace(/[.,;?!]/g, "").replace(/-/g, " ").replace(/&nbsp;/g, " ").r
 tWord = $.trim(tWord);
 tObj.spellHolder.find("span.tp_helper").remove();
 
+
 tObj.container.find(".fl-task-spell").hide();
 tObj.container.find(".fl-spell-notes").hide();
 
