@@ -1,5 +1,5 @@
 <% @page_title = ''+@category_title+' :: Онлайн тесты' %>
-<% @page_meta = {'description' => "Apprenez les mots et les phrases de la rubrique "+@category_title+" avec nos cartes mémoire"} %>
+<% @page_meta = {'description' => "Изучайте английские слова и выражения по теме  "+@category_title+" с помощью онлайн тестов"} %>
 <% @with_rec = true %>
 <% @has_audio = true %>
 
@@ -26,7 +26,7 @@ h2.page {margin-bottom: 0px;font-size: 19pt;}
 </div>
 </div>
 
-<h2 class="page">Tests: <%= @category_title %></h2>
+<h2 class="page">Тесты: <%= @category_title %></h2>
 
 <h3 class="page-path">
 	<span class="int-links">
@@ -56,7 +56,7 @@ h2.page {margin-bottom: 0px;font-size: 19pt;}
 	var ch1 = new ch_exercise( {
 		id: "ch1", 
 		test_id: "",
-		quest_num: 10,
+		quest_num: 15,
 		variants_num: 5,
 		quest_type: 'audio',
 		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
@@ -85,7 +85,7 @@ h2.page {margin-bottom: 0px;font-size: 19pt;}
 	var ch2 = new ch_exercise( {
 		id: "ch2", 
 		test_id: "",
-		quest_num: 10,
+		quest_num: 15,
 		variants_num: 5,
 		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
 		basic_array: [
@@ -113,7 +113,7 @@ h2.page {margin-bottom: 0px;font-size: 19pt;}
 	var ch3 = new ch_exercise( {
 		id: "ch3", 
 		test_id: "",
-		quest_num: 10,
+		quest_num: 15,
 		variants_num: 5,
 		quest_type: 'audio',
 		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],

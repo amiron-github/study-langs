@@ -115,13 +115,14 @@ write_attribute :email, (value ? value.downcase : nil)
 	end
 	
 	
-	def get_cat_ex
+	def get_cat_ex(lang)
 	 test_categories =  user_tests.all(:joins => 'left outer join exercises ON `exercises`.test_id = `user_tests`.test_id', :select => 'distinct exercises.category_id')
 	 list = []
 	 test_categories.each do |tc|
 		category_id = tc.category_id
 		if category_id != nil
 			category = Category.find(category_id)
+			if category.lang == lang
 			unless category.tag == 'everyday_course' || category.tag =='beginner_course' || category.tag =='phonetics_course'||category.tag =='grammar_course'||category.tag =='reading_course'
 				cat_tests = get_test_by_category(category_id)
 				total = 0
@@ -131,6 +132,7 @@ write_attribute :email, (value ? value.downcase : nil)
 				end
 				average = total/cat_tests.length
 				list << {:category => category_title, :exercises => cat_tests, :total => average}
+			end
 			end
 		end
 	 end

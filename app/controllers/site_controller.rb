@@ -59,18 +59,20 @@ class SiteController < ApplicationController
     when /(memory|balloon-game)\.html$/
       @javascripts << 'vocabulary'
 	when /(ru_words)\.html$/
-		@vocabulary_exercises = current_user.get_cat_ex
+		@vocabulary_exercises = current_user.get_cat_ex('en')
 		@words_statistics = current_user.categories_by_language('ru')
 	when /(en_words)\.html$/
-		@vocabulary_exercises = current_user.get_cat_ex
+		@vocabulary_exercises = current_user.get_cat_ex('ru')
 		@words_statistics = current_user.categories_by_language('en')
 	when /(ru_results)\.html$/
-		@vocabulary_exercises = current_user.get_cat_ex
+		@vocabulary_exercises = current_user.get_cat_ex('ru')
 		@course_exercises = current_user.get_course_results(Exercise::EVERYDAY_RU, 'everyday_course')
 		@beginner_exercises = current_user.get_course_results(Exercise::BEGINNER_RU, 'beginner_course')
 		@phonetics_exercises = current_user.get_course_results(Exercise::PHONETICS_RU, 'phonetics_course')
 		@reading_exercises = current_user.get_course_results(Exercise::READING_RU, 'reading_course')
 		@grammar_exercises = current_user.get_course_results(Exercise::GRAMMAR_RU, 'grammar_course')
+	when /(en_results)\.html$/
+		@vocabulary_exercises = current_user.get_cat_ex('en')
     end
 
 	@hide_html = '<div class="hidden_content">Available for subscribed users</div>'

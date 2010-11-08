@@ -34,9 +34,9 @@ module VocabularyHelper
 		when 'telephone'
 			list_spaces = [745]
 		when 'greetings_en'
-			list_spaces = [6, 13]
+			list_spaces = [753, 758]
 		when 'politeness_en'
-			list_spaces = [8,11];
+			list_spaces = [778,775];
 	end
 	return list_spaces
   end

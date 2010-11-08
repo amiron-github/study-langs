@@ -170,7 +170,7 @@ private
 		category_tag = category.tag
 		case original
 			when 'en'
-		      exceptions << {:tag => 'politeness_en', :except=> [5,12] }
+		      exceptions << {:tag => 'politeness_en', :except=> [787,775] }
 			when 'fr'
 		      exceptions << {:tag => 'politeness', :except=> [] }
 			when 'ru'

@@ -1,0 +1,24 @@
+
+<div class="tab-in-tab-list">
+<a href="javascript:;" class="all-in-tab tab-in-current">Show all</a>
+
+<% if @vocabulary_exercises[:results].length > 0 %>| <a href="javascript:;">Vocabulary topics</a> <%end%>
+
+</div>
+
+<% unless @vocabulary_exercises[:results].length > 0 %>
+
+<p>There is no enough information to display.</p>
+
+<% else %>
+
+
+<% if @vocabulary_exercises[:results].length > 0 %>
+<div class="tab-in-tab">
+ <%= render(:partial => "course_user_results" , :locals => { :course_data  => @vocabulary_exercises}) %>
+</div> 															
+<% end %>
+
+
+<%end%>
+
