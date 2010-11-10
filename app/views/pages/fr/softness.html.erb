@@ -1,0 +1,279 @@
+<% @page_title = 'Russian Language Online: Softness of consonants in Russian' %>
+<% @page_meta = {'description' => "Online information about soft consonants in Russian with audio examples"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+
+
+<% content_for :special_js_css do %>
+
+<%= stylesheet_link_tag 'stylesounds' %>
+
+<style type="text/css">
+h2.page {margin-bottom: 0px;}
+
+.sound-letter td {
+width: 20%;
+}
+.italic-letter {
+font-style: italic;
+font-family: Times New Roman;
+}
+
+.note-block {
+font-size:8pt;
+line-height:14pt;
+padding-left:55px;
+text-indent:-55px;
+}
+
+</style>
+
+<% end %>
+
+<div class="hint_wrap">
+<div class="hint_button" style="float: right;">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Links and Settings</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+    				<li><a href="basic-letters.html">Russian Letters</a></li>
+					<li><a href="devocalization.html">Devocalization</a></li>
+   					<li><a href="stress-reduction.html">Stress and reduction</a></li>
+					<li><a href="reading-exceptions.html">Exceptional cases</a> </li>
+					<li><a href="basic-reading-rules.html">Basic rules</a> </li>
+    				<li><a href="reading-practice.html">Training exercises</a></li>
+    		</ul>
+        <%= render :partial => 'preload_option' %>
+	</div>
+</div>
+</div>
+<div id="pagecontent"><div id="content">
+
+
+<h2 class="page">La mouillure des consonnes russes</h2>
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="russian-reading.html">Reading in Russian</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="readingrules.html">Rules of reading</a>
+	<span class="int-arrow">--&gt;</span> Consonnes molles
+	</span>
+</h3>
+ 
+<p>
+
+
+Toutes les consonnes sont divisés en consonnes dures et consonnes molles. La plupart des consonnes forment des couples "consonne dure/consonne molle", c'est à dire la prononciation des sons dans un couple ne se diffère que par la mouillure. 
+
+<span style="line-height: 20px;" >
+<span class="open_popup_link" onClick="open_comment('/comments_audio/comment_hard_soft.html')">Cliquez ici pour ouvrir une fenêtre popup et écouter ces sons.</span>
+</span> 
+</p>
+<p><span style="border-bottom: 1px dashed #000;">Les deux consonnes d'un couple "consonne dure/consonne molle" sont désignées par une lettre-consonne</span></p>
+
+<h3 class="page-p">Comment les lettres russes désignent-elles les consonnes molles</h3>
+<p>
+Afin de déterminer si la lettre-consonne désigne une consonne dure ou une consonne molle, il faut examiner la lettre suivante:
+
+</p>
+<p>
+- Si la lettre  suivante est <span class="letter">и</span>, <span class="letter">е</span>, <span class="letter">ю</span>, <span class="letter">я</span>, <span class="letter">ё</span> ou <span class="letter">ь</span>, la lettre-consonne désigne une consonne molle.
+</p>
+
+<div class="egdiv eg-sound ">
+<h4>Exemples: </h4>
+<p><strong>Les lettres mises en surbrillance désignent des consonnes molles:</strong></p>
+<p>
+<span class="eg"><span class="soft_letter">д</span>иплом</span>
+
+<span onmouseout="hide_info(this)" onmouseover="tooltip(this,'Voir les notes ci-dessous')" style="cursor: help;">*</span>
+
+<span class="sound" onclick="playSound('reading/soundr020010.mp3')">[diplom] &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+ <span class="egt">diplôme</span>
+</p>
+<p>
+<span class="eg"><span class="soft_letter">т</span>екст</span>
+<span class="sound" onclick="playSound('reading/soundr020020.mp3')">[t'ekst] &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+ <span class="egt">texte</span>
+</p>
+<p>
+<span class="eg"><span class="soft_letter">м</span>ёд</span>
+<span class="sound" onclick="playSound('sound08803.mp3')">[m'ot] &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+ <span class="egt">miel</span>
+</p>
+<p>
+<span class="eg"><span class="soft_letter">б</span>юро </span>
+<span class="sound" onclick="playSound('reading/soundr020026.mp3')">[b'ouro] &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+ <span class="egt">bureau</span>
+</p>
+<p>
+<span class="eg"><span class="soft_letter">м</span>ясо</span>
+<span class="sound" onclick="playSound('sound08301.mp3')">[m'asa] &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+ <span class="egt">viande</span>
+</p>
+<p>
+<span class="eg">но<span class="soft_letter">л</span>ь</span>
+<span class="sound" onclick="playSound('num00000.mp3')">[nol']  &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+<span class="egt">zéro</span>
+</p>
+</div>
+
+<p class="note-block">
+<span class="note">* Notes:</span>
+Dans les transcriptions sur notre site, nous ne démontrons pas <span style="white-space: nowrap">le signe [']</span> avant <span style="white-space: nowrap">le son [i],</span> parce que ce son ne suit que les consonnes molles. Dans les autres cas, les consonnes molles sont généralement indiquée par <span style="white-space: nowrap">le signe ['].</span>
+</p>
+
+
+<p>
+- Dans les autres cas, c'est-à-dire si la lettre-consonne est suivie par une lettre-consonne (sauf dans les cas d'un groupe de consonnes molles, voir ci-dessous), par les lettres-voyelles <span class="letter">а</span>, <span class="letter">о</span>, <span class="letter">у</span>, <span class="letter">ы</span>, <span class="letter">э</span>, <span class="letter">ъ</span>, ou bien si la lettre se trouve à la fin du mot, elle désigne une consonne dure correspondante.
+
+</p>
+
+<div class="egdiv eg-sound ">
+<h4>Exemples: </h4>
+<p><strong>Les lettres mises en surbrillance désignent des consonnes dures:</strong></p>
+<p>
+<span class="eg"><span class="hard_letter">д</span>о<span class="hard_letter">м</span></span>
+<span class="sound" onclick="playSound('sound06108.mp3')">[dom] &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+ <span class="egt">maison</span>
+</p>
+<p>
+<span class="eg"><span class="hard_letter">б</span>а<span class="hard_letter">р</span></span>
+<span class="sound" onclick="playSound('sound06106.mp3')">[bar] &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+ <span class="egt">bar</span>
+</p>
+<p>
+<span class="eg"><span class="hard_letter">м</span>ы<span class="hard_letter">л</span>о</span>
+<span class="sound" onclick="playSound('sound09615.mp3')">[m<s>i</s>la] &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+ <span class="egt">savon</span>
+</p>
+
+</div>
+
+
+
+<h3 class="page-p">Connsonnes toujours dures ou molle</h3>
+
+<p>
+Certains sons ne forment pas de couples: ce sont les sons dures <span class="sound" onclick="playSound('sound227.mp3')">[j]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('sound228.mp3')">[ch]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('sound240.mp3')">[ts]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span> et les sont molles
+<span class="sound" onclick="playSound('sound238.mp3')">[sch]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('sound239.mp3')">[tch]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>, 
+<span class="sound" onclick="playSound('sound237.mp3')">[y]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>.  
+
+Ils sont désignés, respectivement, par lettres <span class="letter">ж</span>, <span class="letter">ш</span>, <span class="letter">ц</span>, <span class="letter">щ</span>, <span class="letter">ч</span>, <span class="letter">й</span>. 
+
+Étant donné que ces lettres désignent des sons qui ne sont pas engagés dans un couple "dure contre molle", leur lecture sera toujours la même, y compris dans les cas où elles se trouvent devant une lettre servant à indiquer la mouillure (<span class="letter">и</span>, <span class="letter">е</span>, <span class="letter">ю</span>, <span class="letter">я</span>, <span class="letter">ё</span>, <span class="letter">ь</span>).
+
+ Il est à noter que si les lettres <span class="letter">ж</span>, <span class="letter">ш</span>, <span class="letter">ц</span> sont suivies par la lettre <span class="letter">и</span>, 
+la lettre <span class="letter">и</span> est lue comme <span class="sound" onclick="playSound('sound206.mp3')">[<span class="ry">i</span>] <span class="play_tip">&nbsp; &nbsp;</span></span> (pas comme <span class="sound" onclick="playSound('sound205.mp3')">[i] <span class="play_tip">&nbsp;&nbsp;&nbsp;</span></span>).
+ 
+</p>
+
+<div class="egdiv eg-sound ">
+<h4>Exemples: </h4>
+<p><strong>Dans les mots suivants la lettre <span class="eg">и</span> est lue comme 
+<span class="sound" onclick="playSound('sound206.mp3')">[<span class="ry">i</span>] <span class="play_tip">&nbsp; &nbsp;</span></span>:</strong></p>
+<p>
+
+<span class="eg">ужин</span>
+<span class="sound" onclick="playSound('sound04124.mp3')">[ouj<span class="ry">i</span>n] &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+ <span class="egt">dîner, repas du soir</span>
+</p>
+<p>
+<span class="eg">машина</span>
+<span class="sound" onclick="playSound('sound02302.mp3')">[mach<span class="ry">i</span>na] &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+ <span class="egt">voiture</span>
+</p>
+<p>
+<span class="eg">станция</span>
+<span class="sound" onclick="playSound('sound02206.mp3')">[stants<span class="ry">i</span>ya] &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+ <span class="egt">station</span>
+</p>
+
+</div>
+
+<h3 class="page-p">Groupe de lettres molles</h3>
+<p>
+Certaines lettres-consonnes peuvent désigner des sons molles, même quand elles se trouvent dans un mot avant les autres consonnes, 
+mais seulement si la consonne suivante est molle. Cela peut se produire dans les groupes de lettres suivants:
+<span class="letter">ст</span>, <span class="letter">зд</span>, <span class="letter">н</span> + <span class="letter">т</span>, <span class="letter">д</span>, <span class="letter">с</span>, <span class="letter">з</span>, <span class="letter">ч</span>.
+</p>
+
+<div class="egdiv eg-sound ">
+<h4>Exemples: </h4>
+<p>Les lettres mises en surbrillance désignent des consonnes molles:
+</p>
+<p>
+<span class="eg">по<span class="soft_letter">ст</span>ирать </span>
+<span class="sound" onclick="playSound('sound05121.mp3')">[pas'tirat'] &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+ <span class="egt">to wash, to launder </span>
+</p>
+
+</div>
+
+
+
+
+<h3 class="page-p">
+Les particularités de la lecture des lettres
+<span class="norm_txt">е</span>, <span class="norm_txt">ю</span>, <span class="norm_txt">я</span>, <span class="norm_txt">ё</span> 
+suivant des connsones et les signes
+<span class="norm_txt">ь</span>, <span class="norm_txt">ъ</span>
+</h3>
+ 
+<p>
+
+Nous avons déjà mentionné que les lettres <span class="letter">е</span>, <span class="letter">ю</span>, <span class="letter">я</span>, <span class="letter">ё</span>  
+indiquent la mouillure de la consonne précédente. Notes que si une des ces lettres indique la mouillure, elle perd le son initial 
+<span class="sound" onclick="playSound('sound237.mp3')">[y]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span> 
+qui est présent dans sa signification de base.
+</p>
+<p>Ainsi, dans les cas  où elles désignent des voyelles accentuées et suivent des lettres-consonnes, ces lettres-voyelles sont lues comme suit:</p>  
+
+<span class="letter">е</span> - <span class="sound" onclick="playSound('sound202.mp3')">[e] <span class="play_tip">&nbsp; &nbsp;</span></span>:
+
+<span class="eg">ферма </span>
+<span class="sound" onclick="playSound('reading/soundr020018.mp3')">[f'erma] &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+<span class="egt">ferme</span>
+
+<br><br>
+<span class="letter">ё</span> - <span class="sound" onclick="playSound('sound203.mp3')">[o] <span class="play_tip">&nbsp; &nbsp;</span></span>:
+
+<span class="eg">осётр </span>
+<span class="sound" onclick="playSound('sound08405.mp3')">[as'otr] &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+<span class="egt">esturgeon</span>
+
+<br><br>
+<span class="letter">ю</span> - <span class="sound" onclick="playSound('sound204.mp3')">[ou] <span class="play_tip">&nbsp; &nbsp;</span></span>:
+
+<span class="eg">люстра </span>
+<span class="sound" onclick="playSound('reading/soundr020024.mp3')">[l'oustra] &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+<span class="egt">lustre</span>
+
+<br><br>
+<span class="letter">я</span> - <span class="sound" onclick="playSound('sound201.mp3')">[a] <span class="play_tip">&nbsp; &nbsp;</span></span>:
+<span class="eg">пять </span>
+<span class="sound" onclick="playSound('num00005.mp3')">[p'at'] &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+<span class="egt">cinq</span>
+
+<p>Vous pouvez trouver plus d'infos sur la lecture de ces lettres sur la page<a href="/fr/stress-reduction.html">L'accent et la réduction vocalique</a></p>
+
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+</div></div>
+
+<script type="text/javascript">
+currentSection="reading";
+</script>

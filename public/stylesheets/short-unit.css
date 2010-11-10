@@ -1,0 +1,241 @@
+#tabs_row {
+padding-left: 20px;
+}
+.inpBlock {
+margin-left: 50px;
+}
+.inpBlock h3 {
+}
+.item-name {
+font-size: 14px;
+font-weight: bold;
+}
+
+
+.unit-area h3.tab-head {
+font-size: 20px;
+font-weight: normal;
+color: #555;
+padding-bottom: 5px;
+border-bottom: 1px solid #777;
+margin: 0 0 20px 0;
+}
+
+p.tab-info {
+font-size: 10px;
+font-style: italic;
+}
+
+.unit-area {
+background-color: #fff;
+border: 1px solid #708089;
+padding: 3px;
+position: relative;
+padding: 4px;
+background-color:#fff;
+min-height: 800px;
+-moz-border-radius: 6px;
+-webkit-border-radius: 6px;
+border-radius: 6px;
+-moz-box-shadow: 1px 2px 7px #999;
+-webkit-box-shadow: 1px 2px 8px #999;
+box-shadow: 1px 2px 8px #999;
+background-color:#FFFFFF;
+background-image:url(/images/cs_bg.gif);
+background-position:left bottom;
+background-repeat:repeat-x;
+-moz-box-shadow: 1px 2px 9px #B3B7BF;
+-webkit-box-shadow: 2px 1px 9px #B3B7BF;
+box-shadow: 1px 2px 9px #B3B7BF;
+}
+
+
+.ptab {
+float:left;
+back-ground-color: #efefef;
+background-image: url(/images/transparent-60.png);
+background-repeat: repeat;
+margin:0;
+padding:0 0 0 4px;
+text-decoration:none;
+cursor: pointer;
+color:#666;
+margin-left: 2px;
+border: 1px solid #8F9FBF;
+border-bottom: 0px solid #fff;
+position: relative;
+top: 3px;
+}
+.current_ptab {
+border: 1px solid #708089;
+border-bottom: 0px solid #fff;
+background-image: none;
+top: 0px;
+background-color: #fff;
+padding-bottom: 3px;
+color: #111;
+}
+.ptab div {
+background-image: none;
+position: relative;
+}
+
+#prof_tabs {
+border: 1px solid #708089;
+width: auto;
+padding-top: 10px;
+background:#4B87FB url(/stylesheets/custom-theme/images/ui-bg_gloss-wave_55_4b87fb_500x100.png) repeat-x scroll 50% 0;
+-moz-bo-rder-radius: 6px;
+-webkit-border-radius: 4px;
+border-radius: 4px;
+}
+
+.pBlock {
+background-color: transparent;
+clear: both;
+padding: 20px 30px 10px 40px;
+border: 0px solid #819DCF;
+bor-der-top: 0px solid #9FC2FF;
+margin-bottom: 30px;
+-moz-box-shadow: 0px 0px 0px #9F9F9F;
+-webkit-box-shadow: 0px 0px 0px #9F9F9F;
+box-shadow: 0px 0px 0px #9F9F9F;
+}
+.inpBlock {
+margin-left: 0;
+}
+
+.unit-title {
+padding: 0 20px 15px 30px;
+font-size: 30px;
+color: #fff;
+font-weight: normal;
+text-shadow: 1px 1px 1px #555;
+}
+
+
+
+.su-present {
+background-color: #eff5fe;
+border:3px solid #86ACEF;
+margin:0 20px 30px;
+padding:10px;
+-moz-box-shadow:1px 1px 0px #627EAF, 1px 2px 3px #3E556F;
+-webkit-box-shadow:1px 1px 0px #627EAF, 1px 2px 3px #3E556F;
+box-shadow:1px 1px 0px #627EAF, 1px 2px 3px #3E556F;
+}
+
+.su-present-brd {
+background-color: #fff;
+padding: 20px;
+}
+
+.su-present table td {
+font-size:15px;
+padding:8px 10px;
+cursor: default;
+}
+
+.su-present table tr:hover {
+background-color: #ebf3fe;
+}
+
+.su-present table td.su-pres-audio {
+padding-right: 0px;
+}
+
+.su-present table td.su-pres-orig {
+font-weight: bold;
+padding-right: 20px;
+}
+
+.pBlock .su-step-title {
+border-bottom:1px solid #777777;
+color:#555555;
+font-size:20px;
+font-weight:normal;
+margin:0 0 20px;
+padding-bottom:5px;
+}
+
+.su-step-info {
+font-size: 10px;
+padding-bottom: 20px;
+}
+
+.su-task {
+position: relative;
+margin: 0px 0px 40px;
+border: 2px solid #9FC2FF;
+background-color:#fff;
+padding: 8px 80px 8px 20px;
+font-size: 12px;
+color: #31394F;
+text-shadow: 0px 1px 0px #fff, 1px 1px 3px #8EA7CF;
+-moz-border-radius: 9px;
+-webkit-border-radius: 9px;
+border-radius: 9px;
+-moz-box-shadow: 1px 1px 0px #627EAF, 1px 2px 3px #3E556F;
+-webkit-box-shadow: 1px 1px 0px #627EAF, 1px 2px 3px #3E556F;
+box-shadow: 1px 1px 0px #627EAF, 1px 2px 3px #3E556F;
+}
+
+
+
+.voc-wordlist .diction td {
+border-bottom: 1px solid #efefef;
+}
+
+.trans-display-wrapper {
+font-size: 11px;
+color: #444;
+position: relative;
+top: -50px;
+margin-bottom: -15px;
+}
+
+.voc-wordlist .diction td.original {
+position: relative;
+width: auto;
+padding-left: 35px;
+cursor: default;
+}
+
+.voc-wordlist .diction td.original div.ru-transcript {
+display: none;
+font-size: 11px;
+color: #555;font-weight: normal;
+}
+
+.voc-wordlist .diction td.translation {
+width: auto;
+padding-left: 22px;
+padding-right: 18px;
+cursor: default;
+}
+
+.voc-wordlist div.jp_control {
+position: absolute;
+margin-left: -25px;
+}
+
+.lt-spacer  {
+padding-top: 0px;
+}
+
+.egdiv {
+border-color: #7CB0F9;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

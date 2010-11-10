@@ -1,0 +1,336 @@
+<% @page_title = 'Урок 1' %>
+<% @page_meta = {'description' => ""} %>
+
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'jp-control' %>
+
+<%= javascript_include_tag 'lexical-test' %>
+<%= stylesheet_link_tag 'lexical-test' %>
+
+<%= javascript_include_tag 'short-unit' %>
+<%= stylesheet_link_tag 'short-unit' %>
+
+<script type="text/javascript">
+<%if params[:tab] %>
+	openTabFromUrl(<%= params[:tab] %>);
+<%else%>
+	openTabFromUrl();
+<%end%>
+</script>
+
+
+
+<div class="unit-area">
+
+
+<div id="prof_tabs">
+
+<div class="unit-title">
+Урок 1
+</div>
+	<div id="tabs_row">
+            <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Этап 1</a></div></div>
+			<div id="tab02" class="ptab"><div><a href="#">Этап 2</a></div></div>
+            <div id="tab03" class="ptab"><div><a href="#">Этап 3</a></div></div>
+			<div id="tab04" class="ptab"><div><a href="#">Этап 4</a></div></div>
+			<div id="tab04" class="ptab"><div><a href="#">Этап 5</a></div></div>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+
+<div id="for_tab01" class="pBlock" style="display: block">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Обзор</h3>
+<p class="su-step-info">
+Данный этап предназначен для ознакомления с лексикой и грамматическими конструкциями урока.
+</p>	
+	
+
+<h4 class="su-task">
+Задание 1. Слушайте и повторяйте. Ознакомьтесь с переводом фраз.
+</h4>
+
+	
+<div class="su-present">
+<div class="su-present-brd">
+<table cellspacing="0">
+	<tr>
+		<td class="su-pres-audio"><div class="jp_control" onclick="cJplayer('/sounds/en/greetings/sound0101.mp3', this)"></div></td>
+		<td class="su-pres-orig">Hello!</td>
+		<td class="su-pres-trans">Здравствуйте!</td>
+	</tr>
+	<tr>
+		<td class="su-pres-audio"><div class="jp_control" onclick="cJplayer('/sounds/en/greetings/sound0114.mp3', this)"></div></td>
+		<td class="su-pres-orig">How are you?</td>
+		<td class="su-pres-trans">Как дела?</td>
+	</tr>
+	<tr>
+		<td class="su-pres-audio"><div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div></td>
+		<td class="su-pres-orig">I’m fine, thank you.</td>
+		<td class="su-pres-trans">Хорошо, спасибо</td>
+	</tr>
+	<tr>
+		<td class="su-pres-audio"><div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div></td>
+		<td class="su-pres-orig">Tea? - No, thanks.</td>
+		<td class="su-pres-trans">Чаю? - Нет, спасибо.</td>
+	</tr>
+	<tr>
+		<td class="su-pres-audio"><div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div></td>
+		<td class="su-pres-orig">Coffee, please.</td>
+		<td class="su-pres-trans">Кофе, пожалуйста. (просьба)</td>
+	</tr>
+	<tr>
+		<td class="su-pres-audio"><div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div></td>
+		<td class="su-pres-orig">Goodbye!</td>
+		<td class="su-pres-trans">До свидания!</td>
+	</tr>
+	<tr>
+		<td class="su-pres-audio"><div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div></td>
+		<td class="su-pres-orig">Bye!</td>
+		<td class="su-pres-trans">Пока!</td>
+	</tr>
+</table>	
+</div>	
+</div>	
+	
+
+
+<br><br><br><br>
+
+<h4 class="su-task">
+Задание 2. Прослушайте фразу и найдите её в списке.
+</h4>
+
+
+
+<div id="ch1" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		test_id: "",
+		quest_num: 15,
+		variants_num: 5,
+		quest_type: 'text',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+['Hello!','Здравствуйте!'],
+['How are you?','Как дела?'],
+['I’m fine, thank you.','Хорошо, спасибо'],
+['Tea? - No, thanks.','Чаю? - Нет, спасибо.'],
+['Coffee, please.','Кофе, пожалуйста.'],
+['Goodbye!','До свидания!']
+		
+
+		]
+		
+		} )
+</script>
+
+
+
+
+	
+	
+	</div>
+</div>
+
+<div id="for_tab02" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Лексика</h3>
+<p class="su-step-info">
+Данный этап предназначен для работы с полезными словами и выражениями по теме урока.
+</p>	
+	
+
+<h4 class="su-task">
+Задание 1. Ознакомьтесь со словами и выражениями урока.
+</h4>
+	
+<br><br>
+
+
+<div class="voc-wordlist">
+<table class="voc_bord" align="center" cellspacing="0">
+<tr>
+<td>
+
+<table style="width: 400px" class="diction" cellpadding="0" cellspacing="0" align="center">
+<col width="50%"><col width="50%">
+<thead>
+<tr>
+	<td> <div class="trans-display-wrapper"><input type="checkbox" class="trans-display" /> Транскрипция </div> </td>
+	<td></td>
+</tr>
+</thead>
+<tbody>
+
+<%
+cat = Cluster.find(2)
+@words = cat.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+%>
+<%@words.each_with_index do |word, index|-%>
+<tr class="trow">
+    <td class="original" valign="top">
+	<%unless word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div><%end%>
+	<%= word.text %>
+	<div class="ru-transcript">[<%= word.transcribe %>]</div>
+	
+    </td>
+    <td class="translation" valign="top"><%= word.translate %>
+    </td>
+</tr>
+<%end -%>
+
+
+</tbody>
+<tfoot>
+<tr>
+	<td></td>
+	<td></td>
+</tr>
+</tfoot>  
+</table>
+
+</td>
+</tr>
+</table>
+</div><!-- end of voc-wordlist-->
+
+<br><br><br><br>
+
+<h4 class="su-task">
+Задание 2. Прослушайте фразу и найдите её перевод.
+</h4>
+
+
+
+<div id="ch2" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		test_id: "",
+		quest_num: 15,
+		variants_num: 5,
+		quest_type: 'audio',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+<% @last_item_index = (@words.length)-1 -%>
+<% @words.each_with_index  do |word, index| -%>
+['<%= word.sound_url %>', "<%= word.text.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
+		} )
+</script>	
+
+	
+	</div>
+</div>
+
+
+<div id="for_tab03" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Теория</h3>
+<p class="su-step-info">
+Данный этап предназначен для ознакомления с правилами грамматики и лексики.
+</p>	
+	
+
+	
+<h3>Формы обращения</h3>
+<p>
+В английском языке нет разделения во 2 лице, подобного русскому ты-вы, поэтому you соответствует одновременно и ты и вы.
+</p> 
+
+<h3>Порядок членов предложения</h3>
+<p>
+Для повествовательных предложений в английском языке характерен прямой порядок слов. Это означает, что подлежащее должно предшествовать сказуемому, а также что дополнение должно следовать за глаголом. Поскольку в английском языке нет падежей, роль слов в предложении в большой степени зависит порядка слов. Изменение порядка слов может привести к грамматической ошибке или изменению смысла всего предложения.
+</p>
+	
+<div class="egdiv">
+<h4>Примеры: </h4>
+<p>
+<em>You are a student.</em> - Ты студент. (You - подлежащее, are - глагол-сказуемое)
+</p>
+<p>
+В русском языке в определённых условиях возможно изменение порядка слов (Студент я), при этом грамматической ошибки не будет. 
+В англйиском варианте представлен единственно возможный порядок данных слов, изменение которого приведет к грамматической ошибке.
+</p>
+<p>
+<em>Cats eat mice.</em> - Кошки едят мышей. (Cats - подлежащее, eat - глагол-сказуемое, mice - дополнение)
+</p>
+<p>
+В русском языке в определённых условиях возможно изменение порядка слов (Мышей едят кошки, едят кошки мышей), при этом смысл изменяться не будет. 
+В англйиском варианте изменение порядка слов в данном предложении приведет к изменению смысла или грамматической ошибке: 
+Mice eat cats (Мыши едят кошек), Eat cats mice (грамматически неправильный вариант).
+</p>
+
+</div>
+	
+	
+	
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+currentSection="course";
+</script>

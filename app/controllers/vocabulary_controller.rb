@@ -16,7 +16,7 @@ layout :determine_layout
 	
 	if @lang == 'fr'
 		@category_title = @category.title_fr
-		render(:action => 'fr_vocabulary')
+		render(:action => 'fr_ru_vocabulary')
 	elsif @lang == 'ru'
 		if @add_lang == 'en'
 			@category_short_tag = params[:category]
@@ -62,7 +62,7 @@ layout :determine_layout
 	
 	if @lang == 'fr'
 		@category_title = @category.title_fr
-		render(:action => 'fr_flashcard' )
+		render(:action => 'fr_ru_flashcard' )
 	elsif @lang == 'ru'
 		@category_short_tag = params[:category]
 		@category_title =  @category.title_ru
@@ -100,7 +100,7 @@ layout :determine_layout
 	
 	if @lang == 'fr'
 		@category_title = @category.title_fr
-		render(:action => 'fr_test' )
+		render(:action => 'fr_ru_test' )
 	elsif @lang == 'ru'
 		@category_short_tag = params[:category]
 		@category_title =  @category.title_ru

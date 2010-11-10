@@ -1,6 +1,6 @@
 <% 
-@page_title = 'Online Russian Flashcards: '+@category_title+' '  %>
-<% @page_meta = {'description' => "Learn Russian vocabulary topic "+@category_title+" with online flashcards: words with audio samples, quizzes and spell practice"} %>
+@page_title = 'Cartes mémoire en ligne: '+@category_title+' '  %>
+<% @page_meta = {'description' => "Apprenez les mots et les phrases de la rubrique "+@category_title+" avec nos cartes mémoire"} %>
 <% @with_rec = true %>
 <% @has_audio = true %>
 
@@ -24,8 +24,8 @@ font-size: 19pt;
     </div>
     <div class="sub_hint" style="display: none;">
         <ul>
-            <li><a href="/en/ru/vocabulary/<%= @category.tag %>"><%= @category_title %></a></li>
-			<li><a href="/en/ru/lexical-test/<%= @category.tag %>">Tests: <%= @category_title %></a></li>
+            <li><a href="/fr/ru/vocabulary/<%= @category.tag %>"><%= @category_title %></a></li>
+			<li><a href="/fr/ru/lexical-test/<%= @category.tag %>">Tests: <%= @category_title %></a></li>
         </ul>
         <%= render :partial => 'site/down_accent' %>
   </div>
@@ -33,14 +33,14 @@ font-size: 19pt;
 </div>
 
 
-<h2 class="page">Flashcards: <%= @category_title %></h2>
+<h2 class="page">Cartes mémoire: <%= @category_title %></h2>
 
 <h3 class="page-path">
 	<span class="int-links">
-	<a href="/vocabulary.html">Vocabulary</a>
+	<a href="/fr/vocabulary.html">Vocabulaire</a>
 	<span class="int-arrow">--&gt;</span> 
-	<a href="/en/ru/vocabulary/<%= @category.tag %>"><%= @category_title %></a>
-	<span class="int-arrow">--&gt;</span> Flashcards
+	<a href="/fr/ru/vocabulary/<%= @category.tag %>"><%= @category_title %></a>
+	<span class="int-arrow">--&gt;</span> Cartes mémoire
 	</span>
 </h3>
 
@@ -54,20 +54,19 @@ font-size: 19pt;
 		id: "fl1", 
 		random_order: false,
 		basic_array: [
-
 <%@last_item_index = (@words.length)-1 -%>
 <% @words.each_with_index  do |word, index| -%>
-['<%= word.html %>', '<%= word.translate.to_s.gsub(/'/,"’") %>', '<%= word.sound_url %>', '<%= word.transcribe %>'<%if current_user %>, '<%= word.id %>'
-,'<%= current_user.word_status(word.id) %>'<%end%>
+['<%= word.html %>', '<%= word.translate_fr.to_s.gsub(/'/,"’") %>', '<%= word.sound_url %>', '<%= word.transcribe_fr %>'<%if current_user %>, '<%= word.id %>','<%= current_user.word_status(word.id) %>'<%end%>
 ]<% if index!= @last_item_index %>,<%end%>	
-<%end-%>
+<%end-%>		
+
 		]
 		} )
 </script>
 
 
 <table class="voc-links voc-link-first voc-link-last" align="center" cellspacing="0"><tr>
-	<td class="voc-space">Check how you know this topic with our &nbsp;<a href="/en/ru/lexical-test/<%= @category.tag %>">Lexical tests >></a></td>
+	<td class="voc-space">Évaluez comment vous avez appris ces mots à l'aide de nos &nbsp;<a href="/fr/ru/lexical-test/<%= @category.tag %>">Tests lexicaux >></a></td>
 </tr></table>
 
 
