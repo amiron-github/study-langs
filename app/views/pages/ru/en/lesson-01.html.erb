@@ -1,11 +1,17 @@
 <% @page_title = 'Урок 1' %>
 <% @page_meta = {'description' => ""} %>
 
+
+<% content_for :special_js_css do %>
+
 <%= javascript_include_tag 'jquery.jplayer.min.js' %>
 <%= javascript_include_tag 'jp-control' %>
-
 <%= javascript_include_tag 'lexical-test' %>
 <%= stylesheet_link_tag 'lexical-test' %>
+<%= javascript_include_tag 'test-drag-sort' %>
+<%= javascript_include_tag 'es-grammar-exercises' %>
+<%= javascript_include_tag 'es-test-drag-input' %>
+
 
 <%= javascript_include_tag 'short-unit' %>
 <%= stylesheet_link_tag 'short-unit' %>
@@ -17,6 +23,11 @@
 	openTabFromUrl();
 <%end%>
 </script>
+
+
+<% end %>
+
+
 
 
 
@@ -33,7 +44,7 @@
 			<div id="tab02" class="ptab"><div><a href="#">Этап 2</a></div></div>
             <div id="tab03" class="ptab"><div><a href="#">Этап 3</a></div></div>
 			<div id="tab04" class="ptab"><div><a href="#">Этап 4</a></div></div>
-			<div id="tab04" class="ptab"><div><a href="#">Этап 5</a></div></div>
+			<div id="tab05" class="ptab"><div><a href="#">Этап 5</a></div></div>
 	</div>
 	<div style="clear: both;"></div>
 </div>
@@ -173,7 +184,7 @@
 <tbody>
 
 <%
-cat = Cluster.find(2)
+cat = Cluster.find(15)
 @words = cat.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
 %>
 <%@words.each_with_index do |word, index|-%>
@@ -230,7 +241,7 @@ cat = Cluster.find(2)
 		
 <% @last_item_index = (@words.length)-1 -%>
 <% @words.each_with_index  do |word, index| -%>
-['<%= word.sound_url %>', "<%= word.text.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+['<%= word.sound_url %>', "<%= word.translate.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
 <%end -%>
 
 		]
@@ -282,6 +293,8 @@ Mice eat cats (Мыши едят кошек), Eat cats mice (грамматич�
 </p>
 
 </div>
+
+
 	
 	
 	
@@ -293,8 +306,300 @@ Mice eat cats (Мыши едят кошек), Eat cats mice (грамматич�
 
 
 
+<div id="for_tab04" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Упражнения</h3>
+<p class="su-step-info">
+Данный этап предназначен для тренировки и закрепления.
+</p>	
+	
+<h4 class="su-task">
+Задание 1. Постройте предложения в соответствие с прямым порядком слов, по схеме Подлежащее - Сказуемое - Дополнение.
+</h4>
+	
 
 
+<div class="su-exerc">
+<div id="di4">	
+				
+<p class="task">Перетащите слова в текстовое поле или напечатайте их.</p> 
+
+
+<div  class="gr_ex_type di_mix">
+
+<div class="gext_task gext_sign di_mix_first"> 
+<div class="di_mix_variants di_not_mix">Улицу убирают дворники</div>
+<input type="text" value=""> <span class="gext_answer" style="display: none">дворники убирают улицу</span>
+<div class="gext_show"><span><b>Дворники убирают улицу.</b></span> &nbsp;</div>
+
+</div>
+
+<div class="gext_task gext_sign"> 
+<div class="di_mix_variants di_not_mix">Мой&nbsp;брат книгу читает</div>
+<input type="text" value=""> <span class="gext_answer" style="display: none">Мой брат читает книгу</span>
+<div class="gext_show"><span><b>Мой брат читает книгу.</b></span> &nbsp;</div>
+</div>
+
+<div class="gext_task gext_sign">
+ <div class="di_mix_variants di_not_mix">Осенью прилетают птицы.</div>
+<input type="text" value=""> <span class="gext_answer" style="display: none">птицы прилетают осенью</span>
+
+<div class="gext_show"><span><b>Птицы прилетают осенью</b></span> &nbsp;</div>
+
+</div>
+
+<div class="gext_task gext_sign">
+ <div class="di_mix_variants di_not_mix">Обед готовит моя&nbsp;мама</div>
+<input type="text" value=""> <span class="gext_answer" style="display: none">моя мама готовит обед</span>
+
+<div class="gext_show"><span><b>Моя мама готовит обед.</b></span> &nbsp;</div>
+
+</div>
+
+<div class="gext_task gext_sign">
+ <div class="di_mix_variants di_not_mix">Этот&nbsp;журнал мой&nbsp;папа купил.</div>
+<input type="text" value=""> <span class="gext_answer" style="display: none">Мой&nbsp;папа купил этот&nbsp;журнал</span>
+
+<div class="gext_show"><span><b>Мой папа купил этот журнал.</b></span> &nbsp;</div>
+
+</div>
+
+
+<p class="gext_check es-ex-buttons gex-es-btn"><input type="button" class="gext_check_btn" value="Проверить" > <input type="button" value="Ответы" class="gext_answer_show"></p>
+
+
+</div>
+
+
+</div>
+
+
+</div> <!-- end of di4  -->
+
+
+<script type="text/javascript"> 
+	var di4 = new draginput_test( {
+		id: "di4", 
+		targets: "gext_task input", 
+		//in_targets: "input",
+		clear_option: true,
+		one_use: true,
+		variant_elem: "di_mix_variants span"
+		//targets_color: "#ffffff"
+
+		} )
+</script>
+
+
+
+	
+	
+	
+	
+
+	
+
+
+
+	</div>
+</div>
+<div id="for_tab05" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Практика</h3>
+<p class="su-step-info">
+Данный этап предназначен для закрепления.
+</p>	
+	
+
+<h4 class="su-task">
+Задание 1. Прослушайте фразы и подберите подходящую реплику к фразам.
+</h4>
+
+<div id="ds2" class="ds-wrapper" style="padding: 15px;">
+
+<p class="task" align="center">Перетащите слова из нижнего списка и нажмите "Проверить"</p>		
+
+<table align="center" style="margin: 0 auto;">
+
+<tr>
+<td>
+
+
+<table class="dst-test ds-table ds-audio" cellspacing="0" align="left" style="margin: auto">
+<col width="80">
+<col width="40">
+<col width="200">
+<tr>
+	<td class="ds-quest ds-audio-listen" align="center">
+			Hello!
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest ds-audio-listen ">
+			Alexey is
+	</td>
+
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+
+<tr>
+	<td class="ds-quest ds-audio-listen ">
+		Mike is
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest ds-audio-listen ">
+		Jane is
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest ds-audio-listen ">
+		Vabe is
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+</table>
+
+</td>
+
+</tr>
+<tr>
+
+<td>
+
+	
+<br>
+<br>
+
+<table class="ds_variants_list" >
+<col width="300">
+<tr valign="top">
+<td>
+
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>journalist from the USA</div></div>
+	</li>
+
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>engeneer from Canada</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">4</span>actress from the USA</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>programmer from Russia</div></div>
+
+	</li>
+</ul>
+
+</td>
+</tr>
+</table>
+
+
+
+</td>
+</tr>
+</table>
+
+
+<div class="es_btn_wrapper es-ex-buttons ds-check-wrapper">
+
+<input type="button" class="es_btn ds-check-button" value="Проверить">
+
+</div>
+
+
+</div>
+
+<script type="text/javascript"> 
+	var ds2 = new dragsort_test( {
+		id: "ds2", 
+		targets: "ds-answer", 
+		answer_elem: "ds_sort_item", 
+		variant_elem: "ds_variant",
+		answer_color: "#F7F6F6",
+		auto_check: false
+		} )
+</script>	
+	
+	
+	
+
+
+
+	
+	<br><br><br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+	</div>
+</div>
 
 
 

@@ -12,6 +12,8 @@
   <script type="text/javascript" src="/javascripts/jquery-1.4.2.min.js"></script>
   <%= javascript_include_tag 'effects' %>
   <%= stylesheet_link_tag 'stylesheet' %>
+  
+  
   <%if @javascripts%>  
   <% for js_file in @javascripts -%>
   <%= javascript_include_tag js_file %>
@@ -28,6 +30,7 @@
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <%= yield :special_js_css %>
+  
   <style type="text/css">
   .never-existed {font-size: 10pt;}
 	<%= yield :special_css %>

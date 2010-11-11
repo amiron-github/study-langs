@@ -63,17 +63,18 @@ grExFromVariants(t,i)
 
 
 $(".di_mix_variants").each(function(i, elem) {
-
 	var tStr = $(elem).text();
 	
 	$(elem).empty();
 	
-	tStr = tStr.replace(/[!.,;-?]/g, "").split(" ");
+	tStr = tStr.replace(/[!.,;-?]/g, "").replace(/\s\s+/g, " ").split(" ");
 	
-	tStr = tStr.shuffle();
+	if ( $(elem).hasClass("di_not_mix") == false) {
+		tStr = tStr.shuffle();
+	}
 	
 	for (var n=0; n < tStr.length; n ++ ) {
-		$(elem).append("<span>" + tStr[n] + "</span>")
+		$(elem).append("<span>" + tStr[n] + "</span> ")
 	}
 
 });

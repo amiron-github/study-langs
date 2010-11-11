@@ -67,18 +67,18 @@ this.start = function() {
 	this.container.find(".clear_placed_text").click(function() {
 		if (tObj.inTargets) {
 			$(this).parent().find(tObj.inTargets).val("");
-			
 		}else {
-			$(this).prev(tObj.targetsClass).val("");
+			$(this).prev("." + tObj.targetsClass).val("");
 		}
 		
 		if (tObj.oneUse) {
-			$(this).parent().find(".di_mix_variants").find(":hidden")
-				.css({visibility: "visible", backgroundColor: "#8FE2FF"})
-				.animate({backgroundColor: "#ffffff"});
+			$(this).parent().find(".di_mix_variants").find("*").each(function(i,elem) {
+				if ($(elem).css("visibility")=="hidden") {
+					$(elem).css({visibility: "visible", backgroundColor: "#8FE2FF"})
+					$(elem).animate({backgroundColor: "#ffffff"});
+				}
+			})
 		}
-		
-		
 	});
 	
 	
@@ -188,6 +188,7 @@ this.hittedTarget = function (fromVariant, hitted) {
 					} else {
 						var tValue = currentValue +" " + addValue;
 					}
+					tValue = tValue.replace(/&nbsp;/g, " ")
 					tValue = $.trim(tValue)
 					tIntarget.val(tValue);
 				}
@@ -199,6 +200,7 @@ this.hittedTarget = function (fromVariant, hitted) {
 					} else {
 						var tValue = currentValue +" " + addValue;
 					}
+				tValue = tValue.replace(/&nbsp;/g, " ")
 				tValue = $.trim(tValue)
 				tIntarget.html(tValue);
 			}
@@ -219,7 +221,7 @@ this.hittedTarget = function (fromVariant, hitted) {
 					} else {
 						var tValue = currentValue +" " + addValue;
 					}
-					
+					tValue = tValue.replace(/&nbsp;/g, " ")
 					tValue = $.trim(tValue)
 					tObj.targets.eq(hitted).val(tValue);
 				}
@@ -230,7 +232,7 @@ this.hittedTarget = function (fromVariant, hitted) {
 				} else {
 					var tValue = currentValue +" " + addValue;
 				}
-				
+				tValue = tValue.replace(/&nbsp;/g, " ")
 				tValue = $.trim(tValue)
 				tObj.targets.eq(hitted).html(tValue);
 			}
