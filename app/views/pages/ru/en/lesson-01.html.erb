@@ -429,27 +429,16 @@ Mice eat cats (Мыши едят кошек), Eat cats mice (грамматич�
 
 <table class="dst-test ds-table ds-audio" cellspacing="0" align="left" style="margin: auto">
 <col width="80">
+<col width="20">
 <col width="40">
 <col width="200">
 <tr>
-	<td class="ds-quest ds-audio-listen" align="center">
-			Hello!
+	<td class="ds-quest" align="center">
+			Фраза 1 
 	</td>
-	<td class="ds-audio-correctness">
-		<div class="ds-sign"></div>
-
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div>
 	</td>
-	<td class="ds-answer">
-		<div class="ds_sort_item">
-			&nbsp;
-		</div>
-	</td>
-</tr>
-<tr>
-	<td class="ds-quest ds-audio-listen ">
-			Alexey is
-	</td>
-
 	<td class="ds-audio-correctness">
 		<div class="ds-sign"></div>
 	</td>
@@ -459,10 +448,12 @@ Mice eat cats (Мыши едят кошек), Eat cats mice (грамматич�
 		</div>
 	</td>
 </tr>
-
 <tr>
-	<td class="ds-quest ds-audio-listen ">
-		Mike is
+	<td class="ds-quest">
+			Фраза 2
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound01103.mp3', this)"></div>
 	</td>
 	<td class="ds-audio-correctness">
 		<div class="ds-sign"></div>
@@ -470,38 +461,59 @@ Mice eat cats (Мыши едят кошек), Eat cats mice (грамматич�
 	<td class="ds-answer">
 		<div class="ds_sort_item">
 			&nbsp;
-
 		</div>
 	</td>
 </tr>
 <tr>
-	<td class="ds-quest ds-audio-listen ">
-		Jane is
+	<td class="ds-quest">
+		Фраза 3
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound01111.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Фраза 4
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/soundb01032021.mp3', this)"></div>
 	</td>
 	<td class="ds-audio-correctness">
 		<div class="ds-sign"></div>
 	</td>	
 	<td class="ds-answer">
-
 		<div class="ds_sort_item">
 			&nbsp;
 		</div>
 	</td>
 </tr>
 <tr>
-	<td class="ds-quest ds-audio-listen ">
-		Vabe is
+	<td class="ds-quest">
+		Фраза 5
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div>
 	</td>
 	<td class="ds-audio-correctness">
 		<div class="ds-sign"></div>
 	</td>	
 	<td class="ds-answer">
-
 		<div class="ds_sort_item">
 			&nbsp;
 		</div>
 	</td>
 </tr>
+
+
 </table>
 
 </td>
@@ -515,25 +527,32 @@ Mice eat cats (Мыши едят кошек), Eat cats mice (грамматич�
 <br>
 <br>
 
-<table class="ds_variants_list" >
-<col width="300">
+<table class="ds_variants_list" width="100%">
 <tr valign="top">
 <td>
 
 <ul class="no-list">
 	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>journalist from the USA</div></div>
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Hi!</div></div>
 	</li>
 
 	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>engeneer from Canada</div></div>
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>I’m fine.</div></div>
 	</li>
 	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">4</span>actress from the USA</div></div>
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">4</span>You’re welcome!</div></div>
 	</li>
-	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>programmer from Russia</div></div>
+</ul>
 
+</td>
+<td>
+
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>Yes, thank you.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">5</span>Bye!</div></div>
 	</li>
 </ul>
 
@@ -563,14 +582,47 @@ Mice eat cats (Мыши едят кошек), Eat cats mice (грамматич�
 		targets: "ds-answer", 
 		answer_elem: "ds_sort_item", 
 		variant_elem: "ds_variant",
-		answer_color: "#F7F6F6",
+		answer_color: "#F6FAFF",
 		auto_check: false
 		} )
 </script>	
 	
 	
 	
+<br><br><br><br>
 
+<h4 class="su-task">
+Задание 2. Напечатайте фразу под диктовку.
+</h4>
+
+
+
+<div id="ch3" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch3", 
+		test_id: "",
+		quest_num: 10,
+		variants_num: 5,
+		quest_type: 'audio',
+		answer_type: 'type',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+<% @last_item_index = (@words.length)-1 -%>
+<% @words.each_with_index  do |word, index| -%>
+['<%= word.sound_url %>', "<%= word.text.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
+		} )
+</script>
 
 
 	
