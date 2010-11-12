@@ -5,9 +5,13 @@ class SessionsController < ApplicationController
 layout :determine_layout
   # render new.rhtml
   def new
+	@lang = params[:lang]
+	@to_lang = params[:to_lang]
   end
 
   def create
+	layout_lang= params[:lang]
+	to_lang = params[:to_lang]
     logout_keeping_session!
     user = User.authenticate(params[:email], params[:password])
     if user
@@ -18,8 +22,15 @@ layout :determine_layout
       self.current_user = user
       new_cookie_flag = (params[:remember_me] == "1")
       handle_remember_cookie! new_cookie_flag
-      redirect_back_or_default('/user_profile.html')
-      flash[:notice] = "Logged in successfully"
+	  if layout_lang == 'ru'
+		if to_lang=='jp'
+			redirect_back_or_default('/ru/jp/user_profile.html')
+		elsif to_lang=='en'
+			redirect_back_or_default('/ru/en/user_profile.html')
+		end
+	  else
+		redirect_back_or_default('/user_profile.html')
+	  end
     else
       note_failed_signin
       @email       = params[:email]
@@ -30,16 +41,35 @@ layout :determine_layout
   end
 
   def destroy
+	layout_lang = params[:lang]
+	to_lang = params[:to_lang]
     logout_killing_session!
     #flash[:notice] = "You have been logged out."
-    redirect_back_or_default('/')
+	if layout_lang == 'fr'
+			redirect_back_or_default('/fr/')
+	elsif layout_lang == 'ru'
+		if to_lang == 'jp'
+				redirect_back_or_default('/ru/jp/')
+		else 
+				redirect_back_or_default('/ru/en/')
+		end
+	else
+			redirect_back_or_default('/')
+	end
   end
   
 private
 	def determine_layout
 		layout_lang = params[:lang]
+		to_lang = params[:to_lang]
 		if layout_lang == 'fr'
 			'fr_application.rhtml'
+		elsif layout_lang == 'ru'
+			if to_lang == 'jp'
+				'ru_jp_application'
+			else 
+				'ru_en_application'
+			end
 		else
 			'application'
 		end

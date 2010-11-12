@@ -7,3 +7,10 @@ $(".trans-display").change(function(){
 	}
 }).change();
 });
+
+
+function openNextStep(tab) {
+openTabFromUrl(tab)
+location.href="#tab="+tab
+window.scrollTo(0,100);
+}

@@ -212,16 +212,13 @@ function checkExType(elClass) {
 		userAnswer = $.trim(userAnswer); 			
 		tAnswer = $.trim(tAnswer); 
 		
+		$(this).removeClass("gex-correct").removeClass("gex-error");
+		
 		if( userAnswer.toUpperCase() == tAnswer.toUpperCase() ) {
-			$(this).css({backgroundImage: "url(/images/accept1.png)"}).parent().removeAttr("title");
-			//$("#t_inf").append( " <pre>|" + userAnswer.toUpperCase() +"| - |"+ tAnswer.toUpperCase() + "|</pre><br>");
-			
+			$(this).addClass("gex-correct");
    		}else {
-			$(this).css({backgroundImage: "url(/images/error1.png)"}).attr("title", "");
-			
-			//$("#t_inf").append( " <pre>|" + userAnswer.toUpperCase() +"| - |"+ tAnswer.toUpperCase() + "|</pre><br>");
-			
-			
+			$(this).addClass("gex-error");
+
 			errorNum++;
 		}
 

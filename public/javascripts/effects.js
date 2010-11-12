@@ -946,42 +946,47 @@ $("div.ptab").hover(
 
 
 $("#tab01").click(function(){
-	setCookie("voc", '01');
 	$(".pBlock").hide();
 	$("#for_tab01").show();
+	location.href='#tab=1'
 });
 
 $("#tab02").click(function(){
-	setCookie("voc", '02');
 	$(".pBlock").hide();
 	$("#for_tab02").show();
+	location.href='#tab=2'
 });
 
 $("#tab03").click(function(){
-	setCookie("voc", '03');
 	$(".pBlock").hide();
 	$("#for_tab03").show();
+	location.href='#tab=3'
 });
 
 $("#tab04").click(function(){
-	setCookie("voc", '04');
-	
 	$(".pBlock").hide();
 	$("#for_tab04").show();
+	location.href='#tab=4'
 });
 
 $("#tab05").click(function(){
-	setCookie("voc", '05');
-	
 	$(".pBlock").hide();
 	$("#for_tab05").show();
+	location.href='#tab=5'
+});
+
+$("#tab06").click(function(){
+	$(".pBlock").hide();
+	$("#for_tab05").show();
+	location.href='#tab=6'
 });
 
 //openTab();
 
-activeTab();
 
 });
+
+
 
 
 
@@ -1117,7 +1122,7 @@ function findTabInUrl() {
 }
 
 function openTabFromUrl(tab) {
-/if the url is on the same page, bind onClick event/
+//if the url is on the same page, bind onClick event/
 	if (tab) {
 		var tabToOpen = tab;
 	} else {
@@ -1127,6 +1132,7 @@ function openTabFromUrl(tab) {
 	$(function() {
 		$(".ptab").eq(tabToOpen-1).click();
 	});
+	
 }
 
 

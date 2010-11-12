@@ -149,6 +149,29 @@ font-weight: bold;
 padding-right: 20px;
 }
 
+
+.su-next-wrapper {
+padding-bottom: 30px;
+}
+
+
+input.su-next-step {
+background-color: #63a2fe;
+}
+
+.es-ex-buttons input.su-next-step {
+width: auto;
+font-size: 15px !important;
+padding-left: 10px;
+padding-right: 10px;
+}
+
+.su-next-wrapper input.ex-btn-hover {
+background-color: #91d4ff;
+}
+
+
+
 .pBlock .su-step-title {
 border-bottom:1px solid #777777;
 color:#555555;
@@ -168,7 +191,8 @@ position: relative;
 margin: 0px 0px 40px;
 border: 2px solid #9FC2FF;
 background-color:#fff;
-padding: 8px 80px 8px 20px;
+padding: 8px 30px 8px 108px;
+text-indent: -78px;
 font-size: 12px;
 color: #31394F;
 text-shadow: 0px 1px 0px #fff, 1px 1px 3px #8EA7CF;
@@ -178,6 +202,17 @@ border-radius: 9px;
 -moz-box-shadow: 1px 1px 0px #627EAF, 1px 2px 3px #3E556F;
 -webkit-box-shadow: 1px 1px 0px #627EAF, 1px 2px 3px #3E556F;
 box-shadow: 1px 1px 0px #627EAF, 1px 2px 3px #3E556F;
+}
+
+h3.su-page-p {
+background-color:#DDE7F5;
+border-top:1px solid #678ACF;
+font-size:15px;
+left:-5px;
+margin:50px 0 20px;
+padding:6px 8px 7px;
+position:relative;
+text-shadow:0 1px 0 #FFFFFF;
 }
 
 .voc-wordlist .diction {
@@ -839,5 +874,27 @@ padding-right: 10px;
 
 
 
+/* grammar exercises  */
+.gex-correct {
+background-image:url(/images/accept-20.png);
+background-position:10px 4px;
+}
+
+.gex-error {
+background-image:url(/images/error-20.png);
+background-position:10px 4px;
+}
+
+.gext_sign {
+font-size: 11px;
+font-weight: bold;
+background-color: #f6f9fe;
+padding-right: 15px;
+color: #333;
+}
+
+
+
+/* end of grammar exercises  */
 
 
