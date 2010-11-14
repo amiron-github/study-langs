@@ -427,7 +427,7 @@ this.start = function() {
 		
 		tObj.targetTable();               // shot of targets
 		t.css({visibility: "hidden"});
-		dragHelper.addClass("ds_ondrag").html(tHtml).css({left: x, top: y, maxWidth: l, opacity: "0.8"});
+		dragHelper.addClass("ds_ondrag").html(" "+tHtml+" ").css({left: x, top: y, maxWidth: l, opacity: "0.8"});
 		tObj.dragging(difX, difY);
 		tObj.dropping(fromVariant);
 		e.preventDefault();
@@ -501,7 +501,7 @@ this.hittedTarget = function (fromVariant, hitted) {
 		tObj.targets.eq(hitted).children().append('<div taken="'+fromVariant+'" class="sl_item">' + tVariantHtml + '</div> ');
 		tObj.hittedAnimation(hitted);
 			
-		this.answers.find("div.sl_item").mousedown(function(e){
+		this.answers.find("div.sl_item").unbind("mousedown").mousedown(function(e){
 
 			$("body").addClass("noselect");
 			var t = $(this);
@@ -516,7 +516,7 @@ this.hittedTarget = function (fromVariant, hitted) {
 			t.parent().attr("taken", "-1");
 			t.remove();
 			tObj.targetTable();  // shot of the targets
-			dragHelper.addClass("ds_ondrag").html(tHtml).css({left: x, top: y, maxWidth: l, opacity: "0.8", textAlign: "left"});
+			dragHelper.addClass("ds_ondrag").html(""+tHtml+"").css({left: x, top: y, maxWidth: l, opacity: "0.8", textAlign: "left"});
 			tObj.dragging(difX, difY);
 			tObj.dropping(fromVariant);
 			e.preventDefault();

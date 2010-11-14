@@ -542,7 +542,8 @@ background-image: url(/images/accept-20.png);
 .di_mix .di_mix_variants {
 margin-bottom: 10px;
 margin-top: 10px;
-padding: 3px;
+padding: 4px 3px;
+line-height: normal;
 border: 1px dashed #a0b2cc;
 background-color: #dbe9fd;
 position: relative;
@@ -594,7 +595,7 @@ border-top: 1px dotted #666;
 padding-top: 8px;
 padding-left:40px;
 text-indent:0px;
-background-position: 0 50%;
+background-position: 10px 50%;
 position: relative;
 padding-right: 30px;
 }
@@ -683,6 +684,8 @@ padding-left: 10px;
 padding-right: 10px;
 background-color: #bed7fc;
 }
+
+
 
 /*end of grammar exercises*/
 
@@ -791,11 +794,11 @@ font-weight: bold;
 .sl_item {
 background-color: #fff;
 margin: 2px;
-border: 1px dashed #DFDFDF;
+border: 1px dashed #A0B2CC;
 }
 
 .ds-border-right {
-border-right: 1px solid #999;
+border-right:1px solid #7A95BD;
 }
 
 .ds_sort_item {
@@ -845,6 +848,14 @@ box-shadow:1px 1px 0px #627EAF, 1px 2px 3px #3E556F;
 display: none;
 }
 
+.ds-table th {
+background-color:#DBE9FD;
+background-image:none;
+border-bottom:1px solid #7A95BD;
+padding:5px;
+text-align:center;
+}
+
 
 .no-list {
 list-style: none;
@@ -886,8 +897,7 @@ background-position:10px 4px;
 }
 
 .gext_sign {
-font-size: 11px;
-font-weight: bold;
+font-size: 12px;
 background-color: #f6f9fe;
 padding-right: 15px;
 color: #333;
@@ -896,5 +906,41 @@ color: #333;
 
 
 /* end of grammar exercises  */
+
+.su-gr-table {
+background-color:#C3CDDF;
+}
+
+.su-gr-table  th {
+background-color:#D1DDEF;
+border:1px solid #EFF5FF;
+color:#45494F;
+font-size:11px;
+padding:4px 15px;
+text-align: center;
+}
+
+.su-gr-table  th.sec-row {
+background-color: #E0E6EF
+}
+
+.su-gr-table td {
+background-color:#FFFFFF;
+color:#45494F;
+padding:4px 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
