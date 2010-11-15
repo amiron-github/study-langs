@@ -2698,7 +2698,28 @@ background-color: #FFFFCF;
 #alert_mess div b {font-size: 14px; display: block; padding: 3px 3px 4px;}
 
 
+.st-bl-table {
+background-color:#C3CDDF;
+}
 
+.st-bl-table th {
+background-color:#D1DDEF;
+border:1px solid #EFF5FF;
+color:#45494F;
+font-size:11px;
+padding:4px 15px;
+text-align: center;
+}
+
+.st-bl-table th.sec-row {
+background-color: #E0E6EF
+}
+
+.st-bl-table td {
+background-color:#FFFFFF;
+color:#45494F;
+padding:4px 15px;
+}
 
 
 
