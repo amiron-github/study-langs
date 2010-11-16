@@ -184,10 +184,15 @@ write_attribute :email, (value ? value.downcase : nil)
 	end
 	
 	def check_new_category(category_id)
-		started = words.find(:first, :conditions=>['category_id=?',category_id])
-		if !started
-			return Category.find(category_id)
-		else
+		lang = Category.find(category_id).lang
+		unless  lang == '' || lang == nil
+			started = words.find(:first, :conditions=>['category_id=?',category_id])
+			if !started 
+				return Category.find(category_id)
+			else
+				return false
+			end
+		else 
 			return false
 		end
 	end

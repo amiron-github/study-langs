@@ -742,6 +742,14 @@ border: 1px solid #7A95BD;
 box-shadow: 2px 2px 5px #efefef;
 }
 
+.ds-table-nosound tr td.ds-quest {
+padding: 4px 4px 4px 12px;
+font-weight: bold;
+text-align: left  !important;
+font-size: 12px;
+color: #444;
+}
+
 div.ds_dragged {
 padding: 10px 20px;
 text-align: left;

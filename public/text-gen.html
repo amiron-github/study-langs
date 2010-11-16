@@ -5,6 +5,7 @@
 
   
  <script src="/javascripts/jquery.min.js" type="text/javascript"></script>
+ <script src="/javascripts/editaccents.js" type="text/javascript"></script>
  
  
  <script type="text/javascript"> 
@@ -175,6 +176,15 @@ $("#show_line_generator").toggle(function() {
 }, function() {
 	$("#line_generator_display").fadeIn();
 	$(this).val("hide");
+
+});
+
+$("#show_editor").toggle(function() {
+	$(".display_editor").fadeIn();
+	$(this).val("hide");
+}, function() {
+	$(".display_editor").fadeOut();
+	$(this).val("show");
 
 });
 
@@ -440,10 +450,9 @@ function invertColumn() {
 }
 
 
- 
- 
 
  
+
  </script>
  
  
@@ -548,6 +557,53 @@ width: 150px;
 
 .col_options input {
 font-size: 11px;
+}
+
+
+
+
+
+.ac_edit_panel {
+background-color: #fff;
+}
+
+.ac_edit_panel td {
+padding: 0;
+}
+
+.ac_edit_panel td a {
+outline: none;
+display: block;
+}
+
+.ac_edit_panel td a {
+font-weight: bold;
+font-size: 12px;
+color: #000;
+text-decoration: none;
+padding: 1px 3px 2px;
+border: 1px solid #555;
+}
+
+.ac_edit_panel td a:active {
+border: 1px solid #555;
+background-color: #fff;
+}
+
+.ac_edit_panel td a:visited {
+border: 1px solid #555;
+background-color: #fff;
+}
+
+.ac_edit_panel td a:hover {
+border: 1px solid #000;
+background-color: #efefef;
+}
+
+.ac_edit_panel td a:active {
+border: 1px solid #000;
+background-color: #333;
+color: #fff;
 }
  
 </style> 
@@ -738,6 +794,39 @@ Width:
 
 <br>
 <br>
+
+<div id="text_editor" class="display-container">
+
+<h2><b>Text editor</b> <input type="button" id="show_editor" value="show" align="right"></h2>
+
+<div class="display_editor" style="display: none;">
+
+<br>
+<br>
+
+<table class="ac_edit_panel" cellpadding="1">
+	<tr>
+		<td><a href="javascript:aRusAcc()" >Ra </a></td>
+		<td><a href="javascript:aTrAcc()" >Ea </a></td>
+		<td><a href="javascript:aTrRy()" >Ry </a></td>
+		<td><a href="javascript:aTrRyAcc()" >Ry a </a></td>
+		<td><a href="javascript:aSoftY()" >Y'</a></td>
+		<td><a href="javascript:aSoftV()" >V' </a></td>
+		<td><a href="javascript:aSoftC()" >C' </a></td>
+		<td><a href="javascript:aTrSoftYE()" >ye </a></td>
+		<td><a href="javascript:aTrSoftYA()" >ya</a></td>
+		<td><a href="javascript:aTrSoftYO()" >ty</a></td>
+		<td><a href="javascript:aTrSoftYOO()" >yoo</a></td>
+	</tr>
+</table>
+
+<br>
+
+<textarea id="t_editor" style="width: 500px;" rows="10">Hi</textarea>
+
+</div> <!-- end of display_wrap -->
+
+</div> <!-- end of display-container -->
 <br>
 <br>
 <br>

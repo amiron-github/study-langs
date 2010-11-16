@@ -1,5 +1,7 @@
 
 <% content_for :special_js_css do %>
+<%= javascript_include_tag 'editaccents.js' %>
+
 <style type="text/css">
 .display-container {
 padding: 30px 30px;
@@ -84,6 +86,54 @@ font-size: 11px;
 .w-data div div:nth-child(odd) {
 background-color: #efefef;
 }
+
+/*to editor*/
+
+
+.ac_edit_panel {
+background-color: #fff;
+}
+
+.ac_edit_panel td {
+padding: 0;
+}
+
+.ac_edit_panel td a {
+outline: none;
+display: block;
+}
+
+.ac_edit_panel td a {
+font-weight: bold;
+font-size: 12px;
+color: #000;
+text-decoration: none;
+padding: 1px 3px 2px;
+border: 1px solid #555;
+}
+
+.ac_edit_panel td a:active {
+border: 1px solid #555;
+background-color: #fff;
+}
+
+.ac_edit_panel td a:visited {
+border: 1px solid #555;
+background-color: #fff;
+}
+
+.ac_edit_panel td a:hover {
+border: 1px solid #000;
+background-color: #fff;
+}
+
+.ac_edit_panel td a:active {
+border: 1px solid #000;
+background-color: #555;
+color: #fff;
+}
+
+/*end to editor*/
 
 </style>
 <script type="text/javascript">
@@ -462,7 +512,23 @@ Display:
 <div id="edit_text" > 
 <b>Edit the element</b> <span class="el-name"></span><br>
 <div>
-<textarea style="width: 100%;" rows="3"></textarea>
+<br>
+<table class="ac_edit_panel" cellpadding="1">
+	<tr>
+		<td><a title="span acco" href="javascript:aRusAcc()">ao</a></td>
+		<td><a title="span acct" href="javascript:aTrAcc()">at</a></td>
+		<td><a title="span ry" href="javascript:aTrRy()"><s>i</s></a></td>
+		<td><a title="span acct ry" href="javascript:aTrRyAcc()"><s>i</s>a</a></td>
+		<td><a title="span sftc" href="javascript:aSoftC()">ь+s</a></td>
+		<td><a title="span sftv e" href="javascript:aTrSoftYE()">е</a></td>
+		<td><a title="span sftv a" href="javascript:aTrSoftYA()">я</a></td>
+		<td><a title="span sfty o" href="javascript:aTrSoftYO()">ё</a></td>
+		<td><a title="span sftv oo" href="javascript:aTrSoftYOO()">ю</a></td>
+		<td><a title="span sfty" href="javascript:aSoftY()">s'</a></td>
+		<td><a title="span sftv" href="javascript:aSoftV()">s'a</a></td>
+	</tr>
+</table>
+<textarea id="t_editor" style="width: 100%;" rows="3"></textarea>
 </div>
 </div>
 
