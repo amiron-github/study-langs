@@ -59,38 +59,36 @@ http://www.study-languages-online.com/course.html
 	http://www.study-languages-online.com/unit09.html
 	http://www.study-languages-online.com/unit10.html
 http://www.study-languages-online.com/vocabulary.html
-	http://www.study-languages-online.com/politeness.html
-	http://www.study-languages-online.com/acquaintance.html
-	http://www.study-languages-online.com/transport.html
-	http://www.study-languages-online.com/airport.html
-	http://www.study-languages-online.com/bus.html
-	http://www.study-languages-online.com/subway.html
-	http://www.study-languages-online.com/taxi.html
-	http://www.study-languages-online.com/hotel.html
-	http://www.study-languages-online.com/services.html
-	http://www.study-languages-online.com/city.html
-	http://www.study-languages-online.com/sightseeing.html
-	http://www.study-languages-online.com/meals.html
-	http://www.study-languages-online.com/bread.html
-	http://www.study-languages-online.com/gruel.html
-	http://www.study-languages-online.com/meat.html
-	http://www.study-languages-online.com/dairy.html
-	http://www.study-languages-online.com/vegetables.html
-	http://www.study-languages-online.com/fruit.html
-	http://www.study-languages-online.com/confectionery.html
-	http://www.study-languages-online.com/drinks.html
-	http://www.study-languages-online.com/shopping.html
-	http://www.study-languages-online.com/clothing.html
-	http://www.study-languages-online.com/lingerie.html
-	http://www.study-languages-online.com/sportwear.html
-	http://www.study-languages-online.com/shoes.html
-	http://www.study-languages-online.com/accessories.html
-	http://www.study-languages-online.com/perfumery.html
-	http://www.study-languages-online.com/jewelry.html
-	http://www.study-languages-online.com/video.html
+	http://www.study-languages-online.com/en/ru/vocabulary/politeness
+	http://www.study-languages-online.com/en/ru/vocabulary/acquaintance
+	http://www.study-languages-online.com/en/ru/vocabulary/airport
+	http://www.study-languages-online.com/en/ru/vocabulary/bus
+	http://www.study-languages-online.com/en/ru/vocabulary/subway
+	http://www.study-languages-online.com/en/ru/vocabulary/taxi
+	http://www.study-languages-online.com/en/ru/vocabulary/hotel
+	http://www.study-languages-online.com/en/ru/vocabulary/services
+	http://www.study-languages-online.com/en/ru/vocabulary/city
+	http://www.study-languages-online.com/en/ru/vocabulary/sightseeing
+	http://www.study-languages-online.com/en/ru/vocabulary/bread
+	http://www.study-languages-online.com/en/ru/vocabulary/gruel
+	http://www.study-languages-online.com/en/ru/vocabulary/meat
+	http://www.study-languages-online.com/en/ru/vocabulary/dairy
+	http://www.study-languages-online.com/en/ru/vocabulary/vegetables
+	http://www.study-languages-online.com/en/ru/vocabulary/fruit
+	http://www.study-languages-online.com/en/ru/vocabulary/confectionery
+	http://www.study-languages-online.com/en/ru/vocabulary/drinks
+	http://www.study-languages-online.com/en/ru/vocabulary/shopping
+	http://www.study-languages-online.com/en/ru/vocabulary/clothing
+	http://www.study-languages-online.com/en/ru/vocabulary/lingerie
+	http://www.study-languages-online.com/en/ru/vocabulary/sportwear
+	http://www.study-languages-online.com/en/ru/vocabulary/shoes
+	http://www.study-languages-online.com/en/ru/vocabulary/accessories
+	http://www.study-languages-online.com/en/ru/vocabulary/perfumery
+	http://www.study-languages-online.com/en/ru/vocabulary/jewelry
+	http://www.study-languages-online.com/en/ru/vocabulary/video
 	http://www.study-languages-online.com/language-skills.html
-	http://www.study-languages-online.com/parts-of-body.html
-	http://www.study-languages-online.com/bank.html
+	http://www.study-languages-online.com/en/ru/vocabulary/parts-of-body
+	http://www.study-languages-online.com/en/ru/vocabulary/bank
 http://www.study-languages-online.com/pronunciation.html
 	http://www.study-languages-online.com/basic-sounds.html
 	http://www.study-languages-online.com/sounds-info.html

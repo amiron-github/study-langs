@@ -1,0 +1,151 @@
+<% @page_title = 'Russian Language Online: Devocalization and vocalization of consonants' %>
+<% @page_meta = {'description' => "Online information about devocalization and vocalization of consonants in Russian with audio examples"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<% content_for :special_js_css do %>
+<%= stylesheet_link_tag 'stylesounds' %>
+
+<style type="text/css">
+h2.page {margin-bottom: 0px;}
+.sound-letter td {
+width: 20%;
+}
+.italic-letter {
+font-style: italic;
+font-family: Times New Roman;
+}
+</style>
+<% end %>
+
+<div class="hint_wrap">
+<div class="hint_button" style="float: right;">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Links and Settings</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+    				<li><a href="basic-letters.html">Russian Letters</a></li>
+    				<li><a href="softness.html">Softness </a></li>
+   					<li><a href="stress-reduction.html">Stress and reduction</a></li>
+					<li><a href="reading-exceptions.html">Exceptional cases</a> </li>
+					<li><a href="basic-reading-rules.html">Basic rules</a> </li>
+    				<li><a href="reading-practice.html">Training exercises</a></li>
+    		</ul>
+        <%= render :partial => 'preload_option' %>
+	</div>
+</div>
+</div>
+<div id="pagecontent"><div id="content">
+
+
+<h2 class="page">Devocalization and Vocalization <br/>of Consonants</h2>
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="russian-reading.html">Reading in Russian</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="readingrules.html">Rules of reading</a>
+	<span class="int-arrow">--&gt;</span> Devocalization and Vocalization
+	</span>
+</h3>
+<p> 
+
+Une caractéristique importante du système phonétique russe est l'opposition des consonnes sonores vs. consonnes sourdes. 
+Les consonnes sonores sont prononcées avec une vibration des cordes vocales, alors que les consonnes sourdes ne sont pas accompagnées de la vibration des cordes vocales.
+ La langue russe possède 11 paires "consonne sonore/consonne sourde": 
+ [b - p, b' - p', v - f, v' - f', z - s, z’ - s', d - t, d' - t', j - sh, g - k, g' - k']. 
+ Les autres consonnes n'ont pas de paires, ce sont les consonnes sonores [m, m', n, n', l, l', r, r', y] et les consonnes sourdes [ts, tch, h, sch]. 
+
+<br />
+<span style="line-height: 20px;" >
+<span class="open_popup_link" onClick="open_comment('/comments_audio/comment_voiced_unvoiced.html')">Cliquez ici pour ouvrir une fenêtre popup et écouter ces sons</span>
+</span>
+</p>
+
+
+<h3 class="page-p"> L'assourdissement de consonnes</h3>
+<p>
+Les lettres-consonnes <span class="letter">б</span>, <span class="letter">в</span>, <span class="letter">г</span>, <span class="letter">д</span>, <span class="letter">ж</span>, <span class="letter">з</span>,
+dont les valeurs de base sont des connsonnes sonores, peuvent désigner des consonnes sourdes (dures ou molles). 
+Ce phénomène est appelé "l'assourdissment". L'assourdissment se produit lorsque ces lettres se trouvent avant les lettres désignant des consonnes sourdes, à la fin d'un mot ou
+devant le signe mou (<span class="letter">ь</span>) final. 
+</p>
+
+<div class="egdiv eg-sound ">
+<h4>Exemples: </h4>
+<p><strong>Les lettres mises en surbrillance désignent des consonnes sourdes:</strong></p>
+<p>
+<span class="eg">зу<span class="unvoiced_letter">б</span></span>
+<span class="sound" onclick="playSound('sound12107.mp3')">[zoup] &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+ <span class="egt">dent</span>
+
+</p>
+
+<p>
+<span class="eg">а<span class="unvoiced_letter">в</span>тобус</span>
+
+<span class="sound" onclick="playSound('sound02101.mp3')">[aftobous] &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+ <span class="egt">bus</span>
+</p>
+<p>
+<span class="eg">нер<span class="unvoiced_letter">в</span></span>
+<span class="sound" onclick="playSound('reading/soundr030002.mp3')">[n'erf] &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+ <span class="egt">nerf</span>
+</p>
+<p>
+<span class="eg">обу<span class="unvoiced_letter">в</span>ь</span>
+<span class="sound" onclick="playSound('sound09401.mp3')">[obouf'] &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+ <span class="egt">chaussures</span>
+</p>
+
+</div> 
+
+
+
+<h3 class="page-p">La sonorisation de consonnes</h3>
+<p>
+La sonorisation est un phénomène inverse par rapport à l'assourdissment. 
+Les lettres  <span class="letter">п</span>, <span class="letter">ф</span>, <span class="letter">с</span>, <span class="letter">т</span>, <span class="letter">ш</span> et <span class="letter">к</span>, 
+dont les valeurs de base sont des connsonnes sourdes, peuvent désigner des consonnes sonores (dures ou molles). 
+La sonorisation se produit lorsque ces lettres se trouvent devant les lettres
+<span class="letter">б</span>, <span class="letter">г</span>, <span class="letter">д</span>, <span class="letter">ж</span>, <span class="letter">з</span>
+désignant des consonnes sonore. 
+Notez que si les lettres <span class="letter">п</span>, <span class="letter">ф</span>, <span class="letter">с</span>, <span class="letter">т</span>, <span class="letter">ш</span> et <span class="letter">к</span>
+se trouvent devant la lettre <span class="letter">в</span> la sonorisation ne se produit pas.  
+</p>
+<div class="egdiv eg-sound ">
+<h4>Exemples: </h4>
+<p><strong>Les lettres mises en surbrillance désignent des consonnes sourdes:</strong></p>
+<p>
+<span class="eg">во<span class="voiced_letter">к</span>зал</span>
+<span class="sound" onclick="playSound('sound06107.mp3')">[vagzal] &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+ <span class="egt">gare</span>
+</p>
+<p>
+<span class="eg">фу<span class="voiced_letter">т</span>болка</span>
+<span class="sound" onclick="playSound('sound09114.mp3')">[foudbolka] &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+ <span class="egt">T-shirt</span>
+</p>
+<p>MAIS:</p>
+<p>
+<span class="eg">квартал</span>
+
+<span class="sound" onclick="playSound('sound06111.mp3')">[kvartal] &nbsp;<span class="play_tip">&nbsp;&nbsp;</span></span>
+ <span class="egt">quartier</span> - il n'y a pas de sonorisation devant [v]
+</p>
+
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
+
+
+</div></div>
+
+<script type="text/javascript">
+currentSection="reading";
+</script>
