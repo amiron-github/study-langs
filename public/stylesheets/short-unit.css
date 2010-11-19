@@ -685,7 +685,8 @@ padding-right: 10px;
 background-color: #bed7fc;
 }
 
-
+.gex_multi_one {
+}
 
 /*end of grammar exercises*/
 
@@ -911,6 +912,43 @@ padding-right: 15px;
 color: #333;
 }
 
+.gex_multi_one {
+
+}
+
+.gex_multi_one .gex-error, .gex_multi_one .gex-correct {
+background-position:10px 10px;
+}
+
+.di_mix .gex_multi_one_item {
+border-bottom: 0px solid #fff;
+padding-bottom: 2px;
+}
+
+.gr_ex_variants_wrap {
+background-color: #f6f9fe;
+padding: 15px 10px 10px;
+}
+
+.gexv_variant {
+font-size: 11px;
+padding:0 30px 3px 90px;
+text-indent: -18px;
+}
+
+.gexv_variant input {
+position: relative;
+margin: 0;
+top: 3px;
+}
+
+.gexv_with_trans  .gexv_task {
+font-style: italic;
+}
+
+.gexv_with_trans  .gexv_task span {
+font-weight: bold;
+}
 
 
 /* end of grammar exercises  */
@@ -938,10 +976,13 @@ color:#45494F;
 padding:4px 15px;
 }
 
+/*.ui-dialog*/
 
+.ui-dialog {
+position: fixed;
+}
 
-
-
+/*end of .ui-dialog*/
 
 
 

@@ -66,41 +66,16 @@
 <div class="su-present">
 <div class="su-present-brd">
 <table cellspacing="0">
+<%
+@voc1 = Cluster.find(17).words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+%>
+<% @voc1.each do |voc_word|  %>
 	<tr>
-		<td class="su-pres-audio"><div class="jp_control" onclick="cJplayer('/sounds/en/greetings/sound0101.mp3', this)"></div></td>
-		<td class="su-pres-orig">I am Alexander.</td>
-		<td class="su-pres-trans">Я Александр.</td>
+		<td class="su-pres-audio"><%unless voc_word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%=voc_word.sound_url%>', this)"></div><%end%></td>
+		<td class="su-pres-orig"><%=voc_word.text%></td>
+		<td class="su-pres-trans"><%=voc_word.translate%></td>
 	</tr>
-	<tr>
-		<td class="su-pres-audio"><div class="jp_control" onclick="cJplayer('/sounds/en/greetings/sound0114.mp3', this)"></div></td>
-		<td class="su-pres-orig">She is from the USA.</td>
-		<td class="su-pres-trans">Она из США.</td>
-	</tr>
-	<tr>
-		<td class="su-pres-audio"><div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div></td>
-		<td class="su-pres-orig">We are from London.</td>
-		<td class="su-pres-trans">Мы из Лондона.</td>
-	</tr>
-	<tr>
-		<td class="su-pres-audio"><div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div></td>
-		<td class="su-pres-orig">They are from Russia.</td>
-		<td class="su-pres-trans">Они из России</td>
-	</tr>
-	<tr>
-		<td class="su-pres-audio"><div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div></td>
-		<td class="su-pres-orig">Oleg and Helen are from Moscow.</td>
-		<td class="su-pres-trans">Олег и Елена из Москвы.</td>
-	</tr>
-	<tr>
-		<td class="su-pres-audio"><div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div></td>
-		<td class="su-pres-orig">I'm from France.</td>
-		<td class="su-pres-trans">Я из Франции.</td>
-	</tr>
-	<tr>
-		<td class="su-pres-audio"><div class="jp_control" onclick="cJplayer('/sounds/sound01106.mp3', this)"></div></td>
-		<td class="su-pres-orig">John is from New-York.</td>
-		<td class="su-pres-trans">Джон из Нью-Йорка.</td>
-	</tr>
+<% end %>
 </table>	
 </div>	
 </div>	
@@ -131,12 +106,16 @@
 		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
 		basic_array: [
 		
-['Hello!','Здравствуйте!'],
-['How are you?','Как дела?'],
-['I’m fine, thank you.','Хорошо, спасибо'],
-['Tea? - No, thanks.','Чаю? - Нет, спасибо.'],
-['Coffee, please.','Кофе, пожалуйста.'],
-['Goodbye!','До свидания!']
+<%
+@voc2 = @voc1 
+@last_voc2 = (@voc2.length)-1
+%>
+
+		
+<% @voc2.each_with_index do |voc_word,index|  %>
+["<%= voc_word.text.to_s.gsub(/"/,'\"') %>", "<%= voc_word.translate.to_s.gsub(/"/,'\"') %>" ]<% if index!= @last_voc2 -%>,<%end -%>
+
+<% end %>
 		
 
 		]
@@ -185,7 +164,7 @@
 <tbody>
 
 <%
-cat = Cluster.find(15)
+cat = Cluster.find(16)
 @words = cat.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
 %>
 <%@words.each_with_index do |word, index|-%>
@@ -674,7 +653,7 @@ are - 're: We're
 <br><br>
 
 <h4 class="su-task">
-Задание 2. Напечатайте фразу под диктовку.
+Задание 2. Выполните перевод, используя данные слова.
 </h4>
 
 

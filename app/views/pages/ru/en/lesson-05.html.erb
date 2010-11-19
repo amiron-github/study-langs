@@ -1,0 +1,777 @@
+<% @page_title = 'Урок 5' %>
+<% @page_meta = {'description' => ""} %>
+
+
+<% content_for :special_js_css do %>
+
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'jp-control' %>
+<%= javascript_include_tag 'lexical-test' %>
+<%= stylesheet_link_tag 'lexical-test' %>
+<%= javascript_include_tag 'jquery-ui-1.8.6.dial.min.js' %>
+<%= stylesheet_link_tag 'custom-theme/jquery-ui-1.8.5.custom.css' %>
+<%= javascript_include_tag 'test-drag-sort' %>
+<%= javascript_include_tag 'es-grammar-exercises' %>
+<%= javascript_include_tag 'es-test-drag-input' %>
+
+
+<%= javascript_include_tag 'short-unit' %>
+<%= stylesheet_link_tag 'short-unit' %>
+
+<script type="text/javascript">
+<%if params[:tab] %>
+	openTabFromUrl(<%= params[:tab] %>);
+<%else%>
+	openTabFromUrl();
+<%end%>
+	$(function() {
+	
+	$("#les-res").click(function() {
+		$( "#dialog" ).dialog({
+			height: 300,
+			width: 400,
+			modal: true
+		}).dialog( "option", "buttons", { "Ok": function() { $(this).dialog("close"); } } );	
+	})
+
+	});
+
+</script>
+
+
+<% end %>
+
+
+
+<div class="unit-area">
+
+
+<div id="prof_tabs">
+
+<div class="unit-title">
+Урок 4
+</div>
+	<div id="tabs_row">
+            <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Этап 1</a></div></div>
+			<div id="tab02" class="ptab"><div><a href="#">Этап 2</a></div></div>
+            <div id="tab03" class="ptab"><div><a href="#">Этап 3</a></div></div>
+			<div id="tab04" class="ptab"><div><a href="#">Этап 4</a></div></div>
+			<div id="tab05" class="ptab"><div><a href="#">Этап 5</a></div></div>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+
+<div id="for_tab01" class="pBlock" style="display: block">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Обзор</h3>
+<p class="su-step-info">
+Данный этап предназначен для ознакомления с лексикой и грамматическими конструкциями урока.
+</p>	
+	
+
+<h4 class="su-task">
+Задание 1. Слушайте и повторяйте. Ознакомьтесь с переводом фраз.
+</h4>
+	
+<div class="su-present">
+<div class="su-present-brd">
+<table cellspacing="0">
+<%
+@voc1 = Cluster.find(24).words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+%>
+<% @voc1.each do |voc_word|  %>
+	<tr>
+		<td class="su-pres-audio"><%unless voc_word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%=voc_word.sound_url%>', this)"></div><%end%></td>
+		<td class="su-pres-orig"><%=voc_word.text%></td>
+		<td class="su-pres-trans"><%=voc_word.translate%></td>
+	</tr>
+<% end %>	
+	
+</table>	
+</div>	
+</div>	
+	
+
+
+<br><br><br><br>
+
+<h4 class="su-task">
+Задание 2. Прослушайте фразу и найдите её в списке.
+</h4>
+
+
+
+<div id="ch1" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		test_id: "",
+		quest_num: 15,
+		variants_num: 5,
+		quest_type: 'text',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+<%
+@voc2 = Cluster.find(25).words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+@last_voc2 = (@voc2.length)-1
+%>
+		
+<% @voc2.each_with_index do |voc_word,index|  %>
+["<%= voc_word.text.to_s.gsub(/"/,'\"') %>", "<%= voc_word.translate.to_s.gsub(/"/,'\"') %>" ]<% if index!= @last_voc2 -%>,<%end -%>
+
+<% end %>
+		
+
+		]
+		
+		} )
+</script>
+
+
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(2)">
+</div>	
+	
+	</div>
+</div>
+
+<div id="for_tab02" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Лексика</h3>
+<p class="su-step-info">
+Данный этап предназначен для работы с полезными словами и выражениями по теме урока.
+</p>	
+	
+<h4 class="su-task">
+Задание 1. Ознакомьтесь со словами и выражениями урока.
+</h4>
+
+
+<br><br>
+<div class="voc-wordlist">
+<table class="voc_bord" align="center" cellspacing="0">
+<tr>
+<td>
+
+<table style="width: 400px" class="diction" cellpadding="0" cellspacing="0" align="center">
+<col width="50%"><col width="50%">
+<thead>
+<tr>
+	<td> <div class="trans-display-wrapper"><input type="checkbox" class="trans-display" /> Транскрипция </div> </td>
+	<td></td>
+</tr>
+</thead>
+<tbody>
+
+<%
+cat = Cluster.find(26)
+@words = cat.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+%>
+<%@words.each_with_index do |word, index|-%>
+<tr class="trow">
+    <td class="original" valign="top">
+	<%unless word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div><%end%>
+	<%= word.text %>
+	<div class="ru-transcript">[<%= word.transcribe %>]</div>
+	
+    </td>
+    <td class="translation" valign="top"><%= word.translate %>
+    </td>
+</tr>
+<%end -%>
+
+
+</tbody>
+<tfoot>
+<tr>
+	<td></td>
+	<td></td>
+</tr>
+</tfoot>  
+</table>
+
+</td>
+</tr>
+</table>
+</div><!-- end of voc-wordlist-->
+
+<br><br><br><br>
+
+<h4 class="su-task">
+Задание 2. Прослушайте фразу и найдите её перевод.
+</h4>
+
+
+
+<div id="ch2" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		test_id: "",
+		quest_num: 15,
+		variants_num: 5,
+		quest_type: 'audio',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+<% @last_item_index = (@words.length)-1 -%>
+<% @words.each_with_index  do |word, index| -%>
+['<%= word.sound_url %>', "<%= word.translate.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
+		} )
+</script>	
+
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(3)">
+</div>
+	
+	</div>
+</div>
+
+
+<div id="for_tab03" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Теория</h3>
+<p class="su-step-info">
+Данный этап предназначен для ознакомления с правилами грамматики и лексики.
+</p>		
+
+<h3 class="su-page-p" style="margin-top: 0;">Артикли</h3>
+<p>
+Это служебные слова, которые употребляются перед существительными и не имеют самостоятельного значения. Они не употребляются перед существительными с указательными и притяжательными местоимения, а также с количественными числительными.
+</p>
+
+
+<div class="egdiv">
+<h4>Пример: </h4>
+<p>
+Утвердительная форма:<br>
+This is Emma. - Это Эмма.
+</p>
+<p>
+Вопросительная форма:<br>
+Is this Emma? - Это Эмма?
+</p>
+</div>
+
+
+<h3 class="su-page-p">Неопределенный артикль</h3>
+<p>
+Неопределенный артикль указывает на принадлежность к классу однородных предметов. Он употребляется только перед исчисляемыми существительными в единственном числе.
+</p>
+
+<p>
+При ответе на альтернативные вопросы часто ипользуются те же конструкции, которые использовались в вопросе.
+</p>
+
+<div class="egdiv">
+<h4>Пример: </h4>
+<p>
+Is this Jack or Richard? - This is Richard. 
+</p>
+</div>
+
+
+<br><br>
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(4)">
+</div>	
+	
+<br><br><br><br><br><br>
+	
+	</div>
+</div>
+
+
+<div id="for_tab04" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Упражнения</h3>
+<p class="su-step-info">
+Данный этап предназначен для работы с лексико-грамматическим материалом урока.
+</p>	
+	
+<h4 class="su-task">
+Задание 1. Просмотрите предложения и их перевод. Выберите вариант, касающийся употребления артикля перед подчеркнутыми словами.
+</h4>
+	
+
+
+
+<div class="su-exerc">
+
+<div class="task">Выберите один из вариантов ответа.</div>
+
+<div  class="gr_ex_variants">
+
+<div  class="gr_ex_variants_wrap gexv_with_trans">
+<table class="gr_ex_vars_tab gexv_options" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td>
+			<div class="gexv_task gexv_sign">
+				1. <span>This is <u>? milk</u>.</span> - Это молоко.
+			</div>
+			<div class="gexv_variant"><input type="checkbox" > ставится артикль <span class="eg">a</span></div>
+			<div class="gexv_variant"><input type="checkbox"> ставится артикль <span class="eg">an</span></div>
+			<div class="gexv_variant"><input type="checkbox"> нулевой артикль, потому что множественное число </div>
+			<div class="gexv_variant"><input type="checkbox" class="ok"> нет артикля, потому что неисчисляемое существительное </div>
+		
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="gexv_task gexv_sign">
+				 2. <span>He is <u>? economist</u>.</span> - Он экономист.
+			</div>
+			<div class="gexv_variant"><input type="checkbox"> ставится артикль <span class="eg">a</span></div>
+			<div class="gexv_variant"><input type="checkbox"  class="ok"> ставится артикль <span class="eg">an</span></div>
+			<div class="gexv_variant"><input type="checkbox"> нулевой артикль, потому что множественное число </div>
+			<div class="gexv_variant"><input type="checkbox"> нет артикля, потому что неисчисляемое существительное </div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="gexv_task gexv_sign">
+				  3. <span>They are <u>? students</u>.</span> - Это студенты. 
+			</div>
+			<div class="gexv_variant"><input type="checkbox"> ставится артикль <span class="eg">a</span></div>
+			<div class="gexv_variant"><input type="checkbox"> ставится артикль <span class="eg">an</span></div>
+			<div class="gexv_variant"><input type="checkbox"  class="ok"> нулевой артикль, потому что множественное число </div>
+			<div class="gexv_variant"><input type="checkbox"> нет артикля, потому что неисчисляемое существительное </div>	
+		</td>
+	</tr>
+
+	<tr>
+
+		<td>
+			<div class="gexv_task gexv_sign">
+				  4. <span>Jessica is <u>? journalist</u>.</span> - Джессика - журналист.
+			</div>
+			<div class="gexv_variant"><input type="checkbox" class="ok"> ставится артикль <span class="eg">a</span></div>
+			<div class="gexv_variant"><input type="checkbox"> ставится артикль <span class="eg">an</span></div>
+			<div class="gexv_variant"><input type="checkbox"> нулевой артикль, потому что множественное число </div>
+			<div class="gexv_variant"><input type="checkbox"> нет артикля, потому что неисчисляемое существительное </div>
+		</td>
+	</tr>
+	<tr>
+
+		<td>
+			<div class="gexv_task gexv_sign">
+				  5. <span>This is <u>? interesting book</u>.</span> - Это интересная книга.
+			</div>
+			<div class="gexv_variant"><input type="checkbox"> ставится артикль <span class="eg">a</span></div>
+			<div class="gexv_variant"><input type="checkbox"  class="ok"> ставится артикль <span class="eg">an</span></div>
+			<div class="gexv_variant"><input type="checkbox"> нулевой артикль, потому что множественное число </div>
+			<div class="gexv_variant"><input type="checkbox"> нет артикля, потому что неисчисляемое существительное </div>
+		</td>
+	</tr>
+	<tr>
+
+		<td>
+			<div class="gexv_task gexv_sign">
+				  6. <span>Lily and Kyle don't drink <u>? vodka</u>.</span> - Лили и Кайл не пьют водку.
+			</div>
+			<div class="gexv_variant"><input type="checkbox"> ставится артикль <span class="eg">a</span></div>
+			<div class="gexv_variant"><input type="checkbox"> ставится артикль <span class="eg">an</span></div>
+			<div class="gexv_variant"><input type="checkbox"> нулевой артикль, потому что множественное число </div>
+			<div class="gexv_variant"><input type="checkbox"  class="ok"> нет артикля, потому что неисчисляемое существительное </div>
+		</td>
+	</tr>
+</table>
+</div>
+
+<p class="gexv_check es-ex-buttons gex-es-btn">
+
+<input type="button" value="Check answers"></p>
+
+</div>
+
+
+
+</div> <!-- end of su-ex  -->
+
+
+
+
+
+
+<br><br><br><br>
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(5)">
+</div>
+
+
+	</div>
+</div>
+<div id="for_tab05" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Практика</h3>
+<p class="su-step-info">
+Данный этап предназначен для закрепления полученных знаний.
+</p>	
+	
+
+<h4 class="su-task">
+Задание 1. Прослушайте фразы и подберите подходящую реплику к фразам.
+</h4>
+
+<div id="sl1" class="ds-wrapper drag-sort-list" style="padding: 15px;">
+		
+
+<table align="center" style="margin: 0 auto;">
+<tr>
+<td>
+
+
+<table class="dst-test ds-table ds-audio" cellspacing="0" align="center" style="margin: 0 auto">
+
+<col width="100"><col width="100"><col width="100"><col width="100">
+
+<tr style="font-size: 11px; vertical-align: top;">
+	<th class="ds-border-right" >
+	</th>
+	<th class="ds-border-right" >
+		Имя
+	</th>
+
+	<th class="ds-border-right" >
+		Страна
+	</th>
+
+	<th class="ds-border-right" >
+		Семейное положение
+	</th>
+</tr>
+<tr>
+	<td class="ds-border-right" style="height: 40px">
+		<table class="ds-table" cellspacing="0" align="center">
+			<tr>
+				<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap">Запись 1</td>
+				<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div></td>
+			</tr>
+		</table>
+	</td>
+	<td class="ds-answer ds-border-right" style="height: 40px">
+		<div class="ds_sort_item">
+		</div>
+
+	</td>
+	<td class="ds-answer ds-border-right " style="height: 40px">
+		<div class="ds_sort_item">
+		</div>
+
+	</td>
+
+	<td class="ds-answer ds-border-right " style=" height: 40px">
+		<div class="ds_sort_item">
+			
+		</div>
+
+	</td>
+</tr>
+<tr>
+	<td class="ds-border-right" style="height: 40px">
+		<table class="ds-table" cellspacing="0" align="center">
+			<tr>
+				<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap">Запись 2</td>
+				<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div></td>
+			</tr>
+		</table>
+	</td>
+	<td class="ds-answer ds-border-right" style="height: 40px">
+		<div class="ds_sort_item">
+		</div>
+	</td>
+	<td class="ds-answer ds-border-right " style="height: 40px">
+		<div class="ds_sort_item">
+		</div>
+	</td>
+
+	<td class="ds-answer ds-border-right " style="height: 40px">
+		<div class="ds_sort_item">
+		</div>
+
+	</td>
+</tr>
+<tr>
+	<td class="ds-border-right" style="height: 40px">
+		<table class="ds-table" cellspacing="0" align="center">
+			<tr>
+				<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap">Запись 2</td>
+				<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div></td>
+			</tr>
+		</table>
+	</td>
+	<td class="ds-answer ds-border-right" style="height: 40px">
+		<div class="ds_sort_item">
+		</div>
+
+	</td>
+	<td class="ds-answer ds-border-right" style="height: 40px">
+		<div class="ds_sort_item">
+		</div>
+	</td>
+
+	<td class="ds-answer ds-border-right " style="height: 40px">
+		<div class="ds_sort_item">
+			
+		</div>
+
+	</td>
+</tr>
+</table>
+
+</td>
+
+</tr>
+<tr>
+	<td>
+	
+		<!-- div class="ds_check_sign"></div -->
+	
+	</td>
+</tr>
+<tr>
+
+<td>
+	
+<br>
+
+<table class="ds_variants_list"  style="margin: 0 auto" align="center">
+<col width="150">
+<col width="150">
+<tr valign="top">
+<td>
+
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Алекс</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>Стив</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>Майкл</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">4</span>Марк</div></div>
+	</li>
+</ul>
+
+</td>
+<td>
+
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Канада</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>США</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Россия</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>Франция</div></div>
+	</li>
+</ul>
+
+</td>
+<td>
+
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>женат</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>холост</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>разведён</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>вдовец</div></div>
+	</li>
+</ul>
+
+</td>
+</tr>
+</table>
+
+
+
+</td>
+</tr>
+</table>
+
+
+<div class="es_btn_wrapper es-ex-buttons ds-check-wrapper">
+
+<input type="button" class="es_btn ds-check-button" value="Проверить" />
+
+</div>
+
+</div>
+
+<script type="text/javascript"> 
+	var sl1 = new sortlist_test( {
+		id: "sl1", 
+		targets: "ds-answer", 
+		answer_elem: "ds_sort_item", 
+		variant_elem: "ds_variant",
+		answer_color: "#fff",
+		auto_check: false
+		} )
+</script>
+
+	
+	
+<br><br>
+
+
+
+<h4 class="su-task">
+Задание 2. Ответьте на вопросы по модели.
+</h4>
+
+
+
+
+
+<div class="su-exerc">
+<div id="di4">	
+				
+<p class="task">Перетащите слова в текстовое поле или напечатайте их.</p> 
+
+
+<div  class="gr_ex_type di_mix">
+
+<div class="gext_task gext_sign di_mix_first"> 
+<div class="di_mix_tobuild">Is he a journalist or a businessman?</div>
+<div class="di_mix_variants di_mix">he is a journalist are an they</div>
+<input type="text" value=""> <span class="gext_answer" style="display: none">he is a journalist</span>
+<div class="gext_show"><span><b>He is a journalist.</b></span> &nbsp;</div>
+
+</div>
+
+<div class="gext_task gext_sign"> 
+<div class="di_mix_tobuild">Are you a teacher or a doctor?</div>
+<div class="di_mix_variants di_mix">I am is we are a an teacher</div>
+<input type="text" value=""> <span class="gext_answer" style="display: none">I am a teacher</span>
+<div class="gext_show"><span><b>I am a teacher.</b></span> &nbsp;</div>
+</div>
+
+<div class="gext_task gext_sign">
+<div class="di_mix_tobuild">Is she a designer or an architect?</div>
+ <div class="di_mix_variants di_mix">is she a designer or an they we</div>
+<input type="text" value=""> <span class="gext_answer" style="display: none">She is a designer</span>
+
+<div class="gext_show"><span><b>She is a designer.</b></span> &nbsp;</div>
+
+</div>
+
+<div class="gext_task gext_sign">
+<div class="di_mix_tobuild">Is John a programmer or a manager</div>
+ <div class="di_mix_variants di_mix">he is a programmer they are an</div>
+<input type="text" value=""> <span class="gext_answer" style="display: none">he is a programmer</span>
+
+<div class="gext_show"><span><b>He is a programmer.</b></span> &nbsp;</div>
+
+</div>
+
+
+
+
+<p class="gext_check es-ex-buttons gex-es-btn"><input type="button" class="gext_check_btn" value="Проверить" > <input type="button" value="Ответы" class="gext_answer_show"></p>
+
+
+</div>
+
+
+</div>
+
+
+</div> <!-- end of di4  -->
+
+
+<script type="text/javascript"> 
+	var di4 = new draginput_test( {
+		id: "di4", 
+		targets: "gext_task input", 
+		//in_targets: "input",
+		clear_option: true,
+		one_use: true,
+		variant_elem: "di_mix_variants span"
+		//targets_color: "#ffffff"
+
+		} )
+</script>
+
+
+	<br><br>
+	
+<input type="button" id="les-res" value="Results">	
+
+<div style="display: none">
+<div id="dialog" title="Results of the lesson">
+	<p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+</div>
+
+</div>
+	
+	<br><br>
+
+	
+
+
+	</div>
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+currentSection="course";
+</script>
