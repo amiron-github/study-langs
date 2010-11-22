@@ -4,34 +4,29 @@
 <% @has_audio = true %>
 
 <% content_for :special_js_css do %>
+<%= javascript_include_tag 'ev-test' %>
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'every-exercises' %>
+<%= stylesheet_link_tag 'every-exercises' %>
 
-<%= stylesheet_link_tag 'test-style' %>
-
-<%= javascript_include_tag 'test' %>
-<%= javascript_include_tag 'test-text' %>
-<%= stylesheet_link_tag 'test-style' %>
-
-
+<script type="text/javascript">wrapTests = false;</script>
 <style type="text/css">
-
 
 .diction td.original {
 padding-left: 25px;
 text-indent: -10px;
 }
-
-
 .diction td.translation {
 text-indent: -10px;
 padding-left: 25px;
 }
-
 .mini-dialog td {
 padding-bottom: 20px;
 }
 
-.quest {
-
+table.tbtest td.test-var-o {
+text-indent: -69px;
+padding: 3px 3px 3px 70px;
 }
 
 .variants {
@@ -65,8 +60,6 @@ padding: 20px 40px 40px 30px;
 </style>
 
 
-
-
 <% end %>
 
 <div class="hint_wrap">
@@ -78,7 +71,7 @@ padding: 20px 40px 40px 30px;
     </div>
     <div class="sub_hint" style="display: none;">
         <ul>
-            <li><a href="acquaintance.html">Topic: Acquaintance</a></li>
+            <li><a href="/en/ru/vocabulary/acquaintance">Topic: Acquaintance</a></li>
         </ul>
         <%= render :partial => 'down_accent' %>
   </div>
@@ -114,6 +107,14 @@ T['2']=['1','2'];
 T['3']=['2','5','4','1','6','3'];
 </script>
 
+<div class="section-block" style="cursor: auto; margin: 20px 30px"> 
+	<div class="sect-crn clt"> 
+		<div class="sect-crn crt"> 
+			<div class="sect-mid">  </div> 
+		</div> 
+	</div> 
+	<div class="section-content" style="height: auto; padding: 0px 40px;">
+
 <p class="bold">Audio 1</p>
 <div class="player_swf"><span style="visibility: hidden">sounds/soundb02011010.mp3</span></div>
 <br><br>
@@ -129,7 +130,6 @@ T['3']=['2','5','4','1','6','3'];
 			</td>
 
 		</tr>
-
 		<tr>
 			<td>
 
@@ -147,6 +147,23 @@ T['3']=['2','5','4','1','6','3'];
 
 </table>
 </form>
+	</div><!-- end of section-content -->
+	<div class="sect-btm"> 
+    		<div class="sect-clb"> 
+    			<div class="sect-crb"> 
+    				<div class="sect-btm-bg" style="height: 40px;"></div> 
+    			</div> 
+    		</div> 
+	</div> 
+</div> 
+
+<div class="section-block" style="cursor: auto; margin: 20px 30px"> 
+	<div class="sect-crn clt"> 
+		<div class="sect-crn crt"> 
+			<div class="sect-mid">  </div> 
+		</div> 
+	</div> 
+	<div class="section-content" style="height: auto; padding: 0px 40px;">
 
 <p class="bold">Audio 2</p>
 <div class="player_swf"><span style="visibility: hidden">sounds/soundb02011020.mp3</span></div>
@@ -181,6 +198,16 @@ T['3']=['2','5','4','1','6','3'];
 
 </table>
 </form>
+	</div><!-- end of section-content -->
+	<div class="sect-btm"> 
+    		<div class="sect-clb"> 
+    			<div class="sect-crb"> 
+    				<div class="sect-btm-bg" style="height: 40px;"></div> 
+    			</div> 
+    		</div> 
+	</div> 
+</div>
+
 </div>
 
 <hr>
@@ -188,7 +215,7 @@ T['3']=['2','5','4','1','6','3'];
 <div class="ex-area">
 <p class="task ex-task">a) Listen to Russian expressions used when you meet people and repeat after the speaker:</p>
 
-<div class="voc_inter">
+<div class="voc_inter ev-wordlist">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="200">
@@ -313,17 +340,74 @@ Notice that  the usage of verbs is not always required in Russian sentences. In 
 
 
 <p class="task ex-task">b) Listen to the Russian words and choose the right translation from the list:</p>
-<div id="t1">
 
-<script type="text/javascript">
-var t1 = new Test({dict:[
+<div id="ch1" class="es-ex-wrapper">
+<div class="es-ex-alert-container"><div class="es-ex-alert-rt"><div class="es-ex-alert"> &nbsp;</div></div></div>
+<div class="es-ex-top">
+	<div class="es-ex-autoplay-wrapper"><input class="es-ex-autoplay" type="checkbox" /> <span>Go to next automatically</span> </div>
+	<div class="es-ex-final"></div>
 
-['sounds/soundb02021010.mp3','Let me introduce myself'],['sounds/soundb02021020.mp3','My name is ...'],['sounds/soundb02021030.mp3','I am ...'],['sounds/soundb02021040.mp3','What is your name? (formal)'],['sounds/soundb02021050.mp3','What is your name? (informal)'],
-['sounds/soundb02021060.mp3','Nice to meet you.'], ['sounds/soundb02021070.mp3','Very glad (to meet you)']
-
-],hide:'di1',id:'t1',type: 'audio',how_questions: 7, how_show: 2}, 'c0202022.II.b)');
-</script>
 </div>
+<table class="es-ex-content" cellspacing="0">
+	<tr>
+		<td class="es-ex-quest" width="40%" valign="middle" align="center">
+			<div class="es-ex-audio-wrapper">
+				<table><tr><td style="height: 140px;"><div class="es-ex-audio-holder"><div class="es-ex-audio"></div></div></td></tr></table>
+			</div>
+			<div class="es-ex-string-holder">
+				<table><tr><td class="es-ex-string-wrapper" style="height: 150px;">&nbsp;</td></tr></table>
+			</div>
+
+		</td>
+		<td class="es-ex-tasks" valign="top">
+			<div class="yn-answer-type">
+					<p class="es-yn-task-p">Is this translated as:</p>
+					<div class="es-yn-variant-wrapper"><div class="es-yn-variant yn-trans">&nbsp;</div></div>
+					<div class="es-ex-buttons yn-btns">
+						<input type="button" class="es-ex-es-btn yn-yes" value="Yes"/> &nbsp;&nbsp;&nbsp;&nbsp; <input value="NO" type="button"  class="es-ex-es-btn yn-no"/>
+
+					</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td><div class="es-ex-bottom"><input type="button" class="es-ex-next" value="NEXT" style="font-size: 12px; visibility: hidden;"></div></td>
+		<td></td>
+	</tr>
+</table>
+
+<div class="es-ex-info-container">
+	<table cellspacing="0" align="center">
+		<tr>
+			<td style="padding-left: 20px;"><div class="es-ex-info"> &nbsp;  </div></td>
+			<td><div class="es-ex-buttons"><input type="button" class="es-ex-es-btn es-ex-start" value="RESTART"/></div></td>
+		</tr>
+	</table>
+</div>
+</div>
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		test_id: "c0202022.II.b)",
+		quest_type: 'audio',
+		quest_num: 7,
+		//answer_type: 'audio',
+		basic_array: [
+		
+['/sounds/soundb02021010.mp3','Let me introduce myself'],
+['/sounds/soundb02021020.mp3','My name is ...',49],
+['/sounds/soundb02021030.mp3','I am ...',38],
+['/sounds/soundb02021040.mp3','What is your name? (formal)',43],
+['/sounds/soundb02021050.mp3','What is your name? (informal)'],
+['/sounds/soundb02021060.mp3','Nice to meet you.',40], 
+['/sounds/soundb02021070.mp3','Very glad (to meet you)',48]
+
+		]
+		} )
+</script>
+
+<br><br>
 
 </div>
 
@@ -334,7 +418,7 @@ var t1 = new Test({dict:[
 
 <p class="task ex-task">a) Learn the following Russian pronouns:</p>
 
-<div class="voc_inter">
+<div class="voc_inter ev-wordlist">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="60">
@@ -416,7 +500,9 @@ There are three Russian words which may be equivalent to the English word "You":
 
 <p class="task ex-task">b) Using the above-mentioned pronouns, translate into Russian and check yourself:</p>
 
-<div class="task_transl">
+
+
+<div class="task_transl ev-ex-area">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="290">
@@ -581,8 +667,8 @@ Look at the following examples:
 
 <p class="task ex-task">a) Give a positive answer following the model to the questions. Note that Russians may begin their questions with "Извините, пожалуйста" when addressing to an unknown person.</p>
 
-<p class="ital">Model:</p>
-
+<div class="model">
+<h4>Model</h4>
 <table  cellspacing="0" >
 	<tr valign="top">
 		<td width="340">
@@ -609,11 +695,11 @@ Look at the following examples:
 		<td valign="top"><p class="ital">Are you Sam Brown? -Yes, I am Sam Brown.</p>
 		</td>
 	</tr>
-
 </table>
+</div>
 
-<p class="ital">Questions</p>
-
+<div class="ev-ex-area">
+<p class="ital bold" style="margin-top: 0;">Questions</p>
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="350">
@@ -725,12 +811,12 @@ Look at the following examples:
 			</td>
 	</tr>
 </table>
-
+</div>
 
 <p class="task ex-task">b) Give a negative answer following the model to the questions. </p>
 
-<p class="ital">Model:</p>
-
+<div class="model">
+<h4>Model</h4>
 <table  cellspacing="0" >
 	<tr valign="top">
 		<td width="340">
@@ -759,10 +845,11 @@ Look at the following examples:
 		<td valign="top"><p class="ital">Are you Sam Brown? -No, I am John Brown.</p>
 		</td>
 	</tr>
-
 </table>
+</div>
 
-<p class="ital">Questions</p>
+<div class="ev-ex-area">
+<p class="ital vold" style="margin-top: 0">Questions</p>
 
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
@@ -875,11 +962,11 @@ Look at the following examples:
 			</td>
 	</tr>
 </table>
-
+</div>
 
 <p class="task ex-task">c) Translate into Russian and check yourself:</p>
 
-<div class="task_transl">
+<div class="task_transl ev-ex-area">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="320">
@@ -990,8 +1077,17 @@ Look at the following examples:
 
 <p class="task ex-task"> Associate questions and answers:</p>
 
+
+
+<div class="section-block" style="cursor: auto; margin: 20px 30px"> 
+	<div class="sect-crn clt"> 
+		<div class="sect-crn crt"> 
+			<div class="sect-mid">  </div> 
+		</div> 
+	</div> 
+	<div class="section-content" style="height: auto; padding: 0px 40px;">
 <form onsubmit="return check_test(this,3,'c0202050.V')">
-<table cellspacing="0" cellpadding="3" align="center">
+<table class="tbtest" cellspacing="0" cellpadding="3" align="center" style="font-size: 12px;">
 	<tr>
 		<td>&nbsp;
 		</td>
@@ -1000,11 +1096,11 @@ Look at the following examples:
 		</td>
 	</tr>
 	<tr>
-		<td width="300"  valign=top>
+		<td width="45%"  valign=top>
 		1. Извините, пожалуйста, Вы Марк Тин?
 		</td>
 
-		<td style="padding: 3px;"><img src="pixel.gif" width="10" height="10" id="r31"><input type="text" size=1><span class="test-space">Меня зовут Стелла. Рада познакомиться, Алекс.</span>
+		<td class="test-var-o"><img src="pixel.gif" width="10" height="10" id="r31"><input type="text" size=1><span class="test-space">Меня зовут Стелла. Рада познакомиться, Алекс.</span>
 
 		</td>
 	</tr>
@@ -1012,7 +1108,7 @@ Look at the following examples:
 		<td>
 		2. Я Алекс Грин, а Вас как зовут?
 		</td>
-		<td style="padding: 3px;"><img src="pixel.gif" width="10" height="10" id="r32"><input type="text" size=1><span class="test-space">Здравствуйте, Вы Сергей Мил?</span>
+		<td class="test-var-o"><img src="pixel.gif" width="10" height="10" id="r32"><input type="text" size=1><span class="test-space">Здравствуйте, Вы Сергей Мил?</span>
 
 		</td>
 	</tr>
@@ -1021,7 +1117,7 @@ Look at the following examples:
 		<td>
 		3. Привет, тебя как зовут?
 		</td>
-		<td style="padding: 3px;"><img src="pixel.gif" width="10" height="10" id="r33"><input type="text" size=1><span class="test-space">Меня зовут Соня Мосс.</span>
+		<td class="test-var-o"><img src="pixel.gif" width="10" height="10" id="r33"><input type="text" size=1><span class="test-space">Меня зовут Соня Мосс.</span>
 		</td>
 
 	</tr>
@@ -1029,7 +1125,7 @@ Look at the following examples:
 		<td>
 		4. Как Вас зовут?
 		</td>
-		<td style="padding: 3px;"><img src="pixel.gif" width="10" height="10" id="r34"><input type="text" size=1><span class="test-space">Да, я Марк Тин.</span>
+		<td class="test-var-o"<img src="pixel.gif" width="10" height="10" id="r34"><input type="text" size=1><span class="test-space">Да, я Марк Тин.</span>
 		</td>
 	</tr>
 	<tr>
@@ -1037,7 +1133,7 @@ Look at the following examples:
 		<td>
 		5. Здравствуйте!
 		</td>
-		<td style="padding: 3px;"><img src="pixel.gif" width="10" height="10" id="r35"><input type="text" size=1><span class="test-space">Нет.</span>
+		<td class="test-var-o"><img src="pixel.gif" width="10" height="10" id="r35"><input type="text" size=1><span class="test-space">Нет.</span>
 		</td>
 	</tr>
 	<tr>
@@ -1045,7 +1141,7 @@ Look at the following examples:
 		6. Извините, Вы Макс Рунел?
 		</td>
 
-		<td style="padding: 3px;"><img src="pixel.gif" width="10" height="10" id="r36"><input type="text" size=1><span class="test-space">Меня Линда, а тебя? </span>
+		<td class="test-var-o"><img src="pixel.gif" width="10" height="10" id="r36"><input type="text" size=1><span class="test-space">Меня Линда, а тебя? </span>
 		</td>
 	</tr>
 	<tr>
@@ -1054,11 +1150,26 @@ Look at the following examples:
 		</td>
 
 	</tr>
-
  </table>
 </form>
+
+	</div><!-- end of section-content -->
+	<div class="sect-btm"> 
+    		<div class="sect-clb"> 
+    			<div class="sect-crb"> 
+    				<div class="sect-btm-bg" style="height: 40px;"></div> 
+    			</div> 
+    		</div> 
+	</div> 
+</div> 
+
+
+
 </div>
-<hr>
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
 
 </div></div>
 

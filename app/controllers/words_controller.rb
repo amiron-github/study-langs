@@ -24,7 +24,7 @@ layout "admin"
 		lang=params[:lang]
 	end
     @enwords = Word.all
-	@encategory = Category.find(:all, :conditions => ['lang=?', lang])
+	@encategory = Category.find(:all, :conditions => ['lang=?', lang], :order => 'order_num')
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @words }
@@ -54,6 +54,16 @@ layout "admin"
       format.xml  { render :xml => @enword }
     end
   end
+  
+  def update_cat_order
+  	params[:category].values.each do |t|
+		category = Category.find(t[:id])
+		category.update_attribute(:order_num, t[:order_num])
+	end
+
+	redirect_to(:back)
+	
+  end  
   
   def list_attributes
 	#ERB::Util.html_escape()

@@ -5,12 +5,11 @@
 
 <% content_for :special_js_css do %>
 
-<%= stylesheet_link_tag 'test-style' %>
-
-<%= javascript_include_tag 'test' %>
-<%= javascript_include_tag 'test-text' %>
-<%= stylesheet_link_tag 'test-style' %>
-
+<%= javascript_include_tag 'ev-test' %>
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'every-exercises' %>
+<%= stylesheet_link_tag 'every-exercises' %>
+<script type="text/javascript">wrapTests = false;</script>
 
 <style type="text/css">
 
@@ -30,7 +29,6 @@ padding-bottom: 20px;
 }
 
 .quest {
-
 }
 
 .variants {
@@ -62,8 +60,6 @@ padding: 20px 40px 40px 30px;
 }
 
 </style>
-
-
 <% end %>
 
 <div class="hint_wrap">
@@ -75,7 +71,7 @@ padding: 20px 40px 40px 30px;
     </div>
     <div class="sub_hint" style="display: none;">
         <ul>
-            <li><a href="acquaintance.html">Topic: Acquaintance</a></li>
+            <li><a href="/en/ru/vocabulary/professions">Topic: Professions</a></li>
         </ul>
         <%= render :partial => 'down_accent' %>
   </div>
@@ -116,6 +112,14 @@ T['5']=['2', '4', '3', '8', '1', '6', '5', '7']; // For Test#1
 </script>
 
 
+
+<div class="section-block" style="cursor: auto; margin: 20px 30px"> 
+	<div class="sect-crn clt"> 
+		<div class="sect-crn crt"> 
+			<div class="sect-mid">  </div> 
+		</div> 
+	</div> 
+	<div class="section-content" style="height: auto; padding: 0px 40px;">
 <p class="bold">Audio 1</p>
 <div class="player_swf"><span style="visibility: hidden">sounds/soundb04011010.mp3</span></div>
 <form onsubmit="return check_test(this,1,'c0204011.I.1)')">
@@ -144,7 +148,23 @@ T['5']=['2', '4', '3', '8', '1', '6', '5', '7']; // For Test#1
 	</tr>
 </table>
 </form>
+	</div><!-- end of section-content -->
+	<div class="sect-btm"> 
+    		<div class="sect-clb"> 
+    			<div class="sect-crb"> 
+    				<div class="sect-btm-bg" style="height: 40px;"></div> 
+    			</div> 
+    		</div> 
+	</div> 
+</div>
 
+<div class="section-block" style="cursor: auto; margin: 20px 30px"> 
+	<div class="sect-crn clt"> 
+		<div class="sect-crn crt"> 
+			<div class="sect-mid">  </div> 
+		</div> 
+	</div> 
+	<div class="section-content" style="height: auto; padding: 0px 40px;">
 <p class="bold">Audio 2</p>
 <div class="player_swf"><span style="visibility: hidden">sounds/soundb04011020.mp3</span></div>
 <form onsubmit="return check_test(this,2,'c0204012.I.2)')">
@@ -173,7 +193,23 @@ T['5']=['2', '4', '3', '8', '1', '6', '5', '7']; // For Test#1
 	</tr>
 </table>
 </form>
+	</div><!-- end of section-content -->
+	<div class="sect-btm"> 
+    		<div class="sect-clb"> 
+    			<div class="sect-crb"> 
+    				<div class="sect-btm-bg" style="height: 40px;"></div> 
+    			</div> 
+    		</div> 
+	</div> 
+</div> 
 
+<div class="section-block" style="cursor: auto; margin: 20px 30px"> 
+	<div class="sect-crn clt"> 
+		<div class="sect-crn crt"> 
+			<div class="sect-mid">  </div> 
+		</div> 
+	</div> 
+	<div class="section-content" style="height: auto; padding: 0px 40px;">
 <p class="bold">Audio 3</p>
 <div class="player_swf"><span style="visibility: hidden">sounds/soundb04011030.mp3</span></div>
 <form onsubmit="return check_test(this,3,'c0204013.I.3)')">
@@ -202,6 +238,16 @@ T['5']=['2', '4', '3', '8', '1', '6', '5', '7']; // For Test#1
 	</tr>
 </table>
 </form>
+	</div><!-- end of section-content -->
+	<div class="sect-btm"> 
+    		<div class="sect-clb"> 
+    			<div class="sect-crb"> 
+    				<div class="sect-btm-bg" style="height: 40px;"></div> 
+    			</div> 
+    		</div> 
+	</div> 
+</div>
+
 
 </div>
 
@@ -211,7 +257,7 @@ T['5']=['2', '4', '3', '8', '1', '6', '5', '7']; // For Test#1
 <div class="ex-area">
 <p class="task ex-task">a) Listen and repeat:</p>
 
-<div class="voc_inter">
+<div class="voc_inter ev-wordlist">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="160">
@@ -365,23 +411,83 @@ T['5']=['2', '4', '3', '8', '1', '6', '5', '7']; // For Test#1
 </div>
 
 
-<p class="task ex-task">b) Listen to the Russian words and choose the right translation from the list:</p>
-<div id="t1">
+<p class="task ex-task">b) Read the Russian words and choose the right translation from the list:</p>
 
-<script type="text/javascript">
-var t1 = new Test({dict:[
+<div id="ch1" class="es-ex-wrapper">
+<div class="es-ex-alert-container"><div class="es-ex-alert-rt"><div class="es-ex-alert"> &nbsp;</div></div></div>
+<div class="es-ex-top">
+	<div class="es-ex-autoplay-wrapper"><input class="es-ex-autoplay" type="checkbox" /> <span>Go to next automatically</span> </div>
+	<div class="es-ex-final"></div>
 
-['менеджер','menager'],['служащий','office worker'],['военный','military man'],['рабочий','worker'],['учитель','teacher'],
-['доктор','doctor'],['инженер','engineer'],['программист','programmer'],['студент','student'],['журналист','journalist']
-
-],hide:'di1',id:'t1',type: 'text',how_questions: 8, how_show: 2},'c0204022.II.b)');
-</script>
 </div>
+<table class="es-ex-content" cellspacing="0">
+	<tr>
+		<td class="es-ex-quest" width="40%" valign="middle" align="center">
+			<div class="es-ex-audio-wrapper">
+				<table><tr><td style="height: 140px;"><div class="es-ex-audio-holder"><div class="es-ex-audio"></div></div></td></tr></table>
+			</div>
+			<div class="es-ex-string-holder">
+				<table><tr><td class="es-ex-string-wrapper" style="height: 150px;">&nbsp;</td></tr></table>
+			</div>
+
+		</td>
+		<td class="es-ex-tasks" valign="top">
+			<div class="yn-answer-type">
+					<p class="es-yn-task-p">Is this translated as:</p>
+					<div class="es-yn-variant-wrapper"><div class="es-yn-variant yn-trans">&nbsp;</div></div>
+					<div class="es-ex-buttons yn-btns">
+						<input type="button" class="es-ex-es-btn yn-yes" value="Yes"/> &nbsp;&nbsp;&nbsp;&nbsp; <input value="NO" type="button"  class="es-ex-es-btn yn-no"/>
+
+					</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td><div class="es-ex-bottom"><input type="button" class="es-ex-next" value="NEXT" style="font-size: 12px; visibility: hidden;"></div></td>
+		<td></td>
+	</tr>
+</table>
+
+<div class="es-ex-info-container">
+	<table cellspacing="0" align="center">
+		<tr>
+			<td style="padding-left: 20px;"><div class="es-ex-info"> &nbsp;  </div></td>
+			<td><div class="es-ex-buttons"><input type="button" class="es-ex-es-btn es-ex-start" value="RESTART"/></div></td>
+		</tr>
+	</table>
+</div>
+</div>
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		test_id: "c0204022.II.b)",
+		quest_type: 'text',
+		quest_num: 10,
+		basic_array: [
+		
+['менеджер','menager',1076],
+['служащий','office worker',1246],
+['военный','military man',1068],
+['рабочий','worker',1092],
+['учитель','teacher',1067],
+['доктор','doctor',1250],
+['инженер','engineer',1245],
+['программист','programmer',1081],
+['студент','student',1063],
+['журналист','journalist',1065]
+
+		]
+		} )
+</script>
+
+<br><br>
+
 
 <p class="task ex-task">с) Give a positive answer following the model and check yourself: </p>
 
-<p class="ital">Model:</p>
-
+<div class="model">
+<h4>Model</h4>
 <table class="tab1"  cellspacing="0" >
 	<tr valign="top">
 		<td width="350">
@@ -408,10 +514,12 @@ var t1 = new Test({dict:[
 		<td valign="top"><p class="ital">Is Catherine a doctor? - Yes, she is (a doctor).</p>
 		</td>
 	</tr>
-
 </table>
+</div>
 
-<p class="ital" style="margin-bottom: 20px;">Questions:</p>
+
+<div class="ev-ex-area">
+<p class="ital bold" style="margin-bottom: 20px; margin-top: 0">Questions:</p>
 
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
@@ -526,7 +634,7 @@ var t1 = new Test({dict:[
 			</td>
 	</tr>
 </table>
-
+</div>
 
 </div>
 
@@ -537,7 +645,7 @@ var t1 = new Test({dict:[
 
 <p class="task ex-task">a) Listen and repeat. Pay attention to the nouns endings in plural:</p>
 
-<div class="voc_inter">
+<div class="voc_inter ev-ex-area">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="200">
@@ -699,7 +807,7 @@ Some nouns do not change their form in plural:
 
 <p class="task ex-task">b) Translate into Russian and check yourself:</p>
 
-<div class="task_transl">
+<div class="task_transl ev-ex-area">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="290">
@@ -813,27 +921,25 @@ Some nouns do not change their form in plural:
 
 <p class="task ex-task">a) Listen and repeat the following Russian pronouns:</p>
 
-<div class="voc_inter">
+<div class="voc_inter ev-wordlist">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="60">
-				<p >мы<br />
+				<p ><span>мы</span><br />
 
 					<span class="sound" onclick="playSound('soundb04040010.mp3')">[m<span class="acct"><span class="ry">i</span></span>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
 				</p>
 			</td>
 			<td width="30"><p>–</p></td>
 			<td>
-
 				<span>we</span>
-
 			</td>
 	</tr>
 </table>
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="60">
-				<p>вы</span><br />
+				<p><span>вы</span><br />
 					<span class="sound" onclick="playSound('soundb04040020.mp3')">[v<span class="acct"><span class="ry">i</span></span>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
 
 				</p>
@@ -848,7 +954,7 @@ Some nouns do not change their form in plural:
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="60">
-				<p >он<span class="acco">и</span><br />
+				<p ><span>он<span class="acco">и</span></span><br />
 
 					<span class="sound" onclick="playSound('soundb04040030.mp3')">[an<span class="acct">i</span>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
 				</p>
@@ -866,8 +972,13 @@ Some nouns do not change their form in plural:
 
 <p class="task ex-task">b) Listen to the phrases in Russian and choose the right translation.</p>
 
-
-
+<div class="section-block" style="cursor: auto; margin: 20px 30px"> 
+	<div class="sect-crn clt"> 
+		<div class="sect-crn crt"> 
+			<div class="sect-mid">  </div> 
+		</div> 
+	</div> 
+	<div class="section-content" style="height: auto; padding: 0px 40px;">
 <form onsubmit="return check_test(this,4,'c0204042.IV.b)')">
 <table class="tbtest" cellspacing="0" cellpadding="3" >
 	<tr>
@@ -959,15 +1070,22 @@ Some nouns do not change their form in plural:
 		</td>
 	</tr>
  </table>
-
-
 </form>
+	</div><!-- end of section-content -->
+	<div class="sect-btm"> 
+    		<div class="sect-clb"> 
+    			<div class="sect-crb"> 
+    				<div class="sect-btm-bg" style="height: 40px;"></div> 
+    			</div> 
+    		</div> 
+	</div> 
+</div> 
 
 <p class="task ex-task">c) Answer the questions following the model: 
 </p>
 
-<p class="ital">Model:</p>
-
+<div class="model">
+<h4>Model</h4>
 <table  cellspacing="0" >
 	<tr valign="top">
 		<td width="410">
@@ -994,10 +1112,11 @@ Some nouns do not change their form in plural:
 		<td valign="top"><p class="ital">Are Mark and Chris students? - Yes, they are students.</p>
 		</td>
 	</tr>
-
 </table>
+</div>
 
-<p class="ital">Questions</p>
+<div class="ev-ex-area">
+<p class="ital bold" style="margin-top: 0">Questions</p>
 
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
@@ -1112,7 +1231,7 @@ Some nouns do not change their form in plural:
 			</td>
 	</tr>
 </table>
-
+</div>
 
 </div>
 
@@ -1122,7 +1241,14 @@ Some nouns do not change their form in plural:
 
 <p class="task ex-task">Listen to the phrases in Russian and choose the right translation.</p>
 
-
+<div class="section-block" style="cursor: auto; margin: 20px 30px"> 
+	<div class="sect-crn clt"> 
+		<div class="sect-crn crt"> 
+			<div class="sect-mid">  </div> 
+		</div> 
+	</div> 
+	<div class="section-content" style="height: auto; padding: 0px 40px;">
+	
 <form onsubmit="return check_test(this,5,'c0204050.V')">
 <table class="tbtest" cellspacing="0" cellpadding="3" align="center">
 	<tr>
@@ -1133,7 +1259,7 @@ Some nouns do not change their form in plural:
 		</td>
 	</tr>
 	<tr>
-		<td width="250" valign="top">
+		<td width="180" valign="top">
 			<div class="key">
 
    				<div>
@@ -1235,12 +1361,24 @@ Some nouns do not change their form in plural:
 <div style="margin: 20px 0px 20px 0px;" align="center">
 	<input type="submit" value="Check">
 </div>
-
 </form>
+	</div><!-- end of section-content -->
+	<div class="sect-btm"> 
+    		<div class="sect-clb"> 
+    			<div class="sect-crb"> 
+    				<div class="sect-btm-bg" style="height: 40px;"></div> 
+    			</div> 
+    		</div> 
+	</div> 
+</div> 
 
 </div>
 
-<hr>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
+
 
 </div></div>
 

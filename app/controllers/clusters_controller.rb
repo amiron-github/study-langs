@@ -38,16 +38,12 @@ require_role "admin"
   
   def add_to_cluster
 	cluster = Cluster.find(params[:id])
-
 	params[:word].values.each do |word_id|
 		word = Word.find(word_id)
 		cluster.involves(word)
 	end
 	redirect_to(cluster)
   end
-  
-  
-  
   
   def select_to_remove
 	cluster = Cluster.find(params[:id])

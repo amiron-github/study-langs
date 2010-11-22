@@ -75,17 +75,13 @@ We advise to visit <a href="functions.html">Functions and settings</a> page to r
 </p>
 
 
-
-
-
-
 <div id="prof_tabs">
 	<div id="tabs_row">
-            <div id="tab01" class="ptab current_ptab"><div><a href="vocabulary.html" style="color: #000;">Vocabulary</a></div></div>
-            <div id="tab02" style="display: none" class="ptab"><div><a href="vocabulary_exercises.html">Exercises</a></div></div>
-            <div id="tab03" style="display: none" class="ptab"><div><a href="vocabulary_tests.html">&nbsp;&nbsp; Tests &nbsp;&nbsp;</a></div></div>
+            <div id="tab01" class="ptab current_ptab"><div><a href="vocabulary.html" style="color: #000;">Vocabulaire</a></div></div>
+            <div id="tab02" class="ptab"><div><a href="vocabulary_exercises.html">Cartes Mémoire</a></div></div>
+            <div id="tab03" class="ptab"><div><a href="vocabulary_tests.html">&nbsp;&nbsp; Tests &nbsp;&nbsp;</a></div></div>
 
-            <div id="tab04" style="display: none" class="ptab"><div><a href="vocabulary_games.html">&nbsp;&nbsp; Games &nbsp;&nbsp;</a></div></div>
+            <div id="tab04" class="ptab"><div><a href="vocabulary_games.html">&nbsp;&nbsp; Jeux &nbsp;&nbsp;</a></div></div>
 	</div>
 	<div style="clear: both;"></div>
 </div>
@@ -94,17 +90,7 @@ We advise to visit <a href="functions.html">Functions and settings</a> page to r
 
 	<div class="inpBlock">
 	
-	<h3>Content: </h3>
-
-	<% @categories.each do |category| %>
-	
-		- <%= link_to category.title_fr, :controller => 'vocabulary', :action => 'build_vocabulary', :category => category.tag, :lang=> 'fr', :to_lang => 'ru' %><br>
-	
-	<% end %>
-	
-	
-<div style="display: none;">	
-	
+	<h3>Contenu: </h3>
       <div class="bold inner-listing">
 	  
             <p><a href="/fr/ru/vocabulary/politeness" title="Formules de politesse">I. Formules de politesse</a></p> 
@@ -119,104 +105,97 @@ We advise to visit <a href="functions.html">Functions and settings</a> page to r
             <p><a href="/fr/ru/vocabulary/taxi" title="Taxi">4. Taxi</a></p>
         </div>
 		
-            <p><a href="/fr/hotel.html" title="Hôtel">IV. Hôtel</a></p>
-            <p style="display: none;"><a href="services.html" title="Services">V. Services</a></p>
-            <p><a href="/fr/city.html" title="En ville">VI. Ville</a></p>
+            <p><a href="/fr/ru/vocabulary/hotel" title="Hôtel">IV. Hôtel</a></p>
+            <p><a href="/fr/ru/vocabulary/services" title="Services">V. Services</a></p>
+            <p><a href="/fr/ru/vocabulary/city" title="En ville">VI. Ville</a></p>
 
-            <p><a href="/fr/sightseeing.html" title="Curiosités">VII. Curiosités</a></p>
+            <p><a href="/fr/ru/vocabulary/sightseeing" title="Curiosites">VII. Curiosites</a></p>
 			
 			
             <p id="repas"><a href="#repas" title="Repas">VIII. Repas</a></p>
         <div  class="secondary-list">
-            <p><a href="bread.html" title="Boulangerie, pâtisserie">1. Boulangerie, pâtisserie</a></p>
-            <p><a href="gruel.html" title="Bouillies">2. Bouillies</a></p>
+            <p><a href="/fr/ru/vocabulary/bread" title="Boulangerie, patisserie">1. Boulangerie, patisserie</a></p>
+            <p><a href="/fr/ru/vocabulary/gruel" title="Bouillies">2. Bouillies</a></p>
             <p><a href="meat.html" title="Plats de viande">3. Plats de viande</a></p>
 
-            <p><a href="fish.html" title="Poisson, plats de poissons">4. Poisson, plats de poissons</a></p>
-            <p><a href="dairy.html" title="Produits laitiers">5. Produits laitiers</a></p>
-            <p><a href="vegetables.html" title="Vegetables">6. Légumes</a></p>
-            <p><a href="fruit.html" title="Fruits et baies">7. Fruits et baies</a></p>
-            <p><a href="confectionery.html" title="Confiserie">8. Confiserie</a></p>
-            <p><a href="drinks.html" title="Boissons">9. Boissons</a></p>
+            <p><a href="/fr/ru/vocabulary/fish" title="Poisson, plats de poissons">4. Poisson, plats de poisson</a></p>
+            <p><a href="/fr/ru/vocabulary/dairy" title="Produits laitiers">5. Produits laitiers</a></p>
+            <p><a href="/fr/ru/vocabulary/vegetables" title="Légumes">6. Légumes</a></p>
+            <p><a href="/fr/ru/vocabulary/fruit" title="Fruits et baies">7. Fruits et baies</a></p>
+            <p><a href="/fr/ru/vocabulary/confectionery" title="Confiserie">8. Confiserie</a></p>
+            <p><a href="/fr/ru/vocabulary/drinks" title="Boissons">9. Boissons</a></p>
 
         </div>
-				
-        <p id="shopping"><a href="#shopping" title="Shopping">IX. Shopping</a></p>
+        <p><a href="shopping.html" title="Shopping">IX. Shopping</a></p>
         <div  class="secondary-list">
-            <p><a href="clothing.html" title="Vêtement">1. Vêtement</a></p>
-            <p><a href="lingerie.html" title="Lingerie">2. Lingerie and nightwear</a></p>
-            <p><a href="sportwear.html" title="Vêtements de sport">3. Vêtements de sport</a></p>
-            <p><a href="shoes.html" title="Shoes">4. Shoes</a></p>
+            <p><a href="/fr/ru/vocabulary/clothing" title="Vêtements">1. Vêtements</a></p>
+            <p><a href="/fr/ru/vocabulary/lingerie" title="Sous-vêtement">2. Sous-vêtement</a></p>
+            <p><a href="/fr/ru/vocabulary/sportwear" title="Tenue de sport">3. Tenue de sport</a></p>
+            <p><a href="/fr/ru/vocabulary/shoes" title="Chaussures">4. Chaussures</a></p>
 
-            <p><a href="accessories.html" title="Accessories">5. Accessories</a></p>
-            <p><a href="perfumery.html" title="Perfumery">6. Perfumery</a></p>
-            <p><a href="jewelry.html" title="Jewelry">7. Jewelry</a></p>
-            <p><a href="video.html" title="Audio, video and photo">8. Audio, video and photo</a></p>
+            <p><a href="/fr/ru/vocabulary/accessories" title="Accessoires">5. Accessoires</a></p>
+            <p><a href="/fr/ru/vocabulary/perfumery" title="Parfumerie">6. Parfumerie</a></p>
+            <p><a href="/fr/ru/vocabulary/jewelry" title="Bijouterie">7. Bijouterie</a></p>
+            <p><a href="/fr/ru/vocabulary/video" title="Audio, vidéo et photo">8. Audio, vidéo et photo</a></p>
         </div>
-	
-		
-        <p><a href="numerals.html" title="Numerals">X. Numeraux russes</a></p>
+        <p><a href="numerals.html" title="Numerals">X. Russian numbers</a></p>
 
         <div  class="secondary-list">
-            <p><a href="numerals00-100.html" title="Numeraux cardinaux de 0 à 100">1. Numeraux cardinaux de 0 à 100</a></p>
-			
-            <p><a href="numerals100.html" title="Cardinal numbers more than 100">2. Numeraux cardinaux plus de 100</a></p>
-            <p style="display: none;"><a href="cardinal.html" title="Ordinal numbers">3. Ordinal numbers</a></p>
+            <p><a href="/numerals00-100.html" title="Cardinal numbers from 0 to 100">1. Cardinal numbers from 0 to 100</a></p>
+            <p><a href="/numerals100.html" title="Cardinal numbers more than 100">2. Cardinal numbers more than 100</a></p>
+            <p><a href="/fr/ru/vocabulary/ordinal_numerals" title="Ordinal numbers">3. Ordinal numbers</a></p>
         </div>
-		
-	<p style="display: none;"><a href="language-skills.html" title="Language Skills">XI. Language skills</a></p> 
-	 <p style="display: none;"><a href="parts-of-body.html" title="Parts of Human Body">XII. Parts of Human Body</a></p> 
-	 <p style="display: none;"><a href="bank.html" title="Bank and Money">XIII. Bank and Money</a></p>
-
-</div>
-
-
-
-
-
-      </div>
+		<p><a href="/fr/ru/vocabulary/language-skills" title="Language Skills">XI. Language skills</a></p> 
+		<p><a href="/fr/ru/vocabulary/countries" title="Pays">XI. Pays et continents</a></p> 
+	 </div>
+	 
+	 
+	 <br><br><br><br><br><br>
 
 	</div>
 </div>
 <div id="for_tab02" class="pBlock" style="display: none">
 	<div class="inpBlock">
 		
-	<h3>Content: </h3>
+	<h3>Contenu: </h3>
 	
         <div class="inner-listing">	
-          <p><a href="politeness-exercise.html" title="Formulas of politeness exercises">Exercises: Formulas of politeness</a></p> 
-          <p><a href="acquaintance-exercise.html" title="Making acquaintance exercises">Exercises: Making acquaintance</a></p>
+          <p><a href="/fr/ru/flashcards/politeness" >Cartes Mémoire: Formules de politesse</a></p> 
+          <p><a href="/fr/ru/flashcards/acquaintance" >Cartes Mémoire: Faire connaissance</a></p>
 
-          <p><a href="airport-exercise.html" title="Airport exercises">Exercises: Airport</a></p>
-          <p><a href="bus-exercise.html" title="City transport exercises ">Exercises: Bus, trolley, tram</a></p>
-          <p><a href="subway-exercise.html" title="Subway exercises">Exercises: Subway</a></p>
-          <p><a href="taxi-exercise.html" title="Taxi exercises">Exercises: Taxi</a></p>
-          <p><a href="hotel-exercise.html" title="Hotel exercises">Exercises: Hotel</a></p>
-          <p><a href="services-exercise.html" title="Services exercises">Exercises: Services</a></p>
+          <p><a href="/fr/ru/flashcards/airport" >Cartes Mémoire: Aéroport</a></p>
+          <p><a href="/fr/ru/flashcards/bus">Cartes Mémoire: Bus, trolleybus, tramway</a></p>
+          <p><a href="/fr/ru/flashcards/subway" >Cartes Mémoire: Métro</a></p>
+          <p><a href="/fr/ru/flashcards/taxi" >Cartes Mémoire: Taxi</a></p>
+          <p><a href="/fr/ru/flashcards/hotel" >Cartes Mémoire: Hôtel</a></p>
+          <p><a href="/fr/ru/flashcards/services" >Cartes Mémoire: Services</a></p>
 
-          <p><a href="city-exercise.html" title="City">Exercises: City</a></p>
-          <p><a href="sightseeing-exercise.html" title="Sightseeing exercises">Exercises: Sightseeing</a></p>
-          <p><a href="bread-exercise.html" title="Bread and confectionery exercises">Exercises: Bread and confectionery</a></p>
-          <p><a href="gruel-exercise.html" title="Gruels and porridges exercises ">Exercises: Gruels and porridges</a></p>
-          <p><a href="meat-exercise.html" title="Meat dishes exercises">Exercises: Meat dishes</a></p>
-          <p><a href="fish-exercise.html" title="Fish dishes exercises">Exercises: Fish, fish dishes</a></p>
+          <p><a href="/fr/ru/flashcards/city" >Cartes Mémoire: Ville</a></p>
+          <p><a href="/fr/ru/flashcards/sightseeing" >Cartes Mémoire: Curiosités</a></p>
+          <p><a href="/fr/ru/flashcards/bread" >Cartes Mémoire: Boulangerie, patisserie</a></p>
+          <p><a href="/fr/ru/flashcards/gruel" >Cartes Mémoire: Bouillies</a></p>
+          <p><a href="/fr/ru/flashcards/meat" >Cartes Mémoire: Plats de viande</a></p>
+          <p><a href="/fr/ru/flashcards/fish" >Cartes Mémoire: Poisson, plats de poisson</a></p>
 
-          <p><a href="dairy-exercise.html" title="Dairy produce exercises">Exercises: Dairy produce</a></p>
-          <p><a href="vegetables-exercise.html" title="Vegetables exercises">Exercises: Vegetables</a></p>
-          <p><a href="fruit-exercise.html" title="Fruit, berries exercises">Exercises: Fruit, berries</a></p>
-          <p><a href="confectionery-exercise.html" title="Confectionery exercises">Exercises: Confectionery</a></p>
-          <p><a href="drinks-exercise.html" title="Soft and strong drinks">Exercises: Beverages, soft and strong drinks</a></p>
-          <p><a href="clothing-exercise.html" title="Outdoor clothing exercises">Exercises: Outdoor clothing</a></p>
+          <p><a href="/fr/ru/flashcards/dairy" >Cartes Mémoire: Produits laitiers</a></p>
+          <p><a href="/fr/ru/flashcards/vegetables" >Cartes Mémoire: Légumes</a></p>
+          <p><a href="/fr/ru/flashcards/fruit" >Cartes Mémoire: Fruits et baies</a></p>
+          <p><a href="/fr/ru/flashcards/confectionery">Cartes Mémoire:  Confiserie</a></p>
+          <p><a href="/fr/ru/flashcards/drinks">Cartes Mémoire: Boissons</a></p>
+          <p><a href="/fr/ru/flashcards/clothing" >Cartes Mémoire: Vêtements</a></p>
 
-          <p><a href="lingerie-exercise.html" title="Lingerie and nightwear exercises">Exercises: Lingerie and nightwear</a></p>
-          <p><a href="sportwear-exercise.html" title="Sportswear exercises">Exercises: Sportswear</a></p>
-          <p><a href="shoes-exercise.html" title="Shoes exercises">Exercises: Shoes</a></p>
-          <p><a href="accessories-exercise.html" title="Accessories exercises">Exercises: Accessories</a></p>
-          <p><a href="perfumery-exercise.html" title="Perfumery exercises">Exercises: Perfumery</a></p>
-          <p><a href="jewelry-exercise.html" title="Jewelry exercises">Exercises: Jewelry</a></p>
+          <p><a href="/fr/ru/flashcards/lingerie" >Cartes Mémoire: Sous-vêtement</a></p>
+          <p><a href="/fr/ru/flashcards/sportwear" >Cartes Mémoire: Tenue de sport</a></p>
+          <p><a href="/fr/ru/flashcards/shoes" >Cartes Mémoire: Chaussures</a></p>
+          <p><a href="/fr/ru/flashcards/accessories" >Cartes Mémoire: Accessoires</a></p>
+          <p><a href="/fr/ru/flashcards/perfumery" >Cartes Mémoire: Parfumerie</a></p>
+          <p><a href="/fr/ru/flashcards/jewelry" >Cartes Mémoire: Bijouterie</a></p>
 
-          <p><a href="video-exercise.html" title="Audio, video and photo exercises">Exercises: Audio, video and photo</a></p>
-		  <p><a href="language-skills-exercise.html" title="Language Skills">Exercises: Language Skills</a></p>
+          <p><a href="/fr/ru/flashcards/video" >Cartes Mémoire: Audio, vidéo et photo</a></p>
+			<p><a href="/fr/ru/flashcards/parts-of-body" >Cartes Mémoire: Language Skills</a></p>
+			<p><a href="/fr/ru/flashcards/professions" title="Professions">Cartes Mémoire: Professions and occupations</a></p>
+			<p><a href="/fr/ru/flashcards/countries" title="Countries">Cartes Mémoire: Pays et continents</a></p>
+		  
         </div>
 	
 	</div>
@@ -227,43 +206,50 @@ We advise to visit <a href="functions.html">Functions and settings</a> page to r
 	<h3>Content: </h3>
 	
         <div class="inner-listing">	
-          <p><a href="politeness-test.html" title="Formulas of politeness tests">Tests: Formulas of politeness</a></p> 
-          <p><a href="acquaintance-test.html" title="Making acquaintance tests">Tests: Making acquaintance</a></p>
+          <p><a href="/fr/ru/lexical-test/politeness" title="Formulas of politeness tests">Tests: Formulas of politeness</a></p> 
+          <p><a href="/fr/ru/lexical-test/acquaintance" title="Making acquaintance tests">Tests: Making acquaintance</a></p>
 
-          <p><a href="airport-test.html" title="Airport tests">Tests: Airport</a></p>
-          <p><a href="bus-test.html" title="City transport tests ">Tests: Bus, trolley, tram</a></p>
-          <p><a href="subway-test.html" title="Subway tests">Tests: Subway</a></p>
-          <p><a href="taxi-test.html" title="Taxi tests">Tests: Taxi</a></p>
-          <p><a href="hotel-test.html" title="Hotel tests">Tests: Hotel</a></p>
-          <p><a href="services-test.html" title="Services tests">Tests: Services</a></p>
+          <p><a href="/fr/ru/lexical-test/airport" title="Airport tests">Tests: Airport</a></p>
+          <p><a href="/fr/ru/lexical-test/bus" title="City transport tests ">Tests: Bus, trolley, tram</a></p>
+          <p><a href="/fr/ru/lexical-test/subway" title="Subway tests">Tests: Subway</a></p>
+          <p><a href="/fr/ru/lexical-test/taxi" title="Taxi tests">Tests: Taxi</a></p>
+          <p><a href="/fr/ru/lexical-test/hotel" title="Hotel tests">Tests: Hotel</a></p>
+          <p><a href="/fr/ru/lexical-test/services" title="Services tests">Tests: Services</a></p>
 
-          <p><a href="city-test.html" title="City">Tests: City</a></p>
-          <p><a href="sightseeing-test.html" title="Sightseeing tests">Tests: Sightseeing</a></p>
-          <p><a href="bread-test.html" title="Bread and confectionery tests">Tests: Bread and confectionery</a></p>
-          <p><a href="gruel-test.html" title="Gruels and porridges tests ">Tests: Gruels and porridges</a></p>
-          <p><a href="meat-test.html" title="Meat dishes tests">Tests: Meat dishes</a></p>
-          <p><a href="fish-test.html" title="Fish dishes tests">Tests: Fish, fish dishes</a></p>
+          <p><a href="/fr/ru/lexical-test/city" title="City">Tests: City</a></p>
+          <p><a href="/fr/ru/lexical-test/sightseeing" title="Sightseeing tests">Tests: Sightseeing</a></p>
+          <p><a href="/fr/ru/lexical-test/bread" title="Bread and confectionery tests">Tests: Bread and confectionery</a></p>
+          <p><a href="/fr/ru/lexical-test/gruel" title="Gruels and porridges tests ">Tests: Gruels and porridges</a></p>
+          <p><a href="/fr/ru/lexical-test/meat" title="Meat dishes tests">Tests: Meat dishes</a></p>
+          <p><a href="/fr/ru/lexical-test/fish" title="Fish dishes tests">Tests: Fish, fish dishes</a></p>
 
-          <p><a href="dairy-test.html" title="Dairy produce tests">Tests: Dairy produce</a></p>
-          <p><a href="vegetables-test.html" title="Vegetables tests">Tests: Vegetables</a></p>
-          <p><a href="fruit-test.html" title="Fruit, berries tests">Tests: Fruit, berries</a></p>
-          <p><a href="confectionery-test.html" title="Confectionery tests">Tests: Confectionery</a></p>
-          <p><a href="drinks-test.html" title="Soft and strong drinks">Tests: Beverages, soft and strong drinks</a></p>
+          <p><a href="/fr/ru/lexical-test/dairy" title="Dairy produce tests">Tests: Dairy produce</a></p>
+          <p><a href="/fr/ru/lexical-test/vegetables" title="Vegetables tests">Tests: Vegetables</a></p>
+          <p><a href="/fr/ru/lexical-test/fruit" title="Fruit, berries tests">Tests: Fruit, berries</a></p>
+          <p><a href="/fr/ru/lexical-test/confectionery" title="Confectionery tests">Tests: Confectionery</a></p>
+          <p><a href="/fr/ru/lexical-test/drinks" title="Soft and strong drinks">Tests: Beverages, soft and strong drinks</a></p>
           <p><a href="clothing-test.html" title="Outdoor clothing tests">Tests: Outdoor clothing</a></p>
 
-          <p><a href="lingerie-test.html" title="Lingerie and nightwear tests">Tests: Lingerie and nightwear</a></p>
-          <p><a href="sportswear-test.html" title="Sportswear tests">Tests: Sportswear</a></p>
-          <p><a href="shoes-test.html" title="Shoes tests">Tests: Shoes</a></p>
-          <p><a href="accessories-test.html" title="Accessories tests">Tests: Accessories</a></p>
-          <p><a href="perfumery-test.html" title="Perfumery tests">Tests: Perfumery</a></p>
-          <p><a href="jewelry-test.html" title="Jewelry tests">Tests: Jewelry</a></p>
+          <p><a href="/fr/ru/lexical-test/lingerie" title="Lingerie and nightwear tests">Tests: Lingerie and nightwear</a></p>
+          <p><a href="/fr/ru/lexical-test/sportwear" title="Sportswear tests">Tests: Sportswear</a></p>
+          <p><a href="/fr/ru/lexical-test/shoes" title="Shoes tests">Tests: Shoes</a></p>
+          <p><a href="/fr/ru/lexical-test/accessories" title="Accessories tests">Tests: Accessories</a></p>
+          <p><a href="/fr/ru/lexical-test/perfumery" title="Perfumery tests">Tests: Perfumery</a></p>
+          <p><a href="/fr/ru/lexical-test/jewelry" title="Jewelry tests">Tests: Jewelry</a></p>
 
-          <p><a href="video-test.html" title="Audio, video and photo tests">Tests: Audio, video and photo</a></p>
+          <p><a href="/fr/ru/lexical-test/video" title="Audio, video and photo tests">Tests: Audio, video and photo</a></p>
           <p><a href="numerals00-100-test.html" title="Cardinal numbers from 0 to 100 tests">Tests: Numbers from 0 to 100</a></p>
           <p><a href="numerals100-test.html" title="Cardinal numbers more than 100 tests">Tests: Numbers more than 100</a></p>
-		  <p><a href="language-skills-test.html" title="Language Skills">Tests: Language Skills</a></p>
+		  <p><a href="/fr/ru/lexical-test/language-skills" title="Language Skills">Tests: Language Skills</a></p>
+			<p><a href="/fr/ru/lexical-test/parts-of-body" title="Parts of Human Body">Tests: Parts of Human Body</a></p> 
+			<p><a href="/fr/ru/lexical-test/bank" title="Bank and Money">Tests: Bank and Money</a></p>
+			<p><a href="/fr/ru/lexical-test/computer" title="Computer and Internet">Tests: Computer and Internet</a></p>
+			<p><a href="/fr/ru/lexical-test/telephone" title="Telephone calls">Tests: Telephone calls</a></p>
+			<p><a href="/fr/ru/lexical-test/family" title="Family">Tests: Family and Relatives</a></p>
+			<p><a href="/fr/ru/lexical-test/professions" title="Professions">Tests: Professions and occupations</a></p>
+			<p><a href="/fr/ru/lexical-test/countries" title="Countries">Tests: Countries</a></p>
+			<p><a href="/fr/ru/lexical-test/weather" title="Countries">Tests: Weather</a></p>
         </div>	
-
 	</div>
 </div>
 <div id="for_tab04" class="pBlock" style="display: none">
@@ -292,9 +278,7 @@ We advise to visit <a href="functions.html">Functions and settings</a> page to r
 
 			</span>
 
-		
 		</a>
-		
 		
 		<a href="balloon-game.html" class="forgame">
 		<span class="gname">Hot Air Balloons</span>
@@ -313,14 +297,8 @@ We advise to visit <a href="functions.html">Functions and settings</a> page to r
 			The fateful hour for the humankind has come. Hordes of demons try to rush into our world in order to destroy the human race.<br> 
 			However, humans still cherish the hope to survive: a mighty wizard Nestor has a great magic power to stop the evil spirits. 
 			Be courageous, you and Nestor can bar the way of demons to our world!
-
-
 			</span>
-
-		
 		</a>
-
-
 	</div>
 </div>
 

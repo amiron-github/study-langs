@@ -6,12 +6,11 @@
 <% content_for :special_js_css do %>
 
 <%= stylesheet_link_tag 'test-style' %>
-
-<%= javascript_include_tag 'test' %>
-<%= javascript_include_tag 'test-text' %>
-<%= stylesheet_link_tag 'test-style' %>
-
-
+<%= javascript_include_tag 'ev-test' %>
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'every-exercises' %>
+<%= stylesheet_link_tag 'every-exercises' %>
+<script type="text/javascript">wrapTests = false;</script>
 <style type="text/css">
 
 
@@ -74,16 +73,12 @@ padding: 20px 40px 40px 30px;
     </div>
     <div class="sub_hint" style="display: none;">
         <ul>
-            <li><a href="politeness.html">Formulas of politeness</a></li>
-            <li><a href="acquaintance.html">Acquaintance</a></li>
+            <li><a href="/en/ru/vocabulary/countries">Topic: Countries</a></li>
         </ul>
         <%= render :partial => 'down_accent' %>
   </div>
 </div>
 </div>
-
-
-
 
 <h2 class="page">Lesson 3</h2>
 <div id="pagecontent"><div id="content">
@@ -110,6 +105,14 @@ T['1']=['2','1'];
 T['2']=['1','2'];
 T['3']=['5','3','8','6','1','4', '2', '7'];
 </script>
+
+<div class="section-block" style="cursor: auto; margin: 20px 30px"> 
+	<div class="sect-crn clt"> 
+		<div class="sect-crn crt"> 
+			<div class="sect-mid">  </div> 
+		</div> 
+	</div> 
+	<div class="section-content" style="height: auto; padding: 0px 40px;">
 <p class="bold">Audio 1</p>
 <div class="player_swf"><span style="visibility: hidden">sounds/soundb03011010.mp3</span></div>
 <br><br>
@@ -143,8 +146,24 @@ T['3']=['5','3','8','6','1','4', '2', '7'];
 
 </table>
 </form>
+	</div><!-- end of section-content -->
+	<div class="sect-btm"> 
+    		<div class="sect-clb"> 
+    			<div class="sect-crb"> 
+    				<div class="sect-btm-bg" style="height: 40px;"></div> 
+    			</div> 
+    		</div> 
+	</div> 
+</div> 
 
 
+<div class="section-block" style="cursor: auto; margin: 20px 30px"> 
+	<div class="sect-crn clt"> 
+		<div class="sect-crn crt"> 
+			<div class="sect-mid">  </div> 
+		</div> 
+	</div> 
+	<div class="section-content" style="height: auto; padding: 0px 40px;">
 <p class="bold">Audio 2</p>
 <div class="player_swf"><span style="visibility: hidden">sounds/soundb03011020.mp3</span></div>
 <br><br>
@@ -178,6 +197,16 @@ T['3']=['5','3','8','6','1','4', '2', '7'];
 
 </table>
 </form>
+	</div><!-- end of section-content -->
+	<div class="sect-btm"> 
+    		<div class="sect-clb"> 
+    			<div class="sect-crb"> 
+    				<div class="sect-btm-bg" style="height: 40px;"></div> 
+    			</div> 
+    		</div> 
+	</div> 
+</div> 
+
 </div>
 <hr>
 
@@ -186,7 +215,7 @@ T['3']=['5','3','8','6','1','4', '2', '7'];
 
 <p class="task ex-task">a) Listen and repeat. Pay attention to the nouns' endings:</p>
 
-<div class="voc_inter">
+<div class="voc_inter ev-wordlist">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="280">
@@ -295,21 +324,81 @@ Such changes of word forms are closely related to the concept of <dfn>cases</dfn
 
 
 <p class="task ex-task">b) Listen to the Russian words and choose the right translation from the list:</p>
-<div id="t1">
 
-<script type="text/javascript">
-var t1 = new Test({dict:[
+<div id="ch1" class="es-ex-wrapper">
+<div class="es-ex-alert-container"><div class="es-ex-alert-rt"><div class="es-ex-alert"> &nbsp;</div></div></div>
+<div class="es-ex-top">
+	<div class="es-ex-autoplay-wrapper"><input class="es-ex-autoplay" type="checkbox" /> <span>Go to next automatically</span> </div>
+	<div class="es-ex-final"></div>
 
-['sounds/soundb03022010.mp3','Russia'],['sounds/soundb03022020.mp3','Great Britain'],['sounds/soundb03022030.mp3','Australia'],['sounds/soundb03022040.mp3','France'],['sounds/soundb03022050.mp3','Canada'],
-['sounds/soundb03022060.mp3','The USA']
-
-],hide:'di1',id:'t1',type: 'audio',how_questions: 6, how_show: 2},'c0203022.II.b)');
-</script>
 </div>
+<table class="es-ex-content" cellspacing="0">
+	<tr>
+		<td class="es-ex-quest" width="40%" valign="middle" align="center">
+			<div class="es-ex-audio-wrapper">
+				<table><tr><td style="height: 140px;"><div class="es-ex-audio-holder"><div class="es-ex-audio"></div></div></td></tr></table>
+			</div>
+			<div class="es-ex-string-holder">
+				<table><tr><td class="es-ex-string-wrapper" style="height: 150px;">&nbsp;</td></tr></table>
+			</div>
+
+		</td>
+		<td class="es-ex-tasks" valign="top">
+			<div class="yn-answer-type">
+					<p class="es-yn-task-p">Is this translated as:</p>
+					<div class="es-yn-variant-wrapper"><div class="es-yn-variant yn-trans">&nbsp;</div></div>
+					<div class="es-ex-buttons yn-btns">
+						<input type="button" class="es-ex-es-btn yn-yes" value="Yes"/> &nbsp;&nbsp;&nbsp;&nbsp; <input value="NO" type="button"  class="es-ex-es-btn yn-no"/>
+
+					</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td><div class="es-ex-bottom"><input type="button" class="es-ex-next" value="NEXT" style="font-size: 12px; visibility: hidden;"></div></td>
+		<td></td>
+	</tr>
+</table>
+
+<div class="es-ex-info-container">
+	<table cellspacing="0" align="center">
+		<tr>
+			<td style="padding-left: 20px;"><div class="es-ex-info"> &nbsp;  </div></td>
+			<td><div class="es-ex-buttons"><input type="button" class="es-ex-es-btn es-ex-start" value="RESTART"/></div></td>
+		</tr>
+	</table>
+</div>
+</div>
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		test_id: "c0203022.II.b)",
+		quest_type: 'audio',
+		quest_num: 7,
+		//answer_type: 'audio',
+		basic_array: [
+		
+['/sounds/soundb03022010.mp3','Russia',1241],
+['/sounds/soundb03022020.mp3','Great Britain',1199],
+['/sounds/soundb03022030.mp3','Australia',1192],
+['/sounds/soundb03022040.mp3','France',1217],
+['/sounds/soundb03022050.mp3','Canada',1231],
+['/sounds/soundb03022060.mp3','The USA',1237]
+
+		]
+		} )
+</script>
+
+<br><br>
+
 
 <p class="task ex-task">с) Give a positive or a negative answer following the model and check yourself: </p>
 
-<p class="ital">Model 1:</p>
+
+
+<div class="model">
+<h4>Model 1</h4>
 
 <table class="tab1"  cellspacing="0" >
 	<tr valign="top">
@@ -340,7 +429,7 @@ var t1 = new Test({dict:[
 
 </table>
 
-<p class="ital">Model 2:</p>
+<h4>Model 2</h4>
 
 <table class="tab1"  cellspacing="0" >
 	<tr valign="top">
@@ -370,8 +459,11 @@ var t1 = new Test({dict:[
 	</tr>
 
 </table>
+</div>
 
-<p class="ital" style="margin-bottom: 20px;">Questions:</p>
+
+<div class="ev-ex-area">
+<p class="ital bold" style="margin-bottom: 20px; margin-top: 0">Questions:</p>
 
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
@@ -467,6 +559,7 @@ var t1 = new Test({dict:[
 			</td>
 	</tr>
 </table>
+</div>
 
 </div>
 <hr>
@@ -476,11 +569,11 @@ var t1 = new Test({dict:[
 
 <p class="task ex-task">a) Listen and repeat. Pay attention to the nouns endings:</p>
 
-<div class="voc_inter">
+<div class="voc_inter ev-wordlist">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="190">
-				<p class="t2_di2">брит<span class="acco">а</span>нец / брит<span class="acco">а</span>нка<br />
+				<p class="t2_di2"><span>брит<span class="acco">а</span>нец / брит<span class="acco">а</span>нка</span><br />
 
 					<span class="sound" onclick="playSound('soundb03031010.mp3')">[brit<span class="acct">a</span>nits - brit<span class="acct">a</span>nka]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
 				</p>
@@ -495,7 +588,7 @@ var t1 = new Test({dict:[
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="190">
-				<p class="t2_di2">р<span class="acco">у</span>сский / р<span class="acco">у</span>сская</span><br />
+				<p class="t2_di2"><span>р<span class="acco">у</span>сский / р<span class="acco">у</span>сская</span></span><br />
 					<span class="sound" onclick="playSound('soundb03031020.mp3')">[r<span class="acct">oo</span>skiy - r<span class="acct">oo</span>skaya]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
 
 				</p>
@@ -509,7 +602,7 @@ var t1 = new Test({dict:[
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="190">
-				<p class="t2_di2">француз / француженка<br />
+				<p class="t2_di2"><span>франц<span class="acco">у</span>з / франц<span class="acco">у</span>женка</span><br />
 
 					<span class="sound" onclick="playSound('soundb03031030.mp3')">[frants<span class="acct">oo</span>s - frants<span class="acct">oo</span>j<span class="ry">i</span>nka]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
 				</p>
@@ -524,7 +617,7 @@ var t1 = new Test({dict:[
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="190">
-				<p class="t2_di2">кан<span class="acco">а</span>дец / кан<span class="acco">а</span>дка<br />
+				<p class="t2_di2"><span>кан<span class="acco">а</span>дец / кан<span class="acco">а</span>дка</span><br />
 
 					<span class="sound" onclick="playSound('soundb03031040.mp3')">[kan<span class="acct">a</span>dits - kan<span class="acct">a</span>tka]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
 				</p>
@@ -538,8 +631,8 @@ var t1 = new Test({dict:[
 </table>
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
-			<td width="190">
-				<p class="t2_di2">австрал<span class="acco">и</span><i></i>ец / австрал<span class="acco">и</span>йка<br />
+			<td width="210">
+				<p class="t2_di2"><span>австрал<span class="acco">и</span><i></i>ец / австрал<span class="acco">и</span>йка</span><br />
 
 					<span class="sound" onclick="playSound('soundb03031050.mp3')">[afstral<span class="acct">i</span>its - afstral<span class="acct">i</span>yka]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
 				</p>
@@ -554,7 +647,7 @@ var t1 = new Test({dict:[
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="190">
-				<p class="t2_di2">америк<span class="acco">а</span>нец / америк<span class="acco">а</span>нка<br />
+				<p class="t2_di2"><span>америк<span class="acco">а</span>нец / америк<span class="acco">а</span>нка</span><br />
 
 					<span class="sound" onclick="playSound('soundb03031060.mp3')">[amirik<span class="acct">a</span>nits - amirik<span class="acct">a</span>nka]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
 				</p>
@@ -578,21 +671,85 @@ All Russian nouns have gender, masculine, feminine or neuter, without regard wha
 </div>
 
 <p class="task ex-task">b) Read Russian words and choose the right translation from the list:</p>
-<div id="t2">
 
-<script type="text/javascript">
-var t2 = new Test({dict:[
+<div id="ch2" class="es-ex-wrapper">
+<div class="es-ex-alert-container"><div class="es-ex-alert-rt"><div class="es-ex-alert"> &nbsp;</div></div></div>
+<div class="es-ex-top">
+	<div class="es-ex-autoplay-wrapper"><input class="es-ex-autoplay" type="checkbox" /> <span>Go to next automatically</span> </div>
+	<div class="es-ex-final"></div>
 
-['русский','Russian (male)'],['русская','Russian (female)'],['британец','Briton (male)'],['британка','Briton (female)'],['француз','French (male)'],
-['француженка','French (female)'], ['канадец','Canadian (male)'], ['канадка','Canadian (female)'], ['австралиец','Australian (male)'], ['австралийка','Australian (female)'], ['американец','American (male)'], ['американка','American (female)']
-
-],hide:'di2',id:'t2',type: 'text',how_questions: 8, how_show: 2},'c0203022.III.b)');
-</script>
 </div>
+<table class="es-ex-content" cellspacing="0">
+	<tr>
+		<td class="es-ex-quest" width="40%" valign="middle" align="center">
+			<div class="es-ex-audio-wrapper">
+				<table><tr><td style="height: 140px;"><div class="es-ex-audio-holder"><div class="es-ex-audio"></div></div></td></tr></table>
+			</div>
+			<div class="es-ex-string-holder">
+				<table><tr><td class="es-ex-string-wrapper" style="height: 150px;">&nbsp;</td></tr></table>
+			</div>
+
+		</td>
+		<td class="es-ex-tasks" valign="top">
+			<div class="yn-answer-type">
+					<p class="es-yn-task-p">Is this translated as:</p>
+					<div class="es-yn-variant-wrapper"><div class="es-yn-variant yn-trans">&nbsp;</div></div>
+					<div class="es-ex-buttons yn-btns">
+						<input type="button" class="es-ex-es-btn yn-yes" value="Yes"/> &nbsp;&nbsp;&nbsp;&nbsp; <input value="NO" type="button"  class="es-ex-es-btn yn-no"/>
+
+					</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td><div class="es-ex-bottom"><input type="button" class="es-ex-next" value="NEXT" style="font-size: 12px; visibility: hidden;"></div></td>
+		<td></td>
+	</tr>
+</table>
+
+<div class="es-ex-info-container">
+	<table cellspacing="0" align="center">
+		<tr>
+			<td style="padding-left: 20px;"><div class="es-ex-info"> &nbsp;  </div></td>
+			<td><div class="es-ex-buttons"><input type="button" class="es-ex-es-btn es-ex-start" value="RESTART"/></div></td>
+		</tr>
+	</table>
+</div>
+</div>
+
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		test_id: "c0203022.III.b)",
+		quest_type: 'text',
+		quest_num: 10,
+		basic_array: [
+		
+['русский','Russian (male)'],
+['русская','Russian (female)'],
+['британец','Briton (male)'],
+['британка','Briton (female)'],
+['француз','French (male)'],
+['француженка','French (female)'], 
+['канадец','Canadian (male)'],
+['канадка','Canadian (female)'], 
+['австралиец','Australian (male)'], 
+['австралийка','Australian (female)'], 
+['американец','American (male)'], 
+['американка','American (female)']
+
+
+		]
+		} )
+</script>
+
+<br><br>
+
+
 
 <p class="task ex-task">c) Translate into Russian and check yourself:</p>
 
-<div class="task_transl">
+<div class="task_transl ev-ex-area">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="290">
@@ -738,11 +895,11 @@ var t2 = new Test({dict:[
 
 <p class="task ex-task">a) Learn the following Russian pronouns:</p>
 
-<div class="voc_inter">
+<div class="voc_inter ev-wordlist">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="60">
-				<p>он<br />
+				<p><span>он</span><br />
 
 					<span class="sound" onclick="playSound('soundb03041030.mp3')">[<span class="acct">o</span>n]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
 				</p>
@@ -758,7 +915,7 @@ var t2 = new Test({dict:[
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="60">
-				<p>он<span class="acco">а</span></span><br />
+				<p><span>он<span class="acco">а</span></span><br />
 					<span class="sound" onclick="playSound('soundb03041040.mp3')">[an<span class="acct">a</span>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
 
 				</p>
@@ -773,7 +930,7 @@ var t2 = new Test({dict:[
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="60">
-				<p>он<span class="acco">о</span><br />
+				<p><span>он<span class="acco">о</span></span><br />
 
 					<span class="sound" onclick="playSound('soundb03041050.mp3')">[an<span class="acct">o</span>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
 				</p>
@@ -807,8 +964,8 @@ In singular, Russian third person pronouns <span class="eg">он</span> and <spa
 <p class="task ex-task">b) Paraphrase sentences below using Russian pronouns. See the model: 
 </p>
 
-<p class="ital">Model:</p>
-
+<div class="model">
+<h4>Model</h4>
 <table  cellspacing="0" >
 	<tr valign="top">
 		<td width="350">
@@ -835,11 +992,11 @@ In singular, Russian third person pronouns <span class="eg">он</span> and <spa
 		<td valign="top"><p class="ital">Linda is from Canada - This is Linda. She is Canadian</p>
 		</td>
 	</tr>
-
 </table>
+</div>
 
-<p class="ital">Questions</p>
-
+<div class="ev-ex-area">
+<p class="ital bold" style="margin-top: 0">Questions</p>
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="290">
@@ -934,6 +1091,7 @@ In singular, Russian third person pronouns <span class="eg">он</span> and <spa
 			</td>
 	</tr>
 </table>
+</div>
 
 </div>
 
@@ -945,8 +1103,17 @@ In singular, Russian third person pronouns <span class="eg">он</span> and <spa
 <p class="task ex-task">Listen to the phrases in Russian and choose the right translation.</p>
 
 
+
+<div class="section-block" style="cursor: auto; margin: 20px 30px"> 
+	<div class="sect-crn clt"> 
+		<div class="sect-crn crt"> 
+			<div class="sect-mid">  </div> 
+		</div> 
+	</div> 
+	<div class="section-content" style="height: auto; padding: 0px 40px;">
+	
 <form onsubmit="return check_test(this,3,'c0203050.V')">
-<table class="tbtest" cellspacing="0" cellpadding="3" align="center">
+<table class="tbtest" cellspacing="5" cellpadding="3" align="center">
 	<tr>
 		<td>&nbsp;
 
@@ -955,7 +1122,7 @@ In singular, Russian third person pronouns <span class="eg">он</span> and <spa
 		</td>
 	</tr>
 	<tr>
-		<td width="250" valign="top">
+		<td width="180" valign="top">
 			<div class="key">
 
    				<div>
@@ -1059,10 +1226,20 @@ In singular, Russian third person pronouns <span class="eg">он</span> and <spa
 </div>
 
 </form>
+	</div><!-- end of section-content -->
+	<div class="sect-btm"> 
+    		<div class="sect-clb"> 
+    			<div class="sect-crb"> 
+    				<div class="sect-btm-bg" style="height: 40px;"></div> 
+    			</div> 
+    		</div> 
+	</div> 
+</div> 
+
 
 </div>
 
-<hr>
+<br><br><br><br><br><br><br><br><br><br><br><br>
 
 
 </div></div>

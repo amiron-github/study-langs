@@ -23,6 +23,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'words/list_attributes', :controller => 'words', :action => 'list_attributes'
   map.connect 'words/cat_index', :controller => 'words', :action => 'cat_index' 
   map.connect 'words/index_lang', :controller => 'words', :action => 'index_lang'    
+  map.connect 'update_cat_order', :controller => 'words', :action => 'update_cat_order' 
   map.resources :words
   map.resources :categories
 

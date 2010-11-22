@@ -26,18 +26,73 @@ font-size: 11px;
 background-color: #efefef;
 }
 
+#cat_order .ui-sortable-helper {
+border: 1px dotted #ccc;
+background-color: #fff;
+width: auto !important;
+cursor: default;
+}
+
+#cat_order li {
+list-style: none;
+padding: 3px 6px;
+cursor: default;
+font-size: 12px;
+}
+
+.cat_order_display {
+margin: 0 30px;
+padding: 20px;
+border: 1px solid #222;
+}
+
+.cat_order_wrapper {
+display: none;
+}
+
 
 </style>
 <script type="text/javascript">
 	$(function() {
-		$("#sortable").sortable();
-		$("#sortable").disableSelection();
-		$("#sortable").sortable("widget");
-		$("#accordion").accordion({ collapsible: true, active: false, autoHeight: false });
+		$("#cat_order").sortable( { update: function() { 
+			setOrder();
+		}});
 		
+		$("#cat_order input").attr("autocomplete", "off")
+		
+		$("#cat_order").disableSelection();
+		$("#accordion").accordion({ collapsible: true, active: false, autoHeight: false });
 		$(".attr_getter select").attr("autocomplete", "off")
-	});
+
+		
+$("#cl_ordr").click(function() {
+	$("#cat_order").find("input[name*='order_num']").val("");
+})
+		
+		});
 	
+
+function setOrder() {
+		$("#cat_order li ").each(function(i, obj) {
+			var tIndex = i+1;
+			$(obj).find("input[name*='order_num']").val(tIndex);
+			$(obj).find(".ord").text(tIndex);
+		});
+}
+
+function openCO() {
+
+if ( $(".cat_order_wrapper").is(":visible") ) {
+	$(".cat_order_wrapper").slideUp();
+} else {
+	$(".cat_order_wrapper").slideDown();
+	
+}
+
+
+
+}
+
 	
 </script>
 <% end %>
@@ -89,7 +144,42 @@ background-color: #efefef;
 
 
 <br />
+<br /><br /><br />
+
+<div class="cat_order_display">
+
+Change categories order <input type="button" value="open/close" onclick="openCO()"/>
+<br><br>
+
+<div class="cat_order_wrapper">
+
+&nbsp;&nbsp;&nbsp;<input id="cl_ordr" type="button" value="clear" style="font-size: 12px;">
+<% form_tag :action => 'update_cat_order' do %>
+<input type="hidden" name="lang" value="<%= params[:lang] %>">
+<ul id="cat_order">
+<% @encategory.each_with_index do |category,index| %>
+	<li><input type="text"  style="width: 25px" name="category[<%= index %>][order_num]" value="<%= category.order_num %>">.  <%= category.title %>
+		
+		<input type="hidden" name="category[<%= index %>][id]" value="<%= category.id %>">
+	</li>
+<% end %>
+</ul>
+<%= submit_tag 'Save order' %>
+<%end%>
+
+</div>
+
+</div>
 
 
 
-<br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+
+
+
+
+
+
+
+

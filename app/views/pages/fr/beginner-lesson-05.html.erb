@@ -7,10 +7,11 @@
 
 <%= stylesheet_link_tag 'test-style' %>
 
-<%= javascript_include_tag 'test' %>
-<%= javascript_include_tag 'test-text' %>
-<%= stylesheet_link_tag 'test-style' %>
-
+<%= javascript_include_tag 'ev-test' %>
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'every-exercises' %>
+<%= stylesheet_link_tag 'every-exercises' %>
+<script type="text/javascript">wrapTests = false;</script>
 
 <style type="text/css">
 
@@ -79,7 +80,7 @@ padding: 20px 40px 40px 30px;
     </div>
     <div class="sub_hint" style="display: none;">
         <ul>
-            <li><a href="/language-skills.html">Topic: Language skills</a></li>
+            <li><a href="/en/ru/vocabulary/language-skills">Topic: Language skills</a></li>
         </ul>
         <%= render :partial => 'down_accent' %>
   </div>
@@ -116,9 +117,14 @@ T['4']=['1','1','1','1','1','1'];
 T['5']=['4', '3', '7', '8', '2', '6', '1', '5' ]; // For Test#1
 </script>
 
-
+<div class="section-block" style="cursor: auto; margin: 20px 30px"> 
+	<div class="sect-crn clt"> 
+		<div class="sect-crn crt"> 
+			<div class="sect-mid">  </div> 
+		</div> 
+	</div> 
+	<div class="section-content" style="height: auto; padding: 0px 40px;">
 <p class="bold">Audio 1</p>
-
 <div class="player_swf"><span style="visibility: hidden">sounds/soundb05011010.mp3</span></div>
 <form onsubmit="return check_test(this,1,'c0205011.I.1)')">
 <p><em>Questions: </em></p>
@@ -154,7 +160,23 @@ T['5']=['4', '3', '7', '8', '2', '6', '1', '5' ]; // For Test#1
 	</tr>
 </table>
 </form>
+	</div><!-- end of section-content -->
+	<div class="sect-btm"> 
+    		<div class="sect-clb"> 
+    			<div class="sect-crb"> 
+    				<div class="sect-btm-bg" style="height: 40px;"></div> 
+    			</div> 
+    		</div> 
+	</div> 
+</div>
 
+<div class="section-block" style="cursor: auto; margin: 20px 30px"> 
+	<div class="sect-crn clt"> 
+		<div class="sect-crn crt"> 
+			<div class="sect-mid">  </div> 
+		</div> 
+	</div> 
+	<div class="section-content" style="height: auto; padding: 0px 40px;">
 <p class="bold">Audio 2</p>
 <div class="player_swf"><span style="visibility: hidden">sounds/soundb05011020.mp3</span></div>
 <form onsubmit="return check_test(this,2,'c0205012.I.2)')">
@@ -191,6 +213,15 @@ T['5']=['4', '3', '7', '8', '2', '6', '1', '5' ]; // For Test#1
 	</tr>
 </table>
 </form>
+	</div><!-- end of section-content -->
+	<div class="sect-btm"> 
+    		<div class="sect-clb"> 
+    			<div class="sect-crb"> 
+    				<div class="sect-btm-bg" style="height: 40px;"></div> 
+    			</div> 
+    		</div> 
+	</div> 
+</div> 
 
 <br/>
 
@@ -202,7 +233,7 @@ T['5']=['4', '3', '7', '8', '2', '6', '1', '5' ]; // For Test#1
 
 <p class="task ex-task">a) Listen and repeat the following phrases. Pay attention to the verbs endingds<span onmouseout="hide_info(this)" onmouseover="tooltip(this,'See notes below')" style="cursor: help;">*</span>:</p>
 
-<div class="voc_inter">
+<div class="voc_inter ev-wordlist">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="200">
@@ -336,6 +367,14 @@ The majority of verbs of the second conjugation includes  have endings -ить i
 
 <p class="task ex-task">b) Associate personal pronouns and verb froms:</p>
 
+<div class="section-block" style="cursor: auto; margin: 20px 30px"> 
+	<div class="sect-crn clt"> 
+		<div class="sect-crn crt"> 
+			<div class="sect-mid">  </div> 
+		</div> 
+	</div> 
+	<div class="section-content" style="height: auto; padding: 0px 40px;">
+	
 <form onsubmit="return check_test(this,3,'c0205022.II.b)')">
 <table cellspacing="0" cellpadding="3" align="center">
 	<tr>
@@ -410,11 +449,19 @@ The majority of verbs of the second conjugation includes  have endings -ить i
 
  </table>
 </form>
-
+	</div><!-- end of section-content -->
+	<div class="sect-btm"> 
+    		<div class="sect-clb"> 
+    			<div class="sect-crb"> 
+    				<div class="sect-btm-bg" style="height: 40px;"></div> 
+    			</div> 
+    		</div> 
+	</div> 
+</div> 
 
 <p class="task ex-task">с) Conjugate (orally) the following Russian verbs and check yourself: </p>
 
-
+<div class="ev-ex-area">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="250">
@@ -439,7 +486,6 @@ The majority of verbs of the second conjugation includes  have endings -ить i
 			<td width="250">
 				<p>звон<u>ить</u> (II conjugation)  <br />
 					<span class="sound" onclick="playSound('soundb05023021.mp3')">[zvan<span class="acct">i</span><span class="sftc">t</span>] <span class="play_tip">&nbsp; &nbsp;</span></span>
-
 				</p>
 			</td>
 			<td>
@@ -448,13 +494,11 @@ The majority of verbs of the second conjugation includes  have endings -ить i
 						<div class="sound"  onclick="playSound('soundb05023022.mp3')">Check&nbsp;yourself</div>
 					</div>
 				</div>
-
 			</td>
 	</tr>
 </table>
 
-
-<br>
+</div>
 
 </div>
 
@@ -465,7 +509,7 @@ The majority of verbs of the second conjugation includes  have endings -ить i
 
 <p class="task ex-task">a) Listen and repeat after the speaker:</p>
 
-<div class="voc_inter">
+<div class="voc_inter ev-wordlist">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="130">
@@ -602,26 +646,84 @@ The majority of verbs of the second conjugation includes  have endings -ить i
 
 </div>
 
-
-
-
 <p class="task ex-task">b) Listen to the Russian words and choose the right translation from the list:</p>
-<div id="t1">
-<script type="text/javascript">
-var t1 = new Test({dict:[
 
-['sounds/soundb05031010.mp3','to speak'],['sounds/soundb05031020.mp3','to understand'],['sounds/soundb05031030.mp3','in Russian'],['sounds/soundb05031040.mp3','in English'],['sounds/soundb05031050.mp3','in French'],
-['sounds/soundb05031060.mp3','in German'], ['sounds/soundb05031070.mp3','well'], ['sounds/soundb05031080.mp3','badly'], ['sounds/soundb05031090.mp3','a little']
 
-],hide:'di1',id:'t1',type: 'audio',how_questions: 7, how_show: 2},'c0205032.III.b)');
-</script>
+<div id="ch1" class="es-ex-wrapper">
+<div class="es-ex-alert-container"><div class="es-ex-alert-rt"><div class="es-ex-alert"> &nbsp;</div></div></div>
+<div class="es-ex-top">
+	<div class="es-ex-autoplay-wrapper"><input class="es-ex-autoplay" type="checkbox" /> <span>Go to next automatically</span> </div>
+	<div class="es-ex-final"></div>
+
 </div>
+<table class="es-ex-content" cellspacing="0">
+	<tr>
+		<td class="es-ex-quest" width="40%" valign="middle" align="center">
+			<div class="es-ex-audio-wrapper">
+				<table><tr><td style="height: 140px;"><div class="es-ex-audio-holder"><div class="es-ex-audio"></div></div></td></tr></table>
+			</div>
+			<div class="es-ex-string-holder">
+				<table><tr><td class="es-ex-string-wrapper" style="height: 150px;">&nbsp;</td></tr></table>
+			</div>
+
+		</td>
+		<td class="es-ex-tasks" valign="top">
+			<div class="yn-answer-type">
+					<p class="es-yn-task-p">Is this translated as:</p>
+					<div class="es-yn-variant-wrapper"><div class="es-yn-variant yn-trans">&nbsp;</div></div>
+					<div class="es-ex-buttons yn-btns">
+						<input type="button" class="es-ex-es-btn yn-yes" value="Yes"/> &nbsp;&nbsp;&nbsp;&nbsp; <input value="NO" type="button"  class="es-ex-es-btn yn-no"/>
+
+					</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td><div class="es-ex-bottom"><input type="button" class="es-ex-next" value="NEXT" style="font-size: 12px; visibility: hidden;"></div></td>
+		<td></td>
+	</tr>
+</table>
+
+<div class="es-ex-info-container">
+	<table cellspacing="0" align="center">
+		<tr>
+			<td style="padding-left: 20px;"><div class="es-ex-info"> &nbsp;  </div></td>
+			<td><div class="es-ex-buttons"><input type="button" class="es-ex-es-btn es-ex-start" value="RESTART"/></div></td>
+		</tr>
+	</table>
+</div>
+</div>
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		test_id: "c0205032.III.b)",
+		quest_type: 'audio',
+		quest_num: 9,
+		basic_array: [
+
+['/sounds/soundb05031010.mp3','to speak',1247],
+['/sounds/soundb05031020.mp3','to understand',1248],
+['/sounds/soundb05031030.mp3','in Russian',605],
+['/sounds/soundb05031040.mp3','in English',601],
+['/sounds/soundb05031050.mp3','in French',609],
+['/sounds/soundb05031060.mp3','in German',613], 
+['/sounds/soundb05031070.mp3','well',635], 
+['/sounds/soundb05031080.mp3','badly',1249], 
+['/sounds/soundb05031090.mp3','a little',635]
+
+		]
+		} )
+</script>
+
+<br><br>
+
 
 <p class="task ex-task">b) Translate into Russian and check yourself:</p>
 
 
 
-<div class="task_transl">
+<div class="task_transl ev-ex-area">
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="290">
@@ -751,8 +853,8 @@ Russian negative sentences are built with the negative particle <span class="eg"
 <p class="task ex-task">Answer the questions following the model: 
 </p>
 
-<p class="ital">Model:</p>
-
+<div class="model">
+<h4>Model</h4>
 <table  cellspacing="0" >
 	<tr valign="top">
 		<td width="420">
@@ -779,10 +881,11 @@ Russian negative sentences are built with the negative particle <span class="eg"
 		<td valign="top"><p class="ital">Do you speak Russian? - No, we do not (speak Russian).</p>
 		</td>
 	</tr>
-
 </table>
+</div>
 
-<p class="ital">Questions</p>
+<div class="ev-ex-area">
+<p class="ital bold" style="margin-top: 0">Questions</p>
 
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
@@ -878,7 +981,7 @@ Russian negative sentences are built with the negative particle <span class="eg"
 			</td>
 	</tr>
 </table>
-
+</div>
 
 
 </div>
@@ -889,9 +992,16 @@ Russian negative sentences are built with the negative particle <span class="eg"
 
 <p class="task ex-task">Listen to the phrases in Russian and choose the right translation.</p>
 
-
+<div class="section-block" style="cursor: auto; margin: 20px 30px"> 
+	<div class="sect-crn clt"> 
+		<div class="sect-crn crt"> 
+			<div class="sect-mid">  </div> 
+		</div> 
+	</div> 
+	<div class="section-content" style="height: auto; padding: 0px 40px;">
+	
 <form onsubmit="return check_test(this,5,'c0205050.V')">
-<table class="tbtest" cellspacing="0" cellpadding="3" align="center">
+<table class="tbtest" cellspacing="6" cellpadding="3" align="center">
 	<tr>
 		<td>&nbsp;
 
@@ -900,7 +1010,7 @@ Russian negative sentences are built with the negative particle <span class="eg"
 		</td>
 	</tr>
 	<tr>
-		<td width="250" valign="top">
+		<td width="200" valign="top">
 			<div class="key">
 
    				<div>
@@ -1004,12 +1114,21 @@ Russian negative sentences are built with the negative particle <span class="eg"
 </div>
 
 </form>
+	</div><!-- end of section-content -->
+	<div class="sect-btm"> 
+    		<div class="sect-clb"> 
+    			<div class="sect-crb"> 
+    				<div class="sect-btm-bg" style="height: 40px;"></div> 
+    			</div> 
+    		</div> 
+	</div> 
+</div> 
 
 
 </div>
 
 
-<hr>
+<br><br><br><br><br><br><br><br><br><br><br>
 
 
 
