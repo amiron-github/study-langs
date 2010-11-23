@@ -985,11 +985,49 @@ position: fixed;
 /*end of .ui-dialog*/
 
 
+/* grammar out ex*/
 
 
+.bl-ex-container {
+background-image: url(/images/ltl-bg.gif);
+border: 2px solid #CFE0FF;
+padding: 50px 50px 50px;
+margin-bottom: 200px;
+overflow: hidden;
+-moz-border-radius: 4px;
+}
 
+.bl-ex-container .su-exerc  {
+background-color: transparent;
+background-image:url(/images/bl-transparent-30.png);
+}
 
+.bl-ex-container  .gext_sign  {
+background-color:transparent;
+}
 
+.gex-area-trans {
+background-image:url(/images/transparent-60.png);
+padding-top: 15px;
+padding-left: 10px;
+padding-right: 10px;
+padding-bottom: 20px;
+border:1px solid #86ACEF;
+-moz-box-shadow:1px 1px 0px #627EAF, 1px 2px 3px #3E556F;
+-webkit-box-shadow:1px 1px 0px #627EAF, 1px 2px 3px #3E556F;
+box-shadow:1px 1px 0px #627EAF, 1px 2px 3px #3E556F;
+}
+
+.bl-ex-container  p.gex-es-btn {
+margin-top: 0;
+}
+
+.gex-init-val {
+color: #888;
+font-style: italic;
+}
+
+/* end of grammar out ex*/
 
 
 

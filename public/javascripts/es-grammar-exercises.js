@@ -6,6 +6,12 @@ $("div.gr_exercise_container").each(function(i){
 
 });
 
+$(".bl-ex-container input").attr("autocomplete", "off");
+
+$(".gex-init-val").focus(function() {
+	$(this).val("").removeClass("gex-init-val")
+
+})
 
 
 $(".ex_from_list_check").each(function(i) {

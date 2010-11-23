@@ -179,6 +179,8 @@ this.hittedTarget = function (fromVariant, hitted) {
 			var tIntarget = tObj.targets.eq(hitted).find(tObj.inTargets);
 			var inTargetDomEl = tIntarget.get(0);
 			
+			if (tIntarget.hasClass("gex-init-val")) tIntarget.val("").removeClass("gex-init-val")
+			
 			if (inTargetDomEl.tagName == "INPUT" || inTargetDomEl.tagName == "TEXTAREA") {
 				if ( !tIntarget.attr("disabled") ) {
 					var currentValue = tIntarget.val();
@@ -214,7 +216,10 @@ this.hittedTarget = function (fromVariant, hitted) {
 			if (targetDomEl.tagName == "INPUT" || targetDomEl.tagName == "TEXTAREA") {
 			
 				if ( !tObj.targets.attr("disabled") ) {
+					if (tObj.targets.eq(hitted).hasClass("gex-init-val")) tObj.targets.eq(hitted).val("").removeClass("gex-init-val")
 					var currentValue =tObj.targets.eq(hitted).val();
+					
+					
 						
 					if (tObj.nospace) {
 						var tValue = currentValue + addValue;
@@ -226,6 +231,7 @@ this.hittedTarget = function (fromVariant, hitted) {
 					tObj.targets.eq(hitted).val(tValue);
 				}
 			} else {
+				if (tObj.targets.eq(hitted).hasClass("gex-init-val")) tObj.targets.eq(hitted).val("").removeClass("gex-init-val")
 				var currentValue =tObj.targets.eq(hitted).html();
 				if (tObj.nospace) {
 					var tValue = currentValue + addValue;
