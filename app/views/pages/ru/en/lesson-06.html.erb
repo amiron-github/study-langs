@@ -1,4 +1,4 @@
-<% @page_title = 'Урок 4' %>
+<% @page_title = 'Урок 6' %>
 <% @page_meta = {'description' => ""} %>
 
 
@@ -8,6 +8,8 @@
 <%= javascript_include_tag 'jp-control' %>
 <%= javascript_include_tag 'lexical-test' %>
 <%= stylesheet_link_tag 'lexical-test' %>
+<%= javascript_include_tag 'jquery-ui-1.8.6.dial.min.js' %>
+<%= stylesheet_link_tag 'custom-theme/jquery-ui-1.8.5.custom.css' %>
 <%= javascript_include_tag 'test-drag-sort' %>
 <%= javascript_include_tag 'es-grammar-exercises' %>
 <%= javascript_include_tag 'es-test-drag-input' %>
@@ -22,6 +24,18 @@
 <%else%>
 	openTabFromUrl();
 <%end%>
+	$(function() {
+	
+	$("#les-res").click(function() {
+		$( "#dialog" ).dialog({
+			height: 300,
+			width: 400,
+			modal: true
+		}).dialog( "option", "buttons", { "Ok": function() { $(this).dialog("close"); } } );	
+	})
+
+	});
+
 </script>
 
 
@@ -35,7 +49,7 @@
 <div id="prof_tabs">
 
 <div class="unit-title">
-Урок 4
+Урок 6
 </div>
 	<div id="tabs_row">
             <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Этап 1</a></div></div>
@@ -64,11 +78,11 @@
 <div class="su-present-brd">
 <table cellspacing="0">
 <%
-@voc1 = Cluster.find(21).words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+@voc1 = Cluster.find(24).words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
 %>
 <% @voc1.each do |voc_word|  %>
 	<tr>
-		<td class="su-pres-audio"><%unless voc_word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%=voc_word.sound_url%>', this)"><%end%></div></td>
+		<td class="su-pres-audio"><%unless voc_word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%=voc_word.sound_url%>', this)"></div><%end%></td>
 		<td class="su-pres-orig"><%=voc_word.text%></td>
 		<td class="su-pres-trans"><%=voc_word.translate%></td>
 	</tr>
@@ -104,7 +118,7 @@
 		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
 		basic_array: [
 <%
-@voc2 = Cluster.find(22).words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+@voc2 = Cluster.find(25).words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
 @last_voc2 = (@voc2.length)-1
 %>
 		
@@ -158,7 +172,7 @@
 <tbody>
 
 <%
-cat = Cluster.find(23)
+cat = Cluster.find(26)
 @words = cat.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
 %>
 <%@words.each_with_index do |word, index|-%>
@@ -240,13 +254,9 @@ cat = Cluster.find(23)
 Данный этап предназначен для ознакомления с правилами грамматики и лексики.
 </p>		
 
-<h3 class="su-page-p" style="margin-top: 0;">Конструкция this is</h3>
+<h3 class="su-page-p" style="margin-top: 0;">Артикли</h3>
 <p>
-Данная конструкция соответствует русской конструкции "Это ....". Она состоит из прилагательного this этот, которое выступает в роли подежащего и
-формы 3 лица ед.ч. глагола to be - is. Данная конструкция употребляется для лиц и предметов в единственном числе (множественное число будет рассматриваться в будущих уроках).
-</p>
-<p>
-В вопросах с данной конструкцией происходит инверсия, при которой слова this и is  меняются местами.
+Это служебные слова, которые употребляются перед существительными и не имеют самостоятельного значения. Они не употребляются перед существительными с указательными и притяжательными местоимения, а также с количественными числительными.
 </p>
 
 
@@ -263,10 +273,9 @@ Is this Emma? - Это Эмма?
 </div>
 
 
-<h3 class="su-page-p">Альтернативный вопрос</h3>
+<h3 class="su-page-p">Неопределенный артикль</h3>
 <p>
-Как уже отмечалось в предыдущем уроке, альтернативный вопрос - вопрос, в котором предлагается 2 или более вариантов ответа. В английском языке 
-такой вопрос чаще всего строится с помощью слова <span class="eg">or</span>, которое переводится как <span class="egt">или</span>.
+Неопределенный артикль указывает на принадлежность к классу однородных предметов. Он употребляется только перед исчисляемыми существительными в единственном числе.
 </p>
 
 <p>
@@ -281,68 +290,6 @@ Is this Jack or Richard? - This is Richard.
 </div>
 
 
-<h3 class="su-page-p">Отрицательная форма глагола to be в настоящем времени</h3>
-<p>
-Отрицание в английском языке чаще всего строится с помощью частицы <span class="eg">not</span> <span class="egt">не</span>.
-В отрицательной форме глагола to bе частица not ставится после глагола. Ниже представлены формы глагола to be в отрицательной форме.
-</p>
-	
-<table class="su-gr-table" cellspacing="1" align="center" style="margin: 0 auto;">
-<thead>
-	<tr>
-		<th rowspan="2">Лицо</th>
-		<th colspan="2">Число</th>
-	</tr>
-	<tr>
-
-		<th class="sec-row">Единственное</th>
-		<th class="sec-row">Множественное</th>
-	</tr>
-</thead>
-<tbody>
-	<tr>
-		<td>1 лицо</td><td>I am not</td><td>we are not</td>
-
-	</tr>
-	<tr>
-		<td>2 лицо</td><td>you are not </td><td>you are not</td>
-	</tr>
-	<tr>
-		<td>3 лицо</td><td>he is not<br> she is not<br> it is not</td><td>they are not</td>
-
-	</tr>
-</tbody>
-</table>
-
-<p>
-В разговорной речи часто употребляются следующие сокращенные формы: 
-</p>
-
-<p style="padding-left: 20px;">
-is not - isn't: He isn't<br>
-are not - aren't: We aren't 
-</p>
-
-<p>
-В отрицательном ответе на простой вопрос со сказуемым, выраженным глаголом to be, используется слово no, при этом оно может сопровождаться следующей конструкцией: подлежащее подходящее по смыслу, выраженное личным местоимением, + соответствующая форма глагола to be c частицей not. При этом в разговорной речи часто используются сокращенные формы.
-</p>
-
-<div class="egdiv">
-<h4>Примеры: </h4>
-<p>
-Are you English? - No, I am not./No, I'm not.
-</p>
-<p>
-Is Alex from Spain? - No, he is not./No, he isn't.
-</p>
-<p>
-Are they from England? - No, they are not./No, they aren't. 
-</p>
-</div>
-
-
-
-
 <br><br>
 <div class="es-ex-buttons su-next-wrapper">
 <input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(4)">
@@ -354,8 +301,6 @@ Are they from England? - No, they are not./No, they aren't.
 </div>
 
 
-
-
 <div id="for_tab04" class="pBlock" style="display: none">
 	<div class="inpBlock">
 	
@@ -365,114 +310,105 @@ Are they from England? - No, they are not./No, they aren't.
 </p>	
 	
 <h4 class="su-task">
-Задание 1. На основе данных фраз постройте вопросительные и отрицательные предложения по модели.
+Задание 1. Просмотрите предложения и их перевод. Выберите вариант, касающийся употребления артикля перед подчеркнутыми словами.
 </h4>
 	
 
 
 
 <div class="su-exerc">
-<div id="di1">	
-				
-<p class="task">Перетащите слова в текстовое поле или напечатайте их.</p> 
 
+<div class="task">Выберите один из вариантов ответа.</div>
 
-<div  class="gr_ex_type di_mix gex_multi_one">
+<div  class="gr_ex_variants">
 
+<div  class="gr_ex_variants_wrap gexv_with_trans">
+<table class="gr_ex_vars_tab gexv_options" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td>
+			<div class="gexv_task gexv_sign">
+				1. <span>This is <u>? milk</u>.</span> - Это молоко.
+			</div>
+			<div class="gexv_variant"><input type="checkbox" > ставится артикль <span class="eg">a</span></div>
+			<div class="gexv_variant"><input type="checkbox"> ставится артикль <span class="eg">an</span></div>
+			<div class="gexv_variant"><input type="checkbox"> нулевой артикль, потому что множественное число </div>
+			<div class="gexv_variant"><input type="checkbox" class="ok"> нет артикля, потому что неисчисляемое существительное </div>
+		
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="gexv_task gexv_sign">
+				 2. <span>He is <u>? economist</u>.</span> - Он экономист.
+			</div>
+			<div class="gexv_variant"><input type="checkbox"> ставится артикль <span class="eg">a</span></div>
+			<div class="gexv_variant"><input type="checkbox"  class="ok"> ставится артикль <span class="eg">an</span></div>
+			<div class="gexv_variant"><input type="checkbox"> нулевой артикль, потому что множественное число </div>
+			<div class="gexv_variant"><input type="checkbox"> нет артикля, потому что неисчисляемое существительное </div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="gexv_task gexv_sign">
+				  3. <span>They are <u>? students</u>.</span> - Это студенты. 
+			</div>
+			<div class="gexv_variant"><input type="checkbox"> ставится артикль <span class="eg">a</span></div>
+			<div class="gexv_variant"><input type="checkbox"> ставится артикль <span class="eg">an</span></div>
+			<div class="gexv_variant"><input type="checkbox"  class="ok"> нулевой артикль, потому что множественное число </div>
+			<div class="gexv_variant"><input type="checkbox"> нет артикля, потому что неисчисляемое существительное </div>	
+		</td>
+	</tr>
 
+	<tr>
 
+		<td>
+			<div class="gexv_task gexv_sign">
+				  4. <span>Jessica is <u>? journalist</u>.</span> - Джессика - журналист.
+			</div>
+			<div class="gexv_variant"><input type="checkbox" class="ok"> ставится артикль <span class="eg">a</span></div>
+			<div class="gexv_variant"><input type="checkbox"> ставится артикль <span class="eg">an</span></div>
+			<div class="gexv_variant"><input type="checkbox"> нулевой артикль, потому что множественное число </div>
+			<div class="gexv_variant"><input type="checkbox"> нет артикля, потому что неисчисляемое существительное </div>
+		</td>
+	</tr>
+	<tr>
 
+		<td>
+			<div class="gexv_task gexv_sign">
+				  5. <span>This is <u>? interesting book</u>.</span> - Это интересная книга.
+			</div>
+			<div class="gexv_variant"><input type="checkbox"> ставится артикль <span class="eg">a</span></div>
+			<div class="gexv_variant"><input type="checkbox"  class="ok"> ставится артикль <span class="eg">an</span></div>
+			<div class="gexv_variant"><input type="checkbox"> нулевой артикль, потому что множественное число </div>
+			<div class="gexv_variant"><input type="checkbox"> нет артикля, потому что неисчисляемое существительное </div>
+		</td>
+	</tr>
+	<tr>
 
-<div class="gext_sign gex_multi_one_item di_mix_first">
-<div class="di_mix_tobuild">Thomas is married.</div>
- <div class="di_mix_variants di_mix">Thomas is married not are why</div>
+		<td>
+			<div class="gexv_task gexv_sign">
+				  6. <span>Lily and Kyle don't drink <u>? vodka</u>.</span> - Лили и Кайл не пьют водку.
+			</div>
+			<div class="gexv_variant"><input type="checkbox"> ставится артикль <span class="eg">a</span></div>
+			<div class="gexv_variant"><input type="checkbox"> ставится артикль <span class="eg">an</span></div>
+			<div class="gexv_variant"><input type="checkbox"> нулевой артикль, потому что множественное число </div>
+			<div class="gexv_variant"><input type="checkbox"  class="ok"> нет артикля, потому что неисчисляемое существительное </div>
+		</td>
+	</tr>
+</table>
 </div>
 
-<div class="gext_task gext_sign" style="border-bottom: 0px solid #fff"> 
-<input type="text" value=""> <span class="gext_answer" style="display: none">is Thomas  married</span>
-<div class="gext_show"><span><b>Is Thomas  married?</b></span> &nbsp;</div>
-</div>
+<p class="gexv_check es-ex-buttons gex-es-btn">
 
-<div class="gext_task gext_sign">
-<input type="text" value=""> <span class="gext_answer" style="display: none">Thomas is not married</span>
-<div class="gext_show"><span><b>Thomas is not married.</b></span> &nbsp;</div>
-</div>
-
-
-
-<div class="gext_sign gex_multi_one_item">
-<div class="di_mix_tobuild">Emily is from England.</div>
- <div class="di_mix_variants di_mix">Emily is from England are not where</div>
-</div>
-
-<div class="gext_task gext_sign" style="border-bottom: 0px solid #fff"> 
-<input type="text" value=""> <span class="gext_answer" style="display: none">is Emily from England</span>
-<div class="gext_show"><span><b>Is Emily from England?</b></span> &nbsp;</div>
-</div>
-
-<div class="gext_task gext_sign">
-<input type="text" value=""> <span class="gext_answer" style="display: none">Emily is not from England</span>
-<div class="gext_show"><span><b>Emily is not from England.</b></span> &nbsp;</div>
-</div>
-
-
-<div class="gext_sign gex_multi_one_item">
-<div class="di_mix_tobuild">This is Mr. Johnson.</div>
- <div class="di_mix_variants di_mix">this is Mr.&nbsp;Johnson are who from not</div>
-</div>
-
-<div class="gext_task gext_sign" style="border-bottom: 0px solid #fff"> 
-<input type="text" value=""> <span class="gext_answer" style="display: none">is this Mr. Johnson</span>
-<div class="gext_show"><span><b>Is this Mr. Johnson?</b></span> &nbsp;</div>
-</div>
-
-<div class="gext_task gext_sign">
-<input type="text" value=""> <span class="gext_answer" style="display: none">This is not Mr. Johnson</span>
-<div class="gext_show"><span><b>This is not Mr. Johnson.</b></span> &nbsp;</div>
-</div>
-
-
-
-<div class="gext_sign gex_multi_one_item">
-<div class="di_mix_tobuild">Victoria and  Alexander are Russian.</div>
- <div class="di_mix_variants di_mix">Victoria and  Alexander are Russian is not from</div>
-</div>
-
-<div class="gext_task gext_sign" style="border-bottom: 0px solid #fff"> 
-<input type="text" value=""> <span class="gext_answer" style="display: none">Are Victoria and  Alexander Russian</span>
-<div class="gext_show"><span><b>Are Victoria and Alexander Russian?</b></span> &nbsp;</div>
-</div>
-
-<div class="gext_task gext_sign">
-<input type="text" value=""> <span class="gext_answer" style="display: none">Victoria and Alexander are not Russian</span>
-<div class="gext_show"><span><b>Are Victoria and  Alexander are not Russian.</b></span> &nbsp;</div>
-</div>
-
-
-<p class="gext_check es-ex-buttons gex-es-btn"><input type="button" class="gext_check_btn" value="Проверить" > <input type="button" value="Ответы" class="gext_answer_show"></p>
-
+<input type="button" value="Check answers"></p>
 
 </div>
 
 
-</div>
+
+</div> <!-- end of su-ex  -->
 
 
-</div> <!-- end of di  -->
-
-
-<script type="text/javascript"> 
-	var di1 = new draginput_test( {
-		id: "di1", 
-		targets: "gext_task input", 
-		//in_targets: "input",
-		clear_option: true,
-		one_use: false,
-		variant_elem: "di_mix_variants span"
-		//targets_color: "#ffffff"
-
-		} )
-</script>
 
 
 
@@ -508,7 +444,7 @@ Are they from England? - No, they are not./No, they aren't.
 
 <table class="dst-test ds-table ds-audio" cellspacing="0" align="center" style="margin: 0 auto">
 
-<col width="100"><col width="100"><col width="100"><col width="100">
+<col width="100"><col width="100"><col width="100">
 
 <tr style="font-size: 11px; vertical-align: top;">
 	<th class="ds-border-right" >
@@ -517,15 +453,6 @@ Are they from England? - No, they are not./No, they aren't.
 		<table class="ds-table" cellspacing="0" align="center">
 			<tr>
 				<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap">Запись 1</td>
-				<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div></td>
-			</tr>
-		</table>
-	</th>
-
-	<th class="ds-border-right" >
-		<table class="ds-table" cellspacing="0" align="center">
-			<tr>
-				<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap">Запись 2</td>
 				<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div></td>
 			</tr>
 		</table>
@@ -554,12 +481,6 @@ Are they from England? - No, they are not./No, they aren't.
 		</div>
 
 	</td>
-
-	<td class="ds-answer ds-border-right " style=" height: 40px">
-		<div class="ds_sort_item">
-			
-		</div>
-	</td>
 </tr>
 <tr>
 	<td class="ds-border-right" style="padding: 5px 15px;">
@@ -573,11 +494,18 @@ Are they from England? - No, they are not./No, they aren't.
 		<div class="ds_sort_item">
 		</div>
 	</td>
-
-	<td class="ds-answer ds-border-right " style="height: 40px">
+</tr>
+<tr>
+	<td class="ds-border-right" style="padding: 5px 15px;">
+		Профессия
+	</td>
+	<td class="ds-answer ds-border-right" style="height: 40px">
 		<div class="ds_sort_item">
 		</div>
-
+	</td>
+	<td class="ds-answer ds-border-right" style="height: 40px">
+		<div class="ds_sort_item">
+		</div>
 	</td>
 </tr>
 <tr>
@@ -592,13 +520,6 @@ Are they from England? - No, they are not./No, they aren't.
 	<td class="ds-answer ds-border-right" style="height: 40px">
 		<div class="ds_sort_item">
 		</div>
-	</td>
-
-	<td class="ds-answer ds-border-right " style="height: 40px">
-		<div class="ds_sort_item">
-			
-		</div>
-
 	</td>
 </tr>
 </table>
@@ -689,7 +610,7 @@ Are they from England? - No, they are not./No, they aren't.
 
 <div class="es_btn_wrapper es-ex-buttons ds-check-wrapper">
 
-<input type="button" class="es_btn ds-check-button" value="Проверить" /a>
+<input type="button" class="es_btn ds-check-button" value="Проверить" />
 
 </div>
 
@@ -713,7 +634,7 @@ Are they from England? - No, they are not./No, they aren't.
 
 
 <h4 class="su-task">
-Задание 2. Выполните перевод, используя данные слова.
+Задание 2. Ответьте на вопросы по модели.
 </h4>
 
 
@@ -729,46 +650,39 @@ Are they from England? - No, they are not./No, they aren't.
 <div  class="gr_ex_type di_mix">
 
 <div class="gext_task gext_sign di_mix_first"> 
-<div class="di_mix_tobuild">Госпожа Винстон - англичанка.</div>
-<div class="di_mix_variants di_mix">Mrs.&nbsp;Winston is English are from</div>
-<input type="text" value=""> <span class="gext_answer" style="display: none">Mrs. Winston is English</span>
-<div class="gext_show"><span><b>Mrs. Winston is English</b></span> &nbsp;</div>
+<div class="di_mix_tobuild">Is he a journalist or a businessman?</div>
+<div class="di_mix_variants di_mix">he is a journalist are an they</div>
+<input type="text" value=""> <span class="gext_answer" style="display: none">he is a journalist</span>
+<div class="gext_show"><span><b>He is a journalist.</b></span> &nbsp;</div>
 
 </div>
 
 <div class="gext_task gext_sign"> 
-<div class="di_mix_tobuild">Это господин Вольский.</div>
-<div class="di_mix_variants di_mix">this are is Mr.&nbsp;Volskiy Mrs.&nbsp;Volskiy they</div>
-<input type="text" value=""> <span class="gext_answer" style="display: none">This is Mr. Volskiy</span>
-<div class="gext_show"><span><b>This is Mr. Volskiy.</b></span> &nbsp;</div>
+<div class="di_mix_tobuild">Are you a teacher or a doctor?</div>
+<div class="di_mix_variants di_mix">I am is we are a an teacher</div>
+<input type="text" value=""> <span class="gext_answer" style="display: none">I am a teacher</span>
+<div class="gext_show"><span><b>I am a teacher.</b></span> &nbsp;</div>
 </div>
 
 <div class="gext_task gext_sign">
-<div class="di_mix_tobuild">Они русские или французы?</div>
- <div class="di_mix_variants di_mix">is he Russian or French from are they</div>
-<input type="text" value=""> <span class="gext_answer" style="display: none">Are they Russian or French</span>
+<div class="di_mix_tobuild">Is she a designer or an architect?</div>
+ <div class="di_mix_variants di_mix">is she a designer or an they we</div>
+<input type="text" value=""> <span class="gext_answer" style="display: none">She is a designer</span>
 
-<div class="gext_show"><span><b>Are they Russian or French?</b></span> &nbsp;</div>
-
-</div>
-
-<div class="gext_task gext_sign">
-<div class="di_mix_tobuild">Сандра не из Германии, она из Автстралии.</div>
- <div class="di_mix_variants di_mix">Sandra isn't German she is Australian are</div>
-<input type="text" value=""> <span class="gext_answer" style="display: none">Sandra isn't German she is Australian</span>
-
-<div class="gext_show"><span><b>Sandra isn't German she is Australian.</b></span> &nbsp;</div>
+<div class="gext_show"><span><b>She is a designer.</b></span> &nbsp;</div>
 
 </div>
 
 <div class="gext_task gext_sign">
-<div class="di_mix_tobuild">Брэндон холост или женат?</div>
- <div class="di_mix_variants di_mix">is Brandon single or married divorced are they</div>
-<input type="text" value=""> <span class="gext_answer" style="display: none">is Brandon single or married</span>
+<div class="di_mix_tobuild">Is John a programmer or a manager</div>
+ <div class="di_mix_variants di_mix">he is a programmer they are an</div>
+<input type="text" value=""> <span class="gext_answer" style="display: none">he is a programmer</span>
 
-<div class="gext_show"><span><b>Is Brandon single or married?</b></span> &nbsp;</div>
+<div class="gext_show"><span><b>He is a programmer.</b></span> &nbsp;</div>
 
 </div>
+
+
 
 
 <p class="gext_check es-ex-buttons gex-es-btn"><input type="button" class="gext_check_btn" value="Проверить" > <input type="button" value="Ответы" class="gext_answer_show"></p>
@@ -797,32 +711,24 @@ Are they from England? - No, they are not./No, they aren't.
 </script>
 
 
-	<br><br><br><br>
+	<br><br>
 	
+<input type="button" id="les-res" value="Results">	
+
+<div style="display: none">
+<div id="dialog" title="Results of the lesson">
+	<p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+</div>
+
+</div>
 	
-
-
-
-
-
-
-
-
+	<br><br>
 
 	
 
 
 	</div>
 </div>
-
-
-
-
-
-
-
-
-
 
 
 
