@@ -36,9 +36,9 @@ $(document).ready(function() {
 
 if ($("#candidate option:eq(0)").val()=="RedSpell DE") {
 	$("body").append(acStyle)
- $(".editor").each(function(i,el)(
-	$(el).prepend(acPanel)
- ))
+	$(".editor").each(function(i,el){
+		$(el).prepend(acPanel)
+	})
 
 }
 
