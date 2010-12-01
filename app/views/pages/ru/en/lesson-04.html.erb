@@ -100,7 +100,7 @@
 		test_id: "",
 		quest_num: 15,
 		variants_num: 5,
-		quest_type: 'text',
+		quest_type: 'audio',
 		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
 		basic_array: [
 <%
@@ -109,7 +109,7 @@
 %>
 		
 <% @voc2.each_with_index do |voc_word,index|  %>
-["<%= voc_word.text.to_s.gsub(/"/,'\"') %>", "<%= voc_word.translate.to_s.gsub(/"/,'\"') %>" ]<% if index!= @last_voc2 -%>,<%end -%>
+["<%= voc_word.sound_url.to_s.gsub(/"/,'\"') %>", "<%= voc_word.translate.to_s.gsub(/"/,'\"') %>" ]<% if index!= @last_voc2 -%>,<%end -%>
 
 <% end %>
 		
@@ -514,7 +514,7 @@ Are they from England? - No, they are not./No, they aren't.
 		<table class="ds-table" cellspacing="0" align="center">
 			<tr>
 				<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap">Запись 1</td>
-				<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div></td>
+				<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('/sounds/en/course/soundc1065.mp3', this)"></div></td>
 			</tr>
 		</table>
 	</th>
@@ -523,7 +523,7 @@ Are they from England? - No, they are not./No, they aren't.
 		<table class="ds-table" cellspacing="0" align="center">
 			<tr>
 				<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap">Запись 2</td>
-				<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div></td>
+				<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('/sounds/en/course/soundc1066.mp3', this)"></div></td>
 			</tr>
 		</table>
 	</th>
@@ -532,7 +532,7 @@ Are they from England? - No, they are not./No, they aren't.
 		<table class="ds-table" cellspacing="0" align="center">
 			<tr>
 				<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap">Запись 2</td>
-				<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('/sounds/sound01101.mp3', this)"></div></td>
+				<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('/sounds/en/course/soundc1067.mp3', this)"></div></td>
 			</tr>
 		</table>
 	</th>
@@ -624,34 +624,16 @@ Are they from England? - No, they are not./No, they aren't.
 
 <ul class="no-list">
 	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Алекс</div></div>
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">0</span>Алекс</div></div>
 	</li>
 	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>Стив</div></div>
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>Сара</div></div>
 	</li>
 	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>Майкл</div></div>
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>Патрик</div></div>
 	</li>
 	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">4</span>Марк</div></div>
-	</li>
-</ul>
-
-</td>
-<td>
-
-<ul class="no-list">
-	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Канада</div></div>
-	</li>
-	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>США</div></div>
-	</li>
-	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Россия</div></div>
-	</li>
-	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>Франция</div></div>
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Дэвид</div></div>
 	</li>
 </ul>
 
@@ -660,16 +642,34 @@ Are they from England? - No, they are not./No, they aren't.
 
 <ul class="no-list">
 	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>женат</div></div>
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">5</span>Великобритания</div></div>
 	</li>
 	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>холост</div></div>
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">4</span>США</div></div>
 	</li>
 	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>разведён</div></div>
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">0</span>Россия</div></div>
 	</li>
 	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>вдовец</div></div>
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">6</span>Франция</div></div>
+	</li>
+</ul>
+
+</td>
+<td>
+
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">7</span>холост</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">8</span>не замужем</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">9</span>разведён</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">0</span>женат</div></div>
 	</li>
 </ul>
 
