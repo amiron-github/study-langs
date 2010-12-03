@@ -89,7 +89,7 @@ layout "admin"
 	render :js => '$("<div style=\"text-align: left; padding-left: 30px;\"></div>").html("'+uw+'").dialog({height: 400, modal: true, title: "User words", buttons: { "Ok": function() { $(this).dialog("close"); } } })'
 	
   end
-
+  
   
 private 
 

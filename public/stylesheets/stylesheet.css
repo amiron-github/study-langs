@@ -2711,14 +2711,35 @@ padding:4px 15px;
 text-align: center;
 }
 
+.st-bl-table  .ru-pers {
+pad-ding: 4px 5px;
+}
+
+.st-bl-table .ru-vform {
+font-size: 12px;
+font-style: italic;
+padding: 8px;
+text-align: center;
+}
+
 .st-bl-table th.sec-row {
-background-color: #E0E6EF
+background-color: #E0E6EF;
+font-weight: normal;
 }
 
 .st-bl-table td {
 background-color:#FFFFFF;
 color:#45494F;
-padding:4px 15px;
+padding:6px 15px;
+}
+
+.st-bl-table .conj-table td {
+font-size: 11px;
+}
+
+.st-bl-table td table td {
+padding:0px 15px 0px 0px;
+white-space: nowrap;
 }
 
 
