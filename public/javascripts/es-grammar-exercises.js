@@ -46,17 +46,12 @@ $(".gext_answer_show").each(function(i) {
 });
 
 
-
-
-
 $(".gexd_check").each(function(i) {
 	$(this).addClass("gexd_ex"+i);
 	$(this).find("input").click(function() {
 		checkExDisplay(".gexd_ex"+i);
 	});
 });
-
-
 
 
 $(".gr_ex_variants").each(function(i) {
