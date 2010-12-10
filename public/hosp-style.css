@@ -20,7 +20,7 @@ display: none
 .text_wrapper {
 background-color: #eee;
 border-top: 1px solid #666;
-border-bottom: 1px solid #666;
+border-bottom: 3px solid #8FA0BF;
 overflow-y: scroll;
 }
 
@@ -100,6 +100,10 @@ background-position: 50% 50%;
 font-size: 13px;
 text-shadow: 0 1px 0 #FFFFFF;
 border-top: 1px solid #dfdfdf;
+}
+
+.panel hr {
+display: none;
 }
 
 .logout {
