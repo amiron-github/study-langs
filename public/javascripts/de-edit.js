@@ -34,6 +34,15 @@ var acPanel = '<table class="ac_edit_panel" cellpadding="1">'
 
 $(document).ready(function() {
 
+
+$(".back").append('| <span id="new-layout-link" style="color: blue; text-decoration: underline; cursor: pointer"><b>New layout</b></span>')
+
+$("#new-layout-link").click(function(){
+	newLayout();
+})
+
+
+
 if ($("#candidate option:eq(0)").val()=="RedSpell DE") {
 	$("body").append(acStyle)
 	$(".editor").each(function(i,el){
@@ -73,6 +82,43 @@ else if (oField.selectionStart || oField.selectionStart == '0') {
 }
 
 }
+
+
+function inSize() {
+	var topW= $(".text_wrapper").offset().top;
+	alH = $(window).height() - topW - 50
+	$(".text_wrapper").height(alH)
+}
+
+
+function newLayout() {
+
+	$("div.text_wrapper").before('<div  style="clear: both"></div>')
+	$("div.text_wrapper").wrapInner('<div class="text-holder"></div>')
+	$("body .top table:first").addClass("p-navig")
+	$("body table:last").hide();
+	$("div.top br:last").remove();
+
+if ($("#desc_switcher option:selected").text()=="Description") {
+	$(".text-holder ").addClass("with-desc ");
+	$(".top").addClass("t-with-desc");
+}
+
+inSize();
+
+$("#new-layout-link").remove()
+
+$(window).resize(function() {
+ inSize()
+})
+
+$("head").append('<link href="http://study-languages-online.com/hosp-style.css" media="screen" rel="stylesheet" type="text/css" />')
+
+
+}
+
+
+
 
 
 
