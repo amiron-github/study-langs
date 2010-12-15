@@ -1248,7 +1248,7 @@ messTime = setTimeout(function(){
 
 
 $(document).ready(function(){
-	$(".head-dec").css({backgroundPosition: "0px 0px"}).animate({backgroundPosition: "(0px 130px)"}, 11000)
+	//$(".head-dec").css({backgroundPosition: "0px 0px"}).animate({backgroundPosition: "(0px 130px)"}, 11000)
 })
 
 

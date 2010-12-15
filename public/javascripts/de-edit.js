@@ -34,7 +34,6 @@ var acPanel = '<table class="ac_edit_panel" cellpadding="1">'
 
 $(document).ready(function() {
 
-
 $(".back").append('| <span id="new-layout-link" style="color: blue; text-decoration: underline; cursor: pointer"><b>New layout</b></span>')
 
 $("#new-layout-link").click(function(){

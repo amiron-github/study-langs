@@ -236,7 +236,8 @@ layout "admin"
 		@enword.save
 	if request.xhr?
 		last_saved = @enword
-		render :js => 'show_last_created('+last_saved.id.to_s+',"'+ERB::Util.html_escape(last_saved.text)+'","'+ERB::Util.html_escape(last_saved.html)+'","'+ERB::Util.html_escape(last_saved.translate)+'","'+ERB::Util.html_escape(last_saved.transcribe)+'","'+last_saved.sound_url+'","'+last_saved.image_url+'",'+last_saved.order_num.to_s+')'
+		render :js => 'show_last_created('+last_saved.id.to_s+',"'+ERB::Util.html_escape(last_saved.text)+'","'+ERB::Util.html_escape(last_saved.html)+'","'+ERB::Util.html_escape(last_saved.translate)+'","'+ERB::Util.html_escape(last_saved.transcribe)+'","'+last_saved.sound_url+'","'+last_saved.grammar+'",'+last_saved.order_num.to_s+')'
+		#change image_url for grammar
 	else
 		redirect_to('/words')
 	end

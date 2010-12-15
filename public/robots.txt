@@ -55,4 +55,25 @@ Disallow: /perfumery-test.html
 Disallow: /bus-exercise.html
 Disallow: /gruel-test.html
 Disallow: /sightseeing-exercise.html
-
+Disallow: /jewelry.html
+Disallow: /drinks.html
+Disallow: /meat.html
+Disallow: /hotel.html
+Disallow: /services.html
+Disallow: /perfumery.html
+Disallow: /video.html
+Disallow: /clothing.html
+Disallow: /vegetables.html
+Disallow: /dairy.html
+Disallow: /subway.html
+Disallow: /bread.html
+Disallow: /accessories.html
+Disallow: /taxi.html
+Disallow: /sportwear.html
+Disallow: /airport.html
+Disallow: /bus.html
+Disallow: /sightseeing.html
+Disallow: /fruit.html
+Disallow: /politeness.html
+Disallow: /acquaintance.html
+Disallow: /fish.html
