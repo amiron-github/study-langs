@@ -215,8 +215,6 @@ var kb_link = tObj.spellHolder.find(".show_keyboard");
 				});
 	}	
 	
-	
-	
 	tObj.start();
 }
 

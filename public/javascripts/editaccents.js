@@ -90,5 +90,25 @@ function aTrSoftYOO() {
 	findAndWrapInEditor($("#t_editor"), start, end)
 }
 
+function aJapLongO() {
+	start='ō'
+	end = ''
+	findAndWrapInEditor($("#t_editor"), start, end)
+}
+
+
+function aJapLongU() {
+	start='ū'
+	end = ''
+	findAndWrapInEditor($("#t_editor"), start, end)
+}
+
+function aCurI() {
+	start='<i>'
+	end = '</i>'
+	findAndWrapInEditor($("#t_editor"), start, end)
+}
+
+
 
 

@@ -38,7 +38,7 @@
   <![endif]-->
 
 </head>
-<body>
+<body <% if cookies[:no_header] %>class="m-header-hidden"<%end%>>
     <div id="fixWidh"><div id="container">
         <!--[if lte IE 6]>
         <table id="containit" cellspacing="0">
@@ -67,7 +67,7 @@
                   <div class="cont-center"></div>
                 </div>
               </div>
-              <div id="menu_content">
+              <div id="menu_content" <% if cookies[:no_menu] %>class="m-menu-hidden"<%end%>>
                 <div id="navigation">
 
                   <div id="nav-pos">
@@ -80,7 +80,7 @@
                           </div>
                         </div>
                       </div>
-                      <div id="nav2" class="menu-item">
+                      <div id="nav2" class="menu-item" style="display: none">
                         <div class="menu-item-front">
                           <div class="item-top">
                             <div class="list down"></div> 
@@ -121,22 +121,22 @@
                         <div class="menu-item-front">
                           <div class="item-top">
                             <div class="list down"></div> 
-                            <a href="/ru/jp/writing.html" style="margin-left: 40px;">Писменность</a>&nbsp;
+                            <a href="/ru/jp/writing.html" style="margin-left: 40px;">Кана</a>&nbsp;
                           </div>
                         </div>
                       </div>
                       <div class="sub" style="display: none">
                         <ul>
-                          <li><a href="/ru/jp/hiragana.html" >Хирагана</a></li>
+                          <li><a href="/ru/jp/hiragana.html">Хирагана</a></li>
                           <li><a href="/ru/jp/katakana.html">Катакана</a></li>
                         </ul>
                       </div>
 					  
-                      <div id="nav5" class="menu-item" style="display: none;">
+                      <div id="nav5" class="menu-item">
                         <div class="menu-item-front">
                           <div class="item-top">
                             <div class="list down"></div> 
-                            <a href="/russian-reading.html" >Reading in Russian</a>&nbsp;
+                            <a href="/ru/jp/kanji.html" style="margin-left: 40px;">Кандзи</a>&nbsp;
                           </div>
                         </div>
                       </div> 
@@ -223,6 +223,11 @@
 
                 </div>
                 <div id="contentcell">
+				<div style="position: relative; z-index: 300">
+						<div id="menu_remover"><span class="menu-shown">Скрать меню</span><span class="menu-hidden">Меню</span></div>
+						<div id="mini-menu"><a href="/ru/jp/index.html">Главная</a> | <a href="/ru/jp/vocabulary.html">Словарь</a> | <a href="/ru/jp/writing.html">Кана</a> | <a href="/ru/jp/kanji.html">Кандзи</a></div>
+						<div id="header_remover"><span class="header-shown">Hide header</span><span class="header-hidden">Show header</span></div>
+					</div>
                   <div id="contfield" class="<%= @with_rec ? 'content withRec' : 'content' %>">
                     <% if @has_audio %>
                       <div id="loading"><div id="progress"></div><div id="progressbar"><div id="progressStatus"></div></div></div>
@@ -273,7 +278,11 @@
       try {
         var pageTracker = _gat._getTracker("UA-8218265-1");
         pageTracker._trackPageview();
-      } catch(err) {}</script>
+      } catch(err) {}
+	  
+	  es_lang = 'rus';
+	  
+	  </script>
 
 </div>
 <% if current_user -%>

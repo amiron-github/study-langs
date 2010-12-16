@@ -60,6 +60,11 @@ font-size: 80px;
 font-size: 17px;
 }
 
+.fl-article-list b {
+font-size: 10px;
+text-transform: uppercase;
+}
+
 .lt-ru-j .es-ex-tasks-list li {
 font-size: 24px;
 line-height: 22px;
@@ -107,12 +112,12 @@ min-height: 105px;
 	
 <h3 class="su-step-title">Обзор</h3>
 <p class="su-step-info">
-Данный этап предназначен для ознакомления с лексикой и грамматическими конструкциями урока.
+Данный этап предназначен для ознакомления с иероглифами текущего урока.
 </p>	
 	
 
 <h4 class="su-task">
-Задание 1. Слушайте и повторяйте. Ознакомьтесь с переводом фраз.
+Задание 1. Ознакомьтесь с представленными иероглифами 
 </h4>
 <br>	
 <br>
@@ -186,11 +191,11 @@ min-height: 105px;
 	
 <h3 class="su-step-title">Изучение</h3>
 <p class="su-step-info">
-Данный этап предназначен для работы с полезными словами и выражениями по теме урока.
+Данный этап предназначен для первичного изучения иероглифов 
 </p>	
 	
 <h4 class="su-task">
-Задание 1. Ознакомьтесь со словами и выражениями урока.
+Задание 1. Ознакомьтесь с иероглифами, их чтением и переводом и выполните простые тесты
 </h4>
 
 
@@ -223,10 +228,8 @@ min-height: 105px;
 			<div class="fl-original"></div>
 		</td>
 		<td width="120" style="padding-top: 20px; padding-bottom: 20px; padding-left: 30px;">
-			<div class="fl-transcript" style="text-align: left; padding-left: 0; font-size: 12px"></div>
-	
 			<div class="fl-translate" style="text-align: left"></div>
-		
+			<div class="fl-transcript" style="text-align: left; padding-left: 0; font-size: 12px; color: #555; line-height: 16px"></div>
 		</td>
 	</tr></table>
 	
@@ -242,7 +245,7 @@ min-height: 105px;
 			<div class="fl-test-task">
 				<span class="fl-wrong-note fl-notes">Неправильно! Попробуйте снова</span>
 				<span class="fl-correct-note fl-notes">Великолепно! Правильный ответ</span>
-				<span class="fl-exclude-note fl-notes">Запись отмечена как изученная.</span>
+				<span class="fl-exclude-note fl-notes">Запись отмечена как изученная</span>
 				<span class="fl-task-string">Найдите перевод слова/выражения в списке</span>
 			</div>
 			<div class="fl-cancel fl-btn noselect"> Отмена </div>
@@ -264,7 +267,7 @@ min-height: 105px;
 		<col><col width="130">
 		<tr class="fl-spell-activity">
 			<td class="fl-text-info">Нажмите кнопку "Примеры", чтобы ознакомитья с употреблением данного иероглифа <br><br>
-			<input type="checkbox" class="fl-autoplay" checked> Автоматически показывать примеры 
+			<input type="checkbox" class="fl-autoplay"> Автоматически показывать примеры 
 			<br><br>
 			</td>
 			<td valign="top"><div class="fl-spell-btn fl-btn noselect">Примеры</div></td>
@@ -303,7 +306,7 @@ min-height: 105px;
 @last_item_index = (@words.length)-1
 @words.each_with_index  do |word, index| %><% unless (word.translate == '#none#' || word.translate == '' )%>
 <% unless except_from_flash(index) -%>
-["<%= word.text.to_s.gsub(/"/,'\"') %>", '<%= word.translate.to_s.gsub(/'/,"’") %>', '<%= word.grammar %>', '<%= word.transcribe.to_s.gsub(/'/,"’") %> <br><%= word.html.to_s.gsub(/'/,"’") %>'<%if current_user %>, '<%= word.id%>' ,'<%= current_user.word_status(word.id) %>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>
+["<%= word.text.to_s.gsub(/"/,'\"') %>", '<%= word.translate.to_s.gsub(/'/,"’") %>', '<%= word.grammar %>', '<b>Он<\/b>: <%= word.transcribe.to_s.gsub(/'/,"’") %><br><b>Кун<\/b>: <%= word.html.to_s.gsub(/'/,"’") %>'<%if current_user %>, '<%= word.id%>' ,'<%= current_user.word_status(word.id) %>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>
 <%end -%>
 <%end-%>
 <%end -%>
@@ -331,12 +334,12 @@ min-height: 105px;
 	
 <h3 class="su-step-title">Тесты</h3>
 <p class="su-step-info">
-Данный этап предназначен для ознакомления с правилами грамматики и лексики.
+Данный этап предназначен для работы с иероглифами текущего урока
 </p>		
 
 
 <h4 class="su-task">
-Задание 1. Найдите перевод
+Задание 1. Найдите перевод иероглифа на русский язык
 </h4>
 
 <div id="ch1" class="lt-holder lt-kanji">
@@ -367,7 +370,7 @@ min-height: 105px;
 
 
 <h4 class="su-task">
-Задание 2. Найдите транскрипцию
+Задание 2. Найдите онное и кунное чтение иероглифа
 </h4>
 
 <div id="ch2" class="lt-holder lt-kanji">
@@ -398,25 +401,21 @@ min-height: 105px;
 
 
 
-
-
-
-
-	
-<br><br><br><br><br><br>
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(4)">
+</div>
 	
 	</div>
 </div>
 
 
 
-
 <div id="for_tab04" class="pBlock" style="display: none">
 	<div class="inpBlock">
 	
-<h3 class="su-step-title">Упражнения</h3>
+<h3 class="su-step-title">Повторение</h3>
 <p class="su-step-info">
-Данный этап предназначен для работы с лексико-грамматическим материалом урока.
+Данный этап предназначен для работы с ранее изученными иероглифами данного уровня
 </p>	
 	
 	
@@ -484,10 +483,6 @@ min-height: 105px;
 
 
 
-<br><br><br><br>
-<div class="es-ex-buttons su-next-wrapper">
-<input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(5)">
-</div>
 
 
 	</div>
@@ -507,5 +502,5 @@ min-height: 105px;
 
 
 <script type="text/javascript">
-currentSection="phonetic";
+currentSection="reading";
 </script>
