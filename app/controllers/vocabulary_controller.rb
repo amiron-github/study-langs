@@ -117,6 +117,34 @@ layout :determine_layout
 	end
   end
   
+  def build_lesson
+	@lang = params[:lang]
+	@add_lang = params[:to_lang]
+	@category_tag = params[:category]
+	@lesson = params[:lesson]
+	@category_title == ''
+	if @add_lang == 'en'
+		@category_tag =  @category_tag+'_en'
+	elsif @add_lang == 'jp'
+		@category_tag =  @category_tag+'_jp'
+	end 
+	
+	@category = Category.find(:first, :conditions => ['tag=?', @category_tag ])
+	
+	@all_words = @category.words.find(:all, :order => 'order_num')
+	
+	len = 10
+	first = @lesson.to_f*len - len
+	@words = @all_words.slice(first, len)
+	@learnt = @all_words.slice(0, @lesson.to_f*len)
+	
+
+	@category_title = @category.title
+	render(:action => 'kanji_lesson' )
+
+	 
+  end
+  
 private
 	def determine_layout
 		layout_lang = params[:lang]

@@ -2,6 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.lexictest '/:lang/:to_lang/lexical-test/:category/', :controller => 'vocabulary', :action => 'build_test'
   map.flashcard '/:lang/:to_lang/flashcards/:category/', :controller => 'vocabulary', :action => 'build_flashcard'
   map.vocabulary '/:lang/:to_lang/vocabulary/:category/', :controller => 'vocabulary', :action => 'build_vocabulary'
+  map.vocabulary '/:lang/:to_lang/:category/lesson/:lesson', :controller => 'vocabulary', :action => 'build_lesson'
   map.connect 'clusters/words_to_add', :controller => 'clusters', :action => 'words_to_add'
   map.connect 'clusters/remove_from_cluster', :controller => 'clusters', :action => 'remove_from_cluster'
   map.connect 'clusters/add_to_cluster', :controller => 'clusters', :action => 'add_to_cluster'

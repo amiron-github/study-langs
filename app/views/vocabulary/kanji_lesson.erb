@@ -1,0 +1,511 @@
+<% @page_title = 'Уроки Кандзи '+@lesson+' :: Изучаем японский' %>
+<% @page_meta = {'description' => ""} %>
+
+
+<% content_for :special_js_css do %>
+
+<%= stylesheet_link_tag 'flashcard' %>
+<%= stylesheet_link_tag 'lexical-test' %>
+<%= stylesheet_link_tag 'short-unit' %>
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'jp-control' %>
+<%= javascript_include_tag 'lexical-test' %>
+<%= javascript_include_tag 'flashcard-kanji' %>
+<%= javascript_include_tag 'short-unit' %>
+
+
+<script type="text/javascript">
+<%if params[:tab] %>
+	openTabFromUrl(<%= params[:tab] %>);
+<%else%>
+	openTabFromUrl();
+<%end%>
+
+$(document).ready(function() {
+	$(".trans-display").change(function(){
+		if ($(this).is(":checked")) {
+			$("div.ru-transcript").show();
+		}else{
+			$("div.ru-transcript").hide();
+		}
+	}).change();
+}); 
+
+
+</script>
+
+<style type="text/css">
+.lt-kanji .es-ex-string-wrapper {
+font-size: 45px;
+}
+
+
+.fl-spell-check, .fl-cancel-spell {
+width: 80px;
+}
+.fl-end-wrapper .fl-stop {
+width: 90px;
+}
+.fl-next {
+width: 100px;
+}
+
+.fl-original {
+font-weight: bold;
+padding: 8px 10px;
+font-size: 80px;
+}
+
+.fl-transcript {
+font-size: 17px;
+}
+
+.lt-ru-j .es-ex-tasks-list li {
+font-size: 24px;
+line-height: 22px;
+}
+
+.lt-ru-j .es-ex-tasks-list li input {
+top: -3px;
+}
+
+.fl-spell-test {
+background-image: url("/images/transparent-30.png");
+padding: 1px 10px;
+}
+
+.fl-spell-test p {
+line-height: 24px;
+min-height: 105px;
+}
+
+
+</style>
+<% end %>
+
+
+
+<div class="unit-area">
+
+
+<div id="prof_tabs">
+
+<div class="unit-title">
+Урок <%= @lesson %>
+</div>
+	<div id="tabs_row">
+            <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Этап 1</a></div></div>
+			<div id="tab02" class="ptab"><div><a href="#">Этап 2</a></div></div>
+            <div id="tab03" class="ptab"><div><a href="#">Этап 3</a></div></div>
+			<div id="tab04" class="ptab"><div><a href="#">Этап 4</a></div></div>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+
+<div id="for_tab01" class="pBlock" style="display: block">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Обзор</h3>
+<p class="su-step-info">
+Данный этап предназначен для ознакомления с лексикой и грамматическими конструкциями урока.
+</p>	
+	
+
+<h4 class="su-task">
+Задание 1. Слушайте и повторяйте. Ознакомьтесь с переводом фраз.
+</h4>
+<br>	
+<br>
+<div class="voc-wordlist">
+<table class="voc_bord" align="center" cellspacing="0">
+<tr>
+<td>
+
+<table style="width: 400px" class="diction" cellpadding="0" cellspacing="0" align="center">
+<col width="100">
+<thead>
+<tr>
+	<td> 
+		<div style="position: relative">
+			<div class="trans-display-wrapper" style="position: absolute; white-space: nowrap"><input type="checkbox" class="trans-display" /> Транскрипция </div> 
+		</div>
+	</td>
+	<td></td>
+</tr>
+</thead>
+<tbody>
+
+
+<%@words.each_with_index do |word, index|-%>
+<tr class="trow">
+    <td class="original" valign="top" >
+		<span style="font-size: 30px"><%= word.text %></span>
+	
+    </td>
+    <td class="translation" valign="top">
+		<div style="padding-top: 5px;"><%= word.translate %></div>
+		<div class="ru-transcript" style="display: none; font-size: 12px; color: #555; padding-top: 5px; padding-bottom: 5px;">
+			<span style="text-transform: uppercase"><%= word.transcribe %> </span>;
+			<%= word.html %>
+		
+		</div>
+    </td>
+</tr>
+<%end -%>
+
+
+</tbody>
+<tfoot>
+<tr>
+	<td></td>
+	<td></td>
+</tr>
+</tfoot>  
+</table>
+
+</td>
+</tr>
+</table>
+</div><!-- end of voc-wordlist-->
+
+<br><br><br><br>
+
+
+
+
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(2)">
+</div>	
+	
+	</div>
+</div>
+
+<div id="for_tab02" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Изучение</h3>
+<p class="su-step-info">
+Данный этап предназначен для работы с полезными словами и выражениями по теме урока.
+</p>	
+	
+<h4 class="su-task">
+Задание 1. Ознакомьтесь со словами и выражениями урока.
+</h4>
+
+
+
+
+
+<div  id="fl1" style="min-height: 600px; text-align: center;">
+
+<div class="fl-container">
+<div class="fl-window">
+
+<div class="fl-init" style="display: none">
+
+</div>
+<div class="fl-end">
+	<div class="fl-end-notice">В данном списке представлены слова и выражения, с которыми вы работали:</div>
+	<div class="fl-end-list"></div>
+	<div class="fl-end-wrapper">
+		<div class="fl-start fl-btn noselect" style="margin-top: 15px; width: 160px"> Пройти заново </div>
+	</div>
+</div>
+<div class="fl-work" style="display: block">
+<div class="fl-article-wrapper">
+  <div class="fl-article-list">
+  
+	
+	<table  style="margin: 0 auto; margin-top: 10px" align="center">
+	<tr valign="top">
+		<td style="border-right: 1px dotted #888; padding-right: 10px; padding-top: 30px">
+			<div class="fl-original"></div>
+		</td>
+		<td width="120" style="padding-top: 20px; padding-bottom: 20px; padding-left: 30px;">
+			<div class="fl-transcript" style="text-align: left; padding-left: 0; font-size: 12px"></div>
+	
+			<div class="fl-translate" style="text-align: left"></div>
+		
+		</td>
+	</tr></table>
+	
+  </div>
+</div>
+<div class="fl-auto-wrapper"> &nbsp;</div>
+<div class="fl-buttons-wrapper">
+	<div class="fl-next fl-btn noselect">Далee >></div>
+</div>
+<div class="fl-check" style="min-height: 190px;">
+	<div class="fl-tests" style="display: none;">
+		<div class="fl-cancel-wrapper" style="display: none;">
+			<div class="fl-test-task">
+				<span class="fl-wrong-note fl-notes">Неправильно! Попробуйте снова</span>
+				<span class="fl-correct-note fl-notes">Великолепно! Правильный ответ</span>
+				<span class="fl-exclude-note fl-notes">Запись отмечена как изученная.</span>
+				<span class="fl-task-string">Найдите перевод слова/выражения в списке</span>
+			</div>
+			<div class="fl-cancel fl-btn noselect"> Отмена </div>
+		</div>
+	</div>
+	<div class="fl-spell" style="display: none;">
+		<div class="fl-spell-cancel-wrapper" style="display: none;">
+			<div class="fl-spell-task">
+				<span class="fl-task-spell">Примеры</span>
+			</div>
+			<div class="fl-cancel-spell fl-btn noselect"> Закрыть </div>
+		</div>
+		<div class="fl-spell-test"> <p class="fl-examples"></p> </div>
+
+
+	</div>
+	<div class="fl-activity-wrapper">
+	<table class="fl-activity">
+		<col><col width="130">
+		<tr class="fl-spell-activity">
+			<td class="fl-text-info">Нажмите кнопку "Примеры", чтобы ознакомитья с употреблением данного иероглифа <br><br>
+			<input type="checkbox" class="fl-autoplay" checked> Автоматически показывать примеры 
+			<br><br>
+			</td>
+			<td valign="top"><div class="fl-spell-btn fl-btn noselect">Примеры</div></td>
+		</tr>
+		
+		<tr>
+			<td class="fl-text-info">Нажмите кнопку "Тесты", чтобы выполнить простые задания с иероглифом</td>
+			<td> <div class="fl-verify fl-btn noselect"> Тесты </div></td>
+		</tr>
+		
+		
+		<tr style="display: none;">
+			<td class="fl-text-info" >Нажмите кнопку "Стоп", если вы желаете закончить работу с флешкартами и вернуться в главное меню </td>
+			<td> <div class="fl-stop fl-btn noselect">Стоп</div></td>
+		</tr>
+	</table>
+	</div>
+</div>
+
+</div>
+
+</div><!-- end of fl-window -->
+</div><!-- end of flcontainer-->
+
+
+</div><!-- end of fl1 -->
+
+<script type="text/javascript"> 
+	var fl1 = new flashcard( {
+		id: "fl1", 
+		random_order: false,
+		trans_bracket: false,
+		//train_spell: false,
+		basic_array: [
+<% 
+@last_item_index = (@words.length)-1
+@words.each_with_index  do |word, index| %><% unless (word.translate == '#none#' || word.translate == '' )%>
+<% unless except_from_flash(index) -%>
+["<%= word.text.to_s.gsub(/"/,'\"') %>", '<%= word.translate.to_s.gsub(/'/,"’") %>', '<%= word.grammar %>', '<%= word.transcribe.to_s.gsub(/'/,"’") %> <br><%= word.html.to_s.gsub(/'/,"’") %>'<%if current_user %>, '<%= word.id%>' ,'<%= current_user.word_status(word.id) %>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>
+<%end -%>
+<%end-%>
+<%end -%>
+		]
+		} )
+</script>
+
+
+
+
+<br><br>
+
+
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(3)">
+</div>
+	
+	</div>
+</div>
+
+
+<div id="for_tab03" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Тесты</h3>
+<p class="su-step-info">
+Данный этап предназначен для ознакомления с правилами грамматики и лексики.
+</p>		
+
+
+<h4 class="su-task">
+Задание 1. Найдите перевод
+</h4>
+
+<div id="ch1" class="lt-holder lt-kanji">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		test_id: "",
+		quest_num: 15,
+		variants_num: 5,
+		quest_type: 'text',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+<% @last_item_index = (@words.length)-1 -%>
+<% @words.each_with_index  do |word, index| -%>
+["<%= word.text.to_s.gsub(/"/,'\"') %>", "<%= word.translate.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
+		} )
+</script>	
+
+
+<h4 class="su-task">
+Задание 2. Найдите транскрипцию
+</h4>
+
+<div id="ch2" class="lt-holder lt-kanji">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		test_id: "",
+		quest_num: 15,
+		variants_num: 5,
+		quest_type: 'text',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+<% @last_item_index = (@words.length)-1 -%>
+<% @words.each_with_index  do |word, index| -%>
+["<%= word.text.to_s.gsub(/"/,'\"') %>", "<span style=\"text-transform: uppercase\"><%= word.transcribe.to_s.gsub(/"/,'\"') %><\/span> ; <%= word.html.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
+		} )
+</script>	
+
+
+
+
+
+
+
+	
+<br><br><br><br><br><br>
+	
+	</div>
+</div>
+
+
+
+
+<div id="for_tab04" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Упражнения</h3>
+<p class="su-step-info">
+Данный этап предназначен для работы с лексико-грамматическим материалом урока.
+</p>	
+	
+	
+<h4 class="su-task">
+Задание 1. Найдите перевод
+</h4>
+
+<div id="ch3" class="lt-holder lt-kanji">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch3 = new ch_exercise( {
+		id: "ch3", 
+		test_id: "",
+		quest_num: 20,
+		variants_num: 5,
+		quest_type: 'text',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+<% @last_item_index = (@learnt.length)-1 -%>
+<% @learnt.each_with_index  do |word, index| -%>
+["<%= word.text.to_s.gsub(/"/,'\"') %>", "<%= word.translate.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
+		} )
+</script>	
+
+
+
+<h4 class="su-task">
+Задание 2. Найдите перевод
+</h4>
+
+<div id="ch4" class="lt-holder lt-ru-j">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch4 = new ch_exercise( {
+		id: "ch4", 
+		test_id: "",
+		quest_num: 20,
+		variants_num: 4,
+		quest_type: 'text',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+<% @last_item_index = (@learnt.length)-1 -%>
+<% @learnt.each_with_index  do |word, index| -%>
+["<%= word.translate.to_s.gsub(/"/,'\"') %>", "<%= word.text.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
+		} )
+</script>	
+
+
+
+<br><br><br><br>
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(5)">
+</div>
+
+
+	</div>
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+currentSection="phonetic";
+</script>
