@@ -40,7 +40,7 @@ font-size: 17px;
 <div class="hint_button" style="float: right;">
   <div class="hint">
       <div class="hint_list">
-        <span class="hint_string">Links and Settings</span>
+        <span class="hint_string">Ссылки по теме</span>
       </div>
     </div>
     <div class="sub_hint" style="display: none;">
@@ -48,13 +48,12 @@ font-size: 17px;
             <li><a href="/ru/jp/vocabulary/<%= @category_short_tag%>"><%= @category_title %></a></li>
 			<li><a href="/ru/jp/lexical-test/<%= @category_short_tag %>">Тесты: <%= @category_title %></a></li>
         </ul>
-        <%= render :partial => 'site/down_accent' %>
   </div>
 </div>
 </div>
 
 
-<h2 class="page">Флешкарты: <%= @category_title %></h2>
+<h2 class="page">Флэш-карты: <%= @category_title %></h2>
 
 <h3 class="page-path">
 	<span class="int-links">
@@ -201,7 +200,7 @@ font-size: 17px;
 @last_item_index = (@words.length)-1
 @words.each_with_index  do |word, index| %><% unless (word.translate == '#none#' || word.translate == '' )%>
 <% unless except_from_flash(index) -%>
-["<%= word.text.to_s.gsub(/"/,'\"') %>", '<%= word.translate.to_s.gsub(/'/,"’") %>', '<%= word.sound_url %>', '<%= word.html.to_s.gsub(/'/,"’") %>'<%if current_user %>, '<%= word.id%>' ,'<%= current_user.word_status(word.id) %>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>
+["<%= word.text.to_s.gsub(/"/,'\"') %>", '<%= word.translate.to_s.gsub(/'/,"’") %>', '<%= word.sound_url %>', '<span title="<%= word.transcribe.to_s.gsub(/'/,"’") %>" style="cursor: default"><%= word.html.to_s.gsub(/'/,"’") %></span>'<%if current_user %>, '<%= word.id%>' ,'<%= current_user.word_status(word.id) %>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>
 <%end -%>
 <%end-%>
 <%end -%>
@@ -216,7 +215,9 @@ font-size: 17px;
 
 
 
-
+<script type="text/javascript">
+currentSection="words";
+</script>
 
 
 

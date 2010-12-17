@@ -109,6 +109,12 @@ function aCurI() {
 	findAndWrapInEditor($("#t_editor"), start, end)
 }
 
+function addSymb(symb) {
+	start=symb
+	end = ''
+	findAndWrapInEditor($("#t_editor"), start, end)
+}
+
 
 
 

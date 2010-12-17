@@ -128,20 +128,35 @@ layout :determine_layout
 	elsif @add_lang == 'jp'
 		@category_tag =  @category_tag+'_jp'
 	end 
-	
-	@category = Category.find(:first, :conditions => ['tag=?', @category_tag ])
-	
+	@category = Category.find(:first, :conditions => ['tag=?', @category_tag ])	
 	@all_words = @category.words.find(:all, :order => 'order_num')
 	
 	len = 10
 	first = @lesson.to_f*len - len
+	
 	@words = @all_words.slice(first, len)
 	@learnt = @all_words.slice(0, @lesson.to_f*len)
+
+	if (@lesson.to_f == 4 && @category_tag == 'hiragana_jp') || (@lesson.to_f == 4 && @category_tag == 'katakana_jp')
+		@words = @all_words.slice(first, 8)
+		@learnt = @all_words.slice(0, @lesson.to_f*len -2)
+	end
 	
-
-	@category_title = @category.title
-	render(:action => 'kanji_lesson' )
-
+	if (@lesson.to_f == 5 && @category_tag == 'hiragana_jp') || (@lesson.to_f == 5 && @category_tag == 'katakana_jp')
+		@words = @all_words.slice(first-2, len)
+	end
+	
+	if @learnt.length > 40 
+		@learnt = @learnt.slice(@learnt.length-40, 40)
+	end
+	
+	@category_title = @category.title_ru
+	
+	if @category_tag == 'hiragana_jp' || @category_tag == 'katakana_jp'
+		render(:action => 'kana_lesson' )
+	else
+		render(:action => 'kanji_lesson' )
+	end
 	 
   end
   

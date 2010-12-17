@@ -1,9 +1,8 @@
-<% @page_title = 'Уроки Кандзи '+@lesson+' :: Изучаем японский' %>
-<% @page_meta = {'description' => ""} %>
+<% @page_title = @category_title+ ' (годзюон) - Урок '+@lesson+' :: Изучаем японский' %>
+<% @page_meta = {'description' => "Онлайн изучение японского языка"} %>
 
 
 <% content_for :special_js_css do %>
-
 <%= stylesheet_link_tag 'flashcard' %>
 <%= stylesheet_link_tag 'lexical-test' %>
 <%= stylesheet_link_tag 'short-unit' %>
@@ -35,11 +34,19 @@ $(document).ready(function() {
 </script>
 
 <style type="text/css">
+
 .lt-kanji .es-ex-string-wrapper {
 font-size: 45px;
 }
-
-
+.lt-ru-h .es-ex-string-wrapper {
+font-size: 25px;
+}
+.lt-ru-h .es-ex-tasks-list li {
+font-size: 12pt;
+}
+.lt-ru-h .es-ex-tasks-list li input {
+top: 1px;
+}
 .fl-spell-check, .fl-cancel-spell {
 width: 80px;
 }
@@ -49,56 +56,47 @@ width: 90px;
 .fl-next {
 width: 100px;
 }
-
 .fl-original {
 font-weight: bold;
 padding: 8px 10px;
 font-size: 80px;
 }
-
 .fl-transcript {
 font-size: 17px;
 }
-
 .fl-article-list b {
 font-size: 10px;
 text-transform: uppercase;
 }
-
 .lt-ru-j .es-ex-tasks-list li {
 font-size: 24px;
 line-height: 22px;
 }
-
 .lt-ru-j .es-ex-tasks-list li input {
 top: -3px;
 }
-
 .fl-spell-test {
 background-image: url("/images/transparent-30.png");
 padding: 1px 10px 10px;
 }
-
 .fl-spell-test p {
 line-height: 24px;
 min-height: 80px;
 margin: 5px 0 10px;;
 }
-
 .fl-ex-auto {
 color:#35485F;
 font-size:11px;
 }
-
 .fl-ex-auto input {
 position: relative;
 top: 2px;
 }
-
-
+.fl-tests div.fl-test-option {
+font-size: 12pt;
+}
 </style>
 <% end %>
-
 
 
 <div class="unit-area">
@@ -107,7 +105,7 @@ top: 2px;
 <div id="prof_tabs">
 
 <div class="unit-title">
-Урок <%= @lesson %>
+<%= @category_title %>: Урок <%= @lesson %>
 </div>
 	<div id="tabs_row">
             <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Этап 1</a></div></div>
@@ -123,12 +121,12 @@ top: 2px;
 	
 <h3 class="su-step-title">Обзор</h3>
 <p class="su-step-info">
-Данный этап предназначен для ознакомления с иероглифами текущего урока.
+Данный этап предназначен для ознакомления со знаками текущего урока.
 </p>	
 	
 
 <h4 class="su-task">
-Задание 1. Ознакомьтесь с представленными иероглифами 
+Задание 1. Ознакомьтесь с представленными знаками 
 </h4>
 <br>	
 <br>
@@ -137,39 +135,32 @@ top: 2px;
 <tr>
 <td>
 
-<table style="width: 400px" class="diction" cellpadding="0" cellspacing="0" align="center">
+<table style="width: 350px" class="diction" cellpadding="0" cellspacing="0" align="center">
 <col width="100">
 <thead>
 <tr>
 	<td> 
 		<div style="position: relative">
-			<div class="trans-display-wrapper" style="position: absolute; white-space: nowrap"><input type="checkbox" class="trans-display" /> Транскрипция </div> 
+			<div class="trans-display-wrapper" style="position: absolute; white-space: nowrap; display: none"><input type="checkbox" class="trans-display" /> Транскрипция </div> 
 		</div>
 	</td>
 	<td></td>
 </tr>
 </thead>
 <tbody>
-
-
 <%@words.each_with_index do |word, index|-%>
 <tr class="trow">
     <td class="original" valign="top" >
 		<span style="font-size: 30px"><%= word.text %></span>
-	
     </td>
     <td class="translation" valign="top">
-		<div style="padding-top: 5px;"><%= word.translate %></div>
+		<div style="padding-top: 5px; font-size: 16px;"><%= word.translate %></div>
 		<div class="ru-transcript" style="display: none; font-size: 12px; color: #555; padding-top: 5px; padding-bottom: 5px;">
 			<span style="text-transform: uppercase"><%= word.transcribe %> </span>;
-			<%= word.html %>
-		
 		</div>
     </td>
 </tr>
 <%end -%>
-
-
 </tbody>
 <tfoot>
 <tr>
@@ -187,9 +178,6 @@ top: 2px;
 <br><br><br><br>
 
 
-
-
-
 <div class="es-ex-buttons su-next-wrapper">
 <input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(2)">
 </div>	
@@ -202,16 +190,12 @@ top: 2px;
 	
 <h3 class="su-step-title">Изучение</h3>
 <p class="su-step-info">
-Данный этап предназначен для первичного изучения иероглифов 
+Данный этап предназначен для первичного изучения знаков 
 </p>	
 	
 <h4 class="su-task">
-Задание 1. Ознакомьтесь с иероглифами, их чтением и переводом и выполните простые тесты
+Задание 1. Ознакомьтесь со знаками и их чтением и выполните простые тесты
 </h4>
-
-
-
-
 
 <div  id="fl1" style="min-height: 600px; text-align: center;">
 
@@ -222,7 +206,7 @@ top: 2px;
 
 </div>
 <div class="fl-end">
-	<div class="fl-end-notice">В данном списке представлены слова и выражения, с которыми вы работали:</div>
+	<div class="fl-end-notice">В данном списке представлены знаки, с которыми вы работали:</div>
 	<div class="fl-end-list"></div>
 	<div class="fl-end-wrapper">
 		<div class="fl-start fl-btn noselect" style="margin-top: 15px; width: 160px"> Пройти заново </div>
@@ -232,15 +216,14 @@ top: 2px;
 <div class="fl-article-wrapper">
   <div class="fl-article-list">
   
-	
 	<table  style="margin: 0 auto; margin-top: 10px" align="center">
+	<col width="50%"><col width="50%">
 	<tr valign="top">
 		<td style="border-right: 1px dotted #888; padding-right: 10px; padding-top: 30px">
 			<div class="fl-original"></div>
 		</td>
-		<td width="120" style="padding-top: 20px; padding-bottom: 20px; padding-left: 30px;">
-			<div class="fl-translate" style="text-align: left"></div>
-			<div class="fl-transcript" style="text-align: left; padding-left: 0; font-size: 12px; color: #555; line-height: 16px"></div>
+		<td width="120" style="padding-top: 40px; padding-bottom: 20px; padding-left: 30px;">
+			<div class="fl-translate" style="text-align: left; font-size: 40px; color: #666;"></div>
 		</td>
 	</tr></table>
 	
@@ -257,7 +240,7 @@ top: 2px;
 				<span class="fl-wrong-note fl-notes">Неправильно! Попробуйте снова</span>
 				<span class="fl-correct-note fl-notes">Великолепно! Правильный ответ</span>
 				<span class="fl-exclude-note fl-notes">Запись отмечена как изученная</span>
-				<span class="fl-task-string">Найдите перевод слова/выражения в списке</span>
+				<span class="fl-task-string">Найдите соответствие в списке</span>
 			</div>
 			<div class="fl-cancel fl-btn noselect"> Отмена </div>
 		</div>
@@ -276,18 +259,16 @@ top: 2px;
 	<div class="fl-activity-wrapper">
 	<table class="fl-activity">
 		<col><col width="130">
-	
 		<tr>
-			<td class="fl-text-info">Нажмите кнопку "Тесты", чтобы выполнить простые задания с иероглифом <br><br></td>
+			<td class="fl-text-info">Нажмите кнопку "Тесты", чтобы выполнить простые задания со знаком <br><br></td>
 			<td valign="top"> <div class="fl-verify fl-btn noselect"> Тесты </div></td>
 		</tr>
 		<tr class="fl-spell-activity">
-			<td class="fl-text-info">Нажмите кнопку "Примеры", чтобы ознакомитья с употреблением данного иероглифа <br><br>
+			<td class="fl-text-info">Нажмите кнопку "Примеры", чтобы ознакомитья с употреблением данного знака <br><br>
 			
 			</td>
 			<td valign="top"><div class="fl-spell-btn fl-btn noselect">Примеры</div></td>
-		</tr>		
-		
+		</tr>
 		<tr style="display: none;">
 			<td class="fl-text-info" >Нажмите кнопку "Стоп", если вы желаете закончить работу с флешкартами и вернуться в главное меню </td>
 			<td> <div class="fl-stop fl-btn noselect">Стоп</div></td>
@@ -324,11 +305,7 @@ top: 2px;
 </script>
 
 
-
-
 <br><br>
-
-
 
 <div class="es-ex-buttons su-next-wrapper">
 <input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(3)">
@@ -337,18 +314,16 @@ top: 2px;
 	</div>
 </div>
 
-
 <div id="for_tab03" class="pBlock" style="display: none">
 	<div class="inpBlock">
 	
 <h3 class="su-step-title">Тесты</h3>
 <p class="su-step-info">
-Данный этап предназначен для работы с иероглифами текущего урока
+Данный этап предназначен для работы со знаками текущего урока
 </p>		
 
-
 <h4 class="su-task">
-Задание 1. Найдите перевод иероглифа на русский язык
+Задание 1. Найдите транскрипцию знака
 </h4>
 
 <div id="ch1" class="lt-holder lt-kanji">
@@ -379,10 +354,10 @@ top: 2px;
 
 
 <h4 class="su-task">
-Задание 2. Найдите онное и кунное чтение иероглифа
+Задание 2. Найдите соответсвующие знаки
 </h4>
 
-<div id="ch2" class="lt-holder lt-kanji">
+<div id="ch2" class="lt-holder lt-ru-h">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
 </div>
@@ -400,7 +375,7 @@ top: 2px;
 		
 <% @last_item_index = (@words.length)-1 -%>
 <% @words.each_with_index  do |word, index| -%>
-["<%= word.text.to_s.gsub(/"/,'\"') %>", "<span style=\"text-transform: uppercase\"><%= word.transcribe.to_s.gsub(/"/,'\"') %><\/span> ; <%= word.html.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+["<%= word.translate.to_s.gsub(/"/,'\"') %>", "<%= word.text.to_s.gsub(/"/,'\"') %>" <% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
 <%end -%>
 
 		]
@@ -417,19 +392,16 @@ top: 2px;
 	</div>
 </div>
 
-
-
 <div id="for_tab04" class="pBlock" style="display: none">
 	<div class="inpBlock">
 	
 <h3 class="su-step-title">Повторение</h3>
 <p class="su-step-info">
-Данный этап предназначен для работы с ранее изученными иероглифами данного уровня
-</p>	
-	
+Данный этап предназначен для работы с ранее изученными знаками
+</p>
 	
 <h4 class="su-task">
-Задание 1. Найдите перевод
+Задание 1. Найдите транскрипцию знака
 </h4>
 
 <div id="ch3" class="lt-holder lt-kanji">
@@ -459,12 +431,11 @@ top: 2px;
 </script>	
 
 
-
 <h4 class="su-task">
-Задание 2. Найдите перевод
+Задание 2. Найдите соответсвующий знак
 </h4>
 
-<div id="ch4" class="lt-holder lt-ru-j">
+<div id="ch4" class="lt-holder lt-ru-h">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
 </div>
@@ -475,7 +446,7 @@ top: 2px;
 		id: "ch4", 
 		test_id: "",
 		quest_num: 20,
-		variants_num: 4,
+		variants_num: 5,
 		quest_type: 'text',
 		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
 		basic_array: [
@@ -492,24 +463,13 @@ top: 2px;
 
 
 
-
-
 	</div>
 </div>
 
 
-
-
 </div>
 
 
-
-
-
-
-
-
-
 <script type="text/javascript">
-currentSection="reading";
+currentSection="phonetic";
 </script>

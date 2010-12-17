@@ -53,15 +53,14 @@ cursor: default;
 <div class="hint_button" style="float: right;">
   <div class="hint">
       <div class="hint_list">
-        <span class="hint_string">Links and Settings</span>
+        <span class="hint_string">Полезные ссылки</span>
       </div>
     </div>
     <div class="sub_hint" style="display: none;">
         <ul>
-            <li><a href="/ru/jp/flashcards/<%= @category_short_tag%>">Флешкарты: <%= @category_title %></a></li>
+            <li><a href="/ru/jp/flashcards/<%= @category_short_tag%>">Флэш-карты: <%= @category_title %></a></li>
 			<li><a href="/ru/jp/lexical-test/<%= @category_short_tag %>">Тесты: <%= @category_title %></a></li>
         </ul>
-        <%= render :partial => 'site/down_accent' %>
   </div>
 </div>
 </div>
@@ -86,7 +85,7 @@ cursor: default;
 <thead>
 <tr>
 	<td style="padding-left: 40px;">Слово</td>
-	<td>Хирагана/Катакана</td>
+	<td>Хирагана</td>
 	<td>Перевод</td>
 </tr>
 </thead>
@@ -111,7 +110,7 @@ cursor: default;
 		<%unless word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div><%end%>
 	<%= word.text %>
     </td>
-	<td class="transcript"> <%= word.html %> </td>
+	<td class="transcript"> <span title="<%= word.transcribe.to_s.gsub(/"/,'') %>" style="cursor: default"><%= word.html %></span> </td>
     <td class="translation" valign="top"><%= word.translate %>
     </td>
 </tr>
@@ -132,7 +131,7 @@ cursor: default;
 </div><!-- end of voc-wordlist-->
 
 <table class="voc-links voc-link-first " align="center" cellspacing="0"><tr>
-	<td class="voc-space">Учить слова и выражения по этой теме с помощью &nbsp;<a href="/ru/jp/flashcards/<%= @category_short_tag%>">Флешкарт >></a></td>
+	<td class="voc-space">Учить слова и выражения по этой теме с помощью &nbsp;<a href="/ru/jp/flashcards/<%= @category_short_tag%>">Флэш-карт >></a></td>
 </tr></table>
 <table class="voc-links voc-link-last" align="center" cellspacing="0"><tr>
 	<td class="voc-space">Оценить знание этих слов с помощью &nbsp;<a href="/ru/jp/lexical-test/<%= @category_short_tag%>">Лексических тестов >></a></td>
@@ -140,6 +139,8 @@ cursor: default;
 
 
 
-
+<script type="text/javascript">
+currentSection="words";
+</script>
 
 

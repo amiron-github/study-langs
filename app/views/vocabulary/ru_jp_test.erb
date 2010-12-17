@@ -10,8 +10,9 @@ h2.page {margin-bottom: 0px;font-size: 19pt;}
 .es-ex-string-wrapper div.jp_control {
 margin:10px auto 0;
 }
-#ch2 .es-ex-string-wrapper {
+#ch2 .es-ex-string-wrapper, #ch1 .es-ex-string-wrapper {
 font-size: 25px;
+font-weight: bold;
 }
 </style>
 <% end %>
@@ -20,7 +21,7 @@ font-size: 25px;
 <div class="hint_button">
 	<div class="hint">
     	<div class="hint_list">
-    		<span class="hint_string">Links and Settings</span>
+    		<span class="hint_string">Ссылки по теме</span>
     	</div>
     </div>
     <div class="sub_hint" style="display: none;">
@@ -28,7 +29,6 @@ font-size: 25px;
      				<li><a href="/ru/jp/vocabulary/<%= @category_short_tag %>"><%= @category_title %></a></li>
 					<li><a href="/ru/jp/flashcards/<%= @category_short_tag %>">Флэш-карты: <%= @category_title %></a></li>
     		</ul>
-			<%= render :partial => 'site/preload_option' %>
 	</div>
 </div>
 </div>
@@ -43,8 +43,6 @@ font-size: 25px;
 	<span class="int-arrow">--&gt;</span> Тесты
 	</span>
 </h3>
-
-
 
 
 <div class="l-test-container">
@@ -63,7 +61,7 @@ font-size: 25px;
 	var ch1 = new ch_exercise( {
 		id: "ch1", 
 		test_id: "",
-		quest_num: 10,
+		quest_num: 15,
 		variants_num: 5,
 		quest_type: 'text',
 		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
@@ -92,7 +90,7 @@ font-size: 25px;
 	var ch2 = new ch_exercise( {
 		id: "ch2", 
 		test_id: "",
-		quest_num: 10,
+		quest_num: 15,
 		variants_num: 5,
 		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
 		basic_array: [
@@ -106,7 +104,7 @@ font-size: 25px;
 </script>
 
 <h3 class="test-task">Тест 3. 
-Прослушайте фразу и найдите её перевод.
+Найдите соответствие русскому варианту.
 <a href="javascript:;" class="lt-test-closer"><span class="lt-h">Скрыть</span><span class="lt-sh">Показать</span></a>
 </h3>
 
@@ -120,14 +118,14 @@ font-size: 25px;
 	var ch3 = new ch_exercise( {
 		id: "ch3", 
 		test_id: "",
-		quest_num: 10,
+		quest_num: 15,
 		variants_num: 5,
-		quest_type: 'audio',
+		quest_type: 'text',
 		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
 		basic_array: [
 		
 <% @words.each_with_index  do |word, index| -%>
-["<%= word.sound_url %>", "<%= word.translate.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+["<%= word.translate.to_s.gsub(/"/,'\"') %>", "<%= word.html.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
 <%end -%>
 
 		]
