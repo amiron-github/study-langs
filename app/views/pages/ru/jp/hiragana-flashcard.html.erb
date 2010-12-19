@@ -1,0 +1,12 @@
+<% @words = Category.find(36).words.find(:all, :order => 'order_num') %>
+<% @category_title = Category.find(36).title_ru %>
+<% @super_link = 'writing.html' %>
+<% @test_link = 'hiragana-test.html' %>
+
+<%= render :partial => '/site/kana_flashcard' %>
+
+
+
+
+
+

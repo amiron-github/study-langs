@@ -195,7 +195,10 @@ class UsersController < ApplicationController
     render :action => 'update_user'
     end
   end
+  
 
+
+  
   def del
     if !current_user
     redirect_back_or_default('/')

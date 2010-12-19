@@ -18,115 +18,35 @@ padding-top: 5px;
 	<li class="gr-li-head"><div class="gr-list-head"><span>Уровень 1 (80 иероглифов)</span></div>
 	
 			<p style="margin: 10px 20px"><a href="/ru/jp/kanji_01.html">Все кандзи уровня 1</a></p>
+			<p style="margin: 10px 20px; color: #555; font-weight: bold">Курс для изучения кандзи уровня 1:</p>
 		<ul>
 		
-			<li><a href="/ru/jp/kanji_01/lesson/1">Урок 1</a> <br>
-				Иероглифы: 一, 二, 三, 四, 五, 六, 七, 八, 九, 十
-			</li>
-			<li><a href="/ru/jp/kanji_01/lesson/2">Урок 2</a>
-			<br>
-				Иероглифы: 百, 千, 上, 下, 左, 右, 中 ,大 , 小, 月 
-			</li>
-			<li><a href="/ru/jp/kanji_01/lesson/3">Урок 3</a>
-			<br>
-				Иероглифы: 日, 年, 早, 木, 林, 山, 川, 土, 空, 田 
-			</li>
-			<li><a href="/ru/jp/kanji_01/lesson/4">Урок 4</a>
-			<br>
-				Иероглифы: 天, 生, 花, 草, 虫, 犬, 人, 名, 女, 男
-			</li>
-			<li><a href="/ru/jp/kanji_01/lesson/5">Урок 5</a>
-			<br>
-				Иероглифы: 子, 目, 耳, 口, 手, 足, 見, 音, 力, 気 
-			</li>
-			<li><a href="/ru/jp/kanji_01/lesson/6">Урок 6</a>
-			<br>
-				Иероглифы: 円, 入, 出, 立, 休, 先, 夕, 本, 文, 字
-			</li>
-			<li><a href="/ru/jp/kanji_01/lesson/7">Урок 7</a>
-			<br>
-				Иероглифы: 学, 校, 村, 町, 森, 正, 水, 火, 玉, 王 
-			</li>
-			<li><a href="/ru/jp/kanji_01/lesson/8">Урок 8</a>
-			<br>
-				Иероглифы: 石, 竹, 糸, 貝, 車, 金, 雨, 赤, 青, 白
-			</li>
-			
+<% mark_learned(@kanji_01).each_with_index do |w, index| -%>
+	<% if index % 10 == 0 %><li>
+			<a href="/ru/jp/kanji_01/lesson/<%= index/10+1 %>">Урок <%= index/10+1 %></a> <br>
+			Иероглифы:<%end -%> <%= w -%><%unless index % 10 == 9 -%>, <% else%>
+		</li>
+	<%end -%>
+<% end -%>
 		</ul>
+		<p style="margin: 10px 20px"><a href="/ru/jp/kanji_01-flashcard.html">Флэш-карты с кандзи 1 уровня</a></p>
+		<p style="margin: 10px 20px"><a href="/ru/jp/kanji_01-test.html">Тест на кандзи 1 уровня</a></p>
 	</li>
 	<li class="gr-li-head"><div class="gr-list-head"><span>Уровень 2 (160 иероглифов)</span></div>
 		<p style="margin: 10px 20px"><a href="/ru/jp/kanji_02.html">Все кандзи уровня 2</a></p>
 		<ul>
-		
-			<li><a href="/ru/jp/kanji_02/lesson/1">Урок 1</a> 
-			<br>
-				Иероглифы: 数 , 多 , 少 , 万 , 半 , 形 , 太 , 細 , 広 , 長
-			</li>
-			<li><a href="/ru/jp/kanji_02/lesson/2">Урок 2</a> 
-			<br>
-				Иероглифы: 点 , 丸 , 交 , 光 , 角 , 計 , 直 , 線 , 矢 , 弱 
-			</li>
-			<li><a href="/ru/jp/kanji_02/lesson/3">Урок 3</a> 
-			<br>
-				Иероглифы: 強 , 高 , 同 , 親 , 母 , 父 , 姉 , 兄 , 弟 , 妹 
-			</li>
-			<li><a href="/ru/jp/kanji_02/lesson/4">Урок 4</a> 
-			<br>
-				Иероглифы: 自 , 友 , 体 , 毛 , 頭 , 顔 , 首 , 心 , 時 , 曜
-			</li>
-			<li><a href="/ru/jp/kanji_02/lesson/5">Урок 5</a> 
-			<br>
-				Иероглифы: 朝 , 昼 , 夜 , 分 , 週 , 春 , 夏 , 秋 , 冬 , 今 
-			</li>
-			<li><a href="/ru/jp/kanji_02/lesson/6">Урок 6</a> 
-			<br>
-				Иероглифы: 新 , 古 , 間 , 方 , 北 , 南 , 東 , 西 , 遠 , 近 
-			</li>
-			<li><a href="/ru/jp/kanji_02/lesson/7">Урок 7</a>
-			<br>
-				Иероглифы: 前 , 後 , 内 , 外 , 場 , 地 , 国 , 園 , 谷 , 野 
-			</li>
-			<li><a href="/ru/jp/kanji_02/lesson/8">Урок 8</a> 
-			<br>
-				Иероглифы: 原 , 里 , 市 , 京 , 風 , 雪 , 雲 , 池 , 海 , 岩 
-			</li>
-			<li><a href="/ru/jp/kanji_02/lesson/9">Урок 9</a>
-			<br>
-				Иероглифы: 星 , 室 , 戸 , 家 , 寺 , 通 , 門 , 道 , 話 , 言 
-			</li>
-			<li><a href="/ru/jp/kanji_02/lesson/10">Урок 10</a>
-			<br>
-				Иероглифы: 答 , 声 , 聞 , 語 , 読 , 書 , 記 , 紙 , 画 , 絵 
-			</li>
-			<li><a href="/ru/jp/kanji_02/lesson/11">Урок 11</a> 
-			<br>
-				Иероглифы: 図 , 工 , 教 , 晴 , 思 , 考 , 知 , 才 , 理 , 算 
-			</li>
-			<li><a href="/ru/jp/kanji_02/lesson/12">Урок 12</a> 
-			<br>
-				Иероглифы: 作 , 元 , 食 , 肉 , 馬 , 牛 , 魚 , 鳥 , 羽 , 鳴 
-			</li>
-			<li><a href="/ru/jp/kanji_02/lesson/13">Урок 13</a> 
-			<br>
-				Иероглифы: 麦 , 米 , 茶 , 色 , 黄 , 黒 , 来 , 行 , 帰 , 歩 
-			</li>
-			<li><a href="/ru/jp/kanji_02/lesson/14">Урок 14</a> 
-			<br>
-				Иероглифы: 走 , 止 , 活 , 店 , 買 , 売 , 午 , 汽 , 弓 , 回
-			</li>
-			<li><a href="/ru/jp/kanji_02/lesson/15">Урок 15</a> 
-			<br>
-				Иероглифы:  会 , 組 , 船 , 明 , 社 , 切 , 電 , 毎 , 合 , 当 
-			</li>
-			<li><a href="/ru/jp/kanji_02/lesson/16">Урок 16</a> 
-			<br>
-				Иероглифы:  台 , 楽 , 公 , 引 , 科 , 歌 , 刀 , 番 , 用 , 何 
-			</li>
-		
-		
+<% mark_learned(@kanji_02).each_with_index do |w, index| -%>
+	<% if index % 10 == 0 %><li>
+			<a href="/ru/jp/kanji_02/lesson/<%= index/10+1 %>">Урок <%= index/10+1 %></a> <br>
+			Иероглифы:<%end -%> <%= w -%><%unless index % 10 == 9 -%>, <% else%>
+		</li>
+	<%end -%>
+<% end -%>		
+		</ul>
+		<p style="margin: 10px 20px"><a href="/ru/jp/kanji_02-flashcard.html">Флэш-карты с кандзи 2 уровня</a></p>
+		<p style="margin: 10px 20px"><a href="/ru/jp/kanji_02-test.html">Тест на кандзи 2 уровня</a></p>
 	</li>
 </ul>
-
 
 
 

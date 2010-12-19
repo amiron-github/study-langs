@@ -73,8 +73,18 @@ class SiteController < ApplicationController
 		@grammar_exercises = current_user.get_course_results(Exercise::GRAMMAR_RU, 'grammar_course')
 	when /(en_results)\.html$/
 		@vocabulary_exercises = current_user.get_cat_ex('en')
+	when '/ru/jp/kanji.html'
+		kanji1 = Category.find(95).words.find(:all, :order => 'order_num')
+		kanji2 = Category.find(96).words.find(:all, :order => 'order_num')
+		@kanji_01 = u_words_stat(kanji1)
+		@kanji_02 = u_words_stat(kanji2)
+	when '/ru/jp/writing.html'
+		words1 = Category.find(36).words.find(:all, :order => 'order_num')
+		words2 = Category.find(37).words.find(:all, :order => 'order_num')
+		@hiragana = u_words_stat(words1)
+		@katakana = u_words_stat(words2)
     end
-
+	
 	@hide_html = '<div class="hidden_content">Available for subscribed users</div>'
 	@hide_title= '<div class="hidden_content" style="font-size: 18px;">The full version of the lesson is available for subscribed users<br/><span style="font-size: 10pt;">See details on the page <a href="/everyday-course.html">Everyday Russian Course</a></span></div>'	
     if (((@file=='/user_profile.html')||(@file=='/user_profile1.html') )&& (!current_user ))
@@ -84,15 +94,22 @@ class SiteController < ApplicationController
     render :file => "pages#{@file}.erb", :layout => layout	
     end
 	
-
-
   rescue StandardError => e
     logger.warn e
     render :file => "pages/404.html", :status => '404 Not Found', :layout => layout	
   end
   
-
-  
+  def u_words_stat(cat_words)
+	new_words = []
+  	if !current_user
+		cat_words.each do |w|
+			new_words << {:text => w.text, :occured => 0}
+		end
+	else
+		new_words = current_user.get_words_occured(cat_words)
+	end
+	return new_words
+  end
   
   
 end

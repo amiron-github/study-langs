@@ -111,6 +111,7 @@ this.randomOrder = hash['random_order'];    // default - true, option: false
 this.texts = hash['texts'];					// default - english
 this.questNum = hash['quest_num'];			// default - basic array length
 this.trainSpell = hash['train_spell']; // default - true,
+this.examples = hash['examples']; // default - false,
 this.transBracket = hash['trans_bracket']; // default true
 var tObj = this;
 
@@ -140,6 +141,7 @@ if (this.variantsNum == undefined) this.variantsNum = 4;
 if (this.randomOrder == undefined) this.randomOrder = true;
 if (this.autoPlay == undefined) this.autoPlay = true;
 if (this.trainSpell == undefined) this.trainSpell = true;
+if (this.examples == undefined) this.examples = false;
 if (this.transBracket == undefined) this.transBracket = true;
 
 this.parseTest = function() {
@@ -159,20 +161,26 @@ this.parseTest = function() {
 	tObj.spellHolder = tObj.container.find(".fl-spell");
 	tObj.spellField = tObj.container.find(".fl-spell-field");
 	tObj.spellCheckButton = tObj.container.find(".fl-spell-check");
+	tObj.exampleHolder = tObj.container.find(".fl-example");
+	tObj.exampleField = tObj.container.find(".fl-example-field");
+	tObj.exampleCheckButton = tObj.container.find(".fl-example-check");
 	
 	tObj.nextButton = tObj.container.find(".fl-next");
 	tObj.startButton = tObj.container.find(".fl-start");
 	tObj.stopButton = tObj.container.find(".fl-stop");
 	tObj.cancelButton = tObj.container.find(".fl-cancel");
 	tObj.cancelSpellButton = tObj.container.find(".fl-cancel-spell");
+	tObj.cancelExampleButton = tObj.container.find(".fl-cancel-example");
 	
 	tObj.verifyButton = tObj.container.find(".fl-verify");
 	tObj.spellButton = tObj.container.find(".fl-spell-btn");
+	tObj.exampleButton = tObj.container.find(".fl-example-btn");
 	
 	tObj.wordListContainer = tObj.container.find(".fl-prestart");
 	tObj.initContainer = tObj.container.find(".fl-init");
 	tObj.workContainer = tObj.container.find(".fl-work");
 	if (!tObj.trainSpell) tObj.contentHolder.addClass("fl-nospell")
+	if (tObj.examples) tObj.contentHolder.addClass("fl-w-examples")
 	
 	tObj.startButton.click(function() {
 		tObj.start();
@@ -186,6 +194,10 @@ this.parseTest = function() {
 		tObj.cancelSpell();
 	}); 
 	
+	tObj.cancelExampleButton.click(function() {
+		tObj.cancelExample();
+	});
+	
 	tObj.stopButton.click(function() {
 		tObj.stop();
 	});
@@ -195,6 +207,8 @@ this.parseTest = function() {
 	}
 	
 	tObj.spellCheckButton.add(tObj.cancelSpellButton).addClass("fl-back");
+	
+	tObj.exampleCheckButton.add(tObj.cancelExampleButton).addClass("fl-back");
 	
 	tObj.container.find(".fl-settings").mouseover(function() {
 		$(this).addClass("fl-set-on");
@@ -214,9 +228,6 @@ var kb_link = tObj.spellHolder.find(".show_keyboard");
 					}
 				});
 	}	
-	
-	
-	
 	tObj.prestart();
 }
 
@@ -340,7 +351,6 @@ tObj.container.find("input.fl-autoplay").change(function() {
 
 this.formArray = function() {
 	tObj.usersArray = new Array();
-	
 	tObj.container.find(".fl-prestart tr.fl-list").each(function(i,elem){
 	
 		if ( $(elem).find("input[type='checkbox']").is(":checked") ) {
@@ -349,9 +359,7 @@ this.formArray = function() {
 				tItemData ['base'] = i;
 				tObj.usersArray.push(tItemData);
 		}
-		
 	})
-	
 }
 
 this.stop = function () {
@@ -362,7 +370,6 @@ this.stop = function () {
 
 
 this.start = function () {
-
 	tObj.formArray();
 	if (tObj.usersArray.length < 1) {
 		tObj.container.find(".fl-start-note").hide().fadeIn(300);
@@ -370,7 +377,6 @@ this.start = function () {
 	} else {
 		tObj.container.find(".fl-start-note").hide();
 	}
-
 	tObj.articleWrapper.css({opacity: "1"});
 	tObj.articleHolder.find("div").css({opacity: "1"});
 	tObj.counter=0;
@@ -394,8 +400,7 @@ this.start = function () {
 	
 		tObj.missedItems[i] =   i
 	}
-	
-	
+
 	tObj.nextButton.unbind("click").click(function() {
 		tObj.gotoNext();
 	});
@@ -412,6 +417,10 @@ this.start = function () {
 		tObj.spellPractice();
 	});
 	
+	tObj.exampleButton.unbind("click").click(function() {
+		tObj.examplePractice();
+	});
+	
 	tObj.initContainer.fadeOut(260, function() {
 		tObj.workContainer.show();
 		tObj.step();
@@ -420,20 +429,35 @@ this.start = function () {
 
 
 tObj.spellPractice = function() {
+	tObj.activityHolder.hide();
+	tObj.spellHolder.show();
+	tObj.spellCheckButton.add(tObj.cancelSpellButton).addClass("fl-back");
+	tObj.spellHolder.find("div").not(".fl-spell-cancel-wrapper").show(400);
 
+	tObj.spellHolder.find("div.fl-spell-cancel-wrapper").show(400, function() {
+		tObj.spellCheckButton.add(tObj.cancelSpellButton).removeClass("fl-back");
+	})
 
-tObj.activityHolder.hide();
-tObj.spellHolder.show();
-tObj.spellCheckButton.add(tObj.cancelSpellButton).addClass("fl-back");
-tObj.spellHolder.find("div").not(".fl-spell-cancel-wrapper").show(400);
-
-tObj.spellHolder.find("div.fl-spell-cancel-wrapper").show(400, function() {
-	tObj.spellCheckButton.add(tObj.cancelSpellButton).removeClass("fl-back");
-})
-
-tObj.launchSpellTest();
-
+	tObj.launchSpellTest();
 }
+
+tObj.examplePractice = function() {
+
+	tObj.activityHolder.hide();
+	tObj.exampleHolder.show();
+	tObj.exampleHolder.find(".fl-task-example").show(400);
+	
+	tObj.exampleCheckButton.add(tObj.cancelExampleButton).addClass("fl-back");
+	
+
+	tObj.exampleHolder.find("div.fl-example-cancel-wrapper").show(400, function() {
+		tObj.exampleCheckButton.add(tObj.cancelExampleButton).removeClass("fl-back");
+		tObj.exampleHolder.find("div").show(400);
+		tObj.exampleHolder.find(".fl-task-example").show();
+	})
+}
+
+
 
 this.launchSpellTest = function() {
 tObj.spellField.val("").focus();
@@ -496,6 +520,21 @@ tObj.cancelSpell = function() {
 	});
 }
 
+tObj.cancelExample = function() {
+	
+	tObj.exampleHolder.find(".fl-task-example").hide(400);
+	
+	tObj.exampleCheckButton.add(tObj.cancelExampleButton).addClass("fl-back");
+	
+	tObj.exampleHolder.stop().hide(400, function() {
+		tObj.exampleHolder.find(".fl-example-cancel-wrapper").hide();
+		if (tObj.activityHolder.is(":hidden")) tObj.activityHolder.fadeIn();
+
+		tObj.exampleHolder.find(".fl-example-spell").show();
+		tObj.exampleHolder.find(".fl-example-notes").hide();
+	});
+}
+
 
 this.step = function () {
 
@@ -511,20 +550,37 @@ this.step = function () {
 		}else{
 			tObj.transcriptHolder.show();
 			if (tObj.transBracket) {
-			tObj.transcriptHolder.html('['+ tObj.workArray[tObj.missedItems[activeEl]]['data'][3]+']')
+				tObj.transcriptHolder.html('['+ tObj.workArray[tObj.missedItems[activeEl]]['data'][3]+']')
 			} else {
 				tObj.transcriptHolder.html(''+ tObj.workArray[tObj.missedItems[activeEl]]['data'][3]+'')
 			}
 		}
 		
 		tObj.accents(tObj.originHolder);
-		if ( tObj.workArray[tObj.missedItems[activeEl]]['data'][2] == '') {
-			tObj.soundHolder.hide()
-		}else{
-			tObj.soundHolder.show().html( '<div onclick="cJplayer(\''+tObj.workArray[tObj.missedItems[activeEl]]['data'][2]+'\', this)" class="jp_control"></div>' )
+		
+		if (tObj.examples) {
+			if ( tObj.workArray[tObj.missedItems[activeEl]]['data'][2] == '') {
+				tObj.container.find(".fl-examples").html('Примеры отсутсвуют')
+
+			}else{
+				tObj.container.find(".fl-examples").html(' ' + tObj.workArray[tObj.missedItems[activeEl]]['data'][2] + ' ')
+			}		
+		} else {
+			if ( tObj.workArray[tObj.missedItems[activeEl]]['data'][2] == '') {
+				tObj.soundHolder.hide()
+			}else{
+				tObj.soundHolder.show().html( '<div onclick="cJplayer(\''+tObj.workArray[tObj.missedItems[activeEl]]['data'][2]+'\', this)" class="jp_control"></div>' )
+			}
+		
 		}
+		
+		
 		if ( tObj.container.find(".fl-autoplay").is(":checked") ) {
 			cJplayer(tObj.workArray[tObj.missedItems[activeEl]]['data'][2], tObj.soundHolder.find(".jp_control").get(0))
+		}
+		
+		if ( tObj.container.find(".fl-auto-ex").is(":checked") ) {
+			tObj.examplePractice();
 		}
 		
 	}else {
@@ -566,6 +622,12 @@ this.gotoNext = function() {
 	
 	clearTimeout(toNextInt);
 	if (tObj.spellHolder.is(":visible")) tObj.cancelSpell();
+	if (tObj.exampleHolder.is(":visible")) {
+		if ( ! tObj.container.find(".fl-auto-ex").is(":checked") ) {
+			tObj.cancelExample();
+		}
+		
+	}
 	
 	tObj.testsHolder.find(".fl-test-task").hide(400);
 	tObj.testsHolder.hide(400, function() {

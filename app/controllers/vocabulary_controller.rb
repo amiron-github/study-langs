@@ -151,13 +151,11 @@ layout :determine_layout
 	end
 	
 	@category_title = @category.title_ru
-	
 	if @category_tag == 'hiragana_jp' || @category_tag == 'katakana_jp'
 		render(:action => 'kana_lesson' )
 	else
 		render(:action => 'kanji_lesson' )
 	end
-	 
   end
   
 private

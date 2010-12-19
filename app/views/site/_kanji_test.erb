@@ -1,20 +1,42 @@
-<% @page_title = ''+@category_title+' :: Онлайн тесты' %>
-<% @page_meta = {'description' => "Учите слова по теме "+@category_title+" с помощью онлайн тестов"} %>
+
+<% @page_title = ' Тест на '+ @category_title +':: Изучение японского онлайн' %>
+<% @page_meta = {'description' => "Проверить знание "+@category_title+" с помощью онлайн тестов"} %>
 <% @with_rec = true %>
-<% @has_audio = true %>
 
 <% content_for :special_js_css do %>
-<%= javascript_include_tag 'jp-control' %>
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= stylesheet_link_tag 'lexical-test' %>
+<%= javascript_include_tag 'lexical-test' %>
+
+
 <style type="text/css">
 h2.page {margin-bottom: 0px;font-size: 19pt;}
 .es-ex-string-wrapper div.jp_control {
 margin:10px auto 0;
 }
 
-#ch1 .es-ex-string-wrapper, #ch3 .es-ex-string-wrapper, #ch4 .es-ex-string-wrapper {
-font-size: 25px;
+#ch1 .es-ex-string-wrapper, #ch2 .es-ex-string-wrapper {
+font-size: 36px;
 font-weight: bold;
 }
+
+#ch2 .es-ex-tasks-list li span {
+text-transform: uppercase;
+}
+
+#ch3 .es-ex-string-wrapper span {
+text-transform: uppercase;
+}
+
+#ch4 .es-ex-tasks-list li {
+font-size: 22px;
+}
+
+#ch4 .es-ex-tasks-list li input {
+top: -2px;
+}
+
+
 </style>
 <% end %>
 
@@ -27,54 +49,50 @@ font-weight: bold;
     </div>
     <div class="sub_hint" style="display: none;">
     		<ul>
-     				<li><a href="/ru/jp/vocabulary/<%= @category_short_tag %>"><%= @category_title %></a></li>
-					<li><a href="/ru/jp/flashcards/<%= @category_short_tag %>">Флэш-карты: <%= @category_title %></a></li>
+     				<li><a href="/ru/jp/kanji_01.html">Все кандзи уровня 1</a></li>
+					<li><a href="/ru/jp/kanji.html">Изучение кандзи</a></li>
     		</ul>
 	</div>
 </div>
 </div>
 
-<h2 class="page">Tests: <%= @category_title %></h2>
+<h2 class="page">Тест: <%= @category_title %></h2>
 
 <h3 class="page-path">
 	<span class="int-links">
-	<a href="/ru/jp/vocabulary.html">Словарь</a>
-	<span class="int-arrow">--&gt;</span> 
-	<a href="/ru/jp/vocabulary/<%= @category_short_tag %>"><%= @category_title %></a>
-	<span class="int-arrow">--&gt;</span> Тесты
+	<a href="/ru/jp/kanji.html">Кандзи</a>
+	<span class="int-arrow">--&gt;</span>Тест: <%= @category_title %>
 	</span>
 </h3>
 
 
 <div class="l-test-container">
 
-<h3 class="test-task">Тест 1. Найдите в списке подходящий перевод.
+
+
+<h3 class="test-task">Тест 1. Прочитатайте фразу и найдите её перевод.
 <a href="javascript:;" class="lt-test-closer"><span class="lt-h">Скрыть</span><span class="lt-sh">Показать</span></a>
 </h3>
 
 <div id="ch1" class="lt-holder">
-<div class="lt-spacer">	
+<div class="lt-spacer">
 <%= render :partial => 'lexical_test', :locals => {:lang => "rus"} %>
 </div>
 </div><!-- end of lt-holder -->
-
 <script type="text/javascript"> 
 	var ch1 = new ch_exercise( {
 		id: "ch1", 
 		test_id: "",
-		quest_num: 15,
+		quest_num: 50,
 		variants_num: 5,
-		quest_type: 'text',
 		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
 		basic_array: [
 		
-<% @last_item_index = (@words.length)-1 -%>
 <% @words.each_with_index  do |word, index| -%>
 		["<%= word.text.to_s.gsub(/"/,'\"') %>", '<%= word.translate.to_s.gsub(/'/,"’") %>'<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
 <%end -%>
 
 		]
-		
 		} )
 </script>
 
@@ -94,40 +112,41 @@ font-weight: bold;
 	var ch2 = new ch_exercise( {
 		id: "ch2", 
 		test_id: "",
-		quest_num: 15,
+		quest_num: 50,
 		variants_num: 5,
 		quest_type: 'text',
 		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
 		basic_array: [
-		
 <% @words.each_with_index  do |word, index| -%>
-["<%= word.translate.to_s.gsub(/"/,'\"') %>", "<%= word.html.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+["<%= word.text.to_s.gsub(/"/,'\"') %>", "<span><%= word.transcribe.to_s.gsub(/"/,'\"') %><\/span>; <%= word.html.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
 <%end -%>
 
 		]
 		} )
 </script>
 
-
-<h3 class="test-task">Тест 3. Прочитатайте соответствие в списке.
+<h3 class="test-task">Тест 3. 
+Найдите соответствие русскому варианту.
 <a href="javascript:;" class="lt-test-closer"><span class="lt-h">Скрыть</span><span class="lt-sh">Показать</span></a>
 </h3>
 
 <div id="ch3" class="lt-holder">
-<div class="lt-spacer">
+<div class="lt-spacer">	
 <%= render :partial => 'lexical_test', :locals => {:lang => "rus"} %>
 </div>
 </div><!-- end of lt-holder -->
+
 <script type="text/javascript"> 
 	var ch3 = new ch_exercise( {
 		id: "ch3", 
 		test_id: "",
-		quest_num: 15,
+		quest_num: 50,
 		variants_num: 5,
+		quest_type: 'text',
 		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
 		basic_array: [
 <% @words.each_with_index  do |word, index| -%>
-		["<%= word.text.to_s.gsub(/"/,'\"') %>", '<%= word.html.to_s.gsub(/'/,"’") %>'<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+["<span><%= word.transcribe.to_s.gsub(/"/,'\"') %><\/span>; <%= word.html.to_s.gsub(/"/,'\"') %>", "<%= word.translate.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
 <%end -%>
 
 		]
@@ -135,7 +154,7 @@ font-weight: bold;
 </script>
 
 <h3 class="test-task">Тест 4. 
-Найдите в списке подходящий перевод.
+Найдите соответствие русскому варианту.
 <a href="javascript:;" class="lt-test-closer"><span class="lt-h">Скрыть</span><span class="lt-sh">Показать</span></a>
 </h3>
 
@@ -149,30 +168,28 @@ font-weight: bold;
 	var ch4 = new ch_exercise( {
 		id: "ch4", 
 		test_id: "",
-		quest_num: 15,
+		quest_num: 50,
 		variants_num: 5,
 		quest_type: 'text',
 		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
 		basic_array: [
-		
 <% @words.each_with_index  do |word, index| -%>
-["<%= word.html.to_s.gsub(/"/,'\"') %>", "<%= word.translate.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+["<%= word.translate.to_s.gsub(/"/,'\"') %>", "<%= word.text.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
 <%end -%>
 
 		]
 		} )
 </script>
 
-<h3 class="test-task test-task-final" style="text-align: center">Вернуться к теме &nbsp;&nbsp;&nbsp;&nbsp;<a href="/ru/jp/vocabulary/<%= @category_short_tag %>"><%= @category_title %> >></a></h3>
+<h3 class="test-task test-task-final" style="text-align: center">Вернуться к теме &nbsp;&nbsp;&nbsp;&nbsp;<a href="/ru/jp/<%= @super_link %>"><%= @category_title %> >></a></h3>
 
 <script type="text/javascript">
 preloadFiles=new Array(
-
 )
 </script>
 
 </div><!-- end of lt-container -->
 
 <script type="text/javascript">
-currentSection="words";
+currentSection="reading";
 </script>

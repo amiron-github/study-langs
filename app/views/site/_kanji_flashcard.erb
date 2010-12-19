@@ -1,37 +1,90 @@
 
 <% 
-@page_title = 'Онлайн флэш-карты: '+@category_title+' '  %>
-<% @page_meta = {'description' => "Учить слова по теме "+@category_title+" с помощью онлайн флешкaрт"} %>
+@page_title = 'Онлайн флэш-карты: '+ @category_title %>
+<% @page_meta = {'description' => "Учить "+@category_title+" с помощью онлайн флешкaрт"} %>
 <% @with_rec = true %>
 <% @has_audio = true %>
 
 
 <% content_for :special_js_css do %>
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= stylesheet_link_tag 'flashcard' %>
+<%= javascript_include_tag 'flashcard-u' %>
+
+
 <style type="text/css">
 h2.page {
 margin-bottom: 0px;
 font-size: 19pt;
 }
+
+.fl-example-check, .fl-cancel-example {
+width: 80px;
+}
+
 .fl-spell-check, .fl-cancel-spell {
 width: 80px;
 }
+
 .fl-end-wrapper .fl-stop {
-width: 90px;
-}
-.fl-next {
-width: 100px;
+width: 110px;
 }
 
 .fl-original {
 font-weight: bold;
 padding: 8px 10px;
-border: 1px solid #dfdfdf;
+font-size: 80px;
 }
 
 .fl-transcript {
 font-size: 17px;
 }
- 
+
+.fl-article-list b {
+font-size: 10px;
+text-transform: uppercase;
+}
+
+.fl-example-test {
+background-image: url("/images/transparent-30.png");
+padding: 1px 10px 10px;
+}
+
+.fl-example-test p {
+line-height: 24px;
+min-height: 80px;
+margin: 5px 0 10px;;
+}
+
+.fl-ex-auto {
+color:#35485F;
+font-size:11px;
+}
+
+.fl-ex-auto input {
+position: relative;
+top: 2px;
+}
+
+.fl-article-list td {
+vertical-align: middle;
+padding-top: 20px;
+padding-bottom: 20px;
+}
+
+.fl-original {
+padding-top: 0;
+padding-bottom: 0;
+line-height:80px;
+}
+
+.fl-translate {
+padding-top: 0;
+padding-bottom: 0;
+line-height: normal;
+margin-top: 0px;
+}
+
 </style>
 
 <%end%>
@@ -45,8 +98,8 @@ font-size: 17px;
     </div>
     <div class="sub_hint" style="display: none;">
         <ul>
-            <li><a href="/ru/jp/vocabulary/<%= @category_short_tag%>"><%= @category_title %></a></li>
-			<li><a href="/ru/jp/lexical-test/<%= @category_short_tag %>">Тесты: <%= @category_title %></a></li>
+            <li><a href="/ru/jp/<%=  @super_link%>"><%= @category_title %></a></li>
+			<li><a href="/ru/jp/kanji.html">Изучение кандзи</a></li>
         </ul>
   </div>
 </div>
@@ -57,9 +110,9 @@ font-size: 17px;
 
 <h3 class="page-path">
 	<span class="int-links">
-	<a href="/ru/jp/vocabulary.html">Словарь</a>
+	<a href="/ru/jp/kanji.html">Кадзи</a>
 	<span class="int-arrow">--&gt;</span> 
-	<a href="/ru/jp/vocabulary/<%= @category_short_tag %>"><%= @category_title %></a>
+	<a href="/ru/jp/<%=  @super_link%>"><%= @category_title %></a>
 	<span class="int-arrow">--&gt;</span> Флэш-карты
 	</span>
 </h3>
@@ -86,13 +139,13 @@ font-size: 17px;
 					</ul>
 					</td>
 					<td style="padding-left: 10px">
-					<b>Настройки флэш-карт:</b>
+					<b>Настройки флешкарт:</b>
 					<ul>
 						<li><span class="fl-act fl-switch-order" >> Порядок слов</span><br>
 							&nbsp;&nbsp;<span class="fl-direct tcheck checked fl-act" >обычный</span><br>
 							&nbsp;&nbsp;<span class="fl-random tcheck fl-act">случайный</span>
 						</li>
-						<li style="visibility: hidden"><span class="fl-act fl-switch-auto" >> Проигрывать аудио</span><br>
+						<li style="display: none;"><span class="fl-act fl-switch-auto" >> Проигрывать аудио</span><br>
 						&nbsp;&nbsp;<span class="fl-auto-on tcheck checked fl-act" >вкл</span>
 								/<span class="fl-auto-off tcheck fl-act" >выкл</span>
 						</li>
@@ -121,17 +174,22 @@ font-size: 17px;
 <div class="fl-work">
 <div class="fl-article-wrapper">
   <div class="fl-article-list">
-	<table  style="margin: 0 auto" align="center"><tr><td height="70">
-		<div class="fl-original"></div>
-	</td></tr></table>
-	<table  style="margin: 0 auto" align="center"><tr>
-		<td><div class="fl-transcript"></div></td>
-		<td style="text-align: left; height:19px;"> <div class="fl-sound"> </div> </td>
+  
+  
+	<table  style="margin: 0 auto; margin-top: 10px" align="center">
+	<tr valign="top">
+		<td style="border-right: 1px dotted #888; padding-right: 10px;">
+			<div class="fl-original"></div>
+		</td>
+		<td width="120" style="padding-left: 30px;">
+			<div class="fl-translate" style="text-align: left"></div>
+			<div class="fl-transcript" style="text-align: left; padding-left: 0; font-size: 12px; color: #555; line-height: 16px"></div>
+		</td>
 	</tr></table>
-	<div class="fl-translate"></div>
+	
   </div>
 </div>
-<div class="fl-auto-wrapper" style="visibility: hidden"><input type="checkbox" class="fl-autoplay" checked> Проигрывать </div>
+<div class="fl-auto-wrapper">&nbsp; </div>
 <div class="fl-buttons-wrapper">
 	<div class="fl-next fl-btn noselect">Далee >></div>
 </div>
@@ -142,7 +200,7 @@ font-size: 17px;
 				<span class="fl-wrong-note fl-notes">Неправильно! Попробуйте снова</span>
 				<span class="fl-correct-note fl-notes">Великолепно! Правильный ответ</span>
 				<span class="fl-exclude-note fl-notes">Запись отмечена как пройденная</span>
-				<span class="fl-task-string">Найдите перевод слова/выражения в списке</span>
+				<span class="fl-task-string">Найдите соответсвие изучаемому иероглифу</span>
 			</div>
 			<div class="fl-cancel fl-btn noselect"> Отмена </div>
 		</div>
@@ -162,6 +220,21 @@ font-size: 17px;
 		</div>
 		<div class="kb-show-wrapper" ></div>
 	</div>
+	
+	<div class="fl-example" style="display: none;">
+		<div class="fl-example-cancel-wrapper" style="display: none;">
+			<div class="fl-example-task">
+				<span class="fl-task-example">Ознакомьтесь с примерами </span>
+			</div>
+			<div class="fl-cancel-example fl-btn noselect"> Закончить </div>
+		</div>
+		<div class="fl-example-test">
+		<p class="fl-examples">Hi</p>
+		<span class="fl-ex-auto"><input type="checkbox" class="fl-auto-ex"> Автоматически показывать примеры <span>
+		</div>
+	</div>
+	
+	
 	<div class="fl-activity-wrapper">
 	<table class="fl-activity">
 		<col><col width="130">
@@ -172,6 +245,10 @@ font-size: 17px;
 		<tr class="fl-spell-activity">
 			<td class="fl-text-info">Нажмите кнопку "Правописание" для практики в написании слова/фразы </td>
 			<td><div class="fl-spell-btn fl-btn noselect">Правописание</div></td>
+		</tr>
+		<tr class="fl-example-activity">
+			<td class="fl-text-info">Нажмите кнопку "Примеры", чтобы ознакомитья с употреблением данного иероглифа </td>
+			<td><div class="fl-example-btn fl-btn noselect">Примеры</div></td>
 		</tr>
 		<tr>
 			<td class="fl-text-info" >Нажмите кнопку "Стоп", если вы желаете закончить работу с флэш-картами и вернуться в главное меню </td>
@@ -195,12 +272,13 @@ font-size: 17px;
 		random_order: false,
 		trans_bracket: false,
 		train_spell: false,
+		examples: true,
 		basic_array: [
 <% 
 @last_item_index = (@words.length)-1
 @words.each_with_index  do |word, index| %><% unless (word.translate == '#none#' || word.translate == '' )%>
 <% unless except_from_flash(index) -%>
-["<%= word.text.to_s.gsub(/"/,'\"') %>", '<%= word.translate.to_s.gsub(/'/,"’") %>', '<%= word.sound_url %>', '<span title="<%= word.transcribe.to_s.gsub(/'/,"’") %>" style="cursor: default"><%= word.html.to_s.gsub(/'/,"’") %></span>'<%if current_user %>, '<%= word.id%>' ,'<%= current_user.word_status(word.id) %>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>
+["<%= word.text.to_s.gsub(/"/,'\"') %>", '<%= word.translate.to_s.gsub(/'/,"’") %>', '<%= word.grammar %>', '<b>Он<\/b>: <%= word.transcribe.to_s.gsub(/'/,"’") %><br><b>Кун<\/b>: <%= word.html.to_s.gsub(/'/,"’") %>'<%if current_user %>, '<%= word.id%>' ,'<%= current_user.word_status(word.id) %>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>
 <%end -%>
 <%end-%>
 <%end -%>
@@ -210,15 +288,11 @@ font-size: 17px;
 
 
 <table class="voc-links voc-link-first voc-link-last" align="center" cellspacing="0"><tr>
-	<td class="voc-space">Оцените, как вы выучили эти слова с помощью &nbsp;<a href="/ru/jp/lexical-test/<%= @category_short_tag %>">Лексических тестов >></a></td>
+	<td class="voc-space">Оцените, как вы выучили эти слова с помощью &nbsp;<a href="/ru/jp/<%=  @super_link%>"><%= @category_title %> >></a></td>
 </tr></table>
 
 
 
 <script type="text/javascript">
-currentSection="words";
+currentSection="phonetic";
 </script>
-
-
-
-

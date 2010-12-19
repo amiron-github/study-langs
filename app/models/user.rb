@@ -202,6 +202,18 @@ write_attribute :email, (value ? value.downcase : nil)
 		return tests
 	end	
 	
+	def get_words_occured(cat_words)
+		new_words = []
+		cat_words.each do |w|
+			occurred = user_words.find(:first, :conditions => ['word_id=?', w.id])
+			if occurred
+				new_words <<  {:text => w.text, :occurred => occurred.occurred}
+			else
+				new_words <<  {:text => w.text, :occurred =>0}
+			end
+		end
+		return new_words
+	end
 	
 	def get_tests 
 	res='var userProgress=new Array('

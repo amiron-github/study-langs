@@ -1,0 +1,11 @@
+<% @words = Category.find(96).words.find(:all, :order => 'order_num') %>
+<% @category_title = Category.find(96).title_ru %>
+<% @super_link = 'kanji_02.html' %>
+
+<%= render :partial => '/site/kanji_flashcard' %>
+
+
+
+
+
+

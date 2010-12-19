@@ -1,0 +1,10 @@
+<% @words = Category.find(37).words.find(:all, :order => 'order_num') %>
+<% @category_title = Category.find(37).title_ru %>
+<% @super_link = 'writing.html' %>
+
+<%= render :partial => '/site/kana_test' %>
+
+
+
+
+

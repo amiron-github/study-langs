@@ -221,7 +221,7 @@ this.start = function () {
 		
 		clearTimeout(toNextInt);
 		tObj.alertHolder.empty().removeClass(tObj.correctClass);
-		tObj.container.removeClass("es-ex-final-bg");
+		tObj.container.find(".es-ex-wrapper").removeClass("es-ex-final-bg");
 		
 		tObj.finalSign.hide();
 		tObj.container.find(".es-ex-invisible").removeClass("es-ex-invisible");
@@ -283,7 +283,7 @@ this.restart = function() {
 		if (!tObj.randomOrder) tObj.straightOrderAnswer = tObj.getAnswersOrder();
 		clearTimeout(toNextInt);
 		tObj.alertHolder.empty().removeClass(tObj.correctClass);
-		tObj.container.removeClass("es-ex-final-bg");
+		tObj.container.find(".es-ex-wrapper").removeClass("es-ex-final-bg");
 		tObj.finalSign.hide();
 		tObj.container.find(".es-ex-invisible").removeClass("es-ex-invisible");
 		tObj.nextButton.val(tObj.nextButtonVal);
@@ -547,7 +547,7 @@ this.gotoEnd = function() {
 	tObj.audioHolder.unbind("mousedown");
 	tObj.alertHolder.empty();
 	tObj.infoHolder.empty();
-	tObj.container.addClass("es-ex-final-bg");
+	tObj.container.find(".es-ex-wrapper").addClass("es-ex-final-bg");
 	tObj.autoPlayBoxContainer.addClass("es-ex-invisible");
 	tObj.contentHolder.addClass("es-ex-invisible");
 	tObj.nextButton.addClass("es-ex-invisible");

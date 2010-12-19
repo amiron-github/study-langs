@@ -426,6 +426,13 @@ margin-top: 1px;
 margin-left: 1px;
 }
 
+.fl-example-cancel-wrapper .fl-btn-down {
+top: 0px;
+left: auto;
+margin-top: 1px;
+margin-left: 1px;
+}
+
 .fl-cancel-wrapper .fl-btn-down {
 top: 0px;
 left: auto;
@@ -569,7 +576,22 @@ overflow:hidden;
 position:relative;
 }
 
+.fl-example-cancel-wrapper {
+overflow:hidden;
+position:relative;
+}
+
+
 .fl-spell-task {
+color:#22456F;
+font-size:12px;
+height:35px;
+line-height:16px;
+margin-bottom:4px;
+padding-right:110px;
+}
+
+.fl-example-task {
 color:#22456F;
 font-size:12px;
 height:35px;
@@ -586,6 +608,7 @@ color:#555555;
 display:block;
 font-weight:bold;
 }
+
 
 .fl-correct-spell {
 background-color:#DFFFE3;
@@ -670,6 +693,85 @@ background-color: #00D4FF;
 font-weight: bold;
 }
 
+/* examples style */
+
+.fl-task-example {
+color:#22456F;
+font-size:12px;
+line-height:16px;
+}
+
+.fl-example-notes {
+display:none;
+left:20px;
+padding:3px 10px;
+position:absolute;
+top:0;
+}
+
+
+.fl-cancel-example {
+text-align: center;
+padding: 3px 10px;
+cursor: pointer;
+border: 1px solid #8E95AF;
+width: 60px;
+position: absolute;
+right: 15px;
+top: 0;
+}
+
+.fl-cancel-example:hover {
+background-color: #FF8C2F;
+font-weight: bold;
+}
+
+.fl-example-check {
+position: relative;
+text-align: center;
+padding: 3px 10px;
+cursor: pointer;
+border: 1px solid #8E95AF;
+width: 60px;
+margin: 0 auto;
+}
+
+.fl-example-check-wrapper {
+padding-top: 15px;
+max-width: 300px;
+text-align: center;
+}
+
+
+.fl-example-field {
+background-image:url(/images/sign/input-text-bg.gif);
+background-repeat:no-repeat;
+border:1px solid #999999;
+font-size:17px;
+padding:3px 5px;
+width: 275px;
+}
+
+.fl-example-btn {
+border:1px solid #8E95AF;
+cursor:pointer;
+padding:3px 6px;
+position:relative;
+text-align:center;
+}
+
+.fl-example-btn:hover {
+background-color: #E5FF00;
+font-weight: bold;
+}
+
+.fl-example-check:hover {
+background-color: #00D4FF;
+font-weight: bold;
+}
+
+/* examples style*/
+
 .kb-show-wrapper {
 color:#35485F;
 font-size: 12px;
@@ -695,4 +797,18 @@ padding-right: 10px;
 .fl-nospell .fl-spell-activity {
 display: none;
 }
+
+.fl-example-activity {
+disp-lay: none;
+}
+
+.fl-w-examples .fl-example-activity {
+disp-lay: table-row;
+}
+
+.msie-sucks  .fl-example-test {
+background-color: #D8E6FF;
+background-image: none;
+}
+
 

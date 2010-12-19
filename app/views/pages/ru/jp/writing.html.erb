@@ -6,59 +6,70 @@
 
 
 <p>
-В японском языке используются две слоговые азбуки: Хирагана и Катакана. Именно с них мы рекомендуем изучение японской письменности.
+В японском языке используются две слоговые азбуки: Хирагана и Катакана. Именно с них обычно рекомендуется изучение японской письменности.
 </p>
+
+
 
 <ul class="gr-list">
 		<li class="gr-li-head"><div class="gr-list-head"><span>Хирагана</span></div>
 			<p style="margin: 10px 20px"><a href="/ru/jp/hiragana.html">Азбука Хирагана</a></p>
 			<p style="margin: 10px 20px; color: #555; font-weight: bold">Курс для изучения знаков годзюон:</p>
 		 <ul>
+<% @h = mark_learned(@hiragana) %>
 			<li><a href="/ru/jp/hiragana/lesson/1">Урок 1</a> <br>
-				Знаки: あ, い, う, え, お, か, き, く, け, こ
+				Знаки: <%= @h.slice(0,10).join(', ').to_s %>
 			</li>
 			<li><a href="/ru/jp/hiragana/lesson/2">Урок 2</a>
 			<br>
-				Знаки: さ, し, す, せ, そ, た, ち, つ, て, と
+				Знаки: <%= @h.slice(10,10).join(', ').to_s %>
 			</li>
 			<li><a href="/ru/jp/hiragana/lesson/3">Урок 3</a>
 			<br>
-				Знаки: な, に, ぬ, ね, の, は, ひ, ふ, へ, ほ 
+				Знаки: <%= @h.slice(20,10).join(', ').to_s %>
 			</li>
 			<li><a href="/ru/jp/hiragana/lesson/4">Урок 4</a>
 			<br>
-				Знаки: ま, み, む, め, も, や, よ, ゆ
+				Знаки: <%= @h.slice(30,8).join(', ').to_s %>
 			</li>
 			<li><a href="/ru/jp/hiragana/lesson/5">Урок 5</a>
 			<br>
-				Знаки: ら, り, る, れ, ろ, わ, を, ん
-			</li>			
-		</ul>
+				Знаки: <%= @h.slice(38,8).join(', ').to_s %>
+			</li>
+
+			</ul>
+		<p style="margin: 10px 20px"><a href="/ru/jp/hiragana-flashcard.html">Флэш-карты: Хирагана</a></p>
+		<p style="margin: 10px 20px"><a href="/ru/jp/hiragana-test.html">Тест: Хирагана (годзюон) </a></p>
+		
 	</li>
 		<li class="gr-li-head"><div class="gr-list-head"><span>Катакана</span></div>
 			<p style="margin: 10px 20px"><a href="/ru/jp/hiragana.html">Азбука Катакана</a></p>
 			<p style="margin: 10px 20px; color: #555; font-weight: bold">Курс для изучения знаков годзюон:</p>
 		 <ul>
+		 
+<% @k = mark_learned(@katakana) %>
 			<li><a href="/ru/jp/katakana/lesson/1">Урок 1</a> <br>
-				Знаки: ア, イ, ウ, エ, オ, カ, キ, ク, ケ, コ
+				Знаки: <%= @k.slice(0,10).join(', ').to_s %>
 			</li>
 			<li><a href="/ru/jp/katakana/lesson/2">Урок 2</a>
 			<br>
-				Знаки: サ, シ, ス, セ, ソ, タ, チ, ツ, テ, ト 
+				Знаки: <%= @k.slice(10,10).join(', ').to_s %>
 			</li>
 			<li><a href="/ru/jp/katakana/lesson/3">Урок 3</a>
 			<br>
-				Знаки: ナ, ニ, ヌ, ネ, ノ, ハ, ヒ, フ, ヘ, ホ
+				Знаки: <%= @k.slice(20,10).join(', ').to_s %>
 			</li>
 			<li><a href="/ru/jp/katakana/lesson/4">Урок 4</a>
 			<br>
-				Знаки: マ, ミ, ム, メ, モ, ヤ, ユ, ヨ
+				Знаки: <%= @k.slice(30,8).join(', ').to_s %>
 			</li>
 			<li><a href="/ru/jp/katakana/lesson/5">Урок 5</a>
 			<br>
-				Знаки: ラ, リ, ル, レ, ロ, ワ, ヲ, ン 
+				Знаки: <%= @k.slice(38,8).join(', ').to_s %>
 			</li>			
 		</ul>
+		<p style="margin: 10px 20px"><a href="/ru/jp/katakana-flashcard.html">Флэш-карты: Катакана</a></p>
+		<p style="margin: 10px 20px"><a href="/ru/jp/katakana-test.html">Тест: Катакана (годзюон) </a></p>
 	</li>
 
 
