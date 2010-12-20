@@ -10,7 +10,7 @@ module SiteHelper
 			s = '<span style="color: #0AAF30;  font-weight: bold" title="Изучено">'+w[:text]+'</span>'
 			new_s << s
 		elsif w[:occurred].to_f >=7
-			s = '<span style="color: #DF0048;  font-weight: bold" title="Освоено">'+w[:text]+'</span>'
+			s = '<span style="color: #DF0048;  font-weight: bold" title="Усвоено">'+w[:text]+'</span>'
 			new_s << s
 		else
 			s = '<span>'+w[:text]+'</span>'

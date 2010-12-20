@@ -1,0 +1,263 @@
+<% @page_title = 'Изучаем японский: Хирагана (годзюон)' %>
+<% @page_meta = {'description' => "Онлайн изучение японского языка: слоговая азбука Хирагана"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+
+<% content_for :special_js_css do %>
+
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'es-course.js' %>
+<%= javascript_include_tag 'jquery.tablesorter.min.js' %>
+
+<%= stylesheet_link_tag 'es-course' %>
+
+
+<style type="text/css">
+.wl-jap {
+font-size: 17px;
+}
+.wr-hiragana tbody td {
+font-weight: bold;
+font-size: 17px;
+text-align: center;
+}
+
+.wr-hiragana tbody td div {
+font-weight: normal;
+font-size: 11px;
+margin-top: 6px;
+}
+
+.wr-hiragana td.wr-han {
+background-color: #efefef !important;
+}
+
+
+.voc-wordlist .diction {
+background-image: none;
+font-size: 17px;
+}
+
+.voc-wordlist .diction th, .voc-wordlist .diction tfoot td {
+text-align: center;
+border-right:1px solid #B5C1CF;
+}
+
+.voc-wordlist .diction th {
+border-bottom:1px solid #B5C1CF;
+padding: 8px;
+}
+
+.voc-wordlist .diction .th-add th {
+background-color: #EFF6FF;
+}
+
+.voc-wordlist .diction td {
+border-bottom: 1px solid #efefef;
+font-weight: bold;
+font-size: 25px;
+text-align: center;
+}
+
+.voc-wordlist .diction td div {
+font-weight: normal;
+font-size: 11px;
+margin-top: 6px;
+}
+
+.voc-wordlist .diction td.original {
+position: relative;
+width: auto;
+padding-left: 50px;
+cursor: default;
+font-size:17px;
+}
+
+div.jp_control {
+position: absolute;
+margin-left: -40px;
+}
+
+
+.voc-wordlist .diction td.transcript {
+cursor: default;
+font-size:17px;
+}
+.voc-wordlist .diction thead td {
+font-weight: bold;
+font-size: 11px;
+padding-bottom: 12px;
+color: #444;
+}
+
+.voc-wordlist .diction td.translation {
+width: auto;
+padding-left: 22px;
+padding-right: 18px;
+cursor: default;
+}
+
+
+
+
+</style>
+
+<% end %>
+
+
+
+<div class="hint_wrap">
+<div class="hint_button" style="float: right;">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Links and Settings</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+     				<li><a href="numerals100-test.html"> Tests: Numerals</a></li>
+    				<li><a href="pronunciation.html">Pronunciation training</a></li>
+     				<li><a href="reading.html">Reading in Russian</a></li>
+    		</ul>     				
+        <%= render :partial => 'colorder_accent' %>
+	</div>
+</div>
+</div>
+
+<h2 class="page">Хирагана (годзюон)</h2>
+
+<div id="pagecontent"><div id="content">
+
+
+<div class="voc-wordlist">
+<table class="voc_bord" align="center" cellspacing="0">
+<tr>
+<td>
+
+
+<table style="width: 440px" class="diction" cellpadding="0" cellspacing="0" align="center">
+	<thead>
+		<tr>
+			<th colspan="5" class="{sorter: false}">годзюон</th>
+		</tr>
+		<tr class="th-add">
+			<th class="{sorter: false}">a</th>
+			<th class="{sorter: false}">i</th>
+			<th class="{sorter: false}">u</th>
+			<th class="{sorter: false}">e</th>
+			<th class="{sorter: false}">o</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>あ <div>[a]</div></td>
+			<td>い <div>[i]</div></td>
+			<td>う <div>[u]</div></td>
+			<td>え <div>[e]</div></td>
+			<td>お <div>[o]</div></td>
+		</tr>
+		<tr>
+			<td>か <div>[ka]</div></td>
+			<td>き <div>[ki]</div></td>
+			<td>く <div>[ku]</div></td>
+			<td>け <div>[ke]</div></td>
+			<td>こ <div>[ko]</div></td>
+		</tr>
+		<tr>
+			<td>さ <div>[sa]</div></td>
+			<td>し <div>[shi]</div></td>
+			<td>す <div>[su]</div></td>
+			<td>せ <div>[se]</div></td>
+			<td>そ <div>[so]</div></td>
+		</tr>
+		<tr>
+			<td>た <div>[ta]</div> </td>
+			<td>ち <div>[chi]</div> </td>
+			<td>つ <div>[tsu]</div> </td>
+			<td>て <div>[te]</div> </td>
+			<td>と <div>[to]</div> </td>
+		</tr>
+		<tr>
+			<td>な <div>[na]</div></td>
+			<td>に <div>[ni]</div> </td>
+			<td>ぬ <div>[nu]</div> </td>
+			<td>ね <div>[ne]</div> </td>
+			<td>の <div>[no]</div> </td>
+		</tr>
+		<tr>
+			<td>は <div>[ha]</div> </td>
+			<td>ひ <div>[hi]</div> </td>
+			<td>ふ <div>[fu]</div> </td>
+			<td>へ <div>[he]</div> </td>
+			<td>ほ <div>[ho]</div> </td>
+		</tr>
+		<tr>
+			<td>ま <div>[ma]</div></td>
+			<td>み <div>[mi]</div></td>
+			<td>む <div>[mu]</div></td>
+			<td>め <div>[me]</div></td>
+			<td>も <div>[mo]</div></td>
+		</tr>
+		<tr>
+			<td>や <div>[ya]</div></td>
+			<td></td>
+			<td>ゆ <div>[yu]</div></td>
+			<td></td>
+			<td>よ <div>[yo]</div></td>
+		</tr>
+		<tr>
+			<td>ら <div>[ra]</div></td>
+			<td>り <div>[ri]</div></td>
+			<td>る <div>[ru]</div></td>
+			<td>れ <div>[re]</div></td>
+			<td>ろ <div>[ro]</div></td>
+		<tr>
+			<td>わ <div>[wa]</div></td>
+			<td>ゐ <div>[wi]</div></td>
+			<td></td>
+			<td>ゑ <div>[we]</div></td>
+			<td>を <div>[o]</div></td>
+		</tr>
+		<tr>
+			<td colspan="5" align="center">ん <div>[n]</div></td>
+		</tr>
+</tbody>
+<tfoot>
+<tr>
+	<td colspan="5"></td>
+</tr>
+</tfoot>  
+</table>
+	
+	
+</td>
+</tr>
+</table>
+</div><!-- end of voc-wordlist-->	
+	
+	
+	
+<br>
+<br>
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br><br>
+<br>
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript">
+currentSection="phonetic";
+</script>
