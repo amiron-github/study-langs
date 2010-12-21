@@ -96,9 +96,36 @@ write_attribute :email, (value ? value.downcase : nil)
 			category_id = t[:category_id]
 			category = Category.find(category_id)
 			if category.lang == lang
+				if category.lang == 'jp'
+					unless category_id == 95 || category_id == 96 || category_id == 36 || category_id == 37
+						cat_words = words.find(:all, :conditions => ['category_id=?', category_id], :order=> 'order_num');
+						cat_tests = user_tests.all(:joins => 'left outer join exercises ON `exercises`.test_id = `user_tests`.test_id', :conditions => {'exercises.category_id' => category_id})
+						user_cat << {:category => category, :words => cat_words, :user_tests => cat_tests}
+					end
+				else
 				cat_words = words.find(:all, :conditions => ['category_id=?', category_id], :order=> 'order_num');
 				cat_tests = user_tests.all(:joins => 'left outer join exercises ON `exercises`.test_id = `user_tests`.test_id', :conditions => {'exercises.category_id' => category_id})
 				user_cat << {:category => category, :words => cat_words, :user_tests => cat_tests}
+				end
+			end
+		end
+	return user_cat
+	end
+	
+	def categories_hkk(lang)
+		user_categories = words.find(:all, :select=> "distinct category_id", :order => 'category_id');
+		user_cat = []
+		user_categories.each do |t|
+			category_id = t[:category_id]
+			category = Category.find(category_id)
+			if category.lang == lang
+				if category.lang == 'jp'
+					if category_id == 95 || category_id == 96 || category_id == 36 || category_id == 37
+						cat_words = words.find(:all, :conditions => ['category_id=?', category_id], :order=> 'order_num');
+						cat_tests = user_tests.all(:joins => 'left outer join exercises ON `exercises`.test_id = `user_tests`.test_id', :conditions => {'exercises.category_id' => category_id})
+						user_cat << {:category => category, :words => cat_words, :user_tests => cat_tests}
+					end
+				end
 			end
 		end
 	return user_cat
@@ -140,7 +167,6 @@ write_attribute :email, (value ? value.downcase : nil)
 	return course_data
 	end
 	
-
 	def get_course_results(map, tag)
 		course = Category.find(:first, :conditions=> ['tag=?', tag])
 		user_tests = get_test_by_category(course.id)

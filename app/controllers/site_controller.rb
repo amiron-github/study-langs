@@ -59,11 +59,13 @@ class SiteController < ApplicationController
     when /(memory|balloon-game)\.html$/
       @javascripts << 'vocabulary'
 	when /(ru_words)\.html$/
-		@vocabulary_exercises = current_user.get_cat_ex('en')
 		@words_statistics = current_user.categories_by_language('ru')
 	when /(en_words)\.html$/
-		@vocabulary_exercises = current_user.get_cat_ex('ru')
 		@words_statistics = current_user.categories_by_language('en')
+	when /(ru_jp_words)\.html$/
+		@words_statistics = current_user.categories_by_language('jp')
+	when /(ru_jp_hkk)\.html$/
+		@words_statistics = current_user.categories_hkk('jp')
 	when /(ru_results)\.html$/
 		@vocabulary_exercises = current_user.get_cat_ex('ru')
 		@course_exercises = current_user.get_course_results(Exercise::EVERYDAY_RU, 'everyday_course')
