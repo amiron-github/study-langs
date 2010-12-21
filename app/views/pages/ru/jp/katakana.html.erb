@@ -1,5 +1,5 @@
 <% @page_title = 'Изучаем японский: Катакана' %>
-<% @page_meta = {'description' => "Японская слоговая азбука Катакана"} %>
+<% @page_meta = {'description' => "Онлайн изучение японского языка: слоговая азбука Катакана"} %>
 <% @with_rec = true %>
 <% @has_audio = true %>
 
@@ -33,10 +33,76 @@ margin-top: 6px;
 background-color: #efefef !important;
 }
 
-.wr-hiragana th {
-text-align: center;
+.voc-wordlist .diction {
+background-image: none;
+font-size: 17px;
 }
 
+.voc-wordlist .diction th, .voc-wordlist .diction tfoot td {
+text-align: center;
+border-right:1px solid #B5C1CF;
+}
+
+.voc-wordlist .diction th {
+border-bottom:1px solid #B5C1CF;
+padding: 8px;
+}
+
+.voc-wordlist .diction .th-add th {
+background-color: #EFF6FF;
+}
+
+.voc-wordlist .diction td {
+border-bottom: 1px solid #B5C1CF;
+font-weight: bold;
+font-size: 20px;
+text-align: center;
+padding-left:7px;
+}
+
+.voc-wordlist .diction td.wr-han {
+background-color: #f2f7fc;
+}
+
+.voc-wordlist .diction td div {
+font-weight: normal;
+font-size: 11px;
+margin-top: 6px;
+color: #444;
+}
+
+.voc-wordlist .diction td.original {
+position: relative;
+width: auto;
+padding-left: 50px;
+cursor: default;
+font-size:17px;
+}
+
+div.jp_control {
+position: absolute;
+margin-left: -40px;
+}
+
+
+.voc-wordlist .diction td.transcript {
+cursor: default;
+font-size:17px;
+}
+
+.voc-wordlist .diction thead td {
+font-weight: bold;
+font-size: 11px;
+padding-bottom: 11px;
+color: #444;
+}
+
+.voc-wordlist .diction td.translation {
+width: auto;
+padding-left: 22px;
+padding-right: 18px;
+cursor: default;
+}
 
 </style>
 
@@ -48,35 +114,47 @@ text-align: center;
 <div class="hint_button" style="float: right;">
 	<div class="hint">
     	<div class="hint_list">
-    		<span class="hint_string">Links and Settings</span>
+    		<span class="hint_string">Полезные ссылки</span>
     	</div>
     </div>
     <div class="sub_hint" style="display: none;">
     		<ul>
-     				<li><a href="numerals100-test.html"> Tests: Numerals</a></li>
-    				<li><a href="pronunciation.html">Pronunciation training</a></li>
-     				<li><a href="reading.html">Reading in Russian</a></li>
+     				<li><a href="/ru/jp/writing.html">Кана</a></li>
+    				<li><a href="/ru/jp/writing.html">Курс изучения катаканы</a></li>
     		</ul>     				
-        <%= render :partial => 'colorder_accent' %>
 	</div>
 </div>
 </div>
 
 
 
-<h2 class="page">Хирагана</h2>
+<h2 class="page">Катакана</h2>
+
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="/ru/jp/writing.html">Кана</a>
+	<span class="int-arrow">--&gt;</span> Катакана
+	</span>
+</h3>
+
+
 
 <div id="pagecontent"><div id="content">
 
 
-	<table class="es-words-list wr-hiragana" cellspacing="1">
+<div class="voc-wordlist">
+<table class="voc_bord" align="center" cellspacing="0">
+<tr>
+<td>
+
+
+<table style="width: 500px" class="diction" cellpadding="0" cellspacing="0" align="center">
 	<thead>
 		<tr>
-
 			<th colspan="5" class="{sorter: false}">годзюон</th>
 			<th colspan="3" class="{sorter: false}">ёон</th>
 		</tr>
-		<tr>
+		<tr class="th-add">
 			<th class="{sorter: false}">a</th>
 			<th class="{sorter: false}">i</th>
 			<th class="{sorter: false}">u</th>
@@ -156,7 +234,7 @@ text-align: center;
 			<td>モ <div>[mo]</div></td>
 			<td class="wr-han">ミャ <div>[mya]</div></td>
 			<td class="wr-han">ミュ <div>[myu]</div></td>
-			<td class="wr-han">ミョ <div>[myo]</div></td>
+			<td class="wr-han">ミョ <div>[myo]</div></td
 		</tr>
 		<tr>
 			<td>ヤ <div>[ya]</div></td>
@@ -192,19 +270,120 @@ text-align: center;
 			<td colspan="5" align="center">ン <div>[n]</div></td>
 			<td colspan="3" class="wr-han"></td>
 		</tr>
-		
-		
-	</tbody>
-	</table>
+</tbody>
+<tfoot>
+<tr>
+	<td colspan="8"></td>
+</tr>
+</tfoot>  
+</table>
 	
-	<br>
-	<br>
-
-
+	
+</td>
+</tr>
+</table>
+</div><!-- end of voc-wordlist-->	
+	
 	
 	
 <br>
 <br>
+
+<p>Символы катаканы могут использоваться со знаками нигори (゛), который указывает на озвончение согласного звука, а также со знаком ха-нигори (゜), который заменяет звук [h] на [p]. В следующией таблице приводятся символы катканы с данными знаками:
+</p>
+
+
+<div class="voc-wordlist">
+<table class="voc_bord" align="center" cellspacing="0">
+<tr>
+<td>
+
+
+<table style="width: 500px" class="diction" cellpadding="0" cellspacing="0" align="center">
+	<thead>
+		<tr>
+			<th colspan="5" class="{sorter: false}"></th>
+			<th colspan="3" class="{sorter: false}"></th>
+		</tr>
+		<tr class="th-add">
+			<th class="{sorter: false}">a</th>
+			<th class="{sorter: false}">i</th>
+			<th class="{sorter: false}">u</th>
+			<th class="{sorter: false}">e</th>
+			<th class="{sorter: false}">o</th>
+			<th class="{sorter: false}">ya</th>
+			<th class="{sorter: false}">yu</th>
+			<th class="{sorter: false}">ye</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>ガ <div>[ga]</div></td>
+			<td>ギ <div>[gi]</div></td>
+			<td>グ <div>[gu]</div></td>
+			<td>ゲ <div>[ge]</div></td>
+			<td>ゴ <div>[go]</div></td>
+			<td class="wr-han">ギャ <div>[gya]</div></td>
+			<td class="wr-han">ギュ <div>[gyu]</div></td>
+			<td class="wr-han">ギョ <div>[gyo]</div></td>
+		</tr>
+		<tr>
+			<td>ザ <div>[za]</div></td>
+			<td>ジ <div>[ji]</div></td>
+			<td>ズ <div>[zu]</div></td>
+			<td>ゼ <div>[ze]</div></td>
+			<td>ゾ <div>[zo]</div></td>
+			<td class="wr-han">ジャ <div>[ja]</div></td>
+			<td class="wr-han">ジュ <div>[ju]</div></td>
+			<td class="wr-han">ジョ <div>[jo]</div></td>
+		</tr>
+		<tr>
+			<td>ダ <div>[da]</div> </td>
+			<td>ヂ <div>[ji]</div> </td>
+			<td>ヅ <div>[zu]</div> </td>
+			<td>デ <div>[de]</div> </td>
+			<td>ド <div>[do]</div> </td>
+			<td class="wr-han">ヂャ <div>[ja]</div> </td>
+			<td class="wr-han">ヂュ <div>[ju]</div> </td>
+			<td class="wr-han">ヂョ <div>[jo]</div> </td>
+		</tr>
+		<tr>
+			<td>バ <div>[ba]</div></td>
+			<td>ビ <div>[bi]</div> </td>
+			<td>ブ <div>[bu]</div> </td>
+			<td>ベ <div>[be]</div> </td>
+			<td>ボ <div>[bo]</div> </td>
+			<td class="wr-han">ビャ <div>[bya]</div> </td>
+			<td class="wr-han">ビュ <div>[byu]</div> </td>
+			<td class="wr-han">ビョ <div>[byo]</div> </td>
+		</tr>
+		<tr>
+			<td>パ <div>[pa]</div> </td>
+			<td>ピ <div>[pi]</div> </td>
+			<td>プ <div>[pu]</div> </td>
+			<td>ペ <div>[pe]</div> </td>
+			<td>ポ <div>[po]</div> </td>
+			<td class="wr-han">ピャ <div>[pya]</div> </td>
+			<td class="wr-han">ピュ <div>[pyu]</div> </td>
+			<td class="wr-han">ピョ <div>[pyo]</div> </td>
+		</tr>
+</tbody>
+<tfoot>
+<tr>
+	<td colspan="8"></td>
+</tr>
+</tfoot>  
+</table>
+	
+	
+</td>
+</tr>
+</table>
+</div><!-- end of voc-wordlist-->
+
+
+
+
 <br>
 <br>
 <br>

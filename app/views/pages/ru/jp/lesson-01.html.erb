@@ -1,0 +1,593 @@
+<% @page_title = 'Урок 1 :: Уроки японского языка' %>
+<% @page_meta = {'description' => "Уроки японского языка онлайн"} %>
+
+
+<% content_for :special_js_css do %>
+
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'jp-control' %>
+<%= javascript_include_tag 'lexical-test' %>
+<%= stylesheet_link_tag 'lexical-test' %>
+<%= javascript_include_tag 'test-drag-sort' %>
+<%= javascript_include_tag 'es-grammar-exercises' %>
+<%= javascript_include_tag 'es-test-drag-input' %>
+
+
+<%= javascript_include_tag 'short-unit' %>
+<%= stylesheet_link_tag 'short-unit' %>
+
+<script type="text/javascript">
+<%if params[:tab] %>
+	openTabFromUrl(<%= params[:tab] %>);
+<%else%>
+	openTabFromUrl();
+<%end%>
+</script>
+
+<style>
+.su-jp-transcript {
+font-weight: normal;
+color: #444;
+font-size: 12px;
+}
+
+.su-present table td {
+vertical-align: top;
+}
+
+.su-present table td.su-pres-orig {
+font-size: 22px;
+}
+
+.su-present table td.su-pres-trans {
+padding-top: 15px;
+}
+
+.voc-wordlist .diction td.original {
+font-size: 17px;
+}
+
+.egdiv .su-jp-ex {
+font-size: 18px;
+}
+
+.egdiv .su-jp-ex u {
+text-decoration: none;
+border-bottom: 1px dotted #000;
+}
+
+
+.ds-table-nosound tr td.ds-quest {
+font-size: 16px;
+}
+
+</style>
+
+<% end %>
+
+
+
+<div class="unit-area">
+
+
+<div id="prof_tabs">
+
+<div class="unit-title">
+Урок 1
+</div>
+	<div id="tabs_row">
+            <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Этап 1</a></div></div>
+			<div id="tab02" class="ptab"><div><a href="#">Этап 2</a></div></div>
+            <div id="tab03" class="ptab"><div><a href="#">Этап 3</a></div></div>
+			<div id="tab04" class="ptab"><div><a href="#">Этап 4</a></div></div>
+			<div id="tab05" class="ptab" style="display: none;"><div><a href="#">Этап 5</a></div></div>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+
+<div id="for_tab01" class="pBlock" style="display: block">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Обзор</h3>
+<p class="su-step-info">
+Данный этап предназначен для ознакомления с лексикой и грамматическими конструкциями урока.
+</p>	
+	
+
+<h4 class="su-task">
+Задание 1. Прочитайте фразы и ознакомьтесь с их переводом.
+</h4>
+
+	
+<div class="su-present">
+<div class="su-present-brd">
+<table cellspacing="0">
+	<tr>
+		<td class="su-pres-audio"></td>
+		<td class="su-pres-orig">
+		<div>こんにちは</div>
+		<div class="su-jp-transcript">[konnichiwa]</div>
+		</td>
+		<td class="su-pres-trans">Здравствуйте!</td>
+	</tr>
+	<tr>
+		<td class="su-pres-audio"></td>
+		<td class="su-pres-orig">
+		おはよう<br>
+		<div class="su-jp-transcript">[ohayo]</div>
+		</td>
+		<td class="su-pres-trans">Доброе утро!</td>
+	</tr>
+	<tr>
+		<td class="su-pres-audio"></td>
+		<td class="su-pres-orig">
+		こんばんは<br>
+		<div class="su-jp-transcript">[kanbanwa]</div>
+		</td>
+		<td class="su-pres-trans">Добрый вечер!</td>
+	</tr>
+	<tr>
+		<td class="su-pres-audio"></td>
+		<td class="su-pres-orig">
+		さよなら <br>
+		<div class="su-jp-transcript">[sayonara]</div>
+		</td>
+		<td class="su-pres-trans">До свидания!</td>
+	</tr>
+	<tr>
+		<td class="su-pres-audio"></td>
+		<td class="su-pres-orig">
+		さよなら、やまださん  <br>
+		<div class="su-jp-transcript">[sayonara, yamada san]</div>
+		</td>
+		<td class="su-pres-trans">До свидания, г-н Ямада.</td>
+	</tr>
+	<tr>
+		<td class="su-pres-audio"></td>
+		<td class="su-pres-orig">
+		ありがとう <br>
+		<div class="su-jp-transcript">[arigatou]</div>
+		</td>
+		<td class="su-pres-trans">Спасибо.</td>
+	</tr>
+</table>	
+</div>	
+</div>	
+	
+
+
+<br><br><br><br>
+
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(2)">
+</div>	
+	
+	</div>
+</div>
+
+<div id="for_tab02" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Лексика</h3>
+<p class="su-step-info">
+Данный этап предназначен для работы с полезными словами и выражениями по теме урока.
+</p>	
+	
+
+<h4 class="su-task">
+Задание 1. Ознакомьтесь со словами и выражениями урока.
+</h4>
+
+
+<p>
+Перед началом работы с лексикой вам настоятельно реклмендуется повторить азбуку <a href="/ru/jp/hiragana.html" >Хирагана</a>, а если вы с ней не знакомы, то пройти <a href="/ru/jp/writing.html">Курс для изучения хираганы</a>.
+</p>
+
+<br><br>
+
+<div class="voc-wordlist">
+<table class="voc_bord" align="center" cellspacing="0">
+<tr>
+<td>
+
+<table style="width: 400px" class="diction" cellpadding="0" cellspacing="0" align="center">
+<col width="50%"><col width="50%">
+<thead>
+<tr>
+	<td> <div class="trans-display-wrapper"><input type="checkbox" class="trans-display" /> Транскрипция </div> </td>
+	<td></td>
+</tr>
+</thead>
+<tbody>
+
+
+
+<tr class="trow">
+    <td class="original" valign="top">
+	こんにちは
+	<div class="ru-transcript">[konnichiwa]</div>
+    </td>
+    <td class="translation" valign="top">Здравствуйте!
+    </td>
+</tr>
+<tr class="trow">
+    <td class="original" valign="top">
+	おはよう
+	<div class="ru-transcript">[ohayo]</div>
+    </td>
+    <td class="translation" valign="top">Доброе утро!
+    </td>
+</tr>
+<tr class="trow">
+    <td class="original" valign="top">
+	こんばんは
+	<div class="ru-transcript">[kanbanwa]</div>
+    </td>
+    <td class="translation" valign="top">Добрый вечер!
+    </td>
+</tr>
+<tr class="trow">
+    <td class="original" valign="top">
+	さよなら 
+	<div class="ru-transcript">[sayonara]</div>
+    </td>
+    <td class="translation" valign="top">До свидания!
+    </td>
+</tr>
+<tr class="trow">
+    <td class="original" valign="top">
+	ありがとう
+	<div class="ru-transcript">[arigatou]</div>
+    </td>
+    <td class="translation" valign="top">Спасибо.
+    </td>
+</tr>
+<tr class="trow">
+    <td class="original" valign="top">
+	さん
+	<div class="ru-transcript">[san]</div>
+    </td>
+    <td class="translation" valign="top">господин, госпожа
+    </td>
+</tr>
+
+
+
+</tbody>
+<tfoot>
+<tr>
+	<td></td>
+	<td></td>
+</tr>
+</tfoot>  
+</table>
+
+</td>
+</tr>
+</table>
+</div><!-- end of voc-wordlist-->
+
+<br><br><br><br>
+
+<h4 class="su-task">
+Задание 2. Прослушайте фразу и найдите её перевод.
+</h4>
+
+
+
+<div id="ch2" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		test_id: "",
+		quest_num: 15,
+		variants_num: 5,
+		quest_type: 'text',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+['[konnichiwa]', 'Здравствуйте!'],
+['[ohayo]','Доброе утро!'],
+['[kanbanwa]', 'Добрый вечер!' ],
+['[sayonara]','До свидания! '],
+['[arigatou]','Спасибо.']
+
+
+		]
+		
+		} )
+</script>	
+
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(3)">
+</div>
+	
+	</div>
+</div>
+
+
+<div id="for_tab03" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Теория</h3>
+<p class="su-step-info">
+Данный этап предназначен для ознакомления с правилами грамматики и лексики.
+</p>	
+	
+
+	
+<h3 class="su-page-p" style="margin-top: 0;">Показатели вежливости в японском языке</h3>
+<p>
+В японском языке большую роль играет категория вежливости в системе существительных, местоимений и глаголов. Эта категория может выражаться с помощью специальных слов и грамматических форм. Вежливость в японском языке включает три компонента:   
+</p> 
+<p>
+- обычная вежливая речь<br>
+- выражение скромности к самому себе<br>
+- выражение почтительности ко 2-му и 3-му лицу
+</p>
+
+<p>
+Одним из показателей вежливости является суффикс <b>さん</b> [san], прибавляемый к именам и фамилиям лиц, к которым обращаются или о которых говорят.
+</p> 
+
+<p>
+Кроме этого, к показателям вежливости относятся префиксы <b>お</b> [o] и <b>ご</b> [go]. Они добавляются к словам, которые обозначают предметы или явления, имеющие отношения к определенному лицу, и обозначают вежливое отношение говорящего к этому лицу.
+</p> 
+
+
+<div class="egdiv">
+<h4>Примеры: </h4>
+<p>
+<span class="su-jp-ex"><b>やまだ<u>さん</u></b></span> [yamada-san] - Г-н Ямада
+</p>
+<p>
+<span class="su-jp-ex"><b><u>お</u>なまえ</b></span> [o-namae] - Ваше имя
+</p>
+
+</div>
+
+
+<br><br><br><br>
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(4)">
+</div>	
+	
+<br><br><br><br><br><br><br>
+	
+	</div>
+</div>
+
+
+<div id="for_tab04" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Упражнения</h3>
+<p class="su-step-info">
+Данный этап предназначен для работы с лексико-грамматическим материалом урока.
+</p>	
+	
+
+<h4 class="su-task">
+Задание 1. Подберите перевод для каждой фразы.
+</h4>
+
+<div id="ds1" class="ds-wrapper" style="padding: 15px;">
+
+<p class="task" align="center">Перетащите слова из нижнего списка и нажмите "Проверить"</p>		
+<br>
+<table align="center" style="margin: 0 auto;">
+
+<tr>
+<td>
+
+
+<table class="dst-test ds-table ds-table-nosound" cellspacing="0" align="left" style="margin: auto">
+<col width="150">
+<col width="40">
+<col width="180">
+<tr>
+	<td class="ds-quest ds-audio-listen" align="center">
+			ありがとう
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest ds-audio-listen">
+			こんばんは
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest ds-audio-listen">
+		こんにちは 
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest ds-audio-listen">
+		おはよう
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest ds-audio-listen">
+		さよなら
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+</table>
+
+</td>
+
+</tr>
+<tr>
+
+<td>
+
+	
+<br>
+<br>
+
+<table class="ds_variants_list" width="100%">
+<tr valign="top">
+<td>
+
+<ul class="no-list" style="padding-left: 30px;">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>Здравствуйте! </div></div>
+	</li>
+
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">4</span>Доброе утро! </div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>Добрый вечер!</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">5</span>До свидания! </div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Спасибо. </div></div>
+	</li>
+</ul>
+
+</td>
+</tr>
+</table>
+
+
+
+</td>
+</tr>
+</table>
+
+
+<div class="es_btn_wrapper es-ex-buttons ds-check-wrapper">
+
+<input type="button" class="es_btn ds-check-button" value="Проверить">
+
+</div>
+
+
+</div>
+
+<script type="text/javascript"> 
+	var ds1 = new dragsort_test( {
+		id: "ds1", 
+		targets: "ds-answer", 
+		answer_elem: "ds_sort_item", 
+		variant_elem: "ds_variant",
+		answer_color: "#F6FAFF",
+		auto_check: false
+		} )
+</script>	
+
+<br><br><br><br>
+	
+	
+	
+	
+	
+	
+
+<br><br><br><br>
+<div class="es-ex-buttons su-next-wrapper" style="display: none;">
+<input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(5)">
+</div>
+
+
+	</div>
+</div>
+<div id="for_tab05" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Практика</h3>
+<p class="su-step-info">
+Данный этап предназначен для закрепления полученных знаний.
+</p>	
+	
+
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+currentSection="course";
+</script>

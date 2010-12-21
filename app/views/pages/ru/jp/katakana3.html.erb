@@ -1,0 +1,224 @@
+<% @page_title = 'Изучаем японский: Катакана' %>
+<% @page_meta = {'description' => "Японская слоговая азбука Катакана"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+
+<% content_for :special_js_css do %>
+
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'es-course.js' %>
+<%= javascript_include_tag 'jquery.tablesorter.min.js' %>
+
+<%= stylesheet_link_tag 'es-course' %>
+
+
+<style type="text/css">
+.wl-jap {
+font-size: 17px;
+}
+.wr-hiragana tbody td {
+font-weight: bold;
+font-size: 17px;
+text-align: center;
+}
+
+.wr-hiragana tbody td div {
+font-weight: normal;
+font-size: 11px;
+margin-top: 6px;
+}
+
+.wr-hiragana td.wr-han {
+background-color: #efefef !important;
+}
+
+.wr-hiragana th {
+text-align: center;
+}
+
+
+</style>
+
+<% end %>
+
+
+
+<div class="hint_wrap">
+<div class="hint_button" style="float: right;">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Links and Settings</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+     				<li><a href="numerals100-test.html"> Tests: Numerals</a></li>
+    				<li><a href="pronunciation.html">Pronunciation training</a></li>
+     				<li><a href="reading.html">Reading in Russian</a></li>
+    		</ul>     				
+        <%= render :partial => 'colorder_accent' %>
+	</div>
+</div>
+</div>
+
+
+
+<h2 class="page">Хирагана</h2>
+
+<div id="pagecontent"><div id="content">
+
+
+	<table class="es-words-list wr-hiragana" cellspacing="1">
+	<thead>
+		<tr>
+
+			<th colspan="5" class="{sorter: false}">годзюон</th>
+			<th colspan="3" class="{sorter: false}">ёон</th>
+		</tr>
+		<tr>
+			<th class="{sorter: false}">a</th>
+			<th class="{sorter: false}">i</th>
+			<th class="{sorter: false}">u</th>
+			<th class="{sorter: false}">e</th>
+			<th class="{sorter: false}">o</th>
+			<th class="{sorter: false}">ya</th>
+			<th class="{sorter: false}">yu</th>
+			<th class="{sorter: false}">ye</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>ア <div>[a]</div></td>
+			<td>イ <div>[i]</div></td>
+			<td>ウ <div>[u]</div></td>
+			<td>エ <div>[e]</div></td>
+			<td>オ <div>[o]</div></td>
+			<td class="wr-han"></td>
+			<td class="wr-han"></td>
+			<td class="wr-han"></td>
+		</tr>
+		<tr>
+			<td>カ <div>[ka]</div></td>
+			<td>キ <div>[ki]</div></td>
+			<td>ク <div>[ku]</div></td>
+			<td>ケ <div>[ke]</div></td>
+			<td>コ <div>[ko]</div></td>
+			<td class="wr-han">キャ <div>[kya]</div></td>
+			<td class="wr-han">キュ <div>[kyu]</div></td>
+			<td class="wr-han">キョ <div>[kyo]</div></td>
+		</tr>
+		<tr>
+			<td>サ <div>[sa]</div></td>
+			<td>シ <div>[shi]</div></td>
+			<td>ス <div>[su]</div></td>
+			<td>セ <div>[se]</div></td>
+			<td>ソ <div>[so]</div></td>
+			<td class="wr-han">シャ <div>[sha]</div></td>
+			<td class="wr-han">シュ <div>[shu]</div></td>
+			<td class="wr-han">ショ <div>[sho]</div></td>
+		</tr>
+		<tr>
+			<td>タ <div>[ta]</div> </td>
+			<td>チ <div>[chi]</div> </td>
+			<td>ツ <div>[tsu]</div> </td>
+			<td>テ <div>[te]</div> </td>
+			<td>ト <div>[to]</div> </td>
+			<td class="wr-han">チャ <div>[cha]</div> </td>
+			<td class="wr-han">チュ <div>[chu]</div> </td>
+			<td class="wr-han">チョ <div>[cho]</div> </td>
+		</tr>
+		<tr>
+			<td>ナ <div>[na]</div></td>
+			<td>ニ <div>[ni]</div> </td>
+			<td>ヌ <div>[nu]</div> </td>
+			<td>ネ <div>[ne]</div> </td>
+			<td>ノ <div>[no]</div> </td>
+			<td class="wr-han">ニャ <div>[nya]</div> </td>
+			<td class="wr-han">ニュ <div>[nyu]</div> </td>
+			<td class="wr-han">ニョ <div>[nyo]</div> </td>
+		</tr>
+		<tr>
+			<td>ハ <div>[ha]</div> </td>
+			<td>ヒ <div>[hi]</div> </td>
+			<td>フ <div>[fu]</div> </td>
+			<td>ヘ <div>[he]</div> </td>
+			<td>ホ <div>[ho]</div> </td>
+			<td class="wr-han">ヒャ <div>[hya]</div> </td>
+			<td class="wr-han">ヒュ <div>[hyu]</div> </td>
+			<td class="wr-han">ヒョ <div>[hyo]</div> </td>
+		</tr>
+		<tr>
+			<td>マ <div>[ma]</div></td>
+			<td>ミ <div>[mi]</div></td>
+			<td>ム <div>[mu]</div></td>
+			<td>メ <div>[me]</div></td>
+			<td>モ <div>[mo]</div></td>
+			<td class="wr-han">ミャ <div>[mya]</div></td>
+			<td class="wr-han">ミュ <div>[myu]</div></td>
+			<td class="wr-han">ミョ <div>[myo]</div></td>
+		</tr>
+		<tr>
+			<td>ヤ <div>[ya]</div></td>
+			<td></td>
+			<td>ユ <div>[yu]</div></td>
+			<td></td>
+			<td>ヨ <div>[yo]</div></td>
+			<td  class="wr-han"></td>
+			<td  class="wr-han"></td>
+			<td  class="wr-han"></td>
+		</tr>
+		<tr>
+			<td>ラ <div>[ra]</div></td>
+			<td>リ <div>[ri]</div></td>
+			<td>ル <div>[ru]</div></td>
+			<td>レ <div>[re]</div></td>
+			<td>ロ <div>[ro]</div></td>
+			<td class="wr-han">リャ <div>[rya]</div></td>
+			<td class="wr-han">リュ <div>[ ryu]</div></td>
+			<td class="wr-han">リョ <div>[ryo]</div></td>
+		</tr>
+		<tr>
+			<td>ワ <div>[wa]</div></td>
+			<td>ヰ <div>[i]</div></td>
+			<td></td>
+			<td>ヱ <div>[e]</div></td>
+			<td>ヲ <div>[o]</div></td>
+			<td  class="wr-han"></td>
+			<td  class="wr-han"></td>
+			<td  class="wr-han"></td>
+		</tr>
+		<tr>
+			<td colspan="5" align="center">ン <div>[n]</div></td>
+			<td colspan="3" class="wr-han"></td>
+		</tr>
+		
+		
+	</tbody>
+	</table>
+	
+	<br>
+	<br>
+
+
+	
+	
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br><br>
+<br>
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript">
+currentSection="phonetic";
+</script>
