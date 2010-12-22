@@ -14,6 +14,8 @@ class UsersController < ApplicationController
 
   # render new.rhtml
   def new
+	@lang = params[:lang]
+	@to_lang = params[:to_lang]
     @user = User.new
   end
  
@@ -27,6 +29,8 @@ class UsersController < ApplicationController
       render :action => 'create_success'
     else
       flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
+	  @lang = params[:lang]
+	  @to_lang = params[:to_lang]
       render :action => 'new'
     end
   end
@@ -196,9 +200,6 @@ class UsersController < ApplicationController
     end
   end
   
-
-
-  
   def del
     if !current_user
     redirect_back_or_default('/')
@@ -307,8 +308,15 @@ class UsersController < ApplicationController
 private
 	def determine_layout
 		layout_lang = params[:lang]
+		to_lang = params[:to_lang]
 		if layout_lang == 'fr'
 			'fr_application.rhtml'
+		elsif layout_lang == 'ru'
+			if to_lang == 'jp'
+				'ru_jp_application'
+			else 
+				'ru_en_application'
+			end
 		else
 			'application'
 		end

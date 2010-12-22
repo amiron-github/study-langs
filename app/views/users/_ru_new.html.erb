@@ -1,14 +1,3 @@
-<% @page_title = 'Sign Up' %>
-<% @page_meta = {'description' => "Registration for Study Languages Online"} %>
-
-<%if @lang == 'ru'%>
-	<%= render :partial => 'users/ru_new' %>
-<%else%>
-
-
-
-
-
 
 <% content_for :special_js_css do %>
 
@@ -71,6 +60,10 @@ zoom: 1;
 z-index: 20000;
 }
 
+.sign-in input {
+font-size: 19px;
+}
+
 </style>
 
 <script type="text/javascript"> 
@@ -128,7 +121,7 @@ if ($('#errorExplanation').length > 0) {
 	<div class="sign-rt">
 		<div class="sign-lft">
 			<h2 class="page sign-head">
-				<span class="sign-up-title">&nbsp;</span>
+				<span class="sign-up-title  sign-string">Регистрация</span>
 			</h2>
 		</div>
 	</div>
@@ -145,14 +138,17 @@ if ($('#errorExplanation').length > 0) {
 <div class="module-content">
 
 <% form_for :user, :url => users_path do |f| -%>
+	<input type="hidden" name="lang" value="ru">
+	<input type="hidden" name="to_lang" value="<%= @to_lang %>">
 
-<h2 class="page" style="display: none">It's your first visit? Welcome!</h2>
+
+<h2 class="page" style="display: none">Добро пожаловать!</h2>
 		
 <p align="center" style="display: none"><a href="login" style="font-size: 11px; font-weight: bold;">Already registered? Click here to sign in</a></p>
 			<table align="center" class="sign-options">
 				<tr>
 					<td>
-						<p style="margin-top: 0px;">Already registered? <a href="login">Click here to sign in</a></p>
+						<p style="margin-top: 0px;">Уже зарегистрированы? <a href="login">Логин здесь</a></p>
 
 					</td>
 				</tr>
@@ -178,22 +174,22 @@ if ($('#errorExplanation').length > 0) {
 		
 			<table class="form-entries">
 				<tr>
-					<td class="entry1" >Email address:</td>
+					<td class="entry1" >Email:</td>
 					<td onmouseout="hide_info(this)" onmouseover="tooltip(this,'A real email is needed for account activation')"><%= f.text_field :email %></td>
 				</tr>
 				<tr>
-					<td class="entry1">Password:</td>
+					<td class="entry1">Пароль:</td>
 					<td onmouseout="hide_info(this)" onmouseover="tooltip(this,'Minimum is 6 characters')"> <%= f.password_field :password %></td>
 				</tr>
 				<tr>
-					<td class="entry1">Confirm Password:</td>
+					<td class="entry1">Пароль еще раз:</td>
 					<td><%= f.password_field :password_confirmation %></td>
 				</tr>
 			</table>
 	<tr>
-		<td>
-			<p align="center"><input type="checkbox" id="accpeptance"> I agree to the <a href="copyright.html">Terms</a></p>
-			<p align="center" class="submit-form"><%= submit_tag '' %> </p>
+		<td class="submit-text-btn">
+			<p align="center"><input type="checkbox" id="accpeptance"> Я согласен с <a href="copyright.html">Условиями</a></p>
+			<p align="center" class="sign-in"><%= submit_tag 'Отправить' %> </p>
 		</td>
 	</tr>
 </table>		
@@ -210,15 +206,6 @@ if ($('#errorExplanation').length > 0) {
 </div>		
 		
 		
-<p>
-The registration allows you to save and review the results of the exercises and tests that you have done on our site. 
-In your account, you can find the results of each exercise and test, as well as overall results of all exercises and tests for a lesson or a topic.
-Plus, in your account you can also see words and expressions you have studied with flashcards and lexical tests in sections <b>Online Courses</b> and <b>Vocabulary Topics</b>.
-</p> 
-
-<p>The results of exercises and tests are shown in percents (%), i.e. they demonstrate the relation between correct answers and total number of answers. For example, if you have answered correctly to 4 from 5 questions, the result of the exercise is 80 %. </p>
-
-<p>The knowledge of your own results may give you the global vision of your progress in learning the language and it help you to better control and plan your studies.</p>
 
 <br><br><br><br><br><br><br><br><br><br><br><br>
 		
@@ -227,4 +214,3 @@ Plus, in your account you can also see words and expressions you have studied wi
 currentSection="login";
 </script>
 
-<% end %>

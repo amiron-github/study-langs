@@ -36,6 +36,8 @@ layout :determine_layout
       @email       = params[:email]
       @remember_me = params[:remember_me]
       @error_pas   = "PW/email incorrect"
+	  @lang = params[:lang]
+	  @to_lang = params[:to_lang]
       render :action => 'new'
     end
   end

@@ -54,7 +54,7 @@
 					<div id="user_logged">
 					
 					<% if logged_in?%> 
-						 <strong style="font-size: 10px;"><%= current_user.email %></strong> | <%= link_to "Выйти",{:controller => 'sessions', :action => 'destroy'} %>
+						 <strong style="font-size: 10px;"><%= current_user.email %></strong> | <%= link_to "Выйти",{:controller => 'sessions', :action => 'destroy', :to_lang => 'jp', :lang =>'ru'} %>
 					<%else%>
 						&nbsp;
 					<%end%>
@@ -148,7 +148,7 @@
                       <div class="menu-item-front">
                              <div class="item-top">
                                  <div class="list down"></div> 
-                                 <a href="user_profile.html" style="margin-left: 42px !important;">Мой аккаунт&nbsp;&nbsp;&nbsp;</a>
+                                 <a href="/ru/jp/user_profile.html" style="margin-left: 42px !important;">Мой аккаунт&nbsp;&nbsp;&nbsp;</a>
                              </div>
                        </div>
 				</div>
@@ -156,7 +156,7 @@
                             <ul>
                                 <li><a href="/ru/jp/user_profile.html" >Профиль</a></li>
 								<li><a href="/ru/jp/user_profile.html?tab=2"  onclick = "nextActiveTab('2')">Словарь</a></li>
-								<li><%= link_to "Выйти",{:controller => 'sessions', :action => 'destroy'} %> </li>
+								<li><%= link_to "Выйти",{:controller => 'sessions', :action => 'destroy', :to_lang => 'jp', :lang =>'ru'} %> </li>
                             </ul>
                      </div>					
 
@@ -173,14 +173,16 @@
 					<div class="sub" style="display: none">
 					<% if @page_title == 'Sign In' %>
 						<ul style="padding: 5px 1px 5px 28px;">
-							<li><%= link_to "Регистрация",{:controller => 'users', :action => 'new'} %></li>
+							<li><%= link_to "Регистрация",{:controller => 'users', :action => 'new', :to_lang => 'jp', :lang =>'ru'} %></li>
 						</ul>
 					<% elsif @page_title == 'Sign Up' %>
 						<ul style="padding: 5px 1px 5px 28px;">
-							<li> <%= link_to "Войти",{:controller => 'sessions', :action => 'new'} %></li>
+							<li> <%= link_to "Войти",{:controller => 'sessions', :action => 'new', :to_lang => 'jp', :lang =>'ru' } %></li>
 						</ul>
 					<%else%>
 						<% form_tag session_path do %>
+						<input type="hidden" name="lang" value="ru">
+						<input type="hidden" name="to_lang" value="jp">
 							<ul style="padding: 5px 20px 5px 18px;">
 								<li style="padding-bottom: 7px; text-align: center;"><a href="/signup">Регистрация</a></li>
 								<li>
@@ -192,7 +194,7 @@
 									<%= password_field_tag 'password', nil %>
 								</li>
 								<li style="text-align: center;">
-									<%= submit_tag 'войти' %>
+									<%= submit_tag 'Войти' %>
 								</li>
 							</ul>
 						<% end -%>
