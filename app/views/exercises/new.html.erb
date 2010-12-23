@@ -28,10 +28,27 @@ label {font-weight: bold;color: #333;}
 	<%= f.label :category %>
   </td>
   <td>
-	<%=
-		@cats = Category.find(:all).map {|c| [c.title, c.id] }
-		f.select(:category_id, @cats)
+	<% #=
+		#@cats = Category.find(:all).map {|c| [c.title, c.id] }
+		#f.select(:category_id, @cats)
 	%> 
+	
+<% @categories = Category.find(:all, :order=> 'lang, order_num') %>	
+	
+			<select id="exercise_category_id" name="exercise[category_id]" style="width: 200px">
+				<% @categories.each do |category| %>
+<option value="<%= category.id %>" 
+style="padding: 1px 1px 1px; background-color:<% if category.lang=='en'-%>
+#DFEBFF<%elsif category.lang=='fr' -%>
+#DFFFE0<%elsif category.lang=='jp' -%>
+#FFD6BF<%elsif category.lang=='' || category.lang== nil -%>
+#FEFF6F<% end -%>;"><%= category.title %> | <%= category.lang.to_s.upcase %>
+</option>
+				<% end %>
+			</select>	
+	
+	
+	
   </td>
 <tr>
 <tr>

@@ -32,6 +32,7 @@ label {font-weight: bold;color: #333;}
 		@cats = Category.find(:all).map {|c| [c.title, c.id] }
 		f.select(:category_id, @cats)
 	%> 
+		
   </td>
 <tr>
 <tr>

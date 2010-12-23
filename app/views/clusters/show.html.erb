@@ -47,8 +47,13 @@ background-color: #fff;
 width: auto !important;
 }
 
-
-
+#add-wrapper {
+min-width: 450px;
+max-height: 600px;
+max-width: 1000px;
+overflow: auto;
+border: 1px solid #dfdfdf;
+}
 
 
 </style>
@@ -73,7 +78,8 @@ $("#select-all-to-remove").click(function() {
 $("#words-to-add").dialog({
 	autoOpen: false,
 		show: 'blind',
-		width: 430,
+		height: 'auto',
+		width: 'auto',
 		hide: 'blind',
 		modal: true
 });
@@ -186,7 +192,13 @@ Select words to remove by
 			 Add from
 			<select name="category" style="width: 150px">
 				<% @categories.each do |category| %>
-					<option value="<%= category.id %>"><%= category.title %> | <%= category.lang.to_s.upcase %></option>
+<option value="<%= category.id %>" 
+style="padding: 1px 1px 1px; background-color:<% if category.lang=='en'-%>
+#DFEBFF<%elsif category.lang=='fr' -%>
+#DFFFE0<%elsif category.lang=='jp' -%>
+#FFD6BF<%elsif category.lang=='' || category.lang== nil -%>
+#FEFF6F<% end -%>;"><%= category.title %> | <%= category.lang.to_s.upcase %>
+</option>
 				<% end %>
 			</select>
 			
@@ -233,8 +245,10 @@ Select words to remove by
 </div>
 <% form_tag :action => 'add_to_cluster' do %>
 	<input type="hidden" value="<%= @cluster.id %>" name="id">
+	<div id="add-wrapper">
 	<div id="to_add_list">
 	<input type="checkbox" value="word_id" name="word[0]"> Word
+	</div>
 	</div>
 <div style="padding: 15px 10px 20px; border-top: 1px dotted #333;">
 <%= submit_tag "Add selected to cluster" %>

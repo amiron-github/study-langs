@@ -17,7 +17,7 @@ require_role "admin"
   # GET /clusters/1.xml
   def show
     @cluster = Cluster.find(params[:id])
-	@categories = Category.all
+	@categories = Category.find(:all, :order=> 'lang, order_num')
 	@words = @cluster.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num, order_num')
 	
     respond_to do |format|
