@@ -26,7 +26,6 @@
   <% end -%>
   <%end%>
  
- 
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <%= yield :special_js_css %>
@@ -57,7 +56,7 @@
 					<div id="user_logged">
 					
 					<% if logged_in?%> 
-						 <strong style="font-size: 10px;"><%= current_user.email %></strong> | <%= link_to "Sign Out",{:controller => 'sessions', :action => 'destroy', :lang=>'ru', :to_lang=>'en'} %>
+						 <strong style="font-size: 10px;"><%= current_user.email %></strong> | <%= link_to "Выйти",{:controller => 'sessions', :action => 'destroy', :lang=>'ru', :to_lang=>'en'} %>
 					<%else%>
 						&nbsp;
 					<%end%>
@@ -94,46 +93,40 @@
                       </div>
                       <div class="sub" style="display: none">
                         <ul style="padding-left: 16px;">
-                          <li style="padding-top: 10px; font-weight: bold;" ><a href="beginner-course.html">Russian for Beginners</a> </li>
-                          <li style="padding-bottom: 10px; padding-top: 10px; font-weight: bold;"><a href="everyday-course.html">Everyday Russian</a> </li>
-
+                          <li style="padding-top: 10px;" ><a href="/ru/en/course.html">Курс английского</a> </li>
                         </ul>
                       </div>
                       <div id="nav3" class="menu-item">
                         <div class="menu-item-front">
                           <div class="item-top">
                             <div class="list down"></div> 
-                            <a href="/ru/en/vocabulary.html" style="margin-left: 40px;">Словарь</a>&nbsp;
+                            <a href="/ru/en/vocabulary.html" style="margin-left: 40px;">Словарь&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>&nbsp;
                           </div>
                         </div>
                       </div>
                       <div class="sub" style="display: none">
                         <ul>
-                          <li><a href="/politeness.html" title="Formulas of politeness">Politeness</a></li>
-                          <li><a href="/acquaintance.html" title="Making an acquaintance">Acquaintance</a></li>
-                          <li><a href="/transport.html" title="Transport">Transport</a></li>
-                          <li><a href="/hotel.html" title="Hotel">Hotel</a> </li>
-                          <li><a href="/sightseeing.html" title="Sightseeing">Sightseeing</a> </li>
-                          <li><a href="/meals.html" title="Meals">Meals</a> </li>
-                          <li><a href="/shopping.html" title="Shopping">Shopping</a> </li>
-                          <li><a href="/numerals00-100.html" title="Numerals">Numerals</a> </li>
-                          <li class="sub_high"><a href="/vocabulary_games.html" title="Language Games">Language games</a>  </li>
-                          <li class="sub_high"><a href="/vocabulary_tests.html" title="Tests">Lexical tests</a>  </li>
+                          <li><a href="/ru/en/vocabulary.html">Словарные темы</a></li>
+                          <li><a href="/ru/en/vocabulary.html?tab=2">Флэш-карты</a></li>
+                          <li><a href="/ru/en/vocabulary.html?tab=3">Лексические тесты</a></li>
                         </ul>
                       </div>
                       <div id="nav8" class="menu-item">
                         <div class="menu-item-front">
                           <div class="item-top">
                             <div class="list down"></div> 
-                            <a href="/ru/en/english-grammar.html" style="margin-left: 40px;">Грамматика</a>&nbsp;
+                            <a href="/ru/en/english-grammar.html" style="margin-left: 40px;">Грамматика&nbsp;&nbsp;&nbsp;&nbsp;</a>&nbsp;
                           </div>
                         </div>
                       </div>
                       <div class="sub" style="display: none">
                         <ul>
-                          <li><a href="/basic-sounds.html" title="Sounds in Russian">Sounds in Russian</a></li>
-                          <li><a href="/sounds-info.html" title="Infos">Info about sounds</a></li>
-                          <li><a href="/phonetics-course.html" title="Training">Phonetics course</a></li>
+                          <li><a href="/ru/en/english-grammar.html">Существительные</a></li>
+                          <li><a href="/ru/en/english-grammar.html">Местоимения</a></li>
+						  <li><a href="/ru/en/english-grammar.html">Прилагательные</a></li>
+						  <li><a href="/ru/en/english-grammar.html">Числительные</a></li>
+						  <li><a href="/ru/en/english-grammar.html">Глаголы</a></li>
+                          <li><a href="/ru/en/english-grammar.html"><b>Упражнения</b></a></li>
                         </ul>
                       </div>
 					
@@ -143,15 +136,16 @@
                       <div class="menu-item-front">
                              <div class="item-top">
                                  <div class="list down"></div> 
-                                 <a href="user_profile.html" style="margin-left: 42px !important;">&nbsp;&nbsp;&nbsp;Мой Аккаунт</a>
+                                 <a href="/ru/en/user_profile.html" style="margin-left: 40px !important;">Мой аккаунт&nbsp;&nbsp;&nbsp;</a>
                              </div>
                        </div>
 				</div>
 					<div class="sub" style="display: none">
                             <ul>
-                                <li><a href="/user_profile.html" title="Профиль">Профиль</a></li>
-								<li><a href="/user_profile.html?tab=3" title="Результаты">Результаты</a></li>
-								<li><%= link_to "Sign Out",{:controller => 'sessions', :action => 'destroy', :lang=>'ru', :to_lang=>'en'} %> </li>
+                                <li><a href="/ru/en/user_profile.html">Профиль</a></li>
+								<li><a href="/ru/en/user_profile.html?tab=2">Мой словарь</a></li>
+								<li><a href="/ru/en/user_profile.html?tab=3">Результаты</a></li>
+								<li><%= link_to "Выйти",{:controller => 'sessions', :action => 'destroy', :lang=>'ru', :to_lang=>'en'} %> </li>
                             </ul>
                      </div>					
 
@@ -161,33 +155,35 @@
                       <div class="menu-item-front">
                              <div class="item-top">
                                  <div class="list down"></div> 
-										<a href="login" style="margin-left: 42px !important;">Вход на сайт</a>					  
+										<a href="/ru/en/login" style="margin-left: 33px !important; font-size: 11px;" >Вход/Регистрация</a>										  
                                  </div>
                               </div>
                     </div>
 					<div class="sub" style="display: none">
 					<% if @page_title == 'Sign In' %>
 						<ul style="padding: 5px 1px 5px 28px;">
-							<li><%= link_to "Sign Up",{:controller => 'users', :action => 'new'} %></li>
+							<li><%= link_to "Регистрация",{:controller => 'users', :action => 'new', :to_lang => 'en', :lang =>'ru'} %></li>
 						</ul>
 					<% elsif @page_title == 'Sign Up' %>
 						<ul style="padding: 5px 1px 5px 28px;">
-							<li> <%= link_to "Sign in",{:controller => 'sessions', :action => 'new'} %></li>
+							<li> <%= link_to "Войти",{:controller => 'sessions', :action => 'new', :to_lang => 'en', :lang =>'ru' } %></li>
 						</ul>
 					<%else%>
 						<% form_tag session_path do %>
+						<input type="hidden" name="lang" value="ru">
+						<input type="hidden" name="to_lang" value="en">
 							<ul style="padding: 5px 20px 5px 18px;">
-								<li style="padding-bottom: 7px; text-align: center;"><a href="/signup">Click here to sign up!</a></li>
+								<li style="padding-bottom: 7px; text-align: center;"><a href="/signup">Регистрация</a></li>
 								<li>
-									<span style="font-size: 10px; font-weight: bold;">Email address</span><br/>
+									<span style="font-size: 10px; font-weight: bold;">E-mail</span><br/>
 									<%= text_field_tag 'email', @email %>
 								</li>
 								<li>
-									<span style="font-size: 10px; font-weight: bold;">Password</span><br/>
+									<span style="font-size: 10px; font-weight: bold;">Пароль</span><br/>
 									<%= password_field_tag 'password', nil %>
 								</li>
 								<li style="text-align: center;">
-									<%= submit_tag 'Sign In' %>
+									<%= submit_tag 'Войти' %>
 								</li>
 							</ul>
 						<% end -%>
@@ -195,8 +191,6 @@
 					</div>
 				<%end%>			
                      
-
-					 
                       <div id="nav6" class="menu-item">
                         <div class="menu-item-front">
                           <div class="item-top">
@@ -206,15 +200,14 @@
                       </div>
                     </div>
 
-
                   </div>
 
                 </div>
                 <div id="contentcell">
 				<div style="position: relative; z-index: 300">
-						<div id="menu_remover"><span class="menu-shown">Hide menu</span><span class="menu-hidden">Show menu</span></div>
-						<div id="mini-menu"><a href="index.html">Home</a> | <a href="course.html">Courses</a> | <a href="vocabulary.html">Vocabulary</a> | <a href="russian-grammar.html">Grammar</a> | <a href="russian-sounds-letters.html">Sounds &amp; Letters</a></div>
-						<div id="header_remover"><span class="header-shown">Hide header</span><span class="header-hidden">Show header</span></div>
+						<div id="menu_remover"><span class="menu-shown">Скрыть меню</span><span class="menu-hidden">Меню</span></div>
+						<div id="mini-menu"><a href="/ru/en/index.html">Главная</a> | <a href="/ru/en/course.html">Онлайн уроки</a> | <a href="/ru/en/vocabulary.html">Словарь</a> | <a href="/ru/en/english-grammar.html">Грамматика</a> </div>
+						<div id="header_remover"><span class="header-shown">Скрыть шапку</span><span class="header-hidden">Шапка</span></div>
 					</div>
                   <div id="contfield" class="<%= @with_rec ? 'content withRec' : 'content' %>">
                     <% if @has_audio %>
@@ -267,11 +260,9 @@
         var pageTracker = _gat._getTracker("UA-8218265-1");
         pageTracker._trackPageview();
       } catch(err) {}
-	  
-	  es_lang = 'rus';
+	  es_lang = 'ru';
 	  
 	  </script>
-
 </div>
 <% if current_user -%>
 <script type="text/javascript">

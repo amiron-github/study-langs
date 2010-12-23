@@ -2,6 +2,7 @@ var gContent;
 var preloadFiles = new Array();
 var currentSection;
 var wrapTests = true;
+var es_lang;
 
 function startDragTest(arr) {
         for (var i=0; i<arr.length; i++) {
@@ -1248,7 +1249,7 @@ messTime = setTimeout(function(){
 
 
 $(document).ready(function(){
-	//$(".head-dec").css({backgroundPosition: "0px 0px"}).animate({backgroundPosition: "(0px 130px)"}, 11000)
+	$(".head-dec").css({backgroundPosition: "0px 0px"}).animate({backgroundPosition: "(0px 130px)"}, 11000)
 })
 
 
