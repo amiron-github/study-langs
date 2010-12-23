@@ -13,7 +13,7 @@ h2.page {margin-bottom: 0px;font-size: 19pt;}
 <div class="hint_button">
 	<div class="hint">
     	<div class="hint_list">
-    		<span class="hint_string">Links and Settings</span>
+    		<span class="hint_string">Ссылки по теме</span>
     	</div>
     </div>
     <div class="sub_hint" style="display: none;">
@@ -21,7 +21,6 @@ h2.page {margin-bottom: 0px;font-size: 19pt;}
      				<li><a href="/ru/en/vocabulary/<%= @category_short_tag %>"><%= @category_title %></a></li>
 					<li><a href="/ru/en/flashcards/<%= @category_short_tag %>">Флэш-карты: <%= @category_title %></a></li>
     		</ul>
-			<%= render :partial => 'site/preload_option' %>
 	</div>
 </div>
 </div>
@@ -58,13 +57,13 @@ h2.page {margin-bottom: 0px;font-size: 19pt;}
 		<% unless @test_data[0] == nil || @test_data[0]==''%>test_id: "<%= @test_data[0].test_id %>",<%end%>
 		quest_num: <%= quest_num_from(@test_data[0]) %>,
 		variants_num: 5,
-		quest_type: 'audio',
+		quest_type: 'text',
 		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
 		basic_array: [
-		
 <% @last_item_index = (@words.length)-1 -%>
+
 <% @words.each_with_index  do |word, index| -%>
-['<%= word.sound_url %>', "<%= word.text.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+		["<%= word.text.to_s.gsub(/"/,'\"') %>", '<%= word.translate.to_s.gsub(/'/,"’") %>'<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
 <%end -%>
 
 		]
@@ -87,11 +86,12 @@ h2.page {margin-bottom: 0px;font-size: 19pt;}
 		<% unless @test_data[1] == nil || @test_data[1]==''%>test_id: "<%= @test_data[1].test_id %>",<%end%>
 		quest_num: <%= quest_num_from(@test_data[1]) %>,
 		variants_num: 5,
+		quest_type: 'audio',
 		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
 		basic_array: [
 		
 <% @words.each_with_index  do |word, index| -%>
-		["<%= word.text.to_s.gsub(/"/,'\"') %>", '<%= word.translate.to_s.gsub(/'/,"’") %>'<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+["<%= word.sound_url %>", "<%= word.translate.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
 <%end -%>
 
 		]
@@ -115,12 +115,12 @@ h2.page {margin-bottom: 0px;font-size: 19pt;}
 		<% unless @test_data[2] == nil || @test_data[2]==''%>test_id: "<%= @test_data[2].test_id %>",<%end%>
 		quest_num: <%= quest_num_from(@test_data[2]) %>,
 		variants_num: 5,
-		quest_type: 'audio',
+		quest_type: 'text',
 		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
 		basic_array: [
 		
 <% @words.each_with_index  do |word, index| -%>
-["<%= word.sound_url %>", "<%= word.translate.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+["<%= word.translate.to_s.gsub(/"/,'\"') %>", "<%= word.text.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
 <%end -%>
 
 		]
