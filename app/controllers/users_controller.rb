@@ -22,15 +22,16 @@ class UsersController < ApplicationController
   def create
     logout_keeping_session!
     @user = User.new(params[:user])
+	@lang = params[:lang]
+	@to_lang = params[:to_lang]
     @user.register! if @user && @user.valid?
     success = @user && @user.valid?
     if success && @user.errors.empty?
+	  @u_mail = @user.email
       flash[:notice] = "Thanks for signing up!  We're sending you an email with your activation code."
       render :action => 'create_success'
     else
       flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
-	  @lang = params[:lang]
-	  @to_lang = params[:to_lang]
       render :action => 'new'
     end
   end

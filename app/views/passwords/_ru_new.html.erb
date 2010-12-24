@@ -1,8 +1,3 @@
-<%if @lang == 'ru'%>
-	<%= render :partial => 'passwords/ru_new' %>
-<%else%>
-
-
 <% @page_title = 'Forgotten Password?' %>
 
 
@@ -104,8 +99,6 @@ if ($('#errorExplanation').length > 0) {
 }
 
 
-
-
 });
 
 
@@ -126,7 +119,7 @@ if ($('#errorExplanation').length > 0) {
 	<div class="sign-rt">
 		<div class="sign-lft">
 			<h2 class="page sign-head">
-				<span class="sign-up-title sign-string">Forgot Password?</span>
+				<span class="sign-up-title sign-string">Забыли пароль?</span>
 			</h2>
 		</div>
 	</div>
@@ -142,19 +135,14 @@ if ($('#errorExplanation').length > 0) {
 <div class="module-left">
 <div class="module-content">
 
-
-
-
-
-
-
-
-
 <% form_for(@password) do |f| %>
+	<input type="hidden" name="lang" value="ru">
+	<input type="hidden" name="to_lang" value="<%= @to_lang %>">
+  <h2 style="display: none;">Забыли пароль?</h2>
   
-  <h2 style="display: none;">Forgot Your Password?</h2>
-  
-  <p class="pass-form">That's okay!  We forget ours too.  Give us your email address and we'll send you a link to reset your password.</p>
+ <p class="pass-form">Ничего страшного!  Мы тоже, бывает, забываем.  
+  Введите ниже свой e-mail, на который мы вышлем ссылку для смены пароля.
+ </p>
   
 <div class="sign-notification-wrapper" style="display: none;">	
 		
@@ -170,18 +158,13 @@ if ($('#errorExplanation').length > 0) {
   
   <%= f.error_messages %>
   
-  
-  
-  
-  
-  
   <table align="center" class="pass-form">
 	<tr>
 		<td>
 		
 			<table class="form-entries">
 				<tr>
-					<td class="entry1">Enter your email address:</td>
+					<td class="entry1">Адрес электронной почты:</td>
 					<td><%= f.text_field :email %></td>
 				</tr>
 
@@ -220,6 +203,6 @@ if ($('#errorExplanation').length > 0) {
 </div>	
 
 
-<%end%>
+
 
 

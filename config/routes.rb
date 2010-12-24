@@ -31,6 +31,10 @@ ActionController::Routing::Routes.draw do |map|
   map.forgot_password '/forgot_password',             :controller => 'passwords', :action => 'new'
   map.change_password '/change_password/:reset_code', :controller => 'passwords', :action => 'reset'
   map.change_password '/update_password/', :controller => 'passwords', :action => 'update_after_forgetting'
+  map.forgot_password '/:lang/:to_lang/forgot_password',             :controller => 'passwords', :action => 'new'
+  map.change_password '/:lang/:to_lang/change_password/:reset_code', :controller => 'passwords', :action => 'reset'
+  map.change_password '/:lang/:to_lang/update_password/', :controller => 'passwords', :action => 'update_after_forgetting'
+  
   map.resources :passwords
   map.order '/order', :controller => 'users', :action => 'new_order'
   map.success '/success', :controller => 'users', :action => 'success_pp'

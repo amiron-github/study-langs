@@ -2743,4 +2743,242 @@ white-space: nowrap;
 }
 
 
+/* start of styles for small blocks*/
+.sb-results {
+bor-der: 1px solid #C3CDDF;
+back-ground-color: #E2E6F2;
+background-color:#AFCCFF;
+background-image:url(/images/fl-bg.png);
+border:1px solid #99B2DF;
+padding: 1px;
+margin: 0 auto;
+max-width: 700px;
+}
+
+.sb-details {
+position: absolute;
+right: 10px;
+top: 8px;
+padding: 3px 5px;
+font-size: 10px;
+color: #666;
+cursor: pointer;
+-moz-border-radius: 4px;
+-webkit-border-radius: 4px;
+border-radius: 4px;
+text-shadow: 0px 0px 0px #fff;
+border:1px solid #8E95AF;
+background-image:url(/images/btn-grd.png);
+background-position:50% 50%;
+background-repeat:no-repeat;
+background-color: #BFD6FF;
+}
+.sb-details-content {
+opacity: 0;
+padding: 10px 15px 10px 30px;
+background-color: #fff;
+}
+.sb-details-content h4 {
+margin-top: 0px;
+color: #374C6F;
+}
+.sb-details:hover {
+color: #111;
+border: 1px solid #676C7F;
+}
+.details-hidden .mv-details {
+display: block;
+}
+.details-hidden .mv-no-details {
+display:none;
+}
+.mv-details {
+display: none;
+}
+.sb-item {
+opacity: 1;
+overflow: hidden;
+background-color:#FFFFFF;
+backg-round-image:url(/images/transparent-80.png);
+bor-der: 1px solid #95B8EF;
+color: #333;
+padding-bottom: 10px;
+-moz-box-shadow: 0px 1px 3px #45546F;
+-webkit-box-shadow: 0px 1px 3px #45546F;
+box-shadow: 0px 1px 3px #45546F;
+margin: 7px 5px;
+position: relative;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+border-radius: 10px;
+}
+
+
+.details-hidden {
+backg-round-color: transparent;
+opacity:0.9;
+}
+.sb-item:hover {
+background-color:#FFFFFF;
+opacity:1;
+}
+.sb-quick-info {
+font-size: 11px; 
+color: #31394F; 
+padding: 10px 30px 0;
+}
+.sb-top-topic {
+color: #04193F;
+font-size: 15px;
+font-weight: bold;
+padding: 10px 80px 5px 5px;
+margin: 0 10px 0;
+border-bottom: 1px dotted #537ABF;
+col-or: #31394F;
+text-sh-adow: 0px 1px 0px #fff, 1px 1px 3px #8EA7CF;
+}
+
+.sb-top-topic span a {
+font-weight: normal;
+font-size: 20px;
+text-shadow:0 1px 0 #FFFFFF, 1px 2px 4px #999999;
+}
+
+
+.sb-top-topic span a:link {
+background-color: transparent;
+color: #06265F;
+text-decoration: none;
+}
+
+.sb-top-topic span a:visited {
+background-color: transparent;
+color: #06265F;
+text-decoration: none;
+}
+
+.sb-top-topic span a:hover {
+background-color: transparent;
+color: #04193F;
+text-decoration: underline;
+}
+
+.sb-top-topic span a:active {
+background-color: transparent;
+color: #04193F;
+text-decoration: underline;
+}
+
+.sb-topic-content a:visited {
+color:#0000EE;
+}
+
+.sb-topic-content a:hover {
+color:#00015F;
+}
+
+.sb-topic-content {
+}
+.sb-topic-content-last {
+border-bottom: 1px solid #dfdfdf;
+}
+.sb-word-list-wrapper {
+max-width: 450px;
+border: 1px solid #C3CDDF;
+padding: 3px;
+}
+.sb-words-list {
+width: 100%;
+}
+.sb-list-even {
+background-color: #EFF5FF;
+}
+.sb-words-list td {
+color:#45494F;
+font-size:12px;
+padding:1px 5px;
+}
+.sb-topic-details {
+display: none;
+}
+.sb-list-original {
+font-weight: bold;
+}
+.sb-tests {
+padding-top: 20px;
+}
+.sb-tests-list {
+background-color: #C3CDDF;
+}
+.sb-tests-list td {
+background-color: #fff;
+padding: 4px 15px;
+color:#45494F;
+}
+.sb-tests-list th {
+border: 1px solid #EFF5FF;
+background-color: #D1DDEF;
+font-size: 10px;
+padding: 4px 15px;
+color:#45494F;
+}
+.sb-test-title {
+font-weight: bold;
+}
+.sb-test-result {
+text-align: center;
+}
+.sb-remove-topic {
+padding-top: 30px;
+}
+.sb-remove-topic input {
+font-size: 10px;
+font-weight: bold;
+}
+
+/* end of styles for small blocks*/
+
+h2.page-bl {
+font-size: 28px; 
+color: #2663CF;
+}
+
+.gr-li-head span a:link  {
+color: #233FBF;
+background-color: transparent;
+text-decoration: none;
+}
+
+.gr-li-head span a:visited  {
+color: #233FBF;
+background-color: transparent;
+text-decoration: none;
+}
+
+.gr-li-head span a:hover  {
+color: #233FBF;
+background-color: transparent;
+text-decoration: underline;
+}
+
+.gr-li-head span a:active  {
+color: #233FBF;
+background-color: transparent;
+text-decoration: underline;
+}
+
+.ru-en .gr-list-head {
+background-color: #DDE7F5;
+}
+
+
+
+
+
+
+
+
+
+
+
 

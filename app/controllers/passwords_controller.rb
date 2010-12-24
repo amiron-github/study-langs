@@ -1,8 +1,10 @@
 class PasswordsController < ApplicationController
+layout :determine_layout
 
   def new
     @password = Password.new
-    
+    @lang = params[:lang]
+	@to_lang = params[:to_lang]
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @password }
@@ -10,6 +12,8 @@ class PasswordsController < ApplicationController
   end
 
   def create
+	@lang = params[:lang]
+	@to_lang = params[:to_lang]
     @password = Password.new(params[:password])
     @password.user = User.find_by_email(@password.email)
     respond_to do |format|
@@ -20,7 +24,7 @@ class PasswordsController < ApplicationController
         format.xml  { render :xml => @password, :status => :created, :location => @password }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @password.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @password.errors, :status => :unprocessable_entity, :lang => @lang, :to_lang => @to_lang }
       end
     end
   end
@@ -28,6 +32,8 @@ class PasswordsController < ApplicationController
   def reset
     begin
       @user = Password.find(:first, :conditions => ['reset_code = ? and expiration_date > ?', params[:reset_code], Time.now]).user
+	  @lang = params[:lang]
+	  @to_lang = params[:to_lang]
     rescue
       flash[:notice] = 'The change password URL you visited is either invalid or expired.'
       redirect_to(new_password_path)
@@ -36,6 +42,8 @@ class PasswordsController < ApplicationController
 
   def update_after_forgetting
     @user = Password.find_by_reset_code(params[:reset_code]).user
+	@lang = params[:lang]
+	@to_lang = params[:to_lang]
     respond_to do |format|
       if @user.update_attributes(params[:user])
 #        flash[:notice] = 'Password was successfully updated.'
@@ -50,7 +58,8 @@ class PasswordsController < ApplicationController
   
   def update
     @password = Password.find(params[:id])
-
+	@lang = params[:lang]
+	@to_lang = params[:to_lang]
     respond_to do |format|
       if @password.update_attributes(params[:password])
         flash[:notice] = 'Password was successfully updated.'
@@ -62,5 +71,22 @@ class PasswordsController < ApplicationController
       end
     end
   end
+  
+ private
+	def determine_layout
+		layout_lang = params[:lang]
+		to_lang = params[:to_lang]
+		if layout_lang == 'fr'
+			'fr_application.rhtml'
+		elsif layout_lang == 'ru'
+			if to_lang == 'jp'
+				'ru_jp_application'
+			else 
+				'ru_en_application'
+			end
+		else
+			'application'
+		end
+	end
 
 end

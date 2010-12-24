@@ -4,328 +4,86 @@
 
 <% content_for :special_js_css do %>
 <%= stylesheet_link_tag 'cs_styles' %>
-
-<script type="text/javascript"> 
-
-$(document).ready(function() {
-	
-var cs_view = "small";	
-	
-$(".cs_more_btn").click(function() {
-	if ( ! $(this).parent().hasClass("cs_bigger") ) {
-		showCSDetails($(this));
-	} else {
-		hideCSDetails($(this));
-	}
-});	
-
-
-if (getCookie( 'cs_beginner') ) {
-	//showCSAtStart ( $("#for_beginner") )
+<style type="text/css">
+.gr-list-head {
+background-color: #DDE7F5;
+background-image:url("/images/task-bg.png");
+background-position:right bottom;
+background-repeat:repeat-y;
+border-left: 4px solid #D1DEEF;
 }
 
-if (getCookie( 'cs_everyday') ) {
-	showCSAtStart ( $("#for_everyday") );
+.gr-list p {
+font-size: 11px;
+color: #444;
+margin: 0 20px 15px 20px;
+}
+.gr-list p a {
+font-size: 12px;
 }
 
-});
-
-function showCSDetails(jObj) {
-	jObj.parent().addClass("cs_bigger");
-	jObj.text("Hide details");
-	parentContainer = jObj.parent().parent();
-	parentContainer.find(".cs_to_show").slideDown(400, function() {
-		parentContainer.find("li.cs_to_show").css({display: "list-item"});
-		parentContainer.addClass("cs_open")
-	});
-	
-	jObj.blur();
-	if (jObj.attr('id') == 'for_beginner') {
-			setCookie('cs_beginner', 'open');
-	} else {
-			setCookie('cs_everyday', 'open');
-	}
+.gr-list p span {
+display: block;
+padding-bottom: 3px;
 }
 
-
-
-
-function hideCSDetails(jObj) {
-	jObj.parent().removeClass("cs_bigger");
-	jObj.text("Read more");
-	jObj.parent().parent().find(".cs_to_show").slideUp(400, function() {
-		jObj.parent().parent().removeClass("cs_open");
-	});
-	jObj.blur();
-	if ( jObj.attr('id') == 'for_beginner') {
-		delCookie('cs_beginner');
-	} else {
-		delCookie('cs_everyday');
-	}
+.gr-list {
+margin-right: 80px;
+max-width: 700px;
 }
-
-function showCSAtStart(jObj) {
-	jObj.parent().addClass("cs_bigger");
-	jObj.text("Hide details");
-	parentContainer = jObj.parent().parent();
-	parentContainer.find(".cs_to_show").show();
-	parentContainer.find("li.cs_to_show").css({display: "list-item"});
-	parentContainer.addClass("cs_open");
-	jObj.blur();
-}
-
-
-</script>
+</style>
 
 <% end %>
 
+<h2 class="page page-bl">Онлайн уроки английского языка</h2>
 
 
-
-<h2 class="page">Онлайн уроки английского языка</h2>
-
-
-<p style="padding-bottom: 20px;" align="center">
+<p align="center">
 Здесь вы можете узнать об имеющихся на нашем сайте онлайн уроках английского языка 
 
+<br><br><br>
 </p>
 
-<table class="cs_place" cellspacing="0" id="beginner_course">
-	<tr valign="top">
-		<td width="150" class="cs_icon">
-			<div class="cs_beginner"></div>
-			<div class="cs_course_link" align="center">
-			Мини-уроки <br><br>
-			<a href="beginner-course.html" title="Go to the main page of the course"><span>Страница курса</span> >></a>
-			</div>
-		</td>
-		<td class="cs_wrapper">
-
-		
-<div class="cs_container">
-
-<div class="cs_top">
-	<div class="cs_clt"></div>
-	<div class="cs_crt"></div>
-</div>
-
-<div class="cs_lft">
-	<div class="cs_rt">
-		<div class="cs_content cs_open">
-			<h3 class="cs_title" style="margin-right: 0">Мини-уроки английского языка<span class="cs_badge" style="display: none;">Бесплатно</span></h3>
-			<p>
-Данные уроки предназначены для тех, кто только начинает изучать английский язык, а также для тех, кто-давно-типа-изучал-но-хочет-повторить.	
-			</p>
-			<table width="100%" cellspacing="0">
-				<tr valign="top">
-					<td width="46%">
-					<h4>Содержание:</h4>
-					<ul class="cs_list cs_course_list"> 
-						<li><a href="lesson-01.html" title="Урок 1">Урок 1</a><br>
-						Основные формулы вежливости. Порядок слов в английском предложении
-						</li>
-						<li><a href="lesson-02.html" title="Урок 2">Урок 2.</a><br>
-						Представление. Личные местоимения. Глагол to be
-						</li>
-						<li><a href="lesson-03.html" title="Урок 3">Урок 3.</a><br>
-						Национальность. Вопросительная форма.
-						</li>
-						<li><a href="lesson-04.html" title="Урок 4">Урок 4.</a><br>
-						Семейное положение. Отрицательная форма.
-						</li>
-						<li><a href="lesson-05.html" title="Урок 5">Урок 5.</a><br>
-						Профессии. Неопределенный артикль
-						</li>
-						<li><a href="lesson-06.html" title="Урок 6">Урок 6.</a><br>
-						Люди и занятия. Множественное число существительных
-						</li>
-					</ul>
 
 
-				</tr>
-			</table>
-			
-			
-			<!-- div class="cs_more" align="center">
-				<a href="javascript:;" class="cs_more_btn" id="for_beginner"> Read more</a>
-			</div -->
-		</div>	
-	</div>
-</div>
-
-<div class="cs_btm">
-	<div class="cs_clb"></div>
-	<div class="cs_crb"></div>
-</div>
-</div>		
-		
-
-		</td>
-	</tr>
-</table>
-
-
-<br>
-
-
-
-<!-- table class="cs_place" cellspacing="0" id="everyday_course">
-	<tr valign="top">
-		<td width="150" class="cs_icon">
-			<div class="cs_everyday"></div>
-			<div class="cs_course_link" align="center">
-			Everyday Russian  <br><br>
-			
-			<a href="everyday-course.html" title="Go to the main page of the course"><span>Visit main page</span> >></a> 
-			</div>
-		</td>
-		<td class="cs_wrapper">
-
-		
-<div class="cs_container">
-
-<div class="cs_top">
-	<div class="cs_clt"></div>
-	<div class="cs_crt"></div>
-</div>
-
-<div class="cs_lft">
-	<div class="cs_rt">
-		<div class="cs_content">
-			<h3 class="cs_title"> <a href="everyday-course.html" title="Go to the main page of the course">Everyday Russian Course</a> <span class="cs_badge" style="font-size: 18px;">from $8.99 </span></h3>
-			<p>
-				Find an easy way to learn the language you need for most everyday situations. The 10 online lessons of this course include everything to enable you to to start speaking right away: dialogues, vocabulary lists, interactive exercises and tests.
-			</p>
-			<table width="100%" cellspacing="0">
-				<tr valign="top">
-					<td width="46%">
-					<h4>Content:</h4>
-					<ul class="cs_list cs_course_list"> 
-						<li><a href="unit01.html" title="Lesson 1">Lesson 1. <span class="ital">In the airport</span></a></li>
-						<li><a href="unit02.html" title="Lesson 2">Lesson 2. <span class="ital">Transport</span></a> </li>
-						<li><a href="unit03.html" title="Lesson 3">Lesson 3. <span class="ital">At the hotel</span></a> </li>
-						<li><a href="unit04.html" title="Lesson 4">Lesson 4. <span class="ital">In the street</span></a></li>
-						<li><a href="unit05.html" title="Lesson 5">Lesson 5. <span class="ital">Sightseeings</span></a> </li>
-						
-						<li><a href="unit06.html" title="Lesson 6">Lesson 6. <span class="ital">Shopping</span></a> </li>
-						<li><a href="unit07.html" title="Lesson 7">Lesson 7. <span class="ital">At the restaurant</span></a>  </li>
-						<li class="cs_add_list_item cs_to_show"><a href="unit08.html" title="Lesson 8">Lesson 8. <span class="ital">At the drugstore</span></a> </li>
-						<li class="cs_add_list_item cs_to_show"><a href="unit09.html" title="Lesson 9">Lesson 9. <span class="ital">Currency exchange</span></a></li>
-						<li class="cs_add_list_item cs_to_show"><a href="unit10.html" title="Lesson 10">Lesson 10. <span class="ital">Internet &amp; Telephone</span></a>  </li>
-					</ul>
-					
-					<div class="cs_further"> and more ... </div>
-
-					</td>
-					<td width="54%" style="padding-left: 10px; color: #3B3F4F;">
-					<h4>Features:</h4>
-					<ul class="cs_list cs_features"> 
-						<li>Work with realistic dialogues recorded by native speakers </li>
-						<li>Various interactive exercises</li>
-						<li>All words and phrases are accompanied by audio and transcription</li>
-						<li class="cs_add_list_item cs_to_show">Basic vocabulary and essential grammar constructions that you need to converse with locals</li>
-						<li class="cs_add_list_item cs_to_show">Step-by-step learning, from simple words to full sentences</li>
-						<li class="cs_add_list_item cs_to_show">No background in Russian is needed</li>
-					</ul>
-					<div class="cs_further"> and more ... </div>
-					</td>
-				</tr>
-			</table>
-			
-			<p>
-				<% if !(logged_in? && current_user.payment) %>
-				You can try for free the first lesson of this course and review a limited version of other lessons.
-				<br><br>
-				<a href="unit01.html" title="Try Lesson 1 for free" class="bold" style="text-decoration: none"><span style="text-decoration: underline">TRY LESSON 1 FOR FREE</span> >></a>
-				<%else%>
-					Every lesson in this course is devoted to a definite topic. The topics cover typical situations which a person visiting Russia may get into.
-				<%end%>
-			</p>
-			
-			<div class="cs_to_show">
-			
-			<p>
-				This online course will give you an opportunity to experience conversational language and learn the vocabulary for introductions, finding your way, shopping, using telephone and internet etc. 
-				
-				<% if !(logged_in? && current_user.payment) %>
-				Every lesson in this course is devoted to a definite topic. The topics cover typical situations which a person visiting Russia may get into.
-				<%end%>
-			</p>
-			
-			
-			<p>
-				If you are a registered user, you can review the results of the exercises and tests you have done during the lessons<% if logged_in? %>
-				in your <b>Profile</b>, in the <a href="/user_profile.html#tab=3" title="Results">My Results section</a>
-			<%else%>. See the <a href="/signup">Registration page</a> 
-			<%end%>
-			</p>
-			
-			
-			
-			<% if !(logged_in? && current_user.payment) %>
-			<p>
-				We have the following options for those who would like to subscribe to this course:
-			</p>
-			
-			<ul class="ital">
-				<li> 2-month subscription - <b>$8.99 USD</b></li>
-				<li> 4-month subscription - <b>$14.99 USD</b></li>
-				<li> 6-month subscription - <b>$19.99 USD</b></li>
-			</ul>
-			<% end %>
-			
-			<% if  !logged_in? %>
-				<p>If you would like to subscribe to this  course, please, <a href="/signup">Sign Up</a> or <a href="login">Sign In</a> and complete the payment procedure.</p>
-			<% elsif (logged_in? && !current_user.payment) %>
-				<p>If you would like to subscribe to this  course, you can purchase a subscription in your <a href="user_profile.html"><strong>Profile</strong></a>.
-				<br><br>
-				<a href="user_profile.html#subscription" title="Subscribe to the Course" class="bold" style="text-decoration: none; color: red;"><span style="text-decoration: underline">SUBSCRIBE TO THE COURSE</span> >></a>
-				</p>
-			<%end%> 
-			
-			
-			<p>
-				The full version of this course is available for subscribed users. Other users have access to the full version of the first lesson and to a limited version of other lessons.
-			</p>
-			
-			
-			
-			</div>
-			
-			
-			<div class="cs_more" align="center">
-				<a href="javascript:;" class="cs_more_btn" id="for_everyday"> Read more</a>
-			</div>
-		</div>	
-	</div>
-</div>
-
-<div class="cs_btm">
-	<div class="cs_clb"></div>
-	<div class="cs_crb"></div>
-</div>
-</div>		
-		
-
-		</td>
-	</tr>
-</table -->
+<ul class="gr-list" id="theory">
+	<li class="gr-li-head"><div class="gr-list-head"><span><a href="/ru/en/lesson-01.html">Урок 1</a></span></div>
+		<p><span>Основные формулы вежливости. Порядок слов в английском предложении</span>
+		<a href="/ru/en/lesson-01.html"><em>Пройти  урок >></em></a>
+		</p>
+	</li>
+	<li class="gr-li-head"><div class="gr-list-head"><span><a href="/ru/en/lesson-02.html">Урок 2</a></span></div>
+		<p><span>Представление. Личные местоимения. Глагол to be</span>
+		<a href="/ru/en/lesson-02.html"><em>Пройти  урок >></em></a>
+		</p>
+	</li>
+	<li class="gr-li-head"><div class="gr-list-head"><span><a href="/ru/en/lesson-03.html">Урок 3</a></span></div>
+		<p><span>Национальность. Вопросительная форма.</span>
+		<a href="/ru/en/lesson-03.html"><em>Пройти  урок >></em></a>
+		</p>
+	</li>
+	<li class="gr-li-head"><div class="gr-list-head"><span><a href="/ru/en/lesson-04.html">Урок 4</a></span></div>
+		<p><span>Семейное положение. Отрицательная форма.</span>
+		<a href="/ru/en/lesson-04.html"><em>Пройти  урок >></em></a>
+		</p>
+	</li>
+	<li class="gr-li-head"><div class="gr-list-head"><span><a href="/ru/en/lesson-05.html">Урок 5</a></span></div>
+		<p><span>Профессии. Неопределенный артикль</span>
+		<a href="/ru/en/lesson-05.html"><em>Пройти  урок >></em></a>
+		</p>
+	</li>
+	<li class="gr-li-head"><div class="gr-list-head"><span><a href="/ru/en/lesson-06.html">Урок 6</a></span></div>
+		<p><span>Люди и занятия. Множественное число существительных.</span>
+		<a href="/ru/en/lesson-06.html"><em>Пройти  урок >></em></a>
+		</p>
+	</li>
+	<li class="gr-li-head"><div class="gr-list-head"><span>Урок 7</span></div>
+		<p><span>Люди и занятия. Множественное число существительных</span></p>
+	</li>
+</ul>
 
 
-
-
-
-
-<br>
-
-<p>
-Before you begin one of our online courses, we recommend you to see the sections <a href="pronunciation.html">Russian Pronunciation</a> and <a href="russian-reading.html">Reading in Russian</a>. These sections are not necessary for the work with online Russian courses, but if you familiarize with them the work with a course will be easier, since when you do the exercises of the lessons you will devote less attention to the pronunciation and transcription of the words and expressions, and the tasks of the lessons will be simpler to fulfill. 
-</p>
-<p>
-We also advise to visit <a href="test-use.html">How to use tests</a> page to learn how to work with tests which you will find in the online lessons, and <a href="functions.html">Functions and settings</a> page to read information about available functions on our website that may make it easier to learn Russian.
-</p>
-
-<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 <script type="text/javascript">
 currentSection="course";

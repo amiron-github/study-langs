@@ -9,9 +9,9 @@
 <% end %>
   <meta name="keywords" content="russian translation, russian language, learn russian, study russian, learn russian online, russian phrases, russian words, speak russian, speaking russian, learning russian, basic russian, learn russian language, beginners russian, russian language course, russian online lessons, russian vocabulary, russian for begginers" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf8"> 
+  <%= stylesheet_link_tag 'stylesheet' %>
   <script type="text/javascript" src="/javascripts/jquery-1.4.2.min.js"></script>
   <%= javascript_include_tag 'effects' %>
-  <%= stylesheet_link_tag 'stylesheet' %>
   
   
   <%if @javascripts%>  
@@ -40,8 +40,8 @@
   <![endif]-->
 
 </head>
-<body <% if cookies[:no_header] %>class="m-header-hidden"<%end%>>
-    <div id="fixWidh"><div id="container">
+<body class="ru-en<% if cookies[:no_header] %> m-header-hidden<%end%>">
+    <div id="fixWidh"><div id="container" class="">
         <!--[if lte IE 6]>
         <table id="containit" cellspacing="0">
           <tr valign="top">

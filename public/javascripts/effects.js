@@ -1252,5 +1252,22 @@ $(document).ready(function(){
 	$(".head-dec").css({backgroundPosition: "0px 0px"}).animate({backgroundPosition: "(0px 130px)"}, 11000)
 })
 
+function smallBox(container) {
+
+container.find(".sb-details").toggle(function(){
+		$(this).parent().find(".sb-topic-details").slideDown(function() {
+					$(this).parent().find(".sb-details-content").animate({opacity: 1},200);
+		})
+		$(this).parent().removeClass("details-hidden");
+	},function(){
+		$(this).parent().find(".sb-details-content").animate({opacity: 0},200, function() {
+			$(this).parent(".sb-topic-details").slideUp();
+		})
+		$(this).parent().addClass("details-hidden");
+});
+
+
+}
+
 
 
