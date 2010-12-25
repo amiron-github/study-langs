@@ -28,12 +28,14 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :words
   map.resources :categories
 
+  
+  map.forgot_password '/:lang/:to_lang/forgot_password',             :controller => 'passwords', :action => 'new'
+  map.change_password '/:lang/:to_lang/change_password/:reset_code', :controller => 'passwords', :action => 'reset'
+  map.change_password '/:lang/:to_lang/update_password/', :controller => 'passwords', :action => 'update_after_forgetting' 
   map.forgot_password '/forgot_password',             :controller => 'passwords', :action => 'new'
   map.change_password '/change_password/:reset_code', :controller => 'passwords', :action => 'reset'
   map.change_password '/update_password/', :controller => 'passwords', :action => 'update_after_forgetting'
-  map.forgot_password '/:lang/:to_lang/forgot_password',             :controller => 'passwords', :action => 'new'
-  map.change_password '/:lang/:to_lang/change_password/:reset_code', :controller => 'passwords', :action => 'reset'
-  map.change_password '/:lang/:to_lang/update_password/', :controller => 'passwords', :action => 'update_after_forgetting'
+
   
   map.resources :passwords
   map.order '/order', :controller => 'users', :action => 'new_order'
@@ -41,14 +43,14 @@ ActionController::Routing::Routes.draw do |map|
   map.buy '/buy', :controller => 'users', :action => 'buy'
   map.ppipn '/gettrial', :controller => 'users', :action => 'gettrial'
   map.ppipn '/ppipn', :controller => 'orders', :action => 'paypal_ipn'
-  map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/:lang/:to_lang/logout', :controller => 'sessions', :action => 'destroy'
-  map.login '/login', :controller => 'sessions', :action => 'new'
-  map.login '/:lang/login', :controller => 'sessions', :action => 'new'
+  map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/:lang/:to_lang/login', :controller => 'sessions', :action => 'new'
+  map.login '/:lang/login', :controller => 'sessions', :action => 'new'
+  map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
-  map.signup '/signup', :controller => 'users', :action => 'new'
   map.signup '/:lang/:to_lang/signup', :controller => 'users', :action => 'new'
+  map.signup '/signup', :controller => 'users', :action => 'new'
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
   map.cart '/cart', :controller => 'users', :action => 'show_cart'
   map.user '/user', :controller => 'users', :action => 'update_user'
