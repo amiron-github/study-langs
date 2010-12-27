@@ -78,7 +78,7 @@
 <div class="su-present-brd">
 <table cellspacing="0">
 <%
-@voc1 = Cluster.find(24).words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+@voc1 = Cluster.find(27).words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
 %>
 <% @voc1.each do |voc_word|  %>
 	<tr>
@@ -118,7 +118,7 @@
 		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
 		basic_array: [
 <%
-@voc2 = Cluster.find(25).words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+@voc2 = Cluster.find(28).words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
 @last_voc2 = (@voc2.length)-1
 %>
 		
@@ -172,7 +172,7 @@
 <tbody>
 
 <%
-cat = Cluster.find(26)
+cat = Cluster.find(29)
 @words = cat.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
 %>
 <%@words.each_with_index do |word, index|-%>
@@ -223,13 +223,13 @@ cat = Cluster.find(26)
 		test_id: "",
 		quest_num: 15,
 		variants_num: 5,
-		quest_type: 'audio',
+		quest_type: 'text',
 		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
 		basic_array: [
 		
 <% @last_item_index = (@words.length)-1 -%>
 <% @words.each_with_index  do |word, index| -%>
-['<%= word.sound_url %>', "<%= word.translate.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+["<%= word.text %>", "<%= word.translate.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
 <%end -%>
 
 		]
@@ -419,7 +419,7 @@ cat = Cluster.find(26)
 	
 
 <h4 class="su-task">
-Задание 1. Прослушайте фразы и подберите подходящую реплику к фразам.
+Задание 1. Прочитайте текст и подберите соответсвующие имена в нижнем списке.
 </h4>
 
 

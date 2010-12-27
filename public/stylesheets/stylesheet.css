@@ -2745,10 +2745,8 @@ white-space: nowrap;
 
 /* start of styles for small blocks*/
 .sb-results {
-bor-der: 1px solid #C3CDDF;
-back-ground-color: #E2E6F2;
-background-color:#AFCCFF;
-background-image:url(/images/fl-bg.png);
+background-color:#DFEBFF;
+back-ground-image:url(/images/fl-bg.png);
 border:1px solid #99B2DF;
 padding: 1px;
 margin: 0 auto;
@@ -2940,7 +2938,14 @@ font-weight: bold;
 
 h2.page-bl {
 font-size: 28px; 
-color: #2663CF;
+color: #31549F;
+}
+
+.ru-en h2.page {
+font-size: 18pt;
+}
+.ru-en h2.page-bl {
+font-size: 20pt;
 }
 
 .gr-li-head span a:link  {

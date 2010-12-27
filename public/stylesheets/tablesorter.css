@@ -37,3 +37,35 @@ table.tablesorter thead tr .headerSortDown {
 table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
 background-color: #8dbdd8;
 }
+
+/*custom*/
+
+table.st-bl-table thead tr .header {
+	background-image: url(/images/tablesorter/bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+
+
+table.st-bl-table tbody tr.odd td {
+	background-color:#f3f7fc;
+}
+table.st-bl-table thead tr .headerSortUp {
+	background-image: url(/images/tablesorter/asc.gif);
+}
+table.st-bl-table thead tr .headerSortDown {
+	background-image: url(/images/tablesorter/desc.gif);
+}
+table.st-bl-table thead tr .headerSortDown, table.st-bl-table thead tr .headerSortUp {
+background-color: #a5c0e2;
+}
+
+
+
+
+
+
+
+
+
