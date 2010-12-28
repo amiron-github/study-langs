@@ -1,0 +1,146 @@
+﻿<%
+@category = Category.find(100)
+@words = @category.words.find(:all, :order => 'order_num')
+
+%>
+
+<% @page_title = 'Неправильные глаголы (тесты) :: Изучение английского онлайн' %>
+<% @page_meta = {'description' => "Интерактивные упражнения с тремя формами неправильных глаголов английского языка"} %>
+
+
+<% content_for :special_js_css do %>
+
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'lexical-test' %>
+<%= stylesheet_link_tag 'lexical-test' %>
+
+<%end%>
+
+<% content_for :special_css do %>
+h2.page {margin-bottom: 0px;font-size: 19pt;}
+.hint_button {
+float: right;
+}
+
+.quest  {
+width: 166px;
+}
+
+.variants  {
+width: 166px;
+}
+
+<% end %>
+
+
+<h2 class="page">Неправильные глаголы (тесты)</h2>
+
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="/ru/en/english-grammar.html">Грамматика</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="/ru/en/english-irregular-verbs.html">Неправильные глаголы</a>
+	<span class="int-arrow">--&gt;</span> Тесты
+	</span>
+</h3>
+
+<div class="l-test-container">
+
+<h3 class="test-task">Тест 1. Найдите в списке вторую и третью форму глагола.
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Скрыть</span><span class="lt-sh">Показать</span></a>
+</h3>
+
+<div id="ch1" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		test_id: "",
+		quest_num: 30,
+		variants_num: 5,
+		quest_type: 'text',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+<% @last_item_index = (@words.length)-1 -%>
+<% @words.each_with_index  do |word, index| -%>
+		["<%= word.text.to_s.gsub(/"/,'\"') %>", '<%= word.html.to_s.gsub(/'/,"’") %> <span style="font-weight: normal">\/<\/span> <%= word.image_url.to_s.gsub(/'/,"’") %>']<% if index!= @last_item_index -%>,<%end -%>
+<%end -%>
+
+		]
+		
+		} )
+</script>
+
+
+<h3 class="test-task">Тест 2. Напишите первую форму глагола, соответствующую представленным формам.
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Скрыть</span><span class="lt-sh">Показать</span></a>
+</h3>
+
+<div id="ch2" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		quest_num: 30,
+		variants_num: 5,
+		quest_type: 'text',
+		answer_type: 'type',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+<% @words.each_with_index  do |word, index| -%>
+		['<%= word.html.to_s.gsub(/'/,"’") %> <span style="font-weight: normal">\/<\/span> <%= word.image_url.to_s.gsub(/'/,"’") %>', "<%= word.text.to_s.gsub(/"/,'\"') %>"]<% if index!= @last_item_index -%>,<%end -%>
+<%end -%>
+
+		]
+		
+		} )
+</script>
+
+<h3 class="test-task">Тест 3. Напишите через запятую вторую и третью форму глагола.
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Скрыть</span><span class="lt-sh">Показать</span></a>
+</h3>
+
+<div id="ch3" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch3 = new ch_exercise( {
+		id: "ch3", 
+		quest_num: 30,
+		variants_num: 5,
+		quest_type: 'text',
+		answer_type: 'type',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+<% @words.each_with_index  do |word, index| -%>
+		["<%= word.text.to_s.gsub(/"/,'\"') %>", '<%= word.html.to_s.gsub(/'/,"’") %>, <%= word.image_url.to_s.gsub(/'/,"’") %>']<% if index!= @last_item_index -%>,<%end -%>
+<%end -%>
+
+		]
+		
+		} )
+</script>
+
+
+
+<h3 class="test-task test-task-final" style="text-align: center">Повторить &nbsp;&nbsp;&nbsp;&nbsp;<a href="/ru/en/english-irregular-verbs.html">Неправильные глаголы >></a></h3>
+
+</div><!-- end of lt-container -->
+
+<script type="text/javascript">
+currentSection="grammar";
+</script>

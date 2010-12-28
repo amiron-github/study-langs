@@ -9,6 +9,7 @@
 		@esex_yes = "YES"
 		@esex_no = "NO"
 		@esex_restart = "RESTART"
+		@check_type = "Check"
 	elsif @lang == "rus" 
 		@esex_auto_play = "Авто переход"
 		@esex_next = "Далее"
@@ -16,6 +17,7 @@
 		@esex_yes = "Да"
 		@esex_no = "Нет"
 		@esex_restart = "Заново"
+		@check_type = "Проверить"
 	elsif @lang == "fr" 
 		@esex_auto_play = "Continuer automatiquement"
 		@esex_next = "Suivant"
@@ -59,7 +61,7 @@
 			</div>
 				<div style="margin-right: 10px"><input type="text" class="es-ex-type-field for_keyb ex-txt-letters" /> </div>
 			<div class="es-ex-buttons es-ex-type-check-wrapper">
-				<input type="button" class="es-ex-check-type" value="Check">
+				<input type="button" class="es-ex-check-type" value="<%= @check_type%>">
 			</div>
 			<div class="es-ex-type-elements">
 				
