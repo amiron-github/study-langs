@@ -164,6 +164,7 @@ this.straightOrderAnswers = new Array();
 this.wrongAnswers=new Array();
 this.wrongAswersNum=0;
 this.correctAswersNum=0;
+this.noMouseCheck == false;
 
 tObj.correctClass = "es-ex-alert-correct";
 tObj.wrongClass = "es-ex-alert-wrong";
@@ -241,6 +242,21 @@ this.start = function () {
 		});
 		
 		if (tObj.answerType == "type") {
+			tObj.optionsHolder.find(".es-ex-type-field").keypress(function(e){
+				if (e.which == 13) {
+					tObj.optionsHolder.find(".es-ex-check-type").click()
+					if (tObj.autoPlay) {
+						tObj.noMouseCheck = true;
+						tObj.optionsHolder.find(".es-ex-check-type").mouseover().mousedown()
+					} else {
+						tObj.optionsHolder.find(".es-ex-check-type").mouseover().mousedown()
+						setTimeout(function(){
+							tObj.optionsHolder.find(".es-ex-check-type").mouseout().mouseup()
+						},100)
+					}
+				}
+			})
+		
 			if (tObj.virtKeys) tObj.optionsHolder.css({paddingTop: "0"}).find(".kb-show-wrapper").show()
 			
 			var kb_link = tObj.optionsHolder.find(".show_keyboard"); 
@@ -293,6 +309,7 @@ this.restart = function() {
 
 this.step = function () {
 tObj.alertHolder.empty().removeClass(tObj.correctClass).removeClass(tObj.wrongClass);
+if (tObj.noMouseCheck) tObj.optionsHolder.find(".es-ex-check-type").mouseout().mouseup()
 
   if (this.counter < this.questNum) {
 	tObj.remain = tObj.questNum - tObj.counter;
