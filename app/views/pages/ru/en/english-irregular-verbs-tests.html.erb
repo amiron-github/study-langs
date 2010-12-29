@@ -1,6 +1,6 @@
 ﻿<%
-@category = Category.find(100)
-@words = @category.words.find(:all, :order => 'order_num')
+
+@words =  Cluster.find(33).words.all
 
 %>
 

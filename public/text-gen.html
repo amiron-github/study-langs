@@ -414,9 +414,10 @@ $(".generated_line_items:even").css({backgroundColor: "#dfdfdf"})
 			for (var i=0; i < textArray[r].length; i ++) {
 				textArray[r][i] = $.trim(textArray[r][i]);
 				var num = r + 1
+				var ord = num
 				if (r <  9) num = '0'+num
 				
-				textArray[r][i] = textArray[r][i].replace(/@num/g, num )
+				textArray[r][i] = textArray[r][i].replace(/@num/g, num ).replace(/@ord/g, ord)
 				
 				$("#line_row_"+r).append('<input type="text" id="line_item_'+i+'" class="line_items" value="'+textArray[r][i]+'"> ');
 			}
