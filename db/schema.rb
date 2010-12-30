@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101028072118) do
+ActiveRecord::Schema.define(:version => 20101230110219) do
 
   create_table "categories", :force => true do |t|
     t.string   "title"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20101028072118) do
     t.string   "title_fr"
     t.string   "lang"
     t.string   "tag"
+    t.integer  "sound_status"
   end
 
   create_table "cluster_words", :force => true do |t|

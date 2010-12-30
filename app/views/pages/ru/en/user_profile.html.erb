@@ -26,14 +26,14 @@ updateUserResults()
 });
 
 function updateUserWords() {
-$("#u-vocabulary").html('<center><b style="color: #555">Loading data</b> <img src="/images/load.gif"/></center>');
+$("#u-vocabulary").html('<center><b style="color: #555">Loading data<\/b> <img src="/images/load.gif"\/><\/center>');
 $("#u-vocabulary").load("/ajax/en_words.html", function() {
 	loadedEvents($("#u-vocabulary"));
 })
 }
 
 function updateUserResults() {
-$("#u-results").html('<center><b style="color: #555">Loading data</b> <img src="/images/load.gif"/></center>');
+$("#u-results").html('<center><b style="color: #555">Loading data<\/b> <img src="/images/load.gif"\/><\/center>');
 $("#u-results").load("/ajax/en_results.html", function() {
 	loadedEvents($("#u-results"));
 })

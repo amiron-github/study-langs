@@ -154,11 +154,12 @@ write_attribute :email, (value ? value.downcase : nil)
 				cat_tests = get_test_by_category(category_id)
 				total = 0
 				category_title = category.title
+				category_title_ru = category.title_ru
 				cat_tests.each do |test|
 					total += test.result_percent
 				end
 				average = total/cat_tests.length
-				list << {:category => category_title, :exercises => cat_tests, :total => average}
+				list << {:category => category_title,:category_ru =>category_title_ru,:exercises =>cat_tests, :total => average}
 			end
 			end
 		end

@@ -8,8 +8,6 @@ var di_style =""
 
 
 
-
-
 $(document).ready(function() {
 	$("head").append(di_style);	
 });
@@ -33,17 +31,14 @@ if (this.inTargets == undefined ) this.inTargets = false;
 if (this.clearOption == undefined ) this.inTargets = false;
 if (this.oneUse == undefined ) this.oneUse = false;
 if (this.nospace == undefined ) this.nospace = false;
-
-
 this.targetsData = new Array();
-
+if ($.browser.msie) this.ieSucks = true;
 
 this.start = function() {
 
 	this.container = $('#'+this.id);
 	this.targets = this.container.find("." + this.targetsClass );			// jquery elements to put the variants in, wrappers of answers
 	this.variants = this.container.find("."+ tObj.variantsClass);          // jquery elements with variants which will be dragged and checked as answers
-	
 	
 	this.variants.css({cursor: "default"});
 	
@@ -74,13 +69,16 @@ this.start = function() {
 		if (tObj.oneUse) {
 			$(this).parent().find(".di_mix_variants").find("*").each(function(i,elem) {
 				if ($(elem).css("visibility")=="hidden") {
-					$(elem).css({visibility: "visible", backgroundColor: "#8FE2FF"})
-					$(elem).animate({backgroundColor: "#ffffff"});
+					if (tObj.ieSucks) {
+						$(elem).css({visibility: "visible"})
+					} else {
+						$(elem).css({visibility: "visible", backgroundColor: "#8FE2FF"}).animate({backgroundColor: "#ffffff"}, function(){$(elem).css({backgroundColor: "#ffffff"})});
+					}
+					
 				}
 			})
 		}
 	});
-	
 	
 	
 	this.variants.mousedown(function(e) {
@@ -102,8 +100,7 @@ this.start = function() {
 		e.preventDefault();
 		return false;
 	});
-	
-	
+
 }
 
 
@@ -140,7 +137,6 @@ this.collision = function (x,y) {
 this.dropping = function (fromVariant) {
 
 	$("body").one("mouseup", function(e) {
-	
 		var hitTarget = tObj.collision(e.pageX,e.pageY);   // determine if a target is hitted
 		dragHelper.removeClass("di_ondrag").empty();       // remove drag helper
 		$("body").unbind("mousemove");
@@ -148,28 +144,27 @@ this.dropping = function (fromVariant) {
 		if ( hitTarget > -1) {
 			tObj.hittedTarget(fromVariant, hitTarget);
 		} 
-		
 		if (!tObj.oneUse) {
-			tObj.variants.filter(":eq("+fromVariant+")")
-				.css({visibility: "visible", backgroundColor: "#8FE2FF"})
-				.animate({backgroundColor: "#ffffff"});
+			if (tObj.ieSucks) {
+				tObj.variants.filter(":eq("+fromVariant+")").css({visibility: "visible"});
+			} else {
+				tObj.variants.filter(":eq("+fromVariant+")").css({visibility: "visible", backgroundColor: "#8FE2FF"}).animate({backgroundColor: "#ffffff"});
+			}
 		} else {
-		
 			if ( hitTarget < 0) {
-				tObj.variants.filter(":eq("+fromVariant+")")
-					.css({visibility: "visible", backgroundColor: "#8FE2FF"})
-					.animate({backgroundColor: "#ffffff"});
+				if (tObj.ieSucks) {
+					tObj.variants.filter(":eq("+fromVariant+")").css({visibility: "visible"});
+				}else{
+					tObj.variants.filter(":eq("+fromVariant+")").css({visibility: "visible", backgroundColor: "#8FE2FF"}).animate({backgroundColor: "#ffffff"});
+				}
 			}
 		}
-			
-
 		
 		$("body").removeClass("noselect");
 		e.preventDefault();
 		return false;
 	});
 }
-
 
 
 this.hittedTarget = function (fromVariant, hitted) {
@@ -207,7 +202,7 @@ this.hittedTarget = function (fromVariant, hitted) {
 				tIntarget.html(tValue);
 			}
 			
-			tObj.hittedAnimation(tIntarget);
+			if (! tObj.ieSucks) tObj.hittedAnimation(tIntarget);
 
 		} else {
 
@@ -218,8 +213,6 @@ this.hittedTarget = function (fromVariant, hitted) {
 				if ( !tObj.targets.attr("disabled") ) {
 					if (tObj.targets.eq(hitted).hasClass("gex-init-val")) tObj.targets.eq(hitted).val("").removeClass("gex-init-val").unbind("focus")
 					var currentValue =tObj.targets.eq(hitted).val();
-					
-					
 						
 					if (tObj.nospace) {
 						var tValue = currentValue + addValue;
@@ -243,12 +236,8 @@ this.hittedTarget = function (fromVariant, hitted) {
 				tObj.targets.eq(hitted).html(tValue);
 			}
 			
-			tObj.hittedAnimation(tObj.targets.eq(hitted));
-			
+			if (! tObj.ieSucks) tObj.hittedAnimation(tObj.targets.eq(hitted));
 		}
-		
-		
-		
 }
 
 
@@ -257,8 +246,6 @@ this.hittedAnimation = function(hitted) {
 
 			if (tObj.answerBColor == undefined) {
 				var tColor = hitted.css("background-color");
-				
-
 				
 				if (tColor == "transparent" || tColor == "rgba(0, 0, 0, 0)" ) {
 					var endColor = "#ffffff";
@@ -276,9 +263,7 @@ this.hittedAnimation = function(hitted) {
 				hitted.addClass("ds_noImage").stop().css({backgroundColor: "#feff8f"}).animate({backgroundColor: tColor},500, function () {
 					hitted.css({backgroundColor: tColor}).removeClass("ds_noImage");
 				});
-				
 			}
-			
 }
 
 
