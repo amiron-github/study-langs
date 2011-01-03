@@ -24,7 +24,7 @@ color: #222222;
 text-decoration: none;
 height: 240px;
 padding: 0px 10px; 
-display: block
+display: block;
 }
 
 .content a.forgame img {
@@ -43,6 +43,64 @@ margin-left: 200px;
 display: block;
 }
 
+.ptab div, .ptab {
+background-image: none;
+}
+
+.ptab {
+background-color: #F3F7FC;
+margin-left: 6px;
+}
+
+.ptab div {
+padding: 7px 15px 3px 9px;
+}
+
+div.current_ptab div {
+padding-left: 9px;
+padding-right: 15px;
+}
+
+
+#tabs_row {
+padding-left: 15px;
+padding-top: 5px;
+}
+
+.tabs-wrapper {
+bor-der: 1px solid #C3CFDF;
+bor-der-top: 1px solid #678ACF;
+-moz-box-shadow: 1px 2px 9px #B3B7BF;
+-webkit-box-shadow: 1px 2px 9px #B3B7BF;
+box-shadow: 1px 2px 9px #B3B7BF;
+}
+
+#prof_tabs  {
+background-color: #DDE7F5;
+border: 1px solid #82AAC8;
+border-bottom: 1px solid #678ACF;
+margin: 0;
+width: auto;
+}
+
+.current_ptab {
+background-color: #FFFFFF;
+border: 1px solid #678ACF;
+border-bottom: 0px solid #fff;
+}
+
+
+.pBlock {
+border: 1px solid #afafaf;
+border-top: 1px solid #fff;
+-moz-box-shadow: 0 0 0 #fff;
+-webkit-box-shadow: 0 0 0 #fff;
+box-shadow: 0 0 0 #fff;
+}
+
+
+
+
 </style>
 
 <% end %>
@@ -54,12 +112,12 @@ display: block;
 Здесь вы найдёте списки слов по темам.
 </p>
 
+<div class="tabs-wrapper">
 <div id="prof_tabs">
 	<div id="tabs_row">
-            <div id="tab01" class="ptab current_ptab"><div><a href="vocabulary.html" style="color: #000;">Темы</a></div></div>
+            <div id="tab01" class="ptab current_ptab"><div><a href="vocabulary.html" style="color: #000;">Словарь</a></div></div>
             <div id="tab02" class="ptab"><div><a href="vocabulary_exercises.html">Флэш-карты</a></div></div>
             <div id="tab03" class="ptab"><div><a href="vocabulary_tests.html">&nbsp;&nbsp; Тесты &nbsp;&nbsp;</a></div></div>
-
             <div id="tab04" class="ptab" style="display: none"><div><a href="vocabulary_games.html">&nbsp;&nbsp; Игры &nbsp;&nbsp;</a></div></div>
 	</div>
 	<div style="clear: both;"></div>
@@ -277,6 +335,8 @@ display: block;
 
 	</div>
 </div>
+
+</div> <!-- end of tabs wrapper -->
 
 <script type="text/javascript">
 currentSection="words";

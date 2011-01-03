@@ -1,0 +1,77 @@
+<% @words = Category.find(101).words.find(:all, :order => 'order_num') %>
+<% @page_title = 'Aspectual pairs of Russian verbs' %>
+<% @page_meta = {'description' => "List of the commonly used Russian verbs in pairs imperfective/perfective"} %>
+
+<% content_for :special_js_css do %>
+<%= stylesheet_link_tag 'tablesorter' %>
+<%= javascript_include_tag 'jquery.tablesorter.min.js' %>
+
+<script type="text/javascript">	
+$(document).ready(function() { 
+    $("table.st-bl-table").tablesorter({sortList: [[0,0]],widgets: ['zebra'] });
+});
+</script>
+<style type="text/css">
+h2.page {margin-bottom: 0px;}
+.st-bl-table td {font-size: 12px;color: #000;}
+.st-bl-table td em {color: #45494F;}
+.st-bl-table td strong {color: #222;}
+
+.v-link {
+cursor: pointer;
+}
+.v-link:hover {
+text-decoration: underline;
+}
+
+</style>
+<% end %>
+
+<h2 class="page">Aspectual pairs in Russian</h2>
+<h3 class="page-path"> 
+<span class="int-links"><a href="/russian-grammar.html">Russian grammar</a> <span class="int-arrow">--&gt;</span> Imperfective/perfective verb pairs</span> 
+</h3>
+
+
+<p>
+The table below demonstrates the most frequently used Russian verbs in pairs "<em>imperfective/perfective</em>".
+<br> 
+<br> 
+</p>
+
+
+<table class="st-bl-table" cellspacing="1" align="center" style="margin: 0 auto;">
+	<col width="30%"><col width="30%"><col width="40%">
+	<thead>
+		<tr>
+			<th>Imperfective</th>
+			<th>Perfective</th>
+			<th>Translation</th>
+		</tr>
+	</thead>
+	<tbody>
+<% @words.each do |w| %>	
+		<tr>
+			<td>
+				<span <% unless w.grammar == ''|| w.grammar == nil %> class="v-link" title="View conjugation" onclick="open_comment('/grammar_comments/verb-forms.html?verb=<%= w.grammar %>', 500, 520)"<%end%>><strong><%= w.text%></strong></span>
+			</td>
+			<td>
+				<span <% unless w.forms == ''|| w.forms == nil %> class="v-link" title="View conjugation" onclick="open_comment('/grammar_comments/verb-forms.html?verb=<%= w.forms %>', 500, 520)"<%end%>><%= w.html %></span>
+			</td>
+			<td>
+				<em><%= w.translate %></em>
+			</td>
+		</tr>
+<%end%>
+	</tbody>
+	</table>
+	
+
+	
+<br><br><br><br><br><br><br><br><br><br><br><br><br>	
+	
+	
+
+<script type="text/javascript">
+currentSection="grammar";
+</script>

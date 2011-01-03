@@ -167,10 +167,12 @@ function checkExFromList(elClass) {
 	tContainer.find(".gr_ex_unit").each(function(i) {
 	totalTasks++;
 	var userAnswer = $(this).find("select").find("option:selected").attr("class");
+	
+	$(this).removeClass("gex-correct").removeClass("gex-error");
 	if(userAnswer == "ok") {
-		$(this).css({backgroundImage: "url(/images/accept1.png)"}).attr("title", "")
+		$(this).addClass("gex-correct");
 	}else {
-		$(this).css({backgroundImage: "url(/images/error1.png)"}).attr("title", "");
+		$(this).addClass("gex-error");
 		errorNum ++;
 	}
 	});

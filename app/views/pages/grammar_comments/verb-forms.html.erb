@@ -1,0 +1,1079 @@
+<%
+@verb =''
+@spec_pr = false;
+@spec_pst = false;
+@spec_ft = false;
+@infinitive = 'делать';
+@inf = 'д<span class="accom">е</span>лать';
+@trans = 'to do';
+@pr_stems = ['д<span class="accom">е</span>ла','д<span class="accom">е</span>ла','д<span class="accom">е</span>ла'];
+@pst_stem = 'д<span class="accom">е</span>лал';
+@asp = 0;
+@conj_type=1;
+@reflexive = 0;
+@pr_end_var = 1; # not accent/accent/accent switch == 1: [1,2],[3,4][5,6]
+				 #									  2: [1,2,3],[4,5,6][7,8,9]
+@pst_end_var = 1;    
+
+@verb = params[:verb]
+
+case @verb
+when 'byt'
+	@infinitive = 'быть';
+	@inf = 'быть';
+	@trans = 'to be';
+	@spec_pr = ['есть','есть','есть','есть','есть','есть',];
+	@spec_ft = ['б<span class="accom">у</span>ду','б<span class="accom">у</span>дешь','б<span class="accom">у</span>дет','б<span class="accom">у</span>дем','б<span class="accom">у</span>дете','б<span class="accom">у</span>дут',];
+	@pst_stem = 'б<span class="accom">ы</span>л';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1; 
+when 'idti'
+	@infinitive = 'идти';
+	@inf = 'идт<span class="accom">и</span>';
+	@trans = 'to go';
+	@pr_stems = ['ид','ид','ид'];
+	@spec_pst = ['ш<span class="accom">ё</span>л', 'шл<span class="accom">а</span>','шл<span class="accom">о</span>','шл<span class="accom">и</span>'];
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 4;
+	@pst_end_var = 1;
+when 'poyti'
+	@infinitive = 'пойти';
+	@inf = 'пойт<span class="accom">и</span>';
+	@trans = 'to go';
+	@pr_stems = ['пойд','пойд','пойд'];
+	@spec_pst = ['пош<span class="accom">ё</span>л', 'пошл<span class="accom">а</span>','пошл<span class="accom">о</span>','пошл<span class="accom">и</span>'];
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 4;
+	@pst_end_var = 1;
+when 'priyti'
+	@infinitive = 'прийти';
+	@inf = 'прийт<span class="accom">и</span>';
+	@trans = 'to come, to arrive';
+	@pr_stems = ['прид','прид','прид'];
+	@spec_pst = ['приш<span class="accom">ё</span>л', 'пришл<span class="accom">а</span>','пришл<span class="accom">о</span>','пришл<span class="accom">и</span>'];
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 4;
+	@pst_end_var = 1;
+when 'uyti'
+	@infinitive = 'уйти';
+	@inf = 'уйт<span class="accom">и</span>';
+	@trans = 'to come, to arrive';
+	@pr_stems = ['уйд','уйд','уйд'];
+	@spec_pst = ['уш<span class="accom">ё</span>л', 'ушл<span class="accom">а</span>','ушл<span class="accom">о</span>','ушл<span class="accom">и</span>'];
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 4;
+	@pst_end_var = 1;
+when 'hodit'
+	@infinitive = 'ходить';
+	@inf = 'ходить';
+	@trans = 'to go, to walk';
+	@pr_stems = ['хож','ход','ход'];
+	@pst_stem = 'ходил';
+	@asp = 0;
+	@conj_type=2;
+	@pr_end_var = 8;
+	@pst_end_var = 1;
+when 'prihodit'
+	@infinitive = 'приходить';
+	@inf = 'приходить';
+	@trans = 'to come, to arrive';
+	@pr_stems = ['прихож','приход','приход'];
+	@pst_stem = 'приходил';
+	@asp = 0;
+	@conj_type=2;
+	@pr_end_var = 8;
+	@pst_end_var = 1;
+when 'uhodit'
+	@infinitive = 'уходить';
+	@inf = 'уходить';
+	@trans = 'to leave, to go away';
+	@pr_stems = ['ухож','уход','уход'];
+	@pst_stem = 'уходил';
+	@asp = 0;
+	@conj_type=2;
+	@pr_end_var = 8;
+	@pst_end_var = 1;	
+when 'drat'
+	@infinitive = 'драть';
+	@inf = 'драть';
+	@trans = 'to tear, to strip of';
+	@pr_stems = ['дер','дер','дер'];
+	@spec_pst = ['драл','драла','драло','драли'];
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 4;
+	@pst_end_var = 1;
+when 'lejat'
+	@infinitive = 'лежать';
+	@inf = 'леж<span class="accom">а</span>ть';
+	@trans = 'to be in a lying position';
+	@pr_stems = ['леж','леж','леж'];
+	@pst_stem = 'леж<span class="accom">а</span>л';
+	@asp = 0;
+	@conj_type=2;
+	@pr_end_var = 5;
+	@pst_end_var = 1; 
+when 'govorit'
+	@infinitive = 'говорить';
+	@inf = 'говор<span class="accom">и</span>ть';
+	@trans = 'to speak';
+	@pr_stems = ['говор','говор','говор'];
+	@pst_stem = 'говор<span class="accom">и</span>л';
+	@asp = 0;
+	@conj_type=2;
+	@pr_end_var = 4;
+	@pst_end_var = 1; 
+when 'zvonit'
+	@infinitive = 'звонить';
+	@inf = 'звон<span class="accom">и</span>ть';
+	@trans = 'to call, to phone';
+	@pr_stems = ['звон','звон','звон'];
+	@pst_stem = 'звон<span class="accom">и</span>л';
+	@asp = 0;
+	@conj_type=2;
+	@pr_end_var = 4;
+	@pst_end_var = 1;
+when 'pozvonit'
+	@infinitive = 'позвонить';
+	@inf = 'позвон<span class="accom">и</span>ть';
+	@trans = 'to call, to phone';
+	@pr_stems = ['позвон','позвон','позвон'];
+	@pst_stem = 'позвон<span class="accom">и</span>л';
+	@asp = 1;
+	@conj_type=2;
+	@pr_end_var = 4;
+	@pst_end_var = 1;
+when 'stanovitsa'
+	@infinitive = 'становиться';
+	@inf = 'станов<span class="accom">и</span>ться';
+	@trans = 'to become';
+	@pr_stems = ['становл','стан<span class="accom">о</span>в','стан<span class="accom">о</span>в'];
+	@pst_stem = 'станов<span class="accom">и</span>л';
+	@asp = 0;
+	@reflexive = 1;
+	@conj_type=2;
+	@pr_end_var = 7;
+	@pst_end_var = 1;
+when 'stat'
+	@infinitive = 'стать';
+	@inf = 'ст<span class="accom">а</span>ть';
+	@trans = 'to become';
+	@pr_stems = ['ст<span class="accom">а</span>н','ст<span class="accom">а</span>н','ст<span class="accom">а</span>н'];
+	@pst_stem = 'ст<span class="accom">а</span>л';
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 2;
+	@pst_end_var = 1;
+when 'izuchat'
+	@infinitive = 'изучать';
+	@inf = 'изуч<span class="accom">а</span>ть';
+	@trans = 'to study';
+	@pr_stems = ['изуч<span class="accom">а</span>','изуч<span class="accom">а</span>','изуч<span class="accom">а</span>'];
+	@pst_stem = 'изуч<span class="accom">а</span>л';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'izuchit'
+	@infinitive = 'изучить';
+	@inf = 'изуч<span class="accom">и</span>ть';
+	@trans = 'to study';
+	@pr_stems = ['изуч','из<span class="accom">у</span>ч','из<span class="accom">у</span>ч'];
+	@pst_stem = 'изуч<span class="accom">и</span>л';
+	@asp = 1;
+	@conj_type=2;
+	@pr_end_var = 9;
+	@pst_end_var = 1;
+when 'klast'
+	@infinitive = 'класть';
+	@inf = 'кл<span class="accom">а</span>сть';
+	@trans = 'to put';
+	@pr_stems = ['клад','клад','клад'];
+	@pst_stem = 'кл<span class="accom">а</span>л';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 4;
+	@pst_end_var = 1;
+when 'polojit'
+	@infinitive = 'положить';
+	@inf = 'полож<span class="accom">и</span>ть';
+	@trans = 'to put';
+	@pr_stems = ['полож','пол<span class="accom">о</span>ж','пол<span class="accom">о</span>ж'];
+	@pst_stem = 'полож<span class="accom">и</span>л';
+	@asp = 1;
+	@conj_type=2;
+	@pr_end_var = 9;
+	@pst_end_var = 1;
+when 'moch'
+	@infinitive = 'мочь';
+	@inf = 'мочь';
+	@trans = 'can, to be able';
+	@pr_stems = ['мог','мож','мог'];
+	@pst_stem = 'мог';
+	@spec_ft = [' --',' --',' --',' --',' --',' --']
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 6;
+	@pst_end_var = 3;
+when 'smoch'
+	@infinitive = 'cмочь';
+	@inf = 'cмочь';
+	@trans = 'can, to be able';
+	@pr_stems = ['смог','смож','смог'];
+	@pst_stem = 'смог';
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 6;
+	@pst_end_var = 3;
+when 'myt'
+	@infinitive = 'мыть';
+	@inf = 'мыть';
+	@trans = 'to wash';
+	@pr_stems = ['мо','мо','мо'];
+	@pst_stem = 'мыл';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'pomyt'
+	@infinitive = 'помыть';
+	@inf = 'помыть';
+	@trans = 'to wash';
+	@pr_stems = ['помо','помо','помо'];
+	@pst_stem = 'помыл';
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'lubit'
+	@infinitive = 'любить';
+	@inf = 'любить';
+	@trans = 'to love';
+	@pr_stems = ['любл','люб','люб'];
+	@pst_stem = 'любил';
+	@asp = 0;
+	@conj_type=2;
+	@pr_end_var = 7;
+	@pst_end_var = 1;
+when 'polubit'
+	@infinitive = 'полюбить';
+	@inf = 'полюбить';
+	@trans = 'to love';
+	@pr_stems = ['полюбл','полюб','полюб'];
+	@pst_stem = 'полюбил';
+	@asp = 1;
+	@conj_type=2;
+	@pr_end_var = 7;
+	@pst_end_var = 1;
+when 'konchat'
+	@infinitive = 'кончать';
+	@inf = 'кончать';
+	@trans = 'to finish';
+	@pr_stems = ['конча','конча','конча'];
+	@pst_stem = 'кончал';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'konchit'
+	@infinitive = 'кончить';
+	@inf = 'кончить';
+	@trans = 'to finish';
+	@pr_stems = ['конч','конч','конч'];
+	@pst_stem = 'кончил';
+	@asp = 1;
+	@conj_type=2;
+	@pr_end_var = 3;
+	@pst_end_var = 1;
+when 'nahodit'
+	@infinitive = 'находить';
+	@inf = 'находить';
+	@trans = 'to find';
+	@pr_stems = ['нахож','наход','наход'];
+	@pst_stem = 'находил';
+	@asp = 0;
+	@conj_type=2;
+	@pr_end_var = 8;
+	@pst_end_var = 1;
+when 'nayti'
+	@infinitive = 'найти';
+	@inf = 'найти';
+	@trans = 'to find';
+	@pr_stems = ['найд','найд','найд'];
+	@spec_pst= ['нашёл','нашла','нашло','нашли'];
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 4;
+	@pst_end_var = 1;
+when 'nachinat'
+	@infinitive = 'начинать';
+	@inf = 'начинать';
+	@trans = 'to begin';
+	@pr_stems = ['начина','начина','начина'];
+	@pst_stem = 'начинал';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'nachat'
+	@infinitive = 'начать';
+	@inf = 'начать';
+	@trans = 'to begin';
+	@pr_stems = ['начн','начн','начн'];
+	@spec_pst = ['начал', 'начала','начало','начали'];
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 4;
+	@pst_end_var = 1;
+when 'otvechat'
+	@infinitive = 'отвечать';
+	@inf = 'отвечать';
+	@trans = 'to answer';
+	@pr_stems = ['отвеча','отвеча','отвеча'];
+	@pst_stem = 'отвечал';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'otvetit'
+	@infinitive = 'ответить';
+	@inf = 'ответить';
+	@trans = 'to answer';
+	@pr_stems = ['отвеч','ответ','ответ'];
+	@pst_stem = 'ответил';
+	@asp = 1;
+	@conj_type=2;
+	@pr_end_var = 2;
+	@pst_end_var = 1;
+when 'otdyhat'
+	@infinitive = 'отдыхать';
+	@inf = 'отдыхать';
+	@trans = 'to rest, to relax';
+	@pr_stems = ['отдыха','отдыха','отдыха'];
+	@pst_stem = 'отдыхал';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'otdohnut'
+	@infinitive = 'отдохнуть';
+	@inf = 'отдохнуть';
+	@trans = 'to rest, to relax';
+	@pr_stems = ['отдохн','отдохн','отдохн'];
+	@pst_stem = 'отдохнул';
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 4;
+	@pst_end_var = 1;
+when 'otkryvat'
+	@infinitive = 'открывать';
+	@inf = 'открывать';
+	@trans = 'to open';
+	@pr_stems = ['открыва','открыва','открыва'];
+	@pst_stem = 'открывал';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'otkryt'
+	@infinitive = 'открыть';
+	@inf = 'открыть';
+	@trans = 'to open';
+	@pr_stems = ['откро','откро','откро'];
+	@pst_stem = 'открыл';
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'perestavat'
+	@infinitive = 'переставать';
+	@inf = 'переставать';
+	@trans = 'to stop';
+	@pr_stems = ['переста','переста','переста'];
+	@pst_stem = 'переставал';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 3;
+	@pst_end_var = 1;
+when 'perestat'
+	@infinitive = 'перестать';
+	@inf = 'перестать';
+	@trans = 'to stop';
+	@pr_stems = ['перестан','перестан','перестан'];
+	@pst_stem = 'перестал';
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 2;
+	@pst_end_var = 1;
+when 'pet'
+	@infinitive = 'петь';
+	@inf = 'петь';
+	@trans = 'to sing';
+	@pr_stems = ['по','по','по'];
+	@pst_stem = 'пел';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 3;
+	@pst_end_var = 1;
+when 'spet'
+	@infinitive = 'спеть';
+	@inf = 'спеть';
+	@trans = 'to sing';
+	@pr_stems = ['спо','спо','спо'];
+	@pst_stem = 'спел';
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 3;
+	@pst_end_var = 1;
+when 'pisat'
+	@infinitive = 'писать';
+	@inf = 'писать';
+	@trans = 'to write';
+	@pr_stems = ['пиш','пиш','пиш'];
+	@pst_stem = 'писал';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 6;
+	@pst_end_var = 1;
+when 'napisat'
+	@infinitive = 'написать';
+	@inf = 'написать';
+	@trans = 'to write';
+	@pr_stems = ['напиш','напиш','напиш'];
+	@pst_stem = 'написал';
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 6;
+	@pst_end_var = 1;
+when 'pit'
+	@infinitive = 'пить';
+	@inf = 'пить';
+	@trans = 'to drink';
+	@pr_stems = ['пь','пь','пь'];
+	@pst_stem = 'пил';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 3;
+	@pst_end_var = 1;
+when 'vypit'
+	@infinitive = 'выпить';
+	@inf = 'выпить';
+	@trans = 'to drink';
+	@pr_stems = ['выпь','выпь','выпь'];
+	@pst_stem = 'выпил';
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'platit'
+	@infinitive = 'платить';
+	@inf = 'платить';
+	@trans = 'to pay';
+	@pr_stems = ['плач','плат','плат'];
+	@pst_stem = 'платил';
+	@asp = 0;
+	@conj_type=2;
+	@pr_end_var = 8;
+	@pst_end_var = 1;
+when 'zaplatit'
+	@infinitive = 'заплатить';
+	@inf = 'заплатить';
+	@trans = 'to pay';
+	@pr_stems = ['заплач','заплат','заплат'];
+	@pst_stem = 'заплатил';
+	@asp = 1;
+	@conj_type=2;
+	@pr_end_var = 8;
+	@pst_end_var = 1;
+when 'povtoryat'
+	@infinitive = 'повторять';
+	@inf = 'повторять';
+	@trans = 'to repeat, to review';
+	@pr_stems = ['повторя','повторя','повторя'];
+	@pst_stem = 'повторял';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'povtorit'
+	@infinitive = 'повторить';
+	@inf = 'повторить';
+	@trans = 'to repeat, to review';
+	@pr_stems = ['повтор','повтор','повтор'];
+	@pst_stem = 'повторил';
+	@asp = 1;
+	@conj_type=2;
+	@pr_end_var = 4;
+	@pst_end_var = 1;
+when 'pokazyvat'
+	@infinitive = 'показывать';
+	@inf = 'показывать';
+	@trans = 'to show';
+	@pr_stems = ['показыва','показыва','показыва'];
+	@pst_stem = 'показывал';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'pokazat'
+	@infinitive = 'показать';
+	@inf = 'показать';
+	@trans = 'to show';
+	@pr_stems = ['покаж','покаж','покаж'];
+	@pst_stem = 'показал';
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 6;
+	@pst_end_var = 1;
+when 'pokupat'
+	@infinitive = 'покупать';
+	@inf = 'покупать';
+	@trans = 'to buy';
+	@pr_stems = ['покупа','покупа','покупа'];
+	@pst_stem = 'покупал';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'kupit'
+	@infinitive = 'купить';
+	@inf = 'купить';
+	@trans = 'to buy';
+	@pr_stems = ['купл','куп','куп'];
+	@pst_stem = 'купил';
+	@asp = 1;
+	@conj_type=2;
+	@pr_end_var = 7;
+	@pst_end_var = 1;
+when 'poluchat'
+	@infinitive = 'получать';
+	@inf = 'получать';
+	@trans = 'to get, to receive';
+	@pr_stems = ['получа','получа','получа'];
+	@pst_stem = 'получал';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'poluchit'
+	@infinitive = 'получить';
+	@inf = 'получать';
+	@trans = 'to get, to receive';
+	@pr_stems = ['получ','получ','получ'];
+	@pst_stem = 'получил';
+	@asp = 1;
+	@conj_type=2;
+	@pr_end_var = 9;
+	@pst_end_var = 1;
+when 'pomogat'
+	@infinitive = 'помогать';
+	@inf = 'помогать';
+	@trans = 'to help';
+	@pr_stems = ['помога','помога','помога'];
+	@pst_stem = 'помогал';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'pomoch'
+	@infinitive = 'помочь';
+	@inf = 'помочь';
+	@trans = 'to help';
+	@pr_stems = ['помог','помож','помог'];
+	@pst_stem = 'помог';
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 6;
+	@pst_end_var = 3;
+when 'ponimat'
+	@infinitive = 'понимать';
+	@inf = 'понимать';
+	@trans = 'to understand';
+	@pr_stems = ['понима','понима','понима'];
+	@pst_stem = 'понимал';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'ponyat'
+	@infinitive = 'понять';
+	@inf = 'понять';
+	@trans = 'to understand';
+	@pr_stems = ['пойм','пойм','пойм'];
+	@pst_stem = 'понял';
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 4;
+	@pst_end_var = 1;
+when 'posylat'
+	@infinitive = 'посылать';
+	@inf = 'посылать';
+	@trans = 'to send';
+	@pr_stems = ['посыла','посыла','посыла'];
+	@pst_stem = 'посылал';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'poslat'
+	@infinitive = 'послать';
+	@inf = 'послать';
+	@trans = 'to send';
+	@pr_stems = ['пошл','пошл','пошл'];
+	@pst_stem = 'послал';
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 3;
+	@pst_end_var = 1;
+when 'prosit'
+	@infinitive = 'просить';
+	@inf = 'просить';
+	@trans = 'to ask (to do smth)';
+	@pr_stems = ['прош','прос','прос'];
+	@pst_stem = 'просил';
+	@asp = 0;
+	@conj_type=2;
+	@pr_end_var = 8;
+	@pst_end_var = 1;
+when 'poprosit'
+	@infinitive = 'попросить';
+	@inf = 'попросить';
+	@trans = 'to ask (to do smth)';
+	@pr_stems = ['попрош','попрос','попрос'];
+	@pst_stem = 'попросил';
+	@asp = 1;
+	@conj_type=2;
+	@pr_end_var = 8;
+	@pst_end_var = 1;
+when 'reshat'
+	@infinitive = 'решать';
+	@inf = 'решать';
+	@trans = 'to decide';
+	@pr_stems = ['реша','реша','реша'];
+	@pst_stem = 'решал';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'reshit'
+	@infinitive = 'решить';
+	@inf = 'решить';
+	@trans = 'to decide';
+	@pr_stems = ['реш','реш','реш'];
+	@pst_stem = 'решил';
+	@asp = 1;
+	@conj_type=2;
+	@pr_end_var = 5;
+	@pst_end_var = 1;
+when 'risovat'
+	@infinitive = 'рисовать';
+	@inf = 'рисовать';
+	@trans = 'to draw';
+	@pr_stems = ['рису','рису','рису'];
+	@pst_stem = 'рисовал';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'narisovat'
+	@infinitive = 'нарисовать';
+	@inf = 'нарисовать';
+	@trans = 'to draw';
+	@pr_stems = ['нарису','нарису','нарису'];
+	@pst_stem = 'нарисовал';
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'slushat'
+	@infinitive = 'слушать';
+	@inf = 'слушать';
+	@trans = 'to listen';
+	@pr_stems = ['слуша','слуша','слуша'];
+	@pst_stem = 'слушал';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'poslushat'
+	@infinitive = 'послушать';
+	@inf = 'послушать';
+	@trans = 'to listen';
+	@pr_stems = ['послуша','послуша','послуша'];
+	@pst_stem = 'послушал';
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'slyshat'
+	@infinitive = 'слышать';
+	@inf = 'слышать';
+	@trans = 'to hear';
+	@pr_stems = ['слыш','слыш','слыш'];
+	@pst_stem = 'слышал';
+	@asp = 0;
+	@conj_type=2;
+	@pr_end_var = 3;
+	@pst_end_var = 1;
+when 'uslyshat'
+	@infinitive = 'услышать';
+	@inf = 'услышать';
+	@trans = 'to hear';
+	@pr_stems = ['услыш','услыш','услыш'];
+	@pst_stem = 'услышал';
+	@asp = 1;
+	@conj_type=2;
+	@pr_end_var = 3;
+	@pst_end_var = 1;
+when 'posmotret'
+	@infinitive = 'посмотреть';
+	@inf = 'посмотреть';
+	@trans = 'to see, to watch';
+	@pr_stems = ['посмотр','посмотр','посмотр'];
+	@pst_stem = 'посмотрел';
+	@asp = 1;
+	@conj_type=2;
+	@pr_end_var = 7;
+	@pst_end_var = 1;
+when 'sprashivat'
+	@infinitive = 'спрашивать';
+	@inf = 'спрашивать';
+	@trans = 'to ask';
+	@pr_stems = ['спрашива','спрашива','спрашива'];
+	@pst_stem = 'спрашивал';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'sprashivat'
+	@infinitive = 'спрашивать';
+	@inf = 'спрашивать';
+	@trans = 'to ask';
+	@pr_stems = ['спрашива','спрашива','спрашива'];
+	@pst_stem = 'спрашивал';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'sprosit'
+	@infinitive = 'спросить';
+	@inf = 'спросить';
+	@trans = 'to ask';
+	@pr_stems = ['спрош','спрос','спрос'];
+	@pst_stem = 'спросил';
+	@asp = 1;
+	@conj_type=2;
+	@pr_end_var = 8;
+	@pst_end_var = 1;
+when 'stroit'
+	@infinitive = 'строить';
+	@inf = 'строить';
+	@trans = 'to build';
+	@pr_stems = ['стро','стро','стро'];
+	@pst_stem = 'строил';
+	@asp = 0;
+	@conj_type=2;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'postroit'
+	@infinitive = 'построить';
+	@inf = 'построить';
+	@trans = 'to build';
+	@pr_stems = ['постро','постро','постро'];
+	@pst_stem = 'построил';
+	@asp = 1;
+	@conj_type=2;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'ustavat'
+	@infinitive = 'уставать';
+	@inf = 'уставать';
+	@trans = 'to get tired, to tire (of doing smth)';
+	@pr_stems = ['уста','уста','уста'];
+	@pst_stem = 'уставал';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 3;
+	@pst_end_var = 1;
+when 'ustat'
+	@infinitive = 'устать';
+	@inf = 'уставать';
+	@trans = 'to get tired, to tire (of doing smth)';
+	@pr_stems = ['устан','устан','устан'];
+	@pst_stem = 'устал';
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 2;
+	@pst_end_var = 1;
+when 'hotet'
+	@infinitive = 'хотеть';
+	@inf = 'хотеть';
+	@trans = 'to want';
+	@spec_pr = ['хочу','хочешь','хочет','хотим','хотите','хотят'];
+	@pst_stem = 'хотел';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'zahotet'
+	@infinitive = 'захотеть';
+	@inf = 'захотеть';
+	@trans = 'to want';
+	@spec_pr = ['захочу','захочешь','захочет','захотим','захотите','захотят'];
+	@pst_stem = 'захотел';
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'chitat'
+	@infinitive = 'читать';
+	@inf = 'читать';
+	@trans = 'to read';
+	@pr_stems = ['чита','чита','чита'];
+	@pst_stem = 'читал';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'prochitat'
+	@infinitive = 'прочитать';
+	@inf = 'прочитать';
+	@trans = 'to read';
+	@pr_stems = ['прочита','прочита','прочита'];
+	@pst_stem = 'прочитал';
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'znat'
+	@infinitive = 'знать';
+	@inf = 'знать';
+	@trans = 'to know';
+	@pr_stems = ['зна','зна','зна'];
+	@pst_stem = 'знал';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'uznat'
+	@infinitive = 'узнать';
+	@inf = 'узнать';
+	@trans = 'to know, to find out, to learn';
+	@pr_stems = ['узна','узна','узна'];
+	@pst_stem = 'узнал';
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'dumat'
+	@infinitive = 'думать';
+	@inf = 'думать';
+	@trans = 'to think';
+	@pr_stems = ['дума','дума','дума'];
+	@pst_stem = 'думал';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'podumat'
+	@infinitive = 'подумать';
+	@inf = 'подумать';
+	@trans = 'to think';
+	@pr_stems = ['подума','подума','подума'];
+	@pst_stem = 'подумал';
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'davat'
+	@infinitive = 'давать';
+	@inf = 'давать';
+	@trans = 'to give';
+	@pr_stems = ['да','да','да'];
+	@pst_stem = 'давал';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 3;
+	@pst_end_var = 1;
+when 'dat'
+	@infinitive = 'дать';
+	@inf = 'дать';
+	@trans = 'to give';
+	@spec_pr = ['дам','дашь','даст','дадим','дадите','дадут'];
+	@spec_pst = ['дал','дала','дало','дали'];
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'jdat'
+	@infinitive = 'ждать';
+	@inf = 'ждать';
+	@trans = 'to wait';
+	@pr_stems = ['жд','жд','жд'];
+	@spec_pst = ['ждал','ждала','ждало','ждали'];
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 4;
+	@pst_end_var = 1;
+when 'podojdat'
+	@infinitive = 'подождать';
+	@inf = 'подождать';
+	@trans = 'to wait';
+	@pr_stems = ['подожд','подожд','подожд'];
+	@spec_pst = ['подождал','подождала','подождало','подождали'];
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 4;
+	@pst_end_var = 1;
+when 'bejat'
+	@infinitive = 'бежать';
+	@inf = 'бежать';
+	@trans = 'to run';
+	@spec_pr = ['бегу','бежишь','бежит','бежим','бежите','бегут'];
+	@pst_stem = 'бежал';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'pobejat'
+	@infinitive = 'побежать';
+	@inf = 'побежать';
+	@trans = 'to run';
+	@spec_pr = ['побегу','побежишь','побежит','побежим','побежите','побегут'];
+	@pst_stem = 'побежал';
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'ehat'
+	@infinitive = 'ехать';
+	@inf = 'ехать';
+	@trans = 'to go by a vehicle, to ride, to travel';
+	@pr_stems = ['ед','ед','ед'];
+	@pst_stem = 'ехал';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 2;
+	@pst_end_var = 1;
+when 'poehat'
+	@infinitive = 'поехать';
+	@inf = 'поехать';
+	@trans = 'to go by a vehicle, to ride, to travel';
+	@pr_stems = ['поед','поед','поед'];
+	@pst_stem = 'поехал';
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 2;
+	@pst_end_var = 1;
+when 'ezdit'
+	@infinitive = 'ездить';
+	@inf = 'ездить';
+	@trans = 'to go by a vehicle, to ride, to travel (regularly)';
+	@pr_stems = ['езж','езд','езд'];
+	@pst_stem = 'ездил';
+	@asp = 0;
+	@conj_type=2;
+	@pr_end_var = 2;
+	@pst_end_var = 1;
+when 'delat'
+	@infinitive = 'делать';
+	@inf = 'делать';
+	@trans = 'to do, to make';
+	@pr_stems = ['дела','дела','дела'];
+	@pst_stem = 'делал';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'sdelat'
+	@infinitive = 'сделать';
+	@inf = 'сделать';
+	@trans = 'to do, to make';
+	@pr_stems = ['сдела','сдела','сдела'];
+	@pst_stem = 'сделал';
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'videt'
+	@infinitive = 'видеть';
+	@inf = 'видеть';
+	@trans = 'to see';
+	@pr_stems = ['виж','вид','вид'];
+	@pst_stem = 'видел';
+	@asp = 0;
+	@conj_type=2;
+	@pr_end_var = 2;
+	@pst_end_var = 1;
+when 'uvidet'
+	@infinitive = 'увидеть';
+	@inf = 'увидеть';
+	@trans = 'to see';
+	@pr_stems = ['увиж','увид','увид'];
+	@pst_stem = 'увидел';
+	@asp = 1;
+	@conj_type=2;
+	@pr_end_var = 2;
+	@pst_end_var = 1;
+when 'jit'
+	@infinitive = 'жить';
+	@inf = 'жить';
+	@trans = 'to live';
+	@pr_stems = ['жив','жив','жив'];
+	@spec_pst = ['жил','жила','жило','жили'];
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 4;
+	@pst_end_var = 1;
+when 'projit'
+	@infinitive = 'прожить';
+	@inf = 'прожить';
+	@trans = 'to live';
+	@pr_stems = ['прожив','прожив','прожив'];
+	@spec_pst = ['прожил','прожила','прожило','прожили'];
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 4;
+	@pst_end_var = 1;
+when 'tantsevat'
+	@infinitive = 'танцевать';
+	@inf = 'танцевать';
+	@trans = 'to dance';
+	@pr_stems = ['танцу','танцу','танцу'];
+	@pst_stem = 'танцевал';
+	@asp = 0;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+when 'potantsevat'
+	@infinitive = 'потанцевать';
+	@inf = 'потанцевать';
+	@trans = 'to dance';
+	@pr_stems = ['потанцу','потанцу','потанцу'];
+	@pst_stem = 'потанцевал';
+	@asp = 1;
+	@conj_type=1;
+	@pr_end_var = 1;
+	@pst_end_var = 1;
+end
+
+
+%>
+
+
+
+
+<%= render :partial => 'verb_forms_test'%>
+
+
+
+
+
+
+

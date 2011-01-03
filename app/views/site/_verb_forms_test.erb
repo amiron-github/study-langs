@@ -1,0 +1,250 @@
+<%
+
+pr_end_options = [
+  [ ['ю','ешь','ет','ем','ете','ют'],
+	['у','ешь','ет','ем','ете','ут'],
+	['<span class="accom">ю</span>','<span class="accom">ё</span>шь','<span class="accom">ё</span>т','<span class="accom">ё</span>м','<span class="accom">ё</span>те','<span class="accom">ю</span>т'],
+	['<span class="accom">у</span>','<span class="accom">ё</span>шь','<span class="accom">ё</span>т','<span class="accom">ё</span>м','<span class="accom">ё</span>те','<span class="accom">у</span>т'],
+	['<span class="accom">ю</span>','ешь','ет','ем','ете','ют'],
+	['<span class="accom">у</span>','ешь','ет','ем','ете','ут']  ],
+  [ ['ю','ишь','ит','им','ите','ят'],
+	['у','ишь','ит','им','ите','ят'],
+	['у','ишь','ит','им','ите','ат'],
+	['<span class="accom">ю</span>','<span class="accom">и</span>шь','<span class="accom">и</span>т','<span class="accom">и</span>м','<span class="accom">и</span>те','<span class="accom">я</span>т'],
+	['<span class="accom">у</span>','<span class="accom">и</span>шь','<span class="accom">и</span>т','<span class="accom">и</span>м','<span class="accom">и</span>те','<span class="accom">а</span>т'],
+	['<span class="accom">у</span>','<span class="accom">и</span>шь','<span class="accom">и</span>т','<span class="accom">и</span>м','<span class="accom">и</span>те','<span class="accom">я</span>т'],
+	['<span class="accom">ю</span>','ишь','ит','им','ите','ят'],
+	['<span class="accom">у</span>','ишь','ит','им','ите','ят'],
+	['<span class="accom">у</span>','ишь','ит','им','ите','ат']  ]
+]
+
+refl_end = ['сь','ся']
+
+
+pst_end_options = [
+	['','а','о','и'],
+	['','ла','ло','ли'],
+	['','л<span class="accom">а</span>','л<span class="accom">о</span>','л<span class="accom">и</span>']
+	] 
+
+
+
+@endings = pr_end_options[@conj_type-1][@pr_end_var-1]
+@p_end = pst_end_options[@pst_end_var-1]
+
+@pr_forms=[]
+if !@spec_pr 
+	if @reflexive == 1
+		@pr_forms = [@pr_stems[0]+@endings[0]+refl_end[0],@pr_stems[1]+@endings[1]+refl_end[1],@pr_stems[1]+@endings[2]+refl_end[1],@pr_stems[1]+@endings[3]+refl_end[1],@pr_stems[1]+@endings[4]+refl_end[0],@pr_stems[2]+@endings[5]+refl_end[1]]
+	else 
+		@pr_forms = [@pr_stems[0]+@endings[0],@pr_stems[1]+@endings[1],@pr_stems[1]+@endings[2],@pr_stems[1]+@endings[3],@pr_stems[1]+@endings[4],@pr_stems[2]+@endings[5]]
+	end
+else
+	@pr_forms = [@spec_pr[0],@spec_pr[1],@spec_pr[2],@spec_pr[3],@spec_pr[4],@spec_pr[5]]
+end
+
+@pst_forms=[]
+if !@spec_pst 
+	if @reflexive == 1
+		@pst_forms = [ @pst_stem+@p_end[0]+refl_end[1], @pst_stem+@p_end[1]+refl_end[0], @pst_stem+@p_end[2]+refl_end[0], @pst_stem+@p_end[3]+refl_end[0]]
+	else
+		@pst_forms = [ @pst_stem+@p_end[0], @pst_stem+@p_end[1],@pst_stem+@p_end[2],@pst_stem+@p_end[3]]
+	end
+else
+	@pst_forms = [@spec_pst[0],@spec_pst[1],@spec_pst[2],@spec_pst[3]]
+end
+
+@ft_forms=[]
+if !@spec_ft 
+	@ft_forms = ['буду '+@inf,'будешь '+@inf,'будет '+@inf,'будем '+@inf,'будете '+@inf,'будут '+@inf]
+else
+	@ft_forms = [@spec_ft[0],@spec_ft[1],@spec_ft[2],@spec_ft[3],@spec_ft[4],@spec_ft[5]]
+end
+
+
+%>
+
+
+
+<% @page_title = 'Verb forms: '+@infinitive %>
+<% content_for :special_js_css do %>
+<style>
+.st-table {
+width: 400px;
+}
+.st-table td {
+font-size: 12px;
+}
+
+.acc-om {
+font-weight: bold;
+color: blue;
+}
+</style>
+
+<%end%>
+
+<h3><%= @infinitive %></h3>
+<p>
+<%= @inf %> - <%= @trans %>
+</p>
+
+
+<% if @asp==0%>
+<h3>Present tense</h3>
+
+
+<table class="st-table" cellspacing="0" >
+<col width="30%"><col width="35%"><col width="35%">
+	<tr style="vertical-align: middle;">
+		<th>Person</th>
+		<th>Singular</th>
+		<th style="padding-top: 8px; padding-bottom: 8px;" class="thbrd">Plural</th>
+	</tr>
+	<tr class="eng-pron">
+		<td>1st person</td>
+		<td> я <%= @pr_forms[0]%> </td>
+		<td> мы <%= @pr_forms[3]%> </td>
+	</tr>
+	<tr>
+		<td class="case-name"> 2nd person </td>
+		<td> ты <%= @pr_forms[1]%> </td>
+		<td> вы <%= @pr_forms[4]%> </td>
+	</tr>
+	<tr>
+		<td class="case-name"> 3d person </td>
+		<td> он <%= @pr_forms[2]%> </td>
+		<td> они <%= @pr_forms[5]%> </td>
+	</tr>
+</table>
+
+<h3>Past tense</h3>
+
+
+<table class="st-table" cellspacing="0" >
+<col width="30%"><col width="35%"><col width="35%">
+	<tr style="vertical-align: middle;">
+		<th>Gender</th>
+		<th>Singular</th>
+		<th style="padding-top: 8px; padding-bottom: 8px;" class="thbrd">Plural</th>
+	</tr>
+	<tr class="eng-pron">
+		<td class="case-name"> Masculine </td>
+		<td> <%= @pst_forms[0]%> </td>
+		<td rowspan="3" valign="middle"> <%= @pst_forms[3]%> </td>
+	</tr>
+	<tr>
+		<td class="case-name">  Feminine </td>
+		<td> <%= @pst_forms[1]%> </td>
+	</tr>
+	<tr>
+		<td class="case-name"> Neuter </td>
+		<td> <%= @pst_forms[2]%> </td>
+	</tr>
+</table>
+
+<h3>Future tense</h3>
+
+
+<table class="st-table" cellspacing="0" >
+<col width="30%"><col width="35%"><col width="35%">
+	<tr style="vertical-align: middle;">
+		<th>Person</th>
+		<th>Singular</th>
+		<th style="padding-top: 8px; padding-bottom: 8px;" class="thbrd">Plural</th>
+	</tr>
+	<tr class="eng-pron">
+		<td>1st person</td>
+		<td>  я <%= @ft_forms[0]%> </td>
+		<td> мы <%= @ft_forms[3]%> </td>
+	</tr>
+	<tr>
+		<td class="case-name"> 2nd person </td>
+		<td> ты <%= @ft_forms[1]%> </td>
+		<td> вы <%= @ft_forms[4]%> </td>
+	</tr>
+	<tr>
+		<td class="case-name"> 3d person </td>
+		<td>  он <%= @ft_forms[2]%> </td>
+		<td> они <%= @ft_forms[5]%> </td>
+	</tr>
+</table>
+
+<% else %>
+<h3>Present tense</h3>
+
+
+<table class="st-table" cellspacing="0" >
+<col width="30%"><col width="35%"><col width="35%">
+	<tr style="vertical-align: middle;">
+		<th>Person</th>
+		<th>Singular</th>
+		<th style="padding-top: 8px; padding-bottom: 8px;" class="thbrd">Plural</th>
+	</tr>
+	<tr class="eng-pron">
+		<td></td>
+		<td colspan="2" valign="middle">  -- </td>
+	</tr>
+
+
+</table>
+
+<h3>Past tense</h3>
+
+
+<table class="st-table" cellspacing="0" >
+<col width="30%"><col width="35%"><col width="35%">
+	<tr style="vertical-align: middle;">
+		<th>Gender</th>
+		<th>Singular</th>
+		<th style="padding-top: 8px; padding-bottom: 8px;" class="thbrd">Plural</th>
+	</tr>
+	<tr class="eng-pron">
+		<td class="case-name"> Masculine </td>
+		<td> <%= @pst_forms[0]%> </td>
+		<td rowspan="3" valign="middle"> <%= @pst_forms[3]%> </td>
+	</tr>
+	<tr>
+		<td class="case-name">  Feminine </td>
+		<td> <%= @pst_forms[1]%> </td>
+	</tr>
+	<tr>
+		<td class="case-name"> Neuter </td>
+		<td> <%= @pst_forms[2]%> </td>
+	</tr>
+</table>
+
+<h3>Future tense</h3>
+
+<table class="st-table" cellspacing="0" >
+<col width="30%"><col width="35%"><col width="35%">
+	<tr style="vertical-align: middle;">
+		<th>Person</th>
+		<th>Singular</th>
+		<th style="padding-top: 8px; padding-bottom: 8px;" class="thbrd">Plural</th>
+	</tr>
+	<tr class="eng-pron">
+		<td>1st person</td>
+		<td> я <%= @pr_forms[0]%> </td>
+		<td> мы <%= @pr_forms[3]%> </td>
+	</tr>
+	<tr>
+		<td class="case-name"> 2nd person </td>
+		<td> ты <%= @pr_forms[1]%> </td>
+		<td> вы <%= @pr_forms[4]%> </td>
+	</tr>
+	<tr>
+		<td class="case-name"> 3d person </td>
+		<td> он <%= @pr_forms[2]%> </td>
+		<td> они <%= @pr_forms[5]%> </td>
+	</tr>
+</table>
+
+
+
+
+<%end%>
+
+
+
+<br><br><br><br><br><br>

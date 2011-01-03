@@ -2977,6 +2977,12 @@ background-color: #DDE7F5;
 }
 
 
+.ru-en #menu_body .menu-item   {
+ background-image: url("/images/bluebutton-1.gif");
+}
+.ru-en #menu_body .menu-item-front {
+ background-image: none;
+}
 
 
 
