@@ -1,0 +1,787 @@
+<%
+cluster =  Cluster.find(@cluster_num)
+@voc = cluster.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+@voc1 = cluster.words.find(:all)
+if !@less_title
+	@less_title = cluster.title
+end
+%>
+
+<% @page_title = @less_title + ' :: Уроки английского для детей'  %>
+<% @page_meta = {'description' => ""} %>
+
+
+<% content_for :special_js_css do %>
+
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'jp-control' %>
+<%= javascript_include_tag 'lexical-test' %>
+<%= stylesheet_link_tag 'lexical-test' %>
+<%= javascript_include_tag 'test-drag-sort' %>
+<%= javascript_include_tag 'es-grammar-exercises' %>
+<%= javascript_include_tag 'es-test-drag-input' %>
+<%= javascript_include_tag 'jquery-ui-1.8.6.dial.min.js' %>
+<%= stylesheet_link_tag 'custom-theme/jquery-ui-1.8.5.custom.css' %>
+
+
+<%= javascript_include_tag 'short-unit' %>
+<%= stylesheet_link_tag 'short-unit' %>
+
+<script type="text/javascript">
+<%if params[:tab] %>
+	openTabFromUrl(<%= params[:tab] %>);
+<%else%>
+	openTabFromUrl();
+<%end%>
+
+$(function(){
+ var dsOpLen = $(".ds-options-wrap li").length;
+ var dsOpUnits = new Array();
+ for (var i=0; i < dsOpLen; i++ ) {
+	dsOpUnits.push( '<li>'+$(".ds-options-wrap li").eq(i).html() + '<\/li>' );
+ }
+ $(".ds-options-wrap").empty().prepend( dsOpUnits.shuffle().join(" ") )
+
+ $("#les-res").click(function() {
+		$( "#dialog" ).dialog({
+			height: 300,
+			width: 400,
+			modal: true
+		}).dialog( "option", "buttons", { "Ok": function() { $(this).dialog("close"); } } );	
+ })
+ 
+})
+
+function stResults(source,step) {
+	var res = parseInt(source.text());
+	if (res>0 && res >= parseInt($("#step"+step).text()) ) {
+		var msg;
+		if (res < 60) {
+			msg='<span style="color:red" title="'+res+'%">плохо<\/span>';
+		} else if (res > 95) {
+			msg='<span style="color:green" title="'+res+'%">отлично<\/span>';
+		} else if (res <= 95 && res > 80) {
+			msg='<span style="color:blue" title="'+res+'%">очень хорошо<\/span>';
+		}else {
+			msg='<span style="color:blue" title="'+res+'%">хорошо<\/span>';
+		}
+		$("#gen_step"+step).html('<b>'+msg+'<\/b>')
+		$("#step"+step).text(res)
+	}
+}
+function dragTResults(container) {
+	var infoHolder = container.find(".ds-check-wrapper");
+	var total = infoHolder.data('total');
+	var correct = infoHolder.data('correct');
+	var tResults = Math.round((correct/total)*100);
+	container.find("#ds_res_perc").remove();
+	container.append('<span id="ds_res_perc" style="display: none">'+tResults+'<\/span>');
+	stResults($("#ds_res_perc"),2)
+}
+</script>
+
+<style type="text/css">
+
+.ui-dialog {
+    position: fixed;
+}
+
+.obj-sound .jp_control,.obj-sound .jp_control:hover {
+    background-color: #FFFFFF;
+    background-image: url("/images/play-25.png");
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    height: 27px;
+    width: 27px;
+}
+
+.obj-sound .jp_pause {
+    background-image: url("/images/pause-25.png") !important;
+}
+
+
+.lt-img .es-ex-string-wrapper .jp_control, .es-ex-string-wrapper .jp_control:hover {
+    background-color: #FFFFFF;
+    background-image: url("/images/play-25.png");
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    height: 27px;
+    width: 27px;
+	margin: 0 auto;
+}
+
+.lt-img .es-ex-string-wrapper .jp_pause {
+    background-image: url("/images/pause-25.png") !important;
+}
+
+
+.obj-txt {
+padding: 10px 2px;
+font-weight: bold;
+font-size: 15px;
+}
+
+.obj-transl {
+font-size: 11px;
+color: #444;
+padding: 6px 2px;
+}
+
+.su-im-present {
+background-color: #eff5fe;
+border:3px solid #86ACEF;
+margin:0 20px 30px;
+padding:10px;
+-moz-box-shadow:1px 1px 0px #627EAF, 1px 2px 3px #3E556F;
+-webkit-box-shadow:1px 1px 0px #627EAF, 1px 2px 3px #3E556F;
+box-shadow:1px 1px 0px #627EAF, 1px 2px 3px #3E556F;
+}
+
+.su-im-present-brd {
+background-color: #fff;
+padding: 20px;
+}
+
+.su-im-wrap {
+border: 2px solid #8FA2BF;
+background-color: #fff;
+margin: 3px;
+-moz-box-shadow:1px 2px 3px #B5C2CF;
+-webkit-box-shadow:1px 2px 3px #3E556F;
+box-shadow:1px 2px 3px #3E556F;
+}
+
+.lt-img .es-ex-tasks ul li input {
+display: none;
+}
+
+.lt-img .es-ex-tasks ul li {
+fl-oat: left;
+margin-right: 5px;
+padding: 6px 8px;
+text-indent: 0;
+display: inline-block;
+}
+
+.lt-img .es-ex-string-wrapper {
+font-size: 32px;
+}
+
+.lt-img .es-ex-string-wrapper td span {
+font-size: 16px;
+display: block;
+padding-bottom: 10px;
+font-weight: normal;
+font-style: italic;
+}
+
+.lt-img .es-ex-string-wrapper td img {
+border: 1px solid #ccc;
+display: block;
+margin-right: 20px;
+}
+
+.lt-img .es-ex-string-holder {
+margin-left: 30px;
+margin-right: 30px;
+}
+
+
+.lt-img .es-ex-tasks-list {
+overflow: hidden;
+padding: 3px 10px 10px;
+text-align: center;
+}
+
+.lt-img li.lt-ex-wrong {
+background-color: #FF1200;
+background-image: none;
+}
+
+.lt-img li.lt-ex-should {
+background-color: #1DEF61;
+background-image: none;
+}
+
+.lt-img li.lt-ex-correct {
+background-color: #1DEF61;
+background-image: none;
+}
+
+.ds_vholder {
+padding: 3px 6px;
+}
+
+.lt-spacer {
+padding-bottom: 60px;
+}
+
+.es-ex-type-rand {
+background-color: #BFD9FF;
+border: 1px dashed #A0B2CC;
+margin-bottom: 10px;
+margin-right: -12px;
+padding: 4px 3px;
+position: relative;
+cursor: default;
+}
+
+.es-ex-type-rand span {
+ background-color: #FFFFFF;
+ color: #333333;
+ font-size: 21px;
+ margin-left: 3px;
+ padding: 0px 3px 1px;
+ cursor: pointer;
+}
+
+.lt-img .es-ex-type-elem {
+position: relative;
+padding: 10px 30px 20px;
+margin-bottom: 10px;
+}
+
+.lt-img .es-ex-type-field  {
+display: block;
+}
+
+a.lt-type-reset {
+border: 1px solid gray;
+cursor: pointer;
+display: block;
+font-size: 19px;
+padding: 0px 2px;
+font-weight: bold;
+outline: none;
+position: absolute;
+right: 4px;
+margin-top: -30px;
+text-decoration: none !important;
+text-decoration: none !important;
+-moz-user-select: none;
+-khtml-user-select: none;
+user-select: none;
+}
+
+
+
+a.lt-type-reset:link {
+background-color:#fff;
+border:1px solid gray;
+color:#444444;
+}
+a.lt-type-reset:visited {
+background-color:#fff;
+border:1px solid gray;
+color:#444444;
+}
+a.lt-type-reset:hover {
+background-color:#BFDCFF;
+border:1px solid #000000;
+color:#000000;
+}
+a.lt-type-reset:active {
+background-color:#2F71BF;
+border:1px solid #000000;
+color:#FFFFFF;
+}
+
+.es-ex-untyped {
+color: red;
+border-color: red;
+}
+
+.es-ex-typed {
+color: green;
+background-color: #EFFFF1;
+background-image: none;
+border-color: green;
+}
+
+.su-task  {
+text-indent: 0;
+padding-left: 30px;
+}
+
+.ds_sort_item {
+    margin-left: 9px;
+}
+
+b.st-link:hover {
+text-decoration: underline;
+}
+
+b.st-link {
+cursor: pointer;
+}
+
+.kl-res-list {
+list-style-type: circle;
+}
+
+.kl-res-info {
+font-size: 10px; 
+font-style: italic;
+color: #555;
+padding-top: 10px;
+margin-top: 20px;
+border-top: 1px dotted #555;
+}
+
+.kl-res-list li {
+font-size: 14px;
+font-weight: bold;
+padding: 5px 3px 5px;
+}
+
+.kl-res-list li span {
+font-size: 12px;
+font-weight: normal;
+font-style: italic;
+color: #888;
+}
+
+
+.kl-res-caller {
+display: none;
+}
+.kl-res-list li b span  {
+font-weight: bold;
+}
+
+.kl-res-caller input.st-bl-btn {
+height: 24px;
+line-height:22px;
+padding-left: 6px;
+padding-right: 6px;
+}
+
+.kl-res-caller {
+padding-left: 40px;
+padding-top: 15px;
+}
+
+</style>
+
+<!--[if lte IE 7]>
+<style>
+.lt-img .es-ex-tasks ul li {
+float: left;
+display: block;
+}
+</style>
+<![endif]-->
+
+<% end %>
+
+
+
+
+
+<div class="unit-area">
+
+
+<div id="prof_tabs">
+
+<div class="unit-title">
+Урок: <%= @less_title %>
+</div>
+	<div id="tabs_row">
+            <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Этап 1</a></div></div>
+			<div id="tab02" class="ptab"><div><a href="#">Этап 2</a></div></div>
+            <div id="tab03" class="ptab"><div><a href="#">Этап 3</a></div></div>
+			<div id="tab04" class="ptab"><div><a href="#">Этап 4</a></div></div>
+			<div id="tab05" class="ptab"><div><a href="#">Этап 5</a></div></div>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+
+<div id="for_tab01" class="pBlock" style="display: block">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Обзор</h3>
+<p class="su-step-info">
+Данный этап предназначен для ознакомления со словами, с которыми обучающийся будет работать на уроке.
+</p>	
+
+
+<h4 class="su-task">
+Слушай и повторяй. Постарайся запомнить, как звучат и пишутся представленные слова.
+</h4>
+	
+<div class="su-im-present">
+<div class="su-im-present-brd">
+
+<table class="obj-sound" width="100%" align="center" style="margin: 0 auto;" cellspacing="2">
+<col width="50%"><col width="50%">
+
+<% @rows = 2 %>
+<% @voc.each_with_index do |word,index| %>
+<%if index % @rows == 0 %><tr><%end%>
+	
+		<td>
+<div class="su-im-wrap">
+<table cellspacing="0">
+	<tr>
+		<td>
+			<img width="130" src="<%= word.image_url %>" /> 
+		</td>
+		<td style="padding-right: 30px;">
+			<div class="obj-txt"><%= word.text %></div>
+			<div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div>
+			<div class="obj-transl"><%= word.translate %></div>
+	</tr>
+</table>
+</div>		
+		</td>
+<%if index % @rows == @rows-1 %></tr><%end%>
+<%end%>
+</table>
+	
+</div>	
+</div>		
+	
+	
+	
+	
+<br><br>
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(2)">
+</div>	
+	
+<br><br><br><br><br><br><br>	
+	</div>
+</div>
+<div id="for_tab02" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Прочитай, послушай и найди ответ</h3>
+<p class="su-step-info">
+Данный этап предназначен для первичной работы с лексикой урока.
+</p>	
+	
+
+
+<h4 class="su-task">
+Прочитай или прослушай фразы и найди для каждой из них подходящую картинку.
+</h4>
+
+<div id="ds2" class="ds-wrapper" style="padding: 15px;">
+
+<p class="task" align="center">Перетащи картинки на нужное место и нажми "Проверить"</p>		
+
+<table align="center" style="margin: 0 auto;">
+
+<tr>
+<td>
+
+
+<table class="dst-test ds-table ds-audio" cellspacing="0" align="left" style="margin: auto">
+<col width="80">
+<col width="20">
+<col width="40">
+<col width="100">
+
+
+<% @voc1.each_with_index do |word, index| %>
+<tr>
+	<td class="ds-quest" align="right" height="65">
+			 <span style="font-size: 15px"><%= word.text %></span>
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer" >
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<% end %>
+
+
+</table>
+
+</td>
+
+
+
+<td style="padding-left: 20px;">
+
+<table class="ds_variants_list" width="100%">
+<tr valign="top">
+<td>
+
+<ul class="no-list ds-options-wrap">
+
+
+<% @voc1.each_with_index do |word, index| %>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt"><%= index+1 %></span><img width="70" src="<%= word.image_url %>"></div></div>
+	</li>
+<% end %>
+</ul>
+
+</td>
+</tr>
+</table>
+
+
+
+</td>
+</tr>
+</table>
+
+
+<div class="es_btn_wrapper es-ex-buttons ds-check-wrapper">
+
+<input type="button" class="es_btn ds-check-button" value="Проверить">
+
+</div>
+
+
+</div>
+
+<script type="text/javascript"> 
+	var ds2 = new dragsort_test( {
+		id: "ds2", 	
+		<% unless @test_data[0] == nil || @test_data[0]==''%>test_id: "<%= @test_data[0] %>",<%end%>		
+		targets: "ds-answer",
+		callback: function(){dragTResults($("#ds2"))},	
+		answer_elem: "ds_sort_item", 
+		variant_elem: "ds_variant",
+		answer_color: "#F6FAFF",
+		auto_check: false
+		} )
+</script>	
+		
+	
+<br><br>
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(3)">
+</div>
+
+<br><br><br><br><br><br><br>
+
+	</div>
+</div>
+<div id="for_tab03" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Прослушай и найди ответ</h3>
+<p class="su-step-info">
+Данный этап предназначен для развития аудирования.
+</p>	
+	
+<h4 class="su-task">
+Прослушай фразы и найди для каждой из них подходящую картинку.
+</h4>
+
+<div id="ch1" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test_img', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1",
+		<% unless @test_data[1] == nil || @test_data[1]==''%>test_id: "<%= @test_data[1] %>",<%end%>		
+		quest_num: 10,
+		callback: function() {stResults($("#ch1_result"),3)},
+		variants_num: 6,
+		quest_type: 'audio',
+		next_time: 2500,
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+<% 
+@last_voc = (@voc.length)-1
+%>
+<% @voc.each_with_index do |voc_word,index|  %>
+['<%= voc_word.sound_url %>', '<img width="130" src="<%= voc_word.image_url %>">' ]<% if index!= @last_voc -%>,<%end -%>
+<% end %>
+	
+		]
+		
+		} )
+</script>
+
+
+	
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(4)">
+</div>	
+	
+<br><br><br><br><br><br><br>
+	
+	</div>
+</div>
+
+<div id="for_tab04" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Составь слово</h3>
+<p class="su-step-info">
+Данный этап предназначен для работы с писменной формой слов и выражений.
+</p>	
+
+<h4 class="su-task">
+Посмотри на картинку и прослушай запись. Из предложенных букв составь английское слово для перевода. Кликни на букву, чтобы она появилась в текстовом поле.
+</h4>
+
+<div id="ch2" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test_img', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		<% unless @test_data[2] == nil || @test_data[2]==''%>test_id: "<%= @test_data[2] %>",<%end%>
+		quest_num: 10,
+		variants_num: 6,
+		quest_type: 'html',
+		answer_type: 'type',
+		callback: function() {stResults($("#ch2_result"),4)},
+		tp_no_space: true,
+		rand_letters: true,
+		next_time: 2500,
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+<% 
+@last_voc = (@voc.length)-1
+%>
+<% @voc.each_with_index do |voc_word,index|  %>
+['<table><tr><td><img src="<%= voc_word.image_url %>"><\/td><td><span>Прослушать<\/span> <div class="jp_control" onclick="cJplayer(\'<%= voc_word.sound_url %>\', this)"><\/div><\/td><\/tr><\/table>', '<%= voc_word.text %>' ]<% if index!= @last_voc -%>,<%end -%>
+<% end %>
+	
+		]
+		
+		} )
+</script>
+
+
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(5)">
+</div>
+
+<br><br><br><br><br><br><br>
+
+	</div>
+</div>
+<div id="for_tab05" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Повторение и результаты</h3>
+<p class="su-step-info">
+Данный этап предназначен для закрепления изученного материала.
+</p>	
+	
+<h4 class="su-task">
+Посмотри на картинку. В списке справа найди перевод на английский язык.
+</h4>	
+	
+
+<div id="ch3" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch3 = new ch_exercise( {
+		id: "ch3", 
+		<% unless @test_data[3] == nil || @test_data[3]==''%>test_id: "<%= @test_data[3] %>",<%end%>
+		quest_num: 10,
+		variants_num: 5,
+		callback: function() {stResults($("#ch3_result"),5)},
+		next_time: 2500,
+		quest_type: 'image',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+<% @last_item_index = (@voc.length)-1 -%>
+<% @voc.each_with_index  do |word, index| -%>
+['<%= word.image_url %>', "<%= word.text.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
+		} )
+</script>
+
+
+<div class="rk-res-wrapper">
+<h3 class="su-page-p" style="margin-top: 0">Результаты урока</h3>
+<p>
+Текущие результаты урока<span title="См. ниже">*</span>:
+</p>
+	
+<ul class="kl-res-list">
+	<li><b class="st-link" onclick="openNextStep(2)">Этап 2</b>: <span id="gen_step2" class="kl-res-li">не выполненено</span></li>
+	<li><b class="st-link" onclick="openNextStep(3)">Этап 3</b>: <span id="gen_step3" class="kl-res-li">не выполненено</span> </li>
+	<li><b class="st-link" onclick="openNextStep(4)">Этап 4</b>: <span id="gen_step4" class="kl-res-li">не выполненено</span></li>
+	<li><b class="st-link" onclick="openNextStep(5)">Этап 5</b>: <span id="gen_step5" class="kl-res-li">не выполненено</span></li>
+</ul>
+
+<div class="kl-res-caller">
+<span class="es-ex-buttons st-bl-btn-wrap">
+<input type="button" class="st-bl-btn" id="les-res" value="Подробно">
+</span>
+</div>
+<div class="kl-res-info">
+* Показаны самые высокие результаты
+</div>
+
+
+
+
+
+<div style="display: none">
+<div id="dialog" title="Результаты урока" align="left">
+	<p>
+	Результаты выполненных упражнений: 
+	</p>
+
+<ul>
+	<li>Этап 2: <span id="step2">0</span>%</li>
+	<li>Этап 3: <span id="step3">0</span>% </li>
+	<li>Этап 4: <span id="step4">0</span>%</li>
+	<li>Этап 5: <span id="step5">0</span>%</li>
+</ul>
+</div>
+</div>
+
+</div>
+
+<br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br>
+
+	</div>
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+<script type="text/javascript">
+currentSection="words";
+</script>
+
+

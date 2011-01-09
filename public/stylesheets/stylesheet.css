@@ -2984,6 +2984,16 @@ background-color: #DDE7F5;
  background-image: none;
 }
 
+.ds-wrapper .ds-check-wrapper {
+position: relative;
+padding-left: 110px;
+padding-right: 110px;
+}
+
+.ds-wrapper  .check_notify {
+text-align: left;
+}
+
 
 
 

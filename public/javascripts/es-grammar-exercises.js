@@ -72,13 +72,11 @@ $(".di_mix_variants").each(function(i, elem) {
 	if ( $(elem).hasClass("di_not_mix") == false) {
 		tStr = tStr.shuffle();
 	}
-	
 	for (var n=0; n < tStr.length; n ++ ) {
 		$(elem).append("<span>" + tStr[n] + "</span> ")
 	}
 
 });
-
 
 
 });

@@ -1,0 +1,435 @@
+<% @page_title = 'Карточки' %>
+<% @page_meta = {'description' => ""} %>
+<% @has_audio = true %>
+
+
+<% content_for :special_js_css do %>
+<%= javascript_include_tag 'vocabulary-enru' %>
+
+<script type="text/javascript">
+
+var gamePlace;
+var totalScore=0;
+var tasks;
+
+
+$(document).ready(function(){
+
+gamePlace=$("#game_place").html();
+
+$("select").change(function () {
+	var topic=$("select option").index($("select option:selected"));
+	getTopic(topic);
+}).change();
+
+ $.get("/sounds/games/memory_ding.mp3");
+ $.get("/sounds/games/memory-tada.mp3");
+
+});
+
+
+
+function checkCard(){
+
+var cardToCheck=t.data("tocheck");
+
+if ($(".act_card").length) {
+
+	if($("div.act_card").length==1){
+
+		if($("div.act_card").attr("id")==cardToCheck){
+
+			t.addClass("act_card");
+
+				var posX1=t.get(0).offsetLeft;
+				var posY1=t.get(0).offsetTop+30;
+				var posX2=$("div#"+cardToCheck).get(0).offsetLeft;
+				var posY2=$("div#"+cardToCheck).get(0).offsetTop+30;
+			setTimeout(function(){
+				var cardClosedTimes1=t.data("closed");
+				var cardClosedTimes2=$("div#"+cardToCheck).data("closed");
+
+				var CardPointsCount=new Array(cardClosedTimes1, cardClosedTimes2);
+				var cardPoints=new Array();
+
+					for (var i=0; i<2; i++)	{
+
+						switch(CardPointsCount[i])
+							{
+						case 0:
+ 						 cardPoints[i]=50
+ 						 break;    
+						case 1:
+ 							cardPoints[i]=30
+ 						 break;
+						case 2:
+ 							cardPoints[i]=20
+ 						 break;
+
+						default:
+
+							cardPoints[i]=10
+						}
+					}
+
+				totalScore=totalScore+cardPoints[0]+cardPoints[1];
+				
+				t.removeClass("card").addClass("card_open").css({visibility: "hidden"});
+
+				$("div#"+cardToCheck).removeClass("card").addClass("card_open").css({visibility: "hidden"});
+
+				$("div.act_card").removeClass("act_card");
+				
+				playSound('games/memory_ding.mp3');
+
+
+				$("#helper1").css({left: posX1+30, top: posY1, opacity: "1"}).text(cardPoints[0]+" очков!").animate({top:  "-=100px", opacity: "0"},1200, function(){
+
+					$("#helper1").empty();
+				});
+
+				$("#helper2").css({left: posX2, top: posY2, opacity: "1"}).text(cardPoints[1]+" очков!").animate({top:  "-=110px", opacity: "0"},1400, function(){
+
+					$("#helper2").empty();
+				});
+
+				$("#answers").text("Счёт: "+totalScore);
+				
+				if ($("div.card").length==0){
+					setTimeout(function(){
+						playSound('games/memory-tada.mp3');
+
+
+						$("#answers").hide().css({position: "relative", top: "-350px", fontSize: "16px"}).html("Гамовер <br><br> Вы набрали: "+totalScore+" очков").show();
+
+					}, 1000);
+
+					}
+
+			},900);
+		
+		}else{
+
+			var secondOpen=$("div.act_card");
+
+			var secondClosed=secondOpen.data("closed");
+			var tClosed=t.data("closed");
+
+			t.addClass("act_card");
+
+			setTimeout(function(){
+				
+				secondOpen.data("closed", secondClosed+1);
+				t.data("closed", tClosed+1);
+
+				$("div.card").removeClass("act_card");
+			},1600);
+	
+		}
+
+	   }else{
+		return false;
+	   }
+
+}else{
+
+t.addClass("act_card");
+
+}
+
+}
+
+function startMemoryGame() {
+
+$("#game_place").html(gamePlace);
+
+$("div.card").click(function(){
+
+	t=$(this);
+
+	checkCard(t);
+
+});
+
+
+totalScore=0;
+
+
+$("#answers").text("Score: "+totalScore);
+
+var cardSize=$("div.card").length;
+
+
+var allTask=new Array();
+
+
+for (var i=0; i<tasks.length; i++){
+	allTask[i]=tasks[i]
+}
+
+
+var curTaskNum=cardSize/2;
+var currentTask=new Array();
+
+currentTask=shuffleArray(allTask,curTaskNum);
+
+
+var russName=new Array();
+var engName=new Array();
+
+
+  for (var i=0; i< currentTask.length; i++) {
+	russName.push(currentTask[i][0]);
+	engName.push(currentTask[i][1]);
+  }
+
+
+
+var helpRussName=new Array();
+var helpEngName=new Array();
+
+
+for (var i=0; i<curTaskNum; i++) {
+	helpRussName[i]={word: russName[i], div: "r"+i, check: "e"+i};
+	helpEngName[i]={word: engName[i], div: "e"+i, check: "r"+i};
+}
+
+
+var allHelpNames=new Array();
+var allHelpNames=helpRussName.concat(helpEngName);
+
+
+var ahnLen=allHelpNames.length;
+
+var newAllHelpNames=shuffleArray(allHelpNames,ahnLen)
+
+
+for (var i=0; i< ahnLen; i++){
+	var inDataClosed=0;
+
+	$("div.card").eq(i).attr("id",  newAllHelpNames[i]['div']).html("<div>"+ newAllHelpNames[i]['word']+"<\/div>").data("tocheck", newAllHelpNames[i]['check']).data("closed", inDataClosed);
+
+}
+
+
+}
+
+
+function shuffleArray(arr, length) {
+    var newArray = new Array();
+    if (!length) length = arr.length;
+
+    for (var i=0; i<length; i++) {
+        var t = Math.round(Math.random()*(arr.length-1));
+        newArray.push(arr[t]);
+        arr.splice(t,1);
+    }
+    return newArray;
+}
+
+
+</script>
+
+<style type="text/css"> 
+
+#game_place {
+position: absolute;
+width: 560px;
+background-color: #1F427F;
+text-align: left;
+background-image: url("/images/game-box.gif");
+background-repeat: repeat-x;
+background-position: left bottom;
+background-color: #183A87;
+}
+
+.game_place_top {
+height: 30px;
+}
+
+
+.game_field {
+padding-left: 10px !important;
+padding: 0px;
+background-image: url("/images/card-back.jpg");
+background-repeat: no-repeat;
+background-position: -200px -200px;
+}
+
+.card {
+float: left;
+width: 120px;
+margin-left: 10px;
+height: 130px;
+border: 1px solid #000;
+margin-bottom: 10px;
+background-color: #fff;
+text-align: center;
+background-color: #AFCCFF;
+color: #000;
+cursor: pointer;
+position: relative;
+background-image: url("/images/card.jpg");
+background-repeat: no-repeat;
+background-position: 50% bottom;
+}
+
+.card div {
+display: none
+}
+
+.act_card {
+background-color: #fff;
+color: #000;
+overflow: hidden;
+background-image: url("/images/card-back.jpg");
+background-repeat: repeat-x;
+background-position: left bottom;
+}
+
+.act_card div {
+display: block;
+padding: 15px 10px;
+}
+
+.card_open {
+float: left;
+width: 120px;
+margin-left: 10px;
+height: 130px;
+border: 1px solid #000;
+margin-bottom: 10px;
+background-color: #fff;
+text-align: center;
+background-color: #fff;
+color: #555;
+font-size: 0px;
+cursor: default;
+overflow: hidden;
+}
+
+
+#helper1, #helper2 {
+position: absolute;
+color: #FF2F4B;
+font-size: 16px;
+font-weight: bold;
+}
+
+#helper2 {
+position: absolute;
+}
+
+
+#answers {
+
+color: blue;
+text-align: center;
+font-weight: bold;
+color: #fff;
+height: 40px;
+
+
+}
+
+#gamebox {
+height: 750px;
+}
+
+#game_starting {
+text-align: center;
+}
+
+#startMemory  {
+font-size: 15px;
+font-weight: bold;
+}
+
+</style>
+
+<% end %>
+
+<h2  class="page" style="color: #444">Memory Game</h2>
+
+<div id="game_starting">
+
+<p style="margin-bottom: 25px; max-width: 560px; margin-left: auto; margin-right: auto">
+В игре нужно найти соотвествующие пары русский-английский. 
+При открытии пары вам начисляются очки. Выберите тему и нажмите "Старт"! 
+</p>
+<form>
+<p><b>Словарная тема: &nbsp;&nbsp;</b>
+<select name="OS">
+<option selected >Приветствия</option>
+<option>Вежливость</option>
+<option>Семья</option>
+</select></p>
+</form> 
+
+<br>
+<input id="startMemory" type="button" value="СТАРТ" onclick="startMemoryGame()" />
+</div>
+<br>
+<div id="gamebox">
+<div style="width: 50%;">
+<div style="float: right;">
+
+
+<div id="game_place" style="margin-left: -280px;">
+
+<div class="game_place_top">
+</div>
+
+<div class="game_field">
+
+<div class="card"></div>
+<div class="card"></div>
+<div class="card"></div>
+<div class="card"></div>
+<div class="card"></div>
+<div class="card"></div>
+<div class="card"></div>
+<div class="card"></div>
+<div class="card"></div>
+<div class="card"></div>
+<div class="card"></div>
+<div class="card"></div>
+<div class="card"></div>
+<div class="card"></div>
+<div class="card"></div>
+<div class="card"></div>
+
+<div style="clear: both;"></div>
+
+</div>
+
+
+<div id="answers">
+
+<div style="clear: both;"></div>
+</div>
+
+
+<div id="helper1"></div>
+<div id="helper2"></div>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+<script type="text/javascript">
+currentSection="words";
+</script>

@@ -123,6 +123,9 @@ this.texts = hash['texts'];					// default - english
 this.questNum = hash['quest_num'];			// default - basic array length
 this.virtKeys = hash['virt_keys'];			// default - false
 this.tpNoSpace = hash['tp_no_space'];			// default - false
+this.toNextTime = hash['next_time'];			// default - 1600
+this.randLetters = hash['rand_letters'];		// default - false
+this.callback = hash['callback'];
 
 var tObj = this;
 
@@ -134,6 +137,10 @@ if (this.variantsNum == undefined) this.variantsNum = 4;
 if (this.variantsNum > this.questNum ) this.variantsNum = this.questNum;
 if (this.virtKeys == undefined) this.virtKeys = false; 
 if (this.tpNoSpace == undefined) this.tpNoSpace = false;
+if (this.toNextTime == undefined) this.toNextTime = 1600;
+if (this.randLetters == undefined) this.randLetters = false;
+if (this.callback == undefined) this.callback = function() {return false};
+
 
 if (tObj.texts == undefined) {
 	tObj.correctMsg = "Great! This is correct";
@@ -206,7 +213,9 @@ this.parseTest = function() {
 		tObj.start();
 }
 
-
+this.callAfter = function() {
+	tObj.callback();
+}
 
 this.start = function () {
 
@@ -361,9 +370,13 @@ this.getYnAnswers = function() {
 }
 
 this.getTypeAnswers = function() {
-	tObj.optionsHolder.find(".es-ex-type-field").val("");
+	tObj.optionsHolder.find(".es-ex-type-field").val("").removeClass("es-ex-untyped").removeClass("es-ex-typed");
 	tObj.optionsHolder.find(".es-ex-type-elements").html('<a href="javascript:;" class="es-ex-show-type">Show the answer</a>');
 	tObj.optionsHolder.find(".es-ex-show-str-type").text(tObj.workArray[tObj.counter][1]);
+	
+	if (tObj.randLetters) {lt_randomLetters(tObj.workArray[tObj.counter][1],tObj.optionsHolder.find(".es-ex-type-rand"), tObj.optionsHolder.find(".es-ex-type-field"));}
+	
+	
 	
 	tObj.optionsHolder.find(".es-ex-check-type").removeClass("es-ex-invisible").unbind("click").click(function() {
 		var userAnswer = tObj.optionsHolder.find(".es-ex-type-field").val();
@@ -372,13 +385,13 @@ this.getTypeAnswers = function() {
 
 		userAnswer = String( tObj.optionsHolder.find("span.tp_helper").html() )
 		
-		userAnswer=userAnswer.replace(/[.,;?!]/g, "").replace(/-/g, " ").replace(/&nbsp;/g, " ").replace(/&nbsp/g, " ").replace(/\s\s+/g, " ").toUpperCase().replace(/�/g, '�');	
+		userAnswer=userAnswer.replace(/[.,;?!]/g, "").replace(/-/g, " ").replace(/&nbsp;/g, " ").replace(/&nbsp/g, " ").replace(/\s\s+/g, " ").toUpperCase().replace(/Ё/g, 'Е');	
 		userAnswer = $.trim(userAnswer);
 
 		tObj.optionsHolder.find("span.tp_helper").remove();
 		
 		var tWord = tObj.workArray[tObj.counter][1]
-		tWord=tWord.replace(/[.,;?!]/g, "").replace(/-/g, " ").replace(/&nbsp;/g, " ").replace(/&nbsp/g, " ").replace(/\s\s+/g, " ").toUpperCase().replace(/�/g, '�');	
+		tWord=tWord.replace(/[.,;?!]/g, "").replace(/-/g, " ").replace(/&nbsp;/g, " ").replace(/&nbsp/g, " ").replace(/\s\s+/g, " ").toUpperCase().replace(/Ё/g, 'Е');	
 		
 		if (tObj.tpNoSpace) {
 			tWord=tWord.replace(/&nbsp;/g, "").replace(/\s\s+/g, "").replace(/\s+/g, "")
@@ -388,12 +401,24 @@ this.getTypeAnswers = function() {
 		if ( userAnswer.toUpperCase() == tWord.toUpperCase() ) {
 			tObj.alertHolder.empty().removeClass(tObj.correctClass).removeClass(tObj.wrongClass);
 			if (tObj.autoPlay) tObj.optionsHolder.find(".es-ex-check-type").unbind("click");
+			tObj.optionsHolder.find(".es-ex-type-field").addClass("es-ex-typed");
+			
+			
+			
+			
 			tObj.correctAnswer();
 		} else {
 			tObj.alertHolder.empty().removeClass(tObj.correctClass).removeClass(tObj.wrongClass);
 			if (tObj.autoPlay) tObj.optionsHolder.find(".es-ex-check-type").unbind("click");
+			tObj.optionsHolder.find(".es-ex-type-field").addClass("es-ex-untyped");
+			
 			tObj.wrongAnswer();
 		}
+		
+		setTimeout(function() {
+			tObj.optionsHolder.find(".es-ex-type-field").removeClass("es-ex-untyped").removeClass("es-ex-typed");
+		}, tObj.toNextTime)
+		
 		
 		if ($(".keys_poser").is(":visible")) {
 			tObj.optionsHolder.find(".es-ex-type-field").click();
@@ -499,7 +524,7 @@ this.correctAnswer = function () {
 			if ($(elem).data('correct') != 'true') {
 				tObj.highlightWrong($(elem));
 			} else {
-				$(elem).css({color: "green"}).find("input").attr("disabled", "disabled")
+				$(elem).css({color: "green"}).addClass("lt-ex-correct").find("input").attr("disabled", "disabled")
 			}
 		});
 	} else {
@@ -526,10 +551,10 @@ this.wrongAnswer = function (jElem) {
 			if ($(elem).data('correct') != 'true') {
 				tObj.highlightWrong($(elem));
 			} else {
-				$(elem).css({color: "green"}).find("input").attr("disabled", "disabled")
+				$(elem).css({color: "green"}).addClass("lt-ex-should").find("input").attr("disabled", "disabled")
 			}
 		});
-		jElem.css({color: "red"});
+		jElem.css({color: "red"}).addClass("lt-ex-wrong");
 	} else {
 		tObj.ynButtons.unbind("click");
 	}
@@ -537,7 +562,7 @@ this.wrongAnswer = function (jElem) {
 	if (tObj.autoPlay) {
 		toNextInt = setTimeout(function() {
 				tObj.gotoNext();
-		}, 1600);
+		}, tObj.toNextTime);
 	}
 }
 
@@ -570,14 +595,14 @@ this.gotoEnd = function() {
 	tObj.nextButton.addClass("es-ex-invisible");
 
 	var tResults = Math.round((tObj.correctAswersNum / tObj.questNum ) * 100)
-	tObj.finalSign.html('<div><i> '+tObj.totalQuestionsTxt+':</i> '+tObj.questNum+' <br><i>'+tObj.correctAnswersTxt+':</i> '+ tObj.correctAswersNum +'<br><b><br><i>'+tObj.yourResultTxt+'</i></b>: '+tResults+'%</div>' ).fadeIn();
+	tObj.finalSign.html('<div><i> '+tObj.totalQuestionsTxt+':</i> <span id="'+tObj.id+'_total">'+tObj.questNum+'</span> <br><i>'+tObj.correctAnswersTxt+':</i> <span id="'+tObj.id+'_correct">'+ tObj.correctAswersNum +'</span><br><b><br><i>'+tObj.yourResultTxt+'</i></b>: <span id="'+tObj.id+'_result">'+tResults+'</span>%</div>' ).fadeIn();
 
 	if (tObj.questType == 'audio') {
 		exJpForce = true;
 		ex_Jplayer('/sounds/yes.mp3', tObj.audioHolder.get(0),1);
 		exJpForce = false;
 	}
-
+	this.callAfter()
 	var totalTasks = tObj.questNum;
 	var tID = tObj.testID;
 	var correctNum = tObj.correctAswersNum;
@@ -607,7 +632,38 @@ $(document).ready(function() {
 }
 
 
+function lt_randomLetters(word, container, target) {
 
+	var tStr = word;
+	container.empty();
+	tStr = tStr.replace(/[!.,;?]/g, "").replace(/\s\s+/g, " ").split("");
+	tStr = tStr.shuffle();
+	for (var n=0; n < tStr.length; n ++ ) {
+		container.append("<span>" + tStr[n] + "</span> ")
+	}
+	var variants = container.find("span");
+	variants.click(function(e) {
+		t = $(this)
+		t.css({visibility: "hidden"});
+		tVal = target.val();
+		target.val(tVal + t.text() );
+		target.removeClass("es-ex-untyped").removeClass("es-ex-typed")
+		
+	});
+	
+	target.parent().find(".lt-type-reset").remove();
+	target.after('<a href="javascript:;" class="lt-type-reset" title="Восстановить">X</a>');
+	
+	target.parent().find(".lt-type-reset").click(function() {
+		target.val("");
+		target.removeClass("es-ex-untyped").removeClass("es-ex-typed")
+		variants.each(function(i,elem) {
+				if ($(elem).css("visibility")=="hidden") {
+						$(elem).css({visibility: "visible"});
+				}
+		});
+	});
+}
 
 
 

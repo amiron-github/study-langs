@@ -158,10 +158,11 @@ this.checkClass="ds-rt";
 this.signClass="ds-sign";
 this.correctClass = "ds-correct-answer";
 this.errorClass = "ds-error-answer";
-
+this.callback = hash['callback'];
+this.test_id= hash['test_id'];
 
 this.targetsData = new Array();
-
+if (this.callback == undefined) this.callback = function() {return false};
 
 this.start = function() {
 
@@ -350,16 +351,57 @@ this.hittedAnimation = function(hitted) {
 }
 
 this.checkAnswers = function() {
+
+	var errorNum = 0;
+	var errorString = ' errors'
+	var totalTasks = 0;
+	var correctNum=0;
+	var tID = tObj.test_id
+  
   tObj.answers.each(function(i, elem) {
+	totalTasks++;
 	if ( $(elem).find("."+tObj.checkClass).length > 0 ) {
 		var tValue = $(elem).find("."+tObj.checkClass).text();
 		if (tValue == (i +1)) {
 			tObj.container.find("."+tObj.signClass).filter(":eq("+i+")").addClass(tObj.correctClass);
+			correctNum++;
 		} else {
 			tObj.container.find("."+tObj.signClass).filter(":eq("+i+")").addClass(tObj.errorClass);
+			errorNum ++;
 		}
+		
+		
 	}
   });
+  
+  tObj.container.find(".ds-check-wrapper").find(".to_notify").remove();
+	
+	var noTxt = 'No completed tasks'
+	var gTxt = 'Correct';
+	var erTxt = 'Errors';
+	if (es_lang == 'ru') noTxt = 'Нет выполненных'; gTxt = 'Правильно'; erTxt = 'Ошибки';
+	
+	if (correctNum ==  0 && errorNum == 0) {
+		tObj.container.find(".ds-check-wrapper").prepend('<span class="to_notify"><span class="check_notify">'+noTxt+'</span></span>');
+	
+	} else {
+	
+		if (correctNum == totalTasks) {
+		tObj.container.find(".ds-check-wrapper").prepend('<span class="to_notify"><span class="check_notify" style="background-image: none; color: green; padding-left: 10px;"> '+gTxt+': '+correctNum+'/'+totalTasks+' </span></span>');
+		} else {
+			tObj.container.find(".ds-check-wrapper").prepend('<span class="to_notify"><span class="check_notify" style="line-height: normal;"> <span style="color: #000">'+gTxt+': '+correctNum+'/'+totalTasks+'</span><br>'+erTxt+': '+errorNum+'</span></span>');
+		}
+  }
+  
+  tObj.container.find(".ds-check-wrapper").data('total', totalTasks).data('correct', correctNum)
+  
+  tObj.callback();
+  
+  //alert (tID +" "+ totalTasks+" "+ correctNum)
+  sendResults(tID, totalTasks, correctNum);
+  
+  
+  
 }
 
 $(document).ready(function() {

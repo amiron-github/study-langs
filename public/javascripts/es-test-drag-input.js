@@ -26,6 +26,7 @@ this.inTargets = hash['in_targets'];
 this.clearOption = hash['clear_option'];
 this.oneUse = hash['one_use'];
 this.nospace = hash['nospace'];
+this.callback = hash['callback'];
 
 if (this.inTargets == undefined ) this.inTargets = false;
 if (this.clearOption == undefined ) this.inTargets = false;
@@ -33,6 +34,7 @@ if (this.oneUse == undefined ) this.oneUse = false;
 if (this.nospace == undefined ) this.nospace = false;
 this.targetsData = new Array();
 if ($.browser.msie) this.ieSucks = true;
+if (this.callback == undefined) this.callback = function() {return false};
 
 this.start = function() {
 

@@ -1029,5 +1029,16 @@ font-style: italic;
 
 /* end of grammar out ex*/
 
+input.st-bl-btn {
+background-color: #bed7fc;
+}
 
+.st-bl-btn-wrap input.st-bl-btn {
+width: auto;
+height: 28px;
+line-height:26px;
+font-size: 12px !important;
+padding-left: 10px;
+padding-right: 10px;
+}
 

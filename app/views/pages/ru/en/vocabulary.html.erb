@@ -10,7 +10,11 @@
 <%else%>
 	openTabFromUrl();
 <%end%>
-	
+
+$(function() {
+	$("#tab05").css({opacity: 0}).show();
+})
+
 </script>
 
 <style type="text/css">
@@ -45,6 +49,7 @@ display: block;
 
 .ptab div, .ptab {
 background-image: none;
+font-size: 11px;
 }
 
 .ptab {
@@ -115,10 +120,11 @@ box-shadow: 0 0 0 #fff;
 <div class="tabs-wrapper">
 <div id="prof_tabs">
 	<div id="tabs_row">
-            <div id="tab01" class="ptab current_ptab"><div><a href="vocabulary.html" style="color: #000;">Словарь</a></div></div>
-            <div id="tab02" class="ptab"><div><a href="vocabulary_exercises.html">Флэш-карты</a></div></div>
-            <div id="tab03" class="ptab"><div><a href="vocabulary_tests.html">&nbsp;&nbsp; Тесты &nbsp;&nbsp;</a></div></div>
-            <div id="tab04" class="ptab" style="display: none"><div><a href="vocabulary_games.html">&nbsp;&nbsp; Игры &nbsp;&nbsp;</a></div></div>
+            <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Словарь</a></div></div>
+            <div id="tab02" class="ptab"><div><a href="#">Флэш-карты</a></div></div>
+            <div id="tab03" class="ptab"><div><a href="#">&nbsp;&nbsp; Тесты &nbsp;&nbsp;</a></div></div>
+            <div id="tab04" class="ptab"><div><a href="#">&nbsp;&nbsp; Игры &nbsp;&nbsp;</a></div></div>
+			<div id="tab05" class="ptab" style="display: none"><div><a href="#">kids</a></div></div>
 	</div>
 	<div style="clear: both;"></div>
 </div>
@@ -284,57 +290,45 @@ box-shadow: 0 0 0 #fff;
 	
 	
 		
-		<a href="memory.html" class="forgame">
+		<a href="/ru/en/memory-game.html" class="forgame">
 
 		<span class="gname">Memory Game</span>
 		
-		<img src="images/memory-thumb.gif" alt="Thumbnail of Memory Game" align="left"/>
-		<span class="gdesc">Classical Memory Game with Russian words and their English equivalents.</span>
+		<img src="/images/memory-thumb.gif" alt="Thumbnail of Memory Game" align="left"/>
+		<span class="gdesc">Классическая игра, в которой нужно найти пары слов.</span>
 		
 		</a>
 		
-		<a href="crossword-game.html" class="forgame">
-		<span class="gname" style="position: relative;">Word Find Puzzle <span class="new_item" style="font-size: 20px; right: 0px; display: none;">&nbsp;NEW !!!&nbsp;</span></span>
+		<a href="/ru/en/crossword-game.html" class="forgame">
+		<span class="gname" style="position: relative;">Кроссворд<span class="new_item" style="font-size: 20px; right: 0px; display: none;">&nbsp;NEW !!!&nbsp;</span></span>
 		
 		<img src="/images/crossword-thumb-1.gif" alt="" align="left"/>
 			<span class="gdesc">
-			Classical word search puzzle. A very good practice for those who start to learn reading in Russian and a good opportunity to work on the vocabulary topics.
-			Russian words are hidden randomly each time you try the puzzle, so you can play more than once.
-
+			Очень полезная игра для начинающих изучать английский, в которой нужно найти спрятанные слова. 
 
 			</span>
-
 		
 		</a>
 		
-		
-		<a href="balloon-game.html" class="forgame">
-		<span class="gname">Hot Air Balloons</span>
-		
-		<img src="images/balloon-thumb(w).gif" alt="" align="left"/>
-
-		<span class="gdesc">You can steer hot air ballons and only you can help them to land properly. However, you can not do without knowing the Russian language!</span>
-		
-		</a>
-		
-		<a href="sorcerer-game.html" class="forgame">
-		<span class="gname">Fateful Battle</span>
-		
-		<img src="images/battle-thumb.gif" alt="" align="left"/>
-			<span class="gdesc">
-			The fateful hour for the humankind has come. Hordes of demons try to rush into our world in order to destroy the human race.<br> 
-			However, humans still cherish the hope to survive: a mighty wizard Nestor has a great magic power to stop the evil spirits. 
-			Be courageous, you and Nestor can bar the way of demons to our world!
-
-
-			</span>
-
-		
-		</a>
 
 
 	</div>
 </div>
+<div id="for_tab05" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+	
+<h3>Уроки для детей по темам: </h3>
+	
+        <div class="inner-listing">	
+			<p><a href="/ru/en/kids-lesson.html?topic=fruit">Фрукты </a></p> 
+			<p><a href="/ru/en/kids-lesson.html?topic=animals">Животные</a></p> 
+        </div>		
+
+	</div>
+</div>
+
+
 
 </div> <!-- end of tabs wrapper -->
 

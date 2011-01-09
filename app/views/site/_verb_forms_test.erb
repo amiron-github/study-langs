@@ -56,7 +56,7 @@ end
 
 @ft_forms=[]
 if !@spec_ft 
-	@ft_forms = ['буду '+@inf,'будешь '+@inf,'будет '+@inf,'будем '+@inf,'будете '+@inf,'будут '+@inf]
+	@ft_forms = ['б<span class="accom">у</span>ду '+@inf,'б<span class="accom">у</span>дешь '+@inf,'б<span class="accom">у</span>дет '+@inf,'б<span class="accom">у</span>дем '+@inf,'б<span class="accom">у</span>дете '+@inf,'б<span class="accom">у</span>дут '+@inf]
 else
 	@ft_forms = [@spec_ft[0],@spec_ft[1],@spec_ft[2],@spec_ft[3],@spec_ft[4],@spec_ft[5]]
 end
@@ -68,6 +68,21 @@ end
 
 <% @page_title = 'Verb forms: '+@infinitive %>
 <% content_for :special_js_css do %>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+$(".h-v-end input").change(function() {
+	if ($(this).is(":checked")) {
+		$("body").addClass("v-end");
+	} else {
+		$("body").removeClass("v-end");
+	}
+
+}).change()
+
+});
+</script>
 <style>
 .st-table {
 width: 400px;
@@ -76,7 +91,11 @@ width: 400px;
 font-size: 12px;
 }
 
-.acc-om {
+.h-v-end {
+font-size: 11px;
+color: #444;
+}
+.v-end .accom {
 font-weight: bold;
 color: blue;
 }
@@ -88,7 +107,9 @@ color: blue;
 <p>
 <%= @inf %> - <%= @trans %>
 </p>
-
+<p class="h-v-end">
+<input type="checkbox" checked> highlight stressed vowels
+</p>
 
 <% if @asp==0%>
 <h3>Present tense</h3>

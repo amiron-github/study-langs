@@ -8,7 +8,18 @@
 
 <script type="text/javascript">	
 $(document).ready(function() { 
-    $("table.st-bl-table").tablesorter({sortList: [[0,0]],widgets: ['zebra'] });
+
+var myTextExtraction = function(node)  
+{   
+    return $(node).text(); 
+}
+
+
+    $("table.st-bl-table").tablesorter({
+			sortList: [[0,0]],
+			widgets: ['zebra'],
+			textExtraction: myTextExtraction
+	});
 });
 </script>
 <style type="text/css">

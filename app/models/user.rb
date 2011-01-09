@@ -150,7 +150,7 @@ write_attribute :email, (value ? value.downcase : nil)
 		if category_id != nil
 			category = Category.find(category_id)
 			if category.lang == lang
-			unless category.tag == 'everyday_course' || category.tag =='beginner_course' || category.tag =='phonetics_course'||category.tag =='grammar_course'||category.tag =='reading_course'
+			unless category.tag == 'everyday_course' || category.tag =='beginner_course' || category.tag =='phonetics_course'||category.tag =='grammar_course'||category.tag =='reading_course'||category.tag =='kids_lesssons_en'
 				cat_tests = get_test_by_category(category_id)
 				total = 0
 				category_title = category.title
@@ -190,7 +190,7 @@ write_attribute :email, (value ? value.downcase : nil)
 			end
 			if !empty_lesson
 				average = total/user_exercises.length
-				list << {:category => lesson[:name], :exercises => user_exercises, :total => average}
+				list << {:category => lesson[:name], :category_ru => lesson[:name], :exercises => user_exercises, :total => average}
 			end
 		end
 		course_data = {:name=> course_name, :results=> list}
