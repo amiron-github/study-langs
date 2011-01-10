@@ -10,9 +10,24 @@ case @topic
 	when 'fruit'
 		@cluster_num = 34
 		@test_data = Exercise::KIDS_RU[:parts][0][:exercises]
-	when 'animals'
+	when 'domestic_animals'
 		@cluster_num = 35
-		@less_title = 'Животные'
+		@less_title = 'Домашние животные'
+	when 'wild_animals'
+		@cluster_num = 36
+		@less_title = 'Дикие животные'
+	when 'zoo_animals'
+		@cluster_num = 37
+		@less_title = 'В зоопарке'
+	when 'birds'
+		@cluster_num = 38
+		@less_title = 'Птицы'
+	when 'vegetables'
+		@cluster_num = 39
+		@less_title = 'Овощи'
+	when 'numbers_1-10'
+		@cluster_num = 40
+		@less_title = 'Числа от 1 до 10'
 end
 %>
 <%= render :partial => '/site/ru_kids_lesson.html' %>

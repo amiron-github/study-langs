@@ -76,7 +76,7 @@ class SiteController < ApplicationController
 	when /(en_results)\.html$/
 		@vocabulary_exercises = current_user.get_cat_ex('en')
 		@vocabulary_exercises[:name] = 'Словарь'
-		@kids_exercises = current_user.get_course_results(Exercise::KIDS_RU, 'kids_lesssons_en')
+		@kids_exercises = current_user.get_course_results(Exercise::KIDS_RU, 'kids_lessons_en')
 	when '/ru/jp/kanji.html'
 		kanji1 = Category.find(95).words.find(:all, :order => 'order_num')
 		kanji2 = Category.find(96).words.find(:all, :order => 'order_num')
