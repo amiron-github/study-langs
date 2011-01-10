@@ -1246,11 +1246,12 @@ messTime = setTimeout(function(){
 })(jQuery);
 
 /////////////////////////////////////////////////
-
-
+/*
 $(document).ready(function(){
 	$(".head-dec").css({backgroundPosition: "0px 0px"}).animate({backgroundPosition: "(0px 130px)"}, 11000)
 })
+*/
+
 
 function smallBox(container) {
 
