@@ -123,7 +123,7 @@ class UsersController < ApplicationController
 		end
 		current_user.record_words(twords)
 		if new_cat
-			render :js => 'messageIt("A new topic in your vocabulary:<b>'+new_cat.title.to_s+'</b> <span>You can review studied items<br> in your <i>Account</i></span>")'
+			render :js => 'messageIt("'+new_cat.title.to_s+'")'
 		else
 			render :nothing => true
 		end

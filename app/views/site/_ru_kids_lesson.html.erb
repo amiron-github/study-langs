@@ -408,7 +408,7 @@ display: block;
 
 
 <h4 class="su-task">
-Слушай и повторяй. Постарайся запомнить, как звучат и пишутся представленные слова.
+<%unless @mute %>Слушай и повторяй. <%end%>Постарайся запомнить, как звучат и пишутся представленные слова.
 </h4>
 	
 <div class="su-im-present">
@@ -430,7 +430,9 @@ display: block;
 		</td>
 		<td style="padding-right: 30px;">
 			<div class="obj-txt"><%= word.text %></div>
-			<div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div>
+			 <% if @mute %><div style="color: #666; font-size: 12px; font-weight: normal">[<%= word.transcribe %>]</div>
+			 <%else%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div>
+			 <%end -%>
 			<div class="obj-transl"><%= word.translate %></div>
 	</tr>
 </table>
@@ -487,11 +489,12 @@ display: block;
 
 <% @voc1.each_with_index do |word, index| %>
 <tr>
-	<td class="ds-quest" align="right" height="65">
+	<td class="ds-quest" align="right" height="65" style="padding: 2px 3px 2px 10px;">
 			 <span style="font-size: 15px"><%= word.text %></span>
+			 <% if @mute %><div style="color: #555; font-size: 12px; font-weight: normal"><%= word.transcribe %><%end%>
 	</td>
 	<td class="ds-audio-listen" align="center">
-			<div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div>
+			<% unless @mute%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div><%end%>
 	</td>
 	<td class="ds-audio-correctness">
 		<div class="ds-sign"></div>
@@ -575,7 +578,7 @@ display: block;
 	
 <h3 class="su-step-title">Прослушай и найди ответ</h3>
 <p class="su-step-info">
-Данный этап предназначен для развития аудирования.
+Данный этап предназначен для развития <%unless @mute%>аудирования<%else%>лексических навыков<%end%>.
 </p>	
 	
 <h4 class="su-task">
@@ -595,7 +598,7 @@ display: block;
 		quest_num: 10,
 		callback: function() {stResults($("#ch1_result"),3)},
 		variants_num: 6,
-		quest_type: 'audio',
+		<% if @mute %>quest_type: 'text',<%else%>quest_type: 'audio',<%end%>
 		next_time: 2500,
 		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
 		basic_array: [
@@ -603,7 +606,7 @@ display: block;
 @last_voc = (@voc.length)-1
 %>
 <% @voc.each_with_index do |voc_word,index|  %>
-['<%= voc_word.sound_url %>', '<img width="130" src="<%= voc_word.image_url %>">' ]<% if index!= @last_voc -%>,<%end -%>
+['<% if @mute %><%= voc_word.text %><%else%><%= voc_word.sound_url %><%end%>', '<img width="130" src="<%= voc_word.image_url %>">' ]<% if index!= @last_voc -%>,<%end -%>
 <% end %>
 	
 		]
@@ -628,11 +631,11 @@ display: block;
 	
 <h3 class="su-step-title">Составь слово</h3>
 <p class="su-step-info">
-Данный этап предназначен для работы с писменной формой слов и выражений.
+Данный этап предназначен для работы с письменной формой слов и выражений.
 </p>	
 
 <h4 class="su-task">
-Посмотри на картинку и прослушай запись. Из предложенных букв составь английское слово для перевода. Кликни на букву, чтобы она появилась в текстовом поле.
+Посмотри на картинку<%unless @mute %> и прослушай запись<%end%>. Из предложенных букв составь английское слово для перевода. Кликни на букву, чтобы она появилась в текстовом поле.
 </h4>
 
 <div id="ch2" class="lt-holder">
@@ -659,7 +662,7 @@ display: block;
 @last_voc = (@voc.length)-1
 %>
 <% @voc.each_with_index do |voc_word,index|  %>
-['<table><tr><td><img src="<%= voc_word.image_url %>"><\/td><td><span>Прослушать<\/span> <div class="jp_control" onclick="cJplayer(\'<%= voc_word.sound_url %>\', this)"><\/div><\/td><\/tr><\/table>', '<%= voc_word.text %>' ]<% if index!= @last_voc -%>,<%end -%>
+['<table><tr><td><img src="<%= voc_word.image_url %>"><\/td><%unless @mute%><td><span>Прослушать<\/span> <div class="jp_control" onclick="cJplayer(\'<%= voc_word.sound_url %>\', this)"><\/div><\/td><%end%><\/tr><\/table>', '<%= voc_word.text %>' ]<% if index!= @last_voc -%>,<%end -%>
 <% end %>
 	
 		]

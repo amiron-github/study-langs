@@ -1,33 +1,44 @@
 <%
 @cluster_num = 34
+@mute = false
 
 if params[:set]
 	@cluster_num = params[:set]
 end
+if params[:mute]
+	@mute = params[:mute]
+end
+
 @topic = params[:topic]
 @test_data=[]
 case @topic
-	when 'fruit'
-		@cluster_num = 34
-		@test_data = Exercise::KIDS_RU[:parts][0][:exercises]
-	when 'domestic_animals'
-		@cluster_num = 35
-		@less_title = 'Домашние животные'
-	when 'wild_animals'
-		@cluster_num = 36
-		@less_title = 'Дикие животные'
-	when 'zoo_animals'
-		@cluster_num = 37
-		@less_title = 'В зоопарке'
-	when 'birds'
-		@cluster_num = 38
-		@less_title = 'Птицы'
-	when 'vegetables'
-		@cluster_num = 39
-		@less_title = 'Овощи'
 	when 'numbers_1-10'
 		@cluster_num = 40
 		@less_title = 'Числа от 1 до 10'
+		@test_data = Exercise::KIDS_RU[:parts][0][:exercises]
+	when 'fruit'
+		@cluster_num = 34
+		@test_data = Exercise::KIDS_RU[:parts][1][:exercises]
+	when 'vegetables'
+		@cluster_num = 39
+		@less_title = 'Овощи'
+		@test_data = Exercise::KIDS_RU[:parts][2][:exercises]
+	when 'domestic_animals'
+		@cluster_num = 35
+		@less_title = 'Домашние животные'
+		@test_data = Exercise::KIDS_RU[:parts][3][:exercises]
+	when 'wild_animals'
+		@cluster_num = 36
+		@less_title = 'Дикие животные'
+		@test_data = Exercise::KIDS_RU[:parts][4][:exercises]
+	when 'zoo_animals'
+		@cluster_num = 37
+		@less_title = 'В зоопарке'
+		@test_data = Exercise::KIDS_RU[:parts][5][:exercises]
+	when 'birds'
+		@cluster_num = 38
+		@less_title = 'Птицы'
+		@mute = true
 end
 %>
 <%= render :partial => '/site/ru_kids_lesson.html' %>

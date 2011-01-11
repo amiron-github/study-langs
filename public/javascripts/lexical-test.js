@@ -150,7 +150,7 @@ if (tObj.texts == undefined) {
 	tObj.remainingTxt = "<b>Remaining</b>";
 	tObj.totalQuestionsTxt = "Total questions";
 	tObj.correctAnswersTxt = "Correct answers";
-	tObj.yourResultTxt = "Your result";
+	tObj.yourResultTxt = "Your result";	
 } else {
 	tObj.correctMsg = tObj.texts[0];
 	tObj.wrongMsg = tObj.texts[1];
@@ -161,6 +161,11 @@ if (tObj.texts == undefined) {
 	tObj.correctAnswersTxt = tObj.texts[6];
 	tObj.yourResultTxt = tObj.texts[7];
 }
+
+tObj.showAnswerTxt = "Show the answer";
+tObj.goToNextTxt ="Go to next";
+
+/* see also further for localisation*/
 
 this.counter = 0;
 this.remain = 0;
@@ -205,6 +210,11 @@ this.parseTest = function() {
 		if (tObj.answerType == 'yn') {
 			tObj.ynContainer.show();
 		}
+		
+if (es_lang == 'ru') {
+	tObj.showAnswerTxt = "Показать ответ"; 
+	tObj.goToNextTxt ="Перейти к следующему";
+}		
 		
 		if (tObj.variantsNum > 4 || !tObj.randomOrder ) tObj.optionsHolder.addClass("es-ex-tasks-more-than-4");
 		if (tObj.questType == 'audio') tObj.container.addClass("es-audio-ex");
@@ -315,7 +325,6 @@ this.restart = function() {
 		tObj.step();
 }
 
-
 this.step = function () {
 tObj.alertHolder.empty().removeClass(tObj.correctClass).removeClass(tObj.wrongClass);
 if (tObj.noMouseCheck) tObj.optionsHolder.find(".es-ex-check-type").mouseout().mouseup()
@@ -371,12 +380,10 @@ this.getYnAnswers = function() {
 
 this.getTypeAnswers = function() {
 	tObj.optionsHolder.find(".es-ex-type-field").val("").removeClass("es-ex-untyped").removeClass("es-ex-typed");
-	tObj.optionsHolder.find(".es-ex-type-elements").html('<a href="javascript:;" class="es-ex-show-type">Show the answer</a>');
+	tObj.optionsHolder.find(".es-ex-type-elements").html('<a href="javascript:;" class="es-ex-show-type">'+tObj.showAnswerTxt+'</a>');
 	tObj.optionsHolder.find(".es-ex-show-str-type").text(tObj.workArray[tObj.counter][1]);
 	
 	if (tObj.randLetters) {lt_randomLetters(tObj.workArray[tObj.counter][1],tObj.optionsHolder.find(".es-ex-type-rand"), tObj.optionsHolder.find(".es-ex-type-field"));}
-	
-	
 	
 	tObj.optionsHolder.find(".es-ex-check-type").removeClass("es-ex-invisible").unbind("click").click(function() {
 		var userAnswer = tObj.optionsHolder.find(".es-ex-type-field").val();
@@ -403,9 +410,6 @@ this.getTypeAnswers = function() {
 			if (tObj.autoPlay) tObj.optionsHolder.find(".es-ex-check-type").unbind("click");
 			tObj.optionsHolder.find(".es-ex-type-field").addClass("es-ex-typed");
 			
-			
-			
-			
 			tObj.correctAnswer();
 		} else {
 			tObj.alertHolder.empty().removeClass(tObj.correctClass).removeClass(tObj.wrongClass);
@@ -418,12 +422,9 @@ this.getTypeAnswers = function() {
 		setTimeout(function() {
 			tObj.optionsHolder.find(".es-ex-type-field").removeClass("es-ex-untyped").removeClass("es-ex-typed");
 		}, tObj.toNextTime)
-		
-		
 		if ($(".keys_poser").is(":visible")) {
 			tObj.optionsHolder.find(".es-ex-type-field").click();
 		}
-		
 	});
 	
 	tObj.optionsHolder.find(".es-ex-show-type").click(function() {
@@ -432,7 +433,7 @@ this.getTypeAnswers = function() {
 		tObj.optionsHolder.find(".es-ex-show-str-type").fadeIn(200, function() {
 		
 			if (tObj.autoPlay) {
-				tObj.optionsHolder.find(".es-ex-type-elements").append('<a href="javascript:;" class="es-ex-show-type">Go to next</a>');
+				tObj.optionsHolder.find(".es-ex-type-elements").append('<a href="javascript:;" class="es-ex-show-type">'+tObj.goToNextTxt+'</a>');
 				tObj.optionsHolder.find(".es-ex-show-type").click(function() {
 					tObj.gotoNext();
 				})

@@ -2,7 +2,7 @@ var gContent;
 var preloadFiles = new Array();
 var currentSection;
 var wrapTests = true;
-var es_lang;
+var es_lang=false;
 
 function startDragTest(arr) {
         for (var i=0; i<arr.length; i++) {
@@ -1198,10 +1198,21 @@ $("body").prepend('<div id="gv" style="position: absolute; top: 0; left: 0; max-
 }
 
 var messTime;
-function messageIt(html) {
+function messageIt(html,type) {
 $("#alert_mess").remove();
 clearTimeout(messTime);
-$("body").append('<div id="alert_mess" title="Click to close" style="cursor: pointer"><div>'+html+'</div></div>');
+var content;
+if (type==undefined || type==1) {
+	if (es_lang!=undefined && es_lang=='ru') {
+		content='Открыта новая тема в словаре:<b>'+html+'</b> <span>Пройденные слова можно посмотреть <br>в своем <i>Аккаунте</i></span>'
+	} else {
+		content='A new topic in your vocabulary:<b>'+html+'</b> <span>You can review studied items<br> in your <i>Account</i></span>'
+	}
+	
+} else {
+	content = html;
+}
+$("body").append('<div id="alert_mess" title="Click to close" style="cursor: pointer"><div>'+content+'</div></div>');
 $("#alert_mess").fadeIn().click(function() {
 	$("#alert_mess").fadeOut(200)
 	clearTimeout(messTime);
