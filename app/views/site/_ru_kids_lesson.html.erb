@@ -522,7 +522,6 @@ display: block;
 
 <ul class="no-list ds-options-wrap">
 
-
 <% @voc1.each_with_index do |word, index| %>
 	<li> 
 			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt"><%= index+1 %></span><img width="70" src="<%= word.image_url %>"></div></div>
@@ -606,7 +605,7 @@ display: block;
 @last_voc = (@voc.length)-1
 %>
 <% @voc.each_with_index do |voc_word,index|  %>
-['<% if @mute %><%= voc_word.text %><%else%><%= voc_word.sound_url %><%end%>', '<img width="130" src="<%= voc_word.image_url %>">' ]<% if index!= @last_voc -%>,<%end -%>
+['<% if @mute %><%= voc_word.text %><%else%><%= voc_word.sound_url %><%end%>', '<img width="130" src="<%= voc_word.image_url %>">'<% if current_user %>, '<%= voc_word.id%>'<%end%>]<% if index!= @last_voc -%>,<%end -%>
 <% end %>
 	
 		]
@@ -614,8 +613,6 @@ display: block;
 		} )
 </script>
 
-
-	
 
 <div class="es-ex-buttons su-next-wrapper">
 <input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(4)">
@@ -662,15 +659,13 @@ display: block;
 @last_voc = (@voc.length)-1
 %>
 <% @voc.each_with_index do |voc_word,index|  %>
-['<table><tr><td><img src="<%= voc_word.image_url %>"><\/td><%unless @mute%><td><span>Прослушать<\/span> <div class="jp_control" onclick="cJplayer(\'<%= voc_word.sound_url %>\', this)"><\/div><\/td><%end%><\/tr><\/table>', '<%= voc_word.text %>' ]<% if index!= @last_voc -%>,<%end -%>
+['<table><tr><td><img src="<%= voc_word.image_url %>"><\/td><%unless @mute%><td><span>Прослушать<\/span> <div class="jp_control" onclick="cJplayer(\'<%= voc_word.sound_url %>\', this)"><\/div><\/td><%end%><\/tr><\/table>', '<%= voc_word.text %>'<% if current_user %>, '<%= voc_word.id%>'<%end%>]<% if index!= @last_voc -%>,<%end -%>
 <% end %>
 	
 		]
 		
 		} )
 </script>
-
-
 
 <div class="es-ex-buttons su-next-wrapper">
 <input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(5)">
@@ -692,7 +687,6 @@ display: block;
 Посмотри на картинку. В списке справа найди перевод на английский язык.
 </h4>	
 	
-
 <div id="ch3" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
@@ -743,9 +737,6 @@ display: block;
 <div class="kl-res-info">
 * Показаны самые высокие результаты
 </div>
-
-
-
 
 
 <div style="display: none">

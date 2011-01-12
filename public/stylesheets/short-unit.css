@@ -140,6 +140,14 @@ cursor: default;
 background-color: #ebf3fe;
 }
 
+.su-present table.su-no-tr-act tr:hover {
+background-color: transparent;
+}
+
+.su-present table.su-no-tr-act p {
+margin: 0 0px 10px;
+}
+
 .su-present table td.su-pres-audio {
 padding-right: 0px;
 }

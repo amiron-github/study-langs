@@ -649,7 +649,6 @@ function lt_randomLetters(word, container, target) {
 		tVal = target.val();
 		target.val(tVal + t.text() );
 		target.removeClass("es-ex-untyped").removeClass("es-ex-typed")
-		
 	});
 	
 	target.parent().find(".lt-type-reset").remove();

@@ -650,7 +650,96 @@ white-space:nowrap;
 }
 
 
+/* random type letters field*/
 
+
+
+.es-ex-type-rand {
+display: none;
+background-color: #BFD9FF;
+border: 1px dashed #A0B2CC;
+margin-bottom: 10px;
+margin-right: -12px;
+padding: 4px 3px;
+position: relative;
+cursor: default;
+}
+
+.es-rand-type-ex .es-ex-type-rand {
+display: block;
+}
+
+.es-ex-type-rand span {
+ background-color: #FFFFFF;
+ color: #333333;
+ font-size: 21px;
+ margin-left: 3px;
+ padding: 0px 3px 1px;
+ cursor: pointer;
+}
+
+.es-rand-type-ex .es-ex-type-elem {
+position: relative;
+padding: 10px 30px 20px;
+margin-bottom: 10px;
+}
+
+.es-rand-type-ex .es-ex-type-field  {
+display: block;
+}
+
+a.lt-type-reset {
+border: 1px solid gray;
+cursor: pointer;
+display: block;
+font-size: 19px;
+padding: 0px 2px;
+font-weight: bold;
+outline: none;
+position: absolute;
+right: 4px;
+margin-top: -30px;
+text-decoration: none !important;
+text-decoration: none !important;
+-moz-user-select: none;
+-khtml-user-select: none;
+user-select: none;
+}
+
+
+
+a.lt-type-reset:link {
+background-color:#fff;
+border:1px solid gray;
+color:#444444;
+}
+a.lt-type-reset:visited {
+background-color:#fff;
+border:1px solid gray;
+color:#444444;
+}
+a.lt-type-reset:hover {
+background-color:#BFDCFF;
+border:1px solid #000000;
+color:#000000;
+}
+a.lt-type-reset:active {
+background-color:#2F71BF;
+border:1px solid #000000;
+color:#FFFFFF;
+}
+
+.es-ex-untyped {
+color: red;
+border-color: red;
+}
+
+.es-ex-typed {
+color: green;
+background-color: #EFFFF1;
+background-image: none;
+border-color: green;
+}
 
 
 
