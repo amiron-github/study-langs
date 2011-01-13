@@ -94,9 +94,9 @@ function ex_Jplayer(link,el,notPlay) {
 	var tElStatus = $(el).attr("status");
 	var containerJp = $("#exJp");
 	if ( tElStatus == "0" || tElStatus == undefined || exJpForce) { // start sound if sound is not in progress ()
-		tEl.attr("status", "0").removeClass("ex-audio-holder-hover").attr("title", "Click to Play");
+		tEl.attr("status", "0").removeClass("ex-audio-holder-hover").attr("title", "Play");
 		containerJp.jPlayer("setFile", link ).jPlayer("onProgressChange", function() { return false}).jPlayer( "onSoundComplete", function() {  // start sound 
-			tEl.attr("status", "0").removeClass("ex-audio-holder-hover").attr("title", "Click to Play");  										// reset status at the end of sound, show 'play'
+			tEl.attr("status", "0").removeClass("ex-audio-holder-hover").attr("title", "Play");  										// reset status at the end of sound, show 'play'
 		} );
 		if (notPlay != 1) {
 			tEl.attr("status", "1").addClass("ex-audio-holder-hover").removeAttr("title"); // show or not that sound is in progress 

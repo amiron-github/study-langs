@@ -669,6 +669,10 @@ cursor: default;
 display: block;
 }
 
+.lt-img .es-ex-type-rand {
+display: block;
+}
+
 .es-ex-type-rand span {
  background-color: #FFFFFF;
  color: #333333;

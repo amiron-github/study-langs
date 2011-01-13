@@ -2976,7 +2976,6 @@ text-decoration: underline;
 background-color: #DDE7F5;
 }
 
-
 .ru-en #menu_body .menu-item   {
  background-image: url("/images/bluebutton-1.gif");
 }
@@ -2994,16 +2993,21 @@ padding-right: 110px;
 text-align: left;
 }
 
+.ex-block-simple {
+margin-left: 30px;
+margin-right: 20px;
+padding: 8px 15px 10px;
+border: 1px dotted #C2D1EF;
+border-left: 3px solid #A8B5CF;
+background-color: #F3F7FC;
+color: #222;
+}
 
-
-
-
-
-
-
-
-
-
+.ex-block-simple .exs-or {
+font-size: 12px;
+font-weight:  bold;
+color: #333;
+}
 
 
 

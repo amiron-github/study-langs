@@ -1,4 +1,4 @@
-<% @page_title = 'Урок 7' %>
+<% @page_title = 'Урок 8' %>
 <% @page_meta = {'description' => ""} %>
 
 
@@ -49,7 +49,7 @@
 <div id="prof_tabs">
 
 <div class="unit-title">
-Урок 7
+Урок 8
 </div>
 	<div id="tabs_row">
             <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Этап 1</a></div></div>
@@ -78,7 +78,7 @@
 <div class="su-present-brd">
 <table cellspacing="0">
 <%
-@voc1 = Cluster.find(30).words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+@voc1 = Cluster.find(42).words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
 %>
 <% @voc1.each do |voc_word|  %>
 	<tr>
@@ -99,6 +99,8 @@
 <h4 class="su-task">
 Задание 2. Прослушайте фразу и найдите её в списке.
 </h4>
+
+
 
 <div id="ch1" class="lt-holder">
 <div class="lt-spacer">	
@@ -170,7 +172,7 @@
 <tbody>
 
 <%
-cat = Cluster.find(32)
+cat = Cluster.find(44)
 @words = cat.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
 %>
 <%@words.each_with_index do |word, index|-%>
@@ -252,19 +254,32 @@ cat = Cluster.find(32)
 Данный этап предназначен для ознакомления с правилами грамматики и лексики.
 </p>		
 
-<h3 class="su-page-p" style="margin-top: 0;">Притяжательные местоимения</h3>
+<h3 class="su-page-p" style="margin-top: 0;">Указательные местоимения</h3>
 
 <p>
-Притяжательные местоимения - слова, которые указывают на принадлежность к лицу или предмету, не называя обладателя. Притяжательные местоимения в русском языке: мой, твой, свой, их, нашего, её, его и т.д. 
+Указательные местоимения - слова, которые используются для выделения известного говорящему лица, признака, предмета из ряда однородных. 
+В русском языке для этого используются такие местоимения, как  этот, это, тот, такой и т.д.
+</p>
+<h4 class="page-pp">Местоимения this/these и that/those</h4>
+<p>
+Указательные местоимения this/these и that/those могут употребляться перед одушевленными и неодушевленными существительными. 
+</p>
+<p>
+Местоимения this/these употребляются по отношению к предметам и лицам, находящимся вблизи говорящего и могут переводится как этот, эта,это/ эти.
+</p>
+<p>
+Местоимения that/those употребляются по отношению к предметам и лицам, находящимся вдали от говорящего и могут переводится как тот, та,то/ те.
 </p>
 
-<p>Притяжательные местоимения в английском языке имеют следующие формы:
+<h4 class="page-pp">Формы</h4>
+<p>
+Ниже приведена таблица с формами и значениями этих местоимений.
 </p>
 
 <table class="st-bl-table" cellspacing="1" align="center" style="margin: 0 auto;">
 <thead>
 	<tr>
-		<th rowspan="2">Лицо</th>
+		<th rowspan="2">Значение</th>
 		<th colspan="2">Число</th>
 	</tr>
 	<tr>
@@ -274,37 +289,14 @@ cat = Cluster.find(32)
 </thead>
 <tbody>
 	<tr>
-		<td>1 лицо</td><td>my</td><td>our</td>
+		<td>близкий предмет</td><td>this</td><td>these</td>
 	</tr>
 	<tr>
-		<td>2 лицо</td><td>your</td><td>your</td>
-	</tr>
-	<tr>
-		<td>3 лицо</td><td>his<br> her <br> its</td><td>their</td>
+		<td>дальний предмет</td><td>that</td><td>those</td>
 	</tr>
 </tbody>
 </table>
 
-
-<h3 class="page-p">Притяжательный падеж</h3>
-<p>
-Притяжательный падеж указывает на принадлежность чего-либо лицу или предмету. В русском языке подобное значение имеет родительный падеж.
-<p>
-<h4 class="page-pp">Образование притяжательного падежа</h4>
-<ul style="list-style-type: circle">
-	<li>
-		<p>
-		В единственном числе притяжательный падеж образуется прибавлением к существительному апострофа (') с буквой s
-		</p>
-	</li>
-	<li>
-		<p>
-		Во множественном числе для образования притяжательного падежа чаще всего используется один апострофа (')
-		<br>
-		Однако существительные, не имеющие окончание -s во множественном числе, прибавляют и апостроф и букву s.
-		</p>
-	</li>
-</ul>
 
 <br><br>
 <div class="es-ex-buttons su-next-wrapper">
@@ -331,76 +323,97 @@ cat = Cluster.find(32)
 	
 
 <div class="su-exerc">
-<div id="di1">	
-				
-<p class="task">Перетащите слова в текстовое поле или напечатайте их. </p> 
+<div id="di1">			
+<p class="task">Выберите нужную форму из списка. </p> 
 
-<br>
-<table style="cursor: pointer; margin: 0 auto; border: 1px dashed #000; background-color: #fff;" class="di_variants" cellspacing="14" align="center" >
-<tr>
-	<td>
-		<div>my</div>
-	</td>
-	<td>
-		<div>your</div>
-	</td>
-	<td>
-		<div>our</div>
-	</td>
-</tr>
-<tr>
-	<td>
-		<div>his</div>
-	</td>
-	<td>
-		<div>her</div>
-	</td>
-	<td>
-		<div>their</div>
-	</td>
-</tr>
-</table>
-<br>
+<div  class="gr_ex_from_list">
+
+<div class="gex-area-trans">
 
 
+<div class="gr_ex_unit gext_sign"> 
+1. 
+<select>
+<option>That / Those</option>
+<option  >That</option>
+<option class="ok">Those</option>
+</select>
+ are not doctors. 
+</div>
 
-<div  class="gr_ex_type">
-
-<div class="gext_sign"></div>
-<div class="gext_task gext_sign"> 
-
-1. I’m Russian. <input type="text" style="width: 40px" value=""><span class="gext_answer" style="display: none">my</span> name is Ivan. 
- 
-<div class="gext_show"><span>We <b>are</b> from France.</span> &nbsp;</div>
-
+<div class="gr_ex_unit gext_sign"> 
+2. 
+<select>
+<option>This / These</option>
+<option  class="ok">This</option>
+<option>These</option>
+</select>
+is my husband. 
 </div>
 
 
 
-<p class="gext_check es-ex-buttons gex-es-btn"><input type="button" class="gext_check_btn" value="Check answers" > <input type="button" value="Display answers" class="gext_answer_show"></p>
+<div class="gr_ex_unit gext_sign"> 
+3. Is   
+<select>
+<option>this / these</option>
+<option  class="ok">this</option>
+<option >these</option>
+</select>
+car German or Americain? 
+</div>
 
-
+<div class="gr_ex_unit gext_sign"> 
+4. 
+<select>
+<option>That / Those</option>
+<option  class="ok">That</option>
+<option>Those</option>
+</select>
+designer is famous. 
 </div>
 
 
+<div class="gr_ex_unit gext_sign"> 
+5. 
+<select>
+<option>This / These</option>
+<option >This</option>
+<option  class="ok">These</option>
+</select>
+ are good programmers.
+</div>
+
+<div class="gr_ex_unit gext_sign"> 
+6. Are  
+<select>
+<option>that / those</option>
+<option  >that</option>
+<option class="ok">those</option>
+</select>
+your sisters? 
+</div>
+
+<div class="gr_ex_unit gext_sign"> 
+7.    
+<select>
+<option>That / Those</option>
+<option  class="ok">That</option>
+<option >Those</option>
+</select>
+ is a big room.
 </div>
 
 
+
+</div><!-- end of gex-area-trans -->
+
+<p class="ex_from_list_check es-ex-buttons gex-es-btn"><input type="button" class="gext_check_btn" value="Проверить" > </p>
+</div>
+
+</div>
 
 </div> <!-- end of su-exerc -->
-
-
-<script type="text/javascript"> 
-	var di1 = new draginput_test( {
-		id: "di1", 
-		targets: "gext_task", 
-		in_targets: "input",
-		clear_option: false,
-		variant_elem: "di_variants div"
-		//targets_color: "#ffffff"
-
-		} )
-</script>
 
 
 
@@ -435,13 +448,13 @@ cat = Cluster.find(32)
 	<tr>
 		<td class="su-pres-orig">
 
-<p>This is Sam. </p>
-<p>He is from New York. </p>
-<p>He is a programmer. </p>
-<p>His wife, Mary, is a designer. </p>
-<p>Their daughter’s name is Lily.</p>
-<p>Lily is a student.</p>
-<p>She is a good student.</p>
+<p>This is Emily.</p>
+<p>Emily is English.</p>
+<p>She is from London.</p>
+<p>Emily is a lawyer.</p>
+<p>She is not married.</p>
+<p>Emily’s flat is not large.</p>
+<p>But her car is very good.</p>
 		
 		</td>
 	</tr>
@@ -593,7 +606,6 @@ cat = Cluster.find(32)
 		variants_num: 5,
 		quest_type: 'audio',
 		answer_type: 'type',
-
 		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
 		basic_array: [
 		
@@ -617,9 +629,6 @@ cat = Cluster.find(32)
 
 
 </div>
-
-
-
 
 
 

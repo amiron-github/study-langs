@@ -1,4 +1,21 @@
+var noTxt = 'No completed tasks'
+var gTxt = 'Correct';
+var erTxt = 'Errors';
+var hideAnswersTxt='Hide answers';
+var showAnswersTxt='Display answers';
+var noErrorsTxt='No errors';
+	
 $(document).ready(function() {
+	
+	if (es_lang == 'ru') {
+		noTxt = 'Нет выполненных'; 
+		gTxt = 'Правильно'; 
+		erTxt = 'Ошибки';
+		hideAnswersTxt='Скрыть ответы';
+		showAnswersTxt='Показать ответы';
+		noErrorsTxt='Ошибок нет';
+	}
+
 
 $("div.gr_exercise_container").each(function(i){
 	var tParent = $(this).parent("div");
@@ -34,13 +51,13 @@ $(".gext_answer_show").each(function(i) {
 		                                               ////.css({opacity: "0", display: "inline"}).animate({opacity: "1"});
 		$(".gr_ex_type").eq(i).find("div.gext_show").slideDown(function() {
 		   $(this).find("span").fadeIn();
-		   $(".gext_answer_show").eq(i).val('Hide answers')
+		   $(".gext_answer_show").eq(i).val(hideAnswersTxt)
 		});      
 	}, function(){
 		$(".gr_ex_type").eq(i).find(".gext_task input").removeAttr('disabled');
 		$(".gr_ex_type").eq(i).find("div.gext_show").slideUp(function(){
 			$(this).find("span").hide();
-			$(".gext_answer_show").eq(i).val('Display answers')
+			$(".gext_answer_show").eq(i).val(showAnswersTxt)
 		} );
 	});
 });
@@ -75,16 +92,13 @@ $(".di_mix_variants").each(function(i, elem) {
 	for (var n=0; n < tStr.length; n ++ ) {
 		$(elem).append("<span>" + tStr[n] + "</span> ")
 	}
-
 });
 
 
 });
-
 
 
 function grExFromVariants(t, n) {
-
 
 var tContainer = t;
 var tID = tContainer.find("div.gr-ex-testid").text();
@@ -93,18 +107,15 @@ var tID = tContainer.find("div.gr-ex-testid").text();
  	$(this).parent("td").parent("tr").find("input").attr("name", "gexv_" + n + "_"+i );
  })
 
-
 tContainer.find("input:checkbox").click(function() {
   var tName=$(this).attr("name");
   tContainer.find("input[name='"+ tName +"']").removeAttr("checked");
   $(this).attr("checked", "checked");
 });
 
-
-
 tContainer.find(".gexv_check").find("input").click(function() {
 var errorNum = 0;
-var errorString = ' errors'
+var errorString;
 var totalTasks = 0;
 tContainer.find(".gexv_task").each(function() {
 		
@@ -138,19 +149,12 @@ tContainer.find(".gexv_task").each(function() {
 tContainer.find(".gexv_check").find(".to_notify").remove();
 
 if (errorNum > 0) {
-	if (errorNum == 1)	{
-		errorString = ' error'
-	}
-	tContainer.find(".gexv_check").prepend('<span class="to_notify"><span class="check_notify" title="You have '+ errorNum + errorString +' from '+totalTasks+' tasks">'+ errorNum + errorString + '</span></span>');	
+	tContainer.find(".gexv_check").prepend('<span class="to_notify"><span class="check_notify" title="'+erTxt+ ': '+errorNum +'/'+totalTasks+'">'+erTxt+': '+errorNum+'</span></span>');	
 }else{
-	tContainer.find(".gexv_check").prepend('<span class="to_notify"><span class="check_notify" style="background-image: none; color: green; padding-left: 10px;"> No errors</span></span>');
+	tContainer.find(".gexv_check").prepend('<span class="to_notify"><span class="check_notify" style="background-image: none; color: green; padding-left: 10px;"> '+noErrorsTxt+'</span></span>');
 }
-
-
 	var correctNum = totalTasks - errorNum;
 	sendResults(tID, totalTasks, correctNum);
-	
-	
 })
 
 }
@@ -181,9 +185,9 @@ function checkExFromList(elClass) {
 		if (errorNum == 1)	{
 			errorString = ' error'
 		}
-		tContainer.find(".ex_from_list_check").prepend('<span class="to_notify"><span class="check_notify" title="You have '+ errorNum + errorString +' from '+totalTasks+' tasks">'+ errorNum + errorString + '</span></span>');	
+		tContainer.find(".ex_from_list_check").prepend('<span class="to_notify"><span class="check_notify" title="'+ erTxt+': '+errorNum +'/'+totalTasks+'">'+erTxt+': '+errorNum+'</span></span>');	
 	}else{
-	tContainer.find(".ex_from_list_check").prepend('<span class="to_notify"><span class="check_notify" style="background-image: none; color: green; padding-left: 10px;"> No errors</span></span>');
+	tContainer.find(".ex_from_list_check").prepend('<span class="to_notify"><span class="check_notify" style="background-image: none; color: green; padding-left: 10px;"> '+noErrorsTxt+'</span></span>');
 	}
 	
 	var correctNum = totalTasks - errorNum;
@@ -199,7 +203,6 @@ function checkExType(elClass) {
 	var totalTasks = 0;
 	
 	$("#t_inf").empty();
-	
 	
 	tContainer.find(".gext_task").each(function(i) {
 		totalTasks++;
@@ -222,7 +225,6 @@ function checkExType(elClass) {
 			errorNum++;
 		}
 
-		
 	});
 	
 	//tContainer.find("div.gext_show span").css({opacity: "0", display: "inline"}).animate({opacity: "1"});
@@ -233,9 +235,9 @@ function checkExType(elClass) {
 		if (errorNum == 1)	{
 			errorString = ' error'
 		}
-		tContainer.find(".gext_check").prepend('<span class="to_notify"><span class="check_notify" title="You have '+ errorNum + errorString +' from '+totalTasks+' tasks">'+ errorNum + errorString + '</span></span>');	
+		tContainer.find(".gext_check").prepend('<span class="to_notify"><span class="check_notify" title="'+ erTxt+': '+errorNum+'/'+totalTasks+'">'+erTxt+': '+errorNum+'</span></span>');	
 	}else{
-		tContainer.find(".gext_check").prepend('<span class="to_notify"><span class="check_notify" style="background-image: none; color: green; padding-left: 10px;"> No errors</span></span>');
+		tContainer.find(".gext_check").prepend('<span class="to_notify"><span class="check_notify" style="background-image: none; color: green; padding-left: 10px;"> '+noErrorsTxt+'</span></span>');
 	}
 	
 	var correctNum = totalTasks - errorNum;
