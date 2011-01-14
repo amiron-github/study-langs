@@ -190,6 +190,15 @@ this.parseTest = function() {
 		tObj.cancelTest();
 	});
 	
+	tObj.spellField.keypress(function(e){
+		if (e.which == 13) {
+			tObj.spellCheckButton.click().mousedown()
+			setTimeout(function(){
+				tObj.spellCheckButton.mouseup()
+			},100)
+		}
+	})
+	
 	tObj.cancelSpellButton.click(function() {
 		tObj.cancelSpell();
 	}); 
@@ -885,41 +894,6 @@ $(document).ready(function() {
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

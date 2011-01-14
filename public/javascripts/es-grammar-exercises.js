@@ -1,3 +1,18 @@
+
+new function($) {
+    $.fn.testPlaceholder = function() {
+        return this.filter(":input").each(function(index) { 
+			var tVal = $(this).val();
+            $.data(this, 'placehoder', tVal); 
+        }).blur(function() {
+            if ($.trim($(this).val()) === '')
+                $(this).val($.data(this, 'placehoder'));
+        })
+    };
+}(jQuery);
+
+
+
 var noTxt = 'No completed tasks'
 var gTxt = 'Correct';
 var erTxt = 'Errors';
@@ -36,6 +51,10 @@ $(".ex_from_list_check").each(function(i) {
 		checkExFromList(".fromList_ex"+i);
 	});
 });
+
+
+
+$(".gext_task input").not(".gex-init-val").testPlaceholder()
 
 
 $(".gext_check").each(function(i) {

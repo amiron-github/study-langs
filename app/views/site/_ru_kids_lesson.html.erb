@@ -363,6 +363,37 @@ padding-left: 40px;
 padding-top: 15px;
 }
 
+body .unit-title a {
+background-color: transparent;
+color: #fff;
+outline: none;
+font-size: 27px;
+}
+
+body .unit-title a:link {
+background-color: transparent;
+color: #fff;
+text-decoration: none;
+}
+
+body .unit-title a:visited {
+background-color: transparent;
+color: #fff;
+text-decoration: none;
+}
+
+body .unit-title a:hover {
+background-color: transparent;
+color: #fff;
+text-decoration: underline;
+}
+
+body .unit-title a:active {
+background-color: transparent;
+color: #fff;
+text-decoration: underline;
+}
+
 </style>
 
 <!--[if lte IE 7]>
@@ -386,7 +417,7 @@ display: block;
 <div id="prof_tabs">
 
 <div class="unit-title">
-Урок: <%= @less_title %>
+<a href="/ru/en/vocabulary.html#tab=5">Уроки для детей</a>: <%= @less_title %>
 </div>
 	<div id="tabs_row">
             <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Этап 1</a></div></div>

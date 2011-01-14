@@ -1,0 +1,632 @@
+<% @page_title = 'Урок 9' %>
+<% @page_meta = {'description' => ""} %>
+
+
+<% content_for :special_js_css do %>
+
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'jp-control' %>
+<%= javascript_include_tag 'lexical-test' %>
+<%= stylesheet_link_tag 'lexical-test' %>
+<%= javascript_include_tag 'jquery-ui-1.8.6.dial.min.js' %>
+<%= stylesheet_link_tag 'custom-theme/jquery-ui-1.8.5.custom.css' %>
+<%= javascript_include_tag 'test-drag-sort' %>
+<%= javascript_include_tag 'es-grammar-exercises' %>
+<%= javascript_include_tag 'es-test-drag-input' %>
+
+
+<%= javascript_include_tag 'short-unit' %>
+<%= stylesheet_link_tag 'short-unit' %>
+
+<script type="text/javascript">
+<%if params[:tab] %>
+	openTabFromUrl(<%= params[:tab] %>);
+<%else%>
+	openTabFromUrl();
+<%end%>
+	$(function() {
+	
+	$("#les-res").click(function() {
+		$( "#dialog" ).dialog({
+			height: 300,
+			width: 400,
+			modal: true
+		}).dialog( "option", "buttons", { "Ok": function() { $(this).dialog("close"); } } );	
+	})
+
+	});
+
+</script>
+
+
+<% end %>
+
+
+
+<div class="unit-area">
+
+
+<div id="prof_tabs">
+
+<div class="unit-title">
+Урок 9
+</div>
+	<div id="tabs_row">
+            <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Этап 1</a></div></div>
+			<div id="tab02" class="ptab"><div><a href="#">Этап 2</a></div></div>
+            <div id="tab03" class="ptab"><div><a href="#">Этап 3</a></div></div>
+			<div id="tab04" class="ptab"><div><a href="#">Этап 4</a></div></div>
+			<div id="tab05" class="ptab"><div><a href="#">Этап 5</a></div></div>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+
+<div id="for_tab01" class="pBlock" style="display: block">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Обзор</h3>
+<p class="su-step-info">
+Данный этап предназначен для ознакомления с лексикой и грамматическими конструкциями урока.
+</p>	
+	
+
+<h4 class="su-task">
+Задание 1. Слушайте и повторяйте. Ознакомьтесь с переводом фраз.
+</h4>
+	
+<div class="su-present">
+<div class="su-present-brd">
+<table cellspacing="0">
+<%
+@voc1 = Cluster.find(46).words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+%>
+<% @voc1.each do |voc_word|  %>
+	<tr>
+		<td class="su-pres-audio"><%unless voc_word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%=voc_word.sound_url%>', this)"></div><%end%></td>
+		<td class="su-pres-orig"><%=voc_word.text%></td>
+		<td class="su-pres-trans"><%=voc_word.translate%></td>
+	</tr>
+<% end %>	
+	
+</table>	
+</div>	
+</div>	
+	
+
+
+<br><br><br><br>
+
+<h4 class="su-task">
+Задание 2. Прослушайте фразу и найдите её в списке.
+</h4>
+
+
+
+<div id="ch1" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		test_id: "",
+		quest_num: 15,
+		variants_num: 5,
+		quest_type: 'text',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+<%
+@voc2 = Cluster.find(46).words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+@last_voc2 = (@voc2.length)-1
+%>
+		
+<% @voc2.each_with_index do |voc_word,index|  %>
+["<%= voc_word.text.to_s.gsub(/"/,'\"') %>", "<%= voc_word.translate.to_s.gsub(/"/,'\"') %>" ]<% if index!= @last_voc2 -%>,<%end -%>
+
+<% end %>
+		
+
+		]
+		
+		} )
+</script>
+
+
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(2)">
+</div>	
+	
+	</div>
+</div>
+
+<div id="for_tab02" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Лексика</h3>
+<p class="su-step-info">
+Данный этап предназначен для работы с полезными словами и выражениями по теме урока.
+</p>	
+	
+<h4 class="su-task">
+Задание 1. Ознакомьтесь со словами и выражениями урока.
+</h4>
+
+
+<br><br>
+<div class="voc-wordlist">
+<table class="voc_bord" align="center" cellspacing="0">
+<tr>
+<td>
+
+<table style="width: 400px" class="diction" cellpadding="0" cellspacing="0" align="center">
+<col width="50%"><col width="50%">
+<thead>
+<tr>
+	<td> <div class="trans-display-wrapper"><input type="checkbox" class="trans-display" /> Транскрипция </div> </td>
+	<td></td>
+</tr>
+</thead>
+<tbody>
+
+<%
+cat = Cluster.find(48)
+@words = cat.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+%>
+<%@words.each_with_index do |word, index|-%>
+<tr class="trow">
+    <td class="original" valign="top">
+	<%unless word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div><%end%>
+	<%= word.text %>
+	<div class="ru-transcript">[<%= word.transcribe %>]</div>
+	
+    </td>
+    <td class="translation" valign="top"><%= word.translate %>
+    </td>
+</tr>
+<%end -%>
+
+
+</tbody>
+<tfoot>
+<tr>
+	<td></td>
+	<td></td>
+</tr>
+</tfoot>  
+</table>
+
+</td>
+</tr>
+</table>
+</div><!-- end of voc-wordlist-->
+
+<br><br><br><br>
+
+<h4 class="su-task">
+Задание 2. Прослушайте фразу и найдите её перевод.
+</h4>
+
+
+
+<div id="ch2" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		test_id: "",
+		quest_num: 15,
+		variants_num: 5,
+		quest_type: 'text',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+<% @last_item_index = (@words.length)-1 -%>
+<% @words.each_with_index  do |word, index| -%>
+["<%= word.text %>", "<%= word.translate.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
+		} )
+</script>	
+
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(3)">
+</div>
+	
+	</div>
+</div>
+
+
+<div id="for_tab03" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Теория</h3>
+<p class="su-step-info">
+Данный этап предназначен для ознакомления с правилами грамматики и лексики.
+</p>		
+
+<h3 class="su-page-p" style="margin-top: 0;">Вопросительные местоимения</h3>
+
+<p>
+Вопросительные местоимения - слова, которые используются в вопросительных конструкциях. В русском языке это такие слова как <em>кто</em>, <em>что</em>, <em>какой</em> и т.д.
+</p>
+<p>
+В английском языке наиболее употебительны следующие вопросительные местоимения: 
+</p>
+<ul style="list-style-type: circle;">
+	<li><span class="eg">who</span> <span class="egt">кто</span></li>
+	<li><span class="eg">whose</span> <span class="egt">чей</span></li>
+	<li><span class="eg">what</span> <span class="egt">что</span></li>
+	<li><span class="eg">which</span> <span class="egt">какой</span>, <span class="egt">который</span></li>
+</ul>
+
+<p>
+Местоимение <span class="eg">who</span> используется в вопросах, относящихся к одушевленным существительным. Слова <span class="eg">what</span> и <span class="eg">which</span> могут употребляться по отношению к лицам и неодушевленным предметам.
+</p>
+
+<div class="egdiv">
+<h4>Примеры: </h4>
+<p>
+Who is Mr. Petrov? - Кто такой г-н Петров?<br>
+What is this? - Что это такое?
+Which is your phone number? - Какой твой номер телефона?
+</p>
+</div>
+
+<p>
+В вопросах к подлежащему местоимения <span class="eg">what</span>, <span class="eg">who</span>, <span class="eg">which</span> согласуются с глаголом в 3 лице единственном числе. При этом порядок слов остается прямой (инверсии не происходит).
+</p>
+
+<div class="egdiv">
+<h4>Примеры: </h4>
+<p>
+Вопросы к подлежащему (без инверсии):
+</p>
+<p>
+Who is in the car? - Кто (находится) в машине?<br>
+What is on the table? - Что (находится) на столе? 
+</p>
+
+<p>
+Вопросы не к подлежащему (с инверсией):
+</p>
+<p>
+Who is this man? - Кто  этот человек?<br>
+Which color is this car? - Какого цвета эта машина? 
+Whoose car is this? - Чья это машина?
+</p>
+
+</div>
+
+<br><br>
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(4)">
+</div>	
+	
+<br><br><br><br><br><br>
+	
+	</div>
+</div>
+
+
+<div id="for_tab04" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Упражнения</h3>
+<p class="su-step-info">
+Данный этап предназначен для работы с лексико-грамматическим материалом урока.
+</p>	
+	
+<h4 class="su-task">
+Задание 1. Прочитайте вопрос и ответ. Вставьте нужное вопросительное местоимение.
+</h4>
+	
+
+<div class="su-exerc">
+<div id="di1">			
+<p class="task">Выберите местоимение из списка. </p> 
+
+<div  class="gr_ex_from_list">
+
+<div class="gex-area-trans">
+
+
+<div class="gr_ex_unit gext_sign"> 
+1. 
+<select>
+<option>Who</option>
+<option  class="ok">What</option>
+<option >Which</option>
+<option>Whoose</option>
+</select>
+ is on the table? - This is a pen.
+</div>
+
+<div class="gr_ex_unit gext_sign"> 
+2. 
+<select>
+<option>Who</option>
+<option  >What</option>
+<option >Which</option>
+<option class="ok">Whoose</option>
+</select> pen is this? - It's my pen.
+ 
+</div>
+
+
+
+<div class="gr_ex_unit gext_sign"> 
+3.    
+<select>
+<option>Who</option>
+<option  class="ok">What</option>
+<option>Which</option>
+<option>Whoose</option>
+</select>
+ is your job? - I'm a manger.
+</div>
+
+<div class="gr_ex_unit gext_sign"> 
+4. 
+<select>
+<option class="ok">Who</option>
+<option  >What</option>
+<option>Which</option>
+<option>Whoose</option>
+</select>
+ is this woman? - This is my sister.
+</div>
+
+
+<div class="gr_ex_unit gext_sign"> 
+5. 
+<select>
+<option >Who</option>
+<option  class="ok">What</option>
+<option>Which</option>
+<option>Whoose</option>
+</select>
+ is her name? - Her name is Julia.
+</div>
+
+
+</div><!-- end of gex-area-trans -->
+
+<p class="ex_from_list_check es-ex-buttons gex-es-btn"><input type="button" class="gext_check_btn" value="Проверить" > </p>
+</div>
+
+</div>
+
+</div> <!-- end of su-exerc -->
+
+
+
+
+
+
+<br><br><br><br>
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(5)">
+</div>
+
+
+	</div>
+</div>
+<div id="for_tab05" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Практика</h3>
+<p class="su-step-info">
+Данный этап предназначен для закрепления полученных знаний.
+</p>	
+	
+
+<h4 class="su-task">
+Задание 1. Прочитайте текст и подберите соответсвующие имена в нижнем списке.
+</h4>
+
+
+<div class="su-present">
+<div class="su-present-brd">
+<table cellspacing="0" class="su-no-tr-act">
+	<tr>
+		<td class="su-pres-orig">
+
+<p>This is Emily.</p>
+<p>Emily is English.</p>
+<p>She is from London.</p>
+<p>Emily is a lawyer.</p>
+<p>She is not married.</p>
+<p>Emily’s flat is not large.</p>
+<p>But her car is very good.</p>
+		
+		</td>
+	</tr>
+</table>	
+</div>	
+</div>
+
+
+
+
+<div id="ds1" class="ds-wrapper" style="padding: 15px;">
+
+<p class="task" align="center">Перетащите слова из нижнего списка и нажмите "Проверить"</p>		
+<br>
+<table align="center" style="margin: 0 auto;">
+
+<tr>
+<td>
+
+
+<table class="dst-test ds-table ds-table-nosound" cellspacing="0" align="left" style="margin: auto">
+<col width="100">
+<col width="40">
+<col width="180">
+<tr>
+	<td class="ds-quest ds-audio-listen" align="center">
+			Mary is
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest ds-audio-listen">
+			Sam is
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest ds-audio-listen">
+		Lily is
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+
+<td>
+
+	
+<br>
+<br>
+
+<table class="ds_variants_list" width="100%">
+<tr valign="top">
+<td>
+
+<ul class="no-list" style="padding-left: 30px;">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>a student</div></div>
+	</li>
+
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>a programmer</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>a designer</div></div>
+	</li>
+</ul>
+
+</td>
+</tr>
+</table>
+
+
+
+</td>
+</tr>
+</table>
+
+
+<div class="es_btn_wrapper es-ex-buttons ds-check-wrapper">
+
+<input type="button" class="es_btn ds-check-button" value="Проверить">
+
+</div>
+
+
+</div>
+
+<script type="text/javascript"> 
+	var ds1 = new dragsort_test( {
+		id: "ds1", 
+		targets: "ds-answer", 
+		answer_elem: "ds_sort_item", 
+		variant_elem: "ds_variant",
+		answer_color: "#F6FAFF",
+		auto_check: false
+		} )
+</script>	
+
+<br><br>
+	
+	
+
+
+
+<h4 class="su-task">
+Задание 2. Напечатайте фразу под диктовку.
+</h4>
+
+
+
+<div id="ch3" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch3", 
+		test_id: "",
+		quest_num: 10,
+		variants_num: 5,
+		quest_type: 'audio',
+		answer_type: 'type',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+<% @last_item_index = (@words.length)-1 -%>
+<% @words.each_with_index  do |word, index| -%>
+['<%= word.sound_url %>', "<%= word.text.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
+		} )
+</script>
+	
+	<br><br>
+
+	
+
+
+	</div>
+</div>
+
+
+</div>
+
+
+
+
+
+<script type="text/javascript">
+currentSection="course";
+</script>
