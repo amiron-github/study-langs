@@ -427,6 +427,8 @@ this.checkClass="ds-rt";
 this.signClass="ds-sign";
 this.correctClass = "ds-correct-answer";
 this.errorClass = "ds-error-answer";
+this.test_id= hash['test_id'];
+this.totalTasks = hash['total_task'];
 
 
 this.targetsData = new Array();
@@ -447,6 +449,11 @@ this.start = function() {
 	$("body").append('<div id="'+ this.id +'_dragHelper" class="ds_dragHelper noselect"></div>');
 	dragHelper = $('#'+ this.id +'_dragHelper');
 	this.targets.attr("taken", "-1");
+	
+	if(tObj.totalTasks == undefined || tObj.totalTasks < 1) {
+		var total = tObj.container.find("span.ds-rt").filter(function(){return $(this).text() != '0'});
+		tObj.totalTasks = total.length;
+	}
 	
 	this.checkButton.click(function() {
 		tObj.checkAnswers();
@@ -580,30 +587,56 @@ this.hittedAnimation = function(hitted) {
 }
 
 this.checkAnswers = function() {
+
+	var errorNum = 0;
+	var errorString = ' errors'
+	var totalTasks = tObj.totalTasks;
+	var correctNum=0;
+	var tID = tObj.test_id
 	
 	var totalVariants = tObj.variants.length;
-	var correctLen = 0;
-	var errorLen = 0;
 
   tObj.answers.each(function(i, elem) {
+	//totalTasks++;
 	$(elem).find("."+tObj.checkClass).each(function(a, item) {
 		var toCol = $(item).text();
 		if (toCol -1 == i) {
 			$(item).parent().parent().css({color: "green"});
-			correctLen ++;
+			correctNum ++;
 		}else {
 			$(item).parent().parent().css({color: "red", borderColor: "#FF7F7F"});
-			errorLen ++;
+			errorNum ++;
 		}
 	
 	})
 	
   });
   
-  var untouch = totalVariants - correctLen - errorLen;
+  tObj.container.find(".ds-check-wrapper").find(".to_notify").remove();
+	
+	var noTxt = 'No completed tasks'
+	var gTxt = 'Correct';
+	var erTxt = 'Errors';
+	if (es_lang == 'ru') noTxt = 'Нет выполненных'; gTxt = 'Правильно'; erTxt = 'Ошибки';
+	
+	if (correctNum ==  0 && errorNum == 0) {
+		tObj.container.find(".ds-check-wrapper").prepend('<span class="to_notify"><span class="check_notify">'+noTxt+'</span></span>');
+	
+	} else {
+	
+		if (correctNum == totalTasks && errorNum == 0) {
+		tObj.container.find(".ds-check-wrapper").prepend('<span class="to_notify"><span class="check_notify" style="background-image: none; color: green; padding-left: 10px;"> '+gTxt+': '+correctNum+'/'+totalTasks+' </span></span>');
+		} else {
+			tObj.container.find(".ds-check-wrapper").prepend('<span class="to_notify"><span class="check_notify" style="line-height: normal;"> <span style="color: #000">'+gTxt+': '+correctNum+'/'+totalTasks+'</span><br>'+erTxt+': '+errorNum+'</span></span>');
+		}
+  }
   
-  tObj.container.find('.ds_check_sign').text('Correct: '+ correctLen + ', errors: '+errorLen+ ", untouch: "+ untouch+", total: "+ totalVariants);
+  tObj.container.find(".ds-check-wrapper").data('total', totalTasks).data('correct', correctNum)
   
+  
+  //alert (tID +" "+ totalTasks+" "+ correctNum)
+  sendResults(tID, totalTasks, correctNum);
+ 
 }
 
 $(document).ready(function() {

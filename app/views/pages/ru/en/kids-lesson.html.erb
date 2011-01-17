@@ -15,26 +15,30 @@ case @topic
 	when 'numbers_1-10'
 		@cluster_num = 40
 		@less_title = 'Числа от 1 до 10'
-		@test_data = Exercise::KIDS_RU[:parts][0][:exercises]
+		@test_data = Exercise::KIDS_EN[:parts][0][:exercises]
+	when 'colors'
+		@cluster_num = 56
+		@less_title = 'Цвета'
+		@test_data = Exercise::KIDS_EN[:parts][1][:exercises]
 	when 'fruit'
 		@cluster_num = 34
-		@test_data = Exercise::KIDS_RU[:parts][1][:exercises]
+		@test_data = Exercise::KIDS_EN[:parts][2][:exercises]
 	when 'vegetables'
 		@cluster_num = 39
 		@less_title = 'Овощи'
-		@test_data = Exercise::KIDS_RU[:parts][2][:exercises]
+		@test_data = Exercise::KIDS_EN[:parts][3][:exercises]
 	when 'domestic_animals'
 		@cluster_num = 35
 		@less_title = 'Домашние животные'
-		@test_data = Exercise::KIDS_RU[:parts][3][:exercises]
+		@test_data = Exercise::KIDS_EN[:parts][4][:exercises]
 	when 'wild_animals'
 		@cluster_num = 36
 		@less_title = 'Дикие животные'
-		@test_data = Exercise::KIDS_RU[:parts][4][:exercises]
+		@test_data = Exercise::KIDS_EN[:parts][5][:exercises]
 	when 'zoo_animals'
 		@cluster_num = 37
 		@less_title = 'В зоопарке'
-		@test_data = Exercise::KIDS_RU[:parts][5][:exercises]
+		@test_data = Exercise::KIDS_EN[:parts][6][:exercises]
 	when 'birds'
 		@cluster_num = 38
 		@less_title = 'Птицы'

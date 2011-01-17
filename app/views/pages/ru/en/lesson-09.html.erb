@@ -114,7 +114,7 @@
 		test_id: "",
 		quest_num: 15,
 		variants_num: 5,
-		quest_type: 'text',
+		quest_type: 'audio',
 		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
 		basic_array: [
 <%
@@ -123,7 +123,7 @@
 %>
 		
 <% @voc2.each_with_index do |voc_word,index|  %>
-["<%= voc_word.text.to_s.gsub(/"/,'\"') %>", "<%= voc_word.translate.to_s.gsub(/"/,'\"') %>" ]<% if index!= @last_voc2 -%>,<%end -%>
+["<%= voc_word.sound_url %>", "<%= voc_word.translate.to_s.gsub(/"/,'\"') %>" ]<% if index!= @last_voc2 -%>,<%end -%>
 
 <% end %>
 		
@@ -223,13 +223,13 @@ cat = Cluster.find(48)
 		test_id: "",
 		quest_num: 15,
 		variants_num: 5,
-		quest_type: 'text',
+		quest_type: 'audio',
 		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
 		basic_array: [
 		
 <% @last_item_index = (@words.length)-1 -%>
 <% @words.each_with_index  do |word, index| -%>
-["<%= word.text %>", "<%= word.translate.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+["<%= word.sound_url %>", "<%= word.translate.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
 <%end -%>
 
 		]

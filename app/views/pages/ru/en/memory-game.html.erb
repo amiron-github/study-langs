@@ -80,7 +80,7 @@ if ($(".act_card").length) {
 
 				$("div.act_card").removeClass("act_card");
 				
-				playSound('games/memory_ding.mp3');
+				playFile('/sounds/games/memory_ding.mp3');
 
 
 				$("#helper1").css({left: posX1+30, top: posY1, opacity: "1"}).text(cardPoints[0]+" очков!").animate({top:  "-=100px", opacity: "0"},1200, function(){
@@ -97,7 +97,7 @@ if ($(".act_card").length) {
 				
 				if ($("div.card").length==0){
 					setTimeout(function(){
-						playSound('games/memory-tada.mp3');
+						playFile('/sounds/games/memory-tada.mp3');
 
 
 						$("#answers").hide().css({position: "relative", top: "-350px", fontSize: "16px"}).html("Гамовер <br><br> Вы набрали: "+totalScore+" очков").show();
@@ -146,7 +146,6 @@ $("#game_place").html(gamePlace);
 $("div.card").click(function(){
 
 	t=$(this);
-
 	checkCard(t);
 
 });
