@@ -1,4 +1,4 @@
-<% @page_title = 'Урок 9' %>
+<% @page_title = 'Урок 10' %>
 <% @page_meta = {'description' => ""} %>
 
 
@@ -49,7 +49,7 @@
 <div id="prof_tabs">
 
 <div class="unit-title">
-Урок 9
+Урок 10
 </div>
 	<div id="tabs_row">
             <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Этап 1</a></div></div>
@@ -78,7 +78,7 @@
 <div class="su-present-brd">
 <table cellspacing="0">
 <%
-@voc1 = Cluster.find(46).words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+@voc1 = Cluster.find(51).words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
 %>
 <% @voc1.each do |voc_word|  %>
 	<tr>
@@ -118,7 +118,7 @@
 		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
 		basic_array: [
 <%
-@voc2 = Cluster.find(46).words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+@voc2 = Cluster.find(51).words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
 @last_voc2 = (@voc2.length)-1
 %>
 		
@@ -172,7 +172,7 @@
 <tbody>
 
 <%
-cat = Cluster.find(48)
+cat = Cluster.find(53)
 @words = cat.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
 %>
 <%@words.each_with_index do |word, index|-%>
@@ -254,58 +254,57 @@ cat = Cluster.find(48)
 Данный этап предназначен для ознакомления с правилами грамматики и лексики.
 </p>		
 
-<h3 class="su-page-p" style="margin-top: 0;">Вопросительные местоимения</h3>
+<h3 class="su-page-p" style="margin-top: 0;">Определенный артикль</h3>
 
 <p>
-Вопросительные местоимения - слова, которые используются в вопросительных конструкциях. В русском языке это такие слова как <em>кто</em>, <em>что</em>, <em>какой</em> и т.д.
+Определенный артикль произошел от указательного местоимения <span class="eg">that</span> <span class="egt">тот</span>  и употребляется с существительным в том случае, если понятно (из контекста, окружающей обстановке и т.д.), что речь идет именно о данном предмете. Он выделяет предмет из класса ему подобных, указывает на уже известный говорящему или слушающему предмет.
+</p>
+<div class="egdiv">
+<h4>Пример: </h4>
+	<p>	<span class="exs-or">Give me <u>the book</u>.</span> - Дайте мне (эту) книгу. (В ситуации понятно, о какой именно книге идет речь)</p>
+	<p>	Сравните: </p>
+	<p>	<span class="exs-or">Give me <u>a book</u>.</span> - Дайте мне (любую, какую-нибудь) книгу. (В ситуации понятно, о какой именно книге идет речь)</p>
+</div>
+
+
+<p>
+Определенный артикль может использоваться перед любым существительным в любом числе.  
 </p>
 <p>
-В английском языке наиболее употебительны следующие вопросительные местоимения: 
+Кроме общего значения, следует также выделить наиболее частые случаи употребления определенного артикля: 
 </p>
-<ul style="list-style-type: circle;">
-	<li><span class="eg">who</span> <span class="egt">кто</span></li>
-	<li><span class="eg">whose</span> <span class="egt">чей</span></li>
-	<li><span class="eg">what</span> <span class="egt">что</span></li>
-	<li><span class="eg">which</span> <span class="egt">какой</span>, <span class="egt">который</span></li>
+
+<ul style="list-style: none">
+	<li>- перед существительными, обозначающими уникальные, единственные в своем роде предметы
+	<div class="ex-block-simple">
+		<span class="exs-or"><u>the Earth</u></span> - Земля (планета)<br>
+		<span class="exs-or"><u>the Sun</u></span> - Солнце
+	</div>
+	
+	</li>
+	<li>- перед существительными, которые имеют определение в значении ограничения
+	<div class="ex-block-simple">
+		<span class="exs-or"><u>The girl</u> sitting over there</span> - Девочка, сидящая вон там
+	</div>	
+	</li>
+	<li>- перед существительными, которые употребляются с порядковыми числительными или со словами <span class="eg">next</span> (в значении <span class="egt">следующий</span>) и <span class="eg">last</span> (в значении <span class="egt">последний</span>)
+	<div class="ex-block-simple">
+		<span class="exs-or">When is  <u>the first bus</u> to London tomorrow?</span> - Когда будет первый автобус до Лондона завтра?
+	</div>	
+	</li>
+	<li>- перед существительными, обозначающими название национальностей, когда речь идет о народе в целом, о всех его представителях
+	<div class="ex-block-simple">
+		<span class="exs-or"><u>The Russians </u>  are very keen on football.</span> - Русские очень любят футбол.
+	</div>	
+	</li>
+	<li>- перед существительными, обозначающими часто посещаемые места, используемые средства транспорта, коммуникации и т.п.
+	<div class="ex-block-simple">
+		<span class="exs-or">I'm going to <u>the bank</u>.</span> - Я иду в банк.
+	</div>	
+	</li>
 </ul>
 
-<p>
-Местоимение <span class="eg">who</span> используется в вопросах, относящихся к одушевленным существительным. Слова <span class="eg">what</span> и <span class="eg">which</span> могут употребляться по отношению к лицам и неодушевленным предметам.
-</p>
 
-<div class="egdiv">
-<h4>Примеры: </h4>
-<p>
-Who is Mr. Petrov? - Кто такой г-н Петров?<br>
-What is this? - Что это такое?
-Which is your phone number? - Какой твой номер телефона?
-</p>
-</div>
-
-<p>
-В вопросах к подлежащему местоимения <span class="eg">what</span>, <span class="eg">who</span>, <span class="eg">which</span> согласуются с глаголом в 3 лице единственном числе. При этом порядок слов остается прямой (инверсии не происходит).
-</p>
-
-<div class="egdiv">
-<h4>Примеры: </h4>
-<p>
-Вопросы к подлежащему (без инверсии):
-</p>
-<p>
-Who is in the car? - Кто (находится) в машине?<br>
-What is on the table? - Что (находится) на столе? 
-</p>
-
-<p>
-Вопросы не к подлежащему (с инверсией):
-</p>
-<p>
-Who is this man? - Кто  этот человек?<br>
-Which color is this car? - Какого цвета эта машина? 
-Whoose car is this? - Чья это машина?
-</p>
-
-</div>
 
 <br><br>
 <div class="es-ex-buttons su-next-wrapper">
@@ -431,12 +430,126 @@ Whoose car is this? - Чья это машина?
 	
 
 <h4 class="su-task">
-Задание 1. Прочитайте текст и подберите соответсвующие имена в нижнем списке.
+Задание 1. Сделайте перевод фраз с помощью представленных слов.
 </h4>
 
+<div class="su-exerc">
+<div id="di4">	
+				
+<p class="task">Перетащите слова в текстовое поле или напечатайте их.</p> 
+
+
+<div  class="gr_ex_type di_mix">
+
+<div class="gext_task gext_sign di_mix_first"> 
+<div class="di_mix_tobuild">Меня зовут Михаил.</div>
+<div class="di_mix_variants di_mix">my name is Michael am from</div>
+<input type="text" value=""> <span class="gext_answer" style="display: none">My name is Michael</span>
+<div class="gext_show"><span><b>My name is Michael.</b></span> &nbsp;</div>
+
+</div>
+
+<div class="gext_task gext_sign"> 
+<div class="di_mix_tobuild">Я работаю менеджером.</div>
+<div class="di_mix_variants di_mix">I am a manager in designer</div>
+<input type="text" value=""> <span class="gext_answer" style="display: none">I am a manager</span>
+<div class="gext_show"><span><b>I am a manager.</b></span> &nbsp;</div>
+</div>
+
+<div class="gext_task gext_sign">
+<div class="di_mix_tobuild">Я живу в Москве.</div>
+ <div class="di_mix_variants di_mix">I am from Moscow Russian in</div>
+<input type="text" value=""> <span class="gext_answer" style="display: none">I am from Miscow</span>
+
+<div class="gext_show"><span><b>I am from Miscow.</b></span> &nbsp;</div>
+
+</div>
+
+<div class="gext_task gext_sign">
+<div class="di_mix_tobuild">Мою супругу зовут Ольга, она врач</div>
+ <div class="di_mix_variants di_mix">my wife's name is Olga her she is a doctor</div>
+<input type="text" value=""> <span class="gext_answer" style="display: none">My wife's name is Olga, she is a doctor</span>
+
+<div class="gext_show"><span><b>My wife's name is Olga, she is a doctor.</b></span> &nbsp;</div>
+
+</div>
+
+
+
+
+<p class="gext_check es-ex-buttons gex-es-btn"><input type="button" class="gext_check_btn" value="Проверить" > <input type="button" value="Ответы" class="gext_answer_show"></p>
+
+
+</div>
+
+
+</div>
+
+
+</div> <!-- end of di4  -->
+
+
+<script type="text/javascript"> 
+	var di4 = new draginput_test( {
+		id: "di4", 
+		targets: "gext_task input", 
+		//in_targets: "input",
+		clear_option: true,
+		one_use: true,
+		variant_elem: "di_mix_variants span"
+		//targets_color: "#ffffff"
+
+		} )
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
 	
 	
 
+
+
+<h4 class="su-task">
+Задание 2. Напечатайте фразу под диктовку.
+</h4>
+
+
+
+<div id="ch3" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch3", 
+		test_id: "",
+		quest_num: 10,
+		variants_num: 5,
+		quest_type: 'audio',
+		answer_type: 'type',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+<% @last_item_index = (@words.length)-1 -%>
+<% @words.each_with_index  do |word, index| -%>
+['<%= word.sound_url %>', "<%= word.text.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
+		} )
+</script>
 	
 	<br><br>
 

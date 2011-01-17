@@ -464,160 +464,78 @@ your sisters?
 
 
 
-
-<div id="ds1" class="ds-wrapper" style="padding: 15px;">
-
-<p class="task" align="center">Перетащите слова из нижнего списка и нажмите "Проверить"</p>		
 <br>
-<table align="center" style="margin: 0 auto;">
+<div class="su-exerc">
 
-<tr>
-<td>
+<div class="task">Выберите один из вариантов ответа.</div>
 
+<div  class="gr_ex_variants">
 
-<table class="dst-test ds-table ds-table-nosound" cellspacing="0" align="left" style="margin: auto">
-<col width="100">
-<col width="40">
-<col width="180">
-<tr>
-	<td class="ds-quest ds-audio-listen" align="center">
-			Mary is
-	</td>
-	<td class="ds-audio-correctness">
-		<div class="ds-sign"></div>
-	</td>
-	<td class="ds-answer">
-		<div class="ds_sort_item">
-			&nbsp;
-		</div>
-	</td>
-</tr>
-<tr>
-	<td class="ds-quest ds-audio-listen">
-			Sam is
-	</td>
-	<td class="ds-audio-correctness">
-		<div class="ds-sign"></div>
-	</td>
-	<td class="ds-answer">
-		<div class="ds_sort_item">
-			&nbsp;
-		</div>
-	</td>
-</tr>
-<tr>
-	<td class="ds-quest ds-audio-listen">
-		Lily is
-	</td>
-	<td class="ds-audio-correctness">
-		<div class="ds-sign"></div>
-	</td>
-	<td class="ds-answer">
-		<div class="ds_sort_item">
-			&nbsp;
-		</div>
-	</td>
-</tr>
+<div  class="gr_ex_variants_wrap gexv_with_trans">
+<table class="gr_ex_vars_tab gexv_options" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td>
+			<div class="gexv_task gexv_sign">
+				1. Эмили живет в Англии.
+			</div>
+			<div class="gexv_variant"><input type="checkbox" class="ok"> да</div>
+			<div class="gexv_variant"><input type="checkbox" > нет</div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="gexv_task gexv_sign">
+				2. Эмили работает менеджером.
+			</div>
+			<div class="gexv_variant"><input type="checkbox" > да</div>
+			<div class="gexv_variant"><input type="checkbox" class="ok"> нет</div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="gexv_task gexv_sign">
+				 3. У нее большая квартира.
+			</div>
+			<div class="gexv_variant"><input type="checkbox"> да </div>
+			<div class="gexv_variant"><input type="checkbox"  class="ok"> нет</div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="gexv_task gexv_sign">
+				  4. У нее хорошая машина. 
+			</div>
+			<div class="gexv_variant"><input type="checkbox" class="ok"> да</div>
+			<div class="gexv_variant"><input type="checkbox"> нет</div>
+		</td>
+	</tr>
+
+	<tr>
+
+		<td>
+			<div class="gexv_task gexv_sign">
+				  5. Ее  муж работает врачом.
+			</div>
+			<div class="gexv_variant"><input type="checkbox" > да</div>
+			<div class="gexv_variant"><input type="checkbox" class="ok"> нет</div>
+		</td>
+	</tr>
 
 </table>
-
-</td>
-
-</tr>
-<tr>
-
-<td>
-
-	
-<br>
-<br>
-
-<table class="ds_variants_list" width="100%">
-<tr valign="top">
-<td>
-
-<ul class="no-list" style="padding-left: 30px;">
-	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>a student</div></div>
-	</li>
-
-	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>a programmer</div></div>
-	</li>
-	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>a designer</div></div>
-	</li>
-</ul>
-
-</td>
-</tr>
-</table>
-
-
-
-</td>
-</tr>
-</table>
-
-
-<div class="es_btn_wrapper es-ex-buttons ds-check-wrapper">
-
-<input type="button" class="es_btn ds-check-button" value="Проверить">
-
 </div>
 
+<p class="gexv_check es-ex-buttons gex-es-btn">
+
+<input type="button" value="Проверить"></p>
 
 </div>
+</div> <!-- end of su-ex  -->
 
-<script type="text/javascript"> 
-	var ds1 = new dragsort_test( {
-		id: "ds1", 
-		targets: "ds-answer", 
-		answer_elem: "ds_sort_item", 
-		variant_elem: "ds_variant",
-		answer_color: "#F6FAFF",
-		auto_check: false
-		} )
-</script>	
 
 <br><br>
 	
 	
 
-
-
-<h4 class="su-task">
-Задание 2. Напечатайте фразу под диктовку.
-</h4>
-
-
-
-<div id="ch3" class="lt-holder">
-<div class="lt-spacer">	
-<%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
-</div>
-</div><!-- end of lt-holder -->
-
-<script type="text/javascript"> 
-	var ch2 = new ch_exercise( {
-		id: "ch3", 
-		test_id: "",
-		quest_num: 10,
-		variants_num: 5,
-		quest_type: 'audio',
-		answer_type: 'type',
-		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
-		basic_array: [
-		
-<% @last_item_index = (@words.length)-1 -%>
-<% @words.each_with_index  do |word, index| -%>
-['<%= word.sound_url %>', "<%= word.text.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
-<%end -%>
-
-		]
-		
-		} )
-</script>
 	
 	<br><br>
 
