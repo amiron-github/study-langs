@@ -26,6 +26,8 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
 		@user.lang = params[:lang]
 		@user.to_lang = params[:to_lang]
+	@lang = params[:lang]
+	@to_lang = params[:to_lang]
     @user.register! if @user && @user.valid?
     success = @user && @user.valid?
     if success && @user.errors.empty?
@@ -45,7 +47,13 @@ class UsersController < ApplicationController
     when (!params[:activation_code].blank?) && user && !user.active?
       user.activate!
       flash[:notice] = "Signup complete! Please sign in to continue."
-      redirect_to '/login'
+	  if params[:lang] == 'ru'
+		if params[:to_lang] == 'en'
+			redirect_to '/ru/en/login'
+		end
+	  else
+		redirect_to '/login'
+	  end
     when params[:activation_code].blank?
       flash[:error] = "The activation code was missing.  Please follow the URL from your email."
       redirect_back_or_default('/')

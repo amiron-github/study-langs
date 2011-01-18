@@ -23,7 +23,14 @@ layout :determine_layout
       if @password.save
         PasswordMailer.deliver_forgot_password(@password)
         flash[:notice] = "A link to change your password has been sent to #{@password.email}."
-        format.html { redirect_to(:action => 'new') }
+		
+		if @lang == 'ru'
+			if @to_lang == 'en'
+				format.html { redirect_to(:action => 'new', :lang => @lang, :to_lang => @to_lang)}
+			end
+		else
+			format.html { redirect_to(:action => 'new') }
+		end
         format.xml  { render :xml => @password, :status => :created, :location => @password }
       else
         format.html { render :action => "new" }
