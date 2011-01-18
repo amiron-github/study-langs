@@ -404,8 +404,8 @@ this.getTypeAnswers = function() {
 			tWord=tWord.replace(/&nbsp;/g, "").replace(/\s\s+/g, "").replace(/\s+/g, "")
 			userAnswer = userAnswer.replace(/&nbsp;/g, "").replace(/\s\s+/g, "").replace(/\s+/g, "")
 		}
-		
-		if ( userAnswer.toUpperCase() == tWord.toUpperCase() ) {
+		//alert(" '" + userAnswer.toUpperCase()+"' - '"+tWord.toUpperCase()+"'")
+		if ( $.trim(userAnswer.toUpperCase()) == $.trim(tWord.toUpperCase()) ) {
 			tObj.alertHolder.empty().removeClass(tObj.correctClass).removeClass(tObj.wrongClass);
 			if (tObj.autoPlay) tObj.optionsHolder.find(".es-ex-check-type").unbind("click");
 			tObj.optionsHolder.find(".es-ex-type-field").addClass("es-ex-typed");
