@@ -70,17 +70,7 @@ font-size: 19px;
 
 $(document).ready(function() {
 
-	$("#contfield form input:submit").click(function () {
-		if ($("#accpeptance").is(":checked")== false) {
-		
-			alert("Checkmark that you have read the Terms and Conditions");
-			return false;	
-			
-		}
-	
-	});
-	
-	
+
 	$(".submit-form input").mouseover(function() {
 	$(this).parent().addClass("sign-over");
 }).mouseout(function() {
@@ -175,11 +165,11 @@ if ($('#errorExplanation').length > 0) {
 			<table class="form-entries">
 				<tr>
 					<td class="entry1" >Email:</td>
-					<td onmouseout="hide_info(this)" onmouseover="tooltip(this,'A real email is needed for account activation')"><%= f.text_field :email %></td>
+					<td onmouseout="hide_info(this)" onmouseover="tooltip(this,'На этот e-mail вы вышлем письмо для активации')"><%= f.text_field :email %></td>
 				</tr>
 				<tr>
 					<td class="entry1">Пароль:</td>
-					<td onmouseout="hide_info(this)" onmouseover="tooltip(this,'Minimum is 6 characters')"> <%= f.password_field :password %></td>
+					<td onmouseout="hide_info(this)" onmouseover="tooltip(this,'Минимум 6 знаков')"> <%= f.password_field :password %></td>
 				</tr>
 				<tr>
 					<td class="entry1">Пароль еще раз:</td>
@@ -188,7 +178,6 @@ if ($('#errorExplanation').length > 0) {
 			</table>
 	<tr>
 		<td class="submit-text-btn">
-			<p align="center"><input type="checkbox" id="accpeptance"> Я согласен с <a href="copyright.html">Условиями</a></p>
 			<p align="center" class="sign-in"><%= submit_tag 'Отправить' %> </p>
 		</td>
 	</tr>
