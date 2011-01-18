@@ -17,13 +17,15 @@ class UsersController < ApplicationController
 	@lang = params[:lang]
 	@to_lang = params[:to_lang]
     @user = User.new
+		@user.lang = @lang
+		@user.to_lang = @to_lang
   end
  
   def create
     logout_keeping_session!
     @user = User.new(params[:user])
-	@lang = params[:lang]
-	@to_lang = params[:to_lang]
+		@user.lang = params[:lang]
+		@user.to_lang = params[:to_lang]
     @user.register! if @user && @user.valid?
     success = @user && @user.valid?
     if success && @user.errors.empty?

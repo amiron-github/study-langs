@@ -14,8 +14,11 @@ layout :determine_layout
   def create
 	@lang = params[:lang]
 	@to_lang = params[:to_lang]
+
     @password = Password.new(params[:password])
     @password.user = User.find_by_email(@password.email)
+    @password.user.lang = @lang
+    @password.user.to_lang = @to_lang
     respond_to do |format|
       if @password.save
         PasswordMailer.deliver_forgot_password(@password)

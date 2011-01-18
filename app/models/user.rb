@@ -40,7 +40,8 @@ has_many :user_tests,
 # prevents a user from submitting a crafted form that bypasses activation
 # anything else you want your user to change should be added here.
 # attr_accessible :login, :email, :name, :password, :password_confirmation
-	attr_accessible :email, :name, :password, :password_confirmation, :status
+	attr_accessible :email, :name, :password, :password_confirmation, :status, :lang, :to_lang
+  attr_accessor :lang, :to_lang
 
 
 
