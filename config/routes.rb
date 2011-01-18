@@ -51,8 +51,9 @@ ActionController::Routing::Routes.draw do |map|
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/:lang/:to_lang/signup', :controller => 'users', :action => 'new'
   map.signup '/signup', :controller => 'users', :action => 'new'
+  map.activate '/:lang/:to_lang/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
-  map.activate '/:lang/:lang_to/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
+
 
   map.cart '/cart', :controller => 'users', :action => 'show_cart'
   map.user '/user', :controller => 'users', :action => 'update_user'
