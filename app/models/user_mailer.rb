@@ -3,11 +3,6 @@ class UserMailer < ActionMailer::Base
     setup_email(user)
     @subject    += 'Please activate your new account'
     str = if user.lang && user.to_lang then "#{user.lang}/#{user.to_lang}/" else "" end
-	
-	@body[:lang] == 'en'
-	if user.lang == 'ru'
-		@body[:lang] = 'ru'
-	end
  
     @body[:url]  = "http://study-languages-online.com/#{str}activate/#{user.activation_code}"
   
