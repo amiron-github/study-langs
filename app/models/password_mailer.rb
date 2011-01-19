@@ -5,11 +5,6 @@ class PasswordMailer < ActionMailer::Base
     str = if password.user.lang && password.user.to_lang then "#{password.user.lang}/#{password.user.to_lang}/" else "" end
     setup_email(password.user)
 	
-	@body[:lang] == 'en'
-	if password.user.lang == 'ru'
-		@body[:lang] = 'ru'
-	end
-	
     @subject    += 'You have requested to change your password'
     @body[:url]  = "#{APP_CONFIG[:site_url]}/#{str}change_password/#{password.reset_code}"
 
