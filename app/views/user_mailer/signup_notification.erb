@@ -1,3 +1,17 @@
+
+<% if @lang == 'ru'%>
+
+Ура! Ваш аккаунт успешно создан.
+
+  E-mail: <%=h @user.email %>
+  Пароль: <%=h @user.password %>
+
+Перейдите по следующей ссылке, чтобы активировать свой аккаунт:
+
+  <%=h @url %>
+
+<%else%>
+
 Your account has been created.
 
   E-mail: <%=h @user.email %>
@@ -6,3 +20,6 @@ Your account has been created.
 Visit this url to activate your account:
 
   <%=h @url %>
+
+
+<%end%>

@@ -109,7 +109,7 @@
 <script type="text/javascript"> 
 	var ch1 = new ch_exercise( {
 		id: "ch1", 
-		test_id: "",
+		test_id: "c1107012.1.2",
 		quest_num: 15,
 		variants_num: 5,
 		quest_type: 'audio',
@@ -124,13 +124,11 @@
 ["<%= voc_word.sound_url %>", "<%= voc_word.translate.to_s.gsub(/"/,'\"') %>" ]<% if index!= @last_voc2 -%>,<%end -%>
 
 <% end %>
-		
 
 		]
 		
 		} )
 </script>
-
 
 
 <div class="es-ex-buttons su-next-wrapper">
@@ -208,7 +206,6 @@ cat = Cluster.find(32)
 </h4>
 
 
-
 <div id="ch2" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
@@ -218,7 +215,7 @@ cat = Cluster.find(32)
 <script type="text/javascript"> 
 	var ch2 = new ch_exercise( {
 		id: "ch2", 
-		test_id: "",
+		test_id: "c1107022.2.2",
 		quest_num: 15,
 		variants_num: 5,
 		quest_type: 'audio',
@@ -229,7 +226,6 @@ cat = Cluster.find(32)
 <% @words.each_with_index  do |word, index| -%>
 ["<%= word.sound_url %>", "<%= word.translate.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
 <%end -%>
-
 		]
 		
 		} )
@@ -316,7 +312,6 @@ cat = Cluster.find(32)
 	</div>
 </div>
 
-
 <div id="for_tab04" class="pBlock" style="display: none">
 	<div class="inpBlock">
 	
@@ -363,8 +358,9 @@ cat = Cluster.find(32)
 <br>
 
 
-
 <div  class="gr_ex_type">
+<div class="gr-ex-testid">c1107041.4.1</div>
+
 
 <div class="gext_sign"></div>
 <div class="gext_task gext_sign"> 
@@ -405,13 +401,9 @@ cat = Cluster.find(32)
 
 <p class="gext_check es-ex-buttons gex-es-btn"><input type="button" class="gext_check_btn" value="Проверить" > <input type="button" value="Показать ответы" class="gext_answer_show"></p>
 
-
 </div>
 
-
 </div>
-
-
 
 </div> <!-- end of su-exerc -->
 
@@ -427,9 +419,6 @@ cat = Cluster.find(32)
 
 		} )
 </script>
-
-
-
 
 
 
@@ -470,8 +459,6 @@ cat = Cluster.find(32)
 </table>	
 </div>	
 </div>
-
-
 
 
 <div id="ds1" class="ds-wrapper" style="padding: 15px;">
@@ -581,6 +568,7 @@ cat = Cluster.find(32)
 <script type="text/javascript"> 
 	var ds1 = new dragsort_test( {
 		id: "ds1", 
+		test_id: "c1107051.5.1",
 		targets: "ds-answer", 
 		answer_elem: "ds_sort_item", 
 		variant_elem: "ds_variant",
@@ -591,8 +579,6 @@ cat = Cluster.find(32)
 
 <br><br>
 	
-	
-
 
 
 <h4 class="su-task">
@@ -608,14 +594,13 @@ cat = Cluster.find(32)
 </div><!-- end of lt-holder -->
 
 <script type="text/javascript"> 
-	var ch2 = new ch_exercise( {
+	var ch3 = new ch_exercise( {
 		id: "ch3", 
-		test_id: "",
+		test_id: "c1107052.5.2",
 		quest_num: 10,
 		variants_num: 5,
 		quest_type: 'audio',
 		answer_type: 'type',
-
 		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
 		basic_array: [
 		
@@ -632,16 +617,11 @@ cat = Cluster.find(32)
 	<br><br>
 
 	
-
-
 	</div>
 </div>
 
 
 </div>
-
-
-
 
 
 

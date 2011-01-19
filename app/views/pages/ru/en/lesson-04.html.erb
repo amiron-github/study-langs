@@ -27,8 +27,6 @@
 
 <% end %>
 
-
-
 <div class="unit-area">
 
 
@@ -79,13 +77,11 @@
 </div>	
 	
 
-
 <br><br><br><br>
 
 <h4 class="su-task">
 Задание 2. Прослушайте фразу и найдите её перевод в списке.
 </h4>
-
 
 
 <div id="ch1" class="lt-holder">
@@ -97,7 +93,7 @@
 <script type="text/javascript"> 
 	var ch1 = new ch_exercise( {
 		id: "ch1", 
-		test_id: "",
+		test_id: "c1104012.1.2",
 		quest_num: 15,
 		variants_num: 5,
 		quest_type: 'audio',
@@ -107,18 +103,15 @@
 @voc2 = Cluster.find(22).words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
 @last_voc2 = (@voc2.length)-1
 %>
-		
 <% @voc2.each_with_index do |voc_word,index|  %>
 ["<%= voc_word.sound_url.to_s.gsub(/"/,'\"') %>", "<%= voc_word.translate.to_s.gsub(/"/,'\"') %>" ]<% if index!= @last_voc2 -%>,<%end -%>
 
 <% end %>
-		
 
 		]
 		
 		} )
 </script>
-
 
 
 <div class="es-ex-buttons su-next-wrapper">
@@ -196,7 +189,6 @@ cat = Cluster.find(23)
 </h4>
 
 
-
 <div id="ch2" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
@@ -206,7 +198,7 @@ cat = Cluster.find(23)
 <script type="text/javascript"> 
 	var ch2 = new ch_exercise( {
 		id: "ch2", 
-		test_id: "",
+		test_id: "c1104022.2.2",
 		quest_num: 15,
 		variants_num: 5,
 		quest_type: 'audio',
@@ -345,8 +337,6 @@ Are they from England? - No, they are not./No, they aren't.
 </div>
 
 
-
-
 <br><br>
 <div class="es-ex-buttons su-next-wrapper">
 <input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(4)">
@@ -356,7 +346,6 @@ Are they from England? - No, they are not./No, they aren't.
 	
 	</div>
 </div>
-
 
 
 
@@ -374,7 +363,6 @@ Are they from England? - No, they are not./No, they aren't.
 	
 
 
-
 <div class="su-exerc">
 <div id="di1">	
 				
@@ -382,7 +370,7 @@ Are they from England? - No, they are not./No, they aren't.
 
 
 <div  class="gr_ex_type di_mix gex_multi_one">
-
+<div class="gr-ex-testid">c1104041.4.1</div>
 
 <div class="gext_sign gex_multi_one_item di_mix_first">
 <div class="di_mix_tobuild">Thomas is married.</div>
@@ -399,8 +387,6 @@ Are they from England? - No, they are not./No, they aren't.
 <div class="gext_show"><span><b>Thomas is not married.</b></span> &nbsp;</div>
 </div>
 
-
-
 <div class="gext_sign gex_multi_one_item">
 <div class="di_mix_tobuild">Emily is from England.</div>
  <div class="di_mix_variants di_mix">Emily is from England are not where</div>
@@ -415,7 +401,6 @@ Are they from England? - No, they are not./No, they aren't.
 <input type="text" class="gex-init-val" value="Отрицательное предложение"> <span class="gext_answer" style="display: none">Emily is not from England</span>
 <div class="gext_show"><span><b>Emily is not from England.</b></span> &nbsp;</div>
 </div>
-
 
 <div class="gext_sign gex_multi_one_item">
 <div class="di_mix_tobuild">This is Mr. Johnson.</div>
@@ -432,8 +417,6 @@ Are they from England? - No, they are not./No, they aren't.
 <div class="gext_show"><span><b>This is not Mr. Johnson.</b></span> &nbsp;</div>
 </div>
 
-
-
 <div class="gext_sign gex_multi_one_item">
 <div class="di_mix_tobuild">Victoria and  Alexander are Russian.</div>
  <div class="di_mix_variants di_mix">Victoria and  Alexander are Russian is not from</div>
@@ -449,13 +432,9 @@ Are they from England? - No, they are not./No, they aren't.
 <div class="gext_show"><span><b>Are Victoria and  Alexander are not Russian.</b></span> &nbsp;</div>
 </div>
 
-
 <p class="gext_check es-ex-buttons gex-es-btn"><input type="button" class="gext_check_btn" value="Проверить" > <input type="button" value="Показать ответы" class="gext_answer_show"></p>
 
-
 </div>
-
-
 </div>
 
 
@@ -474,8 +453,6 @@ Are they from England? - No, they are not./No, they aren't.
 
 		} )
 </script>
-
-
 
 
 <br><br><br><br>
@@ -682,7 +659,6 @@ Are they from England? - No, they are not./No, they aren't.
 </table>
 
 
-
 </td>
 </tr>
 </table>
@@ -699,6 +675,7 @@ Are they from England? - No, they are not./No, they aren't.
 <script type="text/javascript"> 
 	var sl1 = new sortlist_test( {
 		id: "sl1", 
+		test_id: "c1104051.5.1",
 		targets: "ds-answer", 
 		answer_elem: "ds_sort_item", 
 		variant_elem: "ds_variant",
@@ -718,9 +695,6 @@ Are they from England? - No, they are not./No, they aren't.
 </h4>
 
 
-
-
-
 <div class="su-exerc">
 <div id="di4">	
 				
@@ -728,6 +702,7 @@ Are they from England? - No, they are not./No, they aren't.
 
 
 <div  class="gr_ex_type di_mix">
+<div class="gr-ex-testid">c1104052.5.2</div>
 
 <div class="gext_task gext_sign di_mix_first"> 
 <div class="di_mix_tobuild">Госпожа Винстон - англичанка.</div>
@@ -776,14 +751,10 @@ Are they from England? - No, they are not./No, they aren't.
 
 
 </div>
-
-
 </div>
 
 
 </div> <!-- end of di4  -->
-
-
 <script type="text/javascript"> 
 	var di4 = new draginput_test( {
 		id: "di4", 
@@ -803,49 +774,13 @@ Are they from England? - No, they are not./No, they aren't.
 	
 
 
-
-
-
-
-
-
-
-	
-
-
 	</div>
 </div>
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
