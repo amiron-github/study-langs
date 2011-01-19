@@ -118,7 +118,7 @@
 		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
 		basic_array: [
 <%
-@voc2 = Cluster.find(30).words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+@voc2 = Cluster.find(42).words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
 @last_voc2 = (@voc2.length)-1
 %>
 		
@@ -438,33 +438,126 @@ your sisters?
 	
 
 <h4 class="su-task">
-Задание 1. Прочитайте текст и подберите соответсвующие имена в нижнем списке.
+Задание 1. Прослушайте фразы и подберите подходящую реплику к фразам.
 </h4>
 
+<div id="ds2" class="ds-wrapper" style="padding: 15px;">
 
-<div class="su-present">
-<div class="su-present-brd">
-<table cellspacing="0" class="su-no-tr-act">
-	<tr>
-		<td class="su-pres-orig">
+<p class="task" align="center">Перетащите слова из нижнего списка и нажмите "Проверить"</p>		
 
-<p>This is Emily.</p>
-<p>Emily is English.</p>
-<p>She is from London.</p>
-<p>Emily is a lawyer.</p>
-<p>She is not married.</p>
-<p>Emily’s flat is not large.</p>
-<p>But her car is very good.</p>
-		
-		</td>
-	</tr>
-</table>	
-</div>	
+<table align="center" style="margin: 0 auto;">
+
+<tr>
+<td>
+
+
+<table class="dst-test ds-table ds-audio" cellspacing="0" align="left" style="margin: auto">
+<col width="80">
+<col width="20">
+<col width="40">
+<col width="200">
+<%
+@ph51 = Cluster.find(45).words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+%>
+<%@ph51.each_with_index do |ph,index| %>	
+<tr>
+	<td class="ds-quest" align="center">
+			Фраза <%= index + 1 %>
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('<%=ph.sound_url%>', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<%end%>
+
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+
+<td>
+
+	
+<br>
+<br>
+
+<table class="ds_variants_list" width="100%">
+<tr valign="top">
+<td>
+
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">4</span>Emily is a lawyer.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>She is from London.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">6</span>Emily’s flat is not large</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">5</span>She is not married.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">7</span>But her car is very good.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>This is Emily.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>Emily is English.</div></div>
+	</li>
+</ul>
+
+</td>
+</tr>
+</table>
+
+
+
+</td>
+</tr>
+</table>
+
+
+<div class="es_btn_wrapper es-ex-buttons ds-check-wrapper">
+
+<input type="button" class="es_btn ds-check-button" value="Проверить">
+
 </div>
 
 
+</div>
 
-<br>
+<script type="text/javascript"> 
+	var ds2 = new dragsort_test( {
+		id: "ds2", 
+		test_id: "c1101051.5.1",
+		targets: "ds-answer", 
+		answer_elem: "ds_sort_item", 
+		variant_elem: "ds_variant",
+		answer_color: "#F6FAFF",
+		auto_check: false
+		} )
+</script>
+
+
+
+<h4 class="su-task">
+Задание 2. Ответьте на вопросы по тексту из задания 1.
+</h4>
+
 <div class="su-exerc">
 
 <div class="task">Выберите один из вариантов ответа.</div>

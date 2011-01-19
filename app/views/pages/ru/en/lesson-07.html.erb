@@ -451,26 +451,22 @@ cat = Cluster.find(32)
 	
 
 <h4 class="su-task">
-Задание 1. Прочитайте текст и подберите соответсвующие имена в нижнем списке.
+Задание 1. Прочитайте текст и найдите соответсвия в нижнем списке.
 </h4>
 
 
 <div class="su-present">
 <div class="su-present-brd">
 <table cellspacing="0" class="su-no-tr-act">
+<%
+@ph51 = Cluster.find(41).words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+%>	
+<%@ph51.each do |ph| %>	
 	<tr>
-		<td class="su-pres-orig">
-
-<p>This is Sam. </p>
-<p>He is from New York. </p>
-<p>He is a programmer. </p>
-<p>His wife, Mary, is a designer. </p>
-<p>Their daughter’s name is Lily.</p>
-<p>Lily is a student.</p>
-<p>She is a good student.</p>
-		
-		</td>
+		<td class="su-pres-audio"><%unless ph.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%=ph.sound_url%>', this)"></div><%end%></td>
+		<td class="su-pres-orig"><%=ph.text%></td>
 	</tr>
+<%end%>
 </table>	
 </div>	
 </div>
@@ -494,7 +490,7 @@ cat = Cluster.find(32)
 <col width="180">
 <tr>
 	<td class="ds-quest ds-audio-listen" align="center">
-			Mary is
+			Мэри
 	</td>
 	<td class="ds-audio-correctness">
 		<div class="ds-sign"></div>
@@ -507,7 +503,7 @@ cat = Cluster.find(32)
 </tr>
 <tr>
 	<td class="ds-quest ds-audio-listen">
-			Sam is
+			Сэм
 	</td>
 	<td class="ds-audio-correctness">
 		<div class="ds-sign"></div>
@@ -520,7 +516,7 @@ cat = Cluster.find(32)
 </tr>
 <tr>
 	<td class="ds-quest ds-audio-listen">
-		Lily is
+		Лили
 	</td>
 	<td class="ds-audio-correctness">
 		<div class="ds-sign"></div>
@@ -551,14 +547,14 @@ cat = Cluster.find(32)
 
 <ul class="no-list" style="padding-left: 30px;">
 	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>a student</div></div>
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>учится</div></div>
 	</li>
 
 	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>a programmer</div></div>
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>программист</div></div>
 	</li>
 	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>a designer</div></div>
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>дизайнер</div></div>
 	</li>
 </ul>
 

@@ -223,13 +223,13 @@ cat = Cluster.find(48)
 		test_id: "",
 		quest_num: 15,
 		variants_num: 5,
-		quest_type: 'audio',
+		quest_type: 'text',
 		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
 		basic_array: [
 		
 <% @last_item_index = (@words.length)-1 -%>
 <% @words.each_with_index  do |word, index| -%>
-["<%= word.sound_url %>", "<%= word.translate.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+["<%= word.translate.to_s.gsub(/"/,'\"') %>", "<%= word.text.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
 <%end -%>
 
 		]
@@ -263,10 +263,10 @@ cat = Cluster.find(48)
 В английском языке наиболее употебительны следующие вопросительные местоимения: 
 </p>
 <ul style="list-style-type: circle;">
-	<li><span class="eg">who</span> <span class="egt">кто</span></li>
-	<li><span class="eg">whose</span> <span class="egt">чей</span></li>
-	<li><span class="eg">what</span> <span class="egt">что</span></li>
-	<li><span class="eg">which</span> <span class="egt">какой</span>, <span class="egt">который</span></li>
+	<li><span class="eg">who</span> [ху:] <span class="egt">кто</span></li>
+	<li><span class="eg">whose</span> [хуз:] <span class="egt">чей</span></li>
+	<li><span class="eg">what</span> [уот] <span class="egt">что</span></li>
+	<li><span class="eg">which</span> [уич] <span class="egt">какой</span>, <span class="egt">который</span></li>
 </ul>
 
 <p>
