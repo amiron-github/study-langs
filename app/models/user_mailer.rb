@@ -31,12 +31,11 @@ class UserMailer < ActionMailer::Base
 		@subject    += 'Активируйте свой аккунт'
 		@body[:text_welcome] = 'Ваш аккаунт успешно активирован. Добро пожалаловать на наш сайт!'
 		@body[:text_info1] = 'Теперь в своем аккаунте Вы сможете просматривать пройденные слова и результаты выполненных упражнений и тестов'
-	@body[:text_info2]
+		@body[:text_info2] = ''
 	else 
 		@subject    += 'Please activate your new account'
 	end	
 	
-    @subject    += 'Your account has been activated!'
     @body[:url]  = "http://study-languages-online.com/#{str}"
   end
   
