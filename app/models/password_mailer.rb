@@ -6,7 +6,9 @@ class PasswordMailer < ActionMailer::Base
     setup_email(password.user)
 	@lang ='en'
 	if password.user.lang == 'ru'
-		@lang == 'ru'
+		@body[:text] = 'поменять пороль можно по следующей ссылке:'
+	else 
+		@body[:text] = 'you can change your password at this URL:'
 	end
 	
     @subject    += 'You have requested to change your password'
