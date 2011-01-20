@@ -1,7 +1,7 @@
 class UserMailer < ActionMailer::Base
   def signup_notification(user)
     setup_email(user)
-    @subject    += 'Please activate your new account'
+    
 	@body[:text_created] = 'Your account has been created.'
 	@body[:text_visit] = 'Visit this url to activate your account:'
     str = if user.lang && user.to_lang then "#{user.lang}/#{user.to_lang}/" else "" end
@@ -10,6 +10,8 @@ class UserMailer < ActionMailer::Base
 		@subject    += 'Активируйте свой аккунт'
 		@body[:text_created] = 'Ваш аккунт успешно создан'
 		@body[:text_visit] = 'Перейдите по следующей ссылке, чтобы активировать свой аккаунт:'
+	else 
+		@subject    += 'Please activate your new account'
 	end
  
  
