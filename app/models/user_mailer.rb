@@ -7,9 +7,9 @@ class UserMailer < ActionMailer::Base
     str = if user.lang && user.to_lang then "#{user.lang}/#{user.to_lang}/" else "" end
 	
 	if user.lang == 'ru'
-		@subject    += 'Àêòèâèðóéòå ñâîé àêêóíò'
-		@body[:text_created] = 'Âàø àêêóíò óñïåøíî ñîçäàí'
-		@body[:text_visit] = 'Ïåðåéäèòå ïî ñëåäóþùåé ññûëêå, ÷òîáû àêòèâèðîâàòü ñâîé àêêàóíò:'
+		@subject    += 'ÐÐºÑ‚Ð¸Ð²Ð¸Ñ€ÑƒÐ¹Ñ‚Ðµ ÑÐ²Ð¾Ð¹ Ð°ÐºÐºÑƒÐ½Ñ‚'
+		@body[:text_created] = 'Ð’Ð°Ñˆ Ð°ÐºÐºÑƒÐ½Ñ‚ ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ ÑÐ¾Ð·Ð´Ð°Ð½'
+		@body[:text_visit] = 'ÐŸÐµÑ€ÐµÐ¹Ð´Ð¸Ñ‚Ðµ Ð¿Ð¾ ÑÐ»ÐµÐ´ÑƒÑŽÑ‰ÐµÐ¹ ÑÑÑ‹Ð»ÐºÐµ, Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð°ÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ ÑÐ²Ð¾Ð¹ Ð°ÐºÐºÐ°ÑƒÐ½Ñ‚:'
 	end
  
  
@@ -20,7 +20,9 @@ class UserMailer < ActionMailer::Base
   def activation(user)
     setup_email(user)
 	str = if user.lang && user.to_lang then "#{user.lang}/#{user.to_lang}/" else "" end
-		
+	if user.lang
+		@body[:lang] == user.lang
+	end
 	
     @subject    += 'Your account has been activated!'
     @body[:url]  = "http://study-languages-online.com/#{str}"
