@@ -41,11 +41,15 @@ class UsersController < ApplicationController
   end
 
   def activate
-	@user.lang = params[:lang]
-	@user.to_lang = params[:to_lang]
+  
+	
 	
     logout_keeping_session!
     user = User.find_by_activation_code(params[:activation_code]) unless params[:activation_code].blank?
+	
+	user.lang = params[:lang]
+	user.to_lang = params[:to_lang]
+	
     case
     when (!params[:activation_code].blank?) && user && !user.active?
       user.activate!
