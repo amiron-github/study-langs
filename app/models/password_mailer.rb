@@ -12,8 +12,6 @@ class PasswordMailer < ActionMailer::Base
 		@body[:text] = 'you can change your password at this URL:'
 		@subject    += 'You have requested to change your password'
 	end
-	
-    
     @body[:url]  = "#{APP_CONFIG[:site_url]}/#{str}change_password/#{password.reset_code}"
 
   end

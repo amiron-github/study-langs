@@ -16,20 +16,17 @@ layout :determine_layout
 	@to_lang = params[:to_lang]
     @password = Password.new(params[:password])
     @password.user = User.find_by_email(@password.email)
-    @password.user.lang = @lang
-    @password.user.to_lang = @to_lang
+
     respond_to do |format|
       if @password.save
+	    @password.user.lang = @lang
+		@password.user.to_lang = @to_lang
         PasswordMailer.deliver_forgot_password(@password)
-		
-		
 		if @lang == 'ru'
 			flash[:notice] = "Ссылка для смены пароля выслана на адрес <span style=\"color: #000\"> #{@password.email} </span>."
 		else 
 			flash[:notice] = "A link to change your password has been sent to #{@password.email}."
 		end
-        
-		
 		if @lang == 'ru'
 			if @to_lang == 'en'
 				format.html { redirect_to(:action => 'new', :lang => @lang, :to_lang => @to_lang)}

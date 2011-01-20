@@ -32,7 +32,12 @@ class UsersController < ApplicationController
     success = @user && @user.valid?
     if success && @user.errors.empty?
 	  @u_mail = @user.email
-      flash[:notice] = "Thanks for signing up!  We're sending you an email with your activation code."
+	  if @lang == 'ru'
+		flash[:notice] = "Мы выслали Вам письмо с кодом для активации аккаунта"
+	  else 
+		flash[:notice] = "Thanks for signing up!  We're sending you an email with your activation code."
+	  end
+      
       render :action => 'create_success'
     else
       flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin."
@@ -42,8 +47,6 @@ class UsersController < ApplicationController
 
   def activate
   
-	
-	
     logout_keeping_session!
     user = User.find_by_activation_code(params[:activation_code]) unless params[:activation_code].blank?
 	
@@ -53,12 +56,14 @@ class UsersController < ApplicationController
     case
     when (!params[:activation_code].blank?) && user && !user.active?
       user.activate!
-      flash[:notice] = "Signup complete! Please sign in to continue."
+      
 	  if params[:lang] == 'ru'
+	  flash[:notice] = "Регистрация окончена! Теперь Вы можете войти в свой аккаунт"
 		if params[:to_lang] == 'en'
 			redirect_to '/ru/en/login'
 		end
 	  else
+		flash[:notice] = "Signup complete! Please sign in to continue."
 		redirect_to '/login'
 	  end
     when params[:activation_code].blank?
@@ -229,7 +234,7 @@ class UsersController < ApplicationController
 	      redirect_back_or_default('/') 
 	      else 
 	      @error_pas = "You entered incorrect password"		
-      	      end
+      	  end
       end	
     end
   end

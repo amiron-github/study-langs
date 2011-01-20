@@ -22,9 +22,19 @@ class UserMailer < ActionMailer::Base
   def activation(user)
     setup_email(user)
 	str = if user.lang && user.to_lang then "#{user.lang}/#{user.to_lang}/" else "" end
-	if user.lang
-		@body[:lang] == user.lang
-	end
+
+	@body[:text_welcome] = 'your account has been activated.  Welcome aboard!'
+	@body[:text_info1] = 'Now you can save and review the results of lessons exercises and vocabulary tests that you have completed on our website.'
+	@body[:text_info2] = 'In your account, you can find the results of each exercise and test, as well as overall results of all exercises and tests for a lesson or a topic.'
+	
+	if user.lang == 'ru'
+		@subject    += 'Активируйте свой аккунт'
+		@body[:text_welcome] = 'Ваш аккаунт успешно активирован. Добро пожалаловать на наш сайт!'
+		@body[:text_info1] = 'Теперь в своем аккаунте Вы сможете просматривать пройденные слова и результаты выполненных упражнений и тестов'
+	@body[:text_info2]
+	else 
+		@subject    += 'Please activate your new account'
+	end	
 	
     @subject    += 'Your account has been activated!'
     @body[:url]  = "http://study-languages-online.com/#{str}"

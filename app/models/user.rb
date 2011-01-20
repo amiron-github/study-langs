@@ -151,7 +151,7 @@ write_attribute :email, (value ? value.downcase : nil)
 		if category_id != nil
 			category = Category.find(category_id)
 			if category.lang == lang
-			unless category.tag == 'everyday_course' || category.tag =='beginner_course' || category.tag =='phonetics_course'||category.tag =='grammar_course'||category.tag =='reading_course'||category.tag =='kids_lessons_en'||category.tag =='lessons_en'||category.tag =='grammar_en'
+			unless category.tag == 'everyday_course' || category.tag =='beginner_course' || category.tag =='phonetics_course'||category.tag =='grammar_course'||category.tag =='reading_course' || category.tag =='kids_lessons_en' || category.tag =='lessons_en' || category.tag =='grammar_en'
 				cat_tests = get_test_by_category(category_id)
 				total = 0
 				category_title = category.title

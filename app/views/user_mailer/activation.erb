@@ -1,10 +1,8 @@
-<%=h @user.email %>, your account has been activated.  Welcome aboard!
+<%=h @user.email %>, <%=h @text_welcome %>
 
   <%=h @url %>
 
-Now you can save and review the results of lessons exercises and vocabulary tests that you have completed on our website. 
-In your account, you can find the results of each exercise and test, as well as overall results of all exercises and tests for a lesson or a topic.
+<%=h @text_info1 %> 
+<%=h @text_info2 %> 
 
-<% if @lang == 'ru'%>
- ru
-<%end%>
+
