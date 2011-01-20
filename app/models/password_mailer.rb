@@ -7,18 +7,20 @@ class PasswordMailer < ActionMailer::Base
 	@lang ='en'
 	if password.user.lang == 'ru'
 		@body[:text] = 'поменять пороль можно по следующей ссылке:'
+		@subject    += 'Запрос на смену пароля'
 	else 
 		@body[:text] = 'you can change your password at this URL:'
+		@subject    += 'You have requested to change your password'
 	end
 	
-    @subject    += 'You have requested to change your password'
+    
     @body[:url]  = "#{APP_CONFIG[:site_url]}/#{str}change_password/#{password.reset_code}"
 
   end
 
   def reset_password(user)
     setup_email(user)
-    @subject    += 'Your password has been reset.'
+    @subject  += 'Your password has been reset.'
   end
 
   protected
