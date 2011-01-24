@@ -123,7 +123,12 @@ GRAMMAR_EN = {
   {:name=> "Неправильные глаголы в Past Indefinite", :exercises=> ["g1109010.I", "g1109020.II"]},
   {:name=> "Правильные глаголы в Present Perfect", :exercises=> ["g1110010.I", "g1110020.II"]},
   {:name=> "Неправильные глаголы в Present Perfect", :exercises=> ["g1111010.I", "g1111020.II"]},
-  {:name=> "Глаголы в Future Indefinite", :exercises=> ["g1112010.I", "g1112020.II"]}
+  {:name=> "Глаголы в Future Indefinite", :exercises=> ["g1112010.I", "g1112020.II"]},
+  {:name=> "Притяжательный падеж", :exercises=> ["g1113010.I"]},
+  {:name=> "Личные местоимения", :exercises=> ["g1114010.I","g1114020.II"]},
+  {:name=> "Притяжательные местоимения", :exercises=> ["g1115010.I","g1115020.II"]},
+  {:name=> "Возвратные местоимения", :exercises=> ["g1116010.I","g1116020.II"]},
+  {:name=> "Вопросительные местоимения", :exercises=> ["g1117010.I","g1117020.II"]}
 ]
 }
 
