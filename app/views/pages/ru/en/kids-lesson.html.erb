@@ -45,4 +45,14 @@ case @topic
 		@mute = true
 end
 %>
+
+<% if params[:al] == '1' %>
+<%= render :partial => '/site/ru_kids_al_lesson.html' %>
+<%else%>
 <%= render :partial => '/site/ru_kids_lesson.html' %>
+<%end%>
+
+
+
+
+
