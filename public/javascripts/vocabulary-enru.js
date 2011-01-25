@@ -53,6 +53,82 @@ var wordsFamily=new Array(
 ["children","дети"]
 )
 
+var wordsProfessions=new Array(
+["actor","актер"],
+["actress","актриса"],
+["architect","архитектор"],
+["artist","художник"],
+["barman","бармен"],
+["biologist","биолог"],
+["businessman","бизнесмен"],
+["chemist","химик"],
+["composer","композитор"],
+["designer","дизайнер"],
+["diplomat","дипломат"],
+["doctor","врач"],
+["economist","экономист"],
+["farmer","фермер"],
+["journalist","журналист"],
+["lawyer","адвокат"],
+["librarian","библиотекарь"],
+["manager","менеджер"],
+["mechanic","механик"],
+["military man","военный"],
+["musician","музыкант"],
+["physicist","физик"],
+["pilot","лётчик"],
+["poet","поэт"],
+["politician","политик"],
+["professor","профессор"],
+["programmer","программист"],
+["sailor","моряк"],
+["shop assistant","продавец"],
+["schoolboy","школьник"],
+["secretary","секретарь"],
+["singer","певец"],
+["sportsman","спортсмен"],
+["student","студент"],
+["teacher","учитель"],
+["translator","переводчик"],
+["waiter","официант"],
+["waitress","официантка"],
+["worker","рабочий"],
+["writer","писатель"]
+)
+
+var wordsHouse=new Array(
+["house","дом"],
+["flat","квартира"],
+["balcony","балкон"],
+["bedroom","спальня"],
+["ceiling","потолок"],
+["corridor","коридор"],
+["dining room","столовая"],
+["door","дверь"],
+["elevator","лифт (амер.)"],
+["floor","1) пол, 2) этаж"],
+["ground floor","первый этаж"],
+["first floor","второй этаж"],
+["garage","гараж"],
+["garden","сад"],
+["garret","чердак"],
+["hall","холл"],
+["key","ключ"],
+["kitchen","кухня"],
+["lavatory","туалет"],
+["lift","лифт (брит.)"],
+["living room","гостиная"],
+["mailbox","почтовый ящик"],
+["roof","крыша"],
+["room","комната"],
+["stairs","лестница"],
+["study","кабинет"],
+["terrace","терраса"],
+["villa","вилла"],
+["wall","стена"],
+["window","окно"]
+)
+
 
 function getTopic(topic){
 
@@ -66,6 +142,12 @@ case 1:
 	break;
 case 2:
 	tasks=wordsFamily;
+	break;
+case 3:
+	tasks=wordsProfessions;
+	break;
+case 4:
+	tasks=wordsHouse;
 	break;
 }
 
