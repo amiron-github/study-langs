@@ -1,4 +1,5 @@
 User-Agent: *
+Disallow: /images/list/*
 Disallow: /fruit-exercise.html
 Disallow: /confectionery-exercise.html
 Disallow: /projects.html
@@ -18,7 +19,6 @@ Disallow: /sportwear-test.html
 Disallow: /bread-test.html
 Disallow: /lingerie-exercise.html
 Disallow: /hotel-test.html
-Allow: /
 Disallow: /jewelry-exercise.html
 Disallow: /drinks-exercise.html
 Disallow: /memory.html
@@ -77,3 +77,5 @@ Disallow: /fruit.html
 Disallow: /politeness.html
 Disallow: /acquaintance.html
 Disallow: /fish.html
+Allow: /ru/en/*
+Allow: /
