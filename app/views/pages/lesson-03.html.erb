@@ -1,0 +1,924 @@
+<% @page_title = 'Lesson 3 :: Russian Online Lessons' %>
+<% @page_meta = {'description' => ""} %>
+
+
+<% content_for :special_js_css do %>
+
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'jp-control' %>
+<%= javascript_include_tag 'lexical-test' %>
+<%= stylesheet_link_tag 'lexical-test' %>
+<%= javascript_include_tag 'test-drag-sort' %>
+<%= javascript_include_tag 'es-grammar-exercises' %>
+<%= javascript_include_tag 'es-test-drag-input' %>
+
+
+<%= javascript_include_tag 'short-unit' %>
+<%= stylesheet_link_tag 'short-unit' %>
+
+<script type="text/javascript">
+<%if params[:tab] %>
+	openTabFromUrl(<%= params[:tab] %>);
+<%else%>
+	openTabFromUrl();
+<%end%>
+</script>
+
+
+<% end %>
+
+
+
+
+
+<div class="unit-area">
+
+
+<div id="prof_tabs">
+
+<div class="unit-title">
+Lesson 3
+</div>
+	<div id="tabs_row">
+            <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Step 1</a></div></div>
+			<div id="tab02" class="ptab"><div><a href="#">Step 2</a></div></div>
+            <div id="tab03" class="ptab"><div><a href="#">Step 3</a></div></div>
+			<div id="tab04" class="ptab"><div><a href="#">Step 4</a></div></div>
+			<div id="tab05" class="ptab"><div><a href="#">Step 5</a></div></div>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+
+<div id="for_tab01" class="pBlock" style="display: block">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Review</h3>
+<p class="su-step-info">
+Here you can review lexical and grammer structures of the lesson
+</p>	
+	
+
+<h4 class="su-task">
+Task 1. Listen, repeat and read the translation
+</h4>
+
+	
+<div class="su-present">
+<div class="su-present-brd">
+<table cellspacing="0">
+	<tr>
+		<td class="su-pres-audio"></td>
+		<td class="su-pres-orig">Что это? - Это магазин.</td>
+		<td class="su-pres-trans">What is this? - This is a shop.</td>
+	</tr>
+	<tr>
+		<td class="su-pres-audio"></td>
+		<td class="su-pres-orig">Это музей? - Да, это музей.</td>
+		<td class="su-pres-trans">Is this a museum? - Yes, it is a museum.</td>
+	</tr>
+	<tr>
+		<td class="su-pres-audio"></td>
+		<td class="su-pres-orig">Где паспорт? - Он здесь.</td>
+		<td class="su-pres-trans">Where is the passport? - It is here.</td>
+	</tr>
+	<tr>
+		<td class="su-pres-audio"></td>
+		<td class="su-pres-orig">Где письмо? - Оно там.</td>
+		<td class="su-pres-trans">Where is the letter? - It is there.</td>
+	</tr>
+	<tr>
+		<td class="su-pres-audio"></td>
+		<td class="su-pres-orig">Где ручка? - Она здесь.</td>
+		<td class="su-pres-trans">Where is the pen? - It is here.</td>
+	</tr>
+</table>	
+</div>	
+</div>	
+	
+
+
+<br><br><br><br>
+
+<h4 class="su-task">
+Task 2. Listen to the phrase and find it in the list.
+</h4>
+
+
+
+<div id="ch1" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		test_id: "",
+		quest_num: 15,
+		variants_num: 5,
+		//quest_type: 'audio',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+["Что это? - Это магазин.","What is this? - This is a shop."],
+["Это музей? - Да, это музей.","Is this a museum? - Yes, it is a museum."],
+["Где паспорт? - Он здесь.","Where is the passport? - It is here."],
+["Где письмо? - Оно там.","Where is the letter? - It is there."],
+["Где ручка? - Она здесь.","Where is the pen? - It is here."]
+		
+
+		]
+		
+		} )
+</script>
+
+
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Next step >>" onclick="openNextStep(2)">
+</div>	
+	
+	</div>
+</div>
+
+<div id="for_tab02" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Vocabulary</h3>
+<p class="su-step-info">
+Here you can learn words and expressions of the lesson.
+</p>	
+	
+
+<h4 class="su-task">
+Task 1. Read and repeat the words and expressions of the lesson.
+</h4>
+	
+<br><br>
+
+
+<div class="voc-wordlist">
+<table class="voc_bord" align="center" cellspacing="0">
+<tr>
+<td>
+
+<table style="width: 400px" class="diction" cellpadding="0" cellspacing="0" align="center">
+<col width="50%"><col width="50%">
+<thead>
+<tr>
+	<td> <div class="trans-display-wrapper"><input type="checkbox" class="trans-display" /> Transcription </div> </td>
+	<td></td>
+</tr>
+</thead>
+<tbody>
+
+<%
+cat = Cluster.find(15)
+@words = cat.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+%>
+<%@words.each_with_index do |word, index|-%>
+<tr class="trow">
+    <td class="original" valign="top">
+	<%unless word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div><%end%>
+	<%= word.text %>
+	<div class="ru-transcript">[<%= word.transcribe %>]</div>
+	
+    </td>
+    <td class="translation" valign="top"><%= word.translate %>
+    </td>
+</tr>
+<%end -%>
+
+
+</tbody>
+<tfoot>
+<tr>
+	<td></td>
+	<td></td>
+</tr>
+</tfoot>  
+</table>
+
+</td>
+</tr>
+</table>
+</div><!-- end of voc-wordlist-->
+
+<br><br><br><br>
+
+<h4 class="su-task">
+Task 2. Listen to the phrase and find it in the list.
+</h4>
+
+
+
+<div id="ch2" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		test_id: "c1101022.2.2",
+		quest_num: 15,
+		variants_num: 5,
+		quest_type: 'audio',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+<% @last_item_index = (@words.length)-1 -%>
+<% @words.each_with_index  do |word, index| -%>
+['<%= word.sound_url %>', "<%= word.translate.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
+		} )
+</script>	
+
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Next step >>" onclick="openNextStep(3)">
+</div>
+	
+	</div>
+</div>
+
+
+<div id="for_tab03" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Theory</h3>
+<p class="su-step-info">
+Here you can learn grammar and lexical rules of the lesson.
+</p>	
+	
+
+	
+<h3 class="su-page-p" style="margin-top: 0;">Grammatical gender in Russian</h3>			
+	<p> 
+		All Russian nouns have gender, masculine, feminine or neuter, without regard what they mean, a person or an object. 
+		In the majority of instances, you can determine the grammatical gender of a noun based on its ending of the dictionary form. 
+	</p> 
+	<p> 
+		The basic rules to determine grammatical gender of Russian nouns are: 
+	</p> 
+	<ol class="ital"> 
+		<li>Masculine nouns usually end in a consonant letter or <span class="eg">-й</span></li> 
+		<li>Feminine nouns usually end in <span class="eg">-a</span> or <span class="eg">–я</span></li> 
+		<li>Neuter nouns usually end in <span class="eg">-о</span>, <span class="eg">-е</span>, or <span class="eg">-ё</span>.</li> 
+	</ol> 
+	
+	<p>It should be mentioned there Russian nouns may end in other letters, not only the above mentioned ones. 
+	It is diffficult to determine the grammatical gender of such nouns. For example, in Russian there are both masculine and feminine nouns ending in -ь: 
+	словарь - dictionary (masculine), дверь - door (feminine). 
+	</p> 
+	<p> 
+		Gender is an important grammatical category in Russian and it is impossible to build a correct phrase in Russian without knowing the gender of nouns. 
+		One of the difficulties with gender of nouns consists in the fact that in a phrase the form of adjectives, pronouns, some numbers and some verb tenses will depend of the related noun's gender.
+	</p>	
+<br> 
+<br> 
+ 
+		
+<h3 class="su-page-p">Stem and endings of Russian nouns</h3>		
+		
+<p> 
+Stem is a part of the word that can be determined by dropping the ending of the noun. 
+It is important to determine the stem and the ending of a noun in Russian. Russian nouns often change their endings, so you will need to know which part of the word
+should be changed (ending), and which part will always remain the same (stem). 
+</p> 
+<p> 
+As you have already read the information about Russian gender, 
+you should know that -а/-я are the endings of feminine nouns and -о/-е/-ё are the endings of neuter nouns. It means that you can get the stem of feminine and neuter nouns by dropping respective endings.
+ 
+</p> 
+
+
+
+
+
+<br><br><br><br>
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Next step >>" onclick="openNextStep(4)">
+</div>	
+	
+<br><br><br><br><br><br><br>
+	
+	</div>
+</div>
+
+
+
+
+<div id="for_tab04" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Exercises</h3>
+<p class="su-step-info">
+Here you can do exercises for Russian grammar and lexical material of the lesson.
+</p>	
+	
+<h4 class="su-task"> 
+Task 1. Revise the information about Russian grammar and complete the test
+</h4> 
+	
+<div id="sl1" class="ds-wrapper drag-sort-list" style="padding: 15px;">
+		
+
+<table align="center" style="margin: 0 auto;">
+<tr>
+<td>
+
+
+<table class="dst-test ds-table ds-audio" cellspacing="0" align="center" style="margin: 0 auto">
+
+<col width="150"><col width="150"><col width="150">
+
+<tr>
+
+	<th class="ds-border-right" >
+		masculine
+	</th>
+
+	<th class="ds-border-right" >
+		feminine	
+	</th>
+	<th class="ds-border-right" >
+
+		neuter	
+	</th>
+</tr>
+<tr>
+	<td class="ds-answer ds-border-right" style="vertical-align: top; height: 150px">
+
+		<div class="ds_sort_item">
+		</div>
+		&nbsp;
+	</td>
+	<td class="ds-answer ds-border-right " style="vertical-align: top; height: 150px">
+		<div class="ds_sort_item">
+		</div>
+		&nbsp;
+	</td>
+
+	<td class="ds-answer ds-border-right " style="vertical-align: top; height: 150px">
+		<div class="ds_sort_item">
+			
+		</div>
+		&nbsp;
+	</td>
+</tr>
+
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+	<td>
+	
+		<!-- div class="ds_check_sign"></div -->
+	
+	</td>
+</tr>
+<tr>
+
+<td>
+	
+<br>
+
+<table class="ds_variants_list"  style="margin: 0 auto" align="center">
+
+<tr valign="top">
+<td>
+
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>чай</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">0</span>ресторан</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>вино</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>девочка</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">0</span>ручка</div></div>
+	</li>
+</ul>
+
+</td>
+<td>
+
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">0</span>окно</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>женщина</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>паспорт</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>книга</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">0</span>виза</div></div>
+	</li>
+</ul>
+
+</td>
+<td>
+
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">0</span>метро</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>билет</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>кафе</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>лампа</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">0</span>магазин</div></div>
+	</li>
+</ul>
+
+</td>
+<td>
+
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">0</span>вода</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>музей</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>кофе</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>мальчик</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">0</span>мужчина</div></div>
+	</li>
+</ul>
+
+</td>
+</tr>
+</table>
+
+
+
+</td>
+</tr>
+</table>
+
+
+<div class="es_btn_wrapper es-ex-buttons ds-check-wrapper">
+
+<input type="button" class="es_btn ds-check-button" value="Проверить" /a>
+
+</div>
+
+</div>
+
+<script type="text/javascript"> 
+	var sl1 = new sortlist_test( {
+		id: "sl1",
+		test_id: "c1102051.5.1",
+		targets: "ds-answer",
+		answer_elem: "ds_sort_item", 
+		variant_elem: "ds_variant",
+		answer_color: "#fff",
+		auto_check: false
+		} )
+</script>
+
+	
+	
+<br><br>	
+	
+<h4 class="su-task"> 
+Task 1. Revise the information about Russian grammar and complete the test
+</h4> 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+<div class="su-exerc">
+<div id="di1">	
+				
+<p class="task">Drag the words (or type them) into the text field. </p> 
+
+<br>
+<table style="cursor: pointer; margin: 0 auto; border: 1px dashed #000; background-color: #fff;" class="di_variants" cellspacing="14" align="center" >
+<tr>
+	<td>
+		<div>я</div>
+	</td>
+	<td>
+		<div>ты</div>
+	</td>
+	<td>
+		<div>он</div>
+	</td>
+	<td>
+		<div>она</div>
+	</td>
+</tr>
+<tr>
+	<td>
+		<div>мы</div>
+	</td>
+	<td>
+		<div>вы</div>
+	</td>
+	<td>
+		<div>они</div>
+	</td>
+	<td>
+		
+	</td>
+</tr>
+</table>
+<br>
+
+
+
+<div  class="gr_ex_type">
+
+<div class="gext_sign"></div>
+
+<div class="gext_task gext_sign">
+ 1.	Где Джон? - <input type="text" style="width: 35px" value=""> <span class="gext_answer" style="display: none">Он</span>здесь.
+<div class="gext_show"><span>Где Джон? - <b>Он</b> здесь.</span> &nbsp;</div>
+</div>
+<div class="gext_task gext_sign">
+ 2.	Максим, это ты? - Да, это <input type="text" style="width: 35px" value=""> <span class="gext_answer" style="display: none">я</span>.
+<div class="gext_show"><span>Максим, это ты? - Да, это <b>я</b> .</span> &nbsp;</div>
+</div>
+<div class="gext_task gext_sign">
+ 3.	Где Елена? - <input type="text" style="width: 35px" value=""> <span class="gext_answer" style="display: none">Она</span>здесь.
+<div class="gext_show"><span>Где Елена? - <b>Она</b> здесь.</span> &nbsp;</div>
+</div>
+<div class="gext_task gext_sign">
+ 4.	Роберт, <input type="text" style="width: 35px" value=""> <span class="gext_answer" style="display: none">ты</span>где? - Я здесь.
+<div class="gext_show"><span>Роберт, <b>ты</b> где? - Я здесь.</span> &nbsp;</div>
+</div>
+<div class="gext_task gext_sign">
+ 5.	Виктория и Эмма, <input type="text" style="width: 35px" value=""> <span class="gext_answer" style="display: none">вы</span>где? - Мы здесь.
+<div class="gext_show"><span>Виктория и Эмма, <b>вы</b> где? - Мы здесь.</span> &nbsp;</div>
+</div>
+<div class="gext_task gext_sign">
+ 6.	Где Наталья и Игорь? - <input type="text" style="width: 35px" value=""> <span class="gext_answer" style="display: none">Они</span>здесь.
+<div class="gext_show"><span>Где Наталья и Игорь? - <b>Они</b> здесь.</span> &nbsp;</div>
+</div>
+<div class="gext_task gext_sign">
+ 7.	Андрей и Ольга, это вы? - Да, это <input type="text" style="width: 35px" value=""> <span class="gext_answer" style="display: none">мы</span>.
+<div class="gext_show"><span>Андрей и Ольга, это вы? - Да, это <b>мы</b> .</span> &nbsp;</div>
+</div>
+
+
+
+<p class="gext_check es-ex-buttons gex-es-btn"><input type="button" class="gext_check_btn" value="Check answers" > <input type="button" value="Display answers" class="gext_answer_show"></p>
+
+
+</div>
+
+
+</div>
+
+
+
+</div> <!-- end of su-exerc -->
+
+
+<script type="text/javascript"> 
+	var di1 = new draginput_test( {
+		id: "di1", 
+		targets: "gext_task", 
+		in_targets: "input",
+		clear_option: false,
+		variant_elem: "di_variants div"
+		//targets_color: "#ffffff"
+
+		} )
+</script>
+ 
+ 
+
+<br><br><br><br>
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Next step >>" onclick="openNextStep(5)">
+</div>
+
+
+	</div>
+</div>
+<div id="for_tab05" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Practice</h3>
+<p class="su-step-info">
+Here you can revise and practise what you've just learned.
+</p>	
+	
+
+<h4 class="su-task">
+Task 1. Find the translation for the phrases. 
+</h4>
+
+<div id="ds2" class="ds-wrapper" style="padding: 15px;">
+
+<p class="task" align="center">Drag the phrases from the list and click "Check" button</p>		
+
+<table align="center" style="margin: 0 auto;">
+
+<tr>
+<td>
+
+
+<table class="dst-test ds-table ds-audio" cellspacing="0" align="left" style="margin: auto">
+<col width="200">
+<col width="20">
+<col width="40">
+<col width="200">
+<tr>
+	<td class="ds-quest" align="center">
+			Здравствуйте. Меня зовут Джон.  
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/en/course/soundc1002.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+			Привет. Я Марина. 
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/en/course/soundc1006.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Кто это? - Это Джек. 
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Здравствуйте. Моё имя Рональд.
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/en/course/soundc1001.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Добрый день. Моя фамилия Стенли.
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/en/course/soundc1001.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+</table>
+
+</td>
+
+</tr>
+<tr>
+
+<td>
+
+	
+<br>
+<br>
+
+<table class="ds_variants_list" width="100%">
+<tr valign="top">
+<td>
+
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>Who is this! - This is Jack.</div></div>
+	</li>
+
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Hello! I'm Marina.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">4</span>Hello! My name is John.</div></div>
+	</li>
+</ul>
+
+</td>
+<td>
+
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">0</span>Hello! My name is Ronald.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>Hi! Nice to meet you!</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">0</span>Good afternoon! My surname is Taylor.</div></div>
+	</li>
+</ul>
+
+</td>
+</tr>
+</table>
+
+
+
+</td>
+</tr>
+</table>
+
+
+<div class="es_btn_wrapper es-ex-buttons ds-check-wrapper">
+
+<input type="button" class="es_btn ds-check-button" value="Check answers">
+
+</div>
+
+
+</div>
+
+<script type="text/javascript"> 
+	var ds2 = new dragsort_test( {
+		id: "ds2", 
+		test_id: "c1101051.5.1",
+		targets: "ds-answer", 
+		answer_elem: "ds_sort_item", 
+		variant_elem: "ds_variant",
+		answer_color: "#F6FAFF",
+		auto_check: false
+		} )
+</script>	
+	
+	
+	
+<br><br><br><br>
+
+<h4 class="su-task"> 
+Task 2. Build phrases in Russian.
+</h4> 
+ 
+
+<div class="su-exerc">
+<div id="di4">	
+				
+<p class="task">Drag the words (or type them) in the text field.</p> 
+
+
+<div  class="gr_ex_type di_mix">
+
+
+<div class="gext_task gext_sign di_mix_first"> 
+<div class="di_mix_tobuild">Hello! I'm Mark.</div>
+<div class="di_mix_variants di_mix">здравствуйте я Максим ты кто где Марк это</div>
+<input type="text" value=""> <span class="gext_answer" style="display: none">Здравствуйте! я Марк</span>
+<div class="gext_show"><span><b>Здравствуйте! Я Марк.</b></span> &nbsp;</div>
+</div>
+
+<div class="gext_task gext_sign"> 
+<div class="di_mix_tobuild">Who is this? Is this Olga?</div>
+<div class="di_mix_variants di_mix">кто это это Ольга Олег где как меня зовут</div>
+<input type="text" value=""> <span class="gext_answer" style="display: none">Кто это это Ольга</span>
+<div class="gext_show"><span><b>Кто это? Это Ольга?</b></span> &nbsp;</div>
+</div>
+
+<div class="gext_task gext_sign">
+<div class="di_mix_tobuild">Good afternoon! My name is Robert.</div>
+ <div class="di_mix_variants di_mix">добрый день меня зовут Роберт фамилия</div>
+<input type="text" value=""> <span class="gext_answer" style="display: none">Добрый день меня зовут Роберт</span>
+<div class="gext_show"><span><b>Добрый день! Mеня зовут Роберт.</b></span> &nbsp;</div>
+</div>
+
+<div class="gext_task gext_sign">
+<div class="di_mix_tobuild">My first name is Serge. My last name is Petrov.</div>
+ <div class="di_mix_variants di_mix">моё имя Петров моя фамилия Сергей</div>
+<input type="text" value=""> <span class="gext_answer" style="display: none">Моё имя Сергей моя фамилия Петров</span>
+<div class="gext_show"><span><b>Моё имя Сергей. Моя фамилия Петров.</b></span> &nbsp;</div>
+</div>
+
+
+<p class="gext_check es-ex-buttons gex-es-btn"><input type="button" class="gext_check_btn" value="Check answers" > <input type="button" value="Display answers" class="gext_answer_show"></p>
+
+
+</div>
+
+
+</div>
+
+
+</div> <!-- end of di4  -->
+
+
+<script type="text/javascript"> 
+	var di4 = new draginput_test( {
+		id: "di4", 
+		targets: "gext_task input", 
+		//in_targets: "input",
+		clear_option: true,
+		one_use: true,
+		variant_elem: "di_mix_variants span"
+		//targets_color: "#ffffff"
+
+		} )
+</script>
+
+
+
+	<br><br><br><br>
+
+
+
+	
+	<br><br><br><br>
+
+
+
+	</div>
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+currentSection="course";
+</script>

@@ -1,0 +1,772 @@
+<% @page_title = 'Lesson 1 :: Russian Online Lessons' %>
+<% @page_meta = {'description' => ""} %>
+
+
+<% content_for :special_js_css do %>
+
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'jp-control' %>
+<%= javascript_include_tag 'lexical-test' %>
+<%= stylesheet_link_tag 'lexical-test' %>
+<%= javascript_include_tag 'test-drag-sort' %>
+<%= javascript_include_tag 'es-grammar-exercises' %>
+<%= javascript_include_tag 'es-test-drag-input' %>
+
+
+<%= javascript_include_tag 'short-unit' %>
+<%= stylesheet_link_tag 'short-unit' %>
+
+<script type="text/javascript">
+<%if params[:tab] %>
+	openTabFromUrl(<%= params[:tab] %>);
+<%else%>
+	openTabFromUrl();
+<%end%>
+</script>
+
+
+<% end %>
+
+
+
+
+
+<div class="unit-area">
+
+
+<div id="prof_tabs">
+
+<div class="unit-title">
+Lesson 1
+</div>
+	<div id="tabs_row">
+            <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Step 1</a></div></div>
+			<div id="tab02" class="ptab"><div><a href="#">Step 2</a></div></div>
+            <div id="tab03" class="ptab"><div><a href="#">Step 3</a></div></div>
+			<div id="tab04" class="ptab"><div><a href="#">Step 4</a></div></div>
+			<div id="tab05" class="ptab"><div><a href="#">Step 5</a></div></div>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+
+<div id="for_tab01" class="pBlock" style="display: block">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Review</h3>
+<p class="su-step-info">
+Here you can review lexical and grammer structures of the lesson
+</p>	
+	
+
+<h4 class="su-task">
+Task 1. Listen, repeat and read the translation
+</h4>
+
+	
+<div class="su-present">
+<div class="su-present-brd">
+<table cellspacing="0">
+	<tr>
+		<td class="su-pres-audio"></td>
+		<td class="su-pres-orig">Здравствуйте!</td>
+		<td class="su-pres-trans">Hello</td>
+	</tr>
+	<tr>
+		<td class="su-pres-audio"></td>
+		<td class="su-pres-orig">Добрый день!</td>
+		<td class="su-pres-trans">Good afternoon</td>
+	</tr>
+	<tr>
+		<td class="su-pres-audio"></td>
+		<td class="su-pres-orig">Как поживаете?</td>
+		<td class="su-pres-trans">How are you?</td>
+	</tr>
+	<tr>
+		<td class="su-pres-audio"></td>
+		<td class="su-pres-orig">Спасибо, хорошо. А у Вас как дела?</td>
+		<td class="su-pres-trans">Thanks, I'm fine. And how are you?</td>
+	</tr>
+	<tr>
+		<td class="su-pres-audio"></td>
+		<td class="su-pres-orig">Прекрасно.</td>
+		<td class="su-pres-trans">I'm great</td>
+	</tr>
+</table>	
+</div>	
+</div>	
+	
+
+
+<br><br><br><br>
+
+<h4 class="su-task">
+Task 2. Listen to the phrase and find it in the list.
+</h4>
+
+
+
+<div id="ch1" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		test_id: "",
+		quest_num: 15,
+		variants_num: 5,
+		//quest_type: 'audio',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+["Здравствуйте!","Hello!"],
+["Добрый день!","Good afternoon"],
+["Как поживаете?","How are you?"],
+["Спасибо, хорошо. А у Вас как дела?","Thanks, I'm fine. And how are you?"],
+["Прекрасно.","I'm great!"]
+		
+
+		]
+		
+		} )
+</script>
+
+
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Next step >>" onclick="openNextStep(2)">
+</div>	
+	
+	</div>
+</div>
+
+<div id="for_tab02" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Vocabulary</h3>
+<p class="su-step-info">
+Here you can learn words and expressions of the lesson.
+</p>	
+	
+
+<h4 class="su-task">
+Task 1. Read and repeat the words and expressions of the lesson.
+</h4>
+	
+<br><br>
+
+
+<div class="voc-wordlist">
+<table class="voc_bord" align="center" cellspacing="0">
+<tr>
+<td>
+
+<table style="width: 400px" class="diction" cellpadding="0" cellspacing="0" align="center">
+<col width="50%"><col width="50%">
+<thead>
+<tr>
+	<td> <div class="trans-display-wrapper"><input type="checkbox" class="trans-display" /> Transcription </div> </td>
+	<td></td>
+</tr>
+</thead>
+<tbody>
+
+<%
+cat = Cluster.find(15)
+@words = cat.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+%>
+<%@words.each_with_index do |word, index|-%>
+<tr class="trow">
+    <td class="original" valign="top">
+	<%unless word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div><%end%>
+	<%= word.text %>
+	<div class="ru-transcript">[<%= word.transcribe %>]</div>
+	
+    </td>
+    <td class="translation" valign="top"><%= word.translate %>
+    </td>
+</tr>
+<%end -%>
+
+
+</tbody>
+<tfoot>
+<tr>
+	<td></td>
+	<td></td>
+</tr>
+</tfoot>  
+</table>
+
+</td>
+</tr>
+</table>
+</div><!-- end of voc-wordlist-->
+
+<br><br><br><br>
+
+<h4 class="su-task">
+Task 2. Listen to the phrase and find it in the list.
+</h4>
+
+
+
+<div id="ch2" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		test_id: "c1101022.2.2",
+		quest_num: 15,
+		variants_num: 5,
+		quest_type: 'audio',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+<% @last_item_index = (@words.length)-1 -%>
+<% @words.each_with_index  do |word, index| -%>
+['<%= word.sound_url %>', "<%= word.translate.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
+		} )
+</script>	
+
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Next step >>" onclick="openNextStep(3)">
+</div>
+	
+	</div>
+</div>
+
+
+<div id="for_tab03" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Theory</h3>
+<p class="su-step-info">
+Here you can learn grammar and lexical rules of the lesson.
+</p>	
+	
+
+	
+<h3 class="su-page-p" style="margin-top: 0;">Particularities of Russian phrase stucture</h3>
+
+
+<h4 class="page-pp">Word order</h4>
+
+<p>
+Russian word order is very flexible. The parts of the Russian sentence (subject, predicate etc.) can go in almost any order.
+</p> 
+
+<div class="egdiv">
+<h4>Example: </h4>
+<p>
+<em>Кошки едят мышей.</em> - Cats eat mice.
+</p>
+<p>
+The following sentences have the same meaning, although the word order is quite different: 
+</p>
+<p>
+<em>
+Мышей едят кошки. <br/>
+Едят кошки мышей. <br/>
+Едят мышей кошки. <br/>
+</em>
+</p>
+</div>
+
+	<p>
+		Such a flexible word order is possible because of endings of words which will change depenging on the function of the word in a phrase. 
+		This is what is called "cases", and you will work on this later in other lessons. The only thing you should remember now is that the word order is flexible.
+	</p>
+
+
+<h4 class="page-pp">Subjects and verbs</h4>		
+
+<p>
+The presence of a subject or a verb is not always required in Russian sentences. 
+In particular, Russian often drop subjects expressed by personal pronouns, and the present tense of the Russian verb быть 'to be' is not used. 
+</p>
+		
+<div class="egdiv">
+<h4>Example: </h4>
+<p>
+<em>Как поживаете? </em> - How are you? (litterally: How are living?, formal)
+</p>
+<p>There is no equivalent of "you" in the Russian phrase</p>
+<p><em>А ты как?</em> -  And how are you? (litterally: And you how?, informal)</p>
+<p>There is no equivalent of "are" in the Russian phrase</p> 
+</div>	
+
+<h4 class="page-pp">Articles</h4>		
+		
+<p>
+There are no articles, like English "a" or "the", in Russian.
+</p>
+
+		
+<h3 class="su-page-p" >Questions in Russian</h3>		
+		
+<p>	
+All questions can be devided into three categories:
+</p>	
+
+<ul>
+	<li>Simple questions: these are questions that require an answer "yes" or "no", like "Is this a book?"
+	<li>Alternative questions: these are questions which include two or more of answers in themselves, like "Is this a book or a magazine"
+	<li>Special questions: these are questions which use interrogative words "what", "how", "when" etc., and they require a more informative answer, 
+	like "What is this?"
+</ul>
+
+<p>All these types of questions are present in English, in Russian and other languages. The most important thing you should remember now about Russian questions, is that Russians do not use special grammar constructions or word to ask questions. Questions are commonly expressed by intonation.
+</p>
+
+		
+	<h4 class="page-pp">Russian simple questions</h4>	
+		
+		<p>
+			 These question are expressed by intonation. When answering simple questions in Russian, you can use words да 'yes' and нет 'no'. 
+		</p>
+		
+	<h4 class="page-pp">Russian alternative questions</h4>
+	
+	<p>
+		Russian alternative questions usually use the word "или" (or). 
+	</p>
+	
+	<h4 class="page-pp">Russian special questions</h4>
+	
+	<p>
+		Special questions are formed with diffrent interrogative words, for example что "what", как 'how' etc. 
+		Because of a flexible word order, the place of these words can change: they can occur at the beginning, at the end or in the middle of the question.
+	</p>
+
+
+
+
+
+<br><br><br><br>
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(4)">
+</div>	
+	
+<br><br><br><br><br><br><br>
+	
+	</div>
+</div>
+
+
+
+
+<div id="for_tab04" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Упражнения</h3>
+<p class="su-step-info">
+Here you can do exercises for Russian grammar and lexical material of the lesson.
+</p>	
+	
+<h4 class="su-task"> 
+Task 1. Revise the information about Russian grammar and complete the test
+</h4> 
+ 
+<div class="su-exerc"> 
+ 
+<div class="task">Choose an answer to the following questions:</div> 
+ 
+<div  class="gr_ex_variants"> 
+<div class="gr-ex-testid">c1108052.5.2</div> 
+ 
+ 
+<div  class="gr_ex_variants_wrap "> 
+<table class="gr_ex_vars_tab gexv_options" cellpadding="0" cellspacing="0" border="0"> 
+	<tr> 
+		<td> 
+			<div class="gexv_task gexv_sign"> 
+				1. In Russian sentences, the subject and the verb can not change their place, their position is fixed.
+			</div> 
+			<div class="gexv_variant"><input type="checkbox"> True</div> 
+			<div class="gexv_variant" ><input type="checkbox" class="ok"> False</div> 
+		</td> 
+	</tr> 
+	<tr> 
+		<td> 
+			<div class="gexv_task gexv_sign"> 
+				2. The presence of the verb is not always required in Russian sentences.
+			</div> 
+			<div class="gexv_variant"><input type="checkbox" class="ok"> True</div> 
+			<div class="gexv_variant"><input type="checkbox" > False</div>
+		</td> 
+	</tr> 
+	<tr> 
+		<td> 
+			<div class="gexv_task gexv_sign"> 
+				 3. The Russian equivalent to the English article "a" is the word тот:
+			</div> 
+			<div class="gexv_variant" ><input type="checkbox"> True</div> 
+			<div class="gexv_variant"><input type="checkbox" class="ok"> False</div>
+		</td> 
+	</tr> 
+	<tr> 
+		<td> 
+			<div class="gexv_task gexv_sign"> 
+				  4. In Russian, there are no alternative questions.
+			</div> 
+			<div class="gexv_variant"><input type="checkbox"> True</div> 
+			<div class="gexv_variant"><input type="checkbox"  class="ok"> False</div> 
+		</td> 
+	</tr> 
+ 
+	<tr> 
+ 
+		<td> 
+			<div class="gexv_task gexv_sign"> 
+				  5. The question Как дела? is a :
+			</div> 
+			<div class="gexv_variant"><input type="checkbox"> simple question</div> 
+			<div class="gexv_variant"><input type="checkbox" class="ok"> special question</div>
+		</td> 
+	</tr> 
+	
+	<tr> 
+ 
+		<td> 
+			<div class="gexv_task gexv_sign"> 
+				  6. The subject should always be present in Russian simple questions.
+			</div> 
+			<div class="gexv_variant"><input type="checkbox"> True</div> 
+			<div class="gexv_variant"><input type="checkbox"  class="ok"> False</div> 
+		</td> 
+	</tr> 
+	
+	<tr> 
+ 
+		<td> 
+			<div class="gexv_task gexv_sign"> 
+				  7. The word что is used in Russian special questions:
+			</div> 
+			<div class="gexv_variant"><input type="checkbox" class="ok"> True</div> 
+			<div class="gexv_variant"><input type="checkbox" > False</div> 
+		</td> 
+	</tr> 
+	
+	<tr> 
+ 
+		<td> 
+			<div class="gexv_task gexv_sign"> 
+				  8. To answer an alternative Russian question, the word да is often used in Russian.
+			</div> 
+			<div class="gexv_variant"><input type="checkbox"> True</div> 
+			<div class="gexv_variant"><input type="checkbox"  class="ok"> False</div> 
+		</td> 
+	</tr> 
+ 
+</table> 
+</div> 
+ 
+<p class="gexv_check es-ex-buttons gex-es-btn"> 
+ 
+<input type="button" value="Check answers"></p> 
+ 
+</div> 
+</div> <!-- end of su-ex  --> 
+ 
+ 
+
+<br><br><br><br>
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Next step >>" onclick="openNextStep(5)">
+</div>
+
+
+	</div>
+</div>
+<div id="for_tab05" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Practice</h3>
+<p class="su-step-info">
+Here you can revise and practise what you've just learned.
+</p>	
+	
+
+<h4 class="su-task">
+Task 1. Choose an appropriate answer to the greetings. 
+</h4>
+
+<div id="ds2" class="ds-wrapper" style="padding: 15px;">
+
+<p class="task" align="center">Drag the phrases from the list and click "Check" button</p>		
+
+<table align="center" style="margin: 0 auto;">
+
+<tr>
+<td>
+
+
+<table class="dst-test ds-table ds-audio" cellspacing="0" align="left" style="margin: auto">
+<col width="140">
+<col width="20">
+<col width="40">
+<col width="200">
+<tr>
+	<td class="ds-quest" align="center">
+			Здравствуйте! 
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/en/course/soundc1002.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+			Привет!
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/en/course/soundc1006.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Как поживаете?
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Как дела? Нормально? 
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/en/course/soundc1001.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+
+<td>
+
+	
+<br>
+<br>
+
+<table class="ds_variants_list" width="100%">
+<tr valign="top">
+<td>
+
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>Спасибо, хорошо.</div></div>
+	</li>
+
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Да.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">4</span>Привет!</div></div>
+	</li>
+</ul>
+
+</td>
+<td>
+
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">0</span>Добрый день.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>До свидания!</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">0</span>Удачи!</div></div>
+	</li>
+</ul>
+
+</td>
+</tr>
+</table>
+
+
+
+</td>
+</tr>
+</table>
+
+
+<div class="es_btn_wrapper es-ex-buttons ds-check-wrapper">
+
+<input type="button" class="es_btn ds-check-button" value="Check answers">
+
+</div>
+
+
+</div>
+
+<script type="text/javascript"> 
+	var ds2 = new dragsort_test( {
+		id: "ds2", 
+		test_id: "c1101051.5.1",
+		targets: "ds-answer", 
+		answer_elem: "ds_sort_item", 
+		variant_elem: "ds_variant",
+		answer_color: "#F6FAFF",
+		auto_check: false
+		} )
+</script>	
+	
+	
+	
+<br><br><br><br>
+
+<h4 class="su-task"> 
+Task 2. Read the dialogue and answer the questions.
+</h4> 
+ 
+<div class="su-present"> 
+<div class="su-present-brd"> 
+<table cellspacing="0" class="su-no-tr-act">	
+	<tr> 
+		<td class="su-pres-orig"> 
+			<p style="line-height: 24px;">
+- Добрый день, Мария.<br>
+- Здраствуйте, Александр.<br>
+- Как у Вас дела?<br>
+- Прекрасно! А как Вы поживаете?<br>
+- Спасибо, хорошо.</p> <br>
+		</td> 
+	</tr> 
+</table>	
+</div>	
+</div> 
+
+
+<div class="su-exerc"> 
+ 
+<div class="task">Choose an answer to the following questions:</div> 
+ 
+<div  class="gr_ex_variants"> 
+<div class="gr-ex-testid">c1108052.5.2</div> 
+ 
+ 
+<div  class="gr_ex_variants_wrap "> 
+<table class="gr_ex_vars_tab gexv_options" cellpadding="0" cellspacing="0" border="0"> 
+	<tr> 
+		<td> 
+			<div class="gexv_task gexv_sign"> 
+				1. Alexander greets Maria.
+			</div> 
+			<div class="gexv_variant"><input type="checkbox" class="ok"> True</div> 
+			<div class="gexv_variant" ><input type="checkbox" > False</div> 
+		</td> 
+	</tr> 
+	<tr> 
+		<td> 
+			<div class="gexv_task gexv_sign"> 
+				2.  It's Alexander who has seen Maria first.
+			</div> 
+			<div class="gexv_variant"><input type="checkbox" class="ok"> True</div> 
+			<div class="gexv_variant"><input type="checkbox" > False</div>
+		</td> 
+	</tr> 
+	<tr> 
+		<td> 
+			<div class="gexv_task gexv_sign"> 
+				 3. Alexander and Maria are close freinds.
+			</div> 
+			<div class="gexv_variant" ><input type="checkbox"> True</div> 
+			<div class="gexv_variant"><input type="checkbox" class="ok"> False</div>
+		</td> 
+	</tr> 
+	<tr> 
+		<td> 
+			<div class="gexv_task gexv_sign"> 
+				  4. Maria is dooing well.
+			</div> 
+			<div class="gexv_variant"><input type="checkbox" class="ok"> True</div> 
+			<div class="gexv_variant"><input type="checkbox"  > False</div> 
+		</td> 
+	</tr> 
+  
+</table> 
+</div> 
+ 
+<p class="gexv_check es-ex-buttons gex-es-btn"> 
+ 
+<input type="button" value="Check answers"></p> 
+ 
+</div> 
+</div> <!-- end of su-ex  --> 
+
+
+
+	
+	<br><br><br><br>
+
+
+
+	</div>
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+currentSection="course";
+</script>
