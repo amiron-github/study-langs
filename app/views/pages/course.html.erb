@@ -86,8 +86,7 @@ function showCSAtStart(jObj) {
 
 
 <p style="padding-bottom: 20px;" align="center">
-Here you can see which free and paid online Russian courses are available on our website:
-
+Here you can see which online Russian courses are available on our website:
 </p>
 
 <table class="cs_place" cellspacing="0" id="beginner_course">
@@ -184,7 +183,8 @@ Here you can see which free and paid online Russian courses are available on our
 
 <br>
 
-
+<%= render :partial => '/site/ad_horizont' %>
+<br>
 
 <table class="cs_place" cellspacing="0" id="everyday_course">
 	<tr valign="top">
@@ -342,7 +342,11 @@ Before you begin one of our online courses, we recommend you to see the sections
 We also advise to visit <a href="test-use.html">How to use tests</a> page to learn how to work with tests which you will find in the online lessons, and <a href="functions.html">Functions and settings</a> page to read information about available functions on our website that may make it easier to learn Russian.
 </p>
 
-<br><br><br><br><br><br><br><br><br><br>
+<br><br>
+
+<%= render :partial => '/site/ad_btm' %>
+
+<br><br><br><br><br><br><br><br>
 
 <script type="text/javascript">
 currentSection="course";
