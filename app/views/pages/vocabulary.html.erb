@@ -15,7 +15,7 @@
 
 <style type="text/css">
 #prof_tabs {margin-top: 50px;}
-.inpBlock {min-height: 800px; height: auto !important; height: 800px;}
+.inpBlock {min-height: 800px; height: auto !important; height: 800px; font-size: 12px;}
 .pBlock {padding: 40px 50px;}
 .forgame {}
 
@@ -24,7 +24,7 @@ color: #222222;
 text-decoration: none;
 height: 240px;
 padding: 0px 10px; 
-display: block
+display: block;
 }
 
 .content a.forgame img {
@@ -43,29 +43,82 @@ margin-left: 200px;
 display: block;
 }
 
+.ptab div, .ptab {
+background-image: none;
+font-size: 11px;
+}
+
+.ptab {
+background-color: #F3F7FC;
+margin-left: 6px;
+}
+
+.ptab div {
+padding: 7px 15px 3px 9px;
+}
+
+div.current_ptab div {
+padding-left: 9px;
+padding-right: 15px;
+}
+
+
+#tabs_row {
+padding-left: 15px;
+padding-top: 5px;
+}
+
+.tabs-wrapper {
+bor-der: 1px solid #C3CFDF;
+bor-der-top: 1px solid #678ACF;
+-moz-box-shadow: 1px 2px 9px #B3B7BF;
+-webkit-box-shadow: 1px 2px 9px #B3B7BF;
+box-shadow: 1px 2px 9px #B3B7BF;
+}
+
+#prof_tabs  {
+background-color: #DDE7F5;
+border: 1px solid #82AAC8;
+border-bottom: 1px solid #678ACF;
+margin: 0;
+width: auto;
+}
+
+.current_ptab {
+background-color: #FFFFFF;
+border: 1px solid #678ACF;
+border-bottom: 0px solid #fff;
+}
+
+
+.pBlock {
+border: 1px solid #afafaf;
+border-top: 1px solid #fff;
+-moz-box-shadow: 0 0 0 #fff;
+-webkit-box-shadow: 0 0 0 #fff;
+box-shadow: 0 0 0 #fff;
+}
+
+
+
+
 </style>
 
 <% end %>
 
 
-<h2 class="page">Vocabulary Topics</h2>
+<h2 class="page page-bl">Vocabulary Topics</h2>
 
 <p>
 In this section each topic contains a list of Russian words and phrases with their translation and transcription. You can listen to all Russian words and phrases of the topic. 
 Here you will also find different exercises, tests and word games which will help you to get familiar with the Russian language.
 </p>
-<p>
-If you are a registered user, the results of the tests are saved and can be reviewed in your account. 
-Plus, in your account you can also see words and expressions you have studied with flashcards and lexical tests.
-</p>
+
 
 <%= render :partial => '/site/ad_horizont' %>
+<br>
 
-<p>
-We advise to visit <a href="functions.html">Functions and settings</a> page to read information about available functions that may make it easier to work with topics.
-</p>
-
-
+<div class="tabs-wrapper">
 <div id="prof_tabs">
 	<div id="tabs_row">
             <div id="tab01" class="ptab current_ptab"><div><a href="vocabulary.html" style="color: #000;">Vocabulary</a></div></div>
@@ -80,6 +133,11 @@ We advise to visit <a href="functions.html">Functions and settings</a> page to r
 <div id="for_tab01" class="pBlock" style="display: block">
 
 	<div class="inpBlock">
+	
+	<p style="font-size: 11px; color: #333; margin-top: 0">
+		Below you will find different topics that contain lists of Russian words and phrases with their translation, transcription and pronunciation.
+	<br>
+	</p>
 	
 	<h3>Content: </h3>
 
@@ -152,6 +210,12 @@ We advise to visit <a href="functions.html">Functions and settings</a> page to r
 </div>
 <div id="for_tab02" class="pBlock" style="display: none">
 	<div class="inpBlock">
+	
+	<p style="font-size: 11px; color: #333; margin-top: 0">
+		Flashcards allow to work with each word or phrase of Russian vocabulary topics. Here you will find Russian words and their translation,
+		simple quizzes, spell practice. Registered users can review all studied words in the user's account. 
+	<br>
+	</p>
 		
 	<h3>Content: </h3>
 	
@@ -204,6 +268,11 @@ We advise to visit <a href="functions.html">Functions and settings</a> page to r
 </div>
 <div id="for_tab03" class="pBlock" style="display: none">
 	<div class="inpBlock">
+
+	<p style="font-size: 11px; color: #333; margin-top: 0">
+		You can check how you know a topic with our lexical tests. Registered users can review all studied words and the results of completed tests in the user's account. 
+	<br>
+	</p>	
 	
 	<h3>Content: </h3>
 	
@@ -302,7 +371,20 @@ We advise to visit <a href="functions.html">Functions and settings</a> page to r
 	</div>
 </div>
 
-<br><br>
+</div> <!-- end of tabs wrapper -->
+
+<br>
+
+<p>
+If you are a registered user, the results of the tests are saved and can be reviewed in your account. 
+Plus, in your account you can also see words and expressions you have studied with flashcards and lexical tests.
+</p>
+
+<p>
+We advise to visit <a href="functions.html">Functions and settings</a> page to read information about available functions that may make it easier to work with topics.
+</p>
+
+<br><br><br><br>
 <%= render :partial => '/site/ad_btm' %>
 
 <br><br><br><br>
