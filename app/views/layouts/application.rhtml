@@ -119,7 +119,6 @@
                           <li><a href="/en/ru/vocabulary/politeness" title="Formulas of politeness">Politeness</a></li>
                           <li><a href="/en/ru/vocabulary/acquaintance" title="Making an acquaintance">Acquaintance</a></li>
                           <li><a href="/transport.html" title="Transport">Transport</a></li>
-                          <li><a href="/en/ru/vocabulary/hotel" title="Hotel">Hotel</a> </li>
                           <li><a href="/sightseeing.html" title="Sightseeing">Sightseeing</a> </li>
                           <li><a href="/meals.html" title="Meals">Meals</a> </li>
                           <li><a href="/shopping.html" title="Shopping">Shopping</a> </li>
@@ -235,7 +234,21 @@
                         </div>
                       </div>
                     </div>
-
+<%unless @file == '/index.html' || @file == '/search.html' %>
+<br><br><br>					
+<form action="/search.html" id="cse-search-box">
+  <div align="center">
+    <input type="hidden" name="cx" value="partner-pub-8582966007397893:4309180524" />
+    <input type="hidden" name="cof" value="FORID:10" />
+    <input type="hidden" name="ie" value="UTF-8" />
+    <input type="text" name="q" style="max-width: 200px" size="20" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>					
+<%end%>				
+					
+					
                   </div>
 
                 </div>

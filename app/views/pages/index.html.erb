@@ -13,10 +13,22 @@ The main purpose of this site is to give an opportunity for all interested peopl
 On our site you can find different materials for studying of the Russian language which would be useful <a href="recommendations.html" title="Recommendations for Beginners">for beginners</a> as well as for those who have some experience with Russian. The <a href="course.html" title="Russian Courses">online courses of Russian</a> on our site can help those who have never studied the Russian language and those who want to reinforce their skills in Russian. 
 </p>
 
-<%= render :partial => '/site/ad_horizont' %>
+
+<form action="/search.html" id="cse-search-box">
+  <div align="center">
+    <input type="hidden" name="cx" value="partner-pub-8582966007397893:4309180524" />
+    <input type="hidden" name="cof" value="FORID:10" />
+    <input type="hidden" name="ie" value="UTF-8" />
+    <input type="text" name="q" size="45" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>
+
+
 
 <p style="te_xt-align: center;">Below you'll find a short description of main sections on our website and some links which may be useful for you:</p>
-<div id="sections">
+<div id="sections" style="margin-top:0">
 <table cellpadding="0" cellspacing="0" border="0" align="center">
 	<tr valign="top">
 		<td style="width: 250px; height: 250px;">
@@ -196,6 +208,12 @@ On our site you can find different materials for studying of the Russian languag
 </table>
 </div>
 
+
+
+<%= render :partial => '/site/ad_horizont' %>
+
+
+
 <p>
 Here you can study the Russian language depending on your possibilities, wishes and free time. The content of our site provides the opportunity to learn <a href="vocabulary.html" title="Vocabulary sorted by topics">the most useful vocabulary</a> and grammar as well as the <a href="pronunciation.html" title="Russian pronunciation">phonetics</a> and <a href="russian-reading.html" title="Reading in Russian">rules of reading</a> in Russian language. 
 </p>
@@ -234,7 +252,6 @@ You can also see the list of <a href="/useful-resources.html"  title="Useful lin
 </p>
 
 <br><br>
-<%= render :partial => '/site/ad_btm' %>
 <br><br>
 
 
