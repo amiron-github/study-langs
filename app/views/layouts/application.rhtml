@@ -234,7 +234,7 @@
                         </div>
                       </div>
                     </div>
-<%unless @file == '/index.html' || @file == '/search.html' %>
+<%unless @file == '/index.html' || @file == '/search.html' || cookies[:no_menu] %>
 <br><br><br>					
 <form action="/search.html" id="cse-search-box">
   <div align="center">
