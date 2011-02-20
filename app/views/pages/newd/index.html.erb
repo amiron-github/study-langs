@@ -1,0 +1,396 @@
+<% @page_title = 'New index' %>
+<% @page_meta = {'description' => "New index"} %>
+
+
+<% content_for :special_js_css do %>
+
+<style type="text/css">
+
+.slides-wrap {
+margin-top: 50px;
+text-align: center;
+padding-bottom: 10px;
+}
+
+.slides-container {
+    -moz-border-radius: 7px;
+    -moz-box-shadow: 1px 1px 0 #627EAF, 1px 2px 3px #3E556F;
+    border: 5px solid #6F98DF;
+	background-color: #A5C4F9;
+    max-width: 600px;
+	position: relative;
+    overflow: hidden;
+	margin: 0 auto;
+}
+
+
+.slides-list {
+position: absolute;
+width: 185px;
+right: 0;
+top: 0;
+overflow-y: auto;
+max-height: 300px;
+z-index: 1000;
+}
+
+.slides-list ul {
+padding: 10px 4px 5px 0;
+margin: 0;
+list-style: none;
+text-align: left;
+}
+
+.slides-list ul li {
+cursor: pointer;
+padding: 11px 7px 11px 15px;
+font-size: 11px;
+margin-bottom: 3px;
+margin-left: 15px;
+color: #333;
+text-shadow: 0px 1px 0px #fff;
+font-weight: bold;
+background-image: url("/images/btn-grd.png");
+background-position: -30px -15px !important;
+background-repeat: no-repeat;
+background-color: #BFD2FF;
+-moz-box-shadow: 1px 1px 0 #627EAF, 1px 2px 3px #3E556F;
+border: 1px solid #86A2EF;
+-moz-bo-rder-radius-topleft: 7px;
+-moz-bo-rder-radius-bottomleft: 7px;
+
+}
+
+.slides-list ul li:hover {
+margin-left: 3px;
+background-color: #CFDDFF;
+}
+
+.slides-list ul li.slide-item-act {
+cursor: default;
+background-image: none;
+background-color: #fff;
+margin-left: 3px;
+color: #000;
+text-shadow: 0px 1px 0px #ccc;
+border: 1px solid #4D70CF;
+}
+
+
+.slides-screen {
+min-height: 300px;
+margin-right: 150px;
+margin-left: 10px;
+background-color: #fff;
+position: relative;
+overflow: hidden;
+margin: 6px 150px 6px 10px;
+border: 1px solid #23558F;
+}
+
+.slides-blocks-container {
+position: relative;
+padding: 1px 0;
+margin: 0;
+list-style: none;
+text-align: left;
+}
+
+.slides-blocks-container li.slides-block {
+padding: 0;
+margin: 0;
+overflow: hidden;
+list-style: none;
+position: absolute;
+background-color: #fff;
+top: 0;
+height: 305px;
+z-index: 100;
+background-image: url("/images/cs_bg.gif");
+background-position: 0 0px;
+min-width: 438px;
+}
+
+
+.slides-blocks-container li.sp-next {
+z-index: 150;
+}
+
+.slides-blocks-container li.sp-block-act {
+z-index: 200;
+}
+
+.slides-block h3 {
+color: #457DDF;
+margin: 15px 0 10px;
+font-size: 22px;
+font-weight: normal;
+text-shadow: 2px 2px 2px #BFBFBF;
+}
+
+.slide-block-wrap {
+padding: 1px 30px 1px 20px;
+}
+
+ul.sl-features-list {
+padding: 0;
+list-style: none;
+margin: 0 0 0 0px;
+font-size: 11px;
+}
+
+ul.sl-features-list li {
+padding: 1px 5px 1px 20px;
+margin: 10px 0;
+background-image: url(/images/icons/accept.png);
+background-repeat: no-repeat;
+}
+
+.slides-bloc-details {
+position: absolute;
+width: 100%;
+bottom: 0;
+color: #fff;
+font-size: 11px;
+border-top: 1px solid #2054AF;
+background-color: rgba(0, 58, 159, 0.6);
+
+}
+
+.slides-bloc-details p {
+margin: 0;
+padding: 10px 20px 30px;
+border-top: 1px solid #457DDF;
+text-shadow: 0 1px 0 #111;
+}
+
+
+
+</style>
+<% end %>
+
+
+
+<div id="sp1" class="slides-wrap">
+
+<div class="slides-container">
+
+<div class="slides-screen">
+
+<ul class="slides-blocks-container">
+	<li class="slides-block sp-block-act">
+		<div class="slide-block-wrap">
+		<h3>Everyday Russian Course</h3>
+		<div>
+		
+		<table width="100%" class="slides-pres" cellspacing="0">
+			<tr valign="top">
+				<td>
+					<img src="/images/cs_everyday.jpg" height="200" align="left" style="margin: 0px 5px 0 0;">
+				</td>
+				<td>
+					<ul class="sl-features-list">
+						<li>Realistic dialogues recorded by native speakers </li>
+						<li>Various interactive exercises</li>
+						<li>All words and phrases are accompanied by audio and transcription</li>
+					</ul>
+				</td>
+				
+			</tr>
+		</table>
+
+		</div>
+		
+		</div>
+		<div class="slides-bloc-details">
+		<p>
+		Find an easy way to learn the language you need for most everyday situations. The 10 online lessons of this course include everything to enable you to to start speaking right away: dialogues, vocabulary lists, interactive exercises and tests.
+		</p>
+		</div>
+		
+	</li>
+	<li class="slides-block">
+		<div class="slide-block-wrap">
+		<h3>Russian Course for Beginners</h3>
+		<div>
+		
+		<table width="100%" class="slides-pres" cellspacing="0">
+			<tr valign="top">
+				<td>
+					<img src="/images/cs_beginner.jpg" height="200" align="left" style="margin: 0px 5px 0 0;">
+				</td>
+				<td>
+					<ul class="sl-features-list">
+						<li>The most useful grammar and vocabulary </li>
+						<li>Words and expressions accompanied by pronunciation</li>
+						<li>Plenty of practice opportunities</li>
+						<li>Explanations with numerous examples and exercises</li>
+						
+					</ul>
+				</td>
+				
+			</tr>
+		</table>
+
+		</div>
+		
+		</div>
+		<div class="slides-bloc-details">
+		<p>
+		Online free lessons that will help you to learn basic vocabulary and grammar, fine-tune your pronunciation and get essential language skills in Russian. 
+		</p>
+		</div>
+		
+		
+	</li>	
+	<li class="slides-block">
+		<div class="slide-block-wrap">
+		<h3>Vocabulary Topics</h3>
+		<div>
+		<table width="100%" class="slides-pres" cellspacing="0">
+			<tr valign="top">
+				<td>
+					<img src="/images/vocabulary.png" align="left" style="margin: 0px 5px 0 0;">
+				</td>
+				<td>
+					<ul class="sl-features-list">
+						<li>Russian words and expressions sorted by topics </li>
+						<li>Online flashcards</li>
+						<li>Interactive lexical tests</li>
+						<li>Language games</li>
+						
+					</ul>
+				</td>
+				
+			</tr>
+		</table>
+		</div>
+		</div>
+		<div class="slides-bloc-details">
+		<p>
+		Each topic contains a list of Russian words and phrases with their translation and transcription. Here you will also find different exercises, flash cards and online lexical tests.  
+		</p>
+		</div>	
+	
+	</li>
+	<li class="slides-block">
+		<div class="slide-block-wrap">
+		<h3>Russian Grammar</h3>
+		<div>
+		<table width="100%" class="slides-pres" cellspacing="0">
+			<tr valign="top">
+				<td>
+					<img src="/images/grammar.png" align="left" style="margin: 0px 5px 0 0;">
+				</td>
+				<td>
+					<ul class="sl-features-list">
+						<li>Articles about Russian grammar rules</li>
+						<li>Online grammar exercises</li>
+						<li>Declension and conjugation tables</li>
+						
+						<li>Multiple examples</li>
+					</ul>
+				</td>
+				
+			</tr>
+		</table>
+		</div>
+		</div>
+		<div class="slides-bloc-details">
+		<p>
+		In this section, you can find different materials and exercises devoted to Russian grammar rules. The articles are grouped by parts of speech: noun, adjective, pronoun, verb etc.   
+		</p>
+		</div>	
+	</li>
+	<li class="slides-block">
+		<div class="slide-block-wrap">
+		<h3>Russian Pronunciation</h3>
+		<div>
+		<table width="100%" class="slides-pres" cellspacing="0">
+			<tr valign="top">
+				<td>
+					<img src="/images/pronunciation.png" align="left" style="margin: 0px 5px 0 0;">
+				</td>
+				<td>
+					<ul class="sl-features-list">
+						<li>Articles about Russian grammar rules</li>
+						<li>Online grammar exercises</li>
+						<li>Declension and conjugation tables</li>
+						
+						<li>Multiple examples</li>
+					</ul>
+				</td>
+				
+			</tr>
+		</table>
+		</div>
+		</div>
+		<div class="slides-bloc-details">
+		<p>
+		In this section, you can find different materials and exercises devoted to Russian grammar rules. The articles are grouped by parts of speech: noun, adjective, pronoun, verb etc.   
+		</p>
+		</div>	
+	</li>
+	<li class="slides-block">
+		<div class="slide-block-wrap">
+		<h3>Reading in Russian</h3>
+		<div>
+		<table width="100%" class="slides-pres" cellspacing="0">
+			<tr valign="top">
+				<td>
+					<img src="/images/reading.png" align="left" style="margin: 0px 5px 0 0;">
+				</td>
+				<td>
+					<ul class="sl-features-list">
+						<li>Articles about Russian grammar rules</li>
+						<li>Online grammar exercises</li>
+						<li>Declension and conjugation tables</li>
+						
+						<li>Multiple examples</li>
+					</ul>
+				</td>
+				
+			</tr>
+		</table>
+		</div>
+		</div>
+		<div class="slides-bloc-details">
+		<p>
+		In this section, you can find different materials and exercises devoted to Russian grammar rules. The articles are grouped by parts of speech: noun, adjective, pronoun, verb etc.   
+		</p>
+		</div>	
+	</li>
+	
+	
+</ul>
+
+
+
+
+
+
+</div>
+
+<div class="slides-list">
+<ul>
+	<li class="slide-item-act">Everyday Russian Course</li>
+	<li>Course for Beginners</li>
+	<li>Vocabulary Topics</li>
+	<li>Russian grammar</li>
+	<li>Pronunciation</li>
+	<li>Reading in Russian</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+</div>
+
+<script type="text/javascript"> 
+	var sp1 = new slides_presentation( {
+		id: "sp1"
+		} )
+</script>

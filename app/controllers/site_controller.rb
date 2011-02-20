@@ -14,6 +14,10 @@ class SiteController < ApplicationController
 		layout = 'fr_application.rhtml'
 	end
 	
+	if @file.match(/\/newd\//)
+		layout = 'new.rhtml'
+	end
+	
 	if @file.match(/\/ru\//)  
 		@file = '/ru/jp/index.html' if @file == '/ru/jp/'
 		@file = '/ru/fr/index.html' if @file == '/ru/fr/'
