@@ -9,7 +9,7 @@
 <% end %>
   <meta name="keywords" content="russian translation, russian language, learn russian, study russian, learn russian online, russian phrases, russian words, speak russian, speaking russian, learning russian, basic russian, learn russian language, beginners russian, russian language course, russian online lessons, russian vocabulary, russian for begginers" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf8"> 
-  
+  <%= stylesheet_link_tag 'stylesheet' %>
   <% if @jquery_version.nil? -%>
 	<%= javascript_include_tag 'jquery.min.js' %>
   <% elsif  @jquery_version =='latest' %>
@@ -17,12 +17,8 @@
   <% else %>
 		<%= javascript_include_tag @jquery_version %>
   <%end%>
-
-  
-  
-  
   <%= javascript_include_tag 'effects' %>
-  <%= stylesheet_link_tag 'stylesheet' %>
+  <%= javascript_include_tag 'jquery.carousel.min.js' %>
   <%if @javascripts%>  
   <% for js_file in @javascripts -%>
   <%= javascript_include_tag js_file %>
@@ -50,34 +46,43 @@
 
 </head>
 <body <% if cookies[:no_header] %>class="m-header-hidden"<%end%>>
-    <div id="fixWidh"><div id="container">
+    <div id="fixWidh"><div id="container" class="nd">
         <!--[if lte IE 6]>
         <table id="containit" cellspacing="0">
           <tr valign="top">
             <td>
               <![endif]-->
               <div id="head">
-				<div class="head-dec">
                 <div id="title_wrapper">
                   <div id="title_name">
-                    <h1 class="title_site"><a href="/index.html" title="Home page">Study Russian Online</a></h1>
-                    <div class="title_volume">Study Russian Online</div>
-                    <div class="title_shdw">Study Russian Online</div>
-					<div id="user_logged">
-					
-					<% if logged_in?%> 
-						 <strong style="font-size: 10px;"><%= current_user.email %></strong> | <%= link_to "Sign Out",{:controller => 'sessions', :action => 'destroy'} %>
-					<%else%>
-						&nbsp;
-					<%end%>
-					</div>					
+                    <h1 class="title_site" style="float: left;"><a href="/index.html" title="Home page">Study Russian Online</a>		
+					</h1>
+					<div class="t-top-panel">
+
+<div class="t-sign-in">
+<% if logged_in?%>
+<a href="/user_profile.html" class="t-un" title="Profile"><%= current_user.email %></a> | <a href="/user_profile.html?tab=3" class="t-res" title="Results">Results</a> | <span class="t-out"><%= link_to "Sign Out",{:controller => 'sessions', :action => 'destroy'} %></span>
+<%else%>
+<% unless @page_title == 'Sign In' %><%= link_to "Sign in",{:controller => 'sessions', :action => 'new'} %><%end%> | <%unless @page_title == 'Sign Up'%><%= link_to "Registration",{:controller => 'users', :action => 'new'} %><%end%>
+<%end%>
+</div>
+<% unless @no_search %>			
+<div class="t-search-bar">	
+<form action="/search.html" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-8582966007397893:4309180524" />
+    <input type="hidden" name="cof" value="FORID:10" />
+    <input type="hidden" name="ie" value="UTF-8" />
+    <input type="text" name="q" style="max-width: 200px" size="20" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>	
+</div>
+<%end%>					
+						
+					</div>
                   </div>
-                </div>
-				</div>
-              </div>
-              <div class="corners cont-clt">
-                <div class="corners cont-crt">
-                  <div class="cont-center"></div>
                 </div>
               </div>
               <div id="menu_content" <% if cookies[:no_menu] %>class="m-menu-hidden"<%end%>>
@@ -85,55 +90,42 @@
                   <div id="nav-pos">
                     <div id="menu_body" align="left">
                       <div id="nav1" class="menu-item">
-                        <div class="menu-item-front">
                           <div class="item-top">
                             <a href="/index.html">Home page</a>
                           </div>
-                        </div>
                       </div>
                       <div id="nav2" class="menu-item">
-                        <div class="menu-item-front">
                           <div class="item-top">
                             <div class="list down"></div> 
                             <a href="/course.html">Online Courses</a>&nbsp;
                           </div>
-                        </div>
                       </div>
                       <div class="sub" style="display: none">
                         <ul style="padding-left: 16px;">
-                          <li style="padding-top: 10px; font-weight: bold;" ><a href="/beginner-course.html">Russian for Beginners</a> </li>
-                          <li style="padding-bottom: 10px; padding-top: 10px; font-weight: bold;"><a href="/everyday-course.html">Everyday Russian</a> </li>
+                          <li><a href="/beginner-course.html">Russian for Beginners</a> </li>
+                          <li><a href="/everyday-course.html">Everyday Russian</a> </li>
 
                         </ul>
                       </div>
                       <div id="nav3" class="menu-item">
-                        <div class="menu-item-front">
                           <div class="item-top">
                             <div class="list down"></div> 
                             <a href="/vocabulary.html">Vocabulary Topics</a>&nbsp;
                           </div>
-                        </div>
                       </div>
                       <div class="sub" style="display: none">
                         <ul>
-                          <li><a href="/en/ru/vocabulary/politeness" title="Formulas of politeness">Politeness</a></li>
-                          <li><a href="/en/ru/vocabulary/acquaintance" title="Making an acquaintance">Acquaintance</a></li>
-                          <li><a href="/transport.html" title="Transport">Transport</a></li>
-                          <li><a href="/sightseeing.html" title="Sightseeing">Sightseeing</a> </li>
-                          <li><a href="/meals.html" title="Meals">Meals</a> </li>
-                          <li><a href="/shopping.html" title="Shopping">Shopping</a> </li>
-                          <li><a href="/numerals00-100.html" title="Numerals">Numerals</a> </li>
-                          <li class="sub_high"><a href="/vocabulary.html?tab=4" title="Language Games">Language games</a>  </li>
-                          <li class="sub_high"><a href="/vocabulary.html?tab=3" title="Tests">Lexical tests</a>  </li>
+						  <li><a href="/vocabulary.html">Topics</a></li>
+                          <li><a href="/vocabulary.html?tab=2">Flashcards</a></li>
+						  <li><a href="/vocabulary.html?tab=3">Lexical tests</a></li>
+                          <li><a href="/vocabulary.html?tab=4">Language games</a></li>
                         </ul>
                       </div>
 					  <div id="nav8" class="menu-item">
-                        <div class="menu-item-front">
                           <div class="item-top">
                             <div class="list down"></div> 
                             <a style="margin-left: 27px" href="/russian-grammar.html">Russian grammar</a>&nbsp;
                           </div>
-                        </div>
                       </div>
                       <div class="sub" style="display: none">
                         <ul>
@@ -157,12 +149,10 @@
                         </ul>
                       </div>
                       <div id="nav5" class="menu-item">
-                        <div class="menu-item-front">
                           <div class="item-top">
                             <div class="list down"></div> 
                             <a href="/russian-reading.html" >Reading in Russian</a>&nbsp;
                           </div>
-                        </div>
                       </div> 
                       <div class="sub" style="display: none">
                         <ul>
@@ -171,84 +161,15 @@
                           <li><a href="/reading-practice.html" title="Training">Training exercises</a></li>
                         </ul>
                       </div>
-				<% if logged_in?%>
-				<div id="nav7" class="menu-item" >
-                      <div class="menu-item-front">
-                             <div class="item-top">
-                                 <div class="list down"></div> 
-                                 <a href="/user_profile.html" style="margin-left: 42px !important;">&nbsp;&nbsp;&nbsp;My account</a>
-                             </div>
-                       </div>
-				</div>
-					<div class="sub" style="display: none">
-                            <ul>
-                                <li><a href="/user_profile.html" title="Profile">My Profile</a></li>
-								<li><a href="/user_profile.html?tab=2" title="Vocabulary">My Vocabulary</a></li>
-								<li><a href="/user_profile.html?tab=3" title="Results">My Results</a></li>
-								<li><%= link_to "Sign Out",{:controller => 'sessions', :action => 'destroy'} %> </li>
-                            </ul>
-                     </div>					
-				<%else%>
-					<div id="nav7" class="menu-item" >
-                      <div class="menu-item-front">
-                             <div class="item-top">
-                                 <div class="list down"></div> 	  
-                                          <%= link_to "Sign up/Sign in",{:controller => 'sessions', :action => 'new'} %>					  
-                                 </div>
-                              </div>
-                    </div>
-					<div class="sub" style="display: none">
-					<% if @page_title == 'Sign In' %>
-						<ul style="padding: 5px 1px 5px 28px;">
-							<li><%= link_to "Sign Up",{:controller => 'users', :action => 'new'} %></li>
-						</ul>
-					<% elsif @page_title == 'Sign Up' %>
-						<ul style="padding: 5px 1px 5px 28px;">
-							<li> <%= link_to "Sign in",{:controller => 'sessions', :action => 'new'} %></li>
-						</ul>
-					<%else%>
-						<% form_tag session_path do %>
-							<ul style="padding: 5px 20px 5px 18px;">
-								<li style="padding-bottom: 7px; text-align: center;"><a href="/signup">Click here to sign up!</a></li>
-								<li>
-									<span style="font-size: 10px; font-weight: bold;">Email address</span><br/>
-									<%= text_field_tag 'email', @email %>
-								</li>
-								<li>
-									<span style="font-size: 10px; font-weight: bold;">Password</span><br/>
-									<%= password_field_tag 'password', nil %>
-								</li>
-								<li style="text-align: center;">
-									<%= submit_tag 'Sign In' %>
-								</li>
-							</ul>
-						<% end -%>
-					<%end%>		 
-					</div>
-				<%end%>			
+				
                       <div id="nav6" class="menu-item">
-                        <div class="menu-item-front">
                           <div class="item-top">
                             <a href="/contacts.html" style="margin-left:20px;">Contacts/Questions</a>
                           </div>
-                        </div>
                       </div>
+					  
+					  <%= render :partial => '/site/slideshow' %>
                     </div>
-<%unless @file == '/index.html' || @file == '/search.html' || cookies[:no_menu] %>
-<br><br><br>					
-<form action="/search.html" id="cse-search-box">
-  <div align="center">
-    <input type="hidden" name="cx" value="partner-pub-8582966007397893:4309180524" />
-    <input type="hidden" name="cof" value="FORID:10" />
-    <input type="hidden" name="ie" value="UTF-8" />
-    <input type="text" name="q" style="max-width: 200px" size="20" />
-    <input type="submit" name="sa" value="Search" />
-  </div>
-</form>
-<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>					
-<%end%>				
-					
-					
                   </div>
 
                 </div>
@@ -256,7 +177,6 @@
 					<div style="position: relative; z-index: 300">
 						<div id="menu_remover"><span class="menu-shown">Hide menu</span><span class="menu-hidden">Show menu</span></div>
 						<div id="mini-menu"><a href="/index.html">Home</a> | <a href="/course.html">Courses</a> | <a href="/vocabulary.html">Vocabulary</a> | <a href="/russian-grammar.html">Grammar</a> | <a href="/russian-sounds-letters.html">Sounds &amp; Letters</a></div>
-						<div id="header_remover"><span class="header-shown">Hide header</span><span class="header-hidden">Show header</span></div>
 					</div>
                   <div id="contfield" class="<%= @with_rec ? 'content withRec' : 'content' %>">
 				  
@@ -271,26 +191,11 @@
                 </div>
 				
 		<%= render :partial => '/site/ad_long' %>
-              </div>			  
-              <div class="corners cont-clb">
-                <div class="corners cont-crb">
-                  <div class="cont-center"></div>
-                </div>
               </div>
-              <div class="photos">
-                <div id="photo1-pos"><div class="photo1"></div></div>
-                <div id="photo2-pos">
-                  <div style="float: right;">
-                    <div class="photo2"></div>
-                  </div>
-                </div>
-                <div id="photo3-pos">
-                  <div style="float: right;">
-                    <div class="photo3"></div>
-                  </div>
-                </div>
-              </div>
-            </div><!-- end of #contain-border -->
+			  
+
+ 
+            </div>
             <!--[if lte IE 6]>
           </td>
         </tr>

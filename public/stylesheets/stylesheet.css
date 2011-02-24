@@ -3009,11 +3009,420 @@ font-weight:  bold;
 color: #333;
 }
 
+/*new design*/
+.nd div#head {
+height: 100px;
+background-position: 0px -40px;
+}
+
+.nd #title_name h1 {
+font-size: 38px;
+text-shadow: 1px 1px 4px #111;
+position: relative;
+}
+
+.nd div#menu_content {
+padding-top: 10px;
+padding-bottom: 20px;
+backg-round-color: transparent;
+-moz-box-shadow: 1px 1px 14px #111;
+-webkit-box-shadow: 1px 1px 14px #111;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+box-shadow: 1px 1px 14px #111;
+border-radius: 10px;
+}
+
+.nd #title_name {
+left: 0px;
+top: 0;
+width: auto;
+background-image: url("/images/layout/lbl-trans-50.png");
+border: 3px solid #4D4CAF;
+position: relative;
+top: -10px;
+padding: 25px 40px 20px;
+margin: 0;
+overflow: hidden;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+-moz-box-shadow: 1px 1px 3px #111;
+-webkit-box-shadow: 1px 1px 3px #111;
+}
+
+#title_name div  {
+font-size: 10pt;
+}
+
+.nd .t-top-panel {
+position: absolute;
+right: 40px;
+color: #fff;
+font-weight: bold;
+height: 45px;
+overflow: visible;
+}
+.nd .t-un {
+font-size: 11px;
+font-weight: bold;
+}
+.nd .t-out {
+font-size: 10px;
+}
+.nd .t-res {
+font-size: 11px
+}
+.nd .t-sign-in {
+text-align: right;
+padding-bottom: 12px;
+padding-right: 10px;
+white-space: nowrap;
+}
+.nd .t-sign-in a {
+color: #fff;
+}
+.nd .t-sign-in a:link {
+text-decoration: none;
+}
+.nd .t-sign-in a:visited {
+text-decoration: none;
+}
+.nd .t-sign-in a:hover {
+text-decoration: underline;
+}
+.nd .t-sign-in a:active {
+text-decoration: underline;
+}
+.nd .t-search-bar {
+text-align: right;
+white-space: nowrap;
+}
+.nd .t-search-bar form {
+margin: 0;
+}
+.nd .t-search-bar input {
+vertical-align: top;
+}
+.nd .t-search-bar input[type='submit'] {
+    -moz-box-shadow: 1px 2px 3px #45546F;
+    background-color: #BED7FC;
+    background-image: url("/images/btn-grd.png");
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    border: 1px solid #8E95AF;
+    color: #222222;
+    cursor: pointer;
+    height: 22px;
+    margin: 0;
+    outline: medium none;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    text-shadow: 0 1px 0 #FFFFFF;
+    width: 70px;
+}
 
 
 
+.nd #menu_body .menu-item, .nd #menu_body .menu-item div {
+background-image: none;
+}
+
+.nd #menu_body .menu-item {
+ background-image: url("/images/layout/nav-btn.png") !important;
+background-position: 0 0 !important;
+margin: 0px 0px 0px;
+text-shadow: 0 1px 0 #FFFFFF;
+}
+
+.nd #menu_body .menu-item:hover {
+background-position: 0 -56px !important;
+}
+
+.nd #menu_body .menu-item:hover a {
+ color: #0A204F !important;
+}
+
+.nd #menu_body .menu-item-front, #menu_body .menu-item {
+height: 35px;
+}
+
+.nd #menu_body .item-top {
+padding-top: 7px;
+}
+
+/*end of new design*/
+
+/* sidebar carousel slideshow*/
+#navigation .widget-wrap {
+margin-top: 50px;
+max-width: 200px;
+text-align: center;
+padding-bottom: 10px;
+}
+
+.widget-container {
+border: 4px solid #86ACEF;
+max-width: 140px;
+overflow: hidden;
+width: auto !important;
+min-height: 80px;
+margin: 0 auto;
+-moz-border-radius: 7px 7px 7px 7px;
+-moz-box-shadow: 1px 1px 0 #627EAF, 1px 2px 3px #3E556F;
+-webkit-border-radius: 7px 7px 7px 7px;
+-webkit-box-shadow: 1px 1px 0 #627EAF, 1px 2px 3px #3E556F;
+border-radius: 7px 7px 7px 7px;
+box-shadow: 1px 1px 0 #627EAF, 1px 2px 3px #3E556F;
+}
+
+.carousel-wrap {
+width: 140px;
+height: 104px;
+overflow: hidden;
+position: relative;
+text-align: left;
+}
+
+.carousel-wrap ul {
+padding: 0;
+margin: 0;
+list-style: none;
+position: relative;
+}
+
+.carousel-wrap ul img {
+width: 140px;
+}
+
+.carousel-wrap ul li {
+padding: 0;
+margin: 0;
+list-style: none;
+text-align: left;
+position: absolute;
+background-color: #fff;
+top: 0;
+width: 140px;
+z-index: 100;
+text-align: center;
+}
+.carousel-wrap ul li.cs-act {
+z-index: 200;
+}
+.carousel-wrap ul li.cs-next {
+z-index: 150;
+}
+.carousel-wrap ul li .word-tip {
+position: absolute;
+width: 100%;
+top: 0;
+left: 0;
+padding: 4px 0;
+font-weight: bold;
+font-size: 13px;
+border-bottom: 1px solid #A8BACF;
+color: #fff;
+text-shadow: 0px 1px 0px #000;
+background-image: url("/images/layout/db-trans-60.png");
+}
+
+.carousel-wrap ul.cs-clip  li .word-tip {
+background-color: transparent;
+background-image: url("/images/bl-transparent-30.png");
+text-shadow: 0px 1px 0px #fff;
+border-bottom: 1px solid #9FC2FF;
+color: #0E0E0F;
+}
+
+.carousel-control {
+border: 2px solid #86ACEF;
+max-width: 100px;
+overflow: hidden;
+width: auto !important;
+padding-top: 2px;
+font-size: 8px;
+margin: 0 auto;
+margin-top: 10px;
+-moz-border-radius: 10px;
+-moz-box-shadow: 1px 1px 0 #627EAF, 1px 2px 3px #3E556F;
+-webkit-border-radius: 10px;
+-webkit-box-shadow: 1px 1px 0 #627EAF, 1px 2px 3px #3E556F;
+border-radius: 10px;
+box-shadow: 1px 1px 0 #627EAF, 1px 2px 3px #3E556F;
+}
+
+.carousel-control span {
+cursor: pointer;
+font-weight: bold;
+}
+
+/* end of sidebar slideshow*/
+
+/* page slides slideshow*/
+
+.slides-wrap {
+margin-top: 50px;
+text-align: center;
+padding-bottom: 10px;
+}
+
+.slides-container {
+border: 5px solid #6F98DF;
+background-color: #A5C4F9;
+max-width: 600px;
+position: relative;
+overflow: hidden;
+margin: 0 auto;
+-moz-border-radius: 7px;
+-moz-box-shadow: 1px 1px 0 #627EAF, 1px 2px 3px #3E556F;
+-webkit-border-radius: 7px;
+-webkit-box-shadow: 1px 1px 0 #627EAF, 1px 2px 3px #3E556F;
+border-radius: 7px;
+box-shadow: 1px 1px 0 #627EAF, 1px 2px 3px #3E556F;
+}
 
 
+.slides-list {
+position: absolute;
+width: 185px;
+right: 0;
+top: 0;
+overflow-y: auto;
+max-height: 300px;
+z-index: 1000;
+}
+
+.slides-list ul {
+padding: 10px 4px 5px 0;
+margin: 0;
+list-style: none;
+text-align: left;
+}
+
+.slides-list ul li {
+cursor: pointer;
+padding: 11px 7px 11px 15px;
+font-size: 11px;
+margin-bottom: 3px;
+margin-left: 15px;
+color: #333;
+text-shadow: 0px 1px 0px #fff;
+font-weight: bold;
+background-image: url("/images/btn-grd.png");
+background-position: -30px -15px !important;
+background-repeat: no-repeat;
+background-color: #BFD2FF;
+border: 1px solid #86A2EF;
+-moz-box-shadow: 1px 1px 0 #627EAF, 1px 2px 3px #3E556F;
+-webkit-box-shadow: 1px 1px 0 #627EAF, 1px 2px 3px #3E556F;
+box-shadow: 1px 1px 0 #627EAF, 1px 2px 3px #3E556F;
+}
+
+.slides-list ul li:hover {
+background-color: #6186DF;
+color: #fff;
+text-shadow: 0px 1px 0px #111;
+border: 1px solid #8196CF;
+}
+
+.slides-list ul li.slide-item-act {
+cursor: default;
+background-image: none;
+background-color: #fff;
+margin-left: 3px;
+color: #000;
+text-shadow: 0px 1px 0px #ccc;
+border: 1px solid #4D70CF;
+}
 
 
+.slides-screen {
+min-height: 300px;
+margin-right: 150px;
+margin-left: 10px;
+background-color: #fff;
+position: relative;
+overflow: hidden;
+margin: 6px 150px 6px 10px;
+border: 1px solid #23558F;
+}
 
+.slides-blocks-container {
+position: relative;
+padding: 1px 0;
+margin: 0;
+list-style: none;
+text-align: left;
+}
+
+.slides-blocks-container li.slides-block {
+padding: 0;
+margin: 0;
+overflow: hidden;
+list-style: none;
+position: absolute;
+background-color: #fff;
+top: 0;
+height: 305px;
+z-index: 100;
+background-image: url("/images/cs_bg.gif");
+background-position: 0 0px;
+width: 438px;
+}
+
+
+.slides-blocks-container li.sp-next {
+z-index: 150;
+}
+
+.slides-blocks-container li.sp-block-act {
+z-index: 200;
+}
+
+.slides-block h3 {
+color: #457DDF;
+margin: 15px 0 10px;
+font-size: 22px;
+font-weight: normal;
+text-shadow: 2px 2px 2px #BFBFBF;
+}
+
+.slide-block-wrap {
+padding: 1px 30px 1px 20px;
+}
+
+ul.sl-features-list {
+padding: 0;
+list-style: none;
+margin: 0 0 0 0px;
+font-size: 11px;
+}
+
+ul.sl-features-list li {
+padding: 1px 5px 1px 25px;
+margin: 10px 0;
+background-image: url(/images/icons/tick.png);
+background-repeat: no-repeat;
+background-position: 3px 1px;
+color: #5F3300;
+}
+
+.slides-bloc-details {
+position: absolute;
+width: 100%;
+bottom: 0;
+color: #fff;
+font-size: 11px;
+border-top: 1px solid #2054AF;
+background-image: url(/images/layout/bl-transparent-65.png);
+}
+
+.slides-bloc-details p {
+margin: 0;
+padding: 10px 20px 30px;
+border-top: 1px solid #457DDF;
+text-shadow: 0 1px 0 #111;
+}
+
+/* page slides slideshow*/

@@ -9,8 +9,7 @@
 <% end %>
   <meta name="keywords" content="russian translation, russian language, learn russian, study russian, learn russian online, russian phrases, russian words, speak russian, speaking russian, learning russian, basic russian, learn russian language, beginners russian, russian language course, russian online lessons, russian vocabulary, russian for begginers" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf8"> 
-  <script type="text/javascript" src="/javascripts/jquery-1.4.2.min.js"></script>
-  <%= javascript_include_tag 'jquery-ui-1.8.4.custom.min.js' %>
+  <script type="text/javascript" src="/javascripts/jquery.min.js"></script>
   <%= javascript_include_tag 'jquery.carousel.min.js' %>
   <%= stylesheet_link_tag 'custom-theme/jquery-ui-1.8.5.custom.css' %>
  
@@ -134,14 +133,13 @@ background-image: url("/images/transparent-80.png");
 left: 0px;
 top: 0;
 width: auto;
-
 -moz-border-radius: 10px;
 -webkit-border-radius: 10px;
 disp-lay: inline-block;
 -moz-box-shadow: 1px 1px 3px #111;
 -webkit-box-shadow: 1px 1px 3px #111;
-back-ground-image: url("/images/bl-transparent-30.png");
-background: rgba(129, 143, 207, 0.5);
+background-image: url("/images/layout/lbl-trans-50.png");
+back-ground: rgba(129, 143, 207, 0.5);
 border: 3px solid #4D4CAF;
 position: relative;
 top: -10px;
@@ -150,28 +148,20 @@ margin: 0;
 overflow: hidden;
 }
 
-div#contentcell {
-}
 
 #menu_body .menu-item, #menu_body .menu-item div {
 background-image: none;
 }
 
 #menu_body .menu-item {
- background-image: url("/images/btn-grd.png");
- border: 1px solid #8E95AF;
- -moz-box-shadow: 1px 2px 3px #45546F;
- -webkit-box-shadow: 1px 2px 3px #45546F;
- background-color: #E0E7EF;
- margin: 0px 3px 3px;
- background-position: 0 50% !important;
- -moz-border-radius: 12px;
- -webkit-border-radius: 12px;
- text-shadow: 0 1px 0 #FFFFFF;
+ background-image: url("/images/layout/nav-btn.png") !important;
+background-position: 0 0 !important;
+margin: 0px 0px 0px;
+text-shadow: 0 1px 0 #FFFFFF;
 }
 
 #menu_body .menu-item:hover {
- background-color:#A4C8EF;
+background-position: 0 -56px !important;
 }
 
 #menu_body .menu-item:hover a {
@@ -181,7 +171,7 @@ background-image: none;
 
 
 #menu_body .menu-item-front, #menu_body .menu-item {
-height: 30px;
+height: 35px;
 }
 
 #menu_body .item-top {
@@ -192,9 +182,88 @@ padding-top: 7px;
 font-size: 10pt;
 }
 
-.title_site {
-
+.t-top-panel {
+position: absolute;
+right: 40px;
+color: #fff;
+font-weight: bold;
+height: 45px;
+overflow: visible;
 }
+
+.t-un {
+font-size: 11px;
+font-weight: bold;
+}
+
+.t-out {
+font-size: 10px;
+}
+
+.t-res {
+font-size: 11px
+}
+
+.t-sign-in {
+text-align: right;
+padding-bottom: 12px;
+padding-right: 10px;
+white-space: nowrap;
+}
+
+.t-sign-in a {
+color: #fff;
+}
+
+.t-sign-in a:link {
+text-decoration: none;
+}
+
+.t-sign-in a:visited {
+text-decoration: none;
+}
+
+.t-sign-in a:hover {
+text-decoration: underline;
+}
+
+.t-sign-in a:active {
+text-decoration: underline;
+}
+
+.t-search-bar {
+text-align: right;
+white-space: nowrap;
+}
+
+.t-search-bar form {
+margin: 0;
+}
+
+.t-search-bar input {
+vertical-align: top;
+}
+
+.t-search-bar input[type='submit'] {
+    -moz-box-shadow: 1px 2px 3px #45546F;
+    background-color: #BED7FC;
+    background-image: url("/images/btn-grd.png");
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    border: 1px solid #8E95AF;
+    color: #222222;
+    cursor: pointer;
+    height: 22px;
+    margin: 0;
+    outline: medium none;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    text-shadow: 0 1px 0 #FFFFFF;
+    width: 70px;
+}
+
+
 
 <%= yield :special_css %>
 </style>
@@ -209,14 +278,14 @@ padding-bottom: 10px;
 }
 
 .widget-container {
-    -moz-border-radius: 7px 7px 7px 7px;
-    -moz-box-shadow: 1px 1px 0 #627EAF, 1px 2px 3px #3E556F;
-    border: 4px solid #86ACEF;
-    max-width: 140px;
-    overflow: hidden;
-    width: auto !important;
-	min-height: 80px;
-	margin: 0 auto;
+-moz-border-radius: 7px 7px 7px 7px;
+-moz-box-shadow: 1px 1px 0 #627EAF, 1px 2px 3px #3E556F;
+border: 4px solid #86ACEF;
+max-width: 140px;
+overflow: hidden;
+width: auto !important;
+min-height: 80px;
+margin: 0 auto;
 }
 
 .carousel-wrap {
@@ -224,12 +293,14 @@ width: 140px;
 height: 104px;
 overflow: hidden;
 position: relative;
+text-align: left;
 }
 
 .carousel-wrap ul {
 padding: 0;
 margin: 0;
 list-style: none;
+position: relative;
 }
 
 .carousel-wrap ul img {
@@ -240,7 +311,7 @@ width: 140px;
 padding: 0;
 margin: 0;
 list-style: none;
-text-align: center;
+text-align: left;
 position: absolute;
 pos-ition: relative;
 flo-at: left;
@@ -248,33 +319,26 @@ background-color: #fff;
 top: 0;
 width: 140px;
 z-index: 100;
+text-align: center;
 }
-
 .carousel-wrap ul li.cs-act {
 z-index: 200;
 }
-
 .carousel-wrap ul li.cs-next {
 z-index: 150;
 }
-
-
 .carousel-wrap ul li .word-tip {
 position: absolute;
 width: 100%;
 top: 0;
-
+left: 0;
 padding: 4px 0;
-
 font-weight: bold;
 font-size: 13px;
-
 border-bottom: 1px solid #A8BACF;
 color: #fff;
 text-shadow: 0px 1px 0px #000;
-background: rgba(0, 43, 95,0.6);
-
-
+background-image: url("/images/layout/db-trans-60.png");
 }
 
 .carousel-wrap ul.cs-clip  li .word-tip {
@@ -285,19 +349,17 @@ border-bottom: 1px solid #9FC2FF;
 color: #0E0E0F;
 }
 
-
 .carousel-control {
-    -moz-border-radius: 10px;
-    -moz-box-shadow: 1px 1px 0 #627EAF, 1px 2px 3px #3E556F;
-    border: 2px solid #86ACEF;
-    max-width: 100px;
-    overflow: hidden;
-    width: auto !important;
-	padding-top: 2px;
-	font-size: 8px;
-	margin: 0 auto;
-	margin-top: 10px;
-	
+-moz-border-radius: 10px;
+-moz-box-shadow: 1px 1px 0 #627EAF, 1px 2px 3px #3E556F;
+border: 2px solid #86ACEF;
+max-width: 100px;
+overflow: hidden;
+width: auto !important;
+padding-top: 2px;
+font-size: 8px;
+margin: 0 auto;
+margin-top: 10px;
 }
 
 .carousel-control span {
@@ -328,7 +390,30 @@ font-weight: bold;
                   <div id="title_name">
                     <h1 class="title_site" style="float: left;"><a href="/index.html" title="Home page">Study Russian Online</a>		
 					</h1>
+					<div class="t-top-panel">
 
+<div class="t-sign-in">
+<% if logged_in?%>
+<a href="/user_profile.html" class="t-un" title="Profile"><%= current_user.email %></a> | <a href="/user_profile.html?tab=3" class="t-res" title="Results">Results</a> | <span class="t-out"><%= link_to "Sign Out",{:controller => 'sessions', :action => 'destroy'} %></span>
+<%else%>
+<% unless @page_title == 'Sign In' %><%= link_to "Sign in",{:controller => 'sessions', :action => 'new'} %><%end%> | <%unless @page_title == 'Sign Up'%><%= link_to "Registration",{:controller => 'users', :action => 'new'} %><%end%>
+<%end%>
+</div>			
+<div class="t-search-bar">	
+<form action="/search.html" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-8582966007397893:4309180524" />
+    <input type="hidden" name="cof" value="FORID:10" />
+    <input type="hidden" name="ie" value="UTF-8" />
+    <input type="text" name="q" style="max-width: 200px" size="20" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>	
+</div>
+						
+						
+					</div>
                   </div>
                 </div>
               </div>
@@ -419,68 +504,7 @@ font-weight: bold;
                           <li><a href="/readingrules.html" title="Rules">Rules of reading</a> </li>
                           <li><a href="/reading-practice.html" title="Training">Training exercises</a></li>
                         </ul>
-                      </div>
-					  
-					
-				<% if logged_in?%>
-					
-				<div id="nav7" class="menu-item" >
-                      <div class="menu-item-front">
-                             <div class="item-top">
-                                 <div class="list down"></div> 
-                                 <a href="/user_profile.html" style="margin-left: 42px !important;">&nbsp;&nbsp;&nbsp;My account</a>
-                             </div>
-                       </div>
-				</div>
-					<div class="sub" style="display: none">
-                            <ul>
-                                <li><a href="/ru/en/user_profile.html">Russian-English</a></li>
-								<li><a href="/ru/jp/user_profile.html">Russian-Japanese</a></li>
-								<li><a href="/user_profile.html" >English-Russian</a></li>
-								<li><a href="/fr/ru/user_profile.html" >French-Russian</a></li>
-								<li><%= link_to "Sign Out",{:controller => 'sessions', :action => 'destroy'} %> </li>
-                            </ul>
-                     </div>					
-
-				<%else%>
-				
-					<div id="nav7" class="menu-item" >
-                      <div class="menu-item-front">
-                             <div class="item-top">
-                                 <div class="list down"></div> 	  
-                                          <%= link_to "Sign up/Sign in",{:controller => 'sessions', :action => 'new'} %>					  
-                                 </div>
-                              </div>
-                    </div>
-					<div class="sub" style="display: none">
-					<% if @page_title == 'Sign In' %>
-						<ul style="padding: 5px 1px 5px 28px;">
-							<li><%= link_to "Sign Up",{:controller => 'users', :action => 'new'} %></li>
-						</ul>
-					<% elsif @page_title == 'Sign Up' %>
-						<ul style="padding: 5px 1px 5px 28px;">
-							<li> <%= link_to "Sign in",{:controller => 'sessions', :action => 'new'} %></li>
-						</ul>
-					<%else%>
-						<% form_tag session_path do %>
-							<ul style="padding: 5px 20px 5px 18px;">
-								<li style="padding-bottom: 7px; text-align: center;"><a href="/signup">Click here to sign up!</a></li>
-								<li>
-									<span style="font-size: 10px; font-weight: bold;">Email address</span><br/>
-									<%= text_field_tag 'email', @email %>
-								</li>
-								<li>
-									<span style="font-size: 10px; font-weight: bold;">Password</span><br/>
-									<%= password_field_tag 'password', nil %>
-								</li>
-								<li style="text-align: center;">
-									<%= submit_tag 'Sign In' %>
-								</li>
-							</ul>
-						<% end -%>
-					<%end%>		 
-					</div>
-				<%end%>			
+                      </div>		
                    
                       <div id="nav6" class="menu-item">
                         <div class="menu-item-front">
@@ -502,7 +526,6 @@ font-weight: bold;
 					<div style="position: relative; z-index: 300">
 						<div id="menu_remover"><span class="menu-shown">Hide menu</span><span class="menu-hidden">Show menu</span></div>
 						<div id="mini-menu"><a href="/index.html">EN-RU</a> | <a href="/ru/en/index.html">RU-EN</a> | <a href="/ru/jp/index.html">RU-JP</a> | <a href="/fr/index.html">FR-RU</a> </div>
-						<div id="header_remover"><span class="header-shown">Hide header</span><span class="header-hidden">Show header</span></div>
 
 					</div>
                   <div id="contfield" class="<%= @with_rec ? 'content withRec' : 'content' %>">
@@ -511,26 +534,11 @@ font-weight: bold;
                       <div id="mess" class="sound_tip"><i>Tip</i></div>
                       <div id="audiospan" style="position: absolute;"></div>
                     <% end %>
-					
-					
-					
-					
-
-					
 			
 					<h2 class="admin-layout page">Website new area</h2>
 
-					
-					
-					
                     <%= yield %>
 					
-
-					
-					
-					
-					
-
 					
                     <div id="divspace"></div>
                   </div>
