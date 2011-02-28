@@ -45,7 +45,7 @@
   <![endif]-->
 
 </head>
-<body <% if cookies[:no_header] %>class="m-header-hidden"<%end%>>
+<body>
     <div id="fixWidh"><div id="container" class="nd">
         <!--[if lte IE 6]>
         <table id="containit" cellspacing="0">
@@ -61,9 +61,9 @@
 
 <div class="t-sign-in">
 <% if logged_in?%>
-<a href="/user_profile.html" class="t-un" title="Profile"><%= current_user.email %></a> | <a href="/user_profile.html?tab=3" class="t-res" title="Results">Results</a> | <span class="t-out"><%= link_to "Sign Out",{:controller => 'sessions', :action => 'destroy'} %></span>
+<a href="/user_profile.html" class="t-un" title="Profile"><%= current_user.email %></a> | <span class="t-out"><%= link_to "Sign Out",{:controller => 'sessions', :action => 'destroy'} %></span>
 <%else%>
-<% unless @page_title == 'Sign In' %><%= link_to "Sign in",{:controller => 'sessions', :action => 'new'} %><%end%> | <%unless @page_title == 'Sign Up'%><%= link_to "Registration",{:controller => 'users', :action => 'new'} %><%end%>
+<%= link_to "Sign in",{:controller => 'sessions', :action => 'new'} %> | <%= link_to "Registration",{:controller => 'users', :action => 'new'} %>
 <%end%>
 </div>
 <% unless @no_search %>			

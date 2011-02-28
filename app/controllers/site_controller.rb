@@ -33,7 +33,9 @@ class SiteController < ApplicationController
 			layout = 'ru_application.rhtml'
 		end
 	end
-
+	if logged_in?
+		@no_ad = true
+	end
     # configure javascripts and stylesheets based on page name
     @javascripts = []
     @stylesheets = []

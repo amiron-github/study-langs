@@ -15,7 +15,7 @@ border: 1px solid #EEF0F7;
 }
 
 .cs_beginner {
-background-image: url("/images/cs_beginner.jpg");
+background-image: url("/images/cs_everyday.jpg");
 background-repeat: no-repeat;
 background-position: 50% 50%;
 height: 242px;
@@ -23,7 +23,7 @@ width: 150px;
 }
 
 .cs_everyday {
-background-image: url("/images/cs_everyday.jpg");
+background-image: url("/images/cs_beginner.jpg");
 background-repeat: no-repeat;
 background-position: 50% 50%;
 height: 242px;

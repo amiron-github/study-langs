@@ -917,7 +917,7 @@ function sectionHighlight() {
 }
 
 function pageMenuItem(eq) {
-	$("#nav"+eq).css({backgroundPosition: "100% -49px"}).find("div.menu-item-front").css({backgroundPosition: "0px -143px"});
+	$("#nav"+eq).addClass("active-section").css({backgroundPosition: "100% -49px"}).find("div.menu-item-front").css({backgroundPosition: "0px -143px"});
 	$("#menu_body .menu-item a").css({color: "#183A87"});
 	$("#nav"+eq+" a").css({color: "#0F2862"});
 }
