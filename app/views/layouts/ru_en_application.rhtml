@@ -12,7 +12,7 @@
   <%= stylesheet_link_tag 'stylesheet' %>
   <script type="text/javascript" src="/javascripts/jquery-1.4.2.min.js"></script>
   <%= javascript_include_tag 'effects' %>
-  
+  <%= javascript_include_tag 'jquery.carousel.min.js' %>
   
   <%if @javascripts%>  
   <% for js_file in @javascripts -%>
@@ -26,8 +26,10 @@
   <% end -%>
   <%end%>
  
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/site-icon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/site-icon.ico" type="image/x-icon">
+  
+  
   <%= yield :special_js_css %>
   
   <style type="text/css">
@@ -40,8 +42,8 @@
   <![endif]-->
 
 </head>
-<body class="ru-en<% if cookies[:no_header] %> m-header-hidden<%end%>">
-    <div id="fixWidh"><div id="container" class="">
+<body>
+    <div id="fixWidh"><div id="container" class="nd">
         <!--[if lte IE 6]>
         <table id="containit" cellspacing="0">
           <tr valign="top">
@@ -50,26 +52,40 @@
               <div id="head">
                 <div id="title_wrapper">
                   <div id="title_name">
-                    <h1 class="title_site"><a href="/ru/en/index.html" title="На главную">Изучаем английский</a></h1>
-                    <div class="title_volume">Изучаем английский</div>
-                    <div class="title_shdw">Изучаем английский</div>
-					<div id="user_logged">
-					
-					<% if logged_in?%> 
-						 <strong style="font-size: 10px;"><%= current_user.email %></strong> | <%= link_to "Выйти",{:controller => 'sessions', :action => 'destroy', :lang=>'ru', :to_lang=>'en'} %>
-					<%else%>
-						&nbsp;
-					<%end%>
-					</div>					
+                    <h1 class="title_site" style="float: left;"><a href="/ru/en/index.html" title="На главную">Изучаем английский</a>		
+					</h1>
+					<div class="t-top-panel">
+
+<div class="t-sign-in">
+<% if logged_in?%>
+<a href="/ru/en/user_profile.html" class="t-un" title="Профиль"><%= current_user.email %></a> | <span class="t-out"><%= link_to "Выход",{:controller => 'sessions', :action => 'destroy', :lang=>'ru', :to_lang=>'en'} %></span>
+<%else%>
+<%= link_to "Вход",{:controller => 'sessions', :action => 'new', :to_lang => 'en', :lang =>'ru'} %> | <%= link_to "Регистрация",{:controller => 'users', :action => 'new', :to_lang => 'en', :lang =>'ru'} %>
+<%end%>
+</div>
+<% unless @no_search %>			
+<div class="t-search-bar">	
+
+
+<form action="/ru/en/search.html" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="005738787138117275699:edkgftn6lze" />
+    <input type="hidden" name="cof" value="FORID:11" />
+    <input type="hidden" name="ie" value="UTF-8" />
+    <input type="text" name="q" style="max-width: 200px" size="25" />
+    <input type="submit" name="sa" value="Поиск" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&lang=ru"></script>
+
+	
+</div>
+<%end%>					
+						
+					</div>
                   </div>
                 </div>
               </div>
-              <div class="corners cont-clt">
-                <div class="corners cont-crt">
-                  <div class="cont-center"></div>
-                </div>
-              </div>
-			  
               <div id="menu_content" <% if cookies[:no_menu] %>class="m-menu-hidden"<%end%>>
                 <div id="navigation">
 
@@ -104,13 +120,18 @@
                           <li><a href="/ru/en/vocabulary.html?tab=2">Флэш-карты</a></li>
                           <li><a href="/ru/en/vocabulary.html?tab=3">Лексические тесты</a></li>
 						  <li><a href="/ru/en/vocabulary.html?tab=4">Игры</a></li>
-						  <li><a href="/ru/en/vocabulary.html?tab=5">Для детей</a></li>
                         </ul>
                       </div>
                       <div id="nav8" class="menu-item">
                           <div class="item-top">
                             <div class="list down"></div> 
                             <a href="/ru/en/english-grammar.html" style="margin-left: 40px;">Грамматика&nbsp;&nbsp;&nbsp;&nbsp;</a>&nbsp;
+                          </div>
+                      </div>
+					  <div id="nav9" class="menu-item">
+                          <div class="item-top">
+                            <div class="list down"></div>
+                            <a href="/ru/en/english-for-children.html" style="margin-left: 23px;">Английский детям</a>&nbsp;
                           </div>
                       </div>
                       <div class="sub" style="display: none">
@@ -123,68 +144,13 @@
                           <li><a href="/ru/en/english-grammar.html"><b>Упражнения</b></a></li>
                         </ul>
                       </div>
-
-				<% if logged_in?%>
-				<div id="nav7" class="menu-item">
-                             <div class="item-top">
-                                 <div class="list down"></div> 
-                                 <a href="/ru/en/user_profile.html" style="margin-left: 40px !important;">Мой аккаунт&nbsp;&nbsp;&nbsp;</a>
-                             </div>
-				</div>
-					<div class="sub" style="display: none">
-                            <ul>
-                                <li><a href="/ru/en/user_profile.html">Профиль</a></li>
-								<li><a href="/ru/en/user_profile.html?tab=2">Мой словарь</a></li>
-								<li><a href="/ru/en/user_profile.html?tab=3">Результаты</a></li>
-								<li><%= link_to "Выйти",{:controller => 'sessions', :action => 'destroy', :lang=>'ru', :to_lang=>'en'} %> </li>
-                            </ul>
-                     </div>					
-
-				<%else%>
-				
-					<div id="nav7" class="menu-item" >
-                             <div class="item-top">
-                                 <div class="list down"></div> 
-										<a href="/ru/en/login" style="margin-left: 33px !important; font-size: 11px;" >Вход/Регистрация</a>
-                              </div>
-                    </div>
-					<div class="sub" style="display: none">
-					<% if @page_title == 'Sign In' %>
-						<ul style="padding: 5px 1px 5px 28px;">
-							<li><%= link_to "Регистрация",{:controller => 'users', :action => 'new', :to_lang => 'en', :lang =>'ru'} %></li>
-						</ul>
-					<% elsif @page_title == 'Sign Up' %>
-						<ul style="padding: 5px 1px 5px 28px;">
-							<li> <%= link_to "Войти",{:controller => 'sessions', :action => 'new', :to_lang => 'en', :lang =>'ru' } %></li>
-						</ul>
-					<%else%>
-						<% form_tag session_path do %>
-						<input type="hidden" name="lang" value="ru">
-						<input type="hidden" name="to_lang" value="en">
-							<ul style="padding: 5px 20px 5px 18px;">
-								<li style="padding-bottom: 7px; text-align: center;"><a href="/signup">Регистрация</a></li>
-								<li>
-									<span style="font-size: 10px; font-weight: bold;">E-mail</span><br/>
-									<%= text_field_tag 'email', @email %>
-								</li>
-								<li>
-									<span style="font-size: 10px; font-weight: bold;">Пароль</span><br/>
-									<%= password_field_tag 'password', nil %>
-								</li>
-								<li style="text-align: center;">
-									<%= submit_tag 'Войти' %>
-								</li>
-							</ul>
-						<% end -%>
-					<%end%>		 
-					</div>
-				<%end%>			
-                     
                       <div id="nav6" class="menu-item">
                           <div class="item-top">
                             <a href="/contacts.html" style="margin-left: 40px;">Контакты (анг)</a>
                           </div>
                       </div>
+					  
+					<%= render :partial => '/site/slideshow_ru_en' %>
                     </div>
                   </div>
 
@@ -205,25 +171,9 @@
                     <div id="divspace"></div>
                   </div>
                 </div>
-              </div>
-              <div class="corners cont-clb">
-                <div class="corners cont-crb">
-                  <div class="cont-center"></div>
-                </div>
-              </div>
-              <div class="photos">
-                <div id="photo1-pos"><div class="photo1"></div></div>
-                <div id="photo2-pos">
-                  <div style="float: right;">
-                    <div class="photo2"></div>
-                  </div>
-                </div>
-                <div id="photo3-pos">
-                  <div style="float: right;">
-                    <div class="photo3"></div>
-                  </div>
-                </div>
-              </div>
+				
+<%= render :partial => '/site/ad_long' %>
+              </div> 
             </div><!-- end of #contain-border -->
             <!--[if lte IE 6]>
           </td>

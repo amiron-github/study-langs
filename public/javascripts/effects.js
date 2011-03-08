@@ -911,6 +911,9 @@ function sectionHighlight() {
 		case 'grammar':
 			pageMenuItem(8);
 			break;	
+		case 'kids':
+			pageMenuItem(9);
+			break;
 		default: 
 		   	$("#menu_body .menu-item a").css({color: "#183A87"});
 	}

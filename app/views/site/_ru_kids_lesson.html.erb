@@ -1,7 +1,7 @@
 <%
 cluster =  Cluster.find(@cluster_num)
 @voc = cluster.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
-@voc1 = cluster.words.find(:all)
+@voc1 = @voc.sort_by {rand}
 if !@less_title
 	@less_title = cluster.title
 end
@@ -417,7 +417,7 @@ display: block;
 <div id="prof_tabs">
 
 <div class="unit-title">
-<a href="/ru/en/vocabulary.html#tab=5">Уроки для детей</a>: <%= @less_title %>
+<a href="/ru/en/english-for-children.html">Уроки для детей</a>: <%= @less_title %>
 </div>
 	<div id="tabs_row">
             <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Этап 1</a></div></div>
@@ -806,7 +806,7 @@ display: block;
 
 
 <script type="text/javascript">
-currentSection="words";
+currentSection="kids";
 </script>
 
 
