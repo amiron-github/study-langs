@@ -1,0 +1,27 @@
+<%
+@cluster_num = 62
+@mute = false
+
+if params[:set]
+	@cluster_num = params[:set]
+end
+if params[:mute]
+	@mute = params[:mute]
+end
+
+@topic = params[:topic]
+@test_data=[]
+case @topic
+	when 'part-1'
+		@cluster_num = 62
+
+end
+%>
+
+<%= render :partial => '/site/ru_kids_al_lesson.html' %>
+
+
+
+
+
+
