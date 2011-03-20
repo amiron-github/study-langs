@@ -1,0 +1,33 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  body: MyText
+  status: 1
+  tag: MyString
+  js_css: MyText
+  section: MyString
+  html_on_page: MyString
+  langs: MyString
+  page_url: MyString
+  page_title: MyText
+  page_desc: MyText
+  page_keywords: MyText
+  page_template: 1
+  page_layout: 1
+  author: 1
+
+two:
+  body: MyText
+  status: 1
+  tag: MyString
+  js_css: MyText
+  section: MyString
+  html_on_page: MyString
+  langs: MyString
+  page_url: MyString
+  page_title: MyText
+  page_desc: MyText
+  page_keywords: MyText
+  page_template: 1
+  page_layout: 1
+  author: 1

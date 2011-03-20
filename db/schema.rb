@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101230110219) do
+ActiveRecord::Schema.define(:version => 20110318192426) do
 
   create_table "categories", :force => true do |t|
     t.string   "title"
@@ -51,6 +51,25 @@ ActiveRecord::Schema.define(:version => 20101230110219) do
     t.integer  "quest_num"
     t.integer  "variants_num"
     t.string   "quest_type"
+  end
+
+  create_table "materials", :force => true do |t|
+    t.text     "body"
+    t.integer  "status"
+    t.string   "tag"
+    t.text     "js_css"
+    t.string   "section"
+    t.string   "html_on_page"
+    t.string   "langs"
+    t.string   "page_url"
+    t.text     "page_title"
+    t.text     "page_desc"
+    t.text     "page_keywords"
+    t.integer  "page_template"
+    t.integer  "page_layout"
+    t.integer  "author"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "orders", :force => true do |t|

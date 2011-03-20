@@ -1,0 +1,122 @@
+<% content_for :special_js_css do %>
+ <%= stylesheet_link_tag 'tablesorter' %>
+ <%= javascript_include_tag 'jquery.tablesorter.min.js' %>
+ <%= javascript_include_tag 'jquery.tablesorter.pager.js' %>
+
+<script type="text/javascript">
+
+$(document).ready(function() { 
+    $("table.tablesorter") 
+    .tablesorter({widthFixed: false, headers: {0: {sorter: 'digit'}, 1:{sorter: false},2:{sorter: false},3:{sorter: false}, 4:{sorter: false}, 5:{sorter: false}, 6:{sorter: false}, 7:{sorter: false}, 8:{sorter: false}},widgets: ['zebra'] }) 
+
+$(".t-tag-view span").toggle(
+	function() { 
+		$(this).addClass('t-tag-on');
+		$(".m-body-prev").show()
+	}, 
+	function() {
+		$(this).removeClass('t-tag-on');
+		$(".m-body-prev").hide()
+	}
+);	
+	
+});
+
+
+
+</script> 
+
+<style>
+.t-tag-view {
+}
+.t-tag-view span {
+position: absolute;
+right: 0;
+}
+
+.t-tag-view span img {
+cursor: pointer;
+}
+
+.t-tag-view span .t-tag-join {
+display: none;
+}
+
+.t-tag-view span.t-tag-on img {
+display: none;
+}
+
+.t-tag-view span.t-tag-on img.t-tag-join {
+display: inline;
+}
+
+.m-body-prev {
+display: none;
+padding: 10px 5px 5px;
+}
+
+</style>
+ <%end%>
+ 
+ <h3 class="admin-p-name">Listing materials</h3>
+
+<div style="margin-bottom: 20px;">
+
+
+</div>
+
+
+
+
+<div><br><%= link_to '+ New entry', new_material_path %><br></div>
+
+
+<table class="tablesorter" cellspacing="1">
+<col width="40"><col width="50"><col><col><col  width="60"><col width="50"><col width="80">
+<thead>
+  <tr>
+	<th style="padding-right: 10px">ID</th>
+	<th>Status</th>
+    <th class="t-tag-view">
+		<div style="position: relative;">
+			Tag    <span><img  src="/images/icons/fugue/layout-split-vertical.png" title="Show more info"><img class="t-tag-join" src="/images/icons/fugue/layout-join-vertical.png" title="Show less info"><span> 
+		</div>
+	</th>
+	<th>Url</th>
+    <th>Section</th>
+    <th>Langs</th>
+	<th>Actions</th>
+  </tr>
+</thead>
+<tbody>
+
+
+<% @materials.each do |material| %>
+  <tr>
+    <td><%=h material.id %></td>
+	<td><%=h material.status %></td>
+	<td>
+		<strong><%=h material.tag %></strong>
+		
+		<div class="m-body-prev">
+			<%=h truncate( material.body, 200) %>
+		</div>
+	
+	
+	</td>
+	<td><%=h material.page_url %></td>
+    <td><%=h material.section %></td>
+    <td><%=h material.langs %></td>
+    <td style="white-space: nowrap">
+		<%= link_to '<img src="/images/icons/fugue/eye.png" title="View">', material  %>&nbsp;&nbsp;
+		<%= link_to '<img src="/images/icons/fugue/blue-document-pencil.png" title="Edit">', edit_material_path(material) %>&nbsp;&nbsp;
+		<%= link_to '<img src="/images/icons/fugue/cross.png" title="Delete">', material, :confirm => 'Are you sure?', :method => :delete %>
+	</td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<br />
+
+

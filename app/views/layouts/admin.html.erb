@@ -220,26 +220,6 @@ font-size: 10pt;
 					</h1>
 
 					
-<div class="carousel carousel-top" style="position: absolute; right: 5px; margin-top: -10px;">			
-<div class="foo" style="display: none;">
-    <ul>
-        <li><img src="/images/list/fruit/apple.jpg">
-			<div class="w-tip">яблоко</div>
-		</li>
-		<li><img src="/images/list/fruit/grapes.jpg">
-			<div class="w-tip">виноград</div>
-		</li>
-		<li><img src="/images/list/fruit/banana.jpg">
-			<div class="w-tip">банан</div>
-		</li>
-		<li><img src="/images/list/fruit/kiwi.jpg">
-			<div class="w-tip">киви</div>
-		</li>
-    </ul>
-</div>								
-</div>
-
-					
                   </div>
                 </div>
               </div>
@@ -435,7 +415,7 @@ font-size: 10pt;
 					
 					
 					<h2 class="admin-layout page">Website administration</h2>
-					<div class="admin-navigate"><%= link_to "Users", '/userdata' %> | <%= link_to "Categories", :controller => 'categories', :action => 'index' %> | <%= link_to "Languages", :controller => 'words', :action => 'index' %> | <%= link_to "RU", :controller => 'words', :action => 'index_lang' %> | <%= link_to "EN", :controller => 'words', :action => 'index_lang', :lang=> "en" %> | <%= link_to "JP", :controller => 'words', :action => 'index_lang', :lang=> "jp" %></div>
+					<div class="admin-navigate"><%= link_to "Users", '/userdata' %> | <%= link_to "Materials", materials_path %> | <%= link_to "Categories", :controller => 'categories', :action => 'index' %> | <%= link_to "Languages", :controller => 'words', :action => 'index' %> | <%= link_to "RU", :controller => 'words', :action => 'index_lang' %> | <%= link_to "EN", :controller => 'words', :action => 'index_lang', :lang=> "en" %> | <%= link_to "JP", :controller => 'words', :action => 'index_lang', :lang=> "jp" %></div>
 					
 					<div class="admin-area" style="min-height: 700px;">
 					

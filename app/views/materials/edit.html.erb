@@ -1,0 +1,161 @@
+<% content_for :special_js_css do %>
+  
+<style type="text/css">
+label {font-weight: bold;color: #333;}
+
+.m-body-wrap {
+padding-top: 10px;
+}
+.m-body-wrap textarea {
+min-width: 100% !important;
+margin-top: 6px;
+}
+
+
+#tabs {
+margin-top: 5px;
+min-height: 360px;
+}
+
+#tabs .ui-widget-header{
+background-image: none;
+background-color: #86AAEF;
+}
+
+#material_page_url {
+width: 100%;
+}
+
+.m-page-wrap select {
+min-width: 130px;
+}
+
+
+
+</style>
+<script type="text/javascript">
+
+$(function() {
+	$( "#tabs" ).tabs({selected: 0});
+	
+	$("#tabs").bind("tabsselect", function(event, ui) {
+		var h = $("#tabs .m-body-wrap textarea").height();
+		var val = $("#tabs .m-body-wrap textarea").val()
+		$("#tabs .m-body-show").css({minHeight: h}).html(val);
+		$("#tabs").css({minHeight: $("#tabs").height()})
+	});
+
+});
+
+</script>
+<%end%>
+
+
+<h3 class="admin-p-name">Editing material: <%= @material.id %></h3>
+
+<div style="margin-bottom: 20px;">
+<%= link_to 'All entries', materials_path %> | <%= link_to 'Show ', @material %>
+</div>
+
+<div class="display-container">
+<% form_for(@material) do |f| %>
+  <%= f.error_messages %>
+  
+  <table>
+	<tr>
+		<td><%= f.label :tag %></td><td><%= f.text_field :tag %></td>
+	<tr>
+	<tr>
+		<td><%= f.label :status %></td><td><%= f.select :status, Material::STATUS.map{|s| [s[0],s[2]]} %></td>
+	<tr>
+	<tr>
+		<td><%= f.label :for_page %></td>
+		<td>
+			<%= f.text_field :html_on_page %>
+			
+			 <%= f.label :langs %>
+			<%= f.select :langs, Material::LANG.map{|l|[l[0],l[1]]}, :prompt => 'Select language'  %>
+		</td>
+	<tr>
+  </table>
+    
+    
+
+ 
+<div id="tabs"> 
+   <ul> 
+      <li><a href="#tabs-1">edit</a></li> 
+      <li><a href="#tabs-2">html</a></li> 
+	  <li><a href="#tabs-3">js/css</a></li>
+	  <li><a href="#tabs-4">page</a></li>
+   </ul>
+   
+<div id="tabs-1" class="ui-tab"> 
+  <div class="m-body-wrap">
+    <%= f.label :content %><br />
+    <%= f.text_area :body, :rows=>10 %>
+  </div>
+</div>
+
+<div id="tabs-2" class="ui-tab">   
+  <div class="m-body-show">
+	<%= @material.body %>
+  </div>
+</div>
+
+<div id="tabs-3" class="ui-tab">   
+  <div class="m-js-css-wrap">
+	<%= f.text_area :js_css, :rows=>5 %>
+  </div>
+</div>
+
+<div id="tabs-4" class="ui-tab">   
+  <div class="m-page-wrap">
+
+  <table>
+	<tr>
+		<td><%= f.label :page_url %></td><td><%= f.text_field :page_url %></td>
+	<tr>
+	<tr>
+		<td><%= f.label :section %></td><td> <%= f.select :section, Material::SECTION, :prompt => 'Select section' %></td>
+	<tr>
+	<tr>
+		<td><%= f.label :layout %></td><td> <%= f.select :page_layout, Material::LAYOUT, :prompt=>'Select layout' %></td>
+	<tr>
+	<tr>
+		<td><%= f.label :template %></td><td> <%= f.select :page_template, Material::TEMPLATE, :prompt=>'Select template' %></td>
+	<tr>	
+	<tr>
+		<td><%= f.label :title %></td><td><%= f.text_area :page_title, :rows=>1 %></td>
+	<tr>
+	<tr>
+		<td><%= f.label :description %></td><td><%= f.text_area :page_desc, :rows=>1 %></td>
+	<tr>
+	<tr>
+		<td><%= f.label :keywords %></td><td><%= f.text_area :page_keywords, :rows=>1 %></td>
+	<tr>
+	
+	
+  </table>
+
+  
+  
+  </div>
+</div>
+
+
+</div>  
+  
+
+  <p>
+    <%= f.label :author %>
+    <%= f.hidden_field :author, :value=> current_user.id %> <em><%= current_user.email %></em>
+  </p>
+  
+  <p>
+    <%= f.submit 'Save' %>
+  </p>
+<% end %>
+
+</div>
+

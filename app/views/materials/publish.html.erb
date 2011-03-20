@@ -1,0 +1,9 @@
+<% @page_title = @material.page_title  %>
+<% @page_meta = {'description' =>  @material.page_desc } %>
+<% content_for :special_js_css do %>
+<%= @material.js_css %>
+<% end %>
+<%= @material.body %>
+<script type="text/javascript">
+currentSection="<%= @material.section %>";
+</script>

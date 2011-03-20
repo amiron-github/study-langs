@@ -1,4 +1,17 @@
 ActionController::Routing::Routes.draw do |map|
+
+  map.faq '/:lang/:to_lang/faq/:page', :controller => 'materials', :action=>'publish'
+  map.faq '/faq/:page', :controller => 'materials', :action=>'publish'
+  map.page '/:lang/:to_lang/page/:page', :controller => 'materials', :action=>'publish'
+  map.page '/page/:page', :controller => 'materials', :action=>'publish'
+  map.info '/:lang/:to_lang/info/:page', :controller => 'materials', :action=>'publish'
+  map.info '/info/:page', :controller => 'materials', :action=>'publish'
+  
+  map.connect '/materials/preview_ajax/:id', :controller => 'materials', :action=>'preview_ajax'
+
+
+  map.resources :materials
+  
   map.lexictest '/:lang/:to_lang/lexical-test/:category/', :controller => 'vocabulary', :action => 'build_test'
   map.flashcard '/:lang/:to_lang/flashcards/:category/', :controller => 'vocabulary', :action => 'build_flashcard'
   map.vocabulary '/:lang/:to_lang/vocabulary/:category/', :controller => 'vocabulary', :action => 'build_vocabulary'
