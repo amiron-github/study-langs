@@ -38,7 +38,7 @@ require_role "admin", :except => [:publish]
     end
   rescue StandardError => e
     logger.warn e
-    render :file => "pages/404.html", :status => '404 Not Found', :layout => layout	
+   render :file => "pages/404.html", :status => '404 Not Found', :layout => layout	
   end
 
   # GET /materials/new
