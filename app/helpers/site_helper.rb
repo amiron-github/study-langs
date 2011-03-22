@@ -20,5 +20,15 @@ module SiteHelper
 	return new_s
   end
   
+  def html_by_id(id)
+	material=Material.find(id).body
+	return material
+  end
+  
+  def material_by_id(id)
+	material=Material.find(id)
+	return material
+  end
+  
 end
 

@@ -55,6 +55,16 @@ display: none;
 padding: 10px 5px 5px;
 }
 
+.m-path a:link, .m-path a:visited, .m-path a:hover, .m-patha:active{
+color: #111;
+background-color: transparent;
+text-decoration: none;
+}
+
+.m-path a:hover, .m-patha:active {
+text-decoration: underline;
+}
+
 </style>
  <%end%>
  
@@ -70,21 +80,23 @@ padding: 10px 5px 5px;
 
 <div><br><%= link_to '+ New entry', new_material_path %><br></div>
 
+<div align="right"><%= will_paginate @materials %></div>
 
 <table class="tablesorter" cellspacing="1">
-<col width="40"><col width="50"><col><col><col  width="60"><col width="50"><col width="80">
+<col width="40"><col width="50"><col width="50"><col><col width="30"><col width="60"><col width="80">
 <thead>
   <tr>
 	<th style="padding-right: 10px">ID</th>
 	<th>Status</th>
+	<th>Langs</th>
     <th class="t-tag-view">
 		<div style="position: relative;">
 			Tag    <span><img  src="/images/icons/fugue/layout-split-vertical.png" title="Show more info"><img class="t-tag-join" src="/images/icons/fugue/layout-join-vertical.png" title="Show less info"><span> 
 		</div>
 	</th>
-	<th>Url</th>
+	<th>Page</th>
     <th>Section</th>
-    <th>Langs</th>
+    
 	<th>Actions</th>
   </tr>
 </thead>
@@ -95,18 +107,19 @@ padding: 10px 5px 5px;
   <tr>
     <td><%=h material.id %></td>
 	<td><%=h material.status %></td>
+	<td><%=h material.langs %></td>
 	<td>
-		<strong><%=h material.tag %></strong>
+		<strong class="m-path"> <%= link_to h(material.tag), edit_material_path(material) %></strong>
 		
 		<div class="m-body-prev">
-			<%=h truncate( material.body, 200) %>
+			<%= truncate( strip_tags( material.body), 200) %>
 		</div>
 	
 	
 	</td>
-	<td><%=h material.page_url %></td>
+	<td style="white-space: nowrap;"><a href="<%=h material.html_on_page %>"><%=h material.html_on_page %></a></td>
     <td><%=h material.section %></td>
-    <td><%=h material.langs %></td>
+    
     <td style="white-space: nowrap">
 		<%= link_to '<img src="/images/icons/fugue/eye.png" title="View">', material  %>&nbsp;&nbsp;
 		<%= link_to '<img src="/images/icons/fugue/blue-document-pencil.png" title="Edit">', edit_material_path(material) %>&nbsp;&nbsp;

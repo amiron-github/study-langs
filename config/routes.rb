@@ -1,5 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
-
+  map.faq '/:lang/:to_lang/reading/:page', :controller => 'materials', :action=>'publish'
+  map.faq '/reading/:page', :controller => 'materials', :action=>'publish'
+  map.faq '/:lang/:to_lang/phonetics/:page', :controller => 'materials', :action=>'publish'
+  map.faq '/phonetics/:page', :controller => 'materials', :action=>'publish'
+  map.faq '/:lang/:to_lang/grammar/:page', :controller => 'materials', :action=>'publish'
+  map.faq '/grammar/:page', :controller => 'materials', :action=>'publish'
   map.faq '/:lang/:to_lang/faq/:page', :controller => 'materials', :action=>'publish'
   map.faq '/faq/:page', :controller => 'materials', :action=>'publish'
   map.page '/:lang/:to_lang/page/:page', :controller => 'materials', :action=>'publish'

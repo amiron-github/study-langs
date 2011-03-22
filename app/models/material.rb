@@ -1,18 +1,22 @@
 class Material < ActiveRecord::Base
 
 
+
 LANG = [
-[ "English-Russian","ru-en" ],
-[ "Russian-English","en-ru" ],
+[ "English-Russian","en-ru" ],
+[ "Russian-English","ru-en" ],
 [ "Russian-Japanese","ru-jp" ],
-[ "French-Russian" , "fr-ru" ]
+[ "French-Russian" , "fr-ru" ],
+[ "Russian-French" , "fr-ru" ],
+[ "none" , '' ]
 ]
 
 STATUS = [
 [ "html","html element",1],
-[ "page","page",2 ],
-[ "draft","page",3 ],
-[ "published" , "page published ",4],
+[ "html page","html for page",2 ],
+[ "page","page",3 ],
+[ "draft","page draft",4 ],
+[ "published" , "page published ",5],
 [ "none","zero",0]
 ]
 

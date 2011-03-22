@@ -9,12 +9,18 @@ padding-top: 10px;
 .m-body-wrap textarea {
 min-width: 100% !important;
 margin-top: 6px;
+
 }
 
 
 #tabs {
 margin-top: 5px;
 min-height: 360px;
+padding-bottom: 20px;
+}
+
+input[type='text'], textarea, select {
+border: 1px solid #AFAFAF;
 }
 
 #tabs .ui-widget-header{
@@ -36,13 +42,14 @@ min-width: 130px;
 <script type="text/javascript">
 
 $(function() {
+
 	$( "#tabs" ).tabs({selected: 0});
 	
 	$("#tabs").bind("tabsselect", function(event, ui) {
 		var h = $("#tabs .m-body-wrap textarea").height();
 		var val = $("#tabs .m-body-wrap textarea").val()
 		$("#tabs .m-body-show").css({minHeight: h}).html(val);
-		$("#tabs").css({minHeight: $("#tabs").height()})
+		//$("#tabs").css({minHeight: $("#tabs").height()})
 	});
 
 });
@@ -57,17 +64,17 @@ $(function() {
 <%= link_to 'All entries', materials_path %> | <%= link_to 'Show ', @material %>
 </div>
 
-<div class="display-container">
+<div class="di-splay-container" style="min-height: 700px;">
 <% form_for(@material) do |f| %>
   <%= f.error_messages %>
   
   <table>
 	<tr>
 		<td><%= f.label :tag %></td><td><%= f.text_field :tag %></td>
-	<tr>
+	</tr>
 	<tr>
 		<td><%= f.label :status %></td><td><%= f.select :status, Material::STATUS.map{|s| [s[0],s[2]]} %></td>
-	<tr>
+	</tr>
 	<tr>
 		<td><%= f.label :for_page %></td>
 		<td>
@@ -76,7 +83,7 @@ $(function() {
 			 <%= f.label :langs %>
 			<%= f.select :langs, Material::LANG.map{|l|[l[0],l[1]]}, :prompt => 'Select language'  %>
 		</td>
-	<tr>
+	</tr>
   </table>
     
     
@@ -93,14 +100,20 @@ $(function() {
 <div id="tabs-1" class="ui-tab"> 
   <div class="m-body-wrap">
     <%= f.label :content %><br />
-    <%= f.text_area :body, :rows=>10 %>
+    <%= f.text_area :body, :rows=>20 %>
   </div>
 </div>
 
-<div id="tabs-2" class="ui-tab">   
+<div id="tabs-2" class="ui-tab">
+	<table>
+		<tr>
+			<td>
   <div class="m-body-show">
 	<%= @material.body %>
   </div>
+			</td>
+		</tr>
+	</table>
 </div>
 
 <div id="tabs-3" class="ui-tab">   
@@ -115,25 +128,25 @@ $(function() {
   <table>
 	<tr>
 		<td><%= f.label :page_url %></td><td><%= f.text_field :page_url %></td>
-	<tr>
+	</tr>
 	<tr>
 		<td><%= f.label :section %></td><td> <%= f.select :section, Material::SECTION, :prompt => 'Select section' %></td>
-	<tr>
+	</tr>
 	<tr>
 		<td><%= f.label :layout %></td><td> <%= f.select :page_layout, Material::LAYOUT, :prompt=>'Select layout' %></td>
-	<tr>
+	</tr>
 	<tr>
 		<td><%= f.label :template %></td><td> <%= f.select :page_template, Material::TEMPLATE, :prompt=>'Select template' %></td>
-	<tr>	
+	</tr>	
 	<tr>
 		<td><%= f.label :title %></td><td><%= f.text_area :page_title, :rows=>1 %></td>
-	<tr>
+	</tr>
 	<tr>
 		<td><%= f.label :description %></td><td><%= f.text_area :page_desc, :rows=>1 %></td>
-	<tr>
+	</tr>
 	<tr>
 		<td><%= f.label :keywords %></td><td><%= f.text_area :page_keywords, :rows=>1 %></td>
-	<tr>
+	</tr>
 	
 	
   </table>
