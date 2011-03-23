@@ -30,5 +30,14 @@ module SiteHelper
 	return material
   end
   
+  def material(id)
+	ad_horizont = render :partial => '/site/ad_horizont'
+	ad_btm = render :partial => '/site/ad_btm'
+	
+	material=Material.find(id)
+	material.body = ERB.new(material.body).result(binding)
+	return material
+  end
+  
 end
 
