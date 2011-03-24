@@ -28,12 +28,12 @@ class UserMailer < ActionMailer::Base
 	@body[:text_info2] = 'In your account, you can find the results of each exercise and test, as well as overall results of all exercises and tests for a lesson or a topic.'
 	
 	if user.lang == 'ru'
-		@subject    += 'Активируйте свой аккунт'
+		@subject    += 'Ваш аккаунт активирован'
 		@body[:text_welcome] = 'Ваш аккаунт успешно активирован. Добро пожалаловать на наш сайт!'
 		@body[:text_info1] = 'Теперь в своем аккаунте Вы сможете просматривать пройденные слова и результаты выполненных упражнений и тестов'
 		@body[:text_info2] = ''
 	else 
-		@subject    += 'Please activate your new account'
+		@subject    += 'Your account has been activated'
 	end	
 	
     @body[:url]  = "http://study-languages-online.com/#{str}"

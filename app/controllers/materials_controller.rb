@@ -41,6 +41,7 @@ require_role "admin", :except => [:publish]
 	@t_page = request.path
 	@material = Material.find(:first, :conditions=> ['page_url=?',@t_page])
 		layout = determine_layout
+
     respond_to do |format|
       format.html {render :action => 'publish', :layout => layout} 
       format.xml  { render :xml => @material }
@@ -54,7 +55,6 @@ require_role "admin", :except => [:publish]
   # GET /materials/new.xml
   def new
     @material = Material.new
-
     render :action => 'edit'
   end
 
@@ -90,10 +90,7 @@ require_role "admin", :except => [:publish]
       end
 
   end
-  
-  def preview_ajax
-
-  end	
+ 	
 
   # DELETE /materials/1
   # DELETE /materials/1.xml

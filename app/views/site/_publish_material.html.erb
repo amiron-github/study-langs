@@ -3,7 +3,7 @@
 <% content_for :special_js_css do %>
 <%= @material.js_css %>
 <% end %>
-<%= material_body_to_publish(@material.body) %>
+<%= @material.body %>
 <script type="text/javascript">
 currentSection="<%= @material.section %>";
 </script>
