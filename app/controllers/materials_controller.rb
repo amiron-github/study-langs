@@ -11,14 +11,12 @@ require_role "admin", :except => [:publish]
 	
 	if params[:langs]
 		@langs = params[:langs]
-		@mat = Material.find(:all, :conditions=> ['langs=?', @langs])
+		@mat = Material.find(:all, :conditions=> ['langs=?', @langs] , :order => 'id DESC')
 	else 
-		@mat = Material.all
+		@mat = Material.find(:all, :order => 'id DESC')
 	end
 	
-	
-    @materials = @mat.paginate :page => params[:page], :per_page=> 50, :order => 'id DESC'
-	
+    @materials = @mat.paginate :page => params[:page], :per_page=> 50
 	
 	
     respond_to do |format|

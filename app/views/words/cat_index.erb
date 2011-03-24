@@ -56,6 +56,12 @@ font-size: 12px;
 .m-info table {
 margin-left: 20px;
 }
+
+.pagination {
+display: inline;
+}
+
+
 	#sortable { list-style-type: none; margin: 0; padding: 0; ; }
 	#sortable li { margin: 0 3px 3px 3px; cursor: pointer;}
 	#sortable li td { padding: 5px 10px;}
@@ -150,6 +156,7 @@ var links ='<div style="margin: 10px 10px 10px 35px;"><a href="/words/'+id+'/edi
 | <%= link_to 'Full data', :action=> 'cat_data', :encategory => @encategory %>
 </div>
 
+<% unless params[:all_pages] %><div align="right" style="padding: 0 30px 10px 0;"><%= link_to 'All', :action=> :cat_index, :encategory => @encategory.id, :all_pages => 1 %> | <%= will_paginate @words %></div><%end%>
 <div class="display-container">
 <div align="right" style="padding-right: 10px; padding-bottom: 10px; font-weight: bold; font-size: 11px; ">Quick links</div>
 <% form_remote_tag :url => { :action => 'save_enword_attributes'} do %>

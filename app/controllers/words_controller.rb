@@ -39,6 +39,9 @@ layout "admin"
 	cat = Category.find(params[:encategory])
 	@encategory = cat
 	@words = cat.words.find(:all, :order =>"order_num")
+	unless params[:all_pages] == 1
+		@words = @words.paginate :page => params[:page], :per_page=> 100
+	end
 	respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @enword }
