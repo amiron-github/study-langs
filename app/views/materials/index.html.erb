@@ -68,7 +68,17 @@ text-decoration: underline;
 </style>
  <%end%>
  
- <h3 class="admin-p-name">Listing materials</h3>
+
+ <h3 class="admin-p-name" style="position: relative; padding-right: 200px;">
+	Listing materials <span style="color: #555; text-transform: uppercase"><%= @langs %> </span> 
+	<span style="font-size: 14px; font-weight: normal; position: absolute; right: 0; top: 6px">
+	<a href="/materials?langs=en-ru">EN-RU</a> | 
+	<a href="/materials?langs=ru-en">RU-EN</a> | 
+	<a href="/materials?langs=ru-jp">RU-JP</a>
+	</span>
+	
+</h3>
+
 
 <div style="margin-bottom: 20px;">
 

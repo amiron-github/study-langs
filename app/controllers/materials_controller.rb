@@ -8,7 +8,18 @@ require_role "admin", :except => [:publish]
   # GET /materials
   # GET /materials.xml
   def index
-    @materials = Material.paginate :page => params[:page], :per_page=> 50, :order => 'id DESC'
+	
+	if params[:langs]
+		@langs = params[:langs]
+		@mat = Material.find(:all, :conditions=> ['langs=?', @langs])
+	else 
+		@mat = Material.all
+	end
+	
+	
+    @materials = @mat.paginate :page => params[:page], :per_page=> 50, :order => 'id DESC'
+	
+	
 	
     respond_to do |format|
       format.html # index.html.erb
