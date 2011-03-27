@@ -7,7 +7,7 @@
 
 $(document).ready(function() { 
     $("table.tablesorter") 
-    .tablesorter({widthFixed: false, headers: {0: {sorter: 'digit'}, 1:{sorter: false},2:{sorter: false},3:{sorter: false}, 4:{sorter: false}, 5:{sorter: false}, 6:{sorter: false}, 7:{sorter: false}, 8:{sorter: false}},widgets: ['zebra'] }) 
+    .tablesorter({widthFixed: false, headers: {0: {sorter: 'digit'}, 2:{sorter: false},3:{sorter: false}, 4:{sorter: false}, 5:{sorter: false}, 6:{sorter: false}, 7:{sorter: false}, 8:{sorter: false}},widgets: ['zebra'] }) 
 
 $(".t-tag-view span").toggle(
 	function() { 
@@ -65,6 +65,11 @@ text-decoration: none;
 text-decoration: underline;
 }
 
+.tablesorter td {
+background-position: left bottom;
+background-repeat: repeat-x;
+}
+
 </style>
  <%end%>
  
@@ -82,22 +87,18 @@ text-decoration: underline;
 
 <div style="margin-bottom: 20px;">
 
-
 </div>
-
-
-
 
 <div><br><%= link_to '+ New entry', new_material_path %><br></div>
 
 <div align="right"><%= will_paginate @materials %></div>
 
 <table class="tablesorter" cellspacing="1">
-<col width="40"><col width="50"><col width="50"><col><col width="30"><col width="60"><col width="80">
+<col width="35"><col width="35"><col width="50"><col><col width="30"><col width="60"><col width="80">
 <thead>
   <tr>
 	<th style="padding-right: 10px">ID</th>
-	<th>Status</th>
+	<th>ST</th>
 	<th>Langs</th>
     <th class="t-tag-view">
 		<div style="position: relative;">
@@ -114,9 +115,12 @@ text-decoration: underline;
 
 
 <% @materials.each do |material| %>
-  <tr>
+  <tr style="">
     <td><%=h material.id %></td>
-	<td><%=h material.status %></td>
+	<td>
+		<% @t_stats = status_info(material.status) %>
+		<img char="<%= @t_stats[2]%>" src="<%= @t_stats[3]%>" title="<%= @t_stats[1]%>">
+	</td>
 	<td><%=h material.langs %></td>
 	<td>
 		<strong class="m-path"> <%= link_to h(material.tag), edit_material_path(material) %></strong>

@@ -12,12 +12,14 @@ LANG = [
 ]
 
 STATUS = [
-[ "html","html element",1],
-[ "html page","html for page",2 ],
-[ "page","page",3 ],
-[ "draft","page draft",4 ],
-[ "published" , "page published ",5],
-[ "none","zero",0]
+[ "html","html element",1, "/images/icons/fugue/blue-document-code.png"],
+[ "html el published","html element published",2,"/images/icons/fugue/blue-document-xaml.png" ],
+[ "html page","html for page",3,"/images/icons/fugue/blue-document-attribute-h.png" ],
+[ "html page published","html page published",4,"/images/icons/fugue/blue-document-globe.png" ],
+[ "page","page",5,"/images/icons/fugue/document-text.png" ],
+[ "draft","page draft",6,"/images/icons/fugue/document-exclamation.png" ],
+[ "page published" , "page published ",7,"/images/icons/fugue/document-globe.png"],
+[ "none","zero",0,"/images/icons/fugue/blue-document-small.png"]
 ]
 
 

@@ -12,6 +12,7 @@
   <script type="text/javascript" src="/javascripts/jquery-1.4.2.min.js"></script>
   <%= javascript_include_tag 'jquery-ui-1.8.4.custom.min.js' %>
   <%= javascript_include_tag 'jquery.carousel.min.js' %>
+  <%= javascript_include_tag 'jquery.textarea.js' %>
   <%= stylesheet_link_tag 'custom-theme/jquery-ui-1.8.5.custom.css' %>
  
   <%= javascript_include_tag 'effects' %>
@@ -49,6 +50,12 @@ $("#menu_display input").click( function() {
 		$(this).val(">> Menu")
 		setCookie('no_menu', 'yes')
 	}
+});
+
+$(document).ready(function () {
+
+     $("textarea").tabby();
+
 });
 
 

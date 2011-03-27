@@ -1,4 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
+
+  #map.connect '/ru/jp/lessons/:order', :controller => 'materials'
+  
   map.faq '/:lang/:to_lang/reading/:page', :controller => 'materials', :action=>'publish'
   map.faq '/reading/:page', :controller => 'materials', :action=>'publish'
   map.faq '/:lang/:to_lang/phonetics/:page', :controller => 'materials', :action=>'publish'

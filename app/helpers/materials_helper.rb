@@ -6,4 +6,13 @@ module MaterialsHelper
 	new_content = ERB.new(content).result(binding)
 	return new_content
   end
+  def status_info(status)
+	info = Material::STATUS[0]
+	Material::STATUS.each do |item|
+		if item[2] == status
+			info = item
+		end
+	end
+	return info
+  end
 end

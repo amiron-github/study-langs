@@ -1,0 +1,510 @@
+<% @page_title = 'Уроки японского' %>
+<% @page_meta = {'description' => ""} %>
+
+
+<% content_for :special_js_css do %>
+
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'jp-control' %>
+<%= javascript_include_tag 'lexical-test' %>
+<%= stylesheet_link_tag 'lexical-test' %>
+<%= javascript_include_tag 'jquery-ui-1.8.6.dial.min.js' %>
+<%= stylesheet_link_tag 'custom-theme/jquery-ui-1.8.5.custom.css' %>
+<%= javascript_include_tag 'test-drag-sort' %>
+<%= javascript_include_tag 'es-grammar-exercises' %>
+<%= javascript_include_tag 'es-test-drag-input' %>
+
+
+<%= javascript_include_tag 'short-unit' %>
+<%= stylesheet_link_tag 'short-unit' %>
+
+<script type="text/javascript">
+<%if params[:tab] %>
+	openTabFromUrl(<%= params[:tab] %>);
+<%else%>
+	openTabFromUrl();
+<%end%>
+
+</script>
+
+<style>
+.su-present table td.su-pres-orig {
+font-size: 22px;
+}
+div.su-pres-transcribe {
+font-weight: normal;
+color: #444;
+font-size: 12px;
+}
+
+.es-ex-string-wrapper {
+font-size: 20px;
+font-weight: bold;
+}
+
+</style>
+
+
+<% end %>
+
+
+
+<div class="unit-area">
+
+
+<div id="prof_tabs">
+
+<div class="unit-title">
+Уроки японского языка
+</div>
+	<div id="tabs_row">
+            <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Часть 1</a></div></div>
+			<div id="tab02" class="ptab"><div><a href="#">Часть 2</a></div></div>
+            <div id="tab03" class="ptab"><div><a href="#">Часть 3</a></div></div>
+			<div id="tab04" class="ptab"><div><a href="#">Часть 4</a></div></div>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+
+<div id="for_tab01" class="pBlock" style="display: block">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Обзор</h3>
+<p class="su-step-info">
+Данный этап предназначен для ознакомления с лексикой и грамматическими конструкциями урока.
+</p>	
+	
+
+<h4 class="su-task">
+<%= @review[:task_title] %>
+</h4>
+	
+<div class="su-present">
+<div class="su-present-brd">
+<table cellspacing="0">
+<%
+@phrases = Cluster.find(@review[:phrases]).words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+%>
+<% @phrases.each do |voc_word|  %>
+	<tr>
+		<td class="su-pres-audio"><%unless voc_word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%=voc_word.sound_url%>', this)"></div><%end%></td>
+		<td class="su-pres-orig">
+			<%=voc_word.html %>
+			<div class="su-pres-transcribe">[<%=voc_word.transcribe%>]</div>
+		</td>
+		<td class="su-pres-trans"><%=voc_word.translate%></td>
+	</tr>
+<% end %>	
+	
+</table>	
+</div>	
+</div>	
+	
+
+
+<br><br><br><br>
+
+<h4 class="su-task">
+Задание 2. Прослушайте фразу и найдите её в списке.
+</h4>
+
+
+
+<div id="ch1" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		test_id: "",
+		quest_num: 15,
+		variants_num: 5,
+		quest_type: 'text',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+<%
+@last_phrase = (@phrases.length)-1
+%>
+		
+<% @phrases.each_with_index do |phrase,index|  %>
+["<%= phrase.html.to_s.gsub(/"/,'\"') %>", "<%= phrase.translate.to_s.gsub(/"/,'\"') %>" ]<% if index!= @last_phrase -%>,<%end -%>
+
+<% end %>
+		
+
+		]
+		
+		} )
+</script>
+
+
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(2)">
+</div>	
+	
+	</div>
+</div>
+
+<div id="for_tab02" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Лексика и грамматика</h3>
+<p class="su-step-info">
+Данный этап предназначен для ознакомления с лексикой и грамматикой урока.
+</p>	
+	
+<h4 class="su-task">
+Задание 1. Ознакомьтесь со следующими словами и выражениями.
+</h4>
+
+
+<br><br>
+<div class="voc-wordlist">
+<table class="voc_bord" align="center" cellspacing="0">
+<tr>
+<td>
+
+<table style="width: 400px" class="diction" cellpadding="0" cellspacing="0" align="center">
+<col width="50%"><col width="50%">
+<thead>
+<tr>
+	<td> <div class="trans-display-wrapper"><input type="checkbox" class="trans-display" /> Транскрипция </div> </td>
+	<td></td>
+</tr>
+</thead>
+<tbody>
+
+<%
+cat = Cluster.find(@comments[:vocabulary][:words])
+@words = cat.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+%>
+<%@words.each_with_index do |word, index|-%>
+<tr class="trow">
+    <td class="original" valign="top">
+	<%unless word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div><%end%>
+	<%= word.html %>
+	<div class="ru-transcript">[<%= word.transcribe %>]</div>
+	
+    </td>
+    <td class="translation" valign="top"><%= word.translate %>
+    </td>
+</tr>
+<%end -%>
+
+
+</tbody>
+<tfoot>
+<tr>
+	<td></td>
+	<td></td>
+</tr>
+</tfoot>  
+</table>
+
+</td>
+</tr>
+</table>
+</div><!-- end of voc-wordlist-->
+
+
+<br><br><br><br>
+
+<h4 class="su-task">
+Задание 2. Ознакомьтесь с грамматикой урока.
+</h4>
+
+<%= html_by_id(@comments[:grammar][:html])%>
+
+
+<br><br>
+
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(3)">
+</div>
+	
+	</div>
+</div>
+
+
+<div id="for_tab03" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Упражнения</h3>
+<p class="su-step-info">
+Данный этап предназначен для работы с лексико-грамматическим материалом урока.
+</p>		
+
+
+
+<% @exercises.each do |exercise| %>
+
+
+<% if exercise[:exercise_type] == "grammar" %>
+
+<h4 class="su-task">
+<%= exercise[:task_title] %>
+</h4>
+
+<% unless exercise[:model]== 0 %>
+<div class="egdiv">
+<h4>Модель: </h4>
+<p>
+<%= exercise[:model] %>
+</p>
+</div>
+</div>
+<%end%>
+
+<div class="su-exerc">
+<div id="<%= exercise[:html_id] %>">	
+<p class="task">Перетащите слова в текстовое поле или напечатайте их.</p> 
+<div  class="gr_ex_type di_mix">
+<div class="gr-ex-testid"></div>
+
+<%
+ex_tasks = Cluster.find(exercise[:tasks])
+@tasks_phrases = ex_tasks.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+%>
+
+<% @tasks_phrases.each_with_index do |phrase, index| %>
+	<div class="gext_task gext_sign <% if index == 0 %> di_mix_first <%end%>"> 
+		<div class="di_mix_tobuild"><%= phrase.grammar %></div>
+		<div class="di_mix_variants di_mix"><%= phrase.forms %></div>
+		<input type="text" value=""> <span class="gext_answer" style="display: none"><%= phrase.html %></span>
+		<div class="gext_show"><span><b><%= phrase.text %></b></span> &nbsp;</div>
+	</div>
+<%end%>
+
+<p class="gext_check es-ex-buttons gex-es-btn">
+	<input type="button" class="gext_check_btn" value="Проверить" > <input type="button" value="Ответы" class="gext_answer_show">
+</p>
+</div>
+</div>
+
+</div> <!-- end of <%= exercise[:html_id] %>  -->
+<script type="text/javascript"> 
+	var<%= exercise[:html_id] %> = new draginput_test( {
+		id: "<%= exercise[:html_id] %>", 
+		targets: "gext_task input", 
+		//in_targets: "input",
+		clear_option: true,
+		one_use: true,
+		variant_elem: "di_mix_variants span"
+		//targets_color: "#ffffff"
+
+		} )
+</script>
+
+
+<% elsif exercise[:exercise_type] == "lexical" %>	
+	
+	
+	
+<h4 class="su-task">
+<%= exercise[:task_title] %>
+</h4>
+
+
+<div id="<%= exercise[:html_id] %>" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var <%= exercise[:html_id] %> = new ch_exercise( {
+		id: "<%= exercise[:html_id] %>", 
+		test_id: "<%= exercise[:test_id] %>",
+		quest_num: 15,
+		variants_num: <%= exercise[:variants_num] %>,
+		quest_type: '<%= exercise[:quest_type] %>',
+		answer_type: '<%= exercise[:answer_type] %>',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+
+<%
+@ex_lexical = Cluster.find(exercise[:tasks]).words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+%>
+<%
+@last_task = (@ex_lexical.length)-1
+%>
+		
+<% @ex_lexical.each_with_index do |phrase,index|  %>
+["<%= phrase.html.to_s.gsub(/"/,'\"') %>", "<%= phrase.translate.to_s.gsub(/"/,'\"') %>" ]<% if index!= @last_task -%>,<%end -%>
+
+<% end %>
+	
+		]
+		
+		} )
+</script>	
+	
+	
+	
+<%end%>
+
+
+<%end%>
+
+
+
+<br><br>
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(4)">
+</div>	
+	
+<br><br><br><br><br><br>
+	
+	</div>
+</div>
+
+
+<div id="for_tab04" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Закрепление</h3>
+<p class="su-step-info">
+Данный этап предназначен для закрепления полученных знаний.
+</p>	
+
+
+
+<% @translation.each do |exercise| %>
+
+
+<% if exercise[:exercise_type] == "grammar" %>
+
+<h4 class="su-task">
+<%= exercise[:task_title] %>
+</h4>
+
+<% unless exercise[:model]== 0 %>
+<div class="egdiv">
+<h4>Модель: </h4>
+<p>
+<%= exercise[:model] %>
+</p>
+</div>
+</div>
+<%end%>
+
+<div class="su-exerc">
+<div id="<%= exercise[:html_id] %>">	
+<p class="task">Перетащите слова в текстовое поле или напечатайте их.</p> 
+<div  class="gr_ex_type di_mix">
+<div class="gr-ex-testid"></div>
+
+<%
+ex_tasks = Cluster.find(exercise[:tasks])
+@tasks_phrases = ex_tasks.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+%>
+
+<% @tasks_phrases.each_with_index do |phrase, index| %>
+	<div class="gext_task gext_sign <% if index == 0 %> di_mix_first <%end%>"> 
+		<div class="di_mix_tobuild"><%= phrase.grammar %></div>
+		<div class="di_mix_variants di_mix"><%= phrase.forms %></div>
+		<input type="text" value=""> <span class="gext_answer" style="display: none"><%= phrase.html %></span>
+		<div class="gext_show"><span><b><%= phrase.text %></b></span> &nbsp;</div>
+	</div>
+<%end%>
+
+<p class="gext_check es-ex-buttons gex-es-btn">
+	<input type="button" class="gext_check_btn" value="Проверить" > <input type="button" value="Ответы" class="gext_answer_show">
+</p>
+</div>
+</div>
+
+</div> <!-- end of <%= exercise[:html_id] %>  -->
+<script type="text/javascript"> 
+	var<%= exercise[:html_id] %> = new draginput_test( {
+		id: "<%= exercise[:html_id] %>", 
+		targets: "gext_task input", 
+		//in_targets: "input",
+		clear_option: true,
+		one_use: true,
+		variant_elem: "di_mix_variants span"
+		//targets_color: "#ffffff"
+
+		} )
+</script>
+
+
+<% elsif exercise[:exercise_type] == "lexical" %>	
+	
+	
+	
+<h4 class="su-task">
+<%= exercise[:task_title] %>
+</h4>
+
+
+<div id="<%= exercise[:html_id] %>" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var <%= exercise[:html_id] %> = new ch_exercise( {
+		id: "<%= exercise[:html_id] %>", 
+		test_id: "<%= exercise[:test_id] %>",
+		quest_num: 15,
+		variants_num: <%= exercise[:variants_num] %>,
+		quest_type: '<%= exercise[:quest_type] %>',
+		answer_type: '<%= exercise[:answer_type] %>',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+
+<%
+@ex_lexical = Cluster.find(exercise[:tasks]).words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+%>
+<%
+@last_task = (@ex_lexical.length)-1
+%>
+		
+<% @ex_lexical.each_with_index do |phrase,index|  %>
+["<%= phrase.text.to_s.gsub(/"/,'\"') %>", "<%= phrase.translate.to_s.gsub(/"/,'\"') %>" ]<% if index!= @last_task -%>,<%end -%>
+
+<% end %>
+		
+
+		]
+		
+		} )
+</script>	
+	
+	
+	
+<%end%>
+
+
+<%end%>
+
+
+
+
+
+
+<br><br><br><br>
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(5)">
+</div>
+
+
+	</div>
+</div>
+
+
+</div>
+
+
+
+
+<script type="text/javascript">
+currentSection="course";
+</script>
