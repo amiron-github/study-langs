@@ -7,9 +7,6 @@ require_role "admin", :except => [:publish]
 
 # instruction to publish
 # 
-#
-#
-#
 
 
   # GET /materials
@@ -45,6 +42,20 @@ require_role "admin", :except => [:publish]
   end
   
   def publish
+	@t_page = request.path
+	@material = Material.find(:first, :conditions=> ['page_url=?',@t_page])
+		layout = determine_layout
+
+    respond_to do |format|
+      format.html {render :action => 'publish', :layout => layout} 
+      format.xml  { render :xml => @material }
+    end
+  rescue StandardError => e
+    logger.warn e
+   render :file => "pages/404.html", :status => '404 Not Found', :layout => layout	
+  end
+  
+  def publish_developer
 	@t_page = request.path
 	@material = Material.find(:first, :conditions=> ['page_url=?',@t_page])
 		layout = determine_layout

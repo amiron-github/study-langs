@@ -16,6 +16,10 @@ function findAndWrapInEditor(jElem, startString, endString) {
 	edSetCaretPosition (jElem.get(0), startOn)
 }
 
+function replaceInEditor(jElem, newT) {
+	jElem.replaceSelection(newT, true)
+}
+
 function edSetCaretPosition (oField, iCaretPos) {
 
 if (document.selection) { 
@@ -114,6 +118,16 @@ function addSymb(symb) {
 	end = ''
 	findAndWrapInEditor($("#t_editor"), start, end)
 }
+
+
+//functions for   	<a title="span sftc" href="javascript:;" onclick="editWrapWith(this)"> i <i class="edwr" char="&lt; o i&gt; i=&quot;fgfg&quot;>" title="<i>"></i></a> 
+
+function editWrapWith(el) {
+	var start = $(el).find(".edwr").attr("title")
+	var end = $(el).find(".edwr").attr("char")
+	findAndWrapInEditor($("#text_editor"), start, end)
+}
+
 
 
 

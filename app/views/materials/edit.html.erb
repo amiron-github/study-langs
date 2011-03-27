@@ -1,5 +1,5 @@
 <% content_for :special_js_css do %>
-  
+<%= javascript_include_tag 'editaccents.js' %>  
 <style type="text/css">
 label {font-weight: bold;color: #333;}
 
@@ -108,8 +108,10 @@ $(function() {
    
 <div id="tabs-1" class="ui-tab"> 
   <div class="m-body-wrap">
-    <%= f.label :content %><br />
-    <%= f.text_area :body, :rows=>20 %>
+    <%= f.label :content %>  
+<br />
+    
+	<%= f.text_area :body, :rows=>20, :id=>"text_editor" %>
   </div>
 </div>
 

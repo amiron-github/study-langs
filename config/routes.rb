@@ -1,7 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
 
-  #map.connect '/ru/jp/lessons/:order', :controller => 'materials'
-  
+  map.faq '/developer/:page', :controller => 'materials', :action=>'publish_developer'
   map.faq '/:lang/:to_lang/reading/:page', :controller => 'materials', :action=>'publish'
   map.faq '/reading/:page', :controller => 'materials', :action=>'publish'
   map.faq '/:lang/:to_lang/phonetics/:page', :controller => 'materials', :action=>'publish'
@@ -16,8 +15,6 @@ ActionController::Routing::Routes.draw do |map|
   map.info '/info/:page', :controller => 'materials', :action=>'publish'
   
   map.connect '/materials/preview_ajax/:id', :controller => 'materials', :action=>'preview_ajax'
-
-
   map.resources :materials
   
   map.lexictest '/:lang/:to_lang/lexical-test/:category/', :controller => 'vocabulary', :action => 'build_test'

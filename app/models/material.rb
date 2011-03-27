@@ -19,6 +19,8 @@ STATUS = [
 [ "page","page",5,"/images/icons/fugue/document-text.png" ],
 [ "draft","page draft",6,"/images/icons/fugue/document-exclamation.png" ],
 [ "page published" , "page published ",7,"/images/icons/fugue/document-globe.png"],
+[ "html to check" , "html to check",8,"/images/icons/fugue/document-exclamation.png"],
+[ "html page to check" , "html page to check",9,"/images/icons/fugue/document-exclamation.png"],
 [ "none","zero",0,"/images/icons/fugue/blue-document-small.png"]
 ]
 
