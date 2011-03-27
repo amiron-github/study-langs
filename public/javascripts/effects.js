@@ -24,10 +24,20 @@ $("#header_remover").click( function() {
 		});		
 		delCookie('no_header')
 	} else{
-		$("#fixWidh").css({position: "relative"}).animate({top: "-150px"}, function() {
+		$("#fixWidh").css({position: "relative"}).animate({top: "-84px"}, function() {
 			$("body").addClass("m-header-hidden");
 		});
 		setCookie('no_header', 'yes')
+	}
+});
+
+$("#body_widther").click( function() {
+	if ( $("body").hasClass("m-wide-body") ) {
+		$("body").removeClass("m-wide-body");		
+		delCookie('wide_body')
+	} else{
+		$("body").addClass("m-wide-body");
+		setCookie('wide_body', 'yes')
 	}
 });
 
@@ -1280,7 +1290,6 @@ container.find(".sb-details").toggle(function(){
 		})
 		$(this).parent().addClass("details-hidden");
 });
-
 
 }
 

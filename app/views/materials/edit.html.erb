@@ -58,7 +58,16 @@ $(function() {
 <%end%>
 
 
-<h3 class="admin-p-name">Editing material: <%= @material.id %></h3>
+<h3 class="admin-p-name" style="position: relative; padding-right: 200px;">Editing materials: <%= @material.id %>
+
+	<span style="font-size: 14px; font-weight: normal; position: absolute; right: 0; top: 6px">
+	<a href="/materials?langs=en-ru">EN-RU</a> | 
+	<a href="/materials?langs=ru-en">RU-EN</a> | 
+	<a href="/materials?langs=ru-jp">RU-JP</a> | 
+	<a href="/materials?langs=ru-fr">RU-FR</a>
+	</span>
+
+</h3>
 
 <div style="margin-bottom: 20px;">
 <%= link_to 'All entries', materials_path %> | <%= link_to 'Show ', @material %>

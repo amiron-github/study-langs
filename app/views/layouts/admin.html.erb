@@ -213,7 +213,7 @@ font-size: 10pt;
   <![endif]-->
 
 </head>
-<body <% if cookies[:no_header] %>class="m-header-hidden"<%end%>>
+<body class="<% if cookies[:no_header] %>m-header-hidden<%end%> <% if cookies[:wide_body] %>m-wide-body<%end%>" >
     <div id="fixWidh"><div id="container">
         <!--[if lte IE 6]>
         <table id="containit" cellspacing="0">
@@ -404,6 +404,7 @@ font-size: 10pt;
 						<div id="menu_remover"><span class="menu-shown">Hide menu</span><span class="menu-hidden">Show menu</span></div>
 						<div id="mini-menu"><a href="/index.html">EN-RU</a> | <a href="/ru/en/index.html">RU-EN</a> | <a href="/ru/jp/index.html">RU-JP</a> | <a href="/fr/index.html">FR-RU</a> </div>
 						<div id="header_remover"><span class="header-shown">Hide header</span><span class="header-hidden">Show header</span></div>
+						<div id="body_widther"><span class="body-normal">Wider</span><span class="body-wide">Normal width</span></div>
 
 					</div>
                   <div id="contfield" class="<%= @with_rec ? 'content withRec' : 'content' %>">

@@ -2,8 +2,15 @@ class MaterialsController < ApplicationController
 
 
 layout "admin",  :except => [:preview_ajax]
-
 require_role "admin", :except => [:publish]
+
+
+# instruction to publish
+# 
+#
+#
+#
+
 
   # GET /materials
   # GET /materials.xml
@@ -124,3 +131,4 @@ private
   
 
 end
+
