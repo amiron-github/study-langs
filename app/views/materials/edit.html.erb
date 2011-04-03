@@ -147,7 +147,7 @@ $(function() {
 		<td><%= f.label :layout %></td><td> <%= f.select :page_layout, Material::LAYOUT, :prompt=>'Select layout' %></td>
 	</tr>
 	<tr>
-		<td><%= f.label :template %></td><td> <%= f.select :page_template, Material::TEMPLATE, :prompt=>'Select template' %></td>
+		<td><%= f.label :template %></td><td> <%= f.select :page_template, Material::TEMPLATE.map{|t|[t[0],t[1]]}, :prompt=>'Select template' %></td>
 	</tr>	
 	<tr>
 		<td><%= f.label :title %></td><td><%= f.text_area :page_title, :rows=>1 %></td>

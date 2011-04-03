@@ -30,8 +30,8 @@ SECTION = [
 ]
 
 TEMPLATE = [
-["none"],
-["general", ""]
+["general", 0],
+["exercise", 1]
 ]
 
 LAYOUT = [

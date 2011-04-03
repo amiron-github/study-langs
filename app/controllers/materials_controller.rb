@@ -47,8 +47,13 @@ require_role "admin", :except => [:publish]
 		layout = determine_layout
 
     respond_to do |format|
-      format.html {render :action => 'publish', :layout => layout} 
-      format.xml  { render :xml => @material }
+	  if @material.page_template == 1
+		format.html {render :action => 'publish_ex', :layout => layout} 
+		format.xml  { render :xml => @material }	  
+	  else
+		format.html {render :action => 'publish', :layout => layout} 
+		format.xml  { render :xml => @material }
+	  end
     end
   rescue StandardError => e
     logger.warn e

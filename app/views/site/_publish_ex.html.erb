@@ -1,7 +1,6 @@
 <% @page_title = @material.page_title  %>
 <% @page_meta = {'description' =>  @material.page_desc } %>
 <% content_for :special_js_css do %>
-<%if @material.page_template == 1%>
 <%= javascript_include_tag 'jquery.jplayer.min.js' %>
 <%= javascript_include_tag 'jp-control' %>
 <%= javascript_include_tag 'lexical-test' %>
@@ -11,10 +10,9 @@
 <%= javascript_include_tag 'es-test-drag-input' %>
 <%= javascript_include_tag 'short-unit' %>
 <%= stylesheet_link_tag 'short-unit' %>
-<%end%>
 <%= @material.js_css %>
 <% end %>
-<%= material_body_to_publish(@material.body) %>
+<%= @material.body %>
 <script type="text/javascript">
 currentSection="<%= @material.section %>";
 </script>
