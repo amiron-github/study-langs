@@ -142,6 +142,9 @@ private
 					layout =  'ru_jp_application.rhtml'
 				end
 		end
+		if params[:special_layout] == 'mobile'
+			layout =  'mobile.rhtml'
+		end
 		return layout
 	end  
   
