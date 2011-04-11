@@ -19,18 +19,16 @@ Array.prototype.shuffle = shuffle;
 
 ///////////////////////////////////////////
 
-
 function mobile_test(hash) {
-
 var tObj = this;
 tObj.basicArray = hash['basic_array'];
 tObj.questNum = hash['quest_num'];
 tObj.counter=0;
-tObj.questType = hash['quest_type'];  		// default - html, options audio, image
+tObj.questType = hash['quest_type'];  		// default - html, options audio, img, images
+tObj.answerType = hash['answer_type'];  	// default - variants, option: yn
 tObj.correctAswersNum = 0;
 tObj.texts = hash['texts'];
 tObj.callback = hash['callback'];
-
 if (this.questNum == undefined || this.questNum > this.basicArray.length ) this.questNum = this.basicArray.length;
 if (this.questType == undefined) this.questType = 'html';
 if (this.callback == undefined) this.callback = function() {return false};
@@ -50,6 +48,10 @@ this.parseTest = function() {
 	tObj.container = $(".ui-page-active").find(".m-test-container");
 	tObj.optionsHolder = tObj.container.find(".mt-options");
 	tObj.options = tObj.optionsHolder.find("label .ui-btn-text");
+	if (tObj.answerType == 'images') {
+		tObj.container.addClass('mt-images-test');
+		tObj.options = tObj.container.find(".mt-img-option")
+	}	
 	tObj.optionsRadio = tObj.optionsHolder.find("input[type='radio']");
 	tObj.quest = tObj.container.find(".mt-quest");
 	tObj.questHolder = tObj.container.find(".mt-quest-container");
@@ -65,13 +67,11 @@ this.parseTest = function() {
 	tObj.resTotalTxt = tObj.container.find(".mt-res-total");
 	tObj.resMarkTxt = tObj.container.find(".mt-res-mark");
 	tObj.justBuilt = true;
-	
 	tObj.restartButton.unbind("click").click(function() {
 		tObj.start();
 	});
 		tObj.start()
 }
-
 this.callAfter = function() {
 	tObj.callback();
 }
@@ -94,13 +94,12 @@ this.start = function () {
 this.step = function () {
 tObj.nextButton.parent().find(".ui-btn-text").text(tObj.nextButtonTxt)
 tObj.optionsHolder.find(".ui-radio").removeClass('mt-option-correct').removeClass('mt-option-wrong');
+if (tObj.answerType == 'images') tObj.options.removeClass('mt-option-correct').removeClass('mt-option-wrong').removeClass("mt-img-selected");
 tObj.optionsRadio.removeData("correct").removeAttr("checked").removeAttr("disabled").checkboxradio("refresh");
 tObj.indicatorHolder.removeClass("mt-show-wrong").removeClass("mt-show-correct");
-
   if (this.counter < this.questNum) {
 	var variantsData = tObj.getOptionsData(tObj.counter)
 	tObj.statusIndicator.text( (tObj.counter+1) + "/"+tObj.questNum)
-	
 	if (tObj.questType == 'audio') {
 		tObj.quest.html('<div class="jp_control" onclick="cJplayer(\''+variantsData['options'][variantsData['correct']]['sound_url']+'\', this)"><span class="mt-sound"></span><span class="mt-play">'+tObj.playTxt+'</span><span class="mt-played">'+tObj.playedTxt+'</span></div>');
 		if(tObj.justBuilt) {
@@ -109,16 +108,30 @@ tObj.indicatorHolder.removeClass("mt-show-wrong").removeClass("mt-show-correct")
 			tObj.quest.find(".jp_control").click();
 		}
 
-	}else{
+	}else {
 		tObj.quest.html(variantsData['options'][variantsData['correct']]['quest'])
 	}
-	tObj.options.each(function(i,elem){
-		var content = variantsData['options'][i]['answer'];
-		if (i == variantsData['correct'] ) {
-			tObj.optionsRadio.eq(i).data('correct','true')
-		}
-		$(elem).html(content)
-	})
+	if (tObj.answerType == 'images') {
+		tObj.options.each(function(i,elem){
+			var content = variantsData['options'][i]['image'];
+				$(elem).html(content).find("img").unbind("click").click(function() {
+					tObj.options.removeClass("mt-img-selected");
+					$(elem).addClass("mt-img-selected");
+				})
+			if (i == variantsData['correct'] ) {
+				tObj.options.eq(i).find('img').data('correct','true')
+			}
+		})
+	
+	} else {
+		tObj.options.each(function(i,elem){
+			var content = variantsData['options'][i]['answer'];
+			if (i == variantsData['correct'] ) {
+				tObj.optionsRadio.eq(i).data('correct','true')
+			}
+			$(elem).html(content)
+		})	
+	}
 	if (tObj.questNum - tObj.counter == 1) {
 		tObj.container.addClass("mt-preend");
 		tObj.nextButton.parent().find(".ui-btn-text").text(tObj.seeResultsTxt)
@@ -151,7 +164,13 @@ this.getOptionsData = function(counter) {
 }
 
 this.checkOptions = function() {
-	var checked = tObj.optionsRadio.filter(":checked");
+	var checked;
+	if (tObj.answerType == 'images') {
+		checked = tObj.options.filter(".mt-img-selected").find("img");
+		tObj.options.find("img").unbind("click")
+	} else {
+		checked = tObj.optionsRadio.filter(":checked");
+	}
 			if ( checked.data('correct') == "true") {
 				tObj.correctAnswer(checked)
 			} else {
@@ -169,7 +188,6 @@ this.correctAnswer = function (jElem) {
 			sendWordsResults(studied)
 	}
 }
-
 this.wrongAnswer = function (jElem) {
 	jElem.parent().addClass("mt-option-wrong");
 	tObj.indicatorHolder.addClass("mt-show-wrong");
@@ -195,14 +213,3 @@ $('div').one('pageshow',function(event, ui){
 });
 
 }
-
-
-
-
-
-
-
-
-
-
-
