@@ -10,6 +10,22 @@
 
 <h2 class="page page-bl" style="font-size: 20pt; margin-bottom:  20px">Welcome! Let's learn Russian online!</h2>
 
+
+<div style="font-size: 11px; border: 2px solid #555; padding: 15px; margin: 15px; background-color: #F9FCE6;">
+
+<h3 style="margin-top:0">We have moved to a new server.</h3> 
+
+If you see this message, it is possible that your Internet provider  has not updated yet the DNS information about our site or some other problems occured, and some of the functions on the site, including registration, may work incorrectly. <br>
+
+If you want to visit the up-to-date version of the site, possible solutions are:<br>
+<br>
+- Clear your browser cash<br>
+- Visit the url: <a href="http://184.107.74.178/">http://184.107.74.178/ </a><br>
+</div>
+
+
+
+
 <div id="sp1" class="slides-wrap">
 
 <div class="slides-container">
@@ -235,7 +251,9 @@
 			</div>
 			</div>			
 		</td>
-<% if logged_in? %>
+		
+		
+
 		<td class="desc-unit">
 			<h4>Popular pages</h4>
 			<div class="in-desc">
@@ -267,8 +285,10 @@
 				</ul>
 			</div>
 		</td>
+		
+<% if logged_in? %>
 <%else%>
-		<td class="desc-unit">
+		<!-- td class="desc-unit">
 			<h4>Join our website</h4>
 			<div class="in-desc">
 			<p>
@@ -281,7 +301,7 @@
 				<a href="/login" class="btn-like btn-login">Sign in »</a>
 			</div>
 			</div>
-		</td>
+		</td -->
 <%end%>		
 	</tr>
 	<tr>
