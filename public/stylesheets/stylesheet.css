@@ -1071,6 +1071,14 @@ font-style: italic;
 font-weight: bold;
 }
 
+html body .acct {
+font-weight: bold !important;
+}
+
+.ry {
+text-decoration: line-through !important;
+}
+
 span.sound {
 white-space: nowrap;
 }

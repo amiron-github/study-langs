@@ -273,6 +273,7 @@ $("div.player_swf").each(function(){
 	$(this).replaceWith(str);
 });
 
+/*
 $("span.ry").each(function(){
 		$(this).replaceWith("<s>"+$(this).html() + "</s>");
 });
@@ -280,6 +281,7 @@ $("span.ry").each(function(){
 $("span.acct").each(function(){
 	$(this).replaceWith("<b>"+$(this).html() + "</b>");
 });
+*/
 
 $(".sound").mouseover(function(){
 	$(this).addClass("preplay");
@@ -1024,8 +1026,6 @@ function openTab() {
   		var thisTab=getCookie("voc");
   		$("#tab"+thisTab).click()
   	}
-  	
-
 }
 
 
@@ -1042,51 +1042,6 @@ function openTab() {
 
 ///////////////////////// end for tabs
 
-////////////////////// text in input for login 
-
-$(document).ready(function(){
-
-if ( $("#navigation input#email").length==1) {
-	//InputHelperCreate( $( "input#email" ).get(0), ' email address' );
-	//InputHelperCreate( $( "input#password" ).get(0), 'password' );
-	
-}else {
-return false;
-}
-
-
-});
-
-
-function InputHelperCreate(obj, text){
-		$( obj )
-			.bind( 'focus', function () {
-				InputHelperIn(this, text);
-			} )
-			.bind('blur', function () {
-				InputHelperOut(this, text);
-			} );
-		InputHelperOut(obj, text);
-}
-
-function InputHelperIn(obj, text) {
-		if (obj.value == text) {
-		    $( obj )
-		        .css({color: '#000'})
-		        .val('');
-		}
-	}
-	
-function InputHelperOut(obj, text) {
-		if ( obj.value == '' || obj.value == text ) {
-		    $( obj )
-		        .css({color: '#666'})
-		        .val(text);
-		}
-}
-
-
-//////////////////////// end of text in input for login
 
 var sendData = false
 function sendResults(id, total, right) {
@@ -1149,43 +1104,32 @@ function openTabFromUrl(tab) {
 	
 }
 
-
-
 function goToUrl(link) {
 	var toUrl=$(this).attr("href");
 	location.href=toUrl;
 }
 
-function getVocabulary(type) {
+function getVocabulary(id) {
+
+$("#gv").remove()
 $("body").prepend('<div id="gv" style="position: absolute; top: 0; left: 0; max-wi-dth: 900px; z-index: 10000; background-color: #efefef; text-align: left; padding: 30px"></div>');
-	$(".diction tr.trow").each(function(i, elem) {
-	$("#gv").append('<div id="gv_'+i+'"></div>');
-	var tOrigin = $(elem).find("td.original").html();
-	var tTranscript = $(elem).find(".audiotrans").find("td:eq(0)").html();
-	if ( tOrigin == '&nbsp; ' || tTranscript == null) {
-	}else{
-		var tTranslation = $(elem).find("td.translation").text();
-		var html = $(elem).find("td.transcript").html();
-		var text = $(elem).find("td.original").text();
-		var rE = new RegExp("playSound\\('[0-9a-zA-Z/]+\\.mp3","g");
-		var mp3 = html.match(rE);
-		tTranscript = tTranscript.replace(/\[/g,"").replace(/\]/g,"");
-		tTranslation = tTranslation.replace(/\'/g,"\\'")
-		
-		
-		if (type == 1) {
-			$('#gv_'+i).text(""+tOrigin+"");
-		} else if (type == 2) {
-			$('#gv_'+i).text(""+tTranscript+"");
-		} else if (type == 3) {
-			$('#gv_'+i).text(""+tTranslation+"");
-		} else {
-			$('#gv_'+i).text(""+text+" # "+tOrigin+"#"+tTranslation+" # "+tTranscript+" # /sounds/"+mp3+"")
-		}
-		
-		$('#gv_'+i).text($('#gv_'+i).text().replace(/playSound\('/,"").replace(/<b>/g,'<span class="acct">').replace(/<\/b>/g,'</span>').replace(/<s>/g,'<span class="ry">').replace(/<\/s>/g,'</span>'));
-	}
-})
+	$("#"+id).find("table").each(function(i,elem) {
+		$("#gv").append('<div id="gv_'+i+'"></div>');
+		var tHtml = $(elem).html()
+			var rE = new RegExp("playAudio\\('[0-9a-zA-Z/]+\\.mp3","g");
+			var mp3 = tHtml.match(rE);
+		$('#gv_'+i).text(""+mp3+"")
+		var sound = $('#gv_'+i).text().replace(/playAudio\('/,"")
+		$('#gv_'+i).empty()
+		var text = $(elem).find("td:eq(0) p span:eq(0)").html();
+		$(elem).find("td:eq(0)").find("span.play_tip").remove();
+		var transcribe = $(elem).find("td:eq(0) span.sound").html().replace(/&nbsp;/g,'').replace('[','').replace(']','');
+		var translate = $(elem).find("td:eq(2)").text();
+		$('#gv_'+i).append('<div class="te"><div>'); $('#gv_'+i).find("div.te").text("{:text=>'"+text+"',")
+		$('#gv_'+i).append('<div class="snd"><div>'); $('#gv_'+i).find("div.snd").text(":sound=>'/audio/"+sound+"',")
+		$('#gv_'+i).append('<div class="trans"><div>'); $('#gv_'+i).find("div.trans").text(":transcribe=>'"+transcribe+"',")
+		$('#gv_'+i).append('<div class="tr"><div>'); $('#gv_'+i).find("div.tr").text(":translate=>'"+translate+"'},")
+	})
 
 }
 
