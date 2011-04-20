@@ -48,13 +48,13 @@
 					</h1>
 					<div class="t-top-panel">
 
-<!--div class="t-sign-in">
+<div class="t-sign-in">
 <% if logged_in?%>
 <a href="/ru/en/user_profile.html" class="t-un" title="Профиль"><%= current_user.email %></a> | <span class="t-out"><%= link_to "Выход",{:controller => 'sessions', :action => 'destroy', :lang=>'ru', :to_lang=>'en'} %></span>
 <%else%>
 <%= link_to "Вход",{:controller => 'sessions', :action => 'new', :to_lang => 'en', :lang =>'ru'} %> | <%= link_to "Регистрация",{:controller => 'users', :action => 'new', :to_lang => 'en', :lang =>'ru'} %>
 <%end%>
-</div -->
+</div>
 <% unless @no_search %>			
 <div class="t-search-bar">	
 

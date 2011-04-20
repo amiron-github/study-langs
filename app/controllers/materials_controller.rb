@@ -44,6 +44,9 @@ require_role "admin", :except => [:publish]
   def publish
 	@t_page = request.path
 	@material = Material.find(:first, :conditions=> ['page_url=?',@t_page])
+	if logged_in?
+		@no_ad = true
+	end
 		layout = determine_layout
 
     respond_to do |format|

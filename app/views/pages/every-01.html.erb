@@ -728,9 +728,15 @@ Here you can learn grammar and lexical rules of the lesson.
 
 
 <h4 class="su-task">
-Task 1. Listen to the phrase and find it in the list.
+Task 1. Answer the questions in Russian following the model and check yourself.
 </h4>	
-	
+
+<div class="egdiv">
+	<h4>Model: </h4>
+		<p>Model</p>
+</div>
+
+
 <div class="su-exerc">
 <p class="task">Translate phrases from English into Russian.</p>
 <%
@@ -766,6 +772,149 @@ Task 1. Listen to the phrase and find it in the list.
 
 <%= render :partial => '/site/every/en_ru_oral_quest', :locals => {:phrases => @phrases} %>	
 </div>	
+
+
+
+
+<h4 class="su-task">
+Task 2. Listen to the phrases and find out where the speaking person is from:
+</h4>
+
+<div id="ds2" class="ds-wrapper" style="padding: 15px;">
+
+<p class="task" align="center">Drag and drop the flags and press "Check answers" </p>		
+
+<table align="center" style="margin: 0 auto;">
+
+<tr>
+<td>
+
+
+<table class="dst-test ds-table ds-audio" cellspacing="0" align="left" style="margin: auto">
+<col width="100">
+<col width="20">
+<col width="40">
+<col width="100">
+
+
+
+<% 
+
+@t_images = [
+  {:text=> 'АУС',
+ :sound=>'/audios/audio01021031.mp3',
+ :image=> '/images/aus.gif',
+ :answer=> '1',
+  },
+ {:text=> 'ГБ',
+ :sound=>'/audios/audio01021031.mp3',
+ :image=> '/images/gb.gif', 
+ :answer=> '2', 
+  },
+ {:text=> 'КА',
+ :sound=>'/audios/audio01021031.mp3',
+ :image=> '/images/ca.gif',
+ :answer=> '3', 
+  },
+ {:text=> 'РУ',
+ :sound=>'/audios/audio01021031.mp3',
+ :image=> '/images/ru.gif',
+ :answer=> '4', 
+  },
+ {:text=> 'ЮСА',
+ :sound=>'/audios/audio01021031.mp3',
+ :image=> '/images/usa.gif',  
+ :answer=> '5',
+  }  
+ ]
+
+%>
+
+
+
+<% @t_images.each_with_index do |word, index| %>
+<tr>
+	<td class="ds-quest" align="right" height="55" style="padding: 2px 3px 2px 10px;">
+			 <span style="font-size: 12px">Person <%= index+1 %></span>
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('<%= word[:sound] %>', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer" >
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<% end %>
+</table>
+</td>
+<td style="padding-left: 20px;">
+
+<table class="ds_variants_list" width="100%">
+<tr valign="top">
+<td>
+<ul class="no-list ds-options-wrap">
+
+<% @t_images = @t_images.sort_by {rand} %>
+<% @t_images.each_with_index do |word, index| %>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt"><%= word[:answer] %></span><img  src="<%= word[:image] %>"></div></div>
+	</li>
+<% end %>
+</ul>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<div class="es_btn_wrapper es-ex-buttons ds-check-wrapper">
+<input type="button" class="es_btn ds-check-button" value="Проверить">
+
+</div>
+
+
+</div>
+
+<script type="text/javascript"> 
+	var ds2 = new dragsort_test( {
+		id: "ds2", 			
+		targets: "ds-answer",	
+		answer_elem: "ds_sort_item", 
+		variant_elem: "ds_variant",
+		answer_color: "#F6FAFF",
+		auto_check: false
+		} )
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 <h4 class="su-task">
 Task 2. Listen to the phrase and find it in the list.
