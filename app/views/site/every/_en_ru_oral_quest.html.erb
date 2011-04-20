@@ -1,0 +1,22 @@
+<table cellspacing="8">
+<% phrases.each_with_index do |phrase, index| %>
+<tr>
+	<td>
+	<%unless phrase[:q_sound] == nil %><div class="jp_control" onclick="cJplayer('<%= phrase[:q_sound] %>', this)"></div><%end%>
+	</td>
+	<td>
+
+	<div><%= phrase[:q_text]%></div>
+	<div>[<%= phrase[:q_transcribe]%>]</div>
+	</td>
+	<td>
+		<table class="ds-table" cellspacing="0" align="center"> 
+			<tr> 
+				<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap"><strong>Check yourself</strong></td> 
+				<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('<%= phrase[:sound] %>', this)"></div></td> 
+			</tr> 
+		</table>
+	</td>
+</tr>
+<% end %>
+</table>

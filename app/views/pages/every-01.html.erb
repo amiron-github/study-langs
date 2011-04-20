@@ -1,0 +1,1247 @@
+<% @page_title = 'Lesson 1 :: Russian Online Lessons' %>
+<% @page_meta = {'description' => ""} %>
+
+
+<% content_for :special_js_css do %>
+
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'jp-control' %>
+<%= javascript_include_tag 'lexical-test' %>
+<%= stylesheet_link_tag 'lexical-test' %>
+<%= javascript_include_tag 'test-drag-sort' %>
+<%= javascript_include_tag 'es-grammar-exercises' %>
+<%= javascript_include_tag 'es-test-drag-input' %>
+
+
+<%= javascript_include_tag 'short-unit' %>
+<%= stylesheet_link_tag 'short-unit' %>
+
+<script type="text/javascript">
+<%if params[:tab] %>
+	openTabFromUrl(<%= params[:tab] %>);
+<%else%>
+	openTabFromUrl();
+<%end%>
+</script>
+
+
+<% end %>
+
+
+
+
+
+<div class="unit-area">
+
+
+<div id="prof_tabs">
+
+<div class="unit-title">
+Lesson 1
+</div>
+	<div id="tabs_row">
+            <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Dialogue</a></div></div>
+			<div id="tab02" class="ptab"><div><a href="#">Vocabulary</a></div></div>
+            <div id="tab03" class="ptab"><div><a href="#">Practice</a></div></div>
+			<div id="tab04" class="ptab"><div><a href="#">Revision</a></div></div>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+
+<div id="for_tab01" class="pBlock" style="display: block">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Review</h3>
+<p class="su-step-info">
+Here you can review lexical and grammer structures of the lesson
+</p>	
+	
+
+<h4 class="su-task">
+Task 1. Listen, repeat and read the translation
+</h4>
+
+	
+<div class="su-present">
+<div class="su-present-brd">
+<table cellspacing="0">
+
+<%
+cat = Cluster.find(72)
+@words = cat.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+%>
+<%@words.each_with_index do |word, index|-%>
+
+	<tr>
+		<td class="su-pres-audio"><%unless word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div><%end%></td>
+		<td class="su-pres-orig">
+			<%= word.text %>
+			<div class="ru-transcript" style="display: none;">[<%= word.transcribe %>]</div>
+		</td>
+		<td class="su-pres-trans"><%= word.translate %></td>
+	</tr>
+<%end%>
+</table>	
+</div>	
+</div>	
+	
+
+
+<br><br><br><br>
+
+<h4 class="su-task">
+Task 2. Listen to the phrase and find it in the list.
+</h4>
+
+
+
+<div id="ds1" class="ds-wrapper" style="padding: 15px; margin: 20px 30px;">
+
+<p style="font-size: 11px; text-align: center;">
+Listen to the phrases. Drag the English phrases from the list below <br>and drop them into the corresponding fields.
+</p>		
+
+<table align="center" style="margin: 0 auto;">
+<tr>
+<td>
+
+
+<table class="dst-test ds-table ds-audio" cellspacing="0" align="center" style="margin: 0 auto">
+<col width="80">
+<col width="20">
+<col width="40">
+<col width="250">
+<tr>
+	<td class="ds-quest" align="center">
+			Phrase 1 
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio01013010.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+			Phrase 2
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio01013020.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 3
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio01013030.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 4
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio01013040.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 5
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio01013050.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 6
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio01013060.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 7
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio01013070.mp3', this)"></div>
+	</td>	
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 8
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio01013080.mp3', this)"></div>
+	</td>	
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+
+<td>
+	
+<br>
+<br>
+
+<table class="ds_variants_list" style="margin: 0 auto;" align="center">
+<col width="170">
+<col width="250">
+
+<tr valign="top">
+<td>
+
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">5</span>Hello.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Thank you!</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">8</span>Your passport, please.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>Welcome to Russia.</div></div>
+	</li>
+</ul>
+
+</td>
+<td>
+
+<ul class="no-list">
+
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">4</span>Where is the baggage claim area?</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">6</span>Excuse me.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">7</span>Good bye!</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>Are you from America?</div></div>
+	</li>
+</ul>
+
+</td>
+</tr>
+</table>
+
+
+</td>
+</tr>
+</table>
+
+
+<div class="es_btn_wrapper es-ex-buttons ds-check-wrapper">
+
+<input type="button" class="es_btn ds-check-button" value="Check answers">
+
+</div>
+
+
+</div>
+
+<script type="text/javascript"> 
+	var ds1 = new dragsort_test( {
+		id: "ds1", 
+		test_id: "c0101013.I.c)",
+		targets: "ds-answer", 
+		answer_elem: "ds_sort_item", 
+		variant_elem: "ds_variant",
+		answer_color: "#F7F6F6",
+		auto_check: false
+		} )
+</script>
+
+
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Next step >>" onclick="openNextStep(2)">
+</div>	
+	
+	</div>
+</div>
+
+<div id="for_tab02" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Vocabulary</h3>
+<p class="su-step-info">
+Here you can learn words and expressions of the lesson.
+</p>	
+
+<h4 class="su-task">
+Task 1. Read and repeat the words and expressions of the lesson.
+</h4>
+<%
+ @voc1 = [
+ {:text=> 'я', :translate=> 'I', :transcribe=>'ya'},
+ {:text=> 'вы', :translate=> 'you (formal)', :transcribe=>'vy'},
+ {:text=> 'господин', :translate=> 'mister', :transcribe=>'gaspadin'},
+ {:text=> 'госпожа', :translate=> 'missis, miss', :transcribe=>'gaspaja'},
+ ]
+%>
+<%= render :partial => '/site/every/en_ru_voc', :locals => {:voc => @voc1} %>	
+	
+<br><br>
+
+<div class="su-exerc">
+<div id="di1">	
+				
+<p class="task">Перетащите слова в текстовое поле или напечатайте их.</p> 
+
+<br> 
+<table style="margin: 0 auto; border: 1px dashed #000; background-color: #fff" class="di_variants noselect" cellspacing="14" align="center" > 
+<tr> 
+	<td> 
+		<div> я </div> 
+	</td> 
+	<td> 
+		<div>господин</div> 
+	</td> 
+	<td> 
+		<div>Стив</div> 
+	</td>
+	<td> 
+		<div>Тайлер</div> 
+	</td>	
+</tr> 
+<tr> 
+	<td > 
+		<div> вы </div> 
+	</td> 
+ 
+	<td> 
+		<div>госпожа</div> 
+	</td> 
+	<td> 
+		<div>Браун</div> 
+	</td> 
+	<td> 
+		<div>Реббекка</div> 
+	</td> 
+</tr> 
+</table>  
+<br> 
+
+<div  class="gr_ex_type di_mix">
+<div class="gr-ex-testid"></div>
+<%
+ @phrases = [
+{:to_bild=> "I'm Rebbecca", :answer=>'Я Реббекка', :show=> 'Я Реббекка.'},
+{:to_bild=> "Are you Steve",:answer=>'Вы Стив', :show=> 'Вы Стив?'},
+{:to_bild=> "Are you Mr Brown?", :answer=>'Вы господин Браун', :show=> 'Вы господин Браун?'},
+{:to_bild=> "Are you Mrs Tyler", :answer=>'Вы госпожа Тайлер?', :show=> 'Вы госпожа Тайлер?'}
+ ]
+%>
+<%= render :partial => '/site/every/en_ru_pseudo', :locals => {:phrases => @phrases} %>
+
+</div>
+</div>
+</div> 
+<script type="text/javascript"> 
+	var di1 = new draginput_test( {
+		id: "di1", 
+		targets: "gext_task", 
+		in_targets: "input",
+		clear_option: true,
+		variant_elem: "di_variants div"
+
+		} )
+</script>
+
+
+<br><br><br><br>
+
+<h4 class="su-task">
+Task 2. Listen to the phrase and find it in the list.
+</h4>
+
+<%
+ @voc2 = [
+ {:text=> '<span>америк<span class="acco">а</span>нец</span>', :translate=> 'American (for a man)', :transcribe=>'amirik<span class="acct">a</span>nits', :sound=> '/audios/audio01022001.mp3'},
+ {:text=> '<span>америк<span class="acco">а</span>нка</span>', 
+  :transcribe=>'amirik<span class="acct">a</span>nka', 
+  :sound=> '/audios/audio01022002.mp3',
+  :translate=> 'American (for a man)'
+  },
+ {:text=> '<span>кан<span class="acco">а</span>дец</span>',
+  :sound=> '/audios/audio01022003.mp3', 
+  :transcribe=>'kan<span class="acct">a</span>dits', 
+  :translate=> 'Canadian (for a man)'
+  },
+ {:text=> '<span>кан<span class="acco">а</span>дка</span>',
+  :sound=> '/audios/audio01022004.mp3', 
+  :transcribe=>'kan<span class="acct">a</span>tka', 
+  :translate=> '<span style="white-space: nowrap">Canadian (for a woman)</span>' 
+  },
+ {:text=> '<span>англич<span class="acco">а</span>нин</span>',
+  :sound=> '/audios/audio01022005.mp3', 
+  :transcribe=>'anglich<span class="acct">a</span>nin', 
+  :translate=> 'Englishman' 
+  },
+ {:text=> 'англич<span class="acco">а</span>нка',
+  :sound=> '/audios/audio01022006.mp3', 
+  :transcribe=>'anglich<span class="acct">a</span>nka', 
+  :translate=> 'Englishwoman'
+  } 
+ ]
+%>
+<%= render :partial => '/site/every/en_ru_voc', :locals => {:voc => @voc2} %>	
+	
+<br><br>
+
+<div class="su-exerc">
+<p class="task">Translate phrases from English into Russian.</p> 
+<%
+ @phrases = [
+ 
+ {:sound=> '/audios/audio01022010.mp3', 
+  :translate=> 'I am a Canadian. (for a man)' 
+  },
+ {:sound=> '/audios/audio01022020.mp3', 
+  :translate=> 'I am an Englishman.'
+  },
+ {:sound=> '/audios/audio01022030.mp3', 
+  :translate=> 'I\'m an American. (for a man)'
+  },
+ {:sound=> '/audios/audio01022040.mp3', 
+  :translate=> 'I\'m an Englishwoman.'
+  },
+ {:sound=> '/audios/audio01022050.mp3', 
+  :translate=> 'I\'m an American. (for a woman)'
+  } 
+  
+ ]
+%>
+
+<%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>	
+
+
+</div>
+	
+	
+<br><br>
+
+
+
+<%
+ @voc3 = [
+ 
+ {:text=> 'из Великобрит<span class="acco">а</span>нии',
+  :sound=> '/audios/audio01023001.mp3', 
+  :transcribe=>'iz vilikabrit<span class="acct">a</span>ni', 
+  :translate=> 'from Great Britain' 
+  },
+ {:text=> 'из США',
+  :sound=> '/audios/audio01023002.mp3', 
+  :transcribe=>'is se she <span class="acct">a</span>', 
+  :translate=> 'from the USA' 
+  },
+ {:text=> 'из Кан<span class="acco">а</span>ды',
+  :sound=> '/audios/audio01023003.mp3', 
+  :transcribe=>'anglich<span class="acct">a</span>nka', 
+  :translate=> 'from Canada'
+  },
+ {:text=> 'из Австр<span class="acco">а</span>лии',
+  :sound=> '/audios/audio01023004.mp3', 
+  :transcribe=>'iz afstr<span class="acct">a</span>lii', 
+  :translate=> 'from Australia'
+  },
+ {:text=> 'из Росс<span class="acco">и</span><i></i>и',
+  :sound=> '/audios/audio01023005.mp3', 
+  :transcribe=>'iz rass<span class="acct">i</span>i', 
+  :translate=> 'from Russia'
+  }
+ ]
+%>
+<%= render :partial => '/site/every/en_ru_voc', :locals => {:voc => @voc3} %>	
+
+
+<br><br>
+
+<div class="su-exerc">
+<div id="di2">	
+				
+<p class="task">Перетащите слова в текстовое поле или напечатайте их.</p> 
+
+<br> 
+<table style="margin: 0 auto; border: 1px dashed #000; background-color: #fff" class="di_variants noselect" cellspacing="14" align="center" > 
+<tr> 
+	<td> 
+		<div> Я </div> 
+	</td> 
+	<td colspan="2"> 
+		<div>Великобритании</div> 
+	</td> 
+	<td> 
+		<div>США</div> 
+	</td> 
+</tr> 
+<tr> 
+	<td > 
+		<div> из </div> 
+	</td> 
+ 
+	<td> 
+		<div>Канады</div> 
+	</td> 
+	<td> 
+		<div>Австралии</div> 
+	</td> 
+	<td> 
+		<div>России</div> 
+	</td> 
+</tr> 
+</table>  
+<br> 
+ 
+
+
+<div  class="gr_ex_type di_mix">
+<div class="gr-ex-testid"></div>
+<%
+ @phrases = [
+{:to_bild=> "I'm from Russia.", :answer=>'Я из России', :show=> 'Я из России.'},
+{:to_bild=> "I'm from Great Britain.", :answer=>'я из Великобритании', :show=> 'Я из Великобритании.'},
+{:to_bild=> "I'm from Australia.", :answer=>'я из Австралии', :show=> 'Я из Австралии.'},
+{:to_bild=> "I'm from the USA.", :answer=>'Я из США', :show=> 'Я из США.'},
+{:to_bild=> "I'm an from Canada.", :answer=>'Я из Канады', :show=> 'Я из Канады.'}
+ ]
+%>
+<%= render :partial => '/site/every/en_ru_pseudo', :locals => {:phrases => @phrases} %>
+
+</div>
+</div>
+</div> 
+<script type="text/javascript"> 
+	var di2 = new draginput_test( {
+		id: "di2", 
+		targets: "gext_task", 
+		in_targets: "input",
+		clear_option: true,
+		variant_elem: "di_variants div"
+
+		} )
+</script>
+
+
+<br><br>
+
+
+
+<h4 class="su-task">
+Task 3. Listen to the phrase and find it in the list.
+</h4>
+
+<%
+ @voc = [
+
+ {:text=> 'п<span class="acco">а</span>спорт',
+  :sound=> '/audios/audio01030001.mp3', 
+  :transcribe=>'p<span class="acct">a</span>spart', 
+  :translate=> 'passport' 
+  },
+ {:text=> 'в<span class="acco">и</span>за',
+  :sound=> '/audios/audio01030002.mp3', 
+  :transcribe=>'v<span class="acct">i</span>za', 
+  :translate=> 'visa' 
+  },
+ {:text=> 'бил<span class="acco">е</span>т',
+  :sound=> '/audios/audio01030003.mp3', 
+  :transcribe=>'bi<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>t', 
+  :translate=> 'ticket'
+  },
+ {:text=> 'баг<span class="acco">а</span>ж',
+  :sound=> '/audios/audio01030004.mp3', 
+  :transcribe=>'bag<span class="acct">a</span>sh', 
+  :translate=> 'luggage'
+  },
+ {:text=> 'такс<span class="acco">и',
+  :sound=> '/audios/audio01030005.mp3', 
+  :transcribe=>'taks<span class="acct">i</span>', 
+  :translate=> 'taxi'
+  },
+ {:text=> 'авт<span class="acco">о</span>бус',
+  :sound=> '/audios/audio01030006.mp3', 
+  :transcribe=>'aft<span class="acct">o</span>boos', 
+  :translate=> 'bus'
+  },
+ {:text=> 'метр<span class="acco">о</span>',
+  :sound=> '/audios/audio01030007.mp3', 
+  :transcribe=>'mitr<span class="acct">o</span>', 
+  :translate=> 'subway'
+  },
+ {:text=> 'в<span class="acco">ы</span>ход',
+  :sound=> '/audios/audio01041001.mp3', 
+  :transcribe=>'v<span class="acct"><span class="ry">i</span></span>hat', 
+  :translate=> 'exit'
+  },
+ {:text=> 'вход',
+  :sound=> '/audios/audio01041002.mp3', 
+  :transcribe=>'fh<span class="acct">o</span>t', 
+  :translate=> 'entrance'
+  },
+ {:text=> 'бар',
+  :sound=> '/audios/audio01041003.mp3', 
+  :transcribe=>'b<span class="acct">a</span>r', 
+  :translate=> 'bar'
+  },
+ {:text=> 'каф<span class="acco">е</span>',
+  :sound=> '/audios/audio01041004.mp3', 
+  :transcribe=>'kaf<span class="acct">e</span>', 
+  :translate=> 'caf&#233;'
+  },
+ {:text=> 'туал<span class="acco">е</span>т',
+  :sound=> '/audios/audio01041005.mp3', 
+  :transcribe=>'tooa<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>t>', 
+  :translate=> 'W.C.'
+  },
+ {:text=> 'спр<span class="acco">а</span>вочная',
+  :sound=> '/audios/audio01041006.mp3', 
+  :transcribe=>'sp<span class="acct">a</span>vachnaya', 
+  :translate=> 'information office'
+  }
+
+ ]
+%>
+<%= render :partial => '/site/every/en_ru_voc', :locals => {:voc => @voc} %>	
+	
+<br><br><br><br>
+
+
+<div id="ch1" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test' %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		quest_num: 15,
+		variants_num: 5,
+		quest_type: 'audio',
+		basic_array: [
+		
+<% @last_item_index = (@voc.length)-1 -%>
+<% @voc.each_with_index  do |word, index| -%>
+['<%= word[:sound] %>', "<%= word[:translate].to_s.gsub(/"/,'\"') %>"]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
+		} )
+</script>
+
+
+
+
+<br><br><br><br>
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Next step >>" onclick="openNextStep(3)">
+</div>
+	
+	</div>
+</div>
+
+
+<div id="for_tab03" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Practice</h3>
+<p class="su-step-info">
+Here you can learn grammar and lexical rules of the lesson.
+</p>
+
+
+<h4 class="su-task">
+Task 1. Listen to the phrase and find it in the list.
+</h4>	
+	
+<div class="su-exerc">
+<p class="task">Translate phrases from English into Russian.</p>
+<%
+ @phrases = [
+ {:q_text=> 'Вы господ<span class="acco">и</span>н Сэм Блэк?',
+ :q_sound=>'/audios/audio01021011.mp3',
+ :q_transcribe=>'v<span class="acct"><span class="ry">i</span></span> gaspad<span class="acct">i</span>n s<span class="acct">e</span>m bl<span class="acct">e</span>k?',
+ :sound=> '/audios/audio01021012.mp3',  
+  },
+  {:q_text=> 'Вы госпож<span class="acco">а</span> М<span class="acco">э</span>рилин Блэк?',
+ :q_sound=>'/audios/audio01021021.mp3',
+ :q_transcribe=>'v<span class="acct"><span class="ry">i</span></span> gaspaj<span class="acct">a</span> m<span class="acct">e</span>rilin bl<span class="acct">e</span>k?',
+ :sound=> '/audios/audio01021022.mp3',  
+  },
+  {:q_text=> 'Вы Сэм Уайт?',
+ :q_sound=>'/audios/audio01021031.mp3',
+ :q_transcribe=>'v<span class="acct"><span class="ry">i</span></span> s<span class="acct">e</span>m oo<span class="acct">a</span>yt?',
+ :sound=> '/audios/audio01021032.mp3',  
+  },
+  {:q_text=> 'Вы Дж<span class="acco">и</span>на Грей?',
+ :q_sound=>'/audios/audio01021041.mp3',
+ :q_transcribe=>'v<span class="acct"><span class="ry">i</span></span> dj<span class="acct"><span class="ry">i</span></span>na gr<span class="acct">e</span>y?',
+ :sound=> '/audios/audio01021042.mp3',  
+  },
+  {:q_text=> 'Вы Л<span class="acco">и</span>нда Ст<span class="acco">о</span><i></i>ун?',
+ :q_sound=>'/audios/audio01021051.mp3',
+ :q_transcribe=>'v<span class="acct"><span class="ry">i</span></span> l<span class="acct">i</span>nda st<span class="acct">o</span>oon?',
+ :sound=> '/audios/audio01021052.mp3',  
+  }
+  
+ ]
+%>
+
+<%= render :partial => '/site/every/en_ru_oral_quest', :locals => {:phrases => @phrases} %>	
+</div>	
+	
+<h4 class="su-task">
+Task 2. Listen to the phrase and find it in the list.
+</h4>	
+	
+<div class="su-exerc">
+<p class="task">Translate phrases from English into Russian.</p>
+<%
+ @phrases = [
+ {:q_text=> '<span class="acco">Э</span>то такс<span class="acco">и</span>?',
+ :q_sound=>'/audios/audio01031011.mp3',
+ :q_transcribe=>'<span class="acct">e</span>ta taks<span class="acct">i</span>?',
+ :sound=> '/audios/audio01031012.mp3',  
+  },
+  {:q_text=> '<span class="acco">Э</span>то метр<span class="acco">о</span>?',
+ :q_sound=>'/audios/audio01031021.mp3',
+ :q_transcribe=>'<span class="acct">e</span>ta mitr<span class="acct">o</span>',
+ :sound=> '/audios/audio01031022.mp3',  
+  },
+  {:q_text=> '<span class="acco">Э</span>то баг<span class="acco">а</span>ж?',
+ :q_sound=>'/audios/audio01031031.mp3',
+ :q_transcribe=>'<span class="acct">e</span>ta bag<span class="acct">a</span>sh',
+ :sound=> '/audios/audio01031032.mp3',  
+  }
+  
+ ]
+%>
+
+<%= render :partial => '/site/every/en_ru_oral_quest', :locals => {:phrases => @phrases} %>	
+</div>	
+	
+<br><br>
+
+<div class="su-exerc">
+<p class="task">Translate phrases from English into Russian.</p>
+<%
+ @phrases = [
+ {:q_text=> '<span class="acco">Э</span>то Дж<span class="acco">о</span>н?  (Sam)',
+ :q_sound=>'/audios/audio01032011.mp3',
+ :q_transcribe=>'<span class="acct">e</span>ta dj<span class="acct">o</span>n?',
+ :sound=> '/audios/audio01032012.mp3',  
+  },
+  {:q_text=> '<span class="acco">Э</span>то в<span class="acco">и</span>за?  (passport)',
+ :q_sound=>'/audios/audio01032021.mp3',
+ :q_transcribe=>'<span class="acct">e</span>ta v<span class="acct">i</span>za?',
+ :sound=> '/audios/audio01032022.mp3',  
+  },
+  {:q_text=> '<span class="acco">Э</span>то бил<span class="acco">е</span>т? (visa)',
+ :q_sound=>'/audios/audio01032031.mp3',
+ :q_transcribe=>'<span class="acct">e</span>ta bi<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>t?',
+ :sound=> '/audios/audio01032032.mp3',  
+  }
+  
+ ]
+%>
+
+<%= render :partial => '/site/every/en_ru_oral_quest', :locals => {:phrases => @phrases} %>	
+</div>		
+
+
+
+
+
+<br><br><br><br>
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(4)">
+</div>	
+	
+<br><br><br><br><br><br><br>
+	
+	</div>
+</div>
+
+
+
+
+<div id="for_tab04" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Упражнения</h3>
+<p class="su-step-info">
+Here you can do exercises for Russian grammar and lexical material of the lesson.
+</p>	
+	
+<h4 class="su-task"> 
+Task 1. Revise the information about Russian grammar and complete the test
+</h4> 
+ 
+<div class="su-exerc"> 
+ 
+<div class="task">Choose an answer to the following questions:</div> 
+ 
+<div  class="gr_ex_variants"> 
+<div class="gr-ex-testid">c1108052.5.2</div> 
+ 
+ 
+<div  class="gr_ex_variants_wrap "> 
+<table class="gr_ex_vars_tab gexv_options" cellpadding="0" cellspacing="0" border="0"> 
+	<tr> 
+		<td> 
+			<div class="gexv_task gexv_sign"> 
+				1. In Russian sentences, the subject and the verb can not change their place, their position is fixed.
+			</div> 
+			<div class="gexv_variant"><input type="checkbox"> True</div> 
+			<div class="gexv_variant" ><input type="checkbox" class="ok"> False</div> 
+		</td> 
+	</tr> 
+	<tr> 
+		<td> 
+			<div class="gexv_task gexv_sign"> 
+				2. The presence of the verb is not always required in Russian sentences.
+			</div> 
+			<div class="gexv_variant"><input type="checkbox" class="ok"> True</div> 
+			<div class="gexv_variant"><input type="checkbox" > False</div>
+		</td> 
+	</tr> 
+	<tr> 
+		<td> 
+			<div class="gexv_task gexv_sign"> 
+				 3. The Russian equivalent to the English article "a" is the word тот:
+			</div> 
+			<div class="gexv_variant" ><input type="checkbox"> True</div> 
+			<div class="gexv_variant"><input type="checkbox" class="ok"> False</div>
+		</td> 
+	</tr> 
+	<tr> 
+		<td> 
+			<div class="gexv_task gexv_sign"> 
+				  4. In Russian, there are no alternative questions.
+			</div> 
+			<div class="gexv_variant"><input type="checkbox"> True</div> 
+			<div class="gexv_variant"><input type="checkbox"  class="ok"> False</div> 
+		</td> 
+	</tr> 
+ 
+	<tr> 
+ 
+		<td> 
+			<div class="gexv_task gexv_sign"> 
+				  5. The question Как дела? is a :
+			</div> 
+			<div class="gexv_variant"><input type="checkbox"> simple question</div> 
+			<div class="gexv_variant"><input type="checkbox" class="ok"> special question</div>
+		</td> 
+	</tr> 
+	
+	<tr> 
+ 
+		<td> 
+			<div class="gexv_task gexv_sign"> 
+				  6. The subject should always be present in Russian simple questions.
+			</div> 
+			<div class="gexv_variant"><input type="checkbox"> True</div> 
+			<div class="gexv_variant"><input type="checkbox"  class="ok"> False</div> 
+		</td> 
+	</tr> 
+	
+	<tr> 
+ 
+		<td> 
+			<div class="gexv_task gexv_sign"> 
+				  7. The word что is used in Russian special questions:
+			</div> 
+			<div class="gexv_variant"><input type="checkbox" class="ok"> True</div> 
+			<div class="gexv_variant"><input type="checkbox" > False</div> 
+		</td> 
+	</tr> 
+	
+	<tr> 
+ 
+		<td> 
+			<div class="gexv_task gexv_sign"> 
+				  8. To answer an alternative Russian question, the word да is often used in Russian.
+			</div> 
+			<div class="gexv_variant"><input type="checkbox"> True</div> 
+			<div class="gexv_variant"><input type="checkbox"  class="ok"> False</div> 
+		</td> 
+	</tr> 
+ 
+</table> 
+</div> 
+ 
+<p class="gexv_check es-ex-buttons gex-es-btn"> 
+ 
+<input type="button" value="Check answers"></p> 
+ 
+</div> 
+</div> <!-- end of su-ex  --> 
+ 
+ 
+
+<br><br><br><br>
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Next step >>" onclick="openNextStep(5)">
+</div>
+
+
+	</div>
+</div>
+<div id="for_tab05" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Practice</h3>
+<p class="su-step-info">
+Here you can revise and practise what you've just learned.
+</p>	
+	
+
+<h4 class="su-task">
+Task 1. Choose an appropriate answer to the greetings. 
+</h4>
+
+<div id="ds2" class="ds-wrapper" style="padding: 15px;">
+
+<p class="task" align="center">Drag the phrases from the list and click "Check" button</p>		
+
+<table align="center" style="margin: 0 auto;">
+
+<tr>
+<td>
+
+
+<table class="dst-test ds-table ds-audio" cellspacing="0" align="left" style="margin: auto">
+<col width="140">
+<col width="20">
+<col width="40">
+<col width="200">
+<tr>
+	<td class="ds-quest" align="center">
+			Здравствуйте! 
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/en/course/soundc1002.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+			Привет!
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/en/course/soundc1006.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Как поживаете?
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Как дела? Нормально? 
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/sounds/en/course/soundc1001.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+
+<td>
+
+	
+<br>
+<br>
+
+<table class="ds_variants_list" width="100%">
+<tr valign="top">
+<td>
+
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>Спасибо, хорошо.</div></div>
+	</li>
+
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Да.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">4</span>Привет!</div></div>
+	</li>
+</ul>
+
+</td>
+<td>
+
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">0</span>Добрый день.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>До свидания!</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">0</span>Удачи!</div></div>
+	</li>
+</ul>
+
+</td>
+</tr>
+</table>
+
+
+
+</td>
+</tr>
+</table>
+
+
+<div class="es_btn_wrapper es-ex-buttons ds-check-wrapper">
+
+<input type="button" class="es_btn ds-check-button" value="Check answers">
+
+</div>
+
+
+</div>
+
+<script type="text/javascript"> 
+	var ds2 = new dragsort_test( {
+		id: "ds2", 
+		test_id: "c1101051.5.1",
+		targets: "ds-answer", 
+		answer_elem: "ds_sort_item", 
+		variant_elem: "ds_variant",
+		answer_color: "#F6FAFF",
+		auto_check: false
+		} )
+</script>	
+	
+	
+	
+<br><br><br><br>
+
+<h4 class="su-task"> 
+Task 2. Read the dialogue and answer the questions.
+</h4> 
+ 
+<div class="su-present"> 
+<div class="su-present-brd"> 
+<table cellspacing="0" class="su-no-tr-act">	
+	<tr> 
+		<td class="su-pres-orig"> 
+			<p style="line-height: 24px;">
+- Добрый день, Мария.<br>
+- Здраствуйте, Александр.<br>
+- Как у Вас дела?<br>
+- Прекрасно! А как Вы поживаете?<br>
+- Спасибо, хорошо.</p> <br>
+		</td> 
+	</tr> 
+</table>	
+</div>	
+</div> 
+
+
+<div class="su-exerc"> 
+ 
+<div class="task">Choose an answer to the following questions:</div> 
+ 
+<div  class="gr_ex_variants"> 
+<div class="gr-ex-testid">c1108052.5.2</div> 
+ 
+ 
+<div  class="gr_ex_variants_wrap "> 
+<table class="gr_ex_vars_tab gexv_options" cellpadding="0" cellspacing="0" border="0"> 
+	<tr> 
+		<td> 
+			<div class="gexv_task gexv_sign"> 
+				1. Alexander greets Maria.
+			</div> 
+			<div class="gexv_variant"><input type="checkbox" class="ok"> True</div> 
+			<div class="gexv_variant" ><input type="checkbox" > False</div> 
+		</td> 
+	</tr> 
+	<tr> 
+		<td> 
+			<div class="gexv_task gexv_sign"> 
+				2.  It's Alexander who has seen Maria first.
+			</div> 
+			<div class="gexv_variant"><input type="checkbox" class="ok"> True</div> 
+			<div class="gexv_variant"><input type="checkbox" > False</div>
+		</td> 
+	</tr> 
+	<tr> 
+		<td> 
+			<div class="gexv_task gexv_sign"> 
+				 3. Alexander and Maria are close freinds.
+			</div> 
+			<div class="gexv_variant" ><input type="checkbox"> True</div> 
+			<div class="gexv_variant"><input type="checkbox" class="ok"> False</div>
+		</td> 
+	</tr> 
+	<tr> 
+		<td> 
+			<div class="gexv_task gexv_sign"> 
+				  4. Maria is dooing well.
+			</div> 
+			<div class="gexv_variant"><input type="checkbox" class="ok"> True</div> 
+			<div class="gexv_variant"><input type="checkbox"  > False</div> 
+		</td> 
+	</tr> 
+  
+</table> 
+</div> 
+ 
+<p class="gexv_check es-ex-buttons gex-es-btn"> 
+ 
+<input type="button" value="Check answers"></p> 
+ 
+</div> 
+</div> <!-- end of su-ex  --> 
+
+
+
+	
+	<br><br><br><br>
+
+
+
+	</div>
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+currentSection="course";
+</script>

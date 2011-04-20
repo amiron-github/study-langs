@@ -1,0 +1,15 @@
+<table cellspacing="8">
+<% phrases.each_with_index do |phrase, index| %>
+<tr>
+	<td><%= index+1 %>. <%= phrase[:translate]%></td>
+	<td>
+		<table class="ds-table" cellspacing="0" align="center"> 
+			<tr> 
+				<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap"><strong>Check yourself</strong></td> 
+				<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('<%= phrase[:sound] %>', this)"></div></td> 
+			</tr> 
+		</table>
+	</td>
+</tr>
+<% end %>
+</table>

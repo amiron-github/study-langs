@@ -59,13 +59,13 @@
 					</h1>
 					<div class="t-top-panel">
 
-<!-- div class="t-sign-in">
+<div class="t-sign-in">
 <% if logged_in?%>
 <a href="/user_profile.html" class="t-un" title="Profile"><%= current_user.email %></a> | <span class="t-out"><%= link_to "Sign Out",{:controller => 'sessions', :action => 'destroy'} %></span>
 <%else%>
 <%= link_to "Sign in",{:controller => 'sessions', :action => 'new'} %> | <%= link_to "Registration",{:controller => 'users', :action => 'new'} %>
 <%end%>
-</div -->
+</div>
 <% unless @no_search %>			
 <div class="t-search-bar">	
 <form action="/search.html" id="cse-search-box">

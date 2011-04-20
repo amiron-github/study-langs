@@ -1,0 +1,43 @@
+<br><br>
+<div class="voc-wordlist">
+<table class="voc_bord" align="center" cellspacing="0">
+<tr>
+<td>
+
+<table style="width: 400px" class="diction" cellpadding="0" cellspacing="0" align="center">
+<col width="50%"><col width="50%">
+<thead>
+<tr>
+	<td> <div class="trans-display-wrapper"><input type="checkbox" class="trans-display" /> Transcription </div> </td>
+	<td></td>
+</tr>
+</thead>
+<tbody>
+
+<% voc.each_with_index do |word, index| %>
+
+<tr class="trow">
+    <td class="original" valign="top">
+	<%unless word[:sound] == nil %><div class="jp_control" onclick="cJplayer('<%= word[:sound] %>', this)"></div><%end%>
+	<%unless word[:text] == nil %><%= word[:text] %><%end%>
+	<div class="ru-transcript">[<% unless word[:transcribe] == nil %><%= word[:transcribe] %><%end%>]</div>
+    </td>
+    <td class="translation" valign="top"><%unless word[:translate] == nil %><%= word[:translate] %><%end%>
+    </td>
+</tr>
+
+<%end%>
+
+</tbody>
+<tfoot>
+<tr>
+	<td></td>
+	<td></td>
+</tr>
+</tfoot>  
+</table>
+
+</td>
+</tr>
+</table>
+</div><!-- end of voc-wordlist-->
