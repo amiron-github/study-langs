@@ -1,0 +1,20 @@
+
+
+<div class="su-present">
+<div class="su-present-brd">
+<table cellspacing="0">
+
+<% voc.each_with_index do |word, index|-%>
+
+	<tr valign="top">
+		<td valign="middle" class="su-pres-audio"><%unless word[:sound] == ''%><div class="jp_control" onclick="cJplayer('<%= word[:sound] %>', this)"></div><%end%></td>
+		<td class="su-pres-orig">
+			<%= word[:text] %>
+			<div class="ru-transcript" style="disp-lay: none; font-weight: normal; font-size: 0.8em">[<%= word[:transcribe] %>]</div>
+		</td>
+		<td class="su-pres-trans"><%= word[:translate] %></td>
+	</tr>
+<%end%>
+</table>	
+</div>	
+</div>

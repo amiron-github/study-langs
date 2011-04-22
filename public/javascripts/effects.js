@@ -1133,6 +1133,49 @@ $("body").prepend('<div id="gv" style="position: absolute; top: 0; left: 0; max-
 
 }
 
+
+
+function getTrans(id) {
+
+$("#gv").remove()
+$("body").prepend('<div id="gv" style="position: absolute; top: 0; left: 0; max-wi-dth: 900px; z-index: 10000; background-color: #efefef; text-align: left; padding: 30px"></div>');
+	$("#"+id).find("tr").not("tr:first").each( function(i,elem) {
+		$("#gv").append('<div id="gv_'+i+'"></div>');
+		var tHtml = $(elem).find("td:eq(2)").html();
+		var rE = new RegExp("playAudio\\('[0-9a-zA-Z/]+\\.mp3","g");
+		var mp3 = tHtml.match(rE);
+		$('#gv_'+i).text(""+mp3+"")
+		var sound = $('#gv_'+i).text().replace(/playAudio\('/,"")
+		$('#gv_'+i).empty()
+                var tElemP = $(elem).find("td.qa_task p")
+   if ($(elem).find("td.qa_task p span.sound").length > 0 ) {
+                tElemP.find("span.sound").find("span.play_tip").remove();
+                var q_transcribe = tElemP.find("span.sound").html().replace(/&nbsp;/g,'').replace('[','').replace(']','');
+
+                var rE = new RegExp("playAudio\\('[0-9a-zA-Z/]+\\.mp3","g");
+		var q_mp3 = tElemP.html().match(rE);
+		$('#gv_'+i).text(""+q_mp3+"")
+		var q_sound = $('#gv_'+i).text().replace(/playAudio\('/,"")
+		$('#gv_'+i).empty()
+                tElemP.find("span.sound").remove()
+                var q_text = tElemP.html().replace("<br>","").replace("<br/>","");
+$('#gv_'+i).append('<div class="te"><div>'); $('#gv_'+i).find("div.te").text("{:q_text=>'"+q_text+"',");
+$('#gv_'+i).append('<div class="qs"><div>'); $('#gv_'+i).find("div.qs").text(":q_sound=>'"+q_sound+"',"); 
+$('#gv_'+i).append('<div class="trans"><div>'); $('#gv_'+i).find("div.trans").text(":q_transcribe=>'"+q_transcribe+"',");
+$('#gv_'+i).append('<div class="snd"><div>'); $('#gv_'+i).find("div.snd").text(":sound=>'/audios/"+sound+"'},")
+                } else {
+                    var q_text = tElemP.html();
+$('#gv_'+i).append('<div class="te"><div>'); $('#gv_'+i).find("div.te").text("{:q_text=>'"+q_text+"',")
+$('#gv_'+i).append('<div class="snd"><div>'); $('#gv_'+i).find("div.snd").text(":sound=>'/audios/"+sound+"'},")
+
+                }
+});
+
+}
+
+
+
+
 function getVocSounds() {
 
 $("body").prepend('<div id="gv" style="position: absolute; top: 0; left: 0; max-width: 900px; z-index: 10000; background-color: #efefef; text-align: left; padding: 30px"></div>');

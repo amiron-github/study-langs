@@ -1,0 +1,58 @@
+
+<table align="center" style="margin: 0 auto;">
+<tr>
+<td>
+
+<table class="dst-test ds-table ds-audio" cellspacing="0" align="left" style="margin: auto">
+<col width="80">
+<col width="20">
+<col width="40">
+<col width="250">
+
+<% t_phrases.each_with_index do |word, index| %>
+<tr>
+	<td class="ds-quest" align="right" style="padding: 2px 3px 2px 10px;">
+			 <span style="font-size: 12px">Phrase <%= index+1 %></span>
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('<%= word[:sound] %>', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer" >
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<% end %>
+</table>
+
+</td>
+</tr><tr>
+<td>
+<br><br>
+<table class="ds_variants_list" width="100%">
+<tr valign="top">
+<td>
+<ul class="no-list ds-options-wrap">
+
+<% t_phrases = t_phrases.sort_by {rand} %>
+<% t_phrases.each_with_index do |word, index| %>
+	<li> 
+		<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt"><%= word[:answer] %></span><%= word[:text] %></div></div>
+	</li>
+<% end %>
+</ul>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<div class="es_btn_wrapper es-ex-buttons ds-check-wrapper">
+<input type="button" class="es_btn ds-check-button" value="Check">
+</div>
