@@ -21,9 +21,9 @@ set :rails_env, "production"
 
 #set :user, "studylanguagesonline"
 #set :runner, "studylanguagesonline"
-set :user, "root"
-set :runner, "root"
-set :domain, "216.157.29.138"
+set :user, "sshadmin"
+set :runner, "sshadmin"
+set :domain, "184.107.74.178"
 server domain, :app, :web
 role :db, domain, :primary => true
 
