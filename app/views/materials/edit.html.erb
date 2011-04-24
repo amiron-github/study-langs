@@ -36,9 +36,8 @@ width: 100%;
 min-width: 130px;
 }
 
-
-
 </style>
+<%= Material.find(164).js_css %>
 <script type="text/javascript">
 
 $(function() {
@@ -108,9 +107,9 @@ $(function() {
    
 <div id="tabs-1" class="ui-tab"> 
   <div class="m-body-wrap">
-    <%= f.label :content %>  
-<br />
-    
+	<% edit_bar = Material.find(164).body %>
+	<%=  edit_bar %>
+	
 	<%= f.text_area :body, :rows=>20, :id=>"text_editor" %>
   </div>
 </div>

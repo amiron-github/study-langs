@@ -236,7 +236,7 @@
 		</td>
 		
 		
-
+<% if logged_in? %>
 		<td class="desc-unit">
 			<h4>Popular pages</h4>
 			<div class="in-desc">
@@ -269,9 +269,9 @@
 			</div>
 		</td>
 		
-<% if logged_in? %>
+
 <%else%>
-		<!-- td class="desc-unit">
+		<td class="desc-unit">
 			<h4>Join our website</h4>
 			<div class="in-desc">
 			<p>
@@ -284,7 +284,7 @@
 				<a href="/login" class="btn-like btn-login">Sign in »</a>
 			</div>
 			</div>
-		</td -->
+		</td>
 <%end%>		
 	</tr>
 	<tr>

@@ -128,6 +128,14 @@ function editWrapWith(el) {
 	findAndWrapInEditor($("#text_editor"), start, end)
 }
 
+function editReplaceWith(el) {
+	var selection = $("#text_editor").getSelection()
+	var newT = $(el).find(".edwr").attr("title");
+	var startOn = selection.start+newT.length;
+	$("#text_editor").replaceSelection(newT, true)
+	edSetCaretPosition ($("#text_editor").get(0), startOn)
+}
+
 
 
 
