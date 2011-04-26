@@ -165,7 +165,11 @@ private
 		layout = 'application'
 		case layout_lang 
 			when 'fr'
-			 layout =  'fr_application.rhtml'
+				if add_lang == 'en'
+					layout =  'fr_en_application.rhtml'
+				elsif add_lang == 'ru'
+					layout =  'fr_ru_application.rhtml'
+				end
 			when 'ru'
 				if add_lang == 'en'
 					layout =  'ru_en_application.rhtml'

@@ -9,14 +9,6 @@ class SiteController < ApplicationController
     layout = 'comment_audios.html.erb' if @file.match(/\/comments_audio\//)
 	layout = 'grammar_comments.html.erb' if @file.match(/\/grammar_comments\//)
 	
-	if @file.match(/\/fr\//)
-		@file = '/fr/index.html' if @file == '/fr/'
-		layout = 'fr_application.rhtml'
-	end
-	
-	if @file.match(/\/newd\//)
-		layout = 'new.rhtml'
-	end
 	
 	if @file.match(/\/ru\//)  
 		@file = '/ru/jp/index.html' if @file == '/ru/jp/'
@@ -33,6 +25,16 @@ class SiteController < ApplicationController
 			layout = 'ru_application.rhtml'
 		end
 	end
+	
+	if @file.match(/\/fr\/ru\//)
+		@file = '/fr/ru/index.html' if @file == '/fr/ru/'
+		layout = 'fr_ru_application.rhtml'
+	end
+	
+	if @file.match(/\/newd\//)
+		layout = 'new.rhtml'
+	end
+	
 	if logged_in?
 		@no_ad = true
 	end

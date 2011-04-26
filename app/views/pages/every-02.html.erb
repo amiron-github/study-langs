@@ -698,156 +698,264 @@ Task 3. Read the following expressions
 <%= render :partial => '/site/every/en_ru_model', :locals => {:voc => @voc} %>
 
 
+<br><br>
 
+<div class="su-exerc">
+<div id="di2">	
+				
+<p class="task">Перетащите слова в текстовое поле или напечатайте их.</p> 
 
-
-<h4 class="su-task">
-Task 2. Listen to the phrases and find out where the speaking person is from:
-</h4>
-
-<div id="ds2" class="ds-wrapper" style="padding: 15px;">
-
-<p class="task" align="center">Drag and drop the flags and press "Check answers" </p>		
-
-<table align="center" style="margin: 0 auto;">
+<br> 
+<table style="margin: 0 auto; border: 1px dashed #000; background-color: #fff" class="di_variants noselect" cellspacing="14" align="center" > 
 
 <tr>
-<td>
+	<td colspan="2">
+		<div>Сколько</div>
+	</td>
+	<td>
+		<div>стоит</div>
+	</td>
+	<td >
+		<div>троллейбусе</div>
+	</td>
+	<td>
+		<div>такси</div>
+	</td>
+</tr>
+<tr>
+	<td>
+		<div>на </div>
+	</td>
+	<td>
+		<div>метро</div>
+	</td>
+	<td>
+		<div>проезд</div>
+	</td>
+	<td>
+		<div>автобусе</div>
+	</td>
+	<td>
+		<div>трамвае</div>
+	</td>
+
+</tr>
+</table>  
+<br> 
+ 
 
 
-<table class="dst-test ds-table ds-audio" cellspacing="0" align="left" style="margin: auto">
-<col width="100">
-<col width="20">
-<col width="40">
-<col width="100">
-
-
-
-<% 
-
-@t_images = [
-  {:text=> 'АУС',
- :sound=>'/audios/audio01023006.mp3',
- :image=> '/images/aus.gif',
- :answer=> '1',
-  },
- {:text=> 'ГБ',
- :sound=>'/audios/audio01023007.mp3',
- :image=> '/images/gb.gif', 
- :answer=> '2', 
-  },
- {:text=> 'КА',
- :sound=>'/audios/audio01023008.mp3',
- :image=> '/images/ca.gif',
- :answer=> '3', 
-  },
- {:text=> 'РУ',
- :sound=>'/audios/audio01023009.mp3',
- :image=> '/images/ru.gif',
- :answer=> '4', 
-  },
- {:text=> 'ЮСА',
- :sound=>'/audios/audio010230095.mp3',
- :image=> '/images/usa.gif',  
- :answer=> '5',
-  }  
+<div  class="gr_ex_type di_mix">
+<div class="gr-ex-testid"></div>
+<%
+ @phrases = [
+{:to_bild=> "How much is the fare by underground?", 
+:answer=>'Сколько стоит проезд на метро', 
+:show=> 'Сколько стоит проезд на метро?', 
+:sound=>'/audios/audio02062010.mp3'},
+{:to_bild=> "How much is the fare by taxi?", 
+:answer=>'Сколько стоит проезд на такси', 
+:show=> 'Сколько стоит проезд на такси?', 
+:sound=>'/audios/audio02062020.mp3'},
+{:to_bild=> "How much is the fare by bus?", 
+:answer=>'Сколько стоит проезд на автобусе', 
+:show=> 'Сколько стоит проезд на автобусе?', 
+:sound=>'/audios/audio02062030.mp3'},
+{:to_bild=> "How much is the fare by tram?", 
+:answer=>'Сколько стоит проезд на трамвае', 
+:show=> 'Сколько стоит проезд на трамвае?', 
+:sound=>'/audios/audio02062040.mp3'},
+{:to_bild=> "How much is the fare by trolley?", 
+:answer=>'Сколько стоит проезд на троллейбусе', 
+:show=> 'Сколько стоит проезд на троллейбусе?', 
+:sound=>'/audios/audio02062050.mp3'}
  ]
-
 %>
-
-
-
-<% @t_images.each_with_index do |word, index| %>
-<tr>
-	<td class="ds-quest" align="right" height="55" style="padding: 2px 3px 2px 10px;">
-			 <span style="font-size: 12px">Person <%= index+1 %></span>
-	</td>
-	<td class="ds-audio-listen" align="center">
-			<div class="jp_control" onclick="cJplayer('<%= word[:sound] %>', this)"></div>
-	</td>
-	<td class="ds-audio-correctness">
-		<div class="ds-sign"></div>
-	</td>
-	<td class="ds-answer" >
-		<div class="ds_sort_item">
-			&nbsp;
-		</div>
-	</td>
-</tr>
-<% end %>
-</table>
-</td>
-<td style="padding-left: 20px;">
-
-<table class="ds_variants_list" width="100%">
-<tr valign="top">
-<td>
-<ul class="no-list ds-options-wrap">
-
-<% @t_images = @t_images.sort_by {rand} %>
-<% @t_images.each_with_index do |word, index| %>
-	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt"><%= word[:answer] %></span><img  src="<%= word[:image] %>"></div></div>
-	</li>
-<% end %>
-</ul>
-</td>
-</tr>
-</table>
-
-</td>
-</tr>
-</table>
-
-<div class="es_btn_wrapper es-ex-buttons ds-check-wrapper">
-<input type="button" class="es_btn ds-check-button" value="Проверить">
+<%= render :partial => '/site/every/en_ru_pseudo', :locals => {:phrases => @phrases} %>
 
 </div>
-
-
 </div>
-
+</div> 
 <script type="text/javascript"> 
-	var ds2 = new dragsort_test( {
-		id: "ds2", 			
-		targets: "ds-answer",	
-		answer_elem: "ds_sort_item", 
-		variant_elem: "ds_variant",
-		answer_color: "#F6FAFF",
-		auto_check: false
+	var di2 = new draginput_test( {
+		id: "di2", 
+		targets: "gext_task", 
+		in_targets: "input",
+		clear_option: true,
+		variant_elem: "di_variants div"
+
 		} )
 </script>
+
+
+<br><br>
+
+
 
 	
 <h4 class="su-task">
 Task 2. Listen to the phrase and find it in the list.
 </h4>	
-	
-<div class="su-exerc">
-<p class="task">Translate phrases from English into Russian.</p>
-<%
- @phrases = [
- {:q_text=> '<span class="acco">Э</span>то такс<span class="acco">и</span>?',
- :q_sound=>'/audios/audio01031011.mp3',
- :q_transcribe=>'<span class="acct">e</span>ta taks<span class="acct">i</span>?',
- :sound=> '/audios/audio01031012.mp3',  
-  },
-  {:q_text=> '<span class="acco">Э</span>то метр<span class="acco">о</span>?',
- :q_sound=>'/audios/audio01031021.mp3',
- :q_transcribe=>'<span class="acct">e</span>ta mitr<span class="acct">o</span>',
- :sound=> '/audios/audio01031022.mp3',  
-  },
-  {:q_text=> '<span class="acco">Э</span>то баг<span class="acco">а</span>ж?',
- :q_sound=>'/audios/audio01031031.mp3',
- :q_transcribe=>'<span class="acct">e</span>ta bag<span class="acct">a</span>sh',
- :sound=> '/audios/audio01031032.mp3',  
-  }
-  
- ]
-%>
 
-<%= render :partial => '/site/every/en_ru_oral_quest', :locals => {:phrases => @phrases} %>	
-</div>	
+
+<div class="egdiv"> 
+<h4>Model:</h4>
+<table  cellspacing="0" style="margin: 0 15px;">      
+	<tr valign="top">
+		 <td><div><span class="acco">Э</span>то вокз<span class="acco">а</span>л?<br />
+		 		<span class="sound" onclick="playAudio('audio02032001.mp3')">[<span class="acct">e</span>ta vagz<span class="acct">a</span>l?] <span class="play_tip">&nbsp; &nbsp;</span></span>
+		 		</div>
+
+		 </td>
+         <td>-</td>
+		 <td>
+		 	<div>Да, <span class="acco">э</span>то вокз<span class="acco">а</span>л.<br />
+		 		<span class="sound" onclick="playAudio('audio02032002.mp3')">[d<span class="acct">a</span>, <span class="acct">e</span>ta vagz<span class="acct">a</span>l] <span class="play_tip">&nbsp; &nbsp;</span></span>
+
+		 	</div>
+		 </td>
+		 <td>
+		 	<div>(Нет, <span class="acco">э</span>то аэроп<span class="acco">о</span>рт.)<br />
+		 		<span class="sound" onclick="playAudio('audio02032003.mp3')">[<span class="sftv">n</span><span class="sfty">y</span><span class="acct">e</span>t, <span class="acct">e</span>ta airap<span class="acct">o</span>rt] <span class="play_tip">&nbsp; &nbsp;</span></span>
+
+		 	</div>
+		 </td>
+	</tr>
+	<tr valign="top">
+
+		 <td width="180">
+		 <div class="bold">Is it a ralway station?</div></td>
+         <td width="30"><div>-</div>
+         </td>
+		 <td><div class="bold">Yes, it is a ralway station.<br /></div></td>
+		 <td><div class="bold">(No, it is an airport)<br /></div></td>
+	</tr>
+</table>
+</div>
+
+
+
+
+
+<div class="su-exerc">
+
+
+<img src="images/street.jpg" style="display: block; width: 135px; height: 86px; margin-bottom: 10px;"/>
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+
+			<td width="200">
+				<p><span class="acco">Э</span>то вокз<span class="acco">а</span>л? -  ...  <br />
+					<span class="sound" onclick="playAudio('audio02032011.mp3')">[<span class="acct">e</span>ta vagz<span class="acct">a</span>l?] <span class="play_tip">&nbsp; &nbsp;</span></span>
+				</p>
+
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio02032012.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+			</td>
+
+	</tr>
+</table>
+
+<div style="border-top: 1px dotted #666"></div>
+<br>
+<img src="images/airport.jpg" style="display: block; width: 135px; height: 86px; margin-bottom: 10px;" />
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="200">
+				<p><span class="acco">Э</span>то аэроп<span class="acco">о</span>рт? -  ... <br />
+					<span class="sound" onclick="playAudio('audio02032021.mp3')">[<span class="acct">e</span>ta airap<span class="acct">o</span>rt?] <span class="play_tip">&nbsp; &nbsp;</span></span>
+
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio02032022.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+
+			</td>
+	</tr>
+</table>
+<div style="border-top: 1px dotted #666"></div>
+<br>
+<img src="images/square.jpg" style="display: block; width: 135px; height: 86px; margin-bottom: 10px;" />
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="200">
+				<p><span class="acco">Э</span>то <span class="acco">у</span>лица? -  ... <br />
+
+					<span class="sound" onclick="playAudio('audio02032031.mp3')">[<span class="acct">e</span>ta <span class="acct">oo</span>litsa?] <span class="play_tip">&nbsp; &nbsp;</span></span>
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+
+						<div class="sound"  onclick="playAudio('audio02032032.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+			</td>
+	</tr>
+</table>
+<div style="border-top: 1px dotted #666"></div>
+<br>
+<img src="images/hotel.jpg" style="display: block; width: 135px; height: 86px; margin-bottom: 10px;" />
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+
+			<td width="200">
+				<p><span class="acco">Э</span>то гост<span class="acco">и</span>ница? -  ... <br />
+					<span class="sound" onclick="playAudio('audio02032041.mp3')">[<span class="acct">e</span>ta gast<span class="acct">i</span>nitsa?] <span class="play_tip">&nbsp; &nbsp;</span></span>
+				</p>
+
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio02032042.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+			</td>
+
+	</tr>
+</table>
+<div style="border-top: 1px dotted #666"></div>
+<br>
+<img src="images/station.jpg" style="display: block; width: 135px; height: 86px; margin-bottom: 10px;" />
+<table class="tab1 inter"  cellspacing="0" >
+	<tr valign="top">
+			<td width="200">
+				<p><span class="acco">Э</span>то вокз<span class="acco">а</span>л? -  ... <br />
+					<span class="sound" onclick="playAudio('audio02032051.mp3')">[<span class="acct">e</span>ta vagz<span class="acct">a</span>l?] <span class="play_tip">&nbsp; &nbsp;</span></span>
+
+				</p>
+			</td>
+			<td>
+				<div class="key check">
+					<div>
+						<div class="sound"  onclick="playAudio('audio02032052.mp3')">Check&nbsp;yourself</div>
+					</div>
+				</div>
+
+			</td>
+	</tr>
+</table>
+
+
+
+
+
+
+
+
+</div>
+
 	
 <br><br>
 
