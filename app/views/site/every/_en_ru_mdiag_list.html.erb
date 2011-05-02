@@ -1,0 +1,20 @@
+
+
+
+<table cellspacing="5">
+	<tr valign="top">
+<% mini_d.each_with_index do |diag, index|-%>
+
+		<td valign="middle" class="su-pres-audio">
+		<table class="ds-table" cellspacing="0" align="center"> 
+			<tr> 
+				<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap"><strong>Dialog <%= index+1%></strong></td> 
+				<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('<%= diag[:sound] %>', this)"></div></td> 
+			</tr> 
+		</table>
+		
+		</td>
+
+<%end%>
+		</tr>
+</table>	

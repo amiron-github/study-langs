@@ -522,6 +522,109 @@ Task 3. Learn Russian numerals.
 <br><br><br><br>
 
 
+<%
+ @voc = [
+
+{:text=>'1 (одн<span class="acco">а</span>) остан<span class="acco">о</span>вка',
+:sound=>'/audios/audio02071201.mp3',
+:transcribe=>'adn<span class="acct">a</span> astan<span class="acct">o</span>fka',
+:translate=>' one stop '},
+{:text=>'2 (две) остан<span class="acco">о</span>вки',
+:sound=>'/audios/audio02071202.mp3',
+:transcribe=>'d<span class="sftv">v</span><span class="sfty">y</span><span class="acct">e</span> astan<span class="acct">o</span>fki',
+:translate=>' two stops '},
+{:text=>'3 (три) остан<span class="acco">о</span>вки',
+:sound=>'/audios/audio02071203.mp3',
+:transcribe=>'tr<span class="acct">i</span> astan<span class="acct">o</span>fki',
+:translate=>' three stops '},
+{:text=>'4 (чет<span class="acco">ы</span>ре) остан<span class="acco">о</span>вки',
+:sound=>'/audios/audio02071204.mp3',
+:transcribe=>'chit<span class="acct"><span class="ry">i</span></span>ri astan<span class="acct">o</span>fki',
+:translate=>' four stops '},
+{:text=>'5 (пять) остан<span class="acco">о</span>вок',
+:sound=>'/audios/audio02071205.mp3',
+:transcribe=>'<span class="sftv">p</span><span class="sfty">y</span><span class="acct">a</span><span class="sftc">t</span> astan<span class="acct">o</span>vak',
+:translate=>' five stops '},
+{:text=>'6 (шесть) остан<span class="acco">о</span>вок',
+:sound=>'/audios/audio02071206.mp3',
+:transcribe=>'sh<span class="acct">e</span><span class="sftc">s</span><span class="sftc">t</span> astan<span class="acct">o</span>vak',
+:translate=>' six stops '},
+{:text=>'7 (семь) остан<span class="acco">о</span>вок',
+:sound=>'/audios/audio02071207.mp3',
+:transcribe=>'<span class="sftv">s</span><span class="sfty">y</span><span class="acct">e</span><span class="sftc">m</span> astan<span class="acct">o</span>vak',
+:translate=>' seven stops '},
+{:text=>'8 (в<span class="acco">о</span>семь) остан<span class="acco">о</span>вок',
+:sound=>'/audios/audio02071208.mp3',
+:transcribe=>'v<span class="acct">o</span>si<span class="sftc">m</span> astan<span class="acct">o</span>vak',
+:translate=>' eight stops '},
+{:text=>'9 (д<span class="acco">е</span>вять) остан<span class="acco">о</span>вок',
+:sound=>'/audios/audio02071209.mp3',
+:transcribe=>'<span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span>vi<span class="sftc">t</span> astan<span class="acct">o</span>vak',
+:translate=>' nine stops '},
+{:text=>'10 (д<span class="acco">е</span>сять) остан<span class="acco">о</span>вок',
+:sound=>'/audios/audio02071210.mp3',
+:transcribe=>'<span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span>si<span class="sftc">t</span> astan<span class="acct">o</span>vak',
+:translate=>' ten stops '}
+  
+ ]
+%>
+<%= render :partial => '/site/every/en_ru_voc_tr', :locals => {:voc => @voc} %>
+
+
+<br><br>
+
+
+<%
+ @voc = [
+
+{:text=>'1 (од<span class="acco">и</span>н) рубль',
+:sound=>'/audios/audio02071301.mp3',
+:transcribe=>'ad<span class="acct">i</span>n r<span class="acct">oo</span>b<span class="sftc">l</span>',
+:translate=>' one ruble '},
+{:text=>'2 (два) рубл<span class="acco">я</span>',
+:sound=>'/audios/audio02071302.mp3',
+:transcribe=>'dv<span class="acct">a</span> roob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">a</span>',
+:translate=>' two rubles '},
+{:text=>'3 (три) рубл<span class="acco">я</span>',
+:sound=>'/audios/audio02071303.mp3',
+:transcribe=>'tr<span class="acct">i</span> roob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">a</span>',
+:translate=>' three rubles '},
+{:text=>'4 (чет<span class="acco">ы</span>ре) рубл<span class="acco">я</span>',
+:sound=>'/audios/audio02071304.mp3',
+:transcribe=>'chit<span class="acct"><span class="ry">i</span></span>ri roob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">a</span>',
+:translate=>' four rubles '},
+{:text=>'5 (пять) рубл<span class="acco">е</span>й',
+:sound=>'/audios/audio02071305.mp3',
+:transcribe=>'<span class="sftv">p</span><span class="sfty">y</span><span class="acct">a</span><span class="sftc">t</span> roob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>y',
+:translate=>' five rubles '},
+{:text=>'6 (шесть) рубл<span class="acco">е</span>й',
+:sound=>'/audios/audio02071306.mp3',
+:transcribe=>'sh<span class="acct">e</span><span class="sftc">s</span><span class="sftc">t</span> roob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>y',
+:translate=>' six rubles '},
+{:text=>'7 (семь) рубл<span class="acco">е</span>й',
+:sound=>'/audios/audio02071307.mp3',
+:transcribe=>'<span class="sftv">s</span><span class="sfty">y</span><span class="acct">e</span><span class="sftc">m</span> roob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>y',
+:translate=>' seven rubles '},
+{:text=>'8 (в<span class="acco">о</span>семь) рубл<span class="acco">е</span>й',
+:sound=>'/audios/audio02071308.mp3',
+:transcribe=>'v<span class="acct">o</span>si<span class="sftc">m</span> roob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>y',
+:translate=>' eight rubles '},
+{:text=>'9 (д<span class="acco">е</span>вять) рубл<span class="acco">е</span>й',
+:sound=>'/audios/audio02071309.mp3',
+:transcribe=>'<span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span>vi<span class="sftc">t</span> roob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>y',
+:translate=>' nine rubles '},
+{:text=>'10 (д<span class="acco">е</span>сять) рубл<span class="acco">е</span>й',
+:sound=>'/audios/audio02071310.mp3',
+:transcribe=>'<span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span>si<span class="sftc">t</span> roob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>y',
+:translate=>' ten rubles '}
+  
+ ]
+%>
+<%= render :partial => '/site/every/en_ru_voc_tr', :locals => {:voc => @voc} %>
+
+
+
+
 <div id="ch2" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test' %>
@@ -592,7 +695,46 @@ Task 3. Learn Russian numerals.
 <%= render :partial => '/site/every/en_ru_voc', :locals => {:voc => @voc} %>	
 	
 
-<br><br><br><br>
+<br><br>
+
+
+<br><br>
+
+
+<%
+ @voc = [
+
+{:text=>'10 (д<span class="acco">е</span>сять) рубл<span class="acco">е</span>й',
+:sound=>'/audios/audio02073201.mp3',
+:transcribe=>'<span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span>si<span class="sftc">t</span> roob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>y',
+:translate=>' ten rubles '},
+{:text=>'20 (дв<span class="acco">а</span>дцать) рубл<span class="acco">е</span>й',
+:sound=>'/audios/audio02073202.mp3',
+:transcribe=>'dv<span class="acct">a</span>tsa<span class="sftc">t</span> roob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>y',
+:translate=>' twenty rubles '},
+{:text=>'30 (тр<span class="acco">и</span>дцать) рубл<span class="acco">е</span>й',
+:sound=>'/audios/audio02073203.mp3',
+:transcribe=>'tr<span class="acct">i</span>tsa<span class="sftc">t</span> roob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>y',
+:translate=>' thirty rubles '},
+ {:text=>'90 (девян<span class="acco">о</span>сто) рубл<span class="acco">е</span>й',
+:sound=>'/audios/audio02073209.mp3',
+:transcribe=>'divin<span class="acct">o</span>sta roob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>y',
+:translate=>' ninety rubles'},
+{:text=>'100 (сто) рубл<span class="acco">е</span>й',
+:sound=>'/audios/audio02073210.mp3',
+:transcribe=>'st<span class="acct">o</span> roob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>y',
+:translate=>' one hundred rubles '}
+
+
+ ]
+%>
+
+<%= render :partial => '/site/every/en_ru_voc_tr', :locals => {:voc => @voc} %>
+
+
+
+
+<br><br>
 
 
 <div id="ch3" class="lt-holder">
@@ -949,72 +1091,287 @@ Task 2. Listen to the phrase and find it in the list.
 
 
 
-
-
-
-
-
 </div>
 
 	
 <br><br>
 
-<div class="su-exerc">
-<p class="task">Translate phrases from English into Russian.</p>
+<h4 class="su-task">
+Task 4. Read the following expressions 
+</h4>	
+
+
 <%
- @phrases = [
- {:q_text=> '<span class="acco">Э</span>то Дж<span class="acco">о</span>н?  (Sam)',
- :q_sound=>'/audios/audio01032011.mp3',
- :q_transcribe=>'<span class="acct">e</span>ta dj<span class="acct">o</span>n?',
- :sound=> '/audios/audio01032012.mp3'  
-  },
-  {:q_text=> '<span class="acco">Э</span>то в<span class="acco">и</span>за?  (passport)',
- :q_sound=>'/audios/audio01032021.mp3',
- :q_transcribe=>'<span class="acct">e</span>ta v<span class="acct">i</span>za?',
- :sound=> '/audios/audio01032022.mp3'  
-  },
-  {:q_text=> '<span class="acco">Э</span>то бил<span class="acco">е</span>т? (visa)',
- :q_sound=>'/audios/audio01032031.mp3',
- :q_transcribe=>'<span class="acct">e</span>ta bi<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>t?',
- :sound=> '/audios/audio01032032.mp3'  
-  }
+ @voc = [
+ 
+{:text=>'на вокз<span class="acco">а</span>л',
+:sound=>'/audios/audio02041010.mp3',
+:transcribe=>'na vagz<span class="acct">a</span>l',
+:translate=>' (to go) to the railway station '},
+{:text=>'в аэроп<span class="acco">о</span>рт',
+:sound=>'/audios/audio02041020.mp3',
+:transcribe=>'v airap<span class="acct">o</span>rt',
+:translate=>' (to go) to the airport '},
+{:text=>'в гост<span class="acco">и</span>ницу "Росс<span class="acco">и</span><i></i>я"',
+:sound=>'/audios/audio02041030.mp3',
+:transcribe=>'v gast<span class="acct">i</span>nitsoo ras<span class="acct">i</span>ya',
+:translate=>' (to go) to the hotel "Rossiya" '},
+{:text=>'на <span class="acco">у</span>лицу Л<span class="acco">е</span>нина',
+:sound=>'/audios/audio02041040.mp3',
+:transcribe=>'na <span class="acct">oo</span>litsoo <span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>nina',
+:translate=>' (to go) to the Lenin street '},
+{:text=>'на пл<span class="acco">о</span>щадь Поб<span class="acco">е</span>ды',
+:sound=>'/audios/audio02041050.mp3',
+:transcribe=>'na pl<span class="acct">o</span>scha<span class="sftc">t</span> pa<span class="sftv">b</span><span class="sfty">y</span><span class="acct">e</span>d<span class="ry">i</span>',
+:translate=>' (to go) to the Pobeda square '}
   
  ]
 %>
 
-<%= render :partial => '/site/every/en_ru_oral_quest', :locals => {:phrases => @phrases} %>	
-</div>	
+<%= render :partial => '/site/every/en_ru_model', :locals => {:voc => @voc} %>
 
 
 <br><br>
-
-
-
-
-
-
 
 <div class="su-exerc">
 <p class="task">Translate phrases from English into Russian.</p>
 
 <%
  @phrases = [
-{:q_text=>'It\'s my ticket. ',
-:sound=>'/audios/audio01033010.mp3'},
-{:q_text=>'It\'s my taxi. ',
-:sound=>'/audios/audio01033020.mp3'},
-{:q_text=>'It\'s my passport. ',
-:sound=>'/audios/audio01033030.mp3'},
-{:q_text=>'It\'s my luggage. ',
-:sound=>'/audios/audio01033040.mp3'},
-{:q_text=>'It\'s my visa. ',
-:sound=>'/audios/audio01033050.mp3'} 
+{:q_text=>'I need to go to the Lenin street. ',
+:sound=>'/audios/audio02042010.mp3'},
+{:q_text=>'I need to go to the Pobeda square. ',
+:sound=>'/audios/audio02042020.mp3'},
+{:q_text=>'I need to go to the hotel "Rossiya". ',
+:sound=>'/audios/audio02042030.mp3'},
+{:q_text=>'I need to go to the airport. ',
+:sound=>'/audios/audio02042040.mp3'},
+{:q_text=>'I need to go to the railway station. ',
+:sound=>'/audios/audio02042050.mp3'}
  ]
 %>
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
 
 </div>	
+
+
+
+<br><br>
+
+<h4 class="su-task">
+Task 5.  Learn the following Russian words and complete the test 
+</h4>
+
+
+<%
+ @voc = [
+
+{:text=>'спр<span class="acco">а</span>ва',
+:sound=>'/audios/audio02051010.mp3',
+:transcribe=>'spr<span class="acct">a</span>va',
+:translate=>' to the right '},
+{:text=>'сл<span class="acco">е</span>ва',
+:sound=>'/audios/audio02051020.mp3',
+:transcribe=>'s<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>va',
+:translate=>' to the left '},
+{:text=>'пр<span class="acco">я</span>мо',
+:sound=>'/audios/audio02051030.mp3',
+:transcribe=>'p<span class="sftv">r</span><span class="sfty">y</span><span class="acct">a</span>ma',
+:translate=>' straight ahead '}
+  
+ ]
+%>
+<%= render :partial => '/site/every/en_ru_voc', :locals => {:voc => @voc} %>
+
+<br><br>
+
+
+<div class="su-exerc"> 
+ 
+<div class="task">Choose an appropriate variant to continue the phrase:</div> 
+ 
+<div  class="gr_ex_variants"> 
+<div class="gr-ex-testid"></div> 
+ 
+<div  class="gr_ex_variants_wrap gexv_with_trans"> 
+
+<%
+ @mini_d = [
+{:sound=>'/audios/audio02052010.mp3'},
+{:sound=>'/audios/audio02052020.mp3'},
+{:sound=>'/audios/audio02052030.mp3'}
+ ]
+%>
+<%= render :partial => '/site/every/en_ru_mdiag_list', :locals => {:mini_d => @mini_d} %>
+
+<br><br>
+<table class="gr_ex_vars_tab gexv_options" cellpadding="0" cellspacing="0" border="0"> 
+	<tr> 
+		<td> 
+			<div class="gexv_task gexv_sign"> 
+				1. <span>The railway station is:</span>
+			</div> 
+			<div class="gexv_variant"><input type="checkbox"> to the left</div> 
+			<div class="gexv_variant"><input type="checkbox" class="ok"> to the right</div> 
+			<div class="gexv_variant"><input type="checkbox"> straight ahead</div> 
+		</td> 
+	</tr>  
+	<tr> 
+		<td> 
+			<div class="gexv_task gexv_sign"> 
+				2. <span> The taxi parking is:</span>
+			</div> 
+			<div class="gexv_variant"><input type="checkbox"> to the left</div> 
+			<div class="gexv_variant"><input type="checkbox"> to the right</div> 
+			<div class="gexv_variant"><input type="checkbox"  class="ok"> straight ahead</div> 
+		</td> 
+	</tr>
+	<tr> 
+		<td> 
+			<div class="gexv_task gexv_sign"> 
+				3. <span>The bus stop is:</span>
+			</div> 
+			<div class="gexv_variant"><input type="checkbox" class="ok"> to the left</div> 
+			<div class="gexv_variant"><input type="checkbox"> to the right</div> 
+			<div class="gexv_variant"><input type="checkbox"> straight ahead</div> 
+		</td> 
+	</tr>
+</table> 
+</div> 
+ 
+<p class="gexv_check es-ex-buttons gex-es-btn"> 
+	<input type="button" value="Check answers">
+</p> 
+ 
+</div> 
+
+</div> <!-- end of su-ex  --> 
+ 
+
+
+<h4 class="su-task">
+Task 5.  Listen to the mini-dialogues and do the following tasks: 
+</h4>
+
+<div class="su-exerc"> 
+<div>	
+				
+<p class="task">Enter an appropriate numeral in the text area:</p> 
+ 
+<div  class="gr_ex_type"> 
+<div class="gr-ex-testid"></div> 
+ 
+<div class="gex-area-trans"> 
+
+<%
+ @mini_d = [
+{:sound=>'/audios/audio02072010.mp3'},
+{:sound=>'/audios/audio02072020.mp3'},
+{:sound=>'/audios/audio02072030.mp3'},
+{:sound=>'/audios/audio02072040.mp3'},
+{:sound=>'/audios/audio02072050.mp3'}
+
+ ]
+%>
+<%= render :partial => '/site/every/en_ru_mdiag_list', :locals => {:mini_d => @mini_d} %>
+
+<br><br>
+ 
+<div class="gext_task gext_sign"> 
+1.	There are <input type="text" style="width: 25px" value=""> <span class="gext_answer" style="display: none">4</span> stops to go to the Pushkin square.
+</div> 
+<div class="gext_task gext_sign"> 
+2.	There are <input type="text" style="width: 25px" value=""> <span class="gext_answer" style="display: none">3</span> stops to go to the railway station.
+</div> 
+<div class="gext_task gext_sign"> 
+3.	There are <input type="text" style="width: 25px" value=""> <span class="gext_answer" style="display: none">1</span> stops to go to the Gorky street.
+</div> 
+<div class="gext_task gext_sign"> 
+4.	The fare is <input type="text" style="width: 25px" value=""> <span class="gext_answer" style="display: none">8</span> rubles for the bus.
+</div> 
+<div class="gext_task gext_sign"> 
+5.	The fare is <input type="text" style="width: 25px" value=""> <span class="gext_answer" style="display: none">6</span> rubles for the trolley.
+</div> 
+ 
+</div><!-- end of gex-area-trans --> 
+ 
+ 
+ 
+<p class="gext_check es-ex-buttons gex-es-btn"><input type="button" class="gext_check_btn" value="Check answers" > </p> 
+ 
+ 
+</div> 
+</div> 
+</div> <!-- end of su-exerc -->
+
+
+
+<h4 class="su-task">
+Task 5.  Listen to the mini-dialogues and do the following tasks: 
+</h4>
+
+<div class="su-exerc"> 
+<div>	
+				
+<p class="task">Enter an appropriate numeral in the text area:</p> 
+ 
+<div  class="gr_ex_type"> 
+<div class="gr-ex-testid"></div> 
+ 
+<div class="gex-area-trans"> 
+
+<%
+ @mini_d = [
+{:sound=>'/audios/audio02074010.mp3'},
+{:sound=>'/audios/audio02074020.mp3'},
+{:sound=>'/audios/audio02074030.mp3'},
+{:sound=>'/audios/audio02074040.mp3'},
+{:sound=>'/audios/audio02074050.mp3'}
+
+ ]
+%>
+<%= render :partial => '/site/every/en_ru_mdiag_list', :locals => {:mini_d => @mini_d} %>
+
+<br><br>
+ 
+<div class="gext_task gext_sign"> 
+1. It costs <input type="text" style="width: 25px" value=""> <span class="gext_answer" style="display: none">100</span> rubles to go to the hotel by taxi.
+</div> 
+<div class="gext_task gext_sign"> 
+2.	The fare is <input type="text" style="width: 25px" value=""> <span class="gext_answer" style="display: none">10</span> rubles for the tram.
+</div> 
+<div class="gext_task gext_sign"> 
+3.	It costs <input type="text" style="width: 25px" value=""> <span class="gext_answer" style="display: none">80</span> rubles to go to the Gorky street by taxi.
+</div> 
+<div class="gext_task gext_sign"> 
+4.	The fare is <input type="text" style="width: 25px" value=""> <span class="gext_answer" style="display: none">20</span> rubles for the underground.
+</div> 
+<div class="gext_task gext_sign"> 
+5.	 It costs <input type="text" style="width: 25px" value=""> <span class="gext_answer" style="display: none">60</span>  rubles to go to the Pushkin square by taxi.
+</div> 
+ 
+</div><!-- end of gex-area-trans --> 
+ 
+ 
+ 
+<p class="gext_check es-ex-buttons gex-es-btn"><input type="button" class="gext_check_btn" value="Check answers" > </p> 
+ 
+ 
+</div> 
+</div> 
+</div> <!-- end of su-exerc -->
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -271,6 +271,10 @@ ex_tasks = Cluster.find(exercise[:tasks])
 </script>
 <br/><br/>
 
+<% elsif exercise[:exercise_type] == "material" %>
+
+	<%= material(exercise[:material_num]).body %>
+
 <% elsif exercise[:exercise_type] == "lexical" %>
 
 <h4 class="su-task">
@@ -382,6 +386,10 @@ ex_tasks = Cluster.find(exercise[:tasks])
 </script>
 <br/><br/>
 
+<% elsif exercise[:exercise_type] == "material" %>
+
+	<%= material(exercise[:material_num]).body %>
+	
 <% elsif exercise[:exercise_type] == "lexical" %>
 
 <h4 class="su-task">
