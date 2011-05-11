@@ -151,9 +151,11 @@ function showOrder() {
 <input type="hidden" name="cluster_id" value="<%= @cluster.id %>">
 <ul id="sortable">
 <% @words.each_with_index do |word, index| %>
-	<% @t_num = word.cluster_words.find(:first, :conditions => ['word_id=?', word.id]).order_num.to_s %>
-	<li> <span class="w-order-num"><%= @t_num %></span>.  
-		<%= word.translate %>
+	<% @t_num = word.cluster_words.find(:first, :conditions => ['word_id=? and cluster_id=?', word.id, params[:id]]).order_num.to_s %>
+	<li> 
+		<span style="font-size: 10px;"><a href="/words/<%=word.id%>/edit"><img src="/images/icons/fugue/document-pencil.png"></a></span>
+		<span class="w-order-num"><%= @t_num %></span>.  
+		<%= word.text %>
 		<input type="hidden" name="word[<%= index %>][order_num]" value="<%= @t_num %>">
 		<input type="hidden" name="word[<%= index %>][id]" value="<%= word.id %>">
 	</li>
@@ -174,18 +176,13 @@ function showOrder() {
 <b>Actions:</b>
 <hr>
 <br>
-<% form_remote_tag :url => { :action => 'select_to_remove', :id=> @cluster.id } do %>
-Select words to remove by
 
-			<select name="attr">
-					<option value="text" selected>text</option>
-					<option value="translate" >translate</option>
-					<option value="translate_fr">translate_fr</option>
-			</select>
-
- <%= submit_tag 'Select' %>
-<%end%>
-<br><br>
+<% form_tag :action => 'add_to_cluster' do %>
+	<input type="hidden" value="<%= @cluster.id %>" name="id" >
+	Add word  <input type="text" name="word[0]" size="15" placeholder="enter ID">
+	<%= submit_tag "add" %>
+<% end %>
+<br>
 
 <% form_remote_tag(:url => {:action => 'words_to_add'} ) do %>
 			<input type="hidden" value="false" name="modal">
@@ -210,9 +207,28 @@ style="padding: 1px 1px 1px; background-color:<% if category.lang=='en'-%>
 			
 			<%= submit_tag 'Review' %>
 <% end %>
+<br><br>
+<% form_remote_tag :url => { :action => 'select_to_remove', :id=> @cluster.id } do %>
+Select words to remove by
+
+			<select name="attr">
+					<option value="text" selected>text</option>
+					<option value="translate" >translate</option>
+					<option value="translate_fr">translate_fr</option>
+			</select>
+
+ <%= submit_tag 'Select' %>
+<%end%>
+
 </div>
 
 <br><br>
+
+
+
+
+
+
 
 <hr>
 

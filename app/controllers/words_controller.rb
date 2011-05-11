@@ -32,7 +32,12 @@ layout "admin"
   end
   
   def words_index
-		@words = Word.paginate :page => params[:page], :order => 'created_at DESC'
+		if params[:search]
+			@words = Word.search params[:search]
+			@words = @words.paginate :page => params[:page], :order => 'created_at DESC', :per_page=> 100
+		else
+			@words = Word.paginate :page => params[:page], :order => 'created_at DESC'
+		end
 	end
   
   def cat_index
@@ -48,6 +53,7 @@ layout "admin"
     end
   end
   
+    
   def cat_data
 	cat = Category.find(params[:encategory])
 	@encategory = cat

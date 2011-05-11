@@ -42,6 +42,14 @@ $(document).ready(function() {
 	</form> 
 </div>
 
+<div>
+<% form_tag :controller => 'words', :action => 'words_index' do %>
+      <%= text_field_tag :search, params[:search], :id => 'search_field', :size=> 30 %>
+     <%= submit_tag "Search", :name => nil %> 
+ <% end %> 
+</div>
+
+
 <div><br><%= link_to '+ New word', new_word_path %><br></div>
 
 <div align="right"><%= will_paginate @words %></div>
@@ -51,6 +59,8 @@ $(document).ready(function() {
   <tr>
 	<th>ID &nbsp;</th>
     <th>Text</th>
+	<th>Translate</th>
+	<th>Cat</th>
     <th>Lang</th>
 	<th>Actions</th>
   </tr>
@@ -61,8 +71,10 @@ $(document).ready(function() {
   <tr>
 	<td width="25"><%=h word.id %></td>
     <td><%=h word.text %></td>
-    <td width="45"><%=h word.category.lang %></td>
-    <td width="120"><%= link_to 'Show', word %> | <%= link_to 'Edit', edit_word_path(word) %> | <%= link_to 'Delete', word, :confirm => 'Are you sure?', :method => :delete %></td>
+	<td><%=h word.translate %></td>
+	<td><%=h word.category.title %></td>
+    <td width="40"><%=h word.category.lang %></td>
+    <td width="100"><%= link_to 'Show', word %> | <%= link_to 'Edit', edit_word_path(word) %> | <%= link_to 'Delete', word, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </tbody>

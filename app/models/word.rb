@@ -11,5 +11,10 @@ cattr_reader :per_page
   def  word_lang
 	self.category.lang
   end
+  
+  def self.search(search)
+	search_condition = "%" + search + "%"
+	find(:all, :conditions => ['text LIKE ? OR translate LIKE ?', search_condition, search_condition])
+  end
 
 end
