@@ -11,12 +11,16 @@ LANG = [
 [ "Russian" , "ru" ],
 [ "English", "en" ],
 [ "French", "fr" ],
-[ "Japan" , "jp" ]
+[ "Japan" , "jp" ],
+[ "Russian phrases", "ruf" ],
+[ "English phrases", "enf" ],
+[ "French phrases", "frf" ],
+[ "Japan phrases", "jpf" ]
 ]
 
 protected
 def tag_must_reflect_lang
-	if lang == 'en' || lang == 'fr' || lang == 'jp'
+	if lang == 'en' || lang == 'fr' || lang == 'jp' || lang == 'ruf' || lang == 'enf' || lang == 'frf' || lang == 'jpf'
 		t_lang = '_'+lang.to_s
 		if tag.nil? || !tag.include?(t_lang)
 			errors.add(:tag, 'should reflect lang') 
