@@ -77,6 +77,7 @@ class SiteController < ApplicationController
 	when /(ru_results)\.html$/
 		@vocabulary_exercises = current_user.get_cat_ex('ru')
 		@course_exercises = current_user.get_course_results(Exercise::EVERYDAY_RU, 'everyday_course')
+		@every_exercises = current_user.get_detailed_results(Exercise::EVERYDAY_RU_NEW, 'everyday_course')
 		@beginner_exercises = current_user.get_course_results(Exercise::BEGINNER_RU, 'beginner_course')
 		@phonetics_exercises = current_user.get_course_results(Exercise::PHONETICS_RU, 'phonetics_course')
 		@reading_exercises = current_user.get_course_results(Exercise::READING_RU, 'reading_course')

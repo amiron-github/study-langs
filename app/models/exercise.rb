@@ -24,6 +24,97 @@ EVERYDAY_RU = {
 ]
 }
 
+EVERYDAY_RU_NEW = {
+:name => 'Everyday Russian course', 
+:parts => [
+  {:name=> "Lesson 1. In the airport", 
+   :exercises=> [
+	[["c0101013.I.c)","II, a)"]],
+	[["c0101212","I, b)"],["c0101024.II.d)","II, d)"],["c0101032.III.b)","III, b)"]],
+	[["c0101322","II, b)"]],
+	[["c0101050.V","I, a)"]]
+	]
+  },
+ {:name=> "Lesson 2. Transport", 
+   :exercises=> [
+	[["c0102013.I.c)","II, a)"]],
+	[["c0102022.II.b)","I, b)"],["c0102232","III, b)"],["c0102234","III, d)"]],
+	[["c0102062.VI.b)","II, b)"],["c0102052.V.b)","V, b)"],["c0102072.VII.b)","VI, a)"],["c0102074.VII.d)","VI, b)"]],
+	[["c0102411","I, a)"]]
+	]
+  },
+ {:name=> "Lesson 3. At the hotel", 
+   :exercises=> [
+	[["c0103013.I.c)","II, a)"]],
+	[["c0103022.II.b)","III, a)"],["c0103252","V, b)"]],
+	[["c0103044.IV.d)","II, a)"],["c0103033.III.c)","IV, a)"],["c0103073.VII.c)","VI, a)"]],
+	[["c0103411","I, a)"]]
+	]
+  },
+ {:name=> "Lesson 4. In the street", 
+   :exercises=> [
+	[["c0104013.I.c)","II, a)"]],
+	[["c0102063.VI.c)","III, d)"],["c0104083.VIII.c)","IV, b)"]],
+	[["c0104032.III.b)","I, a)"],["c0104035.III.e)","II, b)"],["c0104050.V","IV, a)"]],
+	[["c0104411","I, a)"]]
+	]
+  },
+ {:name=> "Lesson 5. Sightseeings", 
+   :exercises=> [
+	[["c0105013.I.c)","II, a)"]],
+	[["c0105022.II.b)","III, a)"],["c0105242","IV, b)"]],
+	[["c0105043.IV.c)","I, c)"],["c0105053.V.c)","II, c)"]],
+	[["c0105411","I, a)"]]
+	]
+  },
+ {:name=> "Lesson 6. Shopping", 
+   :exercises=> [
+	[["c0106013.I.c)","II, a)"]],
+	[["c0106022.II.b)","III, a)"],["c0106082.VIII.b)","IV, b)"]],
+	[["c0106042.IV.b)","I, b)"],["c010602063.VI.c)","III, c)"]],
+	[["c0106411","I, a)"]]
+	]
+  },
+ {:name=> "Lesson 7. At the restaurant", 
+   :exercises=> [
+	[["c0107013.I.c)","II, a)"]],
+	[["c0107022.II.b)","I, b)"],["c0107032.III.b)","II, b)"],["c0107042.IV.b)","III, b)"],["c0107242","IV, b)"]],
+	[["c0107051.V.a)","I, a)"],["c0107052.V.b)","I, b)"],["c0107053.V.c)","I, c)"],["c0107332","III, b)"]],
+	[["c0107411","I, a)"]]
+	]
+  },
+ {:name=> "Lesson 8. At the drugstore", 
+   :exercises=> [
+	[["c0108013.I.c)","II, a)"]],
+	[["c0108022.II.b)","I, b)"],["c0108032.III.b)","II, b)"],["c0108062.VI.b)","IV, b)"]],
+	[["c0108042.IV.b)","I, b)"],["c0108043.IV.c)","I, c)"],["c0108063.VI.c)","III, a)"],["c0108072.VII.b)","IV, b)"]],
+	[["c0108411","I, a)"]]
+	]
+  },
+ {:name=> "Lesson 9. Currency exchange", 
+   :exercises=> [
+	[["c0109013.I.c)","II, a)"]],
+	[["c0109022.II.b)","I, b)"],["c0109032.III.b)","II, b)"]],
+	[["c0109052.V.b)","I, b)"],["c0109321","II, a)"],["c0109063.VI.c)","III, b)"]],
+	[["c0109411","I, a)"]]
+	]
+  },
+ {:name=> "Lesson 10. Internet & Telephone", 
+   :exercises=> [
+	[["c0110013.I.c)","II, a)"]],
+	[["c0110022.II.b)","I, b)"],["c0110222","II, b)"]],
+	[["c0110032.III.b)","I, a)"],["c0110041.IV.a)","II, a)"],["c0110051.V.1","III, dialog 1"],["c0110052.V.2","III, dialog 2"],["c0110053.V.3","III, dialog 3"],["c0110061.VI.a)","IV, a)"],["c0110072.VII.b)","V, a)"]],
+	[["c0110071.VII.a)","I, a)"]]
+	]
+  }
+]
+
+}
+
+
+
+
+
 BEGINNER_RU = {
 :name => 'Course for beginners', 
 :parts => [

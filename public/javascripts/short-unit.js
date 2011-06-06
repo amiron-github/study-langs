@@ -1,11 +1,33 @@
 $(document).ready(function() {
 $(".trans-display").change(function(){
 	if ($(this).is(":checked")) {
-		$(".original div.ru-transcript").show();
+		$(this).parent().parent().parent().parent().parent().find(".original div.ru-transcript").show();
 	}else{
-		$(".original div.ru-transcript").hide();
+		$(this).parent().parent().parent().parent().parent().find(".original div.ru-transcript").hide();
 	}
 }).change();
+
+$(".dt_transc  input").attr("autocomplete", "off").change(function(){
+	if ($(this).is(":checked")) {
+		$(this).parent().parent().parent().parent().parent().find("td .d-transc").show();
+	}else{
+		$(this).parent().parent().parent().parent().parent().find("td .d-transc").hide();
+	}
+}).change();
+
+$(".come-more-display").toggle(function(){
+	$(this).text("Hide details").parent().find(".com-more-in").show();
+	
+},function(){
+	$(this).text("Read more").parent().find(".com-more-in").hide();
+});
+
+$(".tb_settings").toggle(function(){
+		$(this).addClass("tb_set_on").parent().find(".tb_settings-wrap").show(400)
+	},function(){
+		$(this).removeClass("tb_set_on").parent().find(".tb_settings-wrap").hide(400)
+})
+
 });
 
 

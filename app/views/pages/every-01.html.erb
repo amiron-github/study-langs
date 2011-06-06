@@ -12,9 +12,12 @@
 <%= javascript_include_tag 'es-grammar-exercises' %>
 <%= javascript_include_tag 'es-test-drag-input' %>
 
-
 <%= javascript_include_tag 'short-unit' %>
 <%= stylesheet_link_tag 'short-unit' %>
+
+<%= javascript_include_tag 'dialog-player' %>
+<%= stylesheet_link_tag 'dialog_player' %>
+
 
 <script type="text/javascript">
 <%if params[:tab] %>
@@ -28,17 +31,20 @@
 <% end %>
 
 
-
-
-
+<div id="pagecontent"><div id="content">
 <div class="unit-area">
 
 
 <div id="prof_tabs">
 
+<%= render :partial => '/site/every/settings_block' %>
+
 <div class="unit-title">
 Lesson 1
 </div>
+
+<%= render :partial => '/site/every/en_ru_coverflow', :locals => {:active => 1} %>
+
 	<div id="tabs_row">
             <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Dialogue</a></div></div>
 			<div id="tab02" class="ptab"><div><a href="#">Vocabulary</a></div></div>
@@ -51,53 +57,47 @@ Lesson 1
 <div id="for_tab01" class="pBlock" style="display: block">
 	<div class="inpBlock">
 	
-<h3 class="su-step-title">Review</h3>
+<h3 class="su-step-title">Dialogues</h3>
 <p class="su-step-info">
-Here you can review lexical and grammer structures of the lesson
+Here you can work with dialogues of the lesson
 </p>	
 	
 
-<h4 class="su-task">
-Task 1. Listen, repeat and read the translation
+<h4 class="su-task" >
+I. Welcome to Russia!
 </h4>
 
+<p class="part-task">a) Listen to the dialogue and read the translation</p>
+
+
+<%= render :partial => '/site/every/dialog_player', 
+			:locals => {:cluster_id => 72, :html_id=>"dc1",
+						:d_title=>'Dialogue 1-1. In the airport',
+:content=> "Listen to the dialogue between a tourist and the passport control officer. The tourist, named John Brown, has just arrived to Russia from America. After his passport is checked, John asks the officer where the baggage claim area is. Then he thanks the officer and says goodbye."
+			} %>	
+
+				<script type="text/javascript"> 
+					var  dc1 = new dialog_controls( {
+					id: "dc1", 
+					file: "/audios/audio0101.mp3",
+					tracks: [0,1384,2300,4153,5200,6000,7990,9326,11024,12173,13767,17894,22387,23358,25078]
+				
+					} )
+				</script>		
 	
-<div class="su-present">
-<div class="su-present-brd">
-<table cellspacing="0">
+<br>
+<p class="part-task">b) Listen and repeat the dialogue phrase by phrase</p>
 
-<%
-cat = Cluster.find(72)
-@words = cat.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
-%>
-<%@words.each_with_index do |word, index|-%>
-
-	<tr>
-		<td class="su-pres-audio"><%unless word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div><%end%></td>
-		<td class="su-pres-orig">
-			<%= word.text %>
-			<div class="ru-transcript" style="display: none;">[<%= word.transcribe %>]</div>
-		</td>
-		<td class="su-pres-trans"><%= word.translate %></td>
-	</tr>
-<%end%>
-</table>	
-</div>	
-</div>	
-	
-
-
-<br><br><br><br>
 
 <h4 class="su-task">
-Task 2. Listen to the phrase and find it in the list.
+II. First contacts
 </h4>
 
-
+<p class="part-task">a) Find the translation of Russian phrases</p>
 
 <div id="ds1" class="ds-wrapper" style="padding: 15px; margin: 20px 30px;">
 
-<p style="font-size: 11px; text-align: center;">
+<p class="ex-desc">
 Listen to the phrases. Drag the English phrases from the list below <br>and drop them into the corresponding fields.
 </p>		
 
@@ -270,7 +270,7 @@ Listen to the phrases. Drag the English phrases from the list below <br>and drop
 			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">8</span>Your passport, please.</div></div>
 	</li>
 	<li> 
-			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>Welcome to Russia.</div></div>
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>Welcome to Russia!</div></div>
 	</li>
 </ul>
 
@@ -324,10 +324,10 @@ Listen to the phrases. Drag the English phrases from the list below <br>and drop
 		} )
 </script>
 
-
+<br><br><br>
 
 <div class="es-ex-buttons su-next-wrapper">
-<input type="button" class="su-next-step" value="Next step >>" onclick="openNextStep(2)">
+<input type="button" class="su-next-step" value="Next part >>" onclick="openNextStep(2)">
 </div>	
 	
 	</div>
@@ -342,8 +342,25 @@ Here you can learn words and expressions of the lesson.
 </p>	
 
 <h4 class="su-task">
-Task 1. Read and repeat the words and expressions of the lesson.
+I. Addressing other people
 </h4>
+
+<div class="com-wrap">
+	<div class="com-head"><span class="com-h-ico"></span>Polite forms of address</div>
+	<div class="com-content">
+<p>
+The Russian language has respectful and familiar forms of address to other people. The polite form is used in formal situations or if you are you talking to someone you don't know very well. Russian familiar form is generally used among friends and relatives.
+<p>	
+<p>
+In this course, we mainly use polite phrases for formal situations.
+<p>
+	</div>
+</div>
+
+<br>
+
+<p class="part-task">a) Learn Russian words:</p>
+
 <%
  @voc1 = [
  {:text=> 'я', :translate=> 'I', :transcribe=>'ya'},
@@ -352,17 +369,43 @@ Task 1. Read and repeat the words and expressions of the lesson.
  {:text=> 'госпожа', :translate=> 'missis, miss', :transcribe=>'gaspaja'},
  ]
 %>
-<%= render :partial => '/site/every/en_ru_voc', :locals => {:voc => @voc1} %>	
+<%= render :partial => '/site/every/en_ru_voc', :locals => {:voc => @voc1} %>
+
+
+<br>
+
 	
-<br><br>
+	
+<p class="part-task">b) Build phrases in Russian:</p>
+
+<div class="com-wrap">
+	<div class="com-head"><span class="com-h-ico"></span>Particularities of Russian sentences</div>
+	<div class="com-content">
+<p>	
+<strong>Absence of the present tense of "to be"</strong><br>
+In Russian language, the present tense of "to be" (am, is, are) is not usually used.
+<p>	
+<div class="com-more">
+<div class="com-more-in">
+Read the following examples:<br><br>
+<b>Я Джон Браун.</b> – I am John Brown.<br>
+<b>Вы из Канады.</b> – You are from Canada.<br>
+<b>Это Александр.</b> – This is Alexander.
+</div>
+<span class="come-more-display">Read more</span>
+</div>
+
+	</div>
+</div>
+
 
 <div class="su-exerc">
 <div id="di1">	
 				
-<p class="task">Перетащите слова в текстовое поле или напечатайте их.</p> 
+<p class="ex-desc">Drag and drop the following words to build phrases. You can read correct answers by clicking the button "Display answers"</p> 
 
 <br> 
-<table style="margin: 0 auto; border: 1px dashed #000; background-color: #fff" class="di_variants noselect" cellspacing="14" align="center" > 
+<table class="di_variants noselect di_var_view" cellspacing="14" align="center" > 
 <tr> 
 	<td> 
 		<div> я </div> 
@@ -396,15 +439,16 @@ Task 1. Read and repeat the words and expressions of the lesson.
 <br> 
 
 <div  class="gr_ex_type di_mix">
-<div class="gr-ex-testid"></div>
+<div class="gr-ex-testid">c0101212</div>
 <%
  @phrases = [
 {:to_bild=> "I'm Rebbecca", :answer=>'Я Реббекка', :show=> 'Я Реббекка.'},
-{:to_bild=> "Are you Steve",:answer=>'Вы Стив', :show=> 'Вы Стив?'},
+{:to_bild=> "Are you Steve?",:answer=>'Вы Стив', :show=> 'Вы Стив?'},
 {:to_bild=> "Are you Mr Brown?", :answer=>'Вы господин Браун', :show=> 'Вы господин Браун?'},
-{:to_bild=> "Are you Mrs Tyler", :answer=>'Вы госпожа Тайлер?', :show=> 'Вы госпожа Тайлер?'}
+{:to_bild=> "Are you Mrs Tyler?", :answer=>'Вы госпожа Тайлер?', :show=> 'Вы госпожа Тайлер?'}
  ]
 %>
+
 <%= render :partial => '/site/every/en_ru_pseudo', :locals => {:phrases => @phrases} %>
 
 </div>
@@ -422,11 +466,14 @@ Task 1. Read and repeat the words and expressions of the lesson.
 </script>
 
 
-<br><br><br><br>
+<br><br>
 
 <h4 class="su-task">
-Task 2. Listen to the phrase and find it in the list.
+II. Where are you from?
 </h4>
+
+<p class="part-task">a) Learn the following Russian words: </p>
+
 
 <%
  @voc2 = [
@@ -460,27 +507,49 @@ Task 2. Listen to the phrase and find it in the list.
 %>
 <%= render :partial => '/site/every/en_ru_voc', :locals => {:voc => @voc2} %>	
 	
-<br><br>
+<p class="part-task">b) Translate phrases from English into Russian </p>
+
+<div class="com-wrap">
+	<div class="com-head"><span class="com-h-ico"></span>Particularities of Russian sentences</div>
+	<div class="com-content">
+<p>	
+<strong>Absence of articles</strong><br>
+In English, there are articles "the" and "a". The Russian language has no articles.
+<p>	
+<div class="com-more">
+<div class="com-more-in">
+Look at the following examples:<br><br>
+
+<b>Я англичанин.</b> – I am an Englishman.<br>
+<b>Я из США.</b> – I am from the USA. <br>
+<b>Это билет.</b> – This is a ticket.
+</div>
+<span class="come-more-display">Read more</span>
+</div>
+
+	</div>
+</div>
+
+
 
 <div class="su-exerc">
-<p class="task">Translate phrases from English into Russian.</p> 
 <%
  @phrases = [
  
  {:sound=> '/audios/audio01022010.mp3', 
-  :q_text=> 'I am a Canadian. (for a man)' 
+  :q_text=> 'I am Canadian. (for a man)' 
   },
  {:sound=> '/audios/audio01022020.mp3', 
   :q_text=> 'I am an Englishman.'
   },
  {:sound=> '/audios/audio01022030.mp3', 
-  :q_text=> 'I\'m an American. (for a man)'
+  :q_text=> 'I\'m American. (for a man)'
   },
  {:sound=> '/audios/audio01022040.mp3', 
-  :q_text=> 'I\'m an Englishwoman.'
+  :q_text=> 'I\'m English. (for a woman)'
   },
  {:sound=> '/audios/audio01022050.mp3', 
-  :q_text=> 'I\'m an American. (for a woman)'
+  :q_text=> 'I\'m American. (for a woman)'
   } 
   
  ]
@@ -488,13 +557,10 @@ Task 2. Listen to the phrase and find it in the list.
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>	
 
-
 </div>
 	
-	
-<br><br>
-
-
+<br><br>	
+<p class="part-task">c) Lear the following expressions: </p>
 
 <%
  @voc3 = [
@@ -528,16 +594,16 @@ Task 2. Listen to the phrase and find it in the list.
 %>
 <%= render :partial => '/site/every/en_ru_voc', :locals => {:voc => @voc3} %>	
 
-
 <br><br>
+<p class="part-task">d) Build phrases in Russian: </p>
 
 <div class="su-exerc">
 <div id="di2">	
 				
-<p class="task">Перетащите слова в текстовое поле или напечатайте их.</p> 
+<p class="ex-desc">Drag and drop the following words to build phrases. You can listen and read correct answers by clicking the button "Display answers"</p> 
 
 <br> 
-<table style="margin: 0 auto; border: 1px dashed #000; background-color: #fff" class="di_variants noselect" cellspacing="14" align="center" > 
+<table class="di_variants noselect di_var_view" cellspacing="14" align="center" > 
 <tr> 
 	<td> 
 		<div> Я </div> 
@@ -569,7 +635,7 @@ Task 2. Listen to the phrase and find it in the list.
 
 
 <div  class="gr_ex_type di_mix">
-<div class="gr-ex-testid"></div>
+<div class="gr-ex-testid">c0101024.II.d)</div>
 <%
  @phrases = [
 {:to_bild=> "I'm from Russia.", :answer=>'Я из России', :show=> 'Я из России.'},
@@ -601,8 +667,10 @@ Task 2. Listen to the phrase and find it in the list.
 
 
 <h4 class="su-task">
-Task 3. Listen to the phrase and find it in the list.
+III. In the airport
 </h4>
+
+<p class="part-task">a) Learn Russian words: </p>
 
 <%
  @voc = [
@@ -676,9 +744,9 @@ Task 3. Listen to the phrase and find it in the list.
  ]
 %>
 <%= render :partial => '/site/every/en_ru_voc', :locals => {:voc => @voc} %>	
-	
-<br><br><br><br>
 
+<br><br>
+<p class="part-task">b) Listen and find the corresponding English word: </p>
 
 <div id="ch1" class="lt-holder">
 <div class="lt-spacer">	
@@ -689,6 +757,7 @@ Task 3. Listen to the phrase and find it in the list.
 <script type="text/javascript"> 
 	var ch1 = new ch_exercise( {
 		id: "ch1", 
+		test_id: "c0101032.III.b)",
 		quest_num: 12,
 		variants_num: 5,
 		quest_type: 'audio',
@@ -727,17 +796,137 @@ Here you can learn grammar and lexical rules of the lesson.
 
 
 <h4 class="su-task">
-Task 1. Answer the questions in Russian following the model and check yourself.
-</h4>	
+I. Let me introduce myself 
+</h4>
 
-<div class="egdiv">
+
+<div class="com-wrap">
+	<div class="com-head"><span class="com-h-ico"></span>Simple questions and answers</div>
+	<div class="com-content">
+	
+<p>	
+In the dialogue you could learn the following constructions:
+<p>	
+
+<table  cellspacing="0" >      
+	<tr valign="top">
+		 <td width="180">
+		 <p><b><u>Are you</u> Mr. Brown?</b><br /></p></td>
+
+         <td width="30"><p>-</p>
+         </td>
+		 <td><p><b>Yes, <u>I'm</u> John Brown.</b><br /></p></td>
+	</tr>
+	<tr valign="top">
+		 <td><p><u>Вы</u> господ<span class="acco">и</span>н Бр<span class="acco">а</span><i></i>ун?<br />
+
+		 		<span class="sound" onclick="playAudio('audio01020010.mp3')">[v<span class="acct"><span class="ry">i</span></span> gaspad<span class="acct">i</span>n br<span class="acct">a</span><i></i>oon?] <span class="play_tip">&nbsp; &nbsp;</span></span>
+		 		</p>
+		 </td>
+         		<td><p>-</p></td>
+
+		 <td>
+		 	<p>Да, <u>я</u> Джон Бр<span class="acco">а</span><i></i>ун.<br />
+		 		<span class="sound" onclick="playAudio('audio01020020.mp3')">[d<span class="acct">a</span>, y<span class="acct">a</span> dj<span class="acct">o</span>n br<span class="acct">a</span>oon] <span class="play_tip">&nbsp; &nbsp;</span></span>
+
+		 	</p>
+		 </td>
+	</tr>
+</table>
+
+
+<div class="com-more">
+<div class="com-more-in">
+<p>
+In Russian, simple questions do not use special constructions. So, in most cases, questions are marked only by intonation.
+</p>
+<p>
+As previously mentioned, building phrases in Russian, you can omit all articles and the present tense of "to be". 
+</p>
+</div>
+<span class="come-more-display">Read more</span>
+</div>
+	</div>
+</div>
+<br>
+
+<p class="part-task">a) Listen and repeat the following examples </p>
+
+<%
+
+ @voc_train = [
+ 
+{:text1=>'Вы</u> госпож<span class="acco">а</span> Бр<span class="acco">а</span><i></i>ун?',
+:sound1=>'/audios/audio01020110.mp3',
+:transcribe1=>'v<span class="acct"><span class="ry">i</span></span> gaspaj<span class="acct">a</span> br<span class="acct">a</span>oon?',
+:text2=>'Да, <u>я</u> Джо<i></i><span class="acco">а</span>на Бр<span class="acco">а</span><i></i>ун.',
+:sound2=>'/audios/audio01020120.mp3',
+:transcribe2=>'d<span class="acct">a</span>, y<span class="acct">a</span> djo<span class="acct">a</span>na br<span class="acct">a</span>oon',
+:translate=>'Are you Mrs. Brown? - Yes, I\'m Joana Brown.'},
+ 
+{:text1=>'<u>Вы</u> америк<span class="acco">а</span>нец?',
+:sound1=>'/audios/audio01020210.mp3',
+:transcribe1=>'v<span class="acct"><span class="ry">i</span></span>  amirik<span class="acct">a</span>nits?',
+:text2=>'Да, <u>я</u> америк<span class="acco">а</span>нец.',
+:sound2=>'/audios/audio01020220.mp3',
+:transcribe2=>'d<span class="acct">a</span>, y<span class="acct">a</span> amirik<span class="acct">a</span>nits',
+:translate=>'Are you an American? - Yes, I\'m an American.'},
+ 
+{:text1=>'<u>Вы</u> из США?',
+:sound1=>'/audios/audio01020310.mp3',
+:transcribe1=>'v<span class="acct"><span class="ry">i</span></span>  is se she <span class="acct">a</span>?',
+:text2=>'Да, <u>я</u> из США.',
+:sound2=>'/audios/audio01020320.mp3',
+:transcribe2=>'d<span class="acct">a</span>, y<span class="acct">a</span> is se she <span class="acct">a</span>',
+:translate=>'Are you from the USA? - Yes, I\'m from the USA.'}
+
+ ]
+%>
+
+<%= render :partial => '/site/every/en_ru_voc_train2', :locals => {:voc => @voc_train} %>
+
+<br><br>
+<p class="part-task">b) Answer the questions in Russian following the model and check yourself:  </p>
+
+
+<div class="egmodel">
 	<h4>Model: </h4>
-		<p>Model</p>
+
+	
+<table class="tab1"  cellspacing="0" >
+	<tr valign="top">
+		<td width="370">
+			<table  cellspacing="0" >
+					<tr valign="top">
+		 				<td width="190">
+		 					<p><b><u>Вы</u> господ<span class="acco">и</span>н Сэм Блэк?</b><br />
+
+		 						<span class="sound" onclick="playAudio('audio01021001.mp3')">[v<span class="acct"><span class="ry">i</span></span> gaspad<span class="acct">i</span>n s<span class="acct">e</span>m bl<span class="acct">e</span>k?] <span class="play_tip">&nbsp; &nbsp;</span></span>
+		 					</p>
+		 				</td>
+
+                        					<td width="20"><p>-</p>
+                       					 </td>
+		 				<td width="150">
+		 					<p><b>Да, <u>я</u> Сэм Блэк.</b><br />
+		 						<span class="sound" onclick="playAudio('audio01021002.mp3')">[d<span class="acct">a</span>, y<span class="acct">a</span> s<span class="acct">e</span>m bl<span class="acct">e</span>k] <span class="play_tip">&nbsp; &nbsp;</span></span>
+
+		 					</p>
+		 				</td>
+					</tr>
+				</table>
+		</td>
+		<td valign="top"><p class="ital">Are you Mister Sam Black? - Yes, I'm Sam Black.</p>
+		</td>
+	</tr>
+
+</table>	
+	
+	
 </div>
 
 
 <div class="su-exerc">
-<p class="task">Translate phrases from English into Russian.</p>
 <%
  @phrases = [
  {:q_text=> 'Вы господ<span class="acco">и</span>н Сэм Блэк?',
@@ -772,12 +961,14 @@ Task 1. Answer the questions in Russian following the model and check yourself.
 <%= render :partial => '/site/every/en_ru_oral_quest', :locals => {:phrases => @phrases} %>	
 </div>	
 
-
+<br><br>
 
 
 <h4 class="su-task">
-Task 2. Listen to the phrases and find out where the speaking person is from:
+II. Where are you from?
 </h4>
+<p class="part-task">b) Listen to the phrases and find out where the speaking person is from:  </p>
+
 
 <div id="ds2" class="ds-wrapper" style="padding: 15px;">
 
@@ -795,32 +986,30 @@ Task 2. Listen to the phrases and find out where the speaking person is from:
 <col width="40">
 <col width="100">
 
-
-
 <% 
 
 @t_images = [
-  {:text=> 'АУС',
+  {:text=> 'ka',
  :sound=>'/audios/audio01023006.mp3',
- :image=> '/images/aus.gif',
+ :image=> '/images/ca.gif',
  :answer=> '1',
   },
- {:text=> 'ГБ',
+ {:text=> 'ru',
  :sound=>'/audios/audio01023007.mp3',
- :image=> '/images/gb.gif', 
+ :image=> '/images/ru.gif', 
  :answer=> '2', 
   },
- {:text=> 'КА',
+ {:text=> 'gb',
  :sound=>'/audios/audio01023008.mp3',
- :image=> '/images/ca.gif',
+ :image=> '/images/gb.gif',
  :answer=> '3', 
   },
- {:text=> 'РУ',
+ {:text=> 'aus',
  :sound=>'/audios/audio01023009.mp3',
- :image=> '/images/ru.gif',
+ :image=> '/images/aus.gif',
  :answer=> '4', 
   },
- {:text=> 'ЮСА',
+ {:text=> 'usa',
  :sound=>'/audios/audio010230095.mp3',
  :image=> '/images/usa.gif',  
  :answer=> '5',
@@ -874,7 +1063,7 @@ Task 2. Listen to the phrases and find out where the speaking person is from:
 </table>
 
 <div class="es_btn_wrapper es-ex-buttons ds-check-wrapper">
-<input type="button" class="es_btn ds-check-button" value="Проверить">
+<input type="button" class="es_btn ds-check-button" value="Check answers">
 
 </div>
 
@@ -883,7 +1072,8 @@ Task 2. Listen to the phrases and find out where the speaking person is from:
 
 <script type="text/javascript"> 
 	var ds2 = new dragsort_test( {
-		id: "ds2", 			
+		id: "ds2", 
+		test_id: "c0101322",		
 		targets: "ds-answer",	
 		answer_elem: "ds_sort_item", 
 		variant_elem: "ds_variant",
@@ -892,13 +1082,79 @@ Task 2. Listen to the phrases and find out where the speaking person is from:
 		} )
 </script>
 
+
+<br><br>
+
 	
 <h4 class="su-task">
-Task 2. Listen to the phrase and find it in the list.
+III. It is a passport
 </h4>	
+
+<div class="com-wrap">
+	<div class="com-head"><span class="com-h-ico"></span>Construction Это ... </div>
+	<div class="com-content">
+<p>	
+<p>In the dialogue you could see the Russian word <span class="eg">это</span> <span class="sound" style="clear: left;" onclick="playAudio('audio01030008.mp3')">[eta]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span> which means "it" or "this". This word may be used in the following construction:
+</p>
+
+<table  cellspacing="0" >      
+	<tr valign="top">
+		 <td width="180">
+		 	<p class="bold"><u>It is</u> a passport.</p></td>
+	</tr>
+	<tr valign="top">
+		 <td><p style="margin-top: 0pt;"><u><span class="acco">Э</span>то</u> п<span class="acco">а</span>спорт.<br />
+
+		 		<span class="sound" onclick="playAudio('audio01030000.mp3')">[<span class="acct">e</span>ta p<span class="acct">a</span>spart] <span class="play_tip">&nbsp; &nbsp;</span></span>
+		 		</p>
+		 </td>
+	</tr>
+</table>
+
+	</div>
+</div>
+
+<br>
+
+<p class="part-task">a) Give a positive answer following the model and check yourself:  </p>
+
+
+<div class="egmodel">
+	<h4>Model: </h4>
+
+<table class="tab1"  cellspacing="0" >
+	<tr valign="top">
+		<td width="320">
+			<table  cellspacing="0" >
+					<tr valign="top">
+
+		 				<td width="130">
+		 					<p><u><span class="acco">Э</span>то</u> п<span class="acco">а</span>спорт?<br />
+		 						<span class="sound" onclick="playAudio('audio01031001.mp3')">[<span class="acct">e</span>ta p<span class="acct">a</span>spart?] <span class="play_tip">&nbsp; &nbsp;</span></span>
+
+		 					</p>
+		 				</td>
+                        <td width="20"><p>-</p>
+                        </td>
+		 				<td width="140" >
+		 					<p>Да, <u><span class="acco">э</span>то</u> п<span class="acco">а</span>спорт.<br />
+
+		 						<span class="sound" onclick="playAudio('audio01031002.mp3')">[d<span class="acct">a</span>, <span class="acct">e</span>ta p<span class="acct">a</span>spart] <span class="play_tip">&nbsp; &nbsp;</span></span>
+		 					</p>
+		 				</td>
+					</tr>
+				</table>
+
+		</td>
+		<td valign="top"><p class="ital">Is it a pasport? - Yes, it is a passport.</p>
+		</td>
+	</tr>
+</table>
+
+</div>
+
 	
 <div class="su-exerc">
-<p class="task">Translate phrases from English into Russian.</p>
 <%
  @phrases = [
  {:q_text=> '<span class="acco">Э</span>то такс<span class="acco">и</span>?',
@@ -924,9 +1180,43 @@ Task 2. Listen to the phrase and find it in the list.
 </div>	
 	
 <br><br>
+<p class="part-task">b) Give a negative answer following the model and check yourself:  </p>
+
+
+<div class="egmodel">
+	<h4>Model: </h4>
+
+<table class="tab1"  cellspacing="0" >
+	<tr valign="top">
+		<td width="350">
+			<table  cellspacing="0" >
+					<tr valign="top">
+		 				<td width="150">
+		 					<p><u><span class="acco">Э</span>то</u> п<span class="acco">а</span>спорт? (visa)<br />
+
+		 						<span class="sound" onclick="playAudio('audio01032001.mp3')">[<span class="acct">e</span>ta p<span class="acct">a</span>spart?] <span class="play_tip">&nbsp; &nbsp;</span></span>
+		 					</p>
+		 				</td>
+                        <td width="20"><p>-</p>
+                        </td>
+
+		 				<td width="140">
+		 					<p>Нет, <u><span class="acco">э</span>то</u> в<span class="acco">и</span>за.<br />
+		 						<span class="sound" onclick="playAudio('audio01032002.mp3')">[<span class="sftv">n</span><span class="sfty">y</span><span class="acct">e</span>t <span class="acct">e</span>ta v<span class="acct">i</span>za] <span class="play_tip">&nbsp; &nbsp;</span></span>
+
+		 					</p>
+		 				</td>
+					</tr>
+				</table>
+		</td>
+		<td valign="top"><p class="ital">Is it a pasport? (visa) - No, it is a visa.</p>
+		</td>
+	</tr>
+</table>
+
+</div>
 
 <div class="su-exerc">
-<p class="task">Translate phrases from English into Russian.</p>
 <%
  @phrases = [
  {:q_text=> '<span class="acco">Э</span>то Дж<span class="acco">о</span>н?  (Sam)',
@@ -957,8 +1247,40 @@ Task 2. Listen to the phrase and find it in the list.
 
 
 <h4 class="su-task">
-Task 3. Read the following expressions and translate phrases from English into Russian
+IV. This is my ticket
 </h4>	
+
+<div class="com-wrap">
+	<div class="com-head"><span class="com-h-ico"></span>Grammatical gender in Russian</div>
+	<div class="com-content">
+	
+<p>	
+All Russian nouns have gender: masculine, feminine or neuter. It is an important grammatical category in Russian and it is impossible to build a correct phrase in Russian without knowing the gender of nouns. One of the difficulties with gender of nouns consists in the fact that in a phrase the form of adjectives, pronouns, some numbers and some verb tenses will depend of the related noun’s gender. 
+</p>	
+<p>
+Look at the following examples with the word мой "my" that will change its form depending on the gender of the modified noun:
+<br><br>
+<strong><u>мой</u> паспорт</strong> - my passport (masculine)<br>
+<strong><u>моя</u> виза</strong> - my visa (feminine)<br>
+<strong><u>моё</u> такси</strong> - my taxi (neuter)<br>
+</p>
+<div class="com-more">
+<div class="com-more-in">
+<p>
+For example, if you want to say "interesting book" in Russian, first of all you should know the gender of the Russian noun "книга" (book) and then choose a correct form of the adjective "интересный" from the three forms: "интересный" for masculine, "интересная" for feminine and "интересное" for neuter. The noun "книга" belongs to the feminine, so the correct translation for "interesting book" is "интересная книга". 
+</p>
+<p>
+However, if the form of adjective, pronoun etc. is not correctly chosen and does not correspond to the noun’s gender, the phrase may be not correct, but still understandable for Russian people in most cases.
+</p>
+</div>
+<span class="come-more-display">Read more</span>
+</div>
+	</div>
+</div>
+
+
+<br>
+<p class="part-task">a) Listen and repeat the following examples :  </p>
 
 
 <%
@@ -990,10 +1312,10 @@ Task 3. Read the following expressions and translate phrases from English into R
 
 <%= render :partial => '/site/every/en_ru_model', :locals => {:voc => @voc} %>
 
-
+<br><br>
+<p class="part-task">b) Translate phrases from English into Russian:  </p>
 
 <div class="su-exerc">
-<p class="task">Translate phrases from English into Russian.</p>
 
 <%
  @phrases = [
@@ -1013,14 +1335,41 @@ Task 3. Read the following expressions and translate phrases from English into R
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
 
 </div>	
-
+<br><br>
 
 <h4 class="su-task">
-Task 4.  Learn my
+V. Where is the baggage claim area? 
 </h4>
 
+<div class="com-wrap">
+	<div class="com-head"><span class="com-h-ico"></span>Construction Где находится ... ? </div>
+	<div class="com-content">
+
+<p>In the dialogue you could see the following construction:</p>
+
+<table  cellspacing="0" >      
+	<tr valign="top">
+		 <td width="250">
+		 <p class="bold"><u>Where is</u> the baggage claim area?</p></td>
+	</tr>
+	<tr valign="top">
+		 <td><p style="margin-top: 0pt;"><u>Где нах<span class="acco">о</span>дится</u> в<span class="acco">ы</span>дача багаж<span class="acco">а</span>?<br />
+
+		 		<span class="sound" onclick="playAudio('audio01040000.mp3')">[g<span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span> nah<span class="acct">o</span>ditsa v<span class="acct"><span class="ry">i</span></span>dacha bagaj<span class="acct">a</span>?] <span class="play_tip">&nbsp; &nbsp;</span></span>
+		 		</p>
+
+		 </td>
+	</tr>
+</table>
+
+	</div>
+</div>
+
+<br>
+<p class="part-task">a) Translate phrases from English into Russian:  </p>
+
+
 <div class="su-exerc">
-<p class="task">Translate phrases from English into Russian.</p>
 <%
  @phrases = [
 {:q_text=>'Where is the entrance? ',
@@ -1039,10 +1388,37 @@ Task 4.  Learn my
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
 
 </div>
+<br>
+<p class="part-task">b) Ask questions in Russian:  </p>
+
+
+
+<div class="com-wrap">
+	<div class="com-head"><span class="com-h-ico"></span>Polite address </div>
+	<div class="com-content">
+
+<p>If you address yourself to an unknown person with a question, you should begin your question with the following expression: </p>
+
+<table  cellspacing="0" >      
+	<tr valign="top">
+		 <td width="250">
+		 <p class="bold">Excuse me, please, ...</p></td>
+	</tr>
+	<tr valign="top">
+		 <td><p style="margin-top: 0pt;">Извин<span class="acco">и</span>те, пож<span class="acco">а</span>луйста, ... <br />
+
+		 		<span class="sound" onclick="playAudio('audio01042000.mp3')">[izvin<span class="acct">i</span>ti paj<span class="acct">a</span>loosta] <span class="play_tip">&nbsp; &nbsp;</span></span>
+		 		</p>
+		 </td>
+	</tr>
+</table>
+
+	</div>
+</div>
+
 
 
 <div class="su-exerc">
-<p class="task"> Ask a stranger:</p>
 <%
  @phrases = [
 {:q_text=>'- the way to the W.C. ',
@@ -1056,7 +1432,7 @@ Task 4.  Learn my
  ]
 %>
 
-<%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
+<%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases, :title=>'Ask a stranger: '} %>
 
 </div>
 
@@ -1079,25 +1455,18 @@ Task 4.  Learn my
 <div id="for_tab04" class="pBlock" style="display: none">
 	<div class="inpBlock">
 	
-<h3 class="su-step-title">Упражнения</h3>
+<h3 class="su-step-title">Revision</h3>
 <p class="su-step-info">
 Here you can do exercises for Russian grammar and lexical material of the lesson.
 </p>
 
 
-	
-	
+		
 <h4 class="su-task"> 
-Task 1. Revise this lesson's materials and complete the test
+Revise this lesson's materials 
 </h4> 
  
-
- 
- 
-<div id="ds3" class="ds-wrapper" style="padding: 15px;">
-
-<p class="task" align="center">Drag and drop the flags and press "Check answers" </p>	
-
+ <p class="part-task">a) Listen and find the corresponding English phrases: </p>
 
 <% 
 
@@ -1139,22 +1508,95 @@ Task 1. Revise this lesson's materials and complete the test
 
 %>
 
-<%= render :partial => '/site/every/en_ru_ddtest', :locals => {:t_phrases => @t_phrases} %>
 
+<div id="ch4" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test' %>
 </div>
+</div><!-- end of lt-holder -->
 
 <script type="text/javascript"> 
-	var ds3 = new dragsort_test( {
-		id: "ds3", 			
-		targets: "ds-answer",	
-		answer_elem: "ds_sort_item", 
-		variant_elem: "ds_variant",
-		answer_color: "#F6FAFF",
-		auto_check: false
+	var ch4 = new ch_exercise( {
+		id: "ch4", 
+		test_id: "c0101050.V",
+		quest_num: 12,
+		variants_num: 5,
+		quest_type: 'audio',
+		basic_array: [
+		
+<% @last_item_index = (@t_phrases.length)-1 -%>
+<% @t_phrases.each_with_index  do |word, index| -%>
+['<%= word[:sound] %>', "<%= word[:text].to_s.gsub(/"/,'\"') %>"]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
 		} )
 </script>
  
  
+ <br> <br><br>
+ 
+ 
+ <div class="rev-wrap">
+	 <div class="rev-head">  In this lesson you have learned </div>
+  <div class="rev-content">
+
+<p>- <strong>Russian expressions to introduce yourself</strong></p>
+ 
+<ul class="learnt-list">
+	<li>Я Сэм Браун.</li>
+	<li>Я американец.</li>
+	<li>Я из Канады.</li>
+</ul> 
+
+<p>- <strong>The construction "<span class="ital">Это ...</span>"</strong>: </p>
+
+<ul class="learnt-list">
+	<li>Это билет.</li>
+	<li>Это мой багаж.</li>
+
+</ul> 
+
+<p>- <strong>How to ask about a location:</strong> </p>
+
+<ul class="learnt-list">
+	<li>Где находится бар?</li>
+</ul>
+
+<p>- <strong>How to ask a stranger:</strong> </p>
+
+<ul class="learnt-list">
+	<li>Извините, пожалуйста, где находится выход?</li>
+
+</ul>
+
+<p>You have encountered some <strong>basic terms of courtesy</strong>:</p> 
+
+<ul class="learnt-list">
+	<li>- Здравствуйте.</li>
+	<li>- Добро пожаловать.</li>
+	<li>- Спасибо.</li>
+	<li>- Пожалуйста.</li>
+	<li>- До свидания.</li>
+</ul>
+
+<p>You have also learned general info about <strong>polite forms of address</strong> and <strong>grammatical gender</strong> in Russian</p>
+
+ 
+<p style="margin-top: 30px;">In order to make sure you have understood all the material of the lesson and to get some additional information, we recommend you to visit the following pages: </p>
+
+<ul class="last-links">
+	<li><a href="/en/ru/vocabulary/politeness">Formulas of politeness</a></li>
+	<li><a href="/en/ru/vocabulary/acquaintance">Acquaintance</a></li>
+	<li><a href="/en/ru/vocabulary/airport" title="Airport">Airport</a></li>	
+</ul>
+
+  
+ 
+  </div>
+ </div>
+ 
  
  
  
@@ -1162,7 +1604,7 @@ Task 1. Revise this lesson's materials and complete the test
  
  
 
-<br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
 
 
 
@@ -1178,7 +1620,7 @@ Task 1. Revise this lesson's materials and complete the test
 </div>
 
 
-
+</div></div><!-- end of id content-->
 
 
 

@@ -1,4 +1,11 @@
-<table cellspacing="8">
+<div class="gex-area-trans">
+<table cellspacing="15">
+<tr>
+	<th colspan="3">
+		Questions
+		<br><br>
+	<th>
+</tr>
 <% phrases.each_with_index do |phrase, index| %>
 <tr>
 	<td>
@@ -9,7 +16,7 @@
 	<div><%= phrase[:q_text]%></div>
 	<div>[<%= phrase[:q_transcribe]%>]</div>
 	</td>
-	<td>
+	<td style="padding-left: 30px">
 		<table class="ds-table" cellspacing="0" align="center"> 
 			<tr> 
 				<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap"><strong>Check yourself</strong></td> 
@@ -20,3 +27,4 @@
 </tr>
 <% end %>
 </table>
+</div>

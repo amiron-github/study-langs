@@ -1,0 +1,75 @@
+<%
+
+list = [
+{:url=>"/every-01.html",
+:image=>"/images/list/city/airport.jpg",
+:title=>"Lesson 1. In the airport"},
+{:url=>"/every-02.html",
+:image=>"/images/list/city/taxi.jpg",
+:title=>"Lesson 2. Transport"},
+{:url=>"/every-03.html",
+:image=>"/images/list/city/hotel.jpg",
+:title=>"Lesson 3. At the hotel"},
+{:url=>"/every-04.html",
+:image=>"/images/list/city/street.jpg",
+:title=>"Lesson 4. In the street"},
+{:url=>"/every-05.html",
+:image=>"/images/list/city/theatre.jpg",
+:title=>"Lesson 5. Sightseeings"},
+{:url=>"/every-06.html",
+:image=>"/images/list/city/gum.jpg",
+:title=>"Lesson 6. Shopping"},
+{:url=>"/every-07.html",
+:image=>"/images/list/city/resto-table.jpg",
+:title=>"Lesson 7. At the restaurant"},
+{:url=>"/every-08.html",
+:image=>"/images/list/city/drugstore.jpg",
+:title=>"Lesson 8. At the drugstore"},
+{:url=>"/every-09.html",
+:image=>"/images/list/city/currency-exchange.jpg",
+:title=>"Lesson 9. Currency exchange"},
+{:url=>"/every-10.html",
+:image=>"/images/list/city/cyber-cafe.jpg",
+:title=>"Lesson 10. Internet & Telephone"}
+
+]
+
+
+
+%>
+
+
+
+
+
+<div class="widget-wrap" id="cov1" style="position: relative; padding: 0 24px 15px; margin: 0 3px;">
+
+<div class="coverflow-control cvf-lft">
+	<span class="cvf-prev"> <img title="Previous" src="/images/icons/control_rewind_blue.png"/> </span> 
+</div>
+
+<div class="coverflow-control cvf-rt"> 
+	<span class="cvf-next"> <img src="/images/icons/control_fastforward_blue.png" title="Next"/></span>
+</div>
+<div style="padding-bottom: 5px"></div>
+<div class="coverflow-container">
+<div class="slidshow">
+<div class="coverflow-wrap">
+	<ul >
+		<% list.each_with_index do |lesson, index|%>
+		<li <%if index+1 == active%>class="cvf-act"<%end%>><a href="<%if index+1 == active%>#<%else%><%= lesson[:url]%><%end%>"><img src="<%= lesson[:image]%>" title="<%= lesson[:title]%>"></a></li>
+		<%end%>
+	</ul>
+</div>
+</div>
+</div>
+
+
+
+</div>
+
+<script type="text/javascript"> 
+	var sh1 = new coverflow_show( {
+		id: "cov1"
+		} )
+</script>

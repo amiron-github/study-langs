@@ -12,9 +12,11 @@
 <%= javascript_include_tag 'es-grammar-exercises' %>
 <%= javascript_include_tag 'es-test-drag-input' %>
 
-
 <%= javascript_include_tag 'short-unit' %>
 <%= stylesheet_link_tag 'short-unit' %>
+
+<%= javascript_include_tag 'dialog-player' %>
+<%= stylesheet_link_tag 'dialog_player' %>
 
 <script type="text/javascript">
 <%if params[:tab] %>
@@ -24,21 +26,20 @@
 <%end%>
 </script>
 
-
 <% end %>
 
 
-
-
-
+<div id="pagecontent"><div id="content">
 <div class="unit-area">
 
 
 <div id="prof_tabs">
+<%= render :partial => '/site/every/settings_block' %>
 
 <div class="unit-title">
 Lesson 4
 </div>
+<%= render :partial => '/site/every/en_ru_coverflow', :locals => {:active => 4} %>
 	<div id="tabs_row">
             <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Dialogue</a></div></div>
 			<div id="tab02" class="ptab"><div><a href="#">Vocabulary</a></div></div>
@@ -51,53 +52,61 @@ Lesson 4
 <div id="for_tab01" class="pBlock" style="display: block">
 	<div class="inpBlock">
 	
-<h3 class="su-step-title">Review</h3>
+<h3 class="su-step-title">Dialogues</h3>
 <p class="su-step-info">
-Here you can review lexical and grammer structures of the lesson
+Here you can work with dialogues of the lesson
 </p>	
 	
 
-<h4 class="su-task">
-Task 1. Listen, repeat and read the translation
+<h4 class="su-task" >
+I. Asking the way
 </h4>
 
+<p class="part-task">a) Listen to the dialogues and read the translation</p>
+
+
+<%= render :partial => '/site/every/dialog_player', 
+			:locals => {:cluster_id => 103, :html_id=>"dc1",
+						:d_title=>'Dialogue 4-1. Asking the way',
+:content=> "A tourist doesn't know how to find the Lenin square. She asks a passer-by about the way to it, and he tells that she should reach a big house, turn to the right, cross the bridge and go along the street. The tourist asks him to repeat it once more since she does not speak Russian fluently, and then she thanks him for the help. "
+			} %>	
+
+				<script type="text/javascript"> 
+					var  dc1 = new dialog_controls( {
+					id: "dc1", 
+					file: "/audios/audio04011100.mp3",
+					tracks: [0,4310,6618,7354,13531,20376,23771,24424,26384,26946,29171,30354,34691,36676]
+				
+					} )
+				</script>		
 	
-<div class="su-present">
-<div class="su-present-brd">
-<table cellspacing="0">
+<br><br><br>
 
-<%
-cat = Cluster.find(72)
-@words = cat.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
-%>
-<%@words.each_with_index do |word, index|-%>
+<%= render :partial => '/site/every/dialog_player', 
+			:locals => {:cluster_id => 104, :html_id=>"dc2",
+						:d_title=>'Dialogue 4-2. Taxi',
+:content=> "A tourist looks for a W.C. He asks a passer-by where the nearest W.C. is and she tells that there may be a W.C. near the park. She says that to reach the park the tourist should turn the corner and cross the square. "
+			} %>	
 
-	<tr>
-		<td class="su-pres-audio"><%unless word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div><%end%></td>
-		<td class="su-pres-orig">
-			<%= word.text %>
-			<div class="ru-transcript" style="display: none;">[<%= word.transcribe %>]</div>
-		</td>
-		<td class="su-pres-trans"><%= word.translate %></td>
-	</tr>
-<%end%>
-</table>	
-</div>	
-</div>	
-	
+				<script type="text/javascript"> 
+					var  dc2 = new dialog_controls( {
+					id: "dc2", 
+					file: "/audios/audio04011200.mp3",
+					tracks: [0,4598,9613,11024,12826,14367,24451,25331]
+				
+					} )
+				</script>
 
-
-<br><br><br><br>
-
+<br><br>				
 <h4 class="su-task">
-Task 2. Listen to the phrase and find it in the list.
+II. Useful phrases
 </h4>
 
-
+<p class="part-task">a) Find the translation of Russian phrases</p>
 
 <div id="ds1" class="ds-wrapper" style="padding: 15px; margin: 20px 30px;">
 
-<p style="font-size: 11px; text-align: center;">
+<p class="ex-desc">
 Listen to the phrases. Drag the English phrases from the list below <br>and drop them into the corresponding fields.
 </p>		
 
@@ -358,7 +367,7 @@ Listen to the phrases. Drag the English phrases from the list below <br>and drop
 <script type="text/javascript"> 
 	var ds1 = new dragsort_test( {
 		id: "ds1", 
-		test_id: "",
+		test_id: "c0104013.I.c)",
 		targets: "ds-answer", 
 		answer_elem: "ds_sort_item", 
 		variant_elem: "ds_variant",
@@ -370,7 +379,7 @@ Listen to the phrases. Drag the English phrases from the list below <br>and drop
 
 
 <div class="es-ex-buttons su-next-wrapper">
-<input type="button" class="su-next-step" value="Next step >>" onclick="openNextStep(2)">
+<input type="button" class="su-next-step" value="Next part >>" onclick="openNextStep(2)">
 </div>	
 	
 	</div>
@@ -383,10 +392,14 @@ Listen to the phrases. Drag the English phrases from the list below <br>and drop
 <p class="su-step-info">
 Here you can learn words and expressions of the lesson.
 </p>	
+	
 
 <h4 class="su-task">
-Task 1. Read and repeat the words and expressions of the lesson.
+I. City
 </h4>
+
+<p class="part-task">a) Learn Russian words:</p>
+
 <%
  @voc1 = [
 {:text=>'дом',
@@ -444,11 +457,12 @@ Task 1. Read and repeat the words and expressions of the lesson.
  ]
 %>
 <%= render :partial => '/site/every/en_ru_voc', :locals => {:voc => @voc1} %>	
-	
+
 <br><br>
 
-<div class="su-exerc">
-<p class="task">Translate phrases from English into Russian.</p> 
+<p class="part-task">b) Translate phrases from English into Russian:</p>
+
+<div class="su-exerc"> 
 <%
  @phrases = [
 {:q_text=>'It is a road crossing. ',
@@ -472,14 +486,15 @@ Task 1. Read and repeat the words and expressions of the lesson.
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>	
 
-
 </div>
 
-
+<br><br>
 
 <h4 class="su-task">
-Task 2. Listen to the phrase and find it in the list.
+II. Go straight ahead!
 </h4>
+
+<p class="part-task">a) Learn Russian words:</p>
 
 <%
  @voc2 = [
@@ -516,6 +531,8 @@ Task 2. Listen to the phrase and find it in the list.
 <%= render :partial => '/site/every/en_ru_voc', :locals => {:voc => @voc2} %>	
 	
 <br><br>
+
+<p class="part-task">b) Listen and repeat the examples with these verbs:</p>
 
 
 <%
@@ -554,12 +571,10 @@ Task 2. Listen to the phrase and find it in the list.
 %>
 <%= render :partial => '/site/every/en_ru_voc_tr', :locals => {:voc => @voc} %>
 
-
-
 <br><br>
+<p class="part-task">b) Translate phrases from English into Russian </p>
 
 <div class="su-exerc">
-<p class="task">Translate phrases from English into Russian.</p> 
 <%
  @phrases = [
 {:q_text=>'I need to go to the square. ',
@@ -579,15 +594,18 @@ Task 2. Listen to the phrase and find it in the list.
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>	
 
-
 </div>
-
+<br><br>
 
 <h4 class="su-task">
-Task 3. Listen to the phrase and find it in the list.
+III. I'm a foreigner !
 </h4>
 
-<div class="ev-comment">
+
+<div class="com-wrap">
+	<div class="com-head"><span class="com-h-ico"></span>Telling about your language skills</div>
+	<div class="com-content">
+
 <p>In the dialogue above you have seen the following phrase:</p>
 
 <table  cellspacing="0" >      
@@ -642,9 +660,15 @@ Task 3. Listen to the phrase and find it in the list.
 </table>
 
 </div>
+
+
+	</div>
 </div>
 
-<br><br>
+<br>
+
+<p class="part-task">a) Look, listen and reapeat the examples with these expressions: </p>
+
 <%
  @voc = [
 
@@ -673,12 +697,14 @@ Task 3. Listen to the phrase and find it in the list.
 :transcribe=>'v<span class="acct"><span class="ry">i</span></span> panim<span class="acct">a</span>iti pa angl<span class="acct">i</span>yski?',
 :translate=>'Do you understand English?'}
 
-  
  ]
 %>
 <%= render :partial => '/site/every/en_ru_voc_tr', :locals => {:voc => @voc} %>
 
-<div class="egdiv">
+
+<p class="part-task">b) Answer the questions in Russian following the model and check yourself: </p>
+
+<div class="egmodel">
 <h4>Model</h4>
 <table cellspacing="0" >
 	<tr valign="top">
@@ -709,7 +735,6 @@ Task 3. Listen to the phrase and find it in the list.
 </div>
 
 <div class="su-exerc">
-<p class="task">Translate phrases from English into Russian.</p> 
 <%
  @phrases = [
 {:q_text=>'Вы говор<span class="acco">и</span>те по-р<span class="acco">у</span>сски? - ... ',
@@ -727,10 +752,12 @@ Task 3. Listen to the phrase and find it in the list.
  ]
 %>
 
-<%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>	
-
+<%= render :partial => '/site/every/en_ru_oral_quest', :locals => {:phrases => @phrases} %>		
 
 </div>
+
+<br><br>
+<p class="part-task">c) Learn the following Russian words:  </p>
 
 
 <%
@@ -756,16 +783,44 @@ Task 3. Listen to the phrase and find it in the list.
 %>
 <%= render :partial => '/site/every/en_ru_voc', :locals => {:voc => @voc} %>
 
-
 <br><br>
+<p class="part-task">d) Translate into Russian following the model and check yourself: </p>
+
+
+<div class="egmodel">
+<h4>Model</h4>
+<table cellspacing="0" >
+	<tr valign="top">
+		<td width="300">
+			<table  cellspacing="0" >
+					<tr valign="top">
+
+		 				<td>
+		 					<p>Я <u>хорош<span class="acco">о</span></u> говор<span class="acco">ю</span> по-англ<span class="acco">и</span>йски.<br />
+		 						<span class="sound" onclick="playAudio('audio04063005.mp3')">[y<span class="acct">a</span> harash<span class="acct">o</span> gava<span class="sftv">r</span><span class="sfty">y</span><span class="acct">oo</span> pa angl<span class="acct">i</span>yski] <span class="play_tip">&nbsp; &nbsp;</span></span>
+
+		 					</p>
+		 				</td>
+					</tr>
+				</table>
+		</td>
+		<td valign="top"><p class="ital">I speak English <u>well</u>.</p>
+		</td>
+
+	</tr>
+</table>
+</div>
+
+
+
 
 <div class="su-exerc">
 <div id="di1">	
 				
-<p class="task">Перетащите слова в текстовое поле или напечатайте их.</p> 
+<p class="ex-desc">Drag and drop the following words to build phrases. You can read correct answers by clicking the button "Display answers"</p> 
 
 <br> 
-<table style="margin: 0 auto; border: 1px dashed #000" class="di_variants" cellspacing="14" align="center" >
+<table class="di_variants noselect di_var_view" cellspacing="14" align="center" >
 <tr>
 	<td>
 		<div> Я </div>
@@ -802,7 +857,7 @@ Task 3. Listen to the phrase and find it in the list.
 
 
 <div  class="gr_ex_type di_mix">
-<div class="gr-ex-testid"></div>
+<div class="gr-ex-testid">c0102063.VI.c)</div>
 <%
  @phrases = [
 {:to_bild=> "I speak Russian badly.", 
@@ -849,8 +904,10 @@ Task 3. Listen to the phrase and find it in the list.
 
 
 <h4 class="su-task">
-Task 3. Learn Russian numerals.
+IV. Russian numerals
 </h4>
+
+<p class="part-task">a) Listen, read and repeat the following examples:   </p>
 
 <%
  @voc = [
@@ -879,11 +936,41 @@ Task 3. Learn Russian numerals.
   :transcribe=>'tr<span class="acct">i</span>tsat chit<span class="acct"><span class="ry">i</span></span>ri', 
   :translate=> 'thirty  three' 
   },
-  {:text=> 'пятн<span class="acco">а</span>дцать',
-  :number=> '15',
-  :sound=> '/audios/audio03072005.mp3', 
-  :transcribe=>'pitn<span class="acct">a</span>tsa<span class="sftc">t</span>', 
-  :translate=> 'fifteen' 
+  {:text=> 'с<span class="acco">о</span>рок пять',
+  :number=> '45',
+  :sound=> '/audios/audio04082005.mp3', 
+  :transcribe=>'s<span class="acct">o</span>rak <span class="sftv">p</span><span class="sfty">y</span><span class="acct">a</span>t', 
+  :translate=> 'fourty five' 
+  },
+  {:text=> 'пятьдес<span class="acco">я</span>т шесть',
+  :number=> '56',
+  :sound=> '/audios/audio04082006.mp3', 
+  :transcribe=>'piddi<span class="sftv">s</span><span class="sfty">y</span><span class="acct">a</span>t sh<span class="acct">e</span><span class="sftc">s</span><span class="sftc">t</span>', 
+  :translate=> 'fifty six' 
+  },
+  {:text=> 'шестьдес<span class="acco">я</span>т семь',
+  :number=> '67',
+  :sound=> '/audios/audio04082007.mp3', 
+  :transcribe=>'sh<span class="ry">i</span><span class="sftc">z</span>di<span class="sftv">s</span><span class="sfty">y</span><span class="acct">a</span>t <span class="sftv">s</span><span class="sfty">y</span><span class="acct">e</span><span class="sftc">m</span>', 
+  :translate=> 'sixty seven' 
+  },
+  {:text=> 'с<span class="acco">е</span>мьдесят в<span class="acco">о</span>семь',
+  :number=> '78',
+  :sound=> '/audios/audio04082008.mp3', 
+  :transcribe=>'<span class="sftv">s</span><span class="sfty">y</span><span class="acct">e</span>mdi<span class="sftc">s</span><span class="sfty">y</span>at v<span class="acct">o</span>si<span class="sftc">m</span>', 
+  :translate=> 'seventy eight' 
+  },
+  {:text=> 'в<span class="acco">о</span>семьдесят д<span class="acco">е</span>вять',
+  :number=> '89',
+  :sound=> '/audios/audio04082009.mp3', 
+  :transcribe=>'v<span class="acct">o</span>simdi<span class="sftc">s</span><span class="sfty">y</span>at <span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span>vi<span class="sftc">t</span>', 
+  :translate=> 'eigty nine' 
+  },
+  {:text=> 'девян<span class="acco">о</span>сто д<span class="acco">е</span>вять',
+  :number=> '99',
+  :sound=> '/audios/audio04082010.mp3', 
+  :transcribe=>'divin<span class="acct">o</span>sta <span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span>vi<span class="sftc">t</span>', 
+  :translate=> 'ninety nine' 
   }
   
  ]
@@ -891,10 +978,9 @@ Task 3. Learn Russian numerals.
 <%= render :partial => '/site/every/en_ru_voc', :locals => {:voc => @voc} %>	
 	
 
-<br><br><br><br>
+<br><br>
 
-
-
+<p class="part-task">b) Listen to the Russian numeral and write it (with figures 1, 2, 3 etc.) in the text area:   </p>
 
 
 <div id="ch2" class="lt-holder">
@@ -906,6 +992,7 @@ Task 3. Learn Russian numerals.
 <script type="text/javascript"> 
 	var ch2 = new ch_exercise( {
 		id: "ch2", 
+		test_id: "c0104083.VIII.c)",
 		quest_num: 15,
 		variants_num: 5,
 		quest_type: 'audio',
@@ -930,9 +1017,11 @@ Task 3. Learn Russian numerals.
 
 
 
+<br><br><br><br>
+
 
 <div class="es-ex-buttons su-next-wrapper">
-<input type="button" class="su-next-step" value="Next step >>" onclick="openNextStep(3)">
+<input type="button" class="su-next-step" value="Next part >>" onclick="openNextStep(3)">
 </div>
 	
 	</div>
@@ -949,13 +1038,15 @@ Here you can learn grammar and lexical rules of the lesson.
 
 
 <h4 class="su-task">
-Task 1. Learn 
+I. Finding your way
 </h4>
 
+<p class="part-task">a) Find the translation of Russian phrases</p>
 
 <div id="ds2" class="ds-wrapper" style="padding: 15px;">
 
-<p class="task" align="center">Drag and drop the flags and press "Check answers" </p>	
+<p class="ex-desc">Listen to the phrases. Drag the English phrases from the list below
+and drop them into the corresponding fields. </p>	
 
 
 <% 
@@ -1004,7 +1095,8 @@ Task 1. Learn
 
 <script type="text/javascript"> 
 	var ds2 = new dragsort_test( {
-		id: "ds2", 			
+		id: "ds2", 		
+		test_id:"c0104032.III.b)",
 		targets: "ds-answer",	
 		answer_elem: "ds_sort_item", 
 		variant_elem: "ds_variant",
@@ -1015,14 +1107,12 @@ Task 1. Learn
 
 
 
-
-
-
 <br><br>
 <h4 class="su-task">
-Task 1.  Learn the imperative of the verbs: 
+II.  Turn to the right!
 </h4>
 
+<p class="part-task">a) Learn the imperative of the verbs:</p>
 
 <%
 
@@ -1065,6 +1155,9 @@ Task 1.  Learn the imperative of the verbs:
 
 
 <%= render :partial => '/site/every/en_ru_voc_train2', :locals => {:voc => @voc_train} %>
+<br>
+<br>
+<p class="part-task">b) Listen to the phrases and complete the test:</p>
 
 
 <div class="su-exerc"> 
@@ -1072,7 +1165,9 @@ Task 1.  Learn the imperative of the verbs:
 <div class="task">Choose an appropriate variant to continue the phrase:</div> 
  
 <div  class="gr_ex_variants"> 
-<div class="gr-ex-testid"></div> 
+<div class="gr-ex-testid">c0104035.III.e)</div> 
+ 
+<div class="gex-area-trans">  
  
 <div  class="gr_ex_variants_wrap gexv_with_trans"> 
 
@@ -1084,7 +1179,7 @@ Task 1.  Learn the imperative of the verbs:
 {:sound=>'/audios/audio04035040.mp3'}
  ]
 %>
-<%= render :partial => '/site/every/en_ru_mdiag_list', :locals => {:mini_d => @mini_d} %>
+<%= render :partial => '/site/every/en_ru_mdiag_list', :locals => {:mini_d => @mini_d, :title=>"Phrase"} %>
 
 <br><br>
 <table class="gr_ex_vars_tab gexv_options" cellpadding="0" cellspacing="0" border="0"> 
@@ -1129,7 +1224,9 @@ Task 1.  Learn the imperative of the verbs:
 		</td> 
 	</tr>
 </table> 
+
 </div> 
+</div>
  
 <p class="gexv_check es-ex-buttons gex-es-btn"> 
 	<input type="button" value="Check answers">
@@ -1143,10 +1240,12 @@ Task 1.  Learn the imperative of the verbs:
 
 <br><br>
 <h4 class="su-task">
-Task 1.  Learn the imperative of the verbs: 
+III. How can I get to the Pushkin square? 
 </h4>
 
-<div class="ev-comment">
+<div class="com-wrap">
+	<div class="com-head"><span class="com-h-ico"></span>Asking the way </div>
+	<div class="com-content">
 <p>In the dialogue above you have seen the following construction:</p>
 
 <table  cellspacing="0" >      
@@ -1164,9 +1263,14 @@ Task 1.  Learn the imperative of the verbs:
 		 </td>
 	</tr>
 </table>
+
+	</div>
 </div>
 
-<br><br>
+<br>
+
+<p class="part-task">a) Learn the following expressions: </p>
+
 
 <%
  @voc = [
@@ -1199,8 +1303,10 @@ Task 1.  Learn the imperative of the verbs:
 
 <br><br>
 
+
+<p class="part-task">b) Translate phrases from English into Russian: </p>
+
 <div class="su-exerc">
-<p class="task">Translate phrases from English into Russian.</p> 
 <%
  @phrases = [
  
@@ -1221,14 +1327,17 @@ Task 1.  Learn the imperative of the verbs:
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
 
 </div>
-
+<br><br>
 
 <h4 class="su-task">
-Task 1. Learn 
+IV. Near the park
 </h4>
 
-<div class="ev-comment">
-<p>In the dialogue above you have seen the following construction:</p>
+<div class="com-wrap">
+	<div class="com-head"><span class="com-h-ico"></span>Russian preposition рядом  </div>
+	<div class="com-content">
+	
+<p>In the dialogue coulde see the following construction:</p>
 
 <table  cellspacing="0" >      
 	<tr valign="top">
@@ -1245,15 +1354,20 @@ Task 1. Learn
 		 </td>
 	</tr>
 </table>
+
+
+</div>
 </div>
 
-<br><br>
 
+<br>
+
+<p class="part-task">a) Find the translation of Russian phrases</p>
 
 
 <div id="ds4" class="ds-wrapper" style="padding: 15px; margin: 20px 30px;">
 
-<p style="font-size: 11px; text-align: center;">
+<p class="ex-desc">
 Listen to the phrases. Drag the English phrases from the list below <br>and drop them into the corresponding fields.
 </p>	
 
@@ -1267,7 +1381,7 @@ Listen to the phrases. Drag the English phrases from the list below <br>and drop
 {:sound=>'/audios/audio04051050.mp3'}
  ]
 %>
-<%= render :partial => '/site/every/en_ru_mdiag_list', :locals => {:mini_d => @mini_d} %>	
+<%= render :partial => '/site/every/en_ru_mdiag_list', :locals => {:mini_d => @mini_d, :title=>"Phrase"} %>	
 </div>
 <br><br>
 
@@ -1414,7 +1528,7 @@ Listen to the phrases. Drag the English phrases from the list below <br>and drop
 <script type="text/javascript"> 
 	var ds4 = new dragsort_test( {
 		id: "ds4", 
-		test_id: "",
+		test_id: "c0104050.V",
 		targets: "ds-answer", 
 		answer_elem: "ds_sort_item", 
 		variant_elem: "ds_variant",
@@ -1429,12 +1543,14 @@ Listen to the phrases. Drag the English phrases from the list below <br>and drop
 
 
 <h4 class="su-task">
-Task 1. Learn 
+V. Could you please repeat it! 
 </h4>	
 
-<div class="ev-comment">
+<div class="com-wrap">
+	<div class="com-head"><span class="com-h-ico"></span>Construction Вы не могли бы ... </div>
+	<div class="com-content">
 
-<p>In the dialogue above you have seen the following phrase:</p>
+<p>In the dialogue you could see the following phrase:</p>
 
 <table  cellspacing="0" >      
 	<tr valign="top">
@@ -1453,9 +1569,13 @@ Task 1. Learn
 </table>
 
 <p>If you want to address another person with a polite request, you may use the expression  <span class="norm_txt nwr"><em>Вы не могл<span class="acco">и</span> бы&nbsp;<span class="sound" style="clear: left;" onclick="playAudio('audio04070001.mp3')">[v<span class="acct"><span class="ry">i</span></span> ni magl<span class="acct">i</span> b<span class="ry">i</span>]&nbsp;<span class="play_tip">&nbsp;&nbsp;&nbsp;</span></span></em></span> - "Could you please..."</p>
+	
+	</div>
 </div>
 
-<br><br>
+<br>
+<p class="part-task">a) Learn the following expressions: </p>
+
 
 <%
  @voc = [
@@ -1487,11 +1607,11 @@ Task 1. Learn
 <%= render :partial => '/site/every/en_ru_model', :locals => {:voc => @voc} %>
 
 
-
-<br>
+<br><br>
+<p class="part-task">b) Translate phrases from English into Russian:</p>
 
 <div class="su-exerc">
-<p class="task">Translate phrases from English into Russian.</p> 
+
 <%
  @phrases = [
  
@@ -1513,20 +1633,16 @@ Task 1. Learn
 
 </div>
 
-<br><br>
-
-
-
 
 
 
 
 <br><br><br><br>
 <div class="es-ex-buttons su-next-wrapper">
-<input type="button" class="su-next-step" value="Следующий этап >>" onclick="openNextStep(4)">
+<input type="button" class="su-next-step" value="Next part >>" onclick="openNextStep(4)">
 </div>	
 	
-<br><br><br><br><br><br><br>
+
 	
 	</div>
 </div>
@@ -1537,98 +1653,154 @@ Task 1. Learn
 <div id="for_tab04" class="pBlock" style="display: none">
 	<div class="inpBlock">
 	
-<h3 class="su-step-title">Упражнения</h3>
+<h3 class="su-step-title">Revision</h3>
 <p class="su-step-info">
-Here you can do exercises for Russian grammar and lexical material of the lesson.
+Revise materials from this lesson
 </p>
 
 
 	
-	
 <h4 class="su-task"> 
-Task 1. Revise this lesson's materials and complete the test
+Revise this lesson's materials 
 </h4> 
  
-
- 
- 
-<div id="ds3" class="ds-wrapper" style="padding: 15px;">
-
-<p class="task" align="center">Drag and drop the flags and press "Check answers" </p>	
+ <p class="part-task">a) Listen and find the corresponding English phrases: </p>	
 
 
 <% 
 
 @t_phrases = [
-  {:text=> 'Goodbye!',
- :sound=>'/audios/audio01051010.mp3',
+  {:text=> 'You should cross the bridge.',
+ :sound=>'/audios/audio04032060.mp3',
  :answer=> '1'
   },
- {:text=> 'Are you from America?',
- :sound=>'/audios/audio01051020.mp3', 
+ {:text=> 'You should go through the park.',
+ :sound=>'/audios/audio04032010.mp3', 
  :answer=> '2'
   },
- {:text=> 'Welcome to the USA!',
- :sound=>'/audios/audio01051030.mp3',
+ {:text=> 'How can I get to the museum? ',
+ :sound=>'/audios/audio04042040.mp3',
  :answer=> '3'
   },
- {:text=> 'Excuse me, please, where is the bar?',
- :sound=>'/audios/audio01051040.mp3', 
+ {:text=> 'I understand Russian.',
+ :sound=>'/audios/audio04061020.mp3', 
  :answer=> '4'
   },
- {:text=> 'I\'m an American.',
- :sound=>'/audios/audio01051050.mp3',
+ {:text=> 'I understand Russian a little.',
+ :sound=>'/audios/audio04063020.mp3',
  :answer=> '5'
   },
- {:text=> 'Thank you!',
- :sound=>'/audios/audio01051060.mp3', 
+ {:text=> 'Can you please say that again? ',
+ :sound=>'/audios/audio04072020.mp3',
  :answer=> '6'
   },
- {:text=> 'I\'m from Russia.',
- :sound=>'/audios/audio01051070.mp3',
+ {:text=> 'I speak English.',
+ :sound=>'/audios/audio04061050.mp3', 
  :answer=> '7'
   },
- {:text=> 'It is my ticket.',
- :sound=>'/audios/audio01051080.mp3',
+ {:text=> 'How can I get to the bridge? ',
+ :sound=>'/audios/audio04042030.mp3',
  :answer=> '8'
+  },
+ {:text=> 'Excuse me, please, where is the river?',
+ :sound=>'/audios/audio04022050.mp3',
+ :answer=> '9'
+  },
+ {:text=> 'It is a house. ',
+ :sound=>'/audios/audio04022040.mp3',
+ :answer=> '10'
   }
 
  ]
 
 %>
 
-<%= render :partial => '/site/every/en_ru_ddtest', :locals => {:t_phrases => @t_phrases} %>
-
+<div id="ch4" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test' %>
 </div>
+</div><!-- end of lt-holder -->
 
 <script type="text/javascript"> 
-	var ds3 = new dragsort_test( {
-		id: "ds3", 			
-		targets: "ds-answer",	
-		answer_elem: "ds_sort_item", 
-		variant_elem: "ds_variant",
-		answer_color: "#F6FAFF",
-		auto_check: false
+	var ch4 = new ch_exercise( {
+		id: "ch4",
+		test_id: "c0104411",
+		quest_num: 12,
+		variants_num: 5,
+		quest_type: 'audio',
+		basic_array: [
+		
+<% @last_item_index = (@t_phrases.length)-1 -%>
+<% @t_phrases.each_with_index  do |word, index| -%>
+['<%= word[:sound] %>', "<%= word[:text].to_s.gsub(/"/,'\"') %>"]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
 		} )
 </script>
  
  
+<br><br><br>
  
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+ <div class="rev-wrap">
+	 <div class="rev-head">  In this lesson you have learned </div>
+  <div class="rev-content">
 
-<br><br><br><br>
+<p>- <strong>Words and expressions on the topic "City"</strong></p>
+
+<p>- <strong>Verbs and prepositions</strong>, with the help of which we can specify traveling directions in Russian:</p> 
+
+<ul class="learnt-list">
+
+	<li>- идти через, вдоль, до</li>
+	<li>- дойти до</li>
+	<li>- повернуть</li>
+</ul>
+
+<p>- Forms of <strong>imperative mood</strong> of several Russian verbs:</p> 
+
+<ul class="learnt-list">
+	<li>Идите!</li>
+	<li>Поверните!</li>
+</ul>
+ 
+<p>- <strong>Expresssion used for finding a way:</strong></p>  
+
+<ul class="learnt-list">
+	<li>Как пройти к вокзалу?</li>
+</ul> 
+
+<p>- Expressions that can be helpful to tell about your <strong>language skills</strong>:</p>  
+
+<ul class="learnt-list">
+	<li>Я понимаю по-английски.</li>
+	<li>Я немного говорю по-русски.</li>
+</ul> 
+ 
+<p>- An expression for a <strong>polite request</strong>:</p>  
+
+<ul class="learnt-list">
+	<li>Вы не могли бы повторить?</li>
+	<li>Я немного говорю по-русски.</li>
+</ul> 
+<p>
+In order to make sure you have understood all the material of the lesson and to get some additional information, we recommend you to visit the following pages: 
+</p>
+
+<ul class="last-links">
+	<li><a href="/en/ru/vocabulary/city">City</a></li>
+	<li><a href="/en/ru/vocabulary/sightseeing">Sightseeing</a></li>
+	<li><a href="/numerals00-100.html">Numerals from 0 to 100</a></li>
+</ul>
+
+  
+ 
+  </div>
+ </div>
+ 
+<br><br><br><br><br><br><br><br>
 
 
 
@@ -1638,17 +1810,11 @@ Task 1. Revise this lesson's materials and complete the test
 
 
 
-
-
-
 </div>
 
 
 
-
-
-
-
+</div></div><!-- end of id content-->
 
 
 <script type="text/javascript">

@@ -1,0 +1,52 @@
+<h4 class="tit-head"><span><%= course_data[:name]%></span></h4>
+
+<div class="voc-results section-tests">	
+<% course_data[:results].each_with_index do |t, index| %>
+	<div class="voc-item details-hidden">
+		<div class="voc-top-topic"><span><%= t[:name] %></span></div>
+		<div class="voc-details"><span class="mv-details">Show details</span><span class="mv-no-details">Hide details</span></div>
+		<div class="voc-topic-content">
+			<div class="voc-quick-info">
+				Average result:  <b><%= t[:total]%>%</b>
+			</div>
+		<div class="voc-topic-details">
+			<div class="voc-details-content">
+				<div class="voc-tests" style="padding-top: 2px;">
+					<h4>Results Info:</h4>	
+					<table class="voc-tests-list" cellspacing="1">
+						<col width="100"><col width="150"><col width="100">
+					<tr>
+						<th>Part</th>
+						<th>Title</th>
+						<th align="center">Result</th>
+					</tr>
+					
+					<% t[:exercises].each_with_index do |part, counter| %>
+					
+						<% part.each_with_index do |user_test, t_index| %>
+						<tr valign="top">
+						<% if t_index==0 %><td class="voc-test-title" <%if part.length>1%>rowspan="<%=part.length%>"<%end%>>Part <%= counter+1 %></td><%end%>
+							<td class="voc-test-title">Ex <%= user_test[0] %></td>
+							<td class="voc-test-result"><%= user_test[1] %>%</td>
+						</tr>
+						<%end%>
+						
+					<% end %>
+					
+					
+					
+					</table>
+					<br>
+				</div>		
+			</div><!-- end of voc-details-content -->
+		</div>
+		</div>
+	</div>
+<% end %>
+</div>
+
+
+
+
+
+

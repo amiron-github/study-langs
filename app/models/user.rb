@@ -198,6 +198,52 @@ write_attribute :email, (value ? value.downcase : nil)
 		return course_data
 	end
 	
+	def get_detailed_results(map, tag)
+		course = Category.find(:first, :conditions=> ['tag=?', tag])
+		user_tests = get_test_by_category(course.id)
+		course_map = map
+		course_name = course_map[:name]
+		list =[]
+
+		course_map[:parts].each do |lesson|
+			empty_lesson = true
+			total = 0
+			ex_len = 0
+			lesson_parts = []  # create array of lesson that will include 4 parts 
+			lesson[:exercises].each_with_index do |part,index|
+				part_exercises = [] # create array of parts exercises
+				
+				part.each do |exercise| # go through each part, looking for completed exercise
+					found=false
+					t_test = 0
+					user_tests.each do |test| # going through tests completed by user
+						if test.test_id == exercise[0]               #if user's test is found by id in the exercises of the course
+							found=true
+							t_test = test
+						end
+					end
+					
+					if found 
+						empty_lesson = false
+						part_exercises << [ exercise[1].to_s, t_test.result_percent ] # the exercise is added to part, with its name and result
+						total += t_test.result_percent
+						ex_len = ex_len+1
+					end
+					
+					
+				end
+				
+				lesson_parts << part_exercises # the part is added to the lesson
+			end
+			if !empty_lesson
+				average = total/ex_len
+				list << {:name=> lesson[:name], :exercises=> lesson_parts, :total => average}
+			end
+		end
+		course_data = {:name=> course_name, :results=> list}
+		return course_data
+	end
+	
 	def record_words(words_to_record)
 		words_to_record.each do |word_id|
 			learned = words.find(:first, :conditions => ['word_id=?', word_id])
