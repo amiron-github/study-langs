@@ -357,22 +357,27 @@ I. Is there a bathroom in the room?
 <%
  @voc1 = [
 {:text=>'м<span class="acco">и</span>ни-б<span class="acco">а</span>р',
+:id=> '139',
 :sound=>'/audios/audio03021010.mp3',
 :transcribe=>'m<span class="acct">i</span>ni b<span class="acct">a</span>r',
 :translate=>' snack-bar '},
 {:text=>'кондицион<span class="acco">е</span>р',
+:id=> '136',
 :sound=>'/audios/audio03021020.mp3',
 :transcribe=>'kandits<span class="ry">i</span>a<span class="sftv">n</span><span class="sfty">y</span><span class="acct">e</span>r',
 :translate=>' air-conditioner '},
 {:text=>'холодильник',
+:id=> '137',
 :sound=>'/audios/audio03021030.mp3',
 :transcribe=>'halad<span class="acct">i</span><span class="sftc">l</span>nik',
 :translate=>' fridge '},
 {:text=>'душ',
+:id=> '154',
 :sound=>'/audios/audio03021040.mp3',
 :transcribe=>'d<span class="acct">oo</span>sh',
 :translate=>' shower '},
 {:text=>'в<span class="acct">а</span>нная',
+:id=> '128',
 :sound=>'/audios/audio03021050.mp3',
 :transcribe=>'v<span class="acct">a</span>nnaya',
 :translate=>' bath-room '},
@@ -381,6 +386,7 @@ I. Is there a bathroom in the room?
 :transcribe=>'tiliv<span class="acct">i</span>zar',
 :translate=>' TV set '},
 {:text=>'телеф<span class="acco">о</span>н',
+:id=> '131',
 :sound=>'/audios/audio03021070.mp3',
 :transcribe=>'tilif<span class="acct">o</span>n',
 :translate=>' phone '},
@@ -531,7 +537,7 @@ III. This is your room
 		
 <% @last_item_index = (@voc1.length)-1 -%>
 <% @voc1.each_with_index  do |word, index| -%>
-['<%= word[:sound] %>', "<%= word[:translate].to_s.gsub(/"/,'\"') %>"]<% if index!= @last_item_index -%>,<%end -%>	
+['<%= word[:sound] %>', "<%= word[:translate].to_s.gsub(/"/,'\"') %>"<%unless word[:id]==nil || word[:id]==''%>,'<%=word[:id]%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
 <%end -%>
 
 		]

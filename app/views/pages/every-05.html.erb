@@ -351,38 +351,47 @@ I. I'd like to visit a museum
 <%
  @voc1 = [
 {:text=>'двор<span class="acco">е</span>ц',
+:id=> '202',
 :sound=>'/audios/audio05021010.mp3',
 :transcribe=>'dva<span class="sftv">r</span><span class="sfty">y</span><span class="acct">e</span>ts',
 :translate=>' palace '},
 {:text=>'соб<span class="acco">о</span>р',
+:id=> '198',
 :sound=>'/audios/audio05021020.mp3',
 :transcribe=>'sab<span class="acct">o</span>r',
 :translate=>' cathedral '},
 {:text=>'ц<span class="acco">е</span>рковь',
+:id=> '201',
 :sound=>'/audios/audio05021030.mp3',
 :transcribe=>'ts<span class="acct">e</span>rka<span class="sftc">f</span>',
 :translate=>' church '},
 {:text=>'карт<span class="acco">и</span>нная галер<span class="acco">е</span><i></i>я',
+:id=> '206',
 :sound=>'/audios/audio05021040.mp3',
 :transcribe=>'kart<span class="acct">i</span>naya gali<span class="sftv">r</span><span class="sfty">y</span><span class="acct">e</span>ya',
 :translate=>' picture-gallery '},
 {:text=>'те<i></i><span class="acco">а</span>тр',
+:id=> '1254',
 :sound=>'/audios/audio05021050.mp3',
 :transcribe=>'ti<span class="acct">a</span>tr',
 :translate=>' theatre '},
 {:text=>'киноте<span class="acco">а</span>тр',
+:id=> '1255',
 :sound=>'/audios/audio05021060.mp3',
 :transcribe=>'kinati<span class="acct">a</span>tr',
 :translate=>' cinema '},
 {:text=>'п<span class="acco">а</span>мятник',
+:id=> '192',
 :sound=>'/audios/audio05021070.mp3',
 :transcribe=>'p<span class="acct">a</span>mitnik',
 :translate=>' monument '},
 {:text=>'в<span class="acco">ы</span>ставка',
+:id=> '209',
 :sound=>'/audios/audio05021080.mp3',
 :transcribe=>'v<span class="acct"><span class="ry">i</span></span>stafka',
 :translate=>' exhibition '},
 {:text=>'фонт<span class="acco">а</span>н',
+:id=> '195',
 :sound=>'/audios/audio05021090.mp3',
 :transcribe=>'fant<span class="acct">a</span>n',
 :translate=>' fountain '}
@@ -523,7 +532,7 @@ III. Tourism
 		
 <% @last_item_index = (@voc1.length)-1 -%>
 <% @voc1.each_with_index  do |word, index| -%>
-['<%= word[:sound] %>', "<%= word[:translate].to_s.gsub(/"/,'\"') %>"]<% if index!= @last_item_index -%>,<%end -%>	
+['<%= word[:sound] %>', "<%= word[:translate].to_s.gsub(/"/,'\"') %>"<%unless word[:id]==nil || word[:id]==''%>,'<%=word[:id]%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
 <%end -%>
 
 		]

@@ -440,10 +440,12 @@ I. How much is the fish?
 <%
  @voc1 = [
 {:text=>'м<span class="acco">я</span>со',
+:id=> '289',
 :sound=>'/audio/audio07021010.mp3',
 :transcribe=>'<span class="sftv">m</span><span class="sfty">y</span><span class="acct">a</span>sa',
 :translate=>' meat '},
 {:text=>'р<span class="acco">ы</span>ба',
+:id=> '317',
 :sound=>'/audio/audio07021020.mp3',
 :transcribe=>'r<span class="acct"><span class="ry">i</span></span>ba',
 :translate=>' fish '},
@@ -504,7 +506,7 @@ I. How much is the fish?
 		
 <% @last_item_index = (@voc1.length)-1 -%>
 <% @voc1.each_with_index  do |word, index| -%>
-['<%= word[:sound] %>', "<%= word[:translate].to_s.gsub(/"/,'\"') %>"]<% if index!= @last_item_index -%>,<%end -%>	
+['<%= word[:sound] %>', "<%= word[:translate].to_s.gsub(/"/,'\"') %>"<%unless word[:id]==nil || word[:id]==''%>,'<%=word[:id]%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
 <%end -%>
 
 		]
@@ -555,34 +557,42 @@ II. Meat, fish ans sea products
 <%
  @voc1 = [
 {:text=>'к<span class="acco">у</span>рица',
+:id=> '278',
 :sound=>'/audio/audio07031010.mp3',
 :transcribe=>'k<span class="acct">oo</span>ritsa',
 :translate=>' chicken '},
 {:text=>'свин<span class="acco">и</span>на',
+:id=> '303',
 :sound=>'/audio/audio07031020.mp3',
 :transcribe=>'svin<span class="acct">i</span>na',
 :translate=>' pork '},
 {:text=>'гов<span class="acct">я</span>дина',
+:id=> '295',
 :sound=>'/audio/audio07031030.mp3',
 :transcribe=>'ga<span class="sftv">v</span><span class="sfty">y</span><span class="acct">a</span>dina',
 :translate=>' beef '},
 {:text=>'бар<span class="acco">а</span>нина',
+:id=> '292',
 :sound=>'/audio/audio07031040.mp3',
 :transcribe=>'bar<span class="acct">a</span>nina',
 :translate=>' mutton '},
 {:text=>'кр<span class="acco">а</span>сная р<span class="acco">ы</span>ба',
+:id=> '323',
 :sound=>'/audio/audio07031050.mp3',
 :transcribe=>'kr<span class="acct">a</span>snaya r<span class="acct"><span class="ry">i</span></span>ba',
 :translate=>' salmon '},
 {:text=>'икр<span class="acco">а</span>',
+:id=> '311',
 :sound=>'/audio/audio07031060.mp3',
 :transcribe=>'ikr<span class="acct">a</span>',
 :translate=>' caviar '},
 {:text=>'кр<span class="acco">а</span>бы',
+:id=> '1258',
 :sound=>'/audio/audio07031070.mp3',
 :transcribe=>'kr<span class="acct">a</span>b<span class="ry">i</span>',
 :translate=>' crabs '},
 {:text=>'крев<span class="acco">е</span>тки',
+:id=> '1257',
 :sound=>'/audio/audio07031080.mp3',
 :transcribe=>'kri<span class="sftv">v</span><span class="sfty">y</span><span class="acct">e</span>tki',
 :translate=>' shrimps '},
@@ -617,7 +627,7 @@ II. Meat, fish ans sea products
 		
 <% @last_item_index = (@voc1.length)-1 -%>
 <% @voc1.each_with_index  do |word, index| -%>
-['<%= word[:text] %>', "<%= word[:translate].to_s.gsub(/"/,'\"') %>"]<% if index!= @last_item_index -%>,<%end -%>	
+['<%= word[:text] %>', "<%= word[:translate].to_s.gsub(/"/,'\"') %>"<%unless word[:id]==nil || word[:id]==''%>,'<%=word[:id]%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
 <%end -%>
 
 		]
@@ -636,14 +646,17 @@ III. Vegetables and fruit
 <%
  @voc1 = [
 {:text=>'карт<span class="acco">о</span>фель',
+:id=> '344',
 :sound=>'/audio/audio07041010.mp3',
 :transcribe=>'kart<span class="acct">o</span>fi<span class="sftc">l</span>',
 :translate=>' potatoes '},
 {:text=>'помид<span class="acco">о</span>р',
+:id=> '358',
 :sound=>'/audio/audio07041020.mp3',
 :transcribe=>'pamid<span class="acct">o</span>r',
 :translate=>' tomato '},
 {:text=>'огур<span class="acco">е</span>ц',
+:id=> '345',
 :sound=>'/audio/audio07041030.mp3',
 :transcribe=>'agoo<span class="sftv">r</span><span class="sfty">y</span><span class="acct">e</span>ts',
 :translate=>' cucumber '},
@@ -656,14 +669,17 @@ III. Vegetables and fruit
 :transcribe=>'sal<span class="acct">a</span>t',
 :translate=>' letuce '},
 {:text=>'лук',
+:id=> '357',
 :sound=>'/audio/audio07041060.mp3',
 :transcribe=>'l<span class="acct">oo</span>k',
 :translate=>' onion '},
 {:text=>'чесн<span class="acco">о</span>к',
+:id=> '1259',
 :sound=>'/audio/audio07041070.mp3',
 :transcribe=>'chisn<span class="acct">o</span>k',
 :translate=>' garlic '},
 {:text=>'<span class="acco">я</span>блоко',
+:id=> '381',
 :sound=>'/audio/audio07041080.mp3',
 :transcribe=>'y<span class="acct">a</span>blaka',
 :translate=>' apple '},
@@ -672,14 +688,17 @@ III. Vegetables and fruit
 :transcribe=>'gr<span class="acct">oo</span>sha',
 :translate=>' pear '},
 {:text=>'виногр<span class="acco">а</span>д',
+:id=> '363',
 :sound=>'/audio/audio07041100.mp3',
 :transcribe=>'vinagr<span class="acct">a</span>t',
 :translate=>' grape '},
 {:text=>'бан<span class="acco">а</span>н',
+:id=> '361',
 :sound=>'/audio/audio07041120.mp3',
 :transcribe=>'ban<span class="acct">a</span>n',
 :translate=>' banana '},
 {:text=>'апельс<span class="acco">и</span>н',
+:id=> '379',
 :sound=>'/audio/audio07041130.mp3',
 :transcribe=>'api<span class="sftc">l</span>s<span class="acct">i</span>n',
 :translate=>' orange '},
@@ -716,7 +735,7 @@ III. Vegetables and fruit
 		
 <% @last_item_index = (@voc1.length)-1 -%>
 <% @voc1.each_with_index  do |word, index| -%>
-['<%= word[:text] %>', "<%= word[:translate].to_s.gsub(/"/,'\"') %>"]<% if index!= @last_item_index -%>,<%end -%>	
+['<%= word[:text] %>', "<%= word[:translate].to_s.gsub(/"/,'\"') %>"<%unless word[:id]==nil || word[:id]==''%>,'<%=word[:id]%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
 <%end -%>
 
 		]

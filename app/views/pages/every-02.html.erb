@@ -379,46 +379,57 @@ I. Where is the bus stop?
 <%
  @voc1 = [
 {:text=>'к<span class="acco">а</span>сса',
+:id=> '1251',
 :sound=>'/audios/audio02021010.mp3',
 :transcribe=>'k<span class="acct">a</span>ssa',
 :translate=>' ticket office '},
 {:text=>'трамв<span class="acco">а</span>й',
+:id=> '88',
 :sound=>'/audios/audio02021020.mp3',
 :transcribe=>'tramv<span class="acct">a</span>y',
 :translate=>' tramway '},
 {:text=>'тролл<span class="acct">е</span>йбус',
+:id=> '86',
 :sound=>'/audios/audio02021030.mp3',
 :transcribe=>'tra<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>boos',
 :translate=>' trolleybus '},
 {:text=>'маш<span class="acco">и</span>на',
+:id=> '121',
 :sound=>'/audios/audio02021040.mp3',
 :transcribe=>'mash<span class="acct"><span class="ry">i</span></span>na',
 :translate=>' car '},
 {:text=>'остан<span class="acco">о</span>вка',
+:id=> '79',
 :sound=>'/audios/audio02021050.mp3',
 :transcribe=>'astan<span class="acct">o</span>fka',
 :translate=>' stop '},
 {:text=>'авт<span class="acco">о</span>бусная остан<span class="acco">о</span>вка',
+:id=> '84',
 :sound=>'/audios/audio02021060.mp3',
 :transcribe=>'aft<span class="acct">o</span>boosnaya astan<span class="acct">o</span>fka',
 :translate=>' bus stop '},
 {:text=>'трамв<span class="acco">а</span>йная остан<span class="acco">о</span>вка',
 :sound=>'/audios/audio02021070.mp3',
+:id=> '88',
 :transcribe=>'tramv<span class="acct">a</span>ynaya astan<span class="acct">o</span>fka',
 :translate=>' tramway stop '},
 {:text=>'тролл<span class="acco">е</span>йбусная остан<span class="acco">о</span>вка',
+:id=> '86',
 :sound=>'/audios/audio02021080.mp3',
 :transcribe=>'tra<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>boosnaya astan<span class="acct">o</span>fka',
 :translate=>' trolleybus stop '},
 {:text=>'ст<span class="acco">а</span>нция метр<span class="acco">о</span>',
+:id=> '111',
 :sound=>'/audios/audio02021090.mp3',
 :transcribe=>'st<span class="acct">a</span>nts<span class="ry">i</span>ya mitr<span class="acct">o</span>',
 :translate=>' subway station '},
 {:text=>'схема метро',
+:id=> '98',
 :sound=>'/audios/audio02021100.mp3',
 :transcribe=>'s<span class="sftv">h</span><span class="sfty">y</span><span class="acct">e</span>ma mitr<span class="acct">o</span>',
 :translate=>' subway lines plan '},
 {:text=>'сто<span class="acco">я</span>нка такс<span class="acco">и</span>',
+:id=> '123',
 :sound=>'/audios/audio02021110.mp3',
 :transcribe=>'stay<span class="acct">a</span>nka taks<span class="acct">i</span>',
 :translate=>' taxi parking '}
@@ -447,7 +458,7 @@ I. Where is the bus stop?
 		
 <% @last_item_index = (@voc1.length)-1 -%>
 <% @voc1.each_with_index  do |word, index| -%>
-['<%= word[:sound] %>', "<%= word[:translate].to_s.gsub(/"/,'\"') %>"]<% if index!= @last_item_index -%>,<%end -%>	
+['<%= word[:sound] %>', "<%= word[:translate].to_s.gsub(/"/,'\"') %>"<%unless word[:id]==nil || word[:id]==''%>,'<%=word[:id]%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
 <%end -%>
 
 		]
