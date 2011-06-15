@@ -1,5 +1,9 @@
-<% @t_title = defined?(title) ? title : "norm" %>
+<% if !@good_user%>
+	<%= @hide_html %>
+<%else%>
 
+<% @t_title = defined?(title) ? title : "norm" %>
+<div class="su-exerc">
 <div class="gex-area-trans">
 
 	<div class="trans-head">
@@ -26,3 +30,5 @@
 <% end %>
 </table>
 </div>
+</div>
+<% end %>

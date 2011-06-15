@@ -1,3 +1,7 @@
+<% if !@good_user%>
+	<%= @hide_html %>
+<%else%>
+
 <div class="su-present">
 <div class="su-present-brd">
 <table cellspacing="0">
@@ -22,3 +26,5 @@
 </table>	
 </div>	
 </div>
+
+<%end%>

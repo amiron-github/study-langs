@@ -1,3 +1,7 @@
+<% if !@good_user%>
+	<%= @hide_html %>
+<%else%>
+
 <br><br>
 <div class="voc-wordlist">
 <table class="voc_bord" align="center" cellspacing="0">
@@ -41,3 +45,5 @@
 </tr>
 </table>
 </div><!-- end of voc-wordlist-->
+
+<%end%>

@@ -1,6 +1,14 @@
+<% 
+if (logged_in? && current_user.payment) 
+	@good_user = true
+else
+	@good_user = false
+end
+%>
+
+
 <% @page_title = 'Lesson 2 :: Russian Online Lessons' %>
 <% @page_meta = {'description' => ""} %>
-
 
 <% content_for :special_js_css do %>
 
@@ -504,7 +512,6 @@ II. To the airport!
 <br><br>
 <p class="part-task">b) Translate phrases from English into Russian:</p>
 
-<div class="su-exerc"> 
 <%
  @phrases = [
  
@@ -523,10 +530,8 @@ II. To the airport!
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>	
 
-
-</div>
 	
-	
+<br><br>	
 
 <h4 class="su-task">
 III. Russian numerals
@@ -928,9 +933,6 @@ I. Asking the way
 	</div>
 </div>
 
-
-<div class="su-exerc">
-
 <%
  @phrases = [
 {:q_text=>'- the way to the subway station',
@@ -946,8 +948,7 @@ I. Asking the way
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases, :title=>'Ask a stranger: '} %>
 
-</div>	
-
+<br><br>
 
 <h4 class="su-task">
 II. How much is the fare?
@@ -1329,7 +1330,6 @@ VI. I need to go to the railway station!
 <br><br>
 <p class="part-task">b) Translate phrases from English into Russian:</p>
 
-<div class="su-exerc">
 
 <%
  @phrases = [
@@ -1347,9 +1347,6 @@ VI. I need to go to the railway station!
 %>
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
-
-</div>	
-
 
 
 <br><br>

@@ -1,3 +1,11 @@
+<% 
+if (logged_in? && current_user.payment) 
+	@good_user = true
+else
+	@good_user = false
+end
+%>
+
 <% @page_title = 'Lesson 10 :: Russian Online Lessons' %>
 <% @page_meta = {'description' => ""} %>
 

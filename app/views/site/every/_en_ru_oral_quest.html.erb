@@ -1,3 +1,7 @@
+<% if !@good_user%>
+	<%= @hide_html %>
+<%else%>
+<div class="su-exerc">
 <div class="gex-area-trans">
 	<div class="trans-head">
 		Questions
@@ -22,3 +26,5 @@
 <% end %>
 </table>
 </div>
+</div>
+<% end %>

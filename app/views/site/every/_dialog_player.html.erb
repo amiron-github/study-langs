@@ -1,3 +1,7 @@
+<% if !@good_user%>
+	<%= @hide_html %>
+<%else%>
+
 <%
 cat = Cluster.find(cluster_id)
 dialog = cat.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
@@ -56,3 +60,4 @@ dialog = cat.words.find(:all, :include => :cluster_words, :order => 'cluster_wor
 				</td>
 			</tr>
 		</table>
+<%end%>

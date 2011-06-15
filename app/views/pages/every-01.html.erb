@@ -1,7 +1,9 @@
+<% 
+	@good_user = true
+%>
+
 <% @page_title = 'Lesson 1 :: Russian Online Lessons' %>
 <% @page_meta = {'description' => ""} %>
-
-
 <% content_for :special_js_css do %>
 
 <%= javascript_include_tag 'jquery.jplayer.min.js' %>
@@ -539,8 +541,6 @@ So, building phrases in Russian, you can just omit all articles.
 </div>
 
 
-
-<div class="su-exerc">
 <%
  @phrases = [
  
@@ -565,7 +565,6 @@ So, building phrases in Russian, you can just omit all articles.
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>	
 
-</div>
 	
 <br><br>	
 <p class="part-task">c) Lear the following expressions: </p>
@@ -933,8 +932,6 @@ As previously mentioned, building phrases in Russian, you can omit all articles 
 	
 </div>
 
-
-<div class="su-exerc">
 <%
  @phrases = [
  {:q_text=> 'Вы господ<span class="acco">и</span>н Сэм Блэк?',
@@ -967,7 +964,7 @@ As previously mentioned, building phrases in Russian, you can omit all articles 
 %>
 
 <%= render :partial => '/site/every/en_ru_oral_quest', :locals => {:phrases => @phrases} %>	
-</div>	
+
 
 <br><br>
 
@@ -1162,7 +1159,6 @@ III. It is a passport
 </div>
 
 	
-<div class="su-exerc">
 <%
  @phrases = [
  {:q_text=> '<span class="acco">Э</span>то такс<span class="acco">и</span>?',
@@ -1185,7 +1181,7 @@ III. It is a passport
 %>
 
 <%= render :partial => '/site/every/en_ru_oral_quest', :locals => {:phrases => @phrases} %>	
-</div>	
+
 	
 <br><br>
 <p class="part-task">b) Give a negative answer following the model and check yourself:  </p>
@@ -1224,7 +1220,7 @@ III. It is a passport
 
 </div>
 
-<div class="su-exerc">
+
 <%
  @phrases = [
  {:q_text=> '<span class="acco">Э</span>то Дж<span class="acco">о</span>н?  (Sam)',
@@ -1247,7 +1243,7 @@ III. It is a passport
 %>
 
 <%= render :partial => '/site/every/en_ru_oral_quest', :locals => {:phrases => @phrases} %>	
-</div>	
+
 
 
 <br><br>
@@ -1323,7 +1319,6 @@ However, if the form of adjective, pronoun etc. is not correctly chosen and does
 <br><br>
 <p class="part-task">b) Translate phrases from English into Russian:  </p>
 
-<div class="su-exerc">
 
 <%
  @phrases = [
@@ -1342,7 +1337,6 @@ However, if the form of adjective, pronoun etc. is not correctly chosen and does
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
 
-</div>	
 <br><br>
 
 <h4 class="su-task">
@@ -1377,7 +1371,6 @@ V. Where is the baggage claim area?
 <p class="part-task">a) Translate phrases from English into Russian:  </p>
 
 
-<div class="su-exerc">
 <%
  @phrases = [
 {:q_text=>'Where is the entrance? ',
@@ -1395,7 +1388,6 @@ V. Where is the baggage claim area?
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
 
-</div>
 <br>
 <p class="part-task">b) Ask questions in Russian:  </p>
 
@@ -1425,8 +1417,6 @@ V. Where is the baggage claim area?
 </div>
 
 
-
-<div class="su-exerc">
 <%
  @phrases = [
 {:q_text=>'- the way to the W.C. ',
@@ -1441,10 +1431,6 @@ V. Where is the baggage claim area?
 %>
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases, :title=>'Ask a stranger: '} %>
-
-</div>
-
-
 
 
 <br><br><br><br>
