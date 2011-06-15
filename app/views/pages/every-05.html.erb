@@ -714,7 +714,7 @@ IV. Russian numerals
 
 
 <div class="es-ex-buttons su-next-wrapper">
-<input type="button" class="su-next-step" value="Next step >>" onclick="openNextStep(3)">
+<input type="button" class="su-next-step" value="Next part >>" onclick="openNextStep(3)">
 </div>
 	
 	</div>
@@ -788,7 +788,7 @@ I. What would you advise me to see?
 
 <br>
 
-<p class="part-task">a) Learn Russian words: </p>
+<p class="part-task">a) Learn Russian verbs: </p>
 
 
 <%
@@ -855,7 +855,7 @@ I. What would you advise me to see?
 			<table  cellspacing="0" >
 					<tr valign="top">
 		 				<td>
-		 					<p>Я сов<span class="acco">е</span>тую ...<br />
+		 					<p style="margin-bottom: 0"><b>Я сов<span class="acco">е</span>тую ...</b><br />
 		 						<span class="sound" onclick="playAudio('audio05043001.mp3')">[y<span class="acct">a</span> sa<span class="sftv">v</span><span class="sfty">y</span><span class="acct">e</span>tooyoo]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
 
 		 					</p>
@@ -874,7 +874,7 @@ I. What would you advise me to see?
 			<table  cellspacing="0" >
 					<tr valign="top">
 		 				<td>
-		 					<p>Я рекоменд<span class="acco">у</span><i></i>ю ...<br />
+		 					<p><b>Я рекоменд<span class="acco">у</span><i></i>ю ...</b><br />
 
 		 						<span class="sound" onclick="playAudio('audio05043002.mp3')">[y<span class="acct">a</span> rikamind<span class="acct">oo</span>yoo]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
 		 					</p>
@@ -893,7 +893,9 @@ I. What would you advise me to see?
 
 <div id="ds2" class="ds-wrapper" style="padding: 15px;">
 
-<p class="task" align="center">Drag and drop the flags and press "Check answers" </p>	
+<p class="ex-desc">
+Listen to the phrases. Drag the English phrases from the list below <br>and drop them into the corresponding fields.
+</p>	
 
 
 <% 
@@ -904,19 +906,19 @@ I. What would you advise me to see?
  :answer=> '1'
   },
  {:text=> 'I advise to visit the theater.',
- :sound=>'/audios/audio05043010.mp3', 
+ :sound=>'/audios/audio05043020.mp3', 
  :answer=> '2'
   },
  {:text=> 'I advise to visit the cenrtral park.',
- :sound=>'/audios/audio05043010.mp3',
+ :sound=>'/audios/audio05043030.mp3',
  :answer=> '3'
   },
  {:text=> 'I advise to visit the exhibition.',
- :sound=>'/audios/audio05043010.mp3', 
+ :sound=>'/audios/audio05043040.mp3', 
  :answer=> '4'
   },
  {:text=> 'I recommend to visit the museum.',
- :sound=>'/audios/audio05043010.mp3',
+ :sound=>'/audios/audio05043050.mp3',
  :answer=> '5'
   }
 
@@ -1008,23 +1010,23 @@ II.  Is taking pictures allowed there?
 <%
  @voc1 = [
 {:text=>'кур<span class="acco">и</span>ть',
-:sound=>'/audio/audio05052010.mp3',
+:sound=>'/audios/audio05052010.mp3',
 :transcribe=>'koor<span class="acct">i</span><span class="sftc">t</span>',
 :translate=>' smoke '},
 {:text=>'сним<span class="acco">а</span>ть',
-:sound=>'/audio/audio05052020.mp3',
+:sound=>'/audios/audio05052020.mp3',
 :transcribe=>'snim<span class="acct">a</span><span class="sftc">t</span>',
 :translate=>' shoot (on video) '},
 {:text=>'сесть',
-:sound=>'/audio/audio05052030.mp3',
+:sound=>'/audios/audio05052030.mp3',
 :transcribe=>'<span class="sftv">s</span><span class="sfty">y</span><span class="acct">e</span><span class="sftc">s</span><span class="sftc">t</span>',
 :translate=>' take a seat '},
 {:text=>'куп<span class="acco">и</span>ть бил<span class="acco">е</span>т',
-:sound=>'/audio/audio05052040.mp3',
+:sound=>'/audios/audio05052040.mp3',
 :transcribe=>'koop<span class="acct">i</span><span class="sftc">t</span> bi<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>t',
 :translate=>' buy a ticket '},
 {:text=>'говор<span class="acco">и</span>ть по телеф<span class="acco">о</span>ну',
-:sound=>'/audio/audio05052050.mp3',
+:sound=>'/audios/audio05052050.mp3',
 :transcribe=>'gavar<span class="acct">i</span><span class="sftc">t</span> pa tilif<span class="acct">o</span>noo',
 :translate=>' speak over the phone '}
  ]
@@ -1131,31 +1133,31 @@ III. Telling time
  @voc = [
  
 {:text=>'одн<span class="acco">а</span> мин<span class="acco">у</span>та',
-:sound=>'/audio/audio05061001.mp3',
+:sound=>'/audios/audio05061001.mp3',
 :transcribe=>'adn<span class="acct">a</span> min<span class="acct">oo</span>ta',
 :translate=>' 1 minute '},
 {:text=>'две мин<span class="acco">у</span>ты',
-:sound=>'/audio/audio05061002.mp3',
+:sound=>'/audios/audio05061002.mp3',
 :transcribe=>'d<span class="sftv">v</span><span class="sfty">y</span><span class="acct">e</span> min<span class="acct">oo</span>t<span class="ry">i</span>',
 :translate=>' 2 minutes '},
 {:text=>'три мин<span class="acco">у</span>ты',
-:sound=>'/audio/audio05061003.mp3',
+:sound=>'/audios/audio05061003.mp3',
 :transcribe=>'tr<span class="acct">i</span> min<span class="acct">oo</span>t<span class="ry">i</span>',
 :translate=>' 3 minutes '},
 {:text=>'чет<span class="acco">ы</span>ре мин<span class="acco">у</span>ты',
-:sound=>'/audio/audio05061004.mp3',
+:sound=>'/audios/audio05061004.mp3',
 :transcribe=>'chit<span class="acct"><span class="ry">i</span></span>ri min<span class="acct">oo</span>t<span class="ry">i</span>',
 :translate=>' 4 minutes '},
 {:text=>'пять мин<span class="acco">у</span>т',
-:sound=>'/audio/audio05061005.mp3',
+:sound=>'/audios/audio05061005.mp3',
 :transcribe=>'<span class="sftv">p</span><span class="sfty">y</span><span class="acct">a</span>t min<span class="acct">oo</span>t',
 :translate=>' 5 minutes '},
 {:text=>'шесть мин<span class="acco">у</span>т',
-:sound=>'/audio/audio05061006.mp3',
+:sound=>'/audios/audio05061006.mp3',
 :transcribe=>'sh<span class="acct">e</span><span class="sftc">s</span><span class="sftc">t</span> min<span class="acct">oo</span>t',
 :translate=>' 6 minutes '},
 {:text=>'семь мин<span class="acco">у</span>т',
-:sound=>'/audio/audio05061007.mp3',
+:sound=>'/audios/audio05061007.mp3',
 :transcribe=>'<span class="sftv">s</span><span class="sfty">y</span><span class="acct">e</span><span class="sftc">m</span> min<span class="acct">oo</span>t',
 :translate=>' 7 minutes '}
   
@@ -1195,7 +1197,7 @@ III. Telling time
 :transcribe=>'sh<span class="acct">e</span><span class="sftc">s</span><span class="sftc">t</span> chis<span class="acct">o</span>f',
 :translate=>' 6 o\'clock/6 hours '},
 {:text=>'семь час<span class="acco">о</span>в',
-:sound=>'/audios/audio05061207.mp3.mp3',
+:sound=>'/audios/audio05061207.mp3',
 :transcribe=>'<span class="sftv">s</span><span class="sfty">y</span><span class="acct">e</span><span class="sftc">m</span> chis<span class="acct">o</span>f',
 :translate=>' 7 o\'clock/7 hours '}
   
@@ -1306,7 +1308,7 @@ Questions about the time usually include the following words and expressions:<br
 :transcribe2=>'tr<span class="acct">i</span> chis<span class="acct">a</span>',
 :translate=>'What time is it? - (It is) 3 o\'clock.'},
  
-{:text1=>'В котором часу?',
+{:text1=>'В кот<span class="acco">о</span>ром час<span class="acco">у</span>?',
 :sound1=>'/audios/audio05063021.mp3',
 :transcribe1=>'f kat<span class="acct">o</span>ram chis<span class="acct">oo</span>?',
 :text2=>'В три часа.',
@@ -1326,7 +1328,7 @@ Questions about the time usually include the following words and expressions:<br
 :sound1=>'/audios/audio05063041.mp3',
 :transcribe1=>'f kat<span class="acct">o</span>ram chis<span class="acct">oo</span>?',
 :text2=>'В д<span class="acco">е</span>сять час<span class="acco">о</span>в.',
-:sound2=>'/audios/audio04034042.mp3',
+:sound2=>'/audios/audio05063042.mp3',
 :transcribe2=>'v <span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span>si<span class="sftc">t</span> chis<span class="acct">o</span>f',
 :translate=>'At what time? - At 10 o\'clock.'},
  

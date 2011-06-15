@@ -1,4 +1,4 @@
-
+<% @t_title = defined?(title) ? title : "norm" %>
 <table align="center" style="margin: 0 auto;">
 <tr>
 <td>
@@ -12,7 +12,7 @@
 <% t_phrases.each_with_index do |word, index| %>
 <tr>
 	<td class="ds-quest" align="right" style="padding: 2px 3px 2px 10px;">
-			 <span style="font-size: 12px">Phrase <%= index+1 %></span>
+			 <span style="font-size: 12px"><% if @t_title == "norm" %>Phrase<%else%><%= @t_title %><%end%>&nbsp;<%= index+1 %></span>
 	</td>
 	<td class="ds-audio-listen" align="center">
 			<div class="jp_control" onclick="cJplayer('<%= word[:sound] %>', this)"></div>
@@ -54,5 +54,5 @@
 </table>
 
 <div class="es_btn_wrapper es-ex-buttons ds-check-wrapper">
-<input type="button" class="es_btn ds-check-button" value="Check">
+<input type="button" class="es_btn ds-check-button" value="Check answers">
 </div>

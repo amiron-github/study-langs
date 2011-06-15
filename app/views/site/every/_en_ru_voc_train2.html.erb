@@ -1,14 +1,22 @@
 <div class="su-present">
 <div class="su-present-brd">
 <table cellspacing="0">
-<col width="34%"><col width="34%"><col width="32%">
+<col><col width="8"><col><col width="32%">
 <% voc.each_with_index do |word, index|-%>
-
 	<tr valign="top">
-		<td style="font-size: 11px !important;" ><%= word[:text1] %> <br> <%= word[:transcribe1] %></td>
-		<td style="font-size: 11px !important;" ><%= word[:text2] %> <br> <%= word[:transcribe2] %></td>
+		<td style="font-size: 12px !important;padding-right:5px;" >
+			<span class="bold"><%= word[:text1] %></span> <br> 
+			<span class="sound" onclick="playFile('<%= word[:sound1] %>')">[<%= word[:transcribe1] %>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
 		</td>
-		<td class="su-pres-trans" style="font-size: 11px !important;"><%= word[:translate] %></td>
+		<td style="padding-left:0;padding-right:0;">-</td>
+		<td style="font-size: 12px !important; padding-left:5px;" >
+			<span class="bold"><%= word[:text2] %></span> <br> 
+			<span class="sound" onclick="playFile('<%= word[:sound2] %>')">[<%= word[:transcribe2] %>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+		</td>
+		</td>
+		<td class="su-pres-trans" style="font-size: 11px !important;">
+			<%= word[:translate] %>
+		</td>
 	</tr>
 <%end%>
 </table>	

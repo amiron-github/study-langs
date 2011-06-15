@@ -409,43 +409,43 @@ I. Money
 <%
  @voc1 = [
 {:text=>'д<span class="acco">е</span>ньги',
-:sound=>'/audio/audio09021010.mp3',
+:sound=>'/audios/audio09021010.mp3',
 :transcribe=>'<span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span><span class="sftc">n</span>gi',
 :translate=>' money '},
 {:text=>'куп<span class="acco">ю</span>ры',
-:sound=>'/audio/audio09021020.mp3',
+:sound=>'/audios/audio09021020.mp3',
 :transcribe=>'koo<span class="sftv">p</span><span class="sfty">y</span><span class="acct">oo</span>r<span class="ry">i</span>',
 :translate=>' bank notes '},
 {:text=>'мон<span class="acco">е</span>ты',
-:sound=>'/audio/audio09021030.mp3',
+:sound=>'/audios/audio09021030.mp3',
 :transcribe=>'ma<span class="sftv">n</span><span class="sfty">y</span><span class="acct">e</span>t<span class="ry">i</span>',
 :translate=>' coins '},
 {:text=>'д<span class="acco">о</span>ллары',
-:sound=>'/audio/audio09021040.mp3',
+:sound=>'/audios/audio09021040.mp3',
 :transcribe=>'d<span class="acct">o</span>lar<span class="ry">i</span>',
 :translate=>' dollars '},
 {:text=>'<span class="acco">е</span>вро',
-:sound=>'/audio/audio09021050.mp3',
+:sound=>'/audios/audio09021050.mp3',
 :transcribe=>'y<span class="acct">e</span>vra',
 :translate=>' euros '},
 {:text=>'ф<span class="acco">у</span>нты',
-:sound=>'/audio/audio09021060.mp3',
+:sound=>'/audios/audio09021060.mp3',
 :transcribe=>'f<span class="acct">oo</span>nt<span class="ry">i</span>',
 :translate=>' pounds '},
 {:text=>'рубл<span class="acco">и</span>',
-:sound=>'/audio/audio09021070.mp3',
+:sound=>'/audios/audio09021070.mp3',
 :transcribe=>'roobl<span class="acct">i</span>',
 :translate=>' roubles '},
 {:text=>'нал<span class="acco">и</span>чные',
-:sound=>'/audio/audio09021080.mp3',
+:sound=>'/audios/audio09021080.mp3',
 :transcribe=>'nal<span class="acct">i</span>chn<span class="ry">i</span>ye',
 :translate=>' cash '},
 {:text=>'к<span class="acco">а</span>рта',
-:sound=>'/audio/audio09021090.mp3',
+:sound=>'/audios/audio09021090.mp3',
 :transcribe=>'k<span class="acct">a</span>rta',
 :translate=>' (credit) card '},
 {:text=>'чек',
-:sound=>'/audio/audio09021100.mp3',
+:sound=>'/audios/audio09021100.mp3',
 :transcribe=>'ch<span class="acct">e</span>k',
 :translate=>' cheque '}
  ]
@@ -503,7 +503,7 @@ Listen to the quesstions. Drag the answers from the list below <br>and drop them
 
 %>
 
-<%= render :partial => '/site/every/en_ru_ddtest', :locals => {:t_phrases => @t_phrases} %>
+<%= render :partial => '/site/every/en_ru_ddtest', :locals => {:t_phrases => @t_phrases, :title=> "Question"} %>
 
 </div>
 
@@ -531,35 +531,41 @@ II. Bank
 <%
  @voc2 = [
 {:text=>'банк',
-:sound=>'/audio/audio09031010.mp3',
+:id=> '701',
+:sound=>'/audios/audio09031010.mp3',
 :transcribe=>'b<span class="acct">a</span>nk',
 :translate=>' bank '},
 {:text=>'банком<span class="acco">а</span>т',
-:sound=>'/audio/audio09031020.mp3',
+:id=> '690',
+:sound=>'/audios/audio09031020.mp3',
 :transcribe=>'bankam<span class="acct">a</span>t',
 :translate=>' cash machine '},
 {:text=>'обм<span class="acco">е</span>н вал<span class="acco">ю</span>ты',
-:sound=>'/audio/audio09031030.mp3',
+:id=> '670',
+:sound=>'/audios/audio09031030.mp3',
 :transcribe=>'ab<span class="sftv">m</span><span class="sfty">y</span><span class="acct">e</span>n va<span class="sftv">l</span><span class="sfty">y</span><span class="acct">oo</span>t<span class="ry">i</span>',
 :translate=>' currency exchange '},
 {:text=>'обм<span class="acco">е</span>нный пункт',
-:sound=>'/audio/audio09031040.mp3',
+:id=> '670',
+:sound=>'/audios/audio09031040.mp3',
 :transcribe=>'ab<span class="sftv">m</span><span class="sfty">y</span><span class="acct">e</span>n<span class="ry">i</span>y p<span class="acct">oo</span>nkt',
 :translate=>' currency exchange office '},
 {:text=>'счёт',
-:sound=>'/audio/audio09031050.mp3',
+:id=> '1261',
+:sound=>'/audios/audio09031050.mp3',
 :transcribe=>'sch<span class="acct">o</span>t',
 :translate=>' bank account '},
 {:text=>'обм<span class="acco">е</span>нный курс',
-:sound=>'/audio/audio09031060.mp3',
+:sound=>'/audios/audio09031060.mp3',
 :transcribe=>'ab<span class="sftv">m</span><span class="sfty">y</span><span class="acct">e</span>n<span class="ry">i</span>y k<span class="acct">oo</span>rs',
 :translate=>' exchange rate '},
 {:text=>'вал<span class="acco">ю</span>та',
-:sound=>'/audio/audio09031070.mp3',
+:id=> '668',
+:sound=>'/audios/audio09031070.mp3',
 :transcribe=>'va<span class="sftv">l</span><span class="sfty">y</span><span class="acct">oo</span>ta',
 :translate=>' currency '},
 {:text=>'с<span class="acco">у</span>мма',
-:sound=>'/audio/audio09031080.mp3',
+:sound=>'/audios/audio09031080.mp3',
 :transcribe=>'s<span class="acct">oo</span>mma',
 :translate=>' amount, sum '}
  ]
@@ -587,7 +593,7 @@ II. Bank
 		
 <% @last_item_index = (@voc2.length)-1 -%>
 <% @voc2.each_with_index  do |word, index| -%>
-['<%= word[:text] %>', "<%= word[:translate].to_s.gsub(/"/,'\"') %>"]<% if index!= @last_item_index -%>,<%end -%>	
+['<%= word[:text] %>', "<%= word[:translate].to_s.gsub(/"/,'\"') %>"<%unless word[:id]==nil || word[:id]==''%>,'<%=word[:id]%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
 <%end -%>
 
 		]
@@ -605,13 +611,13 @@ II. Bank
 <%
  @phrases = [
 
-{:q_text=>' cash machine ',
+{:q_text=>' - cash machine ',
 :sound=>'/audios/audio09033010.mp3'},
-{:q_text=>'currency exchange',
+{:q_text=>' - currency exchange',
 :sound=>'/audios/audio09033020.mp3'},
-{:q_text=>'bank ',
+{:q_text=>' - bank ',
 :sound=>'/audios/audio09033030.mp3'},
-{:q_text=>'currency exchange office ',
+{:q_text=>' - currency exchange office ',
 :sound=>'/audios/audio09033040.mp3'}
 
  ]
@@ -633,23 +639,23 @@ III. Bank transactions
  @voc = [
 
 {:text=>'обмен<span class="acco">я</span>ть д<span class="acco">о</span>ллары на рубл<span class="acco">и</span>',
-:sound=>'/audio/audio09041010.mp3',
+:sound=>'/audios/audio09041010.mp3',
 :transcribe=>'abmi<span class="sftv">n</span><span class="sfty">y</span><span class="acct">a</span><span class="sftc">t</span> d<span class="acct">o</span>lar<span class="ry">i</span> na roobl<span class="acct">i</span>',
 :translate=>' exchange dollars for rubles '},
 {:text=>'сн<span class="acco">я</span>ть нал<span class="acco">и</span>чные',
-:sound=>'/audio/audio09041020.mp3',
+:sound=>'/audios/audio09041020.mp3',
 :transcribe=>'s<span class="sftv">n</span><span class="sfty">y</span><span class="acct">a</span><span class="sftc">t</span> nal<span class="acct">i</span>chn<span class="ry">i</span>ye',
 :translate=>' draw cash (from the account) '},
 {:text=>'снять д<span class="acco">е</span>ньги со счёта',
-:sound=>'/audio/audio09041030.mp3',
+:sound=>'/audios/audio09041030.mp3',
 :transcribe=>'s<span class="sftv">n</span><span class="sfty">y</span><span class="acct">a</span><span class="sftc">t</span> <span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span><span class="sftc">n</span>gi sa sch<span class="acct">o</span>ta',
 :translate=>' draw the money from the account '},
 {:text=>'снять д<span class="acco">е</span>ньги с к<span class="acco">а</span>рты',
-:sound=>'/audio/audio09041040.mp3',
+:sound=>'/audios/audio09041040.mp3',
 :transcribe=>'s<span class="sftv">n</span><span class="sfty">y</span><span class="acct">a</span><span class="sftc">t</span> <span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span><span class="sftc">n</span>gi s k<span class="acct">a</span>rt<span class="ry">i</span>',
 :translate=>' draw the money from the credit card '},
-{:text=>'полож<span class="acco">и</span>ть д<span class="acco">е</span>ньги на счет',
-:sound=>'/audio/audio09041050.mp3',
+{:text=>'полож<span class="acco">и</span>ть д<span class="acco">е</span>ньги на счёт',
+:sound=>'/audios/audio09041050.mp3',
 :transcribe=>'palaj<span class="acct"><span class="ry">i</span></span><span class="sftc">t</span> <span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span><span class="sftc">n</span>gi na sch<span class="acct">o</span>t',
 :translate=>' put money on the account '}
   
@@ -744,7 +750,7 @@ I. I'd like to exchange dollars!
 
 					<tr valign="top">
 		 				<td>
-		 					<p>Мне хот<span class="acco">е</span>лось бы ...<br />
+		 					<p><b>Мне хот<span class="acco">е</span>лось бы ...</b><br />
 		 						<span class="sound" onclick="playAudio('audio09050002.mp3')">[m<span class="sftv">n</span><span class="sfty">y</span><span class="acct">e</span> ha<span class="sftv">t</span><span class="sfty">y</span><span class="acct">e</span>la<span class="sftc">s</span> b<span class="ry">i</span>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
 
 		 					</p>
@@ -929,7 +935,7 @@ III. A problem with device
 
 
 <div class="com-wrap">
-	<div class="com-head"><span class="com-h-ico"></span>Particularities of Russian sentences</div>
+	<div class="com-head"><span class="com-h-ico"></span>Russian consctruction ... работает / не работает</div>
 	<div class="com-content">
 	
 	
@@ -942,7 +948,7 @@ III. A problem with device
 
 					<tr valign="top">
 		 				<td>
-		 					<p>... раб<span class="acco">о</span>тает/... не раб<span class="acco">о</span>тает<br />
+		 					<p><b>... раб<span class="acco">о</span>тает</b>/<b>... не раб<span class="acco">о</span>тает</b><br />
 		 						<span class="sound" onclick="playAudio('audio09060101.mp3')">[rab<span class="acct">o</span>tait]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
 
 		 						&nbsp;<span class="sound" onclick="playAudio('audio09060102.mp3')">[ni rab<span class="acct">o</span>tait]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
@@ -1023,7 +1029,6 @@ III. A problem with device
 	<td>
 		<div>холодильник</div>
 	</td>
-
 </tr>
 </table>
 <br> 
@@ -1060,11 +1065,10 @@ III. A problem with device
 :sound=>'/audios/audio09062050.mp3'}
  ]
 %>
-
-
-<%= render :partial => '/site/every/en_ru_pseudo', :locals => {:phrases => @phrases} %>
+	<%= render :partial => '/site/every/en_ru_pseudo', :locals => {:phrases => @phrases} %>
 
 </div>
+
 </div>
 </div> 
 <script type="text/javascript"> 
@@ -1095,7 +1099,7 @@ III. A problem with device
 					<tr valign="top">
 		 				<td>
 
-		 					<p><span class="acco">Э</span>тот банком<span class="acco">а</span>т раб<span class="acco">о</span>тает?<br />
+		 					<p><b><span class="acco">Э</span>тот банком<span class="acco">а</span>т раб<span class="acco">о</span>тает?</b><br />
 
 		 						<span class="sound" onclick="playAudio('audio09061001.mp3')">[<span class="acct">e</span>tat bankam<span class="acct">a</span>t rab<span class="acct">o</span>tait?] <span class="play_tip">&nbsp; &nbsp;</span></span>
 
@@ -1104,7 +1108,7 @@ III. A problem with device
                         <td width="15"><p>-</p>
                         </td>
 		 				<td>
-		 					<p>Нет, банком<span class="acco">а</span>т не раб<span class="acco">о</span>тает.<br />
+		 					<p><b>Нет, банком<span class="acco">а</span>т не раб<span class="acco">о</span>тает.</b><br />
 
 		 						<span class="sound" onclick="playAudio('audio09061002.mp3')">[<span class="sftv">n</span><span class="sfty">y</span><span class="acct">e</span>t, bankam<span class="acct">a</span>t ni rab<span class="acct">o</span>tait] <span class="play_tip">&nbsp; &nbsp;</span></span>
 		 					</p>
@@ -1129,27 +1133,27 @@ III. A problem with device
  @phrases = [
 
 {:q_text=>'<span class="acco">Э</span>тот магаз<span class="acco">и</span>н раб<span class="acco">о</span>тает? ',
-:q_sound=>'audio09061011.mp3',
+:q_sound=>'/audios/audio09061011.mp3',
 :q_transcribe=>'<span class="acct">e</span>tat magaz<span class="acct">i</span>n rab<span class="acct">o</span>tait? ',
 :sound=>'/audios/audio09061012.mp3'},
 {:q_text=>'<span class="acco">Э</span>тот телеф<span class="acco">о</span>н раб<span class="acco">о</span>тает? ',
-:q_sound=>'audio09061021.mp3',
+:q_sound=>'/audios/audio09061021.mp3',
 :q_transcribe=>'<span class="acct">e</span>tat tilif<span class="acct">o</span>n rab<span class="acct">o</span>tait? ',
 :sound=>'/audios/audio09061022.mp3'},
 {:q_text=>'Обм<span class="acco">е</span>нный пункт раб<span class="acco">о</span>тает? ',
-:q_sound=>'audio09061031.mp3',
+:q_sound=>'/audios/audio09061031.mp3',
 :q_transcribe=>'ab<span class="sftv">m</span><span class="sfty">y</span><span class="acct">e</span>n<span class="ry">i</span>y p<span class="acct">oo</span>nkt rab<span class="acct">o</span>tait? ',
 :sound=>'/audios/audio09061032.mp3'},
 {:q_text=>'Телев<span class="acco">и</span>зор раб<span class="acco">о</span>тает? ',
-:q_sound=>'audio09061041.mp3',
+:q_sound=>'/audios/audio09061041.mp3',
 :q_transcribe=>'tiliv<span class="acct">i</span>zar rab<span class="acct">o</span>tait? ',
 :sound=>'/audios/audio09061042.mp3'},
 {:q_text=>'Холод<span class="acco">и</span>льник раб<span class="acco">о</span>тает? ',
-:q_sound=>'audio09061051.mp3',
+:q_sound=>'/audios/audio09061051.mp3',
 :q_transcribe=>'halad<span class="acct">i</span><span class="sftc">l</span>nik rab<span class="acct">o</span>tait? ',
 :sound=>'/audios/audio09061052.mp3'},
 {:q_text=>'Душ раб<span class="acco">о</span>тает? ',
-:q_sound=>'audio09061061.mp3',
+:q_sound=>'/audios/audio09061061.mp3',
 :q_transcribe=>'d<span class="acct">oo</span>sh rab<span class="acct">o</span>tait? ',
 :sound=>'/audios/audio09061062.mp3'}
 

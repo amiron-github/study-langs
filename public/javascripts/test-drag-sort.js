@@ -379,8 +379,9 @@ this.checkAnswers = function() {
 	var noTxt = 'No completed tasks'
 	var gTxt = 'Correct';
 	var erTxt = 'Errors';
-	if (es_lang == 'ru') noTxt = 'Нет выполненных'; gTxt = 'Правильно'; erTxt = 'Ошибки';
-	
+	if (es_lang == 'ru') {
+		noTxt = 'Нет выполненных'; gTxt = 'Правильно'; erTxt = 'Ошибки';
+	}
 	if (correctNum ==  0 && errorNum == 0) {
 		tObj.container.find(".ds-check-wrapper").prepend('<span class="to_notify"><span class="check_notify">'+noTxt+'</span></span>');
 	
@@ -617,7 +618,11 @@ this.checkAnswers = function() {
 	var noTxt = 'No completed tasks'
 	var gTxt = 'Correct';
 	var erTxt = 'Errors';
-	if (es_lang == 'ru') noTxt = 'Нет выполненных'; gTxt = 'Правильно'; erTxt = 'Ошибки';
+	if (es_lang == 'ru') {
+		noTxt = 'Нет выполненных'; 
+		gTxt = 'Правильно'; 
+		erTxt = 'Ошибки';
+	}
 	
 	if (correctNum ==  0 && errorNum == 0) {
 		tObj.container.find(".ds-check-wrapper").prepend('<span class="to_notify"><span class="check_notify">'+noTxt+'</span></span>');

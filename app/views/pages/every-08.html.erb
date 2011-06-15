@@ -413,35 +413,43 @@ I. Parts of body
 <%
  @voc1 = [
 {:text=>'голов<span class="acco">а</span>',
-:sound=>'/audio/audio08021010.mp3',
+:id=> '659',
+:sound=>'/audios/audio08021010.mp3',
 :transcribe=>'galav<span class="acct">a</span>',
 :translate=>' head '},
 {:text=>'ш<span class="acco">е</span><i></i>я',
-:sound=>'/audio/audio08021020.mp3',
+:id=> '666',
+:sound=>'/audios/audio08021020.mp3',
 :transcribe=>'sh<span class="acct">e</span>ya',
 :translate=>' neck '},
 {:text=>'рук<span class="acco">а</span>',
-:sound=>'/audio/audio08021030.mp3',
+:id=> '658',
+:sound=>'/audios/audio08021030.mp3',
 :transcribe=>'rook<span class="acct">a</span>',
 :translate=>' arm '},
 {:text=>'п<span class="acco">а</span>лец',
-:sound=>'/audio/audio08021040.mp3',
+:id=> '651',
+:sound=>'/audios/audio08021040.mp3',
 :transcribe=>'p<span class="acct">a</span>lits',
 :translate=>' finger '},
 {:text=>'грудь',
-:sound=>'/audio/audio08021050.mp3',
+:id=> '664',
+:sound=>'/audios/audio08021050.mp3',
 :transcribe=>'gr<span class="acct">oo</span><span class="sftc">t</span>',
 :translate=>' breast '},
 {:text=>'жив<span class="acco">о</span>т',
-:sound=>'/audio/audio08021060.mp3',
+:id=> '667',
+:sound=>'/audios/audio08021060.mp3',
 :transcribe=>'j<span class="ry">i</span>v<span class="acct">o</span>t',
 :translate=>' belly '},
 {:text=>'ног<span class="acco">а</span>',
-:sound=>'/audio/audio08021070.mp3',
+:id=> '645',
+:sound=>'/audios/audio08021070.mp3',
 :transcribe=>'nag<span class="acct">a</span>',
+:id=> '662',
 :translate=>' leg '},
 {:text=>'ступн<span class="acco">я</span>',
-:sound=>'/audio/audio08021080.mp3',
+:sound=>'/audios/audio08021080.mp3',
 :transcribe=>'stoop<span class="sftv">n</span><span class="sfty">y</span><span class="acct">a</span>',
 :translate=>' foot '}
  ]
@@ -470,14 +478,14 @@ I. Parts of body
 		
 <% @last_item_index = (@voc1.length)-1 -%>
 <% @voc1.each_with_index  do |word, index| -%>
-['<%= word[:sound] %>', "<%= word[:translate].to_s.gsub(/"/,'\"') %>"]<% if index!= @last_item_index -%>,<%end -%>	
+['<%= word[:sound] %>', "<%= word[:translate].to_s.gsub(/"/,'\"') %>"<%unless word[:id]==nil || word[:id]==''%>,'<%=word[:id]%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
 <%end -%>
 
 		]
 		
 		} )
 </script>
-
+<br>
 
 
 <h4 class="su-task">
@@ -489,35 +497,35 @@ II. Organs
 <%
  @voc2 = [
 {:text=>'нос',
-:sound=>'/audio/audio08031010.mp3',
+:sound=>'/audios/audio08031010.mp3',
 :transcribe=>'n<span class="acct">o</span>s',
 :translate=>' nose '},
 {:text=>'глаз<span class="acco">а</span>',
-:sound=>'/audio/audio08031020.mp3',
+:sound=>'/audios/audio08031020.mp3',
 :transcribe=>'glaz<span class="acct">a</span>',
 :translate=>' eyes '},
 {:text=>'рот',
-:sound=>'/audio/audio08031030.mp3',
+:sound=>'/audios/audio08031030.mp3',
 :transcribe=>'r<span class="acct">o</span>t',
 :translate=>' mouth '},
 {:text=>'з<span class="acco">у</span>бы',
-:sound=>'/audio/audio08031040.mp3',
+:sound=>'/audios/audio08031040.mp3',
 :transcribe=>'z<span class="acct">oo</span>b<span class="ry">i</span>',
 :translate=>' teeth '},
 {:text=>'г<span class="acco">о</span>рло',
-:sound=>'/audio/audio08031050.mp3',
-:transcribe=>'g<span class="acct">o</span>rlo',
+:sound=>'/audios/audio08031050.mp3',
+:transcribe=>'g<span class="acct">o</span>rla',
 :translate=>' throat '},
 {:text=>'с<span class="acco">е</span>рдце',
-:sound=>'/audio/audio08031060.mp3',
+:sound=>'/audios/audio08031060.mp3',
 :transcribe=>'<span class="sftv">s</span><span class="sfty">y</span><span class="acct">e</span>rtse',
 :translate=>' heart '},
 {:text=>'жел<span class="acco">у</span>док',
-:sound=>'/audio/audio08031070.mp3',
+:sound=>'/audios/audio08031070.mp3',
 :transcribe=>'j<span class="ry">i</span>l<span class="acct">oo</span>dak',
 :translate=>' stomach '},
 {:text=>'киш<span class="acco">е</span>чник',
-:sound=>'/audio/audio08031080.mp3',
+:sound=>'/audios/audio08031080.mp3',
 :transcribe=>'kish<span class="acct">e</span>chnik',
 :translate=>' bowels '}
  ]
@@ -702,47 +710,47 @@ III. Health problems
  @voc = [
 
  {:text=>'температ<span class="acco">у</span>ра',
-:sound=>'/audio/audio08051010.mp3',
+:sound=>'/audios/audio08051010.mp3',
 :transcribe=>'timpirat<span class="acct">oo</span>ra',
 :translate=>' temperature '},
 {:text=>'к<span class="acco">а</span>шель',
-:sound=>'/audio/audio08051020.mp3',
+:sound=>'/audios/audio08051020.mp3',
 :transcribe=>'k<span class="acct">a</span>sh<span class="ry">i</span><span class="sftc">l</span>',
 :translate=>' cough '},
 {:text=>'н<span class="acco">а</span>сморк',
-:sound=>'/audio/audio08051030.mp3',
+:sound=>'/audios/audio08051030.mp3',
 :transcribe=>'n<span class="acct">a</span>smark',
 :translate=>' cold, coryza '},
 {:text=>'воспал<span class="acco">е</span>ние',
-:sound=>'/audio/audio08051040.mp3',
+:sound=>'/audios/audio08051040.mp3',
 :transcribe=>'vaspa<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>niye',
 :translate=>' inflammation '},
 {:text=>'моз<span class="acco">о</span>ль',
-:sound=>'/audio/audio08051050.mp3',
+:sound=>'/audios/audio08051050.mp3',
 :transcribe=>'maz<span class="acct">o</span><span class="sftc">l</span>',
 :translate=>' corn '},
 {:text=>'р<span class="acco">а</span>на',
-:sound=>'/audio/audio08051060.mp3',
+:sound=>'/audios/audio08051060.mp3',
 :transcribe=>'r<span class="acct">a</span>na',
 :translate=>' wound '},
 {:text=>'аллерг<span class="acco">и</span><i></i>я',
-:sound=>'/audio/audio08051070.mp3',
+:sound=>'/audios/audio08051070.mp3',
 :transcribe=>'alirg<span class="acct">i</span>ya',
 :translate=>' allergy '},
 {:text=>'боль',
-:sound=>'/audio/audio08051080.mp3',
+:sound=>'/audios/audio08051080.mp3',
 :transcribe=>'b<span class="acct">o</span><span class="sftc">l</span>',
 :translate=>' pain '},
 {:text=>'зубн<span class="acco">а</span><i></i>я боль',
-:sound=>'/audio/audio08051090.mp3',
+:sound=>'/audios/audio08051090.mp3',
 :transcribe=>'zoobn<span class="acct">a</span>ya b<span class="acct">o</span><span class="sftc">l</span>',
 :translate=>' toothache '},
 {:text=>'головн<span class="acco">а</span><i></i>я боль',
-:sound=>'/audio/audio08051100.mp3',
+:sound=>'/audios/audio08051100.mp3',
 :transcribe=>'galavn<span class="acct">a</span>ya b<span class="acct">o</span><span class="sftc">l</span>',
 :translate=>' headache '},
 {:text=>'тошнот<span class="acct">а</span>',
-:sound=>'/audio/audio08051110.mp3',
+:sound=>'/audios/audio08051110.mp3',
 :transcribe=>'tashnat<span class="acct">a</span>',
 :translate=>' sickness, nausea '}
   
@@ -764,7 +772,7 @@ III. Health problems
 					<tr valign="top">
 		 				<td>
 
-		 					<p>У Вас н<span class="acco">а</span>сморк?<br />
+		 					<p><b>У Вас н<span class="acco">а</span>сморк?</b><br />
 		 						<span class="sound" onclick="playAudio('audio08052001.mp3')">[oo v<span class="acct">a</span>s n<span class="acct">a</span>smark?] <span class="play_tip">&nbsp; &nbsp;</span></span>
 		 					</p>
 		 				</td>
@@ -772,7 +780,7 @@ III. Health problems
                         <td width="15"><p>-</p>
                         </td>
 		 				<td>
-		 					<p>Да, у мен<span class="acco">я</span> н<span class="acco">а</span>сморк.<br />
+		 					<p><b>Да, у мен<span class="acco">я</span> н<span class="acco">а</span>сморк.</b><br />
 		 						<span class="sound" onclick="playAudio('audio08052002.mp3')">[d<span class="acct">a</span>, oo mi<span class="sftv">n</span><span class="sfty">y</span><span class="acct">a</span> n<span class="acct">a</span>smark] <span class="play_tip">&nbsp; &nbsp;</span></span>
 
 		 					</p>
@@ -791,27 +799,27 @@ III. Health problems
  @phrases = [
  
 {:q_text=>'У Вас температ<span class="acco">у</span>ра? ',
-:q_sound=>'audio08052011.mp3',
+:q_sound=>'/audios/audio08052011.mp3',
 :q_transcribe=>'oo v<span class="acct">a</span>s timpirat<span class="acct">oo</span>ra? ',
 :sound=>'/audios/audio08052012.mp3'},
 {:q_text=>'У Вас аллерг<span class="acco">и</span><i></i>я? ',
-:q_sound=>'audio08052021.mp3',
+:q_sound=>'/audios/audio08052021.mp3',
 :q_transcribe=>'oo v<span class="acct">a</span>s alirg<span class="acct">i</span>ya? ',
 :sound=>'/audios/audio08052022.mp3'},
 {:q_text=>'У Вас тошнот<span class="acco">а</span>? ',
-:q_sound=>'audio08052031.mp3',
+:q_sound=>'/audios/audio08052031.mp3',
 :q_transcribe=>'oo v<span class="acct">a</span>s tashnat<span class="acct">a</span>? ',
 :sound=>'/audios/audio08052032.mp3'},
 {:q_text=>'У Вас зубн<span class="acco">а</span><i></i>я боль? ',
-:q_sound=>'audio08052041.mp3',
+:q_sound=>'/audios/audio08052041.mp3',
 :q_transcribe=>'oo v<span class="acct">a</span>s zoobn<span class="acct">a</span>ya b<span class="acct">o</span><span class="sftc">l</span>? ',
 :sound=>'/audios/audio08052042.mp3'},
 {:q_text=>'У Вас к<span class="acco">а</span>шель? ',
-:q_sound=>'audio08052051.mp3',
+:q_sound=>'/audios/audio08052051.mp3',
 :q_transcribe=>'oo v<span class="acct">a</span>s k<span class="acct">a</span>sh<span class="ry">i</span><span class="sftc">l</span>? ',
 :sound=>'/audios/audio08052052.mp3'},
 {:q_text=>'У Вас есть воспал<span class="acco">е</span>ние? ',
-:q_sound=>'audio08052061.mp3',
+:q_sound=>'/audios/audio08052061.mp3',
 :q_transcribe=>'oo v<span class="acct">a</span>s y<span class="acct">e</span><span class="sftc">s</span><span class="sftc">t</span> vaspa<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>niye? ',
 :sound=>'/audios/audio08052062.mp3'}
 
@@ -835,43 +843,43 @@ IV. Remedies
  @voc1 = [
 
  {:text=>'лек<span class="acco">а</span>рство',
-:sound=>'/audio/audio08061010.mp3',
+:sound=>'/audios/audio08061010.mp3',
 :transcribe=>'lik<span class="acct">a</span>rstva',
 :translate=>' medicine, drug '},
 {:text=>'ср<span class="acco">е</span>дство',
-:sound=>'/audio/audio08061020.mp3',
+:sound=>'/audios/audio08061020.mp3',
 :transcribe=>'s<span class="sftv">r</span><span class="sfty">y</span><span class="acct">e</span>tstva',
 :translate=>' remedy '},
 {:text=>'табл<span class="acco">е</span>тка',
-:sound=>'/audio/audio08061030.mp3',
+:sound=>'/audios/audio08061030.mp3',
 :transcribe=>'tab<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>tka',
 :translate=>' pill '},
 {:text=>'к<span class="acco">а</span>псула',
-:sound=>'/audio/audio08061040.mp3',
+:sound=>'/audios/audio08061040.mp3',
 :transcribe=>'k<span class="acct">a</span>psoola',
 :translate=>' capsule '},
 {:text=>'паст<span class="acco">и</span>лка',
-:sound=>'/audio/audio08061050.mp3',
+:sound=>'/audios/audio08061050.mp3',
 :transcribe=>'past<span class="acct">i</span>lka',
 :translate=>' pastille '},
 {:text=>'к<span class="acco">а</span>пли',
-:sound=>'/audio/audio08061060.mp3',
+:sound=>'/audios/audio08061060.mp3',
 :transcribe=>'k<span class="acct">a</span>pli',
 :translate=>' drops '},
 {:text=>'сир<span class="acco">о</span>п',
-:sound=>'/audio/audio08061070.mp3',
+:sound=>'/audios/audio08061070.mp3',
 :transcribe=>'sir<span class="acct">o</span>p',
 :translate=>' syrup '},
 {:text=>'мазь',
-:sound=>'/audio/audio08061080.mp3',
+:sound=>'/audios/audio08061080.mp3',
 :transcribe=>'m<span class="acct">a</span><span class="sftc">s</span>',
 :translate=>' ointment '},
 {:text=>'пл<span class="acco">а</span>стырь',
-:sound=>'/audio/audio08061090.mp3',
+:sound=>'/audios/audio08061090.mp3',
 :transcribe=>'pl<span class="acct">a</span>st<span class="ry">i</span><span class="sftc">r</span>',
 :translate=>' plaster '},
 {:text=>'бинт',
-:sound=>'/audio/audio08061100.mp3',
+:sound=>'/audios/audio08061100.mp3',
 :transcribe=>'b<span class="acct">i</span>nt',
 :translate=>' bandage '}
   
@@ -1063,15 +1071,15 @@ In case the noun is in plural (e.g. eyes or teeth), it necessary to use "бол�
 {:to_bild=> "I have a headache.", 
 :answer=>'У меня болит голова', 
 :show=> 'У меня болит голова.', 
-:sound=>'/audios/audio08043030.mp3'},
+:sound=>'/audios/audio08043040.mp3'},
 {:to_bild=> "I feel pain in my leg.", 
 :answer=>'У меня болит нога', 
 :show=> 'У меня болит нога.', 
-:sound=>'/audios/audio08043010.mp3'},
+:sound=>'/audios/audio08043050.mp3'},
 {:to_bild=> "My eyes heart me.", 
 :answer=>'У меня болят глаза.', 
 :show=> 'У меня болят глаза.', 
-:sound=>'/audios/audio08043010.mp3'}
+:sound=>'/audios/audio08043060.mp3'}
  ]
 %>
 <%= render :partial => '/site/every/en_ru_pseudo', :locals => {:phrases => @phrases} %>
@@ -1142,7 +1150,7 @@ II.  Asking for advice
 
 					<tr valign="top">
 		 				<td>
-		 					<p>Что Вы мне посов<span class="acco">е</span>туете?<br />
+		 					<p><b>Что Вы мне посов<span class="acco">е</span>туете?</b><br />
 		 						<span class="sound" onclick="playAudio('audio08053001.mp3')">[sht<span class="acct">o</span> v<span class="acct"><span class="ry">i</span></span> m<span class="sftv">n</span><span class="sfty">y</span><span class="acct">e</span> pasa<span class="sftv">v</span><span class="sfty">y</span><span class="acct">e</span>tooiti?] <span class="play_tip">&nbsp; &nbsp;</span></span>
 
 		 					</p>
@@ -1469,43 +1477,43 @@ IV. Take one capsule 3-4 times a day!
 <%
  @voc1 = [
 {:text=>'од<span class="acco">и</span>н раз в день',
-:sound=>'/audio/audio08071010.mp3',
+:sound=>'/audios/audio08071010.mp3',
 :transcribe=>'ad<span class="acct">i</span>n r<span class="acct">a</span>s v <span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span><span class="sftc">n</span>',
 :translate=>' once a day '},
 {:text=>'два р<span class="acct">а</span>за в день',
-:sound=>'/audio/audio08071020.mp3',
+:sound=>'/audios/audio08071020.mp3',
 :transcribe=>'dv<span class="acct">a</span> r<span class="acct">a</span>za v <span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span><span class="sftc">n</span>',
 :translate=>' two times a day '},
 {:text=>'пять раз в день',
-:sound=>'/audio/audio08071030.mp3',
+:sound=>'/audios/audio08071030.mp3',
 :transcribe=>'<span class="sftv">p</span><span class="sfty">y</span><span class="acct">a</span><span class="sftc">t</span> r<span class="acct">a</span>s v <span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span><span class="sftc">n</span>',
 :translate=>' five times a day '},
 {:text=>'<span class="acco">у</span>тром',
-:sound=>'/audio/audio08071040.mp3',
+:sound=>'/audios/audio08071040.mp3',
 :transcribe=>'<span class="acct">oo</span>tram',
 :translate=>' in the morning '},
 {:text=>'днём',
-:sound=>'/audio/audio08071050.mp3',
+:sound=>'/audios/audio08071050.mp3',
 :transcribe=>'d<span class="sftv">n</span><span class="sfty">y</span><span class="acct">o</span>m',
 :translate=>' in the afternoon '},
 {:text=>'в<span class="acco">е</span>чером',
-:sound=>'/audio/audio08071060.mp3',
+:sound=>'/audios/audio08071060.mp3',
 :transcribe=>'<span class="sftv">v</span><span class="sfty">y</span><span class="acct">e</span>chiram',
 :translate=>' in the evening '},
 {:text=>'н<span class="acco">о</span>чью',
-:sound=>'/audio/audio08071070.mp3',
+:sound=>'/audios/audio08071070.mp3',
 :transcribe=>'n<span class="acct">o</span>chyoo',
 :translate=>' at night '},
-{:text=>'до еды',
-:sound=>'/audio/audio08071080.mp3',
+{:text=>'до ед<span class="acco">ы</span>',
+:sound=>'/audios/audio08071080.mp3',
 :transcribe=>'da yid<span class="acct"><span class="ry">i</span></span>',
 :translate=>' before meals '},
 {:text=>'п<span class="acco">о</span>сле ед<span class="acco">ы</span>',
-:sound=>'/audio/audio08071090.mp3',
+:sound=>'/audios/audio08071090.mp3',
 :transcribe=>'pos<span class="sftv">l</span><span class="sfty">y</span>e yid<span class="acct"><span class="ry">i</span></span>',
 :translate=>' after meals '},
 {:text=>'к<span class="acco">а</span>ждые 3 час<span class="acco">а</span>',
-:sound=>'/audio/audio08071100.mp3',
+:sound=>'/audios/audio08071100.mp3',
 :transcribe=>'k<span class="acct">a</span>jd<span class="ry">i</span>ye tr<span class="acct">i</span> chis<span class="acct">a</span>',
 :translate=>' every 3 hours '}
  ]

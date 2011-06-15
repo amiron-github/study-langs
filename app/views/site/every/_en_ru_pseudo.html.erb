@@ -4,7 +4,10 @@
 	<div class="di_mix_tobuild"><%= phrase[:to_bild] %></div>
 	<% unless phrase[:variants]==nil %><div class="di_mix_variants di_mix"><%= phrase[:variants] %></div><%end%>
 	<input type="text" value=""> <span class="gext_answer" style="display: none"><%= phrase[:answer] %></span>
-	<div class="gext_show"><span><b><%= phrase[:show] %></b></span> &nbsp;</div>
+	<div class="gext_show<% unless phrase[:sound]==nil %> gext_sh_audio<%end%>">
+<% unless phrase[:sound]==nil %><div class="jp_control" onclick="cJplayer('<%= phrase[:sound] %>', this)"></div><%end%>
+		<span><b><%= phrase[:show] %></b>
+	</span> &nbsp;</div>
 </div>
 <% end %>
 </div>

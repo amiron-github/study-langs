@@ -1,28 +1,22 @@
 <div class="gex-area-trans">
-<table cellspacing="15">
-<tr>
-	<th colspan="3">
+	<div class="trans-head">
 		Questions
-		<br><br>
-	<th>
-</tr>
+	</div>
+<table cellspacing="15">
 <% phrases.each_with_index do |phrase, index| %>
-<tr>
+<tr valign="top">
 	<td>
-	<%unless phrase[:q_sound] == nil %><div class="jp_control" onclick="cJplayer('<%= phrase[:q_sound] %>', this)"></div><%end%>
-	</td>
-	<td>
-
-	<div><%= phrase[:q_text]%></div>
-	<div>[<%= phrase[:q_transcribe]%>]</div>
+		<div class="ital bold"><%= phrase[:q_text]%> - ...</div>
+		<div style="font-size: 11px">
+			<span class="sound" onclick="playFile('<%= phrase[:q_sound] %>')">[<%= phrase[:q_transcribe]%>] <span class="play_tip">&nbsp; &nbsp;</span></span>
+		</div>
 	</td>
 	<td style="padding-left: 30px">
-		<table class="ds-table" cellspacing="0" align="center"> 
-			<tr> 
-				<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap"><strong>Check yourself</strong></td> 
-				<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('<%= phrase[:sound] %>', this)"></div></td> 
-			</tr> 
-		</table>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playFile('<%= phrase[:sound] %>')">Check&nbsp;yourself</div>
+			</div>
+		</div>	
 	</td>
 </tr>
 <% end %>

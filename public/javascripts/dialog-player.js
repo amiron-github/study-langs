@@ -64,7 +64,7 @@ this.play = function (time) {
 		tObj.playedTime = pt;
 		tObj.getCurrentPlayed();
 		tObj.showPlayingTrack();
-		tObj.container.find("div.dt_inf").text(pt);
+		//tObj.container.find("div.dt_inf").text(pt);
 	}).jPlayer( "onSoundComplete", function() {
 		tObj.stop();
 	} );

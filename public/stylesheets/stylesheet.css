@@ -637,6 +637,17 @@ background-position: 100% 2px;
 /background-position: 100% 3px; 
 }
 
+.unit-area span.sound  {
+background-image: url("/images/sound-bl.png");
+background-position: 100% 0px; 
+}
+
+.unit-area span.preplay {
+color: #0000FF;
+background-position: 100% -26px; 
+}
+
+
 .play_tip {
 font-size: 14px;
 }

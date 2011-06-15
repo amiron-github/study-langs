@@ -1,27 +1,26 @@
-<% @title = defined?(title) ? title : "norm" %>
+<% @t_title = defined?(title) ? title : "norm" %>
 
 <div class="gex-area-trans">
-<table cellspacing="15">
-<tr>
-	<th>
-		<% if @title == "norm" %> 
+
+	<div class="trans-head">
+		<% if @t_title == "norm" %> 
 			Phrases to translate
 		<%else%>
-			<%= @title %>
+			<%= @t_title %>
 		<%end%>
-		<br><br>
-	<th>
-</tr>
+	</div>	
+	
+<table cellspacing="15">
 <% phrases.each_with_index do |phrase, index| %>
-<tr>
-	<td><%= index+1 %>. <%= phrase[:q_text]%></td>
+<tr valign="top">
+	<td class="ital bold" style="text-indent: -18px;padding-left: 18px;"><%= index+1 %>. <%= phrase[:q_text]%></td>
 	<td style="padding-left: 30px">
-		<table class="ds-table" cellspacing="0" align="center"> 
-			<tr> 
-				<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap"><strong>Check yourself</strong></td> 
-				<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('<%= phrase[:sound] %>', this)"></div></td> 
-			</tr> 
-		</table>
+		<div class="key check">
+			<div>
+				<div class="sound"  onclick="playFile('<%= phrase[:sound] %>')">Check&nbsp;yourself</div>
+
+			</div>
+		</div>
 	</td>
 </tr>
 <% end %>

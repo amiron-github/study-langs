@@ -36,11 +36,10 @@ dialog = cat.words.find(:all, :include => :cluster_words, :order => 'cluster_wor
 
 				</td>
 			</tr>
-			
 <% dialog.each do |phrase|%>			
 			<tr class="drow" valign="top">
 				<td class="d-first"><div class="jp_control" onclick="cJplayer('<%= phrase.sound_url %>', this)"></div></td>
-				<td  class="d-rus">- <%= phrase.text %> 
+				<td  class="d-rus">- <%= phrase.html %> 
 					<div class="d-transc" style="display: none">[<%= phrase.transcribe %>]</div>
 				</td>
 				<td class="d-eng">- <%= phrase.translate %> </td>

@@ -981,19 +981,18 @@ II. How much is the fare?
 
 <%
  @voc = [
- 
-{:text=>'на авт<span class="acco">о</span>бусе',
-:sound=>'/audios/audio02061010.mp3',
-:transcribe=>'na aft<span class="acct">o</span>boo<span class="sftv">s</span><span class="sfty">y</span>e',
-:translate=>' on the bus, by bus '},
 {:text=>'на такс<span class="acco">и</span>',
 :sound=>'/audios/audio02061020.mp3',
 :transcribe=>'na taks<span class="acct">i</span>',
-:translate=>' on the taxi, by taxi '},
+:translate=>' by taxi '},
 {:text=>'на метр<span class="acco">о</span>',
 :sound=>'/audios/audio02061030.mp3',
 :transcribe=>'na mitr<span class="acct">o</span>',
-:translate=>' by underground '},
+:translate=>' by underground '}, 
+{:text=>'на авт<span class="acco">о</span>бусе',
+:sound=>'/audios/audio02061010.mp3',
+:transcribe=>'na aft<span class="acct">o</span>boo<span class="sftv">s</span><span class="sfty">y</span>e',
+:translate=>' by bus '},
 {:text=>'на тролл<span class="acco">е</span>йбусе',
 :sound=>'/audios/audio02061040.mp3',
 :transcribe=>'na tra<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>boo<span class="sftv">s</span><span class="sfty">y</span>e',
@@ -1112,35 +1111,34 @@ III. Is this a hotel?
 
 <div class="egmodel">
 <h4>Model:</h4>
-<table  cellspacing="0" style="margin: 0 15px;">      
+<table  cellspacing="8" style="margin: 0 15px;">      
 	<tr valign="top">
-		 <td><div><span class="acco">Э</span>то вокз<span class="acco">а</span>л?<br />
+		 <td><div><b><span class="acco">Э</span>то вокз<span class="acco">а</span>л?</b><br />
 		 		<span class="sound" onclick="playAudio('audio02032001.mp3')">[<span class="acct">e</span>ta vagz<span class="acct">a</span>l?] <span class="play_tip">&nbsp; &nbsp;</span></span>
 		 		</div>
 
 		 </td>
          <td>-</td>
 		 <td>
-		 	<div>Да, <span class="acco">э</span>то вокз<span class="acco">а</span>л.<br />
+		 	<div><b>Да, <span class="acco">э</span>то вокз<span class="acco">а</span>л.</b><br />
 		 		<span class="sound" onclick="playAudio('audio02032002.mp3')">[d<span class="acct">a</span>, <span class="acct">e</span>ta vagz<span class="acct">a</span>l] <span class="play_tip">&nbsp; &nbsp;</span></span>
 
 		 	</div>
 		 </td>
 		 <td>
-		 	<div>(Нет, <span class="acco">э</span>то аэроп<span class="acco">о</span>рт.)<br />
+		 	<div><b>(Нет, <span class="acco">э</span>то аэроп<span class="acco">о</span>рт.)</b><br />
 		 		<span class="sound" onclick="playAudio('audio02032003.mp3')">[<span class="sftv">n</span><span class="sfty">y</span><span class="acct">e</span>t, <span class="acct">e</span>ta airap<span class="acct">o</span>rt] <span class="play_tip">&nbsp; &nbsp;</span></span>
 
 		 	</div>
 		 </td>
 	</tr>
 	<tr valign="top">
-
-		 <td width="180">
-		 <div class="bold">Is it a ralway station?</div></td>
-         <td width="30"><div>-</div>
+		 <td>
+		 <div class="ital">Is it a ralway station?</div></td>
+         <td><div>-</div>
          </td>
-		 <td><div class="bold">Yes, it is a ralway station.<br /></div></td>
-		 <td><div class="bold">(No, it is an airport)<br /></div></td>
+		 <td><div class="ital">Yes, it is a ralway station.<br /></div></td>
+		 <td><div class="ital">(No, it is an airport)<br /></div></td>
 	</tr>
 </table>
 </div>
@@ -1149,7 +1147,7 @@ III. Is this a hotel?
 
 
 
-<div class="su-exerc">
+<div class="su-exerc ex-with-img">
 
 
 <img src="images/street.jpg" style="display: block; width: 135px; height: 86px; margin-bottom: 10px;"/>
@@ -1157,7 +1155,7 @@ III. Is this a hotel?
 	<tr valign="top">
 
 			<td width="200">
-				<p><span class="acco">Э</span>то вокз<span class="acco">а</span>л? -  ...  <br />
+				<p><span class="ital bold"> <span class="acco">Э</span>то вокз<span class="acco">а</span>л? -  ...  </span><br />
 					<span class="sound" onclick="playAudio('audio02032011.mp3')">[<span class="acct">e</span>ta vagz<span class="acct">a</span>l?] <span class="play_tip">&nbsp; &nbsp;</span></span>
 				</p>
 
@@ -1179,7 +1177,7 @@ III. Is this a hotel?
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="200">
-				<p><span class="acco">Э</span>то аэроп<span class="acco">о</span>рт? -  ... <br />
+				<p><span class="ital bold"><span class="acco">Э</span>то аэроп<span class="acco">о</span>рт? -  ... </span><br />
 					<span class="sound" onclick="playAudio('audio02032021.mp3')">[<span class="acct">e</span>ta airap<span class="acct">o</span>rt?] <span class="play_tip">&nbsp; &nbsp;</span></span>
 
 				</p>
@@ -1200,7 +1198,7 @@ III. Is this a hotel?
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="200">
-				<p><span class="acco">Э</span>то <span class="acco">у</span>лица? -  ... <br />
+				<p><span class="ital bold"><span class="acco">Э</span>то <span class="acco">у</span>лица? -  ... </span><br />
 
 					<span class="sound" onclick="playAudio('audio02032031.mp3')">[<span class="acct">e</span>ta <span class="acct">oo</span>litsa?] <span class="play_tip">&nbsp; &nbsp;</span></span>
 				</p>
@@ -1222,7 +1220,7 @@ III. Is this a hotel?
 	<tr valign="top">
 
 			<td width="200">
-				<p><span class="acco">Э</span>то гост<span class="acco">и</span>ница? -  ... <br />
+				<p><span class="ital bold"><span class="acco">Э</span>то гост<span class="acco">и</span>ница? -  ... </span><br />
 					<span class="sound" onclick="playAudio('audio02032041.mp3')">[<span class="acct">e</span>ta gast<span class="acct">i</span>nitsa?] <span class="play_tip">&nbsp; &nbsp;</span></span>
 				</p>
 
@@ -1243,7 +1241,7 @@ III. Is this a hotel?
 <table class="tab1 inter"  cellspacing="0" >
 	<tr valign="top">
 			<td width="200">
-				<p><span class="acco">Э</span>то вокз<span class="acco">а</span>л? -  ... <br />
+				<p><span class="ital bold"><span class="acco">Э</span>то вокз<span class="acco">а</span>л? -  ... </span><br />
 					<span class="sound" onclick="playAudio('audio02032051.mp3')">[<span class="acct">e</span>ta vagz<span class="acct">a</span>l?] <span class="play_tip">&nbsp; &nbsp;</span></span>
 
 				</p>

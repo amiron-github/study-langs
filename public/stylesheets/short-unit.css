@@ -178,6 +178,58 @@ padding-right: 10px;
 background-color: #91d4ff;
 }
 
+.unit-area .key .sound  {
+background-image: url("/images/sound-bl.png");
+background-position: 100% 1px; 
+}
+
+.unit-area .key .preplay  {
+background-position: 100% -25px; 
+}
+
+.unit-area .key {
+font-size: 11px;
+line-height: 14px;
+background-color: #BED7FC;heck yourself
+-moz-box-shadow: 1px 2px 3px #45546F;
+-webkit-box-shadow: 1px 2px 3px #45546F;
+box-shadow: 1px 2px 3px #45546F;
+border: 1px solid #8E95AF;
+background-image: url("/images/btn-grd.png");
+background-position: 50% 50%;
+background-repeat: no-repeat;
+color: #222222;
+text-shadow: 0 1px 0 #FFFFFF;
+cursor: pointer !important;
+}
+
+.unit-area .key div, .unit-area .key span {
+cursor: pointer !important;
+-moz-user-select: none;
+-khtml-user-select: none;
+user-select: none;
+}
+
+.unit-area .key_act {
+-moz-box-shadow: 0px 1px 2px #45546F;
+-webkit-box-shadow: 0px 1px 2px #45546F;
+box-shadow: 0px 1px 2px #45546F;
+}
+
+.unit-area .key:hover {
+background-color: #9FB9FF;
+}
+
+.trans-head {
+border-bottom: 3px double #A1BCE4;
+color: #4C5A6F;
+font-size: 14px;
+font-style: italic;
+font-weight: bold;
+margin: 0 15px 14pt;
+padding: 0 0 5px;
+}
+
 
 
 .pBlock .su-step-title {
@@ -958,6 +1010,23 @@ font-style: italic;
 font-weight: bold;
 }
 
+.gext_show .jp_control {
+position: absolute;
+left: 0px;
+top: 4px;
+}
+
+.gext_sh_audio {
+margin-left: 0px;
+position: relative;
+text-indent: 0;
+}
+
+.ex-with-img img {
+border: 1px solid #666;
+background-color: #fff;
+padding: 2px;
+}
 
 /* end of grammar exercises  */
 
@@ -1062,7 +1131,8 @@ border-radius: 7px;
 -moz-box-shadow: 1px 1px 0px #fff, 1px 2px 12px #C3CBDF;
 -webkit-box-shadow: 1px 1px 0px #fff, 1px 2px 12px #C3CBDF;
 box-shadow: 1px 1px 0px #fff, 1px 2px 12px #C3CBDF;
-
 }
 
-
+.sound-wrap span.sound{
+white-space: normal;
+}

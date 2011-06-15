@@ -420,55 +420,63 @@ I. Internet
 <%
  @voc1 = [
 {:text=>'Интерн<span class="acco">е</span>т',
-:sound=>'/audio/audio10021010.mp3',
+:sound=>'/audios/audio10021010.mp3',
 :transcribe=>'int<span class="ry">i</span>rn<span class="acct">e</span>t',
 :translate=>' Internet '},
 {:text=>'интерн<span class="acco">е</span>т каф<span class="acco">е</span>',
-:sound=>'/audio/audio10021020.mp3',
+:id=> '719',
+:sound=>'/audios/audio10021020.mp3',
 :transcribe=>'int<span class="ry">i</span>rn<span class="acct">e</span>t kaf<span class="acct">e</span>',
 :translate=>' cyber cafe '},
 {:text=>'интерн<span class="acco">е</span>т сал<span class="acco">о</span>н',
-:sound=>'/audio/audio10021030.mp3',
+:id=> '717',
+:sound=>'/audios/audio10021030.mp3',
 :transcribe=>'int<span class="ry">i</span>rn<span class="acct">e</span>t sal<span class="acct">o</span>n',
 :translate=>' cyber salon '},
 {:text=>'электр<span class="acco">о</span>нная п<span class="acco">о</span>чта, email',
-:sound=>'/audio/audio10021040.mp3',
+:id=> '714',
+:sound=>'/audios/audio10021040.mp3',
 :transcribe=>'iliktr<span class="acct">o</span>naya p<span class="acct">o</span>chta, im<span class="acct">e</span>yl',
 :translate=>' email '},
 {:text=>'icq',
-:sound=>'/audio/audio10021050.mp3',
+:sound=>'/audios/audio10021050.mp3',
 :transcribe=>'ay si ky<span class="acct">oo</span>',
 :translate=>' icq '},
-{:text=>'компь<span class="acct">ю</span>тер',
-:sound=>'/audio/audio10021060.mp3',
+{:text=>'компь<span class="acco">ю</span>тер',
+:id=> '721',
+:sound=>'/audios/audio10021060.mp3',
 :transcribe=>'kampy<span class="acct">oo</span>ter',
 :translate=>' computer '},
-{:text=>'пров<span class="acct">е</span>рить п<span class="acct">о</span>чту',
-:sound=>'/audio/audio10021070.mp3',
+{:text=>'пров<span class="acco">е</span>рить п<span class="acct">о</span>чту',
+:sound=>'/audios/audio10021070.mp3',
 :transcribe=>'pra<span class="sftv">v</span><span class="sfty">y</span><span class="acct">e</span>ri<span class="sftc">t</span> p<span class="acct">o</span>chtoo',
 :translate=>' check email '},
 {:text=>'посет<span class="acco">и</span>ть сайт',
-:sound=>'/audio/audio10021080.mp3',
+:id=> '711',
+:sound=>'/audios/audio10021080.mp3',
 :transcribe=>'pasit<span class="acct">i</span><span class="sftc">t</span> s<span class="acct">a</span>yt',
 :translate=>' visit a site '},
 {:text=>'скач<span class="acco">а</span>ть',
-:sound=>'/audio/audio10021090.mp3',
+:id=> '709',
+:sound=>'/audios/audio10021090.mp3',
 :transcribe=>'skach<span class="acct">a</span><span class="sftc">t</span>',
 :translate=>' download '},
 {:text=>'закач<span class="acco">а</span>ть',
-:sound=>'/audio/audio10021100.mp3',
+:id=> '712',
+:sound=>'/audios/audio10021100.mp3',
 :transcribe=>'zakach<span class="acct">a</span><span class="sftc">t</span>',
 :translate=>' upload '},
 {:text=>'файл',
-:sound=>'/audio/audio10021110.mp3',
+:id=> '715',
+:sound=>'/audios/audio10021110.mp3',
 :transcribe=>'f<span class="acct">a</span>yl',
 :translate=>' file '},
 {:text=>'мегаб<span class="acco">а</span>йт',
-:sound=>'/audio/audio10021120.mp3',
+:sound=>'/audios/audio10021120.mp3',
 :transcribe=>'migab<span class="acct">a</span>yt',
 :translate=>' megabyte '},
-{:text=>'килоб<span class="acct">а</span>йт',
-:sound=>'/audio/audio10021130.mp3',
+{:text=>'килоб<span class="acco">а</span>йт',
+:sound=>'/audios/audio10021130.mp3',
 :transcribe=>'kilab<span class="acct">a</span>yt',
 :translate=>' kilobyte '}
  ]
@@ -495,7 +503,7 @@ I. Internet
 		
 <% @last_item_index = (@voc1.length)-1 -%>
 <% @voc1.each_with_index  do |word, index| -%>
-['<%= word[:text] %>', "<%= word[:translate].to_s.gsub(/"/,'\"') %>"]<% if index!= @last_item_index -%>,<%end -%>	
+['<%= word[:text] %>', "<%= word[:translate].to_s.gsub(/"/,'\"') %>"<%unless word[:id]==nil || word[:id]==''%>,'<%=word[:id]%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
 <%end -%>
 
 		]
@@ -544,51 +552,51 @@ II. Phone
 <%
  @voc1 = [
 {:text=>'телеф<span class="acco">о</span>н',
-:sound=>'/audio/audio10031010.mp3',
+:sound=>'/audios/audio10031010.mp3',
 :transcribe=>'tilif<span class="acct">o</span>n',
 :translate=>' phone '},
 {:text=>'телеф<span class="acco">о</span>н-автом<span class="acco">а</span>т',
-:sound=>'/audio/audio10031020.mp3',
+:sound=>'/audios/audio10031020.mp3',
 :transcribe=>'tilif<span class="acct">o</span>n-aftam<span class="acct">a</span>t',
 :translate=>' pay phone '},
 {:text=>'дл<span class="acco">и</span>нный гуд<span class="acco">о</span>к',
-:sound=>'/audio/audio10031030.mp3',
+:sound=>'/audios/audio10031030.mp3',
 :transcribe=>'dl<span class="acct">i</span>n<span class="ry">i</span>y good<span class="acct">o</span>k',
 :translate=>' long tone '},
 {:text=>'кор<span class="acco">о</span>ткий гуд<span class="acco">о</span>к',
-:sound=>'/audio/audio10031040.mp3',
+:sound=>'/audios/audio10031040.mp3',
 :transcribe=>'kor<span class="acct">o</span>tkiy good<span class="acct">o</span>k',
 :translate=>' short tone '},
 {:text=>'код стран<span class="acco">ы</span>',
-:sound=>'/audio/audio10031050.mp3',
+:sound=>'/audios/audio10031050.mp3',
 :transcribe=>'k<span class="acct">o</span>t stran<span class="acct"><span class="ry">i</span></span>',
 :translate=>' country code '},
 {:text=>'междунар<span class="acco">о</span>дный звон<span class="acco">о</span>к',
-:sound=>'/audio/audio10031060.mp3',
+:sound=>'/audios/audio10031060.mp3',
 :transcribe=>'mijdoonar<span class="acct">o</span>dn<span class="ry">i</span>y zvan<span class="acct">o</span>k',
 :translate=>' international call '},
 {:text=>'м<span class="acco">е</span>стный звон<span class="acco">о</span>к',
-:sound=>'/audio/audio10031070.mp3',
+:sound=>'/audios/audio10031070.mp3',
 :transcribe=>'<span class="sftv">m</span><span class="sfty">y</span><span class="acct">e</span>sn<span class="ry">i</span>y zvan<span class="acct">o</span>k',
 :translate=>' local call '},
 {:text=>'н<span class="acco">о</span>мер',
-:sound=>'/audio/audio10031080.mp3',
+:sound=>'/audios/audio10031080.mp3',
 :transcribe=>'n<span class="acct">o</span>mir',
 :translate=>' (phone) number '},
 {:text=>'набр<span class="acco">а</span>ть н<span class="acco">о</span>мер',
-:sound=>'/audio/audio10031090.mp3',
+:sound=>'/audios/audio10031090.mp3',
 :transcribe=>'nabr<span class="acct">a</span><span class="sftc">t</span> n<span class="acct">o</span>mir',
 :translate=>' dial a number '},
 {:text=>'набр<span class="acco">а</span>ть код стран<span class="acco">ы</span>',
-:sound=>'/audio/audio10031100.mp3',
+:sound=>'/audios/audio10031100.mp3',
 :transcribe=>'nabr<span class="acct">a</span><span class="sftc">t</span> k<span class="acct">o</span>t stran<span class="acct"><span class="ry">i</span></span>',
 :translate=>' dial a country code '},
 {:text=>'сд<span class="acco">е</span>лать звон<span class="acco">о</span>к',
-:sound=>'/audio/audio10031110.mp3',
+:sound=>'/audios/audio10031110.mp3',
 :transcribe=>'<span class="sftc">z</span><span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span>la<span class="sftc">t</span> zvan<span class="acct">o</span>k',
 :translate=>' call, make a call '},
 {:text=>'дожд<span class="acco">а</span>ться дл<span class="acco">и</span>нного гудк<span class="acco">а</span>',
-:sound=>'/audio/audio10031120.mp3',
+:sound=>'/audios/audio10031120.mp3',
 :transcribe=>'dajd<span class="acct">a</span>tsa dl<span class="acct">i</span>nava gootk<span class="acct">a</span>',
 :translate=>' wait for the long tone '}
  ]
@@ -635,7 +643,7 @@ II. Phone
 :sound=>'/audios/audio10034010.mp3'},
 {:q_text=>'Should I dial country code? ',
 :sound=>'/audios/audio10034020.mp3'},
-{:q_text=>'3. Do you have a telephone? ',
+{:q_text=>'Do you have a telephone? ',
 :sound=>'/audios/audio10034030.mp3'},
 {:q_text=>'How much does a call cost? ',
 :sound=>'/audios/audio10034040.mp3'},
@@ -717,7 +725,7 @@ and drop them into the corresponding fields. </p>
 
 %>
 
-<%= render :partial => '/site/every/en_ru_ddtest', :locals => {:t_phrases => @t_phrases} %>
+<%= render :partial => '/site/every/en_ru_ddtest', :locals => {:t_phrases => @t_phrases, :title=> "Question"} %>
 
 </div>
 
@@ -917,7 +925,7 @@ T['6']=['1', '2', '340'];
 	 </tr>
 	<tr>
 		<td>
-		<form onsubmit="return check_test(this,4,"c0110051.V.1")" style="margin-bottom: 0px;">
+		<form onsubmit="return check_test(this,4,'c0110051.V.1')" style="margin-bottom: 0px;">
 		
 		<div style="margin-top: 20px;" class="ital bold">
 		<img src="pixel.gif" width="10" height="10" id="r41" class="ev-test-img"> 1. The tourist asks the way to the: 
@@ -945,7 +953,6 @@ T['6']=['1', '2', '340'];
 
 		<br><br><br><br>
 		
-		
 		</td>
 	</tr>
  </table>
@@ -955,7 +962,7 @@ T['6']=['1', '2', '340'];
 		<td> 
 				<table class="ds-table" cellspacing="0" > 
 					<tr> 
-						<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap; "><strong>Dialogue 1: In a shop </strong></td> 
+						<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap; "><strong>Dialogue 2: In a shop </strong></td> 
 						<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('/audios/audio10053020.mp3', this)"></div></td> 
 					</tr> 
 				</table>
@@ -992,7 +999,7 @@ T['6']=['1', '2', '340'];
 		<td> 
 				<table class="ds-table" cellspacing="0" > 
 					<tr> 
-						<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap; "><strong>Dialogue 1: In a restaurant </strong></td> 
+						<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap; "><strong>Dialogue 3: In a restaurant </strong></td> 
 						<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('/audios/audio10053030.mp3', this)"></div></td> 
 					</tr> 
 				</table>
@@ -1117,47 +1124,47 @@ V. Revision
 :variants=>'извините пожалуйста где находится метро', 
 :answer=>'извините пожалуйста где находится метро', 
 :show=> 'Извините, пожалуйста, где находится метро?', 
-:sound=>'/audios/udio10072020.mp3'},
+:sound=>'/audios/audio10072020.mp3'},
 {:to_bild=> "How much does this souvenir cost?", 
 :variants=>'сколько стоит этот сувенир', 
 :answer=>'сколько стоит этот сувенир', 
 :show=> 'Сколько стоит этот сувенир?', 
-:sound=>'/audios/udio10072030.mp3'},
+:sound=>'/audios/audio10072030.mp3'},
 {:to_bild=> "How can I get to the hotel?", 
 :variants=>'как пройти к гостинице', 
 :answer=>'как пройти к гостинице', 
 :show=> 'Как пройти к гостинице?', 
-:sound=>'/audios/udio10072040.mp3'},
+:sound=>'/audios/audio10072040.mp3'},
 {:to_bild=> "I speak English.", 
 :variants=>'я говорю по-английски', 
 :answer=>'я говорю по-английски', 
 :show=> 'Я говорю по-английски.', 
-:sound=>'/audios/udio10072050.mp3'},
+:sound=>'/audios/audio10072050.mp3'},
 {:to_bild=> "May I smoke here?", 
 :variants=>'здесь можно курить', 
 :answer=>'здесь можно курить', 
 :show=> 'Здесь можно курить?', 
-:sound=>'/audios/udio10072060.mp3'},
+:sound=>'/audios/audio10072060.mp3'},
 {:to_bild=> "I like this T-shirt.", 
 :variants=>'мне нравится эта футболка', 
 :answer=>'мне нравится эта футболка', 
 :show=> 'Мне нравится эта футболка.', 
-:sound=>'/audios/udio10072070.mp3'},
+:sound=>'/audios/audio10072070.mp3'},
 {:to_bild=> "I have a headache.", 
 :variants=>'у меня болит голова', 
 :answer=>'у меня болит голова', 
 :show=> 'У меня болит голова.', 
-:sound=>'/audios/udio10072080.mp3'},
+:sound=>'/audios/audio10072080.mp3'},
 {:to_bild=> "I need a souvenir.", 
 :variants=>'мне нужен сувенир', 
 :answer=>'мне нужен сувенир', 
 :show=> 'Мне нужен сувенир.', 
-:sound=>'/audios/udio10072090.mp3'},
+:sound=>'/audios/audio10072090.mp3'},
 {:to_bild=> "The phone doesn't work.", 
 :variants=>'телефон не работает', 
 :answer=>'телефон не работает', 
 :show=> 'Телефон не работает.', 
-:sound=>'/audios/udio10072100.mp3'}
+:sound=>'/audios/audio10072100.mp3'}
  ]
 %>
 <%= render :partial => '/site/every/en_ru_pseudo', :locals => {:phrases => @phrases} %>
