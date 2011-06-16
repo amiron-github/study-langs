@@ -481,7 +481,6 @@ I. City
 
 <p class="part-task">b) Translate phrases from English into Russian:</p>
 
-<div class="su-exerc"> 
 <%
  @phrases = [
 {:q_text=>'It is a road crossing. ',
@@ -505,7 +504,6 @@ I. City
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>	
 
-</div>
 
 <br><br>
 
@@ -593,7 +591,6 @@ II. Go straight ahead!
 <br><br>
 <p class="part-task">b) Translate phrases from English into Russian </p>
 
-<div class="su-exerc">
 <%
  @phrases = [
 {:q_text=>'I need to go to the square. ',
@@ -613,7 +610,6 @@ II. Go straight ahead!
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>	
 
-</div>
 <br><br>
 
 <h4 class="su-task">
@@ -753,7 +749,6 @@ III. I'm a foreigner !
 </table>
 </div>
 
-<div class="su-exerc">
 <%
  @phrases = [
 {:q_text=>'Вы говор<span class="acco">и</span>те по-р<span class="acco">у</span>сски? ',
@@ -773,7 +768,6 @@ III. I'm a foreigner !
 
 <%= render :partial => '/site/every/en_ru_oral_quest', :locals => {:phrases => @phrases} %>		
 
-</div>
 
 <br><br>
 <p class="part-task">c) Learn the following Russian words:  </p>
@@ -1001,7 +995,9 @@ IV. Russian numerals
 
 <p class="part-task">b) Listen to the Russian numeral and write it (with figures 1, 2, 3 etc.) in the text area:   </p>
 
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 <div id="ch2" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test' %>
@@ -1033,7 +1029,7 @@ IV. Russian numerals
 		
 		} )
 </script>
-
+<%end%>
 
 
 <br><br><br><br>
@@ -1325,7 +1321,6 @@ III. How can I get to the Pushkin square?
 
 <p class="part-task">b) Translate phrases from English into Russian: </p>
 
-<div class="su-exerc">
 <%
  @phrases = [
  
@@ -1345,7 +1340,6 @@ III. How can I get to the Pushkin square?
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
 
-</div>
 <br><br>
 
 <h4 class="su-task">
@@ -1629,7 +1623,6 @@ V. Could you please repeat it!
 <br><br>
 <p class="part-task">b) Translate phrases from English into Russian:</p>
 
-<div class="su-exerc">
 
 <%
  @phrases = [
@@ -1649,10 +1642,6 @@ V. Could you please repeat it!
 %>
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
-
-</div>
-
-
 
 
 
@@ -1733,7 +1722,9 @@ Revise this lesson's materials
  ]
 
 %>
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 <div id="ch4" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test' %>
@@ -1758,7 +1749,7 @@ Revise this lesson's materials
 		
 		} )
 </script>
- 
+<%end%> 
  
 <br><br><br>
  

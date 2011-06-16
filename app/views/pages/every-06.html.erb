@@ -517,8 +517,6 @@ I. I'm looking for a grey suit.
 
 <p class="part-task">b) Translate phrases from English into Russian </p>
 
-<div class="su-exerc">
-
 <%
  @phrases = [
 {:q_text=>'Excuse me, please, how much does the sweater cost? ',
@@ -545,7 +543,6 @@ I. I'm looking for a grey suit.
 %>
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>	
-</div>
 
 <br><br>
 
@@ -660,7 +657,6 @@ Depending on the grammatical gender and the number of the following noun, the wo
 
 <p class="part-task">c) Give a positive answer to the questions: </p>
 
-<div class="su-exerc">
 <%
  @phrases = [
 {:q_text=>'<span class="acco">Э</span>то В<span class="acco">а</span>ша игр<span class="acco">у</span>шка?',
@@ -688,7 +684,6 @@ Depending on the grammatical gender and the number of the following noun, the wo
 
 <%= render :partial => '/site/every/en_ru_oral_quest', :locals => {:phrases => @phrases} %>	
 
-</div>
 <br><br>
 
 <h4 class="su-task">
@@ -699,7 +694,9 @@ III. Goods
 
 <% @voc1 = @voc1 | @voc2 %>
 
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 <div id="ch1" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test' %>
@@ -724,7 +721,7 @@ III. Goods
 		
 		} )
 </script>
-
+<%end%>
 
 
 <h4 class="su-task">
@@ -832,8 +829,9 @@ VI. Russian numerals
 
 <p class="part-task">b) Listen to the Russian numeral and write it (with figures 1, 2, 3 etc.) in the text area:</p>
 
-
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 <div id="ch2" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test' %>
@@ -861,7 +859,7 @@ VI. Russian numerals
 		
 		} )
 </script>
-
+<%end%>
 
 <br><br><br><br>
 
@@ -1059,9 +1057,7 @@ I. What are you looking for?
 
 <br><br>
 <p class="part-task">c) Translate phrases from English into Russian </p>
-
-<div class="su-exerc">
-<p class="task">Translate phrases from English into Russian.</p> 
+ 
 <%
  @phrases = [
 
@@ -1082,8 +1078,6 @@ I. What are you looking for?
 %>
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
-
-</div>
 
 
 <br><br>
@@ -1149,7 +1143,6 @@ II. Can you show me this souvenir?
 </div>
 
 
-<div class="su-exerc">
 <%
  @phrases = [
 
@@ -1178,14 +1171,11 @@ II. Can you show me this souvenir?
 %>
 
 <%= render :partial => '/site/every/en_ru_oral_quest', :locals => {:phrases => @phrases} %>	
-</div>
 
 
 <br><br>
 <p class="part-task">b) Translate phrases from English into Russian </p>
 
-
-<div class="su-exerc">
 <%
  @phrases = [
 
@@ -1206,7 +1196,7 @@ II. Can you show me this souvenir?
 %>
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
-</div>
+
 
 
 
@@ -1326,8 +1316,6 @@ III. I like it!
 </table>
 </div>
 
-<div class="su-exerc">
-
 <%
  @phrases = [
 
@@ -1356,7 +1344,6 @@ III. I like it!
 %>
 
 <%= render :partial => '/site/every/en_ru_oral_quest', :locals => {:phrases => @phrases} %>
-</div>
 
 <br><br>
 <p class="part-task">b) Give a negative answer following the model to the questions: </p>
@@ -1396,10 +1383,6 @@ III. I like it!
 </table>
 </div>
 
-
-
-
-<div class="su-exerc">
  
 <%
  @phrases = [
@@ -1429,8 +1412,6 @@ III. I like it!
 %>
 
 <%= render :partial => '/site/every/en_ru_oral_quest', :locals => {:phrases => @phrases} %>
-</div>
-
 
 
 <br><br>
@@ -1600,7 +1581,9 @@ Revise this lesson's materials
  ]
 
 %>
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 <div id="ch4" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test' %>
@@ -1625,7 +1608,7 @@ Revise this lesson's materials
 		
 		} )
 </script>
- 
+<%end%> 
  
 <br><br><br>
  

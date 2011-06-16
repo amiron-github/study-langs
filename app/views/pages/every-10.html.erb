@@ -493,7 +493,9 @@ I. Internet
 	
 <br><br>
 <p class="part-task">b) Read and find the corresponding English word:  </p>
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 <div id="ch1" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test' %>
@@ -518,13 +520,10 @@ I. Internet
 		
 		} )
 </script>
-
+<%end%>
 <br><br>
 <p class="part-task">b) Translate phrases from English into Russian </p>
 
-
-
-<div class="su-exerc">
 
 <%
  @phrases = [
@@ -547,7 +546,6 @@ I. Internet
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
 
-</div>
 
 <br><br>
 
@@ -613,7 +611,9 @@ II. Phone
 	
 <br><br>
 <p class="part-task">b) Read and find the corresponding English word:  </p>
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 <div id="ch5" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test' %>
@@ -638,11 +638,9 @@ II. Phone
 		
 		} )
 </script>
-
+<%end%>
 <br><br>
 <p class="part-task">b) Translate phrases from English into Russian </p>
-
-<div class="su-exerc">
 
 <%
  @phrases = [
@@ -664,8 +662,6 @@ II. Phone
 %>
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
-
-</div>
 
 
 
@@ -862,8 +858,6 @@ II. I need a phone!
 <p class="part-task">b) Translate into Russian using words <span style="font-weight: normal">этот</span>, <span style="font-weight: normal">эта</span>, <span style="font-weight: normal">это</span> or <span style="font-weight: normal">эти</span> and check yourself:</p>
 
 
-<div class="su-exerc">
-
 <%
  @phrases = [
 
@@ -889,7 +883,6 @@ II. I need a phone!
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
 
-</div>
 
 <br><br>
 
@@ -1057,7 +1050,9 @@ IV. Russian numerals
 </h4>
 
 <p class="part-task">a) Listen to the Russian numeral and write it (with figures 1, 2, 3 etc.) in the text area: </p>
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 <div id="ch6" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test' %>
@@ -1104,7 +1099,7 @@ IV. Russian numerals
 		
 		} )
 </script>
-
+<%end%>
 <br>
 
 	
@@ -1222,10 +1217,9 @@ Revise this and previous lessons' materials
  
  <p class="part-task">a) Listen and find the corresponding English phrases: </p>	
 
-
-
-
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 <div id="ch7" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test' %>
@@ -1253,7 +1247,7 @@ Revise this and previous lessons' materials
 		
 		} )
 </script>
-
+<%end%>
  
 <br><br><br>
  

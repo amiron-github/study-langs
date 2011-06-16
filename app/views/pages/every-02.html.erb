@@ -448,7 +448,9 @@ I. Where is the bus stop?
 <br><br>
 <p class="part-task">b) Listen and find the corresponding English word: </p>
 
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 <div id="ch1" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test' %>
@@ -473,6 +475,8 @@ I. Where is the bus stop?
 		
 		} )
 </script>
+<%end%>
+
 
 <br><br>
 
@@ -718,7 +722,9 @@ III. Russian numerals
 b) Listen to the Russian numeral and write it (with figures 1, 2, 3 etc.) in the text area:
 </p>
 
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 <div id="ch2" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test' %>
@@ -744,7 +750,7 @@ b) Listen to the Russian numeral and write it (with figures 1, 2, 3 etc.) in the
 		
 		} )
 </script>
-
+<%end%>
 <br><br>
 <p class="part-task">c) Learn the following Russian numerals:</p>
 
@@ -856,7 +862,9 @@ b) Listen to the Russian numeral and write it (with figures 1, 2, 3 etc.) in the
 d) Listen to the Russian numeral and write it (with figures 1, 2, 3 etc.) in the text area:
 </p>
 
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 <div id="ch3" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test' %>
@@ -881,7 +889,7 @@ d) Listen to the Russian numeral and write it (with figures 1, 2, 3 etc.) in the
 		
 		} )
 </script>
-
+<%end%>
 
 <br><br><br><br>
 
@@ -1657,7 +1665,9 @@ Revise this lesson's materials
  ]
 
 %>
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 <div id="ch4" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test' %>
@@ -1682,7 +1692,7 @@ Revise this lesson's materials
 		
 		} )
 </script>
- 
+<%end%> 
  
 <br><br><br>
  

@@ -426,8 +426,6 @@ I. Is there a bathroom in the room?
 
 <p class="part-task">b) Translate phrases from English into Russian:</p>
 
-
-<div class="su-exerc">
 <%
  @phrases = [
 {:q_text=>'It is a bath-room. ',
@@ -448,9 +446,8 @@ I. Is there a bathroom in the room?
 :sound=>'/audios/audio03021200.mp3'} 
  ]
 %>
-
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>	
-</div>
+
 
 <br><br>
 
@@ -494,8 +491,6 @@ II. Where is the restaurant?
 
 <p class="part-task">b) Ask a stranger: </p>
 
-
-<div class="su-exerc">
 <%
  @phrases = [
 {:q_text=>' - the reception',
@@ -513,7 +508,6 @@ II. Where is the restaurant?
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases, :title=>'Ask a stranger where is: '} %>	
 
-</div>
 
 
 <br><br>
@@ -527,7 +521,9 @@ III. This is your room
 
 <% @voc1 = @voc1 | @voc2 %>
 
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 <div id="ch1" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test' %>
@@ -552,7 +548,7 @@ III. This is your room
 		
 		} )
 </script>
-
+<%end%>
 <br><br>
 
 <h4 class="su-task">
@@ -644,7 +640,6 @@ IV. When should I pay?
 
 <p class="part-task">b) Translate phrases from English into Russian: </p>
 
-<div class="su-exerc">
 <%
  @phrases = [
  
@@ -666,8 +661,6 @@ IV. When should I pay?
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>	
 
-
-</div>
 	
 <br><br>		
 
@@ -743,7 +736,9 @@ V. Russian numerals
 <br><br>	
 <p class="part-task">b) Listen to the Russian numeral and write it (with figures 1, 2, 3 etc.) in the text area: </p>
 	
-	
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>	
 <div id="ch2" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test' %>
@@ -769,7 +764,7 @@ V. Russian numerals
 		
 		} )
 </script>
-
+<%end%>
 
 
 
@@ -906,7 +901,6 @@ I. Is there a telephone in the room?
 
 <br>
 
-<div class="su-exerc">
 <%
  @phrases = [
  
@@ -927,8 +921,6 @@ I. Is there a telephone in the room?
 %>
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>	
-
-</div>
 
 
 <br><br>
@@ -959,7 +951,6 @@ I. Is there a telephone in the room?
 
 <br>
 
-<div class="su-exerc">
 <%
  @phrases = [
  
@@ -980,8 +971,6 @@ I. Is there a telephone in the room?
 %>
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>	
-
-</div>
 
 
 <br><br>
@@ -1217,7 +1206,6 @@ III. Is it your passport?
 <br><br>
 <p class="part-task">b) Give a positive answer to the questions: </p>
 
-<div class="su-exerc">
 <%
  @phrases = [
  
@@ -1247,7 +1235,6 @@ III. Is it your passport?
 
 <%= render :partial => '/site/every/en_ru_oral_quest', :locals => {:phrases => @phrases} %>
 
-</div>
 
 <br><br>
 
@@ -1384,8 +1371,6 @@ a) Look at the examples of these numerals with the noun <span class="norm_txt"><
 </div>
 
 
-<div class="su-exerc">
-
 <%
  @phrases = [
  
@@ -1405,7 +1390,6 @@ a) Look at the examples of these numerals with the noun <span class="norm_txt"><
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
 
-</div>
 
 <br><br>
 
@@ -1546,7 +1530,9 @@ Revise this lesson's materials
  ]
 
 %>
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 <div id="ch4" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test' %>
@@ -1571,7 +1557,7 @@ Revise this lesson's materials
 		
 		} )
 </script>
- 
+<%end%> 
  
 <br><br><br>
  

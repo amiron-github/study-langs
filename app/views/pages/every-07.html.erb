@@ -496,7 +496,9 @@ I. How much is the fish?
 
 <br><br>
 <p class="part-task">b) Listen and find the corresponding English word:  </p>
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 <div id="ch1" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test' %>
@@ -521,12 +523,10 @@ I. How much is the fish?
 		
 		} )
 </script>
-
+<%end%>
 <br><br>
 <p class="part-task">c) Translate phrases from English into Russian </p>
 	
-
-<div class="su-exerc">
 
 <%
  @phrases = [
@@ -551,8 +551,6 @@ I. How much is the fish?
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>	
 
-
-</div>
 
 <br><br>
 
@@ -617,7 +615,9 @@ II. Meat, fish ans sea products
 
 <p class="part-task">b) Read and find the corresponding English word:  </p>
 
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 <div id="ch2" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test' %>
@@ -642,7 +642,7 @@ II. Meat, fish ans sea products
 		
 		} )
 </script>
-	
+<%end%>	
 <br><br>
 
 <h4 class="su-task">
@@ -725,7 +725,9 @@ III. Vegetables and fruit
 
 <br><br>
 <p class="part-task">b) Read and find the corresponding English word:  </p>
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 <div id="ch3" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test' %>
@@ -752,7 +754,7 @@ III. Vegetables and fruit
 </script>
 
 <br><br>
-
+<%end%>
 
 <h4 class="su-task">
 VI. Dessert
@@ -825,7 +827,9 @@ VI. Dessert
 	
 <br><br>
 <p class="part-task">b) Read and find the corresponding English word:  </p>
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 <div id="ch4" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test' %>
@@ -850,7 +854,7 @@ VI. Dessert
 		
 		} )
 </script>
-
+<%end%>
 
 
 <br><br><br><br>
@@ -1285,8 +1289,6 @@ II. Do you like it?
 </table>
 </div>
 
-
-<div class="su-exerc">
 <%
  @phrases = [
 
@@ -1315,7 +1317,7 @@ II. Do you like it?
 %>
 
 <%= render :partial => '/site/every/en_ru_oral_quest', :locals => {:phrases => @phrases} %>
-</div>
+
 
 
 <br><br>
@@ -1358,7 +1360,6 @@ II. Do you like it?
 </div>
 
 
-<div class="su-exerc">
 <%
  @phrases = [
 
@@ -1387,7 +1388,7 @@ II. Do you like it?
 %>
 
 <%= render :partial => '/site/every/en_ru_oral_quest', :locals => {:phrases => @phrases} %>
-</div>
+
 
 <br><br>
 
@@ -1493,8 +1494,6 @@ III. I I love ice-cream!
 <p class="part-task">c) Translate phrases from English into Russian </p>
 
 
-<div class="su-exerc">
-
 <%
  @phrases = [
 
@@ -1513,7 +1512,6 @@ III. I I love ice-cream!
 %>
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
-</div>
 
 <br><br>
 <p class="part-task">d) Look at the following examples:  </p>
@@ -1559,7 +1557,6 @@ III. I I love ice-cream!
 <br><br>
 <p class="part-task">e) Translate phrases from English into Russian </p>
 
-<div class="su-exerc">
 <%
  @phrases = [
 
@@ -1578,7 +1575,7 @@ III. I I love ice-cream!
 %>
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
-</div>
+
 
 
 
@@ -1661,7 +1658,9 @@ Revise this lesson's materials
  ]
 
 %>
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 <div id="ch7" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test' %>
@@ -1686,7 +1685,7 @@ Revise this lesson's materials
 		
 		} )
 </script>
- 
+<%end%> 
  
 <br><br><br>
  

@@ -38,6 +38,10 @@ module SiteHelper
 	return material
   end
   
+  def hidden_content()
+	inserted_content = render :partial => '/site/hidden_block'
+	return inserted_content
+  end  
   
 end
 

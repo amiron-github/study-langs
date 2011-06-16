@@ -410,8 +410,6 @@ I. I'd like to visit a museum
 <br><br>
 <p class="part-task">b) Translate phrases from English into Russian </p>
 
-<div class="su-exerc">
-
 <%
  @phrases = [
 {:q_text=>'Excuse me, please, where is the picture gallery? ',
@@ -435,7 +433,6 @@ I. I'd like to visit a museum
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>	
 
-</div>
 
 <br><br>
 
@@ -487,8 +484,6 @@ II. Here is the camera.
 
 <p class="part-task">b) Translate phrases from English into Russian </p>
 
-<div class="su-exerc">
-
 <%
  @phrases = [
 {:q_text=>'I have a photo camera. ',
@@ -510,8 +505,6 @@ II. Here is the camera.
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>	
 
-</div>
-
 
 <br><br>
 <h4 class="su-task">
@@ -522,7 +515,9 @@ III. Tourism
 
 <% @voc1 = @voc1 | @voc2 %>
 
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 <div id="ch1" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test' %>
@@ -547,7 +542,7 @@ III. Tourism
 		
 		} )
 </script>
-
+<%end%>
 <br><br>
 
 <h4 class="su-task">
@@ -691,7 +686,9 @@ IV. Russian numerals
 <br><br>
 <p class="part-task">b) Listen to the Russian numeral and write it (with figures 1, 2, 3 etc.) in the text area:</p>
 
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 <div id="ch2" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test' %>
@@ -717,7 +714,7 @@ IV. Russian numerals
 		
 		} )
 </script>
-
+<%end%>
 <br><br><br><br>
 
 
@@ -827,8 +824,6 @@ I. What would you advise me to see?
 <br><br>
 <p class="part-task">b) Translate phrases from English into Russian </p>
 
-<div class="su-exerc">
-
 <%
  @phrases = [
 
@@ -847,8 +842,6 @@ I. What would you advise me to see?
 %>
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
-
-</div>
 
 <br><br>
 
@@ -1256,7 +1249,6 @@ III. Telling time
 
 <p class="part-task">c) Translate phrases from English into Russian </p>
 
-<div class="su-exerc">
 <%
  @phrases = [
  
@@ -1274,8 +1266,6 @@ III. Telling time
 %>
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
-
-</div>
 
 <br><br>
 
@@ -1376,7 +1366,6 @@ Questions about the time usually include the following words and expressions:<br
 <br><br>
 <p class="part-task">c) Translate phrases from English into Russian </p>
 
-<div class="su-exerc">
 <%
  @phrases = [
  
@@ -1394,10 +1383,6 @@ Questions about the time usually include the following words and expressions:<br
 %>
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
-
-</div>
-
-
 
 
 <br><br><br><br>
@@ -1477,7 +1462,9 @@ Revise this lesson's materials
  ]
 
 %>
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 <div id="ch4" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test' %>
@@ -1502,7 +1489,7 @@ Revise this lesson's materials
 		
 		} )
 </script>
- 
+<%end%> 
  
 <br><br><br>
  

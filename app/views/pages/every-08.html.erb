@@ -468,7 +468,9 @@ I. Parts of body
 
 <p class="part-task">b) Listen and find the corresponding English word:  </p>
 
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 <div id="ch1" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test' %>
@@ -493,9 +495,9 @@ I. Parts of body
 		
 		} )
 </script>
+<%end%>
+
 <br>
-
-
 <h4 class="su-task">
 II. Organs
 </h4>
@@ -802,7 +804,6 @@ III. Health problems
 </table>
 </div>
 
-<div class="su-exerc">
 <%
  @phrases = [
  
@@ -836,7 +837,6 @@ III. Health problems
 
 <%= render :partial => '/site/every/en_ru_oral_quest', :locals => {:phrases => @phrases} %>
 
-</div>
 
 <br><br>
 
@@ -899,7 +899,9 @@ IV. Remedies
 <br><br>
 
 <p class="part-task">b) Read and find the corresponding English word:  </p>
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 <div id="ch2" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test' %>
@@ -924,7 +926,7 @@ IV. Remedies
 		
 		} )
 </script>
-
+<%end%>
 <br><br><br><br>
 
 <div class="es-ex-buttons su-next-wrapper">
@@ -986,7 +988,9 @@ In case the noun is in plural (e.g. eyes or teeth), it necessary to use "бол�
 <br><br>
 <p class="part-task">b) Look at the location of the pain and choose a corresponding Russian phrase: </p>
 
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 <div id="ch3" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test' %>
@@ -1012,7 +1016,7 @@ In case the noun is in plural (e.g. eyes or teeth), it necessary to use "бол�
 		
 		} )
 </script>
-
+<%end%>
 <br><br>
 <p class="part-task">c) Build phrases in Russian:</p>
 
@@ -1109,7 +1113,6 @@ In case the noun is in plural (e.g. eyes or teeth), it necessary to use "бол�
 <br><br>
 <p class="part-task">d) Translate phrases from English into Russian </p>
 
-<div class="su-exerc">
 
 <%
  @phrases = [
@@ -1135,10 +1138,6 @@ In case the noun is in plural (e.g. eyes or teeth), it necessary to use "бол�
 %>
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
-
-</div>
-
-
 
 
 <br><br>
@@ -1172,8 +1171,6 @@ II.  Asking for advice
 </table>
 </div>
 
-
-<div class="su-exerc">
 <%
  @phrases = [
 
@@ -1198,8 +1195,6 @@ II.  Asking for advice
 %>
 
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
-
-</div>
 
 
 <br><br>
@@ -1700,7 +1695,9 @@ Revise this lesson's materials
  ]
 
 %>
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 <div id="ch4" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => '/vocabulary/lexical_test' %>
@@ -1725,7 +1722,7 @@ Revise this lesson's materials
 		
 		} )
 </script>
- 
+<%end%> 
  
 <br><br><br>
  
