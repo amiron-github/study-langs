@@ -1,5 +1,7 @@
 <h4 class="tit-head"><span><%= course_data[:name]%></span></h4>
-
+<%
+parts = ['Dialogue', 'Vocabulary', 'Practice', 'Revision']
+%>
 <div class="voc-results section-tests">	
 <% course_data[:results].each_with_index do |t, index| %>
 	<div class="voc-item details-hidden">
@@ -25,7 +27,7 @@
 					
 						<% part.each_with_index do |user_test, t_index| %>
 						<tr valign="top">
-						<% if t_index==0 %><td class="voc-test-title" <%if part.length>1%>rowspan="<%=part.length%>"<%end%>>Part <%= counter+1 %></td><%end%>
+						<% if t_index==0 %><td class="voc-test-title" <%if part.length>1%>rowspan="<%=part.length%>"<%end%>><%= parts[counter] %></td><%end%>
 							<td class="voc-test-title">Ex <%= user_test[0] %></td>
 							<td class="voc-test-result"><%= user_test[1] %>%</td>
 						</tr>
