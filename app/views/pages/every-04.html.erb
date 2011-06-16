@@ -589,7 +589,7 @@ II. Go straight ahead!
 <%= render :partial => '/site/every/en_ru_voc_tr', :locals => {:voc => @voc} %>
 
 <br><br>
-<p class="part-task">b) Translate phrases from English into Russian </p>
+<p class="part-task">c) Translate phrases from English into Russian </p>
 
 <%
  @phrases = [
@@ -825,7 +825,9 @@ III. I'm a foreigner !
 </div>
 
 
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 
 <div class="su-exerc">
 <div id="di1">	
@@ -910,7 +912,7 @@ III. I'm a foreigner !
 
 		} )
 </script>
-
+<%end%>
 
 <br><br>
 
@@ -1058,11 +1060,15 @@ I. Finding your way
 
 <p class="part-task">a) Find the translation of Russian phrases</p>
 
+
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+
 <div id="ds2" class="ds-wrapper" style="padding: 15px;">
 
 <p class="ex-desc">Listen to the phrases. Drag the English phrases from the list below
 and drop them into the corresponding fields. </p>	
-
 
 <% 
 
@@ -1120,7 +1126,7 @@ and drop them into the corresponding fields. </p>
 		} )
 </script>
 
-
+<%end%>
 
 <br><br>
 <h4 class="su-task">
@@ -1174,6 +1180,10 @@ II.  Turn to the right!
 <br>
 <p class="part-task">b) Listen to the phrases and complete the test:</p>
 
+
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 
 <div class="su-exerc"> 
  
@@ -1251,7 +1261,7 @@ II.  Turn to the right!
 
 </div> <!-- end of su-ex  --> 
  
-
+<%end%>
 
 <br><br>
 <h4 class="su-task">
@@ -1377,6 +1387,9 @@ IV. Near the park
 
 <p class="part-task">a) Find the translation of Russian phrases</p>
 
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 
 <div id="ds4" class="ds-wrapper" style="padding: 15px; margin: 20px 30px;">
 
@@ -1549,7 +1562,7 @@ Listen to the phrases. Drag the English phrases from the list below <br>and drop
 		auto_check: false
 		} )
 </script>
-
+<%end%>
 
 <br><br>
 

@@ -522,7 +522,7 @@ I. Internet
 </script>
 <%end%>
 <br><br>
-<p class="part-task">b) Translate phrases from English into Russian </p>
+<p class="part-task">c) Translate phrases from English into Russian </p>
 
 
 <%
@@ -640,7 +640,7 @@ II. Phone
 </script>
 <%end%>
 <br><br>
-<p class="part-task">b) Translate phrases from English into Russian </p>
+<p class="part-task">c) Translate phrases from English into Russian </p>
 
 <%
  @phrases = [
@@ -690,7 +690,9 @@ I. Making a phone call
 
 <p class="part-task">a) Listen to the questions in Russian and find the corresponding answers:  </p>
 
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 <div id="ds7" class="ds-wrapper" style="padding: 15px;">
 
 <p class="ex-desc">Listen to the quesstions. Drag the answers from the list below
@@ -744,7 +746,7 @@ and drop them into the corresponding fields. </p>
 		auto_check: false
 		} )
 </script>
-
+<%end%>
 <br><br>
 
 
@@ -754,6 +756,9 @@ II. I need a phone!
 
 <p class="part-task">a) Choose <span style="font-weight: normal">нужен</span>, <span style="font-weight: normal">нужна</span>, <span style="font-weight: normal">нужно</span> or <span style="font-weight: normal">нужны</span> in the following phrases:</p>
 
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 
 <div class="su-exerc"> 
 <div id="di5">	
@@ -829,11 +834,9 @@ II. I need a phone!
  
 </div> 
  
- 
 </div> 
  
- 
- 
+
 </div> <!-- end of su-exerc --> 
  
  
@@ -850,7 +853,7 @@ II. I need a phone!
 		} )
 </script> 
 
-
+<%end%>
 
 
 <br><br>
@@ -902,6 +905,9 @@ T['6']=['1', '2', '340'];
 </script>
 
 
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 
 <div class="su-exerc">
 
@@ -1039,7 +1045,7 @@ T['6']=['1', '2', '340'];
  </div>
 </div>
 
-
+<%end%>
 
 
 
@@ -1107,6 +1113,9 @@ IV. Russian numerals
 V. Revision
 </h4> 
 
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 
 <div class="su-exerc">
 <div id="di8">	
@@ -1187,6 +1196,7 @@ V. Revision
 		} )
 </script>
 
+<%end%>
 
 
 <br><br><br><br>

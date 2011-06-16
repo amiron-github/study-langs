@@ -462,7 +462,9 @@ I. Money
 	
 <br><br>
 <p class="part-task">b) Listen to the questions in Russian and find the corresponding answers:</p>
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 
 <div id="ds3" class="ds-wrapper" style="padding: 15px;">
 
@@ -526,6 +528,8 @@ Listen to the quesstions. Drag the answers from the list below <br>and drop them
 		auto_check: false
 		} )
 </script>
+
+<%end%>
 
 <br><br>
 
@@ -859,6 +863,10 @@ II. Mini-dialogues
 
 <p class="part-task">a) Listen to the mini-dialogues and complete the test:  </p>
 
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+
 <div class="su-exerc"> 
 <div>	
 				
@@ -930,7 +938,7 @@ The tourist wants to exchange <input type="text" style="width: 40px" value=""> <
 </div> 
 </div> 
 </div> <!-- end of su-exerc -->
-
+<%end%>
 <br><br>
 
 
@@ -996,6 +1004,9 @@ III. A problem with device
 
 <p class="part-task">b) Build phrases in Russian:</p>
 
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 
 <div class="su-exerc">
 <div id="di1">	
@@ -1087,7 +1098,7 @@ III. A problem with device
 
 		} )
 </script>
-
+<%end%>
 
 <br><br>
 

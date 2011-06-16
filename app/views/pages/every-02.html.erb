@@ -1020,6 +1020,11 @@ II. How much is the fare?
 <br><br>
 <p class="part-task">b) Build phrases in Russian:   </p>
 
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+
+
 <div class="su-exerc">
 <div id="di2">	
 				
@@ -1106,7 +1111,7 @@ II. How much is the fare?
 
 		} )
 </script>
-
+<%end%>
 
 <br><br>
 
@@ -1153,8 +1158,9 @@ III. Is this a hotel?
 </div>
 
 
-
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 
 <div class="su-exerc ex-with-img">
 
@@ -1266,15 +1272,13 @@ III. Is this a hotel?
 	</tr>
 </table>
 
-
-
 </div>
-
+<%end%>
 	
 <br><br>
 
 <h4 class="su-task">
-VI. I need to go to the railway station! 
+IV. I need to go to the railway station! 
 </h4>	
 
 <div class="com-wrap">
@@ -1412,7 +1416,9 @@ V. It's to the right.
 
 <br><br>
 <p class="part-task">b) Listen to the mini-dialogues and do the following tasks: </p>
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 <div class="su-exerc"> 
  
 <div class="task">Choose an appropriate variant to continue the phrase:</div> 
@@ -1476,7 +1482,7 @@ V. It's to the right.
 </div> 
 
 </div> <!-- end of su-ex  --> 
- 
+<%end%> 
 <br><br>
 
 <h4 class="su-task">
@@ -1485,6 +1491,10 @@ VI. Mini-dialogues
 
 
 <p class="part-task">a) Revise numerals from 1 to 10. Listen to the mini-dialogues and complete the following test: </p>
+
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 
 <div class="su-exerc"> 
 <div>	
@@ -1537,8 +1547,14 @@ VI. Mini-dialogues
 </div> 
 </div> <!-- end of su-exerc -->
 
+<%end%>
+
 <br><br>
 <p class="part-task">b) Revise numerals from 10 to 100. Listen to the mini-dialogues and complete the following test: </p>
+
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 
 <div class="su-exerc"> 
 <div>	
@@ -1590,7 +1606,7 @@ VI. Mini-dialogues
 </div> 
 </div> <!-- end of su-exerc -->
 
-
+<%end%>
 
 
 <br><br><br><br>

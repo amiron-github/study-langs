@@ -640,11 +640,13 @@ background-position: 100% 2px;
 .unit-area span.sound  {
 background-image: url("/images/sound-bl.png");
 background-position: 100% 0px; 
+/background-position: 100% 1px;
 }
 
 .unit-area span.preplay {
 color: #0000FF;
 background-position: 100% -26px; 
+/background-position: 100% -25px;
 }
 
 
@@ -665,6 +667,14 @@ background-position: 100% -23px;
 span.preplay {
 background-position: 100% -24px;
 /background-position: 100% -23px;
+}
+
+.unit-area span.play_tip {
+/padding-left: 3px;
+}
+
+.unit-area span.play_tip {
+padding-left: 3px\0/;
 }
 
 .sound_tip {

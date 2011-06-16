@@ -61,6 +61,7 @@ text-align: center;
 .coverflow-wrap ul li.cvf-act {
 z-index: 200;
 opacity: 1 !important;
+filter: alpha(opacity=100) !important;
 }
 
 .coverflow-wrap ul li.cvf-act img{
@@ -487,9 +488,6 @@ text-shadow: 0px 1px 0px #14374F;
 }
 
 
-
-
-
 .dialog-t th.rus {
 border-right: 1px solid #81AECF;
 }
@@ -738,7 +736,7 @@ border-radius: 3px;
 -moz-box-shadow: 0px 1px 3px #111;
 -webkit-box-shadow: 0px 1px 3px #111;
 box-shadow: 0px 1px 3px #111;
-margin: 10px 40px;
+position: relative;
 }
 
 .alert_m div {
@@ -752,7 +750,11 @@ background-color: #FFFFCF;
 .alert_m div span {font-size: 11px;}
 .alert_m div b {font-size: 14px; display: block; padding: 3px 3px 4px;}
 
-
+div.hidden_content {
+margin-bottom: 0;
+margin-left: 20px;
+margin-right: 20px;
+}
 
 
 

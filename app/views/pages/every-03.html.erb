@@ -899,8 +899,6 @@ I. Is there a telephone in the room?
 </table>
 </div>
 
-<br>
-
 <%
  @phrases = [
  
@@ -1023,7 +1021,9 @@ II. Do you have a TV set?
 </div>
 
 
-<br><br>
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 
 <div class="su-exerc">
 <div id="di2">	
@@ -1113,7 +1113,7 @@ II. Do you have a TV set?
 
 		} )
 </script>
-
+<%end%>
 
 <br><br>
 
@@ -1245,6 +1245,10 @@ IV. Where is the reception?
 
 <p class="part-task">a) Listen to the mini-dialogues and complete the test: </p>
 
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+
 <div class="su-exerc"> 
  
 <div class="task">Choose an appropriate variant to continue the phrase:</div> 
@@ -1309,7 +1313,7 @@ IV. Where is the reception?
 
 </div> <!-- end of su-ex  --> 
  
-
+<%end%>
  
  
  <br><br>
@@ -1399,6 +1403,10 @@ VI. Mini-dialogues
 
 <p class="part-task">a) Revise numerals from 11 to 19. Listen to the mini-dialogues and complete the following test:</p>
 
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+
 <div class="su-exerc"> 
 <div>	
 				
@@ -1450,7 +1458,7 @@ VI. Mini-dialogues
 </div> 
 </div> <!-- end of su-exerc -->
 
-
+<%end%>
 
 
 

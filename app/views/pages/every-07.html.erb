@@ -757,7 +757,7 @@ III. Vegetables and fruit
 <%end%>
 
 <h4 class="su-task">
-VI. Dessert
+IV. Dessert
 </h4>
 
 <p class="part-task">a) Learn Russian words: </p>
@@ -883,6 +883,11 @@ I. What to order?
 </h4>
 
 <p class="part-task">a) Complete the test:</p>
+
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+
 <div class="su-exerc"> 
  
 <div class="task">Spot an odd one out:</div> 
@@ -954,12 +959,14 @@ I. What to order?
 </div> 
 
 </div> <!-- end of su-ex  --> 
- 
+<%end%> 
 
 <br><br>
 <p class="part-task">b) Listen to the lists of products and associate them with corresponding words:</p>
 
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 
 <div id="ds2" class="ds-wrapper" style="padding: 15px; margin: 20px 30px;">
 
@@ -1101,12 +1108,14 @@ Listen to the phrases. Drag the English phrases from the list below <br>and drop
 		} )
 </script>
  
- 
+<%end%> 
 
 <br><br>
 <p class="part-task">c) Associate Russian and English lists of products:</p>
 
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 <div id="ds3" class="ds-wrapper" style="padding: 15px; margin: 20px 30px;">
 
 <p class="ex-desc">
@@ -1246,7 +1255,7 @@ Listen to the phrases. Drag the English phrases from the list below <br>and drop
 		auto_check: false
 		} )
 </script> 
- 
+ <%end%>
 
 <br><br>
 <h4 class="su-task">
@@ -1432,7 +1441,9 @@ III. I I love ice-cream!
 
 <br><br>
 <p class="part-task">b) Build phrases in Russian:</p>
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 
 <div class="su-exerc">
 <div id="di8">	
@@ -1488,7 +1499,7 @@ III. I I love ice-cream!
 
 		} )
 </script>
-
+<%end%>
 
 <br><br>
 <p class="part-task">c) Translate phrases from English into Russian </p>
@@ -1515,7 +1526,6 @@ III. I I love ice-cream!
 
 <br><br>
 <p class="part-task">d) Look at the following examples:  </p>
-
 
 
 <div class="com-wrap">
@@ -1577,21 +1587,13 @@ III. I I love ice-cream!
 <%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
 
 
-
-
-
-
 <br><br><br><br>
 <div class="es-ex-buttons su-next-wrapper">
 <input type="button" class="su-next-step" value="Next part >>" onclick="openNextStep(4)">
 </div>	
 	
-
-	
 	</div>
 </div>
-
-
 
 
 <div id="for_tab04" class="pBlock" style="display: none">

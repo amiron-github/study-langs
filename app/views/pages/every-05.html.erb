@@ -890,7 +890,9 @@ I. What would you advise me to see?
 </table>
 </div>
 
-
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 
 <div id="ds2" class="ds-wrapper" style="padding: 15px;">
 
@@ -942,7 +944,7 @@ Listen to the phrases. Drag the English phrases from the list below <br>and drop
 		auto_check: false
 		} )
 </script>
-
+<%end%>
 
 <br><br>
 <h4 class="su-task">
@@ -1038,6 +1040,10 @@ II.  Is taking pictures allowed there?
 
 <p class="part-task">c) Build phrases in Russian:</p>
 
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+
 <div class="su-exerc">
 <div id="di1">	
 				
@@ -1119,7 +1125,7 @@ II.  Is taking pictures allowed there?
 
 		} )
 </script>
-
+<%end%>
 
 <br><br>
 

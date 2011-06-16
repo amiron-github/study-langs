@@ -545,6 +545,9 @@ II. Organs
 <br><br>
 <p class="part-task">b) Associate parts of body and organs:  </p>
 
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 
 <div id="ds3" class="ds-wrapper" style="padding: 15px; margin: 20px 30px;">
 
@@ -703,7 +706,7 @@ Listen to the phrases. Drag the English phrases from the list below <br>and drop
 		auto_check: false
 		} )
 </script> 
- 
+<%end%> 
 
 <br><br>
 
@@ -1020,6 +1023,9 @@ In case the noun is in plural (e.g. eyes or teeth), it necessary to use "бол�
 <br><br>
 <p class="part-task">c) Build phrases in Russian:</p>
 
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 
 <div class="su-exerc">
 <div id="di1">	
@@ -1109,6 +1115,7 @@ In case the noun is in plural (e.g. eyes or teeth), it necessary to use "бол�
 
 		} )
 </script>
+<%end%>
 
 <br><br>
 <p class="part-task">d) Translate phrases from English into Russian </p>
@@ -1205,6 +1212,9 @@ III. Medications
 </h4>
 <p class="part-task">a) Find the translation for remedies in Russian: </p>
 
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 
 <div id="ds4" class="ds-wrapper" style="padding: 15px; margin: 20px 30px;">
 
@@ -1467,6 +1477,8 @@ Drag the English phrases from the list below <br>and drop them into the correspo
 		} )
 </script> 
 
+<%end%>
+
 <br><br>
 
 
@@ -1529,6 +1541,9 @@ IV. Take one capsule 3-4 times a day!
 
 <p class="part-task">b) Listen to the recommendations and choose the correct answer::</p>
 
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
 
 <div class="su-exerc"> 
  
@@ -1624,7 +1639,7 @@ IV. Take one capsule 3-4 times a day!
 </div> 
 
 </div> <!-- end of su-ex  --> 
-
+<%end%>
 
 <br><br><br><br>
 <div class="es-ex-buttons su-next-wrapper">

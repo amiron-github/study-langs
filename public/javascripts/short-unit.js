@@ -1,19 +1,19 @@
 $(document).ready(function() {
-$(".trans-display").change(function(){
+$(".trans-display").attr("autocomplete", "off").click(function(){
 	if ($(this).is(":checked")) {
 		$(this).parent().parent().parent().parent().parent().find(".original div.ru-transcript").show();
 	}else{
 		$(this).parent().parent().parent().parent().parent().find(".original div.ru-transcript").hide();
 	}
-}).change();
+});
 
-$(".dt_transc  input").attr("autocomplete", "off").change(function(){
+$(".dt_transc  input").attr("autocomplete", "off").click(function(){
 	if ($(this).is(":checked")) {
 		$(this).parent().parent().parent().parent().parent().find("td .d-transc").show();
 	}else{
 		$(this).parent().parent().parent().parent().parent().find("td .d-transc").hide();
 	}
-}).change();
+});
 
 $(".come-more-display").toggle(function(){
 	$(this).text("Hide details").parent().find(".com-more-in").show();
