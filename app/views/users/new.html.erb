@@ -147,6 +147,13 @@ if ($('#errorExplanation').length > 0) {
 <% form_for :user, :url => users_path do |f| -%>
 
 <h2 class="page" style="display: none">It's your first visit? Welcome!</h2>
+
+<% if params[:tosubcsr]%>
+<p style="text-align: center; background-color: #F7FFB0; border: 1px dotted #FC5800; padding: 5px 20px; font-size: 11px; color: #444; margin: 10px 15px 20px;">
+Only registered users can subscribe to the <em>Everyday Russian course</em>. <br>It will take you just 2 minutes to sign up to our website.
+</p>
+
+<%end%>
 		
 <p align="center" style="display: none"><a href="login" style="font-size: 11px; font-weight: bold;">Already registered? Click here to sign in</a></p>
 			<table align="center" class="sign-options">
@@ -170,7 +177,6 @@ if ($('#errorExplanation').length > 0) {
 </div>	
 
 <%= error_messages_for :user %>
-
 
 <table align="center">
 	<tr>

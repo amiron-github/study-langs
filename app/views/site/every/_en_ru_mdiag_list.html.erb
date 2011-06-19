@@ -7,7 +7,7 @@
 		<td valign="middle" class="su-pres-audio">
 		<table class="ds-table" cellspacing="0" align="center"> 
 			<tr> 
-				<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap"><strong><% if @t_title == "norm" %>Dialogue<%else%><%= @t_title %><%end%> <%= index+1%></strong></td> 
+				<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap; font-size: 11px;"><strong><% if @t_title == "norm" %>Record<%else%><%= @t_title %><%end%> <%= index+1%></strong></td> 
 				<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('<%= diag[:sound] %>', this)"></div></td> 
 			</tr> 
 		</table>
