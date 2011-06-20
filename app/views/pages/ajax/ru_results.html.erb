@@ -14,11 +14,9 @@
 <% else %>
 <% if @course_exercises[:results].length > 0 || @beginner_exercises[:results].length > 0 %>
 <div class="tab-in-tab">
-		<% if current_user.email == 'mirumir.sasha@gmail.com'%>
-		<%= render(:partial => "ev_course_user_results" , :locals => { :course_data  => @every_exercises}) %>
-		<%end%>
+
 	<% if @course_exercises[:results].length > 0 %>
-		<%= render(:partial => "course_user_results" , :locals => { :course_data  => @course_exercises}) %>
+		<%= render(:partial => "ev_course_user_results" , :locals => { :course_data  => @every_exercises}) %>
 	<%end%>
 	<% if @beginner_exercises[:results].length > 0 %>
 		<%= render(:partial => "course_user_results" , :locals => { :course_data  => @beginner_exercises}) %>
