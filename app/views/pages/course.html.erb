@@ -3,76 +3,182 @@
 
 
 <% content_for :special_js_css do %>
-<%= stylesheet_link_tag 'cs_styles' %>
+
+<style type="text/css">
+
+.evc-present-wrap {
+border: 5px solid #6F98DF;
+padding: 8px;
+max-width: 800px;
+position: relative;
+background-image: url(/images/ltl-bg.gif);
+overflow: hidden;
+margin: 0 auto;
+-moz-border-radius: 7px;
+-moz-box-shadow: 1px 1px 0 #627EAF, 1px 2px 3px #3E556F;
+-webkit-border-radius: 7px;
+-webkit-box-shadow: 1px 1px 0 #627EAF, 1px 2px 3px #3E556F;
+border-radius: 7px;
+box-shadow: 1px 1px 0 #627EAF, 1px 2px 3px #3E556F;
+}
+
+.evc-present-top {
+background-image: url("/images/layout/bl-transparent-65.png");
+color: #FFFFFF;
+font-weight: bold;
+border: 1px solid #2054AF;
+}
+
+.evc-present-top p {
+padding: 8px 15px;
+border: 1px solid #457DDF;
+font-size: 18px;
+margin: 0;
+text-shadow: 0 1px 0 #081C3F;
+text-align: center;
+}
+
+.evc-info {
+background-color: transparent;
+background-image: url("/images/bl-transparent-30.png");
+border: 1px solid #86ACEF;
+padding: 10px ;
+}
+
+.evc-init {
+margin: 0;
+pad-ding: 15px;
+text-align: left;
+font-size: 11px;
+color: #444;
+background-color: #fff;
+border: 1px solid #86ACEF;
+min-height: 200px;
+}
+
+
+ul.feat-list li {
+padding: 1px 5px 1px 35px;
+margin: 8px 0;
+background-image: url(/images/icons/tick.png);
+background-repeat: no-repeat;
+background-position: 12px 1px;
+color: #5F3300;
+}
+
+ul.feat-list {
+padding: 0;
+list-style: none;
+margin: 0 0 0 0px;
+font-size: 11px;
+}
+
+.evc-desc {
+padding-top: 10px;
+}
+
+.evc-desc a.btn-like {
+margin: 0 auto;
+width: 190px;
+font-size: 12px;
+font-weight: bold;
+text-decoration: none;
+color: #444;
+padding: 5px 0;
+}
+
+.evc-desc a.btn-register {
+background-color: #91d4ff;
+color: #1E2F45;
+border: 1px solid #8E95AF;
+-moz-box-shadow: 1px 2px 3px #45546F
+-webkit-box-shadow: 1px 2px 3px #45546F
+box-shadow: 1px 2px 3px #45546F
+}
+
+.evc-desc a.btn-register:hover {
+background-color: #63A2FE;
+color: #111;
+}
+
+.subsc-opt tr td {
+padding: 4px 10px;
+background-color: #fff;
+background-image: url("/images/btn-grd.png");
+background-repeat: no-repeat;
+background-position: 50% 50%;
+color: #000;
+font-size: 10px;
+}
+.subsc-opt tr td.sb-even {
+background-color: #FFD100;
+}
+
+.subsc-opt {
+background-color: #bfbfbf;
+mar-gin: 0 auto;
+}
+
+
+.cs_course_link a {
+display: block;
+text-align: center;
+font-size: 14px;
+font-weight: bold;
+padding: 2px 10px 3px;
+-moz-border-radius: 4px;
+-webkit-border-radius: 4px;
+border-radius: 4px;
+text-shadow: 0 1px 1px #132C4D;
+}
+
+
+.cs_course_link a:link {
+color: #fff;
+background-color: #3B7ACC;
+background-color: #2BBD3F;
+
+text-decoration: none;
+}
+.cs_course_link a:visited {
+color: #fff;
+background-color: #3B7ACC;
+background-color: #2BBD3F;
+text-decoration: none;
+}
+.cs_course_link a:hover {
+color: #fff;
+background-color: #149E08;
+}
+.cs_course_link a:active {
+color: #fff;
+background-color: #149E08;
+}
+
+.cs_course_link a.cs-subsc {
+text-shadow: 0 1px 1px #24170C;
+}
+
+.cs_course_link a.cs-subsc:link {
+background-color: #F78400;
+
+}
+.cs_course_link a.cs-subsc:visited {
+background-color: #F78400;
+}
+.cs_course_link a.cs-subsc:hover {
+background-color: #E36702;
+}
+.cs_course_link a.cs-subsc:active {
+background-color: #E36702;
+}
+
+
+
+</style>
 
 <script type="text/javascript"> 
 
-$(document).ready(function() {
-	
-var cs_view = "small";	
-	
-$(".cs_more_btn").click(function() {
-	if ( ! $(this).parent().hasClass("cs_bigger") ) {
-		showCSDetails($(this));
-	} else {
-		hideCSDetails($(this));
-	}
-});	
-
-
-if (getCookie( 'cs_beginner') ) {
-	//showCSAtStart ( $("#for_beginner") )
-}
-
-if (getCookie( 'cs_everyday') ) {
-	showCSAtStart ( $("#for_everyday") );
-}
-
-});
-
-function showCSDetails(jObj) {
-	jObj.parent().addClass("cs_bigger");
-	jObj.text("Hide details");
-	parentContainer = jObj.parent().parent();
-	parentContainer.find(".cs_to_show").slideDown(400, function() {
-		parentContainer.find("li.cs_to_show").css({display: "list-item"});
-		parentContainer.addClass("cs_open")
-	});
-	
-	jObj.blur();
-	if (jObj.attr('id') == 'for_beginner') {
-			setCookie('cs_beginner', 'open');
-	} else {
-			setCookie('cs_everyday', 'open');
-	}
-}
-
-
-
-
-function hideCSDetails(jObj) {
-	jObj.parent().removeClass("cs_bigger");
-	jObj.text("Read more");
-	jObj.parent().parent().find(".cs_to_show").slideUp(400, function() {
-		jObj.parent().parent().removeClass("cs_open");
-	});
-	jObj.blur();
-	if ( jObj.attr('id') == 'for_beginner') {
-		delCookie('cs_beginner');
-	} else {
-		delCookie('cs_everyday');
-	}
-}
-
-function showCSAtStart(jObj) {
-	jObj.parent().addClass("cs_bigger");
-	jObj.text("Hide details");
-	parentContainer = jObj.parent().parent();
-	parentContainer.find(".cs_to_show").show();
-	parentContainer.find("li.cs_to_show").css({display: "list-item"});
-	parentContainer.addClass("cs_open");
-	jObj.blur();
-}
 
 
 </script>
@@ -84,255 +190,205 @@ function showCSAtStart(jObj) {
 <h2 class="page page-bl">Online Russian Courses</h2>
 
 
-<p style="padding-bottom: 20px;" align="center">
-Here you can see which online Russian courses are available on our website:
+<div class="evc-present-wrap">
+
+<table width="100%" cellspacing="0">
+	<tr valign="top">
+		<td style="padding-right: 6px">
+		
+<div class="evc-present-top">
+<p>
+Everyday Russian Course - 10 online lessons
+</p>
+</div>		
+		
+		
+<div class="evc-present evc-info">
+
+<div class="evc-init">
+<p style="margin: 15px 15px 0; color: #111; font-size: 10px; font-weight: bold; text-align: center">
+This course will give you an opportunity to experience conversational language and quickly learn Russian vocabulary for introductions, finding your way, shopping, using telephone etc. 
 </p>
 
-<table class="cs_place" cellspacing="0" id="beginner_course">
-	<tr valign="top">
-		<td width="150" class="cs_icon">
-			<div class="cs_beginner"></div>
-			<div class="cs_course_link" align="center">
-			Course for Beginners <br><br>
-			<a href="/beginner-course.html" title="Go to the main page of the course"><span>Visit main page</span> >></a>
-			</div>
-		</td>
-		<td class="cs_wrapper">
+<div style="padding: 15px; border-bottom: 1px solid #86ACEF;">
+<table width="100%">
+<col width="120"><col>
+<tr valign="top">
+<td>
+<img src="/images/course-01.jpg" align="left" style="margin: 0px 0 0 10px; width: 110px ">
+</td>
+<td>
+<ul class="ital feat-list" style="padding-left: 30px">
+	<li>Work with realistic dialogues recorded by native speakers
+	<li>Various interactive exercises
+	<li>All words and phrases are accompanied by audio and transcription
+	<li>Basic vocabulary and essential grammar constructions that you need to converse with locals
+	<li>Step-by-step learning, from simple words to full sentences
+</ul>
 
-		
-<div class="cs_container">
-
-<div class="cs_top">
-	<div class="cs_clt"></div>
-	<div class="cs_crt"></div>
+<div class="btn-link-wrap evc-desc">
+	<a href="/everyday-course.html" class="btn-like btn-register">Visit the main page »</a>
+</div>
+</td>
+<tr>
+</table>
 </div>
 
-<div class="cs_lft">
-	<div class="cs_rt">
-		<div class="cs_content">
-			<h3 class="cs_title"> <a href="beginner-course.html" title="Go to the main page of the course">Russian Course for Beginners</a> <span class="cs_badge">FREE</span></h3>
-			<p>
-				Online lessons that will help you to learn basic vocabulary and grammar, fine-tune your pronunciation and get essential language skills in Russian. 
-			</p>
-			<table width="100%" cellspacing="0">
-				<tr valign="top">
-					<td width="46%">
-					<h4>Content:</h4>
-					<ul class="cs_list cs_course_list"> 
-						<li><a href="beginner-lesson-01.html" title="Lesson 1">Lesson 1. <span class="ital">Greetings</span></a></li>
-						<li><a href="beginner-lesson-02.html" title="Lesson 2">Lesson 2. <span class="ital">Introducing yourself</span></a></li>
-						<li><a href="beginner-lesson-03.html" title="Lesson 3">Lesson 3. <span class="ital">Where are you from?</span></a></li>
-						<li><a href="beginner-lesson-04.html" title="Lesson 4">Lesson 4. <span class="ital">Professions</span></a></li>
-						<li><a href="beginner-lesson-05.html" title="Lesson 5">Lesson 5. <span class="ital">Languages skills</span></a></li>
-					</ul>
 
-					</td>
-					<td width="54%" style="padding-left: 10px; color: #3B3F4F;">
-					<h4>Features:</h4>
-					<ul class="cs_list cs_features"> 
-						<li>The most useful grammar and vocabulary</li>
-						<li>All words and expressions are accompanied by pronunciation</li>
-						<li>Plenty of practice opportunities</li>
-						<li class="cs_add_list_item cs_to_show">Explanations with numerous examples and exercises</li>
-					</ul>
-					
-					</td>
-				</tr>
-			</table>
-			
-			<p>
-				This course is designed for those who start learning Russian and would like to study the basics of this language.
-			</p>
-			
-			<div class="cs_to_show">
-			
-			<p>
-				Here you can learn Russian words and expressions used in greetings, farewells, requests, talking about yourself etc. There is also basic information about different particularities of Russian grammar: gender, number, cases and verbs conjugation.
-			</p>
-			
-			<p>
-				If you are a registered user, you can review the results of the exercises and tests you have done during the lessons<% if logged_in? %>
-				in your <a href="user_profile.html#tab=3">Profile</a>
-			<%else%>. See the <a href="/signup">Registration page</a> 
-			<%end%>
-			</p>
-			
-			
-			</div>
-			
-			
-			<div class="cs_more" align="center">
-				<a href="javascript:;" class="cs_more_btn" id="for_beginner"> Read more</a>
-			</div>
-		</div>	
-	</div>
+<div style="padding: 10px 20px; background-color: #EDF4FC; color: #000">
+
+<table width="100%" align="center" style="margin: 0 auto">
+<col width="170"><col >
+<tr valign="top">
+
+<td align="right">
+
+<% if !logged_in? %>
+<div class="cs_course_link" style="padding-bottom: 5px;">
+	<a href="/unit01.html" class="cs-try" title="Try lesson 1 for free"><span>FREE LESSON 1</span> &gt;</a>
 </div>
 
-<div class="cs_btm">
-	<div class="cs_clb"></div>
-	<div class="cs_crb"></div>
+<div class="cs_course_link">
+	<a href="/signup?tosubcsr=true" title="SUBSCRIBE" class="cs-subsc" ><span>SUBSCRIBE&nbsp;&nbsp;</span> &gt;</a>
 </div>
-</div>		
-		
 
-		</td>
+<%elsif !(logged_in? && current_user.payment) %>
+
+<div class="cs_course_link" style="padding-bottom: 5px;">
+	<a href="/unit01.html" class="cs-try" title="Try lesson 1 for free"><span>FREE LESSON 1</span> &gt;</a>
+</div>
+
+<div class="cs_course_link">
+	<a href="/user_profile.html" title="SUBSCRIBE" class="cs-subsc" ><span>SUBSCRIBE&nbsp;&nbsp;</span> &gt;</a>
+</div>
+<%else%>
+<div class="cs_course_link" style="padding-bottom: 5px;">
+	<a href="/unit01.html" class="cs-try" title="Lesson 1"><span>START NOW</span> &gt;</a>
+</div>
+
+<%end%>
+			
+
+
+
+</td>
+
+<td>
+
+<p style="margin: 0 0px 0 20px; color: #000">
+The full version of this course is available for subscribed users. Other users have access to the full version of the first lesson and to a limited version of other lessons.
+</p>
+
+</td>
+
 	</tr>
 </table>
 
+</div>
+
+</div>
+</div>
+
+	</td>
+
+	</tr>
+</table>
+</div>
 
 <br>
-
-<%= render :partial => '/site/ad_horizont' %>
+<br>
 <br>
 
-<table class="cs_place" cellspacing="0" id="everyday_course">
+<div class="evc-present-wrap">
+
+<table width="100%" cellspacing="0">
 	<tr valign="top">
-		<td width="150" class="cs_icon">
-			<div class="cs_everyday"></div>
-			<div class="cs_course_link" align="center">
-			Everyday Russian  <br><br>
-			
-			<a href="/everyday-course.html" title="Go to the main page of the course"><span>Visit main page</span> >></a> 
-			</div>
-		</td>
-		<td class="cs_wrapper">
-
+		<td style="padding-right: 6px">
 		
-<div class="cs_container">
-
-<div class="cs_top">
-	<div class="cs_clt"></div>
-	<div class="cs_crt"></div>
-</div>
-
-<div class="cs_lft">
-	<div class="cs_rt">
-		<div class="cs_content">
-			<h3 class="cs_title"> <a href="/everyday-course.html" title="Go to the main page of the course">Everyday Russian Course</a> <span class="cs_badge" style="font-size: 18px;">from $8.99 </span></h3>
-			<p>
-				Find an easy way to learn the language you need for most everyday situations. The 10 online lessons of this course include everything to enable you to to start speaking right away: dialogues, vocabulary lists, interactive exercises and tests.
-			</p>
-			<table width="100%" cellspacing="0">
-				<tr valign="top">
-					<td width="46%">
-					<h4>Content:</h4>
-					<ul class="cs_list cs_course_list"> 
-						<li><a href="/unit01.html" title="Lesson 1">Lesson 1. <span class="ital">In the airport</span></a></li>
-						<li><a href="/unit02.html" title="Lesson 2">Lesson 2. <span class="ital">Transport</span></a> </li>
-						<li><a href="/unit03.html" title="Lesson 3">Lesson 3. <span class="ital">At the hotel</span></a> </li>
-						<li><a href="/unit04.html" title="Lesson 4">Lesson 4. <span class="ital">In the street</span></a></li>
-						<li><a href="/unit05.html" title="Lesson 5">Lesson 5. <span class="ital">Sightseeings</span></a> </li>
-						
-						<li><a href="/unit06.html" title="Lesson 6">Lesson 6. <span class="ital">Shopping</span></a> </li>
-						<li><a href="/unit07.html" title="Lesson 7">Lesson 7. <span class="ital">At the restaurant</span></a>  </li>
-						<li class="cs_add_list_item cs_to_show"><a href="/unit08.html" title="Lesson 8">Lesson 8. <span class="ital">At the drugstore</span></a> </li>
-						<li class="cs_add_list_item cs_to_show"><a href="/unit09.html" title="Lesson 9">Lesson 9. <span class="ital">Currency exchange</span></a></li>
-						<li class="cs_add_list_item cs_to_show"><a href="/unit10.html" title="Lesson 10">Lesson 10. <span class="ital">Internet &amp; Telephone</span></a>  </li>
-					</ul>
-					
-					<div class="cs_further"> and more ... </div>
-
-					</td>
-					<td width="54%" style="padding-left: 10px; color: #3B3F4F;">
-					<h4>Features:</h4>
-					<ul class="cs_list cs_features"> 
-						<li>Work with realistic dialogues recorded by native speakers </li>
-						<li>Various interactive exercises</li>
-						<li>All words and phrases are accompanied by audio and transcription</li>
-						<li class="cs_add_list_item cs_to_show">Basic vocabulary and essential grammar constructions that you need to converse with locals</li>
-						<li class="cs_add_list_item cs_to_show">Step-by-step learning, from simple words to full sentences</li>
-						<li class="cs_add_list_item cs_to_show">No background in Russian is needed</li>
-					</ul>
-					<div class="cs_further"> and more ... </div>
-					</td>
-				</tr>
-			</table>
-			
-			<p>
-				<% if !(logged_in? && current_user.payment) %>
-				You can try for free the first lesson of this course and review a limited version of other lessons.
-				<br><br>
-				<a href="unit01.html" title="Try Lesson 1 for free" class="bold" style="text-decoration: none"><span style="text-decoration: underline">TRY LESSON 1 FOR FREE</span> >></a>
-				<%else%>
-					Every lesson in this course is devoted to a definite topic. The topics cover typical situations which a person visiting Russia may get into.
-				<%end%>
-			</p>
-			
-			<div class="cs_to_show">
-			
-			<p>
-				This online course will give you an opportunity to experience conversational language and learn the vocabulary for introductions, finding your way, shopping, using telephone and internet etc. 
-				
-				<% if !(logged_in? && current_user.payment) %>
-				Every lesson in this course is devoted to a definite topic. The topics cover typical situations which a person visiting Russia may get into.
-				<%end%>
-			</p>
-			
-			
-			<p>
-				If you are a registered user, you can review the results of the exercises and tests you have done during the lessons<% if logged_in? %>
-				in your <b>Profile</b>, in the <a href="/user_profile.html#tab=3" title="Results">My Results section</a>
-			<%else%>. See the <a href="/signup">Registration page</a> 
-			<%end%>
-			</p>
-			
-			
-			
-			<% if !(logged_in? && current_user.payment) %>
-			<p>
-				We have the following options for those who would like to subscribe to this course:
-			</p>
-			
-			<ul class="ital">
-				<li> 2-month subscription - <b>$8.99 USD</b></li>
-				<li> 4-month subscription - <b>$14.99 USD</b></li>
-				<li> 6-month subscription - <b>$19.99 USD</b></li>
-			</ul>
-			<% end %>
-			
-			<% if  !logged_in? %>
-				<p>If you would like to subscribe to this  course, please, <a href="/signup">Sign Up</a> or <a href="login">Sign In</a> and complete the payment procedure.</p>
-			<% elsif (logged_in? && !current_user.payment) %>
-				<p>If you would like to subscribe to this  course, you can purchase a subscription in your <a href="user_profile.html"><strong>Profile</strong></a>.
-				<br><br>
-				<a href="user_profile.html#subscription" title="Subscribe to the Course" class="bold" style="text-decoration: none; color: red;"><span style="text-decoration: underline">SUBSCRIBE TO THE COURSE</span> >></a>
-				</p>
-			<%end%> 
-			
-			
-			<p>
-				The full version of this course is available for subscribed users. Other users have access to the full version of the first lesson and to a limited version of other lessons.
-			</p>
-			
-			
-			
-			</div>
-			
-			
-			<div class="cs_more" align="center">
-				<a href="javascript:;" class="cs_more_btn" id="for_everyday"> Read more</a>
-			</div>
-		</div>	
-	</div>
-</div>
-
-<div class="cs_btm">
-	<div class="cs_clb"></div>
-	<div class="cs_crb"></div>
-</div>
+<div class="evc-present-top">
+<p>
+Russian Course for Beginners - 5 free online lessons
+</p>
 </div>		
 		
+		
+<div class="evc-present evc-info">
 
-		</td>
+<div class="evc-init">
+<p style="margin: 15px 15px 0; color: #111; font-size: 10px; font-weight: bold; text-align: center">
+This course is designed for those who start learning Russian. Here you can learn Russian words and expressions used in greetings, farewells, requests, talking about yourself etc. 
+</p>
+
+<div style="padding: 15px; border-bottom: 1px solid #86ACEF;">
+<table width="100%">
+<col width="120"><col>
+<tr valign="top">
+<td>
+<img src="/images/course-02.jpg" align="left" style="margin: 0px 0 0 10px; width: 110px ">
+</td>
+<td>
+<ul class="ital feat-list" style="padding-left: 30px">
+	<li>The most useful grammar and vocabulary
+	<li>Words and expressions accompanied by pronunciation
+	<li>Plenty of practice opportunities
+	<li>Explanations with numerous examples and exercises
+	<li>No background in Russian is needed
+</ul>
+
+<div class="btn-link-wrap evc-desc">
+	<a href="/beginner-course.html" class="btn-like btn-register">Visit the main page »</a>
+</div>
+</td>
+<tr>
+</table>
+</div>
+
+
+<div style="padding: 10px 20px; background-color: #EDF4FC; color: #000">
+
+<table width="100%" align="center" style="margin: 0 auto">
+<col width="170"><col >
+<tr valign="top">
+
+<td align="right">
+
+<div class="cs_course_link" style="padding-bottom: 5px;">
+	<a href="/beginner-lesson-01.html" class="cs-try" title="Go to lesson 1"><span>START NOW</span> &gt;</a>
+</div>
+
+<!-- div class="cs_course_link">
+	<a href="/signup" title="" class="cs-subsc" ><span>SIGN IN</span> &gt;</a>
+</div -->
+
+
+</td>
+
+<td>
+
+<p style="margin: 0 0px 0 20px; color: #000">
+If you are a registered user, you can save and review the results of the exercises and tests you have done during the lessons. 
+<span style="white-space: nowrap;">See also the <a href="/signup" ><b>Registration page</b></a> </span>
+</p>
+
+</td>
+
 	</tr>
 </table>
 
+</div>
+
+</div>
+</div>
+
+	</td>
+
+	</tr>
+</table>
+</div>
 
 
 
-
-
-<br>
+<br><br>
 
 <p>
 Before you begin one of our online courses, we recommend you to see the sections <a href="pronunciation.html">Russian Pronunciation</a> and <a href="russian-reading.html">Reading in Russian</a>. These sections are not necessary for the work with online Russian courses, but if you familiarize with them the work with a course will be easier, since when you do the exercises of the lessons you will devote less attention to the pronunciation and transcription of the words and expressions, and the tasks of the lessons will be simpler to fulfill. 
