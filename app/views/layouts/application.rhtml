@@ -31,12 +31,14 @@
   <% end -%>
   <%end%>
  
- 
+   <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
   <link rel="icon" href="/site-icon.ico" type="image/x-icon">
   <link rel="shortcut icon" href="/site-icon.ico" type="image/x-icon">
   <%= yield :special_js_css %>
   <style type="text/css">
   .never-existed {font-size: 10pt;}
+  .social-btn-row-trc {display: none;}
+  .m-menu-hidden .social-btn-row-trc {display: block;}
 	<%= yield :special_css %>
   </style>
 
@@ -86,6 +88,7 @@
                 </div>
               </div>
               <div id="menu_content" <% if cookies[:no_menu] %>class="m-menu-hidden"<%end%>>
+			  
                 <div id="navigation">
                   <div id="nav-pos">
                     <div id="menu_body" align="left">
@@ -167,6 +170,17 @@
                             <a href="/contacts.html" style="margin-left:20px;">Contacts/Questions</a>
                           </div>
                       </div>
+	<br>				  
+<div class="social-btn-row" style="text-align: center; position: absolute; margin-top: 15px; margin-left: 22px; white-space: nowrap;">
+<span style="display: inline-block; width: 32px;"><g:plusone size="medium" count="false"></g:plusone></span>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+
+<span style="position: relative; top: 1px;">
+<iframe src="http://www.facebook.com/plugins/like.php?app_id=223626784338099&amp;href&amp;send=false&amp;layout=button_count&amp;width=80&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:80px; height:21px;" allowTransparency="true"></iframe>
+</span>
+</div>
+					  
+					  
 					  
 					  <%= render :partial => '/site/slideshow' %>
                     </div>
@@ -175,8 +189,22 @@
                 </div>
                 <div id="contentcell">
 					<div style="position: relative; z-index: 300">
+					
 						<div id="menu_remover"><span class="menu-shown">Hide menu</span><span class="menu-hidden">Show menu</span></div>
-						<div id="mini-menu"><a href="/index.html">Home</a> | <a href="/course.html">Courses</a> | <a href="/vocabulary.html">Vocabulary</a> | <a href="/russian-grammar.html">Grammar</a> | <a href="/russian-sounds-letters.html">Sounds &amp; Letters</a></div>
+						<div id="mini-menu"><a href="/index.html">Home</a> | <a href="/course.html">Courses</a> | <a href="/vocabulary.html">Vocabulary</a> | <a href="/russian-grammar.html">Grammar</a> | <a href="/russian-sounds-letters.html">Sounds &amp; Letters</a>
+											
+						</div>
+						
+<div class="social-btn-row-trc" style="position: absolute; right: 10px; top: -8px; width: 177px; overflow: hidden" align="center">
+<g:plusone size="medium" count="false"></g:plusone>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+
+<span style="position: relative; top: 1px;">
+<iframe src="http://www.facebook.com/plugins/like.php?app_id=223626784338099&amp;href&amp;send=false&amp;layout=button_count&amp;width=80&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:80px; height:21px;" allowTransparency="true"></iframe>
+</span>
+</div>						
+						
+						
 					</div>
                   <div id="contfield" class="<%= @with_rec ? 'content withRec' : 'content' %>">
 				  
