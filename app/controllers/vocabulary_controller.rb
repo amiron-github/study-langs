@@ -2,6 +2,9 @@ class VocabularyController < ApplicationController
 layout :determine_layout
 
   def build_vocabulary
+  	if logged_in?
+		@no_ad = true
+	end
 	@lang = params[:lang]
 	@add_lang = params[:to_lang]
 	@category_tag = params[:category]
