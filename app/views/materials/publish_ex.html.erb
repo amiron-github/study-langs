@@ -10,7 +10,7 @@
 <%= javascript_include_tag 'es-test-drag-input' %>
 <%= javascript_include_tag 'short-unit' %>
 <%= stylesheet_link_tag 'short-unit' %>
-<%= @material.js_css %>
+<%= material_body_to_publish(@material.js_css) %>
 <% end %>
 <%= material_body_to_publish(@material.body) %>
 <script type="text/javascript">

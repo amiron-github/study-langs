@@ -31,7 +31,8 @@ SECTION = [
 
 TEMPLATE = [
 ["general", 0],
-["exercise", 1]
+["exercise", 1],
+["popup", 2]
 ]
 
 LAYOUT = [

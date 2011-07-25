@@ -35,6 +35,7 @@ module SiteHelper
 	ad_btm = render :partial => '/site/ad_btm'
 	material=Material.find(id)
 	material.body = ERB.new(material.body).result(binding)
+	material.js_css = ERB.new(material.js_css).result(binding)
 	return material
   end
   

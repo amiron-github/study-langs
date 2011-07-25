@@ -53,6 +53,9 @@ require_role "admin", :except => [:publish]
 	  if @material.page_template == 1
 		format.html {render :action => 'publish_ex', :layout => layout} 
 		format.xml  { render :xml => @material }	  
+	  elsif @material.page_template == 2
+		format.html {render :action => 'publish', :layout => 'grammar_comments'} 
+		format.xml  { render :xml => @material }
 	  else
 		format.html {render :action => 'publish', :layout => layout} 
 		format.xml  { render :xml => @material }
