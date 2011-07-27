@@ -9,10 +9,9 @@
 <% end %>
   <meta name="keywords" content="russian translation, russian language, learn russian, study russian, learn russian online, russian phrases, russian words, speak russian, speaking russian, learning russian, basic russian, learn russian language, beginners russian, russian language course, russian online lessons, russian vocabulary, russian for begginers" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf8"> 
-<%= material(243).body %>
   <%= stylesheet_link_tag 'stylesheet' %>
   <% if @jquery_version.nil? -%>
-	<%= javascript_include_tag 'jquery.min.js' %>
+	<%= javascript_include_tag 'jquery-1.4.2.min.js' %>
   <% elsif  @jquery_version =='latest' %>
 		<%= javascript_include_tag 'jquery-1.4.2.min.js' %>
   <% else %>
@@ -41,7 +40,7 @@
   .m-menu-hidden .social-btn-row-trc {display: block;}
 	<%= yield :special_css %>
   </style>
-
+<%= material(243).body %>
   <!--[if lte IE 6]>
     <%= stylesheet_link_tag 'ie6.css' %>
   <![endif]-->

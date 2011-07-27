@@ -11,6 +11,8 @@ function startDragTest(arr) {
 }
 
 $(document).ready(function(){
+
+contentList();
 gContent = $("#content").html();
 
 if ($("#contfield").width() < 600) {
@@ -1279,6 +1281,57 @@ container.find(".sb-details").toggle(function(){
 });
 
 }
+
+function contentList() {
+ if ($('div.content-list').length > 0) {
+    var content = new Array();
+	$('h3.page-p').each(function(i,obj){
+			var item = new Object(); 
+			var id = $(obj).attr('id');
+			if (id=='') {
+				id = 'p-'+i;
+				$(obj).attr('id', id);
+			}
+			item.id = id;
+			item.text = $(obj).text();
+			item.children = new Array();
+			var children = $('h3.page-p:eq('+i+')').nextUntil('h3.page-p', ".page-pp");
+			children.each(function(n,el){
+				var textc = $(el).text();
+				var idc = $(el).attr('id');
+				if (idc=='') {
+					idc = id+n;
+					$(el).attr('id', idc);
+				}
+				var itemc = {text: textc, id: idc};
+				item.children.push(itemc);
+			})
+			content.push(item);
+	});
+	if (content.length>0) {
+		var html = '<div class="content-list-title">&nbsp;</div><div class="cont-l-cont"><ul>';
+		$.each(content, function(i, item) {
+			html= html + '<li><b><a href="#'+item['id']+'">'+(i+1)+'. '+item['text']+'</b></a>';
+			if (item['children'].length > 0) {
+				chtml = '<ul>';
+				$.each(item['children'], function(n,t){
+					chtml = chtml + '<li><a href="#'+t['id']+'">'+(i+1)+'.'+(n+1)+'. '+t['text']+'</li>';
+				})
+				chtml = chtml + '</ul>';
+				html = html + chtml;
+			}
+			html = html + '</li>'
+		})
+		html = html + '</ul></div>';
+		$('div.content-list').each(function(i,obj){
+			var title = $(obj).attr("title")
+			if (title== '') {title = "Contents"}
+			$(obj).html(html).show().find(".content-list-title").text(title)
+		})
+	}
+ }
+}
+
 
 
 
