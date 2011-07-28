@@ -81,7 +81,11 @@ class SiteController < ApplicationController
 		@beginner_exercises = current_user.get_course_results(Exercise::BEGINNER_RU, 'beginner_course')
 		@phonetics_exercises = current_user.get_course_results(Exercise::PHONETICS_RU, 'phonetics_course')
 		@reading_exercises = current_user.get_course_results(Exercise::READING_RU, 'reading_course')
-		@grammar_exercises = current_user.get_course_results(Exercise::GRAMMAR_RU, 'grammar_course')
+
+		@gr_data = Material.find(262).body
+		@gr_ex_data = ActiveSupport::JSON.decode(@gr_data)
+		@grammar_exercises = current_user.get_course_json(@gr_ex_data, 'grammar_course')
+		
 	when /(en_results)\.html$/
 		@vocabulary_exercises = current_user.get_cat_ex('en')
 		@vocabulary_exercises[:name] = 'Словарь'

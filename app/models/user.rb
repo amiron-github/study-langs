@@ -198,13 +198,42 @@ write_attribute :email, (value ? value.downcase : nil)
 		return course_data
 	end
 	
+	def get_course_json(map, tag)
+		course = Category.find(:first, :conditions=> ['tag=?', tag])
+		user_tests = get_test_by_category(course.id)
+		course_map = map
+		course_name = course_map['name']
+		list =[]
+		course_map['parts'].each do |lesson|
+			empty_lesson = true
+			user_exercises = []
+			total = 0
+			lesson['exercises'].each do |exercise|
+				user_tests.each do |test|
+					if test.test_id == exercise               #if test found
+						#lesson[:exercises].delete(exercise)
+						empty_lesson = false
+						user_exercises << test
+						total += test.result_percent
+					end
+				end		
+			end
+			if !empty_lesson
+				average = total/user_exercises.length
+				list << {:category => lesson['name'], :category_ru => lesson['name'], :exercises => user_exercises, :total => average}
+			end
+		end
+		course_data = {:name=> course_name, :results=> list}
+		return course_data
+	end	
+	
+	
 	def get_detailed_results(map, tag)
 		course = Category.find(:first, :conditions=> ['tag=?', tag])
 		user_tests = get_test_by_category(course.id)
 		course_map = map
 		course_name = course_map[:name]
 		list =[]
-
 		course_map[:parts].each do |lesson|
 			empty_lesson = true
 			total = 0
@@ -212,7 +241,6 @@ write_attribute :email, (value ? value.downcase : nil)
 			lesson_parts = []  # create array of lesson that will include 4 parts 
 			lesson[:exercises].each_with_index do |part,index|
 				part_exercises = [] # create array of parts exercises
-				
 				part.each do |exercise| # go through each part, looking for completed exercise
 					found=false
 					t_test = 0
@@ -222,17 +250,13 @@ write_attribute :email, (value ? value.downcase : nil)
 							t_test = test
 						end
 					end
-					
 					if found 
 						empty_lesson = false
 						part_exercises << [ exercise[1].to_s, t_test.result_percent ] # the exercise is added to part, with its name and result
 						total += t_test.result_percent
 						ex_len = ex_len+1
 					end
-					
-					
 				end
-				
 				lesson_parts << part_exercises # the part is added to the lesson
 			end
 			if !empty_lesson
