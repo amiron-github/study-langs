@@ -60,10 +60,6 @@ class SiteController < ApplicationController
       @stylesheets << 'flashcard'
 	  @javascripts << 'virtual-keyboard'
 	  @stylesheets << 'keyboard'
-    when /phonetics\d\d\.html$/
-      @javascripts << 'test-text'
-      @stylesheets << 'test-style'
-      @stylesheets << 'stylesounds'
     when /(memory|balloon-game)\.html$/
       @javascripts << 'vocabulary'
 	when /(ru_words)\.html$/
