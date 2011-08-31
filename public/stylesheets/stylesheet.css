@@ -276,6 +276,7 @@ background-color: #ffffff;
 #menu_body {
 width: 186px;
 overflow: hidden;
+background-color: #fff;
 }
 
 .sub ul, .sub_hint ul {
@@ -3813,6 +3814,10 @@ background-color: transparent;
 
 .content-list b {
 font-weight: normal;
+}
+
+.admin_edit_link {
+position: absolute; margin-top: 30px; display: block; z-index: 100000;
 }
 
 

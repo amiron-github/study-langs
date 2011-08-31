@@ -1,23 +1,2 @@
-<% @page_title = 'Learn Russian Online: Russian lesson' %>
-<% @page_meta = {'description' => "Online Russian lesson includes dialogues, lexical and grammar exercises, sound samples of Russian words and phrases."} %>
-
-<h2 class="page">How to work with Russian lesson </h2>
-<%= render :partial => 'ad_horizont' %>
-<p>
-Our <a href="course.html">Online Russian Course</a> is designed to provide as more useful information about the Russian language as possible. It contains several lessons and <strong>each Russian lesson has a similar structure</strong>.
-</p>
-<p>
-First of all, every online Russian lesson has a dialogue that contains words and expression related to some topic. Before working with the dialogue, you can read its short description so that you know what it is about. All Russian phrases have an English translation and transcription. You should repeat the phrases of the dialogue after speaker and try to read them yourself. 
-</p>
-<p>
-Since every Russian lesson is devoted to a definite topic, you will find a list of new words and expressions. Many different exercises and tests will help you to learn these words. Besides words and expressions of the lessons, you may want to enrich your vocabulary on the topic or learn more about the material of the lesson. You can find a <a href="vocabulary.html">list of recommended pages</a> with additional information which will let you further develop your skills in Russian language.  
-</p>
-<p>
-Besides the exercises with words, each Russian lesson also includes exercises to train some Russian grammar construction. These constructions are not necessarily related to the topic of the lesson, they may be used in many other situations and circumstances.
-</p>
-<p>
-Exercises in each Russian lesson are accompanied by correct answers and it is very important that you could control your own answers and compare them with given examples and correct answers. It is highly recommended to make sure that, even if you have made a mistake, you could find your mistake and correct it. 
-</p>
-<p>
-When you complete all exercises of the Russian lesson, we advise you to look again through the exercises and to revise the essential Russian words, expressions and grammar structures. You should also revise the content of the lesson before you start working with the next lesson.  
-</p>
+<% @material = material(318) %>
+<%= render :partial => '/site/publish_material' %>

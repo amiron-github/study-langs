@@ -1,17 +1,2 @@
-<% @page_title = 'How to learn to speak Russian' %>
-<% @page_meta = {'description' => "Information about how to learn to speak Russian with online Russian course, special lexical and phonetic exercises and other materials available on the website."} %>
-
-<h2 class="page">How to learn to speak Russian</h2>
-<%= render :partial => 'ad_horizont' %>
-<p>
-Our site has several sections which will be really useful for those who learn to speak Russian. We provide a very effective system to learn <a href="vocabulary.html">Russian vocabulary</a>. Special exercises and tests allow to memorize the translation of Russian words and phrases. Everyone who learn foreign languages need to hear the speech of native speakers. On our site, you can find the pronunciation of the most useful words and expressions.
-</p>
-<p>
-Many exercises in the <a href="course.html">online Russian course</a> simulate real situations and dialogues in which you may take part. You will answer questions of native speakers or ask for some information in Russian. <strong>This is the first practice for those people who learn to speak Russian and it will provide good language skills</strong>. 
-</p>
-<p>
-Those who learn to speak to Russian cannot do without knowing basic Russian sounds. And, if you have a good Russian pronunciation, you will better understand native speakers. On our website, you can study the Russian pronunciation. The sections <a href="pronunciation.html">Russian pronunciation</a> has not only the examples of Russian sounds, but also an introductory phonetics course that will help you to train Russian pronunciation online. 
-</p>
-<p>
-If you want to learn to speak to Russian, you need to know Russian letters and to be able to read Russian words. You can learn fast to read in Russian if you work with our section <a href="russian-reading.html">Reading in Russian</a>. This section includes the examination of the Russian alphabet and an overview of Russian rules of reading. You will also find different exercises to train reading in Russian.
-</p>
+<% @material = material(320) %>
+<%= render :partial => '/site/publish_material' %>

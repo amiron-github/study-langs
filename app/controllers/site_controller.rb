@@ -49,11 +49,6 @@ class SiteController < ApplicationController
 
     when /unit\d\d\.html$/
       @javascripts << 'ev-test'
-    when /reading-practice\d\.html$/
-      @javascripts << 'test'
-      @javascripts << 'test-text'
-      @stylesheets << 'test-style'
-      @stylesheets << 'stylesounds'
 	when /-flashcards\.html$/
       @javascripts << 'jquery.jplayer.min.js'
       @javascripts << 'flashcard-k'
@@ -77,7 +72,6 @@ class SiteController < ApplicationController
 		@beginner_exercises = current_user.get_course_results(Exercise::BEGINNER_RU, 'beginner_course')
 		@phonetics_exercises = current_user.get_course_results(Exercise::PHONETICS_RU, 'phonetics_course')
 		@reading_exercises = current_user.get_course_results(Exercise::READING_RU, 'reading_course')
-
 		@gr_data = Material.find(262).body
 		@gr_ex_data = ActiveSupport::JSON.decode(@gr_data)
 		@grammar_exercises = current_user.get_course_json(@gr_ex_data, 'grammar_course')
