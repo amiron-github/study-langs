@@ -7,6 +7,8 @@ ActionController::Routing::Routes.draw do |map|
   map.mobile '/mobile/:lang/:to_lang/:page', :controller => 'materials', :action=>'publish', :special_layout => 'mobile'
   map.mobile '/mobile/:page', :controller => 'materials', :action=>'publish', :special_layout => 'mobile'
   map.faq '/reading/:page', :controller => 'materials', :action=>'publish'
+  map.faq '/:lang/:to_lang/courses/:page', :controller => 'materials', :action=>'publish'
+  map.faq '/courses/:page', :controller => 'materials', :action=>'publish'
   map.faq '/developer/:page', :controller => 'materials', :action=>'publish_developer'
   map.faq '/:lang/:to_lang/reading/:page', :controller => 'materials', :action=>'publish'
   map.faq '/reading/:page', :controller => 'materials', :action=>'publish'
