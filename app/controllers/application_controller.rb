@@ -16,6 +16,87 @@ class ApplicationController < ActionController::Base
   # Uncomment this to filter the contents of submitted sensitive data parameters
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
+  
+  	def layout_by_lang
+		layout_lang = params[:lang]
+		add_lang = params[:to_lang]
+		layout = 'application'
+		case layout_lang 
+			when 'fr'
+				if add_lang == 'en'
+					layout =  'fr_en_application.rhtml'
+				elsif add_lang == 'ru'
+					layout =  'fr_ru_application.rhtml'
+				end
+			when 'ru'
+				if add_lang == 'en'
+					layout =  'ru_en_application.rhtml'
+				elsif add_lang == 'jp'
+					layout =  'ru_jp_application.rhtml'
+				end
+		end
+		return layout
+	end
+	
+
+	def admin_or_owner_required?(id)  
+		if current_user.id == id || current_user.has_role?('admin')  
+			return true
+		else
+			return false
+		end  
+	end	
+	
+  def back_rescued
+		redirect_to :back
+	rescue ActionController::RedirectBackError
+		redirect_to root_path
+  end
+
+  def add_forum_css_js
+  	@javascripts = []
+	@stylesheets = []
+	@stylesheets  << 'forum'
+	@javascripts  << 'forum'
+  end
+  
+  	def has_nickname?(user) 
+		if user.name == '' || user.name == nil || user.name.empty? || user.name.blank?
+			return false
+		else
+			return true
+		end
+	end
+	
+	def check_user?(user)
+		if user.valid?
+			return true
+		else
+			false
+		end
+	end
+	
+	def sanitize_content(content)
+		new_content = ActionController::Base.helpers.sanitize(content, :tags => %w(b i em strong u s strike))
+		new_content = content.to_s.gsub('&', '&amp;').gsub('<', '&lt;').gsub('>', '&gt;')
+		%w(b i em strong u s strike p).each { |x|
+         new_content.gsub!(Regexp.new('&lt;(' + x + ')&gt;(.+?)&lt;/('+x+')&gt;',
+                 Regexp::MULTILINE|Regexp::IGNORECASE), 
+                 "<\\1>\\2</\\1>") 
+        }
+		return new_content.to_s.strip
+	end
+	
+  def check_topic_content(title, content)
+	if title.strip == ''
+		return 1
+	elsif content.strip == ''
+		return 2
+	else
+		return 0
+	end
+  end	
+ 
 
   rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
 

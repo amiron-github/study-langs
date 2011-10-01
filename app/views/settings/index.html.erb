@@ -1,0 +1,64 @@
+
+
+<h1>Listing settings</h1>
+
+<br>
+
+<form action=''>
+View: 
+<select name="wav" onChange="this.form.submit()"> 
+ <option value='1' >Wavatar</option>
+ <option value='0'>none</option>
+<select>
+</form>
+<br>
+<table>
+<tr>
+<td>
+<%unless params[:all]%>
+<div align="right" style="font-size: 12px; float: right"><%= will_paginate @settings %></div>
+<%end%>
+
+<%= link_to '+ New setting', new_setting_path %>
+<br>
+<br>
+<table cellspacing="1" border="0" class="st-bl-table" style="white-space: nowrap; font-size: 11px" >
+<col width="25"><col width="250"><col width="200"><col width="10"><col width="10"><col width="50px">
+  <tr>
+    <th title="User pic" style="padding: 2px">Pic</th>
+	<th>Email</th>
+    <th title="First and last name">Name</th>
+    <th title="Forum status">FS</th>
+	<th>Saving</th>
+	<th>Actions</th>
+  </tr>
+
+<% @settings.each do |setting| %>
+  <tr valign="top">
+    <td style="padding: 2px" align="center">
+	<img src="<%= gravatar_url_for(setting.user,25) %><%if params[:wav]==1%>&d=wavatar<%end%>" width="25"/>
+	</td>
+	<td><%=h setting.user.email %>
+	</td>
+    <td><%=h setting.first_name %> <br> <%=h setting.last_name %> </td>
+    <td><%=h setting.f_status %></td>
+    <td><%=h setting.save_words %> <%=h setting.save_ex %></td>
+    <td>
+		<%= link_to '<img src="/images/icons/eye.png">', setting, :title=>'Show' %>&nbsp;
+		<%= link_to '<img src="/images/icons/edit.png">', edit_setting_path(setting), :title=>'Edit' %>&nbsp;
+		<%= link_to '<img src="/images/icons/delete.png">', setting, :confirm => 'Are you sure?', :method => :delete, :title=>'Delete' %>
+	</td>
+  </tr>
+<% end %>
+</table>
+<br>
+<%unless params[:all]%>
+<div align="right" style="font-size: 12px; float: right"><%= will_paginate @settings %></div>
+<%end%>
+
+</td>
+</tr>
+</table>
+
+<br />
+

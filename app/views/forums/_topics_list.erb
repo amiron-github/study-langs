@@ -1,0 +1,40 @@
+<%
+#needs variable @topics
+%>
+<div class="forum-wall">
+	<div style="font-size: 11px; padding: 15px 10px 10px; font-weight: bold">
+		<% if logged_in? %><strong><%= link_to "+ Create new", :controller=> 'topics', :action => 'new', :forum=>@forum.id %> </strong>
+		<%else%>You need to <a href="/login">login</a> so that you can participate in the forum
+		<%end%>
+	</div>
+  <% for topic in @topics %>  
+	<div class="forum-item<%if has_my_post?(topic.id)%> f-my-post<%end%><%if is_my_topic?(topic.id)%> f-my-topic<%end%>">
+		<div class="forum-item-info"> 
+			<table cellspacing="0" width="100%">
+				<tr>
+					<td>By <b><%=h topic.user.name %></b> - &nbsp;&nbsp; Last updated: <%= show_post_time(topic.last_post_at).to_s(:short) %>
+					<%= render :partial => '/forums/like_it', :locals => {:topic_id => topic.id} %>
+					</td>
+					<td>
+						<div class="forum-item-info-last">
+						<span title="Replies"><%= topic.posts.count - 1 %> <img src="/images/icons/fugue/balloon-left.png" alt="Replies"> &nbsp;</span>
+						<span title="Views" style="display: none"><img class="f-icon-eye" src="/images/icons/fugue/eye.png"> <%= topic.views %></span>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="forum-item-title">
+			<%= link_to h(topic.name), :controller => 'topics', :action=>'show', :id=>topic.id%>
+		</div>
+		<div class="forum-item-content"> 
+			<%if topic.posts.length > 0 %><%=h truncate(topic.posts.first.content, 200) %><%end%>
+		</div>	
+		<div class="forum-item-bottom"> 
+			Category: <%=h topic.fcategory.name %> | Langs: <%=h show_lang(topic.lang) %> - <%=h show_lang(topic.to_lang) %>
+		</div>		
+		
+	</div> 
+  <% end %> 
+
+</div>

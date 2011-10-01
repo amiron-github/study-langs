@@ -37,7 +37,8 @@ class UsersController < ApplicationController
 	  else 
 		flash[:notice] = "Thanks for signing up!  We're sending you an email with your activation code."
 	  end
-      
+      setting = Setting.new()
+	  @user.setting = setting
       render :action => 'create_success'
     else
       flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin."
@@ -151,6 +152,7 @@ class UsersController < ApplicationController
 		end
     end
   end
+  
   
   def delete_topic_words_and_tests
 	category_id =  params[:topic]
@@ -327,6 +329,24 @@ class UsersController < ApplicationController
   # There's no page here to update or destroy a user.  If you add those, be
   # smart -- make sure you check that the visitor is authorized to do so, that they
   # supply their old password along with a new one to update it, etc.
+  
+  def update_nick
+	name = params[:user_name].to_s
+	user = User.find(params[:user_id])
+	verify_user=user
+	verify_user.name = name
+	if check_user?(verify_user)
+		if user.update_attribute(:name, name)
+			render :js => '$("#current_user_name").css({backgroundColor: "#FDFF00"}).animate({backgroundColor: "#fff"}, 1000); enable_form()'
+		else
+			render :js => 'alert("Saving failed :(")'
+		end
+		
+	else
+	    er = verify_user.errors.on(:name).to_s
+		render :js => 'alert("The name '+er+'")'
+	end
+  end
 
 private
 	def determine_layout

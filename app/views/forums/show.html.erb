@@ -1,0 +1,40 @@
+<div class="forum">
+<div class="f-title">
+<%= @forum.name  %> 
+</div>
+
+<br>
+
+<%= render :partial => '/site/user/user_name_update' %>
+<br><br>
+
+<div class="forum-container">
+
+<%= render :partial => '/forums/f_tabs', :locals => {:active => 1} %> 
+
+<div class="f-t-lists" style="border-bottom: 1px solid #ccc; padding: 0px 15px; overflow: hidden;line-height: 30px">
+
+<% form_tag ( "", {:method =>:get} ) do %>
+	<!-- Sort by date
+	<select name="t_sort" onChange="this.form.submit()">
+		<option <%if params[:t_sort] == '1' %>selected<%end%> value='1'>Last post</option>
+		<option <%if params[:t_sort] == '2' %>selected<%end%> value='2'>Topic created</option>
+	</select> -->
+	
+	Languages
+	<select name="lo" onChange="this.form.submit()">
+		<option <%if @find_status == '1' %>selected<%end%> value="1">English-Russian</option>
+		<option <%if @find_status == '2' %>selected<%end%> value="2">Russian-English</option>
+		<option <%if @find_status == '0'%>selected<%end%> value="0">All languages</option>
+	</select>
+<%end %>
+
+
+	<div align="right" style="font-size: 12px; float: right;"> 
+		<div align="right" style="font-size: 12px; float: right;"><%= will_paginate @topics %></div>
+	</div>
+</div>
+	
+<%= render :partial => '/forums/topics_list' %>
+
+</div>

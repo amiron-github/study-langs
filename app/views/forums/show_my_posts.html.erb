@@ -1,0 +1,23 @@
+<div class="forum">
+<div class="f-title">
+<%= @forum.name  %> 
+</div>
+
+<br>
+<%= render :partial => '/site/user/user_name_update' %>
+<br><br>
+
+<div class="forum-container">
+
+<%= render :partial => '/forums/f_tabs', :locals => {:active => 4} %> 
+
+<div style="border-bottom: 1px solid #ccc; padding: 0px 15px; overflow: hidden;line-height: 30px">
+&nbsp;
+	<div align="right" style="font-size: 12px; float: right;"> 
+		<div align="right" style="font-size: 12px; float: right;"><%= will_paginate @topics %></div>
+	</div>
+</div>
+	
+<%= render :partial => '/forums/topics_list' %>
+
+</div>

@@ -1,0 +1,43 @@
+<p>
+  <b>Name:</b>
+  <%=h @fcategory.name %>
+</p>
+
+<p>
+  <b>Desc:</b>
+  <%=h @fcategory.desc %>
+</p>
+
+<p>
+  <b>Name ru:</b>
+  <%=h @fcategory.name_ru %>
+</p>
+
+<p>
+  <b>Desc ru:</b>
+  <%=h @fcategory.desc_ru %>
+</p>
+
+<p>
+  <b>Name fr:</b>
+  <%=h @fcategory.name_fr %>
+</p>
+
+<p>
+  <b>Desc fr:</b>
+  <%=h @fcategory.desc_fr %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%=h @fcategory.status %>
+</p>
+
+<p>
+  <b>Order num:</b>
+  <%=h @fcategory.order_num %>
+</p>
+
+
+<%= link_to 'Edit', edit_fcategory_path(@fcategory) %> |
+<%= link_to 'Back', fcategories_path %>

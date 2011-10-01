@@ -1,0 +1,34 @@
+<h1>Listing fcategories</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Desc</th>
+    <th>Name ru</th>
+    <th>Desc ru</th>
+    <th>Name fr</th>
+    <th>Desc fr</th>
+    <th>Status</th>
+    <th>Order num</th>
+  </tr>
+
+<% @fcategories.each do |fcategory| %>
+  <tr>
+    <td><%=h fcategory.name %></td>
+    <td><%=h fcategory.desc %></td>
+    <td><%=h fcategory.name_ru %></td>
+    <td><%=h fcategory.desc_ru %></td>
+    <td><%=h fcategory.name_fr %></td>
+    <td><%=h fcategory.desc_fr %></td>
+    <td><%=h fcategory.status %></td>
+    <td><%=h fcategory.order_num %></td>
+    <td><%= link_to 'Show', fcategory %></td>
+    <td><%= link_to 'Edit', edit_fcategory_path(fcategory) %></td>
+    <td><%= link_to 'Destroy', fcategory, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New fcategory', new_fcategory_path %>

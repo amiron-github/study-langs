@@ -11,7 +11,7 @@
 
 $(document).ready(function() { 
     $("table.tablesorter") 
-    .tablesorter({widthFixed: true, sortList: [[0,1]], headers: {4: {sorter: 'digit'}, 5: {sorter: 'digit'}, 6:{sorter: false}},widgets: ['zebra'] }) 
+    .tablesorter({widthFixed: true, sortList: [[0,0]], headers: {0: {sorter: 'digit'}, 5: {sorter: 'digit'}, 6:{sorter: false}},widgets: ['zebra'] }) 
     .tablesorterPager({container: $("#pager"), size: 30,positionFixed: false}); 
 	
 $("#show_deleted").click(function() {
@@ -77,11 +77,14 @@ color: #238F46 !important;
 <div align="right">
 <a href="javascript:;" id="show_deleted">[show deleted users]</a>
 </div>
-
+<%unless params[:all]%>
+<div align="right" style="font-size: 12px; float: right;"><%= will_paginate @users %></div>
+<%end%>
 <table class="stt-table tablesorter" cellspacing="1" cellpadding="0" border="0">
 <thead>
 <tr>
 	<th>ID</th>
+	<th>UP</th>
 	<th>email</th>
 	<th>created</th>
 	<th >status</th>
@@ -94,18 +97,34 @@ color: #238F46 !important;
 <% for user in @users -%>
 
 <tr <%if user.state == 'deleted' %> class="deleted" <%end%> id="user_<%= user.id%>">
-
 <td <%if user.has_role?("admin") %> style="border: 1px solid yellow" <%end%> ><%= user.id %></td>
+<td><img src="<%= gravatar_url_for( user,20) %>&d=wavatar&s=20" />
+</td>
 <td style="text-align: left;" <%if user.payment %> class="with_payment"<%end%> ><%= user.email %></td>
 <td><%=h user.created_at.strftime("%Y/%m/%d") %></td>
 <td><%= user.state %></td>
 <td><%= user.words.length %></td>
 <td><%= user.tests_number %></td>
 <td><%= link_to 'Show', { :action => 'show', :id => user} %><br/></td>
-
+<td>
+<div id="s_<%=user.id%>">
+<% unless user.setting %>
+<% form_remote_tag :url => { :controller=> 'userdata', :action => 'add_setting', :id=>user.id } do %>
+	<%= submit_tag "add" %>
+<% end %>
+<%end%>
+</div>
+</td>
 </tr>
 
 <% end %>
 
 </tbody>
 </table>
+
+<%unless params[:all]%>
+<div align="right" style="font-size: 12px; float: right;"><%= will_paginate @users %></div>
+<%end%>
+
+
+<br><br><br><br><br>

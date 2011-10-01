@@ -2,7 +2,11 @@ require 'digest/sha1'
 
 class User < ActiveRecord::Base
 has_and_belongs_to_many :roles
-has_many :user_words
+has_many :user_words, :dependent => :destroy
+has_many :posts  
+has_many :topics
+has_one :setting, :dependent => :destroy
+has_many :favorites, :dependent => :destroy
 has_many :words, :through=> :user_words
 has_many :user_tests,
 	 :dependent => :destroy
@@ -22,12 +26,14 @@ has_many :user_tests,
 	include Authorization::AasmRoles
 
 #  validates_presence_of     :login
-#  validates_length_of       :login,    :within => 3..40
-#  validates_uniqueness_of   :login
-#  validates_format_of       :login,    :with => Authentication.login_regex, :message => Authentication.bad_login_message
+  #validates_length_of       :login,    :within => 3..40
+  #validates_uniqueness_of   :login
+  #validates_format_of       :login,    :with => Authentication.login_regex, :message => Authentication.bad_login_message
 
-	validates_format_of       :name,     :with => Authentication.name_regex,  :message => Authentication.bad_name_message, :allow_nil => true
-	validates_length_of       :name,     :maximum => 100
+	#validates_uniqueness_of   :name
+	#validates_length_of       :name,     :within => 2..80
+	#validates_format_of       :name,     :with => Authentication.name_regex,  :message => Authentication.bad_name_message
+
 
 	validates_presence_of     :email 
 	validates_length_of       :email,    :within => 6..100 #r@a.wk
@@ -279,6 +285,10 @@ write_attribute :email, (value ? value.downcase : nil)
 				words << word
 			end
 		end
+	end
+	
+	def add_favorite(topic)
+		favorites << topic
 	end
 	
 	def check_new_category(category_id)

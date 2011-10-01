@@ -1,4 +1,33 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :settings
+
+  map.resources :fcategories
+  map.connect '/:lang/:to_lang/posts/change_post/:id', :controller => 'posts', :action => 'change_post'
+  map.connect '/posts/change_post/:id', :controller => 'posts', :action => 'change_post'
+  map.connect '/:lang/:to_lang/posts', :controller => 'posts', :action => 'create'
+  map.connect '/:lang/:to_lang/posts/:id', :controller => 'posts', :action => 'update'
+  map.resources :posts
+  map.connect '/topics/remove_all_favorites', :controller => 'topics', :action => 'remove_all_favorites'
+  map.connect '/topics/no_favorite', :controller => 'topics', :action => 'remove_favorite'
+  map.connect '/topics/to_favorite', :controller => 'topics', :action => 'add_to_favorite'
+  map.connect '/:lang/:to_lang/topics/update_post/:id', :controller => 'topics', :action => 'update_post'
+  map.connect '/topics/update_post/:id', :controller => 'topics', :action => 'update_post'
+  map.connect '/:lang/:to_lang/topics/:id/update_topic', :controller => 'topics', :action => 'update_topic'
+  map.connect '/topics/:id/update_topic', :controller => 'topics', :action => 'update_topic'
+  map.connect '/:lang/:to_lang/topics/new', :controller => 'topics', :action => 'new'
+  map.connect '/:lang/:to_lang/topics', :controller => 'topics', :action => 'create'
+  map.connect '/:lang/:to_lang/topics/:id', :controller => 'topics', :action => 'show'
+  map.resources :topics
+  map.connect '/:lang/:to_lang/forums/:forum_id/show_cat/:cat_id', :controller => 'forums', :action => 'show_cat'
+  map.connect '/forums/:forum_id/show_cat/:cat_id', :controller => 'forums', :action => 'show_cat'
+  map.connect '/:lang/:to_lang/forums/:id/show_by_cat', :controller => 'forums', :action => 'show_by_cat'
+  map.connect '/forums/:id/show_by_cat', :controller => 'forums', :action => 'show_by_cat'
+  map.connect '/:lang/:to_lang/forums/:id/show_favorites', :controller => 'forums', :action => 'show_favorites'
+  map.connect '/forums/:id/show_favorites', :controller => 'forums', :action => 'show_favorites'
+  map.connect '/:lang/:to_lang/forums/:id/show_my_posts', :controller => 'forums', :action => 'show_my_posts'
+  map.connect '/forums/:id/show_my_posts', :controller => 'forums', :action => 'show_my_posts'
+  map.connect '/:lang/:to_lang/forums/:id', :controller => 'forums', :action => 'show'
+  map.resources :forums
   map.mobile '/mobile/:lang/:to_lang/course/:page', :controller => 'materials', :action=>'publish', :special_layout => 'mobile'
   map.mobile '/mobile/:lang/:to_lang/vocabulary/:page', :controller => 'materials', :action=>'publish', :special_layout => 'mobile'
   map.mobile '/mobile/:lang/:to_lang/grammar/:page', :controller => 'materials', :action=>'publish', :special_layout => 'mobile'  
@@ -57,7 +86,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :words
   map.resources :categories
 
-  
   map.forgot_password '/:lang/:to_lang/forgot_password',             :controller => 'passwords', :action => 'new'
   map.change_password '/:lang/:to_lang/change_password/:reset_code', :controller => 'passwords', :action => 'reset'
   map.change_password '/:lang/:to_lang/update_password/', :controller => 'passwords', :action => 'update_after_forgetting' 
@@ -65,7 +93,6 @@ ActionController::Routing::Routes.draw do |map|
   map.change_password '/change_password/:reset_code', :controller => 'passwords', :action => 'reset'
   map.change_password '/update_password/', :controller => 'passwords', :action => 'update_after_forgetting'
 
-  
   map.resources :passwords
   map.order '/order', :controller => 'users', :action => 'new_order'
   map.success '/success', :controller => 'users', :action => 'success_pp'
@@ -83,7 +110,6 @@ ActionController::Routing::Routes.draw do |map|
   map.activate '/:lang/:to_lang/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
 
-
   map.cart '/cart', :controller => 'users', :action => 'show_cart'
   map.user '/user', :controller => 'users', :action => 'update_user'
   map.delete_topic '/delete_topic_words_and_tests', :controller => 'users', :action => 'delete_topic_words_and_tests'
@@ -92,11 +118,15 @@ ActionController::Routing::Routes.draw do |map|
   map.del_stat '/del_stat', :controller => 'users', :action => 'del_stat'
   map.get_stat '/set_stat', :controller => 'users', :action => 'set_stat'
   map.set_word '/set_word', :controller => 'users', :action => 'set_word'
+
   map.edit '/edit', :controller => 'users', :action => 'save_user'
   map.psedit '/psedit', :controller => 'users', :action => 'save_pass'
   
+  map.user_name '/update_nick', :controller => 'users', :action => 'update_nick'
+  
   map.userdata "/userdata" , :controller => 'userdata', :action => 'index'
-  map.userdata "/userdata/see_user_words" , :controller => 'userdata', :action => 'see_user_words'
+  map.userdata '/userdata/see_user_words' , :controller => 'userdata', :action => 'see_user_words'
+  map.userdata '/userdata/add_setting/:id' , :controller => 'userdata', :action => 'add_setting'
   map.userdata '/userdata/make_admin', :controller => 'userdata', :action => 'make_admin'
   map.userdata '/userdata/edit_state/:id', :controller => 'userdata', :action => 'edit_state'
   map.userdata '/userdata/edit_payment/:id', :controller => 'userdata', :action => 'edit_payment'

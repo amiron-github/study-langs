@@ -92,7 +92,6 @@ text-decoration: underline;
 background-color: #EFF5FF;
 }
 
-
 /* start of css properties for divs design */
 
 div#container {
@@ -107,47 +106,38 @@ background-image:  url("/images/bluebutton.gif");
 background-repeat: no-repeat;
 background-position: -200px -200px;
 }
-
 table#containit {                             /* table for ie 6*/
 width: 100%;
 padding: 0px;
 }
-
 div#head {
 background-image: url("/images/head.jpg");
 background-repeat: no-repeat;
 background-position: left -3px;
 height: 162px;
 }
-
 .corners {
 background-image: url("/images/corners.png");
 background-repeat: no-repeat;
 height: 18px;
 }
-
 .cont-clt {
 }
-
 .cont-crt {
 background-position: 100% 0%;
 }
-
 .cont-center {
 margin: 0px 18px;
 background-color: #fff;
 height: 18px;
 font-size: 0px;
 }
-
 .cont-clb {
 background-position: 0% 100%;
 }
-
 .cont-crb {
 background-position: 100% 100%;
 }
-
 .photos {
 width: 100%;
 }
@@ -242,9 +232,9 @@ width: 140px;
 
 div#menu_content {
 background-color: #fff;
-min-height: 600px;
+min-height: 800px;
 height: auto !important;
-height: 600px;
+height: 800px;
 }
 
 div#navigation {

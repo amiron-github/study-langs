@@ -1,0 +1,45 @@
+<h1>Editing topic</h1>
+
+<% form_for(@topic) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  
+<p> 1
+  <% lang_choices = @langs.map {|l| [ l['name'], l['id'] ]} %>
+  <%= f.select(:to_lang, lang_choices) %>
+<p>
+  <p>
+    <%= f.label :last_poster_id %><br />
+    <%= f.text_field :last_poster_id %>
+  </p>
+  <p>
+    <%= f.label :last_post_at %><br />
+    <%= f.datetime_select :last_post_at %>
+  </p>
+  <p>
+    <%= f.label :fcategory_id %><br />
+    <%= f.text_field :fcategory_id %>
+  </p>
+  <p>
+    <%= f.label :views %><br />
+    <%= f.text_field :views %>
+  </p>
+  <p>
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </p>
+  <p>
+    <%= f.label :forum_id %><br />
+    <%= f.text_field :forum_id %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @topic %> |
+<%= link_to 'Back', topics_path %>

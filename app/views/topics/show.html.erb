@@ -1,0 +1,198 @@
+<% content_for :special_js_css do %>
+
+
+<%end%>
+
+<div class="forum">
+<div class="f-title">
+<%= @topic.forum.name  %> 
+</div>
+
+<br>
+<br>
+<br>
+
+<!-- div style="color: green;">
+<%= flash[:notice] %>
+</div -->
+<%= render :partial => '/forums/topics_errors' %>
+
+<div class="forum-container">
+
+<%= render :partial => '/forums/f_tabs', :locals => {:active => 0} %>
+
+<div style="border-bottom: 1px solid #ccc; padding: 0px 15px; overflow: hidden;line-height: 30px">
+&nbsp;
+</div>
+
+<div class="forum-wall">
+
+<div class="f-title-wrapper">
+
+
+  <% if params[:edit_title]=='1' && admin_or_owner?(@topic.user_id) %>
+  <div class="f-topic"> 
+  <div class="f-t-quest f-topic-title-edit">
+  
+	<% form_for @topic,  :url => { :action => :update_topic, :id => @topic.id}  do |f| %>
+				<a href="#" class="f-t-post-pic"><img src="<%= gravatar_url_for(@topic.user,50)%>"/></a>
+				<span><%= f.text_field :name %></span> 
+				
+<br><br>
+				<span class="f-post-edit textarea"><textarea name="post[content]" rows="5"><%= @topic_first.content %></textarea></span>
+
+
+			<div class="f-t-quest-sets">	
+			
+			
+					Languages:
+					<select name="lang_option" style="font-size: 11px; min-width: 160px;" id="lang-option" onChange="getCatsByLang()">
+						<option <%if @langs_option == '1' %>selected<%end%> value="1"> English => Russian </option>
+						<option <%if @langs_option == '2' %>selected<%end%> value="2"> Russian => English </option>
+					</select>
+					
+					
+					<br>
+					Category: &nbsp;&nbsp;
+					<span id="f-choose-category">
+					<select name="topic[fcategory_id]" style="font-size: 11px; min-width: 160px;" id="f-topic-cat">
+					
+						<%if @langs_option == '1'%>
+							<% @fcategories1.each do |category|%><option value="<%=category.id%>" <%if category.id == @topic.fcategory_id %>selected<%end%>><%=category.name%><%end%>
+						<%elsif @langs_option == '2'%>
+							<% @fcategories2.each do |category|%><option value="<%=category.id%>" <%if category.id == @topic.fcategory_id %>selected<%end%>><%=category.name%><%end%>
+						<%else%>
+							<% @fcategories.each do |category|%><option value="<%=category.id%>" <%if category.id == @topic.fcategory_id %>selected<%end%>><%=category.name%><%end%>
+						<%end%>
+
+					</select>
+
+					</span>
+			</div>
+		<br>
+		<%= f.submit 'Update' %>  &nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Cancel', :controller => 'topics', :action=>'show', :id=>@topic.id %> 
+	<% end %>  
+  </div>
+  </div>
+  
+ <span id="f-category-options" style="display: none">
+	<select id="f-category-1">
+		<% @fcategories1.each do |category|%><option value="<%=category.id%>" <%if category.id == @topic.fcategory_id %>selected<%end%>><%=category.name%><%end%>
+	</select>
+	<select id="f-category-2">
+		<% @fcategories2.each do |category|%><option value="<%=category.id%>" <%if category.id == @topic.fcategory_id %>selected<%end%>><%=category.name%><%end%>
+	</select>
+</span> 
+  
+  
+ <% else%>
+
+<div class="f-topic"> 
+  <div class="f-t-quest"> 
+	<a href="#" class="f-t-post-pic"><img src="<%= gravatar_url_for(@topic.user, 50)%>"/>
+	</a>
+	<%= render :partial => '/forums/like_it', :locals => {:topic_id => @topic.id} %>
+	
+	<% if admin_or_owner?(@topic.user_id) && !params[:edit_title]%>
+		<div style="position: absolute; margin-left: -75px; margin-top: 70px; font-size: 10px">
+			<%= link_to "Edit", {:action=> 'show', id => @topic.id, :edit_title=> 1} %>  
+			<%if logged_in? && current_user.has_role?("admin") %>
+			  | <%= link_to "Delete", @topic, :confirm => 'Are you sure?', :method => :delete %>
+			<%end%>
+		</div>
+	 <%end%>
+	<h3 class="f-topic-title"><%=h @topic.name %></h3>
+	<div class="f-t-post-info"><a href="#"><%=h @topic.user.name %></a> - at <%= show_post_time(@topic_first.created_at).to_s %></div>
+	<div class="f-t-quest-content">
+		<%=simple_format (@topic_first.content) %>
+	</div>
+	<div class="f-t-quest-sets">
+		Category: <%= link_to h(@topic.fcategory.name), :controller=>'forums', :action=>'show_cat',:forum_id=>@topic.forum_id, :cat_id=>@topic.fcategory.id%> 
+		| Languages: <%=h show_lang @topic.lang %>-<%=h show_lang @topic.to_lang %> 
+	</div>
+  </div>  
+</div>
+
+<%end%>
+  
+	 
+	 
+</div>
+
+
+
+
+<div class="f-t-posts-info"> <%= @topic_posts.length%> comments</div>
+<% @topic_posts.each_with_index do |post,index| %> 
+
+	<div class="f-topic-item">
+				<a href="#" class="f-t-post-pic"><img src="<%= gravatar_url_for(post.user,40)%>"/></a>
+				<% if admin_or_owner?(post.user_id) %>
+					<div class="f-t-post-change"> 
+						<%= link_to "Edit post", {:action=> 'show', id => @topic.id, :edit_post=> post.id} %> 
+						&nbsp;|&nbsp; <%= link_to "Delete", post, :confirm => 'Are you sure?', :method => :delete%>
+					</div>
+				<%end%>
+				<div class="f-t-post-info"><a href="#"><%=h post.user.name %></a> - at <%= show_post_time(post.created_at).to_s %></div>
+
+		<% if params[:edit_post] == post.id.to_s && admin_or_owner?(post.user_id) %>
+		
+			<% form_for post, :url=>{:controller=>'topics', :action=>'update_post', :id=>post.id} do |f| %>
+			<div class="f-post-edit"><%= f.hidden_field :topic_id %><%= f.hidden_field :user_id %>
+			<textarea cols="40" id="post_content" name="post[content]" rows="6"><%= post.content %></textarea>
+			</div>
+			<div class="forum-post-bottom"> 
+				<%= f.submit 'Update' %> <%= link_to 'Cancel', :action=> 'show' %>
+			</div>		
+			<% end %>
+		<% else %>
+			<div class="f-t-post-content"> 
+				<%=simple_format post.content %>
+			</div>	
+		<%end%>
+	</div>
+	
+<%end%>
+
+<% if logged_in? %>
+	<div class="f-topic-item form_to_disable">
+		<a href="#" class="f-t-post-pic"><img src="<%= gravatar_url_for(current_user,40)%>"/></a>
+		<div class="f-t-post-info"><b style="color: #333">New comment</b></div>
+		
+		<%= render :partial => '/site/user/user_name_update' %>		
+
+		
+			<% form_for @post, :url=>{:controller=>'posts',:action=>'create'} do |f| %>
+			
+			<div class="f-post-edit">
+
+    <input type="hidden"  name="post[topic_id]" value="<%= @topic.id %>" />
+	<input type="hidden"  name="post[user_id]" value="<%= current_user.id %>" /> 
+			
+				<%= f.text_area :content, :rows=>6 %>
+				
+			</div>
+			<div class="forum-post-bottom"> 
+				<%= f.submit 'Add post' %>
+			</div>		
+			<% end %>
+
+		
+		
+	</div>
+<%end%>
+
+
+
+
+<br><br><br><br>
+
+
+
+
+</div><!-- end of forum-wall -->
+</div><!-- end of forum-container -->
+</div><!-- end of forum -->
+
+
+<br><br><br><br><br><br><br><br><br><br>

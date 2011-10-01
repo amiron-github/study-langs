@@ -1,0 +1,74 @@
+<h1>Editing setting</h1>
+
+<% form_for(@setting) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :picture %><br />
+    <%= f.text_field :picture %>
+  </p>
+  <p>
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </p>
+  <p>
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </p>
+  <p>
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </p>
+  <p>
+    <%= f.label :f_status %><br />
+    <%= f.text_field :f_status %>
+  </p>
+  <p>
+    <%= f.label :country %><br />
+    <%= f.text_field :country %>
+  </p>
+  <p>
+    <%= f.label :save_words %><br />
+    <%= f.text_field :save_words %>
+  </p>
+  <p>
+    <%= f.label :save_ex %><br />
+    <%= f.text_field :save_ex %>
+  </p>
+  
+    <p>
+    <%= f.label :desc %><br />
+    <%= f.text_area :desc, :rows=> 4 %>
+  </p>
+  <p>
+    <%= f.label :f_avatars %><br />
+    <%= f.text_field :f_avatars %>
+  </p>
+  <p>
+    <%= f.label :f_opt1 %><br />
+    <%= f.text_field :f_opt1 %>
+  </p>
+  <p>
+    <%= f.label :f_opt2 %><br />
+    <%= f.text_field :f_opt2 %>
+  </p>
+  <p>
+    <%= f.label :des_opt1 %><br />
+    <%= f.text_field :des_opt1 %>
+  </p>
+  <p>
+    <%= f.label :des_opt2 %><br />
+    <%= f.text_field :des_opt2 %>
+  </p> 
+  
+  
+  
+  
+  
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @setting %> |
+<%= link_to 'Back', settings_path %>

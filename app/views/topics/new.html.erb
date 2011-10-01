@@ -1,0 +1,84 @@
+
+
+<div class="forum">
+<div class="f-title">
+<%= @forum.name  %> 
+</div>
+
+<br>
+<br>
+<br>
+
+<%= flash[:notice] %>
+
+<%= render :partial => '/forums/topics_errors' %>
+
+
+
+<div class="forum-container">
+
+<%= render :partial => '/forums/f_tabs', :locals => {:active => 0} %>
+
+<div style="border-bottom: 1px solid #ccc; padding: 0px 15px; overflow: hidden;line-height: 30px">
+&nbsp;
+
+</div>
+
+<div class="forum-wall form_to_disable">
+
+<% form_for @topic, :url=>{:controller=>'topics', :action=>'create'} do |f| %> 
+		<% if params[:forum] %><input type="hidden" id="topic_forum_id" name="topic[forum_id]" value="<%= params[:forum] %>" /><% end %>
+		<div class="f-topic"> 
+			<div class="f-t-quest f-topic-title-edit">
+				<a href="#" class="f-t-post-pic"><img src="http://www.gravatar.com/avatar/?d=mm&s=50"/></a>
+			
+				<span><%= f.text_field :name %></span>
+				<br><br>
+				<span class="f-post-edit textarea"><textarea name="post[content]" cols="40" rows="5"><% @post.content %></textarea></span>
+				
+				<div class="f-t-quest-sets">
+					Languages:
+					<select name="lang_option" style="font-size: 11px; min-width: 160px;" id="lang-option" onChange="getCatsByLang()">
+						<option <%if @langs_option == '1' %>selected<%end%> value="1"> English => Russian </option>
+						<option <%if @langs_option == '2' %>selected<%end%> value="2"> Russian => English </option>
+					</select>
+					<br>
+					Category: &nbsp;&nbsp;
+					<span id="f-choose-category">
+					<select name="topic[fcategory_id]" style="font-size: 11px; min-width: 160px;" id="f-topic-cat">
+						<%if @langs_option == '1'%>
+							<% @fcategories1.each do |category|%><option value="<%=category.id%>"><%=category.name%><%end%>
+						<%elsif @langs_option == '2'%>
+							<% @fcategories2.each do |category|%><option value="<%=category.id%>"><%=category.name%><%end%>
+						<%else%>
+							<% @fcategories.each do |category|%><option value="<%=category.id%>"><%=category.name%><%end%>
+						<%end%>
+					</select>
+					</span>
+					 
+				</div>
+				<br>
+				<%= f.submit "Create" %>
+			</div>
+		</div>
+<% end %> 
+
+<span id="f-category-options" style="display: none">
+	<select id="f-category-1">
+		<% @fcategories1.each do |category|%><option value="<%=category.id%>"><%=category.name%><%end%>
+	</select>
+	<select id="f-category-2">
+		<% @fcategories2.each do |category|%><option value="<%=category.id%>"><%=category.name%><%end%>
+	</select>
+</span>
+
+
+<br><br><br><br>
+
+
+</div><!-- end of forum-wall -->
+</div><!-- end of forum-container -->
+</div><!-- end of forum -->
+
+
+<br><br><br><br><br><br><br><br><br><br>

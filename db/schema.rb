@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110318192426) do
+ActiveRecord::Schema.define(:version => 20111001163222) do
 
   create_table "categories", :force => true do |t|
     t.string   "title"
@@ -51,6 +51,34 @@ ActiveRecord::Schema.define(:version => 20110318192426) do
     t.integer  "quest_num"
     t.integer  "variants_num"
     t.string   "quest_type"
+  end
+
+  create_table "favorites", :force => true do |t|
+    t.integer  "topic_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "fcategories", :force => true do |t|
+    t.string   "name"
+    t.text     "desc"
+    t.string   "name_ru"
+    t.text     "desc_ru"
+    t.string   "name_fr"
+    t.text     "desc_fr"
+    t.integer  "status"
+    t.integer  "order_num"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "to_lang"
+  end
+
+  create_table "forums", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "materials", :force => true do |t|
@@ -96,6 +124,14 @@ ActiveRecord::Schema.define(:version => 20110318192426) do
     t.datetime "updated_at"
   end
 
+  create_table "posts", :force => true do |t|
+    t.text     "content"
+    t.integer  "topic_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "products", :force => true do |t|
     t.integer  "period",     :null => false
     t.integer  "price",      :null => false
@@ -122,6 +158,39 @@ ActiveRecord::Schema.define(:version => 20110318192426) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "settings", :force => true do |t|
+    t.string   "picture"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "f_status"
+    t.string   "country"
+    t.integer  "save_words"
+    t.integer  "save_ex"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.text     "desc"
+    t.integer  "f_avatars"
+    t.integer  "f_opt1"
+    t.integer  "f_opt2"
+    t.integer  "des_opt1"
+    t.integer  "des_opt2"
+  end
+
+  create_table "topics", :force => true do |t|
+    t.string   "name"
+    t.integer  "last_poster_id"
+    t.datetime "last_post_at"
+    t.integer  "fcategory_id"
+    t.integer  "views"
+    t.integer  "user_id"
+    t.integer  "forum_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "lang"
+    t.integer  "to_lang"
+  end
 
   create_table "user_tests", :force => true do |t|
     t.integer  "user_id",    :default => 0,  :null => false

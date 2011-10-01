@@ -4,7 +4,9 @@ layout "admin"
 
   def index
     @users = User.all
-
+	unless params[:all]
+		@users = @users.paginate :page => params[:page], :order => 'created_at DESC', :per_page=> 50
+	end
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @users }
@@ -19,6 +21,17 @@ layout "admin"
       format.html # show.html.erb
       format.xml  { render :xml => @user }
     end
+  end
+  
+   def add_setting
+	user=User.find(params[:id])
+	if !user.setting
+		setting = Setting.new()
+		user.setting = setting
+		render :js =>'$("#s_'+params[:id]+'").fadeOut(50)'
+	else
+		render :js =>'alert("Already exists")'
+	end
   end
   
 

@@ -1,0 +1,17 @@
+class Topic < ActiveRecord::Base
+  belongs_to :forum  
+  has_many :posts, :dependent => :destroy
+  has_many :favorites, :dependent => :destroy  
+  belongs_to :user
+  belongs_to :fcategory
+  
+  validates_presence_of    :name 
+  
+LANG = [
+{'name'=>'Russian','name_ru'=>'русский','name_fr'=>'russe','id'=>1},
+{'name'=>'English','name_ru'=>'английский','name_fr'=>'anglais','id'=>2},
+{'name'=>'Other','name_ru'=>'другой','name_fr'=>'autre','id'=>0}
+]
+
+  
+end

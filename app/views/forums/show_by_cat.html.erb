@@ -1,0 +1,66 @@
+<div class="forum">
+<div class="f-title">
+<%= @forum.name  %> 
+</div>
+
+<br>
+
+<br><br>
+
+
+<div class="forum-container">
+
+<%= render :partial => '/forums/f_tabs', :locals => {:active => 2} %>
+
+<div class="f-t-lists" style="border-bottom: 1px solid #ccc; padding: 0px 15px; overflow: hidden;line-height: 30px">
+
+<% form_tag ( "", {:method =>:get} ) do %>
+	Languages
+	<select name="lo" onChange="this.form.submit()">
+		<option <%if @find_status == '1' %>selected<%end%> value="1">English-Russian</option>
+		<option <%if @find_status == '2' %>selected<%end%> value="2">Russian-English</option>
+		<option <%if @find_status == '0'%>selected<%end%> value="0">All languages</option>
+	</select>
+<%end %>
+
+	<div align="right" style="font-size: 12px; float: right;"> 
+		<div align="right" style="font-size: 12px; float: right;">&nbsp;</div>
+	</div>
+</div>
+
+<div class="forum-wall">
+
+	<div style="font-size: 11px; padding: 15px 10px 10px; font-weight: bold">
+		<% if logged_in? %>&nbsp;
+		<%else%>You need to <a href="/login">login</a> so that you can participate in the forum
+		<%end%>
+	</div>
+
+	
+  <% for fcategory in @fcategories %>  
+	<div class="forum-item">
+	
+		
+		<div class="forum-item-title">
+			<%= link_to h(fcategory.name), :controller=>'forums', :action=>'show_cat',:forum_id=>@forum.id, :cat_id=>fcategory.id%>
+		</div>
+		
+		<div class="forum-item-content"> 
+			<%= fcategory.desc %>
+		</div>	
+		<div class="forum-item-bottom"> 
+			Topics: <%= fcategory.topics.length %> - Posts: <%= fcategory[:posts_len] %>
+		</div>		
+		
+			
+	</div> 
+  <% end %> 
+
+
+
+
+</div>
+
+</div>
+
+</div>

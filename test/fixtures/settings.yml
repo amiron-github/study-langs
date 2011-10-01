@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  picture: MyString
+  first_name: MyString
+  last_name: MyString
+  f_status: 1
+  country: MyString
+  save_words: 1
+  save_ex: 1
+
+two:
+  picture: MyString
+  first_name: MyString
+  last_name: MyString
+  f_status: 1
+  country: MyString
+  save_words: 1
+  save_ex: 1

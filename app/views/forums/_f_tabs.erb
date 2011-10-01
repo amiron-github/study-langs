@@ -1,0 +1,12 @@
+<div style="border-bottom: 1px solid #ccc; pad-ding: 8px 10px; overflow: hidden">
+	<div style="float: left; ">
+		<ul class="f-tabs">
+			<li <%if active==1%>class="f-active"<%end%>><%= link_to 'Stream', :controller=>'forums', :action=>'show', :id=>1%></li>
+			<li <%if active==2%>class="f-active"<%end%>><%= link_to 'Categories', :controller=>'forums', :action=>'show_by_cat', :id=>1%></li>
+			<li <%if active==3%>class="f-active"<%end%>><%= link_to 'Following', :controller=>'forums', :action=>'show_favorites', :id=>1%></li>
+			<li <%if active==4%>class="f-active"<%end%>><%= link_to 'My posts', :controller=>'forums', :action=>'show_my_posts', :id=>1%></li>
+		</ul>
+	</div>
+	<div align="right" style="font-size: 12px; float: right;">
+	</div> 
+</div>
