@@ -29,9 +29,11 @@ layout "admin"
 	@users_2 = []
 	all.each do |user|
 		if user.paid
+			user[:expired_date] = user.expired_date
 			@users_2<<user
 		end
 	end
+	@users_2 = @users_2.sort_by{ |user| user[:expired_date] }.reverse
 	
     respond_to do |format|
       format.html # index.html.erb

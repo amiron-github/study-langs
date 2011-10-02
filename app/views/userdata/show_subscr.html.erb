@@ -23,6 +23,7 @@ Current time: <%= Time.now.to_s(:long) %>
 
 
 <table class="stt-table tablesorter" cellspacing="1" cellpadding="0" border="0">
+<col width="20"><col><col width="150">
 <thead>
 <tr>
 	<th>ID</th>
@@ -43,6 +44,7 @@ Current time: <%= Time.now.to_s(:long) %>
 
 
 <table class="stt-table tablesorter" cellspacing="1" cellpadding="0" border="0">
+<col width="20"><col><col width="150">
 <thead>
 <tr>
 	<th>ID</th>
@@ -55,7 +57,7 @@ Current time: <%= Time.now.to_s(:long) %>
 	<tr id="user_<%= user.id%>">
 		<td><%= user.id %></td>
 		<td style="text-align: left;<%if user.payment %>color: green;<%end%>"  ><%= user.email %></td>
-		<td><%= user.expiration_time.to_s %></td>
+		<td><%= user[:expired_date].to_s %></td>
 	</tr>
 <% end %>
 </tbody>

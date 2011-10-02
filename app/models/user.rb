@@ -324,36 +324,40 @@ write_attribute :email, (value ? value.downcase : nil)
 	end
 	
 	def get_tests 
-	res='var userProgress=new Array('
-			first = true
-			self.user_tests.each do |t|
-
-			res = res +((first)?'':',')+'["' +t.test_id+'",'+t.total.to_s+','+t.correct.to_s+']'
+	  res='var userProgress=new Array('
+	  first = true
+	  tests = self.user_tests
+	  tests.each_with_index do |t,index|
+			res = res+'["' +t.test_id+'",'+t.total.to_s+','+t.correct.to_s+']'
+				unless index+1 == tests.length
+					 res+=','
+				end
 			first=false
-			end
+	  end
 
-			res+=");"    
-			return res 
-			end
+	  res+=");"    
+	  return res 
+	end
 
-			def payment
+	def payment
 			order = self.orders.find(:first, :conditions => 'status >0 and expired_at >= now()')
 			if order	
 			return true 
 			else return false 
 			end
-			end
+	end
 			
-			def paid
-				order = self.orders.find(:first, :conditions => 'status >0 and expired_at < now()')
-			if order	
+	def paid
+		order = self.orders.find(:first, :conditions => 'status >0 and expired_at < now()')
+		if order	
 			return true 
-				else return false 
-			end
-			end
+		else 
+			return false 
+		end
+	end
 
-			def expired
-				order = self.orders.find(:first, :conditions => 'status>0 and expired_at >= now()')
+	def expired
+		order = self.orders.find(:first, :conditions => 'status>0 and expired_at >= now()')
 		#		self.orders.each do |t|
 		#		logger.warn(t.expired_at)
 		#		end                	
@@ -363,9 +367,22 @@ write_attribute :email, (value ? value.downcase : nil)
 			  else
 				return '1'
 			  end
-			end
+	end
+	
+	def expired_date
+		order = self.orders.find(:first, :conditions => 'status>0 and expired_at < now()')
+		#		self.orders.each do |t|
+		#		logger.warn(t.expired_at)
+		#		end                	
+		if order
+				logger.warn(order.expired_at.strftime("%m-%d-%Y"))
+				return order.expired_at.strftime("%Y/%m/%d")
+		else
+				return '1'
+		end
+	end
 			
-			def expiration_time
+	def expiration_time
 				order = self.orders.find(:first, :conditions => 'status>0 and expired_at >= now()')
 		#		self.orders.each do |t|
 		#		logger.warn(t.expired_at)
@@ -376,7 +393,7 @@ write_attribute :email, (value ? value.downcase : nil)
 			  else
 				return '1'
 			  end
-			end
+	end
 
 	protected
 
