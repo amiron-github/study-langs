@@ -1,6 +1,10 @@
 <% content_for :special_js_css do %>
 <%= javascript_include_tag 'editaccents.js' %>  
 <style type="text/css">
+.m-js-css-wrap textarea {
+width: 100%;
+}
+
 label {font-weight: bold;color: #333;}
 
 .m-body-wrap {
@@ -9,7 +13,6 @@ padding-top: 10px;
 .m-body-wrap textarea {
 min-width: 100% !important;
 margin-top: 6px;
-
 }
 
 
@@ -87,7 +90,7 @@ $(function() {
 	<tr>
 		<td><%= f.label :for_page %></td>
 		<td>
-			<%= f.text_field :html_on_page %><a href="<%= @material.html_on_page %>" target="_blank"><img src="/images/popup_icon.gif"></a>
+			<%= f.text_field :html_on_page %><a href="<%= @material.html_on_page %>"><img src="/images/popup_icon.gif"></a>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			 <%= f.label :langs %> 
 			<%= f.select :langs, Material::LANG.map{|l|[l[0],l[1]]}, :prompt => 'Select language'  %>
@@ -110,7 +113,6 @@ $(function() {
   <div class="m-body-wrap">
 	<% edit_bar = Material.find(164).body %>
 	<%=  edit_bar %>
-	
 	<%= f.text_area :body, :rows=>20, :id=>"text_editor" %>
   </div>
 </div>
@@ -120,7 +122,7 @@ $(function() {
 		<tr>
 			<td>
   <div class="m-body-show">
-	<%= @material.body %>
+	
   </div>
 			</td>
 		</tr>
@@ -129,7 +131,7 @@ $(function() {
 
 <div id="tabs-3" class="ui-tab">   
   <div class="m-js-css-wrap">
-	<%= f.text_area :js_css, :rows=>5 %>
+	<%= f.text_area :js_css, :rows=>20 %>
   </div>
 </div>
 
@@ -141,7 +143,7 @@ $(function() {
 		<td><%= f.label :page_url %></td>
 		<td style="position: relative;">
 		<div style="position: relative;">
-					<span style="position: absolute;display: block; right: -20px; top: 4px;"><a href="<%= @material.page_url %>" target="_blank"><img src="/images/popup_icon.gif"></a></span>
+					<span style="position: absolute;display: block; right: -20px; top: 4px;"><a href="<%= @material.page_url %>" ><img src="/images/popup_icon.gif"></a></span>
 		</div>
 			<%= f.text_field :page_url %>
 

@@ -343,6 +343,14 @@ write_attribute :email, (value ? value.downcase : nil)
 			else return false 
 			end
 			end
+			
+			def paid
+				order = self.orders.find(:first, :conditions => 'status >0 and expired_at < now()')
+			if order	
+			return true 
+				else return false 
+			end
+			end
 
 			def expired
 				order = self.orders.find(:first, :conditions => 'status>0 and expired_at >= now()')

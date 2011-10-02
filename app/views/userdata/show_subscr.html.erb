@@ -1,0 +1,68 @@
+
+<% content_for :special_js_css do %>
+ <%= stylesheet_link_tag 'tablesorter' %>
+ <%= javascript_include_tag 'jquery.tablesorter.min.js' %>
+ <%= javascript_include_tag 'jquery.tablesorter.pager.js' %>
+<script type="text/javascript">
+
+</script>
+<style type="text/css">
+
+</style>
+
+<%end%>
+
+<h3>User's information</h3>
+
+<%= link_to 'Back to all', {:controller => 'userdata'} %> 
+
+<p>
+Current time: <%= Time.now.to_s(:long) %>
+</p>
+
+
+
+<table class="stt-table tablesorter" cellspacing="1" cellpadding="0" border="0">
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Email</th>
+	<th>Expiration</th>
+</tr>
+</thead>
+<tbody>
+<% for user in @users -%>
+	<tr id="user_<%= user.id%>">
+		<td><%= user.id %></td>
+		<td style="text-align: left;<%if user.payment %>color: green;<%end%>"  ><%= user.email %></td>
+		<td><%= user[:expire].to_s(:long) %></td>
+	</tr>
+<% end %>
+</tbody>
+</table>
+
+
+<table class="stt-table tablesorter" cellspacing="1" cellpadding="0" border="0">
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Email</th>
+	<th>Expired</th>
+</tr>
+</thead>
+<tbody>
+<% for user in @users_2 -%>
+	<tr id="user_<%= user.id%>">
+		<td><%= user.id %></td>
+		<td style="text-align: left;<%if user.payment %>color: green;<%end%>"  ><%= user.email %></td>
+		<td><%= user.expiration_time.to_s %></td>
+	</tr>
+<% end %>
+</tbody>
+</table>
+
+
+
+
+
+

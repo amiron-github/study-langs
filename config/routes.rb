@@ -36,7 +36,9 @@ ActionController::Routing::Routes.draw do |map|
   map.mobile '/mobile/:lang/:to_lang/:page', :controller => 'materials', :action=>'publish', :special_layout => 'mobile'
   map.mobile '/mobile/:page', :controller => 'materials', :action=>'publish', :special_layout => 'mobile'
   map.faq '/reading/:page', :controller => 'materials', :action=>'publish'
+  map.faq '/:lang/:to_lang/courses/:subcategory/:page', :controller => 'materials', :action=>'publish'
   map.faq '/:lang/:to_lang/courses/:page', :controller => 'materials', :action=>'publish'
+  map.faq '/courses/:subcategory/:page', :controller => 'materials', :action=>'publish'
   map.faq '/courses/:page', :controller => 'materials', :action=>'publish'
   map.faq '/developer/:page', :controller => 'materials', :action=>'publish_developer'
   map.faq '/:lang/:to_lang/reading/:page', :controller => 'materials', :action=>'publish'
@@ -118,13 +120,12 @@ ActionController::Routing::Routes.draw do |map|
   map.del_stat '/del_stat', :controller => 'users', :action => 'del_stat'
   map.get_stat '/set_stat', :controller => 'users', :action => 'set_stat'
   map.set_word '/set_word', :controller => 'users', :action => 'set_word'
-
   map.edit '/edit', :controller => 'users', :action => 'save_user'
   map.psedit '/psedit', :controller => 'users', :action => 'save_pass'
   
   map.user_name '/update_nick', :controller => 'users', :action => 'update_nick'
   
-  map.userdata "/userdata" , :controller => 'userdata', :action => 'index'
+  map.userdata '/userdata' , :controller => 'userdata', :action => 'index'
   map.userdata '/userdata/see_user_words' , :controller => 'userdata', :action => 'see_user_words'
   map.userdata '/userdata/add_setting/:id' , :controller => 'userdata', :action => 'add_setting'
   map.userdata '/userdata/make_admin', :controller => 'userdata', :action => 'make_admin'

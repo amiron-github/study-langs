@@ -7,6 +7,7 @@
 <form action=''>
 View: 
 <select name="wav" onChange="this.form.submit()"> 
+ <option value='0' selected>Choose view</option>
  <option value='1' >Wavatar</option>
  <option value='0'>none</option>
 <select>
@@ -36,7 +37,7 @@ View:
 <% @settings.each do |setting| %>
   <tr valign="top">
     <td style="padding: 2px" align="center">
-	<img src="<%= gravatar_url_for(setting.user,25) %><%if params[:wav]==1%>&d=wavatar<%end%>" width="25"/>
+	<img src="<%= gravatar_url_for(setting.user,25) %><%if params[:wav]=='1' %>&d=wavatar<%end%>" width="25"/>
 	</td>
 	<td><%=h setting.user.email %>
 	</td>

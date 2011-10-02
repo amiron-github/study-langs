@@ -3,15 +3,41 @@ before_filter :is_admin
 layout "admin"
 
   def index
-    @users = User.all
+    @users = User.find(:all, :order=> 'id DESC')
 	unless params[:all]
-		@users = @users.paginate :page => params[:page], :order => 'created_at DESC', :per_page=> 50
+		@users = @users.paginate :page => params[:page], :order => 'id DESC', :per_page=> 100
 	end
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @users }
     end
   end
+  
+  def show_subscr
+    all = User.find(:all, :order=> 'id DESC')
+	@users = []
+	
+	all.each do |user|
+		if user.payment
+			user[:expire] =  user.expiration_time
+			@users<<user
+		end
+	end
+	
+	@users = @users.sort_by{ |user| user[:expire] }
+	
+	@users_2 = []
+	all.each do |user|
+		if user.paid
+			@users_2<<user
+		end
+	end
+	
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @users }
+    end
+  end  
   
   def show
     @user = User.find(params[:id])

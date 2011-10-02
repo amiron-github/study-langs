@@ -6,12 +6,12 @@
 
  
 
- 
+<% if params[:all]%> 
 <script type="text/javascript">
 
 $(document).ready(function() { 
     $("table.tablesorter") 
-    .tablesorter({widthFixed: true, sortList: [[0,0]], headers: {0: {sorter: 'digit'}, 5: {sorter: 'digit'}, 6:{sorter: false}},widgets: ['zebra'] }) 
+    .tablesorter({widthFixed: true, headers: {0: {sorter: 'digit'}, 1:{sorter: false}, 5: {sorter: 'digit'},6: {sorter: 'digit'}, 7:{sorter: false},8:{sorter: false}},widgets: ['zebra'] }) 
     .tablesorterPager({container: $("#pager"), size: 30,positionFixed: false}); 
 	
 $("#show_deleted").click(function() {
@@ -21,6 +21,7 @@ $("#show_deleted").click(function() {
 
 });
 </script>
+<%end%>
 
 <style>
 div#contentcell {
@@ -43,7 +44,7 @@ color: #238F46 !important;
 
 <h3 class="admin-p-name">User Data</h3>
 
-<div>
+<div style="display: none">
 <% form_remote_tag :url => { :controller=> 'userdata', :action => 'make_admin' } do %>
 		Make admin with ID: <%= text_field_tag :user_id, '0', :size => 10 %>
 	<%= submit_tag "Save" %>
@@ -53,6 +54,8 @@ color: #238F46 !important;
 
 
 <br><br>
+
+<% if params[:all]%>
 <div id="pager" class="pager"> 
 	<form> 
 		<img title="First Page" src="/images/tablesorter/first.png" class="first"/> 
@@ -73,12 +76,15 @@ color: #238F46 !important;
 		</select> 
 	</form> 
 </div>
+<%end%>
+
 
 <div align="right">
 <a href="javascript:;" id="show_deleted">[show deleted users]</a>
 </div>
 <%unless params[:all]%>
 <div align="right" style="font-size: 12px; float: right;"><%= will_paginate @users %></div>
+<br>
 <%end%>
 <table class="stt-table tablesorter" cellspacing="1" cellpadding="0" border="0">
 <thead>
@@ -90,7 +96,8 @@ color: #238F46 !important;
 	<th >status</th>
 	<th >words</th>
 	<th >tests</th>
-	<th class="thbrd">Show</th>
+	<th >Show</th>
+	<th class="thbrd">&nbsp;</th>
 </tr>
 </thead>
 <tbody>
@@ -98,7 +105,7 @@ color: #238F46 !important;
 
 <tr <%if user.state == 'deleted' %> class="deleted" <%end%> id="user_<%= user.id%>">
 <td <%if user.has_role?("admin") %> style="border: 1px solid yellow" <%end%> ><%= user.id %></td>
-<td><img src="<%= gravatar_url_for( user,20) %>&d=wavatar&s=20" />
+<td style="padding: 1px"><img src="<%= gravatar_url_for( user,20) %>&s=20" />
 </td>
 <td style="text-align: left;" <%if user.payment %> class="with_payment"<%end%> ><%= user.email %></td>
 <td><%=h user.created_at.strftime("%Y/%m/%d") %></td>
