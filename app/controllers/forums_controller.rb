@@ -19,9 +19,9 @@ require_role "admin", :except => [:show, :show_by_cat, :show_cat, :show_favorite
 		langs = sort_by_lang(@find_status)
 	end
 	if langs
-		@topics = @forum.topics.find(:all, :conditions => ['lang=? and to_lang=?', langs[0],langs[1]]).paginate :page => params[:page], :per_page=> 15
+		@topics = @forum.topics.find(:all, :conditions => ['lang=? and to_lang=?', langs[0],langs[1]], :order=>'last_post_at DESC').paginate :page => params[:page], :per_page=> 15
 	else 
-		@topics = @forum.topics.find(:all, :order => 'created_at DESC').paginate :page => params[:page], :per_page=> 15
+		@topics = @forum.topics.find(:all, :order => 'last_post_at DESC').paginate :page => params[:page], :per_page=> 15
 	end
 	add_forum_css_js 
     respond_to do |format|

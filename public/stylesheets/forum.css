@@ -78,7 +78,7 @@ padding-bottom: 30px;
 }
 
 .forum-wall {
-padding-left: 30px;
+padding-left: 50px;
 max-width: 1000px;
 margin-right: 20px;
 padding-right: 160px;
@@ -226,16 +226,21 @@ padding: 8px 0 10px;
 }
 
 .f-topic-item {
-padding: 5px 20px 25px 75px;
+padding: 5px 20px 25px 80px;
 position: relative;
 border-top: 1px solid #ccc;
+}
+
+.f-t-quest {
+padding: 10px 20px 10px 80px;
+position: relative;
 }
 
 .f-t-post-pic {
 position: absolute;
 width: 40px;
 height: 40px;
-margin-left: -55px;
+margin-left: -60px;
 margin-top: 3px;
 text-align: center;
 overflow: hidden;
@@ -244,7 +249,7 @@ overflow: hidden;
 .f-t-quest .f-t-post-pic {
 width: 60px;
 height: 60px;
-margin-left: -75px;
+margin-left: -80px;
 margin-top: 3px;
 }
 
@@ -257,8 +262,13 @@ width: 60px;
 }
 
 .f-t-post-info {
-font-size: 12px; 
+font-size: 11px; 
 color: #999; 
+padding-right: 70px;
+}
+
+.f-t-post-info a {
+font-weight: bold;
 }
 
 .f-t-post-change {
@@ -274,10 +284,6 @@ color: #111;
 padding: 7px 0 0 0;
 }
 
-.f-t-quest {
-padding: 10px 20px 10px 75px;
-position: relative;
-}
 
 .f-t-quest-content {
 font-size: 13px;
@@ -312,9 +318,13 @@ border-top: 1px solid #CCC;
 }
 
 .f-t-quest-sets {
-padding: 15px 0 0; 
-color: #999; 
+padding: 20px 0 0; 
+color: #888; 
 font-size: 11px;
+}
+
+.f-t-quest-sets  a:link, .f-t-quest-sets  a:visited, .f-t-quest-sets  a:hover, .f-t-quest-sets  a:active { 
+color: #888; 
 }
 
 .f-t-lists form {
@@ -323,8 +333,30 @@ margin: 0;
 padding: 0;
 }
 
+.f-t-quest-content p, .f-t-post-content p {
+margin: 0 0 8px;
+}
 
 
+#up-success, #upass-success, #un-success, #un-success1, #delres-success {
+line-height: normal;
+white-space: nowrap;
+font-weight: bold;
+font-size: 11px;
+background-color:#DAFFD6;
+color: #1E9111;
+margin-left: 15px;
+position: absolute;
+display: none;
+border: 1px solid #57FC44;
+padding: 2px 10px;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+zoom: 1;
+}
+
+.ui-dialog {position: fixed;}
 
 
 

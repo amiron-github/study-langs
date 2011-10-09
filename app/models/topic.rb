@@ -8,9 +8,9 @@ class Topic < ActiveRecord::Base
   validates_presence_of    :name 
   
 LANG = [
-{'name'=>'Russian','name_ru'=>'русский','name_fr'=>'russe','id'=>1},
-{'name'=>'English','name_ru'=>'английский','name_fr'=>'anglais','id'=>2},
-{'name'=>'Other','name_ru'=>'другой','name_fr'=>'autre','id'=>0}
+{'name'=>'Russian','name_ru'=>'русский','name_fr'=>'russe','id'=>1,'short_en'=>'RU'},
+{'name'=>'English','name_ru'=>'английский','name_fr'=>'anglais','id'=>2,'short_en'=>'EN'},
+{'name'=>'Other','name_ru'=>'другой','name_fr'=>'autre','id'=>0,'short_en'=>'Other'}
 ]
 
   

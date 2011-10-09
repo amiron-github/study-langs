@@ -53,7 +53,7 @@ require_role "admin", :only => [:index,:show,:new]
 		if @verify < 1
 		  if @post.save
 			@topic = Topic.find(@post.topic_id)
-			@topic.update_attributes(:last_post_at => Time.now)
+			@topic.update_attribute(:last_post_at, Time.now)
 			flash[:notice] = 'Post was successfully created.'
 			format.html { redirect_to :controller=> 'topics', :action=>'show', :id=>@post.topic_id }
 			format.xml  { render :xml => @post, :status => :created, :location => @post }

@@ -1,3 +1,42 @@
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#new_topic").submit(function(){ 
+		var status = 0;
+		status = checkTopicContent()
+		if (status > 0) {
+			return false;
+		}
+	})
+});
+
+
+function checkTopicContent() {
+
+	var topic= $.trim($("#topic_name").val()).length;
+	var content = $.trim($("#post_content").val()).length;
+	msg = 'Invalid data';
+	var status = 0;
+	
+	if (topic < 1 || topic > 250 || content < 1 || content > 10000 ) {
+		if (topic < 1) {
+			msg = $("#submit-err-msg1").text()
+		} else if (topic > 250) {
+			msg = $("#submit-err-msg2").text()
+		} else if (content < 1) {
+			msg = $("#submit-err-msg3").text()
+		} else if (content > 10000) {
+			msg = $("#submit-err-msg4").text()
+		}
+		
+	$('<div title="Invalid entry" style="padding: 30px 60px; font-size: 12px;"><b>'+msg+'</b></div>').dialog({modal:true}).dialog( "option", "buttons", {"Ok": function() { $(this).dialog("close"); } } );
+		status=1;
+	} 
+	return status;
+}
+
+
+</script>
+
 
 
 <div class="forum">
@@ -8,10 +47,6 @@
 <br>
 <br>
 <br>
-
-<%= flash[:notice] %>
-
-<%= render :partial => '/forums/topics_errors' %>
 
 
 
@@ -24,17 +59,22 @@
 
 </div>
 
-<div class="forum-wall form_to_disable">
+<div class="forum-wall">
 
-<% form_for @topic, :url=>{:controller=>'topics', :action=>'create'} do |f| %> 
-		<% if params[:forum] %><input type="hidden" id="topic_forum_id" name="topic[forum_id]" value="<%= params[:forum] %>" /><% end %>
+
 		<div class="f-topic"> 
-			<div class="f-t-quest f-topic-title-edit">
-				<a href="#" class="f-t-post-pic"><img src="http://www.gravatar.com/avatar/?d=mm&s=50"/></a>
-			
-				<span><%= f.text_field :name %></span>
+			<div class="f-t-quest">
+				<a href="#" class="f-t-post-pic"><img src="<%= userpic_for(current_user) %>" width="50"/></a>
+<%= render :partial => '/site/user/user_name_update' %>
+<%= render :partial => '/forums/topics_errors' %>
+
+<% form_for @topic, :url=>{:controller=>'topics', :action=>'create'}, :html=>{:class=>"form_to_disable"} do |f| %> 
+		<% if params[:forum] %><input type="hidden" id="topic_forum_id" name="topic[forum_id]" value="<%= params[:forum] %>" /><%end%>				
+				<strong>Topic title:</strong><br>
+				<span class="f-topic-title-edit"><span><%= f.text_field :name %></span></span>
 				<br><br>
-				<span class="f-post-edit textarea"><textarea name="post[content]" cols="40" rows="5"><% @post.content %></textarea></span>
+				<strong>Topic content:</strong><br>
+				<span class="f-post-edit textarea"><textarea id="post_content" name="post[content]" cols="40" rows="5"><% @post.content %></textarea></span>
 				
 				<div class="f-t-quest-sets">
 					Languages:
@@ -47,31 +87,36 @@
 					<span id="f-choose-category">
 					<select name="topic[fcategory_id]" style="font-size: 11px; min-width: 160px;" id="f-topic-cat">
 						<%if @langs_option == '1'%>
-							<% @fcategories1.each do |category|%><option value="<%=category.id%>"><%=category.name%><%end%>
+							<% @fcategories1.each do |category|%><option value="<%=category.id%>"><%=category.name%></option><%end%>
 						<%elsif @langs_option == '2'%>
-							<% @fcategories2.each do |category|%><option value="<%=category.id%>"><%=category.name%><%end%>
+							<% @fcategories2.each do |category|%><option value="<%=category.id%>"><%=category.name%></option><%end%>
 						<%else%>
-							<% @fcategories.each do |category|%><option value="<%=category.id%>"><%=category.name%><%end%>
+							<% @fcategories.each do |category|%><option value="<%=category.id%>"><%=category.name%></option><%end%>
 						<%end%>
 					</select>
 					</span>
-					 
 				</div>
 				<br>
 				<%= f.submit "Create" %>
+<% end %>				
 			</div>
 		</div>
-<% end %> 
+ 
 
 <span id="f-category-options" style="display: none">
 	<select id="f-category-1">
-		<% @fcategories1.each do |category|%><option value="<%=category.id%>"><%=category.name%><%end%>
+		<% @fcategories1.each do |category|%><option value="<%=category.id%>"><%=category.name%></option><%end%>
 	</select>
 	<select id="f-category-2">
-		<% @fcategories2.each do |category|%><option value="<%=category.id%>"><%=category.name%><%end%>
+		<% @fcategories2.each do |category|%><option value="<%=category.id%>"><%=category.name%></option><%end%>
 	</select>
 </span>
-
+<div style="display:none">
+	<span id="submit-err-msg1">Topic title is invalid</span>
+	<span id="submit-err-msg2">Topic title is too long (maximum 250 symbols)</span>
+	<span id="submit-err-msg3">Topic content is invalid</span>
+	<span id="submit-err-msg4">Topic content is too long (maximum 10000 symbols)</span>
+</div>
 
 <br><br><br><br>
 

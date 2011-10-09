@@ -71,16 +71,35 @@ require 'digest/md5'
 		@lang = 'Other'
 		langs_info.each do |lang|
 			if lang['id']== id
-				@lang = lang['name']
+				@lang = lang['short_en']
 			end
 		end
 		return @lang
 	end
 	
 	def show_post_time(time)
-			return time.to_date
+		#return time.strftime("%H:%M %m/%d/%Y")
+		return l time, :format=>:short_f
 	end
 	
+  def gravatar_for(user) 
+		email_address = user.email.downcase
+		hash = Digest::MD5.hexdigest(email_address)
+		image_src = "http://www.gravatar.com/avatar/#{hash}"
+		return image_src
+  end
+  
+  def userpic_for(user) 
+		image_src = gravatar_for(user)+'?d=identicon&f=y'
+		if user.setting
+			unless !user.setting.picture || user.setting.picture.strip == ''
+				image_src = user.setting.picture
+			end
+		end
+		return image_src
+  end
+
+  
   def gravatar_url_for(user,width) 
 		image_src = "http://www.gravatar.com/avatar/?d=mm"
 		if user.setting

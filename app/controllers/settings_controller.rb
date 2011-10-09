@@ -20,18 +20,16 @@ layout "admin"
   # GET /settings/1.xml
   def show
     @setting = Setting.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @setting }
     end
-  end
+  end  
 
   # GET /settings/new
   # GET /settings/new.xml
   def new
     @setting = Setting.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @setting }

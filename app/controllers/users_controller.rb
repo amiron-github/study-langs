@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
   include ActiveMerchant::Billing::Integrations
+  
   layout :determine_layout
   
   
@@ -85,16 +86,22 @@ class UsersController < ApplicationController
       case
       when (!params[:new_password].blank?)&&(!params[:confirm_password].blank?)&&(params[:confirm_password]==params[:new_password])
     	current_user.update_attribute(:password, params[:new_password])
-      @success="success"
+		@success="success"
+		@status =0
       when (params[:confirm_password]!=params[:new_password])
       @error_val="You entered incompatible passwords"
+	  @status =2
       logger.warn("empty value")
       end
     else
-      @error_pas = "You entered incorrect password" 
+      @error_pas = "You entered incorrect password"
+	  @status =1	  
     end
-    render :action => 'update_pass'
-
+		if request.xhr?
+          render :js => 'userPassChanging("'+@status.to_s+'")'
+        else
+          render :action => 'update_pass'
+		end
     end
   end
 
@@ -201,7 +208,6 @@ class UsersController < ApplicationController
 
 
   def save_user
-
     if !current_user 
     redirect_back_or_default('/')
     else
@@ -220,7 +226,6 @@ class UsersController < ApplicationController
     else
       @error_pas = "You entered incorrect password"      
     end
-
     render :action => 'update_user'
     end
   end
@@ -233,9 +238,17 @@ class UsersController < ApplicationController
 	      if (current_user.authenticated?(params[:password]))
 	      current_user.delete!
 	      logout_keeping_session!
-	      redirect_back_or_default('/') 
+			if request.xhr?
+				render :js => 'window.location.href="/";'
+			else
+				redirect_back_or_default('/') 
+			end
 	      else 
-	      @error_pas = "You entered incorrect password"		
+			if request.xhr?
+				render :js => 'userDelEr()'
+			else
+				@error_pas = "You entered incorrect password"	
+			end
       	  end
       end	
     end
@@ -243,16 +256,25 @@ class UsersController < ApplicationController
 
   def del_stat
     if !current_user
-    redirect_back_or_default('/')
+		redirect_back_or_default('/')
     else
+	@status = -1
       if (params[:password])
-              if (current_user.authenticated?(params[:password]))
-              current_user.user_tests.delete_all
-              @success="succes"
-              else
-              @error_pas = "You entered incorrect password"
-              end
+		if (current_user.authenticated?(params[:password]))
+			current_user.user_tests.delete_all
+			@success="succes"
+			@status = 0
+        else
+			@error_pas = "You entered incorrect password"
+			@status = 1
+        end
       end
+	  if request.xhr?
+          render :js => 'userStatDeleting('+@status.to_s+')'
+      else
+		render :action => 'del_stat'
+	  end
+	  
     end
   end
 
@@ -294,9 +316,7 @@ class UsersController < ApplicationController
 
 	def paypal_ipn
 		notify = Paypal::Notification.new(request.raw_post)
-
 		order = current_user.orders.find(:first, :conditions => 'ord_id=\''+params[:ord_id]+ '\'')
-
 		if notify.acknowledge
 		begin
 			logger.warn("WOW acknowledge!!!!!")
@@ -331,22 +351,45 @@ class UsersController < ApplicationController
   # supply their old password along with a new one to update it, etc.
   
   def update_nick
-	name = params[:user_name].to_s
-	user = User.find(params[:user_id])
-	verify_user=user
-	verify_user.name = name
-	if check_user?(verify_user)
-		if user.update_attribute(:name, name)
-			render :js => '$("#current_user_name").css({backgroundColor: "#FDFF00"}).animate({backgroundColor: "#fff"}, 1000); enable_form()'
-		else
-			render :js => 'alert("Saving failed :(")'
+  if !current_user
+	  render :nothing => true
+    else
+		name = sanitize_string(params[:user_name])
+		user = current_user
+		@status =0
+		if name.length >50
+			@status = 3
+#		elsif name.length <2
+#			@status = 2
+#		elsif User.find(:first, :conditions=>["name=? and id!=?",name,user.id])
+#			@status = 1
 		end
-		
-	else
-	    er = verify_user.errors.on(:name).to_s
-		render :js => 'alert("The name '+er+'")'
+		if @status == 0
+			if user.update_attribute(:name, name)
+				render :js => 'userNameChanging('+@status.to_s+',"'+no_js(name)+'")'
+			else
+				render :js => 'alert("Saving failed :(")'
+			end
+		else
+			render :js => 'userNameChanging('+@status.to_s+',"'+no_js(name)+'")'
+		end
 	end
   end
+  
+  def change_userpic  
+    if !current_user
+	  render :nothing => true
+    else
+		user = current_user
+		picture = sanitize_string(params[:userpic])
+		if user.setting.update_attribute(:picture, picture)
+			render :js => 'userPicChanged("'+ no_js(picture)+'")'
+		else
+			render :js => 'alert("Saving failed!")'
+		end
+		
+    end
+  end  
 
 private
 	def determine_layout

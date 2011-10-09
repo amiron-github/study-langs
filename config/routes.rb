@@ -1,6 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :settings
-
   map.resources :fcategories
   map.connect '/:lang/:to_lang/posts/change_post/:id', :controller => 'posts', :action => 'change_post'
   map.connect '/posts/change_post/:id', :controller => 'posts', :action => 'change_post'
@@ -62,6 +61,7 @@ ActionController::Routing::Routes.draw do |map|
   map.lexictest '/:lang/:to_lang/lexical-test/:category/', :controller => 'vocabulary', :action => 'build_test'
   map.flashcard '/:lang/:to_lang/flashcards/:category/', :controller => 'vocabulary', :action => 'build_flashcard'
   map.vocabulary '/:lang/:to_lang/vocabulary/:category/', :controller => 'vocabulary', :action => 'build_vocabulary'
+  map.vocabulary '/vocabulary/:category/', :controller => 'vocabulary', :action => 'build_vocabulary'
   map.vocabulary '/:lang/:to_lang/:category/lesson/:lesson', :controller => 'vocabulary', :action => 'build_lesson'
   map.connect 'clusters/words_to_add', :controller => 'clusters', :action => 'words_to_add'
   map.connect 'clusters/remove_from_cluster', :controller => 'clusters', :action => 'remove_from_cluster'
@@ -111,7 +111,8 @@ ActionController::Routing::Routes.draw do |map|
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.activate '/:lang/:to_lang/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
-
+  
+  map.connect '/users/change_userpic', :controller => 'users', :action => 'change_userpic'
   map.cart '/cart', :controller => 'users', :action => 'show_cart'
   map.user '/user', :controller => 'users', :action => 'update_user'
   map.delete_topic '/delete_topic_words_and_tests', :controller => 'users', :action => 'delete_topic_words_and_tests'
@@ -172,6 +173,8 @@ ActionController::Routing::Routes.draw do |map|
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
   # map.root :controller => "welcome"
+  
+  
   map.root :controller => 'site', :action => 'page', :page => 'index.html'
 
   # See how all your routes lay out with "rake routes"
@@ -182,6 +185,7 @@ ActionController::Routing::Routes.draw do |map|
 #  map.connect ':controller/:action/:id'
 #  map.connect ':controller/:action/:id.:format'
   map.with_options(:controller => 'site') do |site|
+	site.connect '/:lang/:to_lang/*url', :controller => 'site', :action => 'page'
     site.connect '*url', :action => 'page'
   end
 end

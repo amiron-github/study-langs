@@ -9,7 +9,6 @@ class SiteController < ApplicationController
     layout = 'comment_audios.html.erb' if @file.match(/\/comments_audio\//)
 	layout = 'grammar_comments.html.erb' if @file.match(/\/grammar_comments\//)
 	
-	
 	if @file.match(/\/ru\//)  
 		@file = '/ru/jp/index.html' if @file == '/ru/jp/'
 		@file = '/ru/fr/index.html' if @file == '/ru/fr/'

@@ -129,11 +129,11 @@ $(document).ready(function(){
 
 
 function disable_form() {
-$(".form_to_disable").find("input, textarea").attr("disabled",'disababled')
+$(".form_to_disable").find("input, textarea, select").attr("disabled",'disababled')
 }
 
 function enable_form() {
-$(".form_to_disable").find("input, textarea").removeAttr("disabled")
+$(".form_to_disable").find("input, textarea, select").removeAttr("disabled")
 }
 
 function addFavorite (topic_id)  {

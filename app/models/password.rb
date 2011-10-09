@@ -6,7 +6,7 @@ class Password < ActiveRecord::Base
   attr_accessor :lang
 
   validates_presence_of :email, :user
-  validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :message => 'is not a valid email address'
+  validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :message => :invalid
 
   protected
   def before_create

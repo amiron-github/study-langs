@@ -1,5 +1,17 @@
 <% if params[:er]=='1' %>
-<div style="color: red">Invalid topic</div>
+<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+	<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+		<strong>Alert:</strong> 
+		<span>Invalid topic title</span>
+	</p>
+</div>
+<br>
 <%elsif params[:er]=='2'%>
-<div style="color: red">Invalid post</div>
+<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+	<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+		<strong>Alert:</strong> 
+		<span>Invalid topic content</span>
+	</p>
+</div>
+<br>
 <% end %>

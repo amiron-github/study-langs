@@ -189,7 +189,7 @@ require_role "admin", :only => [:index, :destroy]
 			format.html { redirect_to :controller=> 'topics', :action=>'show', :id=>@post.topic_id }
 			format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
 		  end
-		  else 
+		else 
 			format.html { redirect_to :controller=> 'topics', :action=>'show', :id=>@post.topic_id, :er=>@verify.to_s }
 			format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
 		  end

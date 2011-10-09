@@ -12,12 +12,12 @@
 		<div class="forum-item-info"> 
 			<table cellspacing="0" width="100%">
 				<tr>
-					<td>By <b><%=h topic.user.name %></b> - &nbsp;&nbsp; Last updated: <%= show_post_time(topic.last_post_at).to_s(:short) %>
+					<td>By <b><%=h topic.user.name %></b> - &nbsp;&nbsp; Last updated: <%= show_post_time(topic.last_post_at) %>
 					<%= render :partial => '/forums/like_it', :locals => {:topic_id => topic.id} %>
 					</td>
 					<td>
 						<div class="forum-item-info-last">
-						<span title="Replies"><%= topic.posts.count - 1 %> <img src="/images/icons/fugue/balloon-left.png" alt="Replies"> &nbsp;</span>
+						<span title="Replies"><%= topic.posts.count - 1 %> <img src="/images/icons/comment.png" alt="Replies"> &nbsp;</span>
 						<span title="Views" style="display: none"><img class="f-icon-eye" src="/images/icons/fugue/eye.png"> <%= topic.views %></span>
 						</div>
 					</td>
@@ -25,7 +25,7 @@
 			</table>
 		</div>
 		<div class="forum-item-title">
-			<%= link_to h(topic.name), :controller => 'topics', :action=>'show', :id=>topic.id%>
+			<img src="<%= userpic_for(topic.user)%>" width="20"/> <%= link_to h(topic.name), :controller => 'topics', :action=>'show', :id=>topic.id%>
 		</div>
 		<div class="forum-item-content"> 
 			<%if topic.posts.length > 0 %><%=h truncate(topic.posts.first.content, 200) %><%end%>

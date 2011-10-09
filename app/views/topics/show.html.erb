@@ -1,11 +1,84 @@
 <% content_for :special_js_css do %>
 
+<script type="text/javascript">
+
+
+$(document).ready(function(){
+	$("#edit_topic").submit(function(){ 
+		var status = 0;
+		status = checkTopicContent()
+		if (status > 0) {
+			return false;
+		}
+	});
+	
+	$("#edit_post").submit(function(){ 
+		var status = 0;
+		status = checkPostContent('edit_post_content')
+		if (status > 0) {
+			return false;
+		}
+	});
+	
+	$("#new_post").submit(function(){ 
+		var status = 0;
+		status = checkPostContent('new_post_content')
+		if (status > 0) {
+			return false;
+		}
+	});
+});
+
+function checkPostContent(el) {
+	var content = $.trim($("#"+el).val()).length;
+	msg = 'Invalid data';
+	var status = 0;
+	
+	if (content < 1 || content > 10000 ) {
+		if (content < 1) {
+			msg = $("#comment-err-msg1").text()
+		} else if (content > 10000) {
+			msg = $("#comment-err-msg2").text()
+		}
+		
+	$('<div title="Invalid entry" style="padding: 30px 60px; font-size: 12px;"><b>'+msg+'</b></div>').dialog({modal:true,width:350}).dialog( "option", "buttons", {"Ok": function() { $(this).dialog("close"); } } );
+		status=1;
+	} 
+	return status;
+}
+
+function checkTopicContent() {
+	var topic= $.trim($("#topic_name").val()).length;
+	var content = $.trim($("#post_content").val()).length;
+	msg = 'Invalid data';
+	var status = 0;
+	
+	if (topic < 1 || topic > 250 || content < 1 || content > 10000 ) {
+		if (topic < 1) {
+			msg = $("#submit-err-msg1").text()
+		} else if (topic > 250) {
+			msg = $("#submit-err-msg2").text()
+		} else if (content < 1) {
+			msg = $("#submit-err-msg3").text()
+		} else if (content > 10000) {
+			msg = $("#submit-err-msg4").text()
+		}
+		
+	$('<div title="Invalid entry" style="padding: 30px 60px; font-size: 12px;"><b>'+msg+'</b></div>').dialog({modal:true}).dialog( "option", "buttons", {"Ok": function() { $(this).dialog("close"); } } );
+		status=1;
+	} 
+	return status;
+}
+
+
+</script>
+
 
 <%end%>
 
 <div class="forum">
 <div class="f-title">
-<%= @topic.forum.name  %> 
+<%= @topic.forum.name  %>  > <%= @topic.fcategory.name %>
 </div>
 
 <br>
@@ -34,17 +107,15 @@
   <div class="f-topic"> 
   <div class="f-t-quest f-topic-title-edit">
   
-	<% form_for @topic,  :url => { :action => :update_topic, :id => @topic.id}  do |f| %>
-				<a href="#" class="f-t-post-pic"><img src="<%= gravatar_url_for(@topic.user,50)%>"/></a>
+	<% form_for @topic,  :url => { :action => :update_topic, :id => @topic.id}, :html=>{:id=>'edit_topic'}  do |f| %>
+				<a href="#" class="f-t-post-pic"><img src="<%= userpic_for(@topic.user)%>" width="50"/></a>
 				<span><%= f.text_field :name %></span> 
 				
 <br><br>
-				<span class="f-post-edit textarea"><textarea name="post[content]" rows="5"><%= @topic_first.content %></textarea></span>
-
+				<span class="f-post-edit textarea"><textarea name="post[content]" id="post_content"  rows="5"><%= @topic_first.content %></textarea></span>
 
 			<div class="f-t-quest-sets">	
-			
-			
+
 					Languages:
 					<select name="lang_option" style="font-size: 11px; min-width: 160px;" id="lang-option" onChange="getCatsByLang()">
 						<option <%if @langs_option == '1' %>selected<%end%> value="1"> English => Russian </option>
@@ -88,26 +159,35 @@
  <% else%>
 
 <div class="f-topic"> 
+
+
+
   <div class="f-t-quest"> 
 	<a href="#" class="f-t-post-pic"><img src="<%= gravatar_url_for(@topic.user, 50)%>"/>
 	</a>
 	<%= render :partial => '/forums/like_it', :locals => {:topic_id => @topic.id} %>
 	
-	<% if admin_or_owner?(@topic.user_id) && !params[:edit_title]%>
-		<div style="position: absolute; margin-left: -75px; margin-top: 70px; font-size: 10px">
-			<%= link_to "Edit", {:action=> 'show', id => @topic.id, :edit_title=> 1} %>  
-			<%if logged_in? && current_user.has_role?("admin") %>
-			  | <%= link_to "Delete", @topic, :confirm => 'Are you sure?', :method => :delete %>
-			<%end%>
-		</div>
-	 <%end%>
+
+	 
 	<h3 class="f-topic-title"><%=h @topic.name %></h3>
-	<div class="f-t-post-info"><a href="#"><%=h @topic.user.name %></a> - at <%= show_post_time(@topic_first.created_at).to_s %></div>
+	
+	<% if admin_or_owner?(@topic.user_id) && !params[:edit_title]%>
+					<div class="f-t-post-change"> 
+						<%= link_to "Edit topic", {:action=> 'show', id => @topic.id, :edit_title=> 1} %> 
+						<%if logged_in? && current_user.has_role?("admin") %>
+						&nbsp;|&nbsp; <%= link_to "Delete", @topic, :confirm => 'Are you sure?', :method => :delete %>
+						<%end%>
+						
+					</div>
+	<%end%>
+	
+	<div class="f-t-post-info"><a href="#"><%=h @topic.user.name %></a> - <%= show_post_time(@topic_first.created_at) %></div>
+	
 	<div class="f-t-quest-content">
 		<%=simple_format (@topic_first.content) %>
 	</div>
 	<div class="f-t-quest-sets">
-		Category: <%= link_to h(@topic.fcategory.name), :controller=>'forums', :action=>'show_cat',:forum_id=>@topic.forum_id, :cat_id=>@topic.fcategory.id%> 
+		<%= link_to h(@topic.fcategory.name), {:controller=>'forums', :action=>'show_cat',:forum_id=>@topic.forum_id, :cat_id=>@topic.fcategory.id}, {:title=> 'Category: '+@topic.fcategory.name}%> 
 		| Languages: <%=h show_lang @topic.lang %>-<%=h show_lang @topic.to_lang %> 
 	</div>
   </div>  
@@ -122,24 +202,25 @@
 
 
 
-<div class="f-t-posts-info"> <%= @topic_posts.length%> comments</div>
+<div class="f-t-posts-info"> <%= @topic_posts.length%> <%if @topic_posts.length == 1%>comment<%else%>comments<%end%></div>
 <% @topic_posts.each_with_index do |post,index| %> 
 
 	<div class="f-topic-item">
-				<a href="#" class="f-t-post-pic"><img src="<%= gravatar_url_for(post.user,40)%>"/></a>
-				<% if admin_or_owner?(post.user_id) %>
+				<a href="#" class="f-t-post-pic"><img src="<%= userpic_for(post.user)%>" width="40"/></a>
+				<% if admin_or_owner?(post.user_id)%>
 					<div class="f-t-post-change"> 
-						<%= link_to "Edit post", {:action=> 'show', id => @topic.id, :edit_post=> post.id} %> 
-						&nbsp;|&nbsp; <%= link_to "Delete", post, :confirm => 'Are you sure?', :method => :delete%>
+					<%unless params[:edit_post]== post.id.to_s%><%= link_to "Edit comment", {:action=> 'show', id => @topic.id, :edit_post=> post.id} %> 
+						&nbsp;|&nbsp;<%end%> <%= link_to "Delete", post, :confirm => 'Are you sure?', :method => :delete%>
 					</div>
 				<%end%>
-				<div class="f-t-post-info"><a href="#"><%=h post.user.name %></a> - at <%= show_post_time(post.created_at).to_s %></div>
+				
+				<div class="f-t-post-info"><a href="#"><%=h post.user.name %></a> - <%= show_post_time(post.created_at) %></div>
 
 		<% if params[:edit_post] == post.id.to_s && admin_or_owner?(post.user_id) %>
 		
-			<% form_for post, :url=>{:controller=>'topics', :action=>'update_post', :id=>post.id} do |f| %>
+			<% form_for post, :url=>{:controller=>'topics', :action=>'update_post', :id=>post.id}, :html=>{:id=>'edit_post'} do |f| %>
 			<div class="f-post-edit"><%= f.hidden_field :topic_id %><%= f.hidden_field :user_id %>
-			<textarea cols="40" id="post_content" name="post[content]" rows="6"><%= post.content %></textarea>
+			<textarea cols="40" id="edit_post_content" name="post[content]" rows="6"><%= post.content %></textarea>
 			</div>
 			<div class="forum-post-bottom"> 
 				<%= f.submit 'Update' %> <%= link_to 'Cancel', :action=> 'show' %>
@@ -155,31 +236,23 @@
 <%end%>
 
 <% if logged_in? %>
-	<div class="f-topic-item form_to_disable">
-		<a href="#" class="f-t-post-pic"><img src="<%= gravatar_url_for(current_user,40)%>"/></a>
-		<div class="f-t-post-info"><b style="color: #333">New comment</b></div>
-		
-		<%= render :partial => '/site/user/user_name_update' %>		
-
-		
-			<% form_for @post, :url=>{:controller=>'posts',:action=>'create'} do |f| %>
-			
-			<div class="f-post-edit">
-
-    <input type="hidden"  name="post[topic_id]" value="<%= @topic.id %>" />
-	<input type="hidden"  name="post[user_id]" value="<%= current_user.id %>" /> 
-			
-				<%= f.text_area :content, :rows=>6 %>
-				
-			</div>
-			<div class="forum-post-bottom"> 
-				<%= f.submit 'Add post' %>
-			</div>		
+<%unless params[:edit_title] || params[:edit_post]%>
+	<div class="f-topic-item">
+		<a href="#" class="f-t-post-pic"><img src="<%= userpic_for(current_user)%>" width="40"/></a>
+		<%= render :partial => '/site/user/user_name_update' %>	
+		<div class="f-t-post-info"><b style="color: #333">New comment by <a href="#"><%=h current_user.name %></a></b></div>
+			<% form_for @post, :html=>{:class=>'form_to_disable'}, :url=>{:controller=>'posts',:action=>'create'} do |f| %>
+				<div class="f-post-edit">
+					<input type="hidden"  name="post[topic_id]" value="<%= @topic.id %>" />
+					<input type="hidden"  name="post[user_id]" value="<%= current_user.id %>" /> 
+					<%= f.text_area :content, :rows=>6, :id=>'new_post_content' %>
+				</div>
+				<div class="forum-post-bottom"> 
+					<%= f.submit 'Add post' %>
+				</div>		
 			<% end %>
-
-		
-		
 	</div>
+<%end%>
 <%end%>
 
 
@@ -187,6 +260,14 @@
 
 <br><br><br><br>
 
+<div style="display:none">
+	<span id="submit-err-msg1">Topic title is invalid</span>
+	<span id="submit-err-msg2">Topic title is too long (maximum 250 symbols)</span>
+	<span id="submit-err-msg3">Topic content is invalid</span>
+	<span id="submit-err-msg4">Topic content is too long (maximum 10000 symbols)</span>
+	<span id="comment-err-msg1">Text of the comment is invalid</span>
+	<span id="comment-err-msg2">Text of the comment is too long (maximum 10000 symbols)</span>
+</div>
 
 
 
