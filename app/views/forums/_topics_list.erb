@@ -13,27 +13,29 @@
 			<table cellspacing="0" width="100%">
 				<tr>
 					<td>By <b><%=h topic.user.name %></b> - &nbsp;&nbsp; Last updated: <%= show_post_time(topic.last_post_at) %>
-					<%= render :partial => '/forums/like_it', :locals => {:topic_id => topic.id} %>
+					
 					</td>
 					<td>
 						<div class="forum-item-info-last">
+						<%= render :partial => '/forums/like_it', :locals => {:topic_id => topic.id} %>&nbsp;&nbsp;&nbsp;&nbsp;
 						<span title="Replies"><%= topic.posts.count - 1 %> <img src="/images/icons/comment.png" alt="Replies"> &nbsp;</span>
-						<span title="Views" style="display: none"><img class="f-icon-eye" src="/images/icons/fugue/eye.png"> <%= topic.views %></span>
 						</div>
 					</td>
 				</tr>
 			</table>
 		</div>
-		<div class="forum-item-title">
-			<img src="<%= userpic_for(topic.user)%>" width="20"/> <%= link_to h(topic.name), :controller => 'topics', :action=>'show', :id=>topic.id%>
+		<div class="forum-item-body">
+			<a href="#" class="f-item-pic"><img src="<%= userpic_for(topic.user)%>" width="30"/></a>
+			<div class="forum-item-title">
+				<%= link_to h(topic.name), :controller => 'topics', :action=>'show', :id=>topic.id%>
+			</div>
+			<div class="forum-item-content"> 
+				<%if topic.posts.length > 0 %><%=simple_format truncate(topic.posts.first.content, 250) %><%end%>
+			</div>	
+			<div class="forum-item-bottom"> 
+				<%=h topic.fcategory.name %> | Languages: <%=h show_lang(topic.lang) %> - <%=h show_lang(topic.to_lang) %>
+			</div>		
 		</div>
-		<div class="forum-item-content"> 
-			<%if topic.posts.length > 0 %><%=h truncate(topic.posts.first.content, 200) %><%end%>
-		</div>	
-		<div class="forum-item-bottom"> 
-			Category: <%=h topic.fcategory.name %> | Langs: <%=h show_lang(topic.lang) %> - <%=h show_lang(topic.to_lang) %>
-		</div>		
-		
 	</div> 
   <% end %> 
 
