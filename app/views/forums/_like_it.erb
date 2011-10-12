@@ -1,13 +1,9 @@
 <%if logged_in?%>
   <span class="f-favorites noselect" id="fav_<%=topic_id%>">
   <%if is_favorite?(topic_id)%>
-	    <a href="javascript:;" onclick="removeFavorite('<%=topic_id%>')" title="Remove from favorites"><span class="f-init"><img src="/images/icons/fugue/tick.png"/></span><span class="f-hover" ><img src="/images/icons/fugue/tick.png"/></span>
-		
-		</a>
+	    <a href="javascript:;" onclick="removeFavorite('<%=topic_id%>')" title="Remove from favorites"><span class="f-init"><img src="/images/icons/fugue/tick.png"/></span><span class="f-hover" ><img src="/images/icons/fugue/tick.png"/></span></a>
   <%else%>
-	<a href="javascript:;" onclick="addFavorite('<%=topic_id%>')"  title="Add to favorites">
-	<span class="f-init"><img src="/images/icons/fugue/tick-grey.png"/></span><span class="f-hover"><img src="/images/icons/fugue/tick.png"/></span> 
-	</a>
+	<a href="javascript:;" onclick="addFavorite('<%=topic_id%>')"  title="Add to favorites"><span class="f-init"><img src="/images/icons/fugue/tick-grey.png"/></span><span class="f-hover"><img src="/images/icons/fugue/tick.png"/></span></a>
   <%end%>
   </span>
 <%end%>

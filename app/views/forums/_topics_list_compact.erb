@@ -1,0 +1,27 @@
+<%
+#needs variable @topics
+%>
+<div class="forum-wall forum-compact">
+	<div style="font-size: 11px; padding: 15px 10px 10px; font-weight: bold">
+		<% if logged_in? %><strong><%= link_to "+ Create new", :controller=> 'topics', :action => 'new', :forum=>@forum.id %> </strong>
+		<%else%>You need to <a href="/login">login</a> so that you can participate in the forum
+		<%end%>
+	</div>
+  <% for topic in @topics %>  
+	<div class="forum-item<%if has_my_post?(topic.id)%> f-my-post<%end%><%if is_my_topic?(topic.id)%> f-my-topic<%end%>">
+		<div class="forum-item-info"> 
+		</div>
+		<div class="forum-item-body">
+			<div style="position: absolute; right: 5px;"><%= render :partial => '/forums/like_it', :locals => {:topic_id => topic.id} %></div>
+			<a href="#" class="f-item-pic"><img class="t-userpic-img" src="<%= userpic_for(topic.user)%>" width="30"/></a>
+			<div class="forum-item-title">
+				<%= link_to h(topic.name), :controller => 'topics', :action=>'show', :id=>topic.id%>
+			</div>	
+			<div class="forum-item-bottom"> 
+				<!-- b><%=h topic.user.name %></b> | --><%= link_to h(topic.fcategory.name), {:controller=>'forums', :action=>'show_cat',:forum_id=>topic.forum_id, :cat_id=>topic.fcategory.id} %> - <%= topic.posts.count - 1 %> comments - updated: <%= show_post_time(topic.last_post_at) %> 
+			</div>		
+		</div>
+	</div> 
+  <% end %> 
+
+</div>

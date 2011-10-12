@@ -15,17 +15,17 @@
 <div class="f-t-lists" style="border-bottom: 1px solid #ccc; padding: 0px 15px; overflow: hidden;line-height: 30px">
 
 <% form_tag ( "", {:method =>:get} ) do %>
-	<!-- Sort by date
-	<select name="t_sort" onChange="this.form.submit()">
-		<option <%if params[:t_sort] == '1' %>selected<%end%> value='1'>Last post</option>
-		<option <%if params[:t_sort] == '2' %>selected<%end%> value='2'>Topic created</option>
-	</select> -->
-	
 	Languages
 	<select name="lo" onChange="this.form.submit()">
 		<option <%if @find_status == '1' %>selected<%end%> value="1">English-Russian</option>
 		<option <%if @find_status == '2' %>selected<%end%> value="2">Russian-English</option>
 		<option <%if @find_status == '0'%>selected<%end%> value="0">All languages</option>
+	</select>
+	View
+	<select name="view" onChange="this.form.submit()">
+		<option <%if @view_type == '0' %>selected<%end%> value="0">standard</option>
+		<option <%if @view_type == '1' %>selected<%end%> value="1">detailed</option>
+		<option <%if @view_type == '2'%>selected<%end%> value="2">compact</option>
 	</select>
 <%end %>
 
@@ -34,7 +34,12 @@
 		<div align="right" style="font-size: 12px; float: right;"><%= will_paginate @topics %></div>
 	</div>
 </div>
-	
-<%= render :partial => '/forums/topics_list' %>
 
+<% if @view_type == '1'%>
+<%= render :partial => '/forums/topics_list_detailed' %>
+<%elsif @view_type == '2' %>
+<%= render :partial => '/forums/topics_list_compact' %>
+<%else%>
+<%= render :partial => '/forums/topics_list' %>
+<%end%>
 </div>

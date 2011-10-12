@@ -18,6 +18,10 @@ require_role "admin", :except => [:show, :show_by_cat, :show_cat, :show_favorite
 		@find_status = cookies[:f_lopt]
 		langs = sort_by_lang(@find_status)
 	end
+	@view_type = '0'
+	if params[:view]
+		@view_type=params[:view]
+	end
 	if langs
 		@topics = @forum.topics.find(:all, :conditions => ['lang=? and to_lang=?', langs[0],langs[1]], :order=>'last_post_at DESC').paginate :page => params[:page], :per_page=> 15
 	else 

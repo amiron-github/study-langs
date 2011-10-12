@@ -359,10 +359,10 @@ class UsersController < ApplicationController
 		@status =0
 		if name.length >50
 			@status = 3
-#		elsif name.length <2
-#			@status = 2
-#		elsif User.find(:first, :conditions=>["name=? and id!=?",name,user.id])
-#			@status = 1
+		elsif name.length <2
+			@status = 2
+		elsif User.find(:first, :conditions=>["name=? and id!=?",name,user.id])
+			@status = 1
 		end
 		if @status == 0
 			if user.update_attribute(:name, name)

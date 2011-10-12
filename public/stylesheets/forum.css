@@ -94,13 +94,18 @@ padding: 0 0 2px 0;
 font-size: 14px;
 }
 
+.forum-compact .forum-item-title {
+font-size: 13px;
+}
+
+
 .forum-item-title a {
 font-weight: bold;
 }
 
 .forum-item-body {
 position: relative;
-padding: 6px 20px 15px 45px;
+padding: 6px 27px 10px 45px;
 }
 
 a.f-item-pic  {
@@ -113,12 +118,16 @@ margin-top: 2px;
 }
 
 .forum-item-info {
-line-height: 16px;
+line-height:16px;
 background-color: #F4F4F4;
 font-size: 11px;
 color: #888;
-padding: 2px 25px 0 10px;
-border-bottom: 1px dotted #ccc;
+padding: 0px 25px 0 10px;
+border-bottom: 1px dotted #cfcfcf;
+}
+
+.forum-compact .forum-item-info {
+border-bottom: 0px solid #ccc;
 }
 
 .forum-post-info {
@@ -140,7 +149,8 @@ opacity: 0.8;
 
 .forum-item-info-last img {
 position: relative;
-top: 1px;
+top: 2px;
+left: -2px;
 width: 16px;
 height: 16px;
 }
@@ -151,15 +161,53 @@ margin-left: 12px;
 }
 
 .forum-item-content {
-font-size: 11px;
-color: #111;
-padding: 5px 0 6px 0;
+font-size: 12px;
+color: #444;
+padding: 6px 0 8px 0;
+}
+
+.forum-detailed .forum-item-content {
+font-size: 13px;
+color: #444;
 }
 
 .forum-item-content p {
 margin: 0 0 6px;
 }
 
+.forum-item-comments {
+padding: 0px 0px 5px 38px;
+}
+
+.forum-item-comments  p {
+position: relative;
+margin-bottom: 5px;
+font-size: 13px;
+}
+
+.forum-item-comments p a.comment-pic {
+position: absolute;
+margin-left: -33px;
+margin-top: 2px;
+width: 25px;
+height: 25px;
+}
+
+.forum-comments-title {
+font-size: 12px;
+border-top:1px solid #dfdfdf;
+bord-er-bottom:1px solid #cfcfcf;
+margin-bottom: 8px;
+margin-top: 15px;
+background-color: #F9F9F9;
+padding: 2px 10px;
+color: #666;
+}
+
+.comment-time {
+color: #999;
+font-size: 11px;
+}
 
 .forum-post-content {
 color: #222;
@@ -169,6 +217,10 @@ padding: 10px 20px 0px 12px;
 .forum-item-bottom {
 font-size: 11px;
 color: #999;
+}
+
+.forum-item-bottom  a:link, .forum-item-bottom  a:visited, .forum-item-bottom  a:hover, .forum-item-bottom  a:active { 
+color: #999; 
 }
 
 .forum-post-bottom {
@@ -212,7 +264,7 @@ cursor: pointer;
 }
 .f-favorites span img{
 position: relative;
-top: 3px;
+top: 1px;
 }
 
 .f-favorites .f-hover {

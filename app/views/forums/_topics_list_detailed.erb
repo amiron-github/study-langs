@@ -1,7 +1,7 @@
 <%
 #needs variable @topics
 %>
-<div class="forum-wall">
+<div class="forum-wall forum-detailed">
 	<div style="font-size: 11px; padding: 15px 10px 10px; font-weight: bold">
 		<% if logged_in? %><strong><%= link_to "+ Create new", :controller=> 'topics', :action => 'new', :forum=>@forum.id %> </strong>
 		<%else%>You need to <a href="/login">login</a> so that you can participate in the forum
@@ -29,12 +29,28 @@
 			<div class="forum-item-title">
 				<%= link_to h(topic.name), :controller => 'topics', :action=>'show', :id=>topic.id%>
 			</div>
-			<div class="forum-item-content"> 
-				<%if topic.posts.length > 0 %><%=strip_tags truncate(topic.posts.first.content, 180) %><%end%>
-			</div>	
 			<div class="forum-item-bottom"> 
-				<%= link_to h(topic.fcategory.name), {:controller=>'forums', :action=>'show_cat',:forum_id=>topic.forum_id, :cat_id=>topic.fcategory.id} %> | <%=h show_lang(topic.lang) %> - <%=h show_lang(topic.to_lang) %>
-			</div>		
+				<%= show_post_time(topic.created_at) %> - <%= link_to h(topic.fcategory.name), {:controller=>'forums', :action=>'show_cat',:forum_id=>topic.forum_id, :cat_id=>topic.fcategory.id} %> - <%=h show_lang(topic.lang) %>-<%=h show_lang(topic.to_lang) %>
+			</div>
+			
+			<div class="forum-item-content"> 
+				<div><%if topic.posts.length > 0 %><%=simple_format truncate(topic.posts.first.content, 800) %><%end%></div>
+				<%if topic.posts.length > 1 %>
+				<div class="forum-comments-title">
+					<%if topic.posts.length > 4 %><a href="#">View all <%= topic.posts.length-1 %> comments</a>
+					<%else%><a href="#"><%= topic.posts.length-1 %> comments</a>
+					<%end%>
+				</div>
+				<div class="forum-item-comments"><% posts = topic.posts; posts.shift; posts = posts.last(3) %>
+				<% posts.each do |post|%>
+					<p><a href="#" class="comment-pic"><img src="<%= post.user.setting.picture %>" width="25"/></a>
+					<a href="#"><%= post.user.name %></a> - <%=strip_tags truncate(post.content, 270)%>
+					<br><span class="comment-time"><%= show_post_time(post.created_at)%></span>
+					</p>
+				<%end%>
+				</div>
+				<%end%>
+			</div>
 		</div>
 	</div> 
   <% end %> 

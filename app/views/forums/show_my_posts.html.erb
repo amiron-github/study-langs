@@ -1,3 +1,7 @@
+<% content_for :special_js_css do %>
+<%= stylesheet_link_tag 'user-profile' %>
+<%end%>
+
 <div class="forum">
 <div class="f-title">
 <%= @forum.name  %> 
@@ -17,7 +21,49 @@
 		<div align="right" style="font-size: 12px; float: right;"><%= will_paginate @topics %></div>
 	</div>
 </div>
-	
-<%= render :partial => '/forums/topics_list' %>
 
+
+<table cellpadding="0" cellspacing="20">
+	<col><col><col>
+		<tr valign="top">
+			<td rowspan="3">
+			<div class="userpic-wrapper">
+				<img id="userpic-img" src="<%= userpic_for(current_user) %>" width="80">
+			<div align="center" style="font-size: 10px; padding-top: 5px" >
+				<a href="javascript:;" class="edit-userpic">Change</a>
+			</div>
+			</div>
+			</td>
+			<td class="item-name">Nickname: 
+			</td>
+			<td>
+				<% if !current_user.name || current_user.name == '' %>
+					<span id="us-username"><input placeholder="enter a nickname" style="width: 200px" id="nick-blank"><input id="nick-blank-save" type="button" value="save"></span><span id="un-success1">&#10004; Changed</span>
+				<%else%>
+					<span id="us-username"><%= current_user.name %></span>
+					<a href="javascript:;" class="edit-username">edit</a><span id="un-success">&#10004; Changed</span>
+				<%end%>
+			</td>
+		</tr>
+		<tr>
+			<td class="item-name">Topics  
+			</td>
+			<td><%= current_user.topics.length%>
+			</td>
+		</tr>
+		<tr>
+			<td class="item-name">Comments 
+			</td>
+			<td>  <%= (current_user.posts.length - current_user.topics.length) > 0 ? current_user.posts.length - current_user.topics.length : 0  %>  
+			</td>
+		</tr>
+		</table>
+
+<%= render :partial => '/site/user/user_pic_update' %>
+
+
+
+<div style="padding: 0 20px;">	
+<%= render :partial => '/forums/topics_list_compact' %>
+</div>
 </div>
