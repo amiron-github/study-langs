@@ -1,7 +1,14 @@
-.f-tabs {list-style: none; overflow: hidden; 
-margin: 0; padding: 0;
+#contfield {
+padding: 20px 30px 40px 20px;
+}
+
+.f-tabs {
+list-style: none; overflow: hidden; 
+margin: 0; 
+padding: 0;
 border-left: 1px solid #ccc;
 margin-left: 15px;
+font-size: 14px;
 }
 
 .f-tabs .f-active {
@@ -25,7 +32,7 @@ float: left;
 margin-left: 0px;
 padding: 5px 10px;
 position: relative;
-min-width: 70px;
+min-width: 80px;
 margin-right: -1px;
 border-right: 1px solid #D9D9D9;
 }
@@ -49,11 +56,13 @@ cursor: pointer;
 }
 
 .f-title {
-padding: 10px; 
+padding: 10px 20px; 
 background-color: #E8EEF7;
 font-weight: bold;
 font-size: 18px;
 border: 1px solid #7799dd;
+font-family: Arial, sans-serif;
+margin-bottom: 10px;
 }
 
 .forum a:link, .forum a:visited {
@@ -105,7 +114,7 @@ font-weight: bold;
 
 .forum-item-body {
 position: relative;
-padding: 6px 27px 10px 45px;
+padding: 6px 27px 20px 45px;
 }
 
 a.f-item-pic  {
@@ -198,7 +207,6 @@ font-size: 12px;
 border-top:1px solid #dfdfdf;
 bord-er-bottom:1px solid #cfcfcf;
 margin-bottom: 8px;
-margin-top: 15px;
 background-color: #F9F9F9;
 padding: 2px 10px;
 color: #666;
@@ -393,6 +401,21 @@ font-size: 11px;
 color: #888; 
 }
 
+.f-t-lists {
+border-bottom: 1px solid #ccc; 
+padding: 6px 30px 2px 50px; 
+overflow: hidden;
+line-height: 30px;
+font-size: 11px;
+font-weight: bold;
+color: #666;
+}
+
+.f-t-lists select {
+font-size: 11px;
+margin-right: 20px;
+}
+
 .f-t-lists form {
 display: inline;
 margin: 0;
@@ -424,8 +447,132 @@ zoom: 1;
 
 .ui-dialog {position: fixed;}
 
+.ft-tabs-wrapper {
+padding: 0 60px 0 20px;
+}
+
+.ft-tabs {
+color: #3F61FF;
+padding-bottom: 5px;
+padding-left: 40px;
+border-bottom: 1px dotted #3F61FF;
+}
+
+.ft-tabs a {
+color: #0E20EF;
+text-decoration: none;
+font-size: 11px;
+font-weight: bold;
+outline: none;
+white-space: nowrap;
+padding: 1px 8px 2px;
+}
 
 
+.ft-tabs a.ft-tab-active {
+color: white;
+text-decoration: none;
+background-color: #4F7EFF;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+-moz-box-shadow: 0px 1px 3px #9F9F9F;
+-webkit-box-shadow: 0px 1px 3px #9F9F9F;
+box-shadow: 0px 1px 3px #9F9F9F;
+}
+
+.ft-tab-content {
+min-height: 600px;
+}
+
+.ft-page-list span {
+color: #666;
+cursor: pointer;
+}
+
+.ft-page-list span.ft-page-act {
+color: #111;
+font-weight: bold;
+}
+
+.ft-pages-list {
+padding-top: 15px;
+padding-bottom: 5px;
+text-align: right;
+}
+
+.forum-item-txt {
+padding-bottom: 10px;
+}
+
+.forum-item-txt small {
+position: relative;
+margin-left: 10px;
+}
+
+.forum-btn {
+cursor: pointer;
+font-size: 11px;
+font-weight: bold;
+text-align: center;
+margin-right: 16px;
+white-space: nowrap;
+height: 27px;
+line-height: 27px;
+min-width: 54px;
+outline: 0;
+padding: 0 8px;
+-moz-border-radius: 2px;
+-webkit-border-radius: 2px;
+border-radius: 2px;
+-moz-transition: all 0.218s;
+-o-transition: all 0.218s;
+-webkit-transition: all 0.218s;
+transition: all 0.218s;
+display: inline-block;
+}
+
+.forum-btn:hover {
+border: 1px solid #C6C6C6;
+-moz-transition: all 0.218s;
+-o-transition: all 0.218s;
+-webkit-transition: all 0.218s;
+transition: all 0.218s;
+-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+-ms-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+-o-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.new-topic-btn {
+height: 23px;
+line-height: 23px;
+border: 1px solid #3079ED;
+color: white;
+background-color: #4D90FE;
+background-image: -webkit-linear-gradient(top,#4D90FE,#4787ED);
+background-image: -moz-linear-gradient(top,#4D90FE,#4787ED);
+background-image: -ms-linear-gradient(top,#4D90FE,#4787ED);
+background-image: -o-linear-gradient(top,#4D90FE,#4787ED);
+background-image: linear-gradient(top,#4D90FE,#4787ED);
+}
+
+.new-topic-btn:hover {
+color: white;
+border: 1px solid #2F5BB7;
+background-color: #357AE8;
+background-image: -webkit-linear-gradient(top,#4D90FE,#357AE8);
+background-image: -moz-linear-gradient(top,#4D90FE,#357AE8);
+background-image: -ms-linear-gradient(top,#4D90FE,#357AE8);
+background-image: -o-linear-gradient(top,#4D90FE,#357AE8);
+background-image: linear-gradient(top,#4D90FE,#357AE8);
+}
+
+.content a.forum-btn {
+color: #fff !important;
+text-decoration: none;
+}
 
 
 

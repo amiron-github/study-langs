@@ -82,6 +82,17 @@ require 'digest/md5'
 		return l time, :format=>:short_f
 	end
 	
+  def userpage_for(user) 
+		url = user.id
+		if user.setting
+			unless !user.setting.url || user.setting.url.strip == ''
+				url = user.setting.url
+			end
+		end
+		url= url_for(:controller => 'forums', :action => 'show_user_posts', :id=>1, :user_id=>url)
+		return url
+  end
+	
   def gravatar_for(user) 
 		email_address = user.email.downcase
 		hash = Digest::MD5.hexdigest(email_address)

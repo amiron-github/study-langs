@@ -78,24 +78,19 @@ function checkTopicContent() {
 
 <div class="forum">
 <div class="f-title">
-<%= @topic.forum.name  %>  > <%= @topic.fcategory.name %>
+<%= @topic.forum.name  %> » <%= @topic.fcategory.name %>
 </div>
 
 <br>
-<br>
-<br>
 
-<!-- div style="color: green;">
-<%= flash[:notice] %>
-</div -->
 <%= render :partial => '/forums/topics_errors' %>
 
 <div class="forum-container">
 
 <%= render :partial => '/forums/f_tabs', :locals => {:active => 0} %>
 
-<div style="border-bottom: 1px solid #ccc; padding: 0px 15px; overflow: hidden;line-height: 30px">
-&nbsp;
+<div  class="f-t-lists">
+	&nbsp;
 </div>
 
 <div class="forum-wall">
@@ -108,7 +103,7 @@ function checkTopicContent() {
   <div class="f-t-quest f-topic-title-edit">
   
 	<% form_for @topic,  :url => { :action => :update_topic, :id => @topic.id}, :html=>{:id=>'edit_topic'}  do |f| %>
-				<a href="#" class="f-t-post-pic"><img src="<%= userpic_for(@topic.user)%>" width="50"/></a>
+				<a href="<%= userpage_for(@topic.user)%>" class="f-t-post-pic"><img src="<%= userpic_for(@topic.user)%>" width="50"/></a>
 				<span><%= f.text_field :name %></span> 
 				
 <br><br>
@@ -160,10 +155,8 @@ function checkTopicContent() {
 
 <div class="f-topic"> 
 
-
-
   <div class="f-t-quest"> 
-	<a href="#" class="f-t-post-pic"><img src="<%= gravatar_url_for(@topic.user, 50)%>"/>
+	<a href="<%= userpage_for(@topic.user) %>" class="f-t-post-pic"><img src="<%= userpic_for(@topic.user)%>" width="50"/>
 	</a>
 	<%= render :partial => '/forums/like_it', :locals => {:topic_id => @topic.id} %>
 	
@@ -181,7 +174,7 @@ function checkTopicContent() {
 					</div>
 	<%end%>
 	
-	<div class="f-t-post-info"><a href="#"><%=h @topic.user.name %></a> - <%= show_post_time(@topic_first.created_at) %></div>
+	<div class="f-t-post-info"><a href="<%= userpage_for(@topic.user)%>"><%=h @topic.user.name %></a> - <%= show_post_time(@topic_first.created_at) %></div>
 	
 	<div class="f-t-quest-content">
 		<%=simple_format (@topic_first.content) %>
@@ -195,18 +188,15 @@ function checkTopicContent() {
 
 <%end%>
   
-	 
-	 
+	
 </div>
 
 
-
-
-<div class="f-t-posts-info"> <%= @topic_posts.length%> <%if @topic_posts.length == 1%>comment<%else%>comments<%end%></div>
+<div class="f-t-posts-info" id="comments"> <%= @topic_posts.length%> <%if @topic_posts.length == 1%>comment<%else%>comments<%end%></div>
 <% @topic_posts.each_with_index do |post,index| %> 
 
 	<div class="f-topic-item">
-				<a href="#" class="f-t-post-pic"><img src="<%= userpic_for(post.user)%>" width="40"/></a>
+				<a href="<%= userpage_for(post.user)%>" class="f-t-post-pic"><img src="<%= userpic_for(post.user)%>" width="40"/></a>
 				<% if admin_or_owner?(post.user_id)%>
 					<div class="f-t-post-change"> 
 					<%unless params[:edit_post]== post.id.to_s%><%= link_to "Edit comment", {:action=> 'show', id => @topic.id, :edit_post=> post.id} %> 
@@ -214,7 +204,7 @@ function checkTopicContent() {
 					</div>
 				<%end%>
 				
-				<div class="f-t-post-info"><a href="#"><%=h post.user.name %></a> - <%= show_post_time(post.created_at) %></div>
+				<div class="f-t-post-info"><a href="<%= userpage_for(post.user)%>"><%=h post.user.name %></a> - <%= show_post_time(post.created_at) %></div>
 
 		<% if params[:edit_post] == post.id.to_s && admin_or_owner?(post.user_id) %>
 		
@@ -238,9 +228,9 @@ function checkTopicContent() {
 <% if logged_in? %>
 <%unless params[:edit_title] || params[:edit_post]%>
 	<div class="f-topic-item">
-		<a href="#" class="f-t-post-pic"><img src="<%= userpic_for(current_user)%>" width="40"/></a>
+		<a href="<%= userpage_for(current_user)%>" class="f-t-post-pic"><img src="<%= userpic_for(current_user)%>" width="40"/></a>
 		<%= render :partial => '/site/user/user_name_update' %>	
-		<div class="f-t-post-info"><b style="color: #333">New comment by <a href="#"><%=h current_user.name %></a></b></div>
+		<div class="f-t-post-info"><b style="color: #333">New comment by <a href="<%= userpage_for(current_user)%>"><%=h current_user.name %></a></b></div>
 			<% form_for @post, :html=>{:class=>'form_to_disable'}, :url=>{:controller=>'posts',:action=>'create'} do |f| %>
 				<div class="f-post-edit">
 					<input type="hidden"  name="post[topic_id]" value="<%= @topic.id %>" />

@@ -1,18 +1,15 @@
 <div class="forum">
 <div class="f-title">
-<%= @forum.name  %> 
+<%= @forum.name  %> » Categories
 </div>
 
 <br>
-
-<br><br>
-
 
 <div class="forum-container">
 
 <%= render :partial => '/forums/f_tabs', :locals => {:active => 2} %>
 
-<div class="f-t-lists" style="border-bottom: 1px solid #ccc; padding: 0px 15px; overflow: hidden;line-height: 30px">
+<div class="f-t-lists">
 
 <% form_tag ( "", {:method =>:get} ) do %>
 	Languages

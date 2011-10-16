@@ -46,7 +46,7 @@ width: 250px;
 }
 
 
-#up-success, #upass-success, #un-success, #un-success1, #delres-success {
+#up-success, #upass-success, #un-success, #un-success1, #delres-success, #desc-success {
 white-space: nowrap;
 font-weight: bold;
 font-size: 11px;
@@ -161,4 +161,26 @@ top: 3px;
 padding: 2px;
 border: 1px solid #dfdfdf;
 background-color: #fff;
+}
+
+.profile-info-tbl tr {
+vertical-align: top;
+}
+
+#userdesc {
+font-weight: normal;
+color: #555;
+font-size: 12px;
+padding: 0 5px 5px;
+max-width: 400px;
+}
+
+#userdesc-form textarea {
+font-size: 12px;
+font-family: Verdana;
+padding: 0 4px 4px;
+}
+
+#userdesc p {
+margin: 0 0 7px;
 }

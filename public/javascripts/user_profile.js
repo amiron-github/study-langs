@@ -210,6 +210,8 @@ $("#del-user-btn").click(function() {
 })
 
 
+
+
 });
 
 function updateUserWords() {
@@ -225,6 +227,9 @@ $("#u-results").load("/ajax/ru_results.html", function() {
 	loadedEvents($("#u-results"));
 })
 }
+
+
+
 
 function changeNickname ()  {
 		var userName = $("#us-nickname").val();

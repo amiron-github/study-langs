@@ -359,10 +359,10 @@ class UsersController < ApplicationController
 		@status =0
 		if name.length >50
 			@status = 3
-		elsif name.length <2
-			@status = 2
-		elsif User.find(:first, :conditions=>["name=? and id!=?",name,user.id])
-			@status = 1
+#		elsif name.length <2
+#			@status = 2
+#		elsif User.find(:first, :conditions=>["name=? and id!=?",name,user.id])
+#			@status = 1
 		end
 		if @status == 0
 			if user.update_attribute(:name, name)
@@ -372,6 +372,32 @@ class UsersController < ApplicationController
 			end
 		else
 			render :js => 'userNameChanging('+@status.to_s+',"'+no_js(name)+'")'
+		end
+	end
+  end
+  
+  def update_desc
+  if !current_user
+	  render :nothing => true
+    else
+		desc = sanitize_string(params[:user_desc])
+		setting = current_user.setting
+		@status =0
+		if desc.length >200
+			@status = 3
+		end
+		if @status == 0
+			if setting.update_attribute(:desc, desc)
+				html_desc = ActionController::Base.helpers.simple_format(desc)
+				if desc.length < 1
+					html_desc = '<i>(no info)</i>'
+				end
+				render :js => 'userDescChanging('+@status.to_s+',"'+no_js(html_desc)+'","'+no_js(desc)+'")'
+			else
+				render :js => 'alert("Saving failed :(")'
+			end
+		else
+			render :js => 'userDescChanging('+@status.to_s+',"'+no_js(desc)+'","")'
 		end
 	end
   end

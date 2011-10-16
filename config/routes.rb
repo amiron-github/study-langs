@@ -13,16 +13,33 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/topics/update_post/:id', :controller => 'topics', :action => 'update_post'
   map.connect '/:lang/:to_lang/topics/:id/update_topic', :controller => 'topics', :action => 'update_topic'
   map.connect '/topics/:id/update_topic', :controller => 'topics', :action => 'update_topic'
+  map.connect '/:lang/:to_lang/forum/new_topic', :controller => 'topics', :action => 'new', :forum=>1
+  map.connect '/forum/new_topic', :controller => 'topics', :action => 'new', :forum=>1
   map.connect '/:lang/:to_lang/topics/new', :controller => 'topics', :action => 'new'
   map.connect '/:lang/:to_lang/topics', :controller => 'topics', :action => 'create'
+  map.connect '/:lang/:to_lang/forum/topic/:id', :controller => 'topics', :action => 'show'
+  map.connect '/forum/topic/:id', :controller => 'topics', :action => 'show'
   map.connect '/:lang/:to_lang/topics/:id', :controller => 'topics', :action => 'show'
   map.resources :topics
+  map.connect '/:lang/:to_lang/forum/member/:user_id', :controller => 'forums', :action => 'show_user_posts', :id=>1
+  map.connect '/forum/member/:user_id', :controller => 'forums', :action => 'show_user_posts', :id=>1
+  map.connect '/:lang/:to_lang/forum/my_page', :controller => 'forums', :action => 'show_my_posts', :id=>1
+  map.connect '/forum/my_page', :controller => 'forums', :action => 'show_my_posts', :id=>1
+  map.connect '/:lang/:to_lang/forum/favorites', :controller => 'forums', :action => 'show_favorites', :id=>1
+  map.connect '/forum/favorites', :controller => 'forums', :action => 'show_favorites', :id=>1
+  map.connect '/:lang/:to_lang/forum/category/:cat_id', :controller => 'forums', :action => 'show_cat', :forum_id=>1
+  map.connect '/forum/category/:cat_id', :controller => 'forums', :action => 'show_cat', :forum_id=>1
+  map.connect '/:lang/:to_lang/forum/categories', :controller => 'forums', :action => 'show_by_cat', :id=>1
+  map.connect '/forum/categories', :controller => 'forums', :action => 'show_by_cat', :id=>1
+  map.connect '/:lang/:to_lang/forum/', :controller => 'forums', :action => 'show', :id=>1
+  map.connect '/forum/', :controller => 'forums', :action => 'show', :id=>1
   map.connect '/:lang/:to_lang/forums/:forum_id/show_cat/:cat_id', :controller => 'forums', :action => 'show_cat'
   map.connect '/forums/:forum_id/show_cat/:cat_id', :controller => 'forums', :action => 'show_cat'
   map.connect '/:lang/:to_lang/forums/:id/show_by_cat', :controller => 'forums', :action => 'show_by_cat'
   map.connect '/forums/:id/show_by_cat', :controller => 'forums', :action => 'show_by_cat'
   map.connect '/:lang/:to_lang/forums/:id/show_favorites', :controller => 'forums', :action => 'show_favorites'
   map.connect '/forums/:id/show_favorites', :controller => 'forums', :action => 'show_favorites'
+  map.connect '/forums/:id/show_user_posts/:user_id', :controller => 'forums', :action => 'show_user_posts'
   map.connect '/:lang/:to_lang/forums/:id/show_my_posts', :controller => 'forums', :action => 'show_my_posts'
   map.connect '/forums/:id/show_my_posts', :controller => 'forums', :action => 'show_my_posts'
   map.connect '/:lang/:to_lang/forums/:id', :controller => 'forums', :action => 'show'
@@ -124,6 +141,7 @@ ActionController::Routing::Routes.draw do |map|
   map.edit '/edit', :controller => 'users', :action => 'save_user'
   map.psedit '/psedit', :controller => 'users', :action => 'save_pass'
   
+  map.user_name '/update_desc', :controller => 'users', :action => 'update_desc'
   map.user_name '/update_nick', :controller => 'users', :action => 'update_nick'
   
   map.userdata '/userdata' , :controller => 'userdata', :action => 'index'

@@ -5,20 +5,20 @@
 <div class="forum">
 
 <div class="f-title">
-<%= @forum.name  %> » My page
+<%= @forum.name  %> » Member page
 </div>
 <br/>
 <div class="forum-container">
 
-<%= render :partial => '/forums/f_tabs', :locals => {:active => 4} %> 
+<%= render :partial => '/forums/f_tabs', :locals => {:active => 0} %> 
 
 <div  class="f-t-lists">
 	&nbsp;
 </div>
 
 
-	<table cellpadding="0" cellspacing="20" width="600">
-		<col width="110"><col width="80"><col>
+	<table cellpadding="0" cellspacing="20">
+		<col><col><col>
 		<tr valign="top">
 			<td rowspan="2">
 			<div class="userpic-wrapper">
@@ -39,14 +39,14 @@
 			<td>User's info  
 			</td>
 			<td>
-				<%= render :partial => "/site/user/user_desc_update" %>
+				<%= @user.setting.desc %>
 			</td>
 		</tr>
 	</table>
 
 <div class="ft-tabs-wrapper">
   <div class="ft-tabs">
-  <a class="ft-tab-my-topics ft-tab-active" href="javascript:;">My topics</a> | <a class="ft-tab-my-comments" href="javascript:;">My comments</a>
+  <a class="ft-tab-my-topics ft-tab-active" href="javascript:;">Topics</a> | <a class="ft-tab-my-comments" href="javascript:;">Comments</a>
 </div> 
 <div class="forum-wall">
   <div class="ft-tab-content ft-my-topics">

@@ -1,0 +1,14 @@
+	<% form_tag ( "", {:method =>:get} ) do %>
+		Languages
+		<select name="lo" onChange="this.form.submit()">
+			<option <%if @find_status == '1' %>selected<%end%> value="1">English-Russian</option>
+			<option <%if @find_status == '2' %>selected<%end%> value="2">Russian-English</option>
+			<option <%if @find_status == '0'%>selected<%end%> value="0">All languages</option>
+		</select>
+		View
+		<select name="view" onChange="this.form.submit()">
+			<option <%if @view_type == '0' %>selected<%end%> value="0">standard</option>
+			<option <%if @view_type == '1' %>selected<%end%> value="1">detailed</option>
+			<option <%if @view_type == '2'%>selected<%end%> value="2">compact</option>
+		</select>
+	<%end %>

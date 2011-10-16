@@ -41,22 +41,17 @@ function checkTopicContent() {
 
 <div class="forum">
 <div class="f-title">
-<%= @forum.name  %> 
+<%= @forum.name  %> » New topic
 </div>
 
 <br>
-<br>
-<br>
-
-
 
 <div class="forum-container">
 
 <%= render :partial => '/forums/f_tabs', :locals => {:active => 0} %>
 
-<div style="border-bottom: 1px solid #ccc; padding: 0px 15px; overflow: hidden;line-height: 30px">
+<div class="f-t-lists">
 &nbsp;
-
 </div>
 
 <div class="forum-wall">
@@ -64,7 +59,7 @@ function checkTopicContent() {
 
 		<div class="f-topic"> 
 			<div class="f-t-quest">
-				<a href="#" class="f-t-post-pic"><img src="<%= userpic_for(current_user) %>" width="50"/></a>
+				<a href="<%= userpage_for(current_user) %>" class="f-t-post-pic"><img src="<%= userpic_for(current_user) %>" width="50"/></a>
 <%= render :partial => '/site/user/user_name_update' %>
 <%= render :partial => '/forums/topics_errors' %>
 

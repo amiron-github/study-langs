@@ -124,7 +124,45 @@
 
 $(document).ready(function(){
 	$(".f-topic-title-edit input").attr("autocomplete", "off");
+	
+	$(".ft-tab-my-topics").click(function() {
+		$(".ft-tabs a").removeClass("ft-tab-active");
+		$(this).addClass("ft-tab-active");
+		$(".ft-tab-content:first").show();
+		$(".ft-tab-content:last").hide();
+	}).click();
+
+	$(".ft-tab-my-comments").click(function() {
+		$(".ft-tabs a").removeClass("ft-tab-active");
+		$(this).addClass("ft-tab-active");
+		$(".ft-tab-content:last").show();
+		$(".ft-tab-content:first").hide();
+	});
+	
+itemsPager(".ft-my-topics",".forum-item",10)
+itemsPager(".ft-my-posts",".forum-item",10)	
 });
+
+function itemsPager(container,item,range) {
+	var items = $(container).find(item);
+	var page = 0;
+	items.each(function(index, el){
+		if (index % range == 0) {
+			page=page+1;
+			$(container).find(".ft-page-list").append('<span onClick="openItemPage(\''+container+'\', '+page+')">'+page+'</span> ');
+		}
+		$(el).addClass("ft-page").addClass("ft-page_"+page);
+	});
+	items.hide();
+	openItemPage(container, 1)
+}
+
+function openItemPage(container,page) {
+	$(container).find(".ft-page-act").removeClass("ft-page-act");
+	$(container).find(".ft-page-list span:eq("+(page-1)+")").addClass("ft-page-act")
+	$(container).find(".ft-page").hide();
+	$(container).find(".ft-page_"+page).show();
+}
 
 
 

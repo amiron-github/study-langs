@@ -1,12 +1,6 @@
 <%
 #needs variable @topics
 %>
-<div class="forum-wall">
-	<div style="font-size: 11px; padding: 15px 10px 10px; font-weight: bold">
-		<% if logged_in? %><strong><%= link_to "+ Create new", :controller=> 'topics', :action => 'new', :forum=>@forum.id %> </strong>
-		<%else%>You need to <a href="/login">login</a> so that you can participate in the forum
-		<%end%>
-	</div>
   <% for topic in @topics %>  
 	<div class="forum-item<%if has_my_post?(topic.id)%> f-my-post<%end%><%if is_my_topic?(topic.id)%> f-my-topic<%end%>">
 		<div class="forum-item-info"> 
@@ -25,7 +19,7 @@
 			</table>
 		</div>
 		<div class="forum-item-body">
-			<a href="#" class="f-item-pic"><img src="<%= userpic_for(topic.user)%>" width="30"/></a>
+			<a href="<%= userpage_for(topic.user) %>" class="f-item-pic"><img src="<%= userpic_for(topic.user)%>" width="30"/></a>
 			<div class="forum-item-title">
 				<%= link_to h(topic.name), :controller => 'topics', :action=>'show', :id=>topic.id%>
 			</div>
@@ -37,6 +31,4 @@
 			</div>		
 		</div>
 	</div> 
-  <% end %> 
-
-</div>
+  <% end %>

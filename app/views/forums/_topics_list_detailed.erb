@@ -1,14 +1,8 @@
 <%
 #needs variable @topics
 %>
-<div class="forum-wall forum-detailed">
-	<div style="font-size: 11px; padding: 15px 10px 10px; font-weight: bold">
-		<% if logged_in? %><strong><%= link_to "+ Create new", :controller=> 'topics', :action => 'new', :forum=>@forum.id %> </strong>
-		<%else%>You need to <a href="/login">login</a> so that you can participate in the forum
-		<%end%>
-	</div>
   <% for topic in @topics %>  
-	<div class="forum-item<%if has_my_post?(topic.id)%> f-my-post<%end%><%if is_my_topic?(topic.id)%> f-my-topic<%end%>">
+	<div class="forum-item forum-detailed<%if has_my_post?(topic.id)%> f-my-post<%end%><%if is_my_topic?(topic.id)%> f-my-topic<%end%>">
 		<div class="forum-item-info"> 
 			<table cellspacing="0" width="100%">
 				<tr>
@@ -25,7 +19,7 @@
 			</table>
 		</div>
 		<div class="forum-item-body">
-			<a href="#" class="f-item-pic"><img src="<%= userpic_for(topic.user)%>" width="30"/></a>
+			<a href="<%= userpage_for(topic.user) %>" class="f-item-pic"><img src="<%= userpic_for(topic.user)%>" width="30"/></a>
 			<div class="forum-item-title">
 				<%= link_to h(topic.name), :controller => 'topics', :action=>'show', :id=>topic.id%>
 			</div>
@@ -34,17 +28,19 @@
 			</div>
 			
 			<div class="forum-item-content"> 
-				<div><%if topic.posts.length > 0 %><%=simple_format truncate(topic.posts.first.content, 800) %><%end%></div>
+				<div class="forum-item-txt"><%if topic.posts.length > 0 %><%=simple_format truncate(topic.posts.first.content, 800) %><%end%>
+				<%if topic.posts.first.content.length > 800 %><small><%= link_to 'See more', :controller => 'topics', :action=>'show', :id=>topic.id%></small><%end%>
+				</div>
 				<%if topic.posts.length > 1 %>
 				<div class="forum-comments-title">
-					<%if topic.posts.length > 4 %><a href="#">View all <%= topic.posts.length-1 %> comments</a>
-					<%else%><a href="#"><%= topic.posts.length-1 %> comments</a>
+					<%if topic.posts.length > 4 %><a href="<%= url_for(:controller => 'topics', :action=>'show', :id=>topic.id, :anchor=>'comments')%>">View all <%= topic.posts.length-1 %> comments</a>
+					<%else%><a href="<%= url_for(:controller => 'topics', :action=>'show', :id=>topic.id, :anchor=>'comments')%>"><%= topic.posts.length-1 %> comments</a>
 					<%end%>
 				</div>
 				<div class="forum-item-comments"><% posts = topic.posts; posts.shift; posts = posts.last(3) %>
 				<% posts.each do |post|%>
-					<p><a href="#" class="comment-pic"><img src="<%= post.user.setting.picture %>" width="25"/></a>
-					<a href="#"><%= post.user.name %></a> - <%=strip_tags truncate(post.content, 270)%>
+					<p><a href="<%= userpage_for(post.user) %>" class="comment-pic"><img src="<%= post.user.setting.picture %>" width="25"/></a>
+					<a href="<%= userpage_for(post.user) %>"><%= post.user.name %></a> - <%=strip_tags truncate(post.content, 270)%>
 					<br><span class="comment-time"><%= show_post_time(post.created_at)%></span>
 					</p>
 				<%end%>
@@ -54,5 +50,3 @@
 		</div>
 	</div> 
   <% end %> 
-
-</div>

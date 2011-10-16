@@ -1,40 +1,22 @@
 <div class="forum">
-<div class="f-title">
-<%= @forum.name  %> 
+  <div class="f-title"><%= @forum.name  %></div>
+<br>
+ <div class="forum-container">
+
+  <%= render :partial => '/forums/f_tabs', :locals => {:active => 1} %> 
+
+  <div class="f-t-lists">
+	<%= render :partial => '/forums/view_settings' %>
+  </div>
+
+<div style="margin: 10px 50px 0px 50px;">
+<%= render :partial => '/site/user/user_name_update' %>
 </div>
 
-<br>
-
-<%= render :partial => '/site/user/user_name_update' %>
-<br><br>
-
-<div class="forum-container">
-
-<%= render :partial => '/forums/f_tabs', :locals => {:active => 1} %> 
-
-<div class="f-t-lists" style="border-bottom: 1px solid #ccc; padding: 0px 15px; overflow: hidden;line-height: 30px">
-
-<% form_tag ( "", {:method =>:get} ) do %>
-	Languages
-	<select name="lo" onChange="this.form.submit()">
-		<option <%if @find_status == '1' %>selected<%end%> value="1">English-Russian</option>
-		<option <%if @find_status == '2' %>selected<%end%> value="2">Russian-English</option>
-		<option <%if @find_status == '0'%>selected<%end%> value="0">All languages</option>
-	</select>
-	View
-	<select name="view" onChange="this.form.submit()">
-		<option <%if @view_type == '0' %>selected<%end%> value="0">standard</option>
-		<option <%if @view_type == '1' %>selected<%end%> value="1">detailed</option>
-		<option <%if @view_type == '2'%>selected<%end%> value="2">compact</option>
-	</select>
-<%end %>
-
-
-	<div align="right" style="font-size: 12px; float: right;"> 
+<div class="forum-wall">
+	<div style="overflow: hidden; padding: 10px"> <%= render :partial => '/forums/new_topic_btn' %>
 		<div align="right" style="font-size: 12px; float: right;"><%= will_paginate @topics %></div>
 	</div>
-</div>
-
 <% if @view_type == '1'%>
 <%= render :partial => '/forums/topics_list_detailed' %>
 <%elsif @view_type == '2' %>
@@ -43,3 +25,6 @@
 <%= render :partial => '/forums/topics_list' %>
 <%end%>
 </div>
+
+</div><!-- forum-container  -->
+</div><!-- forum-container  -->
