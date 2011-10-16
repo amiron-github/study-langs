@@ -1,23 +1,18 @@
 <div class="forum">
-<div class="f-title">
-<%= @forum.name  %>  » Favorites
-</div>
-
+	<div class="f-title">
+	<%= @forum.name  %>  » <span>Favorites</span>
+	</div>
 <br>
-
 <div class="forum-container">
-
-<%= render :partial => '/forums/f_tabs', :locals => {:active => 3} %> 
-
+  <%= render :partial => '/forums/f_tabs', :locals => {:active => 3} %> 
   <div class="f-t-lists">
 	<%= render :partial => '/forums/view_settings' %>
   </div>
   
 <div class="forum-wall">
-	<div align="right" style="overflow: hidden"> &nbsp;
-		<div align="right" style="font-size: 12px; float: right;"><%= will_paginate @topics %></div>
+	<div class="ft-pre-items"> &nbsp;
+		<div class="ft-pager"><%= will_paginate @topics %></div>
 	</div>
-
 <% if @view_type == '1'%>
 <%= render :partial => '/forums/topics_list_detailed' %>
 <%elsif @view_type == '2' %>
@@ -36,3 +31,4 @@
 --> 
 
 </div>
+</div><!-- end of forum-->

@@ -108,11 +108,15 @@ require_role "admin", :except => [:show, :show_by_cat, :show_cat, :show_favorite
 	unless @user
 	@user = User.find(:first, :include=>:setting, :conditions => ['settings.url=?', params[:user_id]])
 	end
-	activity=users_topics_and_posts(@user)
-	@topics = activity[0]
-	@comments = activity[1]
-	add_forum_css_js 
-    render :action => 'show_user'
+	if @user && current_user && current_user.id == @user.id
+			redirect_to :action => :show_my_posts
+	else
+		activity=users_topics_and_posts(@user)
+		@topics = activity[0]
+		@comments = activity[1]
+		add_forum_css_js 
+		render :action => 'show_user'
+	end
 	rescue StandardError => e
 		logger.warn e
 		render :file => "pages/404.html", :status => '404 Not Found', :layout => layout_by_lang

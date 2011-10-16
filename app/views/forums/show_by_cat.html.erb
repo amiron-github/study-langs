@@ -1,6 +1,6 @@
 <div class="forum">
 <div class="f-title">
-<%= @forum.name  %> » Categories
+<%= @forum.name  %> » <span>Categories</span>
 </div>
 
 <br>
@@ -19,15 +19,11 @@
 		<option <%if @find_status == '0'%>selected<%end%> value="0">All languages</option>
 	</select>
 <%end %>
-
-	<div align="right" style="font-size: 12px; float: right;"> 
-		<div align="right" style="font-size: 12px; float: right;">&nbsp;</div>
-	</div>
 </div>
 
 <div class="forum-wall">
 
-	<div style="font-size: 11px; padding: 15px 10px 10px; font-weight: bold">
+	<div class="ft-pre-items" style="font-size: 11px;font-weight: bold">
 		<% if logged_in? %>&nbsp;
 		<%else%>You need to <a href="/login">login</a> so that you can participate in the forum
 		<%end%>
