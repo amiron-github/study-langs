@@ -1,6 +1,6 @@
 <div class="forum">
 	<div class="f-title">
-	<%= @forum.name  %> » <span><%= @cat.name%></span>
+	<%= @forum.name  %> » <span>Category: <%= @cat.name%></span>
 	</div>
   <br>
 <div class="forum-container">
@@ -31,6 +31,9 @@
 <%else%>
 <%= render :partial => '/forums/topics_list' %>
 <%end%>
+<div class="ft-btm-page">&nbsp;
+		<div class="ft-pager"><%= will_paginate @topics %></div>
+</div>
 </div>
 
 </div>

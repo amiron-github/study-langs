@@ -18,13 +18,14 @@ require_role "admin", :except => [:show, :show_by_cat, :show_cat, :show_favorite
 		@find_status = cookies[:f_lopt]
 		langs = sort_by_lang(@find_status)
 	end
-	
-	if langs
-		@topics = @forum.topics.find(:all, :conditions => ['lang=? and to_lang=?', langs[0],langs[1]], :order=>'last_post_at DESC').paginate :page => params[:page], :per_page=> 15
-	else 
-		@topics = @forum.topics.find(:all, :order => 'last_post_at DESC').paginate :page => params[:page], :per_page=> 15
-	end
 	@view_type = list_view
+	paging = pages_by_view(@view_type)
+	if langs
+		@topics = @forum.topics.find(:all, :conditions => ['lang=? and to_lang=?', langs[0],langs[1]], :order=>'last_post_at DESC').paginate :page => params[:page], :per_page=> paging
+	else 
+		@topics = @forum.topics.find(:all, :order => 'last_post_at DESC').paginate :page => params[:page], :per_page=> paging
+	end
+	
 	add_forum_css_js 
     respond_to do |format|
       format.html # show.html.erb
@@ -87,10 +88,12 @@ require_role "admin", :except => [:show, :show_by_cat, :show_cat, :show_favorite
 		end
 	end
 	@view_type = list_view
+	paging = pages_by_view(@view_type)
 	if langs
 		@topics = @topics.select{|topic| topic[:lang] == langs[0] || topic[:to_lang] == langs[1]}
 	end
-	@topics = @topics.paginate :page => params[:page], :per_page=> 15
+	@topics = @topics.sort_by{ |topic| topic[:last_post_at] }.reverse
+	@topics = @topics.paginate :page => params[:page], :per_page=> paging
 	add_forum_css_js 
     respond_to do |format|
       format.html { render :action => 'show_favorites' }
@@ -114,6 +117,7 @@ require_role "admin", :except => [:show, :show_by_cat, :show_cat, :show_favorite
 		activity=users_topics_and_posts(@user)
 		@topics = activity[0]
 		@comments = activity[1]
+		@comments_size = activity[2]
 		add_forum_css_js 
 		render :action => 'show_user'
 	end
@@ -128,6 +132,7 @@ require_role "admin", :except => [:show, :show_by_cat, :show_cat, :show_favorite
 	activity=users_topics_and_posts(@user)
 	@topics = activity[0]
 	@comments = activity[1]
+	@comments_size = activity[2]
 	add_forum_css_js 
     render :action => 'show_my_posts'
 	rescue StandardError => e
@@ -140,7 +145,9 @@ require_role "admin", :except => [:show, :show_by_cat, :show_cat, :show_favorite
 	@cat = Fcategory.find(params[:cat_id])
 	@find_status = @cat.status.to_s
 	@view_type = list_view
-	@topics = @cat.topics.find(:all, :order => 'last_post_at DESC').paginate :page => params[:page], :per_page=> 15
+	@view_type = list_view
+	paging = pages_by_view(@view_type)
+	@topics = @cat.topics.find(:all, :order => 'last_post_at DESC').paginate :page => params[:page], :per_page=> paging
 	add_forum_css_js
     respond_to do |format|
       format.html { render :action => 'show_cat' }
@@ -233,9 +240,10 @@ private
 			end
 		end
 	end
+	comments_size = comments.length
 	topics = topics.uniq.sort_by{ |topic| topic[:last_post_at] }.reverse
 	comments = comments.uniq.sort_by{ |topic| topic[:last_post_at] }.reverse  
-	result = [topics, comments]
+	result = [topics,comments,comments_size]
 	return result
   end
   
@@ -270,6 +278,14 @@ private
 		view_type=cookies[:f_view]
 	end
 	return  view_type
+  end
+  
+  def pages_by_view(view)
+	paging = 20
+  	if view == '2'
+		paging = 30
+	end
+	return paging
   end
   
 end

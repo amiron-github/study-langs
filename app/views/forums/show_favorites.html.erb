@@ -20,7 +20,10 @@
 <%else%>
 <%= render :partial => '/forums/topics_list' %>
 <%end%>
-	
+<div class="ft-btm-page">&nbsp;
+		<div class="ft-pager"><%= will_paginate @topics %></div>
+		
+</div>	
  </div>
  
  <!--	

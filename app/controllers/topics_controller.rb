@@ -60,7 +60,9 @@ require_role "admin", :only => [:index, :destroy]
   def show
     @topic = Topic.find(params[:id])
 	@topic_posts = @topic.posts
-	@topic_first = @topic.posts.shift
+	@topic_first = @topic.posts.first
+	@topic.posts.shift
+	@topics_size = @topic_posts.length
 	@post = Post.new
 	@fcategories1=Fcategory.find(:all, :conditions=>['status=? or status=?',1,0])
 	@fcategories2=Fcategory.find(:all, :conditions=>['status=? or status=?',2,0])

@@ -90,7 +90,12 @@ function checkTopicContent() {
 <%= render :partial => '/forums/f_tabs', :locals => {:active => 0} %>
 
 <div  class="f-t-lists">
-	&nbsp;
+Languages: &nbsp;
+			<span class="f-cat-langs"> <%if @langs_option == '1' %>English-Russian<%end%>
+			<%if @langs_option == '2' %>Russian-English<%end%> 
+			<%if @langs_option == '0'%>All languages<%end%>  </span>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Category: <span class="f-cat-langs"><%= link_to h(@topic.fcategory.name), {:controller=>'forums', :action=>'show_cat',:forum_id=>@topic.forum_id, :cat_id=>@topic.fcategory.id}, {:title=> 'Category: '+@topic.fcategory.name}%></span> 
 </div>
 
 <div class="forum-wall">
@@ -181,7 +186,7 @@ function checkTopicContent() {
 	</div>
 	<div class="f-t-quest-sets">
 		<%= link_to h(@topic.fcategory.name), {:controller=>'forums', :action=>'show_cat',:forum_id=>@topic.forum_id, :cat_id=>@topic.fcategory.id}, {:title=> 'Category: '+@topic.fcategory.name}%> 
-		| Languages: <%=h show_lang @topic.lang %>-<%=h show_lang @topic.to_lang %> 
+		| <%=h show_lang @topic.lang %>-<%=h show_lang @topic.to_lang %> 
 	</div>
   </div>  
 </div>
@@ -192,7 +197,7 @@ function checkTopicContent() {
 </div>
 
 
-<div class="f-t-posts-info" id="comments"> <%= @topic_posts.length%> <%if @topic_posts.length == 1%>comment<%else%>comments<%end%></div>
+<div class="f-t-posts-info" id="comments"> <%= @topics_size %> <%if @topics_size == 1%>comment<%else%>comments<%end%></div>
 <% @topic_posts.each_with_index do |post,index| %> 
 
 	<div class="f-topic-item">

@@ -390,7 +390,7 @@ class UsersController < ApplicationController
 			if setting.update_attribute(:desc, desc)
 				html_desc = ActionController::Base.helpers.simple_format(desc)
 				if desc.length < 1
-					html_desc = '<i>(no info)</i>'
+					html_desc = '<i>not available</i>'
 				end
 				render :js => 'userDescChanging('+@status.to_s+',"'+no_js(html_desc)+'","'+no_js(desc)+'")'
 			else
