@@ -8,9 +8,10 @@
 <div class="f-t-lists">
 	<%= render :partial => '/forums/view_settings' %>
 </div>
-<%= render :partial => '/site/user/user_name_update' %>
 <div class="forum-wall">
-	<div class="ft-pre-items"> <%= render :partial => '/forums/new_topic_btn' %>
+	<div class="ft-pre-items"> 
+	<%= render :partial => '/site/user/user_name_update' %>
+	<%= render :partial => '/forums/new_topic_btn' %>
 		<div class="ft-pager"><%= will_paginate @topics %></div>
 	</div>
 <% if @view_type == '1'%>

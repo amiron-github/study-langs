@@ -532,6 +532,28 @@ box-shadow: 0px 1px 3px #9F9F9F;
 min-height: 600px;
 }
 
+.ft-user-info {
+padding-left: 30px;
+}
+
+.ft-user-pages {
+overflow: hidden;
+padding-top: 15px;
+padding-bottom: 5px;
+}
+
+.ft-pages-note {
+float: left;
+padding-left: 20px;
+padding-right: 20px;
+color: #666;
+}
+
+.ft-pages-list {
+float: right;
+text-align: right;
+}
+
 .ft-page-list span {
 color: #666;
 cursor: pointer;
@@ -540,12 +562,6 @@ cursor: pointer;
 .ft-page-list span.ft-page-act {
 color: #111;
 font-weight: bold;
-}
-
-.ft-pages-list {
-padding-top: 15px;
-padding-bottom: 5px;
-text-align: right;
 }
 
 .forum-item-txt {
@@ -638,8 +654,13 @@ font-size: 11px;
 color: #000;
 }
 
-.forum .f-t-lists a {
+.forum .f-t-lists span a {
 color: #000 !important;
+}
+
+.forum .ft-profile-info {
+font-size: 12px;
+color: #555;
 }
 
 .item-name {
@@ -672,4 +693,22 @@ padding: 10px 0;
 .ft-btm-page .ft-pager {
 position: static;
 }
+
+.forum-cat {
+border-top: 1px solid #CCC;
+position: relative;
+padding: 6px 27px 10px 5px;
+}
+
+.forum-cat-title {
+font-size: 15px;
+font-weight: bold;
+}
+
+.forum-cat-desc {
+font-size: 12px;
+color: #444;
+padding: 6px 0 8px 0;
+}
+
 

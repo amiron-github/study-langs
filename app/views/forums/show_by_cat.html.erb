@@ -22,36 +22,23 @@
 </div>
 
 <div class="forum-wall">
-
-	<div class="ft-pre-items" style="font-size: 11px;font-weight: bold">
-		<% if logged_in? %>&nbsp;
-		<%else%>You need to <a href="/login">login</a> so that you can participate in the forum
-		<%end%>
+	<div class="ft-pre-items"> <%= render :partial => '/site/user/user_name_update' %><%= render :partial => '/forums/new_topic_btn' %>
 	</div>
 
-	
   <% for fcategory in @fcategories %>  
-	<div class="forum-item">
-	
-		
-		<div class="forum-item-title">
+	<div class="forum-cat">
+		<div class="forum-cat-title">
 			<%= link_to h(fcategory.name), :controller=>'forums', :action=>'show_cat',:forum_id=>@forum.id, :cat_id=>fcategory.id%>
 		</div>
-		
-		<div class="forum-item-content"> 
+		<div class="forum-cat-desc"> 
 			<%= fcategory.desc %>
 		</div>	
 		<div class="forum-item-bottom"> 
-			Topics: <%= fcategory.topics.length %> - Posts: <%= fcategory[:posts_len] %>
-		</div>		
-		
-			
+			Topics: <%= fcategory.topics.length %> - Comments: <%= fcategory[:posts_len] %>
+		</div>			
 	</div> 
   <% end %> 
-
-
-
-
+  <div class="forum-cat"></div>
 </div>
 
 </div>

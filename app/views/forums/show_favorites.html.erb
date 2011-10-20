@@ -20,9 +20,9 @@
 <%else%>
 <%= render :partial => '/forums/topics_list' %>
 <%end%>
-<div class="ft-btm-page">&nbsp;
+<% if @topics.length == 0%><i>You have no favorites topics yet</i><%end%>
+<div <% unless @topics.length == 0%>class="ft-btm-page"<%end%>>&nbsp;
 		<div class="ft-pager"><%= will_paginate @topics %></div>
-		
 </div>	
  </div>
  

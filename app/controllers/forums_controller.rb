@@ -63,8 +63,8 @@ require_role "admin", :except => [:show, :show_by_cat, :show_cat, :show_favorite
 			len = len + topic.posts.length
 		end
 		cat[:posts_len] = len
+		cat[:last_post] = cat.topics.last.posts.last
 	end
-	@posts_length = Topic
 	add_forum_css_js 
     respond_to do |format|
       format.html { render :action => 'show_by_cat' }

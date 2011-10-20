@@ -139,8 +139,8 @@ $(document).ready(function(){
 		$(".ft-tab-content:first").hide();
 	});
 	
-itemsPager(".ft-my-topics",".forum-item",10)
-itemsPager(".ft-my-posts",".forum-item",10)	
+itemsPager(".ft-my-topics",".forum-item",15)
+itemsPager(".ft-my-posts",".forum-item",15)	
 });
 
 function itemsPager(container,item,range) {
