@@ -174,12 +174,13 @@ function enable_form() {
 $(".form_to_disable").find("input, textarea, select").removeAttr("disabled")
 }
 
-function addFavorite (topic_id)  {
-$.post("/topics/to_favorite", { id: topic_id} );
+function addFavorite (topic_id,lang)  {
+$.post("/"+lang+"/topics/to_favorite", { id: topic_id} );
+
 }
 
-function removeFavorite (topic_id)  {
-$.post("/topics/no_favorite", { id: topic_id} );
+function removeFavorite (topic_id,lang)  {
+$.post("/"+lang+"/topics/no_favorite", { id: topic_id} );
 }
 
 function getCatsByLang() {

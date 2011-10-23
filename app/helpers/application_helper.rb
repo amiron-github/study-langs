@@ -68,10 +68,11 @@ require 'digest/md5'
 	
 	def show_lang(id)
 		langs_info = Topic::LANG
+		
 		@lang = 'Other'
 		langs_info.each do |lang|
 			if lang['id']== id
-				@lang = lang['short_en']
+				@lang = t('langs.short.'+lang['short_en'])
 			end
 		end
 		return @lang
@@ -79,7 +80,7 @@ require 'digest/md5'
 	
 	def show_post_time(time)
 		#return time.strftime("%H:%M %m/%d/%Y")
-		return l time, :format=>:short_f
+		return l(time, :format=>:short_f)
 	end
 	
   def userpage_for(user) 
@@ -123,7 +124,39 @@ require 'digest/md5'
 		end
 		return image_src
   end	
-	
-
+  
+  def category_name(category)
+	name = category.name
+	if I18n.locale == 'ru'
+		name = category.name_ru
+	end
+	return name
+  end
+  
+  def category_desc(category)
+	desc = category.desc
+	if I18n.locale == 'ru'
+		name = category.desc_ru
+	end
+	return name
+  end
+  
+  def comment_word(number)
+	comment = t('comment.other')
+	if number%10 == 1 && number%100!= 11
+		comment = t('comment.one')
+	elsif number%10 > 1 && number%10 <5 && number%100!= 12&& number%100!= 13&& number%100!= 14
+		comment = t('comment.few')
+	end
+	return comment
+  end
+  
+  def in_topics(number)
+	topic = t('in_topic.other')
+	if number%10 == 1 && number%100!= 11
+		topic = t('in_topic.one')
+	end
+	return topic
+  end
 	
 end

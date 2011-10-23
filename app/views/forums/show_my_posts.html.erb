@@ -3,24 +3,24 @@
 <%end%>
 <div class="forum">
 	<div class="f-title">
-	<%= @forum.name  %> » <span>My page</span>
+	<%= t('forum.string.forum_name')  %> » <span><%= t('forum.tabs.my_page')%></span>
 	</div>
   <br/>
 <div class="forum-container">
 	<%= render :partial => '/forums/f_tabs', :locals => {:active => 4} %> 
 	<div  class="f-t-lists">
-		<span class="ft-profile-info">You can change your nickname and avatar in your</span> <a href="/user_profile3.html#tab=4">Profile: Settings</a>
+		<span class="ft-profile-info"><%= t('forum.string.change_info')%></span> <a href="<%= url_for(:controller=>:site, :action=>:page, :url=>'user_profile.html', :lang=>params[:lang], :to_lang=>params[:to_lang]) %>"><%= t('forum.string.profile_setting')%></a>
 	</div>
 	<div class="ft-user-info">
 	<table cellpadding="0" cellspacing="20" width="100%">
-		<col width="110"><col width="80"><col>
+		<col width="110"><col width="90"><col>
 		<tr valign="top">
 			<td rowspan="2">
 			<div class="userpic-wrapper">
 				<img id="userpic-img" src="<%= userpic_for(@user) %>" width="80">
 			</div>
 			</td>
-			<td class="item-name">Nickname: 
+			<td class="item-name"><%= t('Nickname')%>: 
 			</td>
 			<td style="padding-left: 5px;">
 				<% if !@user.name || @user.name == '' %>
@@ -31,7 +31,7 @@
 			</td>
 		</tr>
 		<tr valign="top">
-			<td class="item-name">User's info: 
+			<td class="item-name"><%= t('User_info')%>: 
 			</td>
 			<td height="85">
 				<div style="max-width: 300px;">
@@ -43,21 +43,22 @@
 	</div>
 	<div class="ft-tabs-wrapper">
 	  <div class="ft-tabs">
-		<a class="ft-tab-my-topics ft-tab-active" href="javascript:;">My topics (<%=@topics.length %>)</a> | <a class="ft-tab-my-comments" href="javascript:;">My comments (<%=@comments_size %>)</a>
+		<a class="ft-tab-my-topics ft-tab-active" href="javascript:;"><%= t('forum.string.my_topics')%> (<%=@topics.length %>)</a> | <a class="ft-tab-my-comments" href="javascript:;"><%= t('forum.string.my_comments')%> (<%=@comments_size %>)</a><% com_size = @comments_size %> 
 	  </div>
 	</div> 
 <div class="forum-wall">
   <div class="ft-tab-content ft-my-topics">
    <div class="ft-user-pages" <% if @topics.length==0%>style="display: none"<%end%>>
-	<div class="ft-pages-list">Pages: <span class="ft-page-list"></span></div>
+	<div class="ft-pages-list"><%= t('forum.string.pages')%>: <span class="ft-page-list"></span></div>
   </div>
 	<%= render :partial => '/forums/topics_list_compact' %>
   </div>
-<% @topics = @comments%>
+ 
+<% @topics = @comments %>
   <div class="ft-tab-content ft-my-posts">
   <div class="ft-user-pages" <% if @topics.length==0%>style="display: none"<%end%>>
-	<div class="ft-pages-note"><%=@comments_size %> comments in <%= @comments.length%> topics </div>
-	<div class="ft-pages-list">Pages: <span class="ft-page-list"></span></div>
+	<div class="ft-pages-note"> <%=com_size %> <%= comment_word(com_size) %> <%= t('in')%> <%= @comments.length%> <%= in_topics(@comments.length)%> </div>
+	<div class="ft-pages-list"><%= t('forum.string.pages')%>: <span class="ft-page-list"></span></div>
   </div>
 	<%= render :partial => '/forums/topics_list_compact' %>
  </div>

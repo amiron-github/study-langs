@@ -22,7 +22,7 @@ require_role "admin", :only => [:index, :destroy]
 	  
       if !topic
 		current_user.favorites.create(:topic_id=>params[:id])
-		render :js => '$("#fav_'+params[:id].to_s+'").html("<a href=\"javascript:;\" onclick=\"removeFavorite(\''+params[:id].to_s+'\')\" title=\"Remove from favorites\"> <span class=\"f-init\"><img src=\"/images/icons/fugue/tick.png\"/></span><span class=\"f-hover\" ><img src=\"/images/icons/fugue/tick.png\"/></span></a>"); messageIt("<b>Added to favorites</b>",2)'
+		render :js => '$("#fav_'+params[:id].to_s+'").html("<a href=\"javascript:;\" onclick=\"removeFavorite(\''+params[:id].to_s+'\',\''+I18n.locale+'\')\" title=\"'+t("msg.forum.from_favor")+'\"> <span class=\"f-init\"><img src=\"/images/icons/fugue/tick.png\"/></span><span class=\"f-hover\" ><img src=\"/images/icons/fugue/tick.png\"/></span></a>"); messageIt("<b>'+no_js(t("msg.forum.is_favor"))+'</b>",2)'
       else
 		render :nothing => true
 	  end
@@ -36,7 +36,7 @@ require_role "admin", :only => [:index, :destroy]
       topic = current_user.favorites.find(:first, :conditions => ['topic_id=?', params[:id] ])	  
       if topic
 		current_user.favorites.delete(topic)
-		render :js => '$("#fav_'+params[:id].to_s+'").html("<a href=\"javascript:;\" onclick=\"addFavorite(\''+params[:id].to_s+'\')\" title=\"Add to favorites\"> <span class=\"f-init\"><img src=\"/images/icons/fugue/tick-grey.png\"/></span><span class=\"f-hover\"><img src=\"/images/icons/fugue/tick.png\"/></span></a>"); messageIt("<b>Removed from favorites</b>",2)'
+		render :js => '$("#fav_'+params[:id].to_s+'").html("<a href=\"javascript:;\" onclick=\"addFavorite(\''+params[:id].to_s+'\',\''+I18n.locale+'\')\" title=\"'+t("msg.forum.to_favor")+'\"> <span class=\"f-init\"><img src=\"/images/icons/fugue/tick-grey.png\"/></span><span class=\"f-hover\"><img src=\"/images/icons/fugue/tick.png\"/></span></a>"); messageIt("<b>'+no_js(t("msg.forum.not_favor"))+'</b>",2)'
       else
 		render :nothing => true
 	  end

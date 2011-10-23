@@ -1,7 +1,6 @@
 <% @page_title = 'Study-Languages-Online.com: Profile' %>
 <% @page_meta = {'description' => "User Profile"} %>
 
-
 <% content_for :special_js_css do %>
 <%= javascript_include_tag 'jquery.jplayer.min.js' %>
 <%= javascript_include_tag 'jp-control' %>
@@ -13,20 +12,40 @@
 <%= stylesheet_link_tag 'user-profile' %>
 
 <script type="text/javascript">
-<%if params[:tab] %>
-	openTabFromUrl(<%= params[:tab] %>);
-<%else%>
-	openTabFromUrl();
-<%end%>
+<%if params[:tab] %>openTabFromUrl(<%= params[:tab] %>);<%else%>openTabFromUrl();<%end%>
 
+function updateUserWords() {
+$("#u-vocabulary").html('<center><b style="color: #555">Loading data</b> <img src="/images/load.gif"/></center>');
+$("#u-vocabulary").load("/ajax/ru_words.html", function() {
+	loadedEvents($("#u-vocabulary"));
+})
+}
+
+function updateUserResults() {
+$("#u-results").html('<center><b style="color: #555">Loading data</b> <img src="/images/load.gif"/></center>');
+$("#u-results").load("/ajax/ru_results.html", function() {
+	loadedEvents($("#u-results"));
+})
+}
 </script>	
 
-
-
-
-
-
 <style type="text/css">
+
+.inpBlock {
+min-height: 825px;
+}
+
+.sbcr-free {
+color: #444;
+}
+
+.userdesc-btns  {
+font-size: 12px;
+padding-left: 5px;
+}
+.userdesc-btns input {
+font-size: 12px;
+}
 
 .new_item {
 opacity: 0.8;
@@ -38,7 +57,6 @@ opacity: 1;
 filter: alpha(opacity=100)
 }
 
-
 #tabs_row {
 padding-left: 30px;
 }
@@ -48,8 +66,12 @@ margin-left: 50px;
 .inpBlock h3 {
 }
 .item-name {
-font-size: 14px;
+font-size: 12px;
 font-weight: bold;
+}
+
+.profile-info-tbl td.item-name {
+height: 28px;
 }
 
 /* styles for vocabulary*/
@@ -363,11 +385,10 @@ box-shadow: 0px 1px 3px #9F9F9F;
 
 <p class="tab-info">* You can change your profile info in the tab <strong>Settings</strong></p>
 
-
-
+<br>
 <div class="pr_hsp"> 
-		<table cellpadding="0" cellspacing="20" width="100%" class="profile-info-tbl">
-		<col width="110"><col width="120"><col>
+		<table cellpadding="0" cellspacing="15" width="100%" class="profile-info-tbl">
+		<col width="120"><col width="120"><col>
 		<tr valign="top">
 			<td rowspan="4">
 			<div class="userpic-wrapper">
@@ -377,21 +398,21 @@ box-shadow: 0px 1px 3px #9F9F9F;
 			</div>
 			</div>
 			</td>
+			<td class="item-name">Email address: 
+			</td>
+			<td><%= current_user.email %>
+			</td>			
+		</tr>
+		<tr>
 			<td class="item-name">Nickname: 
 			</td>
 			<td>
 				<% if !current_user.name || current_user.name == '' %>
 					<span id="us-username"><input placeholder="enter a nickname" style="width: 200px" id="nick-blank"><input id="nick-blank-save" type="button" value="save"></span><span id="un-success1">&#10004; Changed</span>
-				<%else%>
+				<%else%>	
 					<span id="us-username"><%= current_user.name %></span>
 				<%end%>
-			</td>
-		</tr>
-		<tr>
-			<td class="item-name">Email: 
-			</td>
-			<td><%= current_user.email %>
-			</td>
+			</td>		
 		</tr>
 		<tr>
 			<td class="item-name">Account created:
@@ -401,73 +422,21 @@ box-shadow: 0px 1px 3px #9F9F9F;
 		</tr>
 		<tr>
 			<td class="item-name" >
-				<small>Short introduction</small> 
+				Short introduction 
 			</td>
-			<td>
+			<td style="height: 80px"><div style="max-width: 300px;position: relative; left: -5px">
 				<%= render :partial => "/site/user/user_desc_update" %>
+				</div>
 			</td>
 		</tr>
 		</table>
-		</div>
 
-
-		
-<div id="pictures" style="display: none" align="left" title="Edit user picture">
-<table width="100%" cellspacing="0">
-<col width="200"><col>
-	<tr align="center" class="up-tips">
-		<td>Preview</td>
-		<td style="font-size: 10px">Choose an option and click "Save"</td>
-	</tr>
-	<tr valign="top">
-	<td align="center">
-	<span id="used-userpic"> <img src="<%= userpic_for(current_user) %>" width="100"></span>
-	<div class="used-txt-holder"><span id="used-txt"> Current picture</span></div>
-	</td>
-	<td>
-
-<div class="pics-holder">
-<ul class="userpics-list">
-	<li>
-	<span> <img src="<%= gravatar_for(current_user) %>?d=identicon&f=y" width="30" ></span>
-	<div> Geometric figure</div>
-	</li>
-	<li>
-		<span> <img src="<%= gravatar_for(current_user) %>" width="30"></span>
-		<div> Customized on <a href="http://www.gravatar.com" target="_blank">www.gravatar.com</a></div>
-	</li>
-	<li>
-		<span> <img src="<%= gravatar_for(current_user) %>?d=wavatar&f=y" width="30"></span>
-		<div> Generated face</div>
-	</li>
-	<li>
-	<span> <img src="<%= gravatar_for(current_user) %>?d=monsterid&f=y" width="30"></span>
-	<div> Generated "monster"</div>
-	</li>
-	<li>
-	<span> <img src="<%= gravatar_for(current_user) %>?d=mm&f=y" width="30"></span>
-	<div> Mystery-man</div>
-	</li>
-</ul>
 
 </div>
-
-	</td>
-	<tr>
-</table>	
-<div class="userpic-tip">
-Choose an avatar from the options above and click "Save". You can also upload or edit your avatar on <a href="http://www.gravatar.com" target="_blank">www.gravatar.com</a>
- </div>
-
-</div>
-
-
 	
 <% if current_user.payment%>
 
-<hr/>
-<p class="ital"> <strong>Subscriptions</strong></p>
-
+<h3 class="tab-head">Subscriptions</h3>
 <p class="ital">You have the following subscriptions:</p>
 
 <table class="st-table">
@@ -477,7 +446,7 @@ Choose an avatar from the options above and click "Save". You can also upload or
         <th class="thbrd">Expiration Date</th>
     </tr>
     <tr>
-        <td height="50" style="padding: 15px;">Subscription to the <a href="everyday-course.html">Everyday Russian Course</a></td>
+        <td height="50" style="padding: 15px; font-size: 12px"><b>Subscription to the <a href="everyday-course.html">Everyday Russian Course</a><b></td>
         <td style="padding: 15px;"><em>Active</em></td>
         <td style="padding: 15px;">
 			<%= current_user.expired %><br>
@@ -488,12 +457,11 @@ Choose an avatar from the options above and click "Save". You can also upload or
 		
 		
 		<% else %>
+<h3 class="tab-head">Subscriptions</h3>
 
-<hr/>
-<p class="ital"> <strong>Subscriptions</strong>: <span class="ital" style="font-size: 11px"> You have no active subscriptions </span> </p>
-
+<p><em style="font-size: 11px"> You have no active subscriptions </em></p>
 <div class="if_no_payment">
-<p style="font-size: 11px; margin-bottom:10px; margin-top: 40px">Subscriptions on <i>Study-Languages-Online.com</i> offered by <span class="ital bold">EgretSoftware Inc.</span>:</p>
+<p style="font-size: 11px; margin-bottom:10px; margin-top: 20px">Subscriptions on <i>Study-Languages-Online.com</i> offered by <span class="ital bold">EgretSoftware Inc.</span>:</p>
 
 <table class="st-table" id="subscription" style="background-color: #fff">
 	<tr>
@@ -505,7 +473,7 @@ Choose an avatar from the options above and click "Save". You can also upload or
 		</th>
 	</tr>
 	<tr>
-		<td style="padding: 15px;"><div style="font-size: 11px; line-height: 20px;" class="sbcr-free"> 2-month subscription to the <a href="everyday-course.html">Everyday&nbsp;Russian&nbsp;Course</a> </div>
+		<td style="padding: 15px;"><div style="font-size: 11px; line-height: 20px;" class="sbcr-free"> <b>2-month subscription to the <a href="everyday-course.html">Everyday&nbsp;Russian&nbsp;Course</a></b> </div>
 		</td>
 		<td style="padding: 15px;">$8.99&nbsp;USD
 		</td>
@@ -529,7 +497,7 @@ Choose an avatar from the options above and click "Save". You can also upload or
 		</td>
 	</tr>
 	<tr>
-		<td style="padding: 15px;"><div style="font-size: 11px; line-height: 20px;" class="sbcr-free"> 4-month subscription to the <a href="everyday-course.html">Everyday&nbsp;Russian&nbsp;Course</a> </div>
+		<td style="padding: 15px;"><div style="font-size: 11px; line-height: 20px;" class="sbcr-free"> <b>4-month subscription to the <a href="everyday-course.html">Everyday&nbsp;Russian&nbsp;Course</a></b> </div>
 		</td>
 		<td style="padding: 15px;">$14.99&nbsp;USD
 		</td>
@@ -554,7 +522,7 @@ Choose an avatar from the options above and click "Save". You can also upload or
 	</tr>
 	
 	<tr>
-		<td style="padding: 15px;"><div style="font-size: 11px; line-height: 20px;" class="sbcr-free"> 6-month subscription to the <a href="everyday-course.html">Everyday&nbsp;Russian&nbsp;Course</a> </div>
+		<td style="padding: 15px;"><div style="font-size: 11px; line-height: 20px;" class="sbcr-free"> <b>6-month subscription to the <a href="everyday-course.html">Everyday&nbsp;Russian&nbsp;Course</a></b> </div>
 		</td>
 		<td style="padding: 15px;">$19.99&nbsp;USD
 		</td>
@@ -579,11 +547,11 @@ Choose an avatar from the options above and click "Save". You can also upload or
 	</tr>
 </table>
 
-<p style="font-size: 11px; text-align: center;">* All payments are made through <span class="ital bold">PayPal</span> services - the safer, easier way to pay online!</p>
+<p style="font-size: 11px;">* All payments are made through <span class="ital bold">PayPal</span> services - the safer, easier way to pay online!</p>
 </div>
 		<%end%>
 
-
+<br><br><br><br><br><br><br><br>
 
 	</div>
 </div>
@@ -689,6 +657,51 @@ Choose an avatar from the options above and click "Save". You can also upload or
 
 </div><!-- end of user-area -->
 
+<div id="pictures" style="display: none" align="left" title="Edit user picture">
+<table width="100%" cellspacing="0">
+<col width="200"><col>
+	<tr align="center" class="up-tips">
+		<td>Preview</td>
+		<td style="font-size: 10px">Choose an option and click "Save"</td>
+	</tr>
+	<tr valign="top">
+	<td align="center">
+	<span id="used-userpic"> <img src="<%= userpic_for(current_user) %>" width="100"></span>
+	<div class="used-txt-holder"><span id="used-txt"> Current picture</span></div>
+	</td>
+	<td>
+
+<div class="pics-holder">
+<ul class="userpics-list">
+	<li>
+	<span> <img src="<%= gravatar_for(current_user) %>?d=identicon&f=y" width="30" ></span>
+	<div> Geometric figure</div>
+	</li>
+	<li>
+		<span> <img src="<%= gravatar_for(current_user) %>" width="30"></span>
+		<div> Customized on <a href="http://www.gravatar.com" target="_blank">www.gravatar.com</a></div>
+	</li>
+	<li>
+		<span> <img src="<%= gravatar_for(current_user) %>?d=wavatar&f=y" width="30"></span>
+		<div> Generated face</div>
+	</li>
+	<li>
+	<span> <img src="<%= gravatar_for(current_user) %>?d=monsterid&f=y" width="30"></span>
+	<div> Generated "monster"</div>
+	</li>
+	<li>
+	<span> <img src="<%= gravatar_for(current_user) %>?d=mm&f=y" width="30"></span>
+	<div> Mystery-man</div>
+	</li>
+</ul>
+
+</div>
+	</td>
+	<tr>
+</table>	
+<div class="userpic-tip">
+Choose an avatar from the options above and click "Save". You can also upload or edit your avatar on <a href="http://www.gravatar.com" target="_blank">www.gravatar.com</a>
+ </div>
 
 <div id="userpass" title="Change password" style="display: none">
 			<div class="err-block" style="display: none;">

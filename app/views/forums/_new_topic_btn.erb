@@ -1,3 +1,3 @@
-<%if logged_in?%><a href="<%= url_for(:controller=> :topics, :action=>:new, :forum=>1)%>" class="forum-btn new-topic-btn">New topic</a>
-<%else%><b style="font-size: 11px;">You need to <%= link_to 'login', :controller=>'forums', :action=>'show_my_posts', :id=>1%> so that you can participate in the forum</b>
+<%if logged_in?%><a href="<%= url_for(:controller=> :topics, :action=>:new, :forum=>1)%>" class="forum-btn new-topic-btn"><%= t('forum.string.new_topic')%></a>
+<%else%><b style="font-size: 11px;"><%= t('forum.string.go_login1')%> <%= link_to t('forum.string.go_login'), :controller=>'forums', :action=>'show_my_posts', :id=>1%> <%= t('forum.string.go_login2')%></b>
 <%end%>

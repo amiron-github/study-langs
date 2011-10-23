@@ -5,14 +5,24 @@
 	<div class="forum-item forum-compact<%if has_my_post?(topic.id)%> f-my-post<%end%><%if is_my_topic?(topic.id)%> f-my-topic<%end%>">
 		<div class="forum-item-info"> 
 		</div>
-		<div class="forum-item-body">
+		<div class="forum-item-body"><% @t_last = false
+			if topic.posts.count-1 > 0 
+				@t_last = true
+				@comments_size = topic.posts.count-1
+				@comment_last = topic.posts.last
+			end%>
 			<div style="position: absolute; right: 5px;"><%= render :partial => '/forums/like_it', :locals => {:topic_id => topic.id} %></div>
 			<a title="<%= topic.user.name %>" href="<%= userpage_for(topic.user) %>" class="f-item-pic"><img class="t-userpic-img" src="<%= userpic_for(topic.user)%>" width="30"/></a>
 			<div class="forum-item-title">
 				<%= link_to h(topic.name), :controller => 'topics', :action=>'show', :id=>topic.id%>
 			</div>	
 			<div class="forum-item-bottom"> 
-				<!-- b><%=h topic.user.name %></b> | --><%= link_to h(topic.fcategory.name), {:controller=>'forums', :action=>'show_cat',:forum_id=>topic.forum_id, :cat_id=>topic.fcategory.id} %> - <a href="<%= url_for(:controller => 'topics', :action=>'show', :id=>topic.id, :anchor=>'comments')%>"><%= topic.posts.count - 1 %> comments</a> - updated <%= show_post_time(topic.last_post_at) %> 
+				<%= link_to category_name(topic.fcategory), {:controller=>'forums', :action=>'show_cat',:forum_id=>topic.forum_id, :cat_id=>topic.fcategory.id}, :title=>t('forum.string.see_category') %> - <a title="<%= t('forum.string.see_comments')%>" href="<%= url_for(:controller => 'topics', :action=>'show', :id=>topic.id, :anchor=>'comments')%>"><%= topic.posts.count - 1 %> <%= comment_word(topic.posts.length-1)%></a> - 
+				<%if @t_last%>
+				<a title="<%= t('forum.string.see_last_comment')%>" href="<%= url_for(:controller => 'topics', :action=>'show', :id=>topic.id, :anchor=>'post_'+@comment_last.id.to_s )%>"><%= t('forum.string.updated_short')%> <%= show_post_time(topic.last_post_at) %></a> 
+				<%else%>
+				<%= t('forum.string.updated_short')%> <%= show_post_time(topic.last_post_at) %>
+				<%end%>
 			</div>		
 		</div>
 	</div> 

@@ -1,6 +1,6 @@
 <div class="forum">
 <div class="f-title">
-<%= @forum.name  %> » <span>Categories</span>
+<%= t('forum.string.forum_name')  %> » <span><%= t('forum.string.cats')%></span>
 </div>
 
 <br>
@@ -12,11 +12,11 @@
 <div class="f-t-lists">
 
 <% form_tag ( "", {:method =>:get} ) do %>
-	Languages
+	<%= t('forum.string.langs')%>
 	<select name="lo" onChange="this.form.submit()">
-		<option <%if @find_status == '1' %>selected<%end%> value="1">English-Russian</option>
-		<option <%if @find_status == '2' %>selected<%end%> value="2">Russian-English</option>
-		<option <%if @find_status == '0'%>selected<%end%> value="0">All languages</option>
+		<option <%if @find_status == '1' %>selected<%end%> value="1"><%= t('langs.en')%>-<%= t('langs.ru')%></option>
+		<option <%if @find_status == '2' %>selected<%end%> value="2"><%= t('langs.ru')%>-<%= t('langs.en')%></option>
+		<option <%if @find_status == '0'%>selected<%end%> value="0"><%= t('langs.all')%></option>
 	</select>
 <%end %>
 </div>
@@ -28,13 +28,13 @@
   <% for fcategory in @fcategories %>  
 	<div class="forum-cat">
 		<div class="forum-cat-title">
-			<%= link_to h(fcategory.name), :controller=>'forums', :action=>'show_cat',:forum_id=>@forum.id, :cat_id=>fcategory.id%>
+			<%= link_to category_name(fcategory), :controller=>'forums', :action=>'show_cat',:forum_id=>@forum.id, :cat_id=>fcategory.id%>
 		</div>
 		<div class="forum-cat-desc"> 
-			<%= fcategory.desc %>
+			<%= category_desc(fcategory) %>
 		</div>	
 		<div class="forum-item-bottom"> 
-			Topics: <%= fcategory.topics.length %> - Comments: <%= fcategory[:posts_len] %>
+			<%= t('forum.string.topics')%>: <%= fcategory.topics.length %> - <%= t('forum.string.comments')%>: <%= fcategory[:posts_len] %>
 		</div>			
 	</div> 
   <% end %> 

@@ -2,15 +2,124 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello_world: Hello world!
-  hello_flash: Hello flash!
   hello: Hello
   Username: Name
   Email: Email
   Password: Password
   Login: Login
+  Nickname: Nickname
+  User_info: User's info
   Forgotten Password: Forgotten Password?
-  Your Details: Your Details 
+  Your Details: Your Details
+  in: in
+  comment:
+    one: comment
+    few: comments
+    other: comments
+  in_topic:
+    one: topic
+    few: topics
+    other: topics	
+  msg:
+    base:
+      saved: Saved
+      sure: Are you sure?
+    forum:
+      to_favor: Add to favorites
+      from_favor: Remove from favorites
+      is_favor: Added to favorites
+      not_favor: Removed from favorites
+    errors:
+      nick:
+        taken: Nickname is already taken 
+        invalid: Invalid nickname
+        long: Nickname is too long <span class="neml">(maximum 50 symbols)</span>
+  btn:
+    save: Save
+    change: Change
+    edit: Edit
+    create: Create
+    cancel: Cancel
+    update: Update
+    next_page: Next »
+    previous_page: « Previous
+    down:
+      save: save
+      change: change
+      edit: edit
+      cancel: cancel
+  langs:
+    ru: Russian
+    en: English
+    fr: French
+    ja: Japanese
+    all: All languages
+    other: Other
+    short:
+      ru: RU
+      en: EN
+      fr: FR
+      ja: JA
+      other: Other
+  forum:
+    tabs:
+      stream: Stream
+      cats: Categories
+      login: Login
+      favorites: Favorites
+      my_page: My page
+    view:
+      standard: standard
+      detailed: detailed
+      compact: compact
+    errors:
+      topic_invalid: Topic title is invalid
+      topic_long: Topic title is too long (maximum 250 symbols)
+      topic_content_invalid: Topic content is invalid
+      topic_content_long: Topic content is too long (maximum 10000 symbols)
+      comment_invalid: Text of the comment is invalid
+      comment_long: Text of the comment is too long (maximum 10000 symbols)
+      desc_invalid: Invalid text
+      desc_long: Text is too long <br><small>(maximum 300 symbols)</small>  
+    string:
+      langs: Languages
+      view: View 
+      new_topic: New topic  
+      go_login1: You need to
+      go_login: login
+      go_login2:  so that you can participate in the forum
+      enter_nick: <strong>Attention!</strong> You can post new topics and comments only after you enter your nickname 
+      put_nick: enter a nickname
+      by: By
+      updated: Last updated
+      updated_short: updated
+      view_all: View all
+      cats: Categories
+      cat: Category
+      topics: Topics
+      comments: Comments
+      no_favorites: You have no favorites topics yet
+      edit_top: Edit topic
+      edit_comment: Edit comment
+      delete: Delete
+      new_comment: New comment by
+      add_comment: Post comment
+      topic_title: Topic title
+      topic_content: Topic content
+      change_info: You can change your nickname and avatar in your 
+      profile_setting: 'Profile: Settings'
+      max_desc_symb: Maximum 300 symbols
+      my_topics: My topics	  
+      my_comments: My comments
+      pages: Pages
+      user_page: Member page
+      not_available: not available
+      forum_name: Forum	
+      see_more: See more
+      last_comment_by: Last comment by	
+      see_last_comment: See the last comment
+      see_comments: See comments	 
+      see_category: See this category	  
   date:
     formats:
       default: "%Y-%m-%d"

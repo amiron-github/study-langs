@@ -4,42 +4,51 @@
   <% for topic in @topics %>  
 	<div class="forum-item forum-detailed<%if has_my_post?(topic.id)%> f-my-post<%end%><%if is_my_topic?(topic.id)%> f-my-topic<%end%>">
 		<div class="forum-item-info"> 
-			<table cellspacing="0" width="100%">
+			<table cellspacing="0" width="100%"><% @t_last = false
+			if topic.posts.count-1 > 0 
+				@t_last = true
+				@comments_size = topic.posts.count-1
+				@comment_last = topic.posts.last
+			end%>
 				<tr>
-					<td>By <b><%=h topic.user.name %></b> - Last updated: <%= show_post_time(topic.last_post_at) %>
-					
+					<td><%= t('forum.string.by')%> <b><%=h topic.user.name %></b> - 
+					<%if @t_last%>
+					<a title="<%= t('forum.string.see_last_comment')%>" href="<%= url_for(:controller => 'topics', :action=>'show', :id=>topic.id, :anchor=>'post_'+@comment_last.id.to_s )%>"><%= t('forum.string.updated')%>: <%= show_post_time(topic.last_post_at) %></a>
+					<%else%>
+					<%= t('forum.string.updated')%>: <%= show_post_time(topic.last_post_at) %> 
+					<%end%>
 					</td>
 					<td>
 						<div class="forum-item-info-last">
 						<%= render :partial => '/forums/like_it', :locals => {:topic_id => topic.id} %>&nbsp;&nbsp;&nbsp;&nbsp;
-						<span title="Replies"><%= topic.posts.count - 1 %> <img src="/images/icons/comment.png" alt="Replies"> &nbsp;</span>
+						<span <%if @t_last%>title="<%= t('forum.string.last_comment_by')%> <%= @comment_last.user.name%>" <%end%>><%= topic.posts.count-1 %> <img src="/images/icons/comment.png"> &nbsp;</span>
 						</div>
 					</td>
 				</tr>
 			</table>
 		</div>
 		<div class="forum-item-body">
-			<a href="<%= userpage_for(topic.user) %>" class="f-item-pic"><img src="<%= userpic_for(topic.user)%>" width="30"/></a>
+			<a title="<%= topic.user.name%>" href="<%= userpage_for(topic.user) %>" class="f-item-pic"><img src="<%= userpic_for(topic.user)%>" width="30"/></a>
 			<div class="forum-item-title">
 				<%= link_to h(topic.name), :controller => 'topics', :action=>'show', :id=>topic.id%>
 			</div>
-			<div class="forum-item-bottom"> 
-				<%= show_post_time(topic.created_at) %> - <%= link_to h(topic.fcategory.name), {:controller=>'forums', :action=>'show_cat',:forum_id=>topic.forum_id, :cat_id=>topic.fcategory.id} %> - <%=h show_lang(topic.lang) %>-<%=h show_lang(topic.to_lang) %>
+			<div class="forum-item-bottom">
+				<%= show_post_time(topic.created_at) %> - <%= link_to category_name(topic.fcategory), {:controller=>'forums', :action=>'show_cat',:forum_id=>topic.forum_id, :cat_id=>topic.fcategory.id} %> - <%=h show_lang(topic.lang) %>-<%=h show_lang(topic.to_lang) %>
 			</div>
 			
 			<div class="forum-item-content"> 
 				<div class="forum-item-txt"><%if topic.posts.length > 0 %><%=simple_format truncate(topic.posts.first.content, 800) %><%end%>
-				<%if topic.posts.first.content.length > 800 %><small><%= link_to 'See more', :controller => 'topics', :action=>'show', :id=>topic.id%></small><%end%>
+				<%if topic.posts.first.content.length > 800 %><small><%= link_to t('forum.string.see_more'), :controller => 'topics', :action=>'show', :id=>topic.id%></small><%end%>
 				</div>
 				<%if topic.posts.length > 1 %>
 				<div class="forum-comments-title">
-					<%if topic.posts.length > 4 %><a href="<%= url_for(:controller => 'topics', :action=>'show', :id=>topic.id, :anchor=>'comments')%>">View all <%= topic.posts.length-1 %> comments</a>
-					<%else%><a href="<%= url_for(:controller => 'topics', :action=>'show', :id=>topic.id, :anchor=>'comments')%>"><%= topic.posts.length-1 %> comments</a>
+					<%if topic.posts.length > 4 %><a title="<%= t('forum.string.see_comments')%>" href="<%= url_for(:controller => 'topics', :action=>'show', :id=>topic.id, :anchor=>'comments')%>"><%= t('forum.string.view_all')%> <%= topic.posts.length-1 %> <%= comment_word(topic.posts.length-1)%></a>
+					<%else%><a title="<%= t('forum.string.see_comments')%>" href="<%= url_for(:controller => 'topics', :action=>'show', :id=>topic.id, :anchor=>'comments')%>"><%= topic.posts.length-1 %> <%= comment_word(topic.posts.length-1)%></a>
 					<%end%>
 				</div>
 				<div class="forum-item-comments"><% posts = topic.posts; posts.shift; posts = posts.last(3) %>
 				<% posts.each do |post|%>
-					<p><a href="<%= userpage_for(post.user) %>" class="comment-pic"><img src="<%= post.user.setting.picture %>" width="25"/></a>
+					<p><a title="<%= post.user.name%>" href="<%= userpage_for(post.user) %>" class="comment-pic"><img src="<%= post.user.setting.picture %>" width="25"/></a>
 					<a href="<%= userpage_for(post.user) %>"><%= post.user.name %></a> - <%=strip_tags truncate(post.content, 270)%>
 					<br><span class="comment-time"><%= show_post_time(post.created_at)%></span>
 					</p>

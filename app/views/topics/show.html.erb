@@ -78,11 +78,9 @@ function checkTopicContent() {
 
 <div class="forum">
 <div class="f-title">
-<%= @topic.forum.name  %> » <span><%= @topic.fcategory.name %></span>
+<%= t('forum.string.forum_name')%> » <span><%= category_name(@topic.fcategory) %></span>
 </div>
-
 <br>
-
 <%= render :partial => '/forums/topics_errors' %>
 
 <div class="forum-container">
@@ -90,19 +88,17 @@ function checkTopicContent() {
 <%= render :partial => '/forums/f_tabs', :locals => {:active => 0} %>
 
 <div  class="f-t-lists">
-Languages: &nbsp;
-			<span class="f-cat-langs"> <%if @langs_option == '1' %>English-Russian<%end%>
-			<%if @langs_option == '2' %>Russian-English<%end%> 
-			<%if @langs_option == '0'%>All languages<%end%>  </span>
+<%= t('forum.string.langs')%>: &nbsp;
+			<span class="f-cat-langs"> <%if @langs_option == '1' %><%= t('langs.en')%>-<%= t('langs.ru')%><%end%>
+			<%if @langs_option == '2' %><%= t('langs.ru')%>-<%= t('langs.en')%><%end%> 
+			<%if @langs_option == '0'%><%= t('langs.all')%><%end%>  </span>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-Category: <span class="f-cat-langs"><%= link_to h(@topic.fcategory.name), {:controller=>'forums', :action=>'show_cat',:forum_id=>@topic.forum_id, :cat_id=>@topic.fcategory.id}, {:title=> 'Category: '+@topic.fcategory.name}%></span> 
+<%= t('forum.string.cat')%>: <span class="f-cat-langs"><%= link_to category_name(@topic.fcategory), {:controller=>'forums', :action=>'show_cat',:forum_id=>@topic.forum_id, :cat_id=>@topic.fcategory.id}, {:title=> 'Category: '+@topic.fcategory.name}%></span> 
 </div>
 
 <div class="forum-wall">
 
 <div class="f-title-wrapper">
-
-
   <% if params[:edit_title]=='1' && admin_or_owner?(@topic.user_id) %>
   <div class="f-topic"> 
   <div class="f-t-quest f-topic-title-edit">
@@ -110,72 +106,62 @@ Category: <span class="f-cat-langs"><%= link_to h(@topic.fcategory.name), {:cont
 	<% form_for @topic,  :url => { :action => :update_topic, :id => @topic.id}, :html=>{:id=>'edit_topic'}  do |f| %>
 				<a href="<%= userpage_for(@topic.user)%>" class="f-t-post-pic"><img src="<%= userpic_for(@topic.user)%>" width="50"/></a>
 				<span><%= f.text_field :name %></span> 
-				
 <br><br>
 				<span class="f-post-edit textarea"><textarea name="post[content]" id="post_content"  rows="5"><%= @topic_first.content %></textarea></span>
 
 			<div class="f-t-quest-sets">	
 
-					Languages:
+					<%= t('forum.string.langs')%>:
 					<select name="lang_option" style="font-size: 11px; min-width: 160px;" id="lang-option" onChange="getCatsByLang()">
-						<option <%if @langs_option == '1' %>selected<%end%> value="1"> English => Russian </option>
-						<option <%if @langs_option == '2' %>selected<%end%> value="2"> Russian => English </option>
+						<option <%if @langs_option == '1' %>selected<%end%> value="1"> <%= t('langs.en')%> => <%= t('langs.ru')%> </option>
+						<option <%if @langs_option == '2' %>selected<%end%> value="2"> <%= t('langs.ru')%> => <%= t('langs.en')%> </option>
 					</select>
-					
-					
 					<br>
-					Category: &nbsp;&nbsp;
+					<%= t('forum.string.cat')%>: &nbsp;&nbsp;
 					<span id="f-choose-category">
 					<select name="topic[fcategory_id]" style="font-size: 11px; min-width: 160px;" id="f-topic-cat">
 					
 						<%if @langs_option == '1'%>
-							<% @fcategories1.each do |category|%><option value="<%=category.id%>" <%if category.id == @topic.fcategory_id %>selected<%end%>><%=category.name%><%end%>
+							<% @fcategories1.each do |category|%><option value="<%=category.id%>" <%if category.id == @topic.fcategory_id %>selected<%end%>><%= category_name(category)%><%end%>
 						<%elsif @langs_option == '2'%>
-							<% @fcategories2.each do |category|%><option value="<%=category.id%>" <%if category.id == @topic.fcategory_id %>selected<%end%>><%=category.name%><%end%>
+							<% @fcategories2.each do |category|%><option value="<%=category.id%>" <%if category.id == @topic.fcategory_id %>selected<%end%>><%=category_name(category)%><%end%>
 						<%else%>
-							<% @fcategories.each do |category|%><option value="<%=category.id%>" <%if category.id == @topic.fcategory_id %>selected<%end%>><%=category.name%><%end%>
+							<% @fcategories.each do |category|%><option value="<%=category.id%>" <%if category.id == @topic.fcategory_id %>selected<%end%>><%=category_name(category)%><%end%>
 						<%end%>
-
 					</select>
-
 					</span>
 			</div>
 		<br>
-		<%= f.submit 'Update' %>  &nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Cancel', :controller => 'topics', :action=>'show', :id=>@topic.id %> 
+		<%= f.submit t('btn.update') %>  &nbsp;&nbsp;&nbsp;&nbsp;<%= link_to t('btn.cancel'), :controller => 'topics', :action=>'show', :id=>@topic.id %> 
 	<% end %>  
   </div>
   </div>
   
  <span id="f-category-options" style="display: none">
 	<select id="f-category-1">
-		<% @fcategories1.each do |category|%><option value="<%=category.id%>" <%if category.id == @topic.fcategory_id %>selected<%end%>><%=category.name%><%end%>
+		<% @fcategories1.each do |category|%><option value="<%=category.id%>" <%if category.id == @topic.fcategory_id %>selected<%end%>><%= category_name(category)%><%end%>
 	</select>
 	<select id="f-category-2">
-		<% @fcategories2.each do |category|%><option value="<%=category.id%>" <%if category.id == @topic.fcategory_id %>selected<%end%>><%=category.name%><%end%>
+		<% @fcategories2.each do |category|%><option value="<%=category.id%>" <%if category.id == @topic.fcategory_id %>selected<%end%>><%=category_name(category)%><%end%>
 	</select>
 </span> 
-  
-  
+ 
  <% else%>
 
 <div class="f-topic"> 
-
   <div class="f-t-quest"> 
 	<a href="<%= userpage_for(@topic.user) %>" class="f-t-post-pic"><img src="<%= userpic_for(@topic.user)%>" width="50"/>
 	</a>
 	<%= render :partial => '/forums/like_it', :locals => {:topic_id => @topic.id} %>
 	
-
-	 
 	<h3 class="f-topic-title"><%=h @topic.name %></h3>
 	
 	<% if admin_or_owner?(@topic.user_id) && !params[:edit_title]%>
 					<div class="f-t-post-change"> 
-						<%= link_to "Edit topic", {:action=> 'show', id => @topic.id, :edit_title=> 1} %> 
+						<%= link_to t('forum.string.edit_top'), {:action=> 'show', id => @topic.id, :edit_title=> 1} %> 
 						<%if logged_in? && current_user.has_role?("admin") %>
-						&nbsp;|&nbsp; <%= link_to "Delete", @topic, :confirm => 'Are you sure?', :method => :delete %>
+						&nbsp;|&nbsp; <%= link_to t('forum.string.delete'), @topic, :confirm => t('msg.base.sure'), :method => :delete %>
 						<%end%>
-						
 					</div>
 	<%end%>
 	
@@ -185,40 +171,35 @@ Category: <span class="f-cat-langs"><%= link_to h(@topic.fcategory.name), {:cont
 		<%=simple_format (@topic_first.content) %>
 	</div>
 	<div class="f-t-quest-sets">
-		<%= link_to h(@topic.fcategory.name), {:controller=>'forums', :action=>'show_cat',:forum_id=>@topic.forum_id, :cat_id=>@topic.fcategory.id}, {:title=> 'Category: '+@topic.fcategory.name}%> 
+		<%= link_to category_name(@topic.fcategory), {:controller=>'forums', :action=>'show_cat',:forum_id=>@topic.forum_id, :cat_id=>@topic.fcategory.id}, {:title=> t('forum.string.cat')+': '+category_name(@topic.fcategory)}%> 
 		| <%=h show_lang @topic.lang %>-<%=h show_lang @topic.to_lang %> 
 	</div>
   </div>  
 </div>
 
 <%end%>
-  
 	
 </div>
 
-
-<div class="f-t-posts-info" id="comments"> <%= @topics_size %> <%if @topics_size == 1%>comment<%else%>comments<%end%></div>
+<div class="f-t-posts-info" id="comments"> <%= @topics_size %> <%= comment_word(@topics_size) %></div>
 <% @topic_posts.each_with_index do |post,index| %> 
-
-	<div class="f-topic-item">
+	<div class="f-topic-item" id="post_<%= post.id %>">
 				<a href="<%= userpage_for(post.user)%>" class="f-t-post-pic"><img src="<%= userpic_for(post.user)%>" width="40"/></a>
 				<% if admin_or_owner?(post.user_id)%>
 					<div class="f-t-post-change"> 
-					<%unless params[:edit_post]== post.id.to_s%><%= link_to "Edit comment", {:action=> 'show', id => @topic.id, :edit_post=> post.id} %> 
-						&nbsp;|&nbsp;<%end%> <%= link_to "Delete", post, :confirm => 'Are you sure?', :method => :delete%>
+					<%unless params[:edit_post]== post.id.to_s%><%= link_to t('forum.string.edit_comment'), {:action=> 'show', id => @topic.id, :edit_post=> post.id} %> 
+						&nbsp;|&nbsp;<%end%> <%= link_to t('forum.string.delete'), post, :method => :delete, :confirm => t('msg.base.sure') %>
 					</div>
 				<%end%>
-				
 				<div class="f-t-post-info"><a href="<%= userpage_for(post.user)%>"><%=h post.user.name %></a> - <%= show_post_time(post.created_at) %></div>
 
 		<% if params[:edit_post] == post.id.to_s && admin_or_owner?(post.user_id) %>
-		
 			<% form_for post, :url=>{:controller=>'topics', :action=>'update_post', :id=>post.id}, :html=>{:id=>'edit_post'} do |f| %>
 			<div class="f-post-edit"><%= f.hidden_field :topic_id %><%= f.hidden_field :user_id %>
 			<textarea cols="40" id="edit_post_content" name="post[content]" rows="6"><%= post.content %></textarea>
 			</div>
 			<div class="forum-post-bottom"> 
-				<%= f.submit 'Update' %> <%= link_to 'Cancel', :action=> 'show' %>
+				<%= f.submit t('btn.update') %> <%= link_to t('btn.cancel'), :action=> 'show' %>
 			</div>		
 			<% end %>
 		<% else %>
@@ -227,7 +208,6 @@ Category: <span class="f-cat-langs"><%= link_to h(@topic.fcategory.name), {:cont
 			</div>	
 		<%end%>
 	</div>
-	
 <%end%>
 
 <% if logged_in? %>
@@ -235,7 +215,7 @@ Category: <span class="f-cat-langs"><%= link_to h(@topic.fcategory.name), {:cont
 	<div class="f-topic-item">
 		<a href="<%= userpage_for(current_user)%>" class="f-t-post-pic"><img src="<%= userpic_for(current_user)%>" width="40"/></a>
 		<%= render :partial => '/site/user/user_name_update' %>	
-		<div class="f-t-post-info"><b style="color: #333">New comment by <a href="<%= userpage_for(current_user)%>"><%=h current_user.name %></a></b></div>
+		<div class="f-t-post-info"><b style="color: #333"><%= t('forum.string.new_comment')%> <a href="<%= userpage_for(current_user)%>"><%=h current_user.name %></a></b></div>
 			<% form_for @post, :html=>{:class=>'form_to_disable'}, :url=>{:controller=>'posts',:action=>'create'} do |f| %>
 				<div class="f-post-edit">
 					<input type="hidden"  name="post[topic_id]" value="<%= @topic.id %>" />
@@ -243,7 +223,7 @@ Category: <span class="f-cat-langs"><%= link_to h(@topic.fcategory.name), {:cont
 					<%= f.text_area :content, :rows=>6, :id=>'new_post_content' %>
 				</div>
 				<div class="forum-post-bottom"> 
-					<%= f.submit 'Add comment' %>
+					<%= f.submit t('forum.string.add_comment') %>
 				</div>		
 			<% end %>
 	</div>
@@ -256,12 +236,12 @@ Category: <span class="f-cat-langs"><%= link_to h(@topic.fcategory.name), {:cont
 <br><br><br><br>
 
 <div style="display:none">
-	<span id="submit-err-msg1">Topic title is invalid</span>
-	<span id="submit-err-msg2">Topic title is too long (maximum 250 symbols)</span>
-	<span id="submit-err-msg3">Topic content is invalid</span>
-	<span id="submit-err-msg4">Topic content is too long (maximum 10000 symbols)</span>
-	<span id="comment-err-msg1">Text of the comment is invalid</span>
-	<span id="comment-err-msg2">Text of the comment is too long (maximum 10000 symbols)</span>
+	<span id="submit-err-msg1"><%= t('forum.errors.topic_invalid')%></span>
+	<span id="submit-err-msg2"><%= t('forum.errors.topic_long')%></span>
+	<span id="submit-err-msg3"><%= t('forum.errors.topic_content_invalid')%></span>
+	<span id="submit-err-msg4"><%= t('forum.errors.topic_content_long')%></span>
+	<span id="comment-err-msg1"><%= t('forum.errors.comment_invalid')%></span>
+	<span id="comment-err-msg2"><%= t('forum.errors.comment_long')%></span>
 </div>
 
 
@@ -269,6 +249,3 @@ Category: <span class="f-cat-langs"><%= link_to h(@topic.fcategory.name), {:cont
 </div><!-- end of forum-wall -->
 </div><!-- end of forum-container -->
 </div><!-- end of forum -->
-
-
-<br><br><br><br><br><br><br><br><br><br>

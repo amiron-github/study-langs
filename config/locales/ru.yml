@@ -2,16 +2,126 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 ru:
-  hello_world: hi!
-  hello_flash: Да
   hello: "Всем привет"
   User: Пользователь
   Username: Логин
   Email: Электронная почта
   Password: Пароль
   Login: Войти
+  Nickname: Ник
+  User_info: Информация
   Forgotten Password: Забыли пароль?
   Your Details: Вход на сайт
+  in: в
+  comment:
+    one: комментарий
+    few: комментария
+    other: комментариев
+  in_topic:
+    one: теме
+    few: темах
+    other: темах
+  msg:
+    base:
+      saved: Сохранено
+      sure: Вы уверены?
+    forum:
+      to_favor: Добавить в избранное
+      from_favor: Удалить из избранного
+      is_favor: Добавлено в избранное
+      not_favor: Удалено из избранного
+    errors:
+      nick:
+        taken: Такой ник уже занят 
+        invalid: Неправильный ник
+        long: Слишком длинный ник <span class="neml">(максимум 50 символов)</span>
+  btn:
+    save: Сохранить
+    change: Изменить
+    edit: Изменить
+    create: Создать
+    cancel: Отменить
+    update: Сохранить
+    next_page: Дальше »
+    previous_page: « Назад
+    down:
+      save: сохранить
+      change: изменить
+      edit: изменить
+      cancel: отменить
+  langs:
+    ru: Русский
+    en: Английский
+    fr: Французский
+    ja: Японский
+    all: Все языки
+    other: Другой
+    short:
+      ru: Рус
+      en: Анг
+      fr: Фр
+      ja: Яп
+  forum:
+    tabs:
+      stream: Лента
+      cats: Категории
+      login: Вход
+      favorites: Избранное
+      my_page: Моя страница
+    view:
+      standard: стандартный
+      detailed: подробный
+      compact: компактный
+    errors:
+      topic_invalid: Неправильное название темы
+      topic_long: Название темы слишком длинное (максимум 250 символов)
+      topic_content_invalid: Текст темы введен неверно
+      topic_content_long: Текст темы слишком длинный (максимум 10000 символов)
+      comment_invalid: Текст комментария введен неверно
+      comment_long: Текст комментария введен неверно (максимум 10000 символов)
+      desc_invalid: Неверное значение
+      desc_long: 'Описание слишком длинное <br><small>(максимум 300 символов)</small>'
+    string:
+      langs: Языки
+      view: Вид	
+      new_topic: Новая тема	
+      go_login1: Для участия в форуме вам необходимо 
+      go_login: выполнить вход
+      go_login2: " "
+      enter_nick: <strong>Внимание!</strong> Вы сможете участвовать в обсуждениях только после того, как введете свой ник
+      put_nick: введите ник
+      by: Автор
+      updated: Обновлено
+      updated_short: обновлено	  
+      view_all: Все 
+      cats: Категории
+      cat: Категория
+      topics: Тем
+      comments: Комментариев
+      topics_many: Темы
+      comments_many: Комментарии	  
+      no_favorites: В избранное ничего не добавлено	
+      edit_top: Редактировать
+      edit_comment: Редактировать
+      delete: Удалить
+      new_comment: Новый комментари	от
+      add_comment: Добавить
+      topic_title: Название темы
+      topic_content: Текст 
+      change_info: Изменить аватар и ник можно на странице
+      profile_setting: 'Профиль: Настройки'
+      max_desc_symb: Максимум 300 символов	 
+      my_topics: Мои темы	  
+      my_comments: Мои комментарии	
+      pages: Страницы
+      user_page: Страница пользователя
+      not_available: нет
+      forum_name: Форум
+      see_more: Дальше
+      last_comment_by: Последний комментарий от 
+      see_last_comment: Просмотреть последний комментарий
+      see_comments: Перейти к коментариям	 
+      see_category: Перейти к категории	  
   date:
     formats:
       default: "%d.%m.%Y"

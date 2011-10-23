@@ -122,7 +122,7 @@
 
 /////////////////////////////////
 
-
+var btns = {"cancel": "Cancel", "save": "Save", "delete": "Delete", "del_acc": "Delete account"}
 $(document).ready(function() { 
 
 updateUserWords();
@@ -135,10 +135,10 @@ $(".edit-userpic").click(function() {
 			height: 'auto',
 			width: 560,
 			modal: true
-		}).dialog( "option", "buttons", {
-			"Save": function() { changeUserpic( $("#used-userpic img").attr("src"))  }, 
-			"Cancel": function() { $(this).dialog("close"); } 
-			} );
+		}).dialog( "option", "buttons", [
+			{text:btns['save'], click: function() { changeUserpic( $("#used-userpic img").attr("src"))  }}, 
+			{text:btns['cancel'], click: function() { $(this).dialog("close"); }} 
+			] );
 		//$(".userpic-dial").find(".ui-dialog-buttonset button:first").button( "option", "disabled", true );
 			
  })
@@ -150,6 +150,7 @@ $(".userpics-list li").click(function(){
 	$("#used-txt").html(txt);
 })
 
+
  $("#edit-userpass").click(function() {
 		$( "#userpass" ).dialog({
 			dialogClass: 'userpass-dial',
@@ -157,7 +158,7 @@ $(".userpics-list li").click(function(){
 			width: 500,
 			open: function () { $(this).find(".userinfo-edit input").blur();  },
 			modal: true
-		}).dialog( "option", "buttons", {"Save": function() { changeUserPass ()  }, "Cancel": function() { $(this).dialog("close"); } } )
+		}).dialog( "option", "buttons", [{ text: btns['save'], click: function() {changeUserPass (); }}, {text: btns['cancel'], click: function() { $(this).dialog("close"); } }] )
 		.dialog({close: function(event, ui) { 
 			$("#userpass .err-block, #userpass .pass-error-msg").hide();
 			$("#userpass .userinfo-edit input").val("");
@@ -171,7 +172,10 @@ $(".edit-username").click(function() {
 			width: 500,
 			open: function () {  $(this).find(".userinfo-edit input").val($("#current_name").text()).blur();  },
 			modal: true
-		}).dialog( "option", "buttons", {"Save": function() { changeNickname ()  }, "Cancel": function() { $(this).dialog("close"); } } )
+		}).dialog( "option", "buttons", [
+			{text: btns['save'], click: function() { changeNickname ()  }}, 
+			{text: btns['cancel'], click: function() { $(this).dialog("close"); } }
+		] )
 		.dialog({close: function(event, ui) { 
 			$("#username .err-block, #userpass .nick-error-msg").hide();
 			$("#username .userinfo-edit input").val("");
@@ -187,7 +191,7 @@ $("#del-results-btn").click(function() {
 			width: 500,
 			open: function () {  $(this).find(".userinfo-edit input").val('').blur();  },
 			modal: true
-		}).dialog( "option", "buttons", {"Delete": function() { deleteResults ()  }, "Cancel": function() { $(this).dialog("close"); } } )
+		}).dialog( "option", "buttons", [{text: btns['delete'], click: function() { deleteResults ()  }},{ text: btns['cancel'], click: function() { $(this).dialog("close"); } }] )
 		.dialog({close: function(event, ui) { 
 			$("#del-results .err-block, #del-results .delres-error-msg").hide();
 			$("#del-results .userinfo-edit input").val("");
@@ -202,7 +206,7 @@ $("#del-user-btn").click(function() {
 			width: 500,
 			open: function () {  $("#del-user input").blur().val('').removeAttr("checked");  },
 			modal: true
-		}).dialog( "option", "buttons", {"Delete account": function() { deleteUser ()  }, "Cancel": function() { $(this).dialog("close"); } } )
+		}).dialog( "option", "buttons", [{text: btns['del_acc'], click: function() { deleteUser ()  }},{text: btns['cancel'], click: function() { $(this).dialog("close"); } }] )
 		.dialog({close: function(event, ui) { 
 			$("#del-user .err-block, #del-user .deluser-error-msg").hide();
 			$("#del-user .userinfo-edit input").val("");
@@ -210,24 +214,7 @@ $("#del-user-btn").click(function() {
 })
 
 
-
-
 });
-
-function updateUserWords() {
-$("#u-vocabulary").html('<center><b style="color: #555">Loading data</b> <img src="/images/load.gif"/></center>');
-$("#u-vocabulary").load("/ajax/ru_words.html", function() {
-	loadedEvents($("#u-vocabulary"));
-})
-}
-
-function updateUserResults() {
-$("#u-results").html('<center><b style="color: #555">Loading data</b> <img src="/images/load.gif"/></center>');
-$("#u-results").load("/ajax/ru_results.html", function() {
-	loadedEvents($("#u-results"));
-})
-}
-
 
 
 

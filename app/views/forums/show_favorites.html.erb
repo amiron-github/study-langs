@@ -1,6 +1,6 @@
 <div class="forum">
 	<div class="f-title">
-	<%= @forum.name  %>  » <span>Favorites</span>
+	<%= t('forum.string.forum_name')%>  » <span><%= t('forum.tabs.favorites') %></span>
 	</div>
 <br>
 <div class="forum-container">
@@ -11,7 +11,7 @@
   
 <div class="forum-wall">
 	<div class="ft-pre-items"> &nbsp;
-		<div class="ft-pager"><%= will_paginate @topics %></div>
+		<div class="ft-pager"><%= will_paginate @topics,:next_label=>t('btn.next_page'),:previous_label=>t('btn.previous_page') %></div>
 	</div>
 <% if @view_type == '1'%>
 <%= render :partial => '/forums/topics_list_detailed' %>
@@ -20,9 +20,9 @@
 <%else%>
 <%= render :partial => '/forums/topics_list' %>
 <%end%>
-<% if @topics.length == 0%><i>You have no favorites topics yet</i><%end%>
+<% if @topics.length == 0%><i><%= t('forum.string.no_favorites')%></i><%end%>
 <div <% unless @topics.length == 0%>class="ft-btm-page"<%end%>>&nbsp;
-		<div class="ft-pager"><%= will_paginate @topics %></div>
+		<div class="ft-pager"><%= will_paginate @topics,:next_label=>t('btn.next_page'),:previous_label=>t('btn.previous_page') %></div>
 </div>	
  </div>
  

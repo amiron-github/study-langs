@@ -30,7 +30,6 @@
     <%= stylesheet_link_tag css_file %>
   <% end -%>
   <%end%>
-   <% unless @no_social%><script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script><%end%>
   <link rel="icon" href="/site-icon.ico" type="image/x-icon">
   <link rel="shortcut icon" href="/site-icon.ico" type="image/x-icon">
   <%= yield :special_js_css %>
@@ -41,6 +40,8 @@
 	<%= yield :special_css %>
   </style>
 <%= material(243).body %>
+<% unless @no_social%><script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script><%end%>
+
   <!--[if lte IE 6]>
     <%= stylesheet_link_tag 'ie6.css' %>
   <![endif]-->
@@ -81,7 +82,6 @@
 <script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>	
 </div>
 <%end%>					
-						
 					</div>
                   </div>
                 </div>
@@ -97,78 +97,24 @@
                           </div>
                       </div>
                       <div id="nav2" class="menu-item">
-                          <div class="item-top">
-                            <div class="list down"></div> 
-                            <a href="/course.html">Online Courses</a>&nbsp;
-                          </div>
-                      </div>
-                      <div class="sub" style="display: none">
-                        <ul style="padding-left: 16px;">
-                          <li><a href="/beginner-course.html">Russian for Beginners</a> </li>
-                          <li><a href="/everyday-course.html">Everyday Russian</a> </li>
-
-                        </ul>
+                          <div class="item-top"><a href="/course.html">Online Courses</a>&nbsp;</div>
                       </div>
                       <div id="nav3" class="menu-item">
-                          <div class="item-top">
-                            <div class="list down"></div> 
-                            <a href="/vocabulary.html">Vocabulary Topics</a>&nbsp;
-                          </div>
-                      </div>
-                      <div class="sub" style="display: none">
-                        <ul>
-						  <li><a href="/vocabulary.html">Topics</a></li>
-                          <li><a href="/vocabulary.html?tab=2">Flashcards</a></li>
-						  <li><a href="/vocabulary.html?tab=3">Lexical tests</a></li>
-                          <li><a href="/vocabulary.html?tab=4">Language games</a></li>
-                        </ul>
+                          <div class="item-top"> <a href="/vocabulary.html">Vocabulary Topics</a>&nbsp;</div>
                       </div>
 					  <div id="nav8" class="menu-item">
-                          <div class="item-top">
-                            <div class="list down"></div> 
-                            <a style="margin-left: 27px" href="/russian-grammar.html">Russian grammar</a>&nbsp;
-                          </div>
-                      </div>
-                      <div class="sub" style="display: none">
-                        <ul>
-                          <li><a href="/russian-grammar.html?tab=1">Grammar rules</a></li>
-						  <li><a href="/russian-grammar.html?tab=2">Grammar tables</a></li>
-                          <li><a href="/russian-grammar.html?tab=3">Grammar exercises</a></li>
-                        </ul>
+                          <div class="item-top"><a style="margin-left: 27px" href="/russian-grammar.html">Russian grammar</a>&nbsp;</div>
                       </div>
                       <div id="nav4" class="menu-item">
                         <div class="menu-item-front">
-                          <div class="item-top">
-                            <div class="list down"></div> 
-                            <a href="/pronunciation.html">Pronunciation</a>&nbsp;
-                          </div>
+                          <div class="item-top"><a href="/pronunciation.html">Pronunciation</a>&nbsp;</div>
                         </div>
                       </div>
-                      <div class="sub" style="display: none">
-                        <ul>
-                          <li><a href="/basic-sounds.html" title="Sounds in Russian">Sounds in Russian</a></li>
-                          <li><a href="/sounds-info.html" title="Infos">Info about sounds</a></li>
-                          <li><a href="/phonetics-course.html" title="Training">Phonetics course</a></li>
-                        </ul>
-                      </div>
                       <div id="nav5" class="menu-item">
-                          <div class="item-top">
-                            <div class="list down"></div> 
-                            <a href="/russian-reading.html" >Reading in Russian</a>&nbsp;
-                          </div>
-                      </div> 
-                      <div class="sub" style="display: none">
-                        <ul>
-                          <li><a href="/basic-letters.html" title="Alphabet">Russian Letters</a></li>
-                          <li><a href="/readingrules.html" title="Rules">Rules of reading</a> </li>
-                          <li><a href="/reading-practice.html" title="Training">Training exercises</a></li>
-                        </ul>
-                      </div>
-				
+                          <div class="item-top"><a href="/russian-reading.html" >Reading in Russian</a>&nbsp;</div>
+                      </div> 			
                       <div id="nav6" class="menu-item">
-                          <div class="item-top">
-                            <a href="/contacts.html" style="margin-left:20px;">Contacts/Questions</a>
-                          </div>
+                          <div class="item-top"><a href="/contacts.html" style="margin-left:20px;">Contacts/Questions</a></div>
                       </div>
 
 <% unless @no_social || @no_social_1%>

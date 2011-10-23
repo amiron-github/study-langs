@@ -123,7 +123,7 @@ require_role "admin", :only => [:index,:show,:new]
 		
 		end
 		respond_to do |format|
-		  format.html { redirect_to "/topics/#{topic}" }
+		  format.html { redirect_to :controller=> 'topics', :action=>'show', :id=>@post.topic_id }
 		  format.xml  { head :ok }
 		end
 	else

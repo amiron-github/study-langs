@@ -1,14 +1,14 @@
 	<% form_tag ( "", {:method =>:get} ) do %>
-		Languages
+		<%= t('forum.string.langs')%>
 		<select name="lo" onChange="this.form.submit()">
-			<option <%if @find_status == '1' %>selected<%end%> value="1">English-Russian</option>
-			<option <%if @find_status == '2' %>selected<%end%> value="2">Russian-English</option>
-			<option <%if @find_status == '0'%>selected<%end%> value="0">All languages</option>
+			<option <%if @find_status == '1' %>selected<%end%> value="1"><%= t('langs.en')%>-<%= t('langs.ru')%></option>
+			<option <%if @find_status == '2' %>selected<%end%> value="2"><%= t('langs.ru')%>-<%= t('langs.en')%></option>
+			<option <%if @find_status == '0'%>selected<%end%> value="0"><%= t('langs.all')%></option>
 		</select>
-		View
+		<%= t('forum.string.view')%>
 		<select name="view" onChange="this.form.submit()">
-			<option <%if @view_type == '0' %>selected<%end%> value="0">standard</option>
-			<option <%if @view_type == '1' %>selected<%end%> value="1">detailed</option>
-			<option <%if @view_type == '2'%>selected<%end%> value="2">compact</option>
+			<option <%if @view_type == '0' %>selected<%end%> value="0"><%= t('forum.view.standard')%></option>
+			<option <%if @view_type == '1' %>selected<%end%> value="1"><%= t('forum.view.detailed')%></option>
+			<option <%if @view_type == '2'%>selected<%end%> value="2"><%= t('forum.view.compact')%></option>
 		</select>
 	<%end %>

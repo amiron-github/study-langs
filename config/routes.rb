@@ -7,7 +7,9 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/:lang/:to_lang/posts/:id', :controller => 'posts', :action => 'update'
   map.resources :posts
   map.connect '/topics/remove_all_favorites', :controller => 'topics', :action => 'remove_all_favorites'
+  map.connect '/:lang/topics/no_favorite', :controller => 'topics', :action => 'remove_favorite'
   map.connect '/topics/no_favorite', :controller => 'topics', :action => 'remove_favorite'
+  map.connect '/:lang/topics/to_favorite', :controller => 'topics', :action => 'add_to_favorite'
   map.connect '/topics/to_favorite', :controller => 'topics', :action => 'add_to_favorite'
   map.connect '/:lang/:to_lang/topics/update_post/:id', :controller => 'topics', :action => 'update_post'
   map.connect '/topics/update_post/:id', :controller => 'topics', :action => 'update_post'
@@ -140,7 +142,7 @@ ActionController::Routing::Routes.draw do |map|
   map.set_word '/set_word', :controller => 'users', :action => 'set_word'
   map.edit '/edit', :controller => 'users', :action => 'save_user'
   map.psedit '/psedit', :controller => 'users', :action => 'save_pass'
-  
+  map.user_name '/:lang/update_desc', :controller => 'users', :action => 'update_desc'
   map.user_name '/update_desc', :controller => 'users', :action => 'update_desc'
   map.user_name '/update_nick', :controller => 'users', :action => 'update_nick'
   

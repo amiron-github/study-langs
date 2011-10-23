@@ -19,16 +19,16 @@ function checkTopicContent() {
 	
 	if (topic < 1 || topic > 250 || content < 1 || content > 10000 ) {
 		if (topic < 1) {
-			msg = $("#submit-err-msg1").text()
+			msg = $("#submit-err-msg1").html()
 		} else if (topic > 250) {
-			msg = $("#submit-err-msg2").text()
+			msg = $("#submit-err-msg2").html()
 		} else if (content < 1) {
-			msg = $("#submit-err-msg3").text()
+			msg = $("#submit-err-msg3").html()
 		} else if (content > 10000) {
-			msg = $("#submit-err-msg4").text()
+			msg = $("#submit-err-msg4").html()
 		}
 		
-	$('<div title="Invalid entry" style="padding: 30px 60px; font-size: 12px;"><b>'+msg+'</b></div>').dialog({modal:true}).dialog( "option", "buttons", {"Ok": function() { $(this).dialog("close"); } } );
+	$('<div title="Invalid entry" style="padding: 30px 60px; font-size: 12px;"><b>'+msg+'</b></div>').dialog({modal:true,width: 350}).dialog( "option", "buttons", {"Ok": function() { $(this).dialog("close"); } } );
 		status=1;
 	} 
 	return status;
@@ -41,7 +41,7 @@ function checkTopicContent() {
 
 <div class="forum">
 <div class="f-title">
-<%= @forum.name  %> » <span>New topic</span>
+<%= t('forum.string.forum_name')  %> » <span><%= t('forum.string.new_topic')%></span>
 </div>
 
 <br>
@@ -65,34 +65,34 @@ function checkTopicContent() {
 
 <% form_for @topic, :url=>{:controller=>'topics', :action=>'create'}, :html=>{:class=>"form_to_disable"} do |f| %> 
 		<% if params[:forum] %><input type="hidden" id="topic_forum_id" name="topic[forum_id]" value="<%= params[:forum] %>" /><%end%>				
-				<strong>Topic title:</strong><br>
+				<strong><%= t('forum.string.topic_title')%>:</strong><br>
 				<span class="f-topic-title-edit"><span><%= f.text_field :name %></span></span>
 				<br><br>
-				<strong>Topic content:</strong><br>
+				<strong><%= t('forum.string.topic_content')%>:</strong><br>
 				<span class="f-post-edit textarea"><textarea id="post_content" name="post[content]" cols="40" rows="5"><% @post.content %></textarea></span>
 				
 				<div class="f-t-quest-sets">
-					Languages:
+					<%= t('forum.string.langs')%>:
 					<select name="lang_option" style="font-size: 11px; min-width: 160px;" id="lang-option" onChange="getCatsByLang()">
-						<option <%if @langs_option == '1' %>selected<%end%> value="1"> English => Russian </option>
-						<option <%if @langs_option == '2' %>selected<%end%> value="2"> Russian => English </option>
+						<option <%if @langs_option == '1' %>selected<%end%> value="1"> <%= t('langs.en')%> => <%= t('langs.ru')%> </option>
+						<option <%if @langs_option == '2' %>selected<%end%> value="2"> <%= t('langs.ru')%> => <%= t('langs.en')%> </option>
 					</select>
 					<br>
-					Category: &nbsp;&nbsp;
+					<%= t('forum.string.cat')%>: &nbsp;&nbsp;
 					<span id="f-choose-category">
 					<select name="topic[fcategory_id]" style="font-size: 11px; min-width: 160px;" id="f-topic-cat">
 						<%if @langs_option == '1'%>
-							<% @fcategories1.each do |category|%><option value="<%=category.id%>"><%=category.name%></option><%end%>
+							<% @fcategories1.each do |category|%><option value="<%=category.id%>"><%= category_name(category)%></option><%end%>
 						<%elsif @langs_option == '2'%>
-							<% @fcategories2.each do |category|%><option value="<%=category.id%>"><%=category.name%></option><%end%>
+							<% @fcategories2.each do |category|%><option value="<%=category.id%>"><%=category_name(category)%></option><%end%>
 						<%else%>
-							<% @fcategories.each do |category|%><option value="<%=category.id%>"><%=category.name%></option><%end%>
+							<% @fcategories.each do |category|%><option value="<%=category.id%>"><%=category_name(category)%></option><%end%>
 						<%end%>
 					</select>
 					</span>
 				</div>
 				<br>
-				<%= f.submit "Create" %>
+				<%= f.submit t('btn.create') %>
 <% end %>				
 			</div>
 		</div>
@@ -100,17 +100,17 @@ function checkTopicContent() {
 
 <span id="f-category-options" style="display: none">
 	<select id="f-category-1">
-		<% @fcategories1.each do |category|%><option value="<%=category.id%>"><%=category.name%></option><%end%>
+		<% @fcategories1.each do |category|%><option value="<%=category.id%>"><%=category_name(category)%></option><%end%>
 	</select>
 	<select id="f-category-2">
-		<% @fcategories2.each do |category|%><option value="<%=category.id%>"><%=category.name%></option><%end%>
+		<% @fcategories2.each do |category|%><option value="<%=category.id%>"><%=category_name(category)%></option><%end%>
 	</select>
 </span>
 <div style="display:none">
-	<span id="submit-err-msg1">Topic title is invalid</span>
-	<span id="submit-err-msg2">Topic title is too long (maximum 250 symbols)</span>
-	<span id="submit-err-msg3">Topic content is invalid</span>
-	<span id="submit-err-msg4">Topic content is too long (maximum 10000 symbols)</span>
+	<span id="submit-err-msg1"><%= t('forum.errors.topic_invalid')%></span>
+	<span id="submit-err-msg2"><%= t('forum.errors.topic_long')%></span>
+	<span id="submit-err-msg3"><%= t('forum.errors.topic_content_invalid')%></span>
+	<span id="submit-err-msg4"><%= t('forum.errors.topic_content_long')%></span>
 </div>
 
 <br><br><br><br>

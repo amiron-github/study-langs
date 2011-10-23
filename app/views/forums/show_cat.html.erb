@@ -1,28 +1,28 @@
 <div class="forum">
 	<div class="f-title">
-	<%= @forum.name  %> » <span>Category: <%= @cat.name%></span>
+	<%= t('forum.string.forum_name')%> » <span><%= t('forum.string.cat')%>: <%= category_name(@cat)%></span>
 	</div>
   <br>
 <div class="forum-container">
 <%= render :partial => '/forums/f_tabs', :locals => {:active => 2} %> 
 <div class="f-t-lists" >
 	<% form_tag ( "", {:method =>:get} ) do %>
-		Languages: &nbsp;
-			<span class="f-cat-langs"> <%if @find_status == '1' %>English-Russian<%end%>
-			<%if @find_status == '2' %>Russian-English<%end%> 
-			<%if @find_status == '0'%>All languages<%end%>  </span>
+		<%= t('forum.string.langs')%>: &nbsp;
+			<span class="f-cat-langs"> <%if @find_status == '1' %><%= t('langs.en')%>-<%= t('langs.ru')%><%end%>
+			<%if @find_status == '2' %><%= t('langs.ru')%>-<%= t('langs.en')%><%end%> 
+			<%if @find_status == '0'%><%= t('langs.all')%><%end%>  </span>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		View
+		<%= t('forum.string.view')%>:
 		<select name="view" onChange="this.form.submit()">
-			<option <%if @view_type == '0' %>selected<%end%> value="0">standard</option>
-			<option <%if @view_type == '1' %>selected<%end%> value="1">detailed</option>
-			<option <%if @view_type == '2'%>selected<%end%> value="2">compact</option>
+			<option <%if @view_type == '0' %>selected<%end%> value="0"><%= t('forum.view.standard')%></option>
+			<option <%if @view_type == '1' %>selected<%end%> value="1"><%= t('forum.view.detailed')%></option>
+			<option <%if @view_type == '2'%>selected<%end%> value="2"><%= t('forum.view.compact')%></option>
 		</select>
 	<%end %>
 </div>
 <div class="forum-wall">
 	<div class="ft-pre-items"> <%= render :partial => '/site/user/user_name_update' %><%= render :partial => '/forums/new_topic_btn' %>
-		<div class="ft-pager"><%= will_paginate @topics %></div>
+		<div class="ft-pager"><%= will_paginate @topics,:next_label=>t('btn.next_page'),:previous_label=>t('btn.previous_page') %></div>
 	</div>	
 <% if @view_type == '1'%>
 <%= render :partial => '/forums/topics_list_detailed' %>
@@ -32,7 +32,7 @@
 <%= render :partial => '/forums/topics_list' %>
 <%end%>
 <div class="ft-btm-page">&nbsp;
-		<div class="ft-pager"><%= will_paginate @topics %></div>
+		<div class="ft-pager"><%= will_paginate @topics,:next_label=>t('btn.next_page'),:previous_label=>t('btn.previous_page') %></div>
 </div>
 </div>
 
