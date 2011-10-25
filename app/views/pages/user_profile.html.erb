@@ -1,29 +1,18 @@
-﻿<% @page_title = 'Study-Languages-Online.com: Profile' %>
+<% @page_title = 'Study-Languages-Online.com: Profile' %>
 <% @page_meta = {'description' => "User Profile"} %>
-
 
 <% content_for :special_js_css do %>
 <%= javascript_include_tag 'jquery.jplayer.min.js' %>
 <%= javascript_include_tag 'jp-control' %>
+<%= javascript_include_tag 'jquery-ui-1.8.16.dial.min.js' %>
+<%= stylesheet_link_tag 'custom-theme/jquery-ui-1.8.5.custom.css' %>
+<%= javascript_include_tag 'user_profile' %>
 
 <%= stylesheet_link_tag 'profile' %>
+<%= stylesheet_link_tag 'user-profile' %>
 
 <script type="text/javascript">
-<%if params[:tab] %>
-	openTabFromUrl(<%= params[:tab] %>);
-<%else%>
-	openTabFromUrl();
-<%end%>
-
-
-
-$(document).ready(function() { 
-
-updateUserWords()
-
-updateUserResults()
-
-});
+<%if params[:tab] %>openTabFromUrl(<%= params[:tab] %>);<%else%>openTabFromUrl();<%end%>
 
 function updateUserWords() {
 $("#u-vocabulary").html('<center><b style="color: #555">Loading data</b> <img src="/images/load.gif"/></center>');
@@ -38,55 +27,25 @@ $("#u-results").load("/ajax/ru_results.html", function() {
 	loadedEvents($("#u-results"));
 })
 }
-
-
-
-
-function loadedEvents(container) {
-
-container.find(".voc-details-content").css({opacity: 0})
-
-container.find(".voc-words-list").each(function(i,elem){
-	$(elem).find("tr:even").addClass("voc-list-even");
-}); 
-
-container.find(".tab-in-tab-list a").click(function() {
-	container.find(".tab-in-tab-list a").removeClass("tab-in-current");
-	$(this).addClass("tab-in-current");
-});
-
-container.find(".tab-in-tab-list a").not(".all-in-tab").click(function() {
-	var tMinHeight = $(this).parent().parent().height()
-	$(this).parent().parent().css({minHeight:  tMinHeight});
-	container.find(".tab-in-tab").hide();
-	tInd = $(".tab-in-tab-list a").index($(this));
-	container.find(".tab-in-tab:eq("+(tInd-1)+")").fadeIn(300);
-});
-
-container.find(".tab-in-tab-list a.all-in-tab").click(function(){
-	var tMinHeight = $(this).parent().parent().height()
-	$(this).parent().parent().css({minHeight:  tMinHeight});
-	container.find(".tab-in-tab").hide().show()
-})
-
-container.find(".voc-details").toggle(function(){
-		$(this).parent().find(".voc-topic-details").slideDown(function() {
-					$(this).parent().find(".voc-details-content").animate({opacity: 1},200);
-		})
-		$(this).parent().removeClass("details-hidden");
-	},function(){
-		$(this).parent().find(".voc-details-content").animate({opacity: 0},200, function() {
-			$(this).parent(".voc-topic-details").slideUp();
-		})
-		$(this).parent().addClass("details-hidden");
-});
-
-container.find(".myvoc-wrapper").css({minHeight: ($(".myvoc-wrapper").height()+600) });
-}
-
 </script>	
 
 <style type="text/css">
+
+.inpBlock {
+min-height: 825px;
+}
+
+.sbcr-free {
+color: #444;
+}
+
+.userdesc-btns  {
+font-size: 12px;
+padding-left: 5px;
+}
+.userdesc-btns input {
+font-size: 12px;
+}
 
 .new_item {
 opacity: 0.8;
@@ -98,7 +57,6 @@ opacity: 1;
 filter: alpha(opacity=100)
 }
 
-
 #tabs_row {
 padding-left: 30px;
 }
@@ -108,8 +66,12 @@ margin-left: 50px;
 .inpBlock h3 {
 }
 .item-name {
-font-size: 14px;
+font-size: 12px;
 font-weight: bold;
+}
+
+.profile-info-tbl td.item-name {
+height: 28px;
 }
 
 /* styles for vocabulary*/
@@ -422,16 +384,35 @@ box-shadow: 0px 1px 3px #9F9F9F;
 <h3 class="tab-head">Profile</h3>
 
 <p class="tab-info">* You can change your profile info in the tab <strong>Settings</strong></p>
+
 <br>
-
-
 <div class="pr_hsp"> 
-		<table cellpadding="0" cellspacing="20">
-		<tr>
-			<td class="item-name" width="200">Email: 
+		<table cellpadding="0" cellspacing="15" width="100%" class="profile-info-tbl">
+		<col width="120"><col width="120"><col>
+		<tr valign="top">
+			<td rowspan="4">
+			<div class="userpic-wrapper">
+				<img id="userpic-img" src="<%= userpic_for(current_user) %>" width="80">
+			<div align="center" style="font-size: 10px; padding-top: 5px" >
+				<a href="javascript:;" class="edit-userpic">Change</a>
+			</div>
+			</div>
+			</td>
+			<td class="item-name">Email address: 
 			</td>
 			<td><%= current_user.email %>
+			</td>			
+		</tr>
+		<tr>
+			<td class="item-name">Nickname: 
 			</td>
+			<td>
+				<% if !current_user.name || current_user.name == '' %>
+					<span id="us-username"><input placeholder="enter a nickname" style="width: 200px" id="nick-blank"><input id="nick-blank-save" type="button" value="save"></span><span id="un-success1">&#10004; Changed</span>
+				<%else%>	
+					<span id="us-username"><%= current_user.name %></span>
+				<%end%>
+			</td>		
 		</tr>
 		<tr>
 			<td class="item-name">Account created:
@@ -439,15 +420,23 @@ box-shadow: 0px 1px 3px #9F9F9F;
 			<td>    <%=current_user.created_at.strftime("%Y/%m/%d")%> <span style="font-size: 9px; font-style: italic">(<%= current_user.created_at.to_date.to_s(:long) %>)</span>
 			</td>
 		</tr>
+		<tr>
+			<td class="item-name" >
+				Short introduction 
+			</td>
+			<td style="height: 80px"><div style="max-width: 300px;position: relative; left: -5px">
+				<%= render :partial => "/site/user/user_desc_update" %>
+				</div>
+			</td>
+		</tr>
 		</table>
-		</div>
-	
+
+
+</div>
 	
 <% if current_user.payment%>
 
-<hr/>
-<p class="ital"> <strong>Subscriptions</strong></p>
-
+<h3 class="tab-head">Subscriptions</h3>
 <p class="ital">You have the following subscriptions:</p>
 
 <table class="st-table">
@@ -457,7 +446,7 @@ box-shadow: 0px 1px 3px #9F9F9F;
         <th class="thbrd">Expiration Date</th>
     </tr>
     <tr>
-        <td height="50" style="padding: 15px;">Subscription to the <a href="everyday-course.html">Everyday Russian Course</a></td>
+        <td height="50" style="padding: 15px; font-size: 12px"><b>Subscription to the <a href="everyday-course.html">Everyday Russian Course</a><b></td>
         <td style="padding: 15px;"><em>Active</em></td>
         <td style="padding: 15px;">
 			<%= current_user.expired %><br>
@@ -468,12 +457,11 @@ box-shadow: 0px 1px 3px #9F9F9F;
 		
 		
 		<% else %>
+<h3 class="tab-head">Subscriptions</h3>
 
-<hr/>
-<p class="ital"> <strong>Subscriptions</strong>: <span class="ital" style="font-size: 11px"> You have no active subscriptions </span> </p>
-
+<p><em style="font-size: 11px"> You have no active subscriptions </em></p>
 <div class="if_no_payment">
-<p style="font-size: 11px; margin-bottom:10px; margin-top: 40px">Subscriptions on <i>Study-Languages-Online.com</i> offered by <span class="ital bold">EgretSoftware Inc.</span>:</p>
+<p style="font-size: 11px; margin-bottom:10px; margin-top: 20px">Subscriptions on <i>Study-Languages-Online.com</i> offered by <span class="ital bold">EgretSoftware Inc.</span>:</p>
 
 <table class="st-table" id="subscription" style="background-color: #fff">
 	<tr>
@@ -485,7 +473,7 @@ box-shadow: 0px 1px 3px #9F9F9F;
 		</th>
 	</tr>
 	<tr>
-		<td style="padding: 15px;"><div style="font-size: 11px; line-height: 20px;" class="sbcr-free"> 2-month subscription to the <a href="everyday-course.html">Everyday&nbsp;Russian&nbsp;Course</a> </div>
+		<td style="padding: 15px;"><div style="font-size: 11px; line-height: 20px;" class="sbcr-free"> <b>2-month subscription to the <a href="everyday-course.html">Everyday&nbsp;Russian&nbsp;Course</a></b> </div>
 		</td>
 		<td style="padding: 15px;">$8.99&nbsp;USD
 		</td>
@@ -509,7 +497,7 @@ box-shadow: 0px 1px 3px #9F9F9F;
 		</td>
 	</tr>
 	<tr>
-		<td style="padding: 15px;"><div style="font-size: 11px; line-height: 20px;" class="sbcr-free"> 4-month subscription to the <a href="everyday-course.html">Everyday&nbsp;Russian&nbsp;Course</a> </div>
+		<td style="padding: 15px;"><div style="font-size: 11px; line-height: 20px;" class="sbcr-free"> <b>4-month subscription to the <a href="everyday-course.html">Everyday&nbsp;Russian&nbsp;Course</a></b> </div>
 		</td>
 		<td style="padding: 15px;">$14.99&nbsp;USD
 		</td>
@@ -534,7 +522,7 @@ box-shadow: 0px 1px 3px #9F9F9F;
 	</tr>
 	
 	<tr>
-		<td style="padding: 15px;"><div style="font-size: 11px; line-height: 20px;" class="sbcr-free"> 6-month subscription to the <a href="everyday-course.html">Everyday&nbsp;Russian&nbsp;Course</a> </div>
+		<td style="padding: 15px;"><div style="font-size: 11px; line-height: 20px;" class="sbcr-free"> <b>6-month subscription to the <a href="everyday-course.html">Everyday&nbsp;Russian&nbsp;Course</a></b> </div>
 		</td>
 		<td style="padding: 15px;">$19.99&nbsp;USD
 		</td>
@@ -559,11 +547,11 @@ box-shadow: 0px 1px 3px #9F9F9F;
 	</tr>
 </table>
 
-<p style="font-size: 11px; text-align: center;">* All payments are made through <span class="ital bold">PayPal</span> services - the safer, easier way to pay online!</p>
+<p style="font-size: 11px;">* All payments are made through <span class="ital bold">PayPal</span> services - the safer, easier way to pay online!</p>
 </div>
 		<%end%>
 
-
+<br><br><br><br><br><br><br><br>
 
 	</div>
 </div>
@@ -619,20 +607,45 @@ box-shadow: 0px 1px 3px #9F9F9F;
 			<td>
 			</td>
 		</tr -->
+		
 		<tr>
-			<td class="item-name"><a href="/userp">Change my password</a>
+			<td class="item-name" style="position: relative; width: 300px">
+				<a href="javascript:;" class="edit-username">Change my nickname</a> <span id="un-success">&#10004; Changed</span>
+			</td>
+			<td>
+			</td>
+		</tr>		
+		
+		<tr>
+			<td class="item-name" style="position: relative">
+				<a href="javascript:;" class="edit-userpic">Change my avatar</a> <span id="up-success">&#10004; Changed</span>
 			</td>
 			<td>
 			</td>
 		</tr>
 		<tr>
-			<td class="item-name"><a href="/del_stat">Delete my results</a>
+			<td class="item-name"><a href="javascript:;" id="edit-userpass">Edit password </a> <span id="upass-success">&#10004; Changed</span>
+	
+			<a href="/userp" style="display: none;">Change my password</a>
 			</td>
 			<td>
 			</td>
 		</tr>
 		<tr>
-			<td class="item-name"><a href="/userd">Delete my account </a>
+			<td class="item-name">
+					<a href="javascript:;" id="del-results-btn">Delete exercises results </a><span id="delres-success">&#10004; Deleted</span>
+					<a href="/del_stat" style="display: none;">Delete my results</a>
+			</td>
+			<td>
+			</td>
+		</tr>
+		<tr>
+			<td class="item-name">
+			
+			<a href="javascript:;" id="del-user-btn">Delete account </a>
+			
+			<a href="/userd" style="display: none;">Delete my account </a>
+			
 			</td>
 			<td>
 			</td>
@@ -643,6 +656,145 @@ box-shadow: 0px 1px 3px #9F9F9F;
 </div>
 
 </div><!-- end of user-area -->
+
+<div id="pictures" style="display: none" align="left" title="Edit user picture">
+<table width="100%" cellspacing="0">
+<col width="200"><col>
+	<tr align="center" class="up-tips">
+		<td>Preview</td>
+		<td style="font-size: 10px">Choose an option and click "Save"</td>
+	</tr>
+	<tr valign="top">
+	<td align="center">
+	<span id="used-userpic"> <img src="<%= userpic_for(current_user) %>" width="100"></span>
+	<div class="used-txt-holder"><span id="used-txt"> Current picture</span></div>
+	</td>
+	<td>
+
+<div class="pics-holder">
+<ul class="userpics-list">
+	<li>
+	<span> <img src="<%= gravatar_for(current_user) %>?d=identicon&f=y" width="30" ></span>
+	<div> Geometric figure</div>
+	</li>
+	<li>
+		<span> <img src="<%= gravatar_for(current_user) %>" width="30"></span>
+		<div> Customized on <a href="http://www.gravatar.com" target="_blank">www.gravatar.com</a></div>
+	</li>
+	<li>
+		<span> <img src="<%= gravatar_for(current_user) %>?d=wavatar&f=y" width="30"></span>
+		<div> Generated face</div>
+	</li>
+	<li>
+	<span> <img src="<%= gravatar_for(current_user) %>?d=monsterid&f=y" width="30"></span>
+	<div> Generated "monster"</div>
+	</li>
+	<li>
+	<span> <img src="<%= gravatar_for(current_user) %>?d=mm&f=y" width="30"></span>
+	<div> Mystery-man</div>
+	</li>
+</ul>
+
+</div>
+	</td>
+	<tr>
+</table>	
+<div class="userpic-tip">
+Choose an avatar from the options above and click "Save". You can also upload or edit your avatar on <a href="http://www.gravatar.com" target="_blank">www.gravatar.com</a>
+ </div>
+
+<div id="userpass" title="Change password" style="display: none">
+			<div class="err-block" style="display: none;">
+				<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+					<p>
+						<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+						<strong>Alert:</strong> 
+							<span id="pass-error-msg1" class="pass-error-msg">Current password is incorrect</span>
+							<span id="pass-error-msg2" class="pass-error-msg">Invalid new password or confirmation</span>
+					</p>
+				</div>
+			</div>
+	<div class="userinfo-edit">
+	   <table cellspacing="5">
+		 <tr><td align="right">Current password:</td><td> <input autocomplete="off" id="cur-pass" value=""/></td></tr>
+		 <tr><td align="right">New password:</td><td> <input autocomplete="off" id="new-pass" value="" type="password" /></td></tr>
+		<tr><td align="right">Confirm new password:</td><td> <input autocomplete="off" id="confirm-pass" value="" type="password"/></td></tr>
+	   </table>
+	</div>
+</div>
+
+
+<div id="username" title="Change nickname" style="display: none">
+			<div class="err-block" style="display: none;">
+				<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+					<p>
+						<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+						<strong>Alert:</strong> 
+							<span id="nick-error-msg1" class="nick-error-msg">Nickname is already taken</span>
+							<span id="nick-error-msg2" class="nick-error-msg">Invalid nickname</span>
+							<span id="nick-error-msg3" class="nick-error-msg">Nickname is too long <span="white-space:nowrap;">(maximum 50 symbols)</span></span>
+					</p>
+				</div>
+			</div>
+	<div class="userinfo-edit">
+		<span style="display: none" id="current_name"><%= current_user.name %></span>
+	   <table cellspacing="5">
+		 <tr><td align="right">Nickname:</td><td><input autocomplete="off" id="us-nickname" value="" style="width: 300px;"/></td></tr>
+	   </table>
+	</div>
+</div>
+
+<div id="del-results" title="Delete test and exercises results" style="display: none">
+	<div class="ui-state-highlight ui-corner-all" style="padding: 0 .7em;"> 
+		<p>
+			<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span> 
+			<span style="font-size: 11px"><strong>Attention!</strong> 
+				The results of tests and exercises completed on our website will be permanently deleted</span>
+		</p>
+	</div>
+	<div class="err-block" style="display: none; padding: 10px 0 0;">
+		<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+				<strong>Alert:</strong> 
+				<span id="delres-error-msg" class="delres-error-msg">Password is incorrect</span>
+			</p>
+		</div>
+	</div>
+	<div class="userinfo-edit">
+	   <table cellspacing="5">
+		 <tr><td align="right">Enter your password:</td><td><input autocomplete="off" id="delres_pass" type="password"/></td></tr>
+	   </table>
+	</div>
+</div>
+
+
+<div id="del-user" title="Delete user's account" style="display: none">
+	<div class="ui-state-highlight ui-corner-all" style="padding: 0 .7em;"> 
+		<p>
+			<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span> 
+			<span style="font-size: 11px"><strong>Attention!</strong> 
+			All your account information will be deleted </span>
+			<br><br>
+			<input type="checkbox" id="deluser-check"><strong style="font-size: 11px; font-style:italic"> Yes, I understand</strong>
+			<br><br>
+		</p>
+	</div>
+	
+	<div class="err-block" style="display: none; padding: 10px 0 0;">
+		<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+				<strong>Alert:</strong> 
+				<span id="deluser-error-msg" class="deluser-error-msg">Password is incorrect</span>
+			</p>
+		</div>
+	</div>
+	<div class="userinfo-edit" align="center">
+	   <table cellspacing="5" style="margin: 0 auto">
+		 <tr><td align="right">Enter your password:</td><td><input autocomplete="off" id="deluser_pass" type="password"/></td></tr>
+	   </table>
+	</div>
+</div>
+
 
 
 <script type="text/javascript">

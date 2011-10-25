@@ -136,9 +136,9 @@ require 'digest/md5'
   def category_desc(category)
 	desc = category.desc
 	if I18n.locale == 'ru'
-		name = category.desc_ru
+		desc = category.desc_ru
 	end
-	return name
+	return desc
   end
   
   def comment_word(number)

@@ -33,53 +33,25 @@ $("#u-results").load("/ajax/en_results.html", function() {
 }
 
 
-
-
-function loadedEvents(container) {
-
-container.find(".voc-details-content").css({opacity: 0})
-
-container.find(".voc-words-list").each(function(i,elem){
-	$(elem).find("tr:even").addClass("voc-list-even");
-}); 
-
-container.find(".tab-in-tab-list a").click(function() {
-	container.find(".tab-in-tab-list a").removeClass("tab-in-current");
-	$(this).addClass("tab-in-current");
-});
-
-container.find(".tab-in-tab-list a").not(".all-in-tab").click(function() {
-	var tMinHeight = $(this).parent().parent().height()
-	$(this).parent().parent().css({minHeight:  tMinHeight});
-	container.find(".tab-in-tab").hide();
-	tInd = $(".tab-in-tab-list a").index($(this));
-	container.find(".tab-in-tab:eq("+(tInd-1)+")").fadeIn(300);
-});
-
-container.find(".tab-in-tab-list a.all-in-tab").click(function(){
-	var tMinHeight = $(this).parent().parent().height()
-	$(this).parent().parent().css({minHeight:  tMinHeight});
-	container.find(".tab-in-tab").hide().show()
-})
-
-container.find(".voc-details").toggle(function(){
-		$(this).parent().find(".voc-topic-details").slideDown(function() {
-					$(this).parent().find(".voc-details-content").animate({opacity: 1},200);
-		})
-		$(this).parent().removeClass("details-hidden");
-	},function(){
-		$(this).parent().find(".voc-details-content").animate({opacity: 0},200, function() {
-			$(this).parent(".voc-topic-details").slideUp();
-		})
-		$(this).parent().addClass("details-hidden");
-});
-
-container.find(".myvoc-wrapper").css({minHeight: ($(".myvoc-wrapper").height()+600) });
-}
-
 </script>	
 
 <style type="text/css">
+
+.inpBlock {
+min-height: 825px;
+}
+
+.sbcr-free {
+color: #444;
+}
+
+.userdesc-btns  {
+font-size: 11px;
+padding-left: 5px;
+}
+.userdesc-btns input {
+font-size: 11px;
+}
 
 .new_item {
 opacity: 0.8;
@@ -91,7 +63,6 @@ opacity: 1;
 filter: alpha(opacity=100)
 }
 
-
 #tabs_row {
 padding-left: 30px;
 }
@@ -101,8 +72,12 @@ margin-left: 50px;
 .inpBlock h3 {
 }
 .item-name {
-font-size: 14px;
+font-size: 12px;
 font-weight: bold;
+}
+
+.profile-info-tbl td.item-name {
+height: 28px;
 }
 
 /* styles for vocabulary*/
@@ -419,24 +394,52 @@ box-shadow: 0px 1px 3px #9F9F9F;
 
 
 <div class="pr_hsp"> 
-		<table cellpadding="0" cellspacing="20">
-		<tr>
-			<td class="item-name" width="200">Email: 
+		<table cellpadding="0" cellspacing="15" width="100%" class="profile-info-tbl">
+		<col width="120"><col width="120"><col>
+		<tr valign="top">
+			<td rowspan="4">
+			<div class="userpic-wrapper">
+				<img id="userpic-img" src="<%= userpic_for(current_user) %>" width="80">
+			<div align="center" style="font-size: 10px; padding-top: 5px" >
+				<a href="javascript:;" class="edit-userpic">Изменить</a>
+			</div>
+			</div>
+			</td>
+			<td class="item-name">Email адрес: 
 			</td>
 			<td><%= current_user.email %>
+			</td>			
+		</tr>
+		<tr>
+			<td class="item-name">Ник: 
 			</td>
+			<td>
+				<% if !current_user.name || current_user.name == '' %>
+					<span id="us-username"><input placeholder="введите ник" style="width: 200px" id="nick-blank"><input id="nick-blank-save" type="button" value="save"></span><span id="un-success1">&#10004; Сохранено</span>
+				<%else%>	
+					<span id="us-username"><%= current_user.name %></span>
+				<%end%>
+			</td>		
 		</tr>
 		<tr>
 			<td class="item-name">Аккаунт создан:
 			</td>
-			<td>    <%=current_user.created_at.strftime("%Y/%m/%d")%> <span style="font-size: 9px; font-style: italic">(<%= current_user.created_at.to_date.to_s(:long) %>)</span>
+			<td>    <%= l(current_user.created_at.to_date, :format=>:long) %></span>
+			</td>
+		</tr>
+		<tr>
+			<td class="item-name" >
+				Информация о себе 
+			</td>
+			<td style="height: 80px"><div style="max-width: 300px;position: relative; left: -5px">
+				<%= render :partial => "/site/user/user_desc_update" %>
+				</div>
 			</td>
 		</tr>
 		</table>
 		</div>
-	
-
-
+		
+<h3 class="tab-head">&nbsp;</h3>		
 
 	</div>
 </div>
@@ -485,26 +488,44 @@ box-shadow: 0px 1px 3px #9F9F9F;
 		<p style="font-size: 10px; font-style: italic;">* Кликните на ссылку, чтобы выполнить следующие действия</p>
 	   
 	   <table cellpadding="0" cellspacing="20">
-		<!-- tr>
-			<td class="item-name" width="200"><a href="/user">Сменить email </a>
+	
+		<tr>
+			<td class="item-name" style="position: relative; width: 300px">
+				<a href="javascript:;" class="edit-username">Изменить ник</a> <span id="un-success">&#10004; Сохранено</span>
 			</td>
 			<td>
 			</td>
-		</tr -->
+		</tr>		
+		
 		<tr>
-			<td class="item-name"><a href="/userp">Сменить пароль</a>
+			<td class="item-name" style="position: relative">
+				<a href="javascript:;" class="edit-userpic">Изменить аватар</a> <span id="up-success">&#10004; Сохранено</span>
 			</td>
 			<td>
 			</td>
 		</tr>
 		<tr>
-			<td class="item-name"><a href="/del_stat">Удалить все результаты упражнений и тестов</a>
+			<td class="item-name"><a href="javascript:;" id="edit-userpass">Изменить пароль </a> <span id="upass-success">&#10004; Сохранено</span>
+	
+			<a href="/userp" style="display: none;">Change my password</a>
 			</td>
 			<td>
 			</td>
 		</tr>
 		<tr>
-			<td class="item-name"><a href="/userd">Удалить аккаунт</a>
+			<td class="item-name">
+					<a href="javascript:;" id="del-results-btn">Удалить результаты упражнений </a><span id="delres-success">&#10004; Удалено</span>
+					<a href="/del_stat" style="display: none;">Delete my results</a>
+			</td>
+			<td>
+			</td>
+		</tr>
+		<tr>
+			<td class="item-name">
+			<a href="javascript:;" id="del-user-btn">Удалить аккаунт </a>
+			
+			<a href="/userd" style="display: none;">Delete my account </a>
+			
 			</td>
 			<td>
 			</td>
@@ -516,7 +537,147 @@ box-shadow: 0px 1px 3px #9F9F9F;
 
 </div><!-- end of user-area -->
 
+<div id="pictures" style="display: none" align="left" title="Изменить аватар">
+<table width="100%" cellspacing="0">
+<col width="200"><col>
+	<tr align="center" class="up-tips">
+		<td>Предосмотр</td>
+		<td style="font-size: 10px">Выберите картинку и нажмите "Сохранить"</td>
+	</tr>
+	<tr valign="top">
+	<td align="center">
+	<span id="used-userpic"> <img src="<%= userpic_for(current_user) %>" width="100"></span>
+	<div class="used-txt-holder"><span id="used-txt"> Текущий аватар</span></div>
+	</td>
+	<td>
+
+<div class="pics-holder">
+<ul class="userpics-list">
+	<li>
+	<span> <img src="<%= gravatar_for(current_user) %>?d=identicon&f=y" width="30" ></span>
+	<div> Геометрическая фигура</div>
+	</li>
+	<li>
+		<span> <img src="<%= gravatar_for(current_user) %>" width="30"></span>
+		<div> С сайта <a href="http://www.gravatar.com" target="_blank">www.gravatar.com</a></div>
+	</li>
+	<li>
+		<span> <img src="<%= gravatar_for(current_user) %>?d=wavatar&f=y" width="30"></span>
+		<div> Рожица</div>
+	</li>
+	<li>
+	<span> <img src="<%= gravatar_for(current_user) %>?d=monsterid&f=y" width="30"></span>
+	<div> Монстер</div>
+	</li>
+	<li>
+	<span> <img src="<%= gravatar_for(current_user) %>?d=mm&f=y" width="30"></span>
+	<div> Человек-загадка</div>
+	</li>
+</ul>
+
+</div>
+	</td>
+	<tr>
+</table>	
+<div class="userpic-tip">
+Выберите аватар из списка и нажмите "Сохранить". Вы также можете настроить или загрузить свой аватар на сайте <a href="http://www.gravatar.com" target="_blank">www.gravatar.com</a>
+ </div>
+
+<div id="userpass" title="Изменить пароль" style="display: none">
+			<div class="err-block" style="display: none;">
+				<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+					<p>
+						<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+						<strong>Ошибка:</strong> 
+							<span id="pass-error-msg1" class="pass-error-msg">Неверный текущий пароль</span>
+							<span id="pass-error-msg2" class="pass-error-msg">Неверный новый пароль или его подтверждение</span>
+					</p>
+				</div>
+			</div>
+	<div class="userinfo-edit">
+	   <table cellspacing="5">
+		 <tr><td align="right">Текущий пароль:</td><td> <input autocomplete="off" id="cur-pass" value=""/></td></tr>
+		 <tr><td align="right">Новый пароль:</td><td> <input autocomplete="off" id="new-pass" value="" type="password" /></td></tr>
+		<tr><td align="right">Новый пароль еще раз:</td><td> <input autocomplete="off" id="confirm-pass" value="" type="password"/></td></tr>
+	   </table>
+	</div>
+</div>
+
+
+<div id="username" title="Изменить ник" style="display: none">
+			<div class="err-block" style="display: none;">
+				<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+					<p>
+						<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+						<strong>Ошибка:</strong> 
+							<span id="nick-error-msg1" class="nick-error-msg">Ник уже занят</span>
+							<span id="nick-error-msg2" class="nick-error-msg">Ник имеет неверное значение</span>
+							<span id="nick-error-msg3" class="nick-error-msg">Ник слишком длинный <span="white-space:nowrap;">(максимум 50 знаков)</span></span>
+					</p>
+				</div>
+			</div>
+	<div class="userinfo-edit">
+		<span style="display: none" id="current_name"><%= current_user.name %></span>
+	   <table cellspacing="5">
+		 <tr><td align="right">Ник:</td><td><input autocomplete="off" id="us-nickname" value="" style="width: 300px;"/></td></tr>
+	   </table>
+	</div>
+</div>
+
+<div id="del-results" title="Удаление результатов упражнений" style="display: none">
+	<div class="ui-state-highlight ui-corner-all" style="padding: 0 .7em;"> 
+		<p>
+			<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span> 
+			<span style="font-size: 11px"><strong>Внимание!</strong> 
+				Будут удалены результаты всех тестов и упражнений, выполненых на сайте</span>
+		</p>
+	</div>
+	<div class="err-block" style="display: none; padding: 10px 0 0;">
+		<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+				<strong>Ошибка:</strong> 
+				<span id="delres-error-msg" class="delres-error-msg">Неправильный пароль</span>
+			</p>
+		</div>
+	</div>
+	<div class="userinfo-edit">
+	   <table cellspacing="5">
+		 <tr><td align="right">Введите пароль:</td><td><input autocomplete="off" id="delres_pass" type="password"/></td></tr>
+	   </table>
+	</div>
+</div>
+
+
+<div id="del-user" title="Удаление аккаунта" style="display: none">
+	<div class="ui-state-highlight ui-corner-all" style="padding: 0 .7em;"> 
+		<p>
+			<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span> 
+			<span style="font-size: 11px"><strong>Внимание!</strong> 
+			Вся информация с вашего аккаунта будет удалена </span>
+			<br><br>
+			<input type="checkbox" id="deluser-check"><strong style="font-size: 11px; font-style:italic"> Да, я понимаю</strong>
+			<br><br>
+		</p>
+	</div>
+	
+	<div class="err-block" style="display: none; padding: 10px 0 0;">
+		<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+				<strong>Ошибка:</strong> 
+				<span id="deluser-error-msg" class="deluser-error-msg">Неверный пароль</span>
+			</p>
+		</div>
+	</div>
+	<div class="userinfo-edit" align="center">
+	   <table cellspacing="5" style="margin: 0 auto">
+		 <tr><td align="right">Введите пароль:</td><td><input autocomplete="off" id="deluser_pass" type="password"/></td></tr>
+	   </table>
+	</div>
+</div>
+
+
 
 <script type="text/javascript">
+var btns = {"cancel": "Отмена", "save": "Сохранить", "delete": "Удалить", "del_acc": "Удалить аккаунт"}
 currentSection="login";
 </script>

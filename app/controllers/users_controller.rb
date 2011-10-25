@@ -357,12 +357,16 @@ class UsersController < ApplicationController
 		name = sanitize_string(params[:user_name])
 		user = current_user
 		@status =0
+		taken_names = Material.find(347).body
+		taken= ActiveSupport::JSON.decode(taken_names)
 		if name.length >50
 			@status = 3
-#		elsif name.length <2
-#			@status = 2
-#		elsif User.find(:first, :conditions=>["name=? and id!=?",name,user.id])
-#			@status = 1
+		elsif name.length <2
+			@status = 2
+		elsif User.find(:first, :conditions=>["name=? and id!=?",name,user.id])
+			@status = 1
+		elsif taken['names'].include?(name.downcase)
+			@status = 1
 		end
 		if @status == 0
 			if user.update_attribute(:name, name)

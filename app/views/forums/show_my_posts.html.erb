@@ -9,7 +9,7 @@
 <div class="forum-container">
 	<%= render :partial => '/forums/f_tabs', :locals => {:active => 4} %> 
 	<div  class="f-t-lists">
-		<span class="ft-profile-info"><%= t('forum.string.change_info')%></span> <a href="<%= url_for(:controller=>:site, :action=>:page, :url=>'user_profile.html', :lang=>params[:lang], :to_lang=>params[:to_lang]) %>"><%= t('forum.string.profile_setting')%></a>
+		<span class="ft-profile-info"><%= t('forum.string.change_info')%></span> <a href="<%= url_for(:controller=>:site, :action=>:page, :url=>'user_profile.html', :lang=>params[:lang], :to_lang=>params[:to_lang]) %>#tab=4"><%= t('forum.string.profile_setting')%></a>
 	</div>
 	<div class="ft-user-info">
 	<table cellpadding="0" cellspacing="20" width="100%">
