@@ -625,6 +625,10 @@ background-image: -o-linear-gradient(top,#4D90FE,#4787ED);
 background-image: linear-gradient(top,#4D90FE,#4787ED);
 }
 
+.content a.new-topic-btn {
+background-color: #357AE8 !important;
+}
+
 .new-topic-btn:hover {
 color: white;
 border: 1px solid #2F5BB7;

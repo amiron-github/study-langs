@@ -102,7 +102,11 @@ class ApplicationController < ActionController::Base
                  Regexp::MULTILINE|Regexp::IGNORECASE), 
                  "<\\1>\\2</\\1>") 
         }
-		return new_content.to_s.strip
+		if current_user&&current_user.has_role?("admin")
+			return content
+		else
+			return new_content.to_s.strip
+		end
 	end
 	
   def check_topic_content(title, content)

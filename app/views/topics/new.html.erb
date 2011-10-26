@@ -82,11 +82,11 @@ function checkTopicContent() {
 					<span id="f-choose-category">
 					<select name="topic[fcategory_id]" style="font-size: 11px; min-width: 160px;" id="f-topic-cat">
 						<%if @langs_option == '1'%>
-							<% @fcategories1.each do |category|%><option value="<%=category.id%>"><%= category_name(category)%></option><%end%>
+							<% @fcategories1.each do |category|%><option <%if params[:cat]==category.id.to_s %>selected<%end%> value="<%=category.id%>"><%= category_name(category)%></option><%end%>
 						<%elsif @langs_option == '2'%>
-							<% @fcategories2.each do |category|%><option value="<%=category.id%>"><%=category_name(category)%></option><%end%>
+							<% @fcategories2.each do |category|%><option <%if params[:cat]==category.id.to_s%>selected<%end%> value="<%=category.id%>"><%=category_name(category)%></option><%end%>
 						<%else%>
-							<% @fcategories.each do |category|%><option value="<%=category.id%>"><%=category_name(category)%></option><%end%>
+							<% @fcategories.each do |category|%><option <%if params[:cat]==category.id.to_s%>selected<%end%> value="<%=category.id%>"><%=category_name(category)%></option><%end%>
 						<%end%>
 					</select>
 					</span>
@@ -100,10 +100,10 @@ function checkTopicContent() {
 
 <span id="f-category-options" style="display: none">
 	<select id="f-category-1">
-		<% @fcategories1.each do |category|%><option value="<%=category.id%>"><%=category_name(category)%></option><%end%>
+		<% @fcategories1.each do |category|%><option <%if params[:cat]==category.id.to_s%>selected<%end%> value="<%=category.id%>"><%=category_name(category)%></option><%end%>
 	</select>
 	<select id="f-category-2">
-		<% @fcategories2.each do |category|%><option value="<%=category.id%>"><%=category_name(category)%></option><%end%>
+		<% @fcategories2.each do |category|%><option <%if params[:cat]==category.id.to_s%>selected<%end%> value="<%=category.id%>"><%=category_name(category)%></option><%end%>
 	</select>
 </span>
 <div style="display:none">

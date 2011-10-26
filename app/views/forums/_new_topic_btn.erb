@@ -1,3 +1,4 @@
-<%if logged_in?%><a href="<%= url_for(:controller=> :topics, :action=>:new, :forum=>1)%>" class="forum-btn new-topic-btn"><%= t('forum.string.new_topic')%></a>
+<% @for_cat = defined?(for_cat) ? for_cat : 0 %>
+<%if logged_in?%><a href="<% if @for_cat>0%><%= url_for(:controller=> :topics, :action=>:new, :forum=>1, :cat=>@for_cat)%><%else%><%= url_for(:controller=> :topics, :action=>:new, :forum=>1)%><%end%>" class="forum-btn new-topic-btn"><%= t('forum.string.new_topic')%></a>
 <%else%><b style="font-size: 11px;"><%= t('forum.string.go_login1')%> <%= link_to t('forum.string.go_login'), :controller=>'forums', :action=>'show_my_posts', :id=>1%> <%= t('forum.string.go_login2')%></b>
 <%end%>

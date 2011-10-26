@@ -8,7 +8,6 @@ require_role "admin", :only => [:index,:show,:new]
   # GET /posts.xml
   def index
     @posts = Post.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @posts }
@@ -54,7 +53,7 @@ require_role "admin", :only => [:index,:show,:new]
 		  if @post.save
 			@topic = Topic.find(@post.topic_id)
 			@topic.update_attribute(:last_post_at, Time.now)
-			flash[:notice] = 'Post was successfully created.'
+			#flash[:notice] = 'Post was successfully created.'
 			format.html { redirect_to :controller=> 'topics', :action=>'show', :id=>@post.topic_id }
 			format.xml  { render :xml => @post, :status => :created, :location => @post }
 		  else
@@ -76,7 +75,7 @@ require_role "admin", :only => [:index,:show,:new]
 	if admin_or_owner_required?(@post.user_id)
 		respond_to do |format|
 		  if @post.update_attributes(params[:post])
-			flash[:notice] = 'Post was successfully updated.'
+			#flash[:notice] = 'Post was successfully updated.'
 			format.html { redirect_to :controller=> 'topics', :action=>'show', :id=>@post.topic_id }
 			format.xml  { head :ok }
 		  else
@@ -98,7 +97,7 @@ require_role "admin", :only => [:index,:show,:new]
 	if admin_or_owner_required?(@post.user_id)
 		respond_to do |format|
 		  if @post.update_attributes(params[:post])
-			flash[:notice] = 'Post was successfully updated.'
+			#flash[:notice] = 'Post was successfully updated.'
 			format.html { redirect_to :controller=> 'topics', :action=>'show', :id=>@post.topic_id }
 			format.xml  { head :ok }
 		  else

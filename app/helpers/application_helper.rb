@@ -83,6 +83,11 @@ require 'digest/md5'
 		return l(time, :format=>:short_f)
 	end
 	
+  def admin_text(content)
+	new_content = ActionController::Base.helpers.simple_format(content)
+	return new_content
+  end
+	
   def userpage_for(user) 
 		url = user.id
 		if user.setting

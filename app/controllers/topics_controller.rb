@@ -131,11 +131,11 @@ require_role "admin", :only => [:index, :destroy]
 			@post = Post.new(:content => sanitize_content(params[:post][:content]), :topic_id => @topic.id, :user_id => current_user.id)
 			@post.save
 				current_user.favorites.create(:topic_id=>@topic.id)
-				flash[:notice] = "Successfully created topic."
+				#flash[:notice] = "Successfully created topic."
 				redirect_to :controller=> 'topics', :action=>'show', :id=>@topic.id 
 		  else  
 			error = '1'
-			flash[:notice] = "Topic not saved"
+			#flash[:notice] = "Topic not saved"
 			redirect_to :action => 'new', :forum=>params[:topic][:forum_id], :er=>error
 		  end
 		 else
@@ -156,11 +156,10 @@ require_role "admin", :only => [:index, :destroy]
 		@topic.lang = @langs[0]
 		@topic.to_lang = @langs[1]
 		@topic.fcategory_id = params[:topic][:fcategory_id]
-		
 			@verify = check_topic_content(params[:topic][:name], params[:post][:content])
 			if @verify < 1
 			  if @topic.save && @post.update_attribute(:content, sanitize_content(params[:post][:content]))
-				flash[:notice] = 'Topic was successfully updated.'
+				#flash[:notice] = 'Topic was successfully updated.'
 				format.html { redirect_to :controller=> 'topics', :action=>'show', :id=>@topic.id }
 				format.xml  { head :ok }
 			  else

@@ -168,7 +168,7 @@ function checkTopicContent() {
 	<div class="f-t-post-info"><a href="<%= userpage_for(@topic.user)%>"><%=h @topic.user.name %></a> - <%= show_post_time(@topic_first.created_at) %></div>
 	
 	<div class="f-t-quest-content">
-		<%=simple_format (@topic_first.content) %>
+		<%if @topic_first.user.has_role?('admin')%><%= admin_text(@topic_first.content) %><%else%><%=simple_format(@topic_first.content) %><%end%>
 	</div>
 	<div class="f-t-quest-sets">
 		<%= link_to category_name(@topic.fcategory), {:controller=>'forums', :action=>'show_cat',:forum_id=>@topic.forum_id, :cat_id=>@topic.fcategory.id}, {:title=> t('forum.string.cat')+': '+category_name(@topic.fcategory)}%> 
@@ -187,7 +187,7 @@ function checkTopicContent() {
 				<a href="<%= userpage_for(post.user)%>" class="f-t-post-pic"><img src="<%= userpic_for(post.user)%>" width="40"/></a>
 				<% if admin_or_owner?(post.user_id)%>
 					<div class="f-t-post-change"> 
-					<%unless params[:edit_post]== post.id.to_s%><%= link_to t('forum.string.edit_comment'), {:action=> 'show', id => @topic.id, :edit_post=> post.id} %> 
+					<%unless params[:edit_post]== post.id.to_s%><%= link_to t('forum.string.edit_comment'), {:action=> 'show', id => @topic.id, :edit_post=> post.id, :anchor=>"post_"+post.id.to_s} %> 
 						&nbsp;|&nbsp;<%end%> <%= link_to t('forum.string.delete'), post, :method => :delete, :confirm => t('msg.base.sure') %>
 					</div>
 				<%end%>
@@ -204,7 +204,7 @@ function checkTopicContent() {
 			<% end %>
 		<% else %>
 			<div class="f-t-post-content"> 
-				<%=simple_format post.content %>
+				<%if post.user.has_role?('admin')%><%= admin_text(post.content) %><%else%><%=simple_format post.content %><%end%>
 			</div>	
 		<%end%>
 	</div>
