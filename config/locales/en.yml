@@ -98,6 +98,8 @@ en:
       cat: Category
       topics: Topics
       comments: Comments
+      topics_many: Topics
+      comments_many: Coments
       no_favorites: You have no favorites topics yet
       edit_top: Edit topic
       edit_comment: Edit comment
