@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
 layout :layout_by_lang
 before_filter :login_required 
+before_filter :check_banned, :only=>[:create, :destroy]
 require_role "admin", :only => [:index,:show,:new]
 
   # GET /posts
@@ -122,7 +123,7 @@ require_role "admin", :only => [:index,:show,:new]
 		
 		end
 		respond_to do |format|
-		  format.html { redirect_to :controller=> 'topics', :action=>'show', :id=>@post.topic_id }
+		  format.html { redirect_to :controller=> 'topics', :action=>'show', :id=>@post.topic_id, :lang=>params[:lang], :to_lang=>params[:to_lang] }
 		  format.xml  { head :ok }
 		end
 	else
@@ -141,7 +142,12 @@ private
 		end	
 
 	end
-  
+	
+	def check_banned
+		if current_user.setting.f_status == 1
+			back_rescued
+		end
+	end  
   
   
 end

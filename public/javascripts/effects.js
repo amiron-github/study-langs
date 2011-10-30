@@ -403,7 +403,12 @@ $("span.accent_show").addClass("checked");
 $("span.accent_un").addClass("checked");
 setCookie('accent_un', 'yes');
 delCookie('accent_on');
-adjustView();
+if (getCookie("accents")) {
+	adjustView();
+} else {
+	setCookie('accents', '1');
+	window.location.reload();
+}
 accentUn();
 }
 
@@ -415,7 +420,12 @@ $("span.accent_show").addClass("checked");
 $("span.accent_on").addClass("checked");
 setCookie('accent_on', 'yes');
 delCookie('accent_un');
-adjustView();
+if (getCookie("accents")) {
+	adjustView();
+} else {
+	setCookie('accents', '1');
+	window.location.reload();
+}
 
 if($("#accent_adjust").hasClass("adjusted")) {
 		accentAdjust();

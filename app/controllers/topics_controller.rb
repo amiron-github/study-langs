@@ -2,6 +2,7 @@ class TopicsController < ApplicationController
 
 layout :layout_by_lang
 before_filter :login_required, :except => [:show]
+before_filter :check_banned, :only=>[:create, :update_topic, :update_post]
 require_role "admin", :only => [:index, :destroy]
 
   # GET /topics
@@ -260,15 +261,19 @@ private
 	end
 	
 	def fcategories_status(lang,to_lang)
-	status= '0'
-	if lang == 'en'&& to_lang == 'ru' 
+	 status= '0'
+	 if lang == 'en'&& to_lang == 'ru' 
 		status = '1'
-	elsif lang == 'ru'&& to_lang == 'en' 
+	 elsif lang == 'ru'&& to_lang == 'en' 
 		status = '2'
+	 end
+	  return status
 	end
-	return status
-  end
-  
-
+	
+	def check_banned
+		if current_user.setting.f_status == 1
+			back_rescued
+		end
+	end
 
 end

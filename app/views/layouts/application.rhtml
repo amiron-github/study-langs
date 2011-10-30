@@ -54,7 +54,7 @@
           <tr valign="top">
             <td>
               <![endif]-->
-              <div id="head">
+              <div id="head"><img src="/images/badge-80.jpg" class="site-badge">
                 <div id="title_wrapper">
                   <div id="title_name">
                     <h1 class="title_site" style="float: left;"><a href="/index.html" title="Home page">Study Russian Online</a>		
@@ -128,10 +128,6 @@
 </span>
 </div>
 <%end%>									
-					  
-					  
-					  <%= render :partial => '/site/slideshow' %>
-					  
                     </div>
                   </div>
 
@@ -194,6 +190,7 @@
         pageTracker._trackPageview();
       } catch(err) {}</script>
 </div>
+<%= render :partial => '/site/slideshow' %>
 <% if current_user -%>
 <script type="text/javascript">
 sendData=true

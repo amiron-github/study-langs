@@ -188,7 +188,7 @@ function checkTopicContent() {
 				<% if admin_or_owner?(post.user_id)%>
 					<div class="f-t-post-change"> 
 					<%unless params[:edit_post]== post.id.to_s%><%= link_to t('forum.string.edit_comment'), {:action=> 'show', id => @topic.id, :edit_post=> post.id, :anchor=>"post_"+post.id.to_s} %> 
-						&nbsp;|&nbsp;<%end%> <%= link_to t('forum.string.delete'), post, :method => :delete, :confirm => t('msg.base.sure') %>
+						&nbsp;|&nbsp;<%end%> <%= link_to t('forum.string.delete'), {:controller=>'posts', :action=>'destroy',:id=>post.id, :lang=>params[:lang], :to_lang=>params[:to_lang]}, {:method => :delete, :confirm => t('msg.base.sure')} %>
 					</div>
 				<%end%>
 				<div class="f-t-post-info"><a href="<%= userpage_for(post.user)%>"><%=h post.user.name %></a> - <%= show_post_time(post.created_at) %></div>

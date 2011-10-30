@@ -137,8 +137,8 @@ margin-bottom: 15px;
 <tr class="trow">
     <td class="original" valign="top">
 	<%unless word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div><%end%>
-	<%= word.html %>
-	<div class="ru-transcript">[<%= word.transcribe %>]</div>
+	<% unless cookies[:accents] %><%=strip_tags(word.html) %><%else%><%= word.html %><%end%>
+	<div class="ru-transcript">[<%= word.transcribe_fr %>]</div>
 	
     </td>
     <td class="translation" valign="top"><%= word.translate_fr %>

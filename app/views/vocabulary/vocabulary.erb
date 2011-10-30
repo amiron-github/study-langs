@@ -1,4 +1,4 @@
-<% @page_title = 'Online Russian Vocabulary: '+@category_title+' '  %>
+<% @page_title = ''+@category_title+' :: Online Russian Vocabulary'  %>
 <% @page_meta = {'description' => "Learn Russian vocabulary topic "+@category_title+" with online flashcards and lexical tests: words with audio samples, quizzes, spell practice"} %>
 <% @with_rec = true %>
 <% @has_audio = true %>
@@ -68,7 +68,7 @@ h2.page {margin-bottom: 0px;}
 	<%end -%>
 <%end -%>
 <tr class="trow">
-    <td class="original" valign="top"><%= word.html %>
+    <td class="original" valign="top"><% unless cookies[:accents] %><%=strip_tags(word.html) %><%else%><%= word.html %><%end%>
     </td>
     <td class="transcript" valign="top">
       <table <%unless word.sound_url == ''%>onclick="playFile('<%= word.sound_url %>')" class="audiotrans"<%end%> cellpadding="0" cellspacing="0" border="0">
