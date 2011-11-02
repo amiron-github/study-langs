@@ -23,7 +23,7 @@ set :rails_env, "production"
 #set :runner, "studylanguagesonline"
 set :user, "sshadmin"
 set :runner, "sshadmin"
-set :domain, "184.107.74.178"
+set :domain, "184.107.74.179"
 server domain, :app, :web
 role :db, domain, :primary => true
 

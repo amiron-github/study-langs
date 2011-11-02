@@ -43,5 +43,5 @@ production:
   pool: 5
   username: MySQLForever
   password: frctcvfplfq
-  host: 10.3.150.11
+  host: 10.3.150.12
   socket: /var/lib/mysql/mysql.sock
