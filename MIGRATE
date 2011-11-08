@@ -1,0 +1,13 @@
+
+gem install rubygems-update -v='1.4.2'
+
+after that
+
+rake gems:install
+then
+
+ in file vim RUBY_ROOT:lib/ruby/gems/1.8/gems/activemerchant-1.3.2/lib/active_merchant/billing/integrations.rb
+edit line like this
+ActiveSupport::Inflector.inflections do |inflect|
+
+
