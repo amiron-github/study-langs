@@ -1,3 +1,4 @@
+<% @page_title = t('forum.string.cats') +" :: " +t('forum.string.forum_name')+" :: Study-Languages-Online.com" %>
 <div class="forum">
 <div class="f-title">
 <%= t('forum.string.forum_name')  %> » <span><%= t('forum.string.cats')%></span>
@@ -34,7 +35,7 @@
 			<%= category_desc(fcategory) %>
 		</div>	
 		<div class="forum-item-bottom"> 
-			<%= t('forum.string.topics')%>: <%= fcategory.topics.length %> - <%= t('forum.string.comments')%>: <%= fcategory[:posts_len] %>
+			<%= t('forum.string.topics')%>: <%= fcategory.topics.length %>
 		</div>			
 	</div> 
   <% end %> 

@@ -1,6 +1,7 @@
 <% if !@good_user%>
 	<%= hidden_content() %>
 <%else%>
+<% @t_filler = defined?(filler) ? filler : " - ..." %><% @t_add = defined?(add) ? 1 : 0 %>
 <div class="su-exerc">
 <div class="gex-area-trans">
 	<div class="trans-head">
@@ -10,11 +11,12 @@
 <% phrases.each_with_index do |phrase, index| %>
 <tr valign="top">
 	<td>
-		<div class="ital bold"><%= phrase[:q_text]%> - ...</div>
+		<div class="ital bold"><%= phrase[:q_text]%><%= @t_filler %></div>
 		<div style="font-size: 11px">
 			<span class="sound" onclick="playFile('<%= phrase[:q_sound] %>')">[<%= phrase[:q_transcribe]%>] <span class="play_tip">&nbsp; &nbsp;</span></span>
 		</div>
 	</td>
+	<%if @t_add == 1 %><td><%= phrase[:q_add]%></td><%end%>
 	<td style="padding-left: 30px">
 		<div class="key check">
 			<div>

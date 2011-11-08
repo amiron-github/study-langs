@@ -121,7 +121,7 @@
 })(jQuery);
 
 /////////////////////////////////
-
+currentSection="contact";
 $(document).ready(function(){
 	$(".f-topic-title-edit input").attr("autocomplete", "off");
 	
