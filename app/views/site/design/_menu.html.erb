@@ -1,0 +1,17 @@
+<% @site_menu.each do |item|%>
+<div id="<%= item[:id]%>" class="menu-item">
+  <div class="item-top"><%if item[:submenu]%><div class="list down"></div><%end%>
+    <a href="<%= item[:url]%>" <%if item[:left]%>style="margin-left: <%=item[:left]%>px"<%end%>><%= item[:title]%></a>
+  </div>
+</div>
+<%if item[:submenu]%>
+<div class="sub" style="display: none">
+   <ul>
+	<%item[:submenu].each do |sub|%><li><a href="<%= sub[:url]%>"><%= sub[:title]%></a></li><%end%>
+   </ul>
+</div>
+<%end%>
+<%end%>
+
+ 
+                      
