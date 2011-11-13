@@ -6,6 +6,126 @@
 #  - Tsutomu Kuroda - http://github.com/kuroda (t-kuroda@oiax.jp)
 
 fr:
+  hello: Bonjour
+  Username: Nick
+  Email: Email
+  Password: Mot de passe
+  Login: 
+  Nickname: Nickname
+  User_info: Info
+  Forgotten Password: Mot de passe oublié?
+  Your Details: Your Details
+  in: in
+  comment:
+    one: commentaire
+    few: commentaires
+    other: commentaires
+  in_topic:
+    one: topic
+    few: topics
+    other: topics	
+  msg:
+    base:
+      saved: Saved
+      sure: Etes-vous sur(e)?
+    forum:
+      to_favor: Ajouter aux favoris
+      from_favor: Éliminer de favoris
+      is_favor: Ajouté aux favoris
+      not_favor: Éliminé de favoris
+    errors:
+      nick:
+        taken: Nickname is already taken 
+        invalid: Invalid nickname
+        long: Nickname is too long <span class="neml">(maximum 50 symbols)</span>
+  btn:
+    save: Save
+    change: Changer
+    edit: Éditer
+    create: Créer
+    cancel: Annunler
+    update: Mettre à jour
+    next_page: Suivant »
+    previous_page: « Précédant
+    down:
+      save: save
+      change: changer
+      edit: éditer
+      cancel: annuler
+  langs:
+    ru: russe
+    en: anglais
+    fr: français
+    ja: japonais
+    all: toutes les langues
+    other: autre
+    short:
+      ru: RU
+      en: EN
+      fr: FR
+      ja: JA
+      other: autre
+  forum:
+    tabs:
+      stream: Stream
+      cats: Catégories
+      login: Connexion
+      favorites: Favoris
+      my_page: Ma page
+    view:
+      standard: standard
+      detailed: detaillé
+      compact: compact
+    errors:
+      topic_invalid: Topic title is invalid
+      topic_long: Topic title is too long (maximum 250 symbols)
+      topic_content_invalid: Topic content is invalid
+      topic_content_long: Topic content is too long (maximum 10000 symbols)
+      comment_invalid: Text of the comment is invalid
+      comment_long: Text of the comment is too long (maximum 10000 symbols)
+      desc_invalid: Texte incorrect
+      desc_long: Text is too long <br><small>(maximum 300 symbols)</small>  
+    string:
+      langs: Langues
+      view: View 
+      new_topic: New topic  
+      go_login1: You need to
+      go_login: login
+      go_login2:  so that you can participate in the forum
+      enter_nick: <strong>Attention!</strong> You can post new topics and comments only after you enter your nickname 
+      put_nick: enter a nickname
+      by: Par
+      updated: Dernière mise à jour
+      updated_short: mis à jour
+      view_all: Voir tous
+      cats: Catégories
+      cat: Catégorie
+      topics: Topics
+      comments: Commentaires
+      topics_many: Topics
+      comments_many: Comentaires
+      no_favorites: Vous n'avez pas encore de favoris
+      edit_top: Edit topic
+      edit_comment: Éditer
+      delete: Éliminer
+      new_comment: Nouveau commentaire par
+      add_comment: Publier
+      topic_title: Topic title
+      topic_content: Topic content
+      change_info: You can change your nickname and avatar in your 
+      profile_setting: 'Profile: Settings'
+      max_desc_symb: 300 symboles au maximum
+      my_topics: My topics	  
+      my_comments: Mes commentaires
+      pages: Pages
+      user_page: Page d'utilisateur
+      not_available: pas disponible
+      forum_name: Forum	
+      see_more: Voir plus
+      last_comment_by: Last comment by	
+      see_last_comment: See the last comment
+      see_comments: Voir les commentaire	 
+      see_category: Voir cette catégorie
   date:
     formats:
       default: "%d/%m/%Y"
@@ -65,7 +185,7 @@ fr:
       default: "%d %B %Y %H:%M:%S"
       short: "%d %b %H:%M"
       long: "%A %d %B %Y %H:%M"
-      short_f: "%d %b a %H:%M"
+      short_f: "le %d %b à %H:%M"
     am: 'am'
     pm: 'pm'
 

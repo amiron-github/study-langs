@@ -47,7 +47,7 @@ require_role "admin", :except => [:publish]
 	if logged_in?
 		@no_ad = true
 	end
-		layout = determine_layout
+		layout = layout_by_lang
 
     respond_to do |format|
 	  if @material.page_template == 1

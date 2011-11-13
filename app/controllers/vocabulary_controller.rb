@@ -1,5 +1,5 @@
 class VocabularyController < ApplicationController
-layout :determine_layout
+layout :layout_by_lang
 
   def build_vocabulary
   	if logged_in?
@@ -13,6 +13,8 @@ layout :determine_layout
 		@category_tag =  @category_tag+'_en'
 	elsif @add_lang == 'jp'
 		@category_tag =  @category_tag+'_jp'
+	elsif @add_lang == 'fr'
+		@category_tag =  @category_tag+'_fr'
 	end 
 	@category = Category.find(:first, :conditions => ['tag=?', @category_tag ])
 	@words = @category.words.find(:all, :order => 'order_num')
@@ -29,6 +31,10 @@ layout :determine_layout
 			@category_short_tag = params[:category]
 			@category_title =  @category.title_ru
 			render(:action => 'ru_jp_vocabulary')
+		elsif @add_lang == 'fr'
+			@category_short_tag = params[:category]
+			@category_title =  @category.title_ru
+			render(:action => 'ru_fr_vocabulary')
 		else 
 			@category_title = @category.title
 			render(:action => 'vocabulary' )
@@ -58,6 +64,8 @@ layout :determine_layout
 		@category_tag =  @category_tag+'_en'
 	elsif @add_lang == 'jp'
 		@category_tag =  @category_tag+'_jp'
+	elsif @add_lang == 'fr'
+		@category_tag =  @category_tag+'_fr'
 	end 	
 	
 	@category = Category.find(:first, :conditions => ['tag=?', @category_tag ])
@@ -73,6 +81,8 @@ layout :determine_layout
 			render(:action => 'ru_en_flashcard')
 		elsif @add_lang == 'jp'
 			render(:action => 'ru_jp_flashcard')
+		elsif @add_lang == 'fr'
+			render(:action => 'ru_en_flashcard')
 		else
 			render(:action => 'flashcard' )
 		end
@@ -96,6 +106,8 @@ layout :determine_layout
 		@category_tag =  @category_tag+'_en'
 	elsif @add_lang == 'jp'
 		@category_tag =  @category_tag+'_jp'
+	elsif @add_lang == 'fr'
+		@category_tag =  @category_tag+'_fr'
 	end 
 	@category = Category.find(:first, :conditions=> ['tag=?', @category_tag])
 	@words = words_for_test(@category, @add_lang, @lang)
@@ -111,6 +123,8 @@ layout :determine_layout
 			render(:action => 'ru_en_test')
 		elsif @add_lang == 'jp'
 			render(:action => 'ru_jp_test')
+		elsif @add_lang == 'fr'
+			render(:action => 'ru_en_test')
 		else 
 			render(:action => 'test' )
 		end

@@ -7,7 +7,7 @@ LANG = [
 [ "Russian-English","ru-en" ],
 [ "Russian-Japanese","ru-jp" ],
 [ "French-Russian" , "fr-ru" ],
-[ "Russian-French" , "fr-ru" ],
+[ "Russian-French" , "ru-fr" ],
 [ "none" , '' ]
 ]
 

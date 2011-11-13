@@ -53,6 +53,12 @@ ActionController::Routing::Routes.draw do |map|
   map.mobile '/mobile/:lang/:to_lang/reading/:page', :controller => 'materials', :action=>'publish', :special_layout => 'mobile'  
   map.mobile '/mobile/:lang/:to_lang/:page', :controller => 'materials', :action=>'publish', :special_layout => 'mobile'
   map.mobile '/mobile/:page', :controller => 'materials', :action=>'publish', :special_layout => 'mobile'
+
+  map.page '/ru/fr/vocabulary', :controller => 'materials', :action=>'publish', :lang=>'ru', :to_lang=>'fr'
+  map.page '/ru/fr/reading', :controller => 'materials', :action=>'publish', :lang=>'ru', :to_lang=>'fr'
+  map.page '/ru/fr/translation', :controller => 'materials', :action=>'publish', :lang=>'ru', :to_lang=>'fr'
+  map.page '/ru/fr/grammar', :controller => 'materials', :action=>'publish', :lang=>'ru', :to_lang=>'fr'
+  
   map.faq '/reading/:page', :controller => 'materials', :action=>'publish'
   map.faq '/:lang/:to_lang/courses/:subcategory/:page', :controller => 'materials', :action=>'publish'
   map.faq '/:lang/:to_lang/courses/:page', :controller => 'materials', :action=>'publish'

@@ -39,6 +39,8 @@ class ApplicationController < ActionController::Base
 					layout =  'ru_en_application.rhtml'
 				elsif add_lang == 'jp'
 					layout =  'ru_jp_application.rhtml'
+				elsif add_lang == 'fr'
+					layout =  'ru_fr_application.rhtml'
 				end
 		end
 		return layout
