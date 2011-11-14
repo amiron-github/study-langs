@@ -129,7 +129,7 @@ margin-bottom: 15px;
 <tr class="trow">
     <td class="original" valign="top">
 	<%unless word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div><%end%>
-	<%= word.text %> <%unless word.grammar==''%><i style="color: #999; font-weight: normal; font-size: 11px;"><%= word.grammar %><i><%end%>
+	<%= word.text %><%unless word.grammar==''%><i style="color: #999; font-weight: normal; font-size: 11px; margin-left:10px"><%= word.grammar %></i><%end%>
 	<div class="ru-transcript">[<%= word.transcribe %>]</div>
 	
     </td>

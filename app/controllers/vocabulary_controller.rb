@@ -82,7 +82,7 @@ layout :layout_by_lang
 		elsif @add_lang == 'jp'
 			render(:action => 'ru_jp_flashcard')
 		elsif @add_lang == 'fr'
-			render(:action => 'ru_en_flashcard')
+			render(:action => 'ru_fr_flashcard')
 		else
 			render(:action => 'flashcard' )
 		end
@@ -124,7 +124,7 @@ layout :layout_by_lang
 		elsif @add_lang == 'jp'
 			render(:action => 'ru_jp_test')
 		elsif @add_lang == 'fr'
-			render(:action => 'ru_en_test')
+			render(:action => 'ru_fr_test')
 		else 
 			render(:action => 'test' )
 		end

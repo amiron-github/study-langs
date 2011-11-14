@@ -1,0 +1,150 @@
+<% @page_title = ''+@category_title+' :: Онлайн тесты' %>
+<% @page_meta = {'description' => "Изучайте английские слова и выражения по теме  "+@category_title+" с помощью онлайн тестов"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+<% content_for :special_js_css do %>
+<style type="text/css">
+h2.page {margin-bottom: 0px;font-size: 19pt;}
+</style>
+<% end %>
+
+<div class="hint_wrap">
+<div class="hint_button">
+	<div class="hint">
+    	<div class="hint_list">
+    		<span class="hint_string">Ссылки по теме</span>
+    	</div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+    		<ul>
+     				<li><a href="/ru/fr/vocabulary/<%= @category_short_tag %>"><%= @category_title %></a></li>
+					<li><a href="/ru/fr/flashcards/<%= @category_short_tag %>">Флэш-карты: <%= @category_title %></a></li>
+    		</ul>
+	</div>
+</div>
+</div>
+
+<h2 class="page">Тесты: <%= @category_title %></h2>
+
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="/ru/fr/vocabulary">Словарь</a>
+	<span class="int-arrow">--&gt;</span> 
+	<a href="/ru/fr/vocabulary/<%= @category_short_tag %>"><%= @category_title %></a>
+	<span class="int-arrow">--&gt;</span> Тесты
+	</span>
+</h3>
+
+
+
+
+<div class="l-test-container">
+
+<h3 class="test-task">Тест 1. Найдите в списке перевод фразы.
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Скрыть</span><span class="lt-sh">Показать</span></a>
+</h3>
+
+<div id="ch1" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => 'lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		<% unless @test_data[0] == nil || @test_data[0]==''%>test_id: "<%= @test_data[0].test_id %>",<%end%>
+		quest_num: <%= quest_num_from(@test_data[0]) %>,
+		variants_num: 5,
+		quest_type: 'text',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+<% @last_item_index = (@words.length)-1 -%>
+<% @words.each_with_index  do |word, index| -%>
+["<%= word.translate.to_s.gsub(/"/,'\"') %>", "<%= word.text.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+		]
+		
+		} )
+</script>
+
+
+
+
+<h3 class="test-task">Тест 2. 
+
+Прочитатайте фразу и найдите её перевод.
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Скрыть</span><span class="lt-sh">Показать</span></a>
+</h3>
+
+<div id="ch2" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => 'lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		<% unless @test_data[1] == nil || @test_data[1]==''%>test_id: "<%= @test_data[1].test_id %>",<%end%>
+		quest_num: <%= quest_num_from(@test_data[1]) %>,
+		variants_num: 5,
+		quest_type: 'text',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+<% @words.each_with_index  do |word, index| -%>
+		["<%= word.text.to_s.gsub(/"/,'\"') %>", '<%= word.translate.to_s.gsub(/'/,"’") %>'<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>		
+
+
+		]
+		} )
+</script>
+
+<%unless @category.sound_status == 2 %>
+
+<h3 class="test-task">Тест 3. Прослушайте фразу и найдите её перевод.
+<a href="javascript:;" class="lt-test-closer"><span class="lt-h">Скрыть</span><span class="lt-sh">Показать</span></a>
+</h3>
+
+<div id="ch3" class="lt-holder">
+<div class="lt-spacer">
+<%= render :partial => 'lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+<script type="text/javascript"> 
+	var ch3 = new ch_exercise( {
+		id: "ch3", 
+		<% unless @test_data[2] == nil || @test_data[2]==''%>test_id: "<%= @test_data[2].test_id %>",<%end%>
+		quest_num: <%= quest_num_from(@test_data[2]) %>,
+		variants_num: 5,
+		quest_type: 'audio',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+<% @words.each_with_index  do |word, index| -%>
+["<%= word.sound_url %>", "<%= word.translate.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		} )
+</script>
+<%end%>
+
+
+
+<h3 class="test-task test-task-final" style="text-align: center">Вернуться к теме &nbsp;&nbsp;&nbsp;&nbsp;<a href="/ru/fr/vocabulary/<%= @category_short_tag %>"><%= @category_title %> >></a></h3>
+
+<script type="text/javascript">
+preloadFiles=new Array(
+
+)
+</script>
+
+</div><!-- end of lt-container -->
+
+<script type="text/javascript">
+currentSection="words";
+</script>
