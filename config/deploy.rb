@@ -24,7 +24,7 @@ set :rails_env, "production"
 set :user, "sshadmin"
 set :runner, "sshadmin"
 set :domain, "184.107.74.179"
-server domain, :app, :web
+server domain, :www, :web
 role :db, domain, :primary => true
 
 #############################################################
@@ -41,7 +41,7 @@ set :deploy_via, :remote_cache
 namespace :deploy do
   task :start do ; end
   task :stop do ; end
-  task :restart, :roles => :app, :except => { :no_release => true } do
+  task :restart, :roles => :www, :except => { :no_release => true } do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 end
