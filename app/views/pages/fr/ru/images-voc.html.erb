@@ -1,0 +1,19 @@
+<%
+
+@cluster_num = 34
+if params[:set]
+	@cluster_num=params[:set]
+end
+@cluster = Cluster.find(@cluster_num)
+@voc= @cluster.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+
+@il_lesson = @cluster.title
+@il_lang = "en"
+#@top_link = '<a href="/courses/beginner-course" class="su-tit-liink">Course for Beginners »</a><br>'
+%>
+
+<%= render :partial => '/site/unit/vocabulary_image_defaults'%>
+<% @il_fs_html=false 
+%>
+<%= render :partial => '/site/unit/vocabulary_image'%>
+

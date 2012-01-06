@@ -1,0 +1,194 @@
+
+<% @page_title =  @il_page_name %>
+<% @page_meta = {'description' => @il_page_desc} %>
+<% content_for :special_js_css do %>
+<%= stylesheet_link_tag 'flash-simple' %>
+<%= stylesheet_link_tag 'lexical-test' %>
+<%= stylesheet_link_tag 'short-unit' %>
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'jp-control' %>
+<%= javascript_include_tag 'lexical-test' %>
+<%= javascript_include_tag 'flash-simple.js' %>
+<%= javascript_include_tag 'short-unit' %>
+
+<script type="text/javascript">
+<%if params[:tab] %>
+	openTabFromUrl(<%= params[:tab] %>);
+<%else%>
+	openTabFromUrl();
+<%end%>
+</script>
+<% end %>
+
+<div class="unit-area">
+<div id="prof_tabs">
+<div class="unit-title">
+<%=@top_link%>
+<%=@il_les_name%>
+</div>
+	<div id="tabs_row">
+            <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;"><%=@il_tab1%></a></div></div>
+			<div id="tab02" class="ptab"><div><a href="#"><%=@il_tab2%></a></div></div>
+            <div id="tab03" class="ptab"><div><a href="#"><%=@il_tab3%></a></div></div>
+			<div id="tab04" class="ptab"><div><a href="#"><%=@il_tab4%></a></div></div>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+
+<div id="for_tab01" class="pBlock" style="display: block">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title"><%=@il_tab1_name%></h3>
+<p class="su-step-info">
+<%=@il_tab1_tip%>
+</p>	
+
+
+
+	
+<div class="fs-container" id="fs1">
+<%= render :partial => '/site/exercises/flash_simple', :locals => {:lang=>@il_lang, :stress =>@il_fs_stress} %>
+</div>
+<script type="text/javascript"> 
+	var fs1 = new flash_show( {
+		id: "fs1",
+		images: 1,
+		autoplay: 1,
+		<%if @mute%>sounds: 0,<%end%>
+	<%unless @il_fs_transcribe%>transcribe: 0,<%end%>
+		orig_size: "<%=@il_fs_size%>",
+		basic_array: [
+<% @last_item_index = (@voc.length)-1%>
+<% @voc.each_with_index do |word,index|%>
+{"origin":"<%if @il_fs_html%><%=j(word.html)%><%else%><%=j(word.text)%><%end%>",
+<%if @il_transcribe_fr%>"transcript":"<%=j(word.transcribe_fr)%>",<%else%>"transcript":"<%=j(word.transcribe)%>",<%end%>
+<%if @il_translate_fr%>"translate":"<%=j(word.translate_fr)%>",<%else%>"translate":"<%=j(word.translate)%>",<%end%>
+"img":"<%=word.image_url%>","sound":"<%=word.sound_url%>"}<% if index!= @last_item_index -%>,<%end -%>
+<%end%>
+		]
+		} )
+</script>
+
+<br><br><br><br><br><br>
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="<%=@il_next1%>" onclick="openNextStep(2)">
+</div>	
+	
+	</div>
+</div>
+
+<div id="for_tab02" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title"><%=@il_tab2_name%></h3>
+<p class="su-step-info">
+<%=@il_tab2_tip%>
+</p>	
+	
+<ul class="img-list-container">
+<% @voc.each_with_index do |word,index|%>
+  <li class="img-list-item">
+	<img src="<%= word.image_url %>" width="110" class="img-list-pic" title="<%if @il_translate_fr%><%= word.translate_fr%><%else%><%= word.translate%><%end%>" />
+	<table cellspacing="0" align="center"><tr><td>
+		<div class="img-list-pic-name">
+			<%unless @mute%><div class="jp_control img-list-pic-sound" onclick="cJplayer('<%= word.sound_url%>', this)"></div><%end%>
+			<b><%= word.text%></b>
+		</div>
+	</td></tr></table>
+  </li>
+<%end%>
+</ul>	
+	
+<br><br><br><br><br>		
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="<%=@il_next2%>" onclick="openNextStep(3)">
+</div>
+	
+	</div>
+</div>
+
+
+<div id="for_tab03" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title"><%=@il_tab3_name%></h3>
+<p class="su-step-info">
+<%=@il_tab3_tip%>
+</p>	
+	
+<div id="ch1" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => @il_lang} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		quest_num: 15,
+		variants_num: 5,
+		next_time: 2000,
+		quest_type: 'image',
+		<%=@il_test_text%>
+		basic_array: [
+<% @last_item_index = (@voc.length)-1 -%>
+<% @voc.each_with_index  do |word, index| -%>
+['<%= word.image_url %>', "<%= j(word.text) %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
+		} )
+</script>
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="<%=@il_next3%>" onclick="openNextStep(4)">
+</div>
+
+	</div>
+</div>
+<div id="for_tab04" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title"><%=@il_tab4_name%></h3>
+<p class="su-step-info">
+<%=@il_tab4_tip%>
+</p>	
+	
+<div id="ch2" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => @il_lang} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		quest_num: 15,
+		variants_num: 6,
+		next_time: 2000,
+		<%unless @mute%>quest_type: 'audio',<%end%>
+		answer_type: "image",
+		<%=@il_test_text%>
+		basic_array: [
+<% @last_item_index = (@voc.length)-1 -%>
+<% @voc.each_with_index  do |word, index| -%>
+['<%if @mute%><%= j(word.text) %><%else%><%= j(word.sound_url) %><%end%>', '<img width="80" src="<%= j(word.image_url) %>" />'<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+		]
+		} )
+</script>	
+	
+<br><br><br><br>
+	
+	</div>
+</div>
+
+</div>
+
+
+<script type="text/javascript">
+currentSection="<%=@il_section%>";
+</script>

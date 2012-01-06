@@ -1,0 +1,140 @@
+<% @page_title = 'Russian Language Online: Softness of consonants in Russian' %>
+<% @page_meta = {'description' => "Online information about soft consonants in Russian with audio examples"} %>
+<% @with_rec = true %>
+<% @has_audio = true 
+@no_search=true
+@no_left_slide= true
+%>
+
+
+
+<% content_for :special_js_css do %>
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'jp-control.js' %>
+
+<%= javascript_include_tag 'flash-simple.js' %>
+<%= javascript_include_tag 'lexical-test' %>
+<%= stylesheet_link_tag 'flash-simple' %>
+<%= stylesheet_link_tag 'lexical-test' %>
+
+<style>
+
+
+
+</style>
+
+
+<% end %>
+
+<%
+cluster = Cluster.find(34)
+@voc= cluster.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+%>
+
+
+<div id="ch2" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		quest_num: 10,
+		variants_num: 6,
+		next_time: 2000,
+		//quest_type: 'audio',
+		answer_type: "image",
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+<% @last_item_index = (@voc.length)-1 -%>
+<% @voc.each_with_index  do |word, index| -%>
+['<%= word.text %>', '<img width="80" src="<%= j(word.image_url) %>" />'<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
+		} )
+</script>
+
+
+
+
+<div id="ch3" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch3 = new ch_exercise( {
+		id: "ch3", 
+		quest_num: 10,
+		variants_num: 5,
+		next_time: 2500,
+		quest_type: 'image',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+<% @last_item_index = (@voc.length)-1 -%>
+<% @voc.each_with_index  do |word, index| -%>
+['<%= word.image_url %>', "<%= word.text.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
+		} )
+</script>
+
+
+
+<ul class="img-list-container">
+<% @voc.each_with_index do |word,index|%>
+  <li class="img-list-item">
+	<img src="<%= word.image_url %>" width="110" class="img-list-pic" title="<%= word.translate%>" />
+	<table cellspacing="0" align="center"><tr><td>
+		<div class="img-list-pic-name">
+			<div class="jp_control img-list-pic-sound" onclick="cJplayer('<%= word.sound_url%>', this)"></div>
+			<b><%= word.text%></b>
+		</div>
+	</td></tr></table>
+  </li>
+<%end%>
+</ul>
+
+<br>
+<br>
+
+<div class="fs-container" id="fs1">
+<%= render :partial => '/site/exercises/flash_simple', :locals => {:lang=>"ru"} %>
+</div>
+
+<script type="text/javascript"> 
+	var fs1 = new flash_show( {
+		id: "fs1",
+		images: 1,
+		autoplay: 0,
+		//sounds: 0,
+		//transcribe: 0,
+		orig_size: "small",
+		basic_array: [
+<% @last_item_index = (@voc.length)-1%>
+<% @voc.each_with_index do |word,index|%>
+{"origin":"<%=j(word.text)%>","transcript":"<%=j(word.transcribe)%>","translate":"<%=j(word.translate)%>","img":"<%=word.image_url%>","sound":"<%=word.sound_url%>"}<% if index!= @last_item_index -%>,<%end -%>
+<%end%>
+		]
+		} )
+</script>
+
+<br>
+<br>
+
+
+
+
+
+<script type="text/javascript">
+currentSection="words";
+</script>

@@ -1,0 +1,79 @@
+<% @ps_lang = defined?(lang) ? lang : "en" %>
+<%  
+		@esex_auto_play = "Go to next automatically"
+		@esex_next = "NEXT >>"
+		@esex_restart = "RESTART"
+		@check_type = "Check"
+	if @ps_lang == "ru" 
+		@esex_auto_play = "Авто переход"
+		@esex_next = "Далее >>"
+		@esex_restart = "Заново"
+		@check_type = "Проверка"
+	elsif @ps_lang == "fr" 
+		@esex_auto_play = "Passer au suivant automatiquement"
+		@esex_next = "Suivant >>"
+		@esex_restart = "Restart"
+		@check_type = "Valider"
+	end
+%>
+<div class="pt-spacer">
+<div class="ps-wrapper pt-spec">
+<div class="ps-alert-container"><div class="ps-alert-rt"><div class="ps-alert"> &nbsp;</div></div></div>
+<div class="ps-top">
+	<div class="ps-final"></div>
+</div>
+<table class="ps-content" cellspacing="0">
+	<tr>
+		<td class="ps-quest" valign="middle" align="center">
+			<div class="ps-audio-wrapper">
+				<table width="100%"><tr><td style="height: 140px; text-align: center"><div class="ps-audio-holder"><div class="ps-audio"></div></div></td></tr></table>
+			</div>
+			<div class="ps-string-holder">
+				<table><tr><td class="ps-string-wrapper" style="height: 80px;">&nbsp;</td></tr></table>
+			</div>
+		</td>
+	</tr>
+	<tr>
+	<td>
+		<div class="ps-autoplay-wrapper"><input class="ps-autoplay" type="checkbox" /> <span><%= @esex_auto_play %></span> </div>
+		<table class="ps-answers-table" align="center" width="100%" style="margin: 0 auto">
+		<tr>
+		<td class="ps-tasks" valign="top">
+		<div class="ps-type-elem">
+			<div class="kb-show-wrapper">
+			<a class="show_keyboard" href="javascript:;">[ Use virtual keyboard ]<span class="kb_offset_top" style="display: none;">220</span></a>
+			</div>
+			<div class="ps-type-rand"></div>
+			<div style="margin-right: 10px; position: relative;">
+				<input type="text" class="ps-type-field for_keyb ps-txt-letters" />
+				<div class="ps-txt-letters">&nbsp;</div>				
+			</div>
+			<div style="display: none;" class="ps-buttons ps-type-check-wrapper">
+			</div>
+			<div class="ps-type-elements">
+			</div>
+		</div>			
+		</td>
+		</tr>
+		</table>
+	</td>
+	</tr>
+	<tr>
+		<td><div class="ps-bottom">
+		<span class="ps-buttons ps-type-check-wrapper"><input type="button" class="ps-check-type" value="<%= @check_type%>">
+		<input type="button" class="ps-next" value="<%= @esex_next%>" style="visibility: hidden;">
+		</span>
+		</div></td>
+		<td></td>
+	</tr>
+</table>
+<div class="ps-info-container">
+	<table cellspacing="0" align="center">
+		<tr>
+			<td style="padding-left: 20px;"><div class="ps-info"> &nbsp;  </div></td>
+			<td><div class="ps-buttons">&nbsp;&nbsp;&nbsp;<input type="button" class="ps-es-btn ps-start" value="<%=@esex_restart%>"/></div></td>
+		</tr>
+	</table>
+</div>
+</div>
+</div>

@@ -55,6 +55,18 @@ overflow: auto;
 border: 1px solid #dfdfdf;
 }
 
+table.min-w100 td div{
+min-width: 100px;
+}
+
+table.min-w150 td div{
+min-width: 150px;
+}
+
+table.min-w200 td div{
+min-width: 200px;
+}
+
 
 </style>
 <script type="text/javascript">
@@ -81,7 +93,9 @@ $("#words-to-add").dialog({
 		height: 'auto',
 		width: 'auto',
 		hide: 'blind',
-		modal: true
+		modal: true,
+		open: function() {setColWidth($(this))},
+		close: function() {$(this).find("table").removeClass("more7")}
 });
 
 	
@@ -92,8 +106,21 @@ $("#words_to_remove").dialog({
 		hide: 'blind',
 		modal: true
 });	
+
+$(".widther").change(function() {
+	var width = $(this).find("option:selected").val();
+	$(this).parent().parent().find("table").removeClass("min-w100").removeClass("min-w150").removeClass("min-w200")
+	if (width != "0") {
+		$(this).parent().parent().find("table").addClass("min-w"+width)
+	}
+})
 	
 });
+
+function setColWidth(container) {
+	var cols = container.find("table tr:eq(0) td").length;
+	if (cols >  7) container.find("table").addClass("more7")
+}
 
 function setOrder() {
 		$("#sortable li ").each(function(i, obj) {
@@ -266,8 +293,16 @@ Select words to remove by
 	<input type="checkbox" value="word_id" name="word[0]"> Word
 	</div>
 	</div>
-<div style="padding: 15px 10px 20px; border-top: 1px dotted #333;">
+<div style="padding: 15px 10px 20px; border-top: 1px dotted #333; position: relative;">
 <%= submit_tag "Add selected to cluster" %>
+
+<select class="widther" style="position: absolute; top:0; right:0">
+	<option value="0">Reset</option>
+	<option value="100">100</option>
+	<option value="150">150</option>
+	<option value="200">200</option>
+<select>
+
 </div>
 <% end %>
 </div>

@@ -85,13 +85,17 @@ require_role "admin"
 	if modal != 'false' 
 		modal = 'true'
 	end
+	@mod = 16
+	if words.length > 100
+		@mod = 20
+	end
 	attributes = ['<table><tr>']
 	words.each_with_index do |word,index|
-		if index % 16 == 0
+		if index % @mod == 0
 			attributes << '<td>'
 		end
 		attributes << '<div><input type=\"checkbox\" value=\"'+word.id.to_s+'\" name=\"word['+index.to_s+']\">'+ERB::Util.html_escape(word[t_attr])+'</div>'
-		if index % 16 == 15 && index != words.length 
+		if index % @mod == (@mod-1) && index != words.length 
 			attributes << '</td>'
 		end
 	end

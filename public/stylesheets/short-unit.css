@@ -1136,3 +1136,32 @@ box-shadow: 1px 1px 0px #fff, 1px 2px 12px #C3CBDF;
 .sound-wrap span.sound{
 white-space: normal;
 }
+
+body .unit-title a.su-tit-liink {
+background-color: transparent;
+color: #fff;
+outline: none;
+font-size: 16px;
+font-weight: bold;
+}
+body .unit-title a.su-tit-liink:link {
+background-color: transparent;
+color: #fff;
+text-decoration: none;
+}
+body .unit-title a.su-tit-liink:visited {
+background-color: transparent;
+color: #fff;
+text-decoration: none;
+}
+body .unit-title a.su-tit-liink:hover {
+background-color: transparent;
+color: #fff;
+text-decoration: underline;
+}
+body .unit-title a.su-tit-liink:active {
+background-color: transparent;
+color: #fff;
+text-decoration: underline;
+}
+

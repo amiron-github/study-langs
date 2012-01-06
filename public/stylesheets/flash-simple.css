@@ -1,0 +1,278 @@
+.fs-btn-down {
+top: 1px;
+left: 1px;
+-moz-box-shadow: 0px 1px 2px #45546F;
+-webkit-box-shadow: 0px 1px 2px #45546F;
+box-shadow: 0px 1px 2px #45546F;
+}
+
+
+.fs-container {
+border: 3px solid #99B2DF;
+background-image: url("/images/fl-bg.png");
+margin: 0 auto 0px;
+padding: 5px 40px 20px;
+background-color: #AFCCFF;
+text-align: left;
+max-width: 550px;
+position: relative;
+}
+
+.fs-show-count {
+text-align: center;
+padding: 12px 10px 8px;
+font-size: 12px;
+font-weight: bold;
+line-height: 20px;
+color: #333;
+}
+
+.fs-window {
+min-height: 200px;
+position: relative;
+}
+
+.fs-work {
+padding: 5px 30px 5px;
+}
+
+.fs-article-wrapper {
+text-align: center;
+background-color: white;
+padding: 35px 20px 25px;
+margin: 0px 30px;
+min-height: 170px;
+-moz-border-radius: 8px;
+-webkit-border-radius: 8px;
+border-radius: 8px;
+-moz-box-shadow: 1px 3px 6px #45546F;
+-webkit-box-shadow: 1px 3px 6px #45546F;
+box-shadow: 1px 3px 6px #45546F;
+overflow: hidden;
+}
+
+.msie8-sucks .fs-article-wrapper {
+border:5px solid #A8B6CF;
+}
+
+.fs-buttons-wrapper {
+padding: 25px 0 20px;
+text-align: center;
+overflow: hidden;
+}
+
+.fs-btn {
+cursor: pointer;
+margin-right: 10px;
+padding: 3px 6px;
+position: relative;
+text-align: center;
+display: inline-block;
+background-image: url(/images/btn-grd.png);
+background-position: 50%;
+background-repeat: no-repeat;
+border: 1px solid #8E95AF;
+-moz-box-shadow: 1px 2px 3px #45546F;
+-webkit-box-shadow: 1px 2px 3px #45546F;
+box-shadow: 1px 2px 3px #45546F;
+}
+
+.msie7-sucks .fs-btn {
+display: block;
+float: left;
+}
+
+.fs-buttons-wrapper .fs-btn {
+line-height: 20px;
+padding: 5px 10px 5px 10px;
+color: #353D5F;
+overflow: hidden;
+font-size: 13px;
+font-weight: bold;
+min-width: 90px;
+text-align: center;
+}
+
+.fs-buttons-wrapper .fs-btn:hover {
+background-color: #BFD6FF;
+}
+
+.fs-buttons-wrapper .fs-btn-disabled {
+color: #999;
+}
+
+.fs-original {
+font-size: 25px;
+color: #3F3F3F;
+line-height: 32px;
+} 
+
+.fs-original-small {
+font-size: 22px;
+line-height: 28px;
+}
+
+.fs-original-big {
+font-size: 30px;
+}
+
+.fs-transcript {
+padding: 0px 10px 0px;
+}
+
+.fs-no-transcript {
+padding:0;
+}
+
+.fs-translate {
+margin-top: 10px;
+font-size: 15px;
+font-weight: bold;
+min-height: 40px;
+line-height: 18px;
+}
+
+.fs-picture img {
+padding: 3px;
+border: 0px solid #999;
+}
+
+.fs-with-img .fs-img-holder {
+height: 150px;
+width: 186px;
+}
+
+.fs-sound .jp_control,.fs-sound .jp_control:hover {
+    background-color: #FFFFFF;
+    background-image: url("/images/play-25.png");
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    height: 27px;
+    width: 27px;
+}
+
+.fs-sound .jp_pause {
+    background-image: url("/images/pause-25.png") !important;
+}
+
+/*settings*/
+
+.fs-container .tb_settings-wrap {
+position: absolute;
+right: 0px;
+top: 21px;
+padding: 10px 0 10px;
+font-weight: normal;
+background-color: #fff;
+width: 160px;
+border: 1px solid #778CBF;
+backg-round-image: url("/images/transparent-80.png");
+-moz-box-shadow: 1px 1px 2px #5779AF;
+-webkit-box-shadow: 1px 1px 2px #5779AF;
+box-shadow: 1px 1px 2px #5779AF;
+display: none;
+mi-n-width: 89px;
+}
+
+.fs-container .tb_settings-wrap .d_act {
+background-color: #C2D7EF;
+}
+
+.fs-container .tb_settings-wrap .d_act {
+font-weight: bold;
+}
+
+.fs-container .tb_settings-wrap .drop_2bl .d_act {
+font-weight: normal;
+}
+
+.fs-container .tb_settings-wrap .drop_1 {
+font-size: 11px;
+font-wei-ght: bold; 
+}
+
+.fs-container .tb_settings-wrap  .toopen {
+padding: 5px 0 6px 0;
+}
+
+.fs-container .tb_settings-wrap .drop_2bl  .toopen {
+padding-left: 5px;
+}
+
+.fs-container .tb_settings-wrap .drop_2bl, .fs-container .tb_settings-wrap .drop_3bl {
+background-image: url("/images/transparent-80.png");
+border: 1px solid #778CBF;
+-moz-box-shadow: 1px 1px 2px #5779AF;
+-webkit-box-shadow: 1px 1px 2px #5779AF;
+box-shadow: 1px 1px 2px #5779AF;
+}
+
+.fs-container .tb_settings-wrap .drop_2 {
+left: 25px;
+}
+
+.fs-container .tb_settings-wrap .drop_3 {
+left: 20px;
+}
+.fs-container .tb_settings-wrap .drop_2bl {
+width: 140px;
+}
+
+.fs-container .tb_settings-wrap .drop_3bl {
+width: 130px;
+}
+
+.fs-container .tb_settings {
+font-weight: bold;
+position: absolute;
+right: -0px;
+top: -0px;
+color: #fff;
+cursor: pointer;
+-moz-bor-der-radius: 4px;
+-webkit-bor-der-radius: 4px;
+bor-der-radius: 4px;
+background-image: url(/images/btn-grd.png);
+background-position: 50% 50%;
+background-repeat: no-repeat;
+border: 1px solid #8E95AF;
+-moz-box-shadow: 1px 1px 1px #5C77A8;
+-webkit-box-shadow: 1px 1px 1px #5C77A8;
+box-shadow: 1px 1px 1px #5C77A8;
+}
+
+.fs-container .tb_settings:hover {
+background-color: #9FC0FF;
+border: 1px solid #5A7ACF;
+-moz-box-shadow: 1px 1px 1px #6F98DF;
+-webkit-box-shadow: 1px 1px 1px #6F98DF;
+box-shadow: 1px 1px 1px #6F98DF;
+}
+
+.fs-container .tb_set_on, .fs-container .tb_set_on:hover {
+margin-top: 1px;
+margin-right: 1px;
+background-color: #9FC0FF;
+border: 1px solid #5A7ACF;
+-moz-box-shadow: 0px 0px 1px #6F98DF;
+-webkit-box-shadow: 0px 0px 1px #6F98DF;
+box-shadow: 0px 0px 1px #6F98DF;
+} 
+
+.fs-container .tb_settings span {
+display: block;
+font-size: 11px;
+color: #fff;
+text-shadow: 0px 1px 0px #304D86;
+color: #232D3F;
+text-shadow: 0 1px 0 #EFF3FF;
+padding: 3px 14px 4px 22px;
+background-repeat: no-repeat;
+background-image: url(/images/icons/fugue/gear.png);
+background-position: 3px 1px;
+}
+
+.fs-no-sound .opt-autoplay {
+display: none;
+}

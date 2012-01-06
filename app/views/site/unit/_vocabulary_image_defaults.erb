@@ -1,0 +1,52 @@
+<%
+@il_lang = defined?(@il_lang) ? @il_lang : "en"
+@mute = defined?(@mute) ? @mute : false
+if @mute
+	@il_fs_transcribe=true
+else
+	@il_fs_transcribe=false
+end
+@il_fs_stress = 0
+@il_fs_html=false
+@il_fs_size="big"
+@il_les_name=@il_lesson
+@il_page_name= @il_les_name
+@il_page_desc = @il_les_name
+@il_tab1 = 'Flashcards'
+@il_tab1_tip = '&nbsp;'
+@il_tab2 = 'Words listing'
+@il_tab2_tip = '&nbsp;'
+@il_tab3 = 'Test 1'
+@il_tab3_tip = '&nbsp;'
+@il_tab4 = 'Test 2'
+@il_tab4_tip = '&nbsp;'
+@il_next1 = defined?(@il_next1) ? @il_next1 : 'Next part >>'
+@il_section = 'words'
+@il_test_text = ''
+if @il_lang == "en"
+	@il_fs_stress = 1  #should be 1
+	@il_fs_html=true  #should be true
+	@il_tab1_name = @il_tab1;@il_tab2_name = @il_tab2; @il_tab3_name = @il_tab3;@il_tab4_name = @il_tab4
+	@il_next2 = @il_next1;@il_next3 = @il_next1;@il_next4 = @il_next1
+elsif @il_lang == "ru"
+	@il_tab1 = 'Флэшкарты'
+	@il_tab2 = 'Список'
+	@il_tab3 = 'Тест 1'
+	@il_tab4 = 'Тест 2'
+	@il_next1 = 'Следующий этап >>'
+	@il_tab1_name = @il_tab1;@il_tab2_name = @il_tab2; @il_tab3_name = @il_tab3; @il_tab4_name = @il_tab4
+	@il_next2 = @il_next1;@il_next3 = @il_next1;@il_next4 = @il_next1
+	@il_test_text = "texts: ['Правильно','Неправильно','Далее >>','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],"
+elsif @il_lang == "fr"
+	@il_fs_stress = 1  #should be 1
+	@il_fs_html=true  #should be true
+	@il_tab1 = 'Cartes mémoire'
+	@il_tab2 = 'Liste de mots'
+	@il_tab3 = 'Test 1'
+	@il_tab4 = 'Test 2'
+	@il_next1 = 'Etape suivante >>'
+	@il_tab1_name = @il_tab1;@il_tab2_name = @il_tab2; @il_tab3_name = @il_tab3; @il_tab4_name = @il_tab4
+	@il_next2 = @il_next1;@il_next3 = @il_next1;@il_next4 = @il_next1
+	@il_test_text = "texts: ['Correct','Incorrect','Suivant >>','Résultat','Restant','Nombre de questions','Réponses corrects','Résultat'],"
+end
+%>

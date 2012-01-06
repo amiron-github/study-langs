@@ -1,0 +1,135 @@
+<% @fs_lang = defined?(lang) ? lang : "en" %>
+<% @fs_stress = defined?(stress) ? stress : 0 %>
+
+
+<%  	@fs_settings = "Settings"
+		@fs_auto_play = "Autoplay"
+		@fs_ap_on = "ON"
+		@fs_ap_off = "OFF"
+		@fs_transcribe = "Transcription"
+		@fs_tr_on = "show"
+		@fs_tr_off = "hide"
+		@fs_stresses = "Stresses settings"
+		@fs_str_on = "show stress"
+		@fs_str_off = "hide stress"
+		@fs_str_un = "vowel underlined"
+		@fs_str_acc = "vowel with stress"
+		@fs_str_adj = "- adjust (if needed)"
+		@fs_softness = "Softness"
+		@fs_sft_on = "ON"
+		@fs_sft_off = "OFF"
+		@prev_btn = "Previous"
+		@next_btn = "Next"
+	if @fs_lang == "ru" 
+		@fs_settings = "Настройки"
+		@fs_auto_play = "Проигрывать"
+		@fs_ap_on = "автоматически"
+		@fs_ap_off = "вручную"
+		@fs_transcribe = "Транскрипция"
+		@fs_tr_on = "показать"
+		@fs_tr_off = "скрыть"
+		@prev_btn = "Назад"
+		@next_btn = "Вперед"
+	elsif @fs_lang=="fr"
+		@fs_settings = "Paramètres"
+		@fs_auto_play = "Reproduction"
+		@fs_ap_on = "automatique"
+		@fs_ap_off = "manuelle"
+		@fs_transcribe = "Transcription"
+		@fs_tr_on = "montrer"
+		@fs_tr_off = "masquer"
+		@fs_stresses = "Accents"
+		@fs_str_on = "montrer"
+		@fs_str_off = "masquer"
+		@fs_str_un = "souligné"
+		@fs_str_acc = "marque d'accent"
+		@fs_str_adj = "- ajuster"
+		@fs_softness = "Сonsonnes molles"
+		@fs_sft_on = "marquées"
+		@fs_sft_off = "non marquées"
+		@prev_btn = "Précédant"
+		@next_btn = "Suivant"
+	end
+%>
+
+
+
+
+
+
+<div style="position: absolute; top: 5px; right: 5px; z-index: 1000;"> 
+<div class="tb_settings-wrap"> 
+   <div class="drop_1 toopen opt-autoplay"><span style="padding-left: 12px;"><%=@fs_auto_play%></span></div> 
+	<div class="drop_2 opt-autoplay"> 
+		<div class="drop_2bl opt-autoplays" style="display: none"> 
+			<div class="drop_2x"><span class="tcheck opt-autoplay_on"><%=@fs_ap_on%></span></div>
+			<div class="drop_2x"><span class="tcheck opt-autoplay_off"><%=@fs_ap_off%></span></div>  
+		</div>	
+	</div>
+   <div class="drop_1 toopen"><span style="padding-left: 12px;"><%=@fs_transcribe%></span></div> 
+	<div class="drop_2"> 
+		<div class="drop_2bl opt-transcribe" style="display: none"> 
+			<div class="drop_2x"><span class="tcheck opt-transcribe_on"><%=@fs_tr_on%></span></div>
+			<div class="drop_2x"><span class="tcheck opt-transcribe_off"><%=@fs_tr_off%></span></div>  
+		</div>	
+	</div>
+<%unless @fs_stress==0%>	
+<div class="drop_1 toopen"><span style="padding-left: 12px;"><%= @fs_stresses %></span></div> 
+	<div class="drop_2"> 
+		<div id="accents" class="drop_2bl" style="display: none"> 
+			<div class="drop_2x"><span class="accent_off tcheck checked"><%=@fs_str_off%></span></div> 
+			<div class="drop_2x toopen"><span class="accent_show tcheck" style="cursor: default"><%=@fs_str_on%></span></div> 
+				<div class="drop_3"> 
+					<div class="drop_3bl" style="display: none"> 
+						<div class="drop_3x"><span class="accent_un tcheck"><%=@fs_str_un%></span></div> 
+						<div class="drop_3x"> 
+							<span class="accent_on  tcheck"><%=@fs_str_acc%></span><br> 
+							<span id="accent_adjust" class="tcheck" style="padding-bottom: 2px; font-size: 9px; display: none;"> <%=@fs_str_adj%></span> 
+						</div> 
+					</div>	
+				</div> 
+		</div>	
+	</div> 
+   <div class="drop_1 toopen"><span style="padding-left: 12px;"><%=@fs_softness%></span></div> 
+	<div class="drop_2"> 
+		<div id="softs" class="drop_2bl" style="display: none"> 
+			<div class="drop_2x"><span id="soft_off" class="tcheck checked"><%=@fs_sft_off%></span></div> 
+			<div class="drop_2x"><span id="soft_on" class="tcheck"><%=@fs_sft_on%></span></div> 
+		</div>	
+	</div>
+<%end%>
+</div> 
+<div class="tb_settings"><span><%=@fs_settings%></span></div> 
+</div>
+
+	<div class="fs-show-count">&nbsp;</div>
+	<div class="fs-window">
+		<div class="fs-article-wrapper">
+			<table width="100%" cellspacing="0">
+			<col><col>
+				<tr>
+					<td rowspan="3" class="fs-img-holder" height="150" >
+						<div class="fs-picture"></div>
+					</td>
+					<td height="70">
+						<div class="fs-original"></div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<table  cellspacing="0" style="margin: 0 auto" align="center"><tr>
+							<td class="fs-transcript"></td>
+							<td style="text-align: left; height:19px;"><div class="fs-sound"> </div></td>
+						</tr></table>
+					</td>
+				</tr>
+				<tr>
+						<td><div class="fs-translate"></div></td>
+				</tr>
+			</table>
+			</div>
+			<div class="fs-buttons-wrapper noselect">
+				<div class="fs-prev fs-btn noselect fs-btn-disabled">«&nbsp;<%=@prev_btn%></div>
+				<div class="fs-next fs-btn noselect"><%=@next_btn%>&nbsp;»</div>
+		</div>			
+	</div>

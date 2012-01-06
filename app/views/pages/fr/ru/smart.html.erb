@@ -1,0 +1,84 @@
+<% @page_title = 'Russian Language Online: Softness of consonants in Russian' %>
+<% @page_meta = {'description' => "Online information about soft consonants in Russian with audio examples"} %>
+<% @with_rec = true %>
+<% @has_audio = true 
+@no_search=true
+@no_left_slide= true
+%>
+
+
+
+<% content_for :special_js_css do %>
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'jp-control.js' %>
+<%= javascript_include_tag 'lexical-test-p' %>
+<%= stylesheet_link_tag 'lexical-test-p' %>
+
+
+<style>
+
+
+</style>
+
+
+<% end %>
+
+
+<div id="ph1" class="pt-holder">
+<%= render :partial => '/site/exercises/phrases_test', :locals => {:lang=>"ru"} %>	
+</div><!-- end of pt-holder -->
+
+<%
+cluster = Cluster.find(117)
+@words= cluster.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+%>
+
+<script type="text/javascript"> 
+	var ch1 = new ph_exercise( {
+		id: "ph1", 
+		//quest_num: 10,
+		//variants_num: 4,
+		//shuffle_quest: false,
+		//random_order: false,
+		auto_play: false,
+		quest_type: 'audio',
+		//answer_type: 'type',
+		//input_type: 'input',
+		//tp_no_space: true,
+		rand_letters: true,
+		next_time: 2500,
+		texts: ['Правильно','Неправильно','Далее >>','Результат','Осталось','Всего вопросов','Правильных ответов','Результат','Показать ответ','Перейти к следующему'],
+		basic_array: [
+/*		
+{"quest": "Hello", "options": ["Привет", "Пока", "Спасибо"], "correct": 1},
+{"quest": "Bye", "options": ["Привет", "Пока", "Спасибо", "Еще"], "correct": 2},
+{"quest": "Thanks", "options": ["Привет", "Пока", "Спасибо"], "correct": 3}
+*/
+
+<% @last_item_index = (@words.length)-1 -%>
+<% @words.each_with_index  do |word, index| -%>
+
+{"quest": "<%= j(word.translate) %>", 
+"correct":"<%= j(word.text)%>",
+"forms":"<%=j(word.text)%>",
+"answer": "<%= j(word.text)%>"
+<% if current_user %>, "id":'<%= word.id%>'<%end%>}<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
+		} )
+</script>
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+currentSection="words";
+</script>
