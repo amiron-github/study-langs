@@ -60,9 +60,9 @@
 		basic_array: [
 <% @last_item_index = (@voc.length)-1%>
 <% @voc.each_with_index do |word,index|%>
-{"origin":"<%if @il_fs_html%><%=j(word.html)%><%else%><%=j(word.text)%><%end%>",
-<%if @il_transcribe_fr%>"transcript":"<%=j(word.transcribe_fr)%>",<%else%>"transcript":"<%=j(word.transcribe)%>",<%end%>
-<%if @il_translate_fr%>"translate":"<%=j(word.translate_fr)%>",<%else%>"translate":"<%=j(word.translate)%>",<%end%>
+{"origin":"<%if @il_fs_html%><%=no_js(word.html)%><%else%><%=no_js(word.text)%><%end%>",
+<%if @il_transcribe_fr%>"transcript":"<%=no_js(word.transcribe_fr)%>",<%else%>"transcript":"<%=no_js(word.transcribe)%>",<%end%>
+<%if @il_translate_fr%>"translate":"<%=no_js(word.translate_fr)%>",<%else%>"translate":"<%=no_js(word.translate)%>",<%end%>
 "img":"<%=word.image_url%>","sound":"<%=word.sound_url%>"}<% if index!= @last_item_index -%>,<%end -%>
 <%end%>
 		]
@@ -135,7 +135,7 @@
 		basic_array: [
 <% @last_item_index = (@voc.length)-1 -%>
 <% @voc.each_with_index  do |word, index| -%>
-['<%= word.image_url %>', "<%= j(word.text) %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+['<%= word.image_url %>', "<%= no_js(word.text) %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
 <%end -%>
 
 		]
@@ -175,7 +175,7 @@
 		basic_array: [
 <% @last_item_index = (@voc.length)-1 -%>
 <% @voc.each_with_index  do |word, index| -%>
-['<%if @mute%><%= j(word.text) %><%else%><%= j(word.sound_url) %><%end%>', '<img width="80" src="<%= j(word.image_url) %>" />'<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+['<%if @mute%><%= no_js(word.text) %><%else%><%= no_js(word.sound_url) %><%end%>', '<img width="80" src="<%= no_js(word.image_url) %>" />'<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
 <%end -%>
 		]
 		} )

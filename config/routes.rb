@@ -145,6 +145,7 @@ ActionController::Routing::Routes.draw do |map|
   map.activate '/:lang/:to_lang/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
   
+  map.vocab_lis '/get_flash_list', :controller =>'vocabulary', :action=>'get_flash_list'
   map.connect '/users/change_userpic', :controller => 'users', :action => 'change_userpic'
   map.cart '/cart', :controller => 'users', :action => 'show_cart'
   map.user '/user', :controller => 'users', :action => 'update_user'

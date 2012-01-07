@@ -580,9 +580,7 @@ this.step = function () {
 			}else{
 				tObj.soundHolder.show().html( '<div onclick="cJplayer(\''+tObj.workArray[tObj.missedItems[activeEl]]['data'][2]+'\', this)" class="jp_control"></div>' )
 			}
-		
 		}
-		
 		
 		if ( tObj.container.find(".fl-autoplay").is(":checked") ) {
 			cJplayer(tObj.workArray[tObj.missedItems[activeEl]]['data'][2], tObj.soundHolder.find(".jp_control").get(0))
@@ -895,7 +893,32 @@ $(document).ready(function() {
 
 }
 
-
+function fixAccents(container) {
+		if ( getCookie('accent_on') ) {
+			if (getCookie('accent_adjust')) {
+				container.find("span.acco").each(function(){
+					var tVal = $(this).text().replace(/[?]/g, "");
+					$(this).html("&#769;" + tVal);
+				});
+			} else {
+			container.find("span.acco").each(function(){
+				var tVal = $(this).text().replace(/[?]/g, "");
+				$(this).html( tVal + "&#769;");
+			});
+			}
+		}
+		if(getCookie('accent_un')) {
+			container.find("span.acco").each(function(){
+				var tVal = $(this).text().replace(/[?]/g, "")
+				$(this).html("<u>" + tVal + "<\/u>");
+			});
+		}
+		if(getCookie('softness')) {
+			container.find("span.sfts").remove();
+			container.find("span.sfty").remove();
+			container.find("span.sftc, span.sftv").after("<span class=\"sfts\">\'<\/span>");
+		}
+}
 
 
 

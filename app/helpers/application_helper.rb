@@ -163,5 +163,9 @@ require 'digest/md5'
 	end
 	return topic
   end
+  
+  def no_js(string)
+	return escape_javascript(string)
+  end
 	
 end

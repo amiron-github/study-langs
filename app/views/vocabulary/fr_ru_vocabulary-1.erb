@@ -1,0 +1,180 @@
+<% @page_title = ' '+@category_title+' :: Vocabulaire russe en ligne:  '  %>
+<% @page_meta = {'description' => "Apprenez les mots et les phrases de la rubrique "+@category_title+" en ligne"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+
+
+<% content_for :special_js_css do %>
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'jp-control' %>
+<script type="text/javascript">
+$(document).ready(function() {
+$(".trans-display").change(function(){
+	if ($(this).is(":checked")) {
+		$(".original div.ru-transcript").show();
+	}else{
+		$(".original div.ru-transcript").hide();
+	}
+}).change();
+});
+</script>
+<style type="text/css">
+h2.page {
+margin-bottom: 0px;
+}
+
+.voc-wordlist .diction td {
+border-bottom: 1px solid #efefef;
+}
+
+.trans-display-wrapper {
+font-size: 11px;
+color: #444;
+position: relative;
+top: -50px;
+margin-bottom: -15px;
+}
+
+.voc-wordlist .diction td.original {
+position: relative;
+width: auto;
+padding-left: 35px;
+cursor: default;
+}
+
+.voc-wordlist .diction td.original div.ru-transcript {
+display: none;
+font-size: 11px;
+color: #555;font-weight: normal;
+}
+
+.voc-wordlist .diction td.translation {
+width: auto;
+padding-left: 22px;
+padding-right: 18px;
+cursor: default;
+}
+
+div.jp_control {
+position: absolute;
+margin-left: -25px;
+}
+
+h3.page-path {
+margin-bottom: 15px;
+}
+
+
+
+</style>
+<% end %>
+
+
+
+
+
+<div class="hint_wrap">
+<div class="hint_button" style="float: right;">
+  <div class="hint">
+      <div class="hint_list">
+        <span class="hint_string">Links and Settings</span>
+      </div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+        <ul>
+            <li><a href="/fr/ru/flashcards/<%= @category.tag %>">Cartes mémoire: <%= @category_title %></a></li>
+			<li><a href="/fr/ru/lexical-test/<%= @category.tag %>">Tests: <%= @category_title %></a></li>
+        </ul>
+        <%= render :partial => 'site/down_accent' %>
+  </div>
+</div>
+</div>
+
+
+<h2 class="page"><%= @category_title %></h2>
+
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="/fr/ru/vocabulary.html">Vocabulaire</a>
+	<span class="int-arrow">--&gt;</span> <%= @category_title %>
+	</span>
+</h3>
+
+
+
+
+<%= render :partial => '/site/ad_horizont' %>
+<br><br><br>
+<div class="voc-wordlist" style="max-width: 600px; margin: 0 auto;">
+<table class="voc_bord" align="center" cellspacing="0">
+<tr>
+<td>
+
+<table  class="diction" cellpadding="0" cellspacing="0" align="center">
+<col width="50%"><col width="50%">
+<thead>
+<tr>
+	<td> <div class="trans-display-wrapper"><input type="checkbox" class="trans-display" /> Transcription </div> </td>
+	<td></td>
+</tr>
+</thead>
+<tbody>
+<%
+@words.each_with_index do |word, index|
+-%>
+
+<% voc_spaces.each do |s| -%>
+<% if word.id == s %>
+  <tr>
+    <td class="original" valign="top">&nbsp;
+    </td>
+
+    <td class="translation" valign="top">&nbsp;
+    </td>
+  </tr>
+<%end -%>
+<%end -%>
+<tr class="trow">
+    <td class="original" valign="top">
+	<%unless word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div><%end%>
+	<% unless cookies[:accents] %><%=strip_tags(word.html) %><%else%><%= word.html %><%end%>
+	<div class="ru-transcript">[<%= word.transcribe_fr %>]</div>
+	
+    </td>
+    <td class="translation" valign="top"><%= word.translate_fr %>
+    </td>
+</tr>
+<%end -%>
+</tbody>
+<tfoot>
+<tr>
+	<td>
+		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+	</td>
+	<td>
+		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+	</td>
+</tr>
+</tfoot>  
+</table>
+
+</td>
+</tr>
+</table>
+</div><!-- end of voc-wordlist-->
+
+
+<table class="voc-links voc-link-first " align="center" cellspacing="0"><tr>
+	<td class="voc-space">Apprenez ces mots et ces phrases à l'aide de nos &nbsp;<a href="/fr/ru/flashcards/<%= @category_tag%>">Cartes mémoire >></a></td>
+</tr></table>
+<table class="voc-links voc-link-last" align="center" cellspacing="0"><tr>
+	<td class="voc-space">Évaluez comment vous avez appris ces mots à l'aide de nos &nbsp;<a href="/fr/ru/lexical-test/<%= @category_tag%>">Tests lexicaux >></a></td>
+</tr></table>
+
+
+
+
+
+
+
+

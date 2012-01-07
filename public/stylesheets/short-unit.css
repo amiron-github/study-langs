@@ -1165,3 +1165,101 @@ color: #fff;
 text-decoration: underline;
 }
 
+/*settings block*/
+
+.tb_settings-wrap {
+position: absolute;
+right: 0px;
+top: 21px;
+padding: 15px 0 20px;
+font-weight: normal;
+background-color: #fff;
+width: 160px;
+border: 1px solid #778CBF;
+backg-round-image: url("/images/transparent-80.png");
+-moz-box-shadow: 1px 1px 2px #5779AF;
+-webkit-box-shadow: 1px 1px 2px #5779AF;
+box-shadow: 1px 1px 2px #5779AF;
+display: none;
+mi-n-width: 89px;
+}
+
+.tb_settings-wrap .d_act {
+background-color: #C2D7EF;
+font-weight: bold;
+}
+
+.tb_settings-wrap .drop_1 {
+font-size: 11px;
+fon-t-weight: bold; 
+}
+
+.tb_settings-wrap .drop_2bl .d_act {
+font-weight: normal;
+}
+
+.tb_settings-wrap  .toopen {
+padding: 5px 0 6px 0;
+}
+
+.tb_settings-wrap .drop_2bl  .toopen {
+padding-left: 5px;
+}
+
+.tb_settings-wrap .drop_2bl, .tb_settings-wrap .drop_3bl {
+background-image: url("/images/transparent-80.png");
+border: 1px solid #778CBF;
+-moz-box-shadow: 1px 1px 2px #5779AF;
+-webkit-box-shadow: 1px 1px 2px #5779AF;
+box-shadow: 1px 1px 2px #5779AF;
+}
+
+.tb_settings-wrap .drop_2, .tb_settings-wrap .drop_3 {
+left: 20px;
+}
+
+
+.tb_settings {
+position: absolute;
+right: 0px;
+top: 0px;
+color: #fff;
+cursor: pointer;
+-moz-bor-der-radius: 4px;
+-webkit-bor-der-radius: 4px;
+bor-der-radius: 4px;
+border: 1px solid #5A7ACF;
+background-image: url(/images/btn-grd.png);
+background-position: 50% 50%;
+background-repeat: no-repeat;
+backg-round-color: #4B87FB;
+-moz-box-shadow: 1px 1px 1px #6F98DF;
+-webkit-box-shadow: 1px 1px 1px #6F98DF;
+box-shadow: 1px 1px 1px #6F98DF;
+}
+
+.tb_set_on {
+margin-top: 1px;
+margin-right: 1px;
+background-color: #9FC0FF;
+-moz-box-shadow: 0px 0px 1px #6F98DF;
+-webkit-box-shadow: 0px 0px 1px #6F98DF;
+box-shadow: 0px 0px 1px #6F98DF;
+} 
+
+.tb_settings:hover {
+background-color: #9FC0FF;
+}
+
+.tb_settings span {
+display: block;
+font-size: 11px;
+color: #fff;
+text-shadow: 0px 1px 0px #304D86;
+color: #232D3F;
+text-shadow: 0 1px 0 #EFF3FF;
+padding: 3px 14px 4px 22px;
+background-repeat: no-repeat;
+background-image: url(/images/icons/fugue/gear.png);
+background-position: 3px 1px;
+}
