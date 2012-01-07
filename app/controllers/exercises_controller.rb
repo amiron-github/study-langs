@@ -8,12 +8,30 @@ layout "admin"
   # User.find($).user_tests.all(:include => {:exercise => :category} , :conditions => {'categories.title' => 'Formulas of politeness'}) // user and category id
   
   def index
-    @exercises = Exercise.all
+	if params[:search]
+			@exercises = Exercise.search params[:search]
+			@exercises = @exercises.paginate :page => params[:page], :order => 'created_at DESC', :per_page=> 100
+	else
+		@exercises = Exercise.find(:all, :order=>'id DESC')
+		@exercises = @exercises.paginate :page => params[:page]
+	end
 	@categories = Category.all
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @exercises }
     end
+  end
+  
+   def search
+	if params[:search]
+			@exercises = Exercise.search params[:search]
+			@exercises = @exercises.paginate :page => params[:page], :order => 'created_at DESC', :per_page=> 100
+	else
+		@exercises = Exercise.find(:all, :order=>'id DESC')
+		@exercises = @exercises.paginate :page => params[:page]
+	end
+	@categories = Category.all
+    render :action => 'index'
   end
 
   # GET /exercises/1
@@ -77,6 +95,39 @@ layout "admin"
       end
     end
   end
+  
+  def new_list 
+	@categories = Category.find(:all, :order=> 'lang, order_num')
+	exercise = Exercise.find(:first)
+	@attributes = exercise.attributes
+	if params[:category] 
+		@category = Category.find( params[:category] )
+	else 
+		@category = Category.find(:first)
+		@last=0
+	end
+  end  
+  
+   def create_list
+    @failed  = ""
+	params[:exercise].values.each do |t|
+		@exercise = Exercise.new(t)
+		if @exercise.save
+		else
+			@failed = @failed+"<br>failed: "+no_js(@exercise.test_id)
+		end
+	end
+	@ok 
+	if request.xhr?
+		render :js => '$("<div></div>").html("<br><b>This list has been created.</b>'+@failed+'").dialog({modal: true, title: "Saving new list", buttons: {"OK": function() {$( this ).dialog( "close" )}}})'
+	else
+		redirect_to(:back)
+	end
+  end  
+  
+  
+  
+  
 
   # DELETE /exercises/1
   # DELETE /exercises/1.xml

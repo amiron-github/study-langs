@@ -127,6 +127,7 @@
 <script type="text/javascript"> 
 	var ch1 = new ch_exercise( {
 		id: "ch1", 
+		<% unless @test_data == nil || @test_data==''%>test_id: "<%= @test_data[0] %>",<%end%>
 		quest_num: 15,
 		variants_num: 5,
 		next_time: 2000,
@@ -166,6 +167,7 @@
 <script type="text/javascript"> 
 	var ch2 = new ch_exercise( {
 		id: "ch2", 
+		<% unless @test_data == nil || @test_data==''%>test_id: "<%= @test_data[1] %>",<%end%>
 		quest_num: 15,
 		variants_num: 6,
 		next_time: 2000,

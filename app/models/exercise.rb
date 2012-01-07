@@ -232,6 +232,11 @@ GRAMMAR_EN = {
 ]
 }
 
+  def self.search(search)
+	search_condition = "%" + search + "%"
+	find(:all, :conditions => ['test_id LIKE ? OR category_id LIKE ?', search_condition, search_condition])
+  end
+
 end
 
 

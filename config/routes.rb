@@ -102,6 +102,9 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'clusters/save_cluster_order', :controller => 'clusters', :action => 'save_cluster_order'
   map.connect 'clusters/select_to_remove', :controller => 'clusters', :action => 'select_to_remove'
   map.resources :clusters
+  map.connect '/exercises/search', :controller => 'exercises', :action => 'search'
+  map.connect '/exercises/new_list', :controller => 'exercises', :action => 'new_list'
+  map.connect '/exercises/create_list', :controller => 'exercises', :action => 'create_list'
   map.resources :exercises
   map.connect 'words/words_index', :controller => 'words', :action => 'words_index'
   map.connect 'words/new_list', :controller => 'words', :action => 'new_list'
