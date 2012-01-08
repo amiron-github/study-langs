@@ -5,6 +5,8 @@ text-align: center;
 }
 
 
+
+
 .es-ex-buttons input {
 background-image:url(/images/btn-grd.png);
 background-position:50%;
@@ -1293,6 +1295,14 @@ padding: 3px 14px 4px 22px;
 background-repeat: no-repeat;
 background-image: url(/images/icons/fugue/gear.png);
 background-position: 3px 1px;
+}
+
+.unit-title .tb_settings-wrap span {
+text-shadow: 0 0 0 #fff;
+}
+
+.unit-title .tb_settings span {
+font-weight: bold;
 }
 
 

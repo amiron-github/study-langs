@@ -1,0 +1,355 @@
+
+<%
+@pl_lang = defined?(@pl_lang) ? @pl_lang : "en"
+@mute = defined?(@mute) ? @mute : true
+@pl_settings = defined?(@pl_settings) ? @pl_settings : false
+@pl_les_name=defined?(@pl_les_name) ? @pl_les_name : @pl_lesson
+@pl_page_name= defined?(@pl_page_name) ? @pl_page_name : @pl_lesson
+@pl_page_desc = defined?(@pl_page_desc ) ? @pl_page_desc : @pl_lesson
+
+#settings for the 1st tab - flash cards
+@pl_fs_transcribe = defined?(@pl_fs_transcribe) ? @pl_fs_transcribe : false
+@pl_fs_stress = defined?(@pl_fs_stress) ? @pl_fs_stress : 0
+@pl_fs_size= defined?(@pl_fs_size) ? @pl_fs_size :"small"
+@pl_fs_html=defined?(@pl_fs_html) ? @pl_fs_html :false
+@pl_section = defined?(@pl_section) ? @pl_section : 'words'
+
+#settings for the 2nd tab - comments
+
+#@pl_co_words = 140
+#@pl_co_default = 127
+#@pl_co_add_html = 186
+
+@pl_co_all_html =defined?(@pl_co_all_html) ? @pl_co_all_html :false
+@pl_co_words = defined?(@pl_co_words) ? @pl_co_words :false
+@pl_co_words_html = defined?(@pl_co_words_html) ? @pl_co_words_html :false
+@pl_co_add_html = defined?(@pl_co_add_html) ? @pl_co_add_html :false
+@pl_co_default = defined?(@pl_co_default) ? @pl_co_default: 0
+
+#settings for 3d tab - test
+@pl_test_spec = defined?(@pl_test_spec) ? @pl_test_spec :false
+
+#settings for 4th tab 
+
+@pl_practice_spec = defined?(@pl_practice_spec) ? @pl_practice_spec :false  			# cluster for exercise, number
+@pl_practice_html = defined?(@pl_practice_html) ? @pl_practice_html :false  			#the most advanced
+@pl_practice_options = defined?(@pl_practice_options ) ? @pl_practice_options :false    # simple but with options
+@practice_signs = defined?(@practice_signs) ? @practice_signs :false					# signs for the test, '[]' or '0' - if nothing
+
+if @pl_lang == "ru"
+	@pl_tab1 = 'Обзор'
+	@pl_tab2 = 'Комментарии'
+	@pl_tab3 = '&nbsp;&nbsp;Тест&nbsp;&nbsp;'
+	@pl_tab4 = 'Практика'
+	@pl_next = 'Следующий этап >>'
+	@pl_transcription = 'Транскрипция'
+	@pl_test_text = "texts: ['Правильно','Неправильно','Далее >>','Результат','Осталось','Всего вопросов','Правильных ответов','Результат','Показать ответ'],"
+elsif @pl_lang == "fr"
+	@pl_tab1 = 'Étude'
+	@pl_tab2 = 'Commentaires'
+	@pl_tab3 = '&nbsp;&nbsp;&nbsp;Test&nbsp;&nbsp;&nbsp;'
+	@pl_tab4 = 'Pratique'
+	@pl_next = 'Étape suivante >>'
+	@pl_transcription = 'Transcription'
+	@pl_test_text = "texts: ['Correct','Incorrect','Suivant >>','Résultat','Restant','Nombre de questions','Réponses corrects','Résultat','Montrer la réponse'],"
+else
+	@pl_tab1 = 'Review'
+	@pl_tab2 = 'Comments'
+	@pl_tab3 = '&nbsp;&nbsp;Test&nbsp;&nbsp;'
+	@pl_tab4 = 'Practice'
+	@pl_next = 'Next part >>'
+	@pl_transcription = 'Transcription'
+	@pl_test_text = ''
+end
+%>
+
+<% @page_title =  @pl_page_name %>
+<% @page_meta = {'description' => @pl_page_desc} %>
+<% content_for :special_js_css do %>
+<%= stylesheet_link_tag 'flash-simple' %>
+<%= stylesheet_link_tag 'lexical-test-p' %>
+<%= stylesheet_link_tag 'short-unit' %>
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'jp-control' %>
+<%= javascript_include_tag 'lexical-test-p' %>
+<%= javascript_include_tag 'flash-simple.js' %>
+<%= javascript_include_tag 'short-unit' %>
+
+<script type="text/javascript">
+<%if params[:tab] %>
+	openTabFromUrl(<%= params[:tab] %>);
+<%else%>
+	openTabFromUrl();
+<%end%>
+</script>
+
+<style>
+.pt-spacer {
+padding-top: 0;
+}
+
+.voc-wordlist {
+padding-top: 20px;
+padding-bottom: 30px;
+margin-bottom: 20px;
+}
+
+h4.su-task {
+margin-top: 30px;
+font-size: 13px;
+}
+
+</style>
+<% end %>
+
+<div class="unit-area">
+<div id="prof_tabs">
+<div class="unit-title">
+<%=@top_link%>
+<%=@pl_les_name%>
+
+<%if @pl_settings%> <%= render :partial => '/site/every/settings_block' %>    <%end%>
+</div>
+	<div id="tabs_row">
+            <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;"><%=@pl_tab1%></a></div></div>
+			<div id="tab02" class="ptab"><div><a href="#"><%=@pl_tab2%></a></div></div>
+            <div id="tab03" class="ptab"><div><a href="#"><%=@pl_tab3%></a></div></div>
+			<div id="tab04" class="ptab"><div><a href="#"><%=@pl_tab4%></a></div></div>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+
+<div id="for_tab01" class="pBlock" style="display: block">
+	<div class="inpBlock">	
+
+<br><br><br><br>
+
+	
+<div class="fs-container" id="fs1">
+<%= render :partial => '/site/exercises/flash_simple', :locals => {:lang=>@pl_lang} %>
+</div>
+<script type="text/javascript"> 
+	var fs1 = new flash_show( {
+		id: "fs1",
+		autoplay: 1,
+		<%if @mute%>sounds: 0,<%end%>
+	<%unless @pl_fs_transcribe%>transcribe: 0,<%end%>
+		orig_size: "<%=@pl_fs_size%>",
+		basic_array: [
+<% @last_item_index = (@voc.length)-1%>
+<% @voc.each_with_index do |word,index|%>
+{"origin":"<%if @pl_fs_html%><%=no_js(word.html)%><%else%><%=no_js(word.text)%><%end%>",
+<%if @pl_transcribe_fr%>"transcript":"<%=no_js(word.transcribe_fr)%>",<%else%>"transcript":"<%=no_js(word.transcribe)%>",<%end%>
+<%if @pl_translate_fr%>"translate":"<%=no_js(word.translate_fr)%>",<%else%>"translate":"<%=no_js(word.translate)%>",<%end%>
+"img":"<%=word.image_url%>","sound":"<%=word.sound_url%>"}<% if index!= @last_item_index %>,<%end%>
+<%end%>
+		]
+		} )
+</script>
+
+<br><br><br><br><br><br>
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="<%=@pl_next%>" onclick="openNextStep(2)">
+</div>	
+	
+	</div>
+</div>
+
+<div id="for_tab02" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+
+<%if @pl_co_all_html %>
+	<%= material(@pl_co_all_html).body%>
+<%else%>
+  <%if @pl_co_words %>
+	<% cat = Cluster.find(@pl_co_words)
+		@words = cat.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+	%>
+	
+<h4 class="su-task">Useful vocabulary</h4>	
+   <div class="voc-wordlist">
+	<table class="voc_bord" align="center" cellspacing="0"><tr><td>
+		<table style="width: 500px" class="diction" cellpadding="0" cellspacing="0" align="center">
+		<col width="50%"><col width="50%">
+		<thead><tr><td> <div class="trans-display-wrapper"><input type="checkbox" class="trans-display" /> <%=@pl_transcription%> </div> </td><td></td></tr></thead>
+		<tbody>
+		<%@words.each_with_index do |word, index|%>
+		<tr class="trow">
+			<td class="original" valign="top">
+			  <%unless word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div><%end%>
+			  <%if @pl_co_words_html%><%= word.html %><%else%><%= word.text%><%end%>
+			  <div class="ru-transcript">[<%= word.transcribe %>]</div>
+			</td>
+			<td class="translation" valign="top"><%= word.translate %>
+			</td>
+		</tr>
+		<%end%>
+		</tbody>
+		<tfoot><tr><td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				</td>
+				<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+		</td></tr></tfoot>   
+		</table>
+	</td>
+	</tr>
+	</table>
+   </div><!-- end of voc-wordlist-->
+  <%end%>
+<%if @pl_co_default%>
+	<%if @pl_co_default == 0 %>
+		<% @co_phrases = @voc %>
+	<%elsif @pl_co_default > 0 %>
+		<% cat = Cluster.find(@pl_co_default)
+			@co_phrases = cat.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+		%>
+	<%end%>
+		<h4 class="su-task">Useful phrases and constructions</h4>
+		<div class="voc-wordlist">
+		<table class="voc_bord" align="center" cellspacing="0"><tr><td>
+			<table style="width: 500px" class="diction" cellpadding="0" cellspacing="0" align="center">
+			<col width="50%"><col width="50%">
+			<thead>
+			<tr><td> <div class="trans-display-wrapper"><input type="checkbox" class="trans-display" /> <%=@pl_transcription%> </div> </td><td></td></tr>
+			</thead>
+			<tbody>
+			<%@co_phrases.each_with_index do |word, index|%>
+				<tr class="trow">
+					<td class="original" valign="top">
+					<%unless word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div><%end%>
+					<%if @pl_co_default_html%><%= word.html %><%else%><%= word.text%><%end%>
+					<div class="ru-transcript">[<%= word.transcribe %>]</div>
+					</td>
+					<td class="translation" valign="top"><%= word.translate %>
+					</td>
+				</tr>
+			<%end%>
+			</tbody>
+			<tfoot><tr>
+				<td>
+					&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				</td>
+				<td>
+					&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+				</td>
+			</tr></tfoot>   
+			</table>
+		</td>
+		</tr></table>
+		</div><!-- end of voc-wordlist-->
+<%end%>
+  <%if @pl_co_add_html%>
+	<%= material(@pl_co_add_html).body%>
+  <%end%>
+<%end%>
+<br><br><br><br><br>		
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="<%=@pl_next%>" onclick="openNextStep(3)">
+</div>
+	
+	</div>
+</div>
+
+<div id="for_tab03" class="pBlock" style="display: none">
+	<div class="inpBlock">	
+<br><br><br><br>
+	<%if @pl_test_spec %>
+		<% cat = Cluster.find(@pl_test_spec)
+			@test_phrases = cat.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+		%>	
+	<%else %>
+		<% @test_phrases = @voc %>
+	<%end%>
+<div id="ph1" class="pt-holder" style="margin-top: 0">
+<%= render :partial => '/site/exercises/phrases_test', :locals => {:lang => @pl_lang} %>	
+</div><!-- end of pt-holder -->
+
+<script type="text/javascript"> 
+	var ph1 = new ph_exercise( {
+		id: "ph1", 
+		<% unless @test_data == nil || @test_data==''%>test_id: "<%= @test_data[0] %>",<%end%>
+		quest_num: 15,
+		variants_num: 4,
+		<%=@pl_test_text%>
+		basic_array: [
+<% @last_item_index = (@test_phrases.length)-1 -%>
+<% @test_phrases.each_with_index  do |word, index| -%>
+{"quest": "<%= no_js(word.text) %>", 
+"answer": "<%= no_js(word.translate)%>"<% if current_user %>, "id":'<%= word.id%>'<%end%>}<% if index!= @last_item_index -%>,<%end%>	
+<%end %>
+		]
+	} )
+</script>
+<br><br><br><br>
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="<%=@pl_next%>" onclick="openNextStep(4)">
+</div>
+
+	</div>
+</div>
+<div id="for_tab04" class="pBlock" style="display: none">
+	<div class="inpBlock">
+
+<br><br><br><br>
+
+	<%if @pl_practice_spec %>
+		<% cat = Cluster.find(@pl_practice_spec)
+			@practice_phrases = cat.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+		%>	
+	<%else %>
+		<% @practice_phrases = @voc %>
+	<%end%>	
+	
+<div id="ph2" class="pt-holder" style="margin-top: 0">
+<%= render :partial => '/site/exercises/phrases_test', :locals => {:lang => @pl_lang} %>	
+</div><!-- end of pt-holder -->
+
+<script type="text/javascript"> 
+	var ph2 = new ph_exercise( {
+		id: "ph2", 
+		<% unless @test_data == nil || @test_data==''%>test_id: "<%= @test_data[1] %>",<%end%>
+		quest_num: 15,
+		answer_type: 'type',<%if @practice_signs%>spec_signs: <%=@practice_signs%>,<%end%>
+		rand_letters: true,
+		next_time: 2000,
+		<%=@pl_test_text%>
+		basic_array: [
+<% @last_item_index = (@practice_phrases.length)-1 -%>
+<% @practice_phrases.each_with_index  do |word, index| -%>
+
+<% if @pl_practice_html %>
+{"quest": "<%= no_js(word.grammar) %>", 
+"correct":"<%= no_js(word.html)%>",
+"forms":"<%=no_js(word.forms)%>",
+"answer": "<%= no_js(word.text)%>"
+<%elsif @pl_practice_options%>
+{"quest": "<%= no_js(word.translate) %>", 
+"correct":"<%= no_js(word.text)%>",
+"forms":"<%=no_js(word.forms)%>",
+"answer": "<%= no_js(word.text)%>"
+<%else%>
+{"quest": "<%= no_js(word.translate) %>", 
+"correct":"<%= no_js(word.text)%>",
+"forms":"<%=no_js(word.text)%>",
+"answer": "<%= no_js(word.text)%>"
+<%end%>
+<% if current_user %>, "id":'<%= word.id%>'<%end%>}<% if index!= @last_item_index -%>,<%end -%>	
+
+
+<%end -%>
+		]
+		} )
+</script>	
+	
+<br><br><br><br>
+	
+	</div>
+</div>
+
+</div>
+
+
+<script type="text/javascript">
+currentSection="<%=@pl_section%>";
+</script>
