@@ -938,6 +938,12 @@ function sectionHighlight() {
 		case 'kids':
 			pageMenuItem(9);
 			break;
+		case 'texts':
+			pageMenuItem(10);
+			break;
+		case 'translation':
+			pageMenuItem(11);
+			break;
 		default: 
 		   	$("#menu_body .menu-item a").css({color: "#183A87"});
 	}
