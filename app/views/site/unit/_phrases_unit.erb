@@ -42,6 +42,8 @@ if @pl_lang == "ru"
 	@pl_tab3 = '&nbsp;&nbsp;Тест&nbsp;&nbsp;'
 	@pl_tab4 = 'Практика'
 	@pl_next = 'Следующий этап >>'
+	@pl_co_voc_txt = defined?(@pl_co_voc_txt) ? @pl_co_voc_txt:"Полезные слова"
+	@pl_co_ph_txt = defined?(@pl_co_ph_txt) ? @pl_co_ph_txt:"Выражения и конструкции"
 	@pl_transcription = 'Транскрипция'
 	@pl_test_text = "texts: ['Правильно','Неправильно','Далее >>','Результат','Осталось','Всего вопросов','Правильных ответов','Результат','Показать ответ'],"
 elsif @pl_lang == "fr"
@@ -49,6 +51,8 @@ elsif @pl_lang == "fr"
 	@pl_tab2 = 'Commentaires'
 	@pl_tab3 = '&nbsp;&nbsp;&nbsp;Test&nbsp;&nbsp;&nbsp;'
 	@pl_tab4 = 'Pratique'
+	@pl_co_voc_txt = defined?(@pl_co_voc_txt) ? @pl_co_voc_txt:"Vocabulaire utile"
+	@pl_co_ph_txt = defined?(@pl_co_ph_txt) ? @pl_co_ph_txt:"Prases et constructions utiles"
 	@pl_next = 'Étape suivante >>'
 	@pl_transcription = 'Transcription'
 	@pl_test_text = "texts: ['Correct','Incorrect','Suivant >>','Résultat','Restant','Nombre de questions','Réponses corrects','Résultat','Montrer la réponse'],"
@@ -58,6 +62,8 @@ else
 	@pl_tab3 = '&nbsp;&nbsp;Test&nbsp;&nbsp;'
 	@pl_tab4 = 'Practice'
 	@pl_next = 'Next part >>'
+	@pl_co_voc_txt = defined?(@pl_co_voc_txt) ? @pl_co_voc_txt:"Useful vocabulary"
+	@pl_co_ph_txt = defined?(@pl_co_ph_txt) ? @pl_co_ph_txt:"Useful phrases and constructions"
 	@pl_transcription = 'Transcription'
 	@pl_test_text = ''
 end
@@ -158,7 +164,6 @@ font-size: 13px;
 
 <div id="for_tab02" class="pBlock" style="display: none">
 	<div class="inpBlock">
-	
 
 <%if @pl_co_all_html %>
 	<%= material(@pl_co_all_html).body%>
@@ -168,7 +173,7 @@ font-size: 13px;
 		@words = cat.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
 	%>
 	
-<h4 class="su-task">Useful vocabulary</h4>	
+<h4 class="su-task"><%=@pl_co_voc_txt%></h4>	
    <div class="voc-wordlist">
 	<table class="voc_bord" align="center" cellspacing="0"><tr><td>
 		<table style="width: 500px" class="diction" cellpadding="0" cellspacing="0" align="center">
@@ -205,7 +210,7 @@ font-size: 13px;
 			@co_phrases = cat.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
 		%>
 	<%end%>
-		<h4 class="su-task">Useful phrases and constructions</h4>
+		<h4 class="su-task"><%=@pl_co_ph_txt%></h4>
 		<div class="voc-wordlist">
 		<table class="voc_bord" align="center" cellspacing="0"><tr><td>
 			<table style="width: 500px" class="diction" cellpadding="0" cellspacing="0" align="center">

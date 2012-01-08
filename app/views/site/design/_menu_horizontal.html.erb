@@ -1,0 +1,3 @@
+<div id="mini-menu">
+<% @site_menu_horizontal.each_with_index do |item,index|%><a href="<%= item[:url]%>"><%= item[:title]%></a><%unless index == (@site_menu_horizontal.length-1)%> | <%end%><%end%>										
+</div>

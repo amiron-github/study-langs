@@ -1,0 +1,1 @@
+<div class="copy"><% @site_footer.each_with_index do |item,index|%><a href="<%= item[:url]%>"><%= item[:title]%></a><%unless index == (@site_footer.length-1)%> | <%end%><%end%></div>
