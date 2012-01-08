@@ -2,7 +2,7 @@
 class SessionsController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
-layout :determine_layout
+layout :layout_by_lang
   # render new.rhtml
   def new
 	@lang = params[:lang]
@@ -27,6 +27,14 @@ layout :determine_layout
 			redirect_back_or_default('/ru/jp/user_profile.html')
 		elsif to_lang=='en'
 			redirect_back_or_default('/ru/en/user_profile.html')
+		elsif to_lang=='fr'
+			redirect_back_or_default('/ru/fr/user_profile.html')
+		end
+	  elsif layout_lang == 'fr'
+		if to_lang=='ru'
+			redirect_back_or_default('/fr/ru/user_profile.html')
+		elsif to_lang=='en'
+			redirect_back_or_default('/fr/en/user_profile.html')
 		end
 	  else
 		redirect_back_or_default('/user_profile.html')
@@ -48,10 +56,18 @@ layout :determine_layout
     logout_killing_session!
     #flash[:notice] = "You have been logged out."
 	if layout_lang == 'fr'
+		if to_lang == 'ru'
+			redirect_back_or_default('/fr/ru/')
+		elsif to_lang == 'en'
+			redirect_back_or_default('/fr/en/')
+		else
 			redirect_back_or_default('/fr/')
+		end
 	elsif layout_lang == 'ru'
 		if to_lang == 'jp'
 				redirect_back_or_default('/ru/jp/')
+		elsif to_lang == 'fr'
+				redirect_back_or_default('/ru/fr/')
 		else 
 				redirect_back_or_default('/ru/en/')
 		end

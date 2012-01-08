@@ -12,7 +12,9 @@ class SiteController < ApplicationController
 	if @file.match(/\/ru\//)  
 		@file = '/ru/jp/index.html' if @file == '/ru/jp/'
 		@file = '/ru/fr/index.html' if @file == '/ru/fr/'
+		@file = '/fr/ru/index.html' if @file == '/fr/ru/'
 		@file = '/ru/en/index.html' if @file == '/ru/en/'
+		@file = '/ru/index.html' if @file == '/ru/'
 		
 		if @file.match(/\/ru\/fr\//) 
 			layout = 'ru_fr_application.rhtml'
@@ -24,12 +26,24 @@ class SiteController < ApplicationController
 			layout = 'ru_application.rhtml'
 		end
 	end
-	
-	if @file.match(/\/fr\/ru\//)
-		@file = '/fr/ru/index.html' if @file == '/fr/ru/'
-		layout = 'fr_ru_application.rhtml'
+	if @file == '/en/'	
+		@file = '/en/index.html'
+		layout = 'en_application.rhtml'
+	end	
+	if @file == '/fr/'	
+		@file = '/fr/index.html'
+		layout = 'fr_application.rhtml'
 	end
-	
+		@file = '/fr/en/index.html' if @file == '/fr/en/'
+		@file = '/fr/index.html' if @file == '/fr/'
+		
+		if @file.match(/\/fr\/ru\//) 
+			layout = 'fr_ru_application.rhtml'
+		elsif @file.match(/\/fr\/en\//) 
+			layout = 'fr_application.rhtml'
+		end
+
+
 	if @file.match(/\/newd\//)
 		layout = 'new.rhtml'
 	end

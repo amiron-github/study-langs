@@ -138,7 +138,7 @@ if ($('#errorExplanation').length > 0) {
 			<table align="center" class="sign-options">
 				<tr>
 					<td>
-						<p style="margin-top: 0px;">Уже зарегистрированы? <a href="login">Логин здесь</a></p>
+						<p style="margin-top: 0px;">Уже зарегистрированы? <%= link_to 'Логин здесь',{:controller => 'sessions', :action => 'new', :lang=>params[:lang], :to_lang=>params[:to_lang]} %></p>
 
 					</td>
 				</tr>

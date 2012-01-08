@@ -54,7 +54,7 @@ $(document).ready(function(){
 			<table align="center" class="sign-options">
 				<tr>
 					<td>
-						<p style="margin-top: 0px;">Новый пользователь? <a href="signup">Регистрация</a></p>
+						<p style="margin-top: 0px;">Новый пользователь? <%= link_to 'Регистрация',{:controller => 'users', :action => 'new', :lang=>params[:lang], :to_lang=>params[:to_lang]} %></p>
 
 					</td>
 				</tr>

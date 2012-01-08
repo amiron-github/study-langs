@@ -1,10 +1,3 @@
-<%if @lang == 'ru'%>
-	<%= render :partial => 'passwords/ru_new' %>
-<%elsif @lang == 'fr'%>
-	<%= render :partial => 'passwords/fr_new' %>
-<%else%>
-
-
 <% @page_title = 'Forgotten Password?' %>
 
 
@@ -61,9 +54,23 @@ margin-bottom: 0px;
 margin-bottom: 0px;
 }
 
+.submit-form input {
+background-image: url('/images/sign/big-btn.png');
+color: #111;
+font-weight: normal;
+text-shadow: 0px 1px 0px #EFEFEF;
+}
+
+.sign-over input {
+color: white;
+text-shadow: 0px 1px 0px #111;
+}
+
 .module div {
 zoom: 1;
 }
+
+
 
 </style>
 
@@ -106,8 +113,6 @@ if ($('#errorExplanation').length > 0) {
 }
 
 
-
-
 });
 
 
@@ -128,7 +133,7 @@ if ($('#errorExplanation').length > 0) {
 	<div class="sign-rt">
 		<div class="sign-lft">
 			<h2 class="page sign-head">
-				<span class="sign-up-title sign-string">Forgot Password?</span>
+				<span class="sign-up-title sign-string">Mot de passe oublié?</span>
 			</h2>
 		</div>
 	</div>
@@ -144,19 +149,17 @@ if ($('#errorExplanation').length > 0) {
 <div class="module-left">
 <div class="module-content">
 
-
-
-
-
-
-
-
-
 <% form_for(@password) do |f| %>
+	<input type="hidden" name="lang" value="fr">
+	<input type="hidden" name="to_lang" value="<%= @to_lang %>">
+  <h2 style="display: none;">Забыли пароль?</h2>
   
-  <h2 style="display: none;">Forgot Your Password?</h2>
-  
-  <p class="pass-form">That's okay!  We forget ours too.  Give us your email address and we'll send you a link to reset your password.</p>
+ <p class="pass-form">Votre mot de passe actuel est sécurisé et ne peut être retrouvé.
+Pour recevoir un nouveau mot de passe, veuillez indiquer votre adresse e-mail.
+ </p>
+ 
+  <p class="pass-form"><b>Attention</b>: votre adresse e-mail doit correspondre à celle de votre inscription à notre site.
+ </p>
   
 <div class="sign-notification-wrapper" style="display: none;">	
 		
@@ -172,25 +175,20 @@ if ($('#errorExplanation').length > 0) {
   
   <%= f.error_messages %>
   
-  
-  
-  
-  
-  
   <table align="center" class="pass-form">
 	<tr>
 		<td>
 		
 			<table class="form-entries">
 				<tr>
-					<td class="entry1">Enter your email address:</td>
+					<td class="entry1">Adresse e-mail:</td>
 					<td><%= f.text_field :email %></td>
 				</tr>
 
 			</table>
 	<tr>
 		<td>
-			<p align="center" class="submit-form"><%= f.submit "" %> </p>
+			<p align="center" class="submit-form"><%= f.submit "Envoyer" %> </p>
 		</td>
 	</tr>
 </table>	
@@ -222,6 +220,6 @@ if ($('#errorExplanation').length > 0) {
 </div>	
 
 
-<%end%>
+
 
 

@@ -1,12 +1,3 @@
-<%if @lang == 'ru'%>
-	<%= render :partial => 'passwords/ru_new' %>
-<%elsif @lang == 'fr'%>
-	<%= render :partial => 'passwords/fr_new' %>
-<%else%>
-
-
-<% @page_title = 'Forgotten Password?' %>
-
 
 <% content_for :special_js_css do %>
 
@@ -65,15 +56,22 @@ margin-bottom: 0px;
 zoom: 1;
 }
 
+.sound_tip {
+z-index: 20000;
+}
+
+.sign-in input {
+font-size: 19px;
+}
+
 </style>
 
 <script type="text/javascript"> 
 
 $(document).ready(function() {
 
-	
-	
-$(".submit-form input").mouseover(function() {
+
+	$(".submit-form input").mouseover(function() {
 	$(this).parent().addClass("sign-over");
 }).mouseout(function() {
 	$(this).parent().removeClass("sign-over");
@@ -86,40 +84,25 @@ $(".submit-form input").mousedown(function() {
 });
 
 
-
 if ($('#errorExplanation').length > 0) {
-
 		if ($.browser.msie && $.browser.version < 8) {
 			//$(".errorExplanation h2").css({display: "block"});
 		} else {
-		
 		var errMess= $('#errorExplanation h2').html();
 		$('#errorExplanation h2').remove();
 		$('.sign-notification').find('td:eq(0)').append(errMess);
-		
-		
 		setTimeout(function() {
 			$('.sign-notification-wrapper').css({opacity: "0"}).slideDown().animate({opacity: "1"});
 		}, 400);
-		
 		}
 }
 
-
-
-
 });
-
-
-
-
-
 
 </script>
 
-
 <% end %>
-
+<div id="mess" class="sound_tip"><i>Tip</i></div>
 
 <div class="module mod-in-log">
 <br/>
@@ -128,7 +111,7 @@ if ($('#errorExplanation').length > 0) {
 	<div class="sign-rt">
 		<div class="sign-lft">
 			<h2 class="page sign-head">
-				<span class="sign-up-title sign-string">Forgot Password?</span>
+				<span class="sign-up-title  sign-string">Inscription</span>
 			</h2>
 		</div>
 	</div>
@@ -144,20 +127,23 @@ if ($('#errorExplanation').length > 0) {
 <div class="module-left">
 <div class="module-content">
 
+<% form_for :user, :url => users_path do |f| -%>
+	<input type="hidden" name="lang" value="fr">
+	<input type="hidden" name="to_lang" value="<%= @to_lang %>">
 
 
+<h2 class="page" style="display: none">Bienvenue!</h2>
+		
+<p align="center" style="display: none"><a href="login" style="font-size: 11px; font-weight: bold;">Already registered? Click here to sign in</a></p>
+			<table align="center" class="sign-options">
+				<tr>
+					<td>
+						<p style="margin-top: 0px;">Si vous disposez déjà d'un compte,  <%= link_to 'identifiez-vous',{:controller => 'sessions', :action => 'new', :lang=>params[:lang], :to_lang=>params[:to_lang]} %></p>
 
-
-
-
-
-
-<% form_for(@password) do |f| %>
-  
-  <h2 style="display: none;">Forgot Your Password?</h2>
-  
-  <p class="pass-form">That's okay!  We forget ours too.  Give us your email address and we'll send you a link to reset your password.</p>
-  
+					</td>
+				</tr>
+			</table>
+			
 <div class="sign-notification-wrapper" style="display: none;">	
 		
 <table class="sign-notification" align="center" ><tr><td style="position: relative;">
@@ -168,50 +154,37 @@ if ($('#errorExplanation').length > 0) {
 </td></tr></table>	
 
 </div>	
-  
-  
-  <%= f.error_messages %>
-  
-  
-  
-  
-  
-  
-  <table align="center" class="pass-form">
+
+<%= error_messages_for :user %>
+
+
+<table align="center">
 	<tr>
 		<td>
 		
 			<table class="form-entries">
 				<tr>
-					<td class="entry1">Enter your email address:</td>
-					<td><%= f.text_field :email %></td>
+					<td class="entry1" >Adresse e-mail:</td>
+					<td onmouseout="hide_info(this)" onmouseover="tooltip(this,'На этот e-mail вы вышлем письмо для активации')"><%= f.text_field :email %></td>
 				</tr>
-
+				<tr>
+					<td class="entry1">Mot de passe:</td>
+					<td onmouseout="hide_info(this)" onmouseover="tooltip(this,'Минимум 6 знаков')"> <%= f.password_field :password %></td>
+				</tr>
+				<tr>
+					<td class="entry1">Confirmation du<br> mot de passe:</td>
+					<td><%= f.password_field :password_confirmation %></td>
+				</tr>
 			</table>
 	<tr>
-		<td>
-			<p align="center" class="submit-form"><%= f.submit "" %> </p>
+		<td class="submit-text-btn">
+			<p align="center" class="sign-in"><%= submit_tag 'Отправить' %> </p>
 		</td>
 	</tr>
-</table>	
-  
-  <%if flash[:notice]%>
-  
-	<style type="text/css">
-		.pass-form {
-			display: none;
-		}
-	</style>
-  
-	<p align="center" style="color: blue; font-weight: bold;" ><%= flash[:notice] %> </p>
-<%end%>
-  
-  
-  
-<% end %>
+</table>		
 
-
-
+<% end -%>
+		
 </div>
 </div>
 </div>
@@ -219,9 +192,14 @@ if ($('#errorExplanation').length > 0) {
 	<div class="module-b-left"></div>
 	<div class="module-b-right"></div>
 </div>
-</div>	
+</div>		
+		
+		
 
+<br><br><br><br><br><br><br><br><br><br><br><br>
+		
 
-<%end%>
-
+<script type="text/javascript">
+currentSection="login";
+</script>
 

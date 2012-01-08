@@ -1,5 +1,5 @@
 class PasswordsController < ApplicationController
-layout :determine_layout
+layout :layout_by_lang
 
   def new
     @password = Password.new

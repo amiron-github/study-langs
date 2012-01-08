@@ -1,12 +1,5 @@
-<%if @lang == 'ru'%>
-	<%= render :partial => 'sessions/ru_new' %>
-<%elsif @lang == 'fr'%>
-	<%= render :partial => 'sessions/fr_new' %>
-<%else%>
-
 <% @page_title = 'Sign In' %>
-<% @page_meta = {'description' => "Log in Study Languages Online"} %>
-
+<% @page_meta = {'description' => "Логин на сайт"} %>
 
 <% content_for :special_js_css do %>
 <%= stylesheet_link_tag 'sign-forms' %>
@@ -29,10 +22,6 @@ $(document).ready(function(){
 
 </script>
 
-
-
-
-
 <% end %>
 
 <div class="module mod-in-log">
@@ -42,7 +31,7 @@ $(document).ready(function(){
 	<div class="sign-rt">
 		<div class="sign-lft">
 			<h2 class="page sign-head">
-				<span class="sign-in-title">&nbsp;</span>
+				<span class="sign-in-title sign-string">Connexion</span>
 			</h2>
 		</div>
 	</div>
@@ -60,11 +49,12 @@ $(document).ready(function(){
 
 
 <% form_tag session_path do %>
-
+	<input type="hidden" name="lang" value="fr">
+	<input type="hidden" name="to_lang" value="<%= @to_lang %>">
 			<table align="center" class="sign-options">
 				<tr>
 					<td>
-						<p style="margin-top: 0px;">New User? <a href="signup">Register here</a></p>
+						<p style="margin-top: 0px;">Pas encore inscrit? <%= link_to 'Inscrivez-vous',{:controller => 'users', :action => 'new', :lang=>params[:lang], :to_lang=>params[:to_lang]} %></p>
 
 					</td>
 				</tr>
@@ -79,7 +69,7 @@ $(document).ready(function(){
 				<div class="notif-icon"></div>
 			</div>
 			
-			<div class="notif-string"> <b>ERROR:</b> Invalid email/password.</div>
+			<div class="notif-string"> <b>ERREUR:</b> Email/Mot de passe incorrecte.</div>
 			
 		</td>
 	</tr>
@@ -96,25 +86,24 @@ $(document).ready(function(){
 		<td>
 			<table class="form-entries">
 				<tr>
-					<td class="entry1">Email:</td>
+					<td class="entry1">Adresse e-mail:</td>
 					<td><%= text_field_tag 'email', @email %></td>
 				</tr>
 				<tr>
-					<td class="entry1">Password:</td>
+					<td class="entry1">Mot de passe:</td>
 					<td> <%= password_field_tag 'password', nil %></td>
 				</tr>
 			</table>
 	<tr>
-		<td>
+		<td class="submit-text-btn">
 			<table align="center" class="sign-options">
-				<tr>
+				<tr>   
 					<td>
-
-						<p >Forgot password? <%= link_to 'Click here', forgot_password_path %></p>
+						<p >Mot de passe oublié? <%= link_to 'Visitez ce lien',{:controller => 'passwords', :action => 'new', :lang=>params[:lang], :to_lang=>params[:to_lang]} %></p>
 					</td>
 				</tr>
 			</table>
-			<p align="center" class="sign-in"><%= submit_tag '' %>  </p>
+			<p align="center" class="sign-in"><%= submit_tag 'Connexion' %>  </p>
 		</td>
 	</tr>
 </table>
@@ -131,8 +120,10 @@ $(document).ready(function(){
 </div>
 
 
+
+
+
+
 <script type="text/javascript">
 currentSection="login";
 </script>
-
-<%end%>

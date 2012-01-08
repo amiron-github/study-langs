@@ -55,6 +55,7 @@ ActionController::Routing::Routes.draw do |map|
   map.mobile '/mobile/:page', :controller => 'materials', :action=>'publish', :special_layout => 'mobile'
 
   map.page '/ru/fr/vocabulary', :controller => 'materials', :action=>'publish', :lang=>'ru', :to_lang=>'fr'
+  
  
   map.courses_page '/:lang/:to_lang/courses', :controller => 'materials', :action=>'publish'
   map.vocab_page '/:lang/:to_lang/vocab', :controller => 'materials', :action=>'publish'
@@ -80,7 +81,7 @@ ActionController::Routing::Routes.draw do |map|
   map.courses '/:lang/:to_lang/courses/:page', :controller => 'materials', :action=>'publish'
   map.courses '/courses/:subcategory/:page', :controller => 'materials', :action=>'publish'
   map.courses '/courses/:page', :controller => 'materials', :action=>'publish'
-  map.developer '/developer/:page', :controller => 'materials', :action=>'publish_developer'
+  map.developer '/developer/:page', :controller => 'materials', :action=>'publish_developer', :special_layout => 'developer'
   map.reading '/:lang/:to_lang/reading/:page', :controller => 'materials', :action=>'publish'
   map.reading '/reading/:page', :controller => 'materials', :action=>'publish'
   map.phonetics '/:lang/:to_lang/phonetics/:page', :controller => 'materials', :action=>'publish'
@@ -182,6 +183,10 @@ ActionController::Routing::Routes.draw do |map|
   map.userdata '/userdata/edit_expiration_date/:id', :controller => 'userdata', :action => 'edit_expiration_date'
   map.userdata "/userdata/:action/:id" , :controller => 'userdata'
   map.userdata "/userdata/:action" , :controller => 'userdata'
+  
+  map.pages '/en/page/:page', :controller => 'materials', :action=>'publish', :lang=>'en', :to_lang=>'none'
+  map.pages '/fr/page/:page', :controller => 'materials', :action=>'publish', :lang=>'fr', :to_lang=>'none'
+  map.pages '/ru/page/:page', :controller => 'materials', :action=>'publish', :lang=>'ru', :to_lang=>'none'
 
   map.resources :users, :member => { :suspend => :put, :unsuspend => :put, :purge => :delete }
   map.resource :session

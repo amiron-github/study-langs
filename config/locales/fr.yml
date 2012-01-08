@@ -332,6 +332,14 @@ fr:
       body: "Veuillez vérifier les champs suivants : "
 
   activerecord:
+    models:
+      user: Utilisateur
+      password: Mot de passe
+    attributes:
+      user:
+        password: Mot de passe
+      password:
+        user: Utilisateur
     errors:
       messages:
         taken: "n'est pas disponible"

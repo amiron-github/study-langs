@@ -69,7 +69,7 @@ require_role "admin", :except => [:publish]
   def publish_developer
 	@t_page = request.path
 	@material = Material.find(:first, :conditions=> ['page_url=?',@t_page])
-		layout = determine_layout
+		layout = layout_by_lang
 
     respond_to do |format|
       format.html {render :action => 'publish', :layout => layout} 

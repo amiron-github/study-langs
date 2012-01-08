@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   include AuthenticatedSystem
   include ActiveMerchant::Billing::Integrations
   
-  layout :determine_layout
+  layout :layout_by_lang
   
   
   # Protect these actions behind an admin login

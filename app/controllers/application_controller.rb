@@ -33,6 +33,8 @@ class ApplicationController < ActionController::Base
 					layout =  'fr_en_application.rhtml'
 				elsif add_lang == 'ru'
 					layout =  'fr_ru_application.rhtml'
+				else
+					layout =  'fr_application.rhtml'
 				end
 			when 'ru'
 				if add_lang == 'en'
@@ -41,10 +43,19 @@ class ApplicationController < ActionController::Base
 					layout =  'ru_jp_application.rhtml'
 				elsif add_lang == 'fr'
 					layout =  'ru_fr_application.rhtml'
+				else
+					layout =  'ru_application.rhtml'
+				end
+			when 'en'
+				if add_lang == 'none'
+					layout =  'en_application.rhtml'
 				end
 		end
 		if params[:special_layout] == 'mobile'
 			layout =  'mobile.rhtml'
+		end
+		if params[:special_layout] == 'developer'
+			layout =  'dev_application.rhtml'
 		end
 		return layout
 	end
