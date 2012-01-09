@@ -2,7 +2,9 @@
 requires: 
 -jquery.js
 -jPlayer.js
+, nativeSupport: false
 */
+
 /////////////////////////////////////////////////// 
 
 var jpc_style =""
@@ -18,7 +20,7 @@ var jpc_style =""
 $(document).ready(function() { 
 	$("head").append(jpc_style);
 	$("body").append('<div id="cJp"></div>');
-	$("#cJp").jPlayer( {swfPath: "/javascripts/"}); //, nativeSupport: false
+	$("#cJp").jPlayer( {swfPath: "/javascripts/"});
 });
 
 var tJplayer=false;

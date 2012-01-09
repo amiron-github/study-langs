@@ -30,7 +30,7 @@ Array.prototype.shuffle = shuffle;
 $(document).ready(function() {
 
 $("body").append('<div id="exJp"></div>');
-$("#exJp").jPlayer( {swfPath: "/javascripts/", nativeSupport: false});
+$("#exJp").jPlayer( {swfPath: "/javascripts/"});
 
 $(".es-ex-audio-holder").mousedown(
 	function() {
