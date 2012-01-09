@@ -4,7 +4,7 @@ class UserMailer < ActionMailer::Base
     
 	@body[:text_created] = 'Your account has been created.'
 	@body[:text_visit] = 'Visit this url to activate your account:'
-    str = if user.lang && user.to_lang then "#{user.lang}/#{user.to_lang}/" else "" end
+    str = if user.lang && !user.to_lang then "#{user.lang}/" elsif user.lang && user.to_lang then "#{user.lang}/#{user.to_lang}/" else "" end
 	
 	if user.lang == 'ru'
 		@subject    += 'Активируйте свой аккунт'

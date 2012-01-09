@@ -151,7 +151,7 @@ if ($('#errorExplanation').length > 0) {
 
 <% form_for(@password) do |f| %>
 	<input type="hidden" name="lang" value="fr">
-	<input type="hidden" name="to_lang" value="<%= @to_lang %>">
+	<%if params[:to_lang]%><input type="hidden" name="to_lang" value="<%= @to_lang %>"><%end%>
   <h2 style="display: none;">Забыли пароль?</h2>
   
  <p class="pass-form">Votre mot de passe actuel est sécurisé et ne peut être retrouvé.

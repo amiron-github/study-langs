@@ -44,7 +44,11 @@
 <% if logged_in?%>
 <a href="<%= @des_el[:links][:profile][:url]%>" class="t-un"><%= current_user.email %></a> | <span class="t-out"><%= link_to @des_el[:text][:logout],{:controller => 'sessions', :action => 'destroy'} %></span>
 <%else%>
+<%if params[:to_lang]%>
 <%= link_to @des_el[:text][:login],{:controller => 'sessions', :action => 'new', :lang=>params[:lang], :to_lang=>params[:to_lang]} %> | <%= link_to @des_el[:text][:signup],{:controller => 'users', :action => 'new', :lang=>params[:lang], :to_lang=>params[:to_lang]} %>
+<%else%>
+<%= link_to @des_el[:text][:login],{:controller => 'sessions', :action => 'new', :lang=>params[:lang]} %> | <%= link_to @des_el[:text][:signup],{:controller => 'users', :action => 'new', :lang=>params[:lang]} %>
+<%end%>
 <%end%>
 </div>
 <% unless @no_search %>			

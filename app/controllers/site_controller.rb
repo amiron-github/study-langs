@@ -92,7 +92,8 @@ class SiteController < ApplicationController
 	when /(en_results)\.html$/
 		@vocabulary_exercises = current_user.get_cat_ex('en')
 		@vocabulary_exercises[:name] = 'Словарь'
-		@kids_exercises = current_user.get_course_results(Exercise::KIDS_EN, 'kids_lessons_en')
+		@kids_ex_data = ActiveSupport::JSON.decode(Material.find(363).body)
+		@kids_exercises = current_user.get_course_json(@kids_ex_data, 'kids_lessons_en')
 		@lessons = current_user.get_course_results(Exercise::LESSONS_EN, 'lessons_en')
 		@grammar_exercises = current_user.get_course_results(Exercise::GRAMMAR_EN, 'grammar_en')
 	when '/ru/jp/kanji.html'

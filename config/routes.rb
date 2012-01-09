@@ -148,13 +148,14 @@ ActionController::Routing::Routes.draw do |map|
   map.ppipn '/ppipn', :controller => 'orders', :action => 'paypal_ipn'
   map.login '/:lang/:to_lang/logout', :controller => 'sessions', :action => 'destroy'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
+#  map.login '/:lang/login', :controller => 'sessions', :action => 'new'
   map.login '/:lang/:to_lang/login', :controller => 'sessions', :action => 'new'
-  map.login '/:lang/login', :controller => 'sessions', :action => 'new'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/:lang/:to_lang/signup', :controller => 'users', :action => 'new'
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.activate '/:lang/:to_lang/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
+  map.activate '/:lang/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
   
   map.vocab_lis '/get_flash_list', :controller =>'vocabulary', :action=>'get_flash_list'
@@ -184,6 +185,7 @@ ActionController::Routing::Routes.draw do |map|
   map.userdata "/userdata/:action/:id" , :controller => 'userdata'
   map.userdata "/userdata/:action" , :controller => 'userdata'
   
+  map.pages '/fr/', :controller => 'site', :action=>'page', :lang=>'fr'
   map.pages '/en/page/:page', :controller => 'materials', :action=>'publish', :lang=>'en', :to_lang=>'none'
   map.pages '/fr/page/:page', :controller => 'materials', :action=>'publish', :lang=>'fr', :to_lang=>'none'
   map.pages '/ru/page/:page', :controller => 'materials', :action=>'publish', :lang=>'ru', :to_lang=>'none'

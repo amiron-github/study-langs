@@ -17,9 +17,9 @@
 		<div class="voc-details"><span class="mv-details">Show details</span><span class="mv-no-details">Hide details</span></div>
 		<div class="voc-topic-content">
 			<div class="voc-quick-info">
-				Total items:  <b><%= t[:category].words.length %></b><br>
-				Studied:  <b><%= t[:words].length %></b> (<%= (t[:words].length.to_f / t[:category].words.length*100).to_i %>%)  <br>
-				Tests completed: <b><%= t[:user_tests].length %></b><br><br>
+				Studied:  <b><%= t[:words].length %></b>      (<%= (t[:words].length.to_f / t[:category].words.length*100).to_i %>%)  |
+				Total items:  <b><%= t[:category].words.length %></b> |
+				Tests completed: <b><%= t[:user_tests].length %></b><br>
 			</div>
 
 		<div class="voc-topic-details">
