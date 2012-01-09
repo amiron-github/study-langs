@@ -61,6 +61,7 @@ ru:
       en: Анг
       fr: Фр
       ja: Яп
+      other: другой
   forum:
     tabs:
       stream: Лента
@@ -151,7 +152,6 @@ ru:
       - Чт
       - Пт
       - Сб
-
     month_names:
       - ~
       - января
@@ -166,7 +166,6 @@ ru:
       - октября
       - ноября
       - декабря
-    # see russian gem for info on "standalone" day names
     standalone_month_names:
       - ~
       - Январь
@@ -429,6 +428,7 @@ ru:
     attributes:
       user:
         password: Пароль
+        password_confirmation: Подтверждение пароля
       password:
         user: Пользователь
     errors:
