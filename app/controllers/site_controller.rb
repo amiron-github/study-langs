@@ -94,8 +94,13 @@ class SiteController < ApplicationController
 		@vocabulary_exercises[:name] = 'Словарь'
 		@kids_ex_data = ActiveSupport::JSON.decode(Material.find(363).body)
 		@kids_exercises = current_user.get_course_json(@kids_ex_data, 'kids_lessons_en')
-		@lessons = current_user.get_course_results(Exercise::LESSONS_EN, 'lessons_en')
-		@grammar_exercises = current_user.get_course_results(Exercise::GRAMMAR_EN, 'grammar_en')
+		
+		@grammar_ex_data = ActiveSupport::JSON.decode(Material.find(380).body)
+		@grammar_exercises = current_user.get_course_json(@grammar_ex_data, 'grammar_en')
+	
+		@lessons_ex_data = ActiveSupport::JSON.decode(Material.find(379).body)
+		@lessons = current_user.get_course_json(@lessons_ex_data, 'lessons_en')
+		
 	when '/ru/jp/kanji.html'
 		kanji1 = Category.find(95).words.find(:all, :order => 'order_num')
 		kanji2 = Category.find(96).words.find(:all, :order => 'order_num')
