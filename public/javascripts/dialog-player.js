@@ -1,4 +1,14 @@
+var msie9_style =""
++"<style type='text/css'> "
++".dt_controls td .jp_pause {background-image: url(/images/icons/icons-24/pause.png) !important;}"
++"</style>"
 
+function msie9() {
+	if ($.support.leadingWhitespace && $.browser.msie) {
+return true
+}
+
+}
 
 function dialog_controls(hash) {
 
@@ -12,6 +22,21 @@ this.shownTrack = -1;
 this.currentTrack = 0;
 this.playedTime = 0;
 this.status = "ready";
+
+this.msie9Sucks = function () {
+	tObj.container = $("#"+tObj.id);
+	tObj.playButton = tObj.container.find("div.dt_play");
+	tObj.buttons = tObj.container.find(".dt_controls td div");
+	tObj.buttons.not(tObj.playButton).css({visibility: "hidden"});
+
+	tObj.playButton.click(function(){
+		cJplayer(tObj.file, this)
+	})
+	
+	tObj.container.addClass("dt_ready");
+	$("head").append(msie9_style);
+	tObj.playButton.after('<div style="position: absolute; margin: -25px 0 0 30px; padding: 2px 3px; font-size:9px; white-space:nowrap">Limited functionality in IE9<br>Use Chrome, FF, Safari or Opera')
+}
  
 this.start = function () {
 
@@ -169,7 +194,11 @@ this.getCurrentPlayed = function() {
 }
 
 $(document).ready(function() {
-	tObj.start();
+	if (msie9() )  {
+		tObj.msie9Sucks();
+	}else {
+		tObj.start();
+    }
 })
 
 }

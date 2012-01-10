@@ -57,6 +57,9 @@ class ApplicationController < ActionController::Base
 		if params[:special_layout] == 'developer'
 			layout =  'dev_application.rhtml'
 		end
+		if params[:special_layout] == 'none'
+			layout =  'clear_application.rhtml'
+		end
 		return layout
 	end
 	
