@@ -153,21 +153,22 @@
                     <div id="divspace"></div>
                   </div>
                 </div>
-				
+<% if !current_user %>				
 <%= render :partial => '/site/ad_long' %>
+<%end%>
               </div> 
             </div><!-- end of #contain-border -->
+			
             <!--[if lte IE 6]>
           </td>
         </tr>
       </table>
       <![endif]-->
       <div id="footer">
-
         <div class="copy"><a href="/copyright.html">&copy;2009-2011 Study-Languages-Online.com</a> | <a href="/ru/en/sitemap.html">Карта сайта</a>| <a href="/index.html">English-Russian</a> | <a href="/ru/en/info/contacts">Контакты</a> </div>
-
       </div>
     </div>
+</div>
 <div id="analytic">
     <script type="text/javascript">
       var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

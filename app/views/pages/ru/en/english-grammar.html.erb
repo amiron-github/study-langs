@@ -1,15 +1,3 @@
-<% @page_title='Английский язык: Грамматика' %>
-<% @page_meta = {'description' => "Обзор раздела Грамматика на сайте"} %>
-
-<% content_for :special_css do %>
-.lists li {
-padding-top: 5px;
-}
-<% end %>
-
-<%= material(17).body %>
-
-<script type="text/javascript">
-currentSection="grammar";
-</script>
+<% @material = material(17) %>
+<%= render :partial => '/site/publish_material' %>
 

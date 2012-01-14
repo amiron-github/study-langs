@@ -1,0 +1,123 @@
+<% @page_title = ''+@category_title+' :: Online Russian Vocabulary'  %>
+<% @page_meta = {'description' => "Learn Russian vocabulary topic "+@category_title+" with online flashcards and lexical tests: words with audio samples, quizzes, spell practice"} %>
+<% @with_rec = true %>
+<% @has_audio = true %>
+<% content_for :special_js_css do %>
+<style type="text/css">
+h2.page {margin-bottom: 0px;}
+</style>
+<% end %>
+
+<div class="hint_wrap">
+<div class="hint_button" style="float: right;">
+  <div class="hint">
+      <div class="hint_list">
+        <span class="hint_string">Links and Settings</span>
+      </div>
+    </div>
+    <div class="sub_hint" style="display: none;">
+        <ul>
+            <li><a href="/en/ru/flashcards/<%= @category.tag %>">Flashcasrds: <%= @category_title %></a></li>
+			<li><a href="/en/ru/lexical-test/<%= @category.tag %>">Tests: <%= @category_title %></a></li>
+        </ul>
+        <%= render :partial => '/site/down_accent' %>
+  </div>
+</div>
+</div>
+
+
+<h2 class="page"><%= @category_title %></h2>
+
+<h3 class="page-path">
+	<span class="int-links">
+	<a href="/vocabulary.html">Vocabulary</a>
+	<span class="int-arrow">--&gt;</span> <%= @category_title %>
+	</span>
+</h3>
+
+<%= render :partial => '/site/ad_horizont' %>
+
+
+<div class="voc-wordlist">
+<table class="voc_bord" align="center" cellspacing="0">
+<tr>
+<td>
+
+<table class="diction" cellpadding="0" cellspacing="0" align="center">
+<thead>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+</thead>
+<tbody>
+<%
+@words.each_with_index do |word, index|
+%>
+  <% voc_spaces.each do |s|%>
+	<% if word.id == s %>
+  <tr>
+    <td class="original" valign="top">&nbsp;
+    </td>
+    <td class="transcript" valign="top">&nbsp;
+    </td>
+    <td class="translation" valign="top">&nbsp;
+    </td>
+  </tr>
+	<%end -%>
+<%end -%>
+<tr class="trow">
+    <td class="original" valign="top"><% unless cookies[:accents] %><%=strip_tags(word.html) %><%else%><%= word.html %><%end%>
+    </td>
+    <td class="transcript" valign="top">
+      <table <%unless word.sound_url == ''%>onclick="playFile('<%= word.sound_url %>')" class="audiotrans"<%end%> cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>[<% if @lang == "fr" %><%= word.transcribe_fr %><%else%><%= word.transcribe %><%end%>]
+          </td>
+          <td class="trs_td"><%unless word.sound_url == ''%><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div><%end%>
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td class="translation" valign="top"><% if @lang == "fr" %><%= word.translate_fr %><%else%><%= word.translate %><%end%>
+    </td>
+  </tr>
+<%end -%>
+<%= render :partial => 'add_voc' %>
+
+</tbody>
+<tfoot>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+</tfoot>  
+</table>
+
+</td>
+</tr>
+</table>
+</div><!-- end of voc-wordlist-->
+
+
+<table class="voc-links voc-link-first " align="center" cellspacing="0"><tr>
+	<td class="voc-space">Learn these words and expressions with our &nbsp;<a href="/en/ru/flashcards/<%= @category_tag%>">Flashcards >></a></td>
+</tr></table>
+<table class="voc-links voc-link-last" align="center" cellspacing="0"><tr>
+	<td class="voc-space">Check how you know this topic with our &nbsp;<a href="/en/ru/lexical-test/<%= @category_tag%>">Lexical tests >></a></td>
+</tr></table>
+
+
+<%= render :partial => '/site/ad_btm' %>
+
+<br><br><br><br><br><br>
+
+<script type="text/javascript">
+currentSection="words";
+</script>
+
+
+
+

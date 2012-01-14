@@ -43,7 +43,9 @@ layout :layout_by_lang
 		@category_title = @category.title
 		render(:action => 'vocabulary' )
 	end
-	 
+  rescue StandardError => e
+    logger.warn e
+    render :action => "404.html", :status => '404 Not Found'	 
   end
 
   def build_flashcard

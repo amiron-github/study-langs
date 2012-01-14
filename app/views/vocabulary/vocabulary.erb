@@ -1,95 +1,204 @@
-<% @page_title = ''+@category_title+' :: Online Russian Vocabulary'  %>
+<% @page_title = ' '+@category_title+' :: Online Russian vocabulary '  %>
 <% @page_meta = {'description' => "Learn Russian vocabulary topic "+@category_title+" with online flashcards and lexical tests: words with audio samples, quizzes, spell practice"} %>
-<% @with_rec = true %>
 <% @has_audio = true %>
+
 <% content_for :special_js_css do %>
+<%= stylesheet_link_tag 'lexical-test' %>
+<%= stylesheet_link_tag 'flashcard' %>
+
+<%= stylesheet_link_tag 'keyboard' %>
+<%= javascript_include_tag 'virtual-keyboard' %>
+
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'jp-control' %>
+<%= stylesheet_link_tag 'short-unit' %>
+<%= javascript_include_tag 'lexical-test' %>
+<%= javascript_include_tag 'flashcard-u' %>
+<%= javascript_include_tag 'short-unit' %>
+
+<script type="text/javascript">
+<%if params[:tab] %>
+	openTabFromUrl(<%= params[:tab] %>);
+<%else%>
+	openTabFromUrl();
+<%end%>
+
+$(document).ready(function() {
+$(".trans-display").change(function(){
+	if ($(this).is(":checked")) {
+		$(".original div.ru-transcript").show();
+	}else{
+		$(".original div.ru-transcript").hide();
+	}
+}).change();
+
+$("#tab02").click(function() {
+	if (sendData) $.ajax({type: 'post', url: "/get_flash_list", data: {voc_id: t_voc_id, text:'text'}} ); 
+})
+
+});
+
+var t_voc_id=<%=@category.id%>
+
+function buildFlashList(data){
+html = ""
+	for (var i = 0; i< data.length; i ++) {
+		var text = data[i]["text"];
+		var translate = data[i]["translate"];
+		var learned = data[i]["status"]
+		var status = new Array;
+		status = ['', 'checked']
+		if ( learned == '1') status = ['fl-learned', '']
+		var tHtml = '<tr class="fl-list '+status[0]+'"><td><input type="checkbox" '+status[1]+' class="st"><\/td><td class="fl-wordlist-origin">'+text+'<\/td><td>'+translate+'<\/td><\/tr>'
+		html = html+tHtml
+	}
+	$(".fl-prestart-list").html(html);
+	fixAccents($(".fl-prestart-list"))
+	$(".fl-prestart-list tr:even").css({backgroundColor: "#efefef"});
+}
+</script>
 <style type="text/css">
-h2.page {margin-bottom: 0px;}
+h2.page {
+margin-bottom: 0px;
+}
+
+.voc-wordlist .diction td {
+border-bottom: 1px solid #efefef;
+}
+.trans-display-wrapper {
+font-size: 11px;
+color: #444;
+position: relative;
+top: -50px;
+margin-bottom: -15px;
+}
+
+.voc-wordlist .diction td.original {
+position: relative;
+width: auto;
+padding-left: 35px;
+cursor: default;
+}
+.voc-wordlist .diction td.original div.ru-transcript {
+display: none;
+font-size: 11px;
+color: #555;font-weight: normal;
+}
+.voc-wordlist .diction td.translation {
+width: auto;
+padding-left: 22px;
+padding-right: 18px;
+cursor: default;
+}
+.voc_bord div.jp_control {
+position: absolute;
+margin-left: -25px;
+}
+.fl-spell-check, .fl-cancel-spell {
+width: 80px;
+}
+.fl-end-wrapper .fl-stop {
+width: 90px;
+}
+.fl-next {
+width: 100px;
+}
+.lt-spacer {
+padding: 0 0 60px;
+}
+.fl-prestart {
+overflow-x: hidden;
+overflow-y: auto;
+}
+.fl-sound .jp_control:hover {
+background-image: url(/images/play-25.png);
+}
+.l-test-container {
+margin-bottom: 90px;
+}
+div.ad-horizont {
+padding-bottom: 0 !important;
+position: relative;
+top: 25px;
+}
+.fl-container .kb-show-wrapper {
+text-align: left;
+}
+.es-ex-buttons input.su-next-step {
+padding-left: 20px;
+padding-right: 20px;
+}
+
+.unit-area {
+min-height: 1010px;
+}
+
 </style>
 <% end %>
 
-<div class="hint_wrap">
-<div class="hint_button" style="float: right;">
-  <div class="hint">
-      <div class="hint_list">
-        <span class="hint_string">Links and Settings</span>
-      </div>
-    </div>
-    <div class="sub_hint" style="display: none;">
-        <ul>
-            <li><a href="/en/ru/flashcards/<%= @category.tag %>">Flashcasrds: <%= @category_title %></a></li>
-			<li><a href="/en/ru/lexical-test/<%= @category.tag %>">Tests: <%= @category_title %></a></li>
-        </ul>
-        <%= render :partial => '/site/down_accent' %>
-  </div>
+<div class="unit-area">
+<div id="prof_tabs">
+<div class="unit-title">
+<%= render :partial => '/site/every/settings_block' %>
+<a href="/vocabulary.html" class="su-tit-link">Russian vocabulary »</a><br>
+<%= @category_title %>
 </div>
+	<div id="tabs_row">
+            <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Vocabulary</a></div></div>
+			<div id="tab02" class="ptab"><div><a href="#">Flash cards</a></div></div>
+            <div id="tab03" class="ptab"><div><a href="#">&nbsp;&nbsp;Tests&nbsp;&nbsp;</a></div></div>
+	</div>
+	<div style="clear: both;"></div>
 </div>
-
-
-<h2 class="page"><%= @category_title %></h2>
-
-<h3 class="page-path">
-	<span class="int-links">
-	<a href="/vocabulary.html">Vocabulary</a>
-	<span class="int-arrow">--&gt;</span> <%= @category_title %>
-	</span>
-</h3>
 
 <%= render :partial => '/site/ad_horizont' %>
+<div id="for_tab01" class="pBlock" style="display: block">
+	<div class="inpBlock">
 
+	<br><br><br><br>
 
 <div class="voc-wordlist">
 <table class="voc_bord" align="center" cellspacing="0">
 <tr>
 <td>
 
-<table class="diction" cellpadding="0" cellspacing="0" align="center">
+<table style="width: 500px" class="diction" cellpadding="0" cellspacing="0" align="center">
+<col width="50%"><col width="50%">
 <thead>
 <tr>
-	<td></td>
-	<td></td>
+	<td> <div class="trans-display-wrapper"><input type="checkbox" class="trans-display" /> Transcription </div> </td>
 	<td></td>
 </tr>
 </thead>
 <tbody>
 <%
 @words.each_with_index do |word, index|
-%>
-  <% voc_spaces.each do |s|%>
-	<% if word.id == s %>
+-%>
+
+<% voc_spaces.each do |s| -%>
+<% if word.id == s %>
   <tr>
     <td class="original" valign="top">&nbsp;
     </td>
-    <td class="transcript" valign="top">&nbsp;
-    </td>
+
     <td class="translation" valign="top">&nbsp;
     </td>
   </tr>
-	<%end -%>
+<%end -%>
 <%end -%>
 <tr class="trow">
-    <td class="original" valign="top"><% unless cookies[:accents] %><%=strip_tags(word.html) %><%else%><%= word.html %><%end%>
+    <td class="original" valign="top">
+	<%unless word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div><%end%>
+	<%= word.html %><%unless word.grammar==''%><i style="color: #999; font-weight: normal; font-size: 11px; margin-left:10px"><%= word.grammar %></i><%end%>
+	<div class="ru-transcript">[<%= word.transcribe %>]</div>
     </td>
-    <td class="transcript" valign="top">
-      <table <%unless word.sound_url == ''%>onclick="playFile('<%= word.sound_url %>')" class="audiotrans"<%end%> cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td>[<% if @lang == "fr" %><%= word.transcribe_fr %><%else%><%= word.transcribe %><%end%>]
-          </td>
-          <td class="trs_td"><%unless word.sound_url == ''%><div class="sdict"><span class="play_tip">&nbsp; &nbsp; </span></div><%end%>
-          </td>
-        </tr>
-      </table>
+    <td class="translation" valign="top"><%= word.translate %>
     </td>
-    <td class="translation" valign="top"><% if @lang == "fr" %><%= word.translate_fr %><%else%><%= word.translate %><%end%>
-    </td>
-  </tr>
+</tr>
 <%end -%>
-<%= render :partial => 'add_voc' %>
-
 </tbody>
 <tfoot>
 <tr>
-	<td></td>
 	<td></td>
 	<td></td>
 </tr>
@@ -101,23 +210,152 @@ h2.page {margin-bottom: 0px;}
 </table>
 </div><!-- end of voc-wordlist-->
 
+<br><br><br>
 
-<table class="voc-links voc-link-first " align="center" cellspacing="0"><tr>
-	<td class="voc-space">Learn these words and expressions with our &nbsp;<a href="/en/ru/flashcards/<%= @category_tag%>">Flashcards >></a></td>
-</tr></table>
-<table class="voc-links voc-link-last" align="center" cellspacing="0"><tr>
-	<td class="voc-space">Check how you know this topic with our &nbsp;<a href="/en/ru/lexical-test/<%= @category_tag%>">Lexical tests >></a></td>
-</tr></table>
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Next part »" onclick="openNextStep(2)">
+</div>	
+	
+	</div>
+</div>
+
+<div id="for_tab02" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<br><br><br><br>	
 
 
-<%= render :partial => '/site/ad_btm' %>
 
-<br><br><br><br><br><br>
+
+	
+<div  id="fl1" style="min-height: 600px; text-align: center;">
+<%= render :partial => 'site/flashcard' %>
+</div><!-- end of fl1 -->
+
+<script type="text/javascript"> 
+	var fl1 = new flashcard( {
+		id: "fl1", 
+		random_order: false,
+		basic_array: [
+<% 
+@last_item_index = (@words.length)-1
+@words.each_with_index  do |word, index| %><% unless (word.translate == '#none#' || word.translate == '' )%>
+["<%= no_js(word.html) %>", '<%= no_js(word.translate) %>', '<%= word.sound_url %>', "<%= no_js(word.transcribe) %>"<%if current_user %>, '<%= word.id%>' ,'<%= current_user.word_status(word.id) %>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>
+<%end-%>
+<%end -%>
+		]
+		} )
+</script>
+
+<br><br><br>		
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Next part »" onclick="openNextStep(3)">
+</div>
+	
+	</div>
+</div>
+
+
+<div id="for_tab03" class="pBlock" style="display: none">
+	<div class="inpBlock">
+
+<br><br><br><br>
+
+
+<div class="l-test-container">
+
+<h4 class="su-task">Test 1. Read the word/phrase and find its translation into Russian.
+</h4>
+
+<div id="ch1" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => 'lexical_test' %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		<% unless @test_data[0] == nil || @test_data[0]==''%>test_id: "<%= @test_data[0].test_id %>",<%end%>
+		quest_num: <%= quest_num_from(@test_data[0]) %>,
+		variants_num: 5,
+		quest_type: 'text',
+		basic_array: [
+<% @last_item_index = (@words.length)-1 -%>
+<% @words.each_with_index  do |word, index| -%>
+["<%= no_js(word.translate) %>", "<%= no_js(word.text) %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+		]
+		
+		} )
+</script>
+
+
+<h4 class="su-task">Test 2. 
+Read the word/phrase and find its translation into English.
+</h4>
+
+<div id="ch2" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => 'lexical_test' %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		<% unless @test_data[1] == nil || @test_data[1]==''%>test_id: "<%= @test_data[1].test_id %>",<%end%>
+		quest_num: <%= quest_num_from(@test_data[1]) %>,
+		variants_num: 5,
+		quest_type: 'text',
+		basic_array: [
+		
+<% @words.each_with_index  do |word, index| -%>
+		["<%= no_js(word.text) %>", '<%=no_js(word.translate) %>'<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>		
+		]
+		} )
+</script>
+
+<%unless @category.sound_status == 2 %>
+
+<h4 class="su-task">Test 3. Listen to the word/phrase and find its translation into English.
+</h4>
+
+<div id="ch3" class="lt-holder">
+<div class="lt-spacer">
+<%= render :partial => 'lexical_test'%>
+</div>
+</div><!-- end of lt-holder -->
+<script type="text/javascript"> 
+	var ch3 = new ch_exercise( {
+		id: "ch3", 
+		<% unless @test_data[2] == nil || @test_data[2]==''%>test_id: "<%= @test_data[2].test_id %>",<%end%>
+		quest_num: <%= quest_num_from(@test_data[2]) %>,
+		variants_num: 5,
+		quest_type: 'audio',
+		basic_array: [
+		
+<% @words.each_with_index  do |word, index| -%>
+["<%= word.sound_url %>", "<%= no_js(word.translate) %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		} )
+</script>
+<%end%>
+
+
+	</div>
+</div>
+
+
+</div> <!-- end of unit-area-->
+	
 
 <script type="text/javascript">
 currentSection="words";
 </script>
-
-
 
 

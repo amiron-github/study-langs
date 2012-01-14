@@ -1,15 +1,3 @@
-<% @page_title = 'Russian Language Online: Reading in Russian' %>
-<% @page_meta = {'description' => "Online materials to learn Russian letters and rules of reading"} %>
-
-<% content_for :special_css do %>
-.lists li {
-padding-top: 5px;
-}
-<% end %>
-
-<%= material(10).body %>
-
-<script type="text/javascript">
-currentSection="reading";
-</script>
+<% @material = material(10) %>
+<%= render :partial => '/site/publish_material' %>
 

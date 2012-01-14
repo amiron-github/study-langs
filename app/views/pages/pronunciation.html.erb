@@ -1,18 +1,2 @@
-<% @page_title='Russian Language Online: Russian Pronunciation' %>
-<% @page_meta = {'description' => "Summary of the online course for Russian pronunciation"} %>
-
-<% content_for :special_css do %>
-.lists li {
-padding-top: 5px;
-}
-<% end %>
-
-<%= material(9).body %>
-
-<br><br><br>
-
-
-<script type="text/javascript">
-currentSection="phonetic";
-</script>
-
+<% @material = material(9) %>
+<%= render :partial => '/site/publish_material' %>
