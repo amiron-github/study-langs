@@ -3871,8 +3871,271 @@ padding-top:0px !important;
 font-size: 35px;
 }
 
+/*styles for section content block*/
+.sv-wrapper {
+margin: 20px 20px 35px;
+max-width: 700px;
+}
+
+.sv-lessons {
+max-width: 500px;
+}
+
+.sv-lessons-ex {
+max-width: 550px;
+}
+
+.sv-lessons .sv-list {
+list-style: none;
+padding: 20px 50px 30px;
+}
+
+.sv-lessons .sv-list li {
+bor-der-bottom: 1px solid #CCC;
+font-weight: bold;
+position: relative;
+padding: 7px 0;
+}
+
+.sv-lessons .sv-list li.sv-li-first {
+bor-der-top: 1px solid #CCC;
+}
+
+.sv-explain {
+color: #888;
+padding: 6px 0 4px 0;
+font-size: 11px;
+}
+
+.sv-lessons-ex .sv-list {
+list-style: none;
+padding: 40px 50px 50px;
+}
+
+.sv-lessons-ex .sv-list li a {
+font-weight: bold;
+}
+
+.sv-lessons-ex .sv-list li {
+border-bottom: 1px solid #CCC;
+position: relative;
+padding: 5px 10px 5px 10px;
+min-height: 38px;
+}
+
+.sv-lessons-ex .sv-list li.sv-li-first {
+border-top: 1px solid #CCC;
+}
+
+.sv-lessons-ex-img .sv-list li {
+padding-left: 60px;
+}
+
+.sv-lessons-ex-img .sv-list li a span {
+position: absolute;
+margin-left: -60px;
+top: 5px;
+}
+
+.sv-lessons-ex-img .sv-list li a span img {
+width: 50px;
+}
+
+.sv-lessons-img .sv-list li {
+line-height: 38px;
+padding: 1px 10px 1px 60px;
+}
+
+.sv-lessons-img .sv-list li a span {
+top: 1px;
+}
+
+.sv-list li a.sv-pointer {
+position: absolute;
+top: 8px;
+display: block;
+right: 10px;
+margin: 0;
+padding: 0 2px;
+font-size: 20px;
+font-weight: normal;
+text-decoration: none;
+line-height: 20px;
+}
+
+.sv-list li a.sv-pointer:link, .sv-list li a.sv-pointer:visited, .sv-list li a.sv-pointer:hover, .sv-list li a.sv-pointer:active {
+color: #999;
+background-color: transparent;
+text-decoration: none;
+}
+
+.sv-title {
+font-size: 15px;
+margin:0;
+line-height: 27px;
+position: relative;
+font-weight: bold;
+overflow: hidden;
+padding: 1px 20px 1px;
+color: white;
+background-color: #6F96FF;
+border: 1px solid #417EAF;
+text-shadow: 0 1px 0 #333;
+}
+
+.sv-list {
+margin: 0px;
+padding: 15px 20px 25px 50px;
+font-size: 12px;
+border: 1px solid #999;
+border-top: 0px solid #fff;
+}
+
+.sv-list li {
+padding: 5px 0;
+line-height: 14px;
+}
+
+.sv-list li li {
+padding: 4px 0;
+}
+
+.sv-list ul, .sv-list ol {
+margin: 0px;
+padding: 3px 0px 0px 30px;
+}
+
+/*end for section content*/
+
+/*styles for collapsible list view */
+.vu-units-list-wrapper {
+max-width: 550px;
+position: relative;
+padding-top: 20px;
+padding-left: 30px;
+}
+.vu-units-list {
+padding:0;
+margin:0;
+list-style: none;
+font-family: arial, sans-serif;
+}
+
+.vu-exp-colaps {
+position: absolute;
+right: 10px;
+top:0;
+font-size: 10px;
+color: #999;
+}
+
+.vu-exp-colaps a {
+}
+
+.vu-exp-colaps a:link, .vu-exp-colaps a:visited {
+text-decoration: none;
+color: #36C;
+}
+
+.vu-exp-colaps a:hover, .vu-exp-colaps a:active {
+text-decoration: underline;
+background-color: transparent;
+color: #36C;
+}
 
 
+.vu-exp span.vu-exp-2 {
+display: none;
+}
+
+.vu-units-list li h3 {
+font-weight: bold;
+overflow: hidden;
+padding: 1px 2px;
+margin: 0 0 1px 0;
+border: 1px solid #77B9EF;
+back-ground-image: url("/images/dialog-tr-bg-bl.png");
+background-position: left 100%;
+background-repeat: repeat-x;
+font-size: 13px;
+line-height: 28px;
+cursor: pointer;
+position: relative;
+}
+
+.vu-units-list li h3 small {
+font-size: 12px;
+}
+
+.vu-units-list li.vu-li-opened h3 small {
+display: none;
+}
+
+.vu-units-list li h3 .vu-li-index {
+position: absolute;
+right: 10px;
+font-weight: normal;
+font-size: 9px;
+}
+
+.vu-units-list li.vu-li-opened h3 .vu-li-index {
+display: none;
+}
+
+
+.vu-units-list li h3:hover {
+backg-round-image: url("/images/h3-bg.png");
+background-color: #E0EAFC;
+border: 1px solid #417EAF;
+}
+
+.vu-units-list li.vu-li-opened h3, .vu-units-list li.vu-li-opened h3:hover  {
+color: white;
+background-color: #6F96FF;
+border: 1px solid #417EAF;
+text-shadow: 0 1px 0 #333;
+font-size: 15px;
+}
+
+.vu-simplified .vu-units-list li h3 {
+padding-left: 15px;
+line-height: 22px;
+}
+
+.vu-simplified .vu-units-list li.vu-li-opened h3, .vu-simplified .vu-units-list li.vu-li-opened h3:hover {
+c-olor: #222;
+b-ackground-color: #EDF2FA;
+b-order: 1px solid #417EAF;
+t-ext-shadow: 0 0 0 #333;
+font-size: 13px;
+}
+
+.vu-units-list li ul, .vu-units-list li ol  {
+display: none;
+padding-top: 10px;
+padding-bottom: 15px;
+}
+
+.vu-units-list li ul ul,.vu-units-list li ul ol, .vu-units-list li ol ul, .vu-units-list li ol ol {
+padding-top: 5px;
+padding-bottom: 5px;
+}
+
+.vu-units-list li.vu-li-opened ul, .vu-units-list li.vu-li-opened ol {
+display:block;
+}
+
+.vu-units-list li ul li, .vu-units-list li ol li {
+line-height: 18px;
+}
+
+.vu-units-list li h3 img {
+margin-bottom: -8px;
+position: relative;
+margin-right:8px;
+}
+
+/*end of collapsible list */
 
 
 

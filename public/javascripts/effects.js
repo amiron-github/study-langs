@@ -51,11 +51,15 @@ $("#menu_remover").click( function() {
 		});		
 		delCookie('no_menu')
 	} else {
-		$("#nav-pos").fadeOut(200, function() {
-			$("div#contentcell").animate({marginLeft: "30px"});
-			$("#menu_content").addClass("m-menu-hidden");
-		});
-		setCookie('no_menu', 'yes')
+		setCookie('no_menu', 'yes');
+		if (sendData) {
+			$("#nav-pos").fadeOut(200, function() {
+				$("div#contentcell").animate({marginLeft: "30px"});
+				$("#menu_content").addClass("m-menu-hidden");
+			});			
+		} else {
+			window.location.reload();
+		}
 	}
 });
 
