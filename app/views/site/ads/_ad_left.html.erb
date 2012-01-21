@@ -1,4 +1,4 @@
-<% unless @no_ad %><%if @left_ad %>
+<% unless @no_ad || @no_left_ad %><% @no_left_slide=true %>
 <div style="padding-top: 20px; padding-left: 14px; margin-top: 40px"> 
 <script type="text/javascript"><!--
 google_ad_client = "ca-pub-8582966007397893";
@@ -12,5 +12,4 @@ google_ad_height = 600;
 src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>
 </div> 
-<%end%> 
 <%end%>

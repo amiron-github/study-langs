@@ -17,7 +17,6 @@ end
 
 %>
 
-
 <div class="widget-wrap" id="sh1" style="display: none;">
 <strong>Learn Russian words!</strong>
 
@@ -25,14 +24,11 @@ end
 <div class="slidshow">
 <div class="carousel-wrap">
 	<ul <% if @l_clusters.include?(@claster_num) %>class="cs-clip"<%end%>>
-	
 <% @slides.each do |word| %>	
 		<li><img src="<%= word.image_url %>" title="<%= word.text %>">
 		<div class="word-tip"><%= word.translate %></div>
 		</li>
 <%end%>
-
-
 	</ul>
 </div>
 </div>

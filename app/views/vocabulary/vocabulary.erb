@@ -1,6 +1,8 @@
 <% @page_title = ' '+@category_title+' :: Online Russian vocabulary '  %>
 <% @page_meta = {'description' => "Learn Russian vocabulary topic "+@category_title+" with online flashcards and lexical tests: words with audio samples, quizzes, spell practice"} %>
-<% @has_audio = true %>
+<% @has_audio = true 
+   @t_template='vocab'
+%>
 
 <% content_for :special_js_css do %>
 <%= stylesheet_link_tag 'lexical-test' %>
@@ -133,16 +135,24 @@ padding-right: 20px;
 min-height: 1010px;
 }
 
+.ad-banner div {
+position: relative;
+padding-top: 20px;
+top: 10px; 
+width: 470px;
+margin: 0 auto;
+}
+
 </style>
 <% end %>
 
 <div class="unit-area">
 <div id="prof_tabs">
-<div class="unit-title">
-<%= render :partial => '/site/every/settings_block' %>
-<a href="/vocabulary.html" class="su-tit-link">Russian vocabulary »</a><br>
-<%= @category_title %>
-</div>
+	<div class="unit-title">
+	<%= render :partial => '/site/every/settings_block' %>
+	<a href="/vocabulary.html" class="su-tit-link">Russian vocabulary »</a><br>
+	<%= @category_title %>
+	</div>
 	<div id="tabs_row">
             <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Vocabulary</a></div></div>
 			<div id="tab02" class="ptab"><div><a href="#">Flash cards</a></div></div>
@@ -151,7 +161,8 @@ min-height: 1010px;
 	<div style="clear: both;"></div>
 </div>
 
-<%= render :partial => '/site/ad_horizont' %>
+<%= render :partial => '/site/ads/ad_banner' %>
+
 <div id="for_tab01" class="pBlock" style="display: block">
 	<div class="inpBlock">
 
@@ -345,7 +356,7 @@ Read the word/phrase and find its translation into English.
 		} )
 </script>
 <%end%>
-
+</div>  <!--end of l-test-container -->
 
 	</div>
 </div>

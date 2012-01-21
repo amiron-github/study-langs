@@ -5,7 +5,7 @@ min-height: 100%;
 
 html, body  {
 hei_ght:100%;
-wid th: 2200px;
+wid-th: 2200px;
 text-align: center;
 }
 
@@ -97,9 +97,9 @@ background-color: #EFF5FF;
 div#container {
 min-width: 809px;
 width: 83%;
-min-height: 805px;
+min-height: 1005px;
 height: auto !important;
-height: 805px;
+height: 1005px;
 margin: 0px auto;
 text-align: left;
 background-image:  url("/images/bluebutton.gif");
@@ -254,9 +254,9 @@ div#navigation div #menu_body {
 
 div#contentcell {
 margin-left: 200px;
-min-height: 800px;
+min-height: 1000px;
 height: auto !important;
-height: 800px;
+height: 1000px;
 background-color: #ffffff;
 }
 
@@ -3861,6 +3861,7 @@ margin-right: 8px;
 text-align: left;
 padding-bottom: 8px;
 padding-top:7px !important;
+padding-left: 25px;
 }
 
 #menu_body .n-nav .item-top a {
@@ -3902,7 +3903,7 @@ bor-der-top: 1px solid #CCC;
 }
 
 .sv-explain {
-color: #888;
+color: #666;
 padding: 6px 0 4px 0;
 font-size: 11px;
 }
@@ -3919,7 +3920,7 @@ font-weight: bold;
 .sv-lessons-ex .sv-list li {
 border-bottom: 1px solid #CCC;
 position: relative;
-padding: 5px 10px 5px 10px;
+padding: 5px 40px 5px 10px;
 min-height: 38px;
 }
 
