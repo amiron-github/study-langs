@@ -1,26 +1,46 @@
 <% @page_title = 'Регистрация' %>
 
-<h2 class="page"> Благодарим Вас за регистрацию! </h2>
+<style>
+.u-mail {
+font-weight: bold;
+color: #111;
+}
+.ok-msg-header ul li{
+list-style: disc;
+padding: 3px 0;
+}
 
-<p align="center"> Ваш аккаунт успешно создан. Вам выслан код для активации аккаунта на указанный Вами email: <br><br> 
-		<i><b style="color: blue"><%= @u_mail %></b></i>. 
+</style>
+
+
+<div class="ok-msg-wrapper">
+<h3 class="ok-msg-header"> <img src="/images/icons/icons-24/tick.png" class="ok-msg-head-img" width="24"> Ваш аккаунт успешно создан!</h3>
+<div class="ok-msg-container">
+<p style="font-size: 14px;">Благодарим Вас за регистрацию!  Вам выслан код для активации аккаунта на указанный Вами email: 
+<span class="u-mail"><%= @u_mail %></span>. 
 </p>
 
-<p align="center"> Письмо с кодом должно прийти на Ваш ящик через 1-2 минуты. 
-</p>
-
-<br><br>
-<h3 style="">Вы не получили код на e-mail?</h3>
+<br>
+<h4 class="unreceived">Вы не получили e-mail?</h4>
 
 <ul>
 	<li>Проверьте, правильно ли вы ввели свой e-mail.</li>
 	<li>Проверьте папку СПАМ. В некоторых случаях требуется добавить адрес <u style="white-space: nowrap"><i>support@study-languages-online.com</i></u> в свой список Контактов.</li>
 	<li>На таких сервисах, как <i>Yahoo</i> или <i>Hotmail</i>, доставка письма может быть отложена на срок до одного часа.</li>
 </ul>
-
-<p align="center">
-Если у Вас возникли вопросы или затруднения, связанные с активацией аккаунта,  напишите нам: <br> <a href="mailto:study.languages.online@gmail.com">study.languages.online@gmail.com</a>.
+<br>
+<p >
+Если у Вас возникли вопросы или затруднения, связанные с активацией аккаунта,  напишите нам:  <a href="mailto:study.languages.online@gmail.com">study.languages.online@gmail.com</a>
 </p>
+
+</div>
+</div>
+
+
+
+
+
+
 
 <script type="text/javascript">
 currentSection="login";
