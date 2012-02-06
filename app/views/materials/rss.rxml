@@ -1,0 +1,18 @@
+xml.instruct!
+xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
+ xml.channel do
+   xml.title       @articles["title"]
+   xml.link        @articles["link"]
+   xml.description @articles["description"]
+   xml.language    @articles["language"]  
+   xml.copyright   		@articles["copyright"]
+   xml.managingEditor   @articles["editor"]   
+   @articles["items"].each do |article|
+     xml.item do
+       xml.title       article['title']
+	   xml.link        article['link'] 
+       xml.description article['description']
+     end
+   end
+ end
+end

@@ -28,6 +28,14 @@ require_role "admin", :except => [:publish]
       format.xml  { render :xml => @materials }
     end
   end
+  
+  def rss
+	@articles_data = Material.find(params[:material]).body
+	@articles = ActiveSupport::JSON.decode(@articles_data)
+	render :layout => false
+	response.headers["Content-Type"] = "application/xml; charset=utf-8"
+  end
+  
 
   # GET /materials/1
   # GET /materials/1.xml

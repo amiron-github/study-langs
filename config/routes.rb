@@ -96,7 +96,10 @@ ActionController::Routing::Routes.draw do |map|
   map.page '/page/:page', :controller => 'materials', :action=>'publish'
   map.info '/:lang/:to_lang/info/:page', :controller => 'materials', :action=>'publish'
   map.info '/info/:page', :controller => 'materials', :action=>'publish'
-  
+
+  map.connect '/fr/ru/rss.xml', :controller => 'materials', :action=>'rss', :material=>428 
+  map.connect '/ru/en/rss.xml', :controller => 'materials', :action=>'rss', :material=>427   
+  map.connect '/rss.xml', :controller => 'materials', :action=>'rss', :material=>426  
   map.connect '/materials/preview_ajax/:id', :controller => 'materials', :action=>'preview_ajax'
   map.resources :materials
   
