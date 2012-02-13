@@ -2,7 +2,7 @@ class MaterialsController < ApplicationController
 
 
 layout "admin",  :except => [:preview_ajax]
-require_role "admin", :except => [:publish, rss]
+require_role "admin", :except => [:publish, :rss]
 
 
 # instruction to publish
