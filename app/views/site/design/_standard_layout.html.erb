@@ -25,7 +25,7 @@
 <%end -%>
 <link rel="icon" href="/site-icon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="/site-icon.ico" type="image/x-icon">
-<%= yield :special_js_css %><%= material(243).body %><%= @layout_settings.body %>
+<%= yield :special_js_css %><%= @layout_settings.body %>
 <meta http-equiv="content-language" content="<%=@es_language%><%if @to_language%>,<%=@to_language%><%end%>">
 <meta name="keywords" content="<%= @keywords%>" />
 <% unless @no_social%><script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script><%end%>
@@ -61,6 +61,7 @@
 <% unless @no_social || @no_social_1 || cookies[:no_menu] %><br>
 <div class="social-btn-row" style="text-align: center; position: absolute; margin-top: 5px; margin-left: 22px; white-space: nowrap;">
 <%= render :partial => '/site/design/social' %>
+
 </div>
 <%end -%>
 <img src="/images/badge-80.jpg" class="site-badge">			

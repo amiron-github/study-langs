@@ -48,7 +48,7 @@
 				</div>
 				<div class="forum-item-comments"><% posts = topic.posts; posts.shift; posts = posts.last(3) %>
 				<% posts.each do |post|%>
-					<p><a title="<%= post.user.name%>" href="<%= userpage_for(post.user) %>" class="comment-pic"><img src="<%= post.user.setting.picture %>" width="25"/></a>
+					<p><a title="<%= post.user.name%>" href="<%= userpage_for(post.user) %>" class="comment-pic"><img src="<%= userpic_for(post.user) %>" width="25"/></a>
 					<a href="<%= userpage_for(post.user) %>"><%= post.user.name %></a> - <%=strip_tags truncate(post.content, 270)%>
 					<br><span class="comment-time"><%= show_post_time(post.created_at)%></span>
 					</p>
