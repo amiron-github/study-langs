@@ -17,6 +17,7 @@
 	<select name="lo" onChange="this.form.submit()">
 		<option <%if @find_status == '1' %>selected<%end%> value="1"><%= t('langs.en')%>-<%= t('langs.ru')%></option>
 		<option <%if @find_status == '2' %>selected<%end%> value="2"><%= t('langs.ru')%>-<%= t('langs.en')%></option>
+		<option <%if @find_status == '3' %>selected<%end%> value="3"><%= t('langs.fr')%>-<%= t('langs.ru')%></option>
 		<option <%if @find_status == '0'%>selected<%end%> value="0"><%= t('langs.all')%></option>
 	</select>
 <%end %>
@@ -29,7 +30,11 @@
   <% for fcategory in @fcategories %>  
 	<div class="forum-cat">
 		<div class="forum-cat-title">
-			<%= link_to category_name(fcategory), :controller=>'forums', :action=>'show_cat',:forum_id=>@forum.id, :cat_id=>fcategory.id%>
+			<%if @spec_lang %>
+			  <%= link_to category_name(fcategory), :controller=>'forums', :action=>'show_cat',:forum_id=>@forum.id, :cat_id=>fcategory.id, :l=>@spec_lang%>
+			<%else%>
+				<%= link_to category_name(fcategory), :controller=>'forums', :action=>'show_cat',:forum_id=>@forum.id, :cat_id=>fcategory.id%>
+			<%end%>
 		</div>
 		<div class="forum-cat-desc"> 
 			<%= category_desc(fcategory) %>

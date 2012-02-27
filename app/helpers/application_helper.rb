@@ -134,6 +134,8 @@ require 'digest/md5'
 	name = category.name
 	if I18n.locale == 'ru'
 		name = category.name_ru
+	elsif I18n.locale == 'fr'
+		name = category.name_fr
 	end
 	return name
   end
@@ -142,6 +144,8 @@ require 'digest/md5'
 	desc = category.desc
 	if I18n.locale == 'ru'
 		desc = category.desc_ru
+	elsif I18n.locale == 'fr'
+		desc = category.desc_fr
 	end
 	return desc
   end

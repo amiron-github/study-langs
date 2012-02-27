@@ -243,6 +243,8 @@ private
 			langs = [2,1]
 		elsif option == '2'
 			langs = [1,2]
+		elsif option == '3'
+			langs = [3,1]
 		else
 			langs = [0,0]
 		end
@@ -254,6 +256,8 @@ private
 			option = 1
 		elsif topic.lang == 1 && topic.to_lang == 2
 			option = 2
+		elsif topic.lang == 3 && topic.to_lang == 1
+			option = 3
 		else
 			option = 0
 		end
@@ -266,6 +270,8 @@ private
 		status = '1'
 	 elsif lang == 'ru'&& to_lang == 'en' 
 		status = '2'
+	 elsif lang == 'fr'&& to_lang == 'ru' 
+		status = '3'
 	 end
 	  return status
 	end

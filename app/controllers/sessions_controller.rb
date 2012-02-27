@@ -32,7 +32,7 @@ layout :layout_by_lang
 		end
 	  elsif layout_lang == 'fr'
 		if to_lang=='ru'
-			redirect_back_or_default('/fr/ru/user_profile.html')
+			redirect_back_or_default('/fr/ru/user_profile')
 		elsif to_lang=='en'
 			redirect_back_or_default('/fr/en/user_profile.html')
 		end

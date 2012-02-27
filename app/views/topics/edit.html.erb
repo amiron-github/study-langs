@@ -8,8 +8,14 @@
     <%= f.text_field :name %>
   </p>
   
-<p> 1
+<p> Lang
   <% lang_choices = @langs.map {|l| [ l['name'], l['id'] ]} %>
+  
+ <%= f.select(:lang, lang_choices) %>
+  </p> 
+<p> To lang
+  <% lang_choices = @langs.map {|l| [ l['name'], l['id'] ]} %>
+  
   <%= f.select(:to_lang, lang_choices) %>
 <p>
   <p>

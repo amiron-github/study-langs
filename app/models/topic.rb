@@ -10,6 +10,7 @@ class Topic < ActiveRecord::Base
 LANG = [
 {'name'=>'Russian','name_ru'=>'русский','name_fr'=>'russe','id'=>1,'short_en'=>'ru'},
 {'name'=>'English','name_ru'=>'английский','name_fr'=>'anglais','id'=>2,'short_en'=>'en'},
+{'name'=>'French','name_ru'=>'французский','name_fr'=>'français','id'=>3,'short_en'=>'fr'},
 {'name'=>'Other','name_ru'=>'другой','name_fr'=>'autre','id'=>0,'short_en'=>'other'}
 ]
 

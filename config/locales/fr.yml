@@ -4,15 +4,15 @@
 fr:
   hello: Bonjour
   User: Utilisateur
-  Username: Nick
+  Username: Pseudo
   Email: Email
   Password: Mot de passe
   Login: 
-  Nickname: Nickname
+  Nickname: Pseudo
   User_info: Info
   Forgotten Password: Mot de passe oublié?
-  Your Details: Your Details
-  in: in
+  Your Details: Vos infos
+  in: dans
   comment:
     one: commentaire
     few: commentaires
@@ -32,9 +32,9 @@ fr:
       not_favor: Éliminé de favoris
     errors:
       nick:
-        taken: Nickname is already taken 
-        invalid: Invalid nickname
-        long: Nickname is too long <span class="neml">(maximum 50 symbols)</span>
+        taken: Ce pseudo n'est pas disponible 
+        invalid: Pseudo invalide
+        long: Le pseudo est trop long <span class="neml">(pas plus de 50 symboles)</span>
   btn:
     save: Save
     change: Changer
@@ -78,19 +78,19 @@ fr:
       topic_long: Topic title is too long (maximum 250 symbols)
       topic_content_invalid: Topic content is invalid
       topic_content_long: Topic content is too long (maximum 10000 symbols)
-      comment_invalid: Text of the comment is invalid
-      comment_long: Text of the comment is too long (maximum 10000 symbols)
-      desc_invalid: Texte incorrect
-      desc_long: Text is too long <br><small>(maximum 300 symbols)</small>  
+      comment_invalid: Le texte du commentaire n'est pas valide
+      comment_long: Le texte du commentaire est trop long (pas plus de 10000 symboles)
+      desc_invalid: Le texte n'est pas valide
+      desc_long: Le texte est trop long <br><small>(pas plus de 300 symbols)</small>  
     string:
       langs: Langues
       view: View 
       new_topic: New topic  
-      go_login1: You need to
-      go_login: login
-      go_login2:  so that you can participate in the forum
+      go_login1: Il faut 
+      go_login: connecter
+      go_login2:  pour participer au forum
       enter_nick: <strong>Attention!</strong> You can post new topics and comments only after you enter your nickname 
-      put_nick: enter a nickname
+      put_nick: entrez un pseudo
       by: Par
       updated: Dernière mise à jour
       updated_short: mis à jour
@@ -109,8 +109,8 @@ fr:
       add_comment: Publier
       topic_title: Topic title
       topic_content: Topic content
-      change_info: You can change your nickname and avatar in your 
-      profile_setting: 'Profile: Settings'
+      change_info: Vous pouvez éditer votre pseudo et votre avatar dans 
+      profile_setting: 'Profil: Paramètres'
       max_desc_symb: 300 symboles au maximum
       my_topics: My topics	  
       my_comments: Mes commentaires
@@ -119,9 +119,9 @@ fr:
       not_available: pas disponible
       forum_name: Forum	
       see_more: Voir plus
-      last_comment_by: Last comment by	
-      see_last_comment: See the last comment
-      see_comments: Voir les commentaire	 
+      last_comment_by: Le dernier commentaire par	
+      see_last_comment: Voir le dernier commentaire
+      see_comments: Voir les commentaires	 
       see_category: Voir cette catégorie
   date:
     formats:

@@ -77,12 +77,13 @@ function checkTopicContent() {
 					<select name="lang_option" style="font-size: 11px; min-width: 160px;" id="lang-option" onChange="getCatsByLang()">
 						<option <%if @langs_option == '1' %>selected<%end%> value="1"> <%= t('langs.en')%> => <%= t('langs.ru')%> </option>
 						<option <%if @langs_option == '2' %>selected<%end%> value="2"> <%= t('langs.ru')%> => <%= t('langs.en')%> </option>
+						<option <%if @langs_option == '3' %>selected<%end%> value="3"> <%= t('langs.fr')%> => <%= t('langs.ru')%> </option>
 					</select>
 					<br>
 					<%= t('forum.string.cat')%>: &nbsp;&nbsp;
 					<span id="f-choose-category">
 					<select name="topic[fcategory_id]" style="font-size: 11px; min-width: 160px;" id="f-topic-cat">
-						<%if @langs_option == '1'%>
+						<%if @langs_option == '1' || @langs_option == '3' %>
 							<% @fcategories1.each do |category|%><option <%if params[:cat]==category.id.to_s %>selected<%end%> value="<%=category.id%>"><%= category_name(category)%></option><%end%>
 						<%elsif @langs_option == '2'%>
 							<% @fcategories2.each do |category|%><option <%if params[:cat]==category.id.to_s%>selected<%end%> value="<%=category.id%>"><%=category_name(category)%></option><%end%>
@@ -105,6 +106,9 @@ function checkTopicContent() {
 	</select>
 	<select id="f-category-2">
 		<% @fcategories2.each do |category|%><option <%if params[:cat]==category.id.to_s%>selected<%end%> value="<%=category.id%>"><%=category_name(category)%></option><%end%>
+	</select>
+	<select id="f-category-3">
+		<% @fcategories1.each do |category|%><option <%if params[:cat]==category.id.to_s%>selected<%end%> value="<%=category.id%>"><%=category_name(category)%></option><%end%>
 	</select>
 </span>
 <div style="display:none">

@@ -59,6 +59,7 @@ ActionController::Routing::Routes.draw do |map|
  
   map.courses_page '/:lang/:to_lang/courses', :controller => 'materials', :action=>'publish'
   map.vocab_page '/:lang/:to_lang/vocab', :controller => 'materials', :action=>'publish'
+  map.vocab_page '/:lang/:to_lang/user_profile', :controller => 'materials', :action=>'publish'
   map.phonetics_page '/:lang/:to_lang/phonetics', :controller => 'materials', :action=>'publish'
   map.reading_page '/:lang/:to_lang/reading', :controller => 'materials', :action=>'publish'
   map.contacts_page '/:lang/:to_lang/contacts', :controller => 'materials', :action=>'publish'

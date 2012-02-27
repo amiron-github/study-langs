@@ -51,11 +51,15 @@ require_role "admin", :except => [:show, :show_by_cat, :show_cat, :show_favorite
 		@find_status = cookies[:f_cat_lopt]
 	end
 	
-	
 	if @find_status == '0'
 		@fcategories = Fcategory.find(:all)
 	else
-		@fcategories = Fcategory.find(:all, :conditions => ['status=? or status=?', @find_status,0])
+		search_status = @find_status
+		if @find_status == '3' 
+			search_status = '1' 
+		end
+		@spec_lang = sort_by_lang(@find_status)[0]
+		@fcategories = Fcategory.find(:all, :conditions => ['status=? or status=?', search_status,0])
 	end
 	@fcategories.each do |cat|
 		len = 0
@@ -146,7 +150,12 @@ require_role "admin", :except => [:show, :show_by_cat, :show_cat, :show_favorite
 	@view_type = list_view
 	@view_type = list_view
 	paging = pages_by_view(@view_type)
-	@topics = @cat.topics.find(:all, :order => 'last_post_at DESC').paginate :page => params[:page], :per_page=> paging
+	if params[:l]
+	  if params[:l] == '3' then @find_status = '3' end
+	  @topics = @cat.topics.find(:all, :conditions=> ['lang=?', params[:l]], :order => 'last_post_at DESC').paginate :page => params[:page], :per_page=> paging
+	else
+	  @topics = @cat.topics.find(:all, :order => 'last_post_at DESC').paginate :page => params[:page], :per_page=> paging
+	end
 	add_forum_css_js
     respond_to do |format|
       format.html { render :action => 'show_cat' }
@@ -252,6 +261,8 @@ private
 		langs = [2,1]
 	elsif option == '2'
 		langs = [1,2]
+	elsif option == '3'
+		langs = [3,1]
 	else 
 		langs = false
 	end
@@ -264,6 +275,10 @@ private
 		status = '1'
 	elsif lang == 'ru'&& to_lang == 'en' 
 		status = '2'
+	elsif lang == 'fr'&& to_lang == 'ru' 
+		status = '1'
+	elsif lang == 'ru'&& to_lang == 'fr' 
+		status = '3'
 	end
 	return status
   end	
