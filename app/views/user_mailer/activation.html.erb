@@ -1,24 +1,8 @@
-<%if I18n.locale=='ru'%> 
-<%=h @user.email %>, Ваш аккаунт успешно активирован. Добро пожалаловать на наш сайт!
+<%=h @user.email %>, <%= @text_welcome %>
 
   <%=h @url %>
 
-Теперь в своем аккаунте Вы сможете просматривать пройденные слова и результаты выполненных упражнений и тестов.
+<%= @text_info1 %>
+<%= @text_info2 %> 
 
-<%elsif I18n.locale=='fr'%>
-Votre compte a bien été validé! Nous sommes ravis que vous ayez choisi d'appartenir à notre communauté et espérons que vous serez heureux d'y rester.
-
-<%=h @url %>
-
-Cordialement,
-L'équipe de Study-Languages-Online.com
- 
-<%else%>
-<%=h @user.email %>, your account has been activated.  Welcome aboard!
-
-  <%=h @url %>
-
-Now you can save and review the results of lessons exercises and vocabulary tests that you have completed on our website.
-In your account, you can find the results of each exercise and test, as well as overall results of all exercises and tests for a lesson or a topic. 
-<%end%>
 
