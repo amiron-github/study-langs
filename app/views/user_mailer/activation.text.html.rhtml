@@ -1,0 +1,24 @@
+<%if I18n.locale=='ru'%> 
+<%=h @user.email %>, Ваш аккаунт успешно активирован. Добро пожалаловать на наш сайт!
+<br><br>
+  <b><a href="<%=h @url %>"><%=h @url %></a></b>
+<br><br>
+Теперь в своем аккаунте Вы сможете просматривать пройденные слова и результаты выполненных упражнений и тестов.
+<br><br>
+<%elsif I18n.locale=='fr'%>
+Votre compte a bien été validé! Nous sommes ravis que vous ayez choisi d'appartenir à notre communauté et espérons que vous serez heureux d'y rester.
+<br><br>
+  <b><a href="<%=h @url %>"><%=h @url %></a></b>
+<br><br>
+Cordialement,<br>
+L'équipe de Study-Languages-Online.com
+<br><br> 
+<%else%>
+<%=h @user.email %>, your account has been activated.  Welcome aboard!
+<br><br>
+  <b><a href="<%=h @url %>"><%=h @url %></a></b>
+<br><br>
+Now you can save and review the results of lessons exercises and vocabulary tests that you have completed on our website.<br>
+In your account, you can find the results of each exercise and test, as well as overall results of all exercises and tests for a lesson or a topic. 
+<%end%>
+

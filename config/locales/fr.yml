@@ -4,11 +4,11 @@
 fr:
   hello: Bonjour
   User: Utilisateur
-  Username: Pseudo
+  Username: Identifiant
   Email: Email
   Password: Mot de passe
   Login: 
-  Nickname: Pseudo
+  Nickname: Identifiant
   User_info: Info
   Forgotten Password: Mot de passe oublié?
   Your Details: Vos infos
@@ -18,35 +18,36 @@ fr:
     few: commentaires
     other: commentaires
   in_topic:
-    one: topic
-    few: topics
-    other: topics	
+    one: sujet
+    few: sujets
+    other: sujets	
   msg:
     base:
-      saved: Saved
-      sure: Etes-vous sur(e)?
+      saved: Enregistré
+      sure:  Êtes vous sûr(e)?
     forum:
       to_favor: Ajouter aux favoris
-      from_favor: Éliminer de favoris
+      from_favor: Supprimer de favoris
       is_favor: Ajouté aux favoris
-      not_favor: Éliminé de favoris
+      not_favor: Supprimé de favoris
     errors:
       nick:
-        taken: Ce pseudo n'est pas disponible 
-        invalid: Pseudo invalide
-        long: Le pseudo est trop long <span class="neml">(pas plus de 50 symboles)</span>
+        taken: L'identifiant saisi n'est pas disponible 
+        invalid: Un identifiant invalide
+        long: L'identifiant saisi est trop long <span class="neml">(pas plus de 50 symboles)</span>
   btn:
-    save: Save
-    change: Changer
+    save: Enregistrer
+    change: Modifier
     edit: Éditer
     create: Créer
-    cancel: Annunler
+    cancel: Annuler
     update: Mettre à jour
+    submit: Envoyer
     next_page: Suivant »
     previous_page: « Précédant
     down:
-      save: save
-      change: changer
+      save: enregistrer
+      change: modifier
       edit: éditer
       cancel: annuler
   langs:
@@ -64,7 +65,7 @@ fr:
       other: autre
   forum:
     tabs:
-      stream: Stream
+      stream: Flux
       cats: Catégories
       login: Connexion
       favorites: Favoris
@@ -74,45 +75,45 @@ fr:
       detailed: detaillé
       compact: compact
     errors:
-      topic_invalid: Topic title is invalid
-      topic_long: Topic title is too long (maximum 250 symbols)
-      topic_content_invalid: Topic content is invalid
-      topic_content_long: Topic content is too long (maximum 10000 symbols)
+      topic_invalid: Le titre du sujet n'est pas valide
+      topic_long: Le titre du sujet est trop long (pas plus de 250 symboles)
+      topic_content_invalid: Le message n'est pas valide
+      topic_content_long: Le message est trop long(pas plus de 10000 symboles)
       comment_invalid: Le texte du commentaire n'est pas valide
       comment_long: Le texte du commentaire est trop long (pas plus de 10000 symboles)
       desc_invalid: Le texte n'est pas valide
       desc_long: Le texte est trop long <br><small>(pas plus de 300 symbols)</small>  
     string:
       langs: Langues
-      view: View 
-      new_topic: New topic  
+      view: Mode d'affichage 
+      new_topic: Nouveau sujet  
       go_login1: Il faut 
-      go_login: connecter
+      go_login: se connecter
       go_login2:  pour participer au forum
-      enter_nick: <strong>Attention!</strong> You can post new topics and comments only after you enter your nickname 
-      put_nick: entrez un pseudo
+      enter_nick: <strong>Attention!</strong> Vous devrez indiquer votre identifiant avant de pouvoir envoyer des messages  
+      put_nick: identifiant
       by: Par
       updated: Dernière mise à jour
       updated_short: mis à jour
       view_all: Voir tous
       cats: Catégories
       cat: Catégorie
-      topics: Topics
+      topics: Sujets
       comments: Commentaires
-      topics_many: Topics
+      topics_many: Sujets
       comments_many: Comentaires
-      no_favorites: Vous n'avez pas encore de favoris
-      edit_top: Edit topic
+      no_favorites: Vous n'avez pas encore de sujets favoris
+      edit_top: Éditer le sujet
       edit_comment: Éditer
-      delete: Éliminer
+      delete: Supprimer
       new_comment: Nouveau commentaire par
       add_comment: Publier
-      topic_title: Topic title
-      topic_content: Topic content
-      change_info: Vous pouvez éditer votre pseudo et votre avatar dans 
-      profile_setting: 'Profil: Paramètres'
+      topic_title: Titre
+      topic_content: Message
+      change_info: Vous pouvez éditer votre identifiant et votre image d'utilisateur dans 
+      profile_setting: 'Profil: Configuration'
       max_desc_symb: 300 symboles au maximum
-      my_topics: My topics	  
+      my_topics: Mes sujets	  
       my_comments: Mes commentaires
       pages: Pages
       user_page: Page d'utilisateur

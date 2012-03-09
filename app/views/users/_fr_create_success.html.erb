@@ -1,0 +1,47 @@
+<% @page_title = 'Регистрация' %>
+
+<style>
+.u-mail {
+font-weight: bold;
+color: #111;
+}
+.ok-msg-header ul li{
+list-style: disc;
+padding: 3px 0;
+}
+
+</style>
+
+
+<div class="ok-msg-wrapper">
+<h3 class="ok-msg-header"> <img src="/images/icons/icons-24/tick.png" class="ok-msg-head-img" width="24"> Votre compte a été créé avec succès!</h3>
+<div class="ok-msg-container">
+<p style="font-size: 14px;">Merci de vous être enregistré!  Un email a été envoyé à 
+<span class="u-mail"><%= @u_mail %></span> avec les détails pour activer votre compte. 
+</p>
+
+<br>
+<h4 class="unreceived">Si vous n'avez pas reçu l'e-mail de validation:</h4>
+
+<ul>
+	<li>Vérifiez que l'adresse e-mail que vous avez saisie lors de la création de votre compte ne comporte pas de faute de frappe.</li>
+	<li>Recherchez l'e-mail dans les dossiers de spam ou de courrier indésirable. Dans certains cas, il faut 
+  ajouter l'adresse	<u style="white-space: nowrap"><i>support@study-languages-online.com</i></u> à votre carnet d'adresses ou à la liste des adresses autorisées.</li>
+</ul>
+<br>
+<p >
+Si le problème persiste, veuillez nous contacter: <a href="mailto:study.languages.online@gmail.com">study.languages.online@gmail.com</a>
+</p>
+
+</div>
+</div>
+
+
+
+
+
+
+
+<script type="text/javascript">
+currentSection="login";
+</script>
