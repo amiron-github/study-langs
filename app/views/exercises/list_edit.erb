@@ -1,0 +1,485 @@
+
+<% content_for :special_js_css do %>
+<style type="text/css">
+.display-container {
+padding: 30px 30px;
+background-color: #EFF5FF;
+-moz-border-radius: 7px;
+-moz-box-shadow: 0px 0px 7px #18274F;
+-webkit-border-radius: 7px;
+-webkit-box-shadow: 0px 0px 7px #18274F;
+border-radius: 7px;
+box-shadow: 0px 0px 7px #18274F;
+}
+
+#f_toggle_show {
+font-size: 11px;
+}
+
+#enw_edit_words input {
+background-color: #fff;
+margin: 0;
+border: 1px solid #afafaf;
+padding: 2px;
+margin-top: 2px;
+color: #000000;
+font-size: 12px;
+}
+
+#enw_edit_words input.enw-ntext {
+font-weight: bold;
+color: #222;
+}
+
+.in-name  {
+display: none;
+}
+
+#enw_edit_words input.in-editable  {
+background-color: #F2FF7F;
+}
+
+#enw_edit_words th {
+font-size: 10px;
+color: #000;
+text-align: center;
+}
+
+#enw_edit_words td {
+text-align: center;
+}
+
+#enw_edit_words input.in-edited  {
+background-color: #B6FF9F;
+color: #123F04;
+}
+
+#enw_edit_words input.changes_checker {
+margin: 0;
+position: relative;
+}
+
+.f-num {
+display: none;
+}
+
+#ent_list_textarea {
+width: auto !important;
+}
+
+.attr_getter {
+padding: 0px 10px;
+text-align: right;
+}
+
+.attr_getter input {
+font-size: 11px;
+}
+
+.w-data div div {
+padding: 2px 4px;
+font-size: 11px;
+}
+
+.w-data div div:nth-child(odd) {
+background-color: #efefef;
+}
+
+</style>
+<script type="text/javascript">
+$(function() {
+
+		
+var dcHeight = $(".display-container").height();
+$(".display-container").css({minHeight: dcHeight+30})
+
+
+$("#enw_edit_words input").not("input[type='checkbox']").focus(function() {
+	$("#enw_edit_words input.in-editable").removeClass("in-editable");
+	$(this).addClass("in-editable");
+}).blur(function() {
+	$("#enw_edit_words input.in-editable").removeClass("in-editable");
+	$(this).removeClass("in-editable");
+	f_check_value($(this));
+})
+
+$("#enw_edit_words input[type='checkbox']").change(function() {
+	undoChanges($(this))
+})
+
+$("#commit_btn").attr("disabled", "disabled");
+
+$(".show_enter_list").click(function() {
+	$("#enter_list").dialog('open');
+});
+
+$("#enter_list").dialog({
+			autoOpen: false,
+			show: 'blind',
+			hide: 'blind',
+			width: 400,
+			title: "Enter list into fields",
+});
+
+$("#ent_list_textarea").resizable({ handles: 's' });
+
+$("#select_enter_list").change(function() {
+	var enterData = $("#select_enter_list option:selected").val();
+	enterData ++
+	$("#enter_list_tag").text( $(".f_col_title:eq("+enterData+")").text() )
+	
+}).change();
+
+
+
+$("#saved_changes").dialog({
+			autoOpen: false,
+			show: 'blind',
+			hide: 'blind',
+			width: 400,
+			title: "Saved data",
+			modal: true,
+			close: function() {
+					recorValues();
+					$("#enw_edit_words tbody input.changes_checker").each(function (i, obj) {
+						undoChanges($(obj))
+					})
+				} ,
+			buttons: {
+				"OK": function() {
+					$( this ).dialog( "close" );
+				}
+			}
+});
+
+$("#edit_text").dialog({
+			autoOpen: false,
+			show: 'blind',
+			hide: 'blind',
+			width: 400,
+			title: "Edit the element",
+			modal: true,
+			buttons: {
+				"Apply": function() {
+					$("input.in-editable").val($("#edit_text textarea").val());
+					$(this).dialog( "close" );
+				},
+				Cancel: function() {
+					$( this ).dialog( "close" );
+				}
+			}
+});
+
+$(".quick_add").click(function() {
+			$("#add_form input[type='text']").val("");
+			$("#add_form input[name*='category']").val("<%=params[:encategory]%>");
+			$("#add_form input[name*='order_num']").val( parseInt($("span.enw-order-num:last").text()) + 1);
+			$("#form_display input").change();
+			$("#add_form").dialog( {title: 'Add a new entry in the list'});
+			$("#add_form").dialog('open');
+});
+
+
+		
+$( "#add_form" ).dialog({
+			autoOpen: false,
+			show: 'blind',
+			hide: 'blind',
+			width: 700,
+			modal: true
+});
+
+$("#f_toggle_show input").attr("autocomplete", "off")
+
+$("#f_toggle_show input").change(function() {
+
+	var tIndex = $("#f_toggle_show input").index($(this))+2;
+	if ($(this).attr("checked")) {
+		$("#enw_edit_words tbody tr").each(function(i, obj) {
+			$(obj).find("input:eq("+tIndex+")").show()
+		})
+		
+		$("#enw_edit_words thead").find("span.f_col_title:eq("+tIndex+")").show();
+	} else {
+		$("#enw_edit_words tbody tr").each(function(i, obj) {
+			$(obj).find("input:eq("+tIndex+")").hide()
+		})		
+		$("#enw_edit_words thead").find("span.f_col_title:eq("+tIndex+")").hide();
+	}
+}).change();
+
+$("#form_display input").attr("autocomplete", "off")
+
+$("#form_display input").change(function() {
+	var tIndex = $("#form_display input").index($(this))
+	if ($(this).attr("checked")) {
+		$("#add_form .wform").each(function(i, obj) {
+			$(obj).find("input:eq("+tIndex+")").show()
+		})
+		$(".f-body").find("span.f-head:eq("+tIndex+")").show();
+	} else {
+		$("#add_form .wform").each(function(i, obj) {
+			$(obj).find("input:eq("+tIndex+")").hide()
+		})		
+		$(".f-body").find("span.f-head:eq("+tIndex+")").hide();
+	}
+});
+		
+
+
+$("#edit_text").dialog({close:function(){$("#enw_edit_words input.in-editable").focus(); f_check_value( $("input.in-editable") );}});
+
+$("#enw_edit_words tbody input").not("input[type='checkbox']").dblclick(function() {
+		var tVal = $(this).val();
+		$("#edit_text textarea").val(tVal);
+		$("#edit_text").dialog('open')
+})
+
+recorValues()
+	
+});
+
+function recorValues() {
+	$("#enw_edit_words tbody input").attr("autocomplete", "off")
+	$("#enw_edit_words tbody input").not("input[type='checkbox']").each(function(i,elem) {
+		var tValue = $(elem).val();
+		$(this).data("value", tValue);
+	})
+	
+}
+	
+function f_check_value(input) {
+	var initValue = input.data("value")
+	if ( input.val() != initValue) {
+		input.addClass("in-edited").attr("name", input.parent().find("span.in-name").text() );
+		input.parent("td").parent("tr").find("input[type='checkbox']").removeAttr("disabled").attr("checked", "checked")
+		input.parent("td").parent("tr").find("input[name*='[id]']").removeAttr("disabled");
+		checkCommit()
+		
+	} else {
+		input.removeClass("in-edited").removeAttr("name");
+		if ( input.parent("td").parent("tr").find("input.in-edited").length < 1 ) {
+			input.parent("td").parent("tr").find("input.changes_checker").attr("disabled", "disabled").removeAttr("checked");
+			input.parent("td").parent("tr").find("input[name*='[id]']").attr("disabled", "disabled");
+		}
+		checkCommit()
+	}
+}
+
+function undoChanges(checkbox) {
+	var tContainer = checkbox.parent("td").parent("tr")
+	tContainer.find("input.in-edited").each(function(i, obj) {
+		$(obj).removeAttr("name").val($(obj).data("value"));
+		$(obj).removeClass("in-edited");
+	})
+
+	tContainer.find("input[name*='[id]']").attr("disabled", "disabled");
+	checkbox.attr("disabled", "disabled").removeAttr("checked");
+	checkCommit()
+}
+
+function checkCommit() {
+	if ( $("input.changes_checker:checked").length < 1 ) { 
+		$("#commit_btn").attr("disabled", "disabled");
+	} else {
+		$("#commit_btn").removeAttr("disabled");
+	}
+}
+
+function show_last_created(el_id, el_text, el_html, el_translate, el_transcribe, el_sound_url, el_image_url, el_order_num) {
+
+$("#enw_edit_words tbody tr:first").clone(true).appendTo("#enw_edit_words tbody")
+var tContainer = $("#enw_edit_words tbody tr:last");
+var nameNum = parseInt( tContainer.prev("tr").find("span.f-num").text() ) + 1;
+tContainer.find("span.in-name").each(function(i, obj) {
+	var tValue = $(obj).text();
+	tValue = tValue.replace(/num0/, nameNum )
+	$(obj).text(tValue)
+})
+tContainer.find("div.enw-links").find("a").each(function(i, obj) {
+	var tValue = $(obj).attr("href");
+	tValue = tValue.replace(/num0/, el_id )
+	$(obj).attr("href", tValue)
+})
+
+$("body").append('<div id="str-fixer" style="position: absolute; top: -10000px"></div>')
+tContainer.find("span.f-num").text(nameNum);
+var idValue = tContainer.find("input[name*='[id]']").attr("name").replace(/num0/, nameNum );
+tContainer.find("input[name*='[id]']").val( el_id ).attr("name", idValue);
+tContainer.find("span.enw-order-num").text(el_order_num)
+$("#str-fixer").html(el_text);
+tContainer.find("input.enw-ntext").val($("#str-fixer").text());
+$("#str-fixer").html(el_html);
+tContainer.find("input.enw-nhtml").val($("#str-fixer").text());
+$("#str-fixer").html(el_translate);
+tContainer.find("input.enw-ntranslate").val($("#str-fixer").text());
+$("#str-fixer").html(el_transcribe);
+tContainer.find("input.enw-ntranscribe").val($("#str-fixer").text());
+tContainer.find("input.enw-nsound_url").val(el_sound_url);
+tContainer.find("input.enw-nimage_url").val(el_image_url);
+$("#str-fixer").remove();
+
+tContainer.find("input").not("input[type='checkbox']").each(function(i,elem) {
+		var tValue = $(elem).val();
+		$(this).data("value", tValue);
+})
+
+
+$("#add_form").dialog('close');
+tContainer.show().effect("highlight", 2000);
+
+}
+
+function splitLine() {
+	var textArray = new Array();
+	textArray = $("#words_array").val().split(/\r\n|\n/);
+	for (var r = 0; r < textArray.length; r ++ ) {		
+			var row = r+1
+			tInputsIndex = $("#select_enter_list option:selected").val()
+			tInputsIndex ++;
+			var tInput = $("#enw_edit_words tbody tr:eq("+row+")").find("td:eq("+tInputsIndex+")").find("input[type='text']");
+			tInput.val(textArray[r])
+	}
+	$("#enw_edit_words tbody tr input[type='text']").each(function(i, obj) {
+		f_check_value($(obj));
+	});
+}
+
+
+	
+</script>
+<% end %>
+
+
+<h3 class="admin-p-name">Exercises list edit</h3>
+
+<div style="margin-bottom: 20px;">
+<%= link_to "Exercises", :action => 'index'%>
+</div>
+
+<div class="display-container" style="position: relative">
+
+<div style="position: absolute; right: 0; margin-right: 80px; margin-top: 30px; font-weight: bold;">
+<%= will_paginate @words %>
+</div>
+
+<div id="f_toggle_show">
+Display: 
+<span style="font-size: 10px; font-weight: bold">
+
+
+<input type="checkbox" class="check_text" > Test_id
+<input type="checkbox" class="check_html" checked> Tile
+<input type="checkbox" class="check_translate" checked> Title ru
+<input type="checkbox" class="check_transcribe" checked> Title fr
+
+
+</span>
+</div>
+<p style="font-size: 10px; font-style: italic; margin-bottom: 10px;">
+* Click the field to edit. 
+</p>
+
+		
+<% form_remote_tag :url => { :action => 'save_exercise_changes'} do %>
+<div style="background-color: #fff; border: 2px solid #D1DFEF; padding: 15px;">
+<table id="enw_edit_words" width="100%" style="background-color: transparent">
+<thead>
+	<tr>
+		<th style="font-size: 9px;"><span class="f_col_title">undo</span></th>
+		<th><span class="f_col_title">№</span></th>
+		<th><span class="f_col_title">test_id</span></th>
+		<th><span class="f_col_title">title</span></th>
+		<th><span class="f_col_title">title_ru</span></th>
+		<th><span class="f_col_title">title_fr</span></th>
+
+		
+	</tr>
+</thead>
+<tbody>
+
+
+<tr style="display: none">
+	<td><input class="changes_checker" type="checkbox" disabled></td>
+	<td><span class="f-num">num0</span><span class="enw-order-num">x</span> <input type="hidden" disabled name="enword[num0][id]" value=""></td>
+	
+	<td><span class="in-name">enword[num0][test_id]</span><input class="enw-ntext" style="width: 100%" type="text" value=""></td>
+	<td><span class="in-name">enword[num0][title]</span><input class="enw-nhtml"  style="width: 100%;"  type="text"  value=""></td>
+	<td><span class="in-name">enword[num0][title_ru]</span><input class="enw-ntranslate" style="width: 100%"  type="text" value=""></td>
+	<td><span class="in-name">enword[num0][title_fr]</span><input class="enw-ntranscribe" style="width: 100%"  type="text" value=""></td>
+
+
+	
+	<td>
+		<div class="enw-links" style="float: right; margin-left: 5px; background-color: #fff; position: relative; font-size: 10px; margin-right: 3px; padding: 4px 10px; border: 1px solid #ccc; margin-top: 2px; white-space: nowrap">  
+			
+		</div>	
+		<div style="clear: both"></div>
+	</td>
+</tr>
+<% @words.each_with_index do |enword,num| %>
+<tr>
+	<td width="25"><input class="changes_checker" type="checkbox" disabled></td>
+	<td width="25"><span class="f-num"><%= num %></span><span class="enw-order-num"><%= enword.id %></span> <input type="hidden" disabled name="enword[<%= num %>][id]" value="<%= enword.id %>"></td>
+	
+
+	<td><span class="in-name">enword[<%= num %>][test_id]</span><input class="enw-ntext" style="width: 100%" type="text" value="<%=h enword.test_id %>"></td>
+	<td><span class="in-name">enword[<%= num %>][title]</span><input style="width: 100%;"  type="text"  value="<%=h enword.title %>"></td>
+	<td><span class="in-name">enword[<%= num %>][title_ru]</span><input  style="width: 100%"  type="text" value="<%=h enword.title_ru %>"></td>
+	<td><span class="in-name">enword[<%= num %>][title_fr]</span><input style="width: 100%"  type="text" value="<%=h enword.title_fr %>"></td>
+
+	
+	<td style="width: 60px;">
+		<div class="enw-links" style="margin-left: 5px;text-align: left; background-color: #fff; position: relative; font-size: 10px; margin-right: 3px; padding: 4px 10px; border: 1px solid #ccc; margin-top: 2px; white-space: nowrap">  
+			 <%=h enword.category.lang %>: <%=h enword.category.title %>
+		</div>	<!-- #to_fix -->
+		<div style="clear: both"></div>
+	</td>
+</tr>
+<% end %>
+</tbody>
+</table>
+<br>
+<input id="commit_btn" type="submit" value="Save changes" name="commit"/>
+<br>
+</div>
+<br>
+
+<% end %>
+
+<div style="padding-left: 20px;">
+<br>
+
+<br>
+
+</div>
+
+
+<div style="padding-left: 20px; padding-top: 15px">
+<a href="javascript:;" class="show_enter_list" style="font-size: 12px;"><b>Enter list data</b></a>
+<br>
+</div>
+</div>
+
+<br><br>
+<br><br>
+
+
+
+<div id="saved_changes"> 
+<b>Changes have been saved</b>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

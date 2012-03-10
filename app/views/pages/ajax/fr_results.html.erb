@@ -1,0 +1,40 @@
+
+<div class="tab-in-tab-list">
+<a href="javascript:;" class="all-in-tab tab-in-current">Показать всё</a>
+<% if @vocabulary_exercises[:results].length > 0 %>| <a href="javascript:;">Словарь</a> <%end%>
+<% if @lessons[:results].length > 0 || @lessons[:results].length > 0 %>| <a href="javascript:;">Уроки</a> <%end%>
+<% if @kids_exercises[:results].length > 0 || @kids_exercises[:results].length > 0 %>| <a href="javascript:;">Для детей</a> <%end%>
+<% if @grammar_exercises[:results].length > 0 || @grammar_exercises[:results].length > 0 %>| <a href="javascript:;">Грамматика</a> <%end%>
+</div>
+
+<% unless @vocabulary_exercises[:results].length > 0 || @lessons[:results].length > 0 || @kids_exercises[:results].length > 0 || @grammar_exercises[:results].length > 0 %>
+	<p><b>Недостаточно данных</b></p>
+<% else %>
+
+<% if @vocabulary_exercises[:results].length > 0 %>
+	<div class="tab-in-tab">
+	 <%= render(:partial => "ru_course_user_results" , :locals => { :course_data  => @vocabulary_exercises}) %>
+	</div> 															
+<% end %>
+
+	<% if @lessons[:results].length > 0 %>
+	<div class="tab-in-tab">
+	 <%= render(:partial => "ru_course_user_results" , :locals => { :course_data  => @lessons}) %>
+	</div> 															
+	<% end %>
+
+	<% if @kids_exercises[:results].length > 0 %>
+	<div class="tab-in-tab">
+	 <%= render(:partial => "ru_course_user_results" , :locals => { :course_data  => @kids_exercises}) %>
+	</div> 															
+	<% end %>
+
+	<% if @grammar_exercises[:results].length > 0 %>
+	<div class="tab-in-tab">
+	 <%= render(:partial => "ru_course_user_results" , :locals => { :course_data  => @grammar_exercises}) %>
+	</div> 															
+	<% end %>
+
+
+<%end%>
+

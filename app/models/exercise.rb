@@ -116,13 +116,13 @@ EVERYDAY_RU_NEW = {
 
 
 BEGINNER_RU = {
-:name => 'Course for beginners', 
+:name => 'Course for beginners', :name_fr => 'Cours de russe pour les débutants' ,
 :parts => [
-  {:name=> "Lesson 1. Greetings and Farewells", :exercises=> ["c0201022.II.b)","c0201042.IV.b)","c0201050.V"]},
-  {:name=> "Lesson 2. Introducing yourself", :exercises=> ["c0202011.I.1)","c0202012.I.2)","c0202022.II.b)","c0202050.V"]},
-  {:name=> "Lesson 3. Where are you from?", :exercises=> ["c0203011.I.1)","c0203012.I.2)","c0203022.II.b)","c0203032.III.b)","c0203050.V"]},
-  {:name=> "Lesson 4. Professions and Occupations", :exercises=> ["c0204011.I.1)","c0204012.I.2)","c0204013.I.3)","c0204022.II.b)","c0204042.IV.b)","c0204050.V"]},
-  {:name=> "Lesson 5. Languages skills", :exercises=> ["c0205011.I.1)","c0205012.I.2)","c0205022.II.b)","c0205032.III.b)","c0205050.V"]}
+  {:name=> "Lesson 1. Greetings and Farewells", :name_fr=> "Leçon 1. Salutations", :exercises=> ["c0201022.II.b)","c0201042.IV.b)","c0201050.V"]},
+  {:name=> "Lesson 2. Introducing yourself", :name_fr=> "Leçon 2. Faisons connaissance!",:exercises=> ["c0202011.I.1)","c0202012.I.2)","c0202022.II.b)","c0202050.V"]},
+  {:name=> "Lesson 3. Where are you from?", :name_fr=> "Leçon 3. D'ou venez-vous?",:exercises=> ["c0203011.I.1)","c0203012.I.2)","c0203022.II.b)","c0203032.III.b)","c0203050.V"]},
+  {:name=> "Lesson 4. Professions and Occupations", :name_fr=> "Leçon 4. Professions",:exercises=> ["c0204011.I.1)","c0204012.I.2)","c0204013.I.3)","c0204022.II.b)","c0204042.IV.b)","c0204050.V"]},
+  {:name=> "Lesson 5. Languages skills", :name_fr=> "Leçon 5. Conaissance de la langue",:exercises=> ["c0205011.I.1)","c0205012.I.2)","c0205022.II.b)","c0205032.III.b)","c0205050.V"]}
 ]
 }
 

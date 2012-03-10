@@ -118,6 +118,8 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/exercises/search', :controller => 'exercises', :action => 'search'
   map.connect '/exercises/new_list', :controller => 'exercises', :action => 'new_list'
   map.connect '/exercises/create_list', :controller => 'exercises', :action => 'create_list'
+  map.connect '/exercises/list_edit', :controller => 'exercises', :action => 'list_edit'
+  map.connect '/exercises/save_exercise_changes', :controller => 'exercises', :action => 'save_exercise_changes'
   map.resources :exercises
   map.connect 'words/words_index', :controller => 'words', :action => 'words_index'
   map.connect 'words/new_list', :controller => 'words', :action => 'new_list'

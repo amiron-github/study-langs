@@ -48,7 +48,7 @@ $(document).ready(function() {
 		</select> 
 	</form> 
 </div>
-<div><br><%= link_to '+ New exercise', new_exercise_path %> | <%= link_to '+ New exercises list', :action=> 'new_list' %></div>
+<div><br><%= link_to '+ New exercise', new_exercise_path %> | <%= link_to '+ New exercises list', :action=> 'new_list' %> | <%= link_to 'Edit list', :action=> 'list_edit' %></div>
 <div align="right"><%= will_paginate @exercises %></div>
 <table class="tablesorter" cellspacing="1">
 <thead>

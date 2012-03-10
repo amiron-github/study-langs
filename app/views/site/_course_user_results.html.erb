@@ -1,27 +1,55 @@
-<h4 class="tit-head"><span><%= course_data[:name]%></span></h4>
+<% @t_lang %>
+<% @t_lang = defined?(lang) ? lang : "en" %>
+<%
+details = 'Show details'
+no_details = 'Hide details'
+average = 'Average result'
+info = 'Results Info'
+title = 'Title'
+result = 'Result'
+test = 'Test'
+%>
+<%if @t_lang== 'fr'%>
+<%
+details = 'Détails'
+no_details = 'Masquer'
+average = 'Résultat moyen'
+info = 'Statistiques'
+title = 'Titre'
+result = 'Résultats'
+test = 'Exercice'
+%>
+<%end%> <%if @t_lang == 'fr' then course_title = course_data[:name_fr] else course_title = course_data[:name]  end%>
+<h4 class="tit-head"><span><%= course_title%></span></h4>
 
 <div class="voc-results section-tests">	
 <% course_data[:results].each_with_index do |t, index| %>
+<%if @t_lang == 'fr' then les_title = t[:category_fr] else les_title = t[:category]  end%>
 	<div class="voc-item details-hidden">
-		<div class="voc-top-topic"><span><%= t[:category] %></span></div>
-		<div class="voc-details"><span class="mv-details">Show details</span><span class="mv-no-details">Hide details</span></div>
+		<div class="voc-top-topic"><span><%= les_title %> </span></div>
+		<div class="voc-details"><span class="mv-details"><%= details%></span><span class="mv-no-details"><%= no_details%></span></div>
 		<div class="voc-topic-content">
 			<div class="voc-quick-info">
-				Average result:  <b><%= t[:total] %>%</b>
+				<%= average%>:  <b><%= t[:total] %>%</b>
 			</div>
 		<div class="voc-topic-details">
 			<div class="voc-details-content">
 				<div class="voc-tests" style="padding-top: 2px;">
-					<h4>Results Info:</h4>	
+					<h4><%= info%>:</h4>	
 					<table class="voc-tests-list" cellspacing="1">
 						<col width="250"><col width="100">
 					<tr>
-						<th>Title</th>
-						<th align="center">Result</th>
+						<th><%= title%></th>
+						<th align="center"><%= result%></th>
 					</tr>
 					<% t[:exercises].each_with_index do |user_test, counter| %>
+<%if @t_lang == 'fr'
+ t_title = user_test.exercise.title_fr
+else
+ t_title = user_test.exercise.title
+end%>
 					<tr>
-						<td class="voc-test-title"><% if user_test.exercise.title != ''%><%= user_test.exercise.title %><%else%>Test <%= counter+1 %><% end %></td>
+						<td class="voc-test-title"><% if t_title != ''%><%= t_title %><%else%><%= test%> <%= counter+1 %><% end %></td>
 						<td class="voc-test-result"><%= (user_test.correct.to_f / user_test.total.to_f * 100).to_i %>%</td>
 						<!-- td class="voc-test-result"><%= user_test.correct%> /<%= user_test.total%></td -->
 					</tr>

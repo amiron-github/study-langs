@@ -21,6 +21,31 @@ layout "admin"
       format.xml  { render :xml => @exercises }
     end
   end
+
+  def list_edit
+	@encategory = 'exercises'
+	@words = Exercise.find(:all, :order=>'id DESC')
+	@words = @words.paginate :page => params[:page], :per_page=> 40
+	respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @word }
+    end
+  end
+  
+  def save_exercise_changes
+	@changesLen = params[:enword].length.to_s;
+	params[:enword].values.each do |t|
+		enword = Exercise.find(t[:id])
+		t.delete( :id )
+		enword.update_attributes(t)
+	end
+	if request.xhr?
+		render :js => '$("#saved_changes b").text("Successfully updated '+ @changesLen +' entries. "); $("#saved_changes").dialog("open")';
+	else
+		redirect_to(:back)
+	end
+  end 
+
   
    def search
 	if params[:search]

@@ -1,3 +1,6 @@
+<%if params[:lang]=='fr'%>
+<%= render :partial => '/site/profile_voc', :locals => {:lang => "fr", :addlang => 'ru'} %>
+<%else%>
 <% 
 	@words_last = @words_statistics.length-1
 %>	
@@ -9,7 +12,7 @@
 <p><b><a href="/vocabulary.html">Start learning Russian vocabulary</a></b></p>
 
 <% else %>
-	
+
 <div class="voc-results">	
 <% @words_statistics.each_with_index do |t, index| %>
 	<div id="topic_<%= t[:category].tag %>" class="voc-item details-hidden">
@@ -79,3 +82,4 @@
 <%end%>
 
 </div><!-- end of myvoc-wrapper -->
+<%end%>

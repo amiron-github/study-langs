@@ -124,6 +124,8 @@ fr:
       see_last_comment: Voir le dernier commentaire
       see_comments: Voir les commentaires	 
       see_category: Voir cette catégorie
+  lessons:
+    beginner1: Leçon 1. Salutations
   date:
     formats:
       default: "%d/%m/%Y"

@@ -162,11 +162,12 @@ write_attribute :email, (value ? value.downcase : nil)
 				total = 0
 				category_title = category.title
 				category_title_ru = category.title_ru
+				category_title_fr = category.title_fr
 				cat_tests.each do |test|
 					total += test.result_percent
 				end
 				average = total/cat_tests.length
-				list << {:category => category_title,:category_ru =>category_title_ru,:exercises =>cat_tests, :total => average}
+				list << {:category => category_title,:category_ru =>category_title_ru,:category_fr =>category_title_fr,:exercises =>cat_tests, :total => average}
 			end
 			end
 		end
@@ -197,7 +198,7 @@ write_attribute :email, (value ? value.downcase : nil)
 			end
 			if !empty_lesson
 				average = total/user_exercises.length
-				list << {:category => lesson[:name], :category_ru => lesson[:name], :exercises => user_exercises, :total => average}
+				list << {:category => lesson[:name], :category_ru => lesson[:name],:category_fr => lesson[:name_fr], :exercises => user_exercises, :total => average}
 			end
 		end
 		course_data = {:name=> course_name, :results=> list}
@@ -226,7 +227,7 @@ write_attribute :email, (value ? value.downcase : nil)
 			end
 			if !empty_lesson
 				average = total/user_exercises.length
-				list << {:category => lesson['name'], :category_ru => lesson['name'], :exercises => user_exercises, :total => average}
+				list << {:category => lesson['name'], :category_ru => lesson['name'], :category_fr => lesson['name_fr'], :exercises => user_exercises, :total => average}
 			end
 		end
 		course_data = {:name=> course_name, :results=> list}
