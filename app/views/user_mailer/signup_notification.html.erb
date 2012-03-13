@@ -1,3 +1,30 @@
+<%if I18n.locale=='ru'%> 
+Здравствуйте,
+
+Ваш аккунт успешно создан. 
+
+  Email: <%=h @user.email %>
+  Пароль: <%=h @user.password %>
+
+Перейдите по следующей ссылке, чтобы активировать свой аккаунт:
+
+  <%=h @url %>
+<%elsif I18n.locale=='fr'%>
+Bonjour, 
+
+Merci de vous etre inscrit sur notre site. Il vous reste une derniere formalite a accomplir pour activer votre compte et etre considere comme utilisateur a part entiere. Pour ce faire, il vous suffit de suivre le lien suivant et votre compte sera active.
+
+  E-mail: <%=h @user.email %>
+  Mot de passe: <%=h @user.password %>
+
+Afin d'achever la procedure d'inscription, veuillez suivre le lien suivant :
+
+<%=h @url %>
+
+Cordialement,
+L'equipe de Study-Languages-Online.com
+
+<%else%>
 <%= @text_created %>
 
   E-mail: <%=h @user.email %>
@@ -6,5 +33,8 @@
 <%= @text_visit %>
 
   <%=h @url %>
+<%end%>
+
+
 
 
