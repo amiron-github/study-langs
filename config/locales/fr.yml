@@ -63,6 +63,17 @@ fr:
       fr: FR
       ja: JA
       other: autre
+  accents:
+    settings: Paramètres
+    stresses: Accents
+    show: afficher
+    hide: masquer
+    underline: souligné
+    stressed: marque d'accent
+    adjust: "- ajuster"
+    softness: Сonsonnes molles
+    show_s: marquées
+    hide_s: non marquées
   forum:
     tabs:
       stream: Flux

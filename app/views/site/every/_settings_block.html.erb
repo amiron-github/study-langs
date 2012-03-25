@@ -1,17 +1,17 @@
 <% @has_audio = true %>
 <div style="position: absolute; top: 8px; right: 8px; z-index: 1000;">
 <div class="tb_settings-wrap">
-<div class="drop_1 toopen"><span style="padding-left: 12px;">Stresses settings</span></div>
+<div class="drop_1 toopen"><span style="padding-left: 12px;"><%= t('accents.stresses')%></span></div>
 	<div class="drop_2">
 		<div id="accents" class="drop_2bl" style="display: none">
-			<div class="drop_2x"><span class="accent_off tcheck checked">hide stress</span></div>
-			<div class="drop_2x toopen"><span class="accent_show tcheck" style="cursor: default">show stress</span></div>
+			<div class="drop_2x"><span class="accent_off tcheck checked"><%= t('accents.hide')%></span></div>
+			<div class="drop_2x toopen"><span class="accent_show tcheck" style="cursor: default"><%= t('accents.show')%></span></div>
 				<div class="drop_3">
 					<div class="drop_3bl" style="display: none">
-						<div class="drop_3x"><span class="accent_un tcheck">vowel underlined</span></div>
+						<div class="drop_3x"><span class="accent_un tcheck"><%= t('accents.underline')%></span></div>
 						<div class="drop_3x">
-							<span class="accent_on  tcheck">vowel with stress</span><br>
-							<span id="accent_adjust" class="tcheck" style="padding-bottom: 2px; font-size: 9px; display: none;"> - adjust (if needed)</span>
+							<span class="accent_on  tcheck"><%= t('accents.stressed')%></span><br>
+							<span id="accent_adjust" class="tcheck" style="padding-bottom: 2px; font-size: 9px; display: none;"> <%=t('accents.adjust')%></span>
 							
 						</div>
 					</div>	
@@ -21,15 +21,15 @@
 
 <div style="display: block;">
 
-   <div class="drop_1 toopen"><span style="padding-left: 12px;">Softness</span></div>
+   <div class="drop_1 toopen"><span style="padding-left: 12px;"><%=t('accents.softness')%></span></div>
 	<div class="drop_2">
 		<div id="softs" class="drop_2bl" style="display: none">
-			<div class="drop_2x"><span id="soft_off" class="tcheck checked">OFF</span></div>
-			<div class="drop_2x"><span id="soft_on" class="tcheck">ON</span></div>
+			<div class="drop_2x"><span id="soft_off" class="tcheck checked"><%=t('accents.show_s')%></span></div>
+			<div class="drop_2x"><span id="soft_on" class="tcheck"><%=t('accents.hide_s')%></span></div>
 		</div>	
 	</div>
 </div>
 
 </div>
-<div class="tb_settings"><span>Settings</span></div>
+<div class="tb_settings"><span><%= t('accents.settings')%></span></div>
 </div>

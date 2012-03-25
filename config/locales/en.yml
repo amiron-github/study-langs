@@ -62,6 +62,17 @@ en:
       fr: FR
       ja: JA
       other: Other
+  accents:
+    settings: Settings
+    stresses: Stresses settings
+    show: show stress
+    hide: hide stress
+    underline: vowel underlined
+    stressed: vowel with stress
+    adjust: "- adjust (if needed)"
+    softness: Softness
+    show_s: "ON"
+    hide_s: "OFF"
   forum:
     tabs:
       stream: Stream
