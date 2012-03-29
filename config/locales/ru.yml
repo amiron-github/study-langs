@@ -13,6 +13,8 @@ ru:
   Forgotten Password: Забыли пароль?
   Your Details: Вход на сайт
   in: в
+  misc:
+    questions: Вопросы
   comment:
     one: комментарий
     few: комментария
@@ -50,6 +52,9 @@ ru:
       change: изменить
       edit: изменить
       cancel: отменить
+    check: Провепить
+    check_answers: Проверить ответы
+    check_yourself: Проверить&nbsp;себя
   langs:
     ru: Русский
     en: Английский

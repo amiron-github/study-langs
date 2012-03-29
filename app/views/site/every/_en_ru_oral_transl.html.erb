@@ -4,7 +4,7 @@
 
 <% @t_title = defined?(title) ? title : "norm" %>
 <div class="su-exerc">
-<div class="gex-area-trans">
+<div class="gex-area-trans"> 
 
 	<div class="trans-head">
 		<% if @t_title == "norm" %> 
@@ -21,7 +21,7 @@
 	<td style="padding-left: 30px">
 		<div class="key check">
 			<div>
-				<div class="sound"  onclick="playFile('<%= phrase[:sound] %>')">Check&nbsp;yourself</div>
+				<div class="sound"  onclick="playFile('<%= phrase[:sound] %>')"><%= t('btn.check_yourself')%></div>
 
 			</div>
 		</div>

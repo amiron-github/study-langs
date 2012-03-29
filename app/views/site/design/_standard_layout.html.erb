@@ -96,12 +96,12 @@
 <div id="footer"><%= render :partial => '/site/design/footer' %></div>
 <%unless @no_stats%><%= render :partial => '/site/design/analytics' %><%end%>
    <%unless @no_left_slide %><% if @es_language == 'ru'%><%= render :partial => '/site/slideshow_ru_en' %><%else%><%= render :partial => '/site/slideshow' %><%end%> <%end -%>
-<% if current_user -%>
+
 <script type="text/javascript">
-sendData=true;
+<% if current_user -%>sendData=true;<%end-%> 
 es_lang = '<%=@es_language%>';
 </script>
-<%end-%>  
+ 
   </body>
   
 </html>

@@ -12,6 +12,8 @@ en:
   Forgotten Password: Forgotten Password?
   Your Details: Your Details
   in: in
+  misc:
+    questions: Questions
   comment:
     one: comment
     few: comments
@@ -49,6 +51,9 @@ en:
       change: change
       edit: edit
       cancel: cancel
+    check: Check
+    check_answers: Check answers
+    check_yourself: Check&nbsp;yourself
   langs:
     ru: Russian
     en: English

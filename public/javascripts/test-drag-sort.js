@@ -381,6 +381,8 @@ this.checkAnswers = function() {
 	var erTxt = 'Errors';
 	if (es_lang == 'ru') {
 		noTxt = 'Нет выполненных'; gTxt = 'Правильно'; erTxt = 'Ошибки';
+	} else 	if (es_lang == 'fr') {
+		noTxt = 'Il n\'y a pas de réponses'; gTxt = 'Correct'; erTxt = 'Erreurs';
 	}
 	if (correctNum ==  0 && errorNum == 0) {
 		tObj.container.find(".ds-check-wrapper").prepend('<span class="to_notify"><span class="check_notify">'+noTxt+'</span></span>');
@@ -622,6 +624,10 @@ this.checkAnswers = function() {
 		noTxt = 'Нет выполненных'; 
 		gTxt = 'Правильно'; 
 		erTxt = 'Ошибки';
+	} else if (es_lang == 'fr') {
+		noTxt = 'Il n\'y a pas de répponses'; 
+		gTxt = 'Correct'; 
+		erTxt = 'Erreurs';
 	}
 	
 	if (correctNum ==  0 && errorNum == 0) {

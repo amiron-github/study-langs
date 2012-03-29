@@ -13,6 +13,8 @@ fr:
   Forgotten Password: Mot de passe oublié?
   Your Details: Vos infos
   in: dans
+  misc:
+    questions: Questions
   comment:
     one: commentaire
     few: commentaires
@@ -50,6 +52,9 @@ fr:
       change: modifier
       edit: éditer
       cancel: annuler
+    check: Valider
+    check_answers: Valider les réponses
+    check_yourself: Valider&nbsp;la&nbsp;réponse
   langs:
     ru: russe
     en: anglais

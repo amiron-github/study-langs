@@ -3,7 +3,7 @@
 <%else%>
 <% @t_filler = defined?(filler) ? filler : " - ..." %><% @t_add = defined?(add) ? 1 : 0 %>
 <div class="su-exerc">
-<div class="gex-area-trans">
+<div class="gex-area-trans"> 
 	<div class="trans-head">
 		Questions
 	</div>
@@ -20,7 +20,7 @@
 	<td style="padding-left: 30px">
 		<div class="key check">
 			<div>
-				<div class="sound"  onclick="playFile('<%= phrase[:sound] %>')">Check&nbsp;yourself</div>
+				<div class="sound"  onclick="playFile('<%= phrase[:sound] %>')"><%= t('btn.check_yourself')%></div>
 			</div>
 		</div>	
 	</td>
