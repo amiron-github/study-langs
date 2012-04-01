@@ -54,6 +54,9 @@ class ApplicationController < ActionController::Base
 		if params[:special_layout] == 'mobile'
 			layout =  'mobile.rhtml'
 		end
+		if params[:special_layout] == 'm'
+			layout =  'm_application.rhtml'
+		end
 		if params[:special_layout] == 'developer'
 			layout =  'dev_application.rhtml'
 		end

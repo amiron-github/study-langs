@@ -46,6 +46,10 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/forums/:id/show_my_posts', :controller => 'forums', :action => 'show_my_posts'
   map.connect '/:lang/:to_lang/forums/:id', :controller => 'forums', :action => 'show'
   map.resources :forums
+  
+  map.mobile '/m/:lang/:to_lang/:subpage/:page', :controller => 'materials', :action=>'publish', :special_layout => 'm'
+  map.mobile '/m/:lang/:to_lang/:page', :controller => 'materials', :action=>'publish', :special_layout => 'm'
+  map.mobile '/m/:page', :controller => 'materials', :action=>'publish', :special_layout => 'm'
   map.mobile '/mobile/:lang/:to_lang/course/:page', :controller => 'materials', :action=>'publish', :special_layout => 'mobile'
   map.mobile '/mobile/:lang/:to_lang/vocabulary/:page', :controller => 'materials', :action=>'publish', :special_layout => 'mobile'
   map.mobile '/mobile/:lang/:to_lang/grammar/:page', :controller => 'materials', :action=>'publish', :special_layout => 'mobile'  
