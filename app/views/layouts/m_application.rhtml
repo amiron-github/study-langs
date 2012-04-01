@@ -1,0 +1,22 @@
+<!DOCTYPE html> 
+<% @layout_settings = material(430) -%>
+<html> 
+	<head> 
+	<title><%= @page_title %></title> 
+<% unless @page_meta.nil? -%>
+  <% @page_meta.each do |name, content| -%>
+  <meta name="<%= name %>" content="<%= content %>" />
+  <% end %>
+<% end %>
+<%= @layout_settings.body %>
+<%= @layout_settings.js_css %>
+<%= yield :special_js_css %>
+</head> 
+<body>
+<%= yield %>
+<script type="text/javascript">
+<% if current_user -%>sendData=true;<%end-%> 
+es_lang = '<%=@es_language%>';
+</script>
+</body>
+</html>
