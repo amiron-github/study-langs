@@ -24,17 +24,17 @@ layout :layout_by_lang
       handle_remember_cookie! new_cookie_flag
 	  if layout_lang == 'ru'
 		if to_lang=='jp'
-			redirect_back_or_default('/ru/jp/user_profile.html')
+			redirect_back_or_default('/ru/jp/user_profile')
 		elsif to_lang=='en'
 			redirect_back_or_default('/ru/en/user_profile.html')
 		elsif to_lang=='fr'
-			redirect_back_or_default('/ru/fr/user_profile.html')
+			redirect_back_or_default('/ru/fr/user_profile')
 		end
 	  elsif layout_lang == 'fr'
 		if to_lang=='ru'
 			redirect_back_or_default('/fr/ru/user_profile')
 		elsif to_lang=='en'
-			redirect_back_or_default('/fr/en/user_profile.html')
+			redirect_back_or_default('/fr/en/user_profile')
 		end
 	  else
 		redirect_back_or_default('/user_profile.html')

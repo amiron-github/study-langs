@@ -95,7 +95,7 @@ background-color: #EFF5FF;
 /* start of css properties for divs design */
 
 div#container {
-min-width: 809px;
+min-width: 950px;
 width: 83%;
 min-height: 1005px;
 height: auto !important;
@@ -144,9 +144,6 @@ width: 100%;
 .photos div {
 font-size: 0px;
 overflow: hidden;
-}
-
-#photo1-pos {
 }
 
 #photo1-pos .photo1 {
@@ -4206,7 +4203,13 @@ border-top: 1px solid #fff;
 box-shadow: 0 0 0 #fff;
 }
 
-
+#menu_body .menu-item a img {
+margin-bottom: -3px;
+position: relative;
+margin-left: -16px;
+margin-right: 7px;
+width: 16px;
+}
 
 
 
