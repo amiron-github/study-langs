@@ -42,11 +42,13 @@ this.transcribe = hash['transcribe'];
 this.autoPlayData = hash['autoplay'];
 this.counter = 0;
 this.autoPlay = 0;
+this.callback = hash['callback'];
 
 if (this.images == undefined) this.images = 0;
 if (this.sounds == undefined) this.sounds = 1;
 if (this.transcribe == undefined) this.transcribe = 1;
 if (this.autoPlayData == undefined) this.autoPlayData = 1;
+if (this.callback == undefined) this.callback = function() {return false};
 
 this.parseTest = function() {
 	tObj.container = $("#"+tObj.id);
@@ -163,6 +165,7 @@ this.next = function() {
 	} 
 	if (tObj.counter > tObj.vocLen-2) {
 		tObj.nextButton.addClass("fs-btn-disabled");
+		tObj.callback();
 	}
 }
 

@@ -171,5 +171,42 @@ require 'digest/md5'
   def no_js(string)
 	return escape_javascript(string)
   end
+  
+  def cat_studied(category, u_words, tests)
+		n_w_len = category.words.length
+		w_pr = (u_words.to_f/n_w_len*100).to_i
+		u_ex_len = tests.length
+		n_ex_len = category.sound_status ==2 ? 2 : 3
+		u_tests = []
+		tests.each do |test|
+			result = (test.correct.to_f / test.total.to_f * 100).to_i
+			u_tests << {:result => result, :data=> test.exercise}
+		end
+	    n=0
+		u_t_results=0
+		ex_average = 0
+		u_tests.each do |u_test|
+			u_t_results = u_t_results+u_test[:result]
+			if u_test[:result]>90
+				n=n+1
+			end
+		end
+		if n > 1
+			ex_average = 100
+		elsif u_ex_len > 0
+			ex_average = (u_t_results.to_f/u_ex_len.to_f).to_i
+		end
+		progress = ((w_pr+ex_average)/2).to_i
+		cat_info={
+			:progress=>progress, 
+			:n_w_len=>n_w_len,
+			:u_w_len=>u_words.to_s,
+			:u_ex_len=>u_ex_len,
+			:n_ex_len=> n_ex_len,
+			:tests => u_tests,
+			:ex_average => ex_average
+		}
+		return cat_info
+  end
 	
 end

@@ -172,14 +172,11 @@ this.start = function() {
 	this.variants = this.container.find("."+ tObj.variantsClass);          // jquery elements with variants which will be dragged and checked as answers
 	
 	this.checkButton = tObj.container.find(".ds-check-button"); 
-	
 	this.targets.css({cursor: "default"});
 	this.variants.css({cursor: "default"});
-	
 	$("body").append('<div id="'+ this.id +'_dragHelper" class="ds_dragHelper noselect"></div>');
 	dragHelper = $('#'+ this.id +'_dragHelper');
 	this.targets.attr("taken", "-1");
-	
 	this.checkButton.click(function() {
 		tObj.checkAnswers();
 	}).mousedown(function() {
@@ -467,8 +464,19 @@ this.start = function() {
 	});
 	
 	this.variants.mousedown(function(e) {
+		tObj.startDrag($(this),e)
+	});
+	
+	//this.variants.click(function(e) {
+	//	tObj.startDrag($(this),e)
+	//});
+	
+}
+
+this.startDrag = function(el,e) {
+
 		$("body").addClass("noselect");
-		var t = $(this);
+		var t = el;
 		var fromVariant = tObj.variants.index(t);
 		var tHtml = t.html();
 		var x = t.offset().left;
@@ -476,7 +484,6 @@ this.start = function() {
 		var l= t.width();
 		var difX=e.pageX-x;
 		var difY=e.pageY-y;
-		
 		tObj.targetTable();               // shot of targets
 		t.css({visibility: "hidden"});
 		dragHelper.addClass("ds_ondrag").html(" "+tHtml+" ").css({left: x, top: y, maxWidth: l, opacity: "0.8"});
@@ -484,8 +491,6 @@ this.start = function() {
 		tObj.dropping(fromVariant);
 		e.preventDefault();
 		return false;
-	});
-	
 }
 
 
@@ -563,7 +568,6 @@ this.hittedTarget = function (fromVariant, hitted) {
 			var difX=e.pageX-x;
 			var difY=e.pageY-y;
 			var fromVariant = t.attr("taken");
-
 			var tHtml = t.html();
 			t.parent().attr("taken", "-1");
 			t.remove();

@@ -26,7 +26,7 @@ STATUS = [
 
 
 SECTION = [
-["home"], ["course"], ["words"], ["phonetic"], ["reading"],["contact"],["login"],["grammar"],["kids"],["texts"],["translation"]
+["home"], ["course"], ["words"], ["phonetic"], ["reading"],["contact"],["login"],["grammar"],["kids"],["texts"],["translation"],["none"]
 ]
 
 TEMPLATE = [

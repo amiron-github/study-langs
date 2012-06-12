@@ -595,7 +595,7 @@ this.gotoEnd = function() {
 	tObj.container.find(".es-ex-wrapper").addClass("es-ex-final-bg");
 	tObj.autoPlayBoxContainer.addClass("es-ex-invisible");
 	tObj.contentHolder.addClass("es-ex-invisible");
-	tObj.nextButton.addClass("es-ex-invisible");
+	tObj.nextButton.addClass("es-ex-invisible").css({visibility: 'hidden'});
 
 	var tResults = Math.round((tObj.correctAswersNum / tObj.questNum ) * 100)
 	tObj.finalSign.html('<div><i> '+tObj.totalQuestionsTxt+':</i> <span id="'+tObj.id+'_total">'+tObj.questNum+'</span> <br><i>'+tObj.correctAnswersTxt+':</i> <span id="'+tObj.id+'_correct">'+ tObj.correctAswersNum +'</span><br><b><br><i>'+tObj.yourResultTxt+'</i></b>: <span id="'+tObj.id+'_result">'+tResults+'</span>%</div>' ).fadeIn();

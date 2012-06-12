@@ -15,6 +15,7 @@
 <%= material_body_to_publish(@material.js_css) %>
 <% end %><% if logged_in? && current_user.email == 'mirumir.sasha@gmail.com'%><a class="admin_edit_link" href="/materials/<%= @material.id %>/edit"><img src="/images/icons/fugue/blue-document-pencil.png" title="Edit page"></a><%end%>
 <%= material_body_to_publish(@material.body) %>
+<%unless @material.section == "none"%>
 <script type="text/javascript">
 currentSection="<%= @material.section %>";
-</script>
+</script><%end%>

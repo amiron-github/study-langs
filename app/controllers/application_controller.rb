@@ -63,6 +63,9 @@ class ApplicationController < ActionController::Base
 		if params[:special_layout] == 'none'
 			layout =  'clear_application.rhtml'
 		end
+		if params[:special_layout] == 'ajax'
+			layout =  'ajax.rhtml'
+		end
 		return layout
 	end
 	

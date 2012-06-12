@@ -161,6 +161,33 @@ layout :layout_by_lang
 	end
 	render :js => 'buildFlashList(['+@data+'])'
   end
+
+  def get_user_topic
+	@category = Category.find(params[:voc_id])
+	@words = @category.words.find(:all, :order => 'order_num');
+	@last_item_index = (@words.length)-1
+	@data = ''
+	@words.each_with_index  do |word, index|
+		text=''
+		if params[:text]=='html'
+			text = no_js(word.html)
+		else
+			text = no_js(word.text)
+		end
+		translate=''
+		if params[:translate]=='fr'
+			translate = no_js(word.translate_fr)
+		else
+			translate = no_js(word.translate)
+		end
+		sound=no_js(word.sound_url)
+		@data = @data + '{"text":"'+text+'","translate":"'+translate+'","sound":"'+sound+'","status":"'+current_user.word_status(word.id)+'"}'
+		if index!= @last_item_index
+			@data= @data+','
+		end
+	end
+	render :js => 'var user_topic=['+@data+']'
+  end
   
   def build_lesson
 	@lang = params[:lang]
