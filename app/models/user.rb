@@ -148,6 +148,13 @@ write_attribute :email, (value ? value.downcase : nil)
 		user_tests.delete(tests_to_delete)
 	end
 	
+	def remove_tests_by_ids (tests)
+	  tests.each do |test_id|
+		test_to_delete = user_tests.find(:first, :conditions=>['test_id=?', test_id])
+		user_tests.delete(test_to_delete)
+	  end
+	end
+	
 	
 	def get_cat_ex(lang)
 	 test_categories =  user_tests.all(:joins => 'left outer join exercises ON `exercises`.test_id = `user_tests`.test_id', :select => 'distinct exercises.category_id')
@@ -161,17 +168,21 @@ write_attribute :email, (value ? value.downcase : nil)
 				cat_tests = get_test_by_category(category_id)
 				total = 0
 				category_title = category.title
+				cat_ex_len=0
+				if category.sound_status == 2 then cat_ex_len=2 else  cat_ex_len=3 end
 				category_title_ru = category.title_ru
 				category_title_fr = category.title_fr
 				cat_tests.each do |test|
 					total += test.result_percent
 				end
 				average = total/cat_tests.length
-				list << {:category => category_title,:category_ru =>category_title_ru,:category_fr =>category_title_fr,:exercises =>cat_tests, :total => average}
+				list << {:category => category_title,:category_ru =>category_title_ru,:category_fr =>category_title_fr,:exercises =>cat_tests, :total => average,:n_t_len=>cat_ex_len, :category_data=> category }
 			end
 			end
 		end
 	 end
+	# list = list.sort_by {|obj| obj[:category_data].order_num }
+	 
 	 course_data = {:name=> 'Vocabulary topics', :results=> list}
 	return course_data
 	end
@@ -227,7 +238,7 @@ write_attribute :email, (value ? value.downcase : nil)
 			end
 			if !empty_lesson
 				average = total/user_exercises.length
-				list << {:category => lesson['name'], :category_ru => lesson['name'], :category_fr => lesson['name_fr'], :exercises => user_exercises, :total => average}
+				list << {:category => lesson['name'], :category_ru => lesson['name'], :category_fr => lesson['name_fr'], :exercises => user_exercises, :total => average, :n_t_len=>lesson['exercises'].length, :lesson_data=> lesson }
 			end
 		end
 		course_data = {:name=> course_name, :results=> list}

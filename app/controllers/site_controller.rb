@@ -80,13 +80,17 @@ class SiteController < ApplicationController
 		@words_statistics = current_user.categories_hkk('jp')
 	when /(ru_results)\.html$/
 		@vocabulary_exercises = current_user.get_cat_ex('ru')
+
 		@course_exercises = current_user.get_course_results(Exercise::EVERYDAY_RU, 'everyday_course')
+		
 		@every_exercises = current_user.get_detailed_results(Exercise::EVERYDAY_RU_NEW, 'everyday_course')
 		@beginner_exercises = current_user.get_course_results(Exercise::BEGINNER_RU, 'beginner_course')
 		@phonetics_exercises = current_user.get_course_results(Exercise::PHONETICS_RU, 'phonetics_course')
 		@reading_exercises = current_user.get_course_results(Exercise::READING_RU, 'reading_course')
 		@gr_data = Material.find(262).body
+		
 		@gr_ex_data = ActiveSupport::JSON.decode(@gr_data)
+		
 		@grammar_exercises = current_user.get_course_json(@gr_ex_data, 'grammar_course')
 		
 	when /(en_results)\.html$/

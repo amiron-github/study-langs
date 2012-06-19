@@ -169,6 +169,13 @@ class UsersController < ApplicationController
 	render :js => ' $("#topic_'+category_tag.to_s+'").fadeOut(function(){ $(this).remove() }); updateUserResults() '
   end
   
+  def delete_tests
+	tests =  params[:test_ids]
+	current_user.remove_tests_by_ids(tests)
+	#var id = ['c0201022.II.b)']; $.post('/delete_tests', {test_ids: id}, function() {updateUserResults()})
+	render :nothing => true
+  end
+
 
 	def buy
 #		ord_id = rand(36**20).to_s(36)

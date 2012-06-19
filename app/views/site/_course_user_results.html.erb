@@ -49,7 +49,7 @@ else
  t_title = user_test.exercise.title
 end%>
 					<tr>
-						<td class="voc-test-title"><% if t_title != ''%><%= t_title %><%else%><%= test%> <%= counter+1 %><% end %></td>
+						<td class="voc-test-title"><% if t_title != ''%><%= t_title %><%else%><%= test%> <%= counter+1 %><% end %>: <%= user_test.test_id%></td>
 						<td class="voc-test-result"><%= (user_test.correct.to_f / user_test.total.to_f * 100).to_i %>%</td>
 						<!-- td class="voc-test-result"><%= user_test.correct%> /<%= user_test.total%></td -->
 					</tr>

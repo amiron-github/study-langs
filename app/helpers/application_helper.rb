@@ -191,11 +191,7 @@ require 'digest/md5'
 				n=n+1
 			end
 		end
-		if n > 1
-			ex_average = 100
-		elsif u_ex_len > 0
-			ex_average = (u_t_results.to_f/u_ex_len.to_f).to_i
-		end
+		ex_average = (u_t_results.to_f/n_ex_len.to_f).to_i
 		progress = ((w_pr+ex_average)/2).to_i
 		cat_info={
 			:progress=>progress, 
@@ -208,5 +204,68 @@ require 'digest/md5'
 		}
 		return cat_info
   end
+  
+  def lesson_v_studied(category, u_ex, tests_len)
+		n_ex_len = tests_len
+		u_ex_len = u_ex.length
+		tests=u_ex
+		u_tests = [] 
+		u_t_results=0
+		tests.each do |test|
+			result = (test.correct.to_f / test.total.to_f * 100).to_i
+			u_tests << {:result => result, :data=> test.exercise}
+		end
+		u_tests.each do |u_test|
+			u_t_results = u_t_results+u_test[:result]
+		end
+		ex_average = (u_t_results.to_f/u_ex_len.to_f).to_i
+		progress=(u_t_results.to_f/n_ex_len).to_i
+		lesson_info={
+			:progress=>progress,
+			:lesson_data=>category,
+			:category=>category,
+			:tests=>u_tests,
+			:n_ex_len=>n_ex_len,
+			:u_ex_len=>u_ex_len,
+			:ex_average=>ex_average,
+			:url=>'vocabulary/'+short_tag(category.tag)
+		}
+		return lesson_info
+  end
+  
+  def lesson_studied(lesson, u_ex, tests_len)
+		n_ex_len = tests_len
+		u_ex_len = u_ex.length
+		tests=u_ex
+		u_tests = [] 
+		u_t_results=0
+		tests.each do |test|
+			result = (test.correct.to_f / test.total.to_f * 100).to_i
+			u_tests << {:result => result, :data=> test.exercise}
+		end
+		u_tests.each do |u_test|
+			u_t_results = u_t_results+u_test[:result]
+		end
+		ex_average = (u_t_results.to_f/u_ex_len.to_f).to_i
+		progress=(u_t_results.to_f/n_ex_len).to_i
+		lesson_info={
+			:progress=>progress,
+			:lesson_data=>lesson,
+			:tests=>u_tests,
+			:n_ex_len=>n_ex_len,
+			:u_ex_len=>u_ex_len,
+			:ex_average=>ex_average,
+			:url=>''
+		}
+		return lesson_info
+  end
 	
 end
+
+
+
+
+
+
+
+
