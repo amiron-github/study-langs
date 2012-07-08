@@ -209,7 +209,7 @@ write_attribute :email, (value ? value.downcase : nil)
 			end
 			if !empty_lesson
 				average = total/user_exercises.length
-				list << {:category => lesson[:name], :category_ru => lesson[:name],:category_fr => lesson[:name_fr], :exercises => user_exercises, :total => average}
+				list << {:category => lesson[:name], :category_ru => lesson[:name],:category_fr => lesson[:name_fr], :exercises => user_exercises, :total => average, :n_t_len=>lesson[:exercises].length, :lesson_data=> lesson}
 			end
 		end
 		course_data = {:name=> course_name, :results=> list}

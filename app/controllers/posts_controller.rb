@@ -118,7 +118,11 @@ require_role "admin", :only => [:index,:show,:new]
 	if admin_or_owner_required?(@post.user_id)
 		topic = @post.topic_id
 		if !first_post_in_topic(@post,topic.id) || current_user.has_role?('admin')
+			t_topic = @post.topic
 			@post.destroy
+			last_topic = t_topic.posts.last
+			last_time = last_topic.created_at
+			t_topic.update_attribute(:last_post_at, last_time)
 		else
 		
 		end
