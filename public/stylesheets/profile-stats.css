@@ -1,0 +1,83 @@
+.cat-progress {
+position: absolute;
+right: 30px;
+width: 150px;
+background: #fff;
+padding: 1px;
+display: block;
+border: 1px solid #999;
+top: 9px;
+}
+
+.cat-progress span {
+height: 10px;
+display: block;
+background: #F6F6F6;
+background: -webkit-gradient(linear,left top,left bottom,from(#99F7AB),to(#2DD64C));
+background: -moz-linear-gradient(top,#99F7AB,#2DD64C);
+background: -o-linear-gradient(top,#99F7AB,#2DD64C);
+}
+
+.delete-top {
+cursor: pointer;
+}
+.vtopic {padding: 20px; text-align: left;}
+.vtopic-popup {
+box-shadow: 1px 2px 10px #444;
+}
+.vtopic-list {
+border-collapse: collapse;
+}
+.vtopic-list td {border: 1px solid #999; padding: 3px 10px; font-size: 11px; min-width:150px}
+
+.vu-units-list li h3:hover {
+    background-color: #9FC5FC;
+    border: 1px solid #4899DB;
+}
+.vu-units-list li.vu-li-opened h3, .vu-units-list li.vu-li-opened h3:hover { background-image: url("/images/h3-bg.png");}
+
+.vu-units-list li.vu-li-opened div.vu-inner{display: block; }
+.vu-units-list li div.vu-inner {display: none; font-size:12px}
+.vu-inner {margin-left: 90px; position: relative; padding: 15px 20px 20px 20px;}
+
+.vu-u-w-len { position: absolute; top: 15px; left: -88px; text-align:center; font-size: 11px}
+.vu-u-w-len div {
+border: 1px solid #999; font-size: 35px;padding: 7px; min-width: 55px;min-height:45px; line-height:45px; cursor: pointer;}
+.v-gen {font-weight: bold; color: #333;}
+.v-e-r {border-collapse: collapse}
+.v-e-r td {border: 1px solid #999; padding: 2px 10px}
+
+.vu-inner a.btn-like {
+margin: 0px auto 8px;
+font-size: 10px;
+text-decoration: none;
+color: #444;
+font-weight: bold;
+padding: 2px 3px;
+background-color: #91D4FF;
+color: #1E2F45;
+border: 1px solid #8E95AF;
+white-space: nowrap;
+}
+
+#u-results .vu-units-list li h3 {padding-left: 20px;}
+
+#u-results .vu-u-w-len div {
+font-size: 25px;
+cursor: default;
+}
+
+#u-results h3.section-stats {
+padding: 0px 32px;
+margin: 38px 0 0;
+font-size: 22px;
+font-family: Arial;
+text-shadow: 0px 1px 0px #fff, 1px 2px 4px #999;
+}
+
+
+
+
+
+
+
