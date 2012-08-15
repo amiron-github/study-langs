@@ -192,7 +192,11 @@ require 'digest/md5'
 			end
 		end
 		ex_average = (u_t_results.to_f/n_ex_len.to_f).to_i
-		progress = ((w_pr+ex_average)/2).to_i
+		#if n==n_ex_len
+		#	progress = 100
+		#else 
+			progress = ((w_pr+ex_average)/2).to_i
+		#end
 		cat_info={
 			:progress=>progress, 
 			:n_w_len=>n_w_len,
@@ -258,6 +262,25 @@ require 'digest/md5'
 			:url=>''
 		}
 		return lesson_info
+  end
+  
+  def voc_array(array)
+	voc = []
+	array.each do |item|
+		data = {:text=>item.text, 
+				:translate=>item.translate,
+				:transcribe=>item.transcribe, 
+				:html=>item.html,
+				:sound => item.sound_url,
+				:image => item.image_url,
+				:grammar => item.grammar,
+				:forms => item.forms,
+				:translate_fr => item.translate_fr,
+				:transcribe_fr => item.transcribe_fr
+				}
+		voc << data
+	end
+	return array
   end
 	
 end

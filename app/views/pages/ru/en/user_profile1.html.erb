@@ -1,0 +1,683 @@
+<% @page_title = 'Аккаунт пользователя :: Study-Languages-Online.com' %>
+<% @page_meta = {'description' => "Аккаунт пользователя"} %>
+
+<% content_for :special_js_css do %>
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'jp-control' %>
+<%= javascript_include_tag 'jquery-ui-1.8.16.dial.min.js' %>
+<%= stylesheet_link_tag 'custom-theme/jquery-ui-1.8.5.custom.css' %>
+<%= javascript_include_tag 'user_profile' %>
+
+<%= stylesheet_link_tag 'profile' %>
+<%= stylesheet_link_tag 'user-profile' %>
+
+<script type="text/javascript">
+<%if params[:tab] %>
+	openTabFromUrl(<%= params[:tab] %>);
+<%else%>
+	openTabFromUrl();
+<%end%>
+
+function updateUserWords() {
+$("#u-vocabulary").html('<center><b style="color: #555">Loading data<\/b> <img src="/images/load.gif"\/><\/center>');
+$("#u-vocabulary").load("/ajax/en_words.html", function() {
+	loadedEvents($("#u-vocabulary"));
+})
+}
+
+function updateUserResults() {
+$("#u-results").html('<center><b style="color: #555">Loading data<\/b> <img src="/images/load.gif"\/><\/center>');
+$("#u-results").load("/ajax/en_results.html", function() {
+	loadedEvents($("#u-results"));
+})
+}
+
+
+</script>	
+
+<style type="text/css">
+
+.inpBlock {
+min-height: 825px;
+}
+
+.sbcr-free {
+color: #444;
+}
+
+.userdesc-btns  {
+font-size: 11px;
+padding-left: 5px;
+}
+.userdesc-btns input {
+font-size: 11px;
+}
+
+.new_item {
+opacity: 0.8;
+filter: alpha(opacity=80)
+}
+
+.current_ptab .new_item {
+opacity: 1;
+filter: alpha(opacity=100)
+}
+
+#tabs_row {
+padding-left: 30px;
+}
+.inpBlock {
+margin-left: 50px;
+}
+.inpBlock h3 {
+}
+.item-name {
+font-size: 12px;
+font-weight: bold;
+}
+
+.profile-info-tbl td.item-name {
+height: 28px;
+}
+
+/* styles for vocabulary*/
+.voc-results {
+border: 1px solid #C3CDDF;
+background-color: #E2E6F2;
+background-color:#AFCCFF;
+back-ground-image:url(/images/fl-bg.png);
+border:1px solid #99B2DF;
+padding: 1px;
+max-width: 620px;
+}
+
+.voc-details {
+position: absolute;
+right: 10px;
+top: 8px;
+padding: 3px 5px;
+font-size: 10px;
+color: #666;
+cursor: pointer;
+-moz-border-radius: 4px;
+-webkit-border-radius: 4px;
+border-radius: 4px;
+text-shadow: 0px 0px 0px #fff;
+border:1px solid #8E95AF;
+background-image:url(/images/btn-grd.png);
+background-position:50% 50%;
+background-repeat:no-repeat;
+background-color: #BFD6FF;
+}
+.voc-details-content {
+opacity: 0;
+padding: 10px 15px 10px 30px;
+background-color: #fff;
+}
+.voc-details-content h4 {
+margin-top: 0px;
+color: #374C6F;
+}
+.voc-details:hover {
+color: #111;
+border: 1px solid #676C7F;
+}
+.details-hidden .mv-details {
+display: block;
+}
+.details-hidden .mv-no-details {
+display:none;
+}
+.mv-details {
+display: none;
+}
+.voc-item {
+opacity: 1;
+overflow: hidden;
+background-color:#FFFFFF;
+backg-round-image:url(/images/transparent-80.png);
+bor-der: 1px solid #95B8EF;
+color: #333;
+padding-bottom: 10px;
+-moz-box-shadow: 0px 1px 3px #45546F;
+-webkit-box-shadow: 0px 1px 3px #45546F;
+box-shadow: 0px 1px 3px #45546F;
+margin: 5px 3px;
+position: relative;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+border-radius: 10px;
+}
+.section-tests .voc-item {
+margin: 3px 3px;
+}
+.details-hidden {
+backg-round-color: transparent;
+opacity:0.9;
+}
+.voc-item:hover {
+background-color:#FFFFFF;
+opacity:1;
+}
+.voc-quick-info {
+padding-top: 10px;
+font-size: 11px; 
+color: #31394F; 
+padding-left: 30px;
+}
+.voc-top-topic {
+color: #04193F;
+font-size: 15px;
+font-weight: bold;
+padding: 10px 80px 5px 5px;
+margin: 0 10px 0;
+border-bottom: 1px dotted #537ABF;
+col-or: #31394F;
+text-sh-adow: 0px 1px 0px #fff, 1px 1px 3px #8EA7CF;
+}
+.voc-topic-content {
+}
+.voc-topic-content-last {
+border-bottom: 1px solid #dfdfdf;
+}
+.voc-word-list-wrapper {
+max-width: 450px;
+border: 1px solid #C3CDDF;
+padding: 3px;
+}
+.voc-words-list {
+width: 100%;
+}
+.voc-list-even {
+background-color: #EFF5FF;
+}
+.voc-words-list td {
+color:#45494F;
+font-size:12px;
+padding:1px 5px;
+}
+.voc-topic-details {
+display: none;
+}
+.voc-list-original {
+font-weight: bold;
+}
+.voc-tests {
+padding-top: 20px;
+}
+.voc-tests-list {
+background-color: #C3CDDF;
+}
+.voc-tests-list td {
+background-color: #fff;
+padding: 4px 15px;
+color:#45494F;
+}
+.voc-tests-list th {
+border: 1px solid #EFF5FF;
+background-color: #D1DDEF;
+font-size: 10px;
+padding: 4px 15px;
+color:#45494F;
+}
+.voc-test-title {
+font-weight: bold;
+}
+.voc-test-result {
+text-align: center;
+}
+.voc-remove-topic {
+padding-top: 30px;
+}
+.voc-remove-topic input {
+font-size: 10px;
+font-weight: bold;
+}
+
+/* styles for tabs */
+
+.user-area h3.tab-head {
+font-size: 20px;
+font-weight: normal;
+color: #555;
+padding-bottom: 5px;
+border-bottom: 1px solid #777;
+margin: 0 0 20px 0;
+}
+
+p.tab-info {
+font-size: 10px;
+font-style: italic;
+}
+
+.user-area {
+background-color: #fff;
+border: 1px solid #708089;
+padding: 3px;
+position: relative;
+padding: 4px;
+background-color:#fff;
+min-height: 700px;
+-moz-border-radius: 6px;
+-webkit-border-radius: 6px;
+border-radius: 6px;
+-moz-box-shadow: 1px 2px 7px #999;
+-webkit-box-shadow: 1px 2px 8px #999;
+box-shadow: 1px 2px 8px #999;
+background-color:#FFFFFF;
+background-image:url(/images/cs_bg.gif);
+background-position:left bottom;
+background-repeat:repeat-x;
+-moz-box-shadow: 1px 2px 9px #B3B7BF;
+-webkit-box-shadow: 2px 1px 9px #B3B7BF;
+box-shadow: 1px 2px 9px #B3B7BF;
+}
+
+
+.ptab {
+float:left;
+back-ground-color: #efefef;
+background-image: url(/images/transparent-60.png);
+background-repeat: repeat;
+margin:0;
+padding:0 0 0 4px;
+text-decoration:none;
+cursor: pointer;
+color:#666;
+margin-left: 2px;
+border: 1px solid #8F9FBF;
+border-bottom: 0px solid #fff;
+position: relative;
+top: 3px;
+}
+.current_ptab {
+border: 1px solid #708089;
+border-bottom: 0px solid #fff;
+background-image: none;
+top: 0px;
+background-color: #fff;
+padding-bottom: 3px;
+color: #111;
+}
+.ptab div {
+background-image: none;
+position: relative;
+}
+
+#prof_tabs {
+border: 1px solid #708089;
+width: auto;
+padding-top: 10px;
+background:#4B87FB url(/stylesheets/custom-theme/images/ui-bg_gloss-wave_55_4b87fb_500x100.png) repeat-x scroll 50%;
+-moz-bo-rder-radius: 6px;
+-webkit-border-radius: 4px;
+border-radius: 4px;
+}
+
+.pBlock {
+background-color: transparent;
+clear: both;
+padding: 20px 30px 10px 40px;
+border: 0px solid #819DCF;
+bor-der-top: 0px solid #9FC2FF;
+margin-bottom: 30px;
+-moz-box-shadow: 0px 0px 0px #9F9F9F;
+-webkit-box-shadow: 0px 0px 0px #9F9F9F;
+box-shadow: 0px 0px 0px #9F9F9F;
+}
+.inpBlock {
+margin-left: 0;
+}
+.tab-in-tab-list {
+margin-bottom: 20px;
+color: #3F61FF;
+padding-bottom: 5px;
+border-bottom: 1px dotted #3F61FF;
+}
+h4.tit-head {
+color: #6F767F;
+font-size: 18px;
+margin: 30px 10px 20px;
+} 
+h4.tit-head span {
+border-bottom: 1px dashed #6F767F;
+}
+.content .tab-in-tab-list a {
+color: #0E20EF;
+text-decoration: none;
+font-size: 10px;
+font-weight: bold;
+outline: none;
+white-space: nowrap;
+padding: 1px 4px 2px;
+}
+.content .tab-in-tab-list a.tab-in-current {
+color: #fff;
+background-color: #4F7EFF;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+-moz-box-shadow: 0px 1px 3px #9F9F9F;
+-webkit-box-shadow: 0px 1px 3px #9F9F9F;
+box-shadow: 0px 1px 3px #9F9F9F;
+}
+
+</style>
+
+<% end %>
+
+
+<div class="user-area">
+<% if current_user.email == 'mirumir.sasha@gmail.com'%>
+	<div align="right" style="position: absolute; z-index: 200; right: 10px; top: 10px;">
+		<%= link_to 'View userdata', {:controller => 'userdata'} %> 
+	</div>
+<% end %>
+
+<div id="prof_tabs">
+	<div id="tabs_row">
+            <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Профиль</a></div></div>
+			<div id="tab02" class="ptab"><div><a href="#">Мой словарь</a></div></div>
+            <div id="tab03" class="ptab"><div><a href="#">Результаты</a></div></div>
+			<div id="tab04" class="ptab"><div><a href="#">Настройки</a></div></div>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+
+<div id="for_tab01" class="pBlock" style="display: block">
+	<div class="inpBlock">
+	
+<h3 class="tab-head">Профиль</h3>
+
+<p class="tab-info">* Информация о пользователе</p>
+<br>
+
+
+<div class="pr_hsp"> 
+		<table cellpadding="0" cellspacing="15" width="100%" class="profile-info-tbl">
+		<col width="120"><col width="120"><col>
+		<tr valign="top">
+			<td rowspan="4">
+			<div class="userpic-wrapper">
+				<img id="userpic-img" src="<%= userpic_for(current_user) %>" width="80">
+			<div align="center" style="font-size: 10px; padding-top: 5px" >
+				<a href="javascript:;" class="edit-userpic">Изменить</a>
+			</div>
+			</div>
+			</td>
+			<td class="item-name">Email адрес: 
+			</td>
+			<td><%= current_user.email %>
+			</td>			
+		</tr>
+		<tr>
+			<td class="item-name">Ник: 
+			</td>
+			<td>
+				<% if !current_user.name || current_user.name == '' %>
+					<span id="us-username"><input placeholder="введите ник" style="width: 200px" id="nick-blank"><input id="nick-blank-save" type="button" value="save"></span><span id="un-success1">&#10004; Сохранено</span>
+				<%else%>	
+					<span id="us-username"><%= current_user.name %></span>
+				<%end%>
+			</td>		
+		</tr>
+		<tr>
+			<td class="item-name">Аккаунт создан:
+			</td>
+			<td>    <%= l(current_user.created_at.to_date, :format=>:long) %></span>
+			</td>
+		</tr>
+		<tr>
+			<td class="item-name" >
+				Информация о себе 
+			</td>
+			<td style="height: 80px"><div style="max-width: 300px;position: relative; left: -5px">
+				<%= render :partial => "/site/user/user_desc_update" %>
+				</div>
+			</td>
+		</tr>
+		</table>
+		</div>
+		
+<h3 class="tab-head">&nbsp;</h3>		
+
+	</div>
+</div>
+
+<div id="for_tab02" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="tab-head">Мой словарь</h3>
+
+	<p class="tab-info">Здесь представлены словарные темы, изченные на нашем сайте</p>
+<br>
+		<div id="u-vocabulary"></div>
+	</div>
+</div>
+
+
+
+
+<div id="for_tab03" class="pBlock" style="display: none">
+	<div class="inpBlock">
+		
+<h3 class="tab-head">Результаты</h3>
+
+<p class="tab-info">Здесь представлены результаты тестов и упражнений, выполненных на нашем сайате</p>
+<br>
+
+<div id="u-results">
+</div><!-- end of u-results -->
+
+<br><br><br><br>	
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+	
+	</div>
+</div>
+
+
+<div id="for_tab04" class="pBlock" style="display: none">
+	<div class="inpBlock">
+
+<h3 class="tab-head">Настройка аккаунта:</h3>
+
+		<p style="font-size: 10px; font-style: italic;">* Кликните на ссылку, чтобы выполнить следующие действия</p>
+	   
+	   <table cellpadding="0" cellspacing="20">
+	
+		<tr>
+			<td class="item-name" style="position: relative; width: 300px">
+				<a href="javascript:;" class="edit-username">Изменить ник</a> <span id="un-success">&#10004; Сохранено</span>
+			</td>
+			<td>
+			</td>
+		</tr>		
+		
+		<tr>
+			<td class="item-name" style="position: relative">
+				<a href="javascript:;" class="edit-userpic">Изменить аватар</a> <span id="up-success">&#10004; Сохранено</span>
+			</td>
+			<td>
+			</td>
+		</tr>
+		<tr>
+			<td class="item-name"><a href="javascript:;" id="edit-userpass">Изменить пароль </a> <span id="upass-success">&#10004; Сохранено</span>
+	
+			<a href="/userp" style="display: none;">Change my password</a>
+			</td>
+			<td>
+			</td>
+		</tr>
+		<tr>
+			<td class="item-name">
+					<a href="javascript:;" id="del-results-btn">Удалить результаты упражнений </a><span id="delres-success">&#10004; Удалено</span>
+					<a href="/del_stat" style="display: none;">Delete my results</a>
+			</td>
+			<td>
+			</td>
+		</tr>
+		<tr>
+			<td class="item-name">
+			<a href="javascript:;" id="del-user-btn">Удалить аккаунт </a>
+			
+			<a href="/userd" style="display: none;">Delete my account </a>
+			
+			</td>
+			<td>
+			</td>
+		</tr>
+		</table>
+
+	</div>
+</div>
+
+</div><!-- end of user-area -->
+
+<div id="pictures" style="display: none" align="left" title="Изменить аватар">
+<table width="100%" cellspacing="0">
+<col width="200"><col>
+	<tr align="center" class="up-tips">
+		<td>Предосмотр</td>
+		<td style="font-size: 10px">Выберите картинку и нажмите "Сохранить"</td>
+	</tr>
+	<tr valign="top">
+	<td align="center">
+	<span id="used-userpic"> <img src="<%= userpic_for(current_user) %>" width="100"></span>
+	<div class="used-txt-holder"><span id="used-txt"> Текущий аватар</span></div>
+	</td>
+	<td>
+
+<div class="pics-holder">
+<ul class="userpics-list">
+	<li>
+	<span> <img src="<%= gravatar_for(current_user) %>?d=identicon&f=y" width="30" ></span>
+	<div> Геометрическая фигура</div>
+	</li>
+	<li>
+		<span> <img src="<%= gravatar_for(current_user) %>" width="30"></span>
+		<div> С сайта <a href="http://www.gravatar.com" target="_blank">www.gravatar.com</a></div>
+	</li>
+	<li>
+		<span> <img src="<%= gravatar_for(current_user) %>?d=wavatar&f=y" width="30"></span>
+		<div> Рожица</div>
+	</li>
+	<li>
+	<span> <img src="<%= gravatar_for(current_user) %>?d=monsterid&f=y" width="30"></span>
+	<div> Монстер</div>
+	</li>
+	<li>
+	<span> <img src="<%= gravatar_for(current_user) %>?d=mm&f=y" width="30"></span>
+	<div> Человек-загадка</div>
+	</li>
+</ul>
+
+</div>
+	</td>
+	<tr>
+</table>	
+<div class="userpic-tip">
+Выберите аватар из списка и нажмите "Сохранить". Вы также можете настроить или загрузить свой аватар на сайте <a href="http://www.gravatar.com" target="_blank">www.gravatar.com</a>
+ </div>
+
+<div id="userpass" title="Изменить пароль" style="display: none">
+			<div class="err-block" style="display: none;">
+				<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+					<p>
+						<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+						<strong>Ошибка:</strong> 
+							<span id="pass-error-msg1" class="pass-error-msg">Неверный текущий пароль</span>
+							<span id="pass-error-msg2" class="pass-error-msg">Неверный новый пароль или его подтверждение</span>
+					</p>
+				</div>
+			</div>
+	<div class="userinfo-edit">
+	   <table cellspacing="5">
+		 <tr><td align="right">Текущий пароль:</td><td> <input autocomplete="off" id="cur-pass" value=""/></td></tr>
+		 <tr><td align="right">Новый пароль:</td><td> <input autocomplete="off" id="new-pass" value="" type="password" /></td></tr>
+		<tr><td align="right">Новый пароль еще раз:</td><td> <input autocomplete="off" id="confirm-pass" value="" type="password"/></td></tr>
+	   </table>
+	</div>
+</div>
+
+
+<div id="username" title="Изменить ник" style="display: none">
+			<div class="err-block" style="display: none;">
+				<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+					<p>
+						<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+						<strong>Ошибка:</strong> 
+							<span id="nick-error-msg1" class="nick-error-msg">Ник уже занят</span>
+							<span id="nick-error-msg2" class="nick-error-msg">Ник имеет неверное значение</span>
+							<span id="nick-error-msg3" class="nick-error-msg">Ник слишком длинный <span="white-space:nowrap;">(максимум 50 знаков)</span></span>
+					</p>
+				</div>
+			</div>
+	<div class="userinfo-edit">
+		<span style="display: none" id="current_name"><%= current_user.name %></span>
+	   <table cellspacing="5">
+		 <tr><td align="right">Ник:</td><td><input autocomplete="off" id="us-nickname" value="" style="width: 300px;"/></td></tr>
+	   </table>
+	</div>
+</div>
+
+<div id="del-results" title="Удаление результатов упражнений" style="display: none">
+	<div class="ui-state-highlight ui-corner-all" style="padding: 0 .7em;"> 
+		<p>
+			<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span> 
+			<span style="font-size: 11px"><strong>Внимание!</strong> 
+				Будут удалены результаты всех тестов и упражнений, выполненых на сайте</span>
+		</p>
+	</div>
+	<div class="err-block" style="display: none; padding: 10px 0 0;">
+		<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+				<strong>Ошибка:</strong> 
+				<span id="delres-error-msg" class="delres-error-msg">Неправильный пароль</span>
+			</p>
+		</div>
+	</div>
+	<div class="userinfo-edit">
+	   <table cellspacing="5">
+		 <tr><td align="right">Введите пароль:</td><td><input autocomplete="off" id="delres_pass" type="password"/></td></tr>
+	   </table>
+	</div>
+</div>
+
+
+<div id="del-user" title="Удаление аккаунта" style="display: none">
+	<div class="ui-state-highlight ui-corner-all" style="padding: 0 .7em;"> 
+		<p>
+			<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span> 
+			<span style="font-size: 11px"><strong>Внимание!</strong> 
+			Вся информация с вашего аккаунта будет удалена </span>
+			<br><br>
+			<input type="checkbox" id="deluser-check"><strong style="font-size: 11px; font-style:italic"> Да, я понимаю</strong>
+			<br><br>
+		</p>
+	</div>
+	
+	<div class="err-block" style="display: none; padding: 10px 0 0;">
+		<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+				<strong>Ошибка:</strong> 
+				<span id="deluser-error-msg" class="deluser-error-msg">Неверный пароль</span>
+			</p>
+		</div>
+	</div>
+	<div class="userinfo-edit" align="center">
+	   <table cellspacing="5" style="margin: 0 auto">
+		 <tr><td align="right">Введите пароль:</td><td><input autocomplete="off" id="deluser_pass" type="password"/></td></tr>
+	   </table>
+	</div>
+</div>
+
+
+
+<script type="text/javascript">
+var btns = {"cancel": "Отмена", "save": "Сохранить", "delete": "Удалить", "del_acc": "Удалить аккаунт"}
+currentSection="login";
+</script>

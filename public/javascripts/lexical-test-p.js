@@ -128,6 +128,8 @@ this.tpNoSpace = hash['tp_no_space'];			// default - false
 this.specSigns = hash['spec_signs'];			// default - !?.,
 this.toNextTime = hash['next_time'];			// default - 1600
 this.randLetters = hash['rand_letters'];		// default - false
+this.intextInput = hash['intext_input'];		// default - false
+this.intextReplace = hash['intext_replace'];    // default - false
 this.callback = hash['callback'];
 
 var tObj = this;
@@ -145,8 +147,10 @@ if (this.tpNoSpace == undefined) this.tpNoSpace = false;
 if (this.specSigns == undefined) this.specSigns = ["!","?",".",","];
 if (this.toNextTime == undefined) this.toNextTime = 1600;
 if (this.randLetters == undefined) this.randLetters = false;
+if (this.intextInput == undefined) this.intextInput = false;
 if (this.callback == undefined) this.callback = function() {return false};
-
+if (this.intextReplace == undefined && this.inputType == 'input' && this.randLetters == true ) this.intextReplace = true;
+if (this.intextReplace == undefined) this.intextReplace = false;
 
 if (tObj.texts == undefined) {
 	tObj.correctMsg = "Great! This is correct";
@@ -237,7 +241,6 @@ this.start = function () {
 		}
 		
 		if (!tObj.randomOrder) tObj.straightOrderAnswer = tObj.getAnswersOrder();
-		
 		clearTimeout(toNextInt);
 		tObj.alertHolder.empty().removeClass(tObj.correctClass);
 		tObj.container.find(".ps-wrapper").removeClass("ps-final-bg");
@@ -259,6 +262,8 @@ this.start = function () {
 		});
 		
 		if (tObj.answerType == "type") {
+			if (!tObj.randLetters) tObj.container.addClass("ps-type-no-options");
+			if (tObj.intextInput)  tObj.optionsHolder.addClass("ps-type-inline");
 			tObj.optionsHolder.find(".ps-type-field").keypress(function(e){
 				if (e.which == 13) {
 					tObj.checkTypeBtn.click()
@@ -365,11 +370,18 @@ if (tObj.noMouseCheck) tObj.checkTypeBtn.mouseout().mouseup()
 this.getTypeAnswers = function() {
 	tObj.optionsHolder.find(".ps-type-field").val("").removeClass("ps-untyped").removeClass("ps-typed");
 	tObj.optionsHolder.find("div.ps-txt-letters").html("").removeClass("ps-untyped").removeClass("ps-typed");
+	tObj.optionsHolder.find(".ps-type-rand").empty();
 	tObj.optionsHolder.find(".ps-type-elements").html('<a href="javascript:;" class="ps-show-type">'+tObj.showAnswerTxt+'</a>');
 	tObj.optionsHolder.find(".ps-show-str-type").text(tObj.workArray[tObj.counter]["answer"]);
 	if (tObj.autoPlay) tObj.nextButton.css({visibility: "hidden"});
+	if (tObj.intextInput) {
+		tObj.optionsHolder.find(".ps-inline-txt").remove();
+		var strings = tObj.workArray[tObj.counter]["inline"]["string"]
+		tObj.optionsHolder.find(".ps-type-content").prepend('<span class="ps-inline-txt">'+strings[0]+'</span>').append('<span class="ps-inline-txt">'+strings[1]+'</span>');
+		tObj.optionsHolder.find(".ps-type-field").css({width: tObj.workArray[tObj.counter]["inline"]["width"]})
+	}
 	
-	if (tObj.randLetters) {lt_randomWords(tObj.workArray[tObj.counter]["forms"],tObj.optionsHolder.find(".ps-type-rand"), tObj.optionsHolder.find(".ps-type-field"),tObj.optionsHolder.find("div.ps-txt-letters"),tObj.specSigns);}
+	if (tObj.randLetters) {lt_randomWords(tObj.workArray[tObj.counter]["forms"],tObj.optionsHolder.find(".ps-type-rand"), tObj.optionsHolder.find(".ps-type-field"),tObj.optionsHolder.find("div.ps-txt-letters"),tObj.specSigns, tObj.intextInput, tObj.intextReplace);}
 	
 	tObj.checkTypeBtn.show().removeClass("ps-invisible").unbind("click").click(function() {
 		var userAnswer = tObj.optionsHolder.find(".ps-type-field").val();
@@ -413,8 +425,7 @@ this.getTypeAnswers = function() {
 	
 	tObj.optionsHolder.find(".ps-show-type").click(function() {
 		$(this).remove(); 
-		tObj.optionsHolder.find(".ps-type-rand").html('<span>'+tObj.workArray[tObj.counter]["answer"]+'</span>');
-
+		tObj.optionsHolder.find(".ps-type-rand").html('<span class="ps-t-ans">'+tObj.workArray[tObj.counter]["answer"]+'</span>');
 			if (tObj.autoPlay) {
 				tObj.checkTypeBtn.addClass("ps-invisible").hide();
 				tObj.nextButton.css({visibility: "visible"});
@@ -619,7 +630,7 @@ $(document).ready(function() {
 }
 
 
-function lt_randomWords(word,container,target,html_target,spec_signs) {
+function lt_randomWords(word,container,target,html_target,spec_signs,hider,replacer) {
 
 	var tStr = word;
 	container.empty();
@@ -632,7 +643,6 @@ function lt_randomWords(word,container,target,html_target,spec_signs) {
 	var variants = container.find("span");
 	variants.click(function(e) {
 		t = $(this)
-		t.css({visibility: "hidden"});
 		var tVal = target.val();
 		var newVal;
 		var tText = t.text();
@@ -641,6 +651,8 @@ function lt_randomWords(word,container,target,html_target,spec_signs) {
 		}else{
 			newVal= tVal +" "+t.text();
 		}
+		if (replacer != undefined && replacer == true) newVal = t.text();
+		if (hider!= undefined && hider == false) t.css({visibility: "hidden"});
 		target.val(newVal);              // - space for words is added 
 		html_target.text( newVal );
 		target.removeClass("ps-untyped").removeClass("ps-typed")

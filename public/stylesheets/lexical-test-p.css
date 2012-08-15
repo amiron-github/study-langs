@@ -15,7 +15,7 @@ border: 5px solid #86ACEF;
 margin: 0 auto;
 width: auto !important;
 width: 500px;
-max-width: 550px;
+max-width: 600px;
 back-ground-color: #AFCCFF;
 background-image:url(/images/bl-transparent-30.png);
 overflow: hidden;
@@ -565,6 +565,49 @@ background-repeat:no-repeat;
 border:1px solid #999999;
 }
 
+.ps-type-inline .ps-txt-letters {
+padding: 2px 3px;
+width: auto;
+font-size: 18px;
+}
+
+.ps-inline-txt {
+font-size: 18px;
+}
+
+.ps-type-inline  span.ps-t-ans {
+color: #666;
+font-size: 18px;
+font-weight: normal;
+position: relative;
+}
+
+.ps-type-inline  span.ps-t-ans b{
+color: #489648;
+font-weight: normal;
+}
+
+.ps-type-no-options .ps-type-inline  span.ps-t-ans {
+left: -5px;
+}
+
+.ps-type-inline .ps-type-rand span:hover {
+col-or: #627EAF;
+}
+
+.ps-type-rand span:hover {
+box-shadow: 1px 1px 2px #627EAF;
+position: relative; 
+top: -1px;
+}
+
+.ps-type-rand span.ps-t-ans:hover {
+box-shadow: 1px 1px 2px transparent;
+position: relative; 
+top: 0px;
+cursor: default;
+}
+
 .ps-type-elements  {
 text-align: center;
 min-height: 14px;
@@ -766,6 +809,13 @@ position: relative;
 cursor: default;
 }
 
+.ps-type-no-options .ps-type-rand  {
+background-color: transparent;
+border: 0px solid #fff;
+margin-bottom: 0px;
+padding: 3px 3px 2px 3px;
+}
+
 .ps-type-rand span {
  background-color: #FFFFFF;
  color: #333333;
@@ -780,6 +830,22 @@ position: relative;
 padding: 10px 30px 20px;
 margin-bottom: 10px;
 }
+
+.ps-type-no-options .pt-spec .ps-type-elem  {
+padding-top: 0px;
+}
+
+.ps-type-no-options .ps-type-content {
+min-height: 60px;
+}
+.ps-type-inline .ps-type-content {
+min-height: 42px;
+}
+
+.ps-type-inline .pt-type-reset {
+display: none;
+}
+
 
 .pt-spec .ps-type-field  {
 display: block;
@@ -878,6 +944,15 @@ padding: 5px 30px 0px;
 min-height: 44px;
 margin-right: -2px;
 }
+
+.ps-type-no-options .ps-type-rand {
+min-height: 21px;
+}
+
+.pt-spec .ps-type-inline .ps-type-rand {
+min-height: 30px;
+}
+
 
 .ps-type-rand nobr span {
 white-space: nowprap;
