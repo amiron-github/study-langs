@@ -1,33 +1,25 @@
-<% @page_title = ' '+@category_title+' :: Англо-русский словарь '  %>
+<% @page_title = ' '+@category_title+' :: Франко-русский словарь '  %>
 <% @page_meta = {'description' => "Изучайте английские слова по теме "+@category_title+" онлайн"} %>
-<% @has_audio = true %>
+<% @has_audio = true 
+   @t_template='vocab'
+%>
 
 <% content_for :special_js_css do %>
-
-
 <%= javascript_include_tag 'jquery.jplayer.min.js' %>
 <%= javascript_include_tag 'jp-control' %>
-
 <%= stylesheet_link_tag 'flashcard' %>
 <%= stylesheet_link_tag 'lexical-test' %>
 <%= stylesheet_link_tag 'short-unit' %>
-
 <%= javascript_include_tag 'lexical-test' %>
 <%= javascript_include_tag 'flashcard-u' %>
 <%= javascript_include_tag 'short-unit' %>
 
-
-
 <script type="text/javascript">
-
 <%if params[:tab] %>
 	openTabFromUrl(<%= params[:tab] %>);
 <%else%>
 	openTabFromUrl();
 <%end%>
-
-
-
 
 $(document).ready(function() {
 $(".trans-display").change(function(){
@@ -39,14 +31,12 @@ $(".trans-display").change(function(){
 }).change();
 
 $("#tab02").click(function() {
-	
 	if (sendData) $.ajax({type: 'post', url: "/get_flash_list", data: {voc_id: t_voc_id, text:'text'}} ); 
 })
 
 });
 
 var t_voc_id=<%=@category.id%>
-
 
 function buildFlashList(data){
 html = ""
@@ -57,16 +47,13 @@ html = ""
 		var status = new Array;
 		status = ['', 'checked']
 		if ( learned == '1') status = ['fl-learned', '']
-		var tHtml = '<tr class="fl-list '+status[0]+'"><td><input type="checkbox" '+status[1]+' class="st"></td><td class="fl-wordlist-origin">'+text+'</td><td>'+translate+'</td></tr>'
+		var tHtml = '<tr class="fl-list '+status[0]+'"><td><input type="checkbox" '+status[1]+' class="st"><\/td><td class="fl-wordlist-origin">'+text+'<\/td><td>'+translate+'<\/td><\/tr>'
 		html = html+tHtml
 	}
-	
 	$(".fl-prestart-list").html(html);
 	fixAccents($(".fl-prestart-list"))
 	$(".fl-prestart-list tr:even").css({backgroundColor: "#efefef"});
 }
-
-
 </script>
 <style type="text/css">
 h2.page {
@@ -76,7 +63,6 @@ margin-bottom: 0px;
 .voc-wordlist .diction td {
 border-bottom: 1px solid #efefef;
 }
-
 .trans-display-wrapper {
 font-size: 11px;
 color: #444;
@@ -91,68 +77,80 @@ width: auto;
 padding-left: 35px;
 cursor: default;
 }
-
 .voc-wordlist .diction td.original div.ru-transcript {
 display: none;
 font-size: 11px;
 color: #555;font-weight: normal;
 }
-
 .voc-wordlist .diction td.translation {
 width: auto;
 padding-left: 22px;
 padding-right: 18px;
 cursor: default;
 }
-
 .voc_bord div.jp_control {
 position: absolute;
 margin-left: -25px;
 }
-
 .fl-spell-check, .fl-cancel-spell {
 width: 80px;
 }
-
 .fl-end-wrapper .fl-stop {
 width: 90px;
 }
 .fl-next {
 width: 100px;
 }
-
 .lt-spacer {
 padding: 0 0 60px;
 }
-
 .fl-prestart {
 overflow-x: hidden;
 overflow-y: auto;
 }
-
 .fl-sound .jp_control:hover {
 background-image: url(/images/play-25.png);
+}
+
+.l-test-container {
+margin-bottom: 90px;
+}
+
+div.ad-horizont {
+padding-bottom: 0 !important;
+position: relative;
+top: 25px;
+}
+
+.ad-banner div {
+position: relative;
+padding-top: 20px;
+top: 10px; 
+width: 470px;
+margin: 0 auto;
 }
 
 </style>
 <% end %>
 
-
 <div class="unit-area">
-<div id="prof_tabs">
-<div class="unit-title">
-<%= @category_title %>
-</div>
-	<div id="tabs_row">
-            <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Словарь</a></div></div>
-			<div id="tab02" class="ptab"><div><a href="#">Флэшкарты</a></div></div>
-            <div id="tab03" class="ptab"><div><a href="#">Тесты</a></div></div>
+	<div id="prof_tabs">
+		<div class="unit-title">
+		<a href="/ru/fr/vocabulary" class="su-tit-link">Франко-русский словарь »</a><br>
+		<%= @category_title %>
+		</div>
+		<div id="tabs_row">
+				<div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Словарь</a></div></div>
+				<div id="tab02" class="ptab"><div><a href="#">Флеш-карты</a></div></div>
+				<div id="tab03" class="ptab"><div><a href="#">Тесты</a></div></div>
+		</div>
+		<div style="clear: both;"></div>
 	</div>
-	<div style="clear: both;"></div>
-</div>
+
+<%= render :partial => '/site/ads/ad_banner' %>
 
 <div id="for_tab01" class="pBlock" style="display: block">
-	<div class="inpBlock">	
+	<div class="inpBlock">
 
 	<br><br><br><br>
 
@@ -161,7 +159,7 @@ background-image: url(/images/play-25.png);
 <tr>
 <td>
 
-<table style="width: 500px" class="diction" cellpadding="0" cellspacing="0" align="center">
+<table style="width: 550px" class="diction" cellpadding="0" cellspacing="0" align="center">
 <col width="50%"><col width="50%">
 <thead>
 <tr>
@@ -190,7 +188,6 @@ background-image: url(/images/play-25.png);
 	<%unless word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div><%end%>
 	<%= word.text %><%unless word.grammar==''%><i style="color: #999; font-weight: normal; font-size: 11px; margin-left:10px"><%= word.grammar %></i><%end%>
 	<div class="ru-transcript">[<%= word.transcribe %>]</div>
-	
     </td>
     <td class="translation" valign="top"><%= word.translate %>
     </td>
@@ -210,8 +207,6 @@ background-image: url(/images/play-25.png);
 </table>
 </div><!-- end of voc-wordlist-->
 
-
-
 <br><br><br>
 
 <div class="es-ex-buttons su-next-wrapper">
@@ -225,7 +220,6 @@ background-image: url(/images/play-25.png);
 	<div class="inpBlock">
 	
 <br><br><br><br>	
-	
 	
 <div  id="fl1" style="min-height: 600px; text-align: center;">
 
@@ -348,7 +342,6 @@ background-image: url(/images/play-25.png);
 </div><!-- end of fl-window -->
 </div><!-- end of flcontainer-->
 
-
 </div><!-- end of fl1 -->
 
 <script type="text/javascript"> 
@@ -365,7 +358,6 @@ background-image: url(/images/play-25.png);
 		]
 		} )
 </script>
-	
 
 <br><br><br>		
 
@@ -413,8 +405,6 @@ background-image: url(/images/play-25.png);
 </script>
 
 
-
-
 <h4 class="su-task">Тест 2. 
 Прочитатайте фразу и найдите её перевод.
 </h4>
@@ -438,8 +428,6 @@ background-image: url(/images/play-25.png);
 <% @words.each_with_index  do |word, index| -%>
 		["<%= no_js(word.text) %>", '<%=no_js(word.translate) %>'<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
 <%end -%>		
-
-
 		]
 		} )
 </script>
@@ -472,15 +460,13 @@ background-image: url(/images/play-25.png);
 		} )
 </script>
 <%end%>
-
+</div>  <!--end of l-test-container -->
 
 	</div>
 </div>
 
 
 </div> <!-- end of unit-area-->
-	
-
 	
 
 <script type="text/javascript">
