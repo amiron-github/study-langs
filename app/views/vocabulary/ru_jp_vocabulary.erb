@@ -78,66 +78,20 @@ width: auto;
 padding-left: 35px;
 cursor: default;
 }
-.voc-wordlist .diction td div.ru-transcript {
-display: none;
-font-size: 11px;
-color: #555;font-weight: normal;
-}
-.voc-wordlist .diction td.transcription {
-font-size: 16px;
-width: auto;
-padding-left: 22px;
-padding-right: 18px;
-cursor: default;
-} 
-
-.voc-wordlist .diction td.translation {
-width: auto;
-padding-left: 22px;
-padding-right: 18px;
-cursor: default;
-}
-.voc_bord div.jp_control {
-position: absolute;
-margin-left: -25px;
-}
-.fl-spell-check, .fl-cancel-spell {
-width: 80px;
-}
-.fl-end-wrapper .fl-stop {
-width: 90px;
-}
-.fl-next {
-width: 100px;
-}
-.lt-spacer {
-padding: 0 0 60px;
-}
-.fl-prestart {
-overflow-x: hidden;
-overflow-y: auto;
-}
-.fl-sound .jp_control:hover {
-background-image: url(/images/play-25.png);
-}
-
-.l-test-container {
-margin-bottom: 90px;
-}
-
-div.ad-horizont {
-padding-bottom: 0 !important;
-position: relative;
-top: 25px;
-}
-
-.ad-banner div {
-position: relative;
-padding-top: 20px;
-top: 10px; 
-width: 470px;
-margin: 0 auto;
-}
+.voc-wordlist .diction td div.ru-transcript {display: none;font-size: 11px;color: #555;font-weight: normal;}
+.voc-wordlist .diction td.transcription {font-size: 16px;width: auto;padding-left: 22px;padding-right: 18px;cursor: default;} 
+.voc-wordlist .diction td.translation {width: auto;padding-left: 22px;padding-right: 18px;cursor: default;}
+.voc_bord div.jp_control {position: absolute;margin-left: -25px;}
+.fl-spell-check, .fl-cancel-spell {width: 80px;}
+.fl-end-wrapper .fl-stop {width: 90px;}
+.fl-next {width: 100px;}
+.lt-spacer {padding: 0 0 60px;}
+.fl-prestart {overflow-x: hidden;overflow-y: auto;}
+.fl-sound .jp_control:hover {background-image: url(/images/play-25.png);}
+.l-test-container {margin-bottom: 90px;}
+div.ad-horizont {padding-bottom: 0 !important;position: relative;top: 25px;}
+.ad-banner div {position: relative;padding-top: 20px;top: 10px; width: 470px;margin: 0 auto;}
+#ch1 .es-ex-string-wrapper, #ch3 .es-ex-string-wrapper {font-size: 22px;font-weight: bold;}
 </style>
 
 <style type="text/css">
@@ -411,7 +365,7 @@ margin: 0 auto;
 
 <div class="l-test-container">
 
-<h4 class="su-task">Тест 1. Найдите в списке перевод фразы.
+<h4 class="su-task">Тест 1. Найдите в списке подходящий перевод
 </h4>
 
 <div id="ch1" class="lt-holder">
@@ -423,6 +377,36 @@ margin: 0 auto;
 <script type="text/javascript"> 
 	var ch1 = new ch_exercise( {
 		id: "ch1", 
+		<% unless @test_data[1] == nil || @test_data[1]==''%>test_id: "<%= @test_data[1].test_id %>",<%end%>
+		quest_num: <%= quest_num_from(@test_data[1]) %>,
+		variants_num: 5,
+		quest_type: 'text',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+<% @words.each_with_index  do |word, index| -%>
+		["<%= no_js(word.text) %>", '<%=no_js(word.translate) %>'<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>		
+		]
+		} )
+</script>
+
+
+
+
+<h4 class="su-task">Тест 2. 
+Найдите соответствие русскому варианту.
+</h4>
+
+<div id="ch2" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => 'lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
 		<% unless @test_data[0] == nil || @test_data[0]==''%>test_id: "<%= @test_data[0].test_id %>",<%end%>
 		quest_num: <%= quest_num_from(@test_data[0]) %>,
 		variants_num: 5,
@@ -438,47 +422,47 @@ margin: 0 auto;
 		} )
 </script>
 
-
-<h4 class="su-task">Тест 2. 
-Прочитатайте фразу и найдите её перевод.
+<h4 class="su-task">Тест 3. 
+Найдите соответствие русскому варианту.
 </h4>
 
-<div id="ch2" class="lt-holder">
+<div id="ch3" class="lt-holder">
 <div class="lt-spacer">	
 <%= render :partial => 'lexical_test', :locals => {:lang => "rus"} %>
 </div>
 </div><!-- end of lt-holder -->
 
 <script type="text/javascript"> 
-	var ch2 = new ch_exercise( {
-		id: "ch2", 
-		<% unless @test_data[1] == nil || @test_data[1]==''%>test_id: "<%= @test_data[1].test_id %>",<%end%>
-		quest_num: <%= quest_num_from(@test_data[1]) %>,
+	var ch3 = new ch_exercise( {
+		id: "ch3", 
+		<% unless @test_data[0] == nil || @test_data[0]==''%>test_id: "<%= @test_data[0].test_id %>",<%end%>
+		quest_num: <%= quest_num_from(@test_data[0]) %>,
 		variants_num: 5,
 		quest_type: 'text',
 		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
 		basic_array: [
-		
+<% @last_item_index = (@words.length)-1 -%>
 <% @words.each_with_index  do |word, index| -%>
-		["<%= no_js(word.text) %>", '<%=no_js(word.translate) %>'<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
-<%end -%>		
+["<%= no_js(word.text) %>", "<%= no_js(word.html) %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
 		]
+		
 		} )
 </script>
 
 <%unless @category.sound_status == 2 %>
 
-<h4 class="su-task">Тест 3. Прослушайте фразу и найдите её перевод.
+<h4 class="su-task">Тест 4. Прослушайте фразу и найдите её перевод.
 </h4>
 
-<div id="ch3" class="lt-holder">
+<div id="ch4" class="lt-holder">
 <div class="lt-spacer">
 <%= render :partial => 'lexical_test', :locals => {:lang => "rus"} %>
 </div>
 </div><!-- end of lt-holder -->
 <script type="text/javascript"> 
-	var ch3 = new ch_exercise( {
-		id: "ch3", 
+	var ch4 = new ch_exercise( {
+		id: "ch4", 
 		<% unless @test_data[2] == nil || @test_data[2]==''%>test_id: "<%= @test_data[2].test_id %>",<%end%>
 		quest_num: <%= quest_num_from(@test_data[2]) %>,
 		variants_num: 5,
