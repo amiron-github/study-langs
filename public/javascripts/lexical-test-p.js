@@ -130,6 +130,8 @@ this.toNextTime = hash['next_time'];			// default - 1600
 this.randLetters = hash['rand_letters'];		// default - false
 this.intextInput = hash['intext_input'];		// default - false
 this.intextReplace = hash['intext_replace'];    // default - false
+this.helperStay = hash['helper_stay'];          // default - false
+this.noSpacer = hash['no_spacer'];          // default - false
 this.callback = hash['callback'];
 
 var tObj = this;
@@ -151,6 +153,9 @@ if (this.intextInput == undefined) this.intextInput = false;
 if (this.callback == undefined) this.callback = function() {return false};
 if (this.intextReplace == undefined && this.inputType == 'input' && this.randLetters == true ) this.intextReplace = true;
 if (this.intextReplace == undefined) this.intextReplace = false;
+if (this.noSpacer == undefined) this.noSpacer = false;
+if (this.helperStay == undefined && this.intextInput==true) {this.helperStay = true;
+}else if (this.helperStay == undefined) {this.helperStay = false;} 
 
 if (tObj.texts == undefined) {
 	tObj.correctMsg = "Great! This is correct";
@@ -376,12 +381,14 @@ this.getTypeAnswers = function() {
 	if (tObj.autoPlay) tObj.nextButton.css({visibility: "hidden"});
 	if (tObj.intextInput) {
 		tObj.optionsHolder.find(".ps-inline-txt").remove();
-		var strings = tObj.workArray[tObj.counter]["inline"]["string"]
+		var inlineData = tObj.workArray[tObj.counter]["inline"]
+		var strings = inlineData["string"]
 		tObj.optionsHolder.find(".ps-type-content").prepend('<span class="ps-inline-txt">'+strings[0]+'</span>').append('<span class="ps-inline-txt">'+strings[1]+'</span>');
-		tObj.optionsHolder.find(".ps-type-field").css({width: tObj.workArray[tObj.counter]["inline"]["width"]})
+		tObj.optionsHolder.find(".ps-type-field").css({width: inlineData["width"]})
+		if ( inlineData["holder"]!=undefined||inlineData["holder"]!=="") tObj.optionsHolder.find(".ps-type-field").val(inlineData["holder"])
 	}
 	
-	if (tObj.randLetters) {lt_randomWords(tObj.workArray[tObj.counter]["forms"],tObj.optionsHolder.find(".ps-type-rand"), tObj.optionsHolder.find(".ps-type-field"),tObj.optionsHolder.find("div.ps-txt-letters"),tObj.specSigns, tObj.intextInput, tObj.intextReplace);}
+	if (tObj.randLetters) {lt_randomWords(tObj.workArray[tObj.counter]["forms"],tObj.optionsHolder.find(".ps-type-rand"), tObj.optionsHolder.find(".ps-type-field"),tObj.optionsHolder.find("div.ps-txt-letters"),tObj.specSigns, tObj.helperStay, tObj.intextReplace,tObj.noSpacer);}
 	
 	tObj.checkTypeBtn.show().removeClass("ps-invisible").unbind("click").click(function() {
 		var userAnswer = tObj.optionsHolder.find(".ps-type-field").val();
@@ -630,7 +637,7 @@ $(document).ready(function() {
 }
 
 
-function lt_randomWords(word,container,target,html_target,spec_signs,hider,replacer) {
+function lt_randomWords(word,container,target,html_target,spec_signs,hider,replacer,no_spacer) {
 
 	var tStr = word;
 	container.empty();
@@ -646,7 +653,7 @@ function lt_randomWords(word,container,target,html_target,spec_signs,hider,repla
 		var tVal = target.val();
 		var newVal;
 		var tText = t.text();
-		if (tText=="!"||tText=="?"||tText==","||tText=="."){
+		if (no_spacer == true || tText=="!"||tText=="?"||tText==","||tText=="."){
 			newVal= tVal +t.text();
 		}else{
 			newVal= tVal +" "+t.text();
@@ -659,7 +666,7 @@ function lt_randomWords(word,container,target,html_target,spec_signs,hider,repla
 	});
 	
 	target.parent().find(".pt-type-reset").remove();
-	target.before('<a href="javascript:;" class="pt-type-reset" title="Восстановить">X</a>');
+	target.after('<a href="javascript:;" class="pt-type-reset" title="Восстановить">X</a>');
 	
 	target.parent().find(".pt-type-reset").click(function() {
 		target.val("");
