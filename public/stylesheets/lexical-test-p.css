@@ -1027,7 +1027,12 @@ min-height: 25px;
 .kid-inline .ps-type-rand {margin-bottom: 25px;min-height: 25px;}
 .kid-inline .ps-quest {width: 230px}
 
-
+.kid-opt .ps-string-wrapper img {position: relative; width: 94px;margin: -25px 11px -25px 0;}
+.kid-opt .ps-string-wrapper {font-size: 25px;}
+.kid-opt  .pt-spec .ps-type-rand {min-height: 21px;margin-right: -2px;padding: 11px 3px;}
+.kid-opt .ps-type-rand span,#ph2 div.ps-txt-letters {font-size: 21px;font-weight: normal;}
+.kid-opt  div.ps-txt-letters {padding: 7px 5px 4px;min-height: 29px;}
+.kid-opt .ps-type-rand span {margin-left: 5px;}
 
 
 
