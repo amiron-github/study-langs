@@ -1034,9 +1034,12 @@ min-height: 25px;
 .kid-opt  div.ps-txt-letters {padding: 7px 5px 4px;min-height: 29px;}
 .kid-opt .ps-type-rand span {margin-left: 5px;}
 
+.pt-add-img .ps-tasks-list li {line-height: 18px; margin: 4px 0px;}
+.ps-add-img {padding: 5px; background-image: url(/images/transparent-60.png); text-align: center;min-height: 136px; margin-left: 10px; margin-top:2px;box-shadow: 0px 1px 3px #627EAF;}
+.ps-add-img-box {width: 205px;}
 
-
-
+.pt-add-img  .ps-bottom {padding-left: 16px;}
+.pt-add-img.ps-not-type .ps-bottom {padding-left: 67px;}
 
 
 

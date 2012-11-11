@@ -131,6 +131,7 @@ this.randLetters = hash['rand_letters'];		// default - false
 this.intextInput = hash['intext_input'];		// default - false
 this.intextReplace = hash['intext_replace'];    // default - false
 this.helperStay = hash['helper_stay'];          // default - false
+this.addImg = hash['add_img'];				// default - false
 this.noSpacer = hash['no_spacer'];          // default - false
 this.callback = hash['callback'];
 
@@ -154,6 +155,7 @@ if (this.callback == undefined) this.callback = function() {return false};
 if (this.intextReplace == undefined && this.inputType == 'input' && this.randLetters == true ) this.intextReplace = true;
 if (this.intextReplace == undefined) this.intextReplace = false;
 if (this.noSpacer == undefined) this.noSpacer = false;
+if (this.addImg == undefined) this.addImg = false;
 if (this.helperStay == undefined && this.intextInput==true) {this.helperStay = true;
 }else if (this.helperStay == undefined) {this.helperStay = false;} 
 
@@ -365,6 +367,7 @@ if (tObj.noMouseCheck) tObj.checkTypeBtn.mouseout().mouseup()
 	}else {
 		tObj.getOptions();
 	}
+	if (tObj.addImg) tObj.container.find(".ps-add-img").html('<img src="'+tObj.workArray[tObj.counter]["image"]+'">')
 	if (this.questNum - this.counter == 1) tObj.nextButton.val(tObj.seeResultsTxt);			
   }else {
 	tObj.gotoEnd();
@@ -448,7 +451,6 @@ this.getOptions = function() {
 	var endOptions = '<ul class="no-list">';
 	var optionsList = '';
 	var correctIndex;
-
   if (tObj.answerType == "options") {
 		var tItem = tObj.workArray[tObj.counter]["options"]
 		tObj.container.removeClass("ps-3-options")
@@ -502,7 +504,12 @@ this.getOptions = function() {
 	tObj.optionsHolder.find("li").each(function(i,elem){
 	
 		$(elem).click(function() {
-			$(elem).find("input").attr("checked", "checked")
+			$(elem).find("input").attr("checked", "checked");
+			if (tObj.answerType == "options") {
+				var strAn = $(elem).text();
+				if ($(elem).find("span.ps-nothin").length > 0) strAn="";
+				tObj.stringHolder.find(".ps-miss-ans").text(strAn);
+			}
 			if ($(elem).data('correct') == "true") {
 				tObj.correctAnswer();
 			} else {
