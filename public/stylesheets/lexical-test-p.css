@@ -953,12 +953,6 @@ min-height: 21px;
 min-height: 30px;
 }
 
-
-.ps-type-rand nobr span {
-white-space: nowprap;
-visibility: visible !important;
-}
-
 .ps-final-bg .ps-type-rand nobr span {
 visibility: hidden !important;
 }
@@ -1017,15 +1011,14 @@ min-height: 25px;
 }
 
 .kid-inline .ps-bottom {padding-bottom: 14px;}
-.kid-inline .ps-type-inline .ps-txt-letters {padding: 1px 6px; font-size: 23px;}
+.kid-inline .ps-type-inline .ps-txt-letters {padding: 1px 6px; font-size: 21px;}
 .kid-inline  .ps-type-rand span {padding: 0px 6px 1px; font-size: 21px; font-weight: normal; margin-left: 8px;}
-.kid-inline .ps-type-elem {margin-top: 3px; padding-top: 30px;}
 .kid-inline .ps-autoplay-wrapper {text-align: left; top: 0;}
-.kid-inline .ps-inline-txt {font-size: 23px;}
+.kid-inline .ps-inline-txt {font-size: 21px;}
 .kid-inline a.ps-show-type {visibility: hidden;}
-.kid-inline .ps-type-elem {background-image: url(/images/transparent-60.png);}
-.kid-inline .ps-type-rand {margin-bottom: 25px;min-height: 25px;}
+.kid-inline .ps-type-elem {margin-top:3px;padding-top:30px;background-image:url(/images/transparent-60.png);}
 .kid-inline .ps-quest {width: 230px}
+.kid-inline .pt-spec .ps-type-rand {min-height: 21px;margin-right: -2px;padding: 8px 3px;margin-bottom: 25px;}
 
 .kid-opt .ps-string-wrapper img {position: relative; width: 94px;margin: -25px 11px -25px 0;}
 .kid-opt .ps-string-wrapper {font-size: 25px;}
@@ -1040,6 +1033,12 @@ min-height: 25px;
 
 .pt-add-img  .ps-bottom {padding-left: 16px;}
 .pt-add-img.ps-not-type .ps-bottom {padding-left: 67px;}
+.ps-var-hidden {visibility: hidden;}
+.ps-type-rand nobr span {white-space: nowprap;visibility:visible}
+}
+
+
+
 
 
 

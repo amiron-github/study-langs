@@ -4,9 +4,6 @@
 text-align: center;
 }
 
-
-
-
 .es-ex-buttons input {
 background-image:url(/images/btn-grd.png);
 background-position:50%;
@@ -143,7 +140,7 @@ padding: 0 20px 15px 30px;
 font-size: 30px;
 color: #fff;
 font-weight: normal;
-text-shadow: 1px 1px 1px #555;
+text-shadow: 0px 1px 2px #555;
 }
 
 

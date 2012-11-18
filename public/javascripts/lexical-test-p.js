@@ -666,7 +666,7 @@ function lt_randomWords(word,container,target,html_target,spec_signs,hider,repla
 			newVal= tVal +" "+t.text();
 		}
 		if (replacer != undefined && replacer == true) newVal = t.text();
-		if (hider!= undefined && hider == false) t.css({visibility: "hidden"});
+		if (hider!= undefined && hider == false)   t.addClass('ps-var-hidden'); // t.css({visibility: "hidden"}); // hide the element
 		target.val(newVal);              // - space for words is added 
 		html_target.text( newVal );
 		target.removeClass("ps-untyped").removeClass("ps-typed")
@@ -680,8 +680,8 @@ function lt_randomWords(word,container,target,html_target,spec_signs,hider,repla
 		html_target.text("");
 		target.removeClass("ps-untyped").removeClass("ps-typed")
 		variants.each(function(i,elem) {
-				if ($(elem).css("visibility")=="hidden") {
-						$(elem).css({visibility: "visible"});
+				if ($(elem).hasClass("ps-var-hidden")==true) {
+						$(elem).removeClass("ps-var-hidden");
 				}
 		});
 	});
