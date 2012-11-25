@@ -1032,7 +1032,7 @@ min-height: 25px;
 .ps-add-img-box {width: 205px;}
 
 .pt-add-img  .ps-bottom {padding-left: 16px;}
-.pt-add-img.ps-not-type .ps-bottom {padding-left: 67px;}
+.pt-add-img.ps-not-type .ps-bottom {padding-left: 63px;}
 .ps-var-hidden {visibility: hidden;}
 .ps-type-rand nobr span {white-space: nowprap;visibility:visible}
 }

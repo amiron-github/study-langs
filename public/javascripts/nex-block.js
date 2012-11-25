@@ -164,7 +164,7 @@ tObj.swButtons.click(function(){
 })
 
 tObj.mainTab.click(function() {
-	if (!tObj.nexWrapper.hasClass("nex-expanded")) tObj.tabsButtons.filter(".nex-t-active").click();
+	//if (!tObj.nexWrapper.hasClass("nex-expanded")) tObj.tabsButtons.filter(".nex-t-active").click();
 });
 	
 }
