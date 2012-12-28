@@ -23,7 +23,9 @@ $(document).ready(function() {
 });
 
 function completeNex(block) { // place in array
- $(".nex-check-done").eq(block).removeClass("need-test").removeClass("nex-checked").click().addClass("need-test");
+	var t = $(".nex-check-done").eq(block)
+	if (t.hasClass("need-test")) t.removeClass("need-test").removeClass("nex-checked").click().addClass("need-test");
+	else t.removeClass("nex-checked").click();
 }
 
 function callComment(comment,icon,type) {
@@ -101,8 +103,6 @@ this.start = function() {
 		}
 	});
 	
-	
-	
 	this.checkButtons = this.container.find(".nex-check-done");
 	tObj.checkButtons.click(function(e){             // show the exercise is done
 		var parent = $(this).parent().parent();
@@ -113,7 +113,7 @@ this.start = function() {
 			parent.removeClass("nex-b-done")
 		} else {
 		   if ($(this).hasClass("need-test")) {
-			messageIt("<b>You need to complete the test!!!</b>", 0) /*general functuib*/
+			messageIt("<b>Нужно выполнить упражнение!</b>", 0) /*general functuib*/
 		   } else {
 			$(this).addClass("nex-checked");
 			var tIndex = tObj.nexContainers.index(parent);

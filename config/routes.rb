@@ -72,8 +72,9 @@ ActionController::Routing::Routes.draw do |map|
   map.texts_page '/:lang/:to_lang/texts', :controller => 'materials', :action=>'publish'
   map.translation_page '/:lang/:to_lang/translation', :controller => 'materials', :action=>'publish'
 
-  map.translation '/:lang/:to_lang/kids/:page', :controller => 'materials', :action=>'publish'
-  map.translation '/kids/:page', :controller => 'materials', :action=>'publish'
+  map.kids '/:lang/:to_lang/kids/:subcategory/:page', :controller => 'materials', :action=>'publish'
+  map.kids '/:lang/:to_lang/kids/:page', :controller => 'materials', :action=>'publish'
+  map.kids '/kids/:page', :controller => 'materials', :action=>'publish'
   map.translation '/:lang/:to_lang/translation/:page', :controller => 'materials', :action=>'publish'
   map.translation '/translation/:page', :controller => 'materials', :action=>'publish' 
   map.texts '/:lang/:to_lang/texts/:page', :controller => 'materials', :action=>'publish'

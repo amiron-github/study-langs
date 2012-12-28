@@ -531,9 +531,9 @@ this.getAnswersOrder = function() {
 
 this.correctAnswer = function () {
 	tObj.alertHolder.html("" + tObj.correctMsg + "").addClass(tObj.correctClass).css({opacity: '0.8'});
-	tObj.correctAswersNum ++;
+	if (tObj.checkTypeBtn.data("checked") != "1" ) {tObj.correctAswersNum ++;}
+	tObj.checkTypeBtn.data("checked","1");
 
-	
 	if (tObj.answerType != 'yn' && tObj.answerType != 'type') {
 		tObj.optionsHolder.find("li").unbind("click").each(function(i, elem) {
 			if ($(elem).data('correct') != 'true') {
@@ -584,6 +584,7 @@ this.gotoNext = function() {
 		//tObj.ynButtons.unbind("click");
 	}
 	tObj.counter++;
+	tObj.checkTypeBtn.removeData("checked");
 	tObj.step();
 	
 	if (tObj.questType == 'audio') { 
