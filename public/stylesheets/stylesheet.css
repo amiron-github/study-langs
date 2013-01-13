@@ -3358,7 +3358,7 @@ padding: 0 20px 10px;
 .slides-container {
 border: 5px solid #6F98DF;
 background-color: #A5C4F9;
-max-width: 700px;
+max-width: 800px;
 position: relative;
 overflow: hidden;
 margin: 0 auto;
@@ -3488,12 +3488,15 @@ font-size: 11px;
 }
 
 ul.sl-features-list li {
+font-style: italic;
+font-weight: bold;
+font-size: 11px;
 padding: 1px 5px 1px 35px;
 margin: 10px 0;
 background-image: url(/images/icons/tick.png);
 background-repeat: no-repeat;
 background-position: 12px 1px;
-color: #5F3300;
+color: #7E5C35; /*#5F3300;*/
 }
 
 .slides-bloc-details {

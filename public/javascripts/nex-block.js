@@ -33,12 +33,14 @@ function callComment(comment,icon,type) {
 	var posT = icon.offset().top - $(window).scrollTop();
 	var posL = 'center';
 	var tClass = "nex-comment";
-	var box = comment.parent().parent()
-	var btn= box.find(".nex-com-icon");
+	var box = comment.parent().parent();
+	
+	var btn= icon;
+	
 	if ($("#menu_content").hasClass("m-menu-hidden")==false) { 
 		posL = $("#contentcell").offset().left + $("#contentcell").width()/2-300 - $(window).scrollLeft();
 	}
-	if (type==2) {tClass="nex-example"; btn=box.find(".nex-ex-icon");}
+	if (type==2) {tClass="nex-example";}
 	comment.dialog({
 		width:600, 
 		dialogClass: tClass,
