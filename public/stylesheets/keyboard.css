@@ -267,3 +267,14 @@ te-xt-transform: lowercase;
 outline: none;
 white-space: nowrap;
 }
+
+.french-keys  .drag-controls, .french-keys .drag-panel {
+min-width: 363px;
+width: 363px;
+}
+
+.french-keys  .k_settings  {
+min-width: 361px;
+width: 361px;
+}
+

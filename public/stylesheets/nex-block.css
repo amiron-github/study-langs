@@ -277,7 +277,8 @@ overflow: hidden;
 }
 
 .nex-header {
-padding: 9px 115px 9px 55px;
+text-indent: -100px;
+padding: 9px 115px 9px 155px;
 color: #666;
 font-weight: bold;
 font-family: Arial, sans serif;
@@ -289,6 +290,9 @@ border-top: 1px solid #DDD;
 .nex-footer {
 text-align: center;
 padding: 9px 55px 9px 55px;
+text-indent: 0px;
+border-top: 1px solid #aaa;
+box-shadow: inset 0 1px 1px #ddd;
 }
 body .su-present table td {
 font-size: 14px;
@@ -298,8 +302,8 @@ cursor: pointer;
 }
 
 .nex-container {
-min-height: 450px;
-border-bottom: 1px solid #BFBFBF;
+min-height: 400px;
+bor-der-bottom: 1px solid #BFBFBF;
 padding: 30px 50px;
 }
 
