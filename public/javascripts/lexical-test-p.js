@@ -288,7 +288,7 @@ this.start = function () {
 		
 			if (tObj.inputType== "input") {
 				tObj.optionsHolder.find("input.ps-type-field").show();
-				if (tObj.virtKeys) tObj.optionsHolder.css({paddingTop: "0"}).find(".kb-show-wrapper").show()
+				if (tObj.virtKeys) tObj.optionsHolder.css({paddingTop: "0"}).find(".kb-sh-ow-wrapper").show()
 				var kb_link = tObj.optionsHolder.find(".show_keyboard"); 
 				if (kb_link.length > 0 ) {
 					kb_link.click(function() {

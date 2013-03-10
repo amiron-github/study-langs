@@ -214,7 +214,9 @@ display: none;
 }
 
 .active_input {
-border: 2px solid #5981EF !important;
+border: 1px solid #5981EF !important;
+box-shadow: 0 1px 4px #5981EF;
+outline-color:#5981EF;
 }
 
 .active_wrapper {
