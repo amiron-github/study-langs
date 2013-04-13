@@ -36,23 +36,24 @@ require_role "admin", :except => [:show, :show_by_cat, :show_cat, :show_favorite
    def show_by_cat
     @forum = Forum.find(params[:id])
 	@find_status = '0'
-	if params[:lang]&&params[:to_lang]
-		@find_status=fcategories_status(params[:lang],params[:to_lang])
-	else
-		@find_status=fcategories_status('en','ru')
-	end
-	if params[:lo]
-		@find_status = params[:lo]
-		cookies[:f_cat_lopt] = params[:lo]
-		#if params[:lo]=='0'			#why is it commented?
-		#	cookies.delete :f_cat_lopt
-		#end
-	elsif cookies[:f_cat_lopt]
-		@find_status = cookies[:f_cat_lopt]
-	end
+	
+#	if params[:lang]&&params[:to_lang]
+#		@find_status=fcategories_status(params[:lang],params[:to_lang])
+#	else
+#		@find_status=fcategories_status('en','ru')
+#	end
+#	if params[:lo]
+#		@find_status = params[:lo]
+#		cookies[:f_cat_lopt] = params[:lo]
+#		#if params[:lo]=='0'			#why is it commented?
+#		#	cookies.delete :f_cat_lopt
+#		#end
+#	elsif cookies[:f_cat_lopt]
+#		@find_status = cookies[:f_cat_lopt]
+#	end
 	
 	if @find_status == '0'
-		@fcategories = Fcategory.find(:all)
+		@fcategories = Fcategory.find(:all, :conditions => ['status > ?', -1])
 	else
 		search_status = @find_status
 		if @find_status == '3' 
@@ -61,6 +62,7 @@ require_role "admin", :except => [:show, :show_by_cat, :show_cat, :show_favorite
 		@spec_lang = sort_by_lang(@find_status)[0]
 		@fcategories = Fcategory.find(:all, :conditions => ['status=? or status=?', search_status,0])
 	end
+	
 	@fcategories.each do |cat|
 		len = 0
 		cat.topics.each do |topic|
@@ -147,7 +149,6 @@ require_role "admin", :except => [:show, :show_by_cat, :show_cat, :show_favorite
     @forum = Forum.find(params[:forum_id])
 	@cat = Fcategory.find(params[:cat_id])
 	@find_status = @cat.status.to_s
-	@view_type = list_view
 	@view_type = list_view
 	paging = pages_by_view(@view_type)
 	if params[:l]
@@ -263,6 +264,8 @@ private
 		langs = [1,2]
 	elsif option == '3'
 		langs = [3,1]
+	elsif option == '4'
+		langs = [1,3]
 	else 
 		langs = false
 	end
@@ -276,9 +279,9 @@ private
 	elsif lang == 'ru'&& to_lang == 'en' 
 		status = '2'
 	elsif lang == 'fr'&& to_lang == 'ru' 
-		status = '1'
-	elsif lang == 'ru'&& to_lang == 'fr' 
 		status = '3'
+	elsif lang == 'ru'&& to_lang == 'fr' 
+		status = '4'
 	end
 	return status
   end	

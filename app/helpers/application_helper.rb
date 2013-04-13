@@ -131,23 +131,27 @@ require 'digest/md5'
   end	
   
   def category_name(category)
-	name = category.name
-	if I18n.locale == 'ru'
-		name = category.name_ru
-	elsif I18n.locale == 'fr'
-		name = category.name_fr
+	if category
+		name = category.name
+		if I18n.locale == 'ru'
+			name = category.name_ru
+		elsif I18n.locale == 'fr'
+			name = category.name_fr
+		end
+		return name
 	end
-	return name
   end
   
   def category_desc(category)
-	desc = category.desc
-	if I18n.locale == 'ru'
-		desc = category.desc_ru
-	elsif I18n.locale == 'fr'
-		desc = category.desc_fr
+	if category
+		desc = category.desc
+		if I18n.locale == 'ru'
+			desc = category.desc_ru
+		elsif I18n.locale == 'fr'
+			desc = category.desc_fr
+		end
+		return desc
 	end
-	return desc
   end
   
   def comment_word(number)

@@ -33,7 +33,7 @@
 				<%= link_to h(topic.name), :controller => 'topics', :action=>'show', :id=>topic.id%>
 			</div>
 			<div class="forum-item-bottom">
-				<%= show_post_time(topic.created_at) %> - <%= link_to category_name(topic.fcategory), {:controller=>'forums', :action=>'show_cat',:forum_id=>topic.forum_id, :cat_id=>topic.fcategory.id} %> - <%=h show_lang(topic.lang) %>-<%=h show_lang(topic.to_lang) %>
+				<%= show_post_time(topic.created_at) %> - <%= link_to category_name(topic.fcategory), {:controller=>'forums', :action=>'show_cat',:forum_id=>topic.forum_id, :cat_id=>topic.fcategory.id} %> <%unless topic.lang==0 %>- <%=h show_lang(topic.lang) %>-<%=h show_lang(topic.to_lang) %><%end%>
 			</div>
 			
 			<div class="forum-item-content"> 

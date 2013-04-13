@@ -3,6 +3,8 @@
 		<select name="lo" onChange="this.form.submit()">
 			<option <%if @find_status == '1' %>selected<%end%> value="1"><%= t('langs.en')%>-<%= t('langs.ru')%></option>
 			<option <%if @find_status == '2' %>selected<%end%> value="2"><%= t('langs.ru')%>-<%= t('langs.en')%></option>
+			<option <%if @find_status == '3' %>selected<%end%> value="3"><%= t('langs.fr')%>-<%= t('langs.ru')%></option>
+			<option <%if @find_status == '4' %>selected<%end%> value="4"><%= t('langs.ru')%>-<%= t('langs.fr')%></option>
 			<option <%if @find_status == '0'%>selected<%end%> value="0"><%= t('langs.all')%></option>
 		</select>
 		<%= t('forum.string.view')%>

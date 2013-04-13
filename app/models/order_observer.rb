@@ -6,7 +6,7 @@ class OrderObserver < ActiveRecord::Observer
         order.expired_at= d
 
 	else
-	       order.expired_at=DateTime.now+365	
+	       order.expired_at=DateTime.now+90	
         end
 	end
         
@@ -16,7 +16,9 @@ class OrderObserver < ActiveRecord::Observer
           OrderMailer.deliver_purchase_notification(order)
           OrderMailer.deliver_admin_notification(order)
         else 
-          OrderMailer.deliver_trial_notification(order)
+			unless order[:send_email] == 0
+				OrderMailer.deliver_trial_notification(order)
+			end
       	end
     end
   end

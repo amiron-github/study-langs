@@ -61,12 +61,15 @@ ru:
     fr: Французский
     ja: Японский
     all: Все языки
-    other: Другой
+    misc: Разное
+    other: Другое
     short:
       ru: Рус
       en: Анг
       fr: Фр
       ja: Яп
+      misc: разное
+      all: все
       other: другой
   forum:
     tabs:

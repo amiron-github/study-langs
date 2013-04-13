@@ -1,8 +1,7 @@
 <% @page_title = t('forum.string.forum_name')+" :: Study-Languages-Online.com" %>
 <% content_for :special_js_css do %>
-
+<%unless @canonical_url=="" %><link rel="canonical" href="<%= @canonical_url %>"/><%end%>
 <script type="text/javascript">
-
 
 $(document).ready(function(){
 	$("#edit_topic").submit(function(){ 
@@ -92,7 +91,9 @@ function checkTopicContent() {
 <%= t('forum.string.langs')%>: &nbsp;
 			<span class="f-cat-langs"> <%if @langs_option == '1' %><%= t('langs.en')%>-<%= t('langs.ru')%><%end%>
 			<%if @langs_option == '2' %><%= t('langs.ru')%>-<%= t('langs.en')%><%end%> 
-			<%if @langs_option == '0'%><%= t('langs.all')%><%end%>  </span>
+			<%if @langs_option == '3' %><%= t('langs.fr')%>-<%= t('langs.ru')%><%end%>
+			<%if @langs_option == '4' %><%= t('langs.ru')%>-<%= t('langs.fr')%><%end%>
+			<%if @langs_option == '0'%><%= t('langs.misc')%><%end%>  </span>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <%= t('forum.string.cat')%>: <span class="f-cat-langs"><%= link_to category_name(@topic.fcategory), {:controller=>'forums', :action=>'show_cat',:forum_id=>@topic.forum_id, :cat_id=>@topic.fcategory.id}, {:title=> 'Category: '+@topic.fcategory.name}%></span> 
 </div>
@@ -116,18 +117,24 @@ function checkTopicContent() {
 					<select name="lang_option" style="font-size: 11px; min-width: 160px;" id="lang-option" onChange="getCatsByLang()">
 						<option <%if @langs_option == '1' %>selected<%end%> value="1"> <%= t('langs.en')%> => <%= t('langs.ru')%> </option>
 						<option <%if @langs_option == '2' %>selected<%end%> value="2"> <%= t('langs.ru')%> => <%= t('langs.en')%> </option>
+						<option <%if @langs_option == '3' %>selected<%end%> value="3"> <%= t('langs.fr')%> => <%= t('langs.ru')%> </option>
+						<option <%if @langs_option == '4' %>selected<%end%> value="4"> <%= t('langs.ru')%> => <%= t('langs.fr')%> </option>
+						<option <%if @langs_option == '0' %>selected<%end%> value="0"> <%= t('langs.other')%> </option>
 					</select>
 					<br>
 					<%= t('forum.string.cat')%>: &nbsp;&nbsp;
 					<span id="f-choose-category">
 					<select name="topic[fcategory_id]" style="font-size: 11px; min-width: 160px;" id="f-topic-cat">
-					
-						<%if @langs_option == '1'%>
-							<% @fcategories1.each do |category|%><option value="<%=category.id%>" <%if category.id == @topic.fcategory_id %>selected<%end%>><%= category_name(category)%><%end%>
+						<%if @langs_option == '1' %>
+							<% @fcategories1.each do |category|%><option <%if category.id == @topic.fcategory_id %>selected<%end%> value="<%=category.id%>"><%= category_name(category)%></option><%end%>
 						<%elsif @langs_option == '2'%>
-							<% @fcategories2.each do |category|%><option value="<%=category.id%>" <%if category.id == @topic.fcategory_id %>selected<%end%>><%=category_name(category)%><%end%>
+							<% @fcategories2.each do |category|%><option <%if category.id == @topic.fcategory_id %>selected<%end%> value="<%=category.id%>"><%=category_name(category)%></option><%end%>
+						<%elsif @langs_option == '3'%>
+							<% @fcategories3.each do |category|%><option <%if category.id == @topic.fcategory_id%>selected<%end%> value="<%=category.id%>"><%=category_name(category)%></option><%end%>
+						<%elsif @langs_option == '4'%>	
+							<% @fcategories4.each do |category|%><option <%if category.id == @topic.fcategory_id%>selected<%end%> value="<%=category.id%>"><%=category_name(category)%></option><%end%>
 						<%else%>
-							<% @fcategories.each do |category|%><option value="<%=category.id%>" <%if category.id == @topic.fcategory_id %>selected<%end%>><%=category_name(category)%><%end%>
+							<% @fcategories.each do |category|%><option <%if category.id == @topic.fcategory_id%>selected<%end%> value="<%=category.id%>"><%=category_name(category)%></option><%end%>
 						<%end%>
 					</select>
 					</span>
@@ -140,10 +147,19 @@ function checkTopicContent() {
   
  <span id="f-category-options" style="display: none">
 	<select id="f-category-1">
-		<% @fcategories1.each do |category|%><option value="<%=category.id%>" <%if category.id == @topic.fcategory_id %>selected<%end%>><%= category_name(category)%><%end%>
+		<% @fcategories1.each do |category|%><option <%if category.id == @topic.fcategory_id%>selected<%end%> value="<%=category.id%>"><%=category_name(category)%></option><%end%>
 	</select>
 	<select id="f-category-2">
-		<% @fcategories2.each do |category|%><option value="<%=category.id%>" <%if category.id == @topic.fcategory_id %>selected<%end%>><%=category_name(category)%><%end%>
+		<% @fcategories2.each do |category|%><option <%if category.id == @topic.fcategory_id%>selected<%end%> value="<%=category.id%>"><%=category_name(category)%></option><%end%>
+	</select>
+	<select id="f-category-3">
+		<% @fcategories3.each do |category|%><option <%if category.id == @topic.fcategory_id%>selected<%end%> value="<%=category.id%>"><%=category_name(category)%></option><%end%>
+	</select>
+	<select id="f-category-4">
+		<% @fcategories4.each do |category|%><option <%if category.id == @topic.fcategory_id%>selected<%end%> value="<%=category.id%>"><%=category_name(category)%></option><%end%>
+	</select>
+	<select id="f-category-0">
+		<% @fcategories.each do |category|%><option <%if category.id == @topic.fcategory_id%>selected<%end%> value="<%=category.id%>"><%=category_name(category)%></option><%end%>
 	</select>
 </span> 
  
@@ -173,7 +189,7 @@ function checkTopicContent() {
 	</div>
 	<div class="f-t-quest-sets">
 		<%= link_to category_name(@topic.fcategory), {:controller=>'forums', :action=>'show_cat',:forum_id=>@topic.forum_id, :cat_id=>@topic.fcategory.id}, {:title=> t('forum.string.cat')+': '+category_name(@topic.fcategory)}%> 
-		| <%=h show_lang @topic.lang %>-<%=h show_lang @topic.to_lang %> 
+		<%unless @topic.lang==0 %>| <%=h show_lang @topic.lang %>-<%=h show_lang @topic.to_lang %> <%end%>
 	</div>
   </div>  
 </div>

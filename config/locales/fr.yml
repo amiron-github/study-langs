@@ -61,12 +61,15 @@ fr:
     fr: français
     ja: japonais
     all: toutes les langues
+    misc: diverses
     other: autre
     short:
       ru: RU
       en: EN
       fr: FR
       ja: JA
+      misc: diverses
+      all: toutes
       other: autre
   accents:
     settings: Paramètres

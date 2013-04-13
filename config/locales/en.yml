@@ -60,12 +60,15 @@ en:
     fr: French
     ja: Japanese
     all: All languages
+    misc: Miscellaneous
     other: Other
     short:
       ru: RU
       en: EN
       fr: FR
       ja: JA
+      all: all
+      misc: Miscellaneous
       other: Other
   accents:
     settings: Settings

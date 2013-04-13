@@ -345,7 +345,7 @@ class UsersController < ApplicationController
 
 	def gettrial  	
 	current_user.orders.create(:type_id =>0, :ord_id => "free_purchase", :status => 2)
-  redirect_back_or_default("/user_profile.html")
+	redirect_back_or_default("/user_profile.html")
 	end
 
 	def success_pp

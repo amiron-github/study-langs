@@ -65,10 +65,24 @@ require_role "admin", :only => [:index, :destroy]
 	@topic.posts.shift
 	@topics_size = @topic_posts.length
 	@post = Post.new
-	@fcategories1=Fcategory.find(:all, :conditions=>['status=? or status=?',1,0])
+	@fcategories1=Fcategory.find(:all, :conditions=>['status=? or status=? or status=?',1,3,0])
 	@fcategories2=Fcategory.find(:all, :conditions=>['status=? or status=?',2,0])
-	@fcategories=Fcategory.all
+	@fcategories3=Fcategory.find(:all, :conditions=>['status=? or status=? or status=?',3, 1,0])
+	@fcategories4=Fcategory.find(:all, :conditions=>['status=? or status=?',4,0])
+	@fcategories=Fcategory.all(:all, :conditions=>['status>?',-1])
 	@langs_option = define_lang_option(@topic).to_s
+	
+	@canonical_url = "" 
+	init_url = "/forum/topic/"+@topic.id.to_s
+	if @topic.lang != 0
+		langs_info = Topic::LANG
+		if @topic.lang==2 && @topic.to_lang==1 then @canonical_url = init_url end
+		if @topic.lang==1 && @topic.to_lang==2 then @canonical_url = "/ru/en"+init_url end
+		if @topic.lang==1 && @topic.to_lang==3 then @canonical_url = "/ru/fr"+init_url end
+		if @topic.lang==3 && @topic.to_lang==1 then @canonical_url = "/fr/ru"+init_url end
+	end
+	
+	
 	add_forum_css_js
 	unless logged_in? && current_user.has_role?("admin")
 		views_num=@topic.views+1
@@ -92,9 +106,11 @@ require_role "admin", :only => [:index, :destroy]
     @topic = Topic.new
 	@forum = Forum.find(params[:forum])
 	@post = Post.new
-	@fcategories1=Fcategory.find(:all, :conditions=>['status=? or status=?',1,0])
+	@fcategories1=Fcategory.find(:all, :conditions=>['status=? or status=? or status=?',1,3,0])
 	@fcategories2=Fcategory.find(:all, :conditions=>['status=? or status=?',2,0])
-	@fcategories=Fcategory.all
+	@fcategories3=Fcategory.find(:all, :conditions=>['status=? or status=? or status=?',3, 1,0])
+	@fcategories4=Fcategory.find(:all, :conditions=>['status=? or status=?',4,0])
+	@fcategories=Fcategory.all(:all, :conditions=>['status>?',-1])
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @topic }
@@ -245,6 +261,8 @@ private
 			langs = [1,2]
 		elsif option == '3'
 			langs = [3,1]
+		elsif option == '4'
+			langs = [1,3]
 		else
 			langs = [0,0]
 		end
@@ -258,6 +276,8 @@ private
 			option = 2
 		elsif topic.lang == 3 && topic.to_lang == 1
 			option = 3
+		elsif topic.lang == 1 && topic.to_lang == 3
+			option = 4
 		else
 			option = 0
 		end
@@ -272,6 +292,8 @@ private
 		status = '2'
 	 elsif lang == 'fr'&& to_lang == 'ru' 
 		status = '3'
+	 elsif lang == 'ru'&& to_lang == 'fr' 
+		status = '4'
 	 end
 	  return status
 	end

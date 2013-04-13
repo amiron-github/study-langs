@@ -9,11 +9,17 @@
 <div class="f-t-lists" >
 	<% form_tag ( "", {:method =>:get} ) do %>
 		<%if params[:l]%><input type="hidden" name="l" value="<%= params[:l]%>"><%end%>
+
 		<%= t('forum.string.langs')%>: &nbsp;
-			<span class="f-cat-langs"> <%if @find_status == '1' %><%= t('langs.en')%>-<%= t('langs.ru')%><%end%>
+			<span class="f-cat-langs"> 
+		<!--
+			<%if @find_status == '1' %><%= t('langs.en')%>-<%= t('langs.ru')%><%end%>
 			<%if @find_status == '2' %><%= t('langs.ru')%>-<%= t('langs.en')%><%end%> 
 			<%if @find_status == '3' %><%= t('langs.fr')%>-<%= t('langs.ru')%><%end%>
-			<%if @find_status == '0'%><%= t('langs.all')%><%end%>  </span>
+			<%if @find_status == '4' %><%= t('langs.ru')%>-<%= t('langs.fr')%><%end%>
+		-->
+			<%if @find_status == '0'%><%= t('langs.all')%><%end%><%if @find_status != '0'%><%= t('langs.misc')%><%end%> </span>
+			
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<%= t('forum.string.view')%>:
 		<select name="view" onChange="this.form.submit()">

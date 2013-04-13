@@ -94,7 +94,7 @@ layout "admin"
   def edit_expiration_date
 	user = User.find(params[:id])
 	order = user.orders.find(:first, :conditions => 'status>0 and expired_at >= now()')
-	
+	order[:send_email] = 0
 	if order.update_attribute(:expired_at, params[:expiration_date])
 		info = order.expired_at.to_s(:long)
 		

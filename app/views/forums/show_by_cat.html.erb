@@ -11,7 +11,7 @@
 <%= render :partial => '/forums/f_tabs', :locals => {:active => 2} %>
 
 <div class="f-t-lists">
-
+<!--
 <% form_tag ( "", {:method =>:get} ) do %>
 	<%= t('forum.string.langs')%>
 	<select name="lo" onChange="this.form.submit()">
@@ -21,6 +21,7 @@
 		<option <%if @find_status == '0'%>selected<%end%> value="0"><%= t('langs.all')%></option>
 	</select>
 <%end %>
+-->&nbsp;
 </div>
 
 <div class="forum-wall">

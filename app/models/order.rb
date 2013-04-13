@@ -2,6 +2,7 @@ class Order < ActiveRecord::Base
    belongs_to :user
    belongs_to :product
 
+  attr_accessor :send_email
 
 #	def before_create 
 #	self.expired_at=DateTime.now+365
