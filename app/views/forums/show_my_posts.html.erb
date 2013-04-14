@@ -1,6 +1,6 @@
 <% @page_title = t('forum.string.forum_name')+" :: Study-Languages-Online.com" %>
 <% content_for :special_js_css do %>
-<% if (!params[:lang]) || (params[:lang]=='ru' && params[:to_lang]=='en') then @link_to_profile = 'user_profile.html' else @link_to_profile = 'user_profile' end%>
+<% if (!params[:lang] && !params[:to_lang]) || (params[:lang]=='ru' && params[:to_lang]=='en') then @link_to_profile = 'user_profile.html' else @link_to_profile = 'user_profile' end%>
 <%= stylesheet_link_tag 'user-profile' %>
 <%end%>
 <div class="forum">
