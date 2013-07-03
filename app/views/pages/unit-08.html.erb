@@ -1,0 +1,1812 @@
+<% 
+if (logged_in? && current_user.payment) 
+	@good_user = true
+else
+	@good_user = false
+end
+%>
+
+<% @page_title = 'Lesson 8 :: Russian Online Lessons' %>
+<% @page_meta = {'description' => ""} %>
+
+
+<% content_for :special_js_css do %>
+
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'jp-control' %>
+<%= javascript_include_tag 'lexical-test' %>
+<%= stylesheet_link_tag 'lexical-test' %>
+<%= javascript_include_tag 'test-drag-sort' %>
+<%= javascript_include_tag 'es-grammar-exercises' %>
+<%= javascript_include_tag 'es-test-drag-input' %>
+
+<%= javascript_include_tag 'short-unit' %>
+<%= stylesheet_link_tag 'short-unit' %>
+
+<%= javascript_include_tag 'dialog-player' %>
+<%= stylesheet_link_tag 'dialog_player' %>
+
+<script type="text/javascript">
+<%if params[:tab] %>
+	openTabFromUrl(<%= params[:tab] %>);
+<%else%>
+	openTabFromUrl();
+<%end%>
+</script>
+
+<style>
+#ch3 .es-ex-string-wrapper {
+background-image: url('/images/corpus.gif'); 
+background-repeat: no-repeat;
+background-position: 50% 50%;
+padding: 0px;
+width: 150px;
+height: 183px;
+}
+
+.corp {
+width: 130; 
+height: 183px;
+background-image: url(/images/action.gif);
+background-repeat: no-repeat;
+}
+
+.head {
+background-position: 1px -24px;
+}
+
+.eyes {
+background-position: -9px -14px;
+}
+
+.stomach {
+background-position: -0px 70px;
+}
+
+.hand {
+background-position: 53px 68px;
+}
+
+.teeth {
+background-position: -10px -3px;
+}
+
+.throat {
+background-position: -0px 5px;
+}
+</style>
+
+
+
+<% end %>
+
+
+
+
+<div id="pagecontent"><div id="content">
+<div class="unit-area">
+
+
+<div id="prof_tabs">
+<%= render :partial => '/site/every/settings_block' %>
+<div class="unit-title">
+Lesson 8. At the drugstore
+</div>
+<%= render :partial => '/site/every/en_ru_coverflow', :locals => {:active => 8} %>
+	<div id="tabs_row">
+            <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Dialogue</a></div></div>
+			<div id="tab02" class="ptab"><div><a href="#">Vocabulary</a></div></div>
+            <div id="tab03" class="ptab"><div><a href="#">Practice</a></div></div>
+			<div id="tab04" class="ptab"><div><a href="#">Revision</a></div></div>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+
+<div id="for_tab01" class="pBlock" style="display: block">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Dialogues</h3>
+<p class="su-step-info">
+Here you can work with dialogues of the lesson
+</p>	
+	
+
+<h4 class="su-task" >
+I. At the drugstore
+</h4>
+
+<p class="part-task">a) Listen to the dialogue and read the translation</p>
+
+
+<%= render :partial => '/site/every/dialog_player', 
+			:locals => {:cluster_id => 110, :html_id=>"dc1",
+						:d_title=>'Dialogue 8-1. Buying medications',
+:content=> "A tourist comes to the drugstore and asks a medicine against cold. She has a running nose and a sore throat. The chemist advises to take a nasal spray, sore throat pastilles and an antiviral drug. He tells how to take these medicines. The tourist buys them and thanks the chemist for help. "
+			} %>	
+
+				<script type="text/javascript"> 
+					var  dc1 = new dialog_controls( {
+					id: "dc1", 
+					file: "/audios/audio08011100.mp3",
+					tracks: [0,1437,2821,8255,10292,11102,16823,17659,33045,35579,39784,41744]
+				
+					} )
+				</script>		
+	
+<br>
+<p class="part-task">b) Listen and repeat the dialogue phrase by phrase</p>
+
+
+<h4 class="su-task">
+II. Useful expressions
+</h4>
+
+<p class="part-task">a) Find the translation of Russian phrases</p>
+
+<div id="ds1" class="ds-wrapper" style="padding: 15px; margin: 20px 30px;">
+
+<p class="ex-desc">
+Listen to the phrases. Drag the English phrases from the list below <br>and drop them into the corresponding fields.
+</p>		
+
+<table align="center" style="margin: 0 auto;">
+<tr>
+<td>
+
+
+<table class="dst-test ds-table ds-audio" cellspacing="0" align="center" style="margin: 0 auto">
+<col width="80">
+<col width="20">
+<col width="40">
+<col width="320">
+<tr>
+	<td class="ds-quest" align="center">
+			Phrase 1 
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio08013010.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+			Phrase 2
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio08013020.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 3
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio08013030.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 4
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio08013040.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 5
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio08013050.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 6
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio08013060.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 7
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio08013070.mp3', this)"></div>
+	</td>	
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 8
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio08013080.mp3', this)"></div>
+	</td>	
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 9
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio08013090.mp3', this)"></div>
+	</td>	
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+</table>
+
+</td>
+
+</tr>
+<tr>
+
+<td>
+	
+<br>
+<br>
+
+<table class="ds_variants_list" style="margin: 0 auto;" align="center">
+<col width="220">
+<col width="230">
+
+<tr valign="top">
+<td>
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">9</span>The total sum is 312 roubles.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">7</span>I'll give you nasal spray.</div></div>
+	</li>
+</ul>
+
+</td>
+<td>
+
+<ul class="no-list">
+
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">5</span>During 3 days at the very least.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">8</span>Take one pastille every 4 hours.</div></div>
+	</li>
+
+</ul>
+
+</td>
+</tr>
+<tr valign="top">
+<td colspan="2">
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>I recommend you to buy this antiviral drug.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>I have a running nose and a sore throat.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">6</span>Could you please recommend me some good medicine?</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">4</span>Use it twice a day: in the morning and in the evening.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>Do you have a high temperature?</div></div>
+	</li>
+</ul>
+</td>
+</tr>
+</table>
+
+
+</td>
+</tr>
+</table>
+
+
+<div class="es_btn_wrapper es-ex-buttons ds-check-wrapper">
+
+<input type="button" class="es_btn ds-check-button" value="Check answers">
+
+</div>
+
+
+</div>
+
+<script type="text/javascript"> 
+	var ds1 = new dragsort_test( {
+		id: "ds1", 
+		test_id: "c0108013.I.c)",
+		targets: "ds-answer", 
+		answer_elem: "ds_sort_item", 
+		variant_elem: "ds_variant",
+		answer_color: "#F7F6F6",
+		auto_check: false
+		} )
+</script>
+
+
+<br><br><br><br>
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Next part >>" onclick="openNextStep(2)">
+</div>	
+	
+	</div>
+</div>
+
+<div id="for_tab02" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Vocabulary</h3>
+<p class="su-step-info">
+Here you can learn words and expressions of the lesson.
+</p>	
+
+<h4 class="su-task">
+I. Parts of body
+</h4>
+
+<p class="part-task">a) Learn Russian words: </p>
+<%
+ @voc1 = [
+{:text=>'голов<span class="acco">а</span>',
+:id=> '659',
+:sound=>'/audios/audio08021010.mp3',
+:transcribe=>'galav<span class="acct">a</span>',
+:translate=>' head '},
+{:text=>'ш<span class="acco">е</span><i></i>я',
+:id=> '666',
+:sound=>'/audios/audio08021020.mp3',
+:transcribe=>'sh<span class="acct">e</span>ya',
+:translate=>' neck '},
+{:text=>'рук<span class="acco">а</span>',
+:id=> '658',
+:sound=>'/audios/audio08021030.mp3',
+:transcribe=>'rook<span class="acct">a</span>',
+:translate=>' arm '},
+{:text=>'п<span class="acco">а</span>лец',
+:id=> '651',
+:sound=>'/audios/audio08021040.mp3',
+:transcribe=>'p<span class="acct">a</span>lits',
+:translate=>' finger '},
+{:text=>'грудь',
+:id=> '664',
+:sound=>'/audios/audio08021050.mp3',
+:transcribe=>'gr<span class="acct">oo</span><span class="sftc">t</span>',
+:translate=>' breast '},
+{:text=>'жив<span class="acco">о</span>т',
+:id=> '667',
+:sound=>'/audios/audio08021060.mp3',
+:transcribe=>'j<span class="ry">i</span>v<span class="acct">o</span>t',
+:translate=>' belly '},
+{:text=>'ног<span class="acco">а</span>',
+:id=> '645',
+:sound=>'/audios/audio08021070.mp3',
+:transcribe=>'nag<span class="acct">a</span>',
+:id=> '662',
+:translate=>' leg '},
+{:text=>'ступн<span class="acco">я</span>',
+:sound=>'/audios/audio08021080.mp3',
+:transcribe=>'stoop<span class="sftv">n</span><span class="sfty">y</span><span class="acct">a</span>',
+:translate=>' foot '}
+ ]
+%>
+<%= render :partial => '/site/every/en_ru_voc', :locals => {:voc => @voc1} %>	
+	
+<br><br>
+
+<p class="part-task">b) Listen and find the corresponding English word:  </p>
+
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+<div id="ch1" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test' %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1",
+		test_id: "c0108022.II.b)",
+		quest_num: 15,
+		variants_num: 5,
+		quest_type: 'audio',
+		basic_array: [
+		
+<% @last_item_index = (@voc1.length)-1 -%>
+<% @voc1.each_with_index  do |word, index| -%>
+['<%= word[:sound] %>', "<%= word[:translate].to_s.gsub(/"/,'\"') %>"<%unless word[:id]==nil || word[:id]==''%>,'<%=word[:id]%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
+		} )
+</script>
+<%end%>
+
+<br>
+<h4 class="su-task">
+II. Organs
+</h4>
+
+<p class="part-task">a) Learn Russian words: </p>
+
+<%
+ @voc2 = [
+{:text=>'нос',
+:sound=>'/audios/audio08031010.mp3',
+:transcribe=>'n<span class="acct">o</span>s',
+:translate=>' nose '},
+{:text=>'глаз<span class="acco">а</span>',
+:sound=>'/audios/audio08031020.mp3',
+:transcribe=>'glaz<span class="acct">a</span>',
+:translate=>' eyes '},
+{:text=>'рот',
+:sound=>'/audios/audio08031030.mp3',
+:transcribe=>'r<span class="acct">o</span>t',
+:translate=>' mouth '},
+{:text=>'з<span class="acco">у</span>бы',
+:sound=>'/audios/audio08031040.mp3',
+:transcribe=>'z<span class="acct">oo</span>b<span class="ry">i</span>',
+:translate=>' teeth '},
+{:text=>'г<span class="acco">о</span>рло',
+:sound=>'/audios/audio08031050.mp3',
+:transcribe=>'g<span class="acct">o</span>rla',
+:translate=>' throat '},
+{:text=>'с<span class="acco">е</span>рдце',
+:sound=>'/audios/audio08031060.mp3',
+:transcribe=>'<span class="sftv">s</span><span class="sfty">y</span><span class="acct">e</span>rtse',
+:translate=>' heart '},
+{:text=>'жел<span class="acco">у</span>док',
+:sound=>'/audios/audio08031070.mp3',
+:transcribe=>'j<span class="ry">i</span>l<span class="acct">oo</span>dak',
+:translate=>' stomach '},
+{:text=>'киш<span class="acco">е</span>чник',
+:sound=>'/audios/audio08031080.mp3',
+:transcribe=>'kish<span class="acct">e</span>chnik',
+:translate=>' bowels '}
+ ]
+%>
+<%= render :partial => '/site/every/en_ru_voc', :locals => {:voc => @voc2} %>	
+	
+<br><br>
+<p class="part-task">b) Associate parts of body and organs:  </p>
+
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+
+<div id="ds3" class="ds-wrapper" style="padding: 15px; margin: 20px 30px;">
+
+<p class="ex-desc">
+Listen to the phrases. Drag the English phrases from the list below <br>and drop them into the corresponding fields.
+</p>		
+
+<table align="center" style="margin: 0 auto;">
+<tr>
+<td>
+
+
+<table class="dst-test ds-table ds-audio" cellspacing="0" align="center" style="margin: 0 auto">
+<col width="100">
+<col width="">
+<col width="40">
+<col width="100">
+<tr>
+	<td class="ds-quest" align="center">
+			шея
+	</td>
+	<td class="ds-audio-listen" align="center">
+			
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+			голова 
+	</td>
+	<td class="ds-audio-listen" align="center">
+			
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		рот
+	</td>
+	<td class="ds-audio-listen" align="center">
+			
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		грудь
+	</td>
+	<td class="ds-audio-listen" align="center">
+			
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		живот
+	</td>
+	<td class="ds-audio-listen" align="center">
+			
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+
+</table>
+
+</td>
+
+<!-- /tr>
+<tr -->
+
+<td style="padding-left: 8px;">
+	
+<table class="ds_variants_list" style="margin: 0 auto;" align="center">
+
+<tr valign="top">
+<td>
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>зубы</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">4</span>сердце</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">5</span>желудок</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>горло</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>глаза</div></div>
+	</li>
+</ul>
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+
+<div class="es_btn_wrapper es-ex-buttons ds-check-wrapper">
+
+<input type="button" class="es_btn ds-check-button" value="Check answers">
+
+</div>
+
+
+</div>
+
+<script type="text/javascript"> 
+	var ds3 = new dragsort_test( {
+		id: "ds3", 
+		test_id: "c0108032.III.b)",
+		targets: "ds-answer", 
+		answer_elem: "ds_sort_item", 
+		variant_elem: "ds_variant",
+		answer_color: "#F7F6F6",
+		auto_check: false
+		} )
+</script> 
+<%end%> 
+
+<br><br>
+
+
+
+
+<h4 class="su-task">
+III. Health problems
+</h4>
+
+<p class="part-task">a) Learn Russian words: </p>
+
+<%
+ @voc = [
+
+ {:text=>'температ<span class="acco">у</span>ра',
+:sound=>'/audios/audio08051010.mp3',
+:transcribe=>'timpirat<span class="acct">oo</span>ra',
+:translate=>' temperature '},
+{:text=>'к<span class="acco">а</span>шель',
+:sound=>'/audios/audio08051020.mp3',
+:transcribe=>'k<span class="acct">a</span>sh<span class="ry">i</span><span class="sftc">l</span>',
+:translate=>' cough '},
+{:text=>'н<span class="acco">а</span>сморк',
+:sound=>'/audios/audio08051030.mp3',
+:transcribe=>'n<span class="acct">a</span>smark',
+:translate=>' cold, coryza '},
+{:text=>'воспал<span class="acco">е</span>ние',
+:sound=>'/audios/audio08051040.mp3',
+:transcribe=>'vaspa<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>niye',
+:translate=>' inflammation '},
+{:text=>'моз<span class="acco">о</span>ль',
+:sound=>'/audios/audio08051050.mp3',
+:transcribe=>'maz<span class="acct">o</span><span class="sftc">l</span>',
+:translate=>' corn '},
+{:text=>'р<span class="acco">а</span>на',
+:sound=>'/audios/audio08051060.mp3',
+:transcribe=>'r<span class="acct">a</span>na',
+:translate=>' wound '},
+{:text=>'аллерг<span class="acco">и</span><i></i>я',
+:sound=>'/audios/audio08051070.mp3',
+:transcribe=>'alirg<span class="acct">i</span>ya',
+:translate=>' allergy '},
+{:text=>'боль',
+:sound=>'/audios/audio08051080.mp3',
+:transcribe=>'b<span class="acct">o</span><span class="sftc">l</span>',
+:translate=>' pain '},
+{:text=>'зубн<span class="acco">а</span><i></i>я боль',
+:sound=>'/audios/audio08051090.mp3',
+:transcribe=>'zoobn<span class="acct">a</span>ya b<span class="acct">o</span><span class="sftc">l</span>',
+:translate=>' toothache '},
+{:text=>'головн<span class="acco">а</span><i></i>я боль',
+:sound=>'/audios/audio08051100.mp3',
+:transcribe=>'galavn<span class="acct">a</span>ya b<span class="acct">o</span><span class="sftc">l</span>',
+:translate=>' headache '},
+{:text=>'тошнот<span class="acct">а</span>',
+:sound=>'/audios/audio08051110.mp3',
+:transcribe=>'tashnat<span class="acct">a</span>',
+:translate=>' sickness, nausea '}
+  
+ ]
+%>
+<%= render :partial => '/site/every/en_ru_voc', :locals => {:voc => @voc} %>	
+	
+
+<br><br>
+<p class="part-task">b) Give a positive answer following the model to the questions:</p>
+
+<div class="egmodel">
+<h4>Model</h4>
+
+<table  cellspacing="0" >
+	<tr valign="top">
+		<td width="360">
+			<table  cellspacing="0" >
+					<tr valign="top">
+		 				<td>
+
+		 					<p><b>У Вас н<span class="acco">а</span>сморк?</b><br />
+		 						<span class="sound" onclick="playAudio('audio08052001.mp3')">[oo v<span class="acct">a</span>s n<span class="acct">a</span>smark?] <span class="play_tip">&nbsp; &nbsp;</span></span>
+		 					</p>
+		 				</td>
+
+                        <td width="15"><p>-</p>
+                        </td>
+		 				<td>
+		 					<p><b>Да, у мен<span class="acco">я</span> н<span class="acco">а</span>сморк.</b><br />
+		 						<span class="sound" onclick="playAudio('audio08052002.mp3')">[d<span class="acct">a</span>, oo mi<span class="sftv">n</span><span class="sfty">y</span><span class="acct">a</span> n<span class="acct">a</span>smark] <span class="play_tip">&nbsp; &nbsp;</span></span>
+
+		 					</p>
+		 				</td>
+					</tr>
+				</table>
+		</td>
+		<td valign="top"><p class="ital">Do you have a running nose? -Yes, I have a running nose.</p>
+		</td>
+	</tr>
+</table>
+</div>
+
+<%
+ @phrases = [
+ 
+{:q_text=>'У Вас температ<span class="acco">у</span>ра? ',
+:q_sound=>'/audios/audio08052011.mp3',
+:q_transcribe=>'oo v<span class="acct">a</span>s timpirat<span class="acct">oo</span>ra? ',
+:sound=>'/audios/audio08052012.mp3'},
+{:q_text=>'У Вас аллерг<span class="acco">и</span><i></i>я? ',
+:q_sound=>'/audios/audio08052021.mp3',
+:q_transcribe=>'oo v<span class="acct">a</span>s alirg<span class="acct">i</span>ya? ',
+:sound=>'/audios/audio08052022.mp3'},
+{:q_text=>'У Вас тошнот<span class="acco">а</span>? ',
+:q_sound=>'/audios/audio08052031.mp3',
+:q_transcribe=>'oo v<span class="acct">a</span>s tashnat<span class="acct">a</span>? ',
+:sound=>'/audios/audio08052032.mp3'},
+{:q_text=>'У Вас зубн<span class="acco">а</span><i></i>я боль? ',
+:q_sound=>'/audios/audio08052041.mp3',
+:q_transcribe=>'oo v<span class="acct">a</span>s zoobn<span class="acct">a</span>ya b<span class="acct">o</span><span class="sftc">l</span>? ',
+:sound=>'/audios/audio08052042.mp3'},
+{:q_text=>'У Вас к<span class="acco">а</span>шель? ',
+:q_sound=>'/audios/audio08052051.mp3',
+:q_transcribe=>'oo v<span class="acct">a</span>s k<span class="acct">a</span>sh<span class="ry">i</span><span class="sftc">l</span>? ',
+:sound=>'/audios/audio08052052.mp3'},
+{:q_text=>'У Вас есть воспал<span class="acco">е</span>ние? ',
+:q_sound=>'/audios/audio08052061.mp3',
+:q_transcribe=>'oo v<span class="acct">a</span>s y<span class="acct">e</span><span class="sftc">s</span><span class="sftc">t</span> vaspa<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>niye? ',
+:sound=>'/audios/audio08052062.mp3'}
+
+ ]
+%>
+
+<%= render :partial => '/site/every/en_ru_oral_quest', :locals => {:phrases => @phrases} %>
+
+
+<br><br>
+
+
+<h4 class="su-task">
+IV. Remedies
+</h4>
+
+<p class="part-task">a) Learn Russian words: </p>
+
+<%
+ @voc1 = [
+
+ {:text=>'лек<span class="acco">а</span>рство',
+:sound=>'/audios/audio08061010.mp3',
+:transcribe=>'lik<span class="acct">a</span>rstva',
+:translate=>' medicine, drug '},
+{:text=>'ср<span class="acco">е</span>дство',
+:sound=>'/audios/audio08061020.mp3',
+:transcribe=>'s<span class="sftv">r</span><span class="sfty">y</span><span class="acct">e</span>tstva',
+:translate=>' remedy '},
+{:text=>'табл<span class="acco">е</span>тка',
+:sound=>'/audios/audio08061030.mp3',
+:transcribe=>'tab<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>tka',
+:translate=>' pill '},
+{:text=>'к<span class="acco">а</span>псула',
+:sound=>'/audios/audio08061040.mp3',
+:transcribe=>'k<span class="acct">a</span>psoola',
+:translate=>' capsule '},
+{:text=>'паст<span class="acco">и</span>лка',
+:sound=>'/audios/audio08061050.mp3',
+:transcribe=>'past<span class="acct">i</span>lka',
+:translate=>' pastille '},
+{:text=>'к<span class="acco">а</span>пли',
+:sound=>'/audios/audio08061060.mp3',
+:transcribe=>'k<span class="acct">a</span>pli',
+:translate=>' drops '},
+{:text=>'сир<span class="acco">о</span>п',
+:sound=>'/audios/audio08061070.mp3',
+:transcribe=>'sir<span class="acct">o</span>p',
+:translate=>' syrup '},
+{:text=>'мазь',
+:sound=>'/audios/audio08061080.mp3',
+:transcribe=>'m<span class="acct">a</span><span class="sftc">s</span>',
+:translate=>' ointment '},
+{:text=>'пл<span class="acco">а</span>стырь',
+:sound=>'/audios/audio08061090.mp3',
+:transcribe=>'pl<span class="acct">a</span>st<span class="ry">i</span><span class="sftc">r</span>',
+:translate=>' plaster '},
+{:text=>'бинт',
+:sound=>'/audios/audio08061100.mp3',
+:transcribe=>'b<span class="acct">i</span>nt',
+:translate=>' bandage '}
+  
+ ]
+%>
+<%= render :partial => '/site/every/en_ru_voc', :locals => {:voc => @voc1} %>	
+	
+
+<br><br>
+
+<p class="part-task">b) Read and find the corresponding English word:  </p>
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+<div id="ch2" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test' %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		test_id: "c0108062.VI.b)",
+		quest_num: 15,
+		variants_num: 5,
+		//quest_type: 'audio',
+		basic_array: [
+		
+<% @last_item_index = (@voc1.length)-1 -%>
+<% @voc1.each_with_index  do |word, index| -%>
+['<%= word[:text] %>', "<%= word[:translate].to_s.gsub(/"/,'\"') %>"]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
+		} )
+</script>
+<%end%>
+<br><br><br><br>
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Next part >>" onclick="openNextStep(3)">
+</div>
+	
+	</div>
+</div>
+
+
+<div id="for_tab03" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Practice</h3>
+<p class="su-step-info">
+Here you can learn grammar and lexical rules of the lesson.
+</p>
+
+
+<h4 class="su-task">
+I. I have a headache
+</h4>
+
+
+<div class="com-wrap">
+	<div class="com-head"><span class="com-h-ico"></span>Construction У меня болит ...</div>
+	<div class="com-content">
+<p>If you feel some pain, you can tell about it with expression "У меня болит ..." [oo minya balit] indicating the location (part of the body or the organ) of the pain. 
+In case the noun is in plural (e.g. eyes or teeth), it necessary to use "болят" [balyat] instead of "болит".</p>
+	
+	</div>
+</div>
+
+<br>
+
+<p class="part-task">a) Look, listen and reapeat the examples: </p>
+
+<%
+ @voc = [
+ 
+{:text=>'У мен<span class="acco">я</span> бол<span class="acco">и</span>т голов<span class="acco">а</span>.',
+:sound=>'/audios/audio08041010.mp3',
+:transcribe=>'oo mi<span class="sftv">n</span><span class="sfty">y</span><span class="acct">a</span> bal<span class="acct">i</span>t galav<span class="acct">a</span>',
+:translate=>' I have a headache. '},
+{:text=>'У мен<span class="acco">я</span> бол<span class="acco">и</span>т жив<span class="acco">о</span>т.',
+:sound=>'/audios/audio08041020.mp3',
+:transcribe=>'oo mi<span class="sftv">n</span><span class="sfty">y</span><span class="acct">a</span> bal<span class="acct">i</span>t j<span class="ry">i</span>v<span class="acct">o</span>t',
+:translate=>' I have a stomach-ache. '},
+{:text=>'У мен<span class="acco">я</span> бол<span class="acco">я</span>т глаз<span class="acco">а</span>.',
+:sound=>'/audios/audio08041030.mp3',
+:transcribe=>'oo mi<span class="sftv">n</span><span class="sfty">y</span><span class="acct">a</span> ba<span class="sftv">l</span><span class="sfty">y</span><span class="acct">a</span>t glaz<span class="acct">a</span>',
+:translate=>' My eyes heart me.'}
+  
+ ]
+%>
+
+<%= render :partial => '/site/every/en_ru_model', :locals => {:voc => @voc} %>
+
+<br><br>
+<p class="part-task">b) Look at the location of the pain and choose a corresponding Russian phrase: </p>
+
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+<div id="ch3" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test' %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch3 = new ch_exercise( {
+		id: "ch3", 
+		test_id: "c0108042.IV.b)",
+		random_order: false,
+		quest_type: 'html',
+		basic_array: [
+		
+['<div class="corp head"></div>','У меня болит голова.'],
+['<div class="corp eyes"></div>','У меня болят глаза.'],
+['<div class="corp hand"></div>','У меня болит рука.'],
+['<div class="corp throat"></div>','У меня болит горло.'],
+['<div class="corp teeth"></div>','У меня болят зубы.'],
+['<div class="corp stomach"></div>','У меня болит живот.']
+
+		]
+		
+		} )
+</script>
+<%end%>
+<br><br>
+<p class="part-task">c) Build phrases in Russian:</p>
+
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+
+<div class="su-exerc">
+<div id="di1">	
+				
+<p class="ex-desc">Drag and drop the following words to build phrases. You can read correct answers by clicking the button "Display answers"</p> 
+
+<br> 
+<table class="di_variants noselect di_var_view" cellspacing="14" align="center" >
+<tr>
+	<td>
+		<div>У меня</div>
+	</td>
+	<td>
+		<div>живот</div>
+	</td>
+	<td >
+		<div>нога</div>
+	</td>
+	<td>
+		<div>глаза</div>
+	</td>
+	<td>
+		<div>горло</div>
+	</td>
+</tr>
+<tr>
+	<td>
+		<div>болит</div>
+	</td>
+	<td>
+		<div>болят</div>
+	</td>
+	<td>
+		<div>голова</div>
+	</td>
+	<td>
+		<div>зубы</div>
+	</td>
+	<td>
+		<div>грудь</div>
+	</td>
+
+</tr>
+</table>
+<br> 
+ 
+
+
+<div  class="gr_ex_type di_mix">
+<div class="gr-ex-testid">c0108043.IV.c)</div>
+<%
+ @phrases = [
+{:to_bild=> "I have a stomach-ache. ", 
+:answer=>'У меня болит живот', 
+:show=> 'У меня болит живот.', 
+:sound=>'/audios/audio08043010.mp3'},
+{:to_bild=> "I have a sore throat.", 
+:answer=>'У меня болит горло', 
+:show=> 'У меня болит горло.', 
+:sound=>'/audios/audio08043020.mp3'},
+{:to_bild=> "I have a headache.", 
+:answer=>'У меня болит голова', 
+:show=> 'У меня болит голова.', 
+:sound=>'/audios/audio08043040.mp3'},
+{:to_bild=> "I feel pain in my leg.", 
+:answer=>'У меня болит нога', 
+:show=> 'У меня болит нога.', 
+:sound=>'/audios/audio08043050.mp3'},
+{:to_bild=> "My eyes heart me.", 
+:answer=>'У меня болят глаза.', 
+:show=> 'У меня болят глаза.', 
+:sound=>'/audios/audio08043060.mp3'}
+ ]
+%>
+<%= render :partial => '/site/every/en_ru_pseudo', :locals => {:phrases => @phrases} %>
+
+</div>
+</div>
+</div> 
+<script type="text/javascript"> 
+	var di1 = new draginput_test( {
+		id: "di1", 
+		targets: "gext_task", 
+		in_targets: "input",
+		clear_option: true,
+		variant_elem: "di_variants div"
+
+		} )
+</script>
+<%end%>
+
+<br><br>
+<p class="part-task">d) Translate phrases from English into Russian </p>
+
+
+<%
+ @phrases = [
+
+{:q_text=>'I have a stomach-ache. ',
+:sound=>'/audios/audio08043010.mp3'},
+{:q_text=>'I have a sore throat. ',
+:sound=>'/audios/audio08043020.mp3'},
+{:q_text=>'I have a toothache. ',
+:sound=>'/audios/audio08043030.mp3'},
+{:q_text=>'I have a headache. ',
+:sound=>'/audios/audio08043040.mp3'},
+{:q_text=>'I feel pain in my leg. ',
+:sound=>'/audios/audio08043050.mp3'},
+{:q_text=>'My eyes heart me. ',
+:sound=>'/audios/audio08043060.mp3'},
+{:q_text=>'I have pain in my finger. ',
+:sound=>'/audios/audio08043070.mp3'},
+{:q_text=>'I have a chest pain. ',
+:sound=>'/audios/audio08043080.mp3'}
+
+ ]
+%>
+
+<%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
+
+
+<br><br>
+<h4 class="su-task">
+II.  Asking for advice
+</h4>
+
+<p class="part-task">a) Translate phrases from English into Russian using the following expression: </p>
+
+
+<div class="egmodel">
+<h4>Expression</h4>
+<table  cellspacing="0" >
+	<tr valign="top">
+		<td width="320">
+			<table  cellspacing="0" >
+
+					<tr valign="top">
+		 				<td>
+		 					<p><b>Что Вы мне посов<span class="acco">е</span>туете?</b><br />
+		 						<span class="sound" onclick="playAudio('audio08053001.mp3')">[sht<span class="acct">o</span> v<span class="acct"><span class="ry">i</span></span> m<span class="sftv">n</span><span class="sfty">y</span><span class="acct">e</span> pasa<span class="sftv">v</span><span class="sfty">y</span><span class="acct">e</span>tooiti?] <span class="play_tip">&nbsp; &nbsp;</span></span>
+
+		 					</p>
+		 				</td>
+					</tr>
+				</table>
+		</td>
+		<td valign="top"><p class="ital">What can you advise me?</p>
+		</td>
+	</tr>
+</table>
+</div>
+
+<%
+ @phrases = [
+
+{:q_text=>'I have a cough. What can you advise me? ',
+:sound=>'/audios/audio08053010.mp3'},
+{:q_text=>'I have a corn. What can you advise me? ',
+:sound=>'/audios/audio08053020.mp3'},
+{:q_text=>'I have a high temperature. What can you advise me? ',
+:sound=>'/audios/audio08053030.mp3'},
+{:q_text=>'I have a running nose. What can you advise me? ',
+:sound=>'/audios/audio08053040.mp3'},
+{:q_text=>'I have an allergy. What can you advise me? ',
+:sound=>'/audios/audio08053050.mp3'},
+{:q_text=>'I have sickness. What can you advise me? ',
+:sound=>'/audios/audio08053060.mp3'},
+{:q_text=>'I have an inflammation. What can you advise me? ',
+:sound=>'/audios/audio08053070.mp3'},
+{:q_text=>'I have a toothache. What can you advise me? ',
+:sound=>'/audios/audio08053080.mp3'}
+
+ ]
+%>
+
+<%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
+
+
+<br><br>
+
+
+<h4 class="su-task">
+III. Medications
+</h4>
+<p class="part-task">a) Find the translation for remedies in Russian: </p>
+
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+
+<div id="ds4" class="ds-wrapper" style="padding: 15px; margin: 20px 30px;">
+
+<p class="ex-desc">
+Drag the English phrases from the list below <br>and drop them into the corresponding fields.
+</p>		
+
+<table align="center" style="margin: 0 auto;">
+<tr>
+<td>
+
+
+<table class="dst-test ds-table ds-audio" cellspacing="0" align="center" style="margin: 0 auto">
+<col width="180">
+<col width="">
+<col width="40">
+<col width="200">
+<tr>
+	<td class="ds-quest" align="center">
+			пастилки от кашля 
+	</td>
+	<td class="ds-audio-listen" align="center">
+			
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+			таблетки от головы
+	</td>
+	<td class="ds-audio-listen" align="center">
+			
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		лекарство от аллергии
+	</td>
+	<td class="ds-audio-listen" align="center">
+			
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		средство от зубной боли
+	</td>
+	<td class="ds-audio-listen" align="center">
+			
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		сироп от кашля
+	</td>
+	<td class="ds-audio-listen" align="center">
+			
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		лекарство от боли
+	</td>
+	<td class="ds-audio-listen" align="center">
+			
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		средство от температуры
+	</td>
+	<td class="ds-audio-listen" align="center">
+			
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		капли от насморка
+	</td>
+	<td class="ds-audio-listen" align="center">
+			
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		средство от воспаления
+	</td>
+	<td class="ds-audio-listen" align="center">
+			
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		пастилки от боли в горле
+	</td>
+	<td class="ds-audio-listen" align="center">
+			
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+
+<td>
+	
+<br><br>
+<table class="ds_variants_list" style="margin: 0 auto;" width="100%" align="center">
+<col width="50%">
+<col width="50%">
+<tr valign="top">
+<td>
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">9</span>remedy for inflammation</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">4</span>remedy for toothache</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">7</span>remedy for high temperature</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>drug for allergy</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">6</span>remedy against pain</div></div>
+	</li>
+</ul>
+
+</td>
+<td>
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">8</span>nasal drops</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>cough pastilles</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">10</span>sore throat pastilles</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>pills for headache</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">5</span>cough syrup</div></div>
+	</li>
+</ul>
+
+</td>
+
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+
+<div class="es_btn_wrapper es-ex-buttons ds-check-wrapper">
+
+<input type="button" class="es_btn ds-check-button" value="Check answers">
+
+</div>
+
+
+</div>
+
+<script type="text/javascript"> 
+	var ds4 = new dragsort_test( {
+		id: "ds4", 
+		test_id: "c0108063.VI.c)",
+		targets: "ds-answer", 
+		answer_elem: "ds_sort_item", 
+		variant_elem: "ds_variant",
+		answer_color: "#F7F6F6",
+		auto_check: false
+		} )
+</script> 
+
+<%end%>
+
+<br><br>
+
+
+<h4 class="su-task">
+IV. Take one capsule 3-4 times a day!
+</h4>
+
+<p class="part-task">a) Learn the following Russian expressions: </p>
+
+
+<%
+ @voc1 = [
+{:text=>'од<span class="acco">и</span>н раз в день',
+:sound=>'/audios/audio08071010.mp3',
+:transcribe=>'ad<span class="acct">i</span>n r<span class="acct">a</span>s v <span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span><span class="sftc">n</span>',
+:translate=>' once a day '},
+{:text=>'два р<span class="acct">а</span>за в день',
+:sound=>'/audios/audio08071020.mp3',
+:transcribe=>'dv<span class="acct">a</span> r<span class="acct">a</span>za v <span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span><span class="sftc">n</span>',
+:translate=>' two times a day '},
+{:text=>'пять раз в день',
+:sound=>'/audios/audio08071030.mp3',
+:transcribe=>'<span class="sftv">p</span><span class="sfty">y</span><span class="acct">a</span><span class="sftc">t</span> r<span class="acct">a</span>s v <span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span><span class="sftc">n</span>',
+:translate=>' five times a day '},
+{:text=>'<span class="acco">у</span>тром',
+:sound=>'/audios/audio08071040.mp3',
+:transcribe=>'<span class="acct">oo</span>tram',
+:translate=>' in the morning '},
+{:text=>'днём',
+:sound=>'/audios/audio08071050.mp3',
+:transcribe=>'d<span class="sftv">n</span><span class="sfty">y</span><span class="acct">o</span>m',
+:translate=>' in the afternoon '},
+{:text=>'в<span class="acco">е</span>чером',
+:sound=>'/audios/audio08071060.mp3',
+:transcribe=>'<span class="sftv">v</span><span class="sfty">y</span><span class="acct">e</span>chiram',
+:translate=>' in the evening '},
+{:text=>'н<span class="acco">о</span>чью',
+:sound=>'/audios/audio08071070.mp3',
+:transcribe=>'n<span class="acct">o</span>chyoo',
+:translate=>' at night '},
+{:text=>'до ед<span class="acco">ы</span>',
+:sound=>'/audios/audio08071080.mp3',
+:transcribe=>'da yid<span class="acct"><span class="ry">i</span></span>',
+:translate=>' before meals '},
+{:text=>'п<span class="acco">о</span>сле ед<span class="acco">ы</span>',
+:sound=>'/audios/audio08071090.mp3',
+:transcribe=>'pos<span class="sftv">l</span><span class="sfty">y</span>e yid<span class="acct"><span class="ry">i</span></span>',
+:translate=>' after meals '},
+{:text=>'к<span class="acco">а</span>ждые 3 час<span class="acco">а</span>',
+:sound=>'/audios/audio08071100.mp3',
+:transcribe=>'k<span class="acct">a</span>jd<span class="ry">i</span>ye tr<span class="acct">i</span> chis<span class="acct">a</span>',
+:translate=>' every 3 hours '}
+ ]
+%>
+<%= render :partial => '/site/every/en_ru_voc', :locals => {:voc => @voc1} %>
+
+
+
+<br><br>
+
+<p class="part-task">b) Listen to the recommendations and choose the correct answer::</p>
+
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+
+<div class="su-exerc"> 
+ 
+<div class="task">Choose an appropriate variant corresponding the recommendation:</div> 
+ 
+<div  class="gr_ex_variants"> 
+<div class="gr-ex-testid">c0108072.VII.b)</div> 
+ 
+ 
+<div class="gex-area-trans">
+<div  class="gr_ex_variants_wrap gexv_with_trans"> 
+
+
+<table class="gr_ex_vars_tab gexv_options" cellpadding="0" cellspacing="0" border="0"> 
+	<tr> 
+		<td> 
+			<div class="gexv_task gexv_sign" style="text-indent: 0"> 
+				<table class="ds-table" cellspacing="0" > 
+					<tr> 
+						<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap; "><strong>Phrase 1 </strong></td> 
+						<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('/audios/audio08072010.mp3', this)"></div></td> 
+					</tr> 
+				</table>
+			</div> 
+			<div class="gexv_variant"><input type="checkbox" > Take 2 pills every 3 hours, during 4 days.</div> 
+			<div class="gexv_variant"><input type="checkbox" class="ok"> Take 2 pills every 4 hours, during 4 days.</div> 
+		</td> 
+	</tr>  
+	<tr> 
+		<td> 
+			<div class="gexv_task gexv_sign" style="text-indent: 0"> 
+				<table class="ds-table" cellspacing="0" > 
+					<tr> 
+						<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap; "><strong>Phrase 2 </strong></td> 
+						<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('/audios/audio08072020.mp3', this)"></div></td> 
+					</tr> 
+				</table>
+			</div> 
+			<div class="gexv_variant"><input type="checkbox" class="ok"> Take 1 capsule 3 times a day before meals</div> 
+			<div class="gexv_variant"><input type="checkbox" > Take 1 capsule 2 times a day after meals</div> 
+		</td> 
+	</tr>
+	<tr> 
+		<td> 
+			<div class="gexv_task gexv_sign" style="text-indent: 0"> 
+				<table class="ds-table" cellspacing="0" > 
+					<tr> 
+						<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap; "><strong>Phrase 3</strong></td> 
+						<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('/audios/audio08072030.mp3', this)"></div></td> 
+					</tr> 
+				</table>
+			</div> 
+			<div class="gexv_variant"><input type="checkbox"> Take 3 capsules 2 times a day.</div> 
+			<div class="gexv_variant"><input type="checkbox" class="ok"> Take 2 capsules 3 times a day</div> 
+		</td> 
+	</tr>
+	<tr> 
+		<td> 
+			<div class="gexv_task gexv_sign" style="text-indent: 0"> 
+				<table class="ds-table" cellspacing="0" > 
+					<tr> 
+						<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap; "><strong>Phrase 4</strong></td> 
+						<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('/audios/audio08072040.mp3', this)"></div></td> 
+					</tr> 
+				</table>
+			</div> 
+			<div class="gexv_variant"><input type="checkbox"> Take 4 pills a day, 2 in the morning and 2 in the afternoon.</div> 
+			<div class="gexv_variant"><input type="checkbox" class="ok"> Take 4 pills a day, 2 in the morning and 2 in the evening.</div> 
+		</td> 
+	</tr>
+	<tr> 
+		<td> 
+			<div class="gexv_task gexv_sign" style="text-indent: 0"> 
+				<table class="ds-table" cellspacing="0" > 
+					<tr> 
+						<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap; "><strong>Phrase 5 </strong></td> 
+						<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('/audios/audio08072050.mp3', this)"></div></td> 
+					</tr> 
+				</table>
+			</div> 
+			<div class="gexv_variant"><input type="checkbox" class="ok"> Take 1 pill before meals, 3 times a day.</div> 
+			<div class="gexv_variant"><input type="checkbox" > Take 1 pill after meals, 4 times a day.</div> 
+		</td> 
+	</tr> 	
+</table> 
+</div> 
+</div>
+ 
+<p class="gexv_check es-ex-buttons gex-es-btn"> 
+	<input type="button" value="Check answers">
+</p> 
+ 
+</div> 
+
+</div> <!-- end of su-ex  --> 
+<%end%>
+
+<br><br><br><br>
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Next part >>" onclick="openNextStep(4)">
+</div>	
+
+	
+	</div>
+</div>
+
+
+
+
+<div id="for_tab04" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Revision</h3>
+<p class="su-step-info">
+Revise materials from this lesson
+</p>
+
+
+	
+<h4 class="su-task"> 
+Revise this lesson's materials 
+</h4> 
+ 
+ <p class="part-task">a) Listen and find the corresponding English phrases: </p>	
+
+
+<% 
+
+@t_phrases = [
+  {:text=> 'I recommend you to buy this antiviral drug.',
+ :sound=>'/audios/audio08013030.mp3',
+ :answer=> '1'
+  },
+ {:text=> 'I have a headache.',
+ :sound=>'/audios/audio08041010.mp3', 
+ :answer=> '2'
+  },
+ {:text=> 'I have a stomach-ache.',
+ :sound=>'/audios/audio08041020.mp3',
+ :answer=> '3'
+  },
+ {:text=> 'I have a chest pain. ',
+ :sound=>'/audios/audio08043080.mp3', 
+ :answer=> '4'
+  },
+ {:text=> 'I have a cough. What can you advise me? ',
+ :sound=>'/audios/audio08053010.mp3',
+ :answer=> '5'
+  },
+ {:text=> 'Take one pastille every 4 hours.',
+ :sound=>'/audios/audio08013080.mp3',
+ :answer=> '6'
+  },
+ {:text=> 'My eyes heart me.',
+ :sound=>'/audios/audio08041030.mp3', 
+ :answer=> '7'
+  },
+ {:text=> 'I feel pain in my leg.  ',
+ :sound=>'/audios/audio08043050.mp3',
+ :answer=> '8'
+  }
+  
+
+ ]
+
+%>
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+<div id="ch4" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test' %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch4 = new ch_exercise( {
+		id: "ch4", 
+		test_id: "c0108411",
+		quest_num: 12,
+		variants_num: 5,
+		quest_type: 'audio',
+		basic_array: [
+		
+<% @last_item_index = (@t_phrases.length)-1 -%>
+<% @t_phrases.each_with_index  do |word, index| -%>
+['<%= word[:sound] %>', "<%= word[:text].to_s.gsub(/"/,'\"') %>"]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
+		} )
+</script>
+<%end%> 
+ 
+<br><br><br>
+ 
+ 
+ <div class="rev-wrap">
+	 <div class="rev-head">  In this lesson you have learned </div>
+  <div class="rev-content">
+
+<p>- <strong>Words and expressions on the topic "Health":</strong></p> 
+<ul class="learnt-list">
+	<li>Части тела</li>
+	<li>Органы</li>
+
+	<li>Жалобы на самочувствие</li>
+	<li>Лечебные средства</li>
+</ul>
+
+<p>- How <strong>to say that you have pain:</strong></p> 
+
+<ul class="learnt-list">
+	<li>У меня болит голова.</li>
+</ul>
+
+<p>- Words and expressions to say about the <strong>frequency of actions</strong>:</p> 
+
+
+<ul class="learnt-list">
+	<li>3 раза в день.</li>
+	<li>Каждые 3 часа.</li>
+</ul>
+<p>
+
+
+In order to make sure you have understood all the material of the lesson and to get some additional information, we recommend you to visit the following pages: 
+</p>
+
+<ul class="last-links">
+	<li>
+		- <a href="/en/ru/vocabulary/parts-of-body">Parts of body</a><br/>
+	</li>
+</ul>
+  
+ 
+  </div>
+ </div>
+ 
+<br><br><br><br><br><br><br><br>
+
+
+
+
+	</div>
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+</div></div><!-- end of id content-->
+
+
+
+<script type="text/javascript">
+currentSection="course";
+</script>

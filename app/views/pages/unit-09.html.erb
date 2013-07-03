@@ -1,0 +1,1355 @@
+<% 
+if (logged_in? && current_user.payment) 
+	@good_user = true
+else
+	@good_user = false
+end
+%>
+
+<% @page_title = 'Lesson 9 :: Russian Online Lessons' %>
+<% @page_meta = {'description' => ""} %>
+
+
+<% content_for :special_js_css do %>
+
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'jp-control' %>
+<%= javascript_include_tag 'lexical-test' %>
+<%= stylesheet_link_tag 'lexical-test' %>
+<%= javascript_include_tag 'test-drag-sort' %>
+<%= javascript_include_tag 'es-grammar-exercises' %>
+<%= javascript_include_tag 'es-test-drag-input' %>
+
+<%= javascript_include_tag 'short-unit' %>
+<%= stylesheet_link_tag 'short-unit' %>
+
+<%= javascript_include_tag 'dialog-player' %>
+<%= stylesheet_link_tag 'dialog_player' %>
+
+<script type="text/javascript">
+<%if params[:tab] %>
+	openTabFromUrl(<%= params[:tab] %>);
+<%else%>
+	openTabFromUrl();
+<%end%>
+</script>
+
+
+<% end %>
+
+<div id="pagecontent"><div id="content">
+<div class="unit-area">
+
+
+<div id="prof_tabs">
+<%= render :partial => '/site/every/settings_block' %>
+<div class="unit-title">
+Lesson 9. Currency exchange
+</div>
+<%= render :partial => '/site/every/en_ru_coverflow', :locals => {:active => 9} %>
+	<div id="tabs_row">
+            <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Dialogue</a></div></div>
+			<div id="tab02" class="ptab"><div><a href="#">Vocabulary</a></div></div>
+            <div id="tab03" class="ptab"><div><a href="#">Practice</a></div></div>
+			<div id="tab04" class="ptab"><div><a href="#">Revision</a></div></div>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+
+<div id="for_tab01" class="pBlock" style="display: block">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Dialogues</h3>
+<p class="su-step-info">
+Here you can work with dialogues of the lesson
+</p>	
+	
+<h4 class="su-task" >
+I. Currency exchange
+</h4>
+
+<p class="part-task">a) Listen to the dialogues and read the translation</p>
+
+
+<%= render :partial => '/site/every/dialog_player', 
+			:locals => {:cluster_id => 111, :html_id=>"dc1",
+						:d_title=>'Dialogue 9-1. At the bank',
+:content=> "A tourist comes to a bank. She wants to changes euros for rubles. The bank teller tells her that the exchange value of euro is 40 rubles. The tourist changes 300 euros. She thanks the teller and says goodbye. "
+			} %>	
+
+				<script type="text/javascript"> 
+					var  dc1 = new dialog_controls( {
+					id: "dc1", 
+					file: "/audios/audio09011100.mp3",
+					tracks: [0,1202,2403,5433,6975,9482,12382,13453,16118,17502,25182,28029]
+				
+					} )
+				</script>		
+	
+<br><br><br>
+
+<%= render :partial => '/site/every/dialog_player', 
+			:locals => {:cluster_id => 112, :html_id=>"dc2",
+						:d_title=>'Dialogue 9-2. Looking for a cash machine',
+:content=> "A tourist asks a passer-by where the nearest cash machine is. The passer-by answers that there is a cash maсhine near the shop. The tourists also asks whether that cash machine accepts VISA cards."
+			} %>	
+
+				<script type="text/javascript"> 
+					var  dc2 = new dialog_controls( {
+					id: "dc2", 
+					file: "/audios/audio09011200.mp3",
+					tracks: [0,4127,7105,10005,11285,12382]
+				
+					} )
+				</script>			
+	
+<br>
+
+
+<p class="part-task">b) Listen and repeat the dialogues phrase by phrase</p>
+
+
+<h4 class="su-task">
+II. Useful expressions
+</h4>
+<p class="part-task">a) Find the translation of Russian phrases</p>
+
+<div id="ds1" class="ds-wrapper" style="padding: 15px; margin: 20px 30px;">
+
+<p class="ex-desc">
+Listen to the phrases. Drag the English phrases from the list below <br>and drop them into the corresponding fields.
+</p>		
+
+
+
+
+<table align="center" style="margin: 0 auto;">
+<tr>
+<td>
+
+
+<table class="dst-test ds-table ds-audio" cellspacing="0" align="center" style="margin: 0 auto">
+<col width="80">
+<col width="20">
+<col width="40">
+<col width="320">
+<tr>
+	<td class="ds-quest" align="center">
+			Phrase 1 
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio09013010.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+			Phrase 2
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio09013020.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 3
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio09013030.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 4
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio09013040.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 5
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio09013050.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 6
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio09013060.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 7
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio09013070.mp3', this)"></div>
+	</td>	
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 8
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio09013080.mp3', this)"></div>
+	</td>	
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 9
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio09013090.mp3', this)"></div>
+	</td>	
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 10
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio09013100.mp3', this)"></div>
+	</td>	
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+
+<td>
+	
+<br>
+<br>
+
+<table class="ds_variants_list" style="margin: 0 auto;" align="center">
+<col width="170">
+<col width="250">
+
+<tr valign="top">
+<td>
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">4</span>Sign here, please.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">7</span>I think it does.</div></div>
+	</li>
+</ul>
+
+</td>
+<td>
+
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>The total sum is 12 000 rubles.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">6</span>Your money and receipt please.</div></div>
+	</li>
+</ul>
+
+</td>
+</tr>
+<tr valign="top">
+<td colspan="2">
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>How much would you like to exchange?</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>Yes, over there, near the shop.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">10</span>Do you know whether it accepts VISA cards?</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">8</span>I would like to exchange euros for rubles.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">5</span>The exchange value of euro is 40 rubles.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">9</span>Could you please tell where the nearest cash machine is?</div></div>
+	</li>
+
+</ul>
+</td>
+</tr>
+</table>
+
+
+</td>
+</tr>
+</table>
+
+
+<div class="es_btn_wrapper es-ex-buttons ds-check-wrapper">
+
+<input type="button" class="es_btn ds-check-button" value="Check answers">
+
+</div>
+
+
+</div>
+
+<script type="text/javascript"> 
+	var ds1 = new dragsort_test( {
+		id: "ds1", 
+		test_id: "c0109013.I.c)",
+		targets: "ds-answer", 
+		answer_elem: "ds_sort_item", 
+		variant_elem: "ds_variant",
+		answer_color: "#F7F6F6",
+		auto_check: false
+		} )
+</script>
+
+
+<br><br><br><br>
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Next part >>" onclick="openNextStep(2)">
+</div>	
+	
+	</div>
+</div>
+
+<div id="for_tab02" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Vocabulary</h3>
+<p class="su-step-info">
+Here you can learn words and expressions of the lesson.
+</p>	
+
+<h4 class="su-task">
+I. Money
+</h4>
+
+<p class="part-task">a) Learn Russian words: </p>
+
+
+<%
+ @voc1 = [
+{:text=>'д<span class="acco">е</span>ньги',
+:sound=>'/audios/audio09021010.mp3',
+:transcribe=>'<span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span><span class="sftc">n</span>gi',
+:translate=>' money '},
+{:text=>'куп<span class="acco">ю</span>ры',
+:sound=>'/audios/audio09021020.mp3',
+:transcribe=>'koo<span class="sftv">p</span><span class="sfty">y</span><span class="acct">oo</span>r<span class="ry">i</span>',
+:translate=>' bank notes '},
+{:text=>'мон<span class="acco">е</span>ты',
+:sound=>'/audios/audio09021030.mp3',
+:transcribe=>'ma<span class="sftv">n</span><span class="sfty">y</span><span class="acct">e</span>t<span class="ry">i</span>',
+:translate=>' coins '},
+{:text=>'д<span class="acco">о</span>ллары',
+:sound=>'/audios/audio09021040.mp3',
+:transcribe=>'d<span class="acct">o</span>lar<span class="ry">i</span>',
+:translate=>' dollars '},
+{:text=>'<span class="acco">е</span>вро',
+:sound=>'/audios/audio09021050.mp3',
+:transcribe=>'y<span class="acct">e</span>vra',
+:translate=>' euros '},
+{:text=>'ф<span class="acco">у</span>нты',
+:sound=>'/audios/audio09021060.mp3',
+:transcribe=>'f<span class="acct">oo</span>nt<span class="ry">i</span>',
+:translate=>' pounds '},
+{:text=>'рубл<span class="acco">и</span>',
+:sound=>'/audios/audio09021070.mp3',
+:transcribe=>'roobl<span class="acct">i</span>',
+:translate=>' roubles '},
+{:text=>'нал<span class="acco">и</span>чные',
+:sound=>'/audios/audio09021080.mp3',
+:transcribe=>'nal<span class="acct">i</span>chn<span class="ry">i</span>ye',
+:translate=>' cash '},
+{:text=>'к<span class="acco">а</span>рта',
+:sound=>'/audios/audio09021090.mp3',
+:transcribe=>'k<span class="acct">a</span>rta',
+:translate=>' (credit) card '},
+{:text=>'чек',
+:sound=>'/audios/audio09021100.mp3',
+:transcribe=>'ch<span class="acct">e</span>k',
+:translate=>' cheque '}
+ ]
+%>
+<%= render :partial => '/site/every/en_ru_voc', :locals => {:voc => @voc1} %>	
+	
+<br><br>
+<p class="part-task">b) Listen to the questions in Russian and find the corresponding answers:</p>
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+
+<div id="ds3" class="ds-wrapper" style="padding: 15px;">
+
+<p class="ex-desc">
+Listen to the quesstions. Drag the answers from the list below <br>and drop them into the corresponding fields.
+</p>
+
+
+<% 
+
+@t_phrases = [
+  {:text=> 'Да, у меня есть купюры по 100 рублей.',
+ :sound=>'/audios/audio09022010.mp3',
+ :answer=> '1'
+  },
+ {:text=> 'Да, у меня есть доллары.',
+ :sound=>'/audios/audio09022020.mp3', 
+ :answer=> '2'
+  },
+ {:text=> 'Да, у меня есть чек.',
+ :sound=>'/audios/audio09022030.mp3',
+ :answer=> '3'
+  },
+ {:text=> 'Да, у меня есть купюры по 50 рублей.',
+ :sound=>'/audios/audio09022040.mp3', 
+ :answer=> '4'
+  },
+ {:text=> 'Да, у меня есть евро.',
+ :sound=>'/audios/audio09022050.mp3',
+ :answer=> '5'
+  },
+ {:text=> 'Да, у меня есть рубли.',
+ :sound=>'/audios/audio09022060.mp3', 
+ :answer=> '6'
+  },
+ {:text=> 'Да, у меня есть наличные.',
+ :sound=>'/audios/audio09022070.mp3',
+ :answer=> '7'
+  },
+ {:text=> 'Да, у меня есть карта.',
+ :sound=>'/audios/audio09022080.mp3',
+ :answer=> '8'
+  }
+
+ ]
+
+%>
+
+<%= render :partial => '/site/every/en_ru_ddtest', :locals => {:t_phrases => @t_phrases, :title=> "Question"} %>
+
+</div>
+
+<script type="text/javascript"> 
+	var ds3 = new dragsort_test( {
+		id: "ds3", 		
+		test_id: "c0109022.II.b)",
+		targets: "ds-answer",	
+		answer_elem: "ds_sort_item", 
+		variant_elem: "ds_variant",
+		answer_color: "#F6FAFF",
+		auto_check: false
+		} )
+</script>
+
+<%end%>
+
+<br><br>
+
+
+<h4 class="su-task">
+II. Bank
+</h4>
+
+<p class="part-task">a) Learn Russian words: </p>
+
+<%
+ @voc2 = [
+{:text=>'банк',
+:id=> '701',
+:sound=>'/audios/audio09031010.mp3',
+:transcribe=>'b<span class="acct">a</span>nk',
+:translate=>' bank '},
+{:text=>'банком<span class="acco">а</span>т',
+:id=> '690',
+:sound=>'/audios/audio09031020.mp3',
+:transcribe=>'bankam<span class="acct">a</span>t',
+:translate=>' cash machine '},
+{:text=>'обм<span class="acco">е</span>н вал<span class="acco">ю</span>ты',
+:id=> '670',
+:sound=>'/audios/audio09031030.mp3',
+:transcribe=>'ab<span class="sftv">m</span><span class="sfty">y</span><span class="acct">e</span>n va<span class="sftv">l</span><span class="sfty">y</span><span class="acct">oo</span>t<span class="ry">i</span>',
+:translate=>' currency exchange '},
+{:text=>'обм<span class="acco">е</span>нный пункт',
+:id=> '670',
+:sound=>'/audios/audio09031040.mp3',
+:transcribe=>'ab<span class="sftv">m</span><span class="sfty">y</span><span class="acct">e</span>n<span class="ry">i</span>y p<span class="acct">oo</span>nkt',
+:translate=>' currency exchange office '},
+{:text=>'счёт',
+:id=> '1261',
+:sound=>'/audios/audio09031050.mp3',
+:transcribe=>'sch<span class="acct">o</span>t',
+:translate=>' bank account '},
+{:text=>'обм<span class="acco">е</span>нный курс',
+:sound=>'/audios/audio09031060.mp3',
+:transcribe=>'ab<span class="sftv">m</span><span class="sfty">y</span><span class="acct">e</span>n<span class="ry">i</span>y k<span class="acct">oo</span>rs',
+:translate=>' exchange rate '},
+{:text=>'вал<span class="acco">ю</span>та',
+:id=> '668',
+:sound=>'/audios/audio09031070.mp3',
+:transcribe=>'va<span class="sftv">l</span><span class="sfty">y</span><span class="acct">oo</span>ta',
+:translate=>' currency '},
+{:text=>'с<span class="acco">у</span>мма',
+:sound=>'/audios/audio09031080.mp3',
+:transcribe=>'s<span class="acct">oo</span>mma',
+:translate=>' amount, sum '}
+ ]
+%>
+<%= render :partial => '/site/every/en_ru_voc', :locals => {:voc => @voc2} %>	
+	
+<br><br>
+
+<p class="part-task">b) Read and find the corresponding English word:  </p>
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+<div id="ch2" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test' %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		test_id: "c0109032.III.b)",
+		quest_num: 15,
+		variants_num: 5,
+		//quest_type: 'audio',
+		basic_array: [
+		
+<% @last_item_index = (@voc2.length)-1 -%>
+<% @voc2.each_with_index  do |word, index| -%>
+['<%= word[:text] %>', "<%= word[:translate].to_s.gsub(/"/,'\"') %>"<%unless word[:id]==nil || word[:id]==''%>,'<%=word[:id]%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
+		} )
+</script>
+<%end%>
+<br><br>
+<p class="part-task">c) Ask questions in Russian:  </p>
+
+
+<%
+ @phrases = [
+
+{:q_text=>' - cash machine ',
+:sound=>'/audios/audio09033010.mp3'},
+{:q_text=>' - currency exchange',
+:sound=>'/audios/audio09033020.mp3'},
+{:q_text=>' - bank ',
+:sound=>'/audios/audio09033030.mp3'},
+{:q_text=>' - currency exchange office ',
+:sound=>'/audios/audio09033040.mp3'}
+
+ ]
+%>
+
+<%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases, :title=>'Ask a stranger where is: '} %>
+
+
+
+<br><br>
+
+<h4 class="su-task">
+III. Bank transactions
+</h4>
+
+<p class="part-task">a) Learn Russian words and expressions: </p>
+
+<%
+ @voc = [
+
+{:text=>'обмен<span class="acco">я</span>ть д<span class="acco">о</span>ллары на рубл<span class="acco">и</span>',
+:sound=>'/audios/audio09041010.mp3',
+:transcribe=>'abmi<span class="sftv">n</span><span class="sfty">y</span><span class="acct">a</span><span class="sftc">t</span> d<span class="acct">o</span>lar<span class="ry">i</span> na roobl<span class="acct">i</span>',
+:translate=>' exchange dollars for rubles '},
+{:text=>'сн<span class="acco">я</span>ть нал<span class="acco">и</span>чные',
+:sound=>'/audios/audio09041020.mp3',
+:transcribe=>'s<span class="sftv">n</span><span class="sfty">y</span><span class="acct">a</span><span class="sftc">t</span> nal<span class="acct">i</span>chn<span class="ry">i</span>ye',
+:translate=>' draw cash (from the account) '},
+{:text=>'снять д<span class="acco">е</span>ньги со счёта',
+:sound=>'/audios/audio09041030.mp3',
+:transcribe=>'s<span class="sftv">n</span><span class="sfty">y</span><span class="acct">a</span><span class="sftc">t</span> <span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span><span class="sftc">n</span>gi sa sch<span class="acct">o</span>ta',
+:translate=>' draw the money from the account '},
+{:text=>'снять д<span class="acco">е</span>ньги с к<span class="acco">а</span>рты',
+:sound=>'/audios/audio09041040.mp3',
+:transcribe=>'s<span class="sftv">n</span><span class="sfty">y</span><span class="acct">a</span><span class="sftc">t</span> <span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span><span class="sftc">n</span>gi s k<span class="acct">a</span>rt<span class="ry">i</span>',
+:translate=>' draw the money from the credit card '},
+{:text=>'полож<span class="acco">и</span>ть д<span class="acco">е</span>ньги на счёт',
+:sound=>'/audios/audio09041050.mp3',
+:transcribe=>'palaj<span class="acct"><span class="ry">i</span></span><span class="sftc">t</span> <span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span><span class="sftc">n</span>gi na sch<span class="acct">o</span>t',
+:translate=>' put money on the account '}
+  
+ ]
+%>
+<%= render :partial => '/site/every/en_ru_voc', :locals => {:voc => @voc} %>	
+	
+
+<br><br>
+<p class="part-task">b) Using the expression "<span style="font-weight: normal">мн<span class="acco">е</span> н<span class="acco">у</span>жно</span>" [m<span class="sftv">n</span><span class="sfty">y</span><span class="acct">e</span> n<span class="acct">oo</span>jna], translate into Russian and check yourself:</p>
+
+
+<%
+ @phrases = [
+
+{:q_text=>'I need to exchange dollars for rubles. ',
+:sound=>'/audios/audio09042010.mp3'},
+{:q_text=>'I need to draw the money from the credit card. ',
+:sound=>'/audios/audio09042020.mp3'},
+{:q_text=>'I need to exchange euros for rubles. ',
+:sound=>'/audios/audio09042030.mp3'},
+{:q_text=>'I need to draw cash. ',
+:sound=>'/audios/audio09042040.mp3'},
+{:q_text=>'I need to draw the money from the account. ',
+:sound=>'/audios/audio09042050.mp3'},
+{:q_text=>'I need to exchange pounds for rubles. ',
+:sound=>'/audios/audio09042060.mp3'}
+
+ ]
+%>
+
+<%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
+
+
+
+<br><br><br><br>
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Next part >>" onclick="openNextStep(3)">
+</div>
+	
+	</div>
+</div>
+
+
+<div id="for_tab03" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Practice</h3>
+<p class="su-step-info">
+Here you can learn grammar and lexical rules of the lesson.
+</p>
+
+
+<h4 class="su-task">
+I. I'd like to exchange dollars! 
+</h4>
+
+
+<div class="com-wrap">
+	<div class="com-head"><span class="com-h-ico"></span>Construction Мне хотелось бы ...</div>
+	<div class="com-content">
+	
+<p>In the dialogue you could see the following construction:</p>
+
+<table  cellspacing="0" >      
+	<tr valign="top">
+		 <td width="320">
+
+		 	<p class="bold">I would like to exchange euros for rubles.</p>
+		 </td>
+	</tr>
+	<tr valign="top">
+		 <td><p style="margin-top: 0pt;">Мне хот<span class="acco">е</span>лось бы обмен<span class="acco">я</span>ть <span class="acco">е</span>вро на рубл<span class="acco">и</span>.<br />
+
+		 		<span class="sound" onclick="playAudio('audio09050001.mp3')">[m<span class="sftv">n</span><span class="sfty">y</span><span class="acct">e</span> ha<span class="sftv">t</span><span class="sfty">y</span><span class="acct">e</span>la<span class="sftc">s</span> b<span class="ry">i</span> abmi<span class="sftv">n</span><span class="sfty">y</span><span class="acct">a</span><span class="sftc">t</span> y<span class="acct">e</span>vra na roobl<span class="acct">i</span>] <span class="play_tip">&nbsp; &nbsp;</span></span>
+
+		 		</p>
+		 </td>
+	</tr>
+</table>
+
+
+<p>If you would like to do something, you can say that using the expression:</p>
+
+<table  cellspacing="0" >
+	<tr valign="top">
+		<td width="220">
+			<table  cellspacing="0" >
+
+					<tr valign="top">
+		 				<td>
+		 					<p><b>Мне хот<span class="acco">е</span>лось бы ...</b><br />
+		 						<span class="sound" onclick="playAudio('audio09050002.mp3')">[m<span class="sftv">n</span><span class="sfty">y</span><span class="acct">e</span> ha<span class="sftv">t</span><span class="sfty">y</span><span class="acct">e</span>la<span class="sftc">s</span> b<span class="ry">i</span>]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+		 					</p>
+		 				</td>
+					</tr>
+				</table>
+		</td>
+		<td valign="top"><p class="ital">I would like to ....</p>
+		</td>
+	</tr>
+
+</table>
+
+	</div>
+</div>
+
+<br>
+<p class="part-task">a) Look, listen and repeat the examples:</p>
+
+<%
+ @voc = [
+ 
+{:text=>'Мне хот<span class="acco">е</span>лось бы обмен<span class="acco">я</span>ть <span class="acco">е</span>вро.',
+:sound=>'/audios/audio09051010.mp3',
+:transcribe=>'m<span class="sftv">n</span><span class="sfty">y</span><span class="acct">e</span> ha<span class="sftv">t</span><span class="sfty">y</span><span class="acct">e</span>la<span class="sftc">s</span> b<span class="ry">i</span> abmi<span class="sftv">n</span><span class="sfty">y</span><span class="acct">a</span><span class="sftc">t</span> y<span class="acct">e</span>vra',
+:translate=>' I would like to exchange euros. '},
+{:text=>'Мне хот<span class="acco">е</span>лось бы куп<span class="acco">и</span>ть бил<span class="acco">е</span>т.',
+:sound=>'/audios/audio09051020.mp3',
+:transcribe=>'m<span class="sftv">n</span><span class="sfty">y</span><span class="acct">e</span> ha<span class="sftv">t</span><span class="sfty">y</span><span class="acct">e</span>la<span class="sftc">s</span> b<span class="ry">i</span> koop<span class="acct">i</span><span class="sftc">t</span> bi<span class="sftv">l</span><span class="sfty">y</span><span class="acct">e</span>t',
+:translate=>'I would like to to buy a ticket.'},
+{:text=>'Мне хот<span class="acco">е</span>лось бы посет<span class="acco">и</span>ть муз<span class="acco">е</span>й.',
+:sound=>'/audios/audio09051030.mp3',
+:transcribe=>'m<span class="sftv">n</span><span class="sfty">y</span><span class="acct">e</span> ha<span class="sftv">t</span><span class="sfty">y</span><span class="acct">e</span>la<span class="sftc">s</span> b<span class="ry">i</span> pasit<span class="acct">i</span><span class="sftc">t</span> moo<span class="sftv">z</span><span class="sfty">y</span><span class="acct">e</span>y',
+:translate=>' I would like to visit the museum.'}
+  
+ ]
+%>
+
+<%= render :partial => '/site/every/en_ru_model', :locals => {:voc => @voc} %>
+
+<br><br>
+<p class="part-task">b) Read and find the corresponding English word:  </p>
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+<div id="ch3" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test' %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch3 = new ch_exercise( {
+		id: "ch3", 
+		test_id: "c0109052.V.b)",
+		random_order: false,
+		quest_type: 'html',
+		basic_array: [
+		
+['Мне хотелось бы обменять доллары.','I\'d like to exchanges dollars.'],
+['Мне хотелось бы купить этот сувенир. ','I\'d like to buy this souvenir.'],
+['Мне хотелось бы посетить театр.','I\'d like to visit a theatre.'],
+['Мне хотелось бы снять наличные с карты. ','I\'d like to draw cash from my card.'],
+['Мне хотелось бы снять со счёта деньги.','I\'d like to draw money from my account.']
+
+		]
+		
+		} )
+</script>
+<%end%>
+<br><br>
+<p class="part-task">c) Translate phrases from English into Russian </p>
+
+<%
+ @phrases = [
+
+{:q_text=>'I\'d like to buy a souvenir. ',
+:sound=>'/audios/audio09053010.mp3'},
+{:q_text=>'I\'d like to draw cash. ',
+:sound=>'/audios/audio09053020.mp3'},
+{:q_text=>'I\'d like to exchange 300 euros. ',
+:sound=>'/audios/audio09053030.mp3'},
+{:q_text=>'I\'d like to draw the money from the credit card. ',
+:sound=>'/audios/audio09053040.mp3'},
+{:q_text=>'I\'d like to visit a museum. ',
+:sound=>'/audios/audio09053050.mp3'},
+{:q_text=>'I\'d like to exchange 100 dollars. ',
+:sound=>'/audios/audio09053060.mp3'}
+
+ ]
+%>
+
+<%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
+
+
+<br><br>
+
+<h4 class="su-task">
+II. Mini-dialogues
+</h4>
+
+<p class="part-task">a) Listen to the mini-dialogues and complete the test:  </p>
+
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+
+<div class="su-exerc"> 
+<div>	
+				
+<p class="task">Enter an appropriate numeral in the text area:</p> 
+ 
+<div  class="gr_ex_type"> 
+<div class="gr-ex-testid">c0109321</div> 
+ 
+<div class="gex-area-trans"> 
+
+ 
+<div class="gext_task gext_sign" style="text-indent: 0"> 
+
+				<table class="ds-table" cellspacing="0" style="line-height: normal; margin-bottom: 10px"> 
+					<tr> 
+						<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap; "><strong>Dialogue 1 </strong></td> 
+						<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('/audios/audio09043010.mp3', this)"></div></td> 
+					</tr> 
+				</table>
+
+The tourist wants to draw <input type="text" style="width: 40px" value=""> <span class="gext_answer" style="display: none">450</span> dollars his the account.
+</div> 
+
+<div class="gext_task gext_sign" style="text-indent: 0"> 
+
+				<table class="ds-table" cellspacing="0" style="line-height: normal; margin-bottom: 10px"> 
+					<tr> 
+						<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap; "><strong>Dialogue 2 </strong></td> 
+						<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('/audios/audio09043020.mp3', this)"></div></td> 
+					</tr> 
+				</table>
+
+The tourist wants to exchange <input type="text" style="width: 40px" value=""> <span class="gext_answer" style="display: none">500</span> dollars for rubles.
+</div> 
+
+<div class="gext_task gext_sign" style="text-indent: 0"> 
+
+				<table class="ds-table" cellspacing="0" style="line-height: normal; margin-bottom: 10px"> 
+					<tr> 
+						<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap; "><strong>Dialogue 3 </strong></td> 
+						<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('/audios/audio09043030.mp3', this)"></div></td> 
+					</tr> 
+				</table>
+
+The tourist wants to draw <input type="text" style="width: 40px" value=""> <span class="gext_answer" style="display: none">400</span> euros from the account.
+</div> 
+
+<div class="gext_task gext_sign" style="text-indent: 0"> 
+
+				<table class="ds-table" cellspacing="0" style="line-height: normal; margin-bottom: 10px"> 
+					<tr> 
+						<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap; "><strong>Dialogue 4 </strong></td> 
+						<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('/audios/audio09043040.mp3', this)"></div></td> 
+					</tr> 
+				</table>
+
+The tourist wants to exchange <input type="text" style="width: 40px" value=""> <span class="gext_answer" style="display: none">200</span> dollars for rubles.
+</div> 
+
+
+ 
+</div><!-- end of gex-area-trans --> 
+ 
+ 
+ 
+<p class="gext_check es-ex-buttons gex-es-btn"><input type="button" class="gext_check_btn" value="Check answers" > </p> 
+ 
+ 
+</div> 
+</div> 
+</div> <!-- end of su-exerc -->
+<%end%>
+<br><br>
+
+
+<h4 class="su-task">
+III. A problem with device
+</h4>
+
+
+<div class="com-wrap">
+	<div class="com-head"><span class="com-h-ico"></span>Russian consctruction ... работает / не работает</div>
+	<div class="com-content">
+	
+	
+<p>If you want to say in Russian that something works or does not work, you can use the following expression:</p>
+
+<table  cellspacing="0" >
+	<tr valign="top">
+		<td width="220">
+			<table  cellspacing="0" >
+
+					<tr valign="top">
+		 				<td>
+		 					<p><b>... раб<span class="acco">о</span>тает</b>/<b>... не раб<span class="acco">о</span>тает</b><br />
+		 						<span class="sound" onclick="playAudio('audio09060101.mp3')">[rab<span class="acct">o</span>tait]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+
+		 						&nbsp;<span class="sound" onclick="playAudio('audio09060102.mp3')">[ni rab<span class="acct">o</span>tait]&nbsp;<span class="play_tip">&nbsp; &nbsp;</span></span>
+		 					</p>
+		 				</td>
+					</tr>
+				</table>
+		</td>
+		<td valign="top"><p class="ital">... works/ ... does not work.</p>
+
+		</td>
+	</tr>
+</table>
+
+	</div>
+</div>
+
+<br><br>
+
+<p class="part-task">a) Learn the following examples:  </p>
+
+<%
+ @voc = [
+ 
+{:text=>'Этот банк<span class="acco">о</span>мат не раб<span class="acco">о</span>тает.',
+:sound=>'/audios/audio09060201.mp3',
+:transcribe=>'<span class="acct">e</span>tat bankam<span class="acct">a</span>t ni rab<span class="acct">o</span>tait',
+:translate=>' This cash machine does not work. '},
+{:text=>'Банк не раб<span class="acco">о</span>тает.',
+:sound=>'/audios/audio09060301.mp3',
+:transcribe=>'b<span class="acct">a</span>nk ni rab<span class="acct">o</span>tait',
+:translate=>' The bank is closed. '}
+  
+ ]
+%>
+
+<%= render :partial => '/site/every/en_ru_model', :locals => {:voc => @voc} %>
+
+<br><br>
+
+<p class="part-task">b) Build phrases in Russian:</p>
+
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+
+<div class="su-exerc">
+<div id="di1">	
+				
+<p class="ex-desc">Drag and drop the following words to build phrases. You can read correct answers by clicking the button "Display answers"</p> 
+
+<br> 
+<table class="di_variants noselect di_var_view" cellspacing="14" align="center" >
+<tr>
+	<td colspan="2">
+		<div>работает</div>
+	</td>
+	<td>
+		<div>телефон</div>
+	</td>
+	<td >
+		<div>банкомат</div>
+	</td>
+	<td>
+		<div>музей</div>
+	</td>
+</tr>
+<tr>
+	<td>
+		<div> не </div>
+	</td>
+	<td>
+		<div>бар</div>
+	</td>
+	<td>
+		<div>телевизор</div>
+	</td>
+	<td>
+		<div>магазин</div>
+	</td>
+	<td>
+		<div>холодильник</div>
+	</td>
+</tr>
+</table>
+<br> 
+ 
+
+
+<div  class="gr_ex_type di_mix">
+<div class="gr-ex-testid">c0109063.VI.c)</div>
+<%
+ @phrases = [
+{:to_bild=> "The phone doesn't work. ", 
+:answer=>'Телефон не работает', 
+:show=> 'Телефон не работает. ', 
+:sound=>'/audios/audio09062010.mp3'},
+{:to_bild=> "The bar is closed.", 
+:answer=>'Бар не работает', 
+:show=> 'Бар не работает.', 
+:sound=>'/audios/audio09062020.mp3'},
+{:to_bild=> "The cash machine doesn't work.", 
+:answer=>'Банкомат не работает', 
+:show=> 'Банкомат не работает.', 
+:sound=>'/audios/audio09062030.mp3'},
+{:to_bild=> "The TV set doesn't work.", 
+:answer=>'Телевизор не работает', 
+:show=> 'Телевизор не работает.', 
+:sound=>'/audios/audio09062040.mp3'},
+{:to_bild=> "The shop is closed.", 
+:answer=>'Магазин не работает.', 
+:show=> 'Магазин не работает.', 
+:sound=>'/audios/audio09062050.mp3'},
+{:to_bild=> "The fridge doesn't work.", 
+:answer=>'Холодильник не работает.', 
+:show=> 'Холодильник не работает.', 
+:sound=>'/audios/audio09062050.mp3'}
+ ]
+%>
+	<%= render :partial => '/site/every/en_ru_pseudo', :locals => {:phrases => @phrases} %>
+
+</div>
+
+</div>
+</div> 
+<script type="text/javascript"> 
+	var di1 = new draginput_test( {
+		id: "di1", 
+		test_id: "c0109411",
+		targets: "gext_task", 
+		in_targets: "input",
+		clear_option: true,
+		variant_elem: "di_variants div"
+
+		} )
+</script>
+<%end%>
+
+<br><br>
+
+<p class="part-task">c) Give a negative answer to the questions following the model:  </p>
+
+
+<div class="egmodel">
+<h4>Model</h4>
+
+<table  cellspacing="0" >
+	<tr valign="top">
+		<td width="440">
+			<table  cellspacing="0" >
+					<tr valign="top">
+		 				<td>
+
+		 					<p><b><span class="acco">Э</span>тот банком<span class="acco">а</span>т раб<span class="acco">о</span>тает?</b><br />
+
+		 						<span class="sound" onclick="playAudio('audio09061001.mp3')">[<span class="acct">e</span>tat bankam<span class="acct">a</span>t rab<span class="acct">o</span>tait?] <span class="play_tip">&nbsp; &nbsp;</span></span>
+
+		 					</p>
+		 				</td>
+                        <td width="15"><p>-</p>
+                        </td>
+		 				<td>
+		 					<p><b>Нет, банком<span class="acco">а</span>т не раб<span class="acco">о</span>тает.</b><br />
+
+		 						<span class="sound" onclick="playAudio('audio09061002.mp3')">[<span class="sftv">n</span><span class="sfty">y</span><span class="acct">e</span>t, bankam<span class="acct">a</span>t ni rab<span class="acct">o</span>tait] <span class="play_tip">&nbsp; &nbsp;</span></span>
+		 					</p>
+		 				</td>
+
+					</tr>
+				</table>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" colspan="2"><span class="ital">Does this cash machine work? -No, the cash machine is out of work.</span>
+
+		</td>
+	</tr>
+</table>
+</div>
+
+
+<%
+ @phrases = [
+
+{:q_text=>'<span class="acco">Э</span>тот магаз<span class="acco">и</span>н раб<span class="acco">о</span>тает? ',
+:q_sound=>'/audios/audio09061011.mp3',
+:q_transcribe=>'<span class="acct">e</span>tat magaz<span class="acct">i</span>n rab<span class="acct">o</span>tait? ',
+:sound=>'/audios/audio09061012.mp3'},
+{:q_text=>'<span class="acco">Э</span>тот телеф<span class="acco">о</span>н раб<span class="acco">о</span>тает? ',
+:q_sound=>'/audios/audio09061021.mp3',
+:q_transcribe=>'<span class="acct">e</span>tat tilif<span class="acct">o</span>n rab<span class="acct">o</span>tait? ',
+:sound=>'/audios/audio09061022.mp3'},
+{:q_text=>'Обм<span class="acco">е</span>нный пункт раб<span class="acco">о</span>тает? ',
+:q_sound=>'/audios/audio09061031.mp3',
+:q_transcribe=>'ab<span class="sftv">m</span><span class="sfty">y</span><span class="acct">e</span>n<span class="ry">i</span>y p<span class="acct">oo</span>nkt rab<span class="acct">o</span>tait? ',
+:sound=>'/audios/audio09061032.mp3'},
+{:q_text=>'Телев<span class="acco">и</span>зор раб<span class="acco">о</span>тает? ',
+:q_sound=>'/audios/audio09061041.mp3',
+:q_transcribe=>'tiliv<span class="acct">i</span>zar rab<span class="acct">o</span>tait? ',
+:sound=>'/audios/audio09061042.mp3'},
+{:q_text=>'Холод<span class="acco">и</span>льник раб<span class="acco">о</span>тает? ',
+:q_sound=>'/audios/audio09061051.mp3',
+:q_transcribe=>'halad<span class="acct">i</span><span class="sftc">l</span>nik rab<span class="acct">o</span>tait? ',
+:sound=>'/audios/audio09061052.mp3'},
+{:q_text=>'Душ раб<span class="acco">о</span>тает? ',
+:q_sound=>'/audios/audio09061061.mp3',
+:q_transcribe=>'d<span class="acct">oo</span>sh rab<span class="acct">o</span>tait? ',
+:sound=>'/audios/audio09061062.mp3'}
+
+ ]
+%>
+
+<%= render :partial => '/site/every/en_ru_oral_quest', :locals => {:phrases => @phrases} %>
+
+
+
+<br><br><br><br>
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Next part >>" onclick="openNextStep(4)">
+</div>	
+	
+	</div>
+</div>
+
+
+
+
+<div id="for_tab04" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Revision</h3>
+<p class="su-step-info">
+Revise materials from this lesson
+</p>
+
+
+	
+<h4 class="su-task"> 
+Revise this lesson's materials 
+</h4> 
+ 
+ <p class="part-task">a) Listen and find the corresponding English phrases: </p>	
+
+
+<% 
+
+@t_phrases = [
+  {:text=> 'Do you have cash?',
+ :sound=>'/audios/audio09022070.mp3',
+ :answer=> '1'
+  },
+ {:text=> 'Excuse me, please, where is a cash machine',
+ :sound=>'/audios/audio09033010.mp3', 
+ :answer=> '2'
+  },
+ {:text=> 'I need to exchange dollars for rubles.  ',
+ :sound=>'/audios/audio09042010.mp3',
+ :answer=> '3'
+  },
+ {:text=> 'I need to draw cash. ',
+ :sound=>'/audios/audio09042040.mp3', 
+ :answer=> '4'
+  },
+ {:text=> 'I need to exchange euros for rubles. ',
+ :sound=>'/audios/audio09042030.mp3',
+ :answer=> '5'
+  },
+ {:text=> 'I would like to visit a museum. ',
+ :sound=>'/audios/audio09051030.mp3',
+ :answer=> '6'
+  },
+ {:text=> 'I\'d like to exchange 300 euros. ',
+ :sound=>'/audios/audio09053030.mp3', 
+ :answer=> '7'
+  },
+ {:text=> 'This cash machine does not work. ',
+ :sound=>'/audios/audio09060201.mp3',
+ :answer=> '8'
+  },
+ {:text=> 'The bar is closed. ',
+ :sound=>'/audios/audio09062020.mp3',
+ :answer=> '9'
+  },
+ {:text=> 'The phone doesn\'t work.  ',
+ :sound=>'/audios/audio09062010.mp3',
+ :answer=> '10'
+  }
+
+ ]
+
+%>
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+<div id="ch4" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test' %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch4 = new ch_exercise( {
+		id: "ch4", 
+		quest_num: 12,
+		variants_num: 5,
+		quest_type: 'audio',
+		basic_array: [
+		
+<% @last_item_index = (@t_phrases.length)-1 -%>
+<% @t_phrases.each_with_index  do |word, index| -%>
+['<%= word[:sound] %>', "<%= word[:text].to_s.gsub(/"/,'\"') %>"]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
+		} )
+</script>
+<%end%> 
+ 
+<br><br><br>
+ 
+ 
+ <div class="rev-wrap">
+	 <div class="rev-head">  In this lesson you have learned </div>
+  <div class="rev-content">
+
+<p>- <strong>Words and expressions on the topic "Money":</strong></p>
+
+ 
+<ul class="learnt-list">
+	<li>Деньги и средства платежа</li>
+	<li>Банк</li>
+	<li>Операции с деньгами</li>
+</ul>
+
+<p>- How <strong>to say that you would like to do something</strong>:</p> 
+
+<ul class="learnt-list">
+	<li>Мне хотелось бы обменять евро на рубли.</li>
+
+</ul>
+
+<p>- How <strong>to say that some office or institution is closed</strong> and does not work:</p> 
+
+<ul class="learnt-list">
+	<li>Банкомат не работает.</li>
+	<li>Банк не работает.</li>
+</ul>
+<p>
+In order to make sure you have understood all the material of the lesson and to get some additional information, we recommend you to visit the following pages: 
+</p>
+
+<ul class="last-links">
+	<li>
+		- <a href="/en/ru/vocabulary/bank">Bank and Money</a><br/>
+	</li>
+</ul>
+
+<br><br><br><br><br><br><br><br>
+
+  
+ 
+  </div>
+ </div>
+ 
+<br><br><br><br><br><br><br><br>
+
+
+
+
+	</div>
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+</div></div><!-- end of id content-->
+
+
+
+<script type="text/javascript">
+currentSection="course";
+</script>

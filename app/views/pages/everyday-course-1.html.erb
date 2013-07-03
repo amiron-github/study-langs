@@ -1,0 +1,446 @@
+<% @page_title='Online Russian Course: Summary' %>
+<% @page_meta = {'description' => "Online Russian Lessons for beginners with exercises, tests and audio examples"} %>
+
+<% content_for :special_js_css do %>
+<style type="text/css">
+
+
+h2.page {
+margin-bottom:0;
+}
+
+h3 {
+font-size: 14px;
+}
+
+.les-desc h4 {
+font-style: italic;
+margin-top: 0px;
+margin-bottom: 10px;
+font-size: 13px;
+color: #333;
+}
+
+.les-desc p {
+margin-top: 0px;
+margin-bottom: 20px;
+}
+
+.les-desc a {
+margin-left: 10px;
+font-weight: bold;
+font-size: 11px;
+}
+
+h3.course_item {
+border: 1px solid #BFBFBF;
+border-bottom: 1px solid #DFDFDF;
+border-bottom: 1px solid #BFBFBF;
+background-color: #E0E7EF;
+background-image: url('/images/h3-bg.png');
+background-position: left bottom;
+background-repeat: repeat-x;
+padding: 5px 20px 5px;
+margin: 0px 0 0px;
+color: #333;
+font-style: italic;
+text-shadow: 0px 1px 0px #fff;
+}
+
+.p-grd-rt {
+background-image: url("/images/p-bg-rt-s.gif");
+background-repeat: repeat-y;
+background-position: right top;
+border: 1px solid #BFBFBF;
+border-bottom: 0px solid #CFCFCF;
+border-top: 0px solid #CFCFCF;
+margin: 0px 1px 0px;
+}
+
+.p-grd-lft {
+background-image: url("/images/p-bg-lft.gif");
+background-repeat: repeat-y;
+background-position: -40px top;
+padding: 20px 30px 30px;
+}
+
+.p-last {
+border-bottom: 1px solid #BFBFBF;
+}
+
+
+.evc-present ul {
+margin: 0;
+padding: 0;
+list-style: none;
+}
+
+.evc-present li {
+margin: 0;
+padding: 0;
+display: block;
+}
+
+.evc-present li a {
+display: block;
+background-color: #fff;
+cursor: pointer;
+margin: 0;
+padding: 0;
+font-size: 14px;
+font-weight: bold;
+overflow: hidden;
+padding: 3px 4px;
+margin-bottom: 1px;
+color: #333;
+background-color: #fff;
+backg-round: rgba(250, 250, 250, 0.8);
+border: 1px solid #77B9EF;
+background-image: url("/images/dialog-tr-bg-bl.png");
+background-position: left 100%;
+background-repeat: repeat-x;
+font-size: 12px;
+}
+
+.evc-present li a:link, .evc-present li a:visited {
+background-color: #fff;
+text-decoration: none;
+color: #444;
+}
+
+.evc-present li a:hover, .evc-present li a:active {
+background-image: url("/images/h3-bg.png");
+color: #fff;
+background-color: #6095FB;
+border: 1px solid #417EAF;
+}
+
+.evc-present {
+
+}
+
+.evc-present-top {
+background-image: url("/images/layout/bl-transparent-65.png");
+color: #FFFFFF;
+font-weight: bold;
+border: 1px solid #2054AF;
+}
+
+.evc-present-top p {
+padding: 8px 15px;
+border: 1px solid #457DDF;
+font-size: 18px;
+margin: 0;
+text-shadow: 0 1px 0 #081C3F;
+text-align: center;
+}
+
+.evc-present li img {
+width: 100%;
+}
+
+.evc-present li span {
+float: left;
+display: block;
+}
+
+.evc-present li span.evc-img-wrap {
+width: 35px;
+background-color: #fff;
+padding: 1px;
+bor-der: 1px solid #999;
+-moz-box-shadow: 1px 1px 2px #ccc;
+-webkit-box-shadow: 1px 1px 2px #ccc;
+box-shadow: 1px 1px 2px #ccc;
+}
+
+.evc-present .evc-less {
+padding: 0 15px 0;
+line-height: 26px;
+}
+
+.evc-present-wrap {
+border: 5px solid #6F98DF;
+padding: 8px;
+max-width: 800px;
+position: relative;
+background-image: url(/images/ltl-bg.gif);
+overflow: hidden;
+margin: 0 auto;
+-moz-border-radius: 7px;
+-moz-box-shadow: 1px 1px 0 #627EAF, 1px 2px 3px #3E556F;
+-webkit-border-radius: 7px;
+-webkit-box-shadow: 1px 1px 0 #627EAF, 1px 2px 3px #3E556F;
+border-radius: 7px;
+box-shadow: 1px 1px 0 #627EAF, 1px 2px 3px #3E556F;
+}
+
+.evc-desc a.btn-like {
+margin: 0 auto;
+width: 150px;
+font-size: 14px;
+font-weight: bold;
+text-decoration: none;
+color: #444;
+padding: 5px 0;
+}
+
+.evc-desc a.btn-register {
+background-color: #FFA73F;
+color: #4F0505;
+border: 1px solid #77797F;
+}
+
+.evc-desc a.btn-login {
+background-color: #6FA3FF;
+color: #0C2A5F;
+border: 1px solid #77797F;
+font-size: 12px;
+}
+
+.evc-desc a.btn-login:hover {
+background-color: #4A86EF;
+color: #111;
+}
+
+.evc-desc a.btn-register:hover {
+background-color: #FF7200;
+color: #111;
+}
+
+.evc-init {
+margin: 0;
+padding: 15px;
+text-align: left;
+font-size: 11px;
+color: #444;
+background-color: #fff;
+border: 1px solid #86ACEF;
+min-height: 338px;
+}
+
+.evc-info {
+background-color: transparent;
+background-image: url("/images/bl-transparent-30.png");
+border: 1px solid #86ACEF;
+padding: 10px ;
+min-height: 372px;
+}
+
+.evc-subs-table {
+margin: 0 auto;
+font-size: 12px;
+color: #222;
+}
+
+.evc-subs-table td {
+padding: 5px 10px;
+}
+
+.evc-subs-table td strong {
+font-style: italic;
+}
+
+.evc-subs-r {
+background-color: #EFEFEF;
+}
+
+.evc-subsc-head {
+font-size: 14px;
+color: #fff;
+margin-bottom: 0px;
+font-weight: bold;
+text-align: center;
+border: 1px solid #4CAF5A;
+
+background-image: url("/images/h3-bg.png");
+background-position: left bottom;
+background-repeat: repeat-x;
+backg-round: url("/images/wh-grd.png") repeat-x scroll 0 50%;
+background-color: #45DF5A;
+padding: 4px;
+text-shadow: 0px 1px 0px #444;
+}
+
+.evc-subsc-wrap {
+border: 1px solid #999;
+border-top: 0px solid #fff;
+padding: 10px;
+}
+
+
+.course-item-desc {
+background-color: #FFFFFF;
+border: 1px solid #708089;
+padding: 2px;
+position: relative;
+margin-top: 30px;
+min-height: 200px;
+-moz-box-shadow: 1px 2px 3px #B3B7BF;
+-webkit-box-shadow: 1px 2px 3px #B3B7BF;
+box-shadow: 1px 2px 3px #B3B7BF;
+}
+
+.course-item-head {
+background: url("/stylesheets/custom-theme/images/ui-bg_gloss-wave_55_4b87fb_500x100.png") repeat-x scroll 50% 50% #4B87FB;
+border: 1px solid #708089;
+color: #FFFFFF;
+font-size: 10pt;
+margin: 0;
+font-weight: bold;
+padding: 5px 8px;
+text-shadow: 0 1px 0 #555555;
+}
+
+.course-item-content {
+padding: 5px 20px;
+}
+
+.course-item-content .feat-list li {
+background-image: url(/images/icons/tick.png);
+background-repeat: no-repeat;
+background-position: 1px 2px;
+padding: 2px 4px 2px 25px;
+margin-bottom: 9px;
+}
+
+.feat-list {
+list-style: none;
+}
+
+
+
+</style>
+<%end%>
+
+
+<h2 class="page page-bl">Everyday Russian Course</h2>
+
+
+<br><br>
+
+<div class="evc-present-wrap">
+
+<table width="100%" cellspacing="0">
+<col width="50%"><col width="50%">
+	<tr valign="top">
+		<td style="padding-right: 6px">
+		
+		
+<div class="evc-present-top">
+<p>
+Online lessons
+</p>
+</div>		
+		
+		
+<div class="evc-present evc-info">
+
+<%
+
+list = [
+{:url=>"/unit01.html",
+:image=>"/images/list/city/airport.jpg",
+:title=>"1. In the airport"},
+{:url=>"/unit02.html",
+:image=>"/images/list/city/taxi.jpg",
+:title=>"2. Transport"},
+{:url=>"/unit03.html",
+:image=>"/images/list/city/hotel.jpg",
+:title=>"3. At the hotel"},
+{:url=>"/unit04.html",
+:image=>"/images/list/city/street.jpg",
+:title=>"4. In the street"},
+{:url=>"/unit05.html",
+:image=>"/images/list/city/theatre.jpg",
+:title=>"5. Sightseeings"},
+{:url=>"/unit06.html",
+:image=>"/images/list/city/gum.jpg",
+:title=>"6. Shopping"},
+{:url=>"/unit07.html",
+:image=>"/images/list/city/resto-table.jpg",
+:title=>"7. At the restaurant"},
+{:url=>"/unit08.html",
+:image=>"/images/list/city/drugstore.jpg",
+:title=>"8. At the drugstore"},
+{:url=>"/unit09.html",
+:image=>"/images/list/city/currency-exchange.jpg",
+:title=>"9. Currency exchange"},
+{:url=>"/unit10.html",
+:image=>"/images/list/city/cyber-cafe.jpg",
+:title=>"10. Internet &amp; Phone"}
+
+]
+
+%>
+<ul>
+<li>
+<%list.each do |lesson|%>
+	<a href="<%= lesson[:url]%>"><span class="evc-img-wrap"><img src="<%= lesson[:image]%>"></span> <span class="evc-less"><%= lesson[:title]%></span></a>
+<%end%>
+</li>
+</ul>
+
+
+</div>
+	</td>
+		<td align="center" style="padding-left: 6px">
+
+<div class="evc-present-top">
+<p>
+Details
+</p>
+</div>
+		
+		<div class="evc-info">
+			
+	<div class="evc-init">
+Find an easy way to learn the language you need for most everyday situations. 	
+	 The 10 online lessons of this course include everything to enable you to to start speaking right away: dialogues, vocabulary lists, interactive exercises and tests. 		
+		
+			<p class="evc-subsc-head">Subscription options
+			</p>
+			<div class="evc-subsc-wrap">
+			<table class="evc-subs-table" align="center">
+				<tr class="evc-subs-r">	
+					<td>2 months - <strong>$8.99 USD</strong></td>
+				</tr>
+				<tr>	
+					<td>4 months - <strong>$14.99 USD</strong></td>
+				</tr>
+				<tr  class="evc-subs-r">	
+					<td>6 months - <strong>$19.99 USD</strong></td>
+				</tr>
+			</table>
+			
+			
+			<div class="btn-link-wrap evc-desc">
+			<br>
+			<br>
+			<% if !logged_in? %>
+				<a href="/signup?tosubcsr=true" class="btn-like btn-register">SUBSCRIBE »</a>
+			<%elsif !(logged_in? && current_user.payment) %>
+				<a href="/user_profile.html" class="btn-like btn-register">SUBSCRIBE »</a>
+			<%end%>
+				<br>
+				<!-- a href="/unit01.html" class="btn-like btn-login">Try Lesson 1 for free »</a -->
+			</div>
+			</div>
+		</div>
+	</div>
+		</td>
+	</tr>
+</table>
+</div>
+
+
+<%= material(244).body %>
+
+
+
+<script type="text/javascript">
+currentSection="course";
+</script>
+
+
+

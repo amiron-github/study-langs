@@ -1,0 +1,1311 @@
+<% 
+if (logged_in? && current_user.payment) 
+	@good_user = true
+else
+	@good_user = false
+end
+%>
+
+<% @page_title = 'Lesson 10 :: Russian Online Lessons' %>
+<% @page_meta = {'description' => ""} %>
+
+
+<% content_for :special_js_css do %>
+
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'jp-control' %>
+<%= javascript_include_tag 'lexical-test' %>
+<%= stylesheet_link_tag 'lexical-test' %>
+<%= javascript_include_tag 'test-drag-sort' %>
+<%= javascript_include_tag 'es-grammar-exercises' %>
+<%= javascript_include_tag 'es-test-drag-input' %>
+<%= javascript_include_tag 'ev-test' %>
+
+<%= javascript_include_tag 'short-unit' %>
+<%= stylesheet_link_tag 'short-unit' %>
+
+<%= javascript_include_tag 'dialog-player' %>
+<%= stylesheet_link_tag 'dialog_player' %>
+
+<script type="text/javascript">
+<%if params[:tab] %>
+	openTabFromUrl(<%= params[:tab] %>);
+<%else%>
+	openTabFromUrl();
+<%end%>
+</script>
+
+<style>
+.ev-test-img {
+position: relative;
+left: -3px;
+top: 4px;
+width: 20px;
+height: 20px;
+}
+</style>
+
+<% end %>
+
+<div id="pagecontent"><div id="content">
+<div class="unit-area">
+
+
+<div id="prof_tabs">
+<%= render :partial => '/site/every/settings_block' %>
+<div class="unit-title">
+Lesson 10. Internet & Telephone
+</div>
+<%= render :partial => '/site/every/en_ru_coverflow', :locals => {:active => 10} %>
+	<div id="tabs_row">
+            <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Dialogue</a></div></div>
+			<div id="tab02" class="ptab"><div><a href="#">Vocabulary</a></div></div>
+            <div id="tab03" class="ptab"><div><a href="#">Practice</a></div></div>
+			<div id="tab04" class="ptab"><div><a href="#">Revision</a></div></div>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+
+<div id="for_tab01" class="pBlock" style="display: block">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Dialogues</h3>
+<p class="su-step-info">
+Here you can work with dialogues of the lesson
+</p>	
+	
+
+<h4 class="su-task" >
+I. Internet & Telephone
+</h4>
+
+<p class="part-task">a) Listen to the dialogues and read the translation</p>
+
+
+<%= render :partial => '/site/every/dialog_player', 
+			:locals => {:cluster_id => 113, :html_id=>"dc1",
+						:d_title=>'Dialogue 10-1. Cyber cafe',
+:content=> "A tourist has come to a cyber cafe. She needs to check her email and upload some photos. She asks about the fees in this cyber cafe. The fees are: 30 rubles for 15 minutes, 50 rubles for 30 minutes and 70 rubles for 1 hour. The administrator tells the tourists to work on the computer 22. He adds that the tourist should pay after she finishes to work. "
+			} %>	
+
+				<script type="text/javascript"> 
+					var  dc1 = new dialog_controls( {
+					id: "dc1", 
+					file: "/audios/audio10011100.mp3",
+					tracks: [0,1985,3030,9587,18181,20584]
+				
+					} )
+				</script>		
+	
+<br><br><br>
+
+<%= render :partial => '/site/every/dialog_player', 
+			:locals => {:cluster_id => 114, :html_id=>"dc2",
+						:d_title=>'Dialogue 2-2. At a hotel',
+:content=> "In a hotel, a tourists asks the receptionist how to use the phone in the hotel room and how much international and local calls cost. "
+			} %>	
+
+				<script type="text/javascript"> 
+					var  dc2 = new dialog_controls( {
+					id: "dc2", 
+					file: "/audios/audio10011200.mp3",
+					tracks: [0,3997,5198,8098,19043,21420,28500,31033,38949]
+				
+					} )
+				</script>		
+	
+	
+	
+<br>
+
+
+<p class="part-task">b) Listen and repeat the dialogues phrase by phrase</p>
+
+
+<h4 class="su-task">
+II. Useful expressions
+</h4>
+<p class="part-task">a) Find the translation of Russian phrases</p>
+
+
+<div id="ds1" class="ds-wrapper" style="padding: 15px; margin: 20px 30px;">
+
+<p class="ex-desc">
+Listen to the phrases. Drag the English phrases from the list below <br>and drop them into the corresponding fields.
+</p>		
+
+
+
+<table align="center" style="margin: 0 auto;">
+<tr>
+<td>
+
+
+<table class="dst-test ds-table ds-audio" cellspacing="0" align="center" style="margin: 0 auto">
+<col width="80">
+<col width="20">
+<col width="40">
+<col width="330">
+<tr>
+	<td class="ds-quest" align="center">
+			Phrase 1 
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio10013010.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+			Phrase 2
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio10013020.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 3
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio10013030.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 4
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio10013040.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 5
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio10013050.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 6
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio10013060.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 7
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio10013070.mp3', this)"></div>
+	</td>	
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 8
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio10013080.mp3', this)"></div>
+	</td>	
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 8
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio10013090.mp3', this)"></div>
+	</td>	
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 8
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio10013100.mp3', this)"></div>
+	</td>	
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+</table>
+
+</td>
+
+</tr>
+<tr>
+
+<td>
+	
+<br>
+<br>
+
+<table class="ds_variants_list" style="margin: 0 auto;" align="center">
+<col width="200">
+<col width="250">
+
+<tr valign="top">
+<td>
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">7</span>A local call is free.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">6</span>You should dial 8.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">9</span>Can I call from my room?</div></div>
+	</li>
+</ul>
+
+</td>
+<td>
+
+<ul class="no-list">
+
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">8</span>I think, I'll need 30 minutes.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">10</span>I would like to check my email.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>Please, come to the computer 22.</div></div>
+	</li>
+</ul>
+
+</td>
+</tr>
+<tr valign="top">
+<td colspan="2">
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>What should I do for an international call?</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">5</span>The cost of your call will be included in the cost for the hotel.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Then dial the number with the country code.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">4</span>The cost of call depends on the country.</div></div>
+	</li>
+</ul>
+</td>
+</tr>
+</table>
+
+
+</td>
+</tr>
+</table>
+
+
+<div class="es_btn_wrapper es-ex-buttons ds-check-wrapper">
+
+<input type="button" class="es_btn ds-check-button" value="Check answers">
+
+</div>
+
+
+</div>
+
+<script type="text/javascript"> 
+	var ds1 = new dragsort_test( {
+		id: "ds1", 
+		test_id: "c0110013.I.c)",
+		targets: "ds-answer", 
+		answer_elem: "ds_sort_item", 
+		variant_elem: "ds_variant",
+		answer_color: "#F7F6F6",
+		auto_check: false
+		} )
+</script>
+
+<br><br><br><br>
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Next part >>" onclick="openNextStep(2)">
+</div>	
+	
+	</div>
+</div>
+
+<div id="for_tab02" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Vocabulary</h3>
+<p class="su-step-info">
+Here you can learn words and expressions of the lesson.
+</p>	
+
+
+<h4 class="su-task">
+I. Internet
+</h4>
+
+<p class="part-task">a) Learn Russian words: </p>
+
+<%
+ @voc1 = [
+{:text=>'Интерн<span class="acco">е</span>т',
+:sound=>'/audios/audio10021010.mp3',
+:transcribe=>'int<span class="ry">i</span>rn<span class="acct">e</span>t',
+:translate=>' Internet '},
+{:text=>'интерн<span class="acco">е</span>т каф<span class="acco">е</span>',
+:id=> '719',
+:sound=>'/audios/audio10021020.mp3',
+:transcribe=>'int<span class="ry">i</span>rn<span class="acct">e</span>t kaf<span class="acct">e</span>',
+:translate=>' cyber cafe '},
+{:text=>'интерн<span class="acco">е</span>т сал<span class="acco">о</span>н',
+:id=> '717',
+:sound=>'/audios/audio10021030.mp3',
+:transcribe=>'int<span class="ry">i</span>rn<span class="acct">e</span>t sal<span class="acct">o</span>n',
+:translate=>' cyber salon '},
+{:text=>'электр<span class="acco">о</span>нная п<span class="acco">о</span>чта, email',
+:id=> '714',
+:sound=>'/audios/audio10021040.mp3',
+:transcribe=>'iliktr<span class="acct">o</span>naya p<span class="acct">o</span>chta, im<span class="acct">e</span>yl',
+:translate=>' email '},
+{:text=>'icq',
+:sound=>'/audios/audio10021050.mp3',
+:transcribe=>'ay si ky<span class="acct">oo</span>',
+:translate=>' icq '},
+{:text=>'компь<span class="acco">ю</span>тер',
+:id=> '721',
+:sound=>'/audios/audio10021060.mp3',
+:transcribe=>'kampy<span class="acct">oo</span>ter',
+:translate=>' computer '},
+{:text=>'пров<span class="acco">е</span>рить п<span class="acct">о</span>чту',
+:sound=>'/audios/audio10021070.mp3',
+:transcribe=>'pra<span class="sftv">v</span><span class="sfty">y</span><span class="acct">e</span>ri<span class="sftc">t</span> p<span class="acct">o</span>chtoo',
+:translate=>' check email '},
+{:text=>'посет<span class="acco">и</span>ть сайт',
+:id=> '711',
+:sound=>'/audios/audio10021080.mp3',
+:transcribe=>'pasit<span class="acct">i</span><span class="sftc">t</span> s<span class="acct">a</span>yt',
+:translate=>' visit a site '},
+{:text=>'скач<span class="acco">а</span>ть',
+:id=> '709',
+:sound=>'/audios/audio10021090.mp3',
+:transcribe=>'skach<span class="acct">a</span><span class="sftc">t</span>',
+:translate=>' download '},
+{:text=>'закач<span class="acco">а</span>ть',
+:id=> '712',
+:sound=>'/audios/audio10021100.mp3',
+:transcribe=>'zakach<span class="acct">a</span><span class="sftc">t</span>',
+:translate=>' upload '},
+{:text=>'файл',
+:id=> '715',
+:sound=>'/audios/audio10021110.mp3',
+:transcribe=>'f<span class="acct">a</span>yl',
+:translate=>' file '},
+{:text=>'мегаб<span class="acco">а</span>йт',
+:sound=>'/audios/audio10021120.mp3',
+:transcribe=>'migab<span class="acct">a</span>yt',
+:translate=>' megabyte '},
+{:text=>'килоб<span class="acco">а</span>йт',
+:sound=>'/audios/audio10021130.mp3',
+:transcribe=>'kilab<span class="acct">a</span>yt',
+:translate=>' kilobyte '}
+ ]
+%>
+<%= render :partial => '/site/every/en_ru_voc', :locals => {:voc => @voc1} %>	
+	
+<br><br>
+<p class="part-task">b) Read and find the corresponding English word:  </p>
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+<div id="ch1" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test' %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		test_id: "c0110022.II.b)",
+		quest_num: 15,
+		variants_num: 5,
+		//quest_type: 'audio',
+		basic_array: [
+		
+<% @last_item_index = (@voc1.length)-1 -%>
+<% @voc1.each_with_index  do |word, index| -%>
+['<%= word[:text] %>', "<%= word[:translate].to_s.gsub(/"/,'\"') %>"<%unless word[:id]==nil || word[:id]==''%>,'<%=word[:id]%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
+		} )
+</script>
+<%end%>
+<br><br>
+<p class="part-task">c) Translate phrases from English into Russian </p>
+
+
+<%
+ @phrases = [
+
+{:q_text=>'I\'d like to check email. ',
+:sound=>'/audios/audio10023010.mp3'},
+{:q_text=>'Do you have a computer? ',
+:sound=>'/audios/audio10023020.mp3'},
+{:q_text=>'How much does Internet cost? ',
+:sound=>'/audios/audio10023030.mp3'},
+{:q_text=>'I\'d like to download a file. ',
+:sound=>'/audios/audio10023040.mp3'},
+{:q_text=>'Where is an cyber cafe? ',
+:sound=>'/audios/audio10023050.mp3'},
+{:q_text=>'Do you have Internet? ',
+:sound=>'/audios/audio10023060.mp3'}
+
+ ]
+%>
+
+<%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
+
+
+<br><br>
+
+<h4 class="su-task">
+II. Phone
+</h4>
+
+<p class="part-task">a) Learn Russian words: </p>
+
+<%
+ @voc1 = [
+{:text=>'телеф<span class="acco">о</span>н',
+:sound=>'/audios/audio10031010.mp3',
+:transcribe=>'tilif<span class="acct">o</span>n',
+:translate=>' phone '},
+{:text=>'телеф<span class="acco">о</span>н-автом<span class="acco">а</span>т',
+:sound=>'/audios/audio10031020.mp3',
+:transcribe=>'tilif<span class="acct">o</span>n-aftam<span class="acct">a</span>t',
+:translate=>' pay phone '},
+{:text=>'дл<span class="acco">и</span>нный гуд<span class="acco">о</span>к',
+:sound=>'/audios/audio10031030.mp3',
+:transcribe=>'dl<span class="acct">i</span>n<span class="ry">i</span>y good<span class="acct">o</span>k',
+:translate=>' long tone '},
+{:text=>'кор<span class="acco">о</span>ткий гуд<span class="acco">о</span>к',
+:sound=>'/audios/audio10031040.mp3',
+:transcribe=>'kor<span class="acct">o</span>tkiy good<span class="acct">o</span>k',
+:translate=>' short tone '},
+{:text=>'код стран<span class="acco">ы</span>',
+:sound=>'/audios/audio10031050.mp3',
+:transcribe=>'k<span class="acct">o</span>t stran<span class="acct"><span class="ry">i</span></span>',
+:translate=>' country code '},
+{:text=>'междунар<span class="acco">о</span>дный звон<span class="acco">о</span>к',
+:sound=>'/audios/audio10031060.mp3',
+:transcribe=>'mijdoonar<span class="acct">o</span>dn<span class="ry">i</span>y zvan<span class="acct">o</span>k',
+:translate=>' international call '},
+{:text=>'м<span class="acco">е</span>стный звон<span class="acco">о</span>к',
+:sound=>'/audios/audio10031070.mp3',
+:transcribe=>'<span class="sftv">m</span><span class="sfty">y</span><span class="acct">e</span>sn<span class="ry">i</span>y zvan<span class="acct">o</span>k',
+:translate=>' local call '},
+{:text=>'н<span class="acco">о</span>мер',
+:sound=>'/audios/audio10031080.mp3',
+:transcribe=>'n<span class="acct">o</span>mir',
+:translate=>' (phone) number '},
+{:text=>'набр<span class="acco">а</span>ть н<span class="acco">о</span>мер',
+:sound=>'/audios/audio10031090.mp3',
+:transcribe=>'nabr<span class="acct">a</span><span class="sftc">t</span> n<span class="acct">o</span>mir',
+:translate=>' dial a number '},
+{:text=>'набр<span class="acco">а</span>ть код стран<span class="acco">ы</span>',
+:sound=>'/audios/audio10031100.mp3',
+:transcribe=>'nabr<span class="acct">a</span><span class="sftc">t</span> k<span class="acct">o</span>t stran<span class="acct"><span class="ry">i</span></span>',
+:translate=>' dial a country code '},
+{:text=>'сд<span class="acco">е</span>лать звон<span class="acco">о</span>к',
+:sound=>'/audios/audio10031110.mp3',
+:transcribe=>'<span class="sftc">z</span><span class="sftv">d</span><span class="sfty">y</span><span class="acct">e</span>la<span class="sftc">t</span> zvan<span class="acct">o</span>k',
+:translate=>' call, make a call '},
+{:text=>'дожд<span class="acco">а</span>ться дл<span class="acco">и</span>нного гудк<span class="acco">а</span>',
+:sound=>'/audios/audio10031120.mp3',
+:transcribe=>'dajd<span class="acct">a</span>tsa dl<span class="acct">i</span>nava gootk<span class="acct">a</span>',
+:translate=>' wait for the long tone '}
+ ]
+%>
+<%= render :partial => '/site/every/en_ru_voc', :locals => {:voc => @voc1} %>	
+	
+<br><br>
+<p class="part-task">b) Read and find the corresponding English word:  </p>
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+<div id="ch5" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test' %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch5 = new ch_exercise( {
+		id: "ch5", 
+		test_id: "c0110222",
+		quest_num: 15,
+		variants_num: 5,
+		//quest_type: 'audio',
+		basic_array: [
+		
+<% @last_item_index = (@voc1.length)-1 -%>
+<% @voc1.each_with_index  do |word, index| -%>
+['<%= word[:text] %>', "<%= word[:translate].to_s.gsub(/"/,'\"') %>"]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
+		} )
+</script>
+<%end%>
+<br><br>
+<p class="part-task">c) Translate phrases from English into Russian </p>
+
+<%
+ @phrases = [
+
+{:q_text=>'How much does an international call cost? ',
+:sound=>'/audios/audio10034010.mp3'},
+{:q_text=>'Should I dial country code? ',
+:sound=>'/audios/audio10034020.mp3'},
+{:q_text=>'Do you have a telephone? ',
+:sound=>'/audios/audio10034030.mp3'},
+{:q_text=>'How much does a call cost? ',
+:sound=>'/audios/audio10034040.mp3'},
+{:q_text=>'Where is a pay phone? ',
+:sound=>'/audios/audio10034050.mp3'},
+{:q_text=>'How much does a telephone cost? ',
+:sound=>'/audios/audio10034060.mp3'}
+
+ ]
+%>
+
+<%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
+
+
+
+<br><br><br><br>
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Next part >>" onclick="openNextStep(3)">
+</div>
+	
+	</div>
+</div>
+
+
+<div id="for_tab03" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Practice</h3>
+<p class="su-step-info">
+Here you can learn grammar and lexical rules of the lesson.
+</p>
+
+
+<h4 class="su-task">
+I. Making a phone call
+</h4>
+
+<p class="part-task">a) Listen to the questions in Russian and find the corresponding answers:  </p>
+
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+<div id="ds7" class="ds-wrapper" style="padding: 15px;">
+
+<p class="ex-desc">Listen to the quesstions. Drag the answers from the list below
+and drop them into the corresponding fields. </p>	
+
+
+<% 
+
+@t_phrases = [
+  {:text=> 'Местный звонок стоит 5 рублей за минуту.',
+ :sound=>'/audios/audio10033010.mp3',
+ :answer=> '1'
+  },
+ {:text=> 'Да, конечно. Вот телефон.',
+ :sound=>'/audios/audio10033020.mp3', 
+ :answer=> '2'
+  },
+ {:text=> 'Да, у меня есть телефон.',
+ :sound=>'/audios/audio10033030.mp3',
+ :answer=> '3'
+  },
+ {:text=> 'Да, вам нужно набрать код страны.',
+ :sound=>'/audios/audio10033040.mp3', 
+ :answer=> '4'
+  },
+ {:text=> 'Звонок в Европу стоит 40 рублей за минуту.',
+ :sound=>'/audios/audio10033050.mp3',
+ :answer=> '5'
+  },
+ {:text=> 'Телефон автомат есть рядом с кафе.',
+ :sound=>'/audios/audio10033060.mp3',
+ :answer=> '6'
+  }
+
+ ]
+
+%>
+
+<%= render :partial => '/site/every/en_ru_ddtest', :locals => {:t_phrases => @t_phrases, :title=> "Question"} %>
+
+</div>
+
+<script type="text/javascript"> 
+	var ds7 = new dragsort_test( {
+		id: "ds7", 
+		test_id: "c0110032.III.b)",		
+		targets: "ds-answer",	
+		answer_elem: "ds_sort_item", 
+		variant_elem: "ds_variant",
+		answer_color: "#F6FAFF",
+		auto_check: false
+		} )
+</script>
+<%end%>
+<br><br>
+
+
+<h4 class="su-task">
+II. I need a phone!
+</h4>
+
+<p class="part-task">a) Choose <span style="font-weight: normal">нужен</span>, <span style="font-weight: normal">нужна</span>, <span style="font-weight: normal">нужно</span> or <span style="font-weight: normal">нужны</span> in the following phrases:</p>
+
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+
+<div class="su-exerc"> 
+<div id="di5">	
+				
+<p class="ex-desc">Drag and drop words or type them in the text fields.</p> 
+
+<br> 
+<table class="di_variants noselect di_var_view" cellspacing="14" align="center" > 
+<tr> 
+	<td> 
+		<div>нужен</div> 
+	</td> 
+	<td> 
+		<div>нужно</div> 
+	</td>  
+</tr> 
+<tr> 
+	<td> 
+		<div>нужна</div> 
+	</td> 
+	<td> 
+		<div>нужны</div> 
+	</td>  
+</tr>
+</table> 
+<br> 
+ 
+
+<div  class="gr_ex_type"> 
+<div class="gr-ex-testid">c0110041.IV.a)</div> 
+ 
+<div class="gex-area-trans"> 
+
+<div class="gext_sign"></div> 
+
+<div class="gext_task gext_sign">
+Мне  <input type="text" style="width: 60px" value=""> <span class="gext_answer" style="display: none">нужно</span> интернет кафе.
+<div class="gext_show"><span> Мне <b>нужно</b> интернет кафе. </span> &nbsp;</div>
+</div>
+<div class="gext_task gext_sign">
+ Мне <input type="text" style="width: 60px" value=""> <span class="gext_answer" style="display: none">нужны</span> туфли.
+<div class="gext_show"><span> Мне <b>нужны</b> туфли.</span> &nbsp;</div>
+</div>
+<div class="gext_task gext_sign">
+Мне <input type="text" style="width: 60px" value=""> <span class="gext_answer" style="display: none">нужен</span> интернет.
+<div class="gext_show"><span> Мне <b>нужен</b> интернет.</span> &nbsp;</div>
+</div>
+<div class="gext_task gext_sign">
+Мне <input type="text" style="width: 60px" value=""> <span class="gext_answer" style="display: none">нужна</span> гостиница.
+<div class="gext_show"><span> Мне <b>нужна</b> гостиница.</span> &nbsp;</div>
+</div>
+<div class="gext_task gext_sign">
+Мне  <input type="text" style="width: 60px" value=""> <span class="gext_answer" style="display: none">нужен</span> компьютер.
+<div class="gext_show"><span> Мне <b>нужен</b> компьютер.</span> &nbsp;</div>
+</div>
+<div class="gext_task gext_sign">
+Мне  <input type="text" style="width: 60px" value=""> <span class="gext_answer" style="display: none">нужна</span> карта.
+<div class="gext_show"><span> Мне <b>нужна</b> карта.</span> &nbsp;</div>
+</div>
+<div class="gext_task gext_sign">
+Мне  <input type="text" style="width: 60px" value=""> <span class="gext_answer" style="display: none">нужен</span>  телефон.
+<div class="gext_show"><span> Мне <b>нужен</b> телефон.</span> &nbsp;</div>
+</div>
+<div class="gext_task gext_sign">
+Мне  <input type="text" style="width: 60px" value=""> <span class="gext_answer" style="display: none">нужны</span> открытки.
+<div class="gext_show"><span> Мне <b>нужны</b> открытки.</span> &nbsp;</div>
+</div>.
+
+</div>
+
+<p class="gext_check es-ex-buttons gex-es-btn"><input type="button" class="gext_check_btn" value="Check answers" > <input type="button" value="Display answers" class="gext_answer_show"></p> 
+ 
+ 
+</div> 
+ 
+</div> 
+ 
+
+</div> <!-- end of su-exerc --> 
+ 
+ 
+<script type="text/javascript"> 
+	var di5 = new draginput_test( {
+		id: "di5", 
+		targets: "gext_task", 
+		in_targets: "input",
+		clear_option: false,
+		nospace: true,
+		variant_elem: "di_variants div"
+		//targets_color: "#ffffff"
+ 
+		} )
+</script> 
+
+<%end%>
+
+
+<br><br>
+
+<p class="part-task">b) Translate into Russian using words <span style="font-weight: normal">этот</span>, <span style="font-weight: normal">эта</span>, <span style="font-weight: normal">это</span> or <span style="font-weight: normal">эти</span> and check yourself:</p>
+
+
+<%
+ @phrases = [
+
+{:q_text=>'How much does this computer cost? ',
+:sound=>'/audios/audio10042010.mp3'},
+{:q_text=>'I like this dessert. ',
+:sound=>'/audios/audio10042020.mp3'},
+{:q_text=>'I need this medicine. ',
+:sound=>'/audios/audio10042030.mp3'},
+{:q_text=>'How much do these toys cost? ',
+:sound=>'/audios/audio10042040.mp3'},
+{:q_text=>'I don\'t like this fish. ',
+:sound=>'/audios/audio10042050.mp3'},
+{:q_text=>'How much do these souvenirs cost? ',
+:sound=>'/audios/audio10042060.mp3'},
+{:q_text=>'I like this caviar. ',
+:sound=>'/audios/audio10042070.mp3'},
+{:q_text=>'I don\'t like this wine. ',
+:sound=>'/audios/audio10042080.mp3'}
+
+ ]
+%>
+
+<%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
+
+
+<br><br>
+
+<h4 class="su-task">
+III. Different situations
+</h4>
+
+<p class="part-task">a) Listen to the dialogues and answer the questions choosing the answer or putting a numeral in the text area. </p>
+
+<script type="text/javascript">
+
+T['4']=['3', '2', '5']; 
+T['5']=['2', '850', '150']; 
+T['6']=['1', '2', '340']; 
+
+
+</script>
+
+
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+
+<div class="su-exerc">
+
+<p >
+
+
+<div class="gex-area-trans" style="padding: 30px 30px">
+
+<table cellspacing="0">        
+	<tr>
+		<td> 
+				<table class="ds-table" cellspacing="0" > 
+					<tr> 
+						<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap; "><strong>Dialogue 1: City </strong></td> 
+						<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('/audios/audio10053010.mp3', this)"></div></td> 
+					</tr> 
+				</table>		
+		
+	
+		</td>
+
+	 </tr>
+	<tr>
+		<td>
+		<form onsubmit="return check_test(this,4,'c0110051.V.1')" style="margin-bottom: 0px;">
+		
+		<div style="margin-top: 20px;" class="ital bold">
+		<img src="pixel.gif" width="10" height="10" id="r41" class="ev-test-img"> 1. The tourist asks the way to the: 
+		</div>
+		<div style="padding-top: 10px; padding-left: 30px;">
+
+		<input type="radio" name="q1">hotel<br /><input type="radio" name="q1">park<br /><input type="radio" name="q1">railway station<br />
+		</div>
+		<div style="margin-top: 20px;" class="ital bold">
+		<img src="pixel.gif" width="10" height="10" id="r42" class="ev-test-img"> 1. In order to get there, he should: 
+		</div>
+		<div style="padding-left: 30px; padding-top: 10px;">
+	   		<input type="radio" name="q2">cross the street and turn to the right<br />
+
+			<input type="radio" name="q2">turn to the right and go along the street<br />
+			<input type="radio" name="q2">cross the square and turn to the right<br />
+		</div>
+		
+		<div style="padding: 15px 0px;" class="ital bold"><img src="pixel.gif" width="10" height="10" id="r43" class="ev-test-img"> 3. It will take him about  <input type="text" size=2> minutes.</div>
+		
+		<div class="es-ex-buttons gex-es-btn" style="padding-left: 100px">
+			<input type="submit" value="Check answers">
+		</div>
+		</form>
+
+		<br><br><br><br>
+		
+		</td>
+	</tr>
+ </table>
+
+<table cellspacing="0">        
+	<tr>
+		<td> 
+				<table class="ds-table" cellspacing="0" > 
+					<tr> 
+						<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap; "><strong>Dialogue 2: In a shop </strong></td> 
+						<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('/audios/audio10053020.mp3', this)"></div></td> 
+					</tr> 
+				</table>
+		</td>
+
+	 </tr>
+	<tr>
+		<td>
+
+		<form onsubmit="return check_test(this,5, 'c0110052.V.2')" style="margin-bottom: 0px;">
+		
+		<div style="margin-top: 20px;" class="ital bold">
+		<img src="pixel.gif" width="10" height="10" id="r51" class="ev-test-img"> 1. The tourist wants to buy: 
+		</div>
+		<div style="padding-left: 30px; padding-top: 10px;">
+		<input type="radio" name="q1">sweater<br /><input type="radio" name="q1">T-shirt<br /><input type="radio" name="q1">shirt<br />
+		</div>
+
+		<div style="padding: 15px 0px;" class="ital bold"><img src="pixel.gif" width="10" height="10" id="r52" class="ev-test-img"> 2. It costs  <input type="text" size=2> rubles.</div>
+		<div style="padding: 15px 0px;" class="ital bold"><img src="pixel.gif" width="10" height="10" id="r53" class="ev-test-img"> 3. The change is <input type="text" size=2> rubles.</div>
+		
+		<div class="es-ex-buttons gex-es-btn" style="padding-left: 100px">
+			<input type="submit" value="Check answers">
+		</div>
+		</form>
+<br><br><br><br>
+
+		</td>
+	</tr>
+ </table>
+ <table cellspacing="0">        
+
+	<tr>
+		<td> 
+				<table class="ds-table" cellspacing="0" > 
+					<tr> 
+						<td style="border-width:0; padding: 3px; padding-left: 6px; white-space: nowrap; "><strong>Dialogue 3: In a restaurant </strong></td> 
+						<td style="border-width:0; padding: 3px"><div class="jp_control" onclick="cJplayer('/audios/audio10053030.mp3', this)"></div></td> 
+					</tr> 
+				</table>
+		</td>
+	 </tr>
+	<tr>
+		<td>
+		<form onsubmit="return check_test(this,6,'c0110053.V.3')" style="margin-bottom: 15px;">
+		
+		<div style="margin-top: 20px;" class="ital bold">
+
+		<img src="pixel.gif" width="10" height="10" id="r61" class="ev-test-img"> 1. The tourist's order is: 
+		</div>
+		<div style="padding-left: 30px; padding-top: 10px;">
+		<input type="radio" name="q1">fried potatoes, steak, beer<br /><input type="radio" name="q1">salad, fried potatoes, steak<br /><input type="radio" name="q1">salad, rice, steak<br />
+		</div>
+		<div style="margin-top: 20px;" class="ital bold">
+		<img src="pixel.gif" width="10" height="10" id="r62" class="ev-test-img"> 1. For the dessert the tourist wants to take: 
+		</div>
+
+		<div style="padding-left: 30px; padding-top: 10px;">
+		<input type="radio" name="q2">jelly<br /><input type="radio" name="q2">ice-cream<br /><input type="radio" name="q2">cake<br />
+		</div>
+		<div style="padding: 15px 0px;" class="ital bold"><img src="pixel.gif" width="10" height="10" id="r63" class="ev-test-img"> 3. It will cost <input type="text" size=2> rubles.</div>
+		
+		<div class="es-ex-buttons gex-es-btn" style="padding-left: 100px">
+			<input type="submit" value="Check answers">
+		</div>
+
+		</form>
+
+		</td>
+	</tr>
+ </table>
+
+ </div>
+</div>
+
+<%end%>
+
+
+
+<br><br>
+
+<h4 class="su-task">
+IV. Russian numerals
+</h4>
+
+<p class="part-task">a) Listen to the Russian numeral and write it (with figures 1, 2, 3 etc.) in the text area: </p>
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+<div id="ch6" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test' %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch6 = new ch_exercise( {
+		id: "ch6", 
+		test_id: "c0110061.VI.a)",
+		quest_num: 15,
+		variants_num: 5,
+		quest_type: 'audio',
+		answer_type: 'type',
+		basic_array: [
+		
+['/sounds/num00001.mp3','1'],
+['/sounds/num00002.mp3','2'],
+['/sounds/num00003.mp3','3'],
+['/sounds/num00004.mp3','4'],
+['/sounds/num00005.mp3','5'],
+['/sounds/num00006.mp3','6'],
+['/sounds/num00007.mp3','7'],
+['/sounds/num00008.mp3','8'],
+['/sounds/num00009.mp3','9'],
+['/sounds/num00010.mp3','10'],
+['/sounds/num00011.mp3','11'],
+['/sounds/num00012.mp3','12'],
+['/sounds/num00013.mp3','13'],
+['/sounds/num00014.mp3','14'],
+['/sounds/num00015.mp3','15'],
+['/sounds/num00016.mp3','16'],
+['/sounds/num00017.mp3','17'],
+['/sounds/num00018.mp3','18'],
+['/sounds/num00019.mp3','19'],
+['/sounds/num00020.mp3','20'],
+['/sounds/num00030.mp3','30'],['/sounds/num00040.mp3','40'],['/sounds/num00050.mp3','50'],['/sounds/num00060.mp3','60'],
+['/sounds/num00070.mp3','70'],['/sounds/num00080.mp3','80'],['/sounds/num00090.mp3','90'],['/sounds/num00100.mp3','100'],
+['/sounds/num00200.mp3','200'],['/sounds/num00300.mp3','300'],['/sounds/num00400.mp3','400'],
+['/sounds/num00500.mp3','500'],['/sounds/num00600.mp3','600'],['/sounds/num00700.mp3','700'],['/sounds/num00800.mp3','800'],
+['/sounds/num00900.mp3','900'],['/sounds/num01000.mp3','1000']
+
+		]
+		
+		} )
+</script>
+<%end%>
+<br>
+
+	
+<h4 class="su-task"> 
+V. Revision
+</h4> 
+
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+
+<div class="su-exerc">
+<div id="di8">	
+				
+<p class="ex-desc">Drag and drop words to build phrases. You can read correct answers by clicking the button "Display answers"</p> 
+
+
+<div  class="gr_ex_type di_mix">
+<div class="gr-ex-testid">c0110072.VII.b)</div>
+<%
+ @phrases = [
+{:to_bild=> "I am Alex Grey.", 
+:variants=>'я Алекс Грей', 
+:answer=>'Я Алекс Грей', 
+:show=> 'Я Алекс Грей.', 
+:sound=>'/audios/audio10072010.mp3'},
+{:to_bild=> "Excuse me, please, where is the subway?", 
+:variants=>'извините пожалуйста где находится метро', 
+:answer=>'извините пожалуйста где находится метро', 
+:show=> 'Извините, пожалуйста, где находится метро?', 
+:sound=>'/audios/audio10072020.mp3'},
+{:to_bild=> "How much does this souvenir cost?", 
+:variants=>'сколько стоит этот сувенир', 
+:answer=>'сколько стоит этот сувенир', 
+:show=> 'Сколько стоит этот сувенир?', 
+:sound=>'/audios/audio10072030.mp3'},
+{:to_bild=> "How can I get to the hotel?", 
+:variants=>'как пройти к гостинице', 
+:answer=>'как пройти к гостинице', 
+:show=> 'Как пройти к гостинице?', 
+:sound=>'/audios/audio10072040.mp3'},
+{:to_bild=> "I speak English.", 
+:variants=>'я говорю по-английски', 
+:answer=>'я говорю по-английски', 
+:show=> 'Я говорю по-английски.', 
+:sound=>'/audios/audio10072050.mp3'},
+{:to_bild=> "May I smoke here?", 
+:variants=>'здесь можно курить', 
+:answer=>'здесь можно курить', 
+:show=> 'Здесь можно курить?', 
+:sound=>'/audios/audio10072060.mp3'},
+{:to_bild=> "I like this T-shirt.", 
+:variants=>'мне нравится эта футболка', 
+:answer=>'мне нравится эта футболка', 
+:show=> 'Мне нравится эта футболка.', 
+:sound=>'/audios/audio10072070.mp3'},
+{:to_bild=> "I have a headache.", 
+:variants=>'у меня болит голова', 
+:answer=>'у меня болит голова', 
+:show=> 'У меня болит голова.', 
+:sound=>'/audios/audio10072080.mp3'},
+{:to_bild=> "I need a souvenir.", 
+:variants=>'мне нужен сувенир', 
+:answer=>'мне нужен сувенир', 
+:show=> 'Мне нужен сувенир.', 
+:sound=>'/audios/audio10072090.mp3'},
+{:to_bild=> "The phone doesn't work.", 
+:variants=>'телефон не работает', 
+:answer=>'телефон не работает', 
+:show=> 'Телефон не работает.', 
+:sound=>'/audios/audio10072100.mp3'}
+ ]
+%>
+<%= render :partial => '/site/every/en_ru_pseudo', :locals => {:phrases => @phrases} %>
+
+</div>
+</div>
+</div> 
+<script type="text/javascript"> 
+	var di8 = new draginput_test( {
+		id: "di8", 
+		targets: "gext_task input", 
+		//in_targets: "input",
+		clear_option: true,
+		one_use: true,
+		variant_elem: "di_mix_variants span"
+
+		} )
+</script>
+
+<%end%>
+
+
+<br><br><br><br>
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Next part >>" onclick="openNextStep(4)">
+</div>	
+	
+	
+	</div>
+</div>
+
+
+
+
+<div id="for_tab04" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Revision</h3>
+<p class="su-step-info">
+Revise materials from this lesson
+</p>
+
+
+	
+<h4 class="su-task"> 
+Revise this and previous lessons' materials 
+</h4> 
+ 
+ <p class="part-task">a) Listen and find the corresponding English phrases: </p>	
+
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+<div id="ch7" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test' %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch7 = new ch_exercise( {
+		id: "ch7", 
+		test_id: "c0110071.VII.a)",
+		quest_num: 15,
+		variants_num: 5,
+		basic_array: [
+		
+['Я Ким Стоун.','I am Kim Stone.'],['Я из Канады.','I am from Canada.'],['Я американец.','I am American.'],['Где находится гостиница?','Where is the hotel?'],
+['Извините, пожалуйста','Excuse me, please.'],['Это лекарство.','It is a medicine.'],['Это мой билет.','This is my ticket.'],['Где находится метро?','Where is the subway?'],
+['Мне нужно в аэропорт.','I need to go to the airport.'],['Сколько стоит проезд?','How much is the fare?'],['Сколько стоит этот сувенир?','How much does this souvenir cost?'],['В номере есть телефон.','There is a telephone in the room.'],
+['У меня есть билет.','I have a ticket.'],['Как пройти к вокзалу?','How can I get to the railway station?'],['Как пройти к парку?','How can I get to the park?'],['Я плохо говорю по-русски.','I speak Russian badly.'],
+['Я говорю по-английски.','I speak English.'],['Вы не могли бы говорить медленее?','Could you please speak slower?'],['Что Вы порекомендуете?','What would you recommend?'],['Здесь можно курить?','May I smoke here?'],
+['Здесь можно фотографировать?','May I photograph here?'],['Мне нужен сувенир.','I need a souvenir.'],['Мне нравится этот музей.','I like this museum.'],['Мне нравятся эти открытки.','I like these post casrds.'],
+['У меня болит голова.','I have a headache.'],['У меня болят зубы.','I have a toothache.'],['Мне нужно снять наличные.','I need to draw cash.'],['Мне хотелось бы обменять евро.','I\'d like to exchange euros.'],
+['Мне хотелось бы посетить музей.','I\'d like to visit a museum.'],['Магазин не работает.','The shop is closed.'],['Телефон не работает.','The phone does not work.']
+
+		]
+		
+		} )
+</script>
+<%end%>
+ 
+<br><br><br>
+ 
+ 
+ <div class="rev-wrap">
+	 <div class="rev-head">  In this lesson you have learned </div>
+  <div class="rev-content">
+
+<p><strong>-Words and expressions on the topic "Means of Communication":</strong></p> 
+
+<ul class="learnt-list">
+	<li>Интернет</li>
+	<li>Телефон</li>
+</ul>
+
+<p>You have also revised the basic constructions which were introduced in previous lessons.</p> 
+
+
+
+<br><br><br><br><br><br><br><br>
+  
+ 
+  </div>
+ </div>
+ 
+<br><br><br><br><br><br><br><br>
+
+
+
+
+	</div>
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+</div></div><!-- end of id content-->
+
+
+
+<script type="text/javascript">
+currentSection="course";
+</script>

@@ -1,0 +1,1762 @@
+<% 
+if (logged_in? && current_user.payment) 
+	@good_user = true
+else
+	@good_user = false
+end
+%>
+
+<% @page_title = 'Lesson 7 :: Russian Online Lessons' %>
+<% @page_meta = {'description' => ""} %>
+
+
+<% content_for :special_js_css do %>
+
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'jp-control' %>
+<%= javascript_include_tag 'lexical-test' %>
+<%= stylesheet_link_tag 'lexical-test' %>
+<%= javascript_include_tag 'test-drag-sort' %>
+<%= javascript_include_tag 'es-grammar-exercises' %>
+<%= javascript_include_tag 'es-test-drag-input' %>
+
+<%= javascript_include_tag 'short-unit' %>
+<%= stylesheet_link_tag 'short-unit' %>
+
+<%= javascript_include_tag 'dialog-player' %>
+<%= stylesheet_link_tag 'dialog_player' %>
+
+<script type="text/javascript">
+<%if params[:tab] %>
+	openTabFromUrl(<%= params[:tab] %>);
+<%else%>
+	openTabFromUrl();
+<%end%>
+</script>
+
+<style>
+.gexv_variant {
+display: inline;
+padding-left: 15px;
+padding-right: 10px;
+}
+
+#ds3 .ds-quest {
+padding: 7px 0 7px 7px;
+text-align: left !important;
+}
+</style>
+
+<% end %>
+
+
+<div id="pagecontent"><div id="content">
+<div class="unit-area">
+
+
+<div id="prof_tabs">
+<%= render :partial => '/site/every/settings_block' %>
+<div class="unit-title">
+Lesson 7. At the restaurant
+</div>
+
+<%= render :partial => '/site/every/en_ru_coverflow', :locals => {:active => 7} %>
+	<div id="tabs_row">
+            <div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Dialogue</a></div></div>
+			<div id="tab02" class="ptab"><div><a href="#">Vocabulary</a></div></div>
+            <div id="tab03" class="ptab"><div><a href="#">Practice</a></div></div>
+			<div id="tab04" class="ptab"><div><a href="#">Revision</a></div></div>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+
+<div id="for_tab01" class="pBlock" style="display: block">
+	<div class="inpBlock">
+
+	
+<h3 class="su-step-title">Dialogues</h3>
+<p class="su-step-info">
+Here you can work with dialogues of the lesson
+</p>	
+	
+
+<h4 class="su-task" >
+I. At the restaurant
+</h4>
+
+<p class="part-task">a) Listen to the dialogue and read the translation</p>
+
+
+<%= render :partial => '/site/every/dialog_player', 
+			:locals => {:cluster_id => 109, :html_id=>"dc1",
+						:d_title=>'Dialogue 7-1. At the restaurant',
+:content=> "Tourists come to the restaurant and ask for a table for two persons. The waiter offers a table near the window. The tourists ask if there is a menu in English, but there is only a menu in Russian. Tourists ask if it is allowed to smoke in the restaurant, and the waiter explains that they may smoke only on the terrace. Several minutes later, the tourist orders steak with fried potatoes, spaghetti carbonara, a bottle of red wine, one vanilla ice-cream, and chocolate mousse. They wait about 15 minutes for their order. After having lunch they order two coffees espresso and ask to bring the bill."
+			} %>	
+
+				<script type="text/javascript"> 
+					var  dc1 = new dialog_controls( {
+					id: "dc1", 
+					file: "/audios/audio07011100.mp3",
+					tracks: [0,1384,2325,4441,7210,8725,10815,14472,17633,22256,23850,26436,32340,35265,47282,55536,56712,59302,60012,63765,64819]
+				
+					} )
+				</script>		
+	
+<br>
+<p class="part-task">b) Listen and repeat the dialogue phrase by phrase</p>
+
+
+<h4 class="su-task">
+II. Useful phrases 
+</h4>
+
+<p class="part-task">a) Find the translation of Russian phrases</p>
+
+<div id="ds1" class="ds-wrapper" style="padding: 15px; margin: 20px 30px;">
+
+<p class="ex-desc">
+Listen to the phrases. Drag the English phrases from the list below <br>and drop them into the corresponding fields.
+</p>		
+
+<table align="center" style="margin: 0 auto;">
+<tr>
+<td>
+
+
+<table class="dst-test ds-table ds-audio" cellspacing="0" align="center" style="margin: 0 auto">
+<col width="80">
+<col width="20">
+<col width="40">
+<col width="300">
+<tr>
+	<td class="ds-quest" align="center">
+			Phrase 1 
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio07013010.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+			Phrase 2
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio07013020.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 3
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio07013030.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 4
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio07013040.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 5
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio07013050.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 6
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio07013060.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 7
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio07013070.mp3', this)"></div>
+	</td>	
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 8
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio07013080.mp3', this)"></div>
+	</td>	
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 9
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio07013090.mp3', this)"></div>
+	</td>	
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 10
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio07013100.mp3', this)"></div>
+	</td>	
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 11
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio07013110.mp3', this)"></div>
+	</td>	
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		Phrase 12
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio07013120.mp3', this)"></div>
+	</td>	
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+</table>
+
+</td>
+
+</tr>
+<tr>
+
+<td>
+	
+<br>
+<br>
+
+<table class="ds_variants_list" style="margin: 0 auto;" align="center">
+<col width="220">
+<col width="250">
+
+<tr valign="top">
+<td>
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">8</span>Do you like that table?</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">11</span>Please, two coffees espresso.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>You can go to the terrace.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Bring us the bill, please.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">5</span>Here smoking is forbidden.</div></div>
+	</li>
+</ul>
+
+</td>
+<td>
+
+<ul class="no-list">
+
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">10</span>We have menu only in Russian.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">4</span>We need a table for two persons.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">7</span>You'll need to wait for a while.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">6</span>Have you got a menu in English?</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">9</span>Is smoking allowed here?</div></div>
+	</li>
+</ul>
+
+</td>
+</tr>
+<tr valign="top">
+<td colspan="2">
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>Your order will be ready in 10-15 minutes.</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">12</span>Could you please give us two martinis?</div></div>
+	</li>
+</ul>
+</td>
+</tr>
+</table>
+
+
+</td>
+</tr>
+</table>
+
+
+<div class="es_btn_wrapper es-ex-buttons ds-check-wrapper">
+
+<input type="button" class="es_btn ds-check-button" value="Check answers">
+
+</div>
+
+
+</div>
+
+<script type="text/javascript"> 
+	var ds1 = new dragsort_test( {
+		id: "ds1", 
+		test_id: "c0107013.I.c)",
+		targets: "ds-answer", 
+		answer_elem: "ds_sort_item", 
+		variant_elem: "ds_variant",
+		answer_color: "#F7F6F6",
+		auto_check: false
+		} )
+</script>
+
+<br><br><br><br>
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Next part >>" onclick="openNextStep(2)">
+</div>	
+	
+	</div>
+</div>
+
+<div id="for_tab02" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Vocabulary</h3>
+<p class="su-step-info">
+Here you can learn words and expressions of the lesson.
+</p>	
+
+<h4 class="su-task">
+I. How much is the fish?
+</h4>
+
+<p class="part-task">a) Learn Russian words: </p>
+
+
+<%
+ @voc1 = [
+{:text=>'м<span class="acco">я</span>со',
+:id=> '289',
+:sound=>'/audios/audio07021010.mp3',
+:transcribe=>'<span class="sftv">m</span><span class="sfty">y</span><span class="acct">a</span>sa',
+:translate=>' meat '},
+{:text=>'р<span class="acco">ы</span>ба',
+:id=> '317',
+:sound=>'/audios/audio07021020.mp3',
+:transcribe=>'r<span class="acct"><span class="ry">i</span></span>ba',
+:translate=>' fish '},
+{:text=>'сал<span class="acco">а</span>т',
+:sound=>'/audios/audio07021030.mp3',
+:transcribe=>'sal<span class="acct">a</span>t',
+:translate=>' salad '},
+{:text=>'дес<span class="acco">е</span>рт',
+:sound=>'/audios/audio07021040.mp3',
+:transcribe=>'di<span class="sftv">s</span><span class="sfty">y</span><span class="acct">e</span>rt',
+:translate=>' dessert '},
+{:text=>'фр<span class="acco">у</span>кты',
+:sound=>'/audios/audio07021050.mp3',
+:transcribe=>'fr<span class="acct">oo</span>kt<span class="ry">i</span>',
+:translate=>' fruit '},
+{:text=>'<span class="acco">о</span>вощи',
+:sound=>'/audios/audio07021060.mp3',
+:transcribe=>'<span class="acct">o</span>vaschi',
+:translate=>' vegetables '},
+{:text=>'гарн<span class="acco">и</span>р',
+:sound=>'/audios/audio07021070.mp3',
+:transcribe=>'garn<span class="acct">i</span>r',
+:translate=>' garnish '},
+{:text=>'морепрод<span class="acco">у</span>кты',
+:sound=>'/audios/audio07021080.mp3',
+:transcribe=>'moriprad<span class="acct">oo</span>kt<span class="ry">i</span>',
+:translate=>' sea products '},
+{:text=>'алког<span class="acco">о</span>льные нап<span class="acco">и</span>тки',
+:sound=>'/audios/audio07021090.mp3',
+:transcribe=>'alkag<span class="acct">o</span><span class="sftc">l</span>n<span class="ry">i</span>ye nap<span class="acct">i</span>tki',
+:translate=>' strong drinks '},
+{:text=>'безалког<span class="acco">о</span>льные нап<span class="acco">и</span>тки',
+:sound=>'/audios/audio07021100.mp3',
+:transcribe=>'bizalkag<span class="acct">o</span><span class="sftc">l</span>n<span class="ry">i</span>ye nap<span class="acct">i</span>tki',
+:translate=>' soft drinks '}
+ ]
+%>
+<%= render :partial => '/site/every/en_ru_voc', :locals => {:voc => @voc1} %>	
+
+
+<br><br>
+<p class="part-task">b) Listen and find the corresponding English word:  </p>
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+<div id="ch1" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test' %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		test_id: "c0107022.II.b)",
+		quest_num: 15,
+		variants_num: 5,
+		quest_type: 'audio',
+		basic_array: [
+		
+<% @last_item_index = (@voc1.length)-1 -%>
+<% @voc1.each_with_index  do |word, index| -%>
+['<%= word[:sound] %>', "<%= word[:translate].to_s.gsub(/"/,'\"') %>"<%unless word[:id]==nil || word[:id]==''%>,'<%=word[:id]%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
+		} )
+</script>
+<%end%>
+<br><br>
+<p class="part-task">c) Translate phrases from English into Russian </p>
+	
+
+<%
+ @phrases = [
+{:q_text=>'Excuse me, please, how much does the salad cost? ',
+:sound=>'/audios/audio07022010.mp3'},
+{:q_text=>'Do you have strong drinks? ',
+:sound=>'/audios/audio07022020.mp3'},
+{:q_text=>'The fish costs 200 rubles. ',
+:sound=>'/audios/audio07022030.mp3'},
+{:q_text=>'How much does the dessert cost? ',
+:sound=>'/audios/audio07022040.mp3'},
+{:q_text=>'Are these sea products? ',
+:sound=>'/audios/audio07022050.mp3'},
+{:q_text=>'Do you have vegetables? ',
+:sound=>'/audios/audio07022060.mp3'},
+{:q_text=>'Do you have fruits? ',
+:sound=>'/audios/audio07022070.mp3'},
+{:q_text=>'How much does the garnish cost? ',
+:sound=>'/audios/audio07022080.mp3'}
+ ]
+%>
+
+<%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>	
+
+
+<br><br>
+
+<h4 class="su-task">
+II. Meat, fish ans sea products
+</h4>
+
+<p class="part-task">a) Learn Russian words: </p>
+
+<%
+ @voc1 = [
+{:text=>'к<span class="acco">у</span>рица',
+:id=> '278',
+:sound=>'/audios/audio07031010.mp3',
+:transcribe=>'k<span class="acct">oo</span>ritsa',
+:translate=>' chicken '},
+{:text=>'свин<span class="acco">и</span>на',
+:id=> '303',
+:sound=>'/audios/audio07031020.mp3',
+:transcribe=>'svin<span class="acct">i</span>na',
+:translate=>' pork '},
+{:text=>'гов<span class="acco">я</span>дина',
+:id=> '295',
+:sound=>'/audios/audio07031030.mp3',
+:transcribe=>'ga<span class="sftv">v</span><span class="sfty">y</span><span class="acct">a</span>dina',
+:translate=>' beef '},
+{:text=>'бар<span class="acco">а</span>нина',
+:id=> '292',
+:sound=>'/audios/audio07031040.mp3',
+:transcribe=>'bar<span class="acct">a</span>nina',
+:translate=>' mutton '},
+{:text=>'кр<span class="acco">а</span>сная р<span class="acco">ы</span>ба',
+:id=> '323',
+:sound=>'/audios/audio07031050.mp3',
+:transcribe=>'kr<span class="acct">a</span>snaya r<span class="acct"><span class="ry">i</span></span>ba',
+:translate=>' salmon '},
+{:text=>'икр<span class="acco">а</span>',
+:id=> '311',
+:sound=>'/audios/audio07031060.mp3',
+:transcribe=>'ikr<span class="acct">a</span>',
+:translate=>' caviar '},
+{:text=>'кр<span class="acco">а</span>бы',
+:id=> '1258',
+:sound=>'/audios/audio07031070.mp3',
+:transcribe=>'kr<span class="acct">a</span>b<span class="ry">i</span>',
+:translate=>' crabs '},
+{:text=>'крев<span class="acco">е</span>тки',
+:id=> '1257',
+:sound=>'/audios/audio07031080.mp3',
+:transcribe=>'kri<span class="sftv">v</span><span class="sfty">y</span><span class="acct">e</span>tki',
+:translate=>' shrimps '},
+{:text=>'рак',
+:sound=>'/audios/audio07031090.mp3',
+:transcribe=>'r<span class="acct">a</span>k',
+:translate=>' crawfish '}
+ ]
+%>
+<%= render :partial => '/site/every/en_ru_voc', :locals => {:voc => @voc1} %>	
+
+
+<br><br>
+
+<p class="part-task">b) Read and find the corresponding English word:  </p>
+
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+<div id="ch2" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test' %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		test_id:"c0107032.III.b)",
+		quest_num: 15,
+		variants_num: 5,
+		//quest_type: 'audio',
+		basic_array: [
+		
+<% @last_item_index = (@voc1.length)-1 -%>
+<% @voc1.each_with_index  do |word, index| -%>
+['<%= word[:text] %>', "<%= word[:translate].to_s.gsub(/"/,'\"') %>"<%unless word[:id]==nil || word[:id]==''%>,'<%=word[:id]%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
+		} )
+</script>
+<%end%>	
+<br><br>
+
+<h4 class="su-task">
+III. Vegetables and fruit
+</h4>
+
+<p class="part-task">a) Learn Russian words: </p>
+
+<%
+ @voc1 = [
+{:text=>'карт<span class="acco">о</span>фель',
+:id=> '344',
+:sound=>'/audios/audio07041010.mp3',
+:transcribe=>'kart<span class="acct">o</span>fi<span class="sftc">l</span>',
+:translate=>' potatoes '},
+{:text=>'помид<span class="acco">о</span>р',
+:id=> '358',
+:sound=>'/audios/audio07041020.mp3',
+:transcribe=>'pamid<span class="acct">o</span>r',
+:translate=>' tomato '},
+{:text=>'огур<span class="acco">е</span>ц',
+:id=> '345',
+:sound=>'/audios/audio07041030.mp3',
+:transcribe=>'agoo<span class="sftv">r</span><span class="sfty">y</span><span class="acct">e</span>ts',
+:translate=>' cucumber '},
+{:text=>'кап<span class="acco">у</span>ста',
+:sound=>'/audios/audio07041040.mp3',
+:transcribe=>'kap<span class="acct">oo</span>sta',
+:translate=>' cabbage '},
+{:text=>'сал<span class="acco">а</span>т',
+:sound=>'/audios/audio07041050.mp3',
+:transcribe=>'sal<span class="acct">a</span>t',
+:translate=>' letuce '},
+{:text=>'лук',
+:id=> '357',
+:sound=>'/audios/audio07041060.mp3',
+:transcribe=>'l<span class="acct">oo</span>k',
+:translate=>' onion '},
+{:text=>'чесн<span class="acco">о</span>к',
+:id=> '1259',
+:sound=>'/audios/audio07041070.mp3',
+:transcribe=>'chisn<span class="acct">o</span>k',
+:translate=>' garlic '},
+{:text=>'<span class="acco">я</span>блоко',
+:id=> '381',
+:sound=>'/audios/audio07041080.mp3',
+:transcribe=>'y<span class="acct">a</span>blaka',
+:translate=>' apple '},
+{:text=>'гр<span class="acco">у</span>ша',
+:sound=>'/audios/audio07041090.mp3',
+:transcribe=>'gr<span class="acct">oo</span>sha',
+:translate=>' pear '},
+{:text=>'виногр<span class="acco">а</span>д',
+:id=> '363',
+:sound=>'/audios/audio07041100.mp3',
+:transcribe=>'vinagr<span class="acct">a</span>t',
+:translate=>' grape '},
+{:text=>'бан<span class="acco">а</span>н',
+:id=> '361',
+:sound=>'/audios/audio07041120.mp3',
+:transcribe=>'ban<span class="acct">a</span>n',
+:translate=>' banana '},
+{:text=>'апельс<span class="acco">и</span>н',
+:id=> '379',
+:sound=>'/audios/audio07041130.mp3',
+:transcribe=>'api<span class="sftc">l</span>s<span class="acct">i</span>n',
+:translate=>' orange '},
+{:text=>'лим<span class="acco">о</span>н',
+:sound=>'/audios/audio07041140.mp3',
+:transcribe=>'lim<span class="acct">o</span>n',
+:translate=>' lemon '},
+{:text=>'в<span class="acco">и</span>шня',
+:sound=>'/audios/audio07041150.mp3',
+:transcribe=>'v<span class="acct">i</span>shnya',
+:translate=>' cherry '}
+ ]
+%>
+<%= render :partial => '/site/every/en_ru_voc', :locals => {:voc => @voc1} %>	
+
+
+<br><br>
+<p class="part-task">b) Read and find the corresponding English word:  </p>
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+<div id="ch3" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test' %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch3 = new ch_exercise( {
+		id: "ch3", 
+		test_id: "c0107042.IV.b)",
+		quest_num: 15,
+		variants_num: 5,
+		//quest_type: 'audio',
+		basic_array: [
+		
+<% @last_item_index = (@voc1.length)-1 -%>
+<% @voc1.each_with_index  do |word, index| -%>
+['<%= word[:text] %>', "<%= word[:translate].to_s.gsub(/"/,'\"') %>"<%unless word[:id]==nil || word[:id]==''%>,'<%=word[:id]%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
+		} )
+</script>
+
+<br><br>
+<%end%>
+
+<h4 class="su-task">
+IV. Dessert
+</h4>
+
+<p class="part-task">a) Learn Russian words: </p>
+
+<%
+ @voc1 = [
+ 
+{:text=>'конф<span class="acco">е</span>ты',
+:sound=>'/audios/audio07061010.mp3',
+:transcribe=>'kan<span class="sftv">f</span><span class="sfty">y</span><span class="acct">e</span>t<span class="ry">i</span>',
+:translate=>' sweets '},
+{:text=>'шокол<span class="acco">а</span>д',
+:sound=>'/audios/audio07061020.mp3',
+:transcribe=>'sh<span class="ry">i</span>kal<span class="acct">a</span>t',
+:translate=>' chocolate '},
+{:text=>'мор<span class="acco">о</span>женое',
+:sound=>'/audios/audio07061030.mp3',
+:transcribe=>'mar<span class="acct">o</span>j<span class="ry">i</span>naye',
+:translate=>' ice-cream '},
+{:text=>'пир<span class="acco">о</span>жное',
+:sound=>'/audios/audio07061040.mp3',
+:transcribe=>'pir<span class="acct">o</span>j<span class="ry">i</span>naye',
+:translate=>' fancy cake '},
+{:text=>'торт',
+:sound=>'/audios/audio07061050.mp3',
+:transcribe=>'t<span class="acct">o</span>rt',
+:translate=>' cake '},
+{:text=>'фрукт<span class="acco">о</span>вый сал<span class="acco">а</span>т',
+:sound=>'/audios/audio07061060.mp3',
+:transcribe=>'frookt<span class="acct">o</span>v<span class="ry">i</span>y sal<span class="acct">a</span>t',
+:translate=>' fruit salad '},
+{:text=>'к<span class="acco">о</span>фе',
+:sound=>'/audios/audio07061070.mp3',
+:transcribe=>'k<span class="acct">o</span><span class="sftv">f</span><span class="sfty">y</span>e',
+:translate=>' coffee '},
+{:text=>'чай',
+:sound=>'/audios/audio07061080.mp3',
+:transcribe=>'ch<span class="acct">a</span>y',
+:translate=>' tea '},
+{:text=>'вод<span class="acco">а</span>',
+:sound=>'/audios/audio07061090.mp3',
+:transcribe=>'vad<span class="acct">a</span>',
+:translate=>' water '},
+{:text=>'п<span class="acco">и</span>во',
+:sound=>'/audios/audio07061100.mp3',
+:transcribe=>'p<span class="acct">i</span>va',
+:translate=>' beer '},
+{:text=>'вин<span class="acco">о</span>',
+:sound=>'/audios/audio07061110.mp3',
+:transcribe=>'vin<span class="acct">o</span>',
+:translate=>' wine '},
+{:text=>'в<span class="acco">о</span>дка',
+:sound=>'/audios/audio07061120.mp3',
+:transcribe=>'v<span class="acct">o</span>tka',
+:translate=>' vodka '},
+{:text=>'конь<span class="acco">я</span>к',
+:sound=>'/audios/audio07061130.mp3',
+:transcribe=>'ka<span class="sftc">n</span>y<span class="acct">a</span>k',
+:translate=>' cognac '},
+{:text=>'в<span class="acco">и</span>ски',
+:sound=>'/audios/audio07061140.mp3',
+:transcribe=>'v<span class="acct">i</span>ski',
+:translate=>' whisky '}
+ ]
+%>
+<%= render :partial => '/site/every/en_ru_voc', :locals => {:voc => @voc1} %>	
+	
+<br><br>
+<p class="part-task">b) Read and find the corresponding English word:  </p>
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+<div id="ch4" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test' %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch4 = new ch_exercise( {
+		id: "ch4", 
+		test_id: "c0107242",
+		quest_num: 15,
+		variants_num: 5,
+		//quest_type: 'audio',
+		basic_array: [
+		
+<% @last_item_index = (@voc1.length)-1 -%>
+<% @voc1.each_with_index  do |word, index| -%>
+['<%= word[:text] %>', "<%= word[:translate].to_s.gsub(/"/,'\"') %>"]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
+		} )
+</script>
+<%end%>
+
+
+<br><br><br><br>
+
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Next part >>" onclick="openNextStep(3)">
+</div>
+	
+	</div>
+</div>
+
+
+<div id="for_tab03" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Practice</h3>
+<p class="su-step-info">
+Here you can learn grammar and lexical rules of the lesson.
+</p>
+
+
+
+<h4 class="su-task">
+I. What to order?
+</h4>
+
+<p class="part-task">a) Complete the test:</p>
+
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+
+<div class="su-exerc"> 
+ 
+<div class="task">Spot an odd one out:</div> 
+ 
+<div  class="gr_ex_variants"> 
+<div class="gr-ex-testid">c0107051.V.a)</div> 
+ 
+ <div class="gex-area-trans">
+<div  class="gr_ex_variants_wrap gexv_with_trans"> 
+
+<table class="gr_ex_vars_tab gexv_options" cellpadding="0" cellspacing="0" border="0"> 
+	<tr> 
+		<td> 
+			<div class="gexv_task gexv_sign"> 
+				<span> List 1:</span>
+			</div>
+			<div style="padding: 5px 0 10px 20px;">
+			<div class="gexv_variant"><input type="checkbox"> икра</div> 
+			<div class="gexv_variant"><input type="checkbox" > крабы</div> 
+			<div class="gexv_variant"><input type="checkbox" class="ok"> яблоко</div> 
+			<div class="gexv_variant"><input type="checkbox"> креветки</div>
+		</td> 
+	</tr>  
+	<tr> 
+		<td> 
+			<div class="gexv_task gexv_sign"> 
+				<span> List 2:</span>
+			</div>
+			<div style="padding: 5px 0 10px 20px;">
+			<div class="gexv_variant"><input type="checkbox"> банан</div> 
+			<div class="gexv_variant"><input type="checkbox"> апельсин</div> 
+			<div class="gexv_variant"><input type="checkbox"> виноград</div> 
+			<div class="gexv_variant"><input type="checkbox" class="ok"> салат</div>
+		</td> 
+	</tr>
+	<tr> 
+		<td> 
+			<div class="gexv_task gexv_sign"> 
+				<span> List 3:</span>
+			</div>
+			<div style="padding: 5px 0 10px 20px;">
+			<div class="gexv_variant"><input type="checkbox" class="ok"> капуста</div> 
+			<div class="gexv_variant"><input type="checkbox" > курица</div> 
+			<div class="gexv_variant"><input type="checkbox" > свинина</div> 
+			<div class="gexv_variant"><input type="checkbox"> говядина</div>
+		</td> 
+	</tr> 
+	<tr> 
+		<td> 
+			<div class="gexv_task gexv_sign"> 
+				<span> List 4:</span>
+			</div>
+			<div style="padding: 5px 0 10px 20px;">
+			<div class="gexv_variant"><input type="checkbox"> картофель</div> 
+			<div class="gexv_variant"><input type="checkbox"  class="ok"> вишня</div> 
+			<div class="gexv_variant"><input type="checkbox"> помидоры</div> 
+			<div class="gexv_variant"><input type="checkbox"> огурцы</div>
+		</td> 
+	</tr> 
+	
+	
+</table> 
+</div> 
+ </div>
+<p class="gexv_check es-ex-buttons gex-es-btn"> 
+	<input type="button" value="Check answers">
+</p> 
+ 
+</div> 
+
+</div> <!-- end of su-ex  --> 
+<%end%> 
+
+<br><br>
+<p class="part-task">b) Listen to the lists of products and associate them with corresponding words:</p>
+
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+
+<div id="ds2" class="ds-wrapper" style="padding: 15px; margin: 20px 30px;">
+
+<p class="ex-desc">
+Listen to the phrases. Drag the English phrases from the list below <br>and drop them into the corresponding fields.
+</p>		
+
+<table align="center" style="margin: 0 auto;">
+<tr>
+<td>
+
+
+<table class="dst-test ds-table ds-audio" cellspacing="0" align="center" style="margin: 0 auto">
+<col width="80">
+<col width="20">
+<col width="40">
+<col width="120">
+<tr>
+	<td class="ds-quest" align="center">
+			List 1 
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio07052010.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+			List 2
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio07052020.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		List 3
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio07052030.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		List 4
+	</td>
+	<td class="ds-audio-listen" align="center">
+			<div class="jp_control" onclick="cJplayer('/audios/audio07052040.mp3', this)"></div>
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+
+</table>
+
+</td>
+
+<!-- /tr>
+<tr -->
+
+<td style="padding-left: 8px;">
+	
+
+<table class="ds_variants_list" style="margin: 0 auto;" align="center">
+
+<tr valign="top">
+<td>
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>Meat</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">4</span>Sea products</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>Vegetables</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>Fruits</div></div>
+	</li>
+</ul>
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+
+<div class="es_btn_wrapper es-ex-buttons ds-check-wrapper">
+
+<input type="button" class="es_btn ds-check-button" value="Check answers">
+
+</div>
+
+
+</div>
+
+<script type="text/javascript"> 
+	var ds2 = new dragsort_test( {
+		id: "ds2", 
+		test_id: "c0107052.V.b)",
+		targets: "ds-answer", 
+		answer_elem: "ds_sort_item", 
+		variant_elem: "ds_variant",
+		answer_color: "#F7F6F6",
+		auto_check: false
+		} )
+</script>
+ 
+<%end%> 
+
+<br><br>
+<p class="part-task">c) Associate Russian and English lists of products:</p>
+
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+<div id="ds3" class="ds-wrapper" style="padding: 15px; margin: 20px 30px;">
+
+<p class="ex-desc">
+Listen to the phrases. Drag the English phrases from the list below <br>and drop them into the corresponding fields.
+</p>		
+
+<table align="center" style="margin: 0 auto;">
+<tr>
+<td>
+
+
+<table class="dst-test ds-table ds-audio" cellspacing="0" align="center" style="margin: 0 auto">
+<col width="180">
+<col width="">
+<col width="40">
+<col width="200">
+<tr>
+	<td class="ds-quest" align="center">
+			чеснок, рыба, помидоры, салат, креветки 
+	</td>
+	<td class="ds-audio-listen" align="center">
+			
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+			говядина, картофель, лук, капуста, яблоко 
+	</td>
+	<td class="ds-audio-listen" align="center">
+			
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		свинина, огурцы, чеснок, салат, говядина
+	</td>
+	<td class="ds-audio-listen" align="center">
+			
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="ds-quest">
+		салат, помидоры, лук, курица, картофель
+	</td>
+	<td class="ds-audio-listen" align="center">
+			
+	</td>
+	<td class="ds-audio-correctness">
+		<div class="ds-sign"></div>
+	</td>	
+	<td class="ds-answer">
+		<div class="ds_sort_item">
+			&nbsp;
+		</div>
+	</td>
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+
+<td>
+	
+<br><br>
+<table class="ds_variants_list" style="margin: 0 auto;" width="100%" align="center">
+
+<tr valign="top">
+<td>
+<ul class="no-list">
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">4</span>salad, onion, tomatoes, chicken, potatoes</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">1</span>tomatoes, fish, salad, garlic, shrimps</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">2</span>potatoes, beef, onion, cabbage, apple</div></div>
+	</li>
+	<li> 
+			<div class="ds_variant"><div class="ds_vholder"><span class="ds-rt">3</span>garlic, pork, cucumbers, salad, beef</div></div>
+	</li>
+</ul>
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+
+<div class="es_btn_wrapper es-ex-buttons ds-check-wrapper">
+
+<input type="button" class="es_btn ds-check-button" value="Check answers">
+
+</div>
+
+
+</div>
+
+<script type="text/javascript"> 
+	var ds3 = new dragsort_test( {
+		id: "ds3", 
+		test_id: "c0107053.V.c)",
+		targets: "ds-answer", 
+		answer_elem: "ds_sort_item", 
+		variant_elem: "ds_variant",
+		answer_color: "#F7F6F6",
+		auto_check: false
+		} )
+</script> 
+ <%end%>
+
+<br><br>
+<h4 class="su-task">
+II. Do you like it?
+</h4>
+
+<p class="part-task">a) Give a positive answer following the model: </p>
+
+<div class="egmodel">
+<h4>Model</h4>
+<table  cellspacing="0" >
+	<tr valign="top">
+		<td width="470">
+			<table  cellspacing="0" >
+					<tr valign="top">
+		 				<td>
+		 					<p><b>Вам нр<span class="acco">а</span>вится <span class="acco">э</span>тот дес<span class="acco">е</span>рт?</b><br />
+
+		 						<span class="sound" onclick="playAudio('audio07062001.mp3')">[v<span class="acct">a</span>m nr<span class="acct">a</span>vitsa <span class="acct">e</span>tat di<span class="sftv">s</span><span class="sfty">y</span><span class="acct">e</span>rt?] <span class="play_tip">&nbsp; &nbsp;</span></span>
+		 					</p>
+		 				</td>
+
+                        <td width="15"><p>-</p>
+                        </td>
+		 				<td>
+		 					<p><b>Да, мне нр<span class="acco">а</span>вится <span class="acco">э</span>тот дес<span class="acco">е</span>рт.</b><br />
+		 						<span class="sound" onclick="playAudio('audio07062002.mp3')">[d<span class="acct">a</span>, m<span class="sftv">n</span><span class="sfty">y</span><span class="acct">e</span> nr<span class="acct">a</span>vitsa <span class="acct">e</span>tat di<span class="sftv">s</span><span class="sfty">y</span><span class="acct">e</span>rt] <span class="play_tip">&nbsp; &nbsp;</span></span>
+
+		 					</p>
+		 				</td>
+					</tr>
+				</table>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" colspan="2"><span class="ital">Do you like this dessert? -Yes, I like this dessert.</span>
+		</td>
+	</tr>
+
+</table>
+</div>
+
+<%
+ @phrases = [
+
+{:q_text=>'Вам нр<span class="acco">а</span>вится <span class="acco">э</span>тот торт? ',
+:q_sound=>'/audios/audio07062011.mp3',
+:q_transcribe=>'v<span class="acct">a</span>m nr<span class="acct">a</span>vitsa <span class="acct">e</span>tat t<span class="acct">o</span>rt? ',
+:sound=>'/audios/audio07062012.mp3'},
+{:q_text=>'Вам нр<span class="acco">а</span>вится <span class="acco">э</span>тo мор<span class="acco">о</span>женое ? ',
+:q_sound=>'/audios/audio07062021.mp3',
+:q_transcribe=>'v<span class="acct">a</span>m nr<span class="acct">a</span>vitsa <span class="acct">e</span>to mar<span class="acct">o</span>j<span class="ry">i</span>naye? ',
+:sound=>'/audios/audio07062022.mp3'},
+{:q_text=>'Вам нр<span class="acco">а</span>вится <span class="acco">э</span>то п<span class="acco">и</span>во? ',
+:q_sound=>'/audios/audio07062031.mp3',
+:q_transcribe=>'v<span class="acct">a</span>m nr<span class="acct">a</span>vitsa <span class="acct">e</span>ta p<span class="acct">i</span>va? ',
+:sound=>'/audios/audio07062032.mp3'},
+{:q_text=>'Вам нр<span class="acco">а</span>вится <span class="acco">э</span>тот фрукт<span class="acco">о</span>вый сал<span class="acco">а</span>т? ',
+:q_sound=>'/audios/audio07062041.mp3',
+:q_transcribe=>'v<span class="acct">a</span>m nr<span class="acct">a</span>vitsa <span class="acct">e</span>tat frookt<span class="acct">o</span>v<span class="ry">i</span>y sal<span class="acct">a</span>t? ',
+:sound=>'/audios/audio07062042.mp3'},
+{:q_text=>'Вам нр<span class="acco">а</span>вится <span class="acco">э</span>то вин<span class="acco">о</span>? ',
+:q_sound=>'/audios/audio07062051.mp3',
+:q_transcribe=>'v<span class="acct">a</span>m nr<span class="acct">a</span>vitsa <span class="acct">e</span>ta vin<span class="acct">o</span>? ',
+:sound=>'/audios/audio07062052.mp3'}
+
+ ]
+%>
+
+<%= render :partial => '/site/every/en_ru_oral_quest', :locals => {:phrases => @phrases} %>
+
+
+
+<br><br>
+
+<p class="part-task">b) Give a negative answer following the model:</p>
+
+<div class="egmodel">
+<h4>Model</h4>
+
+<table  cellspacing="0" >
+	<tr valign="top">
+		<td width="480">
+			<table  cellspacing="0" >
+					<tr valign="top">
+		 				<td>
+
+		 					<p><b>Вам нр<span class="acco">а</span>вится <span class="acco">э</span>тот к<span class="acco">о</span>фе?</b><br />
+		 						<span class="sound" onclick="playAudio('audio07063001.mp3')">[v<span class="acct">a</span>m nr<span class="acct">a</span>vitsa <span class="acct">e</span>tat k<span class="acct">o</span><span class="sftv">f</span><span class="sfty">y</span>e?] <span class="play_tip">&nbsp; &nbsp;</span></span>
+
+		 					</p>
+		 				</td>
+                        <td width="15"><p>-</p>
+                        </td>
+		 				<td>
+		 					<p><b>Нет, мне не нр<span class="acco">а</span>вится <span class="acco">э</span>тот к<span class="acco">о</span>фе.</b><br />
+
+		 						<span class="sound" onclick="playAudio('audio07063002.mp3')">[<span class="sftv">n</span><span class="sfty">y</span><span class="acct">e</span>t, m<span class="sftv">n</span><span class="sfty">y</span><span class="acct">e</span> ni nr<span class="acct">a</span>vitsa <span class="acct">e</span>tat ko<span class="sftv">f</span><span class="sfty">y</span>e] <span class="play_tip">&nbsp; &nbsp;</span></span>
+
+		 					</p>
+		 				</td>
+					</tr>
+				</table>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" colspan="2"><span class="ital">Do you like this coffee? - No, I don't like this coffee.</span>
+		</td>
+	</tr>
+</table>
+</div>
+
+
+<%
+ @phrases = [
+
+{:q_text=>'Вам нр<span class="acco">а</span>вится <span class="acco">э</span>то пир<span class="acco">о</span>жное?',
+:q_sound=>'/audios/audio07063011.mp3',
+:q_transcribe=>'v<span class="acct">a</span>m nr<span class="acct">a</span>vitsa <span class="acct">e</span>ta pir<span class="acct">o</span>j<span class="ry">i</span>naye? ',
+:sound=>'/audios/audio07063012.mp3'},
+{:q_text=>'Вам нр<span class="acco">а</span>вится <span class="acco">э</span>та в<span class="acco">о</span>дка? ',
+:q_sound=>'/audios/audio07063021.mp3',
+:q_transcribe=>'v<span class="acct">a</span>m nr<span class="acct">a</span>vitsa <span class="acct">e</span>ta v<span class="acct">o</span>tka? ',
+:sound=>'/audios/audio07063022.mp3'},
+{:q_text=>'Вам нр<span class="acco">а</span>вится <span class="acco">э</span>тот шокол<span class="acco">а</span>д?',
+:q_sound=>'/audios/audio07063031.mp3',
+:q_transcribe=>'v<span class="acct">a</span>m nr<span class="acct">a</span>vitsa <span class="acct">e</span>tat sh<span class="ry">i</span>kal<span class="acct">a</span>t? ',
+:sound=>'/audios/audio07063032.mp3'},
+{:q_text=>'Вам нр<span class="acco">а</span>вятся <span class="acco">э</span>ти конф<span class="acco">е</span>ты? ',
+:q_sound=>'/audios/audio07063041.mp3',
+:q_transcribe=>'v<span class="acct">a</span>m nra<span class="sftv">v</span><span class="sfty">y</span>atsa <span class="acct">e</span>ti kan<span class="sftv">f</span><span class="sfty">y</span><span class="acct">e</span>t<span class="ry">i</span>? ',
+:sound=>'/audios/audio07063042.mp3'},
+{:q_text=>'Вам нр<span class="acco">а</span>вится <span class="acco">э</span>тот чай? ',
+:q_sound=>'/audios/audio07063051.mp3',
+:q_transcribe=>'v<span class="acct">a</span>m nr<span class="acct">a</span>vitsa <span class="acct">e</span>tat ch<span class="acct">a</span>y? ',
+:sound=>'/audios/audio07063052.mp3'}
+
+ ]
+%>
+
+<%= render :partial => '/site/every/en_ru_oral_quest', :locals => {:phrases => @phrases} %>
+
+
+<br><br>
+
+
+<h4 class="su-task"> 
+III. I I love ice-cream!
+</h4> 
+
+<div class="com-wrap">
+	<div class="com-head"><span class="com-h-ico"></span>Construction Я люблю ... </div>
+	<div class="com-content">
+	
+<p>If you want to say that you like something (you love it) or you don't, you can use the expression "Я люблю .../ Я не люблю" (I love/I don't love). This expression means that the person likes something not in some concrete situation, but in general. For a concrete situation, usually the expression "Мне нравится/ мне не нравится" is used.</p>
+	
+	</div>
+</div>
+<br>
+
+<p class="part-task">a) Learn the following examples::</p>
+
+
+<%
+ @voc = [
+ 
+{:text=>'Я любл<span class="acco">ю</span> мор<span class="acco">о</span>женое.',
+:sound=>'/audios/audio07071010.mp3',
+:transcribe=>'y<span class="acct">a</span> <span class="sftv">l</span><span class="sfty">y</span>oob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">oo</span> mar<span class="acct">o</span>j<span class="ry">i</span>naye',
+:translate=>' I like ice-cream (in general). '},
+{:text=>'Я не любл<span class="acco">ю</span> шокол<span class="acco">а</span>д.',
+:sound=>'/audios/audio07071020.mp3',
+:transcribe=>'y<span class="acct">a</span> ni <span class="sftv">l</span><span class="sfty">y</span>oob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">oo</span> sh<span class="ry">i</span>kal<span class="acct">a</span>t',
+:translate=>'I don\'t like chocolate (in general). '},
+{:text=>'Я любл<span class="acco">ю</span> к<span class="acco">о</span>фе, но этот к<span class="acco">о</span>фе мне не нр<span class="acco">а</span>вится.',
+:sound=>'/audios/audio07071030.mp3',
+:transcribe=>'yy<span class="acct">a</span> <span class="sftv">l</span><span class="sfty">y</span>oob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">oo</span> k<span class="acct">o</span><span class="sftv">f</span><span class="sfty">y</span>e, no <span class="acct">e</span>tat k<span class="acct">o</span><span class="sftv">f</span><span class="sfty">y</span>e m<span class="sftv">n</span><span class="sfty">y</span><span class="acct">e</span> ni nr<span class="acct">a</span>vitsa',
+:translate=>'I like cofee (in general), but I don\'t like this cofee. '}
+ ]
+%>
+
+<%= render :partial => '/site/every/en_ru_model', :locals => {:voc => @voc} %>
+
+<br><br>
+<p class="part-task">b) Build phrases in Russian:</p>
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+
+<div class="su-exerc">
+<div id="di8">	
+				
+<p class="ex-desc">Drag and drop words to build phrases. You can read correct answers by clicking the button "Display answers"</p> 
+
+
+<div  class="gr_ex_type di_mix">
+<div class="gr-ex-testid">c0107332</div>
+
+<%
+ @phrases = [
+{:to_bild=> "I like meat.", 
+:variants=>'я люблю мясо салат виноград виски', 
+:answer=>'Я люблю мясо', 
+:show=> 'Я люблю мясо.', 
+:sound=>'/audios/audio07072012.mp3'},
+{:to_bild=> "I like grapes.", 
+:variants=>'я люблю мясо салат виноград виски', 
+:answer=>'Я люблю виноград', 
+:show=> 'Я люблю виноград.', 
+:sound=>'/audios/audio07072022.mp3'},
+{:to_bild=> "I like potatoes.", 
+:variants=>'я люблю мясо картофель виноград виски', 
+:answer=>'Я люблю картофель', 
+:show=> 'Я люблю картофель.', 
+:sound=>'/audios/audio07072032.mp3'},
+{:to_bild=> "I like sweets.", 
+:variants=>'я люблю мясо салат виноград конфеты', 
+:answer=>'Я люблю конфеты', 
+:show=> 'Я люблю конфеты.', 
+:sound=>'/audios/audio07072042.mp3'},
+{:to_bild=> "I like whisky.", 
+:variants=>'я люблю мясо салат виноград виски', 
+:answer=>'Я люблю виски', 
+:show=> 'Я люблю виски.', 
+:sound=>'/audios/audio07072052.mp3'}
+ ]
+%>
+<%= render :partial => '/site/every/en_ru_pseudo', :locals => {:phrases => @phrases} %>
+
+</div>
+</div>
+</div> 
+<script type="text/javascript"> 
+	var di8 = new draginput_test( {
+		id: "di8", 
+		targets: "gext_task input", 
+		//in_targets: "input",
+		clear_option: true,
+		one_use: true,
+		variant_elem: "di_mix_variants span"
+
+		} )
+</script>
+<%end%>
+
+<br><br>
+<p class="part-task">c) Translate phrases from English into Russian </p>
+
+
+<%
+ @phrases = [
+
+{:q_text=>'I don\'t like salad.',
+:sound=>'/audios/audio07073012.mp3'},
+{:q_text=>'I don\'t like sea products.',
+:sound=>'/audios/audio07073022.mp3'},
+{:q_text=>'I don\'t like tomatoes.',
+:sound=>'/audios/audio07073032.mp3'},
+{:q_text=>'I don\'t like ice-cream.',
+:sound=>'/audios/audio07073042.mp3'},
+{:q_text=>'I don\'t like beer.',
+:sound=>'/audios/audio07073052.mp3'}
+
+ ]
+%>
+
+<%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
+
+<br><br>
+<p class="part-task">d) Look at the following examples:  </p>
+
+
+<div class="com-wrap">
+	<div class="com-head"><span class="com-h-ico"></span>Construction Я люблю (part 2)</div>
+	<div class="com-content">
+
+	<p>
+	Notice that if the noun has <span style="font-weight: normal">-a</span> [-a] on its end, in this expression <span style="font-weight: normal">-a</span> will cnange to <span style="font-weight: normal">-у</span> [-oo].
+	
+	</p>
+	<p>
+	Example: <br><br>
+	
+	<strong>Это рыб<u>а</u>. Я люблю рыб<u>у</u>.</strong> - This is fish. I like fish.
+	</p>
+
+	</div>
+</div>
+
+
+<%
+ @voc = [
+ 
+{:text=>'<span class="acco">Э</span>то икр<u><span class="acco">а</span></u>. Я любл<span class="acco">ю</span> икр<u>у</u>.',
+:sound=>'/audios/audio07074001.mp3',
+:transcribe=>'<span class="acct">e</span>ta ikr<span class="acct">a</span>. y<span class="acct">a</span> <span class="sftv">l</span><span class="sfty">y</span>oob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">oo</span> ikr<span class="acct">oo</span>',
+:translate=>' This is caviar. I like caviar (in general). '},
+{:text=>'<span class="acco">Э</span>то в<span class="acco">о</span>дк<u>а</u>. Я не любл<span class="acco">ю</span> в<span class="acco">о</span>дк<u>у</u>.',
+:sound=>'/audios/audio07074002.mp3',
+:transcribe=>'<span class="acct">e</span>ta v<span class="acct">o</span>tka. y<span class="acct">a</span> ni <span class="sftv">l</span><span class="sfty">y</span>oob<span class="sftv">l</span><span class="sfty">y</span><span class="acct">oo</span> v<span class="acct">o</span>tkoo',
+:translate=>' This is vodka. I don\'t like vodka (in general). '}
+  
+ ]
+%>
+
+<%= render :partial => '/site/every/en_ru_model', :locals => {:voc => @voc} %>
+
+
+<br><br>
+<p class="part-task">e) Translate phrases from English into Russian </p>
+
+<%
+ @phrases = [
+
+{:q_text=>'I like beef.',
+:sound=>'/audios/audio07074012.mp3'},
+{:q_text=>'I like pork.',
+:sound=>'/audios/audio07074022.mp3'},
+{:q_text=>'I like cabbage.',
+:sound=>'/audios/audio07074032.mp3'},
+{:q_text=>'I like mutton.',
+:sound=>'/audios/audio07074042.mp3'},
+{:q_text=>'I like chicken.',
+:sound=>'/audios/audio07074052.mp3'}
+
+ ]
+%>
+
+<%= render :partial => '/site/every/en_ru_oral_transl', :locals => {:phrases => @phrases} %>
+
+
+<br><br><br><br>
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Next part >>" onclick="openNextStep(4)">
+</div>	
+	
+	</div>
+</div>
+
+
+<div id="for_tab04" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<h3 class="su-step-title">Revision</h3>
+<p class="su-step-info">
+Revise materials from this lesson
+</p>
+
+
+	
+<h4 class="su-task"> 
+Revise this lesson's materials 
+</h4> 
+ 
+ <p class="part-task">a) Listen and find the corresponding English phrases: </p>	
+
+
+<% 
+
+@t_phrases = [
+  {:text=> 'Do you have strong drinks? ',
+ :sound=>'/audios/audio07022020.mp3',
+ :answer=> '1'
+  },
+ {:text=> 'How much does the garnish cost? ',
+ :sound=>'/audios/audio07022080.mp3', 
+ :answer=> '2'
+  },
+ {:text=> 'Do you like this beer?',
+ :sound=>'/audios/audio07062031.mp3',
+ :answer=> '3'
+  },
+ {:text=> 'Do you like this wine?',
+ :sound=>'/audios/audio07062051.mp3', 
+ :answer=> '4'
+  },
+ {:text=> 'Do you like this chocolate?',
+ :sound=>'/audios/audio07063031.mp3',
+ :answer=> '5'
+  },
+ {:text=> 'I love ice-cream. ',
+ :sound=>'/audios/audio07071010.mp3',
+ :answer=> '6'
+  },
+ {:text=> 'I don\'t like salad.',
+ :sound=>'/audios/audio07073012.mp3', 
+ :answer=> '7'
+  },
+ {:text=> 'I don\'t like tomatoes. ',
+ :sound=>'/audios/audio07073032.mp3',
+ :answer=> '8'
+  },
+ {:text=> 'I like mutton.',
+ :sound=>'/audios/audio07074042.mp3',
+ :answer=> '9'
+  },
+ {:text=> 'I like chicken. ',
+ :sound=>'/audios/audio07074052.mp3',
+ :answer=> '10'
+  }
+
+ ]
+
+%>
+<% if !@good_user%>
+	<%= hidden_content() %>
+<%else%>
+<div id="ch7" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test' %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch7 = new ch_exercise( {
+		id: "ch7", 
+		test_id: "c0107411",
+		quest_num: 12,
+		variants_num: 5,
+		quest_type: 'audio',
+		basic_array: [
+		
+<% @last_item_index = (@t_phrases.length)-1 -%>
+<% @t_phrases.each_with_index  do |word, index| -%>
+['<%= word[:sound] %>', "<%= word[:text].to_s.gsub(/"/,'\"') %>"]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		
+		} )
+</script>
+<%end%> 
+ 
+<br><br><br>
+ 
+ 
+ <div class="rev-wrap">
+	 <div class="rev-head">  In this lesson you have learned </div>
+  <div class="rev-content">
+
+<p>- <strong>Words and expressions on the topic "Food":</strong></p> 
+
+<ul class="learnt-list">
+
+	<li>Морепродукты</li>
+	<li>Мясо</li>
+	<li>Овощи</li>
+	<li>Фрукты</li>
+	<li>Напитки</li>
+</ul>
+ 
+
+<p>- How <strong>to say that you like something or dislike something</strong>:</p> 
+
+<ul  class="learnt-list">
+	<li>Я люблю мороженое.</li>
+	<li>Я не люблю водку.</li>
+</ul>
+<p>
+In order to make sure you have understood all the material of the lesson and to get some additional information, we recommend you to visit the following pages: 
+</p>
+
+<ul class="last-links">
+	<li>Pages of <a href="/meals.html">Meals</a> section:<br/>
+		- <a href="/en/ru/vocabulary/vegetables">Vegetables and vegetable dishes</a><br/>
+		- <a href="/en/ru/vocabulary/fruit">Fruit, berries</a> <br/>
+		- <a href="/en/ru/vocabulary/meat">Meat dishes</a> <br/>
+		- <a href="/en/ru/vocabulary/fish">Fish, fish dishes </a> and others
+	</li>
+
+</ul>
+
+<br><br><br><br><br><br>
+  
+ 
+  </div>
+ </div>
+ 
+<br><br><br><br><br><br><br><br>
+
+
+
+
+	</div>
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+</div></div><!-- end of id content-->
+
+
+<script type="text/javascript">
+currentSection="course";
+</script>
