@@ -6,7 +6,7 @@
   <br>
 <div class="forum-container">
 <%= render :partial => '/forums/f_tabs', :locals => {:active => 2} %> 
-<div class="f-t-lists" >
+<div class="f-t-lists">
 	<% form_tag ( "", {:method =>:get} ) do %>
 		<%if params[:l]%><input type="hidden" name="l" value="<%= params[:l]%>"><%end%>
 
