@@ -27,8 +27,24 @@ layout :layout_by_lang
 			redirect_back_or_default('/ru/jp/user_profile')
 		elsif to_lang=='en'
 			redirect_back_or_default('/ru/en/user_profile.html')
+		elsif to_lang=='de'
+			redirect_back_or_default('/ru/de/user_profile')
 		elsif to_lang=='fr'
 			redirect_back_or_default('/ru/fr/user_profile')
+		elsif to_lang=='es'
+			redirect_back_or_default('/ru/es/user_profile')
+		elsif to_lang=='it'
+			redirect_back_or_default('/ru/it/user_profile')
+		elsif to_lang=='pt'
+			redirect_back_or_default('/ru/pt/user_profile')
+		elsif to_lang=='ch'
+			redirect_back_or_default('/ru/ch/user_profile')
+		elsif to_lang=='gr'
+			redirect_back_or_default('/ru/gr/user_profile')
+		elsif to_lang=='pl'
+			redirect_back_or_default('/ru/pl/user_profile')
+		elsif to_lang=='ru'
+			redirect_back_or_default('/ru/ru/user_profile')
 		end
 	  elsif layout_lang == 'fr'
 		if to_lang=='ru'
@@ -36,6 +52,18 @@ layout :layout_by_lang
 		elsif to_lang=='en'
 			redirect_back_or_default('/fr/en/user_profile')
 		end
+	  elsif layout_lang == 'en'
+		if to_lang=='ru' || to_lang==''
+			redirect_back_or_default('/user_profile.html')
+		elsif to_lang=='es'
+			redirect_back_or_default('/en/es/user_profile')
+		elsif to_lang=='de'
+			redirect_back_or_default('/en/de/user_profile')
+		elsif to_lang=='fr'
+			redirect_back_or_default('/en/fr/user_profile')
+		elsif to_lang=='jp'
+			redirect_back_or_default('/en/jp/user_profile')
+		end	
 	  else
 		redirect_back_or_default('/user_profile.html')
 	  end
@@ -68,8 +96,38 @@ layout :layout_by_lang
 				redirect_back_or_default('/ru/jp/')
 		elsif to_lang == 'fr'
 				redirect_back_or_default('/ru/fr/')
+		elsif to_lang == 'de'
+				redirect_back_or_default('/ru/de/')
+		elsif to_lang == 'es'
+				redirect_back_or_default('/ru/es/')
+		elsif to_lang == 'it'
+				redirect_back_or_default('/ru/it/')
+		elsif to_lang == 'pt'
+				redirect_back_or_default('/ru/pt/')
+		elsif to_lang == 'ch'
+				redirect_back_or_default('/ru/ch/')
+		elsif to_lang == 'gr'
+				redirect_back_or_default('/ru/gr/')
+		elsif to_lang == 'pl'
+				redirect_back_or_default('/ru/pl/')
+		elsif to_lang == 'ru'
+				redirect_back_or_default('/ru/ru/')
 		else 
 				redirect_back_or_default('/ru/en/')
+		end
+	elsif layout_lang == 'en'
+		if to_lang == 'ru'
+			redirect_back_or_default('/')
+		elsif to_lang == 'de'
+			redirect_back_or_default('/en/de/')
+		elsif to_lang == 'es'
+			redirect_back_or_default('/en/es/')
+		elsif to_lang == 'fr'
+			redirect_back_or_default('/en/fr/')
+		elsif to_lang == 'jp'
+			redirect_back_or_default('/en/jp/')
+		else
+			redirect_back_or_default('/en/')
 		end
 	else
 			redirect_back_or_default('/')

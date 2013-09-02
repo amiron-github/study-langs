@@ -1,10 +1,4 @@
-<%if @lang == 'ru'%>
-	<%= render :partial => 'sessions/ru_new' %>
-<%elsif @lang == 'fr'%>
-	<%= render :partial => 'sessions/fr_new' %>
-<%elsif @lang == 'en' || @to_lang != nil %>
-	<%= render :partial => 'sessions/en_new' %>
-<%else%>
+
 
 <% @page_title = 'Sign In' %>
 <% @page_meta = {'description' => "Log in Study Languages Online"} %>
@@ -63,6 +57,9 @@ $(document).ready(function(){
 
 <% form_tag session_path do %>
 
+	<input type="hidden" name="lang" value="en">
+	<input type="hidden" name="to_lang" value="<%= @to_lang %>">
+
 			<table align="center" class="sign-options">
 				<tr>
 					<td>
@@ -112,7 +109,7 @@ $(document).ready(function(){
 				<tr>
 					<td>
 
-						<p >Forgot password? <%= link_to 'Click here', forgot_password_path %></p>
+						<p >Forgot password? <%= link_to 'Click here', {:controller => 'passwords', :action => 'new', :lang=>params[:lang], :to_lang=>params[:to_lang]} %></p>
 					</td>
 				</tr>
 			</table>
@@ -137,4 +134,4 @@ $(document).ready(function(){
 currentSection="login";
 </script>
 
-<%end%>
+

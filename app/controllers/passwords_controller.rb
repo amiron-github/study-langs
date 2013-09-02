@@ -28,9 +28,9 @@ layout :layout_by_lang
 			flash[:notice] = "A link to change your password has been sent to #{@password.email}."
 		end
 		if @lang == 'ru'
-			if @to_lang == 'en'
+			#if @to_lang == 'en'
 				format.html { redirect_to(:action => 'new', :lang => @lang, :to_lang => @to_lang)}
-			end
+			#end
 		else
 			format.html { redirect_to(:action => 'new') }
 		end

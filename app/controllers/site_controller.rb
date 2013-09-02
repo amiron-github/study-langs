@@ -14,6 +14,14 @@ class SiteController < ApplicationController
 		@file = '/ru/fr/index.html' if @file == '/ru/fr/'
 		@file = '/fr/ru/index.html' if @file == '/fr/ru/'
 		@file = '/ru/en/index.html' if @file == '/ru/en/'
+		@file = '/ru/de/index.html' if @file == '/ru/de/'
+		@file = '/ru/es/index.html' if @file == '/ru/es/'
+		@file = '/ru/it/index.html' if @file == '/ru/it/'
+		@file = '/ru/pt/index.html' if @file == '/ru/pt/'
+		@file = '/ru/ch/index.html' if @file == '/ru/ch/'
+		@file = '/ru/gr/index.html' if @file == '/ru/gr/'
+		@file = '/ru/pl/index.html' if @file == '/ru/pl/'
+		@file = '/ru/ru/index.html' if @file == '/ru/ru/'
 		@file = '/ru/index.html' if @file == '/ru/'
 		
 		if @file.match(/\/ru\/fr\//) 
@@ -22,6 +30,22 @@ class SiteController < ApplicationController
 			layout = 'ru_jp_application.rhtml'
 		elsif @file.match(/\/ru\/en\//) 
 			layout = 'ru_en_application.rhtml'
+		elsif @file.match(/\/ru\/de\//) 
+			layout = 'ru_de_application.rhtml'
+		elsif @file.match(/\/ru\/es\//) 
+			layout = 'ru_es_application.rhtml'
+		elsif @file.match(/\/ru\/it\//) 
+			layout = 'ru_it_application.rhtml'
+		elsif @file.match(/\/ru\/pt\//) 
+			layout = 'ru_pt_application.rhtml'
+		elsif @file.match(/\/ru\/ch\//) 
+			layout = 'ru_ch_application.rhtml'
+		elsif @file.match(/\/ru\/gr\//) 
+			layout = 'ru_gr_application.rhtml'
+		elsif @file.match(/\/ru\/pl\//) 
+			layout = 'ru_pl_application.rhtml'
+		elsif @file.match(/\/ru\/ru\//) 
+			layout = 'ru_ru_application.rhtml'
 		else 
 			layout = 'ru_application.rhtml'
 		end
@@ -30,6 +54,22 @@ class SiteController < ApplicationController
 		@file = '/en/index.html'
 		layout = 'en_application.rhtml'
 	end	
+	if @file == '/en/fr/'	
+		@file = '/en/fr/index.html'
+		layout = 'en_fr_application.rhtml'
+	end
+	if @file == '/en/es/'	
+		@file = '/en/es/index.html'
+		layout = 'en_es_application.rhtml'
+	end
+	if @file == '/en/de/'	
+		@file = '/en/de/index.html'
+		layout = 'en_de_application.rhtml'
+	end
+	if @file == '/en/jp/'	
+		@file = '/en/jp/index.html'
+		layout = 'en_jp_application.rhtml'
+	end
 	if @file == '/fr/'	
 		@file = '/fr/index.html'
 		layout = 'fr_application.rhtml'
@@ -40,7 +80,7 @@ class SiteController < ApplicationController
 		if @file.match(/\/fr\/ru\//) 
 			layout = 'fr_ru_application.rhtml'
 		elsif @file.match(/\/fr\/en\//) 
-			layout = 'fr_application.rhtml'
+			layout = 'fr_en_application.rhtml'
 		end
 
 

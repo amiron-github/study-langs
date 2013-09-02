@@ -104,7 +104,7 @@ write_attribute :email, (value ? value.downcase : nil)
 			category = Category.find(category_id)
 			if category.lang == lang
 				if category.lang == 'jp'
-					unless category_id == 95 || category_id == 96 || category_id == 36 || category_id == 37
+					unless category_id == 95 || category_id == 96 || category_id == 36 || category_id == 37|| category_id == 175
 						cat_words = words.find(:all, :conditions => ['category_id=?', category_id], :order=> 'order_num');
 						cat_tests = user_tests.all(:joins => 'left outer join exercises ON `exercises`.test_id = `user_tests`.test_id', :conditions => {'exercises.category_id' => category_id})
 						user_cat << {:category => category, :words => cat_words, :user_tests => cat_tests}
@@ -127,7 +127,7 @@ write_attribute :email, (value ? value.downcase : nil)
 			category = Category.find(category_id)
 			if category.lang == lang
 				if category.lang == 'jp'
-					if category_id == 95 || category_id == 96 || category_id == 36 || category_id == 37
+					if category_id == 95 || category_id == 96 || category_id == 36 || category_id == 37|| category_id == 175
 						cat_words = words.find(:all, :conditions => ['category_id=?', category_id], :order=> 'order_num');
 						cat_tests = user_tests.all(:joins => 'left outer join exercises ON `exercises`.test_id = `user_tests`.test_id', :conditions => {'exercises.category_id' => category_id})
 						user_cat << {:category => category, :words => cat_words, :user_tests => cat_tests}

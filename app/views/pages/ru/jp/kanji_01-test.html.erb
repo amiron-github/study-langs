@@ -1,5 +1,2 @@
-<% @words = Category.find(95).words.find(:all, :order => 'order_num') %>
-<% @category_title = Category.find(95).title_ru %>
-<% @super_link = 'kanji_01.html' %>
-
-<%= render :partial => '/site/kanji_test' %>
+<% @material = material(682) %>
+<%= render :partial => '/site/publish_material' %>
