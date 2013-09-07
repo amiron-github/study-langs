@@ -59,6 +59,7 @@ ActionController::Routing::Routes.draw do |map|
   map.mobile '/mobile/:page', :controller => 'materials', :action=>'publish', :special_layout => 'mobile'
 
   map.page '/ru/fr/vocabulary', :controller => 'materials', :action=>'publish', :lang=>'ru', :to_lang=>'fr'
+  map.page '/:lang/:to_lang/vocabulary', :controller => 'materials', :action=>'publish'
   
  
   map.courses_page '/:lang/:to_lang/courses', :controller => 'materials', :action=>'publish'

@@ -1,13 +1,5 @@
-<% @page_title = 'Sign Up' %>
-<% @page_meta = {'description' => "Registration for Study Languages Online"} %>
 
-<%if @lang == 'ru'%>
-	<%= render :partial => 'users/ru_new' %>
-<%elsif @lang == 'fr'%>
-	<%= render :partial => 'users/fr_new' %>
-<%elsif @lang == 'en' || @to_lang != nil %>
-	<%= render :partial => 'users/en_new' %>
-<%else%>
+
 
 <% content_for :special_js_css do %>
 
@@ -144,6 +136,8 @@ if ($('#errorExplanation').length > 0) {
 <div class="module-content">
 
 <% form_for :user, :url => users_path do |f| -%>
+	<input type="hidden" name="lang" value="en">
+	<input type="hidden" name="to_lang" value="<%= @to_lang %>">
 
 <h2 class="page" style="display: none">It's your first visit? Welcome!</h2>
 
@@ -231,5 +225,3 @@ Plus, in your account you can also see words and expressions you have studied wi
 <script type="text/javascript">
 currentSection="login";
 </script>
-
-<% end %>

@@ -1,10 +1,4 @@
-<%if @lang == 'ru'%>
-	<%= render :partial => 'users/ru_create_success' %>
-<%elsif @lang == 'fr'%>
-	<%= render :partial => 'users/fr_create_success' %>
-<%elsif @lang == 'en' || @to_lang != nil %>
-	<%= render :partial => 'users/en_create_success' %>
-<%else%>
+
 
 <% @page_title = 'Registration' %>
 
@@ -33,7 +27,7 @@ You should find a validation <nobr>e-mail</nobr> with your activation code.
 </ul>
 <br>
 <p>
-If you have any questions or problems related to your account activation, please, <a href="/contacts.html">contact us</a>.
+If you have any questions or problems related to your account activation, please, contact us <a href="mailto:study.languages.online@gmail.com">study.languages.online@gmail.com</a>.
 </p>
 
 </div>
@@ -43,5 +37,3 @@ If you have any questions or problems related to your account activation, please
 <script type="text/javascript">
 currentSection="login";
 </script>
-
-<%end%>

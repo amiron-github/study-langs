@@ -15,13 +15,21 @@ layout :layout_by_lang
 		@category_tag =  @category_tag+'_jp'
 	elsif @add_lang == 'fr'
 		@category_tag =  @category_tag+'_fr'
+	elsif @add_lang && @add_lang != 'ru'
+		@category_tag =  @category_tag+'_'+@add_lang
 	end 
 	@category = Category.find(:first, :conditions => ['tag=?', @category_tag ])
 	@words = @category.words.find(:all, :order => 'order_num')
 	@test_data = data_for_test(@category)
 	if @lang == 'fr'
-		@category_title = @category.title_fr
-		render(:action => 'fr_ru_vocabulary')
+		if @add_lang == 'ru'
+			@category_title = @category.title_fr
+			render(:action => 'fr_ru_vocabulary')
+		else 
+			@category_title = @category.title_fr
+			render(:action => 'fr_vocabulary')
+		end
+		
 	elsif @lang == 'ru'
 		if @add_lang == 'en'
 			@category_short_tag = params[:category]
@@ -36,12 +44,17 @@ layout :layout_by_lang
 			@category_title =  @category.title_ru
 			render(:action => 'ru_fr_vocabulary')
 		else 
-			@category_title = @category.title
-			render(:action => 'vocabulary' )
+			@category_title = @category.title_ru
+			render(:action => 'ru_vocabulary' )
 		end
 	else 
-		@category_title = @category.title
-		render(:action => 'vocabulary' )
+		if @add_lang == 'ru'
+			@category_title = @category.title
+			render(:action => 'vocabulary' )
+		else 
+			@category_title = @category.title
+			render(:action => 'en_vocabulary' )
+		end
 	end
   rescue StandardError => e
     logger.warn e

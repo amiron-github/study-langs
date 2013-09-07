@@ -1,0 +1,474 @@
+<% @page_title = ' '+@category_title+' :: Cловарь '  %>
+<% @page_meta = {'description' => "Изучайте слова по теме "+@category_title+" онлайн"} %>
+<% @has_audio = true 
+   @t_template='vocab'
+%>
+
+<% content_for :special_js_css do %>
+<%= javascript_include_tag 'jquery.jplayer.min.js' %>
+<%= javascript_include_tag 'jp-control' %>
+<%= stylesheet_link_tag 'flashcard' %>
+<%= stylesheet_link_tag 'lexical-test' %>
+<%= stylesheet_link_tag 'short-unit' %>
+<%= javascript_include_tag 'lexical-test' %>
+<%= javascript_include_tag 'flashcard-u' %>
+<%= javascript_include_tag 'short-unit' %>
+
+<script type="text/javascript">
+<%if params[:tab] %>
+	openTabFromUrl(<%= params[:tab] %>);
+<%else%>
+	openTabFromUrl();
+<%end%>
+
+$(document).ready(function() {
+$(".trans-display").change(function(){
+	if ($(this).is(":checked")) {
+		$(".original div.ru-transcript").show();
+	}else{
+		$(".original div.ru-transcript").hide();
+	}
+}).change();
+
+$("#tab02").click(function() {
+	if (sendData) $.ajax({type: 'post', url: "/get_flash_list", data: {voc_id: t_voc_id, text:'text'}} ); 
+})
+
+});
+
+var t_voc_id=<%=@category.id%>
+
+function buildFlashList(data){
+html = ""
+	for (var i = 0; i< data.length; i ++) {
+		var text = data[i]["text"];
+		var translate = data[i]["translate"];
+		var learned = data[i]["status"]
+		var status = new Array;
+		status = ['', 'checked']
+		if ( learned == '1') status = ['fl-learned', '']
+		var tHtml = '<tr class="fl-list '+status[0]+'"><td><input type="checkbox" '+status[1]+' class="st"><\/td><td class="fl-wordlist-origin">'+text+'<\/td><td>'+translate+'<\/td><\/tr>'
+		html = html+tHtml
+	}
+	$(".fl-prestart-list").html(html);
+	fixAccents($(".fl-prestart-list"))
+	$(".fl-prestart-list tr:even").css({backgroundColor: "#efefef"});
+}
+</script>
+<style type="text/css">
+h2.page {
+margin-bottom: 0px;
+}
+
+.voc-wordlist .diction td {
+border-bottom: 1px solid #efefef;
+}
+.trans-display-wrapper {
+font-size: 11px;
+color: #444;
+position: relative;
+top: -50px;
+margin-bottom: -15px;
+}
+
+.voc-wordlist .diction td.original {
+position: relative;
+width: auto;
+padding-left: 35px;
+cursor: default;
+}
+.voc-wordlist .diction td.original div.ru-transcript {
+display: none;
+font-size: 11px;
+color: #555;font-weight: normal;
+}
+.voc-wordlist .diction td.translation {
+width: auto;
+padding-left: 22px;
+padding-right: 18px;
+cursor: default;
+}
+.voc_bord div.jp_control {
+position: absolute;
+margin-left: -25px;
+}
+.fl-spell-check, .fl-cancel-spell {
+width: 80px;
+}
+.fl-end-wrapper .fl-stop {
+width: 90px;
+}
+.fl-next {
+width: 100px;
+}
+.lt-spacer {
+padding: 0 0 60px;
+}
+.fl-prestart {
+overflow-x: hidden;
+overflow-y: auto;
+}
+.fl-sound .jp_control:hover {
+background-image: url(/images/play-25.png);
+}
+
+.l-test-container {
+margin-bottom: 90px;
+}
+
+div.ad-horizont {
+padding-bottom: 0 !important;
+position: relative;
+top: 25px;
+}
+
+.ad-banner div {
+position: relative;
+padding-top: 20px;
+top: 10px; 
+width: 470px;
+margin: 0 auto;
+}
+
+</style>
+<% end %>
+
+<div class="unit-area">
+	<div id="prof_tabs">
+		<div class="unit-title">
+		<a href="/<%= @lang %>/<%= @add_lang %>/vocabulary" class="su-tit-link">Словарь »</a><br>
+		<%= @category_title %>
+		</div>
+		<div id="tabs_row">
+				<div id="tab01" class="ptab current_ptab"><div><a href="#" style="color: #000;">Словарь</a></div></div>
+				<div id="tab02" class="ptab"><div><a href="#">Флеш-карты</a></div></div>
+				<div id="tab03" class="ptab"><div><a href="#">Тесты</a></div></div>
+		</div>
+		<div style="clear: both;"></div>
+	</div>
+
+<%= render :partial => '/site/ads/ad_banner' %>
+
+<div id="for_tab01" class="pBlock" style="display: block">
+	<div class="inpBlock">
+
+	<br><br><br><br>
+
+<div class="voc-wordlist">
+<table class="voc_bord" align="center" cellspacing="0">
+<tr>
+<td>
+
+<table style="width: 500px" class="diction" cellpadding="0" cellspacing="0" align="center">
+<col width="50%"><col width="50%">
+<thead>
+<tr>
+	<td> <div class="trans-display-wrapper"><input type="checkbox" class="trans-display" /> Транскрипция </div> </td>
+	<td></td>
+</tr>
+</thead>
+<tbody>
+<%
+@words.each_with_index do |word, index|
+-%>
+
+<% voc_spaces.each do |s| -%>
+<% if word.id == s %>
+  <tr>
+    <td class="original" valign="top">&nbsp;
+    </td>
+
+    <td class="translation" valign="top">&nbsp;
+    </td>
+  </tr>
+<%end -%>
+<%end -%>
+<tr class="trow">
+    <td class="original" valign="top">
+	<%unless word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div><%end%>
+	<%= word.text %><%unless word.grammar==''%><i style="color: #999; font-weight: normal; font-size: 11px; margin-left:10px"><%= word.grammar %></i><%end%>
+	<div class="ru-transcript">[<%= word.transcribe %>]</div>
+    </td>
+    <td class="translation" valign="top"><%= word.translate %>
+    </td>
+</tr>
+<%end -%>
+</tbody>
+<tfoot>
+<tr>
+	<td></td>
+	<td></td>
+</tr>
+</tfoot>  
+</table>
+
+</td>
+</tr>
+</table>
+</div><!-- end of voc-wordlist-->
+
+<br><br><br>
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Следующий этап »" onclick="openNextStep(2)">
+</div>	
+	
+	</div>
+</div>
+
+<div id="for_tab02" class="pBlock" style="display: none">
+	<div class="inpBlock">
+	
+<br><br><br><br>	
+	
+<div  id="fl1" style="min-height: 600px; text-align: center;">
+
+<div class="fl-container">
+<div class="fl-window">
+
+<div class="fl-init">
+<div class="fl-settings" style="" >
+		<div class="fl-set-title"> Настройки </div>
+			<div class="fl-set-list">
+			<table>
+				<tr>
+					<td style="border-right: 1px dotted #999; padding-right: 22px">
+					<b>Выбрать в списке:</b>
+					<ul>
+						<li><span class="fl-set-all fl-act" >> Все</span></li>
+						<li><span class="fl-set-none fl-act" >> Ни одного</span></li>
+						<li><span class="fl-set-not-worked fl-act" >> Все неизученные</span></li>
+						<li><span class="fl-set-worked fl-act">> Все изученные </span></li>
+					</ul>
+					</td>
+					<td style="padding-left: 10px">
+					<b>Настройки флешкарт:</b>
+					<ul>
+						<li><span class="fl-act fl-switch-order" >> Порядок слов</span><br>
+							&nbsp;&nbsp;<span class="fl-direct tcheck checked fl-act" >обычный</span><br>
+							&nbsp;&nbsp;<span class="fl-random tcheck fl-act">случайный</span>
+						</li>
+						<li><span class="fl-act fl-switch-auto" >> Проигрывать аудио</span><br>
+						&nbsp;&nbsp;<span class="fl-auto-on tcheck checked fl-act" >вкл</span>
+								/<span class="fl-auto-off tcheck fl-act" >выкл</span>
+						</li>
+					</ul>
+					</td>
+				</tr>
+			</table>
+			</div>
+		</div>
+	<div class="fl-prestart">
+	</div>
+	<div class="fl-start-wrapper">
+		<div class="fl-start fl-btn noselect"> Начать </div>
+		<div class="fl-start-note-wrapper">
+			<div class="fl-start-note">Необходимо выбрать  <br>слово или выражение</div>
+		</div>
+	</div>
+</div>
+<div class="fl-end">
+	<div class="fl-end-notice">В данном списке представлены слова и выражения, с которыми вы работали:</div>
+	<div class="fl-end-list"></div>
+	<div class="fl-end-wrapper">
+		<div class="fl-stop fl-btn noselect"> Закончить </div>
+	</div>
+</div>
+<div class="fl-work">
+<div class="fl-article-wrapper">
+  <div class="fl-article-list">
+	<table  style="margin: 0 auto" align="center"><tr><td height="70">
+		<div class="fl-original"></div>
+	</td></tr></table>
+	<table  style="margin: 0 auto" align="center"><tr>
+		<td><div class="fl-transcript"></div></td>
+		<td style="text-align: left; height:19px;"> <div class="fl-sound"> </div> </td>
+	</tr></table>
+	<div class="fl-translate"></div>
+  </div>
+</div>
+<div class="fl-auto-wrapper"><input type="checkbox" class="fl-autoplay" checked> Проигрывать </div>
+<div class="fl-buttons-wrapper">
+	<div class="fl-next fl-btn noselect">Далee >></div>
+</div>
+<div class="fl-check" style="min-height: 190px;">
+	<div class="fl-tests" style="display: none;">
+		<div class="fl-cancel-wrapper" style="display: none;">
+			<div class="fl-test-task">
+				<span class="fl-wrong-note fl-notes">Неправильно! Попробуйте снова</span>
+				<span class="fl-correct-note fl-notes">Великолепно! Правильный ответ</span>
+				<span class="fl-exclude-note fl-notes">Запись отмечена как пройденная</span>
+				<span class="fl-task-string">Найдите перевод слова/выражения в списке</span>
+			</div>
+			<div class="fl-cancel fl-btn noselect"> Отмена </div>
+		</div>
+	</div>
+	<div class="fl-spell" style="display: none;">
+		<div class="fl-spell-cancel-wrapper" style="display: none;">
+			<div class="fl-spell-task">
+				<span class="fl-wrong-spell fl-spell-notes">Неправильно! Попробуйте снова</span>
+				<span class="fl-correct-spell fl-spell-notes">Великолепно! Правильный ответ</span>
+				<span class="fl-task-spell">Напечатайте в текстовом поле слово/фразу</span>
+			</div>
+			<div class="fl-cancel-spell fl-btn noselect"> Закончить </div>
+		</div>
+		<div class="fl-spell-test"><input class="fl-spell-field for_keyb" type="text" /></div>
+		<div class="fl-spell-check-wrapper">
+			<div class="fl-spell-check fl-btn noselect"> Проверить </div>
+		</div>
+		<div class="kb-show-wrapper" ></div>
+	</div>
+	<div class="fl-activity-wrapper">
+	<table class="fl-activity">
+		<col><col width="130">
+		<tr>
+			<td class="fl-text-info">Нажмите кнопку "Тесты", чтобы выполнить простые задания со словом/фразой</td>
+			<td> <div class="fl-verify fl-btn noselect"> Тесты </div></td>
+		</tr>
+		<!-- tr class="fl-spell-activity">
+			<td class="fl-text-info">Нажмите кнопку "Правописание" для практики в написании слова/фразы </td>
+			<td><div class="fl-spell-btn fl-btn noselect">Правописание</div></td>
+		</tr -->
+		<tr>
+			<td class="fl-text-info" >Нажмите кнопку "Стоп", если вы желаете закончить работу с флешкартами и вернуться в главное меню </td>
+			<td> <div class="fl-stop fl-btn noselect">Стоп</div></td>
+		</tr>
+	</table>
+	</div>
+</div>
+
+</div>
+
+</div><!-- end of fl-window -->
+</div><!-- end of flcontainer-->
+
+</div><!-- end of fl1 -->
+
+<script type="text/javascript"> 
+	var fl1 = new flashcard( {
+		id: "fl1", 
+		random_order: false,
+		basic_array: [
+<% 
+@last_item_index = (@words.length)-1
+@words.each_with_index  do |word, index| %><% unless (word.translate == '#none#' || word.translate == '' )%>
+["<%= no_js(word.text) %>", '<%= no_js(word.translate) %>', '<%= word.sound_url %>', "<%= no_js(word.transcribe) %>"<%if current_user %>, '<%= word.id%>' ,'<%= current_user.word_status(word.id) %>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>
+<%end-%>
+<%end -%>
+		]
+		} )
+</script>
+
+<br><br><br>		
+
+<div class="es-ex-buttons su-next-wrapper">
+<input type="button" class="su-next-step" value="Следующий этап »" onclick="openNextStep(3)">
+</div>
+	
+	</div>
+</div>
+
+
+<div id="for_tab03" class="pBlock" style="display: none">
+	<div class="inpBlock">
+
+<br><br><br><br>
+
+
+<div class="l-test-container">
+
+<h4 class="su-task">Тест 1. Найдите в списке перевод фразы.
+</h4>
+
+<div id="ch1" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => 'lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch1 = new ch_exercise( {
+		id: "ch1", 
+		<% unless @test_data[0] == nil || @test_data[0]==''%>test_id: "<%= @test_data[0].test_id %>",<%end%>
+		quest_num: <%= quest_num_from(@test_data[0]) %>,
+		variants_num: 5,
+		quest_type: 'text',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+<% @last_item_index = (@words.length)-1 -%>
+<% @words.each_with_index  do |word, index| -%>
+["<%= no_js(word.text) %>", "<%= no_js(word.translate) %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+		]
+		
+		} )
+</script>
+
+
+<h4 class="su-task">Тест 2. Прочитатайте фразу и найдите её перевод.</h4>
+
+<div id="ch2" class="lt-holder">
+<div class="lt-spacer">	
+<%= render :partial => 'lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch2 = new ch_exercise( {
+		id: "ch2", 
+		<% unless @test_data[1] == nil || @test_data[1]==''%>test_id: "<%= @test_data[1].test_id %>",<%end%>
+		quest_num: <%= quest_num_from(@test_data[1]) %>,
+		variants_num: 5,
+		quest_type: 'text',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+<% @words.each_with_index  do |word, index| -%>
+		["<%= no_js(word.translate) %>", '<%=no_js(word.text) %>'<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>		
+		]
+		} )
+</script>
+
+<%unless @category.sound_status == 2 %>
+
+<h4 class="su-task">Тест 3. Прослушайте фразу и найдите её перевод.
+</h4>
+
+<div id="ch3" class="lt-holder">
+<div class="lt-spacer">
+<%= render :partial => 'lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+<script type="text/javascript"> 
+	var ch3 = new ch_exercise( {
+		id: "ch3", 
+		<% unless @test_data[2] == nil || @test_data[2]==''%>test_id: "<%= @test_data[2].test_id %>",<%end%>
+		quest_num: <%= quest_num_from(@test_data[2]) %>,
+		variants_num: 5,
+		quest_type: 'audio',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+<% @words.each_with_index  do |word, index| -%>
+["<%= word.sound_url %>", "<%= no_js(word.translate) %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>	
+<%end -%>
+
+		]
+		} )
+</script>
+<%end%>
+</div>  <!--end of l-test-container -->
+
+	</div>
+</div>
+
+
+</div> <!-- end of unit-area-->
+	
+
+<script type="text/javascript">
+currentSection="words";
+</script>
+
+

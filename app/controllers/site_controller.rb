@@ -10,19 +10,19 @@ class SiteController < ApplicationController
 	layout = 'grammar_comments.html.erb' if @file.match(/\/grammar_comments\//)
 	
 	if @file.match(/\/ru\//)  
-		@file = '/ru/jp/index.html' if @file == '/ru/jp/'
-		@file = '/ru/fr/index.html' if @file == '/ru/fr/'
-		@file = '/fr/ru/index.html' if @file == '/fr/ru/'
-		@file = '/ru/en/index.html' if @file == '/ru/en/'
-		@file = '/ru/de/index.html' if @file == '/ru/de/'
-		@file = '/ru/es/index.html' if @file == '/ru/es/'
-		@file = '/ru/it/index.html' if @file == '/ru/it/'
-		@file = '/ru/pt/index.html' if @file == '/ru/pt/'
-		@file = '/ru/ch/index.html' if @file == '/ru/ch/'
-		@file = '/ru/gr/index.html' if @file == '/ru/gr/'
-		@file = '/ru/pl/index.html' if @file == '/ru/pl/'
-		@file = '/ru/ru/index.html' if @file == '/ru/ru/'
-		@file = '/ru/index.html' if @file == '/ru/'
+		@file = '/ru/jp/index.html' if @file == '/ru/jp/' || @file == '/ru/jp'
+		@file = '/ru/fr/index.html' if @file == '/ru/fr/' || @file == '/ru/fr'
+		@file = '/ru/en/index.html' if @file == '/ru/en/' || @file == '/ru/en'
+		@file = '/ru/de/index.html' if @file == '/ru/de/' || @file == '/ru/de'
+		@file = '/ru/es/index.html' if @file == '/ru/es/' || @file == '/ru/es'
+		@file = '/ru/it/index.html' if @file == '/ru/it/' || @file == '/ru/it'
+		@file = '/ru/pt/index.html' if @file == '/ru/pt/' || @file == '/ru/pt'
+		@file = '/ru/ch/index.html' if @file == '/ru/ch/' || @file == '/ru/ch'
+		@file = '/ru/gr/index.html' if @file == '/ru/gr/' || @file == '/ru/gr'
+		@file = '/ru/pl/index.html' if @file == '/ru/pl/' || @file == '/ru/pl'
+		@file = '/ru/ru/index.html' if @file == '/ru/ru/' || @file == '/ru/ru'
+		@file = '/ru/pl/index.html' if @file == '/ru/pl/' || @file == '/ru/pl'
+		@file = '/ru/index.html' if @file == '/ru/' || @file == '/ru'
 		
 		if @file.match(/\/ru\/fr\//) 
 			layout = 'ru_fr_application.rhtml'
@@ -54,15 +54,15 @@ class SiteController < ApplicationController
 		@file = '/en/index.html'
 		layout = 'en_application.rhtml'
 	end	
-	if @file == '/en/fr/'	
+	if @file == '/en/fr/' ||@file == '/en/fr'
 		@file = '/en/fr/index.html'
 		layout = 'en_fr_application.rhtml'
 	end
-	if @file == '/en/es/'	
+	if @file == '/en/es/' ||@file == '/en/es'
 		@file = '/en/es/index.html'
 		layout = 'en_es_application.rhtml'
 	end
-	if @file == '/en/de/'	
+	if @file == '/en/de/' ||@file == '/en/de'	
 		@file = '/en/de/index.html'
 		layout = 'en_de_application.rhtml'
 	end
@@ -70,12 +70,12 @@ class SiteController < ApplicationController
 		@file = '/en/jp/index.html'
 		layout = 'en_jp_application.rhtml'
 	end
-	if @file == '/fr/'	
+	if @file == '/fr/'	|| @file == '/fr'
 		@file = '/fr/index.html'
 		layout = 'fr_application.rhtml'
 	end
-		@file = '/fr/en/index.html' if @file == '/fr/en/'
-		@file = '/fr/index.html' if @file == '/fr/'
+		@file = '/fr/ru/index.html' if @file == '/fr/ru/' || @file == '/fr/ru'
+		@file = '/fr/en/index.html' if @file == '/fr/en/' || @file == '/fr/en'  
 		
 		if @file.match(/\/fr\/ru\//) 
 			layout = 'fr_ru_application.rhtml'
