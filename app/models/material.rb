@@ -8,6 +8,11 @@ LANG = [
 [ "Russian-Japanese","ru-jp" ],
 [ "French-Russian" , "fr-ru" ],
 [ "Russian-French" , "ru-fr" ],
+[ "Russian-German" , "ru-de" ],
+[ "Russian-Spanish" , "ru-es" ],
+[ "English-French" , "en-fr" ],
+[ "Russian-Italian" , "ru-it" ],
+[ "Freanch-English" , "fr-en" ],
 [ "none" , '' ]
 ]
 
