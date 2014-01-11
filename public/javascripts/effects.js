@@ -1226,9 +1226,11 @@ clearTimeout(messTime);
 var content;
 if (type==undefined || type==1) {
 	if (es_lang!=undefined && es_lang=='ru') {
-		content='Открыта новая тема в словаре:<b>'+html+'</b> <span>Пройденные слова можно посмотреть <br>в своем <i>Аккаунте</i></span>'
+		content='Открыта новая тема в словаре:<b>'+html[1]+'</b> <span>Пройденные слова можно посмотреть <br>в своем <i>Аккаунте</i></span>'
+	} else if (es_lang!=undefined && es_lang=='fr') {
+		content='Une nouvelle rubrique est decouverte:<b>'+html[2]+'</b> <span>Vous pouvez voir les mots appris <br>dans votre <i>Profil</i></span>'
 	} else {
-		content='A new topic in your vocabulary:<b>'+html+'</b> <span>You can review studied items<br> in your <i>Account</i></span>'
+		content='A new topic in your vocabulary:<b>'+html[0]+'</b> <span>You can review studied items<br> in your <i>Account</i></span>'
 	}
 	
 } else {

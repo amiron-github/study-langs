@@ -145,7 +145,7 @@ if (this.callback == undefined) this.callback = function() {return false};
 if (tObj.texts == undefined) {
 	tObj.correctMsg = "Great! This is correct";
 	tObj.wrongMsg = "Wrong answer";
-	tObj.nextButtonVal = "NEXT";
+	tObj.nextButtonVal = "NEXT »";
 	tObj.seeResultsTxt = "See results";
 	tObj.remainingTxt = "<b>Remaining</b>";
 	tObj.totalQuestionsTxt = "Total questions";

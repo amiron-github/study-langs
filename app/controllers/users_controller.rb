@@ -153,7 +153,7 @@ class UsersController < ApplicationController
 		end
 		current_user.record_words(twords)
 		if new_cat
-			render :js => 'messageIt("'+new_cat.title.to_s+'")'
+			render :js => 'messageIt(["'+new_cat.title.to_s+'","'+new_cat.title_ru.to_s+'","'+new_cat.title_fr.to_s+'"])'
 		else
 			render :nothing => true
 		end

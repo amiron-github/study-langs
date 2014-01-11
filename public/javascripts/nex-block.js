@@ -62,7 +62,8 @@ if (tObj.texts == undefined) {
 	tObj.texts = {
 		'comment': "Comment",
 		'done':"Готово",
-		'example':"Пример"
+		'example':"Пример",
+		'must_do': "Нужно выполнить упражнение!"
 	}
 }
 
@@ -115,7 +116,7 @@ this.start = function() {
 			parent.removeClass("nex-b-done")
 		} else {
 		   if ($(this).hasClass("need-test")) {
-			messageIt("<b>Нужно выполнить упражнение!</b>", 0) /*general functuib*/
+			messageIt("<b>"+tObj.texts["must_do"]+"</b>", 0) /*general functuib*/
 		   } else {
 			$(this).addClass("nex-checked");
 			var tIndex = tObj.nexContainers.index(parent);
