@@ -57,7 +57,7 @@ class ApplicationController < ActionController::Base
 					layout =  'ru_gr_application.rhtml'
 				elsif add_lang == 'pl'
 					layout =  'ru_pl_application.rhtml'
-				elsif add_lang == 'pl'
+				elsif add_lang == 'ru'
 					layout =  'ru_ru_application.rhtml'
 				else
 					layout =  'ru_application.rhtml'

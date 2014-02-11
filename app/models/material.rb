@@ -12,7 +12,8 @@ LANG = [
 [ "Russian-Spanish" , "ru-es" ],
 [ "English-French" , "en-fr" ],
 [ "Russian-Italian" , "ru-it" ],
-[ "Freanch-English" , "fr-en" ],
+[ "French-English" , "fr-en" ],
+[ "Russian-Russian" , "ru-ru" ],
 [ "none" , '' ]
 ]
 
