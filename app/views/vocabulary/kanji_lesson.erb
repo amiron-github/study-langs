@@ -519,7 +519,35 @@ margin-top: 0px;
 </script>	
 
 
+<h4 class="su-task">
+Задание 3. Найдите онное и кунное чтение иероглифа
+</h4>
 
+<div id="ch5" class="lt-holder lt-kanji">
+<div class="lt-spacer">	
+<%= render :partial => '/vocabulary/lexical_test', :locals => {:lang => "rus"} %>
+</div>
+</div><!-- end of lt-holder -->
+
+<script type="text/javascript"> 
+	var ch5 = new ch_exercise( {
+		id: "ch5", 
+		test_id: "",
+		quest_num: 20,
+		variants_num: 4,
+		quest_type: 'text',
+		texts: ['Правильно','Неправильно','Далее','Результат','Осталось','Всего вопросов','Правильных ответов','Результат'],
+		basic_array: [
+		
+<% @last_item_index = (@learnt.length)-1 -%>
+<% @learnt.each_with_index  do |word, index| -%>
+["<%= word.text.to_s.gsub(/"/,'\"') %>", "<span style=\"text-transform: uppercase\"><%= word.transcribe.to_s.gsub(/"/,'\"') %><\/span> ; <%= word.html.to_s.gsub(/"/,'\"') %>"<% if current_user %>, '<%= word.id%>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>
+<%end -%>
+
+		]
+		
+		} )
+</script>	
 
 
 	</div>

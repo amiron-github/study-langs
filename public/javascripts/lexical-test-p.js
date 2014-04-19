@@ -397,11 +397,11 @@ this.getTypeAnswers = function() {
 		var userAnswer = tObj.optionsHolder.find(".ps-type-field").val();
 		tObj.optionsHolder.append('<span class="tp_helper" style="display: none;">'+userAnswer+'</span>')
 		userAnswer = String( tObj.optionsHolder.find("span.tp_helper").html() )
-		userAnswer=userAnswer.replace(/[.,;?!]/g, "").replace(/-/g, " ").replace(/&nbsp;/g, " ").replace(/&nbsp/g, " ").replace(/\s\s+/g, " ").toUpperCase().replace(/Ё/g, 'Е');	
+		userAnswer=userAnswer.replace(/[.,;?!]/g, "").replace(/-/g, " ").replace(/&nbsp;/g, " ").replace(/&nbsp/g, " ").replace(/\s\s+/g, " ").toUpperCase().replace(/Ё/g, 'Е').replace(/[。、！？]/g, "");	
 		userAnswer = $.trim(userAnswer);
 		tObj.optionsHolder.find("span.tp_helper").remove();
 		var tWord = tObj.workArray[tObj.counter]["correct"]
-		tWord=tWord.replace(/[.,;?!]/g, "").replace(/-/g, " ").replace(/&nbsp;/g, " ").replace(/&nbsp/g, " ").replace(/\s\s+/g, " ").toUpperCase().replace(/Ё/g, 'Е');	
+		tWord=tWord.replace(/[.,;?!]/g, "").replace(/-/g, " ").replace(/&nbsp;/g, " ").replace(/&nbsp/g, " ").replace(/\s\s+/g, " ").toUpperCase().replace(/Ё/g, 'Е').replace(/[。、！？]/g, "");	
 		
 		if (tObj.tpNoSpace) {
 			tWord=tWord.replace(/&nbsp;/g, "").replace(/\s\s+/g, "").replace(/\s+/g, "")

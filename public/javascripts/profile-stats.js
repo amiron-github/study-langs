@@ -44,7 +44,7 @@ $.ajax({
 }
 }
 
-function openTopic(id,title,type) {
+function openTopic(id,title,type,lang) {
 $("#vtopic_"+id).html('<br/><br/><center><b style="color: #555">'+stats_text["load"]+'<\/b> <img src="/images/load.gif"\/><\/center>').dialog({
 	width: 450, 
 	height:450, 
@@ -52,10 +52,12 @@ $("#vtopic_"+id).html('<br/><br/><center><b style="color: #555">'+stats_text["lo
 	dialogClass:"vtopic-popup",
 	buttons: [{text: stats_text["close"], click: function() { $(this).dialog("close"); }}]
 });
+var trans = "default"
+if (lang=="fr") {trans="fr"}
 
 $.ajax({
   url: "/get_user_topic",
-  data: {voc_id: id},
+  data: {voc_id: id, translate: trans},
   success: function(data){  insertTopic(id, user_topic,type) },
   error: function(){ alert(stats_text["error"]) }
 })

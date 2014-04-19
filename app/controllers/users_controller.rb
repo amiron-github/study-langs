@@ -51,18 +51,21 @@ class UsersController < ApplicationController
   
     logout_keeping_session!
     user = User.find_by_activation_code(params[:activation_code]) unless params[:activation_code].blank?
-	
-	user.lang = params[:lang]
-	user.to_lang = params[:to_lang]
+
 	
     case
     when (!params[:activation_code].blank?) && user && !user.active?
+		user.lang = params[:lang]
+		user.to_lang = params[:to_lang]
+	
       user.activate!
       
 	  if params[:lang] == 'ru'
 	  flash[:notice] = "Регистрация окончена! Теперь Вы можете войти в свой аккаунт"
 		if params[:to_lang] == 'en'
 			redirect_to '/ru/en/login'
+		else
+			redirect_to '/ru/'+params[:to_lang]+'/login'
 		end
 	  else
 		flash[:notice] = "Signup complete! Please sign in to continue."
