@@ -174,7 +174,7 @@ cursor: pointer;
 }
 
 .ps-string-holder {
-background-image:url(/images/es-course/ps-play-bg.gif);
+backgr-ound-image:url(/images/es-course/ps-play-bg.gif);
 background-position:left bottom;
 background-repeat:repeat-x;
 
@@ -182,7 +182,7 @@ overflow: hidden;
 margin: 10px;
 mi-n-height: 200px;
 background-color: #fff;
-background-image:url(/images/dialog-tr-bg.png);
+backg-round-image:url(/images/dialog-tr-bg.png);
 background-repeat: repeat-x;
 background-position: left bottom;
 bor-der: 1px solid #999999;

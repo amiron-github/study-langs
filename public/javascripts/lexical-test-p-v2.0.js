@@ -134,7 +134,6 @@ this.helperStay = hash['helper_stay'];          // default - false
 this.addImg = hash['add_img'];				// default - false
 this.noSpacer = hash['no_spacer'];          // default - false
 this.callback = hash['callback'];
-this.multiAnswer = hash['multi_answer'];  // default - false 
 
 var tObj = this;
 
@@ -157,7 +156,6 @@ if (this.intextReplace == undefined && this.inputType == 'input' && this.randLet
 if (this.intextReplace == undefined) this.intextReplace = false;
 if (this.noSpacer == undefined) this.noSpacer = false;
 if (this.addImg == undefined) this.addImg = false;
-if (this.multiAnswer == undefined) this.multiAnswer = false;                           // default - false !!!!!!!!!!!
 if (this.helperStay == undefined && this.intextInput==true) {this.helperStay = true;
 }else if (this.helperStay == undefined) {this.helperStay = false;} 
 
@@ -399,28 +397,18 @@ this.getTypeAnswers = function() {
 		var userAnswer = tObj.optionsHolder.find(".ps-type-field").val();
 		tObj.optionsHolder.append('<span class="tp_helper" style="display: none;">'+userAnswer+'</span>')
 		userAnswer = String( tObj.optionsHolder.find("span.tp_helper").html() )
-		userAnswer=purifyText(userAnswer);	                     ///////////////// change for function
+		userAnswer=userAnswer.replace(/[.,;?!]/g, "").replace(/-/g, " ").replace(/&nbsp;/g, " ").replace(/&nbsp/g, " ").replace(/\s\s+/g, " ").toUpperCase().replace(/Ё/g, 'Е').replace(/[。、！？]/g, "");	
 		userAnswer = $.trim(userAnswer);
 		tObj.optionsHolder.find("span.tp_helper").remove();
 		var tWord = tObj.workArray[tObj.counter]["correct"]
-		tWord=purifyText(tWord);	                                    ///////////////// change for function
+		tWord=tWord.replace(/[.,;?!]/g, "").replace(/-/g, " ").replace(/&nbsp;/g, " ").replace(/&nbsp/g, " ").replace(/\s\s+/g, " ").toUpperCase().replace(/Ё/g, 'Е').replace(/[。、！？]/g, "");	
 		
 		if (tObj.tpNoSpace) {
 			tWord=tWord.replace(/&nbsp;/g, "").replace(/\s\s+/g, "").replace(/\s+/g, "")
 			userAnswer = userAnswer.replace(/&nbsp;/g, "").replace(/\s\s+/g, "").replace(/\s+/g, "")
 		}
 		//alert(" '" + userAnswer.toUpperCase()+"' - '"+tWord.toUpperCase()+"'")
-		////////////////////////////////////////// change for multi
-		var multiCheck = false
-		if (tObj.multiAnswer) {
-			var multiAns = tObj.workArray[tObj.counter]["multicorrect"]
-			var multiCorrect = false
-			if (multiAns != undefined) multiCorrect = checkMultiple(userAnswer, multiAns)
-			if (multiCorrect) multiCheck = true
-				//alert(multiCorrect['string']+" ; "+multiCheck)
-		}
-		////////////////////////////////////////// change for multi
-		if ( $.trim(userAnswer.toUpperCase()) == $.trim(tWord.toUpperCase())  || multiCheck ) {
+		if ( $.trim(userAnswer.toUpperCase()) == $.trim(tWord.toUpperCase()) ) {
 			tObj.alertHolder.empty().removeClass(tObj.correctClass).removeClass(tObj.wrongClass);
 			if (tObj.autoPlay) tObj.checkTypeBtn.unbind("click");
 			tObj.optionsHolder.find(".ps-type-field").addClass("ps-typed");
@@ -463,8 +451,6 @@ this.getOptions = function() {
 	var endOptions = '<ul class="no-list">';
 	var optionsList = '';
 	var correctIndex;
-		var correctIndex1 = -1;///////////////// change for several options
-	var correctIndex2 = -1; ///////////////// change for several options
   if (tObj.answerType == "options") {
 		var tItem = tObj.workArray[tObj.counter]["options"]
 		tObj.container.removeClass("ps-3-options")
@@ -475,10 +461,6 @@ this.getOptions = function() {
 			optionsList = optionsList + tOption;
 		}
 		correctIndex = tObj.workArray[tObj.counter]["correct"]-1;
-		var corectOpt1 = tObj.workArray[tObj.counter]["correct1"]	    ///////////////// change for several options
-		var corectOpt2 = tObj.workArray[tObj.counter]["correct2"]	    ///////////////// change for several options
-		if (corectOpt1!=undefined) correctIndex1 = corectOpt1-1; 	    ///////////////// change for several options
-		if (corectOpt2!=undefined) correctIndex2 = corectOpt2-1;      ///////////////// change for several options
 	
   } else {
 	if (tObj.randomOrder)	{
@@ -519,13 +501,11 @@ this.getOptions = function() {
 	
 	tObj.optionsHolder.html("" + startOptions + optionsList + endOptions +"");
 	tObj.optionsHolder.find("li").eq(correctIndex).data("correct", "true");
-	if (correctIndex1>-1) tObj.optionsHolder.find("li").eq(correctIndex1).data("correct", "true");   ////change for several options
-	if (correctIndex2>-1) tObj.optionsHolder.find("li").eq(correctIndex2).data("correct", "true");   ////change for several options
 	tObj.optionsHolder.find("li").each(function(i,elem){
 	
 		$(elem).click(function() {
 			$(elem).find("input").attr("checked", "checked");
-			if (tObj.stringHolder.find(".ps-miss-ans").length>0) {      ////////////////////////////////// change for all cases
+			if (tObj.answerType == "options") {
 				var strAn = $(elem).text();
 				if ($(elem).find("span.ps-nothin").length > 0) strAn="";
 				tObj.stringHolder.find(".ps-miss-ans").text(strAn);
@@ -661,25 +641,7 @@ $(document).ready(function() {
 	tObj.parseTest();
 })
 
-}
 
-function purifyText(text) {
-	text = text.replace(/[.,;?!]/g, "").replace(/-/g, " ").replace(/&nbsp;/g, " ").replace(/&nbsp/g, " ").replace(/\s\s+/g, " ").toUpperCase().replace(/Ё/g, 'Е').replace(/[??!?]/g, "");
-	return text
-}
-
-
-function checkMultiple(string, array) {
-	var checkFlag = -1
-	$.each(array, function( index, value ) {
-		var pureValue= $.trim(purifyText(value)).toUpperCase();
-		var pureString= $.trim(purifyText(string)).toUpperCase();
-		if (pureString == pureValue) {checkFlag = index}
-	})
-	if (checkFlag > -1) {
-		var checkData = {index:checkFlag, string: array[checkFlag]}
-		return checkData
-	} else {return false}
 }
 
 
