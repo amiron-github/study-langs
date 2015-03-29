@@ -702,7 +702,14 @@ function lt_randomWords(word,container,target,html_target,spec_signs,hider,repla
 		if (no_spacer == true || tText=="!"||tText=="?"||tText==","||tText=="."){
 			newVal= tVal +t.text();
 		}else{
-			newVal= tVal +" "+t.text();
+			var lastChar = tVal.substr(tVal.length - 1)
+			var firstCharToAdd =  tText.substr(0,1)
+				//alert( lastChar +" ; "+firstCharToAdd)
+			if (lastChar== "'" || lastChar== "’" || lastChar== "-" || firstCharToAdd=="-"  ||  firstCharToAdd=="'" || firstCharToAdd=="’") {
+				newVal= tVal + t.text();
+			}else{
+				newVal= tVal +" "+t.text();
+			}
 		}
 		if (replacer != undefined && replacer == true) newVal = t.text();
 		if (hider!= undefined && hider == false)   t.addClass('ps-var-hidden'); // t.css({visibility: "hidden"}); // hide the element
@@ -725,6 +732,7 @@ function lt_randomWords(word,container,target,html_target,spec_signs,hider,repla
 		});
 	});
 }
+
 
 
 
