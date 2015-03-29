@@ -2351,6 +2351,9 @@ max-width: 500px;
 .noselect {
 -moz-user-select: none;
 -khtml-user-select: none;
+-webkit-user-select: none;
+-o-user-select: none;
+-ms-user-select: none;
 user-select: none;
 }
 
