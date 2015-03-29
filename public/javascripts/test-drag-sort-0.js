@@ -132,14 +132,9 @@ var ds_style =""
 +".ds_dragHelper {left: 0; top: 0; position: absolute;}"
 +".ds_ondrag { cursor: default; border: 1px dotted #000; position: absolute; background-color: #fff}"
 +".ds_noImage { background-image: none !important}"
-+".ontarget {background-color: yellow !important;};"
 +"</style>"
 
-var mobileBrowser = false;
 
-if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
-		mobileBrowser = true;
-}
 
 
 
@@ -410,20 +405,11 @@ this.checkAnswers = function() {
 }
 
 $(document).ready(function() {
-	if (mobileBrowser) {
-		hash['test_type'] = "dragsort";
-		sortlist_test(hash);
-	}else{
-		tObj.start();
-	}
+	tObj.start();
 });
 
 
 }
-
-
-
-
 
 
 function sortlist_test(hash) {
@@ -443,9 +429,6 @@ this.correctClass = "ds-correct-answer";
 this.errorClass = "ds-error-answer";
 this.test_id= hash['test_id'];
 this.totalTasks = hash['total_task'];
-this.testType = hash['test_type'];
-
-if (this.testType == undefined) this.testType = "sortlist";
 
 
 this.targetsData = new Array();
@@ -479,24 +462,14 @@ this.start = function() {
 	}).mouseup(function() {
 		tObj.checkButton.css({left: "0px", top: "0px"})
 	});
-
-
-	if (mobileBrowser) {
-		this.variants.unbind("touchstart").bind("touchstart", function(e) {
-			//info('touch start')
-			tObj.startDrag($(this),e);
-		});
-		
-
-	} else {
-		this.variants.mousedown(function(e) {
-			tObj.startDrag($(this),e);
-		});
-	}
-
-
 	
+	this.variants.mousedown(function(e) {
+		tObj.startDrag($(this),e)
+	});
 	
+	//this.variants.click(function(e) {
+	//	tObj.startDrag($(this),e)
+	//});
 	
 }
 
@@ -511,16 +484,9 @@ this.startDrag = function(el,e) {
 		var l= t.width();
 		var difX=e.pageX-x;
 		var difY=e.pageY-y;
-
-			if (mobileBrowser) {
-				difX= e.originalEvent.changedTouches[0].pageX-x;
-				difY=e.originalEvent.changedTouches[0].pageY-y;
-			}
-
 		tObj.targetTable();               // shot of targets
 		t.css({visibility: "hidden"});
 		dragHelper.addClass("ds_ondrag").html(" "+tHtml+" ").css({left: x, top: y, maxWidth: l, opacity: "0.8"});
-
 		tObj.dragging(difX, difY);
 		tObj.dropping(fromVariant);
 		e.preventDefault();
@@ -529,31 +495,11 @@ this.startDrag = function(el,e) {
 
 
 this.dragging = function (difX, difY) {
-	if (mobileBrowser) {
-
-		$("body").unbind('touchmove').bind('touchmove', function(event) {
-			var cordLeft = Math.round(event.originalEvent.targetTouches[0].pageX)-difX;
-			var cordTop = Math.round(event.originalEvent.targetTouches[0].pageY)-40;
-
-			dragHelper.css({left: cordLeft, top: cordTop});
-
-			var tTarg = tObj.collision(event.originalEvent.targetTouches[0].pageX, event.originalEvent.targetTouches[0].pageY);
- 			tObj.targets.removeClass("ontarget");
-			if ( tTarg > -1) {
-				tObj.targets.eq(tTarg).addClass("ontarget");
-			}
-
-			event.preventDefault();
-			return false;
-		});
-
-	}else{
-		$("body").bind("mousemove",function(e){
-			dragHelper.css({left: e.pageX-difX, top: e.pageY-difY});
-			e.preventDefault();
-			return false;
-		});
-	}
+	$("body").bind("mousemove",function(e){
+		dragHelper.css({left: e.pageX-difX, top: e.pageY-difY});
+		e.preventDefault();
+		return false;
+	});
 }
 
 this.targetTable = function() {
@@ -580,57 +526,27 @@ this.collision = function (x,y) {
 
 this.dropping = function (fromVariant) {
 
-	if (mobileBrowser) {
-
-		$("body").unbind("touchend").one("touchend", function(e){
-			e.preventDefault();
-			tObj.targets.removeClass("ontarget");
-			var touch = e.originalEvent.changedTouches [0]
-			var hitTarget = tObj.collision(touch.pageX,touch.pageY);
-			dragHelper.removeClass("ds_ondrag").empty();       // remove drag helper
-
-			tObj.droppedEvent(fromVariant, hitTarget);
-
-			$("body").unbind("touchmove");
-
-			$("body").unbind("touchend");
-
-			return false;
-
-		});
-
-	}else{
-
-	   $("body").one("mouseup", function(e) {
+	$("body").one("mouseup", function(e) {
 		var hitTarget = tObj.collision(e.pageX,e.pageY);   // determine if a target is hitted
 		dragHelper.removeClass("ds_ondrag").empty();       // remove drag helper
 		$("body").unbind("mousemove");
-		tObj.droppedEvent(fromVariant, hitTarget);
-		e.preventDefault();
-		return false;
-
-	   });
-	}
-
-
-}
-
-
-this.droppedEvent = function (fromVariant, hitTarget) {
-		if ( hitTarget > -1 && tObj.testType !="dragsort") {
-				tObj.hittedTarget(fromVariant, hitTarget);
-		}else if (hitTarget > -1 && tObj.testType=="dragsort" && tObj.targets.eq(hitTarget).children().children().length<1) {
-
+		
+		if ( hitTarget > -1) {
 			tObj.hittedTarget(fromVariant, hitTarget);
-		}else {
+		}
+		else {
 			tObj.variants.filter(":eq("+fromVariant+")").css({visibility: "visible"});
 		}
-	tObj.container.find("."+tObj.signClass).removeClass(tObj.correctClass).removeClass(tObj.errorClass);
+		
+		tObj.container.find("."+tObj.signClass).removeClass(tObj.correctClass).removeClass(tObj.errorClass);
 		if (tObj.autoCheck == true) {
 			tObj.checkAnswers();
 		}
 		
 		$("body").removeClass("noselect");
+		e.preventDefault();
+		return false;
+	});
 }
 
 
@@ -639,101 +555,32 @@ this.hittedTarget = function (fromVariant, hitted) {
 	
 		var tVariantHtml = tObj.variants.filter(":eq("+fromVariant+")").html();
 		
-		if (tObj.testType=="dragsort") {
-			tObj.targets.eq(hitted).children().html('<div taken="'+fromVariant+'" class="sl_item">'+tVariantHtml+'</div>');
-		}else{
-			tObj.targets.eq(hitted).children().append('<div taken="'+fromVariant+'" class="sl_item">'+tVariantHtml+'</div>');
-		}
-
+		tObj.targets.eq(hitted).children().append('<div taken="'+fromVariant+'" class="sl_item">' + tVariantHtml + '</div> ');
 		tObj.hittedAnimation(hitted);
 			
-		if (mobileBrowser) {
+		this.answers.find("div.sl_item").unbind("mousedown").mousedown(function(e){
 
-			 this.answers.find("div.sl_item").unbind("touchstart").bind("touchstart", function(e){ 
-				e.preventDefault();
-				var t = $(this);
-				var x = t.offset().left;
-				var y = t.offset().top;
-				var l= t.width();
-				difX= e.originalEvent.changedTouches[0].pageX-x;
-				difY=e.originalEvent.changedTouches[0].pageY-y;
-				var fromVariant = t.attr("taken");
-				t.parent().attr("taken", "-1");
-				var tHtml = t.html();
-				tObj.targetTable();  // shot of the targets
-				dragHelper.addClass("ds_ondrag").html(""+tHtml+"").css({left: x, top: y, maxWidth: l, opacity: "0.8", textAlign: "left"});
-				t.hide();
-					
-		
-				$("body").bind("touchmove", function(event){
-			 	  e.preventDefault();
-				  var cordLeft = Math.round(event.originalEvent.targetTouches[0].pageX)-difX;
-				  var cordTop = Math.round(event.originalEvent.targetTouches[0].pageY)-(difY+20);
-					dragHelper.css({left: cordLeft, top: cordTop});
-
-					var tTarg = tObj.collision(event.originalEvent.targetTouches[0].pageX, event.originalEvent.targetTouches[0].pageY);
- 					tObj.targets.removeClass("ontarget");
-					if ( tTarg > -1) {
-						tObj.targets.eq(tTarg).addClass("ontarget");
-					}					
-
-
-				});
-
-				$("body").unbind("touchend").bind("touchend", function(e){
-					e.preventDefault();
-
-					tObj.targets.removeClass("ontarget");
-					var touch = e.originalEvent.changedTouches [0]
-					var hitTarget = tObj.collision(touch.pageX,touch.pageY);
-					dragHelper.removeClass("ds_ondrag").empty();       // remove drag helper
-					tObj.droppedEvent(fromVariant, hitTarget);
-					$("body").unbind("touchmove");
-					t.remove();
-
-					$("body").unbind("touchend");
-				});
-
-			});
-
-
-			// this.answers.find("div.sl_item").unbind("touchend").bind("touchend", function(e){
-			//		e.preventDefault();
-			//		$("body").unbind("touchmove");
-			//});
-
-		}else{
-		   this.answers.find("div.sl_item").unbind("mousedown").mousedown(function(e){
 			$("body").addClass("noselect");
-			tObj.startDragTaken($(this), e)
-			e.preventDefault();
-			return false;
-		   });
-		}
-}
-
-this.startDragTaken = function (el, e) {
-			var t = el;
+			var t = $(this);
 			var x = t.offset().left;
 			var y = t.offset().top;
 			var l= t.width();
 			var difX=e.pageX-x;
 			var difY=e.pageY-y;
-
 			var fromVariant = t.attr("taken");
 			var tHtml = t.html();
 			t.parent().attr("taken", "-1");
 			t.remove();
 			tObj.targetTable();  // shot of the targets
 			dragHelper.addClass("ds_ondrag").html(""+tHtml+"").css({left: x, top: y, maxWidth: l, opacity: "0.8", textAlign: "left"});
-
 			tObj.dragging(difX, difY);
-
 			tObj.dropping(fromVariant);
+			e.preventDefault();
+			return false;
 
+	});
+		
 }
-
-
 
 this.hittedAnimation = function(hitted) {
 			if (tObj.answerBColor == undefined) {
@@ -741,18 +588,9 @@ this.hittedAnimation = function(hitted) {
 			} else {
 				var tColor = tObj.answerBColor;
 			}
-
-			if (tObj.testType=="dragsort") {
-				tObj.targets.eq(hitted).addClass("ds_noImage").stop().css({backgroundColor: "#feff8f"}).animate({backgroundColor: tColor},500, function () {
-				tObj.targets.eq(hitted).css({backgroundColor: tColor}).removeClass("ds_noImage");
-			});
-
-			}else{
-
-			 tObj.targets.eq(hitted).find(".sl_item:last").addClass("ds_noImage").stop().css({backgroundColor: "#feff8f"}).animate({backgroundColor: tColor},500, function () {
+			tObj.targets.eq(hitted).find(".sl_item:last").addClass("ds_noImage").stop().css({backgroundColor: "#feff8f"}).animate({backgroundColor: tColor},500, function () {
 				tObj.targets.eq(hitted).find(".sl_item:last").css({backgroundColor: tColor}).removeClass("ds_noImage");
-			 });
-			}
+			});
 }
 
 this.checkAnswers = function() {
@@ -771,11 +609,9 @@ this.checkAnswers = function() {
 		var toCol = $(item).text();
 		if (toCol -1 == i) {
 			$(item).parent().parent().css({color: "green"});
-			if (tObj.testType=="dragsort") {tObj.container.find("."+tObj.signClass).filter(":eq("+i+")").addClass(tObj.correctClass);}
 			correctNum ++;
 		}else {
 			$(item).parent().parent().css({color: "red", borderColor: "#FF7F7F"});
-			if (tObj.testType=="dragsort") {tObj.container.find("."+tObj.signClass).filter(":eq("+i+")").addClass(tObj.errorClass);}
 			errorNum ++;
 		}
 	
@@ -793,7 +629,7 @@ this.checkAnswers = function() {
 		gTxt = 'Правильно'; 
 		erTxt = 'Ошибки';
 	} else if (es_lang == 'fr') {
-		noTxt = 'Il n\'y a pas de réponses'; 
+		noTxt = 'Il n\'y a pas de répponses'; 
 		gTxt = 'Correct'; 
 		erTxt = 'Erreurs';
 	}
@@ -824,6 +660,8 @@ $(document).ready(function() {
 
 
 }
+
+
 
 
 

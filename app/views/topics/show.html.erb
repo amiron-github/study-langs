@@ -182,7 +182,7 @@ function checkTopicContent() {
 					</div>
 	<%end%>
 	
-	<div class="f-t-post-info"><a href="<%= userpage_for(@topic.user)%>"><%=h @topic.user.name %></a> - <%= show_post_time(@topic_first.created_at) %></div>
+	<div class="f-t-post-info"><a href="<%= userpage_for(@topic.user)%>"><%=h @topic.user.name %></a> - <%= show_post_time_long(@topic_first.created_at) %></div>
 	
 	<div class="f-t-quest-content">
 		<%if @topic_first.user.has_role?('admin')%><%= admin_text(@topic_first.content) %><%else%><%=simple_format(@topic_first.content) %><%end%>
@@ -208,7 +208,7 @@ function checkTopicContent() {
 						&nbsp;|&nbsp;<%end%> <%= link_to t('forum.string.delete'), {:controller=>'posts', :action=>'destroy',:id=>post.id, :lang=>params[:lang], :to_lang=>params[:to_lang]}, {:method => :delete, :confirm => t('msg.base.sure')} %>
 					</div>
 				<%end%>
-				<div class="f-t-post-info"><a href="<%= userpage_for(post.user)%>"><%=h post.user.name %></a> - <%= show_post_time(post.created_at) %></div>
+				<div class="f-t-post-info"><a href="<%= userpage_for(post.user)%>"><%=h post.user.name %></a> - <%= show_post_time_long(post.created_at) %></div>
 
 		<% if params[:edit_post] == post.id.to_s && admin_or_owner?(post.user_id) %>
 			<% form_for post, :url=>{:controller=>'topics', :action=>'update_post', :id=>post.id}, :html=>{:id=>'edit_post'} do |f| %>

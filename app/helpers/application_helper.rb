@@ -83,6 +83,9 @@ require 'digest/md5'
 		return l(time, :format=>:short_f)
 	end
 	
+	def show_post_time_long(time)
+		return l(time, :format=>:long_f)
+	end
   def admin_text(content)
 	new_content = ActionController::Base.helpers.simple_format(content)
 	return new_content

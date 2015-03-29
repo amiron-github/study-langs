@@ -229,6 +229,7 @@ ru:
       short: "%d %b, %H:%M"
       long: "%d %B %Y, %H:%M"
       short_f: "%d %b в %H:%M"
+      long_f: "%d %B %Y в %H:%M"
     am: "утра"
     pm: "вечера"
 

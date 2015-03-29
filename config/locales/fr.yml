@@ -242,6 +242,7 @@ fr:
       short: "%d %b %H:%M"
       long: "%A %d %B %Y %H:%M"
       short_f: "le %d %b à %H:%M"
+      long_f: "le %d %B %Y à %H:%M"
     am: 'am'
     pm: 'pm'
 

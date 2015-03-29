@@ -1347,13 +1347,19 @@ function contentList() {
 		html = html + '</ul></div>';
 		$('div.content-list').each(function(i,obj){
 			var title = $(obj).attr("title")
-			if (title== '') {title = "Contents"}
+			if (title== '' && es_lang=="ru") {title = "Содержание"} else {title = "Contents"}
 			$(obj).html(html).show().find(".content-list-title").text(title)
 		})
 	}
  }
 }
 
-
+function info(txt) {
+	if ($("#alert_mess").length < 1) {
+		$("body").append('<div id="alert_mess" ><div></div></div>');
+	}
+	$("#alert_mess div").html(txt);
+	$("#alert_mess").show().click(function() {$("#alert_mess").hide(30)});
+}
 
 

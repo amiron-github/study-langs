@@ -203,5 +203,6 @@ en:
       short: "%d %b, %H:%M"
       long: "%B %d, %Y %H:%M"
       short_f: "%d %b at %H:%M"
+      long_f: "%b %d, %Y at %H:%M"
     am: "am"
     pm: "pm"
