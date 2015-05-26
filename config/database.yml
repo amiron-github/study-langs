@@ -38,10 +38,10 @@ test:
 
 production:
   adapter: mysql
-#  encoding: utf8
-  database: study_production
+  encoding: latin1
+  database: study
   pool: 5
-  username: MySQLForever
-  password: frctcvfplfq
-  host: 10.3.151.12
-  socket: /var/lib/mysql/mysql.sock
+  username: root
+  password:
+  socket: /var/run/mysqld/mysqld.sock
+  host: localhost
