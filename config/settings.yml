@@ -1,5 +1,5 @@
 development: &non_production_settings
-  site_url: http://localhost:3000
+  site_url: http://www.study-languages-online.com
   site_name: Study Russian Online
   admin_email: dalles@inventos.ru
   support_email: support@study-languages-online.com

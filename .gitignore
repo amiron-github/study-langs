@@ -5,3 +5,4 @@ tmp/**/*
 public/photos
 public/system
 *.*~
+.DS_Store
