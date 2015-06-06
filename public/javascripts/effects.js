@@ -948,6 +948,9 @@ function sectionHighlight() {
 		case 'translation':
 			pageMenuItem(11);
 			break;
+		case 'phrasebook':
+			pageMenuItem(12);
+			break;
 		default: 
 		   	$("#menu_body .menu-item a").css({color: "#183A87"});
 	}
