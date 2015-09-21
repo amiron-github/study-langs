@@ -10,6 +10,7 @@ $(document).ready(function() {
 	$("#cJp").jPlayer( {solution: 'html, flash', swfPath:"/javascripts/"});
 });
 var tJplayer=false;
+
 function cJplayer(link,el) {
 var prevEl = tJplayer;
 var curEl = el;

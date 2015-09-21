@@ -30,8 +30,7 @@ Array.prototype.shuffle = shuffle;
 $(document).ready(function() {
 
 $("body").append('<div id="exJp"></div>');
-
-$("#exJp").jPlayer( {solution: 'html, flash', swfPath:"/javascripts/"});
+$("#exJp").jPlayer( {swfPath: "/javascripts/"});
 
 $(".es-ex-audio-holder").mousedown(
 	function() {
@@ -85,7 +84,6 @@ var exJplayer=false;
 var exJpForce = false;
 
 function ex_Jplayer(link,el,notPlay) {
-//alert(notPlay)
 	var prevEl = exJplayer;
 	var curEl = el;
 	if ( curEl != prevEl) {
@@ -95,27 +93,6 @@ function ex_Jplayer(link,el,notPlay) {
 	var tEl = $(el);
 	var tElStatus = $(el).attr("status");
 	var containerJp = $("#exJp");
-
-	if ( tElStatus == "0" || tElStatus == undefined  || exJpForce) {          	
-		tEl.attr("status", "0").removeClass("ex-audio-holder-hover").attr("title", "Play"); 		
-		containerJp.jPlayer("setMedia", {mp3: link})
-		containerJp.bind($.jPlayer.event.ended+ ".jp-end", function(event) { 
-				tEl.attr("status", "0").removeClass("ex-audio-holder-hover").attr("title", "Play");
-				containerJp.unbind($.jPlayer.event.ended+ ".jp-end");
-		});
-		
-		if ( notPlay != 1) {		
-			tEl.attr("status", "1").addClass("ex-audio-holder-hover").removeAttr("title");
-			containerJp.jPlayer("play");
-		}
-	} else {
-		return false
-	}
-}
-	
-
-
-/*	
 	if ( tElStatus == "0" || tElStatus == undefined || exJpForce) { // start sound if sound is not in progress ()
 		tEl.attr("status", "0").removeClass("ex-audio-holder-hover").attr("title", "Play");
 		containerJp.jPlayer("setFile", link ).jPlayer("onProgressChange", function() { return false}).jPlayer( "onSoundComplete", function() {  // start sound 
@@ -128,9 +105,7 @@ function ex_Jplayer(link,el,notPlay) {
 	} else {							
 		return false;
 	}
-	
 }
-*/
 
 
 
