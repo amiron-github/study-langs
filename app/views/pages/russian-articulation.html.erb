@@ -1,6 +1,6 @@
 <% @page_title = 'Study Russian Online: Description of Russian sounds articulation' %>
 <% @page_meta = {'description' => "Information about Russian sounds articulation: description of articulation, pictures with sounds articulation, audio examples of sounds"} %>
-<% @with_rec = true %>
+<% @with_rec = false %>
 <% @has_audio = true %>
 
 <% content_for :special_js_css do %>
@@ -211,7 +211,7 @@ padding: 20px;
 
 <% end %>
 
-<div class="hint_wrap">
+<!-- div class="hint_wrap">
 <div class="hint_button" style="float: right;">
   <div class="hint">
       <div class="hint_list">
@@ -220,13 +220,14 @@ padding: 20px;
     </div>
     <div class="sub_hint" style="display: none;">
         <ul>
-            <li><a href="sounds-info.html">General Info about Russian Sounds</a></li>
-            <li><a href="phonetics-course.html">Phonetics course</a></li>
-        </ul>
+            <li><a href="/sounds-info.html">General Info about Russian Sounds</a></li>
+            <li><a href="/phonetics-course.html">Phonetics course</a></li>
+        </ulß>
         <%= render :partial => 'preload_option' %>
   </div>
 </div>
-</div>
+</div -->
+
 <div id="pagecontent"><div id="content">
 
 
