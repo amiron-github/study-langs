@@ -1066,6 +1066,7 @@ font-weight: bold;
 height: 45px;
 position: relative;
 z-index:20;
+display: none;
 }
 
 
