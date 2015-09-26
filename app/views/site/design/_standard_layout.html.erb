@@ -12,7 +12,6 @@
 <%= stylesheet_link_tag 'stylesheet' %>
 <%= javascript_include_tag 'jquery-1.4.2.min.js' %>
 <%= javascript_include_tag 'effects' %>
-<%= javascript_include_tag 'jquery.carousel.min.js' %>
 <%if @javascripts -%>  
   <% for js_file in @javascripts -%>
   <%= javascript_include_tag js_file %>
@@ -33,10 +32,10 @@
 <body>
 <div id="fixWidh">
 <div id="container" class="nd<%if @smaller_title%> s-dname<%end%>">
-  <div id="head"><img src="/images/badge-80.jpg" class="site-badge">
+  <div id="head">
 	<div id="title_wrapper">
 	  <div id="title_name">
-		<h1 class="title_site" style="float: left;"><a href="<%= @des_el[:links][:title][:url]%>"><%= @des_el[:text][:title]%></a></h1>
+		<h1 class="title_site"><a href="<%= @des_el[:links][:title][:url]%>"><%= @des_el[:text][:title]%></a></h1>
 		<div class="t-top-panel">
 <div class="t-sign-in"><%if logged_in? -%>
 <a href="<%= @des_el[:links][:profile][:url]%>" class="t-un"><%= current_user.email %></a> | <span class="t-out"><%= link_to @des_el[:text][:logout],{:controller => 'sessions', :action => 'destroy'} %></span>
@@ -56,21 +55,20 @@
   <div id="menu_content" <% if cookies[:no_menu] %>class="m-menu-hidden"<%end%>>
 	<div id="navigation"> 
 	  <div id="nav-pos">
-		<div id="menu_body" align="left">
+		<div id="menu_body">
 <%= render :partial => '/site/design/menu' %>
 <% unless @no_social || @no_social_1 || cookies[:no_menu] %><br>
 <div class="social-btn-row" style="text-align: center; position: absolute; margin-top: 5px; margin-left: 22px; white-space: nowrap;">
 <%= render :partial => '/site/design/social' %>
 
 </div>
-<%end -%>
-<img src="/images/badge-80.jpg" class="site-badge">			
+<%end -%>		
 <%if @left_ad && !cookies[:no_menu] %><%= render :partial => '/site/ads/ad_left' %><%end -%>						
 		</div>
 	  </div>
 	</div>
 	<div id="contentcell">
-<div style="position: relative; z-index: 300">
+<div id="menu-del-wrapper">
 		<div id="menu_remover"><span class="menu-shown"><%= @des_el[:text][:hide_menu]%></span><span class="menu-hidden"><%= @des_el[:text][:show_menu]%></span></div>
 <%= render :partial => '/site/design/menu_horizontal' %>
 <% unless @no_social || @no_social_2 || !cookies[:no_menu] %>

@@ -63,21 +63,29 @@ $("#menu_remover").click( function() {
 	}
 });
 
+// menu hover
+$("div.menu-item").mouseover(function(){  
+	var t=$(this);
+	//t.css({backgroundPosition: "100% -49px"}).find("div.menu-item-front").css({backgroundPosition: "0px -143px"});
+	
+	t.addClass("current").next("div.sub").addClass("current_sub");
+	}).mouseout(function(){
+	var t=$(this);
+	//t.css({backgroundPosition: "100% -1px"}).find("div.menu-item-front").css({backgroundPosition: "0px -95px"})
+     	 t.removeClass("current").next("div.sub").removeClass("current_sub");
+	});
 
 //menu slide
 $("div.list").click(function () {  
-		var t=$(this);
-		var current_sub = $(this).parent().parent().next(".sub");
-
-     if (current_sub.is(":hidden")) {
+     if ($("div.current_sub").is(":hidden")) {
         $("div.open").slideUp("slow");
         $("div.list").removeClass("up").addClass("down");
         $("div.open").removeClass("open");
-        current_sub.slideDown("slow").addClass("open");
-        t.addClass("up").removeClass("down");
+        $("div.current_sub").slideDown("slow").addClass("open");
+        $(this).addClass("up").removeClass("down");
       } else {
-        current_sub.slideUp("slow");
-        t.addClass("down").removeClass("up");
+        $("div.current_sub").slideUp("slow");
+        $(this).addClass("down").removeClass("up");
      	 }
 });
 
@@ -604,19 +612,88 @@ var mp3g;
 var gP;
 
 function preloadSound() {
-return false;
+setCookie('preload', 'on');
+gP = 1;
+var html = document.getElementById("contfield").innerHTML;
+var rE = new RegExp("playSound\\('[0-9a-zA-Z/]+\\.mp3","g");
+var mp3 = html.match(rE);
+mp3g = new Array();
+if (mp3) {
+    for (var i = 0; i < mp3.length; i++) {
+    mp3[i] = mp3[i].replace(/playSound\('/,"");
+    mp3g.push('sounds/'+ mp3[i])
+}
+}
+rE = new RegExp("playAudio\\('\\w+\\.mp3","g");
+mp3 = html.match(rE);
+if (mp3) {
+    for (var i = 0; i < mp3.length; i++) {
+        mp3[i] = mp3[i].replace(/playAudio\('/,"");
+        mp3g.push('audios/'+ mp3[i])
+}}
+
+rE = new RegExp("cJplayer\\('[0-9a-zA-Z/]+\\.mp3","g");
+mp3 = html.match(rE);
+if (mp3) {
+    for (var i = 0; i < mp3.length; i++) {
+        mp3[i] = mp3[i].replace(/cJplayer\('/,"");
+		//alert(mp3[i]);
+        mp3g.push(mp3[i])
+ }}
+ 
+rE = new RegExp("playFile\\('[0-9a-zA-Z/]+\\.mp3","g");
+mp3 = html.match(rE);
+if (mp3) {
+    for (var i = 0; i < mp3.length; i++) {
+        mp3[i] = mp3[i].replace(/playFile\('/,"");
+		//alert(mp3[i]);
+        mp3g.push(mp3[i])
+ }}
+ 
+rE = new RegExp("playTestSound\\('\\w+\\.mp3","g");
+mp3 = html.match(rE);
+if (mp3) {
+    for (var i = 0; i < mp3.length; i++) {
+        mp3[i] = mp3[i].replace(/playTestSound\('/,"");
+        mp3g.push(mp3[i])
+ }}	
+	
+	
+if (preloadFiles.length) {
+    for (var i = 0; i < preloadFiles.length; i++) {
+        mp3g.push(preloadFiles[i])
+    }
+}
+
+if (mp3g.length) {
+    loadMp3(0);
+}
 }
 
 function prUp(c) {
-return false;
+    	$("#loading").show();
+        $("#progress").html("Audio files loading: "+ Math.round(gP/mp3g.length*100)+ "%");
+	$("#progressStatus").css({width: gP/mp3g.length*100+"%"});
+    c++
+    gP++
+    if (mp3g[c]) {
+        loadMp3(c)
+    }
 }
 
 function loadMp3(c) {
-return false;
+    $.ajax({
+        type: "GET",
+        url: mp3g[c],
+        success: function(msg){
+            prUp(c)
+        },
+        error: function(msg){
+            prUp(c)
+        }
+    });
 }
 ///////////////// End of Audio Files Preload
-
-
 /////////////// Tips 
 var d = document;
 var offsetfromcursorY=21 // y offset of tooltip
@@ -725,7 +802,116 @@ function setCookie(name, value) {
 // END of Main functions
 /////////////////////// End of Cookies
 
+//// for index
+$(document).ready(function(){
 
+$("div.sect-link a").click(function(){
+	var toUrl=$(this).attr("href");
+	location.href=toUrl;
+});
+
+$("#section1").toggle(function () {
+		var t=$(this);
+		
+	  $("#sections .just").css({zIndex: "100"}).removeClass("just");
+	  $("div.section-block").css({zIndex: "100"}); 
+      t.css({position: "absolute", zIndex: "500"})
+      	.animate({width: "400px", marginTop: "15px", marginLeft: "15px",fontSize: "14px", opacity: "0.9"});
+      t.find("div.section-content").animate({height: "318px"}); 
+      t.find("div.zoom").css({backgroundPosition: "100% -18px"}).find("span").text("Click to reduce");
+      $("#sections .big")
+        .click()
+      	.removeClass("big");
+      t.addClass("big");
+		},function () {
+		var t=$(this);
+		$("#sections .just").css({zIndex: "100"}).removeClass("just");
+        t.animate({width: "200px", marginTop: "0px", marginLeft: "0px", fontSize: "10px", opacity: "1.0"}) 
+      	.css({zIndex: "150"});
+      	t.find("div.section-content").animate({height: "121px"}); 
+      	t.find("div.zoom").css({backgroundPosition: "100% 0px"}).find("span").text("Click to read more");
+      	t.removeClass("big")
+      	 .addClass("just");
+      }
+);
+
+$("#section2").toggle(function () { 
+	var t=$(this);
+	  $("#sections .just").css({zIndex: "100"}).removeClass("just");
+	  $("div.section-block").css({zIndex: "100"});
+      t.css({position: "absolute", zIndex: "500"})
+      	.animate({marginLeft: "-215px", width: "400px", marginTop: "15px", marginRight: "-15px", fontSize: "14px", opacity: "0.9"}); 
+      t.find("div.section-content").animate({height: "330px"});
+      t.find("div.zoom").css({backgroundPosition: "100% -18px"}).find("span").text("Click to reduce");
+      $("#sections .big")
+        .click()
+      	.removeClass("big");
+      t.addClass("big");
+		},function () {
+		var t=$(this);
+		$("#sections .just").css({zIndex: "100"}).removeClass("just");
+        t.animate({marginLeft: "0px", width: "200px", marginTop: "0px", fontSize: "10px", opacity: "1.0"}) 
+      	 .css({zIndex: "150"})
+      	t.find("div.section-content").animate({height: "133px"}); 
+      	t.find("div.zoom").css({backgroundPosition: "100% 0px"}).find("span").text("Click to read more");
+      	t.removeClass("big")
+      	.addClass("just");
+      }
+);
+
+$("#section3").toggle(function () { 
+		var t=$(this);
+	  $("#sections .just").css({zIndex: "100"}).removeClass("just");
+	  $("div.section-block").css({zIndex: "100"});
+      t.css({position: "absolute", zIndex: "500"})
+      	.animate({width: "400px", marginTop: "-215px", marginLeft: "15px", fontSize: "14px", opacity: "0.9"}); 
+      t.find("div.section-content").animate({height: "330px"});
+      t.find("div.zoom").css({backgroundPosition: "100% -18px"}).find("span").text("Click to reduce");
+      $("#sections .big")
+        .click()
+      	.removeClass("big");
+      t.addClass("big");
+		},function () {
+		var t=$(this);
+		$("#sections .just").css({zIndex: "100"}).removeClass("just");
+        t.animate({marginLeft: "0px", width: "200px", marginTop: "0px", fontSize: "10px", opacity: "1.0"}) 
+      	 .css({zIndex: "150"})
+      	t.find("div.section-content").animate({height: "133px"}); 
+      	t.find("div.zoom").css({backgroundPosition: "100% 0px"}).find("span").text("Click to read more");
+      	t.removeClass("big")
+      	 .addClass("just");
+      }
+);
+
+$("#section4").toggle(function () { 
+	  var t=$(this);
+	  $("#sections .just").css({zIndex: "100"}).removeClass("just");
+	  $("div.section-block").css({zIndex: "100"});
+      t.css({position: "absolute", zIndex: "500"})
+      	.animate({marginLeft: "-215px", width: "400px", marginTop: "-215px", fontSize: "14px", opacity: "0.9"});
+      t.find("div.section-content").animate({height: "330px"});
+      t.find("div.zoom").css({backgroundPosition: "100% -18px"}).find("span").text("Click to reduce");
+      $("#sections .big")
+        .click()
+      	.removeClass("big");
+      t.addClass("big"); 
+		},function () {
+		var t=$(this);
+	  	$("#sections .just").css({zIndex: "100"}).removeClass("just");
+        t.animate({marginLeft: "0px", width: "200px", marginTop: "0px", fontSize: "10px", opacity: "1.0"}) 
+		 .css({zIndex: "150"})
+		t.find("div.section-content").animate({height: "133px"}); 
+		t.find("div.zoom").css({backgroundPosition: "100% 0px"}).find("span").text("Click to read more");
+      	t.removeClass("big")
+      	 .addClass("just");
+      }
+);
+
+$("div.zoom").show();
+
+});
+
+//////////// end of for index
 
 function sectionHighlight() {
 	switch (currentSection) {
@@ -766,12 +952,14 @@ function sectionHighlight() {
 			pageMenuItem(12);
 			break;
 		default: 
-		   	$("#menu_body .me-nu-item a").css({color: "#183A87"});
+		   	$("#menu_body .menu-item a").css({color: "#183A87"});
 	}
 }
 
 function pageMenuItem(eq) {
-	$("#nav"+eq).addClass("active-section");
+	$("#nav"+eq).addClass("active-section").css({backgroundPosition: "100% -49px"}).find("div.menu-item-front").css({backgroundPosition: "0px -143px"});
+	$("#menu_body .menu-item a").css({color: "#183A87"});
+	$("#nav"+eq+" a").css({color: "#0F2862"});
 }
 
 //////////////////////////// start for tabs 
@@ -838,6 +1026,9 @@ $("#tab06").click(function(){
 
 
 });
+
+
+
 
 
 function activeTab() {
@@ -943,7 +1134,93 @@ function goToUrl(link) {
 	location.href=toUrl;
 }
 
+function getVocabulary(id) {
 
+$("#gv").remove()
+$("body").prepend('<div id="gv" style="position: absolute; top: 0; left: 0; max-wi-dth: 900px; z-index: 10000; background-color: #efefef; text-align: left; padding: 30px"></div>');
+	$("#"+id).find("table").each(function(i,elem) {
+		$("#gv").append('<div id="gv_'+i+'"></div>');
+		var tHtml = $(elem).html()
+			var rE = new RegExp("playAudio\\('[0-9a-zA-Z/]+\\.mp3","g");
+			var mp3 = tHtml.match(rE);
+		$('#gv_'+i).text(""+mp3+"")
+		var sound = $('#gv_'+i).text().replace(/playAudio\('/,"")
+		$('#gv_'+i).empty()
+		var text = $(elem).find("td:eq(0) p span:eq(0)").html();
+		$(elem).find("td:eq(0)").find("span.play_tip").remove();
+		var transcribe = $(elem).find("td:eq(0) span.sound").html().replace(/&nbsp;/g,'').replace('[','').replace(']','');
+		var translate = $(elem).find("td:eq(2)").text();
+		$('#gv_'+i).append('<div class="te"><div>'); $('#gv_'+i).find("div.te").text("{:text=>'"+text+"',")
+		$('#gv_'+i).append('<div class="snd"><div>'); $('#gv_'+i).find("div.snd").text(":sound=>'/audio/"+sound+"',")
+		$('#gv_'+i).append('<div class="trans"><div>'); $('#gv_'+i).find("div.trans").text(":transcribe=>'"+transcribe+"',")
+		$('#gv_'+i).append('<div class="tr"><div>'); $('#gv_'+i).find("div.tr").text(":translate=>'"+translate+"'},")
+	})
+
+}
+
+
+
+function getTrans(id) {
+
+$("#gv").remove()
+$("body").prepend('<div id="gv" style="position: absolute; top: 0; left: 0; max-wi-dth: 900px; z-index: 10000; background-color: #efefef; text-align: left; padding: 30px"></div>');
+	$("#"+id).find("tr").not("tr:first").each( function(i,elem) {
+		$("#gv").append('<div id="gv_'+i+'"></div>');
+		var tHtml = $(elem).find("td:eq(2)").html();
+		var rE = new RegExp("playAudio\\('[0-9a-zA-Z/]+\\.mp3","g");
+		var mp3 = tHtml.match(rE);
+		$('#gv_'+i).text(""+mp3+"")
+		var sound = $('#gv_'+i).text().replace(/playAudio\('/,"")
+		$('#gv_'+i).empty()
+                var tElemP = $(elem).find("td.qa_task p")
+   if ($(elem).find("td.qa_task p span.sound").length > 0 ) {
+                tElemP.find("span.sound").find("span.play_tip").remove();
+                var q_transcribe = tElemP.find("span.sound").html().replace(/&nbsp;/g,'').replace('[','').replace(']','');
+
+                var rE = new RegExp("playAudio\\('[0-9a-zA-Z/]+\\.mp3","g");
+		var q_mp3 = tElemP.html().match(rE);
+		$('#gv_'+i).text(""+q_mp3+"")
+		var q_sound = $('#gv_'+i).text().replace(/playAudio\('/,"")
+		$('#gv_'+i).empty()
+                tElemP.find("span.sound").remove()
+                var q_text = tElemP.html().replace("<br>","").replace("<br/>","");
+$('#gv_'+i).append('<div class="te"><div>'); $('#gv_'+i).find("div.te").text("{:q_text=>'"+q_text+"',");
+$('#gv_'+i).append('<div class="qs"><div>'); $('#gv_'+i).find("div.qs").text(":q_sound=>'"+q_sound+"',"); 
+$('#gv_'+i).append('<div class="trans"><div>'); $('#gv_'+i).find("div.trans").text(":q_transcribe=>'"+q_transcribe+"',");
+$('#gv_'+i).append('<div class="snd"><div>'); $('#gv_'+i).find("div.snd").text(":sound=>'/audios/"+sound+"'},")
+                } else {
+                    var q_text = tElemP.html();
+$('#gv_'+i).append('<div class="te"><div>'); $('#gv_'+i).find("div.te").text("{:q_text=>'"+q_text+"',")
+$('#gv_'+i).append('<div class="snd"><div>'); $('#gv_'+i).find("div.snd").text(":sound=>'/audios/"+sound+"'},")
+
+                }
+});
+
+}
+
+
+
+
+function getVocSounds() {
+
+$("body").prepend('<div id="gv" style="position: absolute; top: 0; left: 0; max-width: 900px; z-index: 10000; background-color: #efefef; text-align: left; padding: 30px"></div>');
+	$(".diction tr.trow").each(function(i, elem) {
+	$("#gv").append('<span id="gv_'+i+'"></span>');
+	
+	var tOrigin = $(elem).find("td.original").html();
+	var tTranscript = $(elem).find(".audiotrans").find("td:eq(0)").html();
+	if ( tOrigin == '&nbsp; ' || tTranscript == null) {
+	}else{
+		var html = $(elem).find("td.transcript").html();
+		var rE = new RegExp("playSound\\('[0-9a-zA-Z/]+\\.mp3","g");
+		var mp3 = html.match(rE);
+
+		$('#gv_'+i).text("'/sounds/"+mp3+"', ")
+		$('#gv_'+i).text($('#gv_'+i).text().replace(/playSound\('/,"").replace(/<b>/g,'<span class="acct">').replace(/<\/b>/g,'</span>').replace(/<s>/g,'<span class="ry">').replace(/<\/s>/g,'</span>'));
+	}
+})
+
+}
 
 var messTime;
 function messageIt(html,type) {
@@ -1087,318 +1364,5 @@ function info(txt) {
 	$("#alert_mess div").html(txt);
 	$("#alert_mess").show().click(function() {$("#alert_mess").hide(30)});
 }
-
-/* carousel and slide show */
-
-function coverflow_show(hash) {
-
-var tObj = this;
-this.id = hash['id'];
-var playS;
-
-this.start = function() {
-
-tObj.container = $('#'+tObj.id);
-tObj.nextBtn = tObj.container.find(".cvf-next");
-tObj.prevBtn = tObj.container.find(".cvf-prev");
-tObj.listItems = tObj.container.find("ul li");
-tObj.first = tObj.container.find("ul li:first");
-
-tObj.last = tObj.container.find("ul li:last");
-tObj.controlBtns = tObj.nextBtn.add(tObj.prevBtn);
-tObj.activeControls();
-tObj.controlBtns.addClass("noselect");
-
-
-tObj.listItems.hover(function(){
-	$(this).stop().animate({opacity: 1},300)
-},function(){
-	$(this).stop().animate({opacity: 0.5},300)
-})
-
-var timer
-
-tObj.container.mouseout(function() {
-timer = setTimeout(function() {
-	tObj.scrollToAct();
-}, 10000)
-}).mouseover(function() {
-	clearTimeout(timer)
-})
-
-setTimeout(function() {
-tObj.listItems.animate({opacity: 0.5}, 100);
-tObj.scrollToAct();
-},3000)
-
-
-}
-
-
-this.activeControls = function() {
-	tObj.nextBtn.click(function(){
-		tObj.forward();
-	})
-	tObj.prevBtn.click(function(){
-		tObj.rewind();
-	});
-}
-
-
-this.forward = function() {
-
-var genW = tObj.container.find(".coverflow-wrap").width();
-var liW = tObj.listItems.width()
-var totalLiW = liW * tObj.listItems.length;
-var actPos = tObj.container.find("ul").position().left
-
-var slide;
-
-if ( Math.abs(actPos - genW) >=  totalLiW ) {
-	slide = totalLiW - genW
-	if (slide > totalLiW - genW) slide = totalLiW - genW
-	tObj.container.find("ul").stop().animate({left: -slide});
-} else {
-	slide = genW - (genW % liW)
-	
-	if (slide > totalLiW - genW) {
-		slide = totalLiW - genW
-		tObj.container.find("ul").stop().animate({left: -slide});
-	}else{
-		tObj.container.find("ul").stop().animate({left: "-="+slide});
-	}
-}
-
-
-
-}
-
-
-this.rewind = function() {
-
-var genW = tObj.container.find(".coverflow-wrap").width();
-var liW = tObj.listItems.width()
-var totalLiW = liW * tObj.listItems.length;
-var actPos = tObj.container.find("ul").position().left
-
-var slide;
-
-if ( actPos + genW >= 0 ) {
-	slide = 0
-	if (slide < 0) slide = 0
-	tObj.container.find("ul").stop().animate({left: slide});
-} else {
-	slide = (actPos + genW) - (actPos + genW)%liW
-	if (slide < 0) slide = 0
-	tObj.container.find("ul").stop().animate({left: -slide});
-}
-
-}
-
-this.scrollToAct = function () {
-
-var genW = tObj.container.find(".coverflow-wrap").width();
-var liW = tObj.listItems.width()
-var totalLiW = liW * tObj.listItems.length;
-
-var active = tObj.container.find("li.cvf-act");
-
-var actPos = tObj.container.find(".cvf-act").position().left
-
-var scroll = actPos - (genW/2 - liW/2);
-
-if  (scroll > totalLiW - genW ) scroll = totalLiW - genW
-if  (scroll < 0 ) scroll = 0
-
-tObj.container.find("ul").stop().animate({left: -scroll});
-
-}
-
-
-$(document).ready(function() {
-	tObj.start();
-});
-
-}
-
-
-
-
-function slide_show(hash) {
-
-var tObj = this;
-this.id = hash['id'];
-this.appendTo = hash['append_to'];
-
-var playS;
-
-this.start = function() {
-
-tObj.container = $('#'+tObj.id);
-tObj.nextBtn = tObj.container.find(".sc-next");
-tObj.prevBtn = tObj.container.find(".sc-prev");
-tObj.playBtn = tObj.container.find(".sc-play");
-tObj.listItems = tObj.container.find("ul li");
-tObj.first = tObj.container.find("ul li:first");
-tObj.first.addClass("cs-act");
-tObj.last = tObj.container.find("ul li:last");
-tObj.controlBtns = tObj.nextBtn.add(tObj.prevBtn);
-tObj.activeControls();
-tObj.controlBtns.addClass("noselect");
-
-tObj.playBtn.toggle(function() {
-		tObj.play();	
-	}, function() {
-		tObj.pause();
-})
-
-if (tObj.appendTo == undefined) {
-tObj.container.show();
-}else {
-tObj.container.appendTo(tObj.appendTo).show();
-}
-
-}
-
-this.activeControls = function() {
-	tObj.nextBtn.click(function(){
-		tObj.pause();
-		tObj.goToNext();
-	})
-	tObj.prevBtn.click(function(){
-		tObj.pause();
-		tObj.goToPrev();
-	});
-}
-
-this.goToNext = function() {
-	var curItem = tObj.container.find(".cs-act");
-	var nextItem;
-	if (tObj.last.hasClass("cs-act")) {
-		nextItem = tObj.first;
-	}else {
-		nextItem = curItem.next();
-	}
-	tObj.passage(curItem,nextItem)
-}
-
-this.goToPrev = function() {
-	var curItem = tObj.container.find(".cs-act");
-	var nextItem;
-	if (tObj.first.hasClass("cs-act")) {
-		nextItem = tObj.last;
-	}else {
-		nextItem = curItem.prev();
-	}
-	tObj.passage(curItem,nextItem);
-}
-
-this.passage = function(current, next) {
-	tObj.controlBtns.unbind("click")
-	next.addClass("cs-next").css({opacity: 1});
-	current.stop().animate({opacity: 0},600,function() {
-		current.removeClass("cs-act");
-		next.removeClass("cs-next").addClass("cs-act");
-		tObj.activeControls();
-	});
-}
-
-this.play = function() {
-	tObj.goToNext();
-	playS = setInterval(function(){
-		tObj.goToNext();
-	}, 5000)
-	tObj.playBtn.addClass("sc-stop")
-}
-
-this.pause = function() {
-	clearInterval(playS);
-	tObj.playBtn.removeClass("sc-stop")
-}
-
-$(document).ready(function() {
-	tObj.start();
-});
-
-}
-
-
-
-
-function slides_presentation(hash) {
-var tObj = this;
-this.id = hash['id'];
-var playS;
-
-this.start = function() {
-	tObj.container = $('#'+tObj.id);
-	tObj.navItems = tObj.container.find(".slides-list li");
-	tObj.slideItems = tObj.container.find("li.slides-block");
-	tObj.actvateBtns();
-	tObj.play();
-}
-
-this.navItemsW = function() {
-  var w=tObj.container.find(".slides-screen").width();
-  tObj.slideItems.width(w+4);
-}
-
-this.actvateBtns = function() {
-	tObj.navItems.click(function() {
-		clearInterval(playS);
-		if ($(this).hasClass("slide-item-act") == false) {
-			tObj.launchGo($(this))
-		}
-	})
-}
-
-this.launchGo = function(jElem) {
-		var index = tObj.navItems.index(jElem);
-		tObj.container.find(".slide-item-act").removeClass("slide-item-act");
-		jElem.addClass("slide-item-act");
-		tObj.goTo(index);
-}
-
-this.goTo = function(eq) {
-	var curItem = tObj.container.find(".sp-block-act");
-	var nextItem = tObj.slideItems.filter(":eq("+eq+")");
-	tObj.passage(curItem,nextItem)
-}
-
-this.play = function() {
-	playS = setInterval(function(){
-		var act = tObj.container.find(".slide-item-act");
-		if (tObj.navItems.index(tObj.container.find(".slide-item-act")) == tObj.navItems.length-1) {
-			tObj.launchGo(tObj.navItems.filter(":first"))
-		} else {
-			tObj.launchGo(tObj.container.find(".slide-item-act").next());
-		}
-	}, 20000)
-}
-
-this.passage = function(current, next) {
-	tObj.navItems.unbind("click")
-	next.addClass("sp-next").css({opacity: 1});
-	current.animate({opacity: 0, left: -600, top: -80},700,function() {
-		current.removeClass("sp-block-act").css({left: 0, top: 0});
-		next.removeClass("sp-next").addClass("sp-block-act");
-		tObj.actvateBtns();
-	});
-}
-
-$(document).ready(function() {
-	tObj.start();
-});
-
-}
-
-/* end of slide show */
-
-
-
-
-
-
-
 
 
