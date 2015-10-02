@@ -1221,113 +1221,18 @@ $(document).ready(function() {
 
 }
 
-function slides_presentation(hash) {
-var tObj = this;
-this.id = hash['id'];
-var playS;
 
-this.start = function() {
-	tObj.container = $('#'+tObj.id);
-	tObj.navItems = tObj.container.find(".slides-list li");
-	tObj.slideItems = tObj.container.find("li.slides-block");
-	tObj.actvateBtns();
-	tObj.play();
-}
 
-this.navItemsW = function() {
-  var w=tObj.container.find(".slides-screen").width();
-  tObj.slideItems.width(w+4);
-}
-
-this.actvateBtns = function() {
-	tObj.navItems.click(function() {
-		clearInterval(playS);
-		if ($(this).hasClass("slide-item-act") == false) {
-			tObj.launchGo($(this))
-		}
-	})
-}
-
-this.launchGo = function(jElem) {
-		var index = tObj.navItems.index(jElem);
-		tObj.container.find(".slide-item-act").removeClass("slide-item-act");
-		jElem.addClass("slide-item-act");
-		tObj.goTo(index);
-}
-
-this.goTo = function(eq) {
-	var curItem = tObj.container.find(".sp-block-act");
-	var nextItem = tObj.slideItems.filter(":eq("+eq+")");
-	tObj.passage(curItem,nextItem)
-}
-
-this.play = function() {
-	playS = setInterval(function(){
-		var act = tObj.container.find(".slide-item-act");
-		if (tObj.navItems.index(tObj.container.find(".slide-item-act")) == tObj.navItems.length-1) {
-			tObj.launchGo(tObj.navItems.filter(":first"))
-		} else {
-			tObj.launchGo(tObj.container.find(".slide-item-act").next());
-		}
-	}, 20000)
-}
-
-this.passage = function(current, next) {
-	tObj.navItems.unbind("click")
-	next.addClass("sp-next").css({opacity: 1});
-	current.animate({opacity: 0, left: -600, top: -80},700,function() {
-		current.removeClass("sp-block-act").css({left: 0, top: 0});
-		next.removeClass("sp-next").addClass("sp-block-act");
-		tObj.actvateBtns();
-	});
-}
-
-$(document).ready(function() {
-	tObj.start();
-});
-
-}
-
-$(function() { $("#slide-show").load("/ajax/side_show.html?lang="+$("#slide-show").attr("class")); });
 
 function slide_show(hash) {
+
 var tObj = this;
 this.id = hash['id'];
 this.appendTo = hash['append_to'];
-this.data = hash['data'];
-this.text = hash['text'];
-this.theme = hash['theme'];
-this.link = hash['link'];
-this.controls = hash['controls']
 
 var playS;
-if (tObj.theme == undefined) {tObj.theme ='light'}
-if (tObj.controls == undefined) {tObj.controls={play:"Play", pause: "Pause"}}
-if (tObj.data == undefined) {tObj.data=[]}
 
 this.start = function() {
-
-var htmlStart = '';
-var htmlEnd = '';
-
-htmlStart = '<div class="widget-wrap" id="'+tObj.id+'"><strong><a href='+tObj.link+'>'+tObj.text+'</a></strong>'
-+'<div class="widget-container"><div class="slidshow"><div class="carousel-wrap">'
-
-if (tObj.theme == "dark") {htmlStart = htmlStart+'<ul>' } else {htmlStart = htmlStart+'<ul class="cs-clip">'}
-
-htmlEnd = '</ul></div></div></div>'
-+'<div class="carousel-control"><span class="sc-prev"> <img src="/images/icons/control_rewind_blue.png"/> </span>  &nbsp;&nbsp; <span class="sc-play"> <img class="sc-play-btn" title="'+tObj.controls["play"]+'" src="/images/icons/control_play_blue.png"/> <img class="sc-pause-btn" src="/images/icons/control_pause_blue.png" title="'+ tObj.controls["pause"]+ '"/></span>  &nbsp;&nbsp; <span class="sc-next"> <img src="/images/icons/control_fastforward_blue.png"/></span></div>'
-
-var htmlList = ''; 
-
-for (i = 0; i < tObj.data.length; i++) { 
-    var item = '<li><img src="'+tObj.data[i]['image']+'" title="'+tObj.data[i]['translate']+'"><div class="word-tip">'+tObj.data[i]['text']+'</div></li>'
-    htmlList = htmlList + item
-}
-
-var html = htmlStart+htmlList+htmlEnd;
-
-$("body").append(html);
 
 tObj.container = $('#'+tObj.id);
 tObj.nextBtn = tObj.container.find(".sc-next");
@@ -1409,6 +1314,76 @@ this.play = function() {
 this.pause = function() {
 	clearInterval(playS);
 	tObj.playBtn.removeClass("sc-stop")
+}
+
+$(document).ready(function() {
+	tObj.start();
+});
+
+}
+
+
+
+
+function slides_presentation(hash) {
+var tObj = this;
+this.id = hash['id'];
+var playS;
+
+this.start = function() {
+	tObj.container = $('#'+tObj.id);
+	tObj.navItems = tObj.container.find(".slides-list li");
+	tObj.slideItems = tObj.container.find("li.slides-block");
+	tObj.actvateBtns();
+	tObj.play();
+}
+
+this.navItemsW = function() {
+  var w=tObj.container.find(".slides-screen").width();
+  tObj.slideItems.width(w+4);
+}
+
+this.actvateBtns = function() {
+	tObj.navItems.click(function() {
+		clearInterval(playS);
+		if ($(this).hasClass("slide-item-act") == false) {
+			tObj.launchGo($(this))
+		}
+	})
+}
+
+this.launchGo = function(jElem) {
+		var index = tObj.navItems.index(jElem);
+		tObj.container.find(".slide-item-act").removeClass("slide-item-act");
+		jElem.addClass("slide-item-act");
+		tObj.goTo(index);
+}
+
+this.goTo = function(eq) {
+	var curItem = tObj.container.find(".sp-block-act");
+	var nextItem = tObj.slideItems.filter(":eq("+eq+")");
+	tObj.passage(curItem,nextItem)
+}
+
+this.play = function() {
+	playS = setInterval(function(){
+		var act = tObj.container.find(".slide-item-act");
+		if (tObj.navItems.index(tObj.container.find(".slide-item-act")) == tObj.navItems.length-1) {
+			tObj.launchGo(tObj.navItems.filter(":first"))
+		} else {
+			tObj.launchGo(tObj.container.find(".slide-item-act").next());
+		}
+	}, 20000)
+}
+
+this.passage = function(current, next) {
+	tObj.navItems.unbind("click")
+	next.addClass("sp-next").css({opacity: 1});
+	current.animate({opacity: 0, left: -600, top: -80},700,function() {
+		current.removeClass("sp-block-act").css({left: 0, top: 0});
+		next.removeClass("sp-next").addClass("sp-block-act");
+		tObj.actvateBtns();
+	});
 }
 
 $(document).ready(function() {

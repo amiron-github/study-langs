@@ -242,7 +242,6 @@ color: #fff;
 
 /* end of header right info */
 
-
 div#menu_content {
 background-color: #fff;
 min-height: 800px;
@@ -2746,6 +2745,9 @@ cursor: pointer;
 font-weight: bold;
 }
 
+.widget-wrap strong a {color: #000; text-decoration: none;}
+.widget-wrap strong a:hover {color: #000; text-decoration: underline;}
+#slide-show {display: none;}
 /* end of sidebar slideshow*/
 
 /* page slides slideshow*/

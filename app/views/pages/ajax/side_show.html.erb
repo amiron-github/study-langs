@@ -1,0 +1,113 @@
+<%
+lang = 'en'
+if params[:lang] then lang=params[:lang] end
+
+show_strings = {:play=>"Play", :pause=>'Pause', :txt=>'Learn Russian words!', :url=>'/vocabulary.html'}
+
+if lang == 'ru'
+	show_strings = {:play=>"Пуск", :pause=>'Пауза', :txt=>'Учите английские слова!', :url=>'/ru/en/vocabulary.html'}
+end
+g_voc = [
+
+[{:img=>"/images/list/fruit/apple.jpg", :en=> "apple", :ru=> "яблоко"},
+{:img=>"/images/list/fruit/banana.jpg", :en=> "banana", :ru=> "банан"},
+{:img=>"/images/list/fruit/cherry.jpg", :en=> "cherry", :ru=> "вишня"},
+{:img=>"/images/list/fruit/kiwi.jpg", :en=> "kiwi", :ru=> "киви"},
+{:img=>"/images/list/fruit/lemon.jpg", :en=> "lemon", :ru=> "лимон"},
+{:img=>"/images/list/fruit/melon.jpg", :en=> "melon", :ru=> "дыня"},
+{:img=>"/images/list/fruit/orange.jpg", :en=> "orange", :ru=> "апельсин"},
+{:img=>"/images/list/fruit/peach.jpg", :en=> "peach", :ru=> "персик"},
+{:img=>"/images/list/fruit/pineapple.jpg", :en=> "pineapple", :ru=> "ананас"},
+{:img=>"/images/list/fruit/water-melon.jpg", :en=> "water melon", :ru=> "арбуз"}],
+
+[{:img=>"/images/list/animals/camel.jpg", :en=> "camel", :ru=> "верблюд", :theme=>'dark'},
+{:img=>"/images/list/animals/bear.jpg", :en=> "bear", :ru=> "медведь"},
+{:img=>"/images/list/animals/hippo.jpg", :en=> "hippopotamus", :ru=> "бегемот"},
+{:img=>"/images/list/animals/kangaroo.jpg", :en=> "kangaroo", :ru=> "кенгуру"},
+{:img=>"/images/list/animals/lion.jpg", :en=> "lion", :ru=> "лев"},
+{:img=>"/images/list/animals/monkey.jpg", :en=> "monkey", :ru=> "обезьяна"},
+{:img=>"/images/list/animals/panda.jpg", :en=> "panda", :ru=> "панда"},
+{:img=>"/images/list/animals/rhino.jpg", :en=> "rhinoceros", :ru=> "носорог"},
+{:img=>"/images/list/animals/tiger.jpg", :en=> "tiger", :ru=> "тигр"},
+{:img=>"/images/list/animals/raccoon.jpg", :en=> "raccoon", :ru=> "енот"}],
+
+[{:img=>"/images/list/drinks/cockteil.jpg", :en=> "cocktail", :ru=> "коктейль"},
+{:img=>"/images/list/drinks/coffee.jpg", :en=> "coffee", :ru=> "кофе"},
+{:img=>"/images/list/drinks/juice.jpg", :en=> "juice", :ru=> "сок"},
+{:img=>"/images/list/drinks/milk.jpg", :en=> "milk", :ru=> "молоко"},
+{:img=>"/images/list/drinks/lemonade.jpg", :en=> "lemonade", :ru=> "лимонад"},
+{:img=>"/images/list/drinks/tea.jpg", :en=> "tea", :ru=> "чай"},
+{:img=>"/images/list/drinks/water.jpg", :en=> "water", :ru=> "вода"}],
+
+[{:img=>"/images/list/furniture/bed.jpg", :en=> "bed", :ru=> "кровать"},
+{:img=>"/images/list/furniture/chair.jpg", :en=> "chair", :ru=> "стул"},
+{:img=>"/images/list/furniture/desk.jpg", :en=> "desk", :ru=> "письменный стол"},
+{:img=>"/images/list/furniture/lamp.jpg", :en=> "lamp", :ru=> "лампа"},
+{:img=>"/images/list/furniture/picture.jpg", :en=> "picture", :ru=> "картина"},
+{:img=>"/images/list/furniture/table-1.jpg", :en=> "table", :ru=> "стол"},
+{:img=>"/images/list/furniture/coach.jpg", :en=> "sofa", :ru=> "диван"},
+{:img=>"/images/list/furniture/armchair.jpg", :en=> "armchair", :ru=> "кресло"}],
+
+[{:img=>"/images/list/colors/black.jpg", :en=> "black", :ru=> "чёрный"},
+{:img=>"/images/list/colors/white.jpg", :en=> "white", :ru=> "белый"},
+{:img=>"/images/list/colors/red.jpg", :en=> "red", :ru=> "красный"},
+{:img=>"/images/list/colors/blue.jpg", :en=> "blue", :ru=> "синий"},
+{:img=>"/images/list/colors/green.jpg", :en=> "green", :ru=> "зелёный"},
+{:img=>"/images/list/colors/brown.jpg", :en=> "brown", :ru=> "коричневый"},
+{:img=>"/images/list/colors/pink.jpg", :en=> "pink", :ru=> "розовый"},
+{:img=>"/images/list/colors/yellow.jpg", :en=> "yellow", :ru=> "жёлтый"}],
+
+[{:img=>"/images/list/sea-animals/fish.jpg", :en=> "fish", :ru=> "рыба"},
+{:img=>"/images/list/sea-animals/cramp-fish.jpg", :en=> "cramp fish", :ru=> "скат"},
+{:img=>"/images/list/sea-animals/jellyfish.jpg", :en=> "jelly-fish", :ru=> "медуза"},
+{:img=>"/images/list/sea-animals/crab.jpg", :en=> "crab", :ru=> "краб"},
+{:img=>"/images/list/sea-animals/eel.jpg", :en=> "eel", :ru=> "угорь"},
+{:img=>"/images/list/sea-animals/octopus.jpg", :en=> "octopus", :ru=> "осьминог"},
+{:img=>"/images/list/sea-animals/squid.jpg", :en=> "squid", :ru=> "кальмар"},
+{:img=>"/images/list/sea-animals/coral.jpg", :en=> "coral", :ru=> "коралл"}],
+
+[{:img=>"/images/list/vegetables/carrot.jpg", :en=> "carrot", :ru=> "морковь"},
+{:img=>"/images/list/vegetables/cabbage.jpg", :en=> "cabbage", :ru=> "капуста"},
+{:img=>"/images/list/vegetables/corn-1.jpg", :en=> "corn", :ru=> "кукуруза"},
+{:img=>"/images/list/vegetables/cucumber.jpg", :en=> "cucumber", :ru=> "огурец"},
+{:img=>"/images/list/vegetables/mushroom.jpg", :en=> "mushroom", :ru=> "гриб"},
+{:img=>"/images/list/vegetables/onion-1.jpg", :en=> "onion", :ru=> "лук"},
+{:img=>"/images/list/vegetables/potatoes.jpg", :en=> "potato", :ru=> "картофель"},
+{:img=>"/images/list/vegetables/radish.jpg", :en=> "radish", :ru=> "редис"},
+{:img=>"/images/list/vegetables/garlic.jpg", :en=> "garlic", :ru=> "чеснок"},
+{:img=>"/images/list/vegetables/tomato.jpg", :en=> "tomato", :ru=> "помидор"}],
+
+[{:img=>"/images/list/clothes/skirt-1.jpg", :en=> "skirt", :ru=> "юбка"},
+{:img=>"/images/list/clothes/shirt.jpg", :en=> "shirt", :ru=> "рубашка"},
+{:img=>"/images/list/clothes/t-shirt-blue.jpg", :en=> "T-shirt", :ru=> "футболка"},
+{:img=>"/images/list/clothes/socks.jpg", :en=> "socks", :ru=> "носки"},
+{:img=>"/images/list/clothes/dress.jpg", :en=> "dress", :ru=> "платье"},
+{:img=>"/images/list/clothes/shorts.jpg", :en=> "shorts", :ru=> "шорты"},
+{:img=>"/images/list/clothes/sweater.jpg", :en=> "sweater", :ru=> "свитер"}]
+]
+
+@show_data =''
+g_voc = g_voc.sort_by{rand}   
+t_voc = g_voc[0]
+theme = 'light'
+if t_voc[0][:theme] == 'dark' then theme = 'dark' end
+t_voc=t_voc.sort_by{rand}
+
+t_voc.each do |data|
+	text = data[:ru];  translate=data[:en]
+	if lang == 'ru' then text = data[:en];  translate=data[:ru] end
+	@show_data += '{image: "'+data[:img]+'", text: "'+text+'", translate: "'+translate+'"}'
+	unless data == t_voc.last then @show_data += ',' end 
+end
+
+%><script type="text/javascript"> 
+	var sh1 = new slide_show( {
+		id: "sh1",
+		append_to: "#menu_body",<%if theme == 'dark'%>
+		theme: 'dark',<%end%>
+		text: '<%= show_strings[:txt]%>',
+		link: '<%= show_strings[:url]%>',
+		controls: {play:"<%= show_strings[:play]%>", pause: "<%= show_strings[:pause]%>"},
+		data: [<%= @show_data %>]
+		} )
+</script> 
