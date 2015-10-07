@@ -1,0 +1,72 @@
+.current_track {
+color:blue;
+}
+
+.jp-audio {
+background:#fff;
+border:1px solid #8FBADE;
+display:inline-block;
+min-height:24px;
+min-width:200px;
+padding:9px 3px 7px;
+}
+
+.jp-play {
+background:url(/images/icons/icons-24/play.png) no-repeat 50% 50%;
+cursor:pointer;
+display:inline-block;
+height:24px;
+margin:0 15px;
+width:24px;
+}
+
+.jp-state-playing .jp-play {
+background:url(/images/icons/icons-24/pause.png) no-repeat 50% 50%;
+}
+
+.jp-stop {
+background:url(/images/icons/icons-24/stop.png) no-repeat 50% 50%;
+cursor:pointer;
+display:inline-block;
+height:24px;
+margin:0 15px;
+width:24px;
+}
+
+.jp-progress {
+background:#9CD8F6;
+border:1px solid #8FBADE;
+display:inline-block;
+margin-bottom:7px;
+min-height:5px;
+width:100px;
+}
+
+.jp-play-bar {
+background:#1F74C3;
+display:block;
+height:8px;
+width:50%;
+}
+
+.jp-seek-bar {
+cursor:pointer;
+display:block;
+}
+
+
+
+.dialog-t th {background-image: none;}
+.dialog-t  {background-image: none; border-collapse: collapse; background-color: #fff}
+.dialog-t td.d-tfoot {background-color: transparent;}
+.dialog-t tr.current_track td { background-image: none;color: #2566D8 !important;background-color: #FAFAFC;}
+.dialog-t {border: 1px solid #8FBADE;}
+.dialog-t .d-rus {border-right: 1px solid #8FBADE;}
+.dialog-t td {border-bottom: 1px solid #8FBADE;}
+.dialog-t td.d-first, .dialog-t th.d-first {padding-left: 6px;}
+.dt_transc {bottom: auto; top: -34px;}
+
+
+
+
+

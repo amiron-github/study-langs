@@ -1,0 +1,70 @@
+<% if !@good_user%>
+
+<div style="font-size: 11px; margin: 15px 20px;"><%= content%></div>
+	<%= hidden_content() %>
+<%else%>
+
+<%
+cat = Cluster.find(cluster_id)
+dialog = cat.words.find(:all, :include => :cluster_words, :order => 'cluster_words.order_num')
+%>
+
+				<div style="font-size: 11px; text-align: left; padding: 10px 20px; border: 1px solid blue; margin-bottom: 15px; display: none">
+					<%= content%>
+				</div>
+
+<table id="<%= html_id %>" class="dialog-t" cellspacing="0" align="center" style="margin: 0 auto;">
+			<col width="30">
+			<col width="250">
+			<col width="260" >
+			<tr>
+				<th class="d-first">&nbsp;</th>
+				<th><%= d_title%></th>
+				<th >&nbsp;</th>
+			</tr>			
+			<tr>
+				<td colspan="3" class="d-pre-phrases" style="text-align: center">
+
+				
+<div class="jp-jplayer"></div>
+<div class="jp-audio">
+		<div class="jp-gui jp-interface">
+			<div class="jp-controls-holder">
+			<div class="jp-play"></div>
+				<div class="jp-progress">
+					<div class="jp-seek-bar">
+						<div class="jp-play-bar"></div>
+					</div>
+				</div>
+			  <div class="jp-stop"></div>
+			</div>
+		</div>
+</div>
+				
+				<div class="dt_transc_wrap">
+					<div class="dt_transc"><input type="checkbox"> Transcription</div>
+				</div>
+
+				</td>
+			</tr>
+<% dialog.each do |phrase|%>			
+			<tr class="drow" valign="top">
+				<td class="d-first"><div class="jp_control" onclick="cJplayer('<%= phrase.sound_url %>', this)"></div></td>
+				<td  class="d-rus">- <%= phrase.html %> 
+					<div class="d-transc" style="display: none">[<%= phrase.transcribe %>]</div>
+				</td>
+				<td class="d-eng">- <%= phrase.translate %> </td>
+			</tr>
+<%end%>
+			<tr>
+				<td colspan="2" class="d-tfoot">
+					<div class="dt_inf" style="disp-lay: none"></div>
+				
+				</td>
+				<td class="d-tfoot">
+				&nbsp;
+				
+				</td>
+			</tr>
+		</table>
+<%end%>
