@@ -65,7 +65,8 @@ display:block;
 .dialog-t td {border-bottom: 1px solid #8FBADE;}
 .dialog-t td.d-first, .dialog-t th.d-first {padding-left: 6px;}
 .dt_transc {bottom: auto; top: -34px;}
-
+.dialog-t td.d-first, .dialog-t th.d-first {padding-left: 14px;}
+tr.drow:hover .jp_control { visibility: visible;}
 
 
 
