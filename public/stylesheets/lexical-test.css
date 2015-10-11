@@ -406,8 +406,9 @@ font-size:11px;
 
 
 .es-ex-tasks-list li input {
+vertical-align: middle;
 position: relative;
-top: 3px;
+top: -1px;
 margin-top: 0px;
 }
 

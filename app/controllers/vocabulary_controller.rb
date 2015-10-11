@@ -29,23 +29,14 @@ layout :layout_by_lang
 			@category_title = @category.title_fr
 			render(:action => 'fr_vocabulary')
 		end
-		
 	elsif @lang == 'ru'
-		if @add_lang == 'en'
-			@category_short_tag = params[:category]
-			@category_title =  @category.title_ru
-			render(:action => 'ru_en_vocabulary')
-		elsif @add_lang == 'jp'
+		if @add_lang == 'jp'
 			@category_short_tag = params[:category]
 			@category_title =  @category.title_ru
 			render(:action => 'ru_jp_vocabulary')
-		elsif @add_lang == 'fr'
-			@category_short_tag = params[:category]
-			@category_title =  @category.title_ru
-			render(:action => 'ru_fr_vocabulary')
 		else 
 			@category_title = @category.title_ru
-			render(:action => 'ru_vocabulary' )
+			render(:action => 'ru_vocabulary_st' )
 		end
 	else 
 		if @add_lang == 'ru'

@@ -111,21 +111,6 @@ function ps_Jplayer(link,el,notPlay) {
 	}
 }	
 	
-/*	
-	if ( tElStatus == "0" || tElStatus == undefined || exJpForce) { // start sound if sound is not in progress ()
-		tEl.attr("status", "0").removeClass("ps-audio-holder-hover").attr("title", "Play");
-		containerJp.jPlayer("setFile", link ).jPlayer("onProgressChange", function() { return false}).jPlayer( "onSoundComplete", function() {  // start sound 
-			tEl.attr("status", "0").removeClass("ps-audio-holder-hover").attr("title", "Play");  										// reset status at the end of sound, show 'play'
-		} );
-		if (notPlay != 1) {
-			tEl.attr("status", "1").addClass("ps-audio-holder-hover").removeAttr("title"); // show or not that sound is in progress 
-			containerJp.jPlayer("play");
-		}
-	} else {							
-		return false;
-	}
-}
-*/
 
 function ph_exercise(hash) {
 
@@ -582,6 +567,12 @@ this.correctAnswer = function () {
 		});
 	} else {
 		//tObj.ynButtons.unbind("click");
+	}
+
+	if ( tObj.workArray[tObj.counter]['id'] != undefined ) {
+			//alert(tObj.workArray[tObj.counter]['id'])
+			var studied = tObj.workArray[tObj.counter]['id']
+			sendWordsResults(studied)
 	}
 
 	if (tObj.autoPlay) {

@@ -57,6 +57,7 @@ this.id = hash['id'];
 this.need_test = hash['need_test'];
 this.tests_id = hash['need_test'];
 this.texts = hash['texts'];
+this.layout = hash['layout'];
 
 if (tObj.texts == undefined) {
 	tObj.texts = {
@@ -66,6 +67,7 @@ if (tObj.texts == undefined) {
 		'must_do': "Нужно выполнить упражнение!"
 	}
 }
+if (tObj.layout == undefined) tObj.layout = 1
 
 this.start = function() {
 	this.container = $('#'+this.id);
@@ -165,6 +167,8 @@ tObj.swButtons.click(function(){
 		tObj.unbindShowAct();
 	}
 })
+
+if (tObj.layout == 2) tObj.swButtons.eq(1).click()
 
 tObj.mainTab.click(function() {
 	//if (!tObj.nexWrapper.hasClass("nex-expanded")) tObj.tabsButtons.filter(".nex-t-active").click();
