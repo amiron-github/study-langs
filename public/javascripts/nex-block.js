@@ -1,27 +1,3 @@
-$(function(){
-
-$("#ocom").click(function(){
-	var posT = $(this).offset().top - $(window).scrollTop();
-	var posL = $("#contentcell").offset().left + $("#contentcell").width()/2-300;
-	
-	$("#comments").dialog({
-		width:600, 
-		dialogClass: "nex-comment",
-		title:'<span class="com-h-ico"></span> Комментарий!!!',
-		position: [posL,posT+30]
-	});
-})
-
-})
-
-$(document).ready(function() {
-	$("#nex-view span").click(function(){
-		var t = $(this)
-		$("#nex-view span").removeClass("checked");
-		t.addClass("checked");
-	})
-});
-
 function completeNex(block) { // place in array
 	var t = $(".nex-check-done").eq(block)
 	if (t.hasClass("need-test")) t.removeClass("need-test").removeClass("nex-checked").click().addClass("need-test");
@@ -237,7 +213,6 @@ this.prevEx = function () {
 	}
 }
 
-
 this.openEx = function(num) {
 var tBlock = tObj.nexBlocks.eq(num);
 var helper = tObj.helperBlock;
@@ -262,15 +237,7 @@ if ( tBlock.position() ) {
 }
 }
 
-
-
-
-
-$(document).ready(function() {
-	tObj.start();
-});
-
-
+$(function() {tObj.start();});
 
 }
 

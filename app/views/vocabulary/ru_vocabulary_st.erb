@@ -12,16 +12,14 @@
 		<%=  %>
 <% content_for :special_js_css do %>
 <%= stylesheet_link_tag 'unit' %>
-<%= javascript_include_tag 'jquery.jplayer.min.js' %>
-<%= javascript_include_tag 'jp-control' %>
+<%= javascript_include_tag 'jquery.jplayer.js' %>
 <%= javascript_include_tag 'lexical-test-p' %>
-<%= javascript_include_tag 'nex-block' %>
 <%= javascript_include_tag 'flashcard-u' %>
-<%= javascript_include_tag 'short-unit' %>
+<%= javascript_include_tag 'unit' %>
 <script type="text/javascript">
 <%if params[:tab] %>openTabFromUrl(<%= params[:tab] %>);<%else%>openTabFromUrl();<%end%>
 var t_voc_id=<%=@category.id%>
-$(document).ready(function() {
+$(function() {
 	$(".trans-display").change(function(){
 		if ($(this).is(":checked")) $(".original div.ru-transcript").show();
 		else $(".original div.ru-transcript").hide();
@@ -30,23 +28,6 @@ $(document).ready(function() {
 		if (sendData) $.ajax({type: 'post', url: "/get_flash_list", data: {voc_id: t_voc_id, text:'text'}} ); 
 	})
 });
-
-function buildFlashList(data){
-html = ""
-	for (var i = 0; i< data.length; i ++) {
-		var text = data[i]["text"];
-		var translate = data[i]["translate"];
-		var learned = data[i]["status"];
-		var status = new Array;
-		status = ['', 'checked']
-		if ( learned == '1') status = ['fl-learned', '']
-		var tHtml = '<tr class="fl-list '+status[0]+'"><td><input type="checkbox" '+status[1]+' class="st"><\/td><td class="fl-wordlist-origin">'+text+'<\/td><td>'+translate+'<\/td><\/tr>'
-		html = html+tHtml
-	}
-	$(".fl-prestart-list").html(html);
-	fixAccents($(".fl-prestart-list"))
-	$(".fl-prestart-list tr:even").css({backgroundColor: "#efefef"});
-}
 </script>
 
 <% end %>

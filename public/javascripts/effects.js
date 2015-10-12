@@ -1419,6 +1419,25 @@ $(document).ready(function() {
 
 /* end of slide show */
 
+/* array shuffle function */
+
+function shuffle () {
+    len = shuffle.arguments[0] || this.length;
+    var sA = new Array();
+    for (var i=0; i < this.length; i++) {
+        sA[sA.length]=this[i];
+    }
+    var newArray = new Array();
+    for (var i=0; i<len; i++) {
+        var t = Math.round(Math.random()*(sA.length-1));
+        newArray.push(sA[t]);
+        sA.splice(t,1);
+    }
+    return newArray;
+}
+
+Array.prototype.shuffle = shuffle;
+
 
 
 

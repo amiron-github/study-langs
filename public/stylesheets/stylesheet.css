@@ -424,12 +424,20 @@ text-align: center;
 
 h2.page {
 font-size: 18pt;
+margin-bottom: 0px;
 }
 
 h2.page-bl {
 font-size: 20pt;
 color: #31549F;
 }
+
+h2.page-bl, h2.page-st {margin-bottom: 40px;}
+.gr-table td, .gr-table-s td {font-weight: bold;}
+.gr-table td:nth-child(1) {font-weight: normal; font-style: italic;}
+.tilde {position: relative;}  
+.tilde span {position: absolute; margin-left: -7px} 
+.st-bl-table th {font-size: 10px;}
 
 /*end of new design*/
 

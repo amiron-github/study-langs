@@ -4,8 +4,10 @@
 <head>
   <title><%= @page_title %></title>
 <% unless @page_meta.nil? -%><% @page_meta.each do |name, content| -%>
-  <meta name="<%= name %>" content="<%= content %>" /><% end %><% end %>
+<meta name="<%= name %>" content="<%= content %>" /><% end %><% end %>
 <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<link rel="icon" href="/site-icon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/site-icon.ico" type="image/x-icon">
 <%= stylesheet_link_tag 'stylesheet' %>
 <%= javascript_include_tag 'jquery-1.4.2.min.js' %>
 <%= javascript_include_tag 'effects' %>
@@ -19,8 +21,6 @@
     <%= stylesheet_link_tag css_file %>
   <% end -%>
 <%end -%>
-<link rel="icon" href="/site-icon.ico" type="image/x-icon">
-<link rel="shortcut icon" href="/site-icon.ico" type="image/x-icon">
 <%= yield :special_js_css %><%= @layout_settings.body %>
 <meta http-equiv="content-language" content="<%=@es_language%><%if @to_language%>,<%=@to_language%><%end%>">
 <meta name="keywords" content="<%= @keywords%>" />

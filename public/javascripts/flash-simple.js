@@ -9,22 +9,21 @@ skin:
 
 */
 
-$(document).ready(function() {
+$(function() {
 	$(".fs-btn").mousedown(function(){
 		$(this).addClass("fs-btn-down");
 	}).mouseup(function(){
 		$(this).removeClass("fs-btn-down");
 	})
-$(".fs-container .tb_settings").toggle(function(){
-		$(this).addClass("tb_set_on").parent().find(".tb_settings-wrap").show(400)
-	},function(){
-		$(this).removeClass("tb_set_on").parent().find(".tb_settings-wrap").hide(400)
-})
-
-$(".fs-container .opt-autoplays div span").click(function() {
-	$(this).parent("div").parent("div").find(".checked").removeClass("checked");
-	$(this).addClass("checked");
-});
+	$(".fs-container .tb_settings").toggle(function(){
+			$(this).addClass("tb_set_on").parent().find(".tb_settings-wrap").show(400)
+		},function(){
+			$(this).removeClass("tb_set_on").parent().find(".tb_settings-wrap").hide(400)
+	})
+	$(".fs-container .opt-autoplays div span").click(function() {
+		$(this).parent("div").parent("div").find(".checked").removeClass("checked");
+		$(this).addClass("checked");
+	});
 
 
 });

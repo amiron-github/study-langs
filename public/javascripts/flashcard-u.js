@@ -7,23 +7,6 @@ example: super-ex.html
 */
 /////////////////////////////////////////////////// 
 
-function shuffle () {
-    len = shuffle.arguments[0] || this.length;
-    var sA = new Array();
-    for (var i=0; i < this.length; i++) {
-        sA[sA.length]=this[i];
-    }
-    var newArray = new Array();
-    for (var i=0; i<len; i++) {
-        var t = Math.round(Math.random()*(sA.length-1));
-        newArray.push(sA[t]);
-        sA.splice(t,1);
-    }
-    return newArray;
-}
-
-Array.prototype.shuffle = shuffle;
-
 (function($) {
 	$.fn.customFadeIn = function(speed, callback) {
 		$(this).fadeIn(speed, function() {
@@ -53,6 +36,26 @@ Array.prototype.shuffle = shuffle;
 
 ///////////////////////////////////////////
 
+function buildFlashList(data){
+html = ""
+	for (var i = 0; i< data.length; i ++) {
+		var text = data[i]["text"];
+		var translate = data[i]["translate"];
+		var learned = data[i]["status"];
+		var status = new Array;
+		status = ['', 'checked']
+		if ( learned == '1') status = ['fl-learned', '']
+		var tHtml = '<tr class="fl-list '+status[0]+'"><td><input type="checkbox" '+status[1]+' class="st"><\/td><td class="fl-wordlist-origin">'+text+'<\/td><td>'+translate+'<\/td><\/tr>'
+		html = html+tHtml
+	}
+	$(".fl-prestart-list").html(html);
+	fixAccents($(".fl-prestart-list"))
+	$(".fl-prestart-list tr:even").css({backgroundColor: "#efefef"});
+}
+
+
+///////////////////////////////////////////
+
 $(document).ready(function() {
 
 	$(".fl-btn").mousedown(function(){
@@ -60,49 +63,9 @@ $(document).ready(function() {
 	}).mouseup(function(){
 		$(this).removeClass("fl-btn-down");
 	})
-
-//$("body").append('<div id="cJp"></div>');
-//$("#cJp").jPlayer( {solution: 'html, flash', swfPath:"/javascripts/"});
-
-
 	
 });
 
-/*
-var tJplayer=false;
-
-function cJplayer(link,el) {
-var prevEl = tJplayer;
-var curEl = el;
-if ( curEl != prevEl) {
-	$(prevEl).attr("status", 0).removeClass("jp_play").removeClass("jp_pause");;
-}
-tJplayer = el;
-var tEl = $(el);
-var tElStatus = $(el).attr("status");
-var containerJp = $("#cJp");
-tEl.removeClass("jp_play").removeClass("jp_pause");
-containerJp.unbind($.jPlayer.event.ended+ ".jp-end");
-mediaData = containerJp.data('jPlayer')
-	if ( tElStatus == "0" || tElStatus == undefined ) {          	
-		tEl.attr("status", "1").addClass("jp_pause"); 		
-		containerJp.jPlayer("setMedia", {mp3: link})
-		containerJp.jPlayer("play");
-		containerJp.bind($.jPlayer.event.ended+ ".jp-end", function(event) { 
-				tEl.attr("status", "0").removeClass("jp_pause").removeClass("jp_play");
-		});
-	} else if ( tElStatus == "2") {   					
-		tEl.attr("status", "1").addClass("jp_pause"); 
-		containerJp.jPlayer("play");
-		containerJp.bind($.jPlayer.event.ended+ ".jp-end", function(event) { 
-				tEl.attr("status", "0").removeClass("jp_pause").removeClass("jp_play");
-		});
-	} else {											
-		tEl.attr("status", "2").addClass("jp_play");  
-		containerJp.jPlayer( "pause" );
-	}
-}
-*/
 
 
 function flashcard(hash) {
@@ -880,7 +843,6 @@ tObj.container.find(".fl-end-wordlist tr:even").css({backgroundColor: "#efefef"}
 		 tObj.endContainer.removeClass("fl-back");
 	});
 	
-	
 tObj.accents(tObj.container.find(".fl-end-list"))
 
 if ( tObj.container.find(".fl-end-wordlist").height() > 330) {
@@ -888,7 +850,6 @@ if ( tObj.container.find(".fl-end-wordlist").height() > 330) {
 }
 
 }
-
 
 
 $(document).ready(function() {
@@ -924,9 +885,5 @@ function fixAccents(container) {
 			container.find("span.sftc, span.sftv").after("<span class=\"sfts\">\'<\/span>");
 		}
 }
-
-
-
-
 
 
