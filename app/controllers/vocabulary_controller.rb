@@ -39,13 +39,9 @@ layout :layout_by_lang
 			render(:action => 'ru_vocabulary_st' )
 		end
 	else 
-		if @add_lang == 'ru'
 			@category_title = @category.title
-			render(:action => 'vocabulary' )
-		else 
-			@category_title = @category.title
-			render(:action => 'en_vocabulary' )
-		end
+			#render(:action => 'vocabulary' )
+			render(:action => 'en_vocabulary_st' )
 	end
   rescue StandardError => e
     logger.warn e

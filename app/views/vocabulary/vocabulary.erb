@@ -7,23 +7,18 @@
 <% content_for :special_js_css do %>
 <%= stylesheet_link_tag 'lexical-test' %>
 <%= stylesheet_link_tag 'flashcard' %>
-
 <%= stylesheet_link_tag 'keyboard' %>
 <%= javascript_include_tag 'virtual-keyboard' %>
+<%= stylesheet_link_tag 'short-unit' %>
 
 <%= javascript_include_tag 'jquery.jplayer.min.js' %>
 <%= javascript_include_tag 'jp-control' %>
-<%= stylesheet_link_tag 'short-unit' %>
 <%= javascript_include_tag 'lexical-test' %>
 <%= javascript_include_tag 'flashcard-u' %>
 <%= javascript_include_tag 'short-unit' %>
 
 <script type="text/javascript">
-<%if params[:tab] %>
-	openTabFromUrl(<%= params[:tab] %>);
-<%else%>
-	openTabFromUrl();
-<%end%>
+<%if params[:tab] %>openTabFromUrl(<%= params[:tab] %>);<%else%>openTabFromUrl();<%end%>
 
 $(document).ready(function() {
 $(".trans-display").change(function(){
@@ -248,12 +243,13 @@ margin: 0 auto;
 		id: "fl1", 
 		random_order: false,
 		basic_array: [
-<% 
-@last_item_index = (@words.length)-1
+		
+<% @last_item_index = (@words.length)-1
 @words.each_with_index  do |word, index| %><% unless (word.translate == '#none#' || word.translate == '' )%>
 ["<%= no_js(word.html) %>", '<%= no_js(word.translate) %>', '<%= word.sound_url %>', "<%= no_js(word.transcribe) %>"<%if current_user %>, '<%= word.id%>' ,'<%= current_user.word_status(word.id) %>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>
 <%end-%>
 <%end -%>
+
 		]
 		} )
 </script>
