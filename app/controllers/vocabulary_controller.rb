@@ -33,7 +33,7 @@ layout :layout_by_lang
 		if @add_lang == 'jp'
 			@category_short_tag = params[:category]
 			@category_title =  @category.title_ru
-			render(:action => 'ru_jp_vocabulary')
+			render(:action => 'ru_jp_vocabulary_st')
 		else 
 			@category_title = @category.title_ru
 			render(:action => 'ru_vocabulary_st' )

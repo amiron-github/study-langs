@@ -1,41 +1,40 @@
-<% @page_title = ' '+@category_title+' :: Cловарь '  %>
-<% @page_meta = {'description' => "Изучайте слова по теме "+@category_title+" онлайн"} %>
+<% @page_title = ' '+@category_title+' :: Японско-русский словарь '  %>
+<% @page_meta = {'description' => "Изучайте японские слова по теме "+@category_title+" онлайн"} %>
 <% @has_audio = true 
    @t_template='vocab'
-   header = 'Словарь'
-	voc_url = 'vocabulary'
-   if params[:to_lang]
-		if params[:to_lang] == "en" then header = 'Англо-русский словарь'; voc_url = 'vocabulary.html' end
-		if params[:to_lang] == "fr" then header = 'Франко-русский словарь' end
-   end
 %>
-		<%=  %>
+
 <% content_for :special_js_css do %>
+<%= stylesheet_link_tag 'lexical-test' %>
 <%= stylesheet_link_tag 'unit' %>
 <%= javascript_include_tag 'jquery.jplayer.js' %>
 <%= javascript_include_tag 'lexical-test-p' %>
 <%= javascript_include_tag 'flashcard-u' %>
 <%= javascript_include_tag 'unit' %>
+
 <script type="text/javascript">
 <%if params[:tab] %>openTabFromUrl(<%= params[:tab] %>);<%else%>openTabFromUrl();<%end%>
 var t_voc_id=<%=@category.id%>
 $(function() {
 	$(".trans-display").change(function(){
-		if ($(this).is(":checked")) $(".original div.ru-transcript").show();
-		else $(".original div.ru-transcript").hide();
+		if ($(this).is(":checked")) {
+			$("div.ru-transcript").show();
+		}else{
+			$("div.ru-transcript").hide();
+		}
 	}).change();
+
 	$("#tab02").click(function() {
 		if (sendData) $.ajax({type: 'post', url: "/get_flash_list", data: {voc_id: t_voc_id, text:'text'}} ); 
 	})
 });
-</script>
 
+</script>
 <% end %>
-<div class="unit-area vocab-page">
+<div class="unit-area">
 	<div id="prof_tabs">
 		<div class="unit-title">
-		<a href="/<%= @lang %>/<%= @add_lang %>/<%= voc_url%>" class="su-tit-link"><%= header%> »</a><br>
- 
+		<a href="/ru/jp/vocab" class="su-tit-link">Японско-русский словарь »</a><br>
 		<%= @category_title %>
 		</div>
 		<div id="tabs_row">
@@ -52,54 +51,68 @@ $(function() {
 	<br><br><br><br>
 
 <div class="voc-wordlist">
-<table class="voc_bord" align="center" cellspacing="0">
+<table class="voc_bord jp-voc-list" align="center" cellspacing="0">
 <tr>
 <td>
 
-<table style="width: 520px" class="diction" cellpadding="0" cellspacing="0" align="center">
-<col width="50%"><col width="50%">
+<table style="width: 550px" class="diction" cellpadding="0" cellspacing="0" align="center">
+<col width="33%"><col width="32%"><col width="35%">
 <thead>
 <tr>
 	<td> <div class="trans-display-wrapper"><input type="checkbox" class="trans-display" /> Транскрипция </div> </td>
 	<td></td>
+	<td></td>
 </tr>
 </thead>
 <tbody>
-<%@words.each_with_index do |word, index|%>
+<%
+@words.each_with_index do |word, index|
+-%>
+
 <% voc_spaces.each do |s| -%>
 <% if word.id == s %>
-  <tr><td class="original" valign="top">&nbsp;</td><td class="translation" valign="top">&nbsp;</td></tr>
+  <tr>
+    <td class="original" valign="top">&nbsp;</td>
+	<td class="transcription" valign="top">&nbsp;</td>
+    <td class="translation" valign="top">&nbsp;</td>
+  </tr>
 <%end -%>
 <%end -%>
 <tr class="trow">
-    <td class="original" valign="top">
-	<%unless word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div><%end%>
-	<%= word.text %><%unless word.grammar==''%><i style="color: #999; font-weight: normal; font-size: 11px; margin-left:10px"><%= word.grammar %></i><%end%>
-	<div class="ru-transcript">[<%= word.transcribe %>]</div>
+    <td class="original" valign="top"><%unless word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div><%end%>
+	<%= word.text %>
     </td>
-    <td class="translation" valign="top"><%= word.translate %>
-    </td>
+    <td class="transcription" valign="top"><%= word.html %>
+		<div class="ru-transcript">[<%= word.transcribe %>]</div>
+    </td>	
+    <td class="translation" valign="top"><%= word.translate %></td>
 </tr>
 <%end -%>
 </tbody>
-<tfoot><tr><td></td><td></td></tr></tfoot>  
+<tfoot>
+	<tr><td></td><td></td><td></td></tr>
+</tfoot>  
 </table>
 
 </td>
 </tr>
 </table>
 </div><!-- end of voc-wordlist-->
+
 <br><br><br>
+
 <div class="es-ex-buttons su-next-wrapper">
 <input type="button" class="su-next-step" value="Следующий этап »" onclick="openNextStep(2)">
 </div>	
+	
 	</div>
 </div>
 
 <div id="for_tab02" class="pBlock" style="display: none">
 	<div class="inpBlock">
 <br><br><br><br>	
-<div  id="fl1" style="min-height: 600px; text-align: center;">
+
+<div  id="fl1" class="fl-jp" style="min-height: 600px; text-align: center;">
 <%= render :partial => 'site/ru_flashcard' %>
 </div><!-- end of fl1 -->
 
@@ -107,35 +120,45 @@ $(function() {
 	var fl1 = new flashcard( {
 		id: "fl1", 
 		random_order: false,
+		trans_bracket: false,
+		train_spell: false,
 		basic_array: [
 <% 
 @last_item_index = (@words.length)-1
 @words.each_with_index  do |word, index| %><% unless (word.translate == '#none#' || word.translate == '' )%>
-["<%= no_js(word.text) %>", '<%= no_js(word.translate) %>', '<%= word.sound_url %>', "<%= no_js(word.transcribe) %>"<%if current_user %>, '<%= word.id%>' ,'<%= current_user.word_status(word.id) %>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>
+<% unless except_from_flash(index) -%>
+["<%= word.text.to_s.gsub(/"/,'\"') %>", '<%= word.translate.to_s.gsub(/'/,"’") %>', '<%= word.sound_url %>', '<span title="<%= word.transcribe.to_s.gsub(/'/,"’") %>" style="cursor: default"><%= word.html.to_s.gsub(/'/,"’") %></span>'<%if current_user %>, '<%= word.id%>' ,'<%= current_user.word_status(word.id) %>'<%end%>]<% if index!= @last_item_index -%>,<%end -%>
+<%end -%>
 <%end-%>
 <%end -%>
 		]
 		} )
 </script>
 
+
 <br><br><br>		
+
 <div class="es-ex-buttons su-next-wrapper">
 <input type="button" class="su-next-step" value="Следующий этап »" onclick="openNextStep(3)">
 </div>
+	
 	</div>
 </div>
 
 <div id="for_tab03" class="pBlock with-nex" style="display: none">
+
 	<div class="inpBlock" id="nb1">
 <div class="nex-tabs-wrapper" style="border: 0px solid #fff"> 
 	<div style="float: left; "> 
 		<ul class="nex-tabs"> 
 			<li class="nex-tab-first nex-t-active"><a href="javascript:;">1</a></li> 
+			<li class="nex-tab-first"><a href="javascript:;">2</a></li>
+			<li class="nex-tab-first"><a href="javascript:;">3</a></li>
 			<%unless @category.sound_status == 2 %>
-			<li><a href="javascript:;">2</a></li> 
-			<li class="nex-tab-last"><a href="javascript:;">3</a></li> 
+			<li><a href="javascript:;">4</a></li> 
+			<li class="nex-tab-last"><a href="javascript:;">5</a></li> 
 			<%else%>
-			<li class="nex-tab-last"><a href="javascript:;">2</a></li> 
+			<li class="nex-tab-last"><a href="javascript:;">4</a></li> 
 			<%end%>
 		</ul> 
 	</div> 
@@ -151,9 +174,9 @@ $(function() {
 <div class="nex-h-helper">
 <div class="nex-helper">
 <div class="nex-block nex-block-active">
-<div class="nex-header">Тест 1.  Прочитатайте фразу и найдите её перевод.</div>
+<div class="nex-header">Тест 1. Найдите в списке подходящий перевод.</div>
 <div class="nex-container">
-<div id="ch1" class="pt-holder ch-opt-comp">
+<div id="ch1" class="pt-holder ch-opt-comp jp-ps-ch-quest">
 <%= render :partial => '/site/exercises/phrases_test', :locals => {:lang=>"ru"} %>	
 </div><!-- end of pt-holder -->
 <script type="text/javascript"> 
@@ -168,7 +191,7 @@ $(function() {
 		basic_array: [
 <% @last_item_index = (@words.length)-1 %>
 <% @words.each_with_index  do |word, index| %>
-{"quest": "<%= j(word[:text])%><%unless word.grammar==''%> <i>(<%= word.grammar %>)</i><%end%>", 
+{"quest": "<%= j(word[:text])%> <br><span class='ps-quest-transcribe'>[<%= j(word[:transcribe])%>]</span>", 
 "answer":  "<%= j(word[:translate])%>"<% if current_user %>, "id":'<%= word.id%>'<%end%>}<% if index!= @last_item_index  %>,<%end%>	
 <%end%>
 		]
@@ -179,9 +202,9 @@ $(function() {
 </div>
 
 <div class="nex-block">
-<div class="nex-header">Тест 2. Найдите в списке перевод фразы.</div>
+<div class="nex-header">Тест 2. Найдите в списке подходящий перевод.</div>
 <div class="nex-container">
-<div id="ch2" class="pt-holder ch-opt-comp">
+<div id="ch2" class="pt-holder ch-opt-comp jp-ps-ch-quest">
 <%= render :partial => '/site/exercises/phrases_test', :locals => {:lang=>"ru"} %>	
 </div><!-- end of pt-holder -->
 
@@ -189,6 +212,62 @@ $(function() {
 	var ch2 = new ph_exercise( {
 		id: "ch2", 
 		<% unless @test_data[1] == nil || @test_data[1]==''%>test_id: "<%= @test_data[1].test_id %>",<%end%>
+		callback: function() { completeNex(1)},
+		auto_play: false,
+		quest_num: 20,
+		next_time: 2000,
+		texts: ['Правильно','Неправильно','Далее »','Результат','Осталось','Всего вопросов','Правильных ответов','Результат','Показать ответ','Перейти к следующему'],
+		basic_array: [
+<% @last_item_index = (@words.length)-1 %>
+<% @words.each_with_index  do |word, index| %>
+{"quest": "<%= j(word[:html])%>", 
+"answer":  "<%= j(word[:translate])%>"<% if current_user %>, "id":'<%= word.id%>'<%end%>}<% if index!= @last_item_index  %>,<%end%>	
+<%end%>
+		]
+		} )
+</script>
+</div>
+</div>
+
+<div class="nex-block">
+<div class="nex-header">Тест 3. Найдите соответствие русскому варианту.</div>
+<div class="nex-container">
+<div id="ch3" class="pt-holder ch-opt-comp jp-ps-ch-answer">
+<%= render :partial => '/site/exercises/phrases_test', :locals => {:lang=>"ru"} %>	
+</div><!-- end of pt-holder -->
+
+<script type="text/javascript"> 
+	var ch3 = new ph_exercise( {
+		id: "ch3", 
+		<% unless @test_data[2] == nil || @test_data[2]==''%>test_id: "<%= @test_data[2].test_id %>",<%end%>
+		callback: function() { completeNex(1)},
+		auto_play: false,
+		quest_num: 20,
+		next_time: 2000,
+		texts: ['Правильно','Неправильно','Далее »','Результат','Осталось','Всего вопросов','Правильных ответов','Результат','Показать ответ','Перейти к следующему'],
+		basic_array: [
+<% @last_item_index = (@words.length)-1 %>
+<% @words.each_with_index  do |word, index| %>
+{"quest": "<%= j(word[:translate])%>", 
+"answer":  "<%= j(word[:html])%>"<% if current_user %>, "id":'<%= word.id%>'<%end%>}<% if index!= @last_item_index  %>,<%end%>	
+<%end%>
+		]
+		} )
+</script>
+</div>
+</div>
+
+<div class="nex-block">
+<div class="nex-header">Тест 4. Найдите соответствие русскому варианту.</div>
+<div class="nex-container">
+<div id="ch4" class="pt-holder ch-opt-comp jp-ps-ch-answer">
+<%= render :partial => '/site/exercises/phrases_test', :locals => {:lang=>"ru"} %>	
+</div><!-- end of pt-holder -->
+
+<script type="text/javascript"> 
+	var ch4 = new ph_exercise( {
+		id: "ch4", 
+		<% unless @test_data[3] == nil || @test_data[3]==''%>test_id: "<%= @test_data[3].test_id %>",<%end%>
 		callback: function() { completeNex(1)},
 		auto_play: false,
 		quest_num: 20,
@@ -208,15 +287,15 @@ $(function() {
 
 <%unless @category.sound_status == 2 %>
 <div class="nex-block">
-<div class="nex-header">Тест 3. Прослушайте фразу и найдите её перевод.</div>
+<div class="nex-header">Тест 5. Прослушайте фразу и найдите её перевод.</div>
 <div class="nex-container">
-<div id="ch3" class="pt-holder ch-opt-comp">
+<div id="ch5" class="pt-holder ch-opt-comp">
 <%= render :partial => '/site/exercises/phrases_test', :locals => {:lang=>"ru"} %>	
 </div><!-- end of pt-holder -->
 <script type="text/javascript"> 
-	var ch3 = new ph_exercise( {
-		id: "ch3", 
-		<% unless @test_data[2] == nil || @test_data[2]==''%>test_id: "<%= @test_data[2].test_id %>",<%end%>
+	var ch5 = new ph_exercise( {
+		id: "ch5", 
+		<% unless @test_data[4] == nil || @test_data[4]==''%>test_id: "<%= @test_data[4].test_id %>",<%end%>
 		callback: function() {completeNex(2)},
 		auto_play: false,
 		quest_type: 'audio',
@@ -251,10 +330,17 @@ $(function() {
    } )
 </script>
 <br><br><br><br>
+
+
 	</div>
 </div>
+
+
 </div> <!-- end of unit-area-->
+	
+
 <script type="text/javascript">
 currentSection="words";
 </script>
+
 

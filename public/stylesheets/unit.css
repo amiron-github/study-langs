@@ -351,7 +351,8 @@ padding: 4px;
 padding: 5px;
 }
 
-
+.voc-wordlist .jp-voc-list .diction td div.ru-transcript {display: none;font-size: 11px;color: #555;font-weight: normal;}
+.voc-wordlist .jp-voc-list .diction td.transcription {font-size: 16px;width: auto;padding-left: 22px;padding-right: 18px;cursor: default;}
 
 
 /* grammar exercises*/
@@ -537,7 +538,6 @@ font-size: 12px;
 color: red;
 white-space: nowrap;
 font-weight: bold;
-
 }
 
 
@@ -624,10 +624,6 @@ background-color: #dbe9fd;
 position: relative;
 margin-right: -12px; 
 }
-
-.di_mix {
-}
-
 
 .di_mix .gext_sign  input {
 width: 100%;
@@ -985,9 +981,6 @@ padding-right: 15px;
 color: #333;
 }
 
-.gex_multi_one {
-
-}
 
 .gex_multi_one .gex-error, .gex_multi_one .gex-correct {
 background-position:10px 10px;
@@ -2512,6 +2505,10 @@ disp-lay: table-row;
 background-color: #D8E6FF;
 background-image: none;
 }
+
+.fl-jp .fl-original {font-weight: bold;padding: 8px 10px;border: 1px solid #dfdfdf;}
+.fl-jp .fl-transcript {font-size: 17px;}
+
 /* end of flashcard css */
 
 /* flash simple css */
@@ -3803,6 +3800,10 @@ width: 43%;
 font-size: 17px;
 text-align: center;
 }
+
+.jp-ps-ch-quest .ps-string-wrapper .ps-quest-transcribe {font-size: 12px; color: #555}
+.jp-ps-ch-quest .ps-string-wrapper {font-size: 26px}
+.jp-ps-ch-answer .ps-tasks-list li {font-size: 21px}
 
 .es-audio-ex .ps-audio-wrapper {position: relative; top: 12px;}
 .es-audio-ex .ps-audio-wrapper table {width: auto!important;}

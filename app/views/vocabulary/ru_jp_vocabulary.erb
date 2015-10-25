@@ -5,11 +5,12 @@
 %>
 
 <% content_for :special_js_css do %>
+
+<%= stylesheet_link_tag 'lexical-test' %>
+<%= stylesheet_link_tag 'unit' %>
+
 <%= javascript_include_tag 'jquery.jplayer.min.js' %>
 <%= javascript_include_tag 'jp-control' %>
-<%= stylesheet_link_tag 'flashcard' %>
-<%= stylesheet_link_tag 'lexical-test' %>
-<%= stylesheet_link_tag 'short-unit' %>
 <%= javascript_include_tag 'lexical-test' %>
 <%= javascript_include_tag 'flashcard-u' %>
 <%= javascript_include_tag 'short-unit' %>
@@ -56,13 +57,12 @@ html = ""
 }
 </script>
 <style type="text/css">
+/*
 h2.page {
 margin-bottom: 0px;
 }
 
-.voc-wordlist .diction td {
-border-bottom: 1px solid #efefef;
-}
+.voc-wordlist .diction td {border-bottom: 1px solid #efefef;}
 .trans-display-wrapper {
 font-size: 11px;
 color: #444;
@@ -78,8 +78,6 @@ width: auto;
 padding-left: 35px;
 cursor: default;
 }
-.voc-wordlist .diction td div.ru-transcript {display: none;font-size: 11px;color: #555;font-weight: normal;}
-.voc-wordlist .diction td.transcription {font-size: 16px;width: auto;padding-left: 22px;padding-right: 18px;cursor: default;} 
 .voc-wordlist .diction td.translation {width: auto;padding-left: 22px;padding-right: 18px;cursor: default;}
 .voc_bord div.jp_control {position: absolute;margin-left: -25px;}
 .fl-spell-check, .fl-cancel-spell {width: 80px;}
@@ -89,17 +87,23 @@ cursor: default;
 .fl-prestart {overflow-x: hidden;overflow-y: auto;}
 .fl-sound .jp_control:hover {background-image: url(/images/play-25.png);}
 .l-test-container {margin-bottom: 90px;}
-div.ad-horizont {padding-bottom: 0 !important;position: relative;top: 25px;}
-.ad-banner div {position: relative;padding-top: 20px;top: 10px; width: 470px;margin: 0 auto;}
-#ch1 .es-ex-string-wrapper, #ch3 .es-ex-string-wrapper {font-size: 22px;font-weight: bold;}
-</style>
 
-<style type="text/css">
 .fl-spell-check, .fl-cancel-spell {width: 80px;}
 .fl-end-wrapper .fl-stop {width: 90px;}
 .fl-next {width: 100px;}
+
+*/
+
+#ch1 .es-ex-string-wrapper, #ch3 .es-ex-string-wrapper {font-size: 22px;font-weight: bold;}
+
+.voc-wordlist .diction td div.ru-transcript {display: none;font-size: 11px;color: #555;font-weight: normal;}
+.voc-wordlist .diction td.transcription {font-size: 16px;width: auto;padding-left: 22px;padding-right: 18px;cursor: default;}
 .fl-original {font-weight: bold;padding: 8px 10px;border: 1px solid #dfdfdf;}
 .fl-transcript {font-size: 17px;}
+
+div.ad-horizont {padding-bottom: 0 !important;position: relative;top: 25px;}
+.ad-banner div {position: relative;padding-top: 20px;top: 10px; width: 470px;margin: 0 auto;}
+
 </style>
 
 
@@ -148,35 +152,25 @@ div.ad-horizont {padding-bottom: 0 !important;position: relative;top: 25px;}
 <% voc_spaces.each do |s| -%>
 <% if word.id == s %>
   <tr>
-    <td class="original" valign="top">&nbsp;
-    </td>
-	<td class="transcription" valign="top">&nbsp;
-    </td>
-    <td class="translation" valign="top">&nbsp;
-    </td>
+    <td class="original" valign="top">&nbsp;</td>
+	<td class="transcription" valign="top">&nbsp;</td>
+    <td class="translation" valign="top">&nbsp;</td>
   </tr>
 <%end -%>
 <%end -%>
 <tr class="trow">
-    <td class="original" valign="top">
-	<%unless word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div><%end%>
+    <td class="original" valign="top"><%unless word.sound_url == ''%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div><%end%>
 	<%= word.text %>
     </td>
-    <td class="transcription" valign="top">
-		<%= word.html %>
+    <td class="transcription" valign="top"><%= word.html %>
 		<div class="ru-transcript">[<%= word.transcribe %>]</div>
     </td>	
-    <td class="translation" valign="top"><%= word.translate %>
-    </td>
+    <td class="translation" valign="top"><%= word.translate %></td>
 </tr>
 <%end -%>
 </tbody>
 <tfoot>
-<tr>
-	<td></td>
-	<td></td>
-	<td></td>
-</tr>
+	<tr><td></td><td></td><td></td></tr>
 </tfoot>  
 </table>
 
@@ -196,132 +190,10 @@ div.ad-horizont {padding-bottom: 0 !important;position: relative;top: 25px;}
 
 <div id="for_tab02" class="pBlock" style="display: none">
 	<div class="inpBlock">
-	
 <br><br><br><br>	
 
-
 <div  id="fl1" style="min-height: 600px; text-align: center;">
-
-<div class="fl-container">
-<div class="fl-window">
-
-<div class="fl-init">
-<div class="fl-settings" style="" >
-		<div class="fl-set-title"> Настройки </div>
-			<div class="fl-set-list">
-			<table>
-				<tr>
-					<td style="border-right: 1px dotted #999; padding-right: 22px">
-					<b>Выбрать в списке:</b>
-					<ul>
-						<li><span class="fl-set-all fl-act" >> Все</span></li>
-						<li><span class="fl-set-none fl-act" >> Ни одного</span></li>
-						<li><span class="fl-set-not-worked fl-act" >> Все неизученные</span></li>
-						<li><span class="fl-set-worked fl-act">> Все изученные </span></li>
-					</ul>
-					</td>
-					<td style="padding-left: 10px">
-					<b>Настройки флэш-карт:</b>
-					<ul>
-						<li><span class="fl-act fl-switch-order" >> Порядок слов</span><br>
-							&nbsp;&nbsp;<span class="fl-direct tcheck checked fl-act" >обычный</span><br>
-							&nbsp;&nbsp;<span class="fl-random tcheck fl-act">случайный</span>
-						</li>
-						<li style="visibility: hidden"><span class="fl-act fl-switch-auto" >> Проигрывать аудио</span><br>
-						&nbsp;&nbsp;<span class="fl-auto-on tcheck checked fl-act" >вкл</span>
-								/<span class="fl-auto-off tcheck fl-act" >выкл</span>
-						</li>
-					</ul>
-					</td>
-				</tr>
-			</table>
-			</div>
-		</div>
-	<div class="fl-prestart">
-	</div>
-	<div class="fl-start-wrapper">
-		<div class="fl-start fl-btn noselect"> Начать </div>
-		<div class="fl-start-note-wrapper">
-			<div class="fl-start-note">Необходимо выбрать  <br>слово или выражение</div>
-		</div>
-	</div>
-</div>
-<div class="fl-end">
-	<div class="fl-end-notice">В данном списке представлены слова и выражения, с которыми вы работали:</div>
-	<div class="fl-end-list"></div>
-	<div class="fl-end-wrapper">
-		<div class="fl-stop fl-btn noselect"> Закончить </div>
-	</div>
-</div>
-<div class="fl-work">
-<div class="fl-article-wrapper">
-  <div class="fl-article-list">
-	<table  style="margin: 0 auto" align="center"><tr><td height="70">
-		<div class="fl-original"></div>
-	</td></tr></table>
-	<table  style="margin: 0 auto" align="center"><tr>
-		<td><div class="fl-transcript"></div></td>
-		<td style="text-align: left; height:19px;"> <div class="fl-sound"> </div> </td>
-	</tr></table>
-	<div class="fl-translate"></div>
-  </div>
-</div>
-<div class="fl-auto-wrapper" style="visibility: hidden"><input type="checkbox" class="fl-autoplay" checked> Проигрывать </div>
-<div class="fl-buttons-wrapper">
-	<div class="fl-next fl-btn noselect">Далee >></div>
-</div>
-<div class="fl-check" style="min-height: 190px;">
-	<div class="fl-tests" style="display: none;">
-		<div class="fl-cancel-wrapper" style="display: none;">
-			<div class="fl-test-task">
-				<span class="fl-wrong-note fl-notes">Неправильно! Попробуйте снова</span>
-				<span class="fl-correct-note fl-notes">Великолепно! Правильный ответ</span>
-				<span class="fl-exclude-note fl-notes">Запись отмечена как пройденная</span>
-				<span class="fl-task-string">Найдите перевод слова/выражения в списке</span>
-			</div>
-			<div class="fl-cancel fl-btn noselect"> Отмена </div>
-		</div>
-	</div>
-	<div class="fl-spell" style="display: none;">
-		<div class="fl-spell-cancel-wrapper" style="display: none;">
-			<div class="fl-spell-task">
-				<span class="fl-wrong-spell fl-spell-notes">Неправильно! Попробуйте снова</span>
-				<span class="fl-correct-spell fl-spell-notes">Великолепно! Правильный ответ</span>
-				<span class="fl-task-spell">Напечатайте в текстовом поле слово/фразу</span>
-			</div>
-			<div class="fl-cancel-spell fl-btn noselect"> Закончить </div>
-		</div>
-		<div class="fl-spell-test"><input class="fl-spell-field for_keyb" type="text" /></div>
-		<div class="fl-spell-check-wrapper">
-			<div class="fl-spell-check fl-btn noselect"> Проверить </div>
-		</div>
-		<div class="kb-show-wrapper" ></div>
-	</div>
-	<div class="fl-activity-wrapper">
-	<table class="fl-activity">
-		<col><col width="130">
-		<tr>
-			<td class="fl-text-info">Нажмите кнопку "Тесты", чтобы выполнить простые задания со словом/фразой</td>
-			<td> <div class="fl-verify fl-btn noselect"> Тесты </div></td>
-		</tr>
-		<tr class="fl-spell-activity">
-			<td class="fl-text-info">Нажмите кнопку "Правописание" для практики в написании слова/фразы </td>
-			<td><div class="fl-spell-btn fl-btn noselect">Правописание</div></td>
-		</tr>
-		<tr>
-			<td class="fl-text-info" >Нажмите кнопку "Стоп", если вы желаете закончить работу с флэш-картами и вернуться в главное меню </td>
-			<td> <div class="fl-stop fl-btn noselect">Стоп</div></td>
-		</tr>
-	</table>
-	</div>
-</div>
-
-</div>
-
-</div><!-- end of fl-window -->
-</div><!-- end of flcontainer-->
-
-
+<%= render :partial => 'site/ru_flashcard' %>
 </div><!-- end of fl1 -->
 
 <script type="text/javascript"> 
