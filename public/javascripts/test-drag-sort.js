@@ -160,7 +160,7 @@ this.autoCheck = hash['auto_check'];
 this.id = hash['id'];
 this.answerBColor = hash['answer_color'];
 this.checkClass="ds-rt";
-this.signClass="ds-sign";
+this.signClass=hash['sign_class'];
 this.correctClass = "ds-correct-answer";
 this.errorClass = "ds-error-answer";
 this.callback = hash['callback'];
@@ -168,6 +168,8 @@ this.test_id= hash['test_id'];
 
 this.targetsData = new Array();
 if (this.callback == undefined) this.callback = function() {return false};
+if (this.signClass == undefined) this.signClass = "ds-sign";
+
 
 this.start = function() {
 
@@ -438,7 +440,7 @@ this.autoCheck = hash['auto_check'];
 this.id = hash['id'];
 this.answerBColor = hash['answer_color'];
 this.checkClass="ds-rt";
-this.signClass="ds-sign";
+this.signClass= hash['sign_class'];
 this.correctClass = "ds-correct-answer";
 this.errorClass = "ds-error-answer";
 this.test_id= hash['test_id'];
@@ -446,7 +448,7 @@ this.totalTasks = hash['total_task'];
 this.testType = hash['test_type'];
 
 if (this.testType == undefined) this.testType = "sortlist";
-
+if (this.signClass == undefined) this.signClass = "ds-sign";
 
 this.targetsData = new Array();
 
@@ -493,10 +495,6 @@ this.start = function() {
 			tObj.startDrag($(this),e);
 		});
 	}
-
-
-	
-	
 	
 }
 

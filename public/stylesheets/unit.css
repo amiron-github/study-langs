@@ -3810,10 +3810,54 @@ text-align: center;
 .es-audio-ex .ps-audio-wrapper table td {height: 80px !important;}
 .es-audio-ex .ps-audio  {background-image: url(/images/play-test-50.png); height: 70px; }
 .es-audio-ex .ps-audio-holder-hover .ps-audio {background-image: url(/images/play-test-down-50.png)}
-
-
 /* end of lexical test p css */
 
+/* kids image lesson exercises*/
+.ds-kid-img .ds-kid-ul {vertical-align: top; text-align: center; margin:0; padding:0}
+.ds-kid-img .ds-check-li {display: inline-block; background-color: #fff; min-width: 100px; padding: 0 2px 3px 2px; border: 1px solid #ababab; margin: 4px; vertical-align: top; box-shadow: 0 1px 3px #C1BEBE}
+.ds-kid-img .ds-check-li span {font-size: 12px; font-weight: bold; text-shadow: 0px 1px 0px #fff;}
+.ds-kid-img .ds-check-li .jp_control {display: inline-block; position: relative; top: 4px; margin-left: 2px}
+.ds-kid-img .ds-check-li .ds-answer {min-height: 60px; text-align: center; background-color: #fff;}
+.ds-kid-img .ds-check-li .ds_sort_item {margin-left: 0}
+.ds-kid-img .ds-check-li .ds-txt-wrapper {padding: 0px 1px 2px 0}
+.ds-kid-img .ds-variants-cnt {padding: 30px 20px 5px;}
+.ds-kid-img .ds-options-wrap li {display: inline-block; margin: 2px 8px}
+.ds-kid-img .ds_variants_list {padding-top: 15px; padding-bottom: 15px;}
+.ds-kid-img .check_notify {left: 50px; top: -4px; padding:4px 10px 5px 44px; background-position: 10px 5px; background-color: #fff; box-shadow: 1px 1px 3px #C4D1EA}
+.ds-kid-img input.ds-check-button {background-color: #bed7fc;}
+.ds-kid-img {padding: 20px; background: #F2F5FB; border: 1px solid #A1B2D8; box-shadow: inset 0 0 6px #C4D1EA}
+.ds-kid-img .ds-error-answer {background-color: #FF6969;}
+.ds-kid-img .ds-error-answer span {text-shadow: 0px 1px 0px #E6B7B7;}
+.ds-kid-img .ds-correct-answer {background-color: #18F379;}
+.ds-kid-img .ds-correct-answer span {text-shadow: 0px 1px 0px #DDF5EA;}
+.ds-kid-img .ds-check-li { border: 1px solid #8E9BB1; box-shadow: 0 1px 3px #BEC6CE;}
+.ds-kid-img .ds_variants_list {border: 1px solid #B3BDD4; box-shadow: 2px 2px 5px #dfdfdf;}
+.ds-kid-img .ds_sort_item {margin-left: 9px;}
+.ds-kid-img .ds_vholder {padding: 3px 6px;}
+
+.ps-kid-img .ps-tasks-list {text-align: center;}
+.ps-kid-img .ps-tasks-list li input {display: none;}
+.ps-kid-img .ps-answers-table {height: 140px;}
+.ps-kid-img .ps-bottom {position: relative; top: -5px}
+.ps-kid-img .ps-tasks-list li {vertical-align: top;text-indent: 0;padding: 6px 7px;display: inline-block;margin: 5px 12px 5px 5px;text-align: center;}
+.ps-kid-img .ps-tasks-list li img {width: 125px; min-height: 90px}
+.ps-kid-img li.pt-ps-wrong {background-color: #FF1200; background-image: none;}
+.ps-kid-img li.pt-ps-should {background-color: #1DEF61; background-image: none;}
+.ps-kid-img li.pt-ps-correct {background-color: #1DEF61; background-image: none;}
+.ps-kid-img .ps-bottom {text-align: center; padding: 10px 20px }
+.ps-kid-img .ps-string-wrapper {font-size: 28px}
+
+.kl-type-test .ps-type-rand span {font-size: 25px; line-height: 37px; font-weight: normal; padding: 0px 5px 1px;}
+.kl-type-test .ps-txt-letters {text-align: center; font-size: 26px;}
+.kl-type-test a.pt-type-reset {font-size: 22px; margin-top: -34px;} 
+.kl-type-test .ps-bottom {text-align: center; padding-left: 16px; padding-bottom: 20px}
+.kl-type-test .pt-spec .ps-type-elem {padding: 10px 90px 5px;}
+.kl-type-test .pt-spec .ps-type-rand {text-align: center;}
+.kl-type-test .jp_control, .kl-type-test .jp_control:hover {background: url("/images/play-25.png") 50% 50% no-repeat; cursor: pointer; height: 27px; width: 27px; margin: 8px auto 0;}
+.kl-type-test .jp_pause { background-image: url("/images/pause-25.png") !important;}
+.kl-type-test .ps-string-wrapper span {font-size: 12px;}
+.kl-type-test span.ps-t-ans {padding-left: 10px; padding-right: 10px}
+/* end of kids image lesson exercises*/
 
 
 
