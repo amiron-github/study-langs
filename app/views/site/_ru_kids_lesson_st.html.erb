@@ -308,7 +308,7 @@ answer:'<img src="<%= voc_word.image_url %>">'
 {quest: '<table><tr><td><img src="<%= voc_word.image_url %>" style="height: 100px"><\/td><%unless @mute%><td><span>Прослушать<\/span> <div class="jp_control" onclick="cJplayer(\'<%= voc_word.sound_url %>\', this)"><\/div><\/td><%end%><\/tr><\/table>', 
 correct:'<%= voc_word.text %>',
 answer:'<%= voc_word.text %>',
-forms:'<%= voc_word.text.split('').join(" ") %><%if voc_word.text=="one hundred" || voc_word.text=="fancy cake" %> &nbsp;<%end%>'
+forms:'<%= voc_word.text.gsub(/ /, "#").split(//).join(' ').gsub('#','&nbsp;') %>'
 <% if current_user %>, id: '<%= voc_word.id%>'<%end%>}<% if index!= @last_voc -%>,<%end -%>
 <% end %>
 	
