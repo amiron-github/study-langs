@@ -124,28 +124,20 @@ b.st-link {cursor: pointer;}
 	
 <div class="kl-wordlist-wrapper">
 <div>
-<table class="obj-sound" width="100%" align="center" style="margin: 0 auto;" cellspacing="2">
-<col width="50%"><col width="50%">
-<% @rows = 2 %>
-<% @voc.each_with_index do |word,index| %>
-<%if index % @rows == 0 %><tr><%end%>
-		<td>
-<div class="su-im-wrap">
-<table cellspacing="0">
-	<tr>
-		<td>
-			<img width="130" src="<%= word.image_url %>" /> 
-		</td>
-		<td class="w-text">
-			<div class="obj-txt"><%= word.text %></div>
-			 <% if @mute %><div style="color: #666; font-size: 12px; font-weight: normal">[<%= word.transcribe %>]</div>
-			 <%else%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div>
-			 <%end -%>
-			<div class="obj-transl"><%= word.translate %></div>
-	</tr>
-</table>
-</div>	
-		</td>
+	<table class="obj-sound" width="100%" align="center" style="margin: 0 auto;" cellspacing="2">
+		<col width="50%"><col width="50%"><% @rows = 2 %>
+		<% @voc.each_with_index do |word,index| %><%if index % @rows == 0 %><tr><%end%>
+			<td>
+			 <div class="su-im-wrap">
+			  <table cellspacing="0"><tr>
+					<td><img width="130" src="<%= word.image_url %>" /></td>
+					<td class="w-text"><div class="obj-txt"><%= word.text %></div><% if @mute %><div style="color: #666; font-size: 12px; font-weight: normal">[<%= word.transcribe %>]</div>
+			 			<%else%><div class="jp_control" onclick="cJplayer('<%= word.sound_url %>', this)"></div><%end -%>
+			 			<div class="obj-transl"><%= word.translate %></div>
+					</td>
+			  </tr></table>
+			 </div>	
+			</td>
 <%if index % @rows == @rows-1 %></tr><%end%>
 <%end%>
 </table>
