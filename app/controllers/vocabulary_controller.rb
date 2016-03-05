@@ -218,9 +218,15 @@ layout :layout_by_lang
 		@words = @all_words.slice(first-2, len)
 	end
 	
+	if (@category_tag == 'kanji_06_jp' && @lesson.to_f == 18) 
+		@words = @all_words.slice(first, 11)
+	end
+	
 	if @learnt.length > 40 
 		@learnt = @learnt.slice(@learnt.length-40, 40)
 	end
+	
+	
 	
 	@category_title = @category.title_ru
 	if @category_tag == 'hiragana_jp' || @category_tag == 'katakana_jp'
