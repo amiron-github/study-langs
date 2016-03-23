@@ -830,7 +830,7 @@ $("#tab05").click(function(){
 
 $("#tab06").click(function(){
 	$(".pBlock").hide();
-	$("#for_tab05").show();
+	$("#for_tab06").show();
 	location.href='#tab=6'
 });
 
