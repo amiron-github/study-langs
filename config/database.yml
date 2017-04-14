@@ -21,7 +21,7 @@ development:
   pool: 5
   username: root
   password:
-  socket: /var/lib/mysql/mysql.sock
+  socket: /private/tmp/mysql.sock
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
