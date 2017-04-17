@@ -23,7 +23,7 @@ set :rails_env, "production"
 #set :runner, "studylanguagesonline"
 set :user, "root"
 set :runner, "root"
-set :domain, "188.93.19.245"
+set :domain, "185.143.172.65"
 server domain, :www, :web
 role :db, domain, :primary => true
 
@@ -35,7 +35,7 @@ set :scm, :git
 set :branch, "master"
 #set :scm_user, 'devel2'
 #set :scm_passphrase, "PASSWORD"
-set :repository, "redspell@git.redspell.ru:/home/redspell/git/studylanguagesonline.git"
+set :repository, "git@github.com:amiron-github/study-langs.git"
 set :deploy_via, :remote_cache
 
 namespace :deploy do

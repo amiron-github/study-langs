@@ -85,7 +85,19 @@ config.action_mailer.smtp_settings = {
     :domain         => 'study-languages-online.com',
 }
 
+if Gem::VERSION >= "1.3.6"
+  module Rails
+    class GemDependency
+      def requirement
+        r = super
+        (r == Gem::Requirement.default) ? nil : r
+      end
+    end
+  end
 end
+
+end
+
 
 
 
