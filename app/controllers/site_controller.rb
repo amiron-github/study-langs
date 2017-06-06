@@ -88,6 +88,8 @@ class SiteController < ApplicationController
 		layout = 'new.rhtml'
 	end
 	
+	@no_ad = true
+	
 	if logged_in?
 		@no_ad = true
 	end
