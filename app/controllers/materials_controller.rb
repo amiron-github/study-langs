@@ -52,6 +52,7 @@ require_role "admin", :except => [:publish, :rss]
   def publish
 	@t_page = request.path
 	@material = Material.find(:first, :conditions=> ['page_url=?',@t_page])
+	@no_ad = true
 	if logged_in?
 		@no_ad = true
 	end
